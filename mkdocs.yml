@@ -1,6 +1,6 @@
 site_name: Power's Wiki
-repo_url: https://github.com/squidfunk/mkdocs-material
-remote_name: squidfunk/mkdocs-material
+repo_url: https://github.com/linyuxuanlin/Wiki_MkDocs
+remote_name: linyuxuanlin/Wiki_MkDocs
 edit_uri: edit/main/docs/
 
 nav:
