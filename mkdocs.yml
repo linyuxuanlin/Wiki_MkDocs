@@ -296,7 +296,7 @@ extra:
     property: UA-152900803-1
   social:
     - icon: fontawesome/brands/twitter
-      link: 123
+      link: https://123.test
     - icon: fontawesome/brands/github
       link: https://github.com/linyuxuanlin
       name: squidfunk on a
