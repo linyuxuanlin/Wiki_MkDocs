@@ -296,9 +296,9 @@ extra:
     property: UA-152900803-1
   social:
     - icon: fontawesome/brands/twitter
-      link: https://twitter.com/squidfunk
+      link: 123
     - icon: fontawesome/brands/github
-      link: https://twitter.com/squidfunk
+      link: https://github.com/linyuxuanlin
       name: squidfunk on a
 
 copyright: Copyright &copy; 2015 - 2022 Power Lin
