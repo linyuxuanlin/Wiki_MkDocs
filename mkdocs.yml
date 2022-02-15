@@ -4,9 +4,9 @@ remote_name: linyuxuanlin/Wiki_MkDocs
 edit_uri: edit/main/docs/
 
 nav:
-  - Home: index.md
+  #- Home: index.md
   - 硬件设计:
-    #- Home: index.md
+    - Home: index.md
     - 应用方案:
       - OSD335x最小系统的设计.md
       - 如何设计一款单片机的最小系统.md # CSDN
