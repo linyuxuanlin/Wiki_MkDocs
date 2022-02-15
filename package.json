@@ -1,6 +1,6 @@
 {
     "name": "mkdocs",
-    "version": "lastest",
+    "version": "8.1.11",
     "private": true,
     "scripts": {
       "dev": "mkdocs serve",
