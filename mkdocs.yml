@@ -282,7 +282,6 @@ theme:
     - navigation.top # 返回顶部按钮
     - search.suggest # 搜索推荐
     - search.highlight
-    
   icon:
     repo: fontawesome/brands/github
 
