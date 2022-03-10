@@ -25,7 +25,6 @@ Hi there~
 <h6>Power Lin |  <a href="https://beian.miit.gov.cn"> 粤 ICP 备 20014898 号 </a> | Built with Docusaurus</h6>
 
 
-<iframe            src="https://viewer.digipcba.com/client/static/js/embed.js"             width="520"            height="400"            id="iframe"            frameBorder="0"            scrolling="no"            marginHeight="0"            marginWidth="0"          />
 
 
 <iframe>
