@@ -32,6 +32,9 @@ Hi there~
 </div>
 </iframe>
 
+<div class="altium-ecad-viewer" data-project-src="https://github.com/SeeedDocument/Xadow_M0/raw/master/res/Xadow_M0_Schematic.zip" style="border-radius: 0px 0px 4px 4px; height: 500px; border-style: solid; border-width: 1px; border-color: rgb(241, 241, 241); overflow: hidden; max-width: 1280px; max-height: 700px; box-sizing: border-box;" />
+</div>
+
 
 ```
 <iframe width="675" height="380" src="https://www.youtube.com/embed/_AQXQDjw7Y8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
