@@ -23,3 +23,6 @@ Hi there~
 [![contact](https://img.shields.io/badge/Contact%20me-here-34ABE0?&style=flat-square)](ContactMe)
 
 <h6>Power Lin |  <a href="https://beian.miit.gov.cn"> 粤 ICP 备 20014898 号 </a> | Built with Docusaurus</h6>
+
+<div class="altium-ecad-viewer" data-project-src="48af3b84-fbe3-4c7c-b4bc-ced824e7efd6"  data-enabled-views="sch,pcb,3d,bom" data-active-view="sch" style="border-radius: 0px 0px 4px 4px; height: 500px; border-style: solid; border-width: 1px; border-color: rgb(241, 241, 241); overflow: hidden; max-width: 1280px; max-height: 700px; box-sizing: border-box;"></div>
+        <script src="https://viewer.digipcba.com/client/static/js/embed.js"></script>
