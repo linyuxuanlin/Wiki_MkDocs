@@ -24,6 +24,7 @@ Hi there~
 
 <h6>Power Lin |  <a href="https://beian.miit.gov.cn"> 粤 ICP 备 20014898 号 </a> | Built with Docusaurus</h6>
 
+```
 <div
   class="altium-ecad-viewer"
   data-project-src="https://github.com/linyuxuanlin/Collection_of_Motor_Driver_Design/raw/main/DC_Motor/IR2104S/IR2104S.SchDoc"
@@ -39,3 +40,4 @@ Hi there~
   "
 >项目在线预览</div>
 <script src="https://viewer.altium.com/client/static/js/embed.js"></script>
+```
