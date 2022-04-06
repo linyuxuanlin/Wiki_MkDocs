@@ -1,0 +1,25 @@
+/* 隐藏 scrollbar */
+::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* 文字选取颜色 */
+  ::selection {
+    background: aquamarine;
+    color: black;
+  }
+  
+  /* Smooth Scroll 顺滑跳转到某位置 */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  img {
+    border: 3px solid black;
+    background: white;
+  }
+  
+  img[alt=badge] {
+    border: none;
+  }
+  
