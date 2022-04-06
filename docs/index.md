@@ -32,7 +32,6 @@ Hi there~
     height: 500px;
     border-style: solid;
     border-width: 1px;
-    border-color: rgb(241, 241, 241);
     overflow: hidden;
     max-width: 1280px;
     max-height: 700px;
