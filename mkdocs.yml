@@ -27,7 +27,7 @@ nav:
       - 嵌入式硬件:
           - RobotCtrl-STM32通用开发套件.md
           - OSD335x最小系统的设计.md
-          - 如何设计一款单片机的最小系统.md // CSDN
+          - 如何设计一款单片机的最小系统.md # CSDN
           - STM32F4硬件开发.md
           - SwiftCtrl-蓝牙手柄.md
           - 自制CMSIS-DAP.md
@@ -205,30 +205,30 @@ nav:
           - 一些观点.md
       - 高效工作:
           - 如何用LaTeX写论文.md
-          - 基于RSSHub搭建RSS生成器（群晖Docker）.md // CSDN
-          - 基于Bitwarden搭建密码管理器（群晖Docker）.md // CSDN
-          - 基于acme.sh自动申请域名证书（群晖Docker）.md // CSDN
-          - 基于Calibre搭建在线书库（群晖Docker）.md // CSDN
-          - 如何实现外网RDP远控（frp）.md // CSDN
-          - 使用rdp访问群晖NAS.md // CSDN
-          - 如何用Markdown写一份简历.md // CSDN
-          - 为什么你需要一个知识库.md // CSDN
-          - 个人文案排版规范.md // CSDN todo
-          - 技术文档写作规范.md // CSDN todo
+          - 基于RSSHub搭建RSS生成器（群晖Docker）.md # CSDN
+          - 基于Bitwarden搭建密码管理器（群晖Docker）.md # CSDN
+          - 基于acme.sh自动申请域名证书（群晖Docker）.md # CSDN
+          - 基于Calibre搭建在线书库（群晖Docker）.md # CSDN
+          - 如何实现外网RDP远控（frp）.md # CSDN
+          - 使用rdp访问群晖NAS.md # CSDN
+          - 如何用Markdown写一份简历.md # CSDN
+          - 为什么你需要一个知识库.md # CSDN
+          - 个人文案排版规范.md # CSDN todo
+          - 技术文档写作规范.md # CSDN todo
           - 如何保存易逝的文字.md
-          - 个人知识库的搭建-基于Docusaurus.md // CSDN
-          - Windows初始化与软件推荐.md // CSDN todo
-          - Docusaurus极简部署指南.md // CSDN todo
-          - Hugo极简搭建指南.md // CSDN todo
-          - 如何在iPad上运行VSCode.md // CSDN
-          - 使用Markdown高效写作.md // CSDN
-          - 用树莓派架设云打印服务器.md // CSDN todo
-          - 用Graphviz绘制关系图.md // CSDN todo
+          - 个人知识库的搭建-基于Docusaurus.md # CSDN
+          - Windows初始化与软件推荐.md # CSDN todo
+          - Docusaurus极简部署指南.md # CSDN todo
+          - Hugo极简搭建指南.md # CSDN todo
+          - 如何在iPad上运行VSCode.md # CSDN
+          - 使用Markdown高效写作.md # CSDN
+          - 用树莓派架设云打印服务器.md # CSDN todo
+          - 用Graphviz绘制关系图.md # CSDN todo
           - RSS-高效率的阅读方式.md
           - 如何在Markdown中使用LaTeX.md
           - 把回忆放心交给GooglePhotos.md
-          - VSCode生产力指南-环境配置.md // CSDN todo
-          - VSCode生产力指南-JupyterNotebook.md // CSDN todo
+          - VSCode生产力指南-环境配置.md # CSDN todo
+          - VSCode生产力指南-JupyterNotebook.md # CSDN todo
           - 在浏览器上运行VSCode（旧）.md
           - 如何配一台电脑.md
 
