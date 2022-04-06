@@ -18,7 +18,7 @@ Hi there~
 为了避免遗忘、便于分享，我在这里收录知识。  
 请随意浏览～
 
-[![GitHub deployments](https://img.shields.io/github/deployments/linyuxuanlin/Wiki_Docusaurus/Production?label=Build&style=flat-square){ width="300", loading=lazy}](https://vercel.com/linyuxuanlin/wiki-mkdocs/deployments)
+[![GitHub deployments](https://img.shields.io/github/deployments/linyuxuanlin/Wiki_Docusaurus/Production?label=Build&style=flat-square){width='auto', height= 'auto' loading=lazy}](https://vercel.com/linyuxuanlin/wiki-mkdocs/deployments)
 [![GitHub last commit](https://img.shields.io/github/last-commit/linyuxuanlin/Wiki_Docusaurus?color=FCD734&label=Last%20commit&style=flat-square)](https://github.com/linyuxuanlin/Wiki_mkdocs/commits/main)
 [![contact](https://img.shields.io/badge/Contact%20me-here-34ABE0?&style=flat-square)](ContactMe)
 
