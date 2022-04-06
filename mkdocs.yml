@@ -7,230 +7,230 @@ nav:
   - 硬件设计:
       - Home: index.md
       - 基础知识:
-          - 基本元器件-电阻
-          - 基本元器件-电容
-          - 基本元器件-电感与磁珠
-          - 基本元器件-二极管
-          - 基本元器件-晶体三级管
-          - 基本元器件-场效应管
-          - 基本元器件-光电耦合器
-          - 基本元器件-运算放大器
-          - 数字电路基础知识
-          - 设计规范-PCB
-          - 推挽与开漏输出
-          - 共模信号与差模信号
-          - 存储介质类别
-          - 保险丝的选型
-          - 锂电池选型指南
-          - 编码器的几种输出方式
-          - 防反接电路的设计
+          - 基本元器件-电阻.md
+          - 基本元器件-电容.md
+          - 基本元器件-电感与磁珠.md
+          - 基本元器件-二极管.md
+          - 基本元器件-晶体三级管.md
+          - 基本元器件-场效应管.md
+          - 基本元器件-光电耦合器.md
+          - 基本元器件-运算放大器.md
+          - 数字电路基础知识.md
+          - 设计规范-PCB.md
+          - 推挽与开漏输出.md
+          - 共模信号与差模信号.md
+          - 存储介质类别.md
+          - 保险丝的选型.md
+          - 锂电池选型指南.md
+          - 编码器的几种输出方式.md
+          - 防反接电路的设计.md
       - 嵌入式硬件:
-          - RobotCtrl-STM32通用开发套件
-          - OSD335x最小系统的设计
-          - 如何设计一款单片机的最小系统 // CSDN
-          - STM32F4硬件开发
-          - SwiftCtrl-蓝牙手柄
-          - 自制CMSIS-DAP
+          - RobotCtrl-STM32通用开发套件.md
+          - OSD335x最小系统的设计.md
+          - 如何设计一款单片机的最小系统.md // CSDN
+          - STM32F4硬件开发.md
+          - SwiftCtrl-蓝牙手柄.md
+          - 自制CMSIS-DAP.md
       - 电机驱动:
-          - 直流有刷电机驱动的设计
-          - TinyDVR-小巧身材，满载动力
-          - RaptorDVR-集成稳压的30A双电机驱动
-          - AirForce-充满灵性的电机驱动模块
-          - ZenDriver-高性能的电机驱动
-          - 电机驱动方案-IR2104S
+          - 直流有刷电机驱动的设计.md
+          - TinyDVR-小巧身材，满载动力.md
+          - RaptorDVR-集成稳压的30A双电机驱动.md
+          - AirForce-充满灵性的电机驱动模块.md
+          - ZenDriver-高性能的电机驱动.md
+          - 电机驱动方案-IR2104S.md
       - 通信协议:
-          - 通信协议-数字逻辑电平
-          - 通信协议-SPI
-          - 通信协议-I2C
-          - 通信协议-CAN
-          - 通信协议-USB
+          - 通信协议-数字逻辑电平.md
+          - 通信协议-SPI.md
+          - 通信协议-I2C.md
+          - 通信协议-CAN.md
+          - 通信协议-USB.md
       - 电源设计:
-          - 电源的设计-方案确定
-          - 电源的设计-线性稳压
-          - 电源的设计-开关稳压（非隔离型）
-          - 电源的设计-集成开关电源
-          - 电源的设计-自举电路
-          - 电源的设计-常用芯片方案收集
-          - 电源方案（Buck）-LMR14050
+          - 电源的设计-方案确定.md
+          - 电源的设计-线性稳压.md
+          - 电源的设计-开关稳压（非隔离型）.md
+          - 电源的设计-集成开关电源.md
+          - 电源的设计-自举电路.md
+          - 电源的设计-常用芯片方案收集.md
+          - 电源方案（Buck）-LMR14050.md
       - 信号与电源完整性:
-          - 高速电路的设计
-          - 信号与电源完整性-基础概念
-          - 信号与电源完整性-时域与频域
-          - 信号与电源完整性-传输线
-          - 信号与电源完整性-失真
-          - 信号与电源完整性-串扰
-          - 电源完整性设计
+          - 高速电路的设计.md
+          - 信号与电源完整性-基础概念.md
+          - 信号与电源完整性-时域与频域.md
+          - 信号与电源完整性-传输线.md
+          - 信号与电源完整性-失真.md
+          - 信号与电源完整性-串扰.md
+          - 电源完整性设计.md
       - 射频设计:
-          - 射频-基础知识
-          - 射频-基本单位
-          - 射频-无线电波与天线
+          - 射频-基础知识.md
+          - 射频-基本单位.md
+          - 射频-无线电波与天线.md
       - 电磁兼容:
-          - ESD基础知识
-          - EMC设计指南
+          - ESD基础知识.md
+          - EMC设计指南.md
       - 软件与仪器:
           - AD常用技巧
-          - AD基本操作-环境搭建
-          - AD基本操作-基础知识
-          - AD基本操作-原理图绘制
-          - AD基本操作-多板系统设计
-          - AD使用Git的注意事项
-          - 函数思想在电路设计中的应用
-          - Cadence操作笔记-OrCAD_Capture
-          - 示波器的触发模式
-          - 网络分析仪基本操作
-          - 逻辑分析仪的使用
+          - AD基本操作-环境搭建.md
+          - AD基本操作-基础知识.md
+          - AD基本操作-原理图绘制.md
+          - AD基本操作-多板系统设计.md
+          - AD使用Git的注意事项.md
+          - 函数思想在电路设计中的应用.md
+          - Cadence操作笔记-OrCAD_Capture.md
+          - 示波器的触发模式.md
+          - 网络分析仪基本操作.md
+          - 逻辑分析仪的使用.md
   - 嵌入式与软件:
       - 软件开发:
-          - 双系统极简安装指南
-          - 网页版串口助手的开发
-          - Ubuntu配置笔记
-          - ROS入门笔记
-          - 机器视觉入门
-          - 使用R语言进行数据分析
-          - CSS学习笔记
-          - HTML学习笔记
-          - JavaScript学习笔记
-          - Docker简易指南
-          - DockerCompose-更优雅的打开方式
-          - 自适应网页设计
-          - 前端开发-环境搭建
-          - BookJourney-二手书商城小程序
-          - Git学习笔记
+          - 双系统极简安装指南.md
+          - 网页版串口助手的开发.md
+          - Ubuntu配置笔记.md
+          - ROS入门笔记.md
+          - 机器视觉入门.md
+          - 使用R语言进行数据分析.md
+          - CSS学习笔记.md
+          - HTML学习笔记.md
+          - JavaScript学习笔记.md
+          - Docker简易指南.md
+          - DockerCompose-更优雅的打开方式.md
+          - 自适应网页设计.md
+          - 前端开发-环境搭建.md
+          - BookJourney-二手书商城小程序.md
+          - Git学习笔记.md
       - Linux:
-          - Linux学习笔记-基础知识
-          - Linux学习笔记-用户操作
-          - 嵌入式Linux-基础知识
-          - 嵌入式Linux-GPIO子系统
-          - BeagleBone系列-基本参数与环境配置
-          - BeagleBone系列-无线连接
-          - BeagleBone系列-使用BBIO库开发
-          - BeagleBone系列-BBAI入坑
-          - JetsonNano系列-入坑
+          - Linux学习笔记-基础知识.md
+          - Linux学习笔记-用户操作.md
+          - 嵌入式Linux-基础知识.md
+          - 嵌入式Linux-GPIO子系统.md
+          - BeagleBone系列-基本参数与环境配置.md
+          - BeagleBone系列-无线连接.md
+          - BeagleBone系列-使用BBIO库开发.md
+          - BeagleBone系列-BBAI入坑.md
+          - JetsonNano系列-入坑.md
       - 单片机:
-          - HAL库开发笔记（一）-环境配置
-          - HAL库开发笔记（二）-GPIO
-          - HAL库开发笔记（三）-外部中断
-          - HAL库开发笔记（四）-串口通信
-          - HAL库开发笔记（五）-DMA
-          - HAL库开发笔记（六）-TIM基本定时器
-          - HAL库开发笔记（七）-TIM通用定时器
-          - HAL库开发笔记（八）-I2C通信（MPU6050）
-          - STM32CubeIDE串口重定向（printf）及输出浮点型
-          - 如何读写单个bit
-          - PlatformIO—一站式嵌入式开发工具
-          - PlatformIO搭配CubeMX食用
-          - C与STM32常用宏定义
-          - C与STM32代码规范
-          - SWD与JTAG的区别与联系
-          - CubeMX的一些坑
-          - STM32的启动模式
-          - KeilMDK配置指南
-          - 大疆N3飞控-参考资料
-          - ATTiny85调试记录
-          - T-Clock桌上小钟
-          - 麦轮小车
-          - 转义字符
-          - 一个舵机的自我修养
+          - HAL库开发笔记（一）-环境配置.md
+          - HAL库开发笔记（二）-GPIO.md
+          - HAL库开发笔记（三）-外部中断.md
+          - HAL库开发笔记（四）-串口通信.md
+          - HAL库开发笔记（五）-DMA.md
+          - HAL库开发笔记（六）-TIM基本定时器.md
+          - HAL库开发笔记（七）-TIM通用定时器.md
+          - HAL库开发笔记（八）-I2C通信（MPU6050）.md
+          - STM32CubeIDE串口重定向（printf）及输出浮点型.md
+          - 如何读写单个bit.md
+          - PlatformIO—一站式嵌入式开发工具.md
+          - PlatformIO搭配CubeMX食用.md
+          - C与STM32常用宏定义.md
+          - C与STM32代码规范.md
+          - SWD与JTAG的区别与联系.md
+          - CubeMX的一些坑.md
+          - STM32的启动模式.md
+          - KeilMDK配置指南.md
+          - 大疆N3飞控-参考资料.md
+          - ATTiny85调试记录.md
+          - T-Clock桌上小钟.md
+          - 麦轮小车.md
+          - 转义字符.md
+          - 一个舵机的自我修养.md
   - 效率指南:
       - 机器人队行政:
-          - 四校交流-策划案
-          - 四校交流-策划案-正式
-          - 团队知识库的搭建-理论
-          - 队内影像资源管理方法
-          - 大扫除-经验模板
-          - 校门口车辆放行-流程
-          - 参观实验室-经验模板
-          - 动员大会-经验总结
-          - 换届大会-经验总结
-          - 破冰活动-经验总结
-          - 出展活动-经验总结
+          - 四校交流-策划案.md
+          - 四校交流-策划案-正式.md
+          - 团队知识库的搭建-理论.md
+          - 队内影像资源管理方法.md
+          - 大扫除-经验模板.md
+          - 校门口车辆放行-流程.md
+          - 参观实验室-经验模板.md
+          - 动员大会-经验总结.md
+          - 换届大会-经验总结.md
+          - 破冰活动-经验总结.md
+          - 出展活动-经验总结.md
       - 产品相关:
-          - 产品经理的日常
-          - 中台的概念
-          - 画图基础
-          - 智能硬件产品经理的技术要求
-          - 如何撰写一份BRD
-          - 软件开发中的注意事项
-          - 专业与分工
-          - 关于复盘
+          - 产品经理的日常.md
+          - 中台的概念.md
+          - 画图基础.md
+          - 智能硬件产品经理的技术要求.md
+          - 如何撰写一份BRD.md
+          - 软件开发中的注意事项.md
+          - 专业与分工.md
+          - 关于复盘.md
       - 小技巧:
-          - Windows常用命令
-          - Windows11个人初始化配置
-          - VSCode的便携模式
-          - 开启Chrome（Edge）多线程下载
-          - 移除Chrome（Edge）由组织管理
-          - 使用Rclone同步网盘数据
-          - 用群晖自带反向代理实现HTTPS访问
-          - 解决Google相册导出时间信息丢失问题
-          - 使用gitignore忽略特殊文件
-          - 3D打印：ABS与PLA的区别
-          - 如何批量拉取Git仓库更新
-          - 如何用Markdown写公众号文章
-          - 如何快速删除node_modules
-          - 如何为公众号文章增加特效
-          - 如何在Linux下使用微信
-          - 如何打印出手写效果的文字
-          - 如何从乐曲中分离音轨
-          - 如何高效制作幻灯片
-          - 卡片式写作
-          - 用reveal.js制作幻灯片
-          - npm和Yarn换源加速国内访问
-          - Vue.js小技巧
-          - 正则表达式实用语句
-          - GitHub改Host
-          - MSI主板开启虚拟化的方法
-          - Git配置代理
-          - 删除GitHub仓库中某个文件夹
-          - 定制SublimeText3
-          - 用Vercel加速Pages服务
-          - Doxygen注释规范
-          - AltiumDesigner安装库文件
-          - CentOS配置OhMyZsh
-          - 如何快速制作一个启动盘
-          - 使用VSCode进行远程开发
-          - Node.js和npm的安装与卸载（MacOS）
+          - Windows常用命令.md
+          - Windows11个人初始化配置.md
+          - VSCode的便携模式.md
+          - 开启Chrome（Edge）多线程下载.md
+          - 移除Chrome（Edge）由组织管理.md
+          - 使用Rclone同步网盘数据.md
+          - 用群晖自带反向代理实现HTTPS访问.md
+          - 解决Google相册导出时间信息丢失问题.md
+          - 使用gitignore忽略特殊文件.md
+          - 3D打印：ABS与PLA的区别.md
+          - 如何批量拉取Git仓库更新.md
+          - 如何用Markdown写公众号文章.md
+          - 如何快速删除node_modules.md
+          - 如何为公众号文章增加特效.md
+          - 如何在Linux下使用微信.md
+          - 如何打印出手写效果的文字.md
+          - 如何从乐曲中分离音轨.md
+          - 如何高效制作幻灯片.md
+          - 卡片式写作.md
+          - 用reveal.js制作幻灯片.md
+          - npm和Yarn换源加速国内访问.md
+          - Vue.js小技巧.md
+          - 正则表达式实用语句.md
+          - GitHub改Host.md
+          - MSI主板开启虚拟化的方法.md
+          - Git配置代理.md
+          - 删除GitHub仓库中某个文件夹.md
+          - 定制SublimeText3.md
+          - 用Vercel加速Pages服务.md
+          - Doxygen注释规范.md
+          - AltiumDesigner安装库文件.md
+          - CentOS配置OhMyZsh.md
+          - 如何快速制作一个启动盘.md
+          - 使用VSCode进行远程开发.md
+          - Node.js和npm的安装与卸载（MacOS）.md
       - 生活黑客:
-          - 如何调制一杯鸡尾酒
-          - 太阳高度角计算
-          - 如何合理配置个人资产
-          - 读《黑客与画家》
-          - 英语六级-备考
-          - 音乐相关
-          - 谈谈未来的职业选择
-          - THEHack2019黑客马拉松
-          - Hack.init()黑客马拉松
-          - 焊接大赛培训及总结
-          - 为什么要「站在巨人的肩膀上」
-          - 如何不被AI取代
-          - 一些观点
+          - 如何调制一杯鸡尾酒.md
+          - 太阳高度角计算.md
+          - 如何合理配置个人资产.md
+          - 读《黑客与画家》.md
+          - 英语六级-备考.md
+          - 音乐相关.md
+          - 谈谈未来的职业选择.md
+          - THEHack2019黑客马拉松.md
+          - Hack.init()黑客马拉松.md
+          - 焊接大赛培训及总结.md
+          - 为什么要「站在巨人的肩膀上」.md
+          - 如何不被AI取代.md
+          - 一些观点.md
       - 高效工作:
-          - 如何用LaTeX写论文
-          - 基于RSSHub搭建RSS生成器（群晖Docker） // CSDN
-          - 基于Bitwarden搭建密码管理器（群晖Docker） // CSDN
-          - 基于acme.sh自动申请域名证书（群晖Docker） // CSDN
-          - 基于Calibre搭建在线书库（群晖Docker） // CSDN
-          - 如何实现外网RDP远控（frp） // CSDN
-          - 使用rdp访问群晖NAS // CSDN
-          - 如何用Markdown写一份简历 // CSDN
-          - 为什么你需要一个知识库 // CSDN
-          - 个人文案排版规范 // CSDN todo
-          - 技术文档写作规范 // CSDN todo
-          - 如何保存易逝的文字
-          - 个人知识库的搭建-基于Docusaurus // CSDN
-          - Windows初始化与软件推荐 // CSDN todo
-          - Docusaurus极简部署指南 // CSDN todo
-          - Hugo极简搭建指南 // CSDN todo
-          - 如何在iPad上运行VSCode // CSDN
-          - 使用Markdown高效写作 // CSDN
-          - 用树莓派架设云打印服务器 // CSDN todo
-          - 用Graphviz绘制关系图 // CSDN todo
-          - RSS-高效率的阅读方式
-          - 如何在Markdown中使用LaTeX
-          - 把回忆放心交给GooglePhotos
-          - VSCode生产力指南-环境配置 // CSDN todo
-          - VSCode生产力指南-JupyterNotebook // CSDN todo
-          - 在浏览器上运行VSCode（旧）
-          - 如何配一台电脑
+          - 如何用LaTeX写论文.md
+          - 基于RSSHub搭建RSS生成器（群晖Docker）.md // CSDN
+          - 基于Bitwarden搭建密码管理器（群晖Docker）.md // CSDN
+          - 基于acme.sh自动申请域名证书（群晖Docker）.md // CSDN
+          - 基于Calibre搭建在线书库（群晖Docker）.md // CSDN
+          - 如何实现外网RDP远控（frp）.md // CSDN
+          - 使用rdp访问群晖NAS.md // CSDN
+          - 如何用Markdown写一份简历.md // CSDN
+          - 为什么你需要一个知识库.md // CSDN
+          - 个人文案排版规范.md // CSDN todo
+          - 技术文档写作规范.md // CSDN todo
+          - 如何保存易逝的文字.md
+          - 个人知识库的搭建-基于Docusaurus.md // CSDN
+          - Windows初始化与软件推荐.md // CSDN todo
+          - Docusaurus极简部署指南.md // CSDN todo
+          - Hugo极简搭建指南.md // CSDN todo
+          - 如何在iPad上运行VSCode.md // CSDN
+          - 使用Markdown高效写作.md // CSDN
+          - 用树莓派架设云打印服务器.md // CSDN todo
+          - 用Graphviz绘制关系图.md // CSDN todo
+          - RSS-高效率的阅读方式.md
+          - 如何在Markdown中使用LaTeX.md
+          - 把回忆放心交给GooglePhotos.md
+          - VSCode生产力指南-环境配置.md // CSDN todo
+          - VSCode生产力指南-JupyterNotebook.md // CSDN todo
+          - 在浏览器上运行VSCode（旧）.md
+          - 如何配一台电脑.md
 
 #  archive：
 # - archive/Python学习笔记
