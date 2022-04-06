@@ -38,5 +38,5 @@ Hi there~
     max-height: 700px;
     box-sizing: border-box;
   "
-><a href=”https://www.altium.com/viewer/”>PCB File Viewer by Altium</a></div>
+>项目在线预览</div>
 <script src="https://viewer.altium.com/client/static/js/embed.js"></script>
