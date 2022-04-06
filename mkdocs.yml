@@ -317,3 +317,4 @@ extra_javascript:
   - https://polyfill.io/v3/polyfill.js?features=es6
   - javascripts/tex-mml-chtml.js
   - https://viewer.altium.com/client/static/js/embed.js
+
