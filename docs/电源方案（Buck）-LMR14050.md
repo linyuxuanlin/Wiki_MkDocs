@@ -7,6 +7,18 @@ LMR1405 是 TI 的一款 Buck 转换器芯片，输入电压范围很宽（4-40V
 
 评估板开源文件请见 [**【Collection_of_Power_Module_Design/DC-DC(Buck)/LMR14050】**](<https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/DC-DC(Buck)/LMR14050>)
 
+
+项目在线预览：
+
+<div style={{height: "60vh"}}>
+<iframe
+  width="100%"
+  height="100%"
+  scrolling="no"
+  src="https://viewer.wiki-power.com/LMR14050.html"
+></iframe>
+</div>
+
 ## 主要特性
 
 - 拓扑：DC/DC（Buck）
@@ -145,9 +157,9 @@ LMR14050 有内部热关断保护功能。当结温超过 170℃ 时热关断激
 
 ### 输出电压设置
 
-根据上面的公式，如果我们需要输出电压为 5V，则可选 $R_{FBT}$ 为 100kΩ，$R_{FBB}$ 为 17.8kΩ（17.65kΩ 的近似值）。
+根据上面的公式，如果我们需要输出电压为 5V，则可选 $R_{FBT}$ 为 100kΩ，$R_{FBB}$ 为 17.4kΩ（17.65kΩ 的近似值，经调试均衡损耗）。
 
-如果我们需要输出电压为 12V，则可选 $R_{FBT}$ 为 100kΩ，$R_{FBB}$ 为 6.65kΩ（6.666kΩ 的近似值）。
+如果我们需要输出电压为 12V，则可选 $R_{FBT}$ 为 100kΩ，$R_{FBB}$ 为 6.34kΩ（6.666kΩ 的近似值，经调试均衡损耗）。
 
 ### 开关频率设置
 

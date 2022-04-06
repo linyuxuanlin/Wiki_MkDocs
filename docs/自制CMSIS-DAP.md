@@ -28,6 +28,18 @@ GitHub 仓库：[**linyuxuanlin/DashDAP**](https://github.com/linyuxuanlin/DashD
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200613154907.jpg)
 
+项目在线预览：
+
+<div style={{height: "60vh"}}>
+<iframe
+  width="100%"
+  height="100%"
+  scrolling="no"
+  src="https://viewer.wiki-power.com/DashDAP.html"
+></iframe>
+</div>
+
+
 ## 背景
 
 CMSIS-DAP / DAP-Link 相比 J-Link / ST-Link 有以下优势：
