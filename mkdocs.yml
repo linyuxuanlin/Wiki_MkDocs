@@ -2,8 +2,8 @@ site_name: Power's Wiki
 repo_url: https://github.com/linyuxuanlin/Wiki_MkDocs
 remote_name: linyuxuanlin/Wiki_MkDocs
 edit_uri: edit/main/docs/
-#site_description: '1'
-#site_url: 'https://wiki-power.com'
+site_description: '1'
+site_url: 'https://wiki-mkdocs.vercel.app/'
 
 nav:
   - 硬件设计:
