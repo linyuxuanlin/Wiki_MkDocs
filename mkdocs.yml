@@ -2,8 +2,6 @@ site_name: Power's Wiki
 repo_url: https://github.com/linyuxuanlin/Wiki_MkDocs
 remote_name: linyuxuanlin/Wiki_MkDocs
 edit_uri: edit/main/docs/
-#site_description: '1'
-#site_url: 'https://wiki-power.com'
 
 nav:
   - 硬件设计:
@@ -310,7 +308,6 @@ theme:
 
 plugins:
   - search
-  - rss
 
 extra:
   generator: false # 不显示 MkDocs 的版权
