@@ -2,8 +2,8 @@ site_name: Power's Wiki
 repo_url: https://github.com/linyuxuanlin/Wiki_MkDocs
 remote_name: linyuxuanlin/Wiki_MkDocs
 edit_uri: edit/main/docs/
-site_description: "1"
-site_url: "https://wiki-mkdocs.vercel.app/"
+site_description: '1'
+site_url: 'https://wiki-mkdocs.vercel.app/'
 
 nav:
   - 硬件设计:
@@ -310,25 +310,7 @@ theme:
 
 plugins:
   - search
-  - rss:
-      abstract_chars_count: 160 # -1 for full content
-      categories:
-        - tags
-      comments_path: "#__comments"
-      date_from_meta:
-        as_creation: "date"
-        as_update: false
-        datetime_format: "%Y-%m-%d %H:%M"
-      enabled: true
-      feed_ttl: 1440
-      image: https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Feed-icon.svg/128px-Feed-icon.svg.png
-      length: 20
-      pretty_print: false
-      match_path: ".*"
-      url_parameters:
-        utm_source: "documentation"
-        utm_medium: "RSS"
-        utm_campaign: "feed-syndication"
+  - rss
 
 extra:
   generator: false # 不显示 MkDocs 的版权
