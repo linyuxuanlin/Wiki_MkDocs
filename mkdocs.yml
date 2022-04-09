@@ -311,10 +311,10 @@ theme:
 plugins:
   - search
   - rss:
-      abstract_chars_count: 160  # -1 for full content
-      categories:
-        - tags
-      comments_path: "#__comments"
+      abstract_chars_count: -1 # -1 for full content
+      #categories:
+       # - tags
+      #comments_path: "#__comments"
       date_from_meta:
         as_creation: "date"
         as_update: false
@@ -322,8 +322,8 @@ plugins:
       enabled: true
       feed_ttl: 1440
       image: https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Feed-icon.svg/128px-Feed-icon.svg.png
-      length: 20
-      pretty_print: false
+      length: 100
+      pretty_print: true
       match_path: ".*"
       url_parameters:
         utm_source: "documentation"
