@@ -1,6 +1,6 @@
 ---
 hide:
-  - toc
+    - toc
 ---
 
 # Power's Wiki

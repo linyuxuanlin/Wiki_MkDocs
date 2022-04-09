@@ -17,9 +17,9 @@ timedatectl set-local-rtc 1 --adjust-system-clock
 2. VS Code
 3. [**Qv2ray**](https://qv2ray.net/)
 4. Git
-   - `sudo apt install git`
-   - `git config --global user.name "John Doe"`
-   - `git config --global user.email johndoe@example.com`
+     - `sudo apt install git`
+     - `git config --global user.name "John Doe"`
+     - `git config --global user.email johndoe@example.com`
 
 
 ## 技巧
@@ -37,29 +37,29 @@ timedatectl set-local-rtc 1 --adjust-system-clock
 注： `<xx>` 表示必须， `(xx)` 表示可选
 
 - cd
-  - 切换工作目录
-  - `cd <目录路径>`
+    - 切换工作目录
+    - `cd <目录路径>`
 - pwd
-  - 查看当前绝对路径
-  - `pwd`
+    - 查看当前绝对路径
+    - `pwd`
 - mkdir
-  - 创建目录
-  - `mkdir （选项） <目录名称>`
+    - 创建目录
+    - `mkdir （选项） <目录名称>`
 - ls
-  - 列出目录下的内容
-  - `ls （选项） （目录名称）`
+    - 列出目录下的内容
+    - `ls （选项） （目录名称）`
 - touch
-  - 改变文件 / 目录时间
-  - `touch （选项） <文件名称>`
+    - 改变文件 / 目录时间
+    - `touch （选项） <文件名称>`
 - mv
-  - 剪切
-  - `mv （选项） （源文件/目录） <目的地文件/目录>`
+    - 剪切
+    - `mv （选项） （源文件/目录） <目的地文件/目录>`
 - cp
-  - 复制
-  - `cp （选项） （源文件名/目录名） <目的地文件名/目录名>`
+    - 复制
+    - `cp （选项） （源文件名/目录名） <目的地文件名/目录名>`
 - rm
-  - 删除
-  - `rm （选项） <文件名/目录名>`
+    - 删除
+    - `rm （选项） <文件名/目录名>`
 
 
 

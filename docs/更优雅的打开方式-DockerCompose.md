@@ -19,21 +19,21 @@ services:
     container_name: geoserver-web
     hostname: geoserver-web
     ports:
-      - 8080:8080
+        - 8080:8080
     volumes:
-      - ./web/data_dir:/geoserver/data_dir
-      - ./web/logs:/geoserver/logs
+        - ./web/data_dir:/geoserver/data_dir
+        - ./web/logs:/geoserver/logs
     restart: unless-stopped
     links:
-      - database:database
+        - database:database
   database:
     image: beginor/postgis:9.3
     container_name: postgis
     hostname: postgis
     ports:
-      - 5432:5432
+        - 5432:5432
     volumes:
-      - ./database/data:/var/lib/postgresql/data
+        - ./database/data:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: 1q2w3e4R
     restart: unless-stopped
@@ -101,9 +101,9 @@ services:
   webapp:
     image: examples/web
     ports:
-      - "80:80"
+        - "80:80"
     volumes:
-      - "/data"
+        - "/data"
 ```
 
 一般来说，`yaml` 文件在 Docker 项目简介中会提供。

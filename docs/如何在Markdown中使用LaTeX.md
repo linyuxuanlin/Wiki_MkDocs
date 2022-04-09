@@ -73,7 +73,7 @@ Markdown 原生支持使用 LaTeX 编写数学公式和符号。
 |        T         |    T     |         τ         |    \tau     |
 |        Υ         | \Upsilon |         υ         |  \upsilon   |
 |        Φ         |   \Phi   |         ϕ         |    \phi     |
-|        −         |    -     |         φ         |   \varphi   |
+|        −         |      -     |         φ         |   \varphi   |
 |        X         |    X     |         χ         |    \chi     |
 |        Ψ         |   \Psi   |         ψ         |    \psi     |
 |        Ω         |  \Omega  |         ω         |   \omega    |
@@ -103,7 +103,7 @@ Markdown 原生支持使用 LaTeX 编写数学公式和符号。
 |   ∮    | \oint  |   ∞    | \infty |
 |   ∇    | \nabla |   ∫    |  \int  |
 |   ∑    |  \sum  |  lim   |  \lim  |
-|   →    | \vec{} |   -    |   -    |
+|   →    | \vec{} |     -    |     -    |
 
 ## 逻辑符号
 

@@ -9,7 +9,7 @@ title: 如何用 Markdown 写学术论文
 
 - [**Python 环境**](https://www.python.org/downloads/)
 - [**Pandoc 环境**](https://github.com/jgm/pandoc/releases/)
-  - pandoc-fignos 插件：`pip install pandoc-fignos`
+    - pandoc-fignos 插件：`pip install pandoc-fignos`
 
 ## 语法
 

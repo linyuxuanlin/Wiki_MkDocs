@@ -88,11 +88,11 @@ Hello 大家好，我是 Power，斜杠青年大学生一枚。这是我的标�
 - 书：《三体》《黑客与画家》《黄金时代》
 - 影视：《爱乐之城》《西部世界》
 - 音乐：
-  - 格伦·古尔德演奏的《哥德堡变奏曲》
-  - Queen 乐队的《波西米亚狂想曲》
-  - 爱乐之城的配乐
-  - South of the Border 专辑
-  - Scott Joplin 的 Ragtime 风格爵士
+    - 格伦·古尔德演奏的《哥德堡变奏曲》
+    - Queen 乐队的《波西米亚狂想曲》
+    - 爱乐之城的配乐
+    - South of the Border 专辑
+    - Scott Joplin 的 Ragtime 风格爵士
 - App：Telegram, Inoreader, Anydesk, 微软数学
 
 ## You are what you eat. 你在网上 fo 过什么有意思的账号？求分享！（可按 有趣—>严肃 排序；平台不限于 YouTube/Twitter/B 站/微博/播客/公众号）

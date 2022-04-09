@@ -21,8 +21,8 @@ title: Windows 初始化与软件推荐
 - 激活 Windows：[**HEU_KMS_Activator**](https://github.com/zbezj/HEU_KMS_Activator)
 - 更新系统、驱动
 - 配置浏览器（Edge Canary）
-  - 拓展
-  - [**开启 Chrome（Edge）多线程下载**](https://wiki-power.com/%E5%BC%80%E5%90%AFChrome%EF%BC%88Edge%EF%BC%89%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BD)
+    - 拓展
+    - [**开启 Chrome（Edge）多线程下载**](https://wiki-power.com/%E5%BC%80%E5%90%AFChrome%EF%BC%88Edge%EF%BC%89%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BD)
 - 用户账户控制设置：设为从不通知
 - 定制任务栏
 - 配置个性化设置
@@ -37,22 +37,22 @@ title: Windows 初始化与软件推荐
 
 - 工作软件
 - [**VS Code insiders**](https://code.visualstudio.com/docs/?dv=win64&build=insiders)
-  - Setting Sync
+    - Setting Sync
 - [**Logitech Options**](https://www.logitech.com.cn/zh-cn/product/options)：罗技鼠标专用（自动弹出下载安装）
 - [**Python**](https://www.microsoft.com/zh-cn/p/python-39/9p7qfqmjrfp7?rtc=1&activetab=pivot:overviewtab)
 - [**微信（测试版）**](https://dldir1.qq.com/weixin/Windows/Beta/WeChatBeta.exe)
 - [**Git**](https://git-scm.com/downloads)
 - [winget](https://www.microsoft.com/zh-cn/p/app-installer/9nblggh4nns1?ocid=9nblggh4nns1_ORSEARCH_Bing&rtc=2&activetab=pivot:overviewtab)
-  - Powertoys:`WinGet install powertoys`
+    - Powertoys:`WinGet install powertoys`
 - [**修改版 QQ**](https://github.com/linyuxuanlin/File-host/blob/main/software/QQ%209.4.2.27666%20Lite-20210118%20by%20flighty-Q.exe)
 
 - [**DiskDenius**](https://www.diskgenius.cn/download.php)：磁盘工具
-  - 预留 10 GB 空闲（SSD）
-  - NTFS，4096 扇区（4k 对齐）
+    - 预留 10 GB 空闲（SSD）
+    - NTFS，4096 扇区（4k 对齐）
 - [**KMS**](https://github.com/linyuxuanlin/File-host/tree/main/software/KMS.exe)：
 
-  - 激活 Windows（已失效）
-  - 关闭 Windows Defender
+    - 激活 Windows（已失效）
+    - 关闭 Windows Defender
 
 - [**GitHub Desktop**](https://desktop.github.com)
 
@@ -81,8 +81,8 @@ title: Windows 初始化与软件推荐
 
 - [**7-Zip**](https://github.com/linyuxuanlin/File-host/tree/main/software/7z.exe)：压缩率高
 - [**WPS 特供版**](http://wpspro.support.wps.cn/gov/guangdong/chaozhou/installation/WPS%20Office%202019%20%E4%B8%93%E4%B8%9A%E7%89%88%EF%BC%88%E6%BD%AE%E5%B7%9E%E5%B8%82%E5%85%9A%E6%94%BF%E6%9C%BA%E5%85%B3%E5%8D%95%E4%BD%8D%EF%BC%89.exe)：清爽无广告
-  - 备用链接：https://pan.baidu.com/s/1d_DVwbLScESe1Zh7um6YTA
-  - 提取码：`y1xe`
+    - 备用链接：https://pan.baidu.com/s/1d_DVwbLScESe1Zh7um6YTA
+    - 提取码：`y1xe`
 - [**SoftDownloader**](https://github.com/linyuxuanlin/File-host/tree/main/software/SoftDownloader.zip)：能找到绝大部分的软件，一键安装
 - [**万彩办公大师**](https://github.com/linyuxuanlin/File-host/tree/main/software/OfficeBox.zip)：各类办公相关的小工具，很强大
 - [**IObit Unlocker**](https://github.com/linyuxuanlin/File-host/tree/main/software/IObit_Unlocker.exe)：文件占用解锁工具
