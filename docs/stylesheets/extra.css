@@ -23,3 +23,8 @@
     border: none;
   }
   
+
+  img[alt=logo] {
+    border: none;
+  }
+  
