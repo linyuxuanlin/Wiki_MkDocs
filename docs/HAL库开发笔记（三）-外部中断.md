@@ -19,7 +19,7 @@ title: HAL 库开发笔记（三）- 外部中断
 
 NVIC 全称为 Nested Vectored Interrupt Controller，翻译过来就是 **嵌套向量中断控制器** 。它主要有三个参数，分别是：中断使能，抢占优先级，响应优先级。（优先级数值越小，优先级越高）
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210206121058.png)
+![](https://cos.wiki-power.com/img/20210206121058.png)
 
 **中断使能**：指的就是是否开启中断。如果开启中断，那么当满足中断触发条件的时候，会跳到中断服务程序运行；否则不理会中断服务程序，继续运行主程序。
 
@@ -51,19 +51,19 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 
 ### 在 CubeMX 内配置中断
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210205150422.png)
+![](https://cos.wiki-power.com/img/20210205150422.png)
 
 如图，LED 还是按照上一篇文章的方法，配置为输出；按键因为是低电平触发，也就是在按下的一瞬间会产生一个下降沿，所以引脚应该配置为下降沿触发的中断。
 
 在我的板子上，就是将 `PI8` 配置为 `GPIO_EXTI8` 模式（外部中断，挂载在中断线 8 上的），并配置为下降沿触发，根据原理图，选择内部上拉（Pull-up）。如图所示：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210403222304.png)
+![](https://cos.wiki-power.com/img/20210403222304.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210206131409.png)
+![](https://cos.wiki-power.com/img/20210206131409.png)
 
 接着，点击跳转 NVIC 标签页面，使能我们配置的中断：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210206134916.png)
+![](https://cos.wiki-power.com/img/20210206134916.png)
 
 另外，要把抢占优先级降低一位（从 0 变为 1，原因下文会解释）。
 

@@ -5,13 +5,13 @@ title: 🚧通信协议 - USB
 
 ## USB 版本
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211129094423.png)
+![](https://cos.wiki-power.com/img/20211129094423.png)
 
 ## USB 机械接口
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211129094855.png)
+![](https://cos.wiki-power.com/img/20211129094855.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211129094944.png)
+![](https://cos.wiki-power.com/img/20211129094944.png)
 
 接口定义 - 标准 USB：
 
@@ -34,7 +34,7 @@ title: 🚧通信协议 - USB
 
 ## USB 插头与版本的兼容性
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211129094829.png)
+![](https://cos.wiki-power.com/img/20211129094829.png)
 
 ## 参考与致谢
 

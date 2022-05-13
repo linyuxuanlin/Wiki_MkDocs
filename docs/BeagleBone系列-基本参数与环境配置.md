@@ -5,7 +5,7 @@ title: BeagleBone 系列 - 基本参数与环境配置
 
 ## 硬件资源
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211008090724.png)
+![](https://cos.wiki-power.com/img/20211008090724.png)
 
 - USB Type-A：作为 USB 从机（Host）模式使用
 - USB Micro：为板子供电并且作为从机

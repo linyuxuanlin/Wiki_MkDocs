@@ -18,7 +18,7 @@ JTAG，全名为 Joint Test Action Group（联合测试行动小组）。截至�
 
 其拓扑图（菊花链）如下：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210209191921.png)
+![](https://cos.wiki-power.com/img/20210209191921.png)
 
 JTAG 一般使用 5 个引脚：
 
@@ -53,9 +53,9 @@ SWD 的优势：
 
 一般来说，单片机板子上会有以下这些烧录座，可同时兼容 JTAG 与 SWD：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210210122923.jpg)
+![](https://cos.wiki-power.com/img/20210210122923.jpg)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210210123714.png)
+![](https://cos.wiki-power.com/img/20210210123714.png)
 
 - TCK 兼容 SWCLK
 - TMS 兼容 SWDIO

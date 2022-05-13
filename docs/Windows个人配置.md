@@ -3,7 +3,7 @@ id: Windows初始化与软件推荐
 title: Windows 初始化与软件推荐
 ---
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210117142759.jpg)
+![](https://cos.wiki-power.com/img/20210117142759.jpg)
 
 你刚刚刷了一个 Windows 系统，有哪些设置项和软件是必须的呢？
 

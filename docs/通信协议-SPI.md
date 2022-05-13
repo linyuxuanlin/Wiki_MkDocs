@@ -5,7 +5,7 @@ title: 通信协议 - SPI
 
 SPI（Serial Peripheral Interface）是一种 **全双工、同步、串行、主从、总线** 通信协议，其数据传输速率为 8 Mbit。SPI 只能有一个主机，可连接一个或多个从机。连接多设备时，需要用到片选引脚（chip select，CS）。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210911095950.png)
+![](https://cos.wiki-power.com/img/20210911095950.png)
 
 ## SPI 的引脚
 
@@ -19,7 +19,7 @@ SPI（Serial Peripheral Interface）是一种 **全双工、同步、串行、�
 - 锁存数据的边沿称为临界边沿。
 - 举个例子，以下左图表示 SDO 在上升沿锁存逻辑 `1`，右图表示在下降沿锁存逻辑 `0`。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026151750.png)
+![](https://cos.wiki-power.com/img/20211026151750.png)
 
 ## SPI 读取句段示例
 
@@ -29,7 +29,7 @@ SPI（Serial Peripheral Interface）是一种 **全双工、同步、串行、�
 4. 数据在 SCLK 上升沿时，从高位（MSB）到低位（LSB）按顺序进行传输
 5. 完成传输数据：`1011001`
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026152228.png)
+![](https://cos.wiki-power.com/img/20211026152228.png)
 
 ## SPI 临界边沿
 
@@ -37,7 +37,7 @@ SPI（Serial Peripheral Interface）是一种 **全双工、同步、串行、�
 - $t_{HO}$（hold time）：定义在临界边沿事件发生后，SDI 上的数据必须保留多长时间。
 - $t_{DO}$（delay time）：定义在临界边沿事件发生后，SDO 上的有效数据的延迟时间。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026160940.png)
+![](https://cos.wiki-power.com/img/20211026160940.png)
 
 ## SPI 传输模式（4 种）
 
@@ -51,11 +51,11 @@ SPI（Serial Peripheral Interface）是一种 **全双工、同步、串行、�
 | 2        | 1（高电平）      | 0（在第一个边沿进行锁存） | 下降沿   |
 | 3        | 1（高电平）      | 1（在第二个边沿进行锁存） | 上升沿   |
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026162028.png)
+![](https://cos.wiki-power.com/img/20211026162028.png)
 
 ## 菊花链（Daisy Chain）
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026164011.png)
+![](https://cos.wiki-power.com/img/20211026164011.png)
 
 在普通模式下，SPI 每个从机都需要一条 CS 线。当从机一多，会占用主机过多的 IO 口。使用菊花链的拓扑连接，就可以只用一条 CS 线，驱动所有的从机。
 

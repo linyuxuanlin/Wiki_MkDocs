@@ -5,11 +5,11 @@ title: BookJourney - 二手书商城小程序
 
 ## 成品
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/书程小驿。jpg)
+![](https://cos.wiki-power.com/img/书程小驿。jpg)
 
 项目地址：[linyuxuanlin/BookJourney](https://github.com/linyuxuanlin/BookJourney) 微信扫码体验：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/1.jpg)
+![](https://cos.wiki-power.com/img/1.jpg)
 
 ## 背景
 

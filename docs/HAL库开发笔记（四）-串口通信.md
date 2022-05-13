@@ -28,9 +28,9 @@ title: HAL 库开发笔记（四）- 串口通信
 - **UART**：通用异步收发器（Universal Asynchronous Receiver/Transmitter）
 - **USART**：通用同步异步收发器（Universal Synchronous/Asynchronous Receiver/Transmitter）
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210207095411.png)
+![](https://cos.wiki-power.com/img/20210207095411.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210207095433.png)
+![](https://cos.wiki-power.com/img/20210207095433.png)
 
 USART 是 UART 的升级版，区别在于多了 CLK 线，在 CLK 没有信号的时候，就表明没有数据传输任务，有 CLK 信号的时候，就是正在传输信号，并且 CLK 提供了时钟同步功能，效验也更精确。
 
@@ -41,11 +41,11 @@ USART 是 UART 的升级版，区别在于多了 CLK 线，在 CLK 没有信号�
 
 ### 在 CubeMX 内配置串口
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210207100329.png)
+![](https://cos.wiki-power.com/img/20210207100329.png)
 
 根据原理图，我们用来进行通讯实验的串口是 `USART1` ，即 `PA9` `PA10` 引脚。那么，我们首先需要在 CubeMX 内将这两个引脚配置为 `USART1` 的发送和接受功能，然后点击左侧 USART1 标签页，将模式（Mode）设为异步（Asynchronous），并在下方修改波特率（Baud Rate）等参数：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210207100941.png)
+![](https://cos.wiki-power.com/img/20210207100941.png)
 
 参数详情如下：
 
@@ -58,7 +58,7 @@ USART 是 UART 的升级版，区别在于多了 CLK 线，在 CLK 没有信号�
 
 最后，在 NVIC 标签页使能 USART1 的串口中断，如图：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210207104641.png)
+![](https://cos.wiki-power.com/img/20210207104641.png)
 
 ### 在代码内配置串口
 
@@ -120,7 +120,7 @@ HAL_UART_Receive_IT(&huart1, (uint8_t *)aRxBuffer, 1); // 接收中断开启函�
 
 连上串口后，会先打印一行 `aTxBuffer` 的内容，然后将会把接收到的 `aRxBuffer` 回传打印出来。如图：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210403232628.png)
+![](https://cos.wiki-power.com/img/20210403232628.png)
 
 ## 参考与致谢
 

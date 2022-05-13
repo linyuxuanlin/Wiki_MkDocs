@@ -44,7 +44,7 @@ ESD 防护的关键在于为静电提供一条单独的放电通道（原理就�
 
 以 AEC-Q200-002 标准为例，其 ESD HBM 测试电路如下：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211215164751.png)
+![](https://cos.wiki-power.com/img/20211215164751.png)
 
 其中，$C_x$ 为测试对象的电容，$C_d$ 为充电电容，$R_d$ 为放电电阻，$R_c$ 为保护电阻。ESD 测试方法如下：
 
@@ -53,13 +53,13 @@ ESD 防护的关键在于为静电提供一条单独的放电通道（原理就�
 
 放电电流曲线：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211215165312.png)
+![](https://cos.wiki-power.com/img/20211215165312.png)
 
 ## ESD 测试流程
 
 以 AEC-Q200-002 标准，HBM 测试流程可以按照下图进行：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211215165447.png)
+![](https://cos.wiki-power.com/img/20211215165447.png)
 
 测试出来的耐压等级按下表分类：
 
@@ -95,7 +95,7 @@ $$
 - $C_x$ 电容参数：GCM 系列 / 0402 封装 / X7R / 50V
 - 测试条件：$C_d=150pF,R_d=2kΩ$
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211215172528.png)
+![](https://cos.wiki-power.com/img/20211215172528.png)
 
 按图表曲线可得，如果我们要抵御 1kV 的 ESD，则可以用 1000pF 的电容来进行防御。在实际的电路设计中，最好给电容并联一个大电阻，在消除 ESD 后对电容里的电释放掉。
 

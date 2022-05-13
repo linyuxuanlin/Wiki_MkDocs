@@ -11,7 +11,7 @@ DMA（Direct Memory Access，直接存储器访问）允许不同速度的硬件
 
 DMA 提供外设 / 存储器或存储器 / 存储器之间的高速数据传输，其过程中无需占用 CPU 资源。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210404153423.png)
+![](https://cos.wiki-power.com/img/20210404153423.png)
 
 如上图所示，STM32F4 系列有两个 DMA 控制器，共 12 通道（DMA1 有 7 个，DMA2 有 5 个）。DMA 控制器与 Cortex-M3 核心共享系统的数据总线。
 
@@ -92,7 +92,7 @@ HAL_UART_DMAResume(&huart1)
 
 配置完 USART 引脚和 NVIC 中断后，切换到 `DMA Settings` 标签页，按照下图进行配置：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210404165541.png)
+![](https://cos.wiki-power.com/img/20210404165541.png)
 
 - 点击 `Add` 添加通道（USART1_RX 与 USART1_TX）
 - 将两个的优先级都设置为 `Medium`（中优先级）
@@ -101,7 +101,7 @@ HAL_UART_DMAResume(&huart1)
 
 随后，在 `System Core` 标签页找到 `DMA`，增加一个 `MEMTOMEM` 栏目，如图：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210404170002.png)
+![](https://cos.wiki-power.com/img/20210404170002.png)
 
 ### 在代码内配置 DMA
 

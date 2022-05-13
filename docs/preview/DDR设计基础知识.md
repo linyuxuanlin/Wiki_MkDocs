@@ -7,7 +7,7 @@ title: 🚧DDR 设计基础知识
 
 DDR 的连接器俗称金手指（Gold Finger/Edge Connector），它是由镀金工艺（金的抗氧化性与传导性都很强）的导电触片组成，因排列如手指状，所以称为「金手指」。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200226143912.png)
+![](https://cos.wiki-power.com/img/20200226143912.png)
 
 金手指的设计要求：
 
@@ -19,7 +19,7 @@ DDR 的连接器俗称金手指（Gold Finger/Edge Connector），它是由镀�
 - 沉锡、沉银焊盘的距离离金手指顶端最小间距 14 mil；
 - 金手指的倒角要求如下图所示，除了插入边要倒角以外，插板两侧板也应该设计（1-1.5）45° 的倒角或者 R1-R1.5 的圆角，方便插拔。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200226144135.png)
+![](https://cos.wiki-power.com/img/20200226144135.png)
 
 ## 参考与致谢
 

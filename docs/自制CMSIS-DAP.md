@@ -26,7 +26,7 @@ GitHub 仓库：[**linyuxuanlin/DashDAP**](https://github.com/linyuxuanlin/DashD
 
 `2.0 版本编辑中`
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200613154907.jpg)
+![](https://cos.wiki-power.com/img/20200613154907.jpg)
 
 项目在线预览：
 
@@ -57,7 +57,7 @@ CMSIS-DAP / DAP-Link 相比 J-Link / ST-Link 有以下优势：
 
 选用村田 8MHz 无源晶振，型号为 CSTCE8M00G53-R0，封装为 3213，电容为 15pF. 为什么选用这个呢？是因为它体积相对小，并且把两个起振电容整合进去了，硬件设计上能省很多事。至于村田晶振型号的命名方式，可以参考下表：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200612143451.jpg)
+![](https://cos.wiki-power.com/img/20200612143451.jpg)
 
 ### 电源
 

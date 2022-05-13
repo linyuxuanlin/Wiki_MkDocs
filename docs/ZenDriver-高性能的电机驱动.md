@@ -14,7 +14,7 @@ title: ZenDriver - 高性能的电机驱动
 
 ## 接口定义
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200125192433.png)
+![](https://cos.wiki-power.com/img/20200125192433.png)
 
 **电机端** 从左到右依次为：**M-，5V，编码器 A，编码器 B，GND，M+** ，对应电机引脚，可以直接怼电机上去。
 
@@ -42,7 +42,7 @@ title: ZenDriver - 高性能的电机驱动
 
 PCB 工程已开源至 GitHub：[https://github.com/linyuxuanlin/ZenDriver](https://github.com/linyuxuanlin/ZenDriver)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200125192734.png)
+![](https://cos.wiki-power.com/img/20200125192734.png)
 
 
 

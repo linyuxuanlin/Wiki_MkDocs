@@ -39,7 +39,7 @@ LMR1405 是 TI 的一款 Buck 转换器芯片，输入电压范围很宽（4-40V
 
 ## 引脚定义
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220110170233.png)
+![](https://cos.wiki-power.com/img/20220110170233.png)
 
 - BOOT：给高侧 MOS 管的自举电容。在 BOOT 和 SW 间接一个 0.1uF 电容。
 - VIN：电源输入，经过去耦电容 $C_{IN}$ 后接到此引脚。
@@ -53,7 +53,7 @@ LMR1405 是 TI 的一款 Buck 转换器芯片，输入电压范围很宽（4-40V
 
 ### 内部功能框图
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111090855.png)
+![](https://cos.wiki-power.com/img/20220111090855.png)
 
 ### 稳压原理
 
@@ -61,7 +61,7 @@ LMR14050 的输出电压通过开启高侧 N-MOS 并控制导通时间来调节�
 
 连续导通模式（CCM）下的 SW 电压与电感电流的对应关系：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111095020.png)
+![](https://cos.wiki-power.com/img/20220111095020.png)
 
 ### 睡眠模式
 
@@ -75,7 +75,7 @@ LMR14050 内部集成了自举电压转换器，在 BOOT 和 SW 引脚接一个�
 
 LMR14050 提供一个 0.75V 的内部参考电压。输出电压通过电阻分压器，从 $V_{OUT}$ 分压出来输入 FB 引脚，在内部进行比较调节。分压电阻建议使用偏差 1% 或更低的、温度系数 100 ppm 或更低的。通过所需分压电流选择低侧电阻 $R_{FBB}$（参考值是 10-100kΩ），并通过公式计算高侧电阻 $R_{FBT}$。选择较大的阻值有利于提高轻载效率，但如果太大，稳压器将更容易受到来自 FB 输入电流的噪声和电压误差的影响。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111105814.png)
+![](https://cos.wiki-power.com/img/20220111105814.png)
 
 $$
 R_{FBT}=\frac{V_{OUT}-0.75}{0.75}R_{FBB}
@@ -87,7 +87,7 @@ $$
 
 可通过调节 EN 的外部上下拉电阻，以调节启动和关闭的电压阈值：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111111613.png)
+![](https://cos.wiki-power.com/img/20220111111613.png)
 
 $R_{ENT}$ 和 $R_{ENB}$ 遵从以下公式计算：
 
@@ -118,13 +118,13 @@ $$
 R_T(kΩ)=32537*f_{SW}^{-1.045}(kHz)
 $$
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111135021.png)
+![](https://cos.wiki-power.com/img/20220111135021.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111135034.png)
+![](https://cos.wiki-power.com/img/20220111135034.png)
 
 LMR14050 开关动作也可以被外部时钟输入信号同步（250kHz-2.3MHz）:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111141247.png)
+![](https://cos.wiki-power.com/img/20220111141247.png)
 
 内部晶振将会被外部时钟的下降沿同步。外部时钟推荐高电平不低于 1.7V，低电平不高于 0.5V，最小脉宽不低于 30ns。如果接低内阻信号源，那么频率设定电阻 $R_T$ 需要被并联到 AC 耦合电阻 $C_{COUP}$（可为 10pF 陶瓷电容），接到终端电阻 $R_{TERM}$（例如 50Ω），这样可以较好地匹配阻抗。
 
@@ -142,7 +142,7 @@ LMR14050 有内部热关断保护功能。当结温超过 170℃ 时热关断激
 
 ## 参考设计
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111143510.png)
+![](https://cos.wiki-power.com/img/20220111143510.png)
 
 设计参数：
 
@@ -239,7 +239,7 @@ LMR14050 需要一个 BOOT 自举电容，在前文有提及，BOOT 电容的参
 
 ## Layout 参考
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220110183248.png)
+![](https://cos.wiki-power.com/img/20220110183248.png)
 
 减小 EMI 的 Layout 建议：
 

@@ -27,7 +27,7 @@ title: CubeMX 的一些坑
 
 - 在 CubeMX 的 SYS 设置中，将 Debug 选项更改为 Serial Wire（SW）
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200531162352.jpg)
+![](https://cos.wiki-power.com/img/20200531162352.jpg)
 
 ## 参考与致谢
 

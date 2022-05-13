@@ -5,7 +5,7 @@ title: 基于 Calibre 搭建在线书库（群晖 Docker）
 
 如何在群晖 NAS 用 calibre-web（Docker）搭建一个在线书库。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210429125418.png)
+![](https://cos.wiki-power.com/img/20210429125418.png)
 
 相比于传统用文件夹的方式，以开源的 Calibre 为代表的书库管理方式，能提供更丰富的功能诸如在线阅读、下载、格式转换、推送到邮箱、去除重复书籍等。calibre-web 是一个基于 Calibre 的 Docker 镜像，可以让我们很方便地将书库部署在像群晖这样的服务器上。
 
@@ -13,7 +13,7 @@ title: 基于 Calibre 搭建在线书库（群晖 Docker）
 
 首先，建立书库资源文件夹，这里我直接在磁盘根目录建立了一个名为 `book` 的共享文件夹：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210429214028.png)
+![](https://cos.wiki-power.com/img/20210429214028.png)
 
 相应地，在 `docker` 文件夹内创建一个名为 `calibre-web` 文件夹，专门用于存放 Docker 镜像的配置文件。
 
@@ -23,11 +23,11 @@ title: 基于 Calibre 搭建在线书库（群晖 Docker）
 
 在 `卷` 页面添加映射文件夹，装载路径分别是 `/library` 和 `/config`：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210429214908.png)
+![](https://cos.wiki-power.com/img/20210429214908.png)
 
 在 `端口设置` 页面添加端口映射，主要将容器内部的 `8083` 端口映射出去，这里我选择 `5004`。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210429215121.png)
+![](https://cos.wiki-power.com/img/20210429215121.png)
 
 随后，创建并启动容器。
 
@@ -37,7 +37,7 @@ title: 基于 Calibre 搭建在线书库（群晖 Docker）
 
 需要注意的是，默认是没有书籍上传功能的，需要依次点击右上角 `管理权限` - `编辑基本配置` — `启用上传`，才能启用书籍上传功能。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210429215628.png)
+![](https://cos.wiki-power.com/img/20210429215628.png)
 
 ## 启用 HTTPS
 

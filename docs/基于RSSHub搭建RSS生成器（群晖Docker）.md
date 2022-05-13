@@ -5,7 +5,7 @@ title: 基于 RSSHub 搭建 RSS 生成器（群晖 Docker）
 
 在群晖 Docker 上搭建 RSSHub 服务，给各种奇奇怪怪的内容生成 RSS 订阅源。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210504105215.png)
+![](https://cos.wiki-power.com/img/20210504105215.png)
 
 ## 在群晖 Docker 上部署
 
@@ -13,7 +13,7 @@ title: 基于 RSSHub 搭建 RSS 生成器（群晖 Docker）
 
 在 `端口设置` 页面，手动设置容器端口 1200 所对应的本地端口（比如我设置为 `8004`）：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210504085806.png)
+![](https://cos.wiki-power.com/img/20210504085806.png)
 
 随后完成配置，启动容器。输入群晖本地 IP:8004，如果能看到 RSSHub 的页面，就算安装成功了。
 
@@ -23,7 +23,7 @@ title: 基于 RSSHub 搭建 RSS 生成器（群晖 Docker）
 
 举个简单的例子，在官方文档中查到，豆瓣 `正在上映的电影` 生成方法如下：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210504104630.png)
+![](https://cos.wiki-power.com/img/20210504104630.png)
 
 那么，使用 `你的域名/douban/movie/playing` 就可以使用自己的服务器来生成 RSS 源了。
 

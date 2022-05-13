@@ -44,7 +44,7 @@ sw 上的波形？如何处理纹波？
 
 如果 x 轴表示时间，y 轴表示你要实现的目标，那么实现目标的过程可以画成一条直线。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211105090617.png)
+![](https://cos.wiki-power.com/img/20211105090617.png)
 
 这条直线可以用两个变量描述：y 轴截距（直线与 y 轴的交点）和斜率（y 随时间变化的速度）。
 

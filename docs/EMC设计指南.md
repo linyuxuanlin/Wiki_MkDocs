@@ -7,7 +7,7 @@ title: EMC 设计指南
 
 电磁兼容性（EMC）包括电磁干扰（EMI，Electro-Magnetic Interference）和电磁耐受性（EMS，Electro-Magnetic Susceptibility）。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211215225136.png)
+![](https://cos.wiki-power.com/img/20211215225136.png)
 
 EMI 分为以下方面：
 
@@ -54,7 +54,7 @@ EMS 分为以下方面：
 
 ### 尽量保持信号回流屏幕完整
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211215190631.png)
+![](https://cos.wiki-power.com/img/20211215190631.png)
 
 如图，如果切割了信号回流平面，则信号电流将不能经最优化（最短）路径返回源头，在寻找替代回流路径的时候将变得不可预期，增大信号环路面积。
 
@@ -74,15 +74,15 @@ EMC 常用元件有共模电感、磁珠与滤波电容器。
 
 常见滤波器模型：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211219173751.png)
+![](https://cos.wiki-power.com/img/20211219173751.png)
 
 ### 共模电感
 
 共模电感的等效模型：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211219173856.png)
+![](https://cos.wiki-power.com/img/20211219173856.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211219174546.png)
+![](https://cos.wiki-power.com/img/20211219174546.png)
 
 ### 磁珠
 

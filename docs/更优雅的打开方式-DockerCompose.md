@@ -3,7 +3,7 @@ id: DockerCompose-更优雅的打开方式
 title: Docker Compose - 更优雅的打开方式
 ---
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210117130925.jpg)
+![](https://cos.wiki-power.com/img/20210117130925.jpg)
 
 Docker Compose 是一种对 Docker 镜像的编排方式，解决了传统命令行 Docker 运行多镜像的麻烦。
 

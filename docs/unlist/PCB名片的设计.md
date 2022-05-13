@@ -5,9 +5,9 @@ title: PCB 名片的设计
 
 ## 效果图
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200125192841.png)
+![](https://cos.wiki-power.com/img/20200125192841.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200125193012.png)
+![](https://cos.wiki-power.com/img/20200125193012.png)
 
 ## 源文件
 

@@ -42,11 +42,11 @@ TJA1050 有两种工作模式（高速 / 静音），由引脚 S（RS） 来控�
 
 #### 芯片管脚
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210607102222.png)
+![](https://cos.wiki-power.com/img/20210607102222.png)
 
 #### 参考电路
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210607115611.png)
+![](https://cos.wiki-power.com/img/20210607115611.png)
 
 如图，CAN 协议控制器（例如单片机）通过串行线（RX/TX）连接到收发器，在收发器上转换为 CAN 信号（CANH/CANL），并通过引脚 S 来选择高速 / 静音模式。
 
@@ -79,17 +79,17 @@ SN65HVD230 有三种工作模式（高速 / 斜率 / 静音），由引脚 S（R
 
 #### 芯片管脚
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210607155539.png)
+![](https://cos.wiki-power.com/img/20210607155539.png)
 
 #### 参考电路
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210607171051.png)
+![](https://cos.wiki-power.com/img/20210607171051.png)
 
 PESD2CAN 是 CAN 专用的 ESD 保护二极管，保护芯片免受静电和其他瞬变因素的损害。
 
 参考的 PCB 布局如下：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210607171427.png)
+![](https://cos.wiki-power.com/img/20210607171427.png)
 
 ### TJA1050 与 SN65HVD230 的异同
 
@@ -107,7 +107,7 @@ CAN 通讯中，电缆容易耦合外部干扰，对信号传输造成影响，�
 
 CAN 接口防护器件主要包括：滤波电容、共模电感、跨接电容、TVS 管。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211220134905.png)
+![](https://cos.wiki-power.com/img/20211220134905.png)
 
 - 滤波电容 $C_1,C_2$：用于给干扰提供低阻抗的回流路径，选取范围为 22pF~1000pF，典型值为 100pF。
 - 共模电感 $L_1$：用于滤除差分线上的共模干扰，阻抗选取范围为 120Ω/100MHz~2200Ω/100MHz，典型值为 600Ω/100MHz。

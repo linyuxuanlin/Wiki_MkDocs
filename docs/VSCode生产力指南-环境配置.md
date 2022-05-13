@@ -5,7 +5,7 @@ title: VS Code 生产力指南 - 环境配置
 
 —— 如何用 VS Code 打造高效率的生产力工具。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200319135609.png)
+![](https://cos.wiki-power.com/img/20200319135609.png)
 
 ## 背景
 
@@ -29,7 +29,7 @@ title: VS Code 生产力指南 - 环境配置
 
 下载安装完成后，我们打开软件，首先看到的是启动页面：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200318224855.png)
+![](https://cos.wiki-power.com/img/20200318224855.png)
 
 ## 插件安装
 
@@ -87,7 +87,7 @@ title: VS Code 生产力指南 - 环境配置
 
 你可以通过 `文件 - 首选项 - 颜色主题` 来选择自己喜欢的主题，例如我选的是 `Monokai Dimmed` 主题：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200319132727.png)
+![](https://cos.wiki-power.com/img/20200319132727.png)
 
 如果你觉得默认提供的主题不够用，也可以在插件商店内，用关键词 `theme` 搜索并下载自己喜欢的主题。
 

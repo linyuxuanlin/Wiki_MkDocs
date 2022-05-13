@@ -23,7 +23,7 @@ title: 基于 acme.sh 自动申请域名证书（群晖 Docker）
 
 我们先创建 `/docker/acme.sh` 文件夹，再手动创建 `account.conf` 文件：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210430212420.png)
+![](https://cos.wiki-power.com/img/20210430212420.png)
 
 接着，我们编辑这个文件，手动添加这几行：
 
@@ -41,13 +41,13 @@ AUTO_UPGRADE='1'
 
 在 `卷` 页面配置挂载的文件夹，点击 `添加文件夹`，选择本地的 `docker/acme.sh` 路径，装载路径填 `/acme.sh`（默认不可变）：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210430214221.png)
+![](https://cos.wiki-power.com/img/20210430214221.png)
 
 在 `网络` 页面，勾选 `使用与 Docker Host 相同的网络`。
 
 接着，切换到 `环境` 页面，在 `命令` 框里填入 `daemon` 命令：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210430215244.png)
+![](https://cos.wiki-power.com/img/20210430215244.png)
 
 随后创建并运行容器。双击已运行的容器，切换到 `终端机` 页面，点击 `通过命令启动`，输入 `sh` 后点确定。
 

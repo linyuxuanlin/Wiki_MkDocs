@@ -22,7 +22,7 @@ P:\Arduino\hardware\tools\avr/bin/avrdude -C "P:\Arduino\hardware\tools\avr/etc/
 
 先给 Arduino 烧 ISP 程序：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200426144425.png)
+![](https://cos.wiki-power.com/img/20200426144425.png)
 
 打开 IDE 首选项，在附加开发板地址中填写：
 
@@ -32,14 +32,14 @@ https://raw.githubusercontent.com/damellis/attiny/ide-1.6.x-boards-manager/packa
 
 打开开发板管理器：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200426144642.png)
+![](https://cos.wiki-power.com/img/20200426144642.png)
 
 搜索并安装（可能需要代理）：
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200426144732.png)
+![](https://cos.wiki-power.com/img/20200426144732.png)
 
 烧录时注意选对芯片型号、时钟速率（Internal 16 MHz）、Arduino 所在的端口，注意编程器选择 `Arduino as ISP`：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200426144834.png)
+![](https://cos.wiki-power.com/img/20200426144834.png)
 
 ## 总结
 

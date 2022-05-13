@@ -5,7 +5,7 @@ title: 通信协议 - I2C
 
 在 I2C（Inter-Integrated Circuit）总线上，从机以它的 I2C 地址被选择。这样子可以用在一个主机上通过两根线控制多个从机。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026174634.png)
+![](https://cos.wiki-power.com/img/20211026174634.png)
 
 ## I2C 的引脚
 
@@ -17,7 +17,7 @@ title: 通信协议 - I2C
 - I2C 地址划分，是 7 bit 地址加上 1 bit 读写指示。
 - I2C 总线上的每个设备都必须有一个唯一的地址，如果地址重复会出问题。有些设备的 I2C 地址是可以编程设置的。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211027112717.png)
+![](https://cos.wiki-power.com/img/20211027112717.png)
 
 ## I2C 通信
 
@@ -29,7 +29,7 @@ title: 通信协议 - I2C
 
 这一段传输的值为 `11001101`：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211104172952.png)
+![](https://cos.wiki-power.com/img/20211104172952.png)
 
 1. 主机拉低 SDA 电平以产生 START 信号。
 2. 第一个位被设置，主机拉低 SCL，将时钟信号经过 DAC 进行输出。
@@ -41,18 +41,18 @@ title: 通信协议 - I2C
 2. 在 SCL 节拍间的低电平，才允许 SDA 切换数值。
 3. 当 SCL 为高电平，SDA 发生变化时，就会被解释为 START、RESTART 或 STOP 事件。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211105172139.png)
+![](https://cos.wiki-power.com/img/20211105172139.png)
 
 ### 接口电路上升 / 下降计时
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211108093819.png)
+![](https://cos.wiki-power.com/img/20211108093819.png)
 
 如图，晶体管将在低电平时导通，并将 $C_b$ 电容放电到低电平。反之，晶体管将在高电平时截止，上拉电阻会将 $C_b$ 充电至高电平。
 
 - $t_r$（上升时间）：信号从低电平过渡到高电平的最大时间。因为 I2C 是开漏信号，所以上升时间由上拉电阻和总线电容的 RC 时间常数决定。
 - $t_f$（下降时间）：信号从高电平过渡到低电平的最大时间。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211108095142.png)
+![](https://cos.wiki-power.com/img/20211108095142.png)
 
 ### I2C 上拉电阻计算
 
@@ -67,7 +67,7 @@ $V_{DD}$ 表示供电电压；$V_{OLMAX}$ 表示最大逻辑低电平（典型�
 
 计算示例：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211108103406.png)
+![](https://cos.wiki-power.com/img/20211108103406.png)
 
 ## 参考与致谢
 
