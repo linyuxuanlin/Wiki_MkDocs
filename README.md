@@ -16,3 +16,4 @@ todo:
 - home index button
 - sitemap
 - rss at index
+- update post and sidebar
