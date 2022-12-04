@@ -24,6 +24,6 @@ Hi there~
 [![badge](https://img.shields.io/github/last-commit/linyuxuanlin/Wiki_Docusaurus?color=FCD734&label=Last%20commit&style=flat-square){loading=lazy}](https://github.com/linyuxuanlin/Wiki_mkdocs/commits/main)
 [![badge](https://img.shields.io/badge/Contact%20me-here-34ABE0?&style=flat-square){loading=lazy}](ContactMe)
 
-[硬件 & 半导体](/硬件与半导体){ .md-button }
-[嵌入式 & 软件开发](/硬件与半导体){ .md-button }
-[效率 & 生活](/硬件与半导体){ .md-button }
+[硬件 & 半导体](/信号完整性-基础概念.md){ .md-button }
+[嵌入式 & 软件开发](/HAL 库开发笔记 - 串口通信.md){ .md-button }
+[效率 & 生活](/如何调制一杯鸡尾酒.md){ .md-button }
