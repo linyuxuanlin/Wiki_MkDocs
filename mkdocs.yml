@@ -39,7 +39,7 @@ theme:
     - search.suggest # 搜索推荐
     #- search.highlight
   icon:
-    repo: fontawesome/brands/github
+    repo: fontawesome/brands/git-alt
 
 plugins:
   - search
