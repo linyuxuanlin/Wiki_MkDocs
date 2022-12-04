@@ -33,6 +33,7 @@ theme:
     #- navigation.tabs.sticky # 导航栏不随页面滚动隐藏
     - navigation.sections # 侧边栏分组显示
     #- navigation.expand # 导航栏自动展开
+    - navigation.indexes 
     - toc.follow # 目录自动跟随
     - navigation.top # 返回顶部按钮
     - search.suggest # 搜索推荐
@@ -59,13 +60,13 @@ plugins:
       match_path: ".*"
       url_parameters:
         utm_source: "documentation"
-        utm_medium: "RSS"
+        utm_medium: "RSS" # todo
         utm_campaign: "feed-syndication"
 
 extra:
   generator: false # 不显示 MkDocs 的版权
   analytics:
-    provider: google
+    provider: google #todo
     property: UA-152900803-1
   social:
     - icon: fontawesome/brands/twitter
