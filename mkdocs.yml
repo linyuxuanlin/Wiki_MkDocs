@@ -5,7 +5,6 @@ repo_url: https://github.com/linyuxuanlin/Wiki_MkDocs
 remote_name: linyuxuanlin/Wiki_MkDocs
 edit_uri: edit/main/docs/
 
-
 theme:
   name: material
   font: false
@@ -44,7 +43,7 @@ plugins:
   - rss:
       abstract_chars_count: -1 # -1 for full content
       #categories:
-       # - tags
+      # - tags
       #comments_path: "#__comments"
       date_from_meta:
         as_creation: "date"
@@ -95,34 +94,32 @@ extra_javascript:
 extra_css:
   - stylesheets/extra.css
 
-
 #############################################################
 #############################################################
 #############################################################
-
-
 
 nav:
   - 硬件设计:
       - Home: index.md
       - 基础知识:
-          - 基本元器件-电阻.md
-          - 基本元器件-电容.md
-          - 基本元器件-电感与磁珠.md
-          - 基本元器件-二极管.md
-          - 基本元器件-晶体三级管.md
-          - 基本元器件-场效应管.md
-          - 基本元器件-光电耦合器.md
-          - 基本元器件-运算放大器.md
-          - 数字电路基础知识.md
-          - 设计规范-PCB.md
-          - 推挽与开漏输出.md
-          - 共模信号与差模信号.md
-          - 存储介质类别.md
-          - 保险丝的选型.md
-          - 锂电池选型指南.md
-          - 编码器的几种输出方式.md
-          - 防反接电路的设计.md
+          - 基础知识2:
+              - 基本元器件-电阻.md
+              - 基本元器件-电容.md
+              - 基本元器件-电感与磁珠.md
+              - 基本元器件-二极管.md
+              - 基本元器件-晶体三级管.md
+              - 基本元器件-场效应管.md
+              - 基本元器件-光电耦合器.md
+              - 基本元器件-运算放大器.md
+              - 数字电路基础知识.md
+              - 设计规范-PCB.md
+              - 推挽与开漏输出.md
+              - 共模信号与差模信号.md
+              - 存储介质类别.md
+              - 保险丝的选型.md
+              - 锂电池选型指南.md
+              - 编码器的几种输出方式.md
+              - 防反接电路的设计.md
       - 嵌入式硬件:
           - RobotCtrl-STM32通用开发套件.md
           - OSD335x最小系统的设计.md
@@ -330,7 +327,6 @@ nav:
           - VSCode生产力指南-JupyterNotebook.md # CSDN todo
           - 在浏览器上运行VSCode（旧）.md
           - 如何配一台电脑.md
-
 #  archive：
 # - archive/Python学习笔记
 # - archive/STM32麦轮小车
