@@ -4,3 +4,4 @@ mkdocs-roamlinks-plugin
 mkdocs-rss-plugin
 markdown
 pymdown-extensions
+mkdocs-git-revision-date-localized-plugin
