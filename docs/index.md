@@ -5,8 +5,6 @@ hide:
   - toc
 ---
 
-
-
 # Power's Wiki
 
 <!--  一个不会讲故事的攻城狮，算不上一个很酷的产品汪~-->
@@ -26,6 +24,6 @@ Hi there~
 [![badge](https://img.shields.io/github/last-commit/linyuxuanlin/Wiki_Docusaurus?color=FCD734&label=Last%20commit&style=flat-square){loading=lazy}](https://github.com/linyuxuanlin/Wiki_mkdocs/commits/main)
 [![badge](https://img.shields.io/badge/Contact%20me-here-34ABE0?&style=flat-square){loading=lazy}](ContactMe)
 
-[硬件与半导体](/硬件与半导体){ .md-button }
-[嵌入式与软件](/嵌入式与软件){ .md-button }
-[效率指南](/效率指南){ .md-button }
+[硬件 & 半导体](/硬件与半导体){ .md-button }
+[嵌入式 & 软件开发](/硬件与半导体){ .md-button }
+[效率 & 生活](/硬件与半导体){ .md-button }
