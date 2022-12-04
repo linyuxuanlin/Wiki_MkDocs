@@ -27,7 +27,7 @@ theme:
   logo: https://cos.ap-guangzhou.myqcloud.com/wiki-media-1253965369/doc/logo-zip.png
   favicon: https://cos.ap-guangzhou.myqcloud.com/wiki-media-1253965369/doc/logo-zip.png
   features:
-    - navigation.instant # Instant loading，像个单页应用
+    #- navigation.instant # Instant loading，像个单页应用
     - navigation.tracking # Anchor tracking
     - navigation.tabs # 导航栏
     #- navigation.expand # 导航栏自动展开
