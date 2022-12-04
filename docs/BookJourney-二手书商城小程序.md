@@ -3,13 +3,13 @@ id: BookJourney-二手书商城小程序
 title: BookJourney - 二手书商城小程序
 ---
 
-## 成品
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/书程小驿.jpg)
 
-![](https://cos.wiki-power.com/img/书程小驿。jpg)
+项目仓库：[**linyuxuanlin/BookJourney**](https://github.com/linyuxuanlin/BookJourney)
 
-项目地址：[linyuxuanlin/BookJourney](https://github.com/linyuxuanlin/BookJourney) 微信扫码体验：
+Demo（微信扫码体验）：
 
-![](https://cos.wiki-power.com/img/1.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/1.jpg)
 
 ## 背景
 
@@ -45,8 +45,5 @@ A：总利润收入：¥16.66……
 
 - [EastWorld / wechat-app-mall](https://github.com/EastWorld/wechat-app-mall)
 
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 
-
-> 文章作者：**Power Lin**  
-> 原文地址：<https://wiki-power.com>  
-> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。

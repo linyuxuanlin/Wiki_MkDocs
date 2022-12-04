@@ -36,7 +36,7 @@ title: 个人知识库极简搭建指南 - VuePress
 
 - `wiki-power.com`：替换为你的自定义域名 `xx.com`
 - `linyuxuanlin/Wiki-book`：替换为你的 GitHub 用户名和仓库名 `xxx/Wiki-book`
-    - （如果仓库名称不为 `Wiki-book`，则需全局搜索并修改对应的仓库名）
+  - （如果仓库名称不为 `Wiki-book`，则需全局搜索并修改对应的仓库名）
 - `master`：替换为 `main`.
 
 ## 第四步：配置部署
@@ -46,19 +46,19 @@ title: 个人知识库极简搭建指南 - VuePress
 点开 [**vercel.com**](https://vercel.com/) , 直接使用 GitHub 账户完成注册。  
 完成之后，在个人主页点击 `Import Project（导入项目）` 按钮，把 GitHub 仓库的 **完整链接** 粘贴进去：
 
-![](https://cos.wiki-power.com/img/20201122232933.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20201122232933.jpg)
 
 接下来提示 `Please select the directory（请选择目录）` ，直接点 `Continue` 继续就行。
 
 在接下来的页面，我们只需在 `OUTPUT DIRECTORY（输出目录）` 处，填入 `docs/.vuepress/dist` 即可：
 
-![](https://cos.wiki-power.com/img/20201122235715.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20201122235715.jpg)
 
 在提示 **部署成功** 后，我们点击页面右上角的 `Settings（设置）` , 切换到 `Domains（域名）` 栏目，在输入框内填写你买的域名 `xx.com` ，点击 `Add（添加）`。
 
 然后我们切换到 `Git（没得翻译）` 栏目，滚轮下滑到 `Production Branch（生产分支）`，选择 `Custom` , 填写 `gh-pages` , 如下图：
 
-![](https://cos.wiki-power.com/img/20201122232843.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20201122232843.jpg)
 
 点击 `Save` 保存。
 
@@ -68,12 +68,9 @@ title: 个人知识库极简搭建指南 - VuePress
 
 等泡一杯茶的时间，访问你买的域名 `xx.com` , 如果你能够顺利看到这个画面：
 
-![](https://cos.wiki-power.com/img/20201122233838.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20201122233838.jpg)
 
 恭喜你！拥有了一个属于自己的知识库！
 
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 
-
-> 文章作者：**Power Lin**  
-> 原文地址：<https://wiki-power.com>  
-> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。

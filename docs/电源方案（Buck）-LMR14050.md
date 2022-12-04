@@ -3,18 +3,15 @@ id: 电源方案（Buck）-LMR14050
 title: 电源方案（Buck）- LMR14050
 ---
 
-LMR1405 是 TI 的一款 Buck 转换器芯片，输入电压范围很宽（4-40V），且能提供 5A 的持续输出电流，轻载有休眠模式提高效率。它的内部集成度高，所以外围需要设计的元器件很少。开关频率能通过外部电阻 $R_T$ 在 200kHz-2.5MHz 范围内选择，也能够与 250 kHz-2.3 MHz 频率范围内的外部时钟同步。保护功能有过温关断、$V_{OUT}$ 过压保护（OVP）、$V_{IN}$ 欠压锁定（UVLO）、逐周期电流限制和带频率折返的短路保护。
+LMR14050 是 TI 的一款 Buck 转换器芯片，输入电压范围很宽（4-40V），且能提供 5A 的持续输出电流，轻载有休眠模式提高效率。它的内部集成度高，所以外围需要设计的元器件很少。开关频率能通过外部电阻 $R_T$ 在 200kHz-2.5MHz 范围内选择，也能够与 250 kHz-2.3 MHz 频率范围内的外部时钟同步。保护功能有过温关断、$V_{OUT}$ 过压保护（OVP）、$V_{IN}$ 欠压锁定（UVLO）、逐周期电流限制和带频率折返的短路保护。
 
-评估板开源文件请见 [**【Collection_of_Power_Module_Design/DC-DC(Buck)/LMR14050】**](<https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/DC-DC(Buck)/LMR14050>)
-
+项目仓库： [**Collection_of_Power_Module_Design/DC-DC(Buck)/LMR14050**](<https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/DC-DC(Buck)/LMR14050>)
 
 项目在线预览：
 
-<div style={{height: "60vh"}}>
-<iframe
-  width="100%"
-  height="100%"
-  scrolling="no"
+<div class="iframe_viewer">
+    <iframe 
+    scrolling="no"
   src="https://viewer.wiki-power.com/LMR14050.html"
 ></iframe>
 </div>
@@ -30,16 +27,20 @@ LMR1405 是 TI 的一款 Buck 转换器芯片，输入电压范围很宽（4-40V
 - 工作频率： 200kHz-2.5MHz
 - 参考价格：￥ 11.3
 - 其他特性
-    - 40µA 超低工作静态电流
-    - 关断电流：1µA
-    - 90mΩ 高侧 MOS 管
-    - 最短导通时间：75ns
-    - 电流模式控制
-    - 热保护、过压保护和短路保护
+  - 40µA 超低工作静态电流
+  - 关断电流：1µA
+  - 90mΩ 高侧 MOS 管
+  - 最短导通时间：75ns
+  - 电流模式控制
+  - 热保护、过压保护和短路保护
+
+## 内部功能框图
+
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111090855.png)
 
 ## 引脚定义
 
-![](https://cos.wiki-power.com/img/20220110170233.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220110170233.png)
 
 - BOOT：给高侧 MOS 管的自举电容。在 BOOT 和 SW 间接一个 0.1uF 电容。
 - VIN：电源输入，经过去耦电容 $C_{IN}$ 后接到此引脚。
@@ -51,17 +52,13 @@ LMR1405 是 TI 的一款 Buck 转换器芯片，输入电压范围很宽（4-40V
 
 ## 特性描述
 
-### 内部功能框图
-
-![](https://cos.wiki-power.com/img/20220111090855.png)
-
 ### 稳压原理
 
 LMR14050 的输出电压通过开启高侧 N-MOS 并控制导通时间来调节。在高侧 N-MOS 导通期间，SW 引脚电压摆动至大约 $V_{IN}$，电感电流 iL 随线性斜率 ($V_{IN}$ – $V_{OUT}$) / L 增加；当高侧 N-MOS 关断时，电感电流通过续流二极管，以 $V_{OUT}$ / L 的斜率放电。稳压器的控制参数由占空比 $D = t_{ON} /T_{SW}$ 决定，其中 $t_{ON}$ 是高端开关导通时间，TSW 是开关周期。稳压器控制环路通过调整占空比 D 来保持恒定的输出电压。在理想的降压转换器中，损耗被忽略，D 与输出电压成正比，与输入电压成反比：$D = V_{OUT} / V_{IN}$。
 
 连续导通模式（CCM）下的 SW 电压与电感电流的对应关系：
 
-![](https://cos.wiki-power.com/img/20220111095020.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111095020.png)
 
 ### 睡眠模式
 
@@ -75,7 +72,7 @@ LMR14050 内部集成了自举电压转换器，在 BOOT 和 SW 引脚接一个�
 
 LMR14050 提供一个 0.75V 的内部参考电压。输出电压通过电阻分压器，从 $V_{OUT}$ 分压出来输入 FB 引脚，在内部进行比较调节。分压电阻建议使用偏差 1% 或更低的、温度系数 100 ppm 或更低的。通过所需分压电流选择低侧电阻 $R_{FBB}$（参考值是 10-100kΩ），并通过公式计算高侧电阻 $R_{FBT}$。选择较大的阻值有利于提高轻载效率，但如果太大，稳压器将更容易受到来自 FB 输入电流的噪声和电压误差的影响。
 
-![](https://cos.wiki-power.com/img/20220111105814.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111105814.png)
 
 $$
 R_{FBT}=\frac{V_{OUT}-0.75}{0.75}R_{FBB}
@@ -87,7 +84,7 @@ $$
 
 可通过调节 EN 的外部上下拉电阻，以调节启动和关闭的电压阈值：
 
-![](https://cos.wiki-power.com/img/20220111111613.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111111613.png)
 
 $R_{ENT}$ 和 $R_{ENB}$ 遵从以下公式计算：
 
@@ -118,13 +115,13 @@ $$
 R_T(kΩ)=32537*f_{SW}^{-1.045}(kHz)
 $$
 
-![](https://cos.wiki-power.com/img/20220111135021.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111135021.png)
 
-![](https://cos.wiki-power.com/img/20220111135034.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111135034.png)
 
 LMR14050 开关动作也可以被外部时钟输入信号同步（250kHz-2.3MHz）:
 
-![](https://cos.wiki-power.com/img/20220111141247.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111141247.png)
 
 内部晶振将会被外部时钟的下降沿同步。外部时钟推荐高电平不低于 1.7V，低电平不高于 0.5V，最小脉宽不低于 30ns。如果接低内阻信号源，那么频率设定电阻 $R_T$ 需要被并联到 AC 耦合电阻 $C_{COUP}$（可为 10pF 陶瓷电容），接到终端电阻 $R_{TERM}$（例如 50Ω），这样可以较好地匹配阻抗。
 
@@ -142,7 +139,7 @@ LMR14050 有内部热关断保护功能。当结温超过 170℃ 时热关断激
 
 ## 参考设计
 
-![](https://cos.wiki-power.com/img/20220111143510.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111143510.png)
 
 设计参数：
 
@@ -239,7 +236,7 @@ LMR14050 需要一个 BOOT 自举电容，在前文有提及，BOOT 电容的参
 
 ## Layout 参考
 
-![](https://cos.wiki-power.com/img/20220110183248.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220110183248.png)
 
 减小 EMI 的 Layout 建议：
 
@@ -251,13 +248,12 @@ LMR14050 需要一个 BOOT 自举电容，在前文有提及，BOOT 电容的参
 
 ## 实际测试
 
-24V 输入，5V/5A 满载输出，实际输出 4.95V/5.00A，纹波 15Vpp，温度 110℃。
+24V 输入，5V/5A 满载输出，实际输出 4.95V/5.00A，纹波 15mV，温度 110℃。
 
 ## 参考与致谢
 
 - [技术文档 · LMR14050](https://www.ti.com.cn/product/cn/LMR14050#tech-docs)
 - [N-1149 Layout Guidelines for Switching Power Supplies](https://www.ti.com/lit/an/snva021c/snva021c.pdf?ts=1641814411004)
 
-> 文章作者：**Power Lin**  
-> 原文地址：<https://wiki-power.com>  
-> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
+

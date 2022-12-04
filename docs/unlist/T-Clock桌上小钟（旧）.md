@@ -7,7 +7,7 @@ title: T-Clock 桌上小钟（旧）
 
 我从柜子里翻出了以前做的一个玩具，拨一下开关，发现还能用，遂将资料整理一下。
 
-![](https://cos.wiki-power.com/img/Tclock1.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/Tclock1.jpg)
 
 ## 硬件部分
 
@@ -20,7 +20,7 @@ title: T-Clock 桌上小钟（旧）
 
 外壳：因暂时没有好的设计，所以没有制作外壳。
 
-![](https://cos.wiki-power.com/img/3D%20tclock.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/3D%20tclock.png)
 
 ## 代码
 
@@ -147,7 +147,7 @@ void loop(void)
 
 ## 总结
 
-![](https://cos.wiki-power.com/img/Tclock2.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/Tclock2.jpg)
 
 这是它的背面，如果有好的设计，我将画个外壳给它装上。
 
@@ -159,6 +159,5 @@ void loop(void)
 
 
 
-> 文章作者：**Power Lin**  
-> 原文地址：<https://wiki-power.com>  
-> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
+

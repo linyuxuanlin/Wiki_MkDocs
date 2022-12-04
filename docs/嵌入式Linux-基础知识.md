@@ -8,7 +8,7 @@ title: 嵌入式 Linux - 基础知识
 - 查看 CPU 信息：`cat /proc/cpuinfo`
 - 查看内核版本：`cat /proc/version`
 - 查看内存使用情况：`cat /proc/meminfo`
-    - 也可以使用命令 `free` 来简单了解内存使用情况
+  - 也可以使用命令 `free` 来简单了解内存使用情况
 - 查看 FLASH 存储器使用情况：`cat /proc/partitions`
 - 查看任务进程：`top`
 - 查看支持的文件系统：`cat /proc/filesystems`（nodev 表示不需要挂载块设备）
@@ -24,6 +24,5 @@ Linux 上驱动的作用，就是把硬件设备与 Linux 文件建立了映射�
 
 - [[野火]i.MX Linux 开发实战指南](https://doc.embedfire.com/linux/imx6/base/zh/latest/index.html)
 
-> 文章作者：**Power Lin**  
-> 原文地址：<https://wiki-power.com>  
-> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
+

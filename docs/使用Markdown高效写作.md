@@ -81,7 +81,7 @@ Markdown 常用语法也就这么几种：**标题、文本样式、引用、代
 
 如果需要多行代码，可以使用三个反引号 <code>```</code> 前后包围代码区块：
 
-![](https://cos.wiki-power.com/img/20210215164653.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210215164653.png)
 
 ```c
 int fputc(int ch,FILE *f)
@@ -177,16 +177,16 @@ int fputc(int ch,FILE *f)
 1. 列表项一
    1. 列表子项一
    2. 列表子项二
-        - 子子项
-        - 子子项
+      - 子子项
+      - 子子项
 2. 列表项二
 ```
 
 1. 列表项一
    1. 列表子项一
    2. 列表子项二
-        - 子子项
-        - 子子项
+      - 子子项
+      - 子子项
 2. 列表项二
 
 ### 表格
@@ -231,7 +231,7 @@ int fputc(int ch,FILE *f)
 ---
 ```
 
-![](https://cos.wiki-power.com/img/20210216123630.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210216123630.png)
 
 ## 高级用法
 
@@ -259,6 +259,5 @@ int fputc(int ch,FILE *f)
 - [Learning-Markdown (Markdown 入门参考)](https://xianbai.me/learn-md/index.html)
 - [基本撰写和格式语法](https://docs.github.com/cn/github/writing-on-github/basic-writing-and-formatting-syntax)
 
-> 文章作者：**Power Lin**  
-> 原文地址：<https://wiki-power.com>  
-> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
+

@@ -13,7 +13,7 @@ title: 使用 rdp 访问群晖 NAS
 
 ## 服务端配置
 
-参考文章 [**如何实现外网 RDP 远控（frp）· 服务端配置**](https://wiki-power.com/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91RDP%E8%BF%9C%E6%8E%A7%EF%BC%88frp%EF%BC%89#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%85%8D%E7%BD%AE)。需要注意的是，`frps.ini` 配置文件中的 `vhost_http_port` / `vhost_https_port` 参数必须保留。
+跳转文章 [**如何实现外网 RDP 远控（frp）· 服务端配置**](https://wiki-power.com/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91RDP%E8%BF%9C%E6%8E%A7%EF%BC%88frp%EF%BC%89#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%85%8D%E7%BD%AE)。需要注意的是，`frps.ini` 配置文件中的 `vhost_http_port` / `vhost_https_port` 参数必须保留。
 
 ### 绑定域名
 
@@ -69,6 +69,5 @@ remote_port = 自定义远程端口
 
 - [群晖 NAS 使用 Docker 安装配置 frpc 内网穿透教程](https://www.ioiox.com/archives/26.html)
 
-> 文章作者：**Power Lin**  
-> 原文地址：<https://wiki-power.com>  
-> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
+

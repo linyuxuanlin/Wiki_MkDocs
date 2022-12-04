@@ -3,7 +3,7 @@ id: 如何用Markdown写一份简历
 title: 如何用 Markdown 写一份简历
 ---
 
-![](https://cos.wiki-power.com/img/20210318220041.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210318220041.png)
 
 用 Markdown 写一份可在线预览，也可导出 PDF 的简历。
 
@@ -32,7 +32,6 @@ title: 如何用 Markdown 写一份简历
 
 - [聊聊简历怎么写？](https://mp.weixin.qq.com/s/P64bm-SBYXyQymfHAR1rqA)
 
-> 文章作者：**Power Lin**  
-> 原文地址：<https://wiki-power.com>  
-> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
+
 

@@ -16,6 +16,4 @@ title: 开启 Chrome（Edge）多线程下载
 
 - [一招加速浏览器下载 20 倍！免费开启 Chrome / Edge “隐藏” 自带的多线程下载功能](https://www.iplaysoft.com/chrome-parallel-download.html)
 
-> 文章作者：**Power Lin**  
-> 原文地址：<https://wiki-power.com>  
-> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

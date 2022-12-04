@@ -20,7 +20,7 @@ title: 基于 docsify 搭建个人 Wiki
 
 好记性不如烂笔头，知识需要归纳、总结、沉淀。而输出总是比输入难的，在这个过程中，也加深了对知识的掌握和理解。这是一个反刍，咀嚼和表达的过程。知识经历了这个过程，才能真正被我们所吸收。
 
-![学习保持率金字塔图](https://cos.wiki-power.com/img/20200128214300.png)
+![学习保持率金字塔图](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200128214300.png)
 
 ### 什么是独立博客
 
@@ -164,6 +164,5 @@ title: 基于 docsify 搭建个人 Wiki
 
 
 
-> 文章作者：**Power Lin**  
-> 原文地址：<https://wiki-power.com>  
-> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
+

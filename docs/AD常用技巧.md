@@ -34,7 +34,7 @@ title: AD 常用技巧
 **方法**：使用字库软件 Font Creator, 在 [GitHub](https://github.com/linyuxuanlin/Modularity_of_Functional_Circuit/tree/master/%E4%B8%93%E7%94%A8%E5%AD%97%E4%BD%93) 下载我的字库作为模板，定制自己的专属字库。字库制作完成后，安装 .ttf 文件，即可在 Altium 内用相应字符调出 Logo 。
 
 字符对应 Logo 如下图：  
-![](https://cos.wiki-power.com/img/20200207200606.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200207200606.png)
 
 ### 自动排布元器件至划定区域
 
@@ -98,6 +98,5 @@ title: AD 常用技巧
 
 - [Altium Designer19 设计宝典：实战操作技巧与问题解决方法](https://item.jd.com/12756518.html)
 
-> 文章作者：**Power Lin**  
-> 原文地址：<https://wiki-power.com>  
-> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
+

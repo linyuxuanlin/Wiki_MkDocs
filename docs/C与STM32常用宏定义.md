@@ -3,8 +3,6 @@ id: C与STM32常用宏定义
 title: C 与 STM32 常用宏定义
 ---
 
-
-
 在嵌入式开发中，有些通用的宏定义，可以让项目兼容性和可移植性更佳。
 
 ## 防止头文件被重复定义
@@ -76,8 +74,4 @@ typedef signed char int8; /* Signed 8 bit value */
 
 - [嵌入式工程师常用的宏定义](https://mp.weixin.qq.com/s/4YPwxtBX6Qdlz9fGKvSCUg)
 
-
-
-> 文章作者：**Power Lin**  
-> 原文地址：<https://wiki-power.com>  
-> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

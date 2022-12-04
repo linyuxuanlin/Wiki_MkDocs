@@ -1,7 +1,9 @@
 ---
-id: Cadence操作笔记-OrCAD_Capture
-title: Cadence 操作笔记 - OrCAD Capture
+id: OrCAD配置与技巧
+title: OrCAD 配置与技巧
 ---
+
+注：本文基于 Cadence OrCAD Capture CIS。
 
 ## 基础
 
@@ -75,15 +77,15 @@ allegro/ 
 
 DRC 设置：
 
-![](https://cos.wiki-power.com/img/20210810134720.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210810134720.png)
 
 复制元器件时自动重命名位号：
 
-![](https://cos.wiki-power.com/img/20210810134747.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210810134747.png)
 
 移动字符时贴近栅格：
 
-![](https://cos.wiki-power.com/img/20210810134758.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210810134758.png)
 
 坑：当使用 CIP 库，显示 `not found in the configured librarie lists` 时，要检查路径内空格的编码。
 
@@ -105,7 +107,6 @@ DRC 设置：
 - 多选元素：按住 `Ctrl` 进行选择
 - 复制并自动增加标号：按住 `Ctrl` 拖动元器件
 - 以鼠标为重心移动原理图：按住 `C`，拖动鼠标
-
 - 放置总线：`E`
 - 放置文字：`T`
 

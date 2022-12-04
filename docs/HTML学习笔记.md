@@ -114,8 +114,5 @@ title: HTML 学习笔记
 - [HTML 30 分钟入门教程](http://deerchao.net/tutorials/html/html.htm)
 - [HTML - head 头部浅析](https://www.tielemao.com/831.html)
 
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 
-
-> 文章作者：**Power Lin**  
-> 原文地址：<https://wiki-power.com>  
-> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。

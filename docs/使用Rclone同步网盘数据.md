@@ -278,6 +278,5 @@ rclone sync COS_backup:/wiki-media-1253965369 /volume1/wiki-media -P
 - [使用 rclone 在 Windows 下挂载 Google 个人 / 团队云盘](https://blog.rhilip.info/archives/874/)
 - [使用 rclone 每天定时备份 typecho 博客网站内容及 mysql 数据库到 Google Drive/Onedrive 等网盘](https://omo.moe/archives/616/)'
 
-> 文章作者：**Power Lin**  
-> 原文地址：<https://wiki-power.com>  
-> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
+

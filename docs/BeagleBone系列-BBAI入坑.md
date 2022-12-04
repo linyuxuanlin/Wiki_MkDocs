@@ -7,7 +7,7 @@ title: BeagleBone 系列 - BBAI 入坑
 
 首先，连接 Cape 的 12V 电源输入，使用 USB 转串口模块，连接板载串口（J3 口才能用于调试）：
 
-![](https://cos.wiki-power.com/img/20211027164010.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211027164010.png)
 
 确保 USB 转串口模块有驱动（我用到是 FTDI 模块，驱动下载地址是 <https://ftdichip.com/drivers/vcp-drivers/>）。
 
@@ -183,6 +183,5 @@ enum
 - [Cape 问题](https://docs.qq.com/sheet/DU1BBZnNORlJhRG5w)
 - [激光雷达](https://github.com/Slamtec/rplidar_sdk)
 
-> 文章作者：**Power Lin**  
-> 原文地址：<https://wiki-power.com>  
-> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
+

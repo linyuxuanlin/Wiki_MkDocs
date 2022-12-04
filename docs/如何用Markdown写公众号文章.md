@@ -12,7 +12,7 @@ title: 如何用 Markdown 写公众号文章
 
 [**MD2WeChat**](https://md2wechat.wiki-power.com/) 是我根据开源项目 [lyricat/wechat-format](https://github.com/lyricat/wechat-format) 定制的一个网页工具，可以很方便地将 Markdown 语法解析为富文本：
 
-[![](https://cos.wiki-power.com/img/20210216125752.png)](https://md2wechat.wiki-power.com/)
+[![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210216125752.png)](https://md2wechat.wiki-power.com/)
 
 将 Markdown 语法的文章粘贴到左栏，并在右栏点击一键复制，粘贴进公众号的编辑器即可。
 
@@ -23,6 +23,5 @@ title: 如何用 Markdown 写公众号文章
 
 - [lyricat/wechat-format](https://github.com/lyricat/wechat-format)
 
-> 文章作者：**Power Lin**  
-> 原文地址：<https://wiki-power.com>  
-> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
+

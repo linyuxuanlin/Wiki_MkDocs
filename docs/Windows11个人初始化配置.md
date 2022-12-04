@@ -19,7 +19,7 @@ title: Windows11个人初始化配置
 - [**Logitech Options**](https://www.logitech.com.cn/zh-cn/product/options)
 - PowerToys
 - Altium Designer
-    - AD Loader
+  - AD Loader
 - DeepL
 - [**微信（测试版）**](https://dldir1.qq.com/weixin/Windows/Beta/WeChatBeta.exe)
 - [**火绒安全**](https://www.huorong.cn/)

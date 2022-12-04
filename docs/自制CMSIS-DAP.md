@@ -1,6 +1,6 @@
 ---
 id: 自制CMSIS-DAP
-title: 🚧自制 CMSIS-DAP
+title: 自制 CMSIS-DAP 🚧
 ---
 
 CMSIS DAP 是 ARM 官方推出的开源仿真器，支持所有的 Cortex - ARM 器件，支持 JTAG / SWD 接口，在最新的固件版本中，还支持单线 SWO 接口，可以直接在程序里把相应的数据通过 SWO 接口输出到调试窗口，起到类似串口调试的目的。DAP 主要有以下特点：
@@ -26,15 +26,13 @@ GitHub 仓库：[**linyuxuanlin/DashDAP**](https://github.com/linyuxuanlin/DashD
 
 `2.0 版本编辑中`
 
-![](https://cos.wiki-power.com/img/20200613154907.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200613154907.jpg)
 
 项目在线预览：
 
-<div style={{height: "60vh"}}>
-<iframe
-  width="100%"
-  height="100%"
-  scrolling="no"
+<div class="iframe_viewer">
+    <iframe 
+    scrolling="no"
   src="https://viewer.wiki-power.com/DashDAP.html"
 ></iframe>
 </div>
@@ -57,7 +55,7 @@ CMSIS-DAP / DAP-Link 相比 J-Link / ST-Link 有以下优势：
 
 选用村田 8MHz 无源晶振，型号为 CSTCE8M00G53-R0，封装为 3213，电容为 15pF. 为什么选用这个呢？是因为它体积相对小，并且把两个起振电容整合进去了，硬件设计上能省很多事。至于村田晶振型号的命名方式，可以参考下表：
 
-![](https://cos.wiki-power.com/img/20200612143451.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200612143451.jpg)
 
 ### 电源
 
@@ -84,6 +82,5 @@ CDC 虚拟串口功能具备一般的串口功能，允许双向通信，允许�
 - [wuxx / nanoDAP](https://github.com/wuxx/nanoDAP)
 - [LGG001 / DAPLink-Brochure](https://github.com/LGG001/DAPLink-Brochure)
 
-> 文章作者：**Power Lin**  
-> 原文地址：<https://wiki-power.com>  
-> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
+

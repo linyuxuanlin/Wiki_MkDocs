@@ -8,7 +8,7 @@ title: 定制 SublimeText3
 **Sublime Text** 是一款非常强大的文本编辑器。由于下学期有 Python 相关课程，而 Pycharm 等工具的 UI 有些难看。我想尝试把 Sublime Text 打造为 Python 开发利器。
 
 定制后的效果图：  
- ![](https://cos.wiki-power.com/img/ST3效果.png)
+ ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/ST3效果.png)
 
 ## [极简部署](https://www.jianguoyun.com/p/Da9TMr0Q-OOjBxif86sB)
 
@@ -77,7 +77,7 @@ Sublime Text 3 可从 [官网](http://www.sublimetext.com/) 下载（推荐下�
 ```
 
 在 `Preferences -> Browse Packages... -> FileHeader -> template -> header 或 body` 中修改模板内容。 效果：  
- ![](https://cos.wiki-power.com/img/ST3 模板效果。png)
+ ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/ST3 模板效果。png)
 
 ### 运行 Python
 
@@ -118,6 +118,5 @@ Sublime Text 3 可从 [官网](http://www.sublimetext.com/) 下载（推荐下�
 
 
 
-> 文章作者：**Power Lin**  
-> 原文地址：<https://wiki-power.com>  
-> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
+

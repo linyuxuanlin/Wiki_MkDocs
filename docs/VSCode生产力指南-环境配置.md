@@ -5,7 +5,7 @@ title: VS Code 生产力指南 - 环境配置
 
 —— 如何用 VS Code 打造高效率的生产力工具。
 
-![](https://cos.wiki-power.com/img/20200319135609.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200319135609.png)
 
 ## 背景
 
@@ -29,7 +29,7 @@ title: VS Code 生产力指南 - 环境配置
 
 下载安装完成后，我们打开软件，首先看到的是启动页面：
 
-![](https://cos.wiki-power.com/img/20200318224855.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200318224855.png)
 
 ## 插件安装
 
@@ -42,18 +42,18 @@ title: VS Code 生产力指南 - 环境配置
 
 - [**Chinese (Simplified) Language Pack**](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hans)：汉化 VS Code
 - [**Settings Sync**](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)：备份设置项和插件，多设备同步
-    - **配置项**：配置相应的 `GitHub Gist ID` 和 `GitHub Access Token`
-    - **用法**：`Shift + Alt + U` 上传，`Shift + Alt + D` 下载
-    - （最新版本 VS Code 已自带同步功能，但如果需要版本管理还是可以用这个插件）
+  - **配置项**：配置相应的 `GitHub Gist ID` 和 `GitHub Access Token`
+  - **用法**：`Shift + Alt + U` 上传，`Shift + Alt + D` 下载
+  - （最新版本 VS Code 已自带同步功能，但如果需要版本管理还是可以用这个插件）
 
 ### Markdown
 
 - [**Markdown All in One**](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)：提供更强大的 Markdown 语法支持
 - [**Markdown Paste Image**](https://marketplace.visualstudio.com/items?itemName=onesdev.vscode-paste-image-plus)：将图片粘贴到 Markdown，并拷贝至 /res 文件夹内
 - [**Pangu-Markdown**](https://marketplace.visualstudio.com/items?itemName=xlthu.Pangu-Markdown)：规范 Markdown 格式（中英文间加空格、替换规范标点等）
-    - **配置项**：启用保存时自动格式化
+  - **配置项**：启用保存时自动格式化
 - [**vscode-pandoc**](https://marketplace.visualstudio.com/items?itemName=DougFinke.vscode-pandoc)：增加 Pandoc 支持，将 Markdown 导出为 PDF/Word/HTML 等格式
-    - **配置项**：确保 [Pandoc](https://pandoc.org/installing.html) 已经安装
+  - **配置项**：确保 [Pandoc](https://pandoc.org/installing.html) 已经安装
 
 ### 美化
 
@@ -68,18 +68,18 @@ title: VS Code 生产力指南 - 环境配置
 ### 前端
 
 - [**Prettier - Code formatter**](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)：HTML/CSS/JavaScript 等前端语言自动格式化工具
-    - **用法**：`Ctrl + Shift + P`
+  - **用法**：`Ctrl + Shift + P`
 - [**Color Manager**](https://marketplace.visualstudio.com/items?itemName=RoyAction.color-manager)：直接预览色值对应的颜色
 - [**Live Server**](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)：在 VS Code 内运行本地网页
 
 ### 其他
 
 - [**Google Translate**](https://marketplace.visualstudio.com/items?itemName=hancel.google-translate)：在 VS Code 内提供翻译
-    - **用法**：`Ctrl + Alt + T`
+  - **用法**：`Ctrl + Alt + T`
 - [**Start git-bash**](https://marketplace.visualstudio.com/items?itemName=McCarter.start-git-bash)：将 `bash` 添加至 VS Code 的终端
 - [**TinyPNG**](https://marketplace.visualstudio.com/items?itemName=andi1984.tinypng)：压缩图片
-    - **配置项**：设置正确的 `TinyPNG API Key`
-    - **用法**：右键文件树内的图片 - `TinyPNG:Compress`
+  - **配置项**：设置正确的 `TinyPNG API Key`
+  - **用法**：右键文件树内的图片 - `TinyPNG:Compress`
 - [**Zhihu Daily**](https://marketplace.visualstudio.com/items?itemName=YRM.zhihu)：摸鱼必备，在 VS Code 内刷知乎日报
 - [**坤坤鼓励师**](https://marketplace.visualstudio.com/items?itemName=sakura1357.cxk)：连续打代码一小时，会有蔡徐坤专属篮球舞提醒你休息
 
@@ -87,7 +87,7 @@ title: VS Code 生产力指南 - 环境配置
 
 你可以通过 `文件 - 首选项 - 颜色主题` 来选择自己喜欢的主题，例如我选的是 `Monokai Dimmed` 主题：
 
-![](https://cos.wiki-power.com/img/20200319132727.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200319132727.png)
 
 如果你觉得默认提供的主题不够用，也可以在插件商店内，用关键词 `theme` 搜索并下载自己喜欢的主题。
 
@@ -144,6 +144,5 @@ git config --global credential.helper store
 
 
 
-> 文章作者：**Power Lin**  
-> 原文地址：<https://wiki-power.com>  
-> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
+

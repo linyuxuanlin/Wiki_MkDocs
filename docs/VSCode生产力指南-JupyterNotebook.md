@@ -6,7 +6,7 @@ title: VS Code 生产力指南 - Jupyter Notebook
 用 VS Code 打造高效率的生产力工具。
 
 
-![](https://cos.wiki-power.com/img/20200323155728.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323155728.png)
 
 Jupyter Notebook 是一个很强大的工具，它允许我们在一个文档环境内编写、运行代码、查看输出、将数据可视化并查看结果……总之，有了它，我们写含代码的文档就方便多了。
 
@@ -28,7 +28,7 @@ Jupyter Notebook 是一个很强大的工具，它允许我们在一个文档环
 
 环境配置完成后，我们可以在 VS Code 命令面板（`Ctrl + Shift + P`）输入 **Python: Create Blank New Jupyter** 创建一个空白的 Jupyter 笔记本（`.ipynb` 文件）。如下图简单测试一下：
 
-![](https://cos.wiki-power.com/img/20200323153020.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323153020.png)
 
 可以看到，代码正常运行。
 
@@ -36,47 +36,47 @@ Jupyter Notebook 是一个很强大的工具，它允许我们在一个文档环
 
 Jupyter Notebook 使用 **代码单元（code cells）** 的形式来创建、编辑和运行代码。
 
-![](https://cos.wiki-power.com/img/20200323153717.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323153717.png)
 
 ### 添加 code cells
 
-![](https://cos.wiki-power.com/img/20200323153850.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323153850.png)
 
 ### 运行单个 code cell
 
-![](https://cos.wiki-power.com/img/20200323153939.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323153939.png)
 
 ### 运行多个 code cells
 
-![](https://cos.wiki-power.com/img/20200323154005.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154005.png)
 
 ### 移动 code cell
 
-![](https://cos.wiki-power.com/img/20200323154059.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154059.png)
 
 ### 删除 code cell
 
-![](https://cos.wiki-power.com/img/20200323154148.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154148.png)
 
 ### 在代码与 Markdown 之间切换
 
-![](https://cos.wiki-power.com/img/20200323154242.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154242.png)
 
 ### 图表查看器
 
 通过图表查看器，你可以轻松查看代码输出的图表，也可以将图标导出各种格式的图片：
 
-![](https://cos.wiki-power.com/img/20200323154555.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154555.png)
 
 ### 数据与变量查看器
 
 变量的类型、数量与值可以通过变量查看器实时查看：
 
-![](https://cos.wiki-power.com/img/20200323154758.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154758.png)
 
 也可以通过数据查看器浏览更具体的数据：
 
-![](https://cos.wiki-power.com/img/20200323154832.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154832.png)
 
 
 
@@ -87,6 +87,5 @@ Jupyter Notebook 使用 **代码单元（code cells）** 的形式来创建、�
 
 
 
-> 文章作者：**Power Lin**  
-> 原文地址：<https://wiki-power.com>  
-> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
+

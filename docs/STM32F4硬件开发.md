@@ -3,13 +3,7 @@ id: STM32F4硬件开发
 title: STM32F4 硬件开发
 ---
 
-本篇文章将会在以下几个方面展开讲解：
-
-- 电源
-- 时钟
-- 复位
-- 启动模式
-- 调试管理
+本篇文章将会对 STM32F4 的 MCU 最小系统（电源、时钟、复位、启动模式、调试管理）展开讲解。
 
 ## 电源
 
@@ -46,13 +40,13 @@ VBAT 也可为 RTC 供电，由复位模块中内置的掉电复位 （PDR）电
 以下是电源引脚的设计方法：
 
 - **VDD**
-    - **去耦电容**：总的一个 10 μF 的陶瓷/钽电容，外加每个 VDD 引脚旁接一个 100 nF 陶瓷电容。
+  - **去耦电容**：总的一个 10 μF 的陶瓷/钽电容，外加每个 VDD 引脚旁接一个 100 nF 陶瓷电容。
 - **VDDA**
-    - **去耦电容**：100 nF 陶瓷电容 + 1 µF 陶瓷/钽电容。
-    - **过滤模拟噪声**：可通过磁珠接至 VDD。
+  - **去耦电容**：100 nF 陶瓷电容 + 1 µF 陶瓷/钽电容。
+  - **过滤模拟噪声**：可通过磁珠接至 VDD。
 - **VREF+**
-    - **去耦电容**：如果启用 VREF+ 功能，则需接一个 100 nF 和一个 1 µF 的电容。
-    - **过滤模拟噪声**：可通过 47 Ω 电阻连至 VDDA。
+  - **去耦电容**：如果启用 VREF+ 功能，则需接一个 100 nF 和一个 1 µF 的电容。
+  - **过滤模拟噪声**：可通过 47 Ω 电阻连至 VDDA。
 - **VBAT**：接外部电池（1.65 V-3.6 V）。如果不需要电池电源，则接至 VDD 引脚。
 - **VCAP1/VCAP2**：各对地连接一个 2.2 µF 陶瓷电容（ESR < 2 Ω）；如果只有 VCAP1，则连一个 4.7 µF 陶瓷电容（ESR < 1 Ω）。
 
@@ -60,7 +54,7 @@ VBAT 也可为 RTC 供电，由复位模块中内置的掉电复位 （PDR）电
 
 #### 上电复位（POR）/ 掉电复位（PDR）
 
-![](https://cos.wiki-power.com/img/20210529143014.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529143014.png)
 
 STM32F4 芯片中集成 POR/PDR 电路，具体上电 / 掉电复位的特征见上图。如需禁用此功能，可通过 PDR_ON 引脚实现。
 
@@ -74,7 +68,7 @@ STM32F4 芯片中集成 POR/PDR 电路，具体上电 / 掉电复位的特征见
 - 软件复位（SW 复位）
 - 低功耗管理复位
 
-![](https://cos.wiki-power.com/img/20210529143925.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529143925.png)
 
 可通过查看控制 / 状态寄存器 （RCC_CSR）中的复位标志确定复位源。
 
@@ -99,7 +93,7 @@ STM32F4 芯片中集成 POR/PDR 电路，具体上电 / 掉电复位的特征见
 
 HSE 时钟源可以有两种提供方式：外部源（有源）、外部晶振 / 陶瓷谐振器（无源）。
 
-![](https://cos.wiki-power.com/img/20210529145726.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529145726.png)
 
 #### 外部源（HSE 旁路）
 
@@ -115,7 +109,7 @@ CL1 和 CL2 应选用大小相同（5-25 pF，典型值 25 pF）的陶瓷电容�
 
 LSE 时钟源可以有两种提供方式：外部源（有源）、外部晶振 / 陶瓷谐振器（无源）。
 
-![](https://cos.wiki-power.com/img/20210529152354.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529152354.png)
 
 #### 外部源 （LSE 旁路）
 
@@ -133,7 +127,7 @@ LSE 时钟源可以有两种提供方式：外部源（有源）、外部晶振 
 
 一般情况下，我们在 BOOT0 串接 10 K 的下拉电阻，BOOT1 任意即可。如果需要模式切换，那么可以参照以下的设计：
 
-![](https://cos.wiki-power.com/img/20200605163537.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200605163537.png)
 
 ## 调试管理
 
@@ -145,7 +139,7 @@ STM32F4 内置 SWJ（SW/JTAG）接口。其中，SW-DP 是 2 引脚（时钟 + �
 
 在 STM32F4 中，SWJ 的引脚分配如下：
 
-![](https://cos.wiki-power.com/img/20210529210858.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529210858.png)
 
 ### JTAG 的内部上下拉
 
@@ -160,16 +154,15 @@ JTAG 引脚不能悬空（因为他们直接连着用于模式调试控制的触
 
 ### 连接标准 JTAG 座的硬件设计
 
-![](https://cos.wiki-power.com/img/20210529211840.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529211840.png)
 
 ## 参考设计
 
-![](https://cos.wiki-power.com/img/20210529213723.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529213723.png)
 
 ## 参考与致谢
 
 - [AN4488: Getting started with STM32F4xxxx MCU hardware development](https://www.st.com/content/ccc/resource/technical/document/application_note/76/f9/c8/10/8a/33/4b/f0/DM00115714.pdf/files/DM00115714.pdf/jcr:content/translations/en.DM00115714.pdf)
 
-> 文章作者：**Power Lin**  
-> 原文地址：<https://wiki-power.com>  
-> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
+

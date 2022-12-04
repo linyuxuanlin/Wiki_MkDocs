@@ -38,7 +38,7 @@ STM32 提供了 BOOT1 与 BOOT0 引脚，可以通过设置引脚的状态，以
 
 以上图表中 `高` `低` 表示接 10K 电阻上拉 / 下拉，而非直连 VCC / GND
 
-![](https://cos.wiki-power.com/img/20200603134417.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200603134417.jpg)
 
 ## 参考与致谢
 
@@ -47,6 +47,5 @@ STM32 提供了 BOOT1 与 BOOT0 引脚，可以通过设置引脚的状态，以
 
 
 
-> 文章作者：**Power Lin**  
-> 原文地址：<https://wiki-power.com>  
-> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
+

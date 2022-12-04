@@ -23,7 +23,7 @@ title: 基于 acme.sh 自动申请域名证书（群晖 Docker）
 
 我们先创建 `/docker/acme.sh` 文件夹，再手动创建 `account.conf` 文件：
 
-![](https://cos.wiki-power.com/img/20210430212420.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210430212420.png)
 
 接着，我们编辑这个文件，手动添加这几行：
 
@@ -41,13 +41,13 @@ AUTO_UPGRADE='1'
 
 在 `卷` 页面配置挂载的文件夹，点击 `添加文件夹`，选择本地的 `docker/acme.sh` 路径，装载路径填 `/acme.sh`（默认不可变）：
 
-![](https://cos.wiki-power.com/img/20210430214221.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210430214221.png)
 
 在 `网络` 页面，勾选 `使用与 Docker Host 相同的网络`。
 
 接着，切换到 `环境` 页面，在 `命令` 框里填入 `daemon` 命令：
 
-![](https://cos.wiki-power.com/img/20210430215244.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210430215244.png)
 
 随后创建并运行容器。双击已运行的容器，切换到 `终端机` 页面，点击 `通过命令启动`，输入 `sh` 后点确定。
 
@@ -79,6 +79,5 @@ acme.sh --issue --dns dns_dp -d aaa.com -d *.aaa.com -d bbb.com -d *.bbb.com -d 
 
 - [群晖 NAS 高级服务 - docker 部署 acme.sh 自动申请域名证书](https://www.ioiox.com/archives/88.html)
 
-> 文章作者：**Power Lin**  
-> 原文地址：<https://wiki-power.com>  
-> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
+

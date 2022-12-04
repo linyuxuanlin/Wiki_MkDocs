@@ -5,7 +5,7 @@ title: 如何在 iPad 上运行 VS Code
 
 注：本教程基于 code-server v3.8.0，CentOS 8.2.
 
-![](https://cos.wiki-power.com/img/20201221140748.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20201221140748.jpg)
 
 ## 补充更新
 
@@ -128,6 +128,5 @@ yum install git
 
 
 
-> 文章作者：**Power Lin**  
-> 原文地址：<https://wiki-power.com>  
-> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
+

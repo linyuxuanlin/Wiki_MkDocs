@@ -5,6 +5,8 @@ hide:
   - toc
 ---
 
+
+
 # Power's Wiki
 
 <!--  一个不会讲故事的攻城狮，算不上一个很酷的产品汪~-->
@@ -23,25 +25,6 @@ Hi there~
 [![badge](https://img.shields.io/github/deployments/linyuxuanlin/Wiki_Docusaurus/Production?label=Build&style=flat-square){loading=lazy}](https://vercel.com/linyuxuanlin/wiki-mkdocs/deployments)
 [![badge](https://img.shields.io/github/last-commit/linyuxuanlin/Wiki_Docusaurus?color=FCD734&label=Last%20commit&style=flat-square){loading=lazy}](https://github.com/linyuxuanlin/Wiki_mkdocs/commits/main)
 [![badge](https://img.shields.io/badge/Contact%20me-here-34ABE0?&style=flat-square){loading=lazy}](ContactMe)
-
-```
-
-<div
-  class="altium-ecad-viewer"
-  data-project-src="https://github.com/linyuxuanlin/Collection_of_Motor_Driver_Design/raw/main/DC_Motor/IR2104S/IR2104S.SchDoc"
-  style="
-    border-radius: 0px 0px 4px 4px;
-    height: 500px;
-    border-style: solid;
-    border-width: 1px;
-    overflow: hidden;
-    max-width: 1280px;
-    max-height: 700px;
-    box-sizing: border-box;
-  "
->在线预览项目</div>
-
-```
 
 [硬件与半导体](/硬件与半导体){ .md-button }
 [嵌入式与软件](/嵌入式与软件){ .md-button }

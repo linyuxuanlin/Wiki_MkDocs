@@ -87,7 +87,7 @@ screen -X -S id quit # 替换掉 id
 
 在浏览器直接输入 `http://你的服务器 ip` 即可享用云端 VS Code.
 
-![](https://cos.wiki-power.com/img/20200413181001.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200413181001.jpg)
 
 配置域名访问：`待探索……`
 
