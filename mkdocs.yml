@@ -78,7 +78,7 @@ extra:
       link: https://github.com/linyuxuanlin
       name: squidfunk on a
 
-copyright: Copyright &copy; 2015 - 2023 by Power Lin | <a href="https://beian.miit.gov.cn"> 粤 ICP 备 20014898 号 </a> | Built with MkDocs & Material theme
+copyright: Copyright &copy; 2015 - 2023 by Power | <a href="https://beian.miit.gov.cn"> 粤 ICP 备 20014898 号 </a>
 
 markdown_extensions:
   - pymdownx.arithmatex:

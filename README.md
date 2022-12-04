@@ -10,7 +10,7 @@ Upgrade Material theme: `pip install --upgrade mkdocs-material`
 
 todo:
 
-- google analytics
+
 - footer
 - site description
 - home index button
@@ -18,3 +18,4 @@ todo:
 - rss at index
 - update post and sidebar and blog
 - post time
+- logo
