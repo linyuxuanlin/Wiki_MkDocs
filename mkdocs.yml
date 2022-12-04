@@ -66,8 +66,8 @@ plugins:
 extra:
   generator: false # 不显示 MkDocs 的版权
   analytics:
-    provider: google #todo
-    property: UA-152900803-1
+    provider: google
+    property: G-QBB3SQMGLN # Fork 我的网站，请把这串代码改成你自己的
   social:
     - icon: fontawesome/brands/twitter
       link: https://123.test
