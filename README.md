@@ -14,10 +14,8 @@ RSS of updated post: </feed_rss_updated.xml>
 
 todo:
 
-- home index button
-- rss at index
+- home index button rss
 - update post and sidebar and blog
 - post time
-- logo
 - post slug
 - index page of groups
