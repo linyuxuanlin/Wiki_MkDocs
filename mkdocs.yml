@@ -111,7 +111,7 @@ extra_css:
 nav:
   #- Home: index.md
   - 硬件 & 半导体:
-      - 硬件与半导体/index.md
+      - 硬件 & 半导体/index.md
       - 硬件设计:
           - 基础知识:
               - 基本元器件-电阻.md
