@@ -45,7 +45,7 @@ theme:
 plugins:
   - search
   #- git-revision-date-localized:
-  #    enable_creation_date: true 
+  #    enable_creation_date: true
   - rss:
       abstract_chars_count: -1 # -1 for full content
       #categories:
@@ -72,11 +72,15 @@ extra:
     provider: google
     property: G-QBB3SQMGLN # Fork 我的网站，请把这串代码改成你自己的
   social:
-    - icon: fontawesome/brands/twitter
-      link: https://123.test
-    - icon: fontawesome/brands/github
-      link: https://github.com/linyuxuanlin
-      name: squidfunk on a
+    - name: 友链 & 导航站
+      link: https://nav.wiki-power.com/
+      icon: fontawesome/brands/github
+    - name: 书摘
+      link: http://digest.wiki-power.com/
+      icon: fontawesome/brands/github
+    - name: 资源仓库
+      link: https://github.com/linyuxuanlin/File-host
+      icon: fontawesome/brands/github
 
 copyright: Copyright &copy; 2015 - 2023 by Power | <a href="https://beian.miit.gov.cn"> 粤 ICP 备 20014898 号 </a>
 
