@@ -77,7 +77,7 @@ extra:
       icon: fontawesome/regular/address-book
     - name: 书摘
       link: http://digest.wiki-power.com/
-      icon: fontawesome/regular/note-sticky
+      icon: fontawesome/regular/bookmark
     - name: 资源仓库
       link: https://github.com/linyuxuanlin/File-host
       icon: fontawesome/regular/file-lines
