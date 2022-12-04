@@ -42,3 +42,6 @@ Hi there~
 >在线预览项目</div>
 
 ```
+
+
+[Subscribe to our newsletter](#){ .md-button }
