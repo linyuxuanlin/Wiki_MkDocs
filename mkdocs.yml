@@ -77,7 +77,7 @@ extra:
       icon: fontawesome/regular/compass
     - name: 书摘
       link: http://digest.wiki-power.com/
-      icon: fontawesome/regular/book
+      icon: fontawesome/brands/github
     - name: 资源仓库
       link: https://github.com/linyuxuanlin/File-host
       icon: fontawesome/regular/treasure-chest
