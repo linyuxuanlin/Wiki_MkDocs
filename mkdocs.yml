@@ -74,13 +74,13 @@ extra:
   social:
     - name: 友链 & 导航站
       link: https://nav.wiki-power.com/
-      icon: fontawesome/brands/github
+      icon: fontawesome/regular/compass
     - name: 书摘
       link: http://digest.wiki-power.com/
-      icon: fontawesome/brands/github
+      icon: fontawesome/regular/book
     - name: 资源仓库
       link: https://github.com/linyuxuanlin/File-host
-      icon: fontawesome/brands/github
+      icon: fontawesome/regular/treasure-chest
 
 copyright: Copyright &copy; 2015 - 2023 by Power | <a href="https://beian.miit.gov.cn"> 粤 ICP 备 20014898 号 </a>
 
