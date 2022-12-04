@@ -244,8 +244,8 @@ nav:
               - VBT_Syntax-TheExec-Flow.md
               - Pattern_Syntax_Notes.md
               - DCVI_Alarms.md
-  - 嵌入式 & 软件:
-      - 嵌入式与软件/index.md
+  - 嵌入式 & 软件开发:
+      - 嵌入式与软件开发/index.md
       - 嵌入式开发:
           - 单片机:
               - HAL库开发笔记-环境配置.md
