@@ -1,7 +1,8 @@
 ---
 title: "Home"
 hide:
-    #- toc
+  - navigation
+  - toc
 ---
 
 # Power's Wiki
@@ -22,7 +23,6 @@ Hi there~
 [![badge](https://img.shields.io/github/deployments/linyuxuanlin/Wiki_Docusaurus/Production?label=Build&style=flat-square){loading=lazy}](https://vercel.com/linyuxuanlin/wiki-mkdocs/deployments)
 [![badge](https://img.shields.io/github/last-commit/linyuxuanlin/Wiki_Docusaurus?color=FCD734&label=Last%20commit&style=flat-square){loading=lazy}](https://github.com/linyuxuanlin/Wiki_mkdocs/commits/main)
 [![badge](https://img.shields.io/badge/Contact%20me-here-34ABE0?&style=flat-square){loading=lazy}](ContactMe)
-
 
 ```
 

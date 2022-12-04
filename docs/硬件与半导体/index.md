@@ -1,7 +1,7 @@
 ---
 title: "Home"
-hide:
-    - toc
+#hide:
+#    - toc
 ---
 
 # 硬件与半导体
