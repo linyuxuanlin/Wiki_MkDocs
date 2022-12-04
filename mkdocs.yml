@@ -5,6 +5,103 @@ repo_url: https://github.com/linyuxuanlin/Wiki_MkDocs
 remote_name: linyuxuanlin/Wiki_MkDocs
 edit_uri: edit/main/docs/
 
+
+theme:
+  name: material
+  font: false
+  palette:
+    - media: "(prefers-color-scheme: light)" # 检查用户系统配置是否为亮色
+      scheme: default # 亮色模式
+      primary: white # 基本颜色
+      accent: blue # 按钮等互动块的颜色
+      toggle:
+        icon: material/brightness-4
+        name: 切换暗色模式
+    - media: "(prefers-color-scheme: dark)" # 检查用户系统配置是否为暗色
+      scheme: slate # 暗色模式
+      primary: black # 基本颜色
+      accent: blue # 按钮等互动块的颜色
+      toggle:
+        icon: material/brightness-7
+        name: 切换亮色模式
+  language: zh
+  logo: https://cos.ap-guangzhou.myqcloud.com/wiki-media-1253965369/doc/logo-zip.png
+  favicon: https://cos.ap-guangzhou.myqcloud.com/wiki-media-1253965369/doc/logo-zip.png
+  features:
+    - navigation.instant # Instant loading，像个单页应用
+    - navigation.tracking # Anchor tracking
+    - navigation.tabs # 导航栏
+    #- navigation.expand # 导航栏自动展开
+    - toc.follow # 目录自动跟随
+    - navigation.top # 返回顶部按钮
+    - search.suggest # 搜索推荐
+    #- search.highlight
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search
+  - rss:
+      abstract_chars_count: -1 # -1 for full content
+      #categories:
+       # - tags
+      #comments_path: "#__comments"
+      date_from_meta:
+        as_creation: "date"
+        as_update: false
+        datetime_format: "%Y-%m-%d %H:%M"
+      enabled: true
+      feed_ttl: 1440
+      image: https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Feed-icon.svg/128px-Feed-icon.svg.png
+      length: 1000
+      pretty_print: true
+      match_path: ".*"
+      url_parameters:
+        utm_source: "documentation"
+        utm_medium: "RSS"
+        utm_campaign: "feed-syndication"
+
+extra:
+  generator: false # 不显示 MkDocs 的版权
+  analytics:
+    provider: google
+    property: UA-152900803-1
+  social:
+    - icon: fontawesome/brands/twitter
+      link: https://123.test
+    - icon: fontawesome/brands/github
+      link: https://github.com/linyuxuanlin
+      name: squidfunk on a
+
+copyright: Copyright &copy; 2015 - 2022 Power Lin
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - attr_list
+  - md_in_html
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - javascripts/tex-mml-chtml.js
+  - https://viewer.altium.com/client/static/js/embed.js
+
+extra_css:
+  - stylesheets/extra.css
+
+
+#############################################################
+#############################################################
+#############################################################
+
+
+
 nav:
   - 硬件设计:
       - Home: index.md
@@ -274,92 +371,3 @@ nav:
 # - 如何用Markdown写学术论文
 # - AD基本操作-PCB绘制
 # - AD基本操作-库文件绘制
-
-theme:
-  name: material
-  font: false
-  palette:
-    - media: "(prefers-color-scheme: light)" # 检查用户系统配置是否为亮色
-      scheme: default # 亮色模式
-      primary: white # 基本颜色
-      accent: blue # 按钮等互动块的颜色
-      toggle:
-        icon: material/brightness-4
-        name: 切换暗色模式
-    - media: "(prefers-color-scheme: dark)" # 检查用户系统配置是否为暗色
-      scheme: slate # 暗色模式
-      primary: black # 基本颜色
-      accent: blue # 按钮等互动块的颜色
-      toggle:
-        icon: material/brightness-7
-        name: 切换亮色模式
-  language: zh
-  logo: https://cos.ap-guangzhou.myqcloud.com/wiki-media-1253965369/doc/logo-zip.png
-  favicon: https://cos.ap-guangzhou.myqcloud.com/wiki-media-1253965369/doc/logo-zip.png
-  features:
-    - navigation.instant # Instant loading，像个单页应用
-    - navigation.tracking # Anchor tracking
-    - navigation.tabs # 导航栏
-    - navigation.expand # 导航栏自动展开
-    - toc.follow # 目录自动跟随
-    - navigation.top # 返回顶部按钮
-    - search.suggest # 搜索推荐
-    - search.highlight
-  icon:
-    repo: fontawesome/brands/github
-
-plugins:
-  - search
-  - rss:
-      abstract_chars_count: -1 # -1 for full content
-      #categories:
-       # - tags
-      #comments_path: "#__comments"
-      date_from_meta:
-        as_creation: "date"
-        as_update: false
-        datetime_format: "%Y-%m-%d %H:%M"
-      enabled: true
-      feed_ttl: 1440
-      image: https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Feed-icon.svg/128px-Feed-icon.svg.png
-      length: 1000
-      pretty_print: true
-      match_path: ".*"
-      url_parameters:
-        utm_source: "documentation"
-        utm_medium: "RSS"
-        utm_campaign: "feed-syndication"
-
-extra:
-  generator: false # 不显示 MkDocs 的版权
-  analytics:
-    provider: google
-    property: UA-152900803-1
-  social:
-    - icon: fontawesome/brands/twitter
-      link: https://123.test
-    - icon: fontawesome/brands/github
-      link: https://github.com/linyuxuanlin
-      name: squidfunk on a
-
-copyright: Copyright &copy; 2015 - 2022 Power Lin
-
-markdown_extensions:
-  - pymdownx.arithmatex:
-      generic: true
-  - pymdownx.highlight:
-      anchor_linenums: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.superfences
-  - attr_list
-  - md_in_html
-
-extra_javascript:
-  - javascripts/mathjax.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
-  - javascripts/tex-mml-chtml.js
-  - https://viewer.altium.com/client/static/js/embed.js
-
-extra_css:
-  - stylesheets/extra.css
