@@ -3,7 +3,7 @@ site_description: abc
 site_url: https://mkdocs.wiki-power.com/
 repo_url: https://github.com/linyuxuanlin/Wiki_MkDocs
 remote_name: linyuxuanlin/Wiki_MkDocs
-edit_uri: edit/main/docs/
+#edit_uri: edit/main/docs/
 
 theme:
   name: material
