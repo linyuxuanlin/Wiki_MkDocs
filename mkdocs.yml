@@ -111,7 +111,7 @@ extra_css:
 nav:
   #- Home: index.md
   - 硬件 & 半导体:
-      - 硬件 & 半导体/index.md
+      - 硬件与半导体/index.md
       - 硬件设计:
           - 基础知识:
               - 基本元器件-电阻.md
@@ -245,6 +245,7 @@ nav:
               - Pattern_Syntax_Notes.md
               - DCVI_Alarms.md
   - 嵌入式 & 软件:
+      - 嵌入式与软件/index.md
       - 嵌入式开发:
           - 单片机:
               - HAL库开发笔记-环境配置.md
@@ -304,6 +305,7 @@ nav:
                   - BeagleBone系列-BBAI入坑.md
                   - JetsonNano系列-入坑.md
   - 效率 & 生活:
+      - 效率与生活/index.md
       - 效率指南:
           - 机器人队行政:
               - 四校交流-策划案.md
