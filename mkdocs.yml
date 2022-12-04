@@ -25,8 +25,8 @@ theme:
         icon: material/eye-outline
         name: 切换亮色模式
   language: zh
-  logo: https://cos.ap-guangzhou.myqcloud.com/wiki-media-1253965369/doc/logo.svg
-  favicon: https://cos.ap-guangzhou.myqcloud.com/wiki-media-1253965369/doc/logo-zip.png
+  logo: https://cos.ap-guangzhou.myqcloud.com/wiki-media-1253965369/doc/logo-small-zip.png
+  favicon: https://cos.ap-guangzhou.myqcloud.com/wiki-media-1253965369/doc/logo-small-zip.png
   features:
     - navigation.instant # Instant loading，像个单页应用
     - navigation.tracking # Anchor tracking
