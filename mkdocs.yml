@@ -42,7 +42,6 @@ theme:
     repo: fontawesome/brands/github
 
 plugins:
-  - blog
   - search
   - rss:
       abstract_chars_count: -1 # -1 for full content
@@ -103,8 +102,6 @@ extra_css:
 #############################################################
 
 nav:
-  - Blog:
-      - blog/index.md
   #- Home: index.md
   - 硬件与半导体:
       - 硬件与半导体/index.md
