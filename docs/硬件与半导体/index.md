@@ -1,6 +1,7 @@
 ---
 title: "Home"
-#hide:
+hide:
+    - footer
 #    - toc
 ---
 
