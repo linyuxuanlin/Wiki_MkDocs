@@ -20,10 +20,10 @@ Hi there~
 为了避免遗忘、便于分享，我在这里收录知识。  
 请随意浏览～
 
+[硬件 & 半导体](/信号完整性-基础概念){ .md-button }
+[嵌入式 & 软件开发](/HAL 库开发笔记 - 串口通信){ .md-button }
+[效率 & 生活](/如何调制一杯鸡尾酒){ .md-button }
+
 [![badge](https://img.shields.io/github/deployments/linyuxuanlin/Wiki_Docusaurus/Production?label=Build&style=flat-square){loading=lazy}](https://vercel.com/linyuxuanlin/wiki-mkdocs/deployments)
 [![badge](https://img.shields.io/github/last-commit/linyuxuanlin/Wiki_Docusaurus?color=FCD734&label=Last%20commit&style=flat-square){loading=lazy}](https://github.com/linyuxuanlin/Wiki_mkdocs/commits/main)
 [![badge](https://img.shields.io/badge/Contact%20me-here-34ABE0?&style=flat-square){loading=lazy}](ContactMe)
-
-[硬件 & 半导体](/信号完整性-基础概念.md){ .md-button }
-[嵌入式 & 软件开发](/HAL 库开发笔记 - 串口通信.md){ .md-button }
-[效率 & 生活](/如何调制一杯鸡尾酒.md){ .md-button }
