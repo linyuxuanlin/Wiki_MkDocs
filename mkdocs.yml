@@ -247,7 +247,7 @@ nav:
   - 嵌入式 & 软件开发:
       - 嵌入式与软件开发/index.md
       - 嵌入式开发:
-          - 单片机:
+          - STM32:
               - HAL库开发笔记-环境配置.md
               - HAL库开发笔记-GPIO.md
               - HAL库开发笔记-外部中断.md
@@ -261,15 +261,16 @@ nav:
               - HAL库开发笔记-以太网通信（LwIP）.md
               - Lora通信-基于正点原子ATK-LORA-01模块.md
               - STM32CubeIDE串口重定向（printf）及输出浮点型.md
-              - 如何读写单个bit.md
-              - PlatformIO—一站式嵌入式开发工具.md
-              - PlatformIO搭配CubeMX食用.md
               - C与STM32常用宏定义.md
               - C与STM32代码规范.md
-              - SWD与JTAG的区别与联系.md
               - CubeMX与CubeIDE避坑.md
               - STM32的启动模式.md
               - KeilMDK配置指南.md
+          - OTHERS:
+              - 如何读写单个bit.md
+              - PlatformIO—一站式嵌入式开发工具.md
+              - PlatformIO搭配CubeMX食用.md
+              - SWD与JTAG的区别与联系.md
               - 大疆N3飞控-参考资料.md
               - ATTiny85调试记录.md
               - T-Clock桌上小钟.md
@@ -277,33 +278,33 @@ nav:
               - 转义字符.md
               - 一个舵机的自我修养.md
               - FreeRTOS开发笔记.md
-          - 软件开发:
-              - 软件开发:
-                  - 双系统极简安装指南.md
-                  - 网页版串口助手的开发.md
-                  - Ubuntu配置笔记.md
-                  - ROS入门笔记.md
-                  - 机器视觉入门.md
-                  - 使用R语言进行数据分析.md
-                  - CSS学习笔记.md
-                  - HTML学习笔记.md
-                  - JavaScript学习笔记.md
-                  - Docker简易指南.md
-                  - DockerCompose-更优雅的打开方式.md
-                  - 自适应网页设计.md
-                  - 前端开发-环境搭建.md
-                  - BookJourney-二手书商城小程序.md
-                  - Git学习笔记.md
-              - Linux:
-                  - Linux学习笔记-基础知识.md
-                  - Linux学习笔记-用户操作.md
-                  - 嵌入式Linux-基础知识.md
-                  - 嵌入式Linux-GPIO子系统.md
-                  - BeagleBone系列-基本参数与环境配置.md
-                  - BeagleBone系列-无线连接.md
-                  - BeagleBone系列-使用BBIO库开发.md
-                  - BeagleBone系列-BBAI入坑.md
-                  - JetsonNano系列-入坑.md
+      - 软件开发:
+          - LINUX:
+              - Linux学习笔记-基础知识.md
+              - Linux学习笔记-用户操作.md
+              - 嵌入式Linux-基础知识.md
+              - 嵌入式Linux-GPIO子系统.md
+              - BeagleBone系列-基本参数与环境配置.md
+              - BeagleBone系列-无线连接.md
+              - BeagleBone系列-使用BBIO库开发.md
+              - BeagleBone系列-BBAI入坑.md
+              - JetsonNano系列-入坑.md
+          - OTHERS:
+              - 双系统极简安装指南.md
+              - 网页版串口助手的开发.md
+              - Ubuntu配置笔记.md
+              - ROS入门笔记.md
+              - 机器视觉入门.md
+              - 使用R语言进行数据分析.md
+              - CSS学习笔记.md
+              - HTML学习笔记.md
+              - JavaScript学习笔记.md
+              - Docker简易指南.md
+              - DockerCompose-更优雅的打开方式.md
+              - 自适应网页设计.md
+              - 前端开发-环境搭建.md
+              - BookJourney-二手书商城小程序.md
+              - Git学习笔记.md
   - 效率 & 生活:
       - 效率与生活/index.md
       - 效率指南:
