@@ -12,16 +12,16 @@ theme:
     - media: "(prefers-color-scheme: light)" # 检查用户系统配置是否为亮色
       scheme: default # 亮色模式
       primary: white # 基本颜色
-      accent: cyan # 按钮等互动块的颜色
+      accent: blue # 按钮等互动块的颜色
       toggle:
-        icon: material/brightness-4
+        icon: material/toggle-switch
         name: 切换暗色模式
     - media: "(prefers-color-scheme: dark)" # 检查用户系统配置是否为暗色
       scheme: slate # 暗色模式
       primary: black # 基本颜色
-      accent: cyan # 按钮等互动块的颜色
+      accent: blue # 按钮等互动块的颜色
       toggle:
-        icon: material/brightness-7
+        icon: material/toggle-switch-off-outline
         name: 切换亮色模式
   language: zh
   logo: https://cos.ap-guangzhou.myqcloud.com/wiki-media-1253965369/doc/logo-zip.png
