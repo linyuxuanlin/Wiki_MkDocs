@@ -110,7 +110,7 @@ extra_css:
 
 nav:
   #- Home: index.md
-  - 硬件与半导体:
+  - 硬件 & 半导体:
       - 硬件与半导体/index.md
       - 硬件设计:
           - 基础知识:
@@ -244,7 +244,7 @@ nav:
               - VBT_Syntax-TheExec-Flow.md
               - Pattern_Syntax_Notes.md
               - DCVI_Alarms.md
-  - 嵌入式与软件:
+  - 嵌入式 & 软件:
       - 嵌入式开发:
           - 单片机:
               - HAL库开发笔记-环境配置.md
@@ -303,78 +303,64 @@ nav:
                   - BeagleBone系列-使用BBIO库开发.md
                   - BeagleBone系列-BBAI入坑.md
                   - JetsonNano系列-入坑.md
-  - 效率指南:
-      - 机器人队行政:
-          - 四校交流-策划案.md
-          - 四校交流-策划案-正式.md
-          - 团队知识库的搭建-理论.md
-          - 队内影像资源管理方法.md
-          - 大扫除-经验模板.md
-          - 校门口车辆放行-流程.md
-          - 参观实验室-经验模板.md
-          - 动员大会-经验总结.md
-          - 换届大会-经验总结.md
-          - 破冰活动-经验总结.md
-          - 出展活动-经验总结.md
-      - 产品相关:
-          - 产品经理的日常.md
-          - 中台的概念.md
-          - 画图基础.md
-          - 智能硬件产品经理的技术要求.md
-          - 如何撰写一份BRD.md
-          - 软件开发中的注意事项.md
-          - 专业与分工.md
-          - 关于复盘.md
-      - 小技巧:
-          - Windows常用命令.md
-          - Windows11个人初始化配置.md
-          - VSCode的便携模式.md
-          - 开启Chrome（Edge）多线程下载.md
-          - 移除Chrome（Edge）由组织管理.md
-          - 用群晖自带反向代理实现HTTPS访问.md
-          - 解决Google相册导出时间信息丢失问题.md
-          - 使用gitignore忽略特殊文件.md
-          - 3D打印：ABS与PLA的区别.md
-          - 如何批量拉取Git仓库更新.md
-          - 如何用Markdown写公众号文章.md
-          - 如何快速删除node_modules.md
-          - 如何为公众号文章增加特效.md
-          - 如何在Linux下使用微信.md
-          - 如何打印出手写效果的文字.md
-          - 如何从乐曲中分离音轨.md
-          - 如何高效制作幻灯片.md
-          - 卡片式写作.md
-          - 用reveal.js制作幻灯片.md
-          - npm和Yarn换源加速国内访问.md
-          - Vue.js小技巧.md
-          - 正则表达式实用语句.md
-          - GitHub改Host.md
-          - MSI主板开启虚拟化的方法.md
-          - Git配置代理.md
-          - 删除GitHub仓库中某个文件夹.md
-          - 定制SublimeText3.md
-          - 用Vercel加速Pages服务.md
-          - Doxygen注释规范.md
-          - AltiumDesigner安装库文件.md
-          - CentOS配置OhMyZsh.md
-          - 如何快速制作一个启动盘.md
-          - 使用VSCode进行远程开发.md
-          - Node.js和npm的安装与卸载（MacOS）.md
-      - 生活黑客:
-          - 如何调制一杯鸡尾酒.md
-          - 太阳高度角计算.md
-          - 如何准备一个逃生背包.md
-          - 谈谈未来的职业选择.md
-          # - 如何合理配置个人资产.md
-          - 读《黑客与画家》.md
-          # - 英语六级-备考.md
-          # - 音乐相关.md
-          - THEHack2019黑客马拉松.md
-          - Hack.init()黑客马拉松.md
-          - 焊接大赛培训及总结.md
-          # - 为什么要「站在巨人的肩膀上」.md
-          - 如何不被AI取代.md
-          # - 一些观点.md
+  - 效率 & 生活:
+      - 效率指南:
+          - 机器人队行政:
+              - 四校交流-策划案.md
+              - 四校交流-策划案-正式.md
+              - 团队知识库的搭建-理论.md
+              - 队内影像资源管理方法.md
+              - 大扫除-经验模板.md
+              - 校门口车辆放行-流程.md
+              - 参观实验室-经验模板.md
+              - 动员大会-经验总结.md
+              - 换届大会-经验总结.md
+              - 破冰活动-经验总结.md
+              - 出展活动-经验总结.md
+          - 产品相关:
+              - 产品经理的日常.md
+              - 中台的概念.md
+              - 画图基础.md
+              - 智能硬件产品经理的技术要求.md
+              - 如何撰写一份BRD.md
+              - 软件开发中的注意事项.md
+              - 专业与分工.md
+              - 关于复盘.md
+          - 小技巧:
+              - Windows常用命令.md
+              - Windows11个人初始化配置.md
+              - VSCode的便携模式.md
+              - 开启Chrome（Edge）多线程下载.md
+              - 移除Chrome（Edge）由组织管理.md
+              - 用群晖自带反向代理实现HTTPS访问.md
+              - 解决Google相册导出时间信息丢失问题.md
+              - 使用gitignore忽略特殊文件.md
+              - 3D打印：ABS与PLA的区别.md
+              - 如何批量拉取Git仓库更新.md
+              - 如何用Markdown写公众号文章.md
+              - 如何快速删除node_modules.md
+              - 如何为公众号文章增加特效.md
+              - 如何在Linux下使用微信.md
+              - 如何打印出手写效果的文字.md
+              - 如何从乐曲中分离音轨.md
+              - 如何高效制作幻灯片.md
+              - 卡片式写作.md
+              - 用reveal.js制作幻灯片.md
+              - npm和Yarn换源加速国内访问.md
+              - Vue.js小技巧.md
+              - 正则表达式实用语句.md
+              - GitHub改Host.md
+              - MSI主板开启虚拟化的方法.md
+              - Git配置代理.md
+              - 删除GitHub仓库中某个文件夹.md
+              - 定制SublimeText3.md
+              - 用Vercel加速Pages服务.md
+              - Doxygen注释规范.md
+              - AltiumDesigner安装库文件.md
+              - CentOS配置OhMyZsh.md
+              - 如何快速制作一个启动盘.md
+              - 使用VSCode进行远程开发.md
+              - Node.js和npm的安装与卸载（MacOS）.md
       - 高效工作:
           - 基于RSSHub搭建RSS生成器（群晖Docker）.md #  CSDN
           - 基于Bitwarden搭建密码管理器（群晖Docker）.md #  CSDN
@@ -403,6 +389,21 @@ nav:
           - VSCode生产力指南-JupyterNotebook.md #  CSDN todo
           - 在浏览器上运行VSCode（旧）.md
           - 如何配一台电脑.md
+      - 生活黑客:
+          - 如何调制一杯鸡尾酒.md
+          - 太阳高度角计算.md
+          - 如何准备一个逃生背包.md
+          - 谈谈未来的职业选择.md
+          # - 如何合理配置个人资产.md
+          - 读《黑客与画家》.md
+          # - 英语六级-备考.md
+          # - 音乐相关.md
+          - THEHack2019黑客马拉松.md
+          - Hack.init()黑客马拉松.md
+          - 焊接大赛培训及总结.md
+          # - 为什么要「站在巨人的肩膀上」.md
+          - 如何不被AI取代.md
+          # - 一些观点.md
 ###
 
 #  archive：
