@@ -11,7 +11,6 @@ Upgrade Material theme: `pip install --upgrade mkdocs-material`
 todo:
 
 
-- footer
 - site description
 - home index button
 - sitemap
