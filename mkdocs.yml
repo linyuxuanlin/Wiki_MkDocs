@@ -42,6 +42,7 @@ theme:
     repo: fontawesome/brands/git-alt
 
 plugins:
+  - blog
   - search
   - git-revision-date-localized:
       enable_creation_date: true 
@@ -104,6 +105,8 @@ extra_css:
 #############################################################
 
 nav:
+  - Blog:
+      - blog/index.md
   #- Home: index.md
   - 硬件与半导体:
       - 硬件与半导体/index.md
