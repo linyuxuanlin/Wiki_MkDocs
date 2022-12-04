@@ -308,6 +308,34 @@ nav:
   - 效率 & 生活:
       - 效率与生活/index.md
       - 效率指南:
+          - 高效工作:
+              - 基于RSSHub搭建RSS生成器（群晖Docker）.md #  CSDN
+              - 基于Bitwarden搭建密码管理器（群晖Docker）.md #  CSDN
+              - 基于acme.sh自动申请域名证书（群晖Docker）.md #  CSDN
+              - 基于Calibre搭建在线书库（群晖Docker）.md #  CSDN
+              - 如何实现外网RDP远控（frp）.md #  CSDN
+              - 使用rdp访问群晖NAS.md #  CSDN
+              - 如何用Markdown写一份简历.md #  CSDN
+              - 使用Rclone同步网盘数据.md
+              - 为什么你需要一个知识库.md #  CSDN
+              - 个人文案排版规范.md #  CSDN todo
+              - 技术文档写作规范.md #  CSDN todo
+              - 如何保存易逝的文字.md
+              - 个人知识库的搭建-基于Docusaurus.md #  CSDN
+              - Windows初始化与软件推荐.md #  CSDN todo
+              - Docusaurus极简部署指南.md #  CSDN todo
+              - Hugo极简搭建指南.md #  CSDN todo
+              - 如何在iPad上运行VSCode.md #  CSDN
+              - 使用Markdown高效写作.md #  CSDN
+              - 用树莓派架设云打印服务器.md #  CSDN todo
+              - 用Graphviz绘制关系图.md #  CSDN todo
+              - RSS-高效率的阅读方式.md
+              - 如何在Markdown中使用LaTeX.md
+              - 把回忆放心交给GooglePhotos.md
+              - VSCode生产力指南-环境配置.md #  CSDN todo
+              - VSCode生产力指南-JupyterNotebook.md #  CSDN todo
+              - 在浏览器上运行VSCode（旧）.md
+              - 如何配一台电脑.md
           - 小技巧:
               - Windows常用命令.md
               - Windows11个人初始化配置.md
@@ -343,49 +371,22 @@ nav:
               - 如何快速制作一个启动盘.md
               - 使用VSCode进行远程开发.md
               - Node.js和npm的安装与卸载（MacOS）.md
-      - 高效工作:
-          - 基于RSSHub搭建RSS生成器（群晖Docker）.md #  CSDN
-          - 基于Bitwarden搭建密码管理器（群晖Docker）.md #  CSDN
-          - 基于acme.sh自动申请域名证书（群晖Docker）.md #  CSDN
-          - 基于Calibre搭建在线书库（群晖Docker）.md #  CSDN
-          - 如何实现外网RDP远控（frp）.md #  CSDN
-          - 使用rdp访问群晖NAS.md #  CSDN
-          - 如何用Markdown写一份简历.md #  CSDN
-          - 使用Rclone同步网盘数据.md
-          - 为什么你需要一个知识库.md #  CSDN
-          - 个人文案排版规范.md #  CSDN todo
-          - 技术文档写作规范.md #  CSDN todo
-          - 如何保存易逝的文字.md
-          - 个人知识库的搭建-基于Docusaurus.md #  CSDN
-          - Windows初始化与软件推荐.md #  CSDN todo
-          - Docusaurus极简部署指南.md #  CSDN todo
-          - Hugo极简搭建指南.md #  CSDN todo
-          - 如何在iPad上运行VSCode.md #  CSDN
-          - 使用Markdown高效写作.md #  CSDN
-          - 用树莓派架设云打印服务器.md #  CSDN todo
-          - 用Graphviz绘制关系图.md #  CSDN todo
-          - RSS-高效率的阅读方式.md
-          - 如何在Markdown中使用LaTeX.md
-          - 把回忆放心交给GooglePhotos.md
-          - VSCode生产力指南-环境配置.md #  CSDN todo
-          - VSCode生产力指南-JupyterNotebook.md #  CSDN todo
-          - 在浏览器上运行VSCode（旧）.md
-          - 如何配一台电脑.md
-      - 生活黑客:
-          - 如何调制一杯鸡尾酒.md
-          - 太阳高度角计算.md
-          - 如何准备一个逃生背包.md
-          - 谈谈未来的职业选择.md
-          # - 如何合理配置个人资产.md
-          - 读《黑客与画家》.md
-          # - 英语六级-备考.md
-          # - 音乐相关.md
-          - THEHack2019黑客马拉松.md
-          - Hack.init()黑客马拉松.md
-          - 焊接大赛培训及总结.md
-          # - 为什么要「站在巨人的肩膀上」.md
-          - 如何不被AI取代.md
-          # - 一些观点.md
+      - 生活琐记:
+          - 生活黑客:
+              - 如何调制一杯鸡尾酒.md
+              - 太阳高度角计算.md
+              - 如何准备一个逃生背包.md
+              - 谈谈未来的职业选择.md
+              # - 如何合理配置个人资产.md
+              - 读《黑客与画家》.md
+              # - 英语六级-备考.md
+              # - 音乐相关.md
+              - THEHack2019黑客马拉松.md
+              - Hack.init()黑客马拉松.md
+              - 焊接大赛培训及总结.md
+              # - 为什么要「站在巨人的肩膀上」.md
+              - 如何不被AI取代.md
+            # - 一些观点.md
       - 其他收纳:
           - 机器人队行政:
               - 四校交流-策划案.md
