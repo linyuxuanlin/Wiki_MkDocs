@@ -45,3 +45,10 @@ Hi there~
 
 
 [Subscribe to our newsletter](#){ .md-button }
+
+[Subscribe to our newsletter](https://mkdocs.wiki-power.com/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E5%8D%8A%E5%AF%BC%E4%BD%93/){ .md-button }
+
+
+[Subscribe to our newsletter](/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E5%8D%8A%E5%AF%BC%E4%BD%93){ .md-button }
+
+[硬件与半导体](/硬件与半导体){ .md-button }
