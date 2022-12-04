@@ -104,10 +104,9 @@ extra_css:
 nav:
   #- Home: index.md
   - 硬件与半导体:
-      #- Home: index.md
+      - 硬件与半导体/index.md
       - 硬件设计:
           - 基础知识:
-              - 基础知识/index.md
               - 基本元器件-电阻.md
               - 基本元器件-电容.md
               - 基本元器件-电感与磁珠.md
