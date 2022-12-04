@@ -13,7 +13,7 @@ theme:
     - media: "(prefers-color-scheme: light)" # 检查用户系统配置是否为亮色
       scheme: default # 亮色模式
       primary: white # 基本颜色
-      accent: blue # 按钮等互动块的颜色
+      accent: cyan # 按钮等互动块的颜色
       toggle:
         icon: material/brightness-4
         name: 切换暗色模式
