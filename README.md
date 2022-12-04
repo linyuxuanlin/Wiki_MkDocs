@@ -1,5 +1,8 @@
 # Wiki_MkDocs
 
+![GitHub last commit](https://img.shields.io/github/last-commit/linyuxuanlin/Wiki_MkDocs)
+![GitHub repo size](https://img.shields.io/github/repo-size/linyuxuanlin/Wiki_MkDocs)
+
 个人 Wiki（基于 MkDocs）
 
 Check the version of MkDocs: `mkdocs --version`  
@@ -20,8 +23,6 @@ todo:
 - post slug
 - index page of groups
 
-
-
 ```
 
 <div
@@ -40,3 +41,5 @@ todo:
 >在线预览项目</div>
 
 ```
+
+[![Star History Chart](https://api.star-history.com/svg?repos=linyuxuanlin/wiki_docusaurus&type=Timeline)](https://star-history.com/#linyuxuanlin/wiki_docusaurus&Timeline)
