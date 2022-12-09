@@ -16,7 +16,7 @@
   
   img {
     border: 3px solid black;
-    background: white;
+    /*background: white;*/
   }
   
   img[alt=badge] {
@@ -24,7 +24,7 @@
   }
   
   img[alt=logo] {
-    border: 0px solid black;
+    border: none;
   }
 
     /*
