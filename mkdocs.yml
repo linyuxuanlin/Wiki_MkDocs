@@ -188,7 +188,7 @@ nav:
               - EMC设计指南.md
               - 信号地与机壳地间的EMC设计.md
           - Signal and Power Integrity:
-              - Basis_of_Signal_and_Power_Integrity.md
+              - Basics_of_Signal_and_Power_Integrity.md
           - 射频设计:
               # - 射频-基础知识.md
               - 射频-组件与系统-导线.md
@@ -232,7 +232,7 @@ nav:
               - Level_Threshold_Test.md
               - Digital_Functional_Test.md
           - ATE Mixed Signal Test:
-              - Basis_of_Mixed_Signal_Test.md
+              - Basics_of_Mixed_Signal_Test.md
               - Basics_of_Fourier_Transform.md
               - ADC-Static_Parameters.md
               - ADC-Dynamic_Parameters.md

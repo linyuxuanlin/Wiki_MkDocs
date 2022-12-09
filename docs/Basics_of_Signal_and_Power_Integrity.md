@@ -1,6 +1,6 @@
 ---
-id: Basis_of_Signal_and_Power_Integrity
-title: Basis of Signal and Power Integrity 🚧
+id: Basics_of_Signal_and_Power_Integrity
+title: Basics of Signal and Power Integrity 🚧
 ---
 
 ## References & Acknowledgements
