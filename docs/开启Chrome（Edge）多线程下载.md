@@ -7,8 +7,8 @@ title: 开启 Chrome（Edge）多线程下载
 
 在地址栏输入链接并回车：
 
-- Chrome：**<chrome://flags/#enable-parallel-downloading>**
-- Edge：**<edge://flags/#enable-parallel-downloading>**
+- Chrome：`chrome://flags/#enable-parallel-downloading`
+- Edge：`edge://flags/#enable-parallel-downloading`
 
 将 `Parallel downloading` 选项的 `Default` 改为 `Enabled` 即可。
 
