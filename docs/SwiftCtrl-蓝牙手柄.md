@@ -11,11 +11,11 @@ SwiftCtrl 是一款基于 Arduino 的蓝牙（HC-06）遥控手柄，提供双�
 
 项目在线预览：
 
-<div class="iframe_viewer">
-    <iframe 
-    scrolling="no"
-  src="https://viewer.wiki-power.com/SwiftCtrl.html"
-></iframe>
+<div class="altium-iframe-viewer">
+  <div
+    class="altium-ecad-viewer"
+    data-project-src="https://github.com/linyuxuanlin/SwiftCtrl/raw/master/Hardware/SwiftCtrl.zip"
+  ></div>
 </div>
 
 ## 基本参数
@@ -26,4 +26,3 @@ SwiftCtrl 是一款基于 Arduino 的蓝牙（HC-06）遥控手柄，提供双�
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200311182440.png)
 
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-

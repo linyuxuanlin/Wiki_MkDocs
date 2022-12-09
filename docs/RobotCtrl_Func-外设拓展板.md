@@ -9,11 +9,11 @@ title: RobotCtrl_Func - 外设拓展板
 
 项目在线预览：
 
-<div class="iframe_viewer">
-    <iframe 
-    scrolling="no"
-  src="https://viewer.wiki-power.com/RobotCtrl_Func.html"
-></iframe>
+<div class="altium-iframe-viewer">
+  <div
+    class="altium-ecad-viewer"
+    data-project-src="https://github.com/linyuxuanlin/RobotCtrl/raw/main/RobotCtrl_MultiBoard_Project/RobotCtrl_Func_V0.8B.zip"
+  ></div>
 </div>
 
 注：项目包含于 [**RobotCtrl - STM32 通用开发套件**](https://wiki-power.com/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6)。
@@ -147,4 +147,3 @@ CAN 总线通信：
 - 测试 IO 引脚连通性。
 
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-

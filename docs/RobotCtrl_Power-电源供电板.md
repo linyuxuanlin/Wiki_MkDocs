@@ -9,11 +9,11 @@ title: RobotCtrl_Power - 电源供电板
 
 项目在线预览：
 
-<div class="iframe_viewer">
-    <iframe 
-    scrolling="no"
-  src="https://viewer.wiki-power.com/RobotCtrl_Power.html"
-></iframe>
+<div class="altium-iframe-viewer">
+  <div
+    class="altium-ecad-viewer"
+    data-project-src="https://github.com/linyuxuanlin/RobotCtrl/raw/main/RobotCtrl_MultiBoard_Project/RobotCtrl_Power_V0.3B.zip"
+  ></div>
 </div>
 
 注：项目包含于 [**RobotCtrl - STM32 通用开发套件**](https://wiki-power.com/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6)。
@@ -60,4 +60,3 @@ RobotCtrl_Power 的 PCB 顶层和底层走信号和电源，中间插入两层�
 - 输出：测试 12V/5V 输出是否达标，以及纹波大小。
 
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-

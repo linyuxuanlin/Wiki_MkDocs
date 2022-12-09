@@ -12,7 +12,7 @@ title: 开启 Chrome（Edge）多线程下载
 
 将 `Parallel downloading` 选项的 `Default` 改为 `Enabled` 即可。
 
-## 参考与致谢 
+## 参考与致谢
 
 - [一招加速浏览器下载 20 倍！免费开启 Chrome / Edge “隐藏” 自带的多线程下载功能](https://www.iplaysoft.com/chrome-parallel-download.html)
 

@@ -9,11 +9,11 @@ TPS54531 是 TI 的一款具有 Eco-mode 的 3.5V 至 28V 输入、5A、570kHz B
 
 项目在线预览：
 
-<div class="iframe_viewer">
-    <iframe 
-    scrolling="no"
-  src="https://viewer.wiki-power.com/TPS54531.html"
-></iframe>
+<div class="altium-iframe-viewer">
+  <div
+    class="altium-ecad-viewer"
+    data-project-src="https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/raw/main/DC-DC(Buck)/TPS54531/TPS54531.zip"
+  ></div>
 </div>
 
 ## 主要特性

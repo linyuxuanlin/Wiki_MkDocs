@@ -27,40 +27,8 @@
     border: none;
   }
 
-    /*
-  img[alt=logo] {
-    border: 1px solid black;
-  }
-  
-
-  div[alt=iframe_viewer] {
-    border-radius: 0px 0px 4px 4px;
-    height: 500px;
-    border-style: solid;
-    border-width: 1px;
-    overflow: hidden;
-    max-width: 1280px;
-    max-height: 700px;
-    box-sizing: border-box;
-  }
-*/
-
-
-
-  .altium-ecad-viewer{
-    border-radius: 0px 0px 4px 4px;
-    height: 1500px;
-    border-style: solid;
-    border-width: 1px;
-    overflow: hidden;
-    max-width: 1280px;
-    max-height: 1700px;
-    box-sizing: border-box;
-  }
-
-  .aaa{
-    
-    height: 500px;
+  .altium-iframe-viewer{
+    height: 400px;
     max-width: 1280px;
     max-height: 700px;
     /*

@@ -9,11 +9,12 @@ LMR14050 是 TI 的一款 Buck 转换器芯片，输入电压范围很宽（4-40
 
 项目在线预览：
 
-<div class="iframe_viewer">
-    <iframe 
-    scrolling="no"
-  src="https://viewer.wiki-power.com/LMR14050.html"
-></iframe>
+
+<div class="altium-iframe-viewer">
+  <div
+    class="altium-ecad-viewer"
+    data-project-src="https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/raw/main/DC-DC(Buck)/LMR14050/LMR14050.zip"
+  ></div>
 </div>
 
 ## 主要特性

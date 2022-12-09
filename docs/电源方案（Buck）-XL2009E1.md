@@ -7,15 +7,6 @@ XL2009E1 是芯龙的一款最高 36V 输入、3A 输出、固定 180kHz 的 Buc
 
 项目仓库：[**Collection_of_Power_Module_Design/DC-DC(Buck)/XL2009E1**](https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/DC-DC(Buck)/XL2009E1)
 
-项目在线预览：
-
-<div class="iframe_viewer">
-    <iframe 
-    scrolling="no"
-  src="https://viewer.wiki-power.com/XL2009E1.html"
-></iframe>
-</div>
-
 ## 主要特性
 
 - 拓扑：DC/DC（Buck）
@@ -97,4 +88,3 @@ XL2009E1 的数据手册提供了直接选型表（3A）：
 - [XL2009_Datasheet](https://datasheet.lcsc.com/lcsc/1806111754_XLSEMI-XL2009E1_C73335.pdf)
 
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-

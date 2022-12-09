@@ -15,20 +15,20 @@ TinyDVR 是一款电机驱动套件，包含母板（Master）与子板（Slave�
 
 **TinyDVR_Master**：
 
-<div class="iframe_viewer">
-    <iframe 
-    scrolling="no"
-  src="https://viewer.wiki-power.com/TinyDVR_Master.html"
-></iframe>
+<div class="altium-iframe-viewer">
+  <div
+    class="altium-ecad-viewer"
+    data-project-src="https://github.com/linyuxuanlin/TinyDVR/raw/master/TinyDVR_Master.zip"
+  ></div>
 </div>
 
 **TinyDVR_Slave**：
 
-<div class="iframe_viewer">
-    <iframe 
-    scrolling="no"
-  src="https://viewer.wiki-power.com/TinyDVR_Slave.html"
-></iframe>
+<div class="altium-iframe-viewer">
+  <div
+    class="altium-ecad-viewer"
+    data-project-src="https://github.com/linyuxuanlin/TinyDVR/raw/master/TinyDVR_Slave.zip"
+  ></div>
 </div>
 
 ## 基本参数
@@ -85,4 +85,3 @@ TinyDVR 是一款电机驱动套件，包含母板（Master）与子板（Slave�
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200311182441.jpg)
 
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-

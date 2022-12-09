@@ -30,13 +30,12 @@ GitHub 仓库：[**linyuxuanlin/DashDAP**](https://github.com/linyuxuanlin/DashD
 
 项目在线预览：
 
-<div class="iframe_viewer">
-    <iframe 
-    scrolling="no"
-  src="https://viewer.wiki-power.com/DashDAP.html"
-></iframe>
+<div class="altium-iframe-viewer">
+  <div
+    class="altium-ecad-viewer"
+    data-project-src="https://github.com/linyuxuanlin/DashDAP/raw/master/Hardware/DashDAP.zip"
+  ></div>
 </div>
-
 
 ## 背景
 
@@ -83,4 +82,3 @@ CDC 虚拟串口功能具备一般的串口功能，允许双向通信，允许�
 - [LGG001 / DAPLink-Brochure](https://github.com/LGG001/DAPLink-Brochure)
 
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-

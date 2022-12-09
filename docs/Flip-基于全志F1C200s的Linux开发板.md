@@ -11,11 +11,11 @@ title: Flip - 基于全志 F1C200s 的 Linux 开发板
 
 项目在线预览 ：
 
-<div class="iframe_viewer">
-    <iframe 
-    scrolling="no"
-  src="https://viewer.wiki-power.com/Flip.html"
-></iframe>
+<div class="altium-iframe-viewer">
+  <div
+    class="altium-ecad-viewer"
+    data-project-src="https://github.com/linyuxuanlin/Flip/raw/main/Hardware/Flip_V0.1.zip"
+  ></div>
 </div>
 
 F1C100s/F1C200s 基于 ARM9 CPU 架构，封装相同，区别仅仅是 F1C100S 内置 32MB DDR1 内存，而 F1C200S 为 64MB。
@@ -63,6 +63,5 @@ Pin 定义：
 - [MangoPi](https://mangopi.cc/f1c200s)
 
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-
 
 ## 各模块的设计
