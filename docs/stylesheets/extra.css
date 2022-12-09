@@ -23,12 +23,16 @@
     border: none;
   }
   
+  img[alt=logo] {
+    border: 0px solid black;
+  }
 
+    /*
   img[alt=logo] {
     border: 1px solid black;
   }
   
-  /*
+
   div[alt=iframe_viewer] {
     border-radius: 0px 0px 4px 4px;
     height: 500px;
