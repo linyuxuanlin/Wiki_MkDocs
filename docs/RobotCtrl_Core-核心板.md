@@ -16,6 +16,22 @@ title: RobotCtrl_Core - 核心板
 ></iframe>
 </div>
 
+<div
+  class="altium-ecad-viewer"
+  data-project-src="https://github.com/linyuxuanlin/Collection_of_Motor_Driver_Design/raw/main/DC_Motor/IR2104S/IR2104S.SchDoc"
+  style="
+    border-radius: 0px 0px 4px 4px;
+    height: 500px;
+    border-style: solid;
+    border-width: 1px;
+    overflow: hidden;
+    max-width: 1280px;
+    max-height: 700px;
+    box-sizing: border-box;
+  "
+>在线预览项目</div>
+
+
 注：项目包含于 [**RobotCtrl - STM32 通用开发套件**](https://wiki-power.com/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6)。
 
 ## 原理图设计
