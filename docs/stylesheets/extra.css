@@ -44,7 +44,7 @@
     box-sizing: border-box;
   }
 */
-  div[alt=altium-ecad-viewer] {
+  div[class=altium-ecad-viewer] {
     border-radius: 0px 0px 4px 4px;
     height: 500px;
     border-style: solid;
