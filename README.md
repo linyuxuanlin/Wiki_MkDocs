@@ -14,7 +14,6 @@ Upgrade Material theme: `pip install --upgrade mkdocs-material`
 Sitemap: </sitemap.xml>  
 RSS of created post: </feed_rss_created.xml>  
 RSS of updated post: </feed_rss_updated.xml>
-
 ```
 
 
