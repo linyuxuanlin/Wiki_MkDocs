@@ -14,10 +14,12 @@
     scroll-behavior: smooth;
   }
   
+  /*
   img {
     border: 3px solid black;
-    /*background: white;*/
+    background: white;
   }
+  
   
   img[alt=badge] {
     border: none;
@@ -26,6 +28,7 @@
   img[alt=logo] {
     border: none;
   }
+  */
 
   .altium-iframe-viewer{
     height: 400px;
