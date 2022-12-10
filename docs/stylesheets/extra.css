@@ -41,11 +41,10 @@
   }
 
   iframe{
-    height: 500px;
+    height: 450px;
     width: 1280px;
     max-width: 1280px;
     max-height: 700px;
-    transform: scale(1, 0.525);
     border-width: 1px;
     border-style: solid;
     border-radius: 0px 0px 4px 4px;
