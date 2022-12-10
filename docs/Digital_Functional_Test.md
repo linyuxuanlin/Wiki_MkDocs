@@ -28,7 +28,7 @@ title: Digital Functional Test 🚧
 5. Switching the order of test execution, in prevent of the interaction between tests.
 6. Pay attention to the Pin Electronic Driver Mode
 . Vt, Hi-Z, Largeswing-VT1K or Smallswing-VT?
-    - Hi-Z: the balance bridge will be used for driving, and VCOM will be used for current loads.
-    - Vt: directly connect to Vt level through a 50Ω resistance. If the DUT output is running at a high speed, using the VT results in fewer reflections seen by the comparator.
+      - Hi-Z: the balance bridge will be used for driving, and VCOM will be used for current loads.
+      - Vt: directly connect to Vt level through a 50Ω resistance. If the DUT output is running at a high speed, using the VT results in fewer reflections seen by the comparator.
 7. Check if TDR is calibrated.
 8. Defects with pattern itself.

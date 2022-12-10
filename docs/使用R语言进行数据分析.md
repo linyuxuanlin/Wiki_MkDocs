@@ -6,10 +6,10 @@ title: 使用 R 语言进行数据分析
 ## 软件安装
 
 - [**R-software**](https://cran.r-project.org/)
-  - 如果是在 Windows 上使用，请在网站主页点击 `Download R for Windows`，然后点击 `install R for the first time`，最后点击 `Download R 4.0.4 for Windows`，下载软件后请自行完成安装。
-  - R 语言支持软件仅在后台运行，没有图形化界面。
+    - 如果是在 Windows 上使用，请在网站主页点击 `Download R for Windows`，然后点击 `install R for the first time`，最后点击 `Download R 4.0.4 for Windows`，下载软件后请自行完成安装。
+    - R 语言支持软件仅在后台运行，没有图形化界面。
 - [**RStudio**](https://rstudio.com/products/rstudio/download/#download)
-  - 直接点击蓝色的 `Download` 按钮，或者在页面下方选择其他系统版本下载。下载软件后请自行完成安装。
+    - 直接点击蓝色的 `Download` 按钮，或者在页面下方选择其他系统版本下载。下载软件后请自行完成安装。
 
 ## 教学资源
 

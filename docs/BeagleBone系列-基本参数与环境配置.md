@@ -10,10 +10,10 @@ title: BeagleBone 系列 - 基本参数与环境配置
 - USB Type-A：作为 USB 从机（Host）模式使用
 - USB Micro：为板子供电并且作为从机
 - LEDs
-  - D2：在启动时以心跳灯闪烁
-  - D3：读写 SD 卡数据时亮起
-  - D4：当 CPU 活动时亮起
-  - D5：当 eMMC 读写时亮起
+    - D2：在启动时以心跳灯闪烁
+    - D3：读写 SD 卡数据时亮起
+    - D4：当 CPU 活动时亮起
+    - D5：当 eMMC 读写时亮起
 - Boot/User 按钮：不管按不按，如果有 SD 卡都会默认从 SD 卡启动（殊途同归），当启动后就作为一个普通按钮，连接到 GPIO_72
 - I2C Grove 接口：连接到 I2C2
 - Uart Grove 接口：连接到 UART2

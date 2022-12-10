@@ -20,9 +20,9 @@ Open/short continuity test is performed with testing the protection diodes (diod
 1. Force 0V to all other pins that are not tested (include power pin).
 2. Force a small negative current (-100uA) on the Pin Under Test (with voltage clamp).
 3. Meaure voltage on the Pin Under Test：
-   - **Higher than max spec(>-0.2V)**: FAIL (Short)
-   - **Midband(-1.5V~-0.2V**): PASS
-   - **Lower than min spec(<-1.5V)**: FAIL (Open)
+     - **Higher than max spec(>-0.2V)**: FAIL (Short)
+     - **Midband(-1.5V~-0.2V**): PASS
+     - **Lower than min spec(<-1.5V)**: FAIL (Open)
 
 #### Test through VDD protection diode
 
@@ -31,9 +31,9 @@ Open/short continuity test is performed with testing the protection diodes (diod
 1. Force 0V to all other pins that are not tested (include power pin).
 2. Force a small positive current (+100uA) on the Pin Under Test (with voltage clamp).
 3. Meaure voltage on the Pin Under Test：
-   - **Higher than max spec(>1.5V)**: FAIL (Short)
-   - **Midband(0.2V~1.5V)**: PASS
-   - **Lower than min spec(<0.2V)**: FAIL (Open)
+     - **Higher than max spec(>1.5V)**: FAIL (Short)
+     - **Midband(0.2V~1.5V)**: PASS
+     - **Lower than min spec(<0.2V)**: FAIL (Open)
 
 ## Power Pin Short Test
 
@@ -48,9 +48,9 @@ Power Pin Short Test is performed by applying a small voltage to VDD, and measur
 1. Apply a small voltage to VDD (100mV) (with current clamp).
 2. Force all other pins to 0V with PPMU.
 3. Measure current flowing into VDD pin:
-   - **Higher than max spec(>20uA)**: FAIL (Short)
-   - **Midband(-1uA~20uA)**: PASS
-   - **Lower than min spec(<-1uA)**: FAIL
+     - **Higher than max spec(>20uA)**: FAIL (Short)
+     - **Midband(-1uA~20uA)**: PASS
+     - **Lower than min spec(<-1uA)**: FAIL
 
 ## References & Acknowledgements
 

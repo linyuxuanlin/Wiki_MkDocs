@@ -34,17 +34,17 @@ TheHdw.Digital.ApplyLevelsTiming(ConnectAllPins, LoadLevels, LoadTiming, RelayMo
 #### Parameters
 
 - **ConnectAllPins**: Optional Boolean, default as `False`.
-  - `True`: Connect all device pins.
-  - `False`: Do not connect.
+    - `True`: Connect all device pins.
+    - `False`: Do not connect.
 - **LoadLevels**: Optional Boolean, default as `False`.
-  - `True`: Load level values.
-  - `False`: Do not Load.
+    - `True`: Load level values.
+    - `False`: Do not Load.
 - **LoadTiming**: Optional Boolean, default as `False`.
-  - `True`: Load timing values.
-  - `False`: Do not Load.
+    - `True`: Load timing values.
+    - `False`: Do not Load.
 - **RelayMode**: Optional `tlRelayMode`, default as `tlUnpowered`. Controls the relays' hot switching.
-  - `tlPowered`: Hot switching. Not power down the DUT before setting levels and connecting.
-  - `tlUnpowered`: Avoid hot switching. Power down the DUT before setting levels and connecting.
+    - `tlPowered`: Hot switching. Not power down the DUT before setting levels and connecting.
+    - `tlUnpowered`: Avoid hot switching. Power down the DUT before setting levels and connecting.
 - **InitPinsHi**: Optional String. Set the pins start with high driver state.
 - **InitPinsLo**: Optional String. Set the pins start with low driver state.
 - **InitPinsHiZ**: Optional String. Set the pins start with impedance driver state.
