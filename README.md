@@ -11,18 +11,15 @@ Upgrade MkDocs: `pip install -U mkdocs`
 Check the version of Material theme: `pip show mkdocs-material`  
 Upgrade Material theme: `pip install --upgrade mkdocs-material`
 
-Sitemap: </sitemap.xml>  
-RSS of created post: </feed_rss_created.xml>  
-RSS of updated post: </feed_rss_updated.xml>
-```
-
-
-
+Sitemap: <https://wiki-power.com/sitemap.xml>  
+RSS of created post: <https://wiki-power.com/feed_rss_created.xml>  
+RSS of updated post: <https://wiki-power.com/feed_rss_updated.xml>
 
 [![Star History Chart](https://api.star-history.com/svg?repos=linyuxuanlin/Wiki_MkDocs&type=Timeline)](https://star-history.com/#linyuxuanlin/Wiki_MkDocs&Timeline)
 
 ## draft
 
+```
 <div
   class="altium-ecad-viewer"
   data-project-src="https://github.com/linyuxuanlin/Collection_of_Motor_Driver_Design/raw/main/DC_Motor/IR2104S/IR2104S.SchDoc"
@@ -37,12 +34,10 @@ RSS of updated post: </feed_rss_updated.xml>
     box-sizing: border-box;
   "
 >在线预览项目</div>
-
 ```
 
 todo:
 
-- altium preview
-- home  button rss
+- home  rss button
 - post time
 - index page of groups
