@@ -1,6 +1,6 @@
 ---
-id: ContactMe
-title: Contact Me
+id: Contact-and-Subscribe
+title: Contact and Subscribe
 ---
 
 [![badge](https://img.shields.io/badge/GitHub-282c34?&style=for-the-badge)](https://github.com/linyuxuanlin)
