@@ -21,14 +21,13 @@ Hi there~
 [![badge](https://img.shields.io/github/last-commit/linyuxuanlin/Wiki_Docusaurus?color=FCD734&label=Last%20commit&style=flat-square){loading=lazy}](https://github.com/linyuxuanlin/Wiki_mkdocs/commits/main)
 [![badge](https://img.shields.io/badge/Contact%20me-here-34ABE0?&style=flat-square){loading=lazy}](ContactMe)
 
-Sitemap: <https://wiki-power.com/sitemap.xml>  
-
-[![badge](https://img.shields.io/badge/RSS-post\-created-34ABE0?&style=flat-square){loading=lazy}](https://wiki-power.com/feed_rss_created.xml)
-[![badge](https://img.shields.io/badge/RSS-post\-updated-34ABE0?&style=flat-square){loading=lazy}](https://wiki-power.com/feed_rss_updated.xml)
+[![badge](https://img.shields.io/badge/RSS-post\-created-34ABE0?&style=flat-square){loading=lazy}](/sitemap.xml)
+[![badge](https://img.shields.io/badge/RSS-post\-created-34ABE0?&style=flat-square){loading=lazy}](/feed_rss_created.xml)
+[![badge](https://img.shields.io/badge/RSS-post\-updated-34ABE0?&style=flat-square){loading=lazy}](/feed_rss_updated.xml)
 
 为了避免遗忘、便于分享，我在这里收录知识。  
 请随意浏览～
 
-[硬件 & 半导体 :fontawesome-solid-microchip:](/信号完整性-基础概念){ .md-button }
+[硬件 & 半导体](/信号完整性-基础概念){ .md-button }
 [嵌入式 & 软件开发](/HAL 库开发笔记 - 串口通信){ .md-button }
 [效率 & 生活](/如何调制一杯鸡尾酒){ .md-button }
