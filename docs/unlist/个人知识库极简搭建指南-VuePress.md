@@ -36,7 +36,7 @@ title: 个人知识库极简搭建指南 - VuePress
 
 - `wiki-power.com`：替换为你的自定义域名 `xx.com`
 - `linyuxuanlin/Wiki-book`：替换为你的 GitHub 用户名和仓库名 `xxx/Wiki-book`
-    - （如果仓库名称不为 `Wiki-book`，则需全局搜索并修改对应的仓库名）
+  - （如果仓库名称不为 `Wiki-book`，则需全局搜索并修改对应的仓库名）
 - `master`：替换为 `main`.
 
 ## 第四步：配置部署

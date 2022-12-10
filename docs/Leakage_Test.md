@@ -24,8 +24,8 @@ Serial input leakage test (IIL & IIH) is performed with applying a voltage of VD
 1. Apply VDDmax to VDD pin (with current clamp).
 2. Force VDDmax to all input pins except for the Pin under Test.
 3. Force 0V to the Pin under Test, and measure the current flow out:
-     - **Higher than spec value(>-10uA)**: PASS
-     - **Lower than spec value(<-10uA)**: FAIL
+   - **Higher than spec value(>-10uA)**: PASS
+   - **Lower than spec value(<-10uA)**: FAIL
 4. Repeat to test next pin.
 
 #### IIH Test (Serial)
@@ -35,8 +35,8 @@ Serial input leakage test (IIL & IIH) is performed with applying a voltage of VD
 1. Apply VDDmax to VDD pin (with current clamp).
 2. Force 0V to all input pins except for the Pin under Test.
 3. Force VDDmax to the Pin under Test, and measure the current flow into:
-     - **Higher than spec value(>10uA)**: FAIL
-     - **Lower than spec value(<10uA)**: PASS
+   - **Higher than spec value(>10uA)**: FAIL
+   - **Lower than spec value(<10uA)**: PASS
 4. Repeat to test next pin.
 
 ### Test Method (Parallel)
@@ -66,8 +66,8 @@ Additionally, a control input (enable signal) is required in this test , to cont
 1. Apply VDDmax to VDD pin (with current clamp).
 2. Precondition the specific out pin to Hi-Z (disable) state.
 3. Force 0V to the Pin under Test, and measure the current flow out:
-     - **Higher than spec value(>-10uA)**: PASS
-     - **Lower than spec value(<-10uA)**: FAIL
+   - **Higher than spec value(>-10uA)**: PASS
+   - **Lower than spec value(<-10uA)**: FAIL
 4. Repeat to test next pin.
 
 #### IOZH Test (Serial)
@@ -77,8 +77,8 @@ Additionally, a control input (enable signal) is required in this test , to cont
 1. Apply VDDmax to VDD pin (with current clamp).
 2. Precondition the specific out pin to Hi-Z (disable) state.
 3. Force VDDmax to the Pin under Test, and measure the current flow into:
-     - **Higher than spec value(>10uA)**: FAIL
-     - **Lower than spec value(<10uA)**: PASS
+   - **Higher than spec value(>10uA)**: FAIL
+   - **Lower than spec value(<10uA)**: PASS
 4. Repeat to test next pin.
 
 ### Test Method (Parallel)

@@ -27,27 +27,27 @@ DP83848 接口为 RMII，DP83848 可支持 10M/100M 的线速，板载 50MHz 无
 
 - RCC：HSE 选择外部晶振
 - SYS
-    - DEBUG：SW
+  - DEBUG：SW
 - GPIO
-    - PA15：`USER_BTN`, Input, Pull-up
-    - PC13：`LED_GREEN`, Output Push Pull, level High
-    - PC14：`LED_BLUE`, Output Push Pull, level High
-    - PC15：`LED_RED`, Output Push Pull, level High
+  - PA15：`USER_BTN`, Input, Pull-up
+  - PC13：`LED_GREEN`, Output Push Pull, level High
+  - PC14：`LED_BLUE`, Output Push Pull, level High
+  - PC15：`LED_RED`, Output Push Pull, level High
 - ETH
-    - Mode：RMII
-    - Advanced Parameters
-      - PHY：DP83848_PHY_ADDRESS
+  - Mode：RMII
+  - Advanced Parameters
+    - PHY：DP83848_PHY_ADDRESS
 - LWIP
-    - Key Options
-      - 勾选 Show Advanced Parameters
-      - 确保 LWIP_NETIF_LINK_CALLBACK 为 Enable（一般默认）
-      - xLWIP_LOOPIF_MULTICAST：Enabled
-      - xLWIP_MULTICAST_TX_OPTIONS：Enabled
-      - xLWIP_NETIF_STATUS_CALLBACK：Enabled
-      - xLWIP_NETIF_EXT_STATUS_CALLBACK：Enabled
-      - xLWIP_SO_RCVBUF：Enabled
-    - Genetal Settings
-      - xLWIP_IGMP：Enabled
+  - Key Options
+    - 勾选 Show Advanced Parameters
+    - 确保 LWIP_NETIF_LINK_CALLBACK 为 Enable（一般默认）
+    - xLWIP_LOOPIF_MULTICAST：Enabled
+    - xLWIP_MULTICAST_TX_OPTIONS：Enabled
+    - xLWIP_NETIF_STATUS_CALLBACK：Enabled
+    - xLWIP_NETIF_EXT_STATUS_CALLBACK：Enabled
+    - xLWIP_SO_RCVBUF：Enabled
+  - Genetal Settings
+    - xLWIP_IGMP：Enabled
 
 时钟树配置：按照板载晶振（此板为 8M）配置。
 

@@ -33,11 +33,11 @@ AX6 https://supes.top/%E7%BA%A2%E7%B1%B3ax6-%E8%A7%A3%E9%94%81ssh%E5%88%B7u-boot
 
 - 二极管
 
-    - [电子工程师手记：二极管选择指南](https://haipeng.me/2021/01/27/diode-guide/)
+  - [电子工程师手记：二极管选择指南](https://haipeng.me/2021/01/27/diode-guide/)
 
 - 电源
-    - [请举手回答，LDO 和 DC-DC 有什么不同？](https://mp.weixin.qq.com/s/GfnT3FTVtMr37DIRVPG65g)
-    - [LDO 基础知识：工作原理及应用](https://haipeng.me/2020/06/10/ldo-basics-principles-and-applications/)
+  - [请举手回答，LDO 和 DC-DC 有什么不同？](https://mp.weixin.qq.com/s/GfnT3FTVtMr37DIRVPG65g)
+  - [LDO 基础知识：工作原理及应用](https://haipeng.me/2020/06/10/ldo-basics-principles-and-applications/)
 
 sw 上的波形？如何处理纹波？
 
@@ -60,10 +60,10 @@ vscode-pandoc
 - foxmail 日历
 - 复式记账
 - Linux
-    - https://doc.embedfire.com/linux/stm32mp1/linux_base/zh/latest/linux_app/gpio_subsystem/gpio_subsystem.html
-    - https://doc.embedfire.com/linux/stm32mp1/linux_base/zh/latest/linux_app/filesystem_system_call/filesystem_system_call.html
-    - https://www.runoob.com/linux/linux-vim.html
-    - https://www.runoob.com/linux/linux-file-attr-permission.html
+  - https://doc.embedfire.com/linux/stm32mp1/linux_base/zh/latest/linux_app/gpio_subsystem/gpio_subsystem.html
+  - https://doc.embedfire.com/linux/stm32mp1/linux_base/zh/latest/linux_app/filesystem_system_call/filesystem_system_call.html
+  - https://www.runoob.com/linux/linux-vim.html
+  - https://www.runoob.com/linux/linux-file-attr-permission.html
 
 ---
 

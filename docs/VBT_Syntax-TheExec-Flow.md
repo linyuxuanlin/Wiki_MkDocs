@@ -20,7 +20,7 @@ Parameters most used:
 - **resultVal** (required): Which the result value will been written.
 - **lowVal**, **hiVal** : The low and high limits. Default is lowVal <= resultVal <= hiVal.
 - **unit**: The unit of measurement
-    - `unitAmp` `unitVolt` `unitDb` `unitHz` `unitTime` .
+  - `unitAmp` `unitVolt` `unitDb` `unitHz` `unitTime` .
 - **TName**: A test name to be datalogged. If left blank, test instance's name will be used.
 - **pinName**: The pin name to be datalogged.
 - **forceVal**, **forceunit**: The test condition value and unit.

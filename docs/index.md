@@ -1,8 +1,8 @@
 ---
 title: "Home"
 hide:
-    - navigation
-    - toc
+  - navigation
+  - toc
 ---
 
 # Power's Wiki
