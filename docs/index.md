@@ -21,9 +21,9 @@ Hi there~
 [![badge](https://img.shields.io/github/last-commit/linyuxuanlin/Wiki_Docusaurus?color=FCD734&label=Last%20commit&style=flat-square){loading=lazy}](https://github.com/linyuxuanlin/Wiki_mkdocs/commits/main)
 [![badge](https://img.shields.io/badge/Contact%20me-here-34ABE0?&style=flat-square){loading=lazy}](ContactMe)
 
-[![badge](https://img.shields.io/badge/RSS-post%2Dcreated-34ABE0?&style=flat-square){loading=lazy}](/sitemap.xml)
-[![badge](https://img.shields.io/badge/RSS-post%2Dcreated-34ABE0?&style=flat-square){loading=lazy}](/feed_rss_created.xml)
-[![badge](https://img.shields.io/badge/RSS-post%2Dupdated-34ABE0?&style=flat-square){loading=lazy}](/feed_rss_updated.xml)
+[![badge](https://img.shields.io/badge/RSS-post%20created-34ABE0?&style=flat-square){loading=lazy}](/sitemap.xml)
+[![badge](https://img.shields.io/badge/RSS-post%20created-34ABE0?&style=flat-square){loading=lazy}](/feed_rss_created.xml)
+[![badge](https://img.shields.io/badge/RSS-post%20updated-34ABE0?&style=flat-square){loading=lazy}](/feed_rss_updated.xml)
 
 为了避免遗忘、便于分享，我在这里收录知识。  
 请随意浏览～
