@@ -5,7 +5,7 @@
   
   /* 文字选取颜色 */
   ::selection {
-    background: aquamarine;
+    background: #0969da /*aquamarine*/;
     color: black;
   }
   
