@@ -62,7 +62,7 @@ plugins:
       match_path: ".*"
       url_parameters:
         utm_source: "documentation"
-        utm_medium: "RSS" # todo
+        utm_medium: "RSS"
         utm_campaign: "feed-syndication"
 
 extra:
