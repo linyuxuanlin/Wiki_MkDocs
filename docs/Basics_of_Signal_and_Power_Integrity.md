@@ -8,3 +8,5 @@ title: Basics of Signal and Power Integrity 🚧
 - *Signal and Power Integrity - Simplified, 3rd Edition*
 
 > This article is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
+
+

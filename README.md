@@ -38,6 +38,6 @@ RSS of updated post: <https://wiki-power.com/feed_rss_updated.xml>
 
 todo:
 
-- home  rss button
 - post time
 - index page of groups
+- speed up page loading 
