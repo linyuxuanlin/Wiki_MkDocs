@@ -45,7 +45,7 @@
     width: 1280px;
     max-width: 1280px;
     max-height: 700px;
-    
+    transform: scale(0.535, 0.525);
     border-width: 1px;
     border-style: solid;
     border-radius: 0px 0px 4px 4px;
