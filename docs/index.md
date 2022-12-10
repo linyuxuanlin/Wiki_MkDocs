@@ -21,6 +21,8 @@ Hi there~
 [![badge](https://img.shields.io/github/last-commit/linyuxuanlin/Wiki_Docusaurus?color=FCD734&label=Last%20commit&style=flat-square){loading=lazy}](https://github.com/linyuxuanlin/Wiki_mkdocs/commits/main)
 [![badge](https://img.shields.io/badge/Contact%20me-here-34ABE0?&style=flat-square){loading=lazy}](ContactMe)
 
+[![badge](https://img.shields.io/badge/RSS-created%20post-34ABE0?&style=flat-square){loading=lazy}](/feed_rss_created.xml)
+
 为了避免遗忘、便于分享，我在这里收录知识。  
 请随意浏览～
 
