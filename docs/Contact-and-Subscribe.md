@@ -10,6 +10,6 @@ title: Contact and Subscribe
 [![badge](https://img.shields.io/badge/SSPAI-C23133?&style=for-the-badge)](https://sspai.com/u/power/)
 [![badge](https://img.shields.io/badge/Bilibili-FE7398?&style=for-the-badge)](https://space.bilibili.com/349536948)
 
-[![badge](https://img.shields.io/badge/RSS-post%20created-34ABE0?&style=flat-square){loading=lazy}](/sitemap.xml)
+[![badge](https://img.shields.io/badge/Sitemap-34ABE0?&style=flat-square){loading=lazy}](/sitemap.xml)
 [![badge](https://img.shields.io/badge/RSS-post%20created-34ABE0?&style=flat-square){loading=lazy}](/feed_rss_created.xml)
 [![badge](https://img.shields.io/badge/RSS-post%20updated-34ABE0?&style=flat-square){loading=lazy}](/feed_rss_updated.xml)
