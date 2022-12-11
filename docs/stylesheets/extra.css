@@ -1,52 +1,42 @@
 /* 隐藏 scrollbar */
 ::-webkit-scrollbar {
-    display: none;
-  }
-  
-  /* 文字选取颜色 */
-  ::selection {
-    background: aquamarine;
-    color: black;
-  }
-  
-  /* Smooth Scroll 顺滑跳转到某位置 */
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  
-  img:not([alt=badge]){
-    width: 1280px;
-    /*border: 3px solid black;
+  display: none;
+}
+
+/* 文字选取颜色 */
+::selection {
+  background: aquamarine;
+  color: black;
+}
+
+/* Smooth Scroll 顺滑跳转到某位置 */
+html {
+  scroll-behavior: smooth;
+}
+
+img:not([alt="badge"]) {
+  width: 1280px;
+  /*border: 3px solid black;
     background: white;*/
-  }
-  
-   /*
-  img[alt=badge] {
-    width: 100%;
-    border: none;
-  }
+}
 
- 
-  img[alt=logo] {
-    border: none;
-  }
-  */
-
-  .altium-iframe-viewer{
-    height: 400px;
-    max-width: 1280px;
-    max-height: 700px;
-    /*
+img[alt="logo"] {
+  border: none;
+}
+*/ .altium-iframe-viewer {
+  height: 400px;
+  max-width: 1280px;
+  max-height: 700px;
+  /*
     border-width: 1px;
     border-style: solid;
     border-radius: 0px 0px 4px 4px;
     overflow: hidden;
     box-sizing: border-box;
     */
-  }
+}
 
-  /*
+/*
   iframe{
     height: 450px;
     width: 1280px;
