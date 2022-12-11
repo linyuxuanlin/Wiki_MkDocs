@@ -20,12 +20,14 @@
     /*border: 3px solid black;
     background: white;*/
   }
-  /*
+  
   
   img[alt=badge] {
+    width: 100%;
     border: none;
   }
-  
+
+  /*
   img[alt=logo] {
     border: none;
   }
