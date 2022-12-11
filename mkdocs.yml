@@ -96,7 +96,6 @@ markdown_extensions:
   - mdx_truly_sane_lists
   - pymdownx.tasklist:
       custom_checkbox: true
-  - mkdocs-mermaid2-plugin #MkDocs-Lab
 
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/latest.min.js #javascripts/mathjax.js
