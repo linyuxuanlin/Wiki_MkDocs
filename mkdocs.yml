@@ -96,6 +96,7 @@ markdown_extensions:
   - mdx_truly_sane_lists
   - pymdownx.tasklist:
       custom_checkbox: true
+  - mkdocs-mermaid2-plugin #MkDocs-Lab
 
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/latest.min.js #javascripts/mathjax.js
@@ -356,6 +357,7 @@ nav:
               - 技术文档写作规范.md #  CSDN todo
               - 如何保存易逝的文字.md
               - 个人知识库的搭建-基于Docusaurus.md #  CSDN
+              - MkDocs测试实验室.md
               - Windows初始化与软件推荐.md #  CSDN todo
               - Docusaurus极简部署指南.md #  CSDN todo
               - Hugo极简搭建指南.md #  CSDN todo

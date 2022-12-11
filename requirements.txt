@@ -6,3 +6,5 @@ markdown
 pymdown-extensions
 mkdocs-git-revision-date-localized-plugin
 mdx_truly_sane_lists
+
+mkdocs-mermaid2-plugin
