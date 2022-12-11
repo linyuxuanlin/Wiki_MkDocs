@@ -15,19 +15,19 @@
   }
   
   
-  img {
+  img:not([alt=badge]){
     width: 1280px;
     /*border: 3px solid black;
     background: white;*/
   }
   
-  
+   /*
   img[alt=badge] {
     width: 100%;
     border: none;
   }
 
-  /*
+ 
   img[alt=logo] {
     border: none;
   }
