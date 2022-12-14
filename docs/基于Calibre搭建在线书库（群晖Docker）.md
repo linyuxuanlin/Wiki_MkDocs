@@ -57,6 +57,6 @@ title: 基于 Calibre 搭建在线书库（群晖 Docker）
 
 - [群晖 Docker 安装 calibre-web 图书管理系统](https://www.chrno.cn/index.php/docker/15.html)
 
-> 原文地址：<https://wiki-power.com/>
+> 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 

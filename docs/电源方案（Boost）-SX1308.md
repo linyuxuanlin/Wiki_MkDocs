@@ -69,6 +69,6 @@ EN 为使能脚，大于 1.5 V 时启动，小于 0.4 V 时关闭，请勿悬空
 - 实测负载最大输出电流 800 mA 左右，能基本保持输出电压稳定（输出 11.6 V）。
 - **EN 引脚不能悬空**，必须上拉（开启 Boost）或下拉（关闭），否则将会以原电压输出。
 
-> 原文地址：<https://wiki-power.com/>
+> 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 

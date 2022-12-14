@@ -138,6 +138,6 @@ $$
 - [电源抑制比（PSRR）测量](https://www.rohde-schwarz.com.cn/applications/-psrr-application-card_56279-601516.html)
 - [关于 DC-DC 瞬态测试的一些东西 🚧](http://www.oliverkung.top/%e5%85%b3%e4%ba%8edc-dc%e7%9e%ac%e6%80%81%e6%b5%8b%e8%af%95%e7%9a%84%e4%b8%80%e4%ba%9b%e4%b8%9c%e8%a5%bf/)
 
-> 原文地址：<https://wiki-power.com/>
+> 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 

@@ -59,6 +59,6 @@ static void CAN_Filter_Config(void) {
 
 - [STM32CubeMX 与 HAL 库学习--简单的 CAN 回环测试](https://blog.csdn.net/weixin_45209978/article/details/119850600)
 
-> 原文地址：<https://wiki-power.com/>
+> 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 

@@ -130,6 +130,6 @@ HAL_Delay(1000);
 - [进阶篇 IV [DMA]](https://alchemicronin.github.io/posts/90d72de/#4-0-%E7%BB%83%E4%B9%A0%E9%A1%B9%E7%9B%AE)
 - [【STM32】HAL 库 STM32CubeMX 教程十一 ---DMA (串口 DMA 发送接收)](https://blog.csdn.net/as480133937/article/details/104827639)
 
-> 原文地址：<https://wiki-power.com/>
+> 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 

@@ -74,5 +74,5 @@ typedef signed char int8; /* Signed 8 bit value */
 
 - [嵌入式工程师常用的宏定义](https://mp.weixin.qq.com/s/4YPwxtBX6Qdlz9fGKvSCUg)
 
-> 原文地址：<https://wiki-power.com/>
+> 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

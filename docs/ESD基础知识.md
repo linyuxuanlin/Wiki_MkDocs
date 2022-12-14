@@ -106,6 +106,6 @@ $$
 - [ESD Resistance of Capacitors](https://article.murata.com/en-us/article/esd-resistance-of-capacitors)
 - [一文搞懂 ESD 器件在 PCB 设计当中的作用](http://murata.eetrend.com/article/2021-11/1004974.html)
 
-> 原文地址：<https://wiki-power.com/>
+> 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 

@@ -325,6 +325,6 @@ HAL_UART_Transmit(&huart1, B_Chan, 1, 0xFFFF);
 - [两个 LORA 模块工作在一般模式定向传输数据的测试方法（使用上位机测试）](http://www.openedv.com/forum.php?mod=viewthread&tid=288951)
 - [ATK-LORA-01 无线串口模块只接收到 00](http://www.openedv.com/forum.php?mod=viewthread&tid=328190&highlight=ATK-LORA-01)
 
-> 原文地址：<https://wiki-power.com/>
+> 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 

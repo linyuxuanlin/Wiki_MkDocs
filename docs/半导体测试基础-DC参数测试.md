@@ -297,5 +297,5 @@ IIL 衡量的是输入引脚到 VDD 的电阻值；IIH 衡量的是输入引脚�
 - 《The Fundamentals Of Digital Semiconductor Testing》
 - 《DC Test Theory》
 
-> 原文地址：<https://wiki-power.com/>
+> 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

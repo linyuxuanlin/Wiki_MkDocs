@@ -48,6 +48,6 @@ title: CubeMX 与 CubeIDE 避坑
 - [STM32 调试器配置异常导致的问题与解决方法（一）](https://www.jianshu.com/p/cea16b641c3d)
 - [STM32cubeIDE 环境配置安装-汉化-主题设置](https://blog.csdn.net/wct3344142/article/details/104142863)
 
-> 原文地址：<https://wiki-power.com/>
+> 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 

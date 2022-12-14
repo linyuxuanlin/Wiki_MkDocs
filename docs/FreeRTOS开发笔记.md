@@ -8,7 +8,7 @@ title: FreeRTOS 开发笔记 🚧
 - [FreeRTOS(Official Website)](https://www.freertos.org/)
 - [STM32F429 FreeRTOS 开发手册 | 正点原子](https://www.amobbs.com/forum.php?mod=attachment&aid=NDE1MDY4fDZkYTVmZjIzfDE2NTUxMTY4NjB8MHw1NjkzMTMw)
 
-> 原文地址：<https://wiki-power.com/>
+> 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 
 

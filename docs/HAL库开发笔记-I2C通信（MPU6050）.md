@@ -390,6 +390,6 @@ printf("XAngle: %.2f°\t", MPU6050.KalmanAngleX);
 - [leech001/MPU6050](https://github.com/leech001/MPU6050)
 - [通信协议 - I2C](https://wiki-power.com/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-I2C)
 
-> 原文地址：<https://wiki-power.com/>
+> 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 

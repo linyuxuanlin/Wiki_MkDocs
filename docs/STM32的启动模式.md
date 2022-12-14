@@ -47,6 +47,6 @@ STM32 提供了 BOOT1 与 BOOT0 引脚，可以通过设置引脚的状态，以
 
 
 
-> 原文地址：<https://wiki-power.com/>
+> 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 

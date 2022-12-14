@@ -106,7 +106,7 @@ if (netif_is_link_up(&gnetif) && !netif_is_up(&gnetif)) {
 
 - [STM32 HAL Ethernet initialization](https://blog.naver.com/eziya76/221852430347)
 
-> 原文地址：<https://wiki-power.com/>
+> 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 
 

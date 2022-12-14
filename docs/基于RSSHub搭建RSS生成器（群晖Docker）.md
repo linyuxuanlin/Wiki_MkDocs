@@ -40,6 +40,6 @@ title: 基于 RSSHub 搭建 RSS 生成器（群晖 Docker）
 - [RSSHub 官方文档](https://docs.rsshub.app/)
 - [在群晖中使用 Docker 安装 RSSHub](https://immwind.com/use-docker-install-rsshub-in-synology)
 
-> 原文地址：<https://wiki-power.com/>
+> 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 
