@@ -77,5 +77,6 @@ $V_{DD}$ 表示供电电压；$V_{OLMAX}$ 表示最大逻辑低电平（典型�
 - [I2C 总线该怎么用？看完你就会了](https://mp.weixin.qq.com/s/IeL77NTyVdTdkcNtqjjFPA)
 - [[电路]I2C 总线协议 🚧](https://zhenhuizhang.tk/post/dian-lu-i2c-zong-xian-xie-yi/)
 
+> 原文地址：<https://wiki-power.com/>
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 

@@ -54,5 +54,6 @@ title: AD 基本操作 - 多板系统设计 🚧
 - [创建物理多板装配](https://www.altium.com/cn/documentation/altium-designer/creating-the-physical-multi-board-assembly-ad)
 - [生成多板设计的生产数据](https://www.altium.com/cn/documentation/altium-designer/generating-multi-board-production-data-ad)
 
+> 原文地址：<https://wiki-power.com/>
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 

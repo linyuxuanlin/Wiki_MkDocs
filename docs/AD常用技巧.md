@@ -98,5 +98,6 @@ title: AD 常用技巧
 
 - [Altium Designer19 设计宝典：实战操作技巧与问题解决方法](https://item.jd.com/12756518.html)
 
+> 原文地址：<https://wiki-power.com/>
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 

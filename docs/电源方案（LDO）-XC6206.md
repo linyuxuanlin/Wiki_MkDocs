@@ -55,5 +55,6 @@ XC6206 系列是高精度、低功耗的三端正电压调节器，提供大电�
 
 - [XC6206_Datasheet](https://www.torexsemi.com/file/xc6206/XC6206.pdf)
 
+> 原文地址：<https://wiki-power.com/>
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 

@@ -11,6 +11,7 @@ title: CubeIDE 配置指南
 - [STM32的开发环境cubeIDE注释混乱问题解决方法](https://blog.csdn.net/weixin_39754256/article/details/104304634)
 - [傻瓜式教程：如何使用“多合一”开发工具STM32CubeIDE](https://zhuanlan.zhihu.com/p/345602228)
 
+> 原文地址：<https://wiki-power.com/>
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 
 

@@ -61,5 +61,6 @@ RobotCtrl_Power 原理图设计主要由 XT60 双电源输入、24V 转 12V、24
 
 本项目是我个人的毕业设计，在项目的设计焊接调试中遇到了诸多大大小小的问题，在导师、同事、朋友们的鼎力相助下，最终得以成功完坑，也拿到了优秀毕设的荣誉，谢谢你们！
 
+> 原文地址：<https://wiki-power.com/>
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 

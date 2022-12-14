@@ -94,5 +94,5 @@ title: 电源设计 - LDO 跳变抑制能力对比测试记录
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220516154925.jpg)
 
+> 原文地址：<https://wiki-power.com/>
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-

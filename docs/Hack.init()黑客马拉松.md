@@ -205,5 +205,6 @@ Q：项目后期还有跟进吗？
 - 团队成员：林沛杰，黄岳峰，张梓宜
 - [IntoRobot 云平台](https://www.intorobot.com/)
 
+> 原文地址：<https://wiki-power.com/>
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 

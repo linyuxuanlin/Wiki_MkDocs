@@ -136,5 +136,6 @@ CC 引脚使用的上下拉电阻取决于是下行端口（DFP）、上行端�
 - [USB Logo Usage Guidelines](https://www.usb.org/sites/default/files/usb-if_logo_usage_guidelines_final_103019.pdf)
 - [AN1953 | USB Type-C™ 简介](http://www.microchip.com.cn/community/Uploads/Download/Library/00001953a_cn.pdf)
 
+> 原文地址：<https://wiki-power.com/>
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 

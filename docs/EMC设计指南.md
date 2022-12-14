@@ -106,4 +106,5 @@ EMC 常用元件有共模电感、磁珠与滤波电容器。
 - [利用混成式共模电感抑制传导电磁干扰](https://www.richtek.com/Design%20Support/Technical%20Document/AN008?sc_lang=zh-CN)
 - [[电路]EMC 基础概念\_共模差模干扰](https://zhenhuizhang.tk/post/dian-lu-emc-ji-chu-gai-nian-_-gong-mo-chai-mo-gan-rao/)
 
+> 原文地址：<https://wiki-power.com/>
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

@@ -7,6 +7,7 @@ title: 嵌入式 Linux - GPIO 子系统
 
 - [8. 控制蜂鸣器（GPIO 子系统）](https://doc.embedfire.com/linux/stm32mp1/linux_base/zh/latest/linux_app/gpio_subsystem/gpio_subsystem.html)
 
+> 原文地址：<https://wiki-power.com/>
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 
 
