@@ -41,7 +41,7 @@ title: Windows11个人初始化配置
 - [Visual Studio Code Insiders](https://code.visualstudio.com/insiders/) (with settings)
 - (Only for Matebook) Huawei PC Manager (with settings)
 - Logi Options+ (with settings)
-- [Powertoys](https://github.com/microsoft/PowerToys/releases)
+- [Powertoys](https://github.com/microsoft/PowerToys/releases) (with backup)
 - Wechat (with settings)
 - [Git](https://git-scm.com/downloads)
 - [GitHub Desktop](https://desktop.github.com/)
