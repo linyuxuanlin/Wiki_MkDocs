@@ -25,6 +25,7 @@ title: Personal Onboarding Workflow (Windows)
 - Clash
 - HiBitUninstaller
 - Win10Apps
+- DriverBooster
 - Altsnap
 - WPD
 - Dism++
