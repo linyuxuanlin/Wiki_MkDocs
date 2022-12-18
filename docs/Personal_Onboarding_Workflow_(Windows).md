@@ -41,7 +41,7 @@ title: Personal Onboarding Workflow (Windows)
 
 ### Microsoft Store
 
-- (Only for Matebook) Intel® Graphics
+- (Only for Matebook) Intel® Graphics Command Center (Beta)
 
 ## Settings
 
