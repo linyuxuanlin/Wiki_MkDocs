@@ -29,3 +29,65 @@ title: Windows11个人初始化配置
 
 - 百度网盘 - 绿化
 - PeaZip Configration
+
+---
+
+## Software Install
+
+### Executable
+
+- HuoRong Security
+- Synology Drive (with settings)
+- [Visual Studio Code Insiders](https://code.visualstudio.com/insiders/) (with settings)
+- (Only for Matebook) Huawei PC Manager (with settings)
+- Logi Options+ (with settings)
+- [Powertoys](https://github.com/microsoft/PowerToys/releases)
+- Wechat (with settings)
+- [Git](https://git-scm.com/downloads)
+- [GitHub Desktop](https://desktop.github.com/)
+
+### Portable (Sync with Synology Drive)
+
+- Clash
+- HiBitUninstaller
+- Win10Apps
+- Altsnap
+- WPD
+- Dism++
+- HEU KMS Activator
+- OInstall
+- Snipaste
+- PicGo
+- Bamboo
+- SumatraPDF
+- Telegram
+
+## Settings
+
+- System Settings
+
+  - System
+    - Multitasking
+      - Don't show Edge tabs
+    - Display
+      - Night Light
+    - Remote Desktop - on
+  - Personalization
+    - Dark theme
+    - Background & Lockscreen
+    - Taskbar
+  - Privacy & security
+    - Search permissions - off
+    - For developers - on
+  - Windows Update
+
+- Ultimate Performance (powershell - `powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61`)
+- File Explorer
+  - Sidebar
+- NVIDIA and Intel driver settings
+- Language format / time / typing
+
+## Software Uninstall
+
+- Onedrive (by HiBit Uninstaller)
+- Unnecessary Windows apps (by Win10Apps)
