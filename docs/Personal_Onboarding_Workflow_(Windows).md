@@ -39,6 +39,10 @@ title: Personal Onboarding Workflow (Windows)
 - Telegram
 - Peazip (with File associations and system menu integration)
 
+### Microsoft Store
+
+- (Only for Matebook) Intel® Graphics
+
 ## Settings
 
 ### System Settings
