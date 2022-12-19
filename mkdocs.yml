@@ -98,7 +98,7 @@ markdown_extensions:
       custom_checkbox: true
 
 extra_javascript:
-  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/latest.min.js #javascripts/mathjax.js
+  - javascripts/mathjax.js #https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/latest.min.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - javascripts/tex-mml-chtml.js
   - https://viewer.altium.com/client/static/js/embed.js
