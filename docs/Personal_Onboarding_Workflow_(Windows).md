@@ -82,3 +82,6 @@ title: Personal Onboarding Workflow (Windows)
 
 - Onedrive (by HiBit Uninstaller)
 - Unnecessary Windows apps (by Win10Apps)
+
+> Original: <https://wiki-power.com/>  
+> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
