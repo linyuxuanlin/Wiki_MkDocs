@@ -358,6 +358,7 @@ nav:
               - 个人知识库的搭建-基于Docusaurus.md #  CSDN
               - MkDocs测试实验室.md
               - Windows初始化与软件推荐（旧）.md #  CSDN todo
+              - Personal_Onboarding_Workflow_(Windows).md
               - Docusaurus极简部署指南.md #  CSDN todo
               - Hugo极简搭建指南.md #  CSDN todo
               - 如何在iPad上运行VSCode.md #  CSDN
@@ -373,7 +374,6 @@ nav:
               - 如何配一台电脑.md
           - 小技巧:
               - Windows常用命令.md
-              - Personal_Onboarding_Workflow_(Windows).md
               - VSCode的便携模式.md
               - 开启Chrome（Edge）多线程下载.md
               - 移除Chrome（Edge）由组织管理.md
