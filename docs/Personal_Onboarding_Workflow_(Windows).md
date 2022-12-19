@@ -3,7 +3,41 @@ id: Personal_Onboarding_Workflow_(Windows)
 title: Personal Onboarding Workflow (Windows)
 ---
 
-- DeepL
+## Settings
+
+### Initialization
+
+- Bring up Windows without Microsoft account.
+- Open diagnosis (for dev version).
+- Check for system and driver update
+
+### System Settings
+
+- System
+  - Multitasking
+    - Don't show Edge tabs
+  - Display
+    - Night Light
+  - Remote Desktop - on
+- Personalization
+  - Dark theme
+  - Background & Lockscreen
+  - Taskbar
+- Privacy & security
+  - Search permissions - off
+  - For developers - on
+- Windows Update
+
+### Other Settings
+
+- Ultimate Performance (powershell - `powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61`)
+- File Explorer
+  - Sidebar
+- NVIDIA and Intel driver settings
+- Language format / time / typing
+- Edge: enable [**parallel downloading**](edge://flags/#enable-parallel-downloading)
+- Disable hibernate: `powercfg /hibernate off`
+- frp
 
 ## Software Install
 
@@ -38,38 +72,11 @@ title: Personal Onboarding Workflow (Windows)
 - JPEGView
 - Telegram
 - Peazip (with File associations and system menu integration)
+- DeepL
 
 ### Microsoft Store
 
 - (Only for Matebook) Intel® Graphics Command Center (Beta)
-
-## Settings
-
-### System Settings
-
-- System
-  - Multitasking
-    - Don't show Edge tabs
-  - Display
-    - Night Light
-  - Remote Desktop - on
-- Personalization
-  - Dark theme
-  - Background & Lockscreen
-  - Taskbar
-- Privacy & security
-  - Search permissions - off
-  - For developers - on
-- Windows Update
-
-### Other Settings
-
-- Ultimate Performance (powershell - `powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61`)
-- File Explorer
-  - Sidebar
-- NVIDIA and Intel driver settings
-- Language format / time / typing
-- frp
 
 ## Software Uninstall
 
