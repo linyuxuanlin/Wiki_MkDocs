@@ -36,6 +36,19 @@ img[alt="logo"] {
     */
 }
 
+.altium-iframe-viewer-2 {
+  height: 400px;
+  max-width: 1280px;
+  max-height: 700px;
+  /*
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 0px 0px 4px 4px;
+    overflow: hidden;
+    box-sizing: border-box;
+    */
+}
+
 /*
   iframe{
     height: 450px;
