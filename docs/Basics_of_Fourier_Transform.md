@@ -22,7 +22,7 @@ Dirichlet Conditions specify a set of conditions that must be met before a signa
 A complex signal that meets the Dirichlet Conditions can be represented by a sum of sinusoids:
 
 $$
-f(t)=a_0+A\{\sum_{n=1}^\infin[a_n cos(n \omega_1 t+\phi_n)+b_n sin(n \omega_1 t+\phi_n)]\}
+f(t)=a_0+A\{\sum_{n=1}^\infty[a_n cos(n \omega_1 t+\phi_n)+b_n sin(n \omega_1 t+\phi_n)]\}
 $$
 
 where:
