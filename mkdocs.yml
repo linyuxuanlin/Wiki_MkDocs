@@ -7,8 +7,8 @@ edit_uri: "" #edit/main/docs/
 
 theme:
   name: material
-  font: #false
-    text: Roboto
+  font: #false #如果国内网络拖慢加载速度可取消
+    text: Mona-Sans
     code: Roboto Mono
   palette:
     - media: "(prefers-color-scheme: light)" # 检查用户系统配置是否为亮色
@@ -27,7 +27,7 @@ theme:
         name: 切换亮色模式
   language: zh
   logo: img/logo-zip.png #https://cos.ap-guangzhou.myqcloud.com/wiki-media-1253965369/doc/logo-zip.png
-  favicon: img/logo.svg  #https://cos.ap-guangzhou.myqcloud.com/wiki-media-1253965369/doc/logo.svg #https://cos.ap-guangzhou.myqcloud.com/wiki-media-1253965369/doc/logo-zip.png
+  favicon: img/logo.svg #https://cos.ap-guangzhou.myqcloud.com/wiki-media-1253965369/doc/logo.svg #https://cos.ap-guangzhou.myqcloud.com/wiki-media-1253965369/doc/logo-zip.png
   features:
     #- navigation.instant # Instant loading，像个单页应用
     - navigation.tracking # Anchor tracking
