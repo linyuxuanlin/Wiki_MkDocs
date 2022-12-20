@@ -99,6 +99,11 @@ markdown_extensions:
   - mdx_truly_sane_lists
   - pymdownx.tasklist:
       custom_checkbox: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
 extra_javascript:
   - javascripts/mathjax.js #https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/latest.min.js
