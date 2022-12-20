@@ -7,7 +7,9 @@ edit_uri: "" #edit/main/docs/
 
 theme:
   name: material
-  font: false
+  font: #false
+    text: Roboto
+    code: Roboto Mono
   palette:
     - media: "(prefers-color-scheme: light)" # 检查用户系统配置是否为亮色
       scheme: default # 亮色模式
