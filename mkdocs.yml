@@ -7,8 +7,7 @@ edit_uri: "" #edit/main/docs/
 
 theme:
   name: material
-  font: 
-    text: Noto Sans Simplified Chinese
+  font: false
   palette:
     - media: "(prefers-color-scheme: light)" # 检查用户系统配置是否为亮色
       scheme: default # 亮色模式
