@@ -8,7 +8,7 @@ edit_uri: "" #edit/main/docs/
 theme:
   name: material
   font: #false #如果国内网络拖慢加载速度可取消
-    text: "Noto Sans Simplified Chinese" # , Roboto
+    text: "Noto Sans SC" # , Roboto
     code: Roboto Mono
   palette:
     - media: "(prefers-color-scheme: light)" # 检查用户系统配置是否为亮色
