@@ -102,7 +102,7 @@ extra_javascript:
   - javascripts/mathjax.js #https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/latest.min.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js #javascripts/tex-mml-chtml.js
-  - https://viewer.altium.com/client/static/js/embed.js
+  - javascripts/embed.js # https://viewer.altium.com/client/static/js/embed.js
 
 extra_css:
   - stylesheets/extra.css
