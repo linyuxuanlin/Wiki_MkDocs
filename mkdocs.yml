@@ -86,6 +86,7 @@ copyright: Copyright &copy; 2015 - 2023 by Power | <a href="https://beian.miit.g
 markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
+  - pymdownx.betterem
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
