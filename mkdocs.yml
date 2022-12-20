@@ -42,8 +42,7 @@ theme:
     repo: fontawesome/brands/git-alt
 
 plugins:
-  - search:
-      prebuild_index: true
+  - search
   #- git-revision-date-localized:
   #    enable_creation_date: true
   - rss:
