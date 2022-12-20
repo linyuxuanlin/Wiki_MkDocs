@@ -50,12 +50,3 @@ img[alt="logo"] {
     
   }
   */
-
-@font-face {
-  font-family: "Mona-Sans";
-  src: "fonts/Mona-Sans-Regular.woff2";
-}
-
-:root {
-  --md-text-font: "Mona-Sans"; 
-}
