@@ -25,7 +25,7 @@ theme:
         name: 切换亮色模式
   language: zh
   logo: https://cos.ap-guangzhou.myqcloud.com/wiki-media-1253965369/doc/logo-zip.png
-  favicon: https://cos.ap-guangzhou.myqcloud.com/wiki-media-1253965369/doc/logo-zip.png #https://cos.ap-guangzhou.myqcloud.com/wiki-media-1253965369/doc/logo.svg
+  favicon: https://cos.ap-guangzhou.myqcloud.com/wiki-media-1253965369/doc/logo.svg #https://cos.ap-guangzhou.myqcloud.com/wiki-media-1253965369/doc/logo-zip.png
   features:
     #- navigation.instant # Instant loading，像个单页应用
     - navigation.tracking # Anchor tracking
@@ -100,7 +100,7 @@ markdown_extensions:
 extra_javascript:
   - javascripts/mathjax.js #https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/latest.min.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
-  - javascripts/tex-mml-chtml.js
+  - - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js #javascripts/tex-mml-chtml.js
   - https://viewer.altium.com/client/static/js/embed.js
 
 extra_css:
