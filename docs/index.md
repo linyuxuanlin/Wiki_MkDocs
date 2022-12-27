@@ -14,8 +14,9 @@ hide:
 [![badge](https://img.shields.io/badge/dynamic/json?label=SSPAI&query=%24.data.totalSubs&url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dsspai%26queryKey%3Dpower&color=282c34&labelColor=d71a1b&longCache=true?&style=for-the-badge){ loading=lazy }](https://sspai.com/u/power/)
 [![badge](https://img.shields.io/badge/dynamic/json?labelColor=FE7398&label=BILIBILI&query=%24.data.totalSubs&url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dbilibili%26queryKey%3D349536948&color=282c34&longCache=true?&style=for-the-badge){ loading=lazy }](https://space.bilibili.com/349536948)
 
-Hi there~  
-这是我的知识库。
+> 读万卷书，行万里路，做个有趣的人。
+
+Hi there~ 欢迎来到我的知识库。
 
 [![badge](https://img.shields.io/github/deployments/linyuxuanlin/Wiki_Docusaurus/Production?label=Build&style=flat-square){ loading=lazy }](https://vercel.com/linyuxuanlin/wiki-mkdocs/deployments)
 [![badge](https://img.shields.io/github/last-commit/linyuxuanlin/Wiki_Docusaurus?color=FCD734&label=Last%20commit&style=flat-square){ loading=lazy }](https://github.com/linyuxuanlin/Wiki_mkdocs/commits/main)
