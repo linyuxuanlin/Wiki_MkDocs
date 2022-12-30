@@ -45,8 +45,10 @@ theme:
 
 plugins:
   - search
-  #- git-revision-date-localized:
-  #    enable_creation_date: true
+        lang:
+            - en
+            - ja
+        separator: '[\s\-\.]+'
   - rss:
       abstract_chars_count: -1 # -1 for full content
       #categories:
