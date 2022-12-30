@@ -45,10 +45,6 @@ theme:
 
 plugins:
   - search
-        lang:
-            - en
-            - ja
-        separator: '[\s\-\.]+'
   - rss:
       abstract_chars_count: -1 # -1 for full content
       #categories:
