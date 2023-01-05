@@ -7,8 +7,8 @@ edit_uri: "" #edit/main/docs/
 
 theme:
   name: material
-  font: #false
-    text: Roboto
+  font: #false #如果国内网络拖慢加载速度可取消
+    text: "Noto Sans SC" # , Roboto
     code: Roboto Mono
   palette:
     - media: "(prefers-color-scheme: light)" # 检查用户系统配置是否为亮色
@@ -27,7 +27,7 @@ theme:
         name: 切换亮色模式
   language: zh
   logo: img/logo-zip.png #https://cos.ap-guangzhou.myqcloud.com/wiki-media-1253965369/doc/logo-zip.png
-  favicon: img/logo.svg  #https://cos.ap-guangzhou.myqcloud.com/wiki-media-1253965369/doc/logo.svg #https://cos.ap-guangzhou.myqcloud.com/wiki-media-1253965369/doc/logo-zip.png
+  favicon: img/logo.svg #https://cos.ap-guangzhou.myqcloud.com/wiki-media-1253965369/doc/logo.svg #https://cos.ap-guangzhou.myqcloud.com/wiki-media-1253965369/doc/logo-zip.png
   features:
     #- navigation.instant # Instant loading，像个单页应用
     - navigation.tracking # Anchor tracking
@@ -45,8 +45,6 @@ theme:
 
 plugins:
   - search
-  #- git-revision-date-localized:
-  #    enable_creation_date: true
   - rss:
       abstract_chars_count: -1 # -1 for full content
       #categories:
@@ -99,6 +97,11 @@ markdown_extensions:
   - mdx_truly_sane_lists
   - pymdownx.tasklist:
       custom_checkbox: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
 extra_javascript:
   - javascripts/mathjax.js #https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/latest.min.js
@@ -185,7 +188,7 @@ nav:
               - 信号完整性-基础概念.md
               - 信号完整性-时域与频域.md
               - 信号完整性-阻抗与电气模型.md
-              - 信号完整性-电阻的物理基础.md
+              #- 信号完整性-电阻的物理基础.md
               - 信号完整性-传输线.md
               - 信号完整性-失真.md
               - 信号完整性-串扰.md
@@ -314,7 +317,8 @@ nav:
   - 效率 & 生活:
       - 生活琐记:
           - BLOG:
-              - blog/2022-09-23-星夜漫游记.md
+              #- blog/2022-12-31-探索之路-2022小记.md
+              - blog/2022-09-23-星夜漫游.md
               - blog/2022-07-03-有限与无限世界.md
               - blog/2022-06-27-硬件行业趋势与个人的选择.md
               - blog/2022-05-01-现代都市与末日田园.md
