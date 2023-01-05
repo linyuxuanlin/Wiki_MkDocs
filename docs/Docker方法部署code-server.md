@@ -33,7 +33,6 @@ services:
     restart: unless-stopped
 ```
 
-
 ## 使用 Docker Cli 方式
 
 ## 部署
@@ -45,6 +44,7 @@ docker run -d --name=[容器名] -e PASSWORD=[密码] -e SUDO_PASSWORD=[root密�
 ```
 
 参数详情：
+
 - `--name`：给容器取个名
 - `-e PASSWORD`：访问密码
 - `-e SUDO_PASSWORD`：root 密码
@@ -60,13 +60,9 @@ docker run -d --name=VSConline -e PASSWORD=123 -e SUDO_PASSWORD=123 -p 8443:8443
 
 请参照 [**Git 学习笔记**](https://wiki-power.com/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE) 中对 Git 的用户名和邮箱配置。
 
-
 ## 参考与致谢
 
 - [linuxserver/code-server](https://hub.docker.com/r/linuxserver/code-server)
 
-
-
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-
