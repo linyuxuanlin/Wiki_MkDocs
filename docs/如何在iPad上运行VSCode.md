@@ -11,7 +11,7 @@ title: 如何在 iPad 上运行 VS Code
 
 更推荐以 Docker 方式安装 code-server 服务。  
 仅需一行命令部署，且无需配置后台运行，自带 Git 等环境。  
-详见：[**Docker 方式运行 code-server**](https://wiki-power.com/unlist/Docker%E6%96%B9%E5%BC%8F%E8%BF%90%E8%A1%8Ccode-server)
+详见：[**Docker 方法部署 code-server**](https://wiki-power.com/Docker%E6%96%B9%E5%BC%8F%E8%BF%90%E8%A1%8Ccode-server)
 
 如果你不想用 Docker 的方式部署，请继续阅读下文。
 

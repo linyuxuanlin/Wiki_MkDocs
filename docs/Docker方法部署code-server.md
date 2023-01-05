@@ -1,6 +1,6 @@
 ---
-id: Docker方式运行code-server
-title: Docker 方式运行 code-server
+id: Docker方法部署code-server
+title: Docker 方法部署 code-server
 ---
 
 ## 准备

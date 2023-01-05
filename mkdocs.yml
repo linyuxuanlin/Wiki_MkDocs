@@ -365,6 +365,7 @@ nav:
               - Docusaurus极简部署指南.md #  CSDN todo
               - Hugo极简搭建指南.md #  CSDN todo
               - 如何在iPad上运行VSCode.md #  CSDN
+              - Docker方法部署code-server.md
               - 使用Markdown高效写作.md #  CSDN
               - 用树莓派架设云打印服务器.md #  CSDN todo
               - 用Graphviz绘制关系图.md #  CSDN todo
@@ -458,7 +459,6 @@ nav:
 # - unlist/电源设计-LDO跳变抑制能力对比测试记录.md
 # - unlist/CentOS安装Docker.md
 # - unlist/乐谱-Imagine.md
-# - unlist/Docker方式运行code-server.md
 # - unlist/T-Clock桌上小钟（旧）.md
 # - unlist/构建知识管理系统.md
 # - unlist/回归博客.md
