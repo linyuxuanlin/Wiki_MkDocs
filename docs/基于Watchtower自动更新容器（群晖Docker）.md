@@ -29,7 +29,7 @@ docker run --rm --name watchtower -v /var/run/docker.sock:/var/run/docker.sock c
 
 ## 参考与致谢
 
-- [如何优雅的使用一条命令更新群晖 docker 容器-Watchtower 教程](https://post.smzdm.com/p/awzggnqp/)
+- [如何优雅地使用一条命令更新群晖 docker 容器 - Watchtower 教程](https://post.smzdm.com/p/awzggnqp/)
 
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
