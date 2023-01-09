@@ -7,7 +7,7 @@ title: 基于 Watchtower 自动更新容器（群晖 Docker）
 
 ## 在群晖 Docker 中下载
 
-打开群晖 Docker 套件，下载 `containrrr/ watchtower` 镜像即可。
+打开群晖 Docker 套件，下载 `containrrr/watchtower` 镜像即可。
 
 ## 在任务计划中配置 Watchtower
 
