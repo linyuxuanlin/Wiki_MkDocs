@@ -11,6 +11,10 @@ VS Code:
 
 ## Docker
 
+```bash
+docker-compose pull
+```
+
 ### Code Server
 
 [Docker 方法部署 code-server](https://wiki-power.com/Docker%E6%96%B9%E5%BC%8F%E8%BF%90%E8%A1%8Ccode-server)
@@ -49,3 +53,8 @@ docker-compose up -d
 <http://SERVER_IP:9000/>
 
 - [Install Portainer Docker Compose | How-to Guide](https://bobcares.com/blog/install-portainer-docker-compose/)
+
+
+### acme.sh
+
+- [使用 acme.sh 免费申请泛域名证书和自动续约](https://blog.csdn.net/qwe134133987/article/details/128456550)
