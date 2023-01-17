@@ -54,7 +54,19 @@ docker-compose up -d
 
 - [Install Portainer Docker Compose | How-to Guide](https://bobcares.com/blog/install-portainer-docker-compose/)
 
-
 ### acme.sh
 
 - [使用 acme.sh 免费申请泛域名证书和自动续约](https://blog.csdn.net/qwe134133987/article/details/128456550)
+
+---
+
+## CasaOS
+
+https://casaos.io/
+
+```
+curl -fsSL https://get.casaos.io | sudo bash
+```
+
+## FRP
+
