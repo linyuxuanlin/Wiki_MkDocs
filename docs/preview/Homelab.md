@@ -70,3 +70,14 @@ curl -fsSL https://get.casaos.io | sudo bash
 
 ## FRP
 
+在 `/root/docker/frp` 下新建 `frps.ini`:
+
+```ini title="frps.ini"
+[common]
+bind_port = 7000
+dashboard_port = 7500
+token = 设置 token
+dashboard_user = 设置用户名
+dashboard_pwd = 设置面板密码
+```
+
