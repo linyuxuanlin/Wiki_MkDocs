@@ -81,3 +81,44 @@ dashboard_user = 设置用户名
 dashboard_pwd = 设置面板密码
 ```
 
+```yml title="docker-compose.yml"
+version: "3.7"
+
+services:
+  frps:
+    restart: always
+    container_name: frps
+    image: fatedier/frp:latest
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /root/docker/frp/frps.ini:/app/frps.ini:ro
+    command: -c /app/frps.ini
+    ports:
+      - 7000:7000
+      - 7500:7500
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+```
+
+version: "3"
+services:
+frps:
+image: fatedier/frp:latest
+container_name: frps
+volumes: - /root/docker/frp/frps.ini:/etc/frps.ini
+network_mode: "host"
+command:
+frps
+restart: always
+
+docker run --restart=always --network host -d -v /root/docker/frp/frps.ini:/etc/frp/frps.ini --name frps snowdreamtech/frps
+
+---
+
+7000
+cs http://frps.cs.wiki-power.com/ http://frp.wiki-power.com:7500/ frps
+cs http://frp.wiki-power.com:3000/ speed test
+:8384 syncing
