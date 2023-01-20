@@ -1,0 +1,12 @@
+CasaOS update
+
+```
+curl -fsSL https://raw.githubusercontent.com/IceWhaleTech/get/main/update.sh | sudo bash
+```
+
+docker run nginx?\ 
+-p 80:80 \ 
+--name nginx \
+-v /root/docker/nginx/nginx.conf:/etc/nginx/nginx.conf \
+-v /root/docker/nginx/conf.d:/etc/nginx/conf.d \
+-v /root/docker/nginx/logs:/var/log/nginx \

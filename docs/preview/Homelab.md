@@ -122,3 +122,5 @@ docker run --restart=always --network host -d -v /root/docker/frp/frps.ini:/etc/
 cs http://frps.cs.wiki-power.com/ http://frp.wiki-power.com:7500/ frps
 cs http://frp.wiki-power.com:3000/ speed test
 :8384 syncing
+
+
