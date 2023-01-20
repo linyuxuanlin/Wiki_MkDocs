@@ -4,9 +4,52 @@ CasaOS update
 curl -fsSL https://raw.githubusercontent.com/IceWhaleTech/get/main/update.sh | sudo bash
 ```
 
-docker run nginx?\ 
--p 80:80 \ 
+---
+
+https://www.docker.com/blog/how-to-use-the-official-nginx-docker-image/
+
+docker run -it --rm -d -p 8080:80 --name nginx-test nginx
+
+docker cp nginx-test:/root/docker/nginx/nginx.conf /etc/nginx/nginx.conf
+
+docker cp nginx-test:/root/docker/nginx/conf.d /etc/nginx/
+
+docker cp nginx-test:/etc/nginx/nginx.conf /root/docker/nginx/  
+docker cp nginx-test:/etc/nginx/conf.d /root/docker/nginx/
+
+docker run nginx\
+-p 80:80 \
 --name nginx \
 -v /root/docker/nginx/nginx.conf:/etc/nginx/nginx.conf \
 -v /root/docker/nginx/conf.d:/etc/nginx/conf.d \
 -v /root/docker/nginx/logs:/var/log/nginx \
+
+---
+
+Nginx Proxy Manager
+
+```
+version: '3'
+services:
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    volumes:
+      - /root/docker/nginx-proxy-manager/data:/data
+      - /root/docker/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
+```
+
+Email: admin@example.com
+Password: changeme
+
+在服务器管理页面关闭端口访问
+
+node.js安装：
+docker run -itd --name node node
+
+dns_tencentcloud_secret_id  = 231954
+dns_tencentcloud_secret_key = f07a159f90705b2661495205fe063874
