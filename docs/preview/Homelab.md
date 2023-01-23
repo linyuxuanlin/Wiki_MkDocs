@@ -60,14 +60,6 @@ docker-compose up -d
 
 ---
 
-## CasaOS
-
-https://casaos.io/
-
-```
-curl -fsSL https://get.casaos.io | sudo bash
-```
-
 ## FRP
 
 在 `/root/docker/frp` 下新建 `frps.ini`:
@@ -123,4 +115,56 @@ cs http://frps.cs.wiki-power.com/ http://frp.wiki-power.com:7500/ frps
 cs http://frp.wiki-power.com:3000/ speed test
 :8384 syncing
 
+---
 
+watchtower
+
+```docker run
+docker run -d \
+    --name watchtower \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    containrrr/watchtower
+```
+
+https://icon.casaos.io/main/all/freshrss.png
+
+```docker-compose.yml
+version: "3"
+services:
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+```
+
+---
+
+---
+
+https://www.docker.com/blog/how-to-use-the-official-nginx-docker-image/
+
+docker run -it --rm -d -p 8080:80 --name nginx-test nginx
+
+docker cp nginx-test:/root/docker/nginx/nginx.conf /etc/nginx/nginx.conf
+
+docker cp nginx-test:/root/docker/nginx/conf.d /etc/nginx/
+
+docker cp nginx-test:/etc/nginx/nginx.conf /root/docker/nginx/  
+docker cp nginx-test:/etc/nginx/conf.d /root/docker/nginx/
+
+docker run nginx\
+-p 80:80 \
+--name nginx \
+-v /root/docker/nginx/nginx.conf:/etc/nginx/nginx.conf \
+-v /root/docker/nginx/conf.d:/etc/nginx/conf.d \
+-v /root/docker/nginx/logs:/var/log/nginx \
+
+---
+
+在服务器管理页面关闭端口访问
+
+## CF 15 年证书
+
+域名迁入 CF，在 SSL/TLS - Orgin Server 开启
+
+---
