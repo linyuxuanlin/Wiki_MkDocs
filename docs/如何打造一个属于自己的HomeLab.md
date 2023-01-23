@@ -3,7 +3,7 @@ id: 如何打造一个属于自己的 HomeLab
 title: 如何打造一个属于自己的 HomeLab
 ---
 
-`[docker-dir]` 替换为本地的目录，比如我的是 `/DATA/AppData`
+注：请将下文中的 `[docker-dir]` 替换为本地的目录，比如我用的是 `/DATA/AppData`。
 
 ## CasaOS - 轻量级服务器面板
 
