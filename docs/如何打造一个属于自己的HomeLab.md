@@ -1,6 +1,6 @@
-id: 如何部署一个属于自己的 HomeLab
-title: 如何部署一个属于自己的 HomeLab
-
+---
+id: 如何打造一个属于自己的 HomeLab
+title: 如何打造一个属于自己的 HomeLab
 ---
 
 `[docker-dir]` 替换为本地的目录，比如我的是 `/DATA/AppData`

@@ -350,7 +350,7 @@ nav:
             # - 一些观点.md
       - 效率指南:
           - 高效工作:
-              - 如何部署一个属于自己的HomeLab.md
+              - 如何打造一个属于自己的HomeLab.md
               - 基于RSSHub搭建RSS生成器（群晖Docker）.md #  CSDN
               - 基于Bitwarden搭建密码管理器（群晖Docker）.md #  CSDN
               - 基于acme.sh自动申请域名证书（群晖Docker）.md #  CSDN
