@@ -1,6 +1,6 @@
 ---
-id: 使用rdp访问群晖NAS
-title: 使用 rdp 访问群晖 NAS
+id: 使用frp访问群晖NAS
+title: 使用 frp 访问群晖 NAS
 ---
 
 使用 frp 在任意网络下访问群晖 NAS。

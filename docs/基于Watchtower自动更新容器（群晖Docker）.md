@@ -19,7 +19,7 @@ title: 基于 Watchtower 自动更新容器（群晖 Docker）
 
 其中的脚本：
 
-```bash
+```shell
 docker run --rm --name watchtower -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --cleanup --run-once calibre-web freshrss code-server
 ```
 
