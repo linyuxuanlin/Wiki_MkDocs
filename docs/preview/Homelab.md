@@ -42,16 +42,12 @@ docker-compose up -d
 
 - [Install Portainer Docker Compose | How-to Guide](https://bobcares.com/blog/install-portainer-docker-compose/)
 
-
 ---
-
 
 cs http://frp.wiki-power.com:3000/ speed test
 :8384 syncing
 
 https://icon.casaos.io/main/all/freshrss.png
-
-
 
 ---
 
@@ -76,8 +72,6 @@ docker run nginx\
 -v /root/docker/nginx/logs:/var/log/nginx \
 
 ---
-
-在服务器管理页面关闭端口访问
 
 ## CF 15 年证书
 

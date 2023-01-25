@@ -3,11 +3,13 @@ id: 如何打造一个属于自己的 HomeLab
 title: 如何打造一个属于自己的 HomeLab
 ---
 
-注：请将下文中的 `[docker-dir]` 替换为本地的目录，比如我用的是 `/DATA/AppData`。
+注：下文出现的 `[docker-dir]` 替换为本地的目录，比如我用的是 `/DATA/AppData`。
 
 ---
 
 ## CasaOS - 轻量级服务器面板
+
+**主要功能**：管理面板、状态监测、文件管理、终端、Docker 容器管理、内置 Docker 应用商店。
 
 **官网**：<https://casaos.io>  
 **文档**：<https://wiki.casaos.io/en/home>
@@ -27,13 +29,15 @@ curl -fsSL https://get.casaos.io | sudo bash
 
 ## Nginx Proxy Manager - 反代证书一站式管理面板
 
+**主要功能**：图形化 nginx 管理、自动申请续签 SSL 证书。
+
 **官网**：<https://nginxproxymanager.com>  
 **文档**：<https://nginxproxymanager.com/guide>
 
 ```yml title="docker-compose.yml"
 version: "3"
 services:
-  nginx-proxy-manager:
+  app:
     image: "jc21/nginx-proxy-manager:latest"
     restart: unless-stopped
     ports:
@@ -58,16 +62,20 @@ services:
 ip addr show docker0
 ```
 
+注：对于自部署的服务，请通过反代走域名访问（80/443 端口），并在服务器管理控制台防火墙中关闭其他端口，以提高安全性。
+
 ---
 
 ## Watchtower - 自动更新 Docker 容器
+
+**主要功能**：自动更新全部 / 部分 Docker 容器。
 
 **文档**：<https://containrrr.dev/watchtower>
 
 ```yml title="docker-compose.yml"
 version: "3"
 services:
-  watchtower:
+  app:
     image: containrrr/watchtower
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -76,6 +84,8 @@ services:
 ---
 
 ## frps - 内网穿透工具（服务端）
+
+**主要功能**：通过有公网 IP 的服务器，将内网主机端口暴露到互联网。
 
 **文档**：<https://hub.docker.com/r/snowdreamtech/frps>
 
@@ -93,7 +103,7 @@ dashboard_pwd = 设置面板密码
 ```yml title="docker-compose.yml"
 version: "3"
 services:
-  frps:
+  app:
     image: "snowdreamtech/frps:latest"
     restart: always
     ports:
@@ -112,6 +122,29 @@ services:
 - [**使用 frp 访问群晖 NAS**](https://wiki-power.com/%E4%BD%BF%E7%94%A8frp%E8%AE%BF%E9%97%AE%E7%BE%A4%E6%99%96NAS/)
 
 ---
+
+## iconserver - favicon 服务器
+
+**主要功能**：抓取网站的 favicon。
+
+**文档**：<https://github.com/mat/besticon#docker>
+
+```yml title="docker-compose.yml"
+version: "3"
+services:
+  app:
+    image: "matthiasluedtke/iconserver:latest"
+    restart: always
+    ports:
+      - 8081:8080
+```
+
+**面板访问地址**：<http://127.0.0.1:8081>
+
+---
+
+## （可一键安装）Vaultwarden
+
 
 ## 参考与致谢
 
