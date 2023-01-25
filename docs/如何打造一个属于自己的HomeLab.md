@@ -3,7 +3,7 @@ id: 如何打造一个属于自己的 HomeLab
 title: 如何打造一个属于自己的 HomeLab
 ---
 
-注：下文出现的 `[docker-dir]` 替换为本地的目录，比如我用的是 `/DATA/AppData`。
+注：下文出现的 `[docker-dir]` 替换为本地的目录，比如我用的是 `/DATA/AppData`；`[port]` 替换为自定义的端口号（0~65535），比如 `1234`
 
 ---
 
@@ -37,7 +37,7 @@ curl -fsSL https://get.casaos.io | sudo bash
 ```yml title="docker-compose.yml"
 version: "3"
 services:
-  app:
+  nginx-proxy-manager:
     image: "jc21/nginx-proxy-manager:latest"
     restart: unless-stopped
     ports:
@@ -75,7 +75,7 @@ ip addr show docker0
 ```yml title="docker-compose.yml"
 version: "3"
 services:
-  app:
+  watchtower:
     image: containrrr/watchtower
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -103,7 +103,7 @@ dashboard_pwd = 设置面板密码
 ```yml title="docker-compose.yml"
 version: "3"
 services:
-  app:
+  frps:
     image: "snowdreamtech/frps:latest"
     restart: always
     ports:
@@ -132,7 +132,7 @@ services:
 ```yml title="docker-compose.yml"
 version: "3"
 services:
-  app:
+  iconserver:
     image: "matthiasluedtke/iconserver:latest"
     restart: always
     ports:
@@ -145,8 +145,29 @@ services:
 
 ## （可一键安装）Vaultwarden
 
+## webdav
+
+https://github.com/BytemarkHosting/docker-webdav
+
+```
+version: '3'
+services:
+  webdav:
+    image: derkades/webdav
+    restart: always
+    ports:
+      - "[port]:80"
+    environment:
+      AUTH_TYPE: Digest # HTTP - Digest, HTTPS - Basic
+      USERNAME: alice
+      PASSWORD: secret1234
+    volumes:
+      - [docker-dir]:/var/lib/dav
+```
 
 ## 参考与致谢
 
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
+
+---
