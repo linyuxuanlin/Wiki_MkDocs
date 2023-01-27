@@ -143,11 +143,11 @@ services:
 
 ---
 
-## （可一键安装）Vaultwarden
+## WebDAV - 跨平台文件共享协议
 
-## webdav
+**主要功能**：把数据备份到其他服务器上。
 
-https://github.com/BytemarkHosting/docker-webdav
+**文档**：<https://hub.docker.com/r/derkades/webdav>
 
 ```
 version: '3'
@@ -158,12 +158,17 @@ services:
     ports:
       - "[port]:80"
     environment:
-      AUTH_TYPE: Digest # HTTP - Digest, HTTPS - Basic
-      USERNAME: alice
-      PASSWORD: secret1234
+      USERNAME: [username]
+      PASSWORD: [password]
     volumes:
-      - [docker-dir]:/var/lib/dav
+      - [syncing-dir]:/data
 ```
+
+---
+
+## （可一键安装）Vaultwarden
+
+---
 
 ## 参考与致谢
 
