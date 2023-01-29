@@ -3,6 +3,8 @@ id: 基于Bitwarden搭建密码管理器（群晖Docker）
 title: 基于 Bitwarden 搭建密码管理器（群晖 Docker）
 ---
 
+注：由于 bitwarden_rs 镜像更名，且 Bitwarden 官方浏览器拓展与旧版本不兼容无法登录，请将下文出现的 `bitwardenrs/server` 替换为 `vaultwardenrs/server`，并确保版本不低于 1.27.0！
+
 本文介绍如何在自己的群晖上使用 Docker 对全平台密码管理服务器 Bitwarden 进行私有部署。
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210503221838.png)
@@ -67,4 +69,3 @@ title: 基于 Bitwarden 搭建密码管理器（群晖 Docker）
 
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-

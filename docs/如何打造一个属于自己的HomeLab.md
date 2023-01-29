@@ -168,6 +168,8 @@ services:
 
 ## （可一键安装）Vaultwarden
 
+注：且 Bitwarden 官方浏览器拓展与旧版本（低于 1.27.0）不兼容导致无法登录，请不要使用一键安装的版本（版本是锁定在 1.24.0），可一键安装后导出 appjson，再重新导入，改版本号后安装。
+
 ---
 
 ## 参考与致谢
@@ -176,7 +178,6 @@ services:
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 
 ---
-
 
 https://icon.casaos.io/main/all/focalboard.png
 
