@@ -196,8 +196,8 @@ nav:
               - ESD基础知识.md
               - EMC设计指南.md
               - 信号地与机壳地间的EMC设计.md
-          - Signal and Power Integrity:
-              - Basics_of_Signal_and_Power_Integrity.md
+          #- Signal and Power Integrity:
+           #   - Basics_of_Signal_and_Power_Integrity.md
           - 射频设计:
               # - 射频-基础知识.md
               - 射频-组件与系统-导线.md
