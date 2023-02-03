@@ -182,3 +182,5 @@ services:
 https://icon.casaos.io/main/all/focalboard.png
 
 docker run -it -p 8082:8000 mattermost/focalboard
+
+Websockets Support
