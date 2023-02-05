@@ -163,6 +163,16 @@ services:
 
 ---
 
+## Syncthing - 跨设备同步工具
+
+**主要功能**：把本地的文件同步至其他服务器上。
+
+**文档**：<https://hub.docker.com/r/syncthing/syncthing/>
+
+在 CasaOS 内可一键安装。
+
+---
+
 ## WebDAV - 跨平台文件共享协议
 
 **主要功能**：把数据备份到其他服务器上。
