@@ -143,6 +143,26 @@ services:
 
 ---
 
+## Focalboard - 项目管理工具
+
+**主要功能**：开源的项目管理、TODO 工具
+
+**文档**：<https://hub.docker.com/r/mattermost/focalboard>
+
+```
+version: '3'
+services:
+  webdav:
+    image: mattermost/focalboard
+    restart: always
+    ports:
+      - "[port]:8000"
+```
+
+注：如需使用反向代理，请开启 `Websockets Support`。
+
+---
+
 ## WebDAV - 跨平台文件共享协议
 
 **主要功能**：把数据备份到其他服务器上。
@@ -178,7 +198,3 @@ services:
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 
 ---
-
-https://icon.casaos.io/main/all/focalboard.png
-
-docker run -it -p 8082:8000 mattermost/focalboard
