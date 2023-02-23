@@ -41,9 +41,9 @@ services:
     image: "jc21/nginx-proxy-manager:latest"
     restart: unless-stopped
     ports:
-      - "80:80"
-      - "81:81"
-      - "443:443"
+      - "[port]:80"
+      - "[port]:81"
+      - "[port]:443"
     volumes:
       - [docker-dir]/nginx-proxy-manager/data:/data
       - [docker-dir]/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
@@ -107,8 +107,8 @@ services:
     image: "snowdreamtech/frps:latest"
     restart: always
     ports:
-      - 7000:7000
-      - 7500:7500
+      - [port]:7000
+      - [port]:7500
     volumes:
       - [docker-dir]/frp/frps.ini:/etc/frp/frps.ini
       manager/letsencrypt:/etc/letsencrypt
@@ -136,10 +136,10 @@ services:
     image: "matthiasluedtke/iconserver:latest"
     restart: always
     ports:
-      - 8081:8080
+      - [port]:8080
 ```
 
-**面板访问地址**：<http://127.0.0.1:8081>
+**面板访问地址**：<http://127.0.0.1:8080>
 
 ---
 
@@ -149,7 +149,7 @@ services:
 
 **文档**：<https://hub.docker.com/r/mattermost/focalboard>
 
-```
+```yml title="docker-compose.yml"
 version: '3'
 services:
   webdav:
@@ -159,7 +159,7 @@ services:
       - "[port]:8000"
 ```
 
-注：如需使用反向代理，请开启 `Websockets Support`。
+**备注**：如需使用反向代理，请开启 `Websockets Support`。
 
 ---
 
@@ -179,7 +179,7 @@ services:
 
 **文档**：<https://hub.docker.com/r/derkades/webdav>
 
-```
+```yml title="docker-compose.yml"
 version: '3'
 services:
   webdav:
@@ -193,6 +193,32 @@ services:
     volumes:
       - [syncing-dir]:/data
 ```
+---
+
+## Uptime Kuma
+
+**主要功能**：站点状态监控工具，监控可用状态、响应时长、证书有效期等。
+
+**官网**：<https://uptime.kuma.pet/>  
+**文档**：<https://github.com/louislam/uptime-kuma/wiki>
+
+**面板访问地址**：<http://127.0.0.1:3001>
+
+
+```yml title="docker-compose.yml"
+version: '3'
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma
+    restart: always
+    ports:
+      - "[port]:3001"
+    volumes:
+      - [docker-dir]:/app/data
+```
+
+**备注**：如需使用反向代理，请开启 `Websockets Support`。
+
 
 ---
 
@@ -207,4 +233,3 @@ services:
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 
----
