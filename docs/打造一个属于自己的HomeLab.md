@@ -242,7 +242,10 @@ services:
       - [local-port]:5230
 ```
 
-**面板访问地址**：<http://127.0.0.1:5230>
+**面板访问地址**：<http://127.0.0.1:5230>  
+**移动端 App**：[Moe Memos](https://memos.moe/)  
+
+**备注**：因用户数据以数据库格式储存，如需导入 / 导出数据，可使用 VS Code 插件 [**SQLite**](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)，下载并打开 `[local-dir]` 下的 `memos_prod.db` 即可进行增删改查、导入导出备份等操作。注意，只有在 docker 容器关闭 / 重启的时候才会更新 `memos_prod.db` 文件。
 
 ---
 
