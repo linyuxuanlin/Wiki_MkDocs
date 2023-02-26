@@ -1,6 +1,6 @@
 ---
-id: 如何打造一个属于自己的 HomeLab
-title: 如何打造一个属于自己的 HomeLab
+id: 打造一个属于自己的HomeLab
+title: 打造一个属于自己的 HomeLab 🚧
 ---
 
 注：下文出现的 `[docker-dir]` 替换为本地的目录，比如我用的是 `/DATA/AppData`；`[port]` 替换为自定义的端口号（0~65535），比如 `1234`
