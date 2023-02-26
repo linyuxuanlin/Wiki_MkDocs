@@ -3,7 +3,9 @@ id: 打造一个属于自己的HomeLab
 title: 打造一个属于自己的 HomeLab 🚧
 ---
 
-注：下文出现的 `[docker-dir]` 替换为本地的目录，比如我用的是 `/DATA/AppData`；`[port]` 替换为自定义的端口号（0~65535），比如 `1234`
+如果你有一个云服务器，觉得不跑点什么服务挺浪费的，那可以尝试部署以下的自托管应用，为生活增加点乐趣。以下服务大多基于 Docker，配合 CasaOS 图形化面板使用，便于折腾与管理。
+
+注：下文出现的 `[local-dir]` 替换为本地的目录，比如我用的是 `/DATA/AppData`；`[local-port]` 替换为自定义的端口号（0~65535），比如 `1234`
 
 ---
 
@@ -41,12 +43,12 @@ services:
     image: "jc21/nginx-proxy-manager:latest"
     restart: unless-stopped
     ports:
-      - "[port]:80"
-      - "[port]:81"
-      - "[port]:443"
+      - "[local-port]:80"
+      - "[local-port]:81"
+      - "[local-port]:443"
     volumes:
-      - [docker-dir]/nginx-proxy-manager/data:/data
-      - [docker-dir]/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
+      - [local-dir]/nginx-proxy-manager/data:/data
+      - [local-dir]/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
 ```
 
 **面板访问地址**：<http://127.0.0.1:81>
@@ -89,7 +91,7 @@ services:
 
 **文档**：<https://hub.docker.com/r/snowdreamtech/frps>
 
-在 `[docker-dir]/frp/` 下新建 `frps.ini`：
+在 `[local-dir]/frp/` 下新建 `frps.ini`：
 
 ```ini title="frps.ini"
 [common]
@@ -107,10 +109,10 @@ services:
     image: "snowdreamtech/frps:latest"
     restart: always
     ports:
-      - [port]:7000
-      - [port]:7500
+      - [local-port]:7000
+      - [local-port]:7500
     volumes:
-      - [docker-dir]/frp/frps.ini:/etc/frp/frps.ini
+      - [local-dir]/frp/frps.ini:/etc/frp/frps.ini
       manager/letsencrypt:/etc/letsencrypt
 ```
 
@@ -136,7 +138,7 @@ services:
     image: "matthiasluedtke/iconserver:latest"
     restart: always
     ports:
-      - [port]:8080
+      - [local-port]:8080
 ```
 
 **面板访问地址**：<http://127.0.0.1:8080>
@@ -150,13 +152,13 @@ services:
 **文档**：<https://hub.docker.com/r/mattermost/focalboard>
 
 ```yml title="docker-compose.yml"
-version: '3'
+version: "3"
 services:
   webdav:
     image: mattermost/focalboard
     restart: always
     ports:
-      - "[port]:8000"
+      - "[local-port]:8000"
 ```
 
 **备注**：如需使用反向代理，请开启 `Websockets Support`。
@@ -186,24 +188,22 @@ services:
     image: derkades/webdav
     restart: always
     ports:
-      - "[port]:80"
+      - "[local-port]:80"
     environment:
       USERNAME: [username]
       PASSWORD: [password]
     volumes:
       - [syncing-dir]:/data
 ```
+
 ---
 
-## Uptime Kuma
+## Uptime Kuma - 网站状态监控工具
 
-**主要功能**：站点状态监控工具，监控可用状态、响应时长、证书有效期等。
+**主要功能**：监控网站的可用状态、响应时长、证书有效期等。
 
 **官网**：<https://uptime.kuma.pet/>  
 **文档**：<https://github.com/louislam/uptime-kuma/wiki>
-
-**面板访问地址**：<http://127.0.0.1:3001>
-
 
 ```yml title="docker-compose.yml"
 version: '3'
@@ -212,13 +212,37 @@ services:
     image: louislam/uptime-kuma
     restart: always
     ports:
-      - "[port]:3001"
+      - "[local-port]:3001"
     volumes:
-      - [docker-dir]:/app/data
+      - [local-dir]:/app/data
 ```
+
+**面板访问地址**：<http://127.0.0.1:3001>
 
 **备注**：如需使用反向代理，请开启 `Websockets Support`。
 
+---
+
+## memos - 开源自托管备忘录
+
+**主要功能**：支持公开分享、Markdown 语法、iframe 嵌入、标签管理、日历视图、简单数据迁移与备份等。
+
+**官网**：<https://usememos.com/>  
+**文档**：<https://github.com/usememos/memos>
+
+```yml title="docker-compose.yml"
+version: "3.0"
+services:
+  memos:
+    image: neosmemo/memos:latest
+    container_name: memos
+    volumes:
+      - [local-dir]:/var/opt/memos
+    ports:
+      - [local-port]:5230
+```
+
+**面板访问地址**：<http://127.0.0.1:5230>
 
 ---
 
@@ -232,4 +256,3 @@ services:
 
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-
