@@ -1,6 +1,6 @@
 ---
 id: 打造一个属于自己的HomeLab
-title: 打造一个属于自己的 HomeLab 🚧
+title: 打造一个属于自己的 HomeLab
 ---
 
 如果你有一个云服务器，觉得不跑点什么服务挺浪费的，那可以尝试部署以下的自托管应用，为生活增加点乐趣。以下服务大多基于 Docker，配合 CasaOS 图形化面板使用，便于折腾与管理。
@@ -249,6 +249,10 @@ services:
 ## （可一键安装）Vaultwarden
 
 注：且 Bitwarden 官方浏览器拓展与旧版本（低于 1.27.0）不兼容导致无法登录，请不要使用一键安装的版本（版本是锁定在 1.24.0），可一键安装后导出 appjson，再重新导入，改版本号后安装。（详情：https://github.com/dani-garcia/vaultwarden/issues/3082）
+
+---
+
+🚧未完待续~
 
 ---
 
