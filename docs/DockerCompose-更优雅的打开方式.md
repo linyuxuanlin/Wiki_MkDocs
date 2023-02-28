@@ -57,6 +57,12 @@ Docker Compose 依赖 Docker Engine，所以请先确保你已经安装了 Docke
 sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 ```
 
+或通过国内镜像下载：
+
+```shell
+curl -L https://get.daocloud.io/docker/compose/releases/download/1.25.5/docker-compose-`uname -s`-`uname -m`  > /usr/local/bin/docker-compose
+```
+
 ### 授权
 
 ```shell
