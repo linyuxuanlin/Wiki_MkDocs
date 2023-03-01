@@ -248,3 +248,5 @@ volumes:
 ```
 
 注：如果 wikijs 不上 postgres，可尝试将 postgres 版本改为 10。
+
+https://docs.requarks.io/storage/git
