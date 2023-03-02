@@ -243,7 +243,7 @@ services:
 ```
 
 **面板访问地址**：<http://127.0.0.1:5230>  
-**移动端 App**：[Moe Memos](https://memos.moe/)  
+**移动端 App**：[Moe Memos](https://memos.moe/)
 
 **备注**：因用户数据以数据库格式储存，如需导入 / 导出数据，可使用 VS Code 插件 [**SQLite**](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)，下载并打开 `[local-dir]` 下的 `memos_prod.db` 即可进行增删改查、导入导出备份等操作。注意，只有在 docker 容器关闭 / 重启的时候才会更新 `memos_prod.db` 文件。
 
@@ -254,6 +254,14 @@ services:
 注：且 Bitwarden 官方浏览器拓展与旧版本（低于 1.27.0）不兼容导致无法登录，请不要使用一键安装的版本（版本是锁定在 1.24.0），可一键安装后导出 appjson，再重新导入，改版本号后安装。（详情：https://github.com/dani-garcia/vaultwarden/issues/3082）
 
 ---
+
+pg_hba.conf
+
+把最后的 md5 改为 password
+
+加端口 5432
+
+DB_HOST: 127.0.0.1
 
 🚧 未完待续~
 
