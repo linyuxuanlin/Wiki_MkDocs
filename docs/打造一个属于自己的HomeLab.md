@@ -282,3 +282,5 @@ services:
       - "5011:80"
     volumes:
       - /DATA/AppData/lsky:/var/www/html
+
+sqlite3
