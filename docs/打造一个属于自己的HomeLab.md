@@ -282,6 +282,8 @@ volumes: - /DATA/AppData/lsky:/var/www/html
 
 sqlite3
 
+
+
 ---
 
 https://docs.requarks.io/install/docker
@@ -329,3 +331,29 @@ https://docs.requarks.io/storage/git
 
 ---
 
+docker run -d --name picuploader \
+  --restart=always \
+  -e ="" \
+  -e =admin \
+  -e = \
+  -v ~ \
+  -v ~
+  -p 80:80 \
+  
+
+```yml title="docker-compose.yml"
+version: "3.0"
+services:
+  picuploader:
+    image: artxia/picuploader-docker
+    container_name: picuploader
+    environment:
+      TZ: Asia/Shanghai
+      USER: admin
+      PASSWD: admin
+    volumes:
+      - [docker-dir]/config/config-local.php:/var/www/PicUploader/config/config-local.php
+      - [docker-dir]/db/PicUploader.db:/var/www/PicUploader/db/PicUploader.db 
+    ports:
+      - [local-port]:80
+```
