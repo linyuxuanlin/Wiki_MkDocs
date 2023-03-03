@@ -286,6 +286,8 @@ sqlite3
 
 ---
 
+wiki.js
+
 https://docs.requarks.io/install/docker
 
 ```yml title="docker-compose.yml"
@@ -331,15 +333,7 @@ https://docs.requarks.io/storage/git
 
 ---
 
-docker run -d --name picuploader \
-  --restart=always \
-  -e ="" \
-  -e =admin \
-  -e = \
-  -v ~ \
-  -v ~
-  -p 80:80 \
-  
+picuploader
 
 ```yml title="docker-compose.yml"
 version: "3.0"
@@ -357,3 +351,4 @@ services:
     ports:
       - [local-port]:80
 ```
+
