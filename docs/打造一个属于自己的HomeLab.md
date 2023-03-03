@@ -272,15 +272,60 @@ DB_HOST: 127.0.0.1
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 
-
 version: '3'
 services:
-  lsky:
-    image: halcyonazure/lsky-pro-docker:latest
-    restart: unless-stopped
-    ports:
-      - "5011:80"
-    volumes:
-      - /DATA/AppData/lsky:/var/www/html
+lsky:
+image: halcyonazure/lsky-pro-docker:latest
+restart: unless-stopped
+ports: - "5011:80"
+volumes: - /DATA/AppData/lsky:/var/www/html
 
 sqlite3
+
+---
+
+https://docs.requarks.io/install/docker
+
+```yml title="docker-compose.yml"
+version: "3"
+services:
+  db:
+    image: postgres:10-alpine
+    container_name: postgres
+    environment:
+      POSTGRES_DB: wiki
+      POSTGRES_PASSWORD: wikijsrocks
+      POSTGRES_USER: wikijs
+    logging:
+      driver: "none"
+    restart: unless-stopped
+    volumes:
+      - [docker-dir]/db-data:/var/lib/postgresql/data
+
+  wiki:
+    image: ghcr.io/requarks/wiki:2
+    container_name: wikijs
+    depends_on:
+      - db
+    environment:
+      DB_TYPE: postgres
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: wikijs
+      DB_PASS: wikijsrocks
+      DB_NAME: wiki
+    restart: unless-stopped
+    ports:
+      - "[port]:3000"
+
+volumes:
+  db-data:
+```
+
+注：如果 wikijs 不上 postgres，可尝试将 postgres 版本改为 10。
+
+https://docs.requarks.io/storage/git
+
+
+---
+
