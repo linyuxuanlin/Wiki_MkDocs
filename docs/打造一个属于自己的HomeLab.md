@@ -286,7 +286,7 @@ services:
       DB_NAME: wiki
     restart: unless-stopped
     ports:
-      - "[port]:3000"
+      - "[local-port]:3000"
 
 volumes:
   db-data:
@@ -322,6 +322,57 @@ services:
       - [docker-dir]/db/PicUploader.db:/var/www/PicUploader/db/PicUploader.db
     ports:
       - [local-port]:80
+```
+
+---
+
+## Cloudreve - 网盘上传工具
+
+```shell
+mkdir -vp cloudreve/{uploads,avatar,data} \
+&& touch cloudreve/conf.ini \
+&& touch cloudreve/cloudreve.db \
+&& mkdir -p aria2/config \
+&& mkdir -p cloudreve/data/aria2 \
+&& chmod -R 777 data/aria2
+```
+
+首次启动时，会创建初始管理员账号，可以在 log 中找到。如果错过了，请删除目录下的 cloudreve.db，重新启动主程序以初始化新的管理员账户。
+
+```yml title="docker-compose.yml"
+version: "3.8"
+services:
+  cloudreve:
+    container_name: cloudreve
+    image: cloudreve/cloudreve:latest
+    restart: unless-stopped
+    ports:
+      - "[local-port]:5212"
+    volumes:
+      - temp_data:/data
+      - [local-dir]/uploads:/cloudreve/uploads
+      - [local-dir]/conf.ini:/cloudreve/conf.ini
+      - [local-dir]/cloudreve.db:/cloudreve/cloudreve.db
+      - [local-dir]/avatar:/cloudreve/avatar
+    depends_on:
+      - aria2
+  aria2:
+    container_name: aria2
+    image: p3terx/aria2-pro
+    restart: unless-stopped
+    environment:
+      - RPC_SECRET=[your_aria_rpc_token]
+      - RPC_PORT=6800
+    volumes:
+      - [local-dir]/config:/config
+      - temp_data:/data
+volumes:
+  temp_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: $PWD/data
+      o: bind
 ```
 
 ---
