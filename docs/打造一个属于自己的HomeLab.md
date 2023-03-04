@@ -269,7 +269,7 @@ services:
 
 **主要功能**：带后台编辑器和管理页面的 wiki 文档工具，包括多用户权限管理、Markdown、多种储存方式（含 git）等功能。
 
-**官网**：<https://js.wiki>
+**官网**：<https://js.wiki>  
 **文档**：<https://docs.requarks.io/install/docker>
 
 ```yml title="docker-compose.yml"
