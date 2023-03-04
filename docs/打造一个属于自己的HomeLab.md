@@ -249,46 +249,12 @@ services:
 
 ---
 
-## （可一键安装）Vaultwarden
+## Wiki.js - 功能强大的 wiki 文档工具
 
-注：且 Bitwarden 官方浏览器拓展与旧版本（低于 1.27.0）不兼容导致无法登录，请不要使用一键安装的版本（版本是锁定在 1.24.0），可一键安装后导出 appjson，再重新导入，改版本号后安装。（详情：https://github.com/dani-garcia/vaultwarden/issues/3082）
+**主要功能**：带后台编辑器和管理页面的 wiki 文档工具，包括多用户权限管理、Markdown、多种储存方式（含 git）等功能。
 
----
-
-pg_hba.conf
-
-把最后的 md5 改为 password
-
-加端口 5432
-
-DB_HOST: 127.0.0.1
-
-🚧 未完待续~
-
----
-
-## 参考与致谢
-
-> 原文地址：<https://wiki-power.com/>  
-> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-
-version: '3'
-services:
-lsky:
-image: halcyonazure/lsky-pro-docker:latest
-restart: unless-stopped
-ports: - "5011:80"
-volumes: - /DATA/AppData/lsky:/var/www/html
-
-sqlite3
-
-
-
----
-
-wiki.js
-
-https://docs.requarks.io/install/docker
+**官网**：<https://js.wiki>
+**文档**：<https://docs.requarks.io/install/docker>
 
 ```yml title="docker-compose.yml"
 version: "3"
@@ -326,14 +292,20 @@ volumes:
   db-data:
 ```
 
-注：如果 wikijs 不上 postgres，可尝试将 postgres 版本改为 10。
+**面板访问地址**：<http://127.0.0.1:3000>
 
-https://docs.requarks.io/storage/git
-
+**备注**：如果 wikijs 不上 postgres，可尝试将 postgres 版本改为 10。  
+**配置 git 仓库同步的详细教程**：<https://docs.requarks.io/storage/git>
 
 ---
 
-picuploader
+## （可一键安装）Vaultwarden
+
+注：且 Bitwarden 官方浏览器拓展与旧版本（低于 1.27.0）不兼容导致无法登录，请不要使用一键安装的版本（版本是锁定在 1.24.0），可一键安装后导出 appjson，再重新导入，改版本号后安装。（详情：https://github.com/dani-garcia/vaultwarden/issues/3082）
+
+---
+
+## PicUploader （未启用）
 
 ```yml title="docker-compose.yml"
 version: "3.0"
@@ -347,8 +319,18 @@ services:
       PASSWD: admin
     volumes:
       - [docker-dir]/config/config-local.php:/var/www/PicUploader/config/config-local.php
-      - [docker-dir]/db/PicUploader.db:/var/www/PicUploader/db/PicUploader.db 
+      - [docker-dir]/db/PicUploader.db:/var/www/PicUploader/db/PicUploader.db
     ports:
       - [local-port]:80
 ```
 
+---
+
+🚧 未完待续~
+
+---
+
+## 参考与致谢
+
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
