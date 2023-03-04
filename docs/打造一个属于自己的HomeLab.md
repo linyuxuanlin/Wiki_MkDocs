@@ -337,8 +337,6 @@ mkdir -vp cloudreve/{uploads,avatar,data} \
 && chmod -R 777 data/aria2
 ```
 
-首次启动时，会创建初始管理员账号，可以在 log 中找到。如果错过了，请删除目录下的 cloudreve.db，重新启动主程序以初始化新的管理员账户。
-
 ```yml title="docker-compose.yml"
 version: "3.8"
 services:
@@ -374,6 +372,9 @@ volumes:
       device: $PWD/data
       o: bind
 ```
+
+**备注**：首次启动时，会创建初始管理员账号，可以在 log 中找到。如果错过了，请删除目录下的 cloudreve.db，重新启动主程序以初始化新的管理员账户。  
+**推荐的文件命名规则**：`{year}{month}{day}{hour}{minute}{second}{ext}`
 
 ---
 
