@@ -326,7 +326,14 @@ services:
 
 ---
 
-## Cloudreve - 网盘上传工具
+## Cloudreve - 支持多家云存储驱动的公有云文件系统
+
+**主要功能**：支持本地、从机、七牛、阿里云 OSS、腾讯云 COS、又拍云、OneDrive、S3 兼容协议作为储存端，可对接 Aria2 离线下载，多用户，拖拽上传 / 管理，在线预览 / 编辑，WebDAV 等。经典的实例是用作个人图床 / 网盘文件管理。
+
+**官网**：<https://docs.cloudreve.org/>
+**文档**：<https://docs.cloudreve.org/getting-started/install#docker-compose>
+
+首先创建目录结构：
 
 ```shell
 mkdir -vp cloudreve/{uploads,avatar,data} \
