@@ -1,6 +1,6 @@
 ---
-id: 基于RSSHub搭建RSS生成器（群晖Docker）
-title: 基于 RSSHub 搭建 RSS 生成器（群晖 Docker）
+id: 使用RSSHub搭建RSS生成器（群晖Docker）
+title: 使用 RSSHub 搭建 RSS 生成器（群晖 Docker）
 ---
 
 在群晖 Docker 上搭建 RSSHub 服务，给各种奇奇怪怪的内容生成 RSS 订阅源。

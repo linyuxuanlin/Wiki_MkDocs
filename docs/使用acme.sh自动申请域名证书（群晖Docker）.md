@@ -1,6 +1,6 @@
 ---
-id: 基于acme.sh自动申请域名证书（群晖Docker）
-title: 基于 acme.sh 自动申请域名证书（群晖 Docker）
+id: 使用acme.sh自动申请域名证书（群晖Docker）
+title: 使用 acme.sh 自动申请域名证书（群晖 Docker）
 ---
 
 本文介绍如何使用 Docker 镜像 acme.sh，实现名证书自动申请和续签功能。

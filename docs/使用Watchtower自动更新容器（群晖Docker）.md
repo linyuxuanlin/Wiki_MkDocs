@@ -1,11 +1,11 @@
 ---
-id: 基于Watchtower自动更新容器（群晖Docker）
-title: 基于 Watchtower 自动更新容器（群晖 Docker）
+id: 使用Watchtower自动更新容器（群晖Docker）
+title: 使用 Watchtower 自动更新容器（群晖 Docker）
 ---
 
 使用 Watchtower 自动更新群晖 Docker 上的容器。
 
-## 在群晖 Docker 中下载
+## 在群晖 Docker 应用中下载镜像
 
 打开群晖 Docker 套件，下载 `containrrr/watchtower` 镜像即可。
 
