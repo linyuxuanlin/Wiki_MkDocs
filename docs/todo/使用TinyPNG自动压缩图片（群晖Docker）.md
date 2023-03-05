@@ -1,13 +1,13 @@
 ---
-id: 使用Watchtower自动更新容器（群晖Docker）
-title: 使用 Watchtower 自动更新容器（群晖 Docker）
+id: 使用TinyPNG自动更新容器（群晖Docker）
+title: 使用 TinyPNG 自动更新容器（群晖 Docker）
 ---
 
-使用 Watchtower 自动更新群晖 Docker 上的容器。
+使用 TinyPNG 自动高质量压缩本地图片。
 
 ## 在群晖 Docker 应用中下载镜像
 
-打开群晖 Docker 套件，下载 `containrrr/watchtower` 镜像即可。
+打开群晖 Docker 套件，下载 `stilleshan/tinypng` 镜像即可。
 
 ## 在任务计划中配置 Watchtower
 
@@ -21,9 +21,16 @@ title: 使用 Watchtower 自动更新容器（群晖 Docker）
 
 ```shell
 docker run --rm --name watchtower -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --cleanup --run-once calibre-web freshrss code-server
+
+docker run --rm -v /your/pic/path:/pic stilleshan/tinypng # 修改 /your/pic/path 为需要压缩的图片目录
 ```
 
-注意，脚本的最后 `calibre-web freshrss code-server` 是需要更新的容器名，请替换为你需要更新的；或者留空表示更新全部容器。
+docker run --rm -v /volume1/wiki-media/img:/pic stilleshan/tinypng
+
+
+
+
+注意，脚本的最后 `calibre-web freshrss code-server` 是需要更新的容器名，请替换为你需要更新的。
 
 保存，运行脚本即可实现 Docker 容器批量定时更新。
 
