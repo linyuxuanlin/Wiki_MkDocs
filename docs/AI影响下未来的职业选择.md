@@ -1,6 +1,6 @@
 ---
-id: 谈谈未来的职业选择
-title: 谈谈未来的职业选择
+id: AI影响下未来的职业选择
+title: AI 影响下未来的职业选择
 ---
 
 ## 背景
@@ -51,8 +51,5 @@ title: 谈谈未来的职业选择
 - [十年內將會消失的職業，你如果正在做這些工作最好盡快轉行](https://www.youtube.com/watch?v=Mshz9DxQLbE&list=PLxaBD9eBZcGTZaMZ-3HN5zXFQ06FDOjzJ&index=2&t=0s)
 - [The future of employment](http://sep4u.gr/wp-content/uploads/The_Future_of_Employment_ox_2013.pdf)
 
-
-
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-
