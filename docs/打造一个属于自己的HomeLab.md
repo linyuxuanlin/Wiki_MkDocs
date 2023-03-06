@@ -332,9 +332,9 @@ services:
     image: halcyonazure/lsky-pro-docker:latest
     restart: unless-stopped
     ports:
-      - "5011:80"
+      - "[local-port]:80"
     volumes:
-      - /DATA/AppData/lsky:/var/www/html
+      - [local-dir]:/var/www/html
 
 sqlite3
 ```
