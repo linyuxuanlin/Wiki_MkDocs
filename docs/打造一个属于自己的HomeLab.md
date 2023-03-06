@@ -323,6 +323,24 @@ volumes:
 
 ---
 
+## lsky-pro
+
+```yml title="docker-compose.yml"
+version: '3'
+services:
+  lsky:
+    image: halcyonazure/lsky-pro-docker:latest
+    restart: unless-stopped
+    ports:
+      - "5011:80"
+    volumes:
+      - /DATA/AppData/lsky:/var/www/html
+
+sqlite3
+```
+
+---
+
 ## Cloudreve - 支持多家云存储驱动的公有云文件系统
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304195423.png)
