@@ -2,7 +2,9 @@
 
 A Visual Basic project is organized around three primary types of files: **Forms**, **Modules**, and **Classes**. Forms normally contain interactive UI (i.e. TextBox, Button, Picture).
 
-## Data Types
+## C Language Concepts in Visual Basic
+
+### Data Types
 
 The Visual Basic data types are:
 
@@ -21,5 +23,18 @@ The Visual Basic data types are:
 | String (variable-length)                 | 10 bytes + string length | `0` to approximately `2 billion`                                                                                                                                                                                 |
 | String (fixed-length)                    | Length of string         | `1` to approximately `65,400`                                                                                                                                                                                    |
 | Variant                                  | 16 bytes                 | /                                                                                                                                                                                                                |
+
+Compared to C lang, VB lacks the concept of `unsigned int` and `unsigned long`.
+
+### The Variant Type
+
+**Variant** type is capable of holding any of the specific data types, including arrays.
+
+### The Boolean Type
+
+**Booleans** can be assigned or tested for the pre-defined values `True` and `False`. `False` is defined to have the value `0`, and `True` is defined to be a unary Not False, that is, `-1`.
+
+VB evaluates logical expressions according to the same rule as C, non-
+zero is `True` and zero is `False`. But **never** get in the habit of thinking that `True` has the value `1`.
 
 
