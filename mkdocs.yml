@@ -43,7 +43,7 @@ theme:
     - search.suggest # 搜索推荐
     #- search.highlight
   icon:
-    repo: fontawesome/brands/git-alt
+    repo: material/github
     #edit: material/pencil
 
 plugins:
