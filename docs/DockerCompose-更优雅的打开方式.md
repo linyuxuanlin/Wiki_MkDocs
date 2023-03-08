@@ -114,14 +114,15 @@ services:
 
 一般来说，`yaml` 文件在 Docker 项目简介中会提供。
 
+## 更多技巧
+
+访问容器：`docker exec -it [compose-name] /bin/bash`
+
 ## 参考与致谢
 
 - [使用 docker-compose 替代 docker run](https://beginor.github.io/2017/06/08/use-compose-instead-of-run.html)
 - [Install Docker Compose](https://docs.docker.com/compose/install/#prerequisites)
 - [Docker-Compose 模板文件参数详解](https://blog.51cto.com/14154700/2466054)
 
-
-
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-
