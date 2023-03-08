@@ -3,7 +3,7 @@ site_description: ATE, hardware, STM32, Arduino, NAS, software, blog
 site_url: https://wiki-power.com/
 repo_url: https://github.com/linyuxuanlin/Wiki_MkDocs
 remote_name: linyuxuanlin/Wiki_MkDocs
-edit_uri: "edit/main/docs/" #
+edit_uri: edit/main/docs/ #
 
 theme:
   name: material
