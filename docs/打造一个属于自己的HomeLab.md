@@ -402,11 +402,14 @@ volumes:
 
 ---
 
-🚧 未完待续~
+## FreshRSS - 自托管 RSS 聚合器
 
----
+**官网**：<https://freshrss.org>  
+**文档**：<https://github.com/FreshRSS/FreshRSS/tree/edge/Docker>
 
-## FreshRSS
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230310205330.png)
+
+**主要功能**：自带网页阅读，导入 OPML 订阅源，API 移动端阅读，插件生态齐全。
 
 ```yml title="docker-compose.yml"
 version: "2.4"
@@ -428,6 +431,11 @@ services:
       TZ: Asia/Shanghai
       CRON_MIN: '*/5'
 ```
+
+**面板访问地址**：<http://127.0.0.1:80>  
+**移动端 App**：FeedMe (Android), NetNewsWire (iOS)
+
+---
 
 🚧 未完待续~
 
