@@ -406,6 +406,33 @@ volumes:
 
 ---
 
+## FreshRSS
+
+```yml title="docker-compose.yml"
+version: "2.4"
+services:
+  freshrss:
+    image: freshrss/freshrss
+    container_name: freshrss
+    hostname: freshrss
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: 10m
+    ports:
+      - "[local-port]:80"
+    volumes:
+      - [local-dir]/data:/var/www/FreshRSS/data
+      - [local-dir]/extensions:/var/www/FreshRSS/extensions
+    environment:
+      TZ: Asia/Shanghai
+      CRON_MIN: '*/5'
+```
+
+🚧 未完待续~
+
+---
+
 ## 参考与致谢
 
 > 原文地址：<https://wiki-power.com/>  
