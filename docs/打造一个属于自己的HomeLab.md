@@ -465,6 +465,15 @@ services:
 
 默认账户密码： `admin` 
 
+RDP
+
+SSH
+
+VNC
+
+Telnet
+
+Kubernetes
 
 ---
 
