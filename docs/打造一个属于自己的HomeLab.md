@@ -22,7 +22,7 @@ title: 打造一个属于自己的 HomeLab
 curl -fsSL https://get.casaos.io | sudo bash
 ```
 
-**面板访问地址**：<http://127.0.0.1:80>
+**默认面板访问地址**：<http://127.0.0.1:80>
 
 **备注**：
 
@@ -55,7 +55,7 @@ services:
       - [local-dir]/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
 ```
 
-**面板访问地址**：<http://127.0.0.1:81>
+**默认面板访问地址**：<http://127.0.0.1:81>
 
 **初始账户密码**：
 
@@ -122,7 +122,7 @@ services:
       manager/letsencrypt:/etc/letsencrypt
 ```
 
-**面板访问地址**：<http://127.0.0.1:7500>
+**默认面板访问地址**：<http://127.0.0.1:7500>
 
 **参考文档**：
 
@@ -148,8 +148,6 @@ services:
     ports:
       - [local-port]:8080
 ```
-
-**面板访问地址**：<http://127.0.0.1:8080>
 
 ---
 
@@ -229,8 +227,6 @@ services:
       - [local-dir]:/app/data
 ```
 
-**面板访问地址**：<http://127.0.0.1:3001>
-
 **备注**：如需使用反向代理，请开启 `Websockets Support`。
 
 ---
@@ -256,7 +252,6 @@ services:
       - [local-port]:5230
 ```
 
-**面板访问地址**：<http://127.0.0.1:5230>  
 **移动端 App**：[Moe Memos](https://memos.moe/)
 
 **备注**：因用户数据以数据库格式储存，如需导入 / 导出数据，可使用 VS Code 插件 [**SQLite**](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)，下载并打开 `[local-dir]` 下的 `memos_prod.db` 即可进行增删改查、导入导出备份等操作。注意，只有在 docker 容器关闭 / 重启的时候才会更新 `memos_prod.db` 文件。
@@ -307,8 +302,6 @@ services:
 volumes:
   db-data:
 ```
-
-**面板访问地址**：<http://127.0.0.1:3000>
 
 **备注**：如果 wikijs 不上 postgres，可尝试将 postgres 版本改为 10。  
 **配置 git 仓库同步的详细教程**：<https://docs.requarks.io/storage/git>
@@ -431,13 +424,13 @@ services:
       CRON_MIN: '*/5'
 ```
 
-**面板访问地址**：<http://127.0.0.1:80>  
 **移动端 App**：FeedMe (Android), NetNewsWire (iOS)
 
 ---
 
 ## Next Terminal - 堡垒机
 
+是集成了 Apache Guacamole 无客户端的远程桌面网关的堡垒机（也称跳板机）方案，能直接通过 web 访问内网资源，跨平台兼容性佳，协议支持 RDP、SSH、VNC、Telnet、Kubernetes。支持 MFA 多因子认证登录，也有审计录像功能和其他记录。
 
 ```yml title="docker-compose.yml"
 version: '3.3'
@@ -463,17 +456,7 @@ services:
       always
 ```
 
-默认账户密码： `admin` 
-
-RDP
-
-SSH
-
-VNC
-
-Telnet
-
-Kubernetes
+**默认账户密码**： `admin`
 
 ---
 
