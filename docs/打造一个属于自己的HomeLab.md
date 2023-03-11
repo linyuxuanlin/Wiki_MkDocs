@@ -336,7 +336,6 @@ services:
     volumes:
       - [local-dir]:/var/www/html
 
-sqlite3
 ```
 
 ---
@@ -434,6 +433,38 @@ services:
 
 **面板访问地址**：<http://127.0.0.1:80>  
 **移动端 App**：FeedMe (Android), NetNewsWire (iOS)
+
+---
+
+## Next Terminal - 堡垒机
+
+
+```yml title="docker-compose.yml"
+version: '3.3'
+services:
+  guacd:
+    image: dushixiang/guacd:latest
+    volumes:
+      - [local-dir]/data:/usr/local/next-terminal/data
+    restart:
+          always
+  next-terminal:
+    image: dushixiang/next-terminal:latest
+    environment:
+      DB: sqlite
+      GUACD_HOSTNAME: guacd
+      GUACD_PORT: 4822
+    ports:
+      - "[local-port]:8088"
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - [local-dir]/data:/usr/local/next-terminal/data
+    restart:
+      always
+```
+
+默认账户密码： `admin` 
+
 
 ---
 
