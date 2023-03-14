@@ -466,6 +466,31 @@ services:
 
 ---
 
+## Podgrab - A self-hosted podcast manager to download episodes as soon as they become live
+
+```yml title="docker-compose.yml"
+version: "2.1"
+services:
+  podgrab:
+    image: akhilrex/podgrab
+    container_name: podgrab
+    environment:
+      - CHECK_FREQUENCY=240
+     # - PASSWORD=password     ## Uncomment to enable basic authentication, username = podgrab
+    volumes:
+      - /path/to/config:/config
+      - /path/to/data:/assets
+    ports:
+      - 8080:8080
+    restart: unless-stopped
+```
+
+
+
+
+
+---
+
 🚧 未完待续~
 
 ---
