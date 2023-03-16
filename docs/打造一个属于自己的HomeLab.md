@@ -466,7 +466,16 @@ services:
 
 ---
 
-## Podgrab - A self-hosted podcast manager to download episodes as soon as they become live
+## Podgrab - 自托管播客管理器（RSS）
+
+Podgrab 是一个自托管的播客管理器 / 下载器 / 存档工具，可通过 RSS 或内置搜索订阅播客，在播客节目上线后立即下载，web 带内置的播放器。
+
+**官网**：<https://github.com/akhilrex/podgrab>  
+**文档**：<https://hub.docker.com/r/akhilrex/podgrab/>
+
+A self-hosted podcast manager/downloader/archiver tool to download podcast episodes as soon as they become live with an integrated player.
+
+一个自我托管的/下载器/存档工具，可在播客节目上线后立即下载，并带有一个集成播放器。
 
 ```yml title="docker-compose.yml"
 version: "2.1"
@@ -476,7 +485,7 @@ services:
     container_name: podgrab
     environment:
       - CHECK_FREQUENCY=240
-     # - PASSWORD=password     ## Uncomment to enable basic authentication, username = podgrab
+      # - PASSWORD=password     ## Uncomment to enable basic authentication, username = podgrab
     volumes:
       - /path/to/config:/config
       - /path/to/data:/assets
@@ -484,10 +493,6 @@ services:
       - 8080:8080
     restart: unless-stopped
 ```
-
-
-
-
 
 ---
 
