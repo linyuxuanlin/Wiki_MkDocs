@@ -472,7 +472,6 @@ Podgrab 是一个自托管的播客管理器 / 下载器 / 存档工具，可通
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230316131448.png)
 
-
 **官网**：<https://github.com/akhilrex/podgrab>  
 **文档**：<https://hub.docker.com/r/akhilrex/podgrab/>
 
