@@ -181,6 +181,27 @@ services:
 
 在 CasaOS 内可一键安装。
 
+```yml title="docker-compose.yml"
+version: "3"
+services:
+  syncthing:
+    image: syncthing/syncthing
+    container_name: syncthing
+    hostname: my-syncthing
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - [DATA]:/DATA
+      - [local-dir]/config:/config
+    ports:
+      - [local-port]:8384 # Web UI
+      - 22000:22000/tcp # TCP file transfers
+      - 22000:22000/udp # QUIC file transfers
+      - 21027:21027/udp # Receive local discovery broadcasts
+    restart: unless-stopped
+```
+
 ---
 
 ## WebDAV - 跨平台文件共享协议
