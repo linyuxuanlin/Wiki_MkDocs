@@ -134,7 +134,9 @@ Dim y(100 To 200) As String 'legal index values range from 100 to 200
 We can declare an array to have as many dimensions. For example, a
 declaration for a 2 dimension array of Longs:
 
-
 ```VBScript
 Dim x(1 To 5, 1 To 10) As Long
 ```
+
+#### Variant Arrays
+
