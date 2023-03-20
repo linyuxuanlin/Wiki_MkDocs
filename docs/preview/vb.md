@@ -32,9 +32,38 @@ Compared to C lang, VB lacks the concept of `unsigned int` and `unsigned long`.
 
 ### The Boolean Type
 
-**Booleans** can be assigned or tested for the pre-defined values `True` and `False`. `False` is defined to have the value `0`, and `True` is defined to be a unary Not False, that is, `-1`.
+**Booleans** can be assigned or tested for the pre-defined values `True` and `False`. `False` is defined to have the value `0`, and `True` is defined to be a unary Not False that is `-1`.
 
 VB evaluates logical expressions according to the same rule as C, non-
 zero is `True` and zero is `False`. But **never** get in the habit of thinking that `True` has the value `1`.
 
+### The Object Type and Pointers
 
+**Object** type is frequently used in VB program.
+
+The **pointer** is not explicitly present in the VB language. But in fact, variables whose type is Object are, references (a.k.a. pointers) to objects.
+
+Both will be introduce in the following chapters.
+
+### Type Conversion and Casting
+
+There is a rich set of type conversion functions for the
+fundamental types in VB:
+
+- `CByte` : Convert to a byte
+- `CCur` : Convert to a currency
+- `CDate` : Convert to a date
+- `CDbl` : Convert to a double
+- `CDec` : Convert to a decimal
+- `CInt` : Convert to an integer
+- `CLng` : Convert to a long
+- `CSng` : Convert to a single
+- `CStr` : Convert to a string
+- `CVar` : Convert to a variant
+
+Also there are several additional math functions that manipulate numbers:
+
+- `Fix` : Truncate
+- `Int` : Truncate, with different handling of negative numbers than Fix
+- `Round` : Round, to a selectable number of decimal places
+- `\`: Perform integer division. (The regular division operator performs a floating point division)

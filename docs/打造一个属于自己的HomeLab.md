@@ -523,6 +523,50 @@ services:
 
 ---
 
+## Todo - 简单的待办事项
+
+```yml title="docker-compose.yml"
+version: "3"
+
+services:
+  todo:
+    image: prologic/todo
+    container_name: todo
+    restart: always
+    ports:
+      - 5015:8000
+    volumes:
+      - /DATA/AppData/todo:/data
+    environment:
+      - THEME=dracula
+```
+
+---
+
+## Homebox - 家庭库存管理系统
+
+doc: https://hay-kot.github.io/homebox/quick-start/
+
+```yml title="docker-compose.yml"
+version: "3.4"
+
+services:
+  homebox:
+    image: ghcr.io/hay-kot/homebox:latest
+    container_name: homebox
+    restart: always
+    environment:
+      - HBOX_LOG_LEVEL=info
+      - HBOX_LOG_FORMAT=text
+      - HBOX_WEB_MAX_UPLOAD_SIZE=10
+    volumes:
+      - /DATA/AppData/homebox:/data/
+    ports:
+      - 5016:7745
+```
+
+---
+
 ## 参考与致谢
 
 - [Docker Proxy](https://dockerproxy.com/)
