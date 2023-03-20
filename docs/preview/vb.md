@@ -76,7 +76,7 @@ We can also try out type conversion in the IDE's Immediate Window before writing
 
 Variable declarations are **optional** in VB. But we can prevent VB from auto-declaring variant variables if we don't like this feature, by adding the following construct at the top of every file:
 
-```vb
+```VBScript
 Option Explicit
 ```
 
@@ -84,7 +84,7 @@ It forces VB to complain about variables that haven't been declared. We can also
 
 Variables are declared with the **Dim** (dimension) keyword as follows:
 
-```vb
+```VBScript
 Dim x As Integer
 ```
 
@@ -98,7 +98,7 @@ Variables which declared at the top of a module are **global** to that module, a
 
 We can create project-global variables by using the **Public** keyword rather than Dim when you declare the variable. And in contrast, we can create a module scope variable by using the **Private** keyword.
 
-```vb
+```VBScript
 Public g_var As Integer
 Private p_var As Integer
 ```
@@ -111,7 +111,7 @@ In summary, we can use Public and Private for all module-level declarations, and
 
 VB allows static/dynamic arrays of any type and with any number of dimensions. Arrays can be resized at runtime. The syntax of for declaring an unsized array is as follows:
 
-```vb
+```VBScript
 Dim x() As Long 'undimensioned
 ```
 
