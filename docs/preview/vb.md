@@ -109,3 +109,10 @@ In summary, we can use Public and Private for all module-level declarations, and
 
 ### Arrays
 
+VB allows static/dynamic arrays of any type and with any number of dimensions. Arrays can be resized at runtime. The syntax of for declaring an unsized array is as follows:
+
+```vb
+Dim x() As Long 'undimensioned
+```
+
+Sizing and resizing of the array can be done at runtime with the **ReDim** function. We can ReDim with the `Preserve` attribute in order to preserve the array content while making it larger. The `Erase` statement can be used to clear a fixed array of any type, also release storage of dynamically ReDim'd arrays.
