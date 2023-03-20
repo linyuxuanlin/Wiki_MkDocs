@@ -109,10 +109,32 @@ In summary, we can use Public and Private for all module-level declarations, and
 
 ### Arrays
 
-VB allows static/dynamic arrays of any type and with any number of dimensions. Arrays can be resized at runtime. The syntax of for declaring an unsized array is as follows:
+VB allows static/dynamic arrays of any type and with any number of dimensions. Arrays can be resized at runtime.
+
+#### Declaration of Arrays
+
+The syntax of for declaring an unsized array is as follows:
 
 ```VBScript
 Dim x() As Long 'undimensioned
 ```
 
 Sizing and resizing of the array can be done at runtime with the **ReDim** function. We can ReDim with the `Preserve` attribute in order to preserve the array content while making it larger. The `Erase` statement can be used to clear a fixed array of any type, also release storage of dynamically ReDim'd arrays.
+
+VB has a flexible syntax for describing how we want to index an array:
+
+```VBScript
+Dim x(5) As Long 'dimension an array of 6 elements
+Dim x(1 To 5) As Long '5 elements from 1 to 5, more prefer
+Dim y(100 To 200) As String 'legal index values range from 100 to 200
+```
+
+#### Multiple Dimension Arrays
+
+We can declare an array to have as many dimensions. For example, a
+declaration for a 2 dimension array of Longs:
+
+
+```VBScript
+Dim x(1 To 5, 1 To 10) As Long
+```
