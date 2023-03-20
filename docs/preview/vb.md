@@ -26,18 +26,18 @@ The Visual Basic data types are:
 
 Compared to C lang, VB lacks the concept of `unsigned int` and `unsigned long`.
 
-### The Variant Type
+#### The Variant Type
 
 **Variant** type is capable of holding any of the specific data types, including arrays.
 
-### The Boolean Type
+#### The Boolean Type
 
 **Booleans** can be assigned or tested for the pre-defined values `True` and `False`. `False` is defined to have the value `0`, and `True` is defined to be a unary Not False that is `-1`.
 
 VB evaluates logical expressions according to the same rule as C, non-
 zero is `True` and zero is `False`. But **never** get in the habit of thinking that `True` has the value `1`.
 
-### The Object Type and Pointers
+#### The Object Type and Pointers
 
 **Object** type is frequently used in VB program.
 
@@ -45,7 +45,7 @@ The **pointer** is not explicitly present in the VB language. But in fact, varia
 
 Both will be introduce in the following chapters.
 
-### Type Conversion and Casting
+#### Type Conversion and Casting
 
 There is a rich set of type conversion functions for the
 fundamental types in VB:
@@ -67,3 +67,45 @@ Also there are several additional math functions that manipulate numbers:
 - `Int` : Truncate, with different handling of negative numbers than Fix
 - `Round` : Round, to a selectable number of decimal places
 - `\`: Perform integer division. (The regular division operator performs a floating point division)
+
+We can also try out type conversion in the IDE's Immediate Window before writing into program, which may avoid some mismatch errors.
+
+### Variables
+
+#### Variable Declaration
+
+Variable declarations are **optional** in VB. But we can prevent VB from auto-declaring variant variables if we don't like this feature, by adding the following construct at the top of every file:
+
+```vb
+Option Explicit
+```
+
+It forces VB to complain about variables that haven't been declared. We can also set the value to `True` in `Tools` - `Options` - `Editor` - `Require Variable Declaration` to cause `Option Explicit` to be inserted automatically in new files.
+
+Variables are declared with the **Dim** (dimension) keyword as follows:
+
+```vb
+Dim x As Integer
+```
+
+Noted that module-level variables are suggested to declare at the top of the module. The feature of `Option Explicit` only requires you to dim the variable, but does not require the type (and the type is assumed to be variant).
+
+And be careful that VB does not have a way to declare multiple variables of the same type. Each variable must be separately declared and typed. For example, `Dim x, y As Integer` will creates a variant variable `x` and an integer variable `y`.
+
+#### Variable Scope
+
+Variables which declared at the top of a module are **global** to that module, also **global** to the program. Variables which declared in the body of a function/subroutine, are **private** to that procedure.
+
+We can create project-global variables by using the **Public** keyword rather than Dim when you declare the variable. And in contrast, we can create a module scope variable by using the **Private** keyword.
+
+```vb
+Public g_var As Integer
+Private p_var As Integer
+```
+
+Noted that **Dim** can be omitted in both usage. The `extern` keyword has no equivalent in VB, rather in C lang.
+
+In summary, we can use Public and Private for all module-level declarations, and use Dim for all procedure-level declarations.
+
+### Arrays
+
