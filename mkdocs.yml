@@ -320,7 +320,7 @@ nav:
               - Git学习笔记.md
   - 效率 & 生活:
       - 效率指南:
-          - 高效工作:
+          - HomeLab & 群晖 NAS:
               - 打造一个属于自己的HomeLab.md
               - 使用RSSHub搭建RSS生成器（群晖Docker）.md #  CSDN
               - 使用Bitwarden搭建密码管理器（群晖Docker）.md #  CSDN
@@ -329,6 +329,9 @@ nav:
               - 使用Watchtower自动更新容器（群晖Docker）.md
               - 如何实现外网RDP远控（frp）.md #  CSDN
               - 使用frp访问群晖NAS.md #  CSDN
+              - 如何在iPad上运行VSCode.md #  CSDN
+              - Docker方法部署code-server.md
+          - 技术篇:
               - 如何用Markdown写一份简历.md #  CSDN
               - 使用Rclone同步网盘数据.md
               - 为什么你需要一个知识库.md #  CSDN
@@ -341,8 +344,6 @@ nav:
               - Personal_Onboarding_Workflow_(Windows).md
               - Docusaurus极简部署指南.md #  CSDN todo
               - Hugo极简搭建指南.md #  CSDN todo
-              - 如何在iPad上运行VSCode.md #  CSDN
-              - Docker方法部署code-server.md
               - 使用Markdown高效写作.md #  CSDN
               - 用树莓派架设云打印服务器.md #  CSDN todo
               - 用Graphviz绘制关系图.md #  CSDN todo
