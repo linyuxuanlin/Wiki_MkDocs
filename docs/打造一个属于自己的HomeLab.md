@@ -573,3 +573,18 @@ services:
 
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
+
+---
+
+## Stirling-PDF
+
+```yml title="docker-compose.yml"
+version: "3.3"
+services:
+  s-pdf:
+    ports:
+      - "[local-port]:8080"
+    image: frooodle/s-pdf
+```
+
+<https://laosu.ml/2023/02/06/PDF%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7%E7%AE%B1Stirling-PDF/>
