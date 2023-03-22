@@ -7,6 +7,8 @@ title: 打造一个属于自己的 HomeLab
 
 注：下文出现的 `[local-dir]` 替换为本地的目录，比如我用的是 `/DATA/AppData/xxx`；`[local-port]` 替换为自定义的端口号（0~65535），比如 `1234`。
 
+---
+
 ## CasaOS - 轻量级服务器面板
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304192541.png)
@@ -26,6 +28,8 @@ curl -fsSL https://get.casaos.io | sudo bash
 
 - 官方推荐系统是 Debian 11，更多支持的架构与系统详见文档。
 - 登陆后把默认的 80 端口改掉，留给 Nginx Proxy Manager 用。
+
+---
 
 ## Nginx Proxy Manager - 反代证书一站式管理面板
 
@@ -66,6 +70,8 @@ ip addr show docker0
 
 注：对于自部署的服务，请通过反代走域名访问（80/443 端口），并在服务器管理控制台防火墙中关闭其他端口，以提高安全性。
 
+---
+
 ## Watchtower - 自动监视更新 Docker 容器的工具
 
 **主要功能**：自动更新全部 / 部分 Docker 容器。
@@ -80,6 +86,8 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 ```
+
+---
 
 ## frps - 内网穿透工具（服务端）
 
@@ -121,6 +129,8 @@ services:
 - [**如何实现外网 RDP 远控（frp）**](https://wiki-power.com/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91RDP%E8%BF%9C%E6%8E%A7%EF%BC%88frp%EF%BC%89/)
 - [**使用 frp 访问群晖 NAS**](https://wiki-power.com/%E4%BD%BF%E7%94%A8frp%E8%AE%BF%E9%97%AE%E7%BE%A4%E6%99%96NAS/)
 
+---
+
 ## iconserver - favicon 服务器
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304195157.png)
@@ -139,6 +149,8 @@ services:
       - [local-port]:8080
 ```
 
+---
+
 ## Focalboard - 项目管理工具
 
 **主要功能**：开源的项目管理、TODO 工具
@@ -156,6 +168,8 @@ services:
 ```
 
 **备注**：如需使用反向代理，请开启 `Websockets Support`。
+
+---
 
 ## Syncthing - 跨设备同步工具
 
@@ -188,6 +202,8 @@ services:
     restart: unless-stopped
 ```
 
+---
+
 ## WebDAV - 跨平台文件共享协议
 
 **主要功能**：把数据备份到其他服务器上。
@@ -208,6 +224,8 @@ services:
     volumes:
       - [syncing-dir]:/data
 ```
+
+---
 
 ## Uptime Kuma - 网站状态监控工具
 
@@ -231,6 +249,8 @@ services:
 ```
 
 **备注**：如需使用反向代理，请开启 `Websockets Support`。
+
+---
 
 ## memos - 开源的自托管备忘录
 
@@ -256,6 +276,8 @@ services:
 **移动端 App**：[Moe Memos](https://memos.moe/)
 
 **备注**：因用户数据以数据库格式储存，如需导入 / 导出数据，可使用 VS Code 插件 [**SQLite**](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)，下载并打开 `[local-dir]` 下的 `memos_prod.db` 即可进行增删改查、导入导出备份等操作。注意，只有在 docker 容器关闭 / 重启的时候才会更新 `memos_prod.db` 文件。
+
+---
 
 ## Wiki.js - 功能强大的 wiki 文档工具
 
@@ -305,11 +327,15 @@ volumes:
 **备注**：如果 wikijs 不上 postgres，可尝试将 postgres 版本改为 10。  
 **配置 git 仓库同步的详细教程**：<https://docs.requarks.io/storage/git>
 
+---
+
 ## Vaultwarden - 密码管理器（可在 CasaOS 内一键安装）
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304195414.jpg)
 
 **备注**：因 Bitwarden 官方浏览器拓展与旧版本（低于 1.27.0）不兼容导致无法登录，请勿直接使用一键安装的版本（版本默认为 1.24.0）。需要一键安装后手动导出 appjson，再重新导入、改版本号后安装。（issue 详见：https://github.com/dani-garcia/vaultwarden/issues/3082）
+
+---
 
 ## lsky-pro
 
@@ -325,6 +351,8 @@ services:
       - [local-dir]:/var/www/html
 
 ```
+
+---
 
 ## Cloudreve - 支持多家云存储驱动的公有云文件系统
 
@@ -385,6 +413,8 @@ volumes:
 **备注**：首次启动时，会创建初始管理员账号，可以在 log 中找到。如果错过了，请删除目录下的 cloudreve.db，重新启动主程序以初始化新的管理员账户。  
 **推荐的文件命名规则**：`{year}{month}{day}{hour}{minute}{second}{ext}`
 
+---
+
 ## FreshRSS - 自托管 RSS 聚合器
 
 **官网**：<https://freshrss.org>  
@@ -416,6 +446,8 @@ services:
 ```
 
 **移动端 App**：FeedMe (Android), NetNewsWire (iOS)
+
+---
 
 ## Next Terminal - 堡垒机
 
@@ -453,6 +485,8 @@ services:
 **默认账户密码**： `admin`  
 **参考文章**：[Next Terminal | 开源 轻量 简单的堡垒机](https://blog.samliu.tech/2022/07/22/next-terminal-%E5%BC%80%E6%BA%90-%E8%BD%BB%E9%87%8F-%E7%AE%80%E5%8D%95%E7%9A%84%E5%A0%A1%E5%9E%92%E6%9C%BA/?utm_source=rss&utm_medium=rss&utm_campaign=next-terminal-%25e5%25bc%2580%25e6%25ba%2590-%25e8%25bd%25bb%25e9%2587%258f-%25e7%25ae%2580%25e5%258d%2595%25e7%259a%2584%25e5%25a0%25a1%25e5%259e%2592%25e6%259c%25ba)
 
+---
+
 ## Podgrab - 自托管播客管理器
 
 Podgrab 是一个自托管的播客管理器 / 下载器 / 存档工具，可通过 RSS 或内置搜索订阅播客，在播客节目上线后立即下载，web 带内置的播放器。
@@ -483,7 +517,11 @@ services:
     restart: unless-stopped
 ```
 
+---
+
 🚧 未完待续~
+
+---
 
 ## Todo - 简单的待办事项
 
@@ -502,6 +540,8 @@ services:
     environment:
       - THEME=dracula
 ```
+
+---
 
 ## Homebox - 家庭库存管理系统
 
@@ -525,12 +565,16 @@ services:
       - 5016:7745
 ```
 
+---
+
 ## 参考与致谢
 
 - [Docker Proxy](https://dockerproxy.com/)
 
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
+
+---
 
 ## Stirling-PDF
 
@@ -544,3 +588,28 @@ services:
 ```
 
 <https://laosu.ml/2023/02/06/PDF%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7%E7%AE%B1Stirling-PDF/>
+
+---
+
+## Yacht
+
+```yml title="docker-compose.yml"
+version: "3"
+services:
+  yacht:
+    container_name: yacht
+    restart: unless-stopped
+    ports:
+      - [local-port]:8000
+    volumes:
+      - [local-dir]:/config
+      - /var/run/docker.sock:/var/run/docker.sock
+    image: selfhostedpro/yacht
+```
+
+**初始账户密码**：
+
+- Email: `admin@yacht.local`
+- Password: `pass`
+
+https://laosu.ml/2022/06/01/%E7%94%A8Yacht%E7%AE%A1%E7%90%86docker%E5%AE%B9%E5%99%A8/
