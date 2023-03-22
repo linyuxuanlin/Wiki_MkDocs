@@ -2,7 +2,7 @@ mkdocs
 mkdocs-material
 mkdocs-roamlinks-plugin
 mkdocs-rss-plugin
-markdown
+markdown==3.3
 pymdown-extensions
 mkdocs-git-revision-date-localized-plugin
 mdx_truly_sane_lists
