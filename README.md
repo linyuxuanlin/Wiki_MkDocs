@@ -5,6 +5,8 @@
 
 个人 Wiki（基于 MkDocs）
 
+(若出现故障，请访问备用网址：https://linyuxuanlin.github.io/Wiki_MkDocs/)
+
 Check the version of MkDocs: `mkdocs --version`  
 Upgrade MkDocs: `pip install -U mkdocs`  
 
