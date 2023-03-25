@@ -1,6 +1,3 @@
-
-## NPS
-
 A lightweight, high-performance, powerful intranet penetration proxy server, with a powerful web management terminal.
 
 ### 服务端 nps
