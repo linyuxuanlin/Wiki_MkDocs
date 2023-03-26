@@ -39,54 +39,27 @@ services:
     restart: unless-stopped
 ```
 
-在这个 `yaml` 文件中，定义了两个服务：web 和 database，一个服务在运行时对应一个容器的实例， 上面的文件表示要启动两个实例。
+在这个 `yaml` 文件中，定义了两个服务：`web` 和 `database`，一个服务在运行时对应一个容器的实例， 上面的文件表示要启动两个实例。
 
 ## 安装 Docker Compose
 
-### 前提
-
 Docker Compose 依赖 Docker Engine，所以请先确保你已经安装了 Docker Engine 环境。如果你还没安装，可以参考上一篇教程：[**Docker 简易指南**](https://wiki-power.com/Docker%E7%AE%80%E6%98%93%E6%8C%87%E5%8D%97) 安装 Docker Engine.
 
-如果你用的是 Windows 和 MacOS 的桌面客户端，那就不用另外安装 Docker Compose 了，因为已经包含在 Docker Desktop 内了。
-
-本教程详细讲解 Linux 下的 Docker Compose 安装。
-
-### 下载 Docker Compose
+如果你用的是 Windows 和 MacOS 的桌面客户端，那就不用另外安装 Docker Compose 了，因为已经包含在 Docker Desktop 内了。接下来将详细讲解 Linux 下的 Docker Compose 安装。
 
 ```shell
+# 下载 Docker Compose
 sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-```
 
-或通过国内镜像下载：
-
-```shell
+# 如果你在中国大陆，可以通过国内的镜像下载：
 curl -L https://get.daocloud.io/docker/compose/releases/download/1.25.5/docker-compose-`uname -s`-`uname -m`  > /usr/local/bin/docker-compose
-```
 
-### 授权
+sudo chmod +x /usr/local/bin/docker-compose # 添加权限
+docker-compose --version # 测试是否安装成功
 
-```shell
-sudo chmod +x /usr/local/bin/docker-compose
-```
-
-### 测试是否安装成功
-
-```shell
-docker-compose --version
-```
-
-### 其他操作
-
-#### 版本更新
-
-```shell
-docker-compose migrate-to-labels
-```
-
-#### 卸载
-
-```shell
-sudo rm /usr/local/bin/docker-compose
+# 更多操作命令
+docker-compose migrate-to-labels # 更新 docker-compose 的版本
+sudo rm /usr/local/bin/docker-compose # 卸载 docker-compose
 ```
 
 ## 如何使用 Docker Compose
@@ -147,6 +120,7 @@ services:
 - [Install Docker Compose](https://docs.docker.com/compose/install/#prerequisites)
 - [Docker-Compose 模板文件参数详解](https://blog.51cto.com/14154700/2466054)
 - [原来，群晖也能用 Docker Compose！](https://www.himiku.com/archives/docker-compose-for-synology-nas.html)
+- [Docker — 从入门到实践](https://docker-practice.github.io/zh-cn/)
 
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
