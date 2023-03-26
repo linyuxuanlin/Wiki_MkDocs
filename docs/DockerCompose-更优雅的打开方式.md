@@ -97,7 +97,7 @@ sudo rm /usr/local/bin/docker-compose
 
 要停止服务的运行，用 `docker-compose down` 就可以了。
 
-## Docker Compose 的模板
+## Docker Compose 文件的写法
 
 Docker Compose 默认的模板文件名称为 `docker-compose.yml`，为 `yaml` 格式，内容如下：
 
@@ -112,7 +112,17 @@ services:
       - "/data"
 ```
 
-一般来说，`yaml` 文件在 Docker 项目简介中会提供。
+一般来说，`docker-compose.yml` 在所需项目的简介中会提供。通常会有以下的参数：
+
+- `version`：定义 Compose 文件格式，版本号与 Docker 引擎相关，为固定格式。
+- `services`：表示此 `docker-compose.yml` 文件中包含的所有服务，为固定格式。
+- `image`：表示用于启动容器的镜像，可以是存储仓库、标签或本地的 Dockerfile 文件。
+- `container_name`：容器名称，非必须，但不能出现重名。
+- `ports`：端口映射（即 Docker CLI 的 `-p`）。
+- `depends_on`：服务之间的依赖关系。在运行 `docker compose up -d` 命令后，只有当 A 成功启动，B 才会启动。
+- `volumes`：挂载一个新的或已存在的目录，即 Docker CLI 的 `-v`。
+- `environment`：容器所需的环境变量，即 Docker CLI 的 `-e`。
+- `restart`：重启策略，一般使用 `always` 或 `unless-stopped`，即 Docker CLI 的 `--restart`。
 
 ## 更多技巧
 
