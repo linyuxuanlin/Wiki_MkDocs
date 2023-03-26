@@ -312,8 +312,6 @@ nav:
               - CSS学习笔记.md
               - HTML学习笔记.md
               - JavaScript学习笔记.md
-              - Docker简易指南.md
-              - DockerCompose-更优雅的打开方式.md
               - 自适应网页设计.md
               - 前端开发-环境搭建.md
               - BookJourney-二手书商城小程序.md
@@ -322,6 +320,8 @@ nav:
       - 效率指南:
           - Self-hosting 自托管:
               - 打造一个属于自己的HomeLab.md
+              - Docker简易指南.md
+              - DockerCompose-更优雅的打开方式.md
               - 使用RSSHub搭建RSS生成器（群晖Docker）.md #  CSDN
               - 使用Bitwarden搭建密码管理器（群晖Docker）.md #  CSDN
               - 使用acme.sh自动申请域名证书（群晖Docker）.md #  CSDN
