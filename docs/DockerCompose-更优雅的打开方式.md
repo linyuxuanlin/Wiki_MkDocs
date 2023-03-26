@@ -124,6 +124,17 @@ services:
 - `environment`：容器所需的环境变量，即 Docker CLI 的 `-e`。
 - `restart`：重启策略，一般使用 `always` 或 `unless-stopped`，即 Docker CLI 的 `--restart`。
 
+## 一些常用的命令
+
+- **前台启动（退出终端即停止）**：docker compose up
+- **后台启动**：docker compose up -d
+- **拉取容器**：docker compose pull
+- **拉取（更新）指定容器**：docker compose pull xxx
+- **停止 up 命令所启动的容器，并移除其网络**：docker compose down
+- **停止指定容器**：docker compose stop xx
+- **查看日志**：docker compose logs xx
+- **检查 Compose 文件格式是否正确**：docker compose config -q
+
 ## 更多技巧
 
 将 Docker CLI 转换为 `docker-compose.yml` 的网站：[**composerize**](https://www.composerize.com/)
@@ -135,6 +146,7 @@ services:
 - [使用 docker-compose 替代 docker run](https://beginor.github.io/2017/06/08/use-compose-instead-of-run.html)
 - [Install Docker Compose](https://docs.docker.com/compose/install/#prerequisites)
 - [Docker-Compose 模板文件参数详解](https://blog.51cto.com/14154700/2466054)
+- [原来，群晖也能用 Docker Compose！](https://www.himiku.com/archives/docker-compose-for-synology-nas.html)
 
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
