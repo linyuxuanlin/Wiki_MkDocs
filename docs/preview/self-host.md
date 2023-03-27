@@ -38,3 +38,7 @@ apt-get install sudo
 ```shell
 curl -fsSL https://get.casaos.io | sudo bash
 ```
+
+换源：
+
+https://www.24kplus.com/linux/1933.html
