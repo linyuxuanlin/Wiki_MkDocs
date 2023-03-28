@@ -11,6 +11,10 @@
 
 HomeLab 篇
 
+1. 用 ventoy 安装 debian
+2. 安装 casaos（带 docker）
+3. frp/nps
+
 NAS 篇
 
 ---
@@ -43,9 +47,7 @@ curl -fsSL https://get.casaos.io | sudo bash
 
 https://www.24kplus.com/linux/1933.html
 
-
-frp:host,高权限
----
+## frp:host,高权限
 
 WiFi
 
@@ -53,3 +55,13 @@ sudo apt-get install wireless-tools wpasupplicant
 sudo apt-get install aptitude
 
 lspci | grep Wireless
+
+---
+
+cloudflared
+
+https://hub.docker.com/r/cloudflare/cloudflared
+
+```
+docker run cloudflare/cloudflared:latest tunnel --no-autoupdate --hello-world
+```

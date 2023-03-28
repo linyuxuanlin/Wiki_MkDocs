@@ -34,4 +34,6 @@ services:
     restart: always
 ```
 
+docker run -d --name npc --net=host ffdfgdfg/npc -server=nginx.wiki-power.com:4000 -vkey=z2begrxvhk35cmni
+
 ---

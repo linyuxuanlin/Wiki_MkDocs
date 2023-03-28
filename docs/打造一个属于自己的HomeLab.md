@@ -613,3 +613,22 @@ services:
 - Password: `pass`
 
 https://laosu.ml/2022/06/01/%E7%94%A8Yacht%E7%AE%A1%E7%90%86docker%E5%AE%B9%E5%99%A8/
+
+
+---
+
+## Portainer
+
+```
+version: '3.3'
+services:
+    portainer:
+        ports:
+            - [local-dir]:8000
+            - [local-dir]:9443
+        restart: always
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+            - [local-dir]/portainer_data:/data
+        image: portainer/portainer-ce:latest
+```
