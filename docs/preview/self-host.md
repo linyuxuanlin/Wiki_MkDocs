@@ -42,3 +42,14 @@ curl -fsSL https://get.casaos.io | sudo bash
 换源：
 
 https://www.24kplus.com/linux/1933.html
+
+
+frp:host,高权限
+---
+
+WiFi
+
+sudo apt-get install wireless-tools wpasupplicant
+sudo apt-get install aptitude
+
+lspci | grep Wireless
