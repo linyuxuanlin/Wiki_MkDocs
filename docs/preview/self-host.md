@@ -65,3 +65,22 @@ https://hub.docker.com/r/cloudflare/cloudflared
 ```
 docker run cloudflare/cloudflared:latest tunnel --no-autoupdate --hello-world
 ```
+---
+
+网卡
+
+https://www.jianshu.com/p/b341ee6ed160
+
+查询WIFI，如下显示了无线网卡的型号
+
+```
+$ lspci -nn
+...
+00:14.3 Network controller [0280]: Intel Corporation Device [8086:54f0]
+```
+
+按着网址
+
+---
+
+连WiFi
