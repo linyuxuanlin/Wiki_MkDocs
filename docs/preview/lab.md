@@ -25,3 +25,24 @@ sudo curl -L "https://github.com/docker/compose/releases/download/v2.2.2/docker-
 sudo chmod +x /usr/local/bin/docker-compose # 将可执行权限应用于二进制文件
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose # 创建软链
 ```
+
+## 安装 CasaOS
+
+```shell
+curl -fsSL https://get.casaos.io | sudo bash
+```
+
+## 安装 Frp
+
+```shell
+mkdir /DATA
+mkdir /DATA/AppData/
+touch /DATA/AppData/frpc.ini
+nano /DATA/AppData/frpc.ini
+```
+
+```ini
+……
+```
+
+
