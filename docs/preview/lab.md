@@ -36,9 +36,10 @@ curl -fsSL https://get.casaos.io | sudo bash
 
 ```shell
 mkdir /DATA
-mkdir /DATA/AppData/
-touch /DATA/AppData/frpc.ini
-nano /DATA/AppData/frpc.ini
+mkdir /DATA/AppData
+mkdir /DATA/AppData/frpc
+touch /DATA/AppData/frpc/frpc.ini
+nano /DATA/AppData/frpc/frpc.ini
 ```
 
 ```ini
