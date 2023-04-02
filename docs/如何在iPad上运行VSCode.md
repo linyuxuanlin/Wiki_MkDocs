@@ -25,11 +25,7 @@ title: 如何在 iPad 上运行 VS Code
 
 刷 Linux（这里我使用 CentOS 8.2），确保 ssh 能正常连上即可。
 
-
-
 ## 二、安装 code-server
-
-
 
 在新的版本下（≥v3.8.0），可以直接使用脚本安装：
 
@@ -109,10 +105,6 @@ yum install git
 通过服务器 IP 访问也许会有些奇怪，我们可以绑定一个自定义的域名，通过域名来访问 code-server 服务。  
 购买一个域名，在 DNS 解析处添加服务器 IP 的，使用 A 类型即可。
 
-### https
-
-【施工中】
-
 ### 当前版本 bugs 及解决
 
 - 无法通过 VS Code 内置的 Settings Sync 服务同步用户设置：可以通过额外安装 [**Settings Sync**](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync) 插件解决
@@ -126,8 +118,5 @@ yum install git
 - [screen 的安装和使用](https://www.jianshu.com/p/420569381e74)
 - [Setup Guide · cdr/code-server](https://github.com/cdr/code-server/blob/v3.8.0/doc/guide.md)
 
-
-
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-

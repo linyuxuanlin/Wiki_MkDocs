@@ -1,6 +1,3 @@
-
-## NPS
-
 A lightweight, high-performance, powerful intranet penetration proxy server, with a powerful web management terminal.
 
 ### 服务端 nps
@@ -36,5 +33,7 @@ services:
       - NPS_VKEY=xxxxxxxxxxxxxxxx
     restart: always
 ```
+
+docker run -d --name npc --net=host ffdfgdfg/npc -server=nginx.wiki-power.com:4000 -vkey=z2begrxvhk35cmni
 
 ---

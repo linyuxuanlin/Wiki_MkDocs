@@ -31,7 +31,7 @@ theme:
   features:
     - content.code.copy # 代码块复制按钮
     - content.action.edit # 文章编辑按钮
-    - navigation.instant # Instant loading，像个单页应用
+    #- navigation.instant # Instant loading，像个单页应用
     - navigation.tracking # Anchor tracking
     - navigation.tabs # 导航栏
     #- navigation.tabs.sticky # 导航栏不随页面滚动隐藏
@@ -312,16 +312,16 @@ nav:
               - CSS学习笔记.md
               - HTML学习笔记.md
               - JavaScript学习笔记.md
-              - Docker简易指南.md
-              - DockerCompose-更优雅的打开方式.md
               - 自适应网页设计.md
               - 前端开发-环境搭建.md
               - BookJourney-二手书商城小程序.md
               - Git学习笔记.md
   - 效率 & 生活:
       - 效率指南:
-          - HomeLab & 群晖 NAS:
+          - Self-hosting 自托管:
               - 打造一个属于自己的HomeLab.md
+              - Docker简易指南.md
+              - DockerCompose-更优雅的打开方式.md
               - 使用RSSHub搭建RSS生成器（群晖Docker）.md #  CSDN
               - 使用Bitwarden搭建密码管理器（群晖Docker）.md #  CSDN
               - 使用acme.sh自动申请域名证书（群晖Docker）.md #  CSDN
@@ -331,7 +331,7 @@ nav:
               - 使用frp访问群晖NAS.md #  CSDN
               - 如何在iPad上运行VSCode.md #  CSDN
               - Docker方法部署code-server.md
-          - 技术篇:
+          - 技术流:
               - 如何用Markdown写一份简历.md #  CSDN
               - 使用Rclone同步网盘数据.md
               - 为什么你需要一个知识库.md #  CSDN
