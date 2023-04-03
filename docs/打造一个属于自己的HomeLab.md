@@ -371,7 +371,7 @@ mkdir -vp cloudreve/{uploads,avatar,data} \
 && touch cloudreve/cloudreve.db \
 && mkdir -p aria2/config \
 && mkdir -p cloudreve/data/aria2 \
-&& chmod -R 777 data/aria2
+&& chmod -R 777 cloudreve/data/aria2
 ```
 
 ```yml title="docker-compose.yml"
