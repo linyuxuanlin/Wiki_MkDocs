@@ -5,7 +5,7 @@
 
 个人 Wiki（基于 MkDocs）
 
-(若出现故障，请访问备用网址：https://linyuxuanlin.github.io/Wiki_MkDocs/)
+(若出现故障，请访问备用网址：https://linyuxuanlin.github.io/Wiki_MkDocs/ 或 https://mkdocs.wiki-power.com/)
 
 Check the version of MkDocs: `mkdocs --version`  
 Upgrade MkDocs: `pip install -U mkdocs`  
