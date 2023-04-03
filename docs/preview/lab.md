@@ -32,18 +32,7 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose # 创建软链
 curl -fsSL https://get.casaos.io | sudo bash
 ```
 
-## 安装 Frp
+## Docker Apps init
 
-```shell
-mkdir /DATA
-mkdir /DATA/AppData
-mkdir /DATA/AppData/frpc
-touch /DATA/AppData/frpc/frpc.ini
-nano /DATA/AppData/frpc/frpc.ini
-```
-
-```ini
-……
-```
-
-
+1. 安装 Frp
+2. Cloudflared ([**Connect with SSH through Cloudflare Tunnel**](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/use_cases/ssh/))
