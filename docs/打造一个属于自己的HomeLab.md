@@ -363,7 +363,7 @@ services:
 **官网**：<https://docs.cloudreve.org/>  
 **文档**：<https://docs.cloudreve.org/getting-started/install#docker-compose>
 
-首先创建目录结构：
+首先创建目录结构，切换到你的 [docker-dir] 下并执行：
 
 ```shell
 mkdir -vp cloudreve/{uploads,avatar,data} \
@@ -371,7 +371,8 @@ mkdir -vp cloudreve/{uploads,avatar,data} \
 && touch cloudreve/cloudreve.db \
 && mkdir -p aria2/config \
 && mkdir -p cloudreve/data/aria2 \
-&& chmod -R 777 cloudreve/data/aria2
+&& chmod -R 777 cloudreve/data/aria2 \
+&& mkdir temp_data
 ```
 
 ```yml title="docker-compose.yml"
@@ -613,7 +614,6 @@ services:
 - Password: `pass`
 
 https://laosu.ml/2022/06/01/%E7%94%A8Yacht%E7%AE%A1%E7%90%86docker%E5%AE%B9%E5%99%A8/
-
 
 ---
 
