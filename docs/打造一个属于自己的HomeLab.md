@@ -302,7 +302,7 @@ services:
       driver: "none"
     restart: unless-stopped
     volumes:
-      - [docker-dir]/db-data:/var/lib/postgresql/data
+      - [local-dir]/db-data:/var/lib/postgresql/data
 
   wiki:
     image: ghcr.io/requarks/wiki:2
@@ -363,7 +363,7 @@ services:
 **官网**：<https://docs.cloudreve.org/>  
 **文档**：<https://docs.cloudreve.org/getting-started/install#docker-compose>
 
-首先创建目录结构，切换到你的 [docker-dir] 下并执行：
+首先创建目录结构，切换到你的 [local-dir] 下并执行：
 
 ```shell
 mkdir -vp cloudreve/{uploads,avatar,data} \
@@ -619,7 +619,7 @@ https://laosu.ml/2022/06/01/%E7%94%A8Yacht%E7%AE%A1%E7%90%86docker%E5%AE%B9%E5%9
 
 ## Portainer
 
-```
+```yml title="docker-compose.yml"
 version: '3.3'
 services:
     portainer:
@@ -631,4 +631,22 @@ services:
             - /var/run/docker.sock:/var/run/docker.sock
             - [local-dir]/portainer_data:/data
         image: portainer/portainer-ce:latest
+```
+
+---
+
+## audiobookshelf
+
+```yml title="docker-compose.yml"
+version: "3.7"
+services:
+  audiobookshelf:
+    image: ghcr.io/advplyr/audiobookshelf:latest
+    ports:
+      - [local-port]:80
+    volumes:
+      - [local-dir]/audiobooks:/audiobooks
+      - [local-dir]/podcasts:/podcasts
+      - [local-dir]/config:/config
+      - [local-dir]/metadata:/metadata
 ```
