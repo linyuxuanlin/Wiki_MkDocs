@@ -46,13 +46,14 @@ fs.inotify.max_user_watches=524288
 sudo sysctl -p
 ```
 
+### 无法使用自定义的用户名登录
+
+在 VS Code 的设置中找到 `Remote.SSH: Config File`，填写覆盖值为 `C:\Users\你需要的用户名\.ssh\config`，并在本地创建相应的配置文件即可。
+
 ## 参考与致谢
 
 - [VSCode Remote 体验 | 远程 Linux 环境开发真香](https://zhuanlan.zhihu.com/p/64849549)
 - [VSCode 报警处理：VisualStudioCode 无法监视这个大型工作区的文件变化](http://www.deadnine.com/somehow/2019/0208/1481.html)
 
-
-
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-
