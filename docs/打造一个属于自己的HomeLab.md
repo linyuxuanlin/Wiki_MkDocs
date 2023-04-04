@@ -624,8 +624,8 @@ version: '3.3'
 services:
     portainer:
         ports:
-            - [local-dir]:8000
-            - [local-dir]:9443
+            - [local-dir]:9000 #HTTP
+            - [local-dir]:9443 #HTTPS
         restart: always
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
