@@ -372,7 +372,7 @@ mkdir -vp cloudreve/{uploads,avatar,data} \
 && mkdir -p aria2/config \
 && mkdir -p cloudreve/data/aria2 \
 && chmod -R 777 cloudreve/data/aria2 \
-&& mkdir temp_data
+&& mkdir data
 ```
 
 ```yml title="docker-compose.yml"
@@ -537,7 +537,7 @@ services:
     ports:
       - 5015:8000
     volumes:
-      - /DATA/AppData/todo:/data
+       - /DATA/AppData/todo_db:/usr/local/go/src/todo/todo.db
     environment:
       - THEME=dracula
 ```
