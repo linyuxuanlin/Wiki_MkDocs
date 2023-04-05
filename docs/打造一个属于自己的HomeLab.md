@@ -650,3 +650,8 @@ services:
       - [local-dir]/config:/config
       - [local-dir]/metadata:/metadata
 ```
+
+
+---
+
+一键启动多个docker-compose配置容器:https://juejin.cn/post/7082842557482270734
