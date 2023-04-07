@@ -319,7 +319,7 @@ nav:
   - 效率 & 生活:
       - 效率指南:
           - 自托管 Self-Host:
-              - 打造一个属于自己的HomeLab.md
+              - 打造属于自己的HomeLab.md
               - Homelab-反代证书一站式管理面板NginxProxyManager.md
               - Docker简易指南.md
               - DockerCompose-更优雅的打开方式.md
