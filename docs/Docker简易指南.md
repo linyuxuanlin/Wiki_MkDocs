@@ -5,8 +5,7 @@ title: Docker 简易指南
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210116153041.png)
 
-软件开发中最麻烦的就是配环境。运行环境的差异，可能导致意想不到的结果。  
-如何通过 Docker 来解决这个问题呢？
+通常我们都知道，软件开发中最麻烦的就是配环境。运行环境的差异，可能导致意想不到的结果，而使用 Docker 可以避免这样的问题。
 
 ## Docker 是什么
 
@@ -179,8 +178,5 @@ docker container kill [containID]
 
 - [Docker 入门教程](http://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html)
 
-
-
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-

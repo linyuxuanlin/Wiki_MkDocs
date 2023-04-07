@@ -115,8 +115,8 @@ services:
     image: "snowdreamtech/frps:latest"
     restart: always
     ports:
-      - [local-port]:7000
-      - [local-port]:7500
+      - [local-port]:7000 # bind_port
+      - [local-port]:7500 # dashboard_port
     volumes:
       - [local-dir]/frp/frps.ini:/etc/frp/frps.ini
       manager/letsencrypt:/etc/letsencrypt
