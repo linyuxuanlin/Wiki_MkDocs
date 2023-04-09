@@ -28,14 +28,14 @@ services:
       - [custom-dir]/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
 ```
 
-**初始账户密码**：
+初始账户密码：
 
 - Email: `admin@example.com`
 - Password: `changeme`
 
 ## 配置说明
 
-**获取 Docker 的 IP 地址**：
+获取 Docker 的 IP 地址：
 
 ```shell
 ip addr show docker0
