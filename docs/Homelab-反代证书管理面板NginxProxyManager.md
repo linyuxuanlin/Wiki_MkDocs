@@ -45,5 +45,7 @@ ip addr show docker0
 
 注：自托管服务尽量通过反代，绑定二级域名访问（80/443 端口），并在公网服务器管理控制台防火墙中关闭其他端口，这样可以提高安全性。
 
+---
+
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

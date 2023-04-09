@@ -21,5 +21,7 @@ curl -fsSL https://get.casaos.io | sudo bash
 
 注：如果是部署在有分配反向代理的服务器上，最好在设置内更换面板访问端口，把 80 端口留给 Nginx。
 
+---
+
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
