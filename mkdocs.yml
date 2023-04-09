@@ -321,6 +321,7 @@ nav:
           - 自托管 Self-Host:
               - 搭建属于自己的HomeLab.md
               - Homelab-反代证书管理面板NginxProxyManager.md
+              - Homelab-轻量服务器管理面板CasaOS.md
               - Docker简易指南.md
               - DockerCompose-更优雅的打开方式.md
               - 使用RSSHub搭建RSS生成器（群晖Docker）.md #  CSDN

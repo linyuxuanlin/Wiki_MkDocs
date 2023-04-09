@@ -7,11 +7,13 @@ title: Homelab - 反代证书管理面板 Nginx Proxy Manager
 
 **Nginx Proxy Manager** 是一个 Nginx 图形化面板，能让用户在 Web 界面上轻松配置反向代理、申请网站 SSL 证书，而无需了解过多 Nginx / Letsencrypt 的底层原理。
 
-**功能**：Nginx 该有的功能都有、自动申请续签 SSL 证书。  
 **官网**：<https://nginxproxymanager.com>  
-**文档**：<https://nginxproxymanager.com/guide>
+**文档**：<https://nginxproxymanager.com/guide>  
+**GitHub**：<https://github.com/NginxProxyManager/nginx-proxy-manager>
 
 ## 部署（docker-compose）
+
+先创建 `docker-compose.yml` ，并将以下的 `[custom-dir]` 替换为本地的目录，比如我的是 `/DATA/AppData`；`[custom-port]` 替换为自定义的端口号，比如 `1234`：
 
 ```yml title="docker-compose.yml"
 version: "3"
@@ -21,7 +23,7 @@ services:
     restart: unless-stopped
     ports:
       - "[custom-port]:80"
-      - "[custom-port]:81" # 默认面板地址
+      - "[custom-port]:81" # 面板地址
       - "[custom-port]:443"
     volumes:
       - [custom-dir]/nginx-proxy-manager/data:/data
