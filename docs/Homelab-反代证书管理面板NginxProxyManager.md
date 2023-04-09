@@ -1,6 +1,6 @@
 ---
 id: Homelab-反代证书管理面板NginxProxyManager
-title: Homelab - 反代证书管理面板 Nginx Proxy Manager 🚧
+title: Homelab - 反代证书管理面板 Nginx Proxy Manager
 ---
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230408182138.png)
