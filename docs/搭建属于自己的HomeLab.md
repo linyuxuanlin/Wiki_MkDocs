@@ -30,7 +30,7 @@ Homelab 是指可在家中搭建的实验（折腾）环境，用于进行实验
 
 ---
 
-注：下文出现的 `[local-dir]` 替换为本地的目录，比如我用的是 `/DATA/AppData/xxx`；`[local-port]` 替换为自定义的端口号（0~65535），比如 `1234`。
+注：下文出现的 `[custom-dir]` 替换为本地的目录，比如我用的是 `/DATA/AppData/xxx`；`[custom-port]` 替换为自定义的端口号（0~65535），比如 `1234`。
 
 ---
 
@@ -72,12 +72,12 @@ services:
     image: "jc21/nginx-proxy-manager:latest"
     restart: unless-stopped
     ports:
-      - "[local-port]:80"
-      - "[local-port]:81"
-      - "[local-port]:443"
+      - "[custom-port]:80"
+      - "[custom-port]:81"
+      - "[custom-port]:443"
     volumes:
-      - [local-dir]/nginx-proxy-manager/data:/data
-      - [local-dir]/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
+      - [custom-dir]/nginx-proxy-manager/data:/data
+      - [custom-dir]/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
 ```
 
 **默认面板访问地址**：<http://127.0.0.1:81>
@@ -122,7 +122,7 @@ services:
 
 **文档**：<https://hub.docker.com/r/snowdreamtech/frps>
 
-在 `[local-dir]/frp/` 下新建 `frps.ini`：
+在 `[custom-dir]/frp/` 下新建 `frps.ini`：
 
 ```ini title="frps.ini"
 [common]
@@ -140,10 +140,10 @@ services:
     image: "snowdreamtech/frps:latest"
     restart: always
     ports:
-      - [local-port]:7000 # bind_port
-      - [local-port]:7500 # dashboard_port
+      - [custom-port]:7000 # bind_port
+      - [custom-port]:7500 # dashboard_port
     volumes:
-      - [local-dir]/frp/frps.ini:/etc/frp/frps.ini
+      - [custom-dir]/frp/frps.ini:/etc/frp/frps.ini
       manager/letsencrypt:/etc/letsencrypt
 ```
 
@@ -171,7 +171,7 @@ services:
     image: "matthiasluedtke/iconserver:latest"
     restart: always
     ports:
-      - [local-port]:8080
+      - [custom-port]:8080
 ```
 
 ---
@@ -189,7 +189,7 @@ services:
     image: mattermost/focalboard
     restart: always
     ports:
-      - "[local-port]:8000"
+      - "[custom-port]:8000"
 ```
 
 **备注**：如需使用反向代理，请开启 `Websockets Support`。
@@ -218,9 +218,9 @@ services:
       - PGID=1000
     volumes:
       - [DATA]:/DATA
-      - [local-dir]/config:/config
+      - [custom-dir]/config:/config
     ports:
-      - [local-port]:8384 # Web UI
+      - [custom-port]:8384 # Web UI
       - 22000:22000/tcp # TCP file transfers
       - 22000:22000/udp # QUIC file transfers
       - 21027:21027/udp # Receive local discovery broadcasts
@@ -242,7 +242,7 @@ services:
     image: derkades/webdav
     restart: always
     ports:
-      - "[local-port]:80"
+      - "[custom-port]:80"
     environment:
       USERNAME: [username]
       PASSWORD: [password]
@@ -268,9 +268,9 @@ services:
     image: louislam/uptime-kuma
     restart: always
     ports:
-      - "[local-port]:3001"
+      - "[custom-port]:3001"
     volumes:
-      - [local-dir]:/app/data
+      - [custom-dir]:/app/data
 ```
 
 **备注**：如需使用反向代理，请开启 `Websockets Support`。
@@ -293,14 +293,14 @@ services:
     image: neosmemo/memos:latest
     container_name: memos
     volumes:
-      - [local-dir]:/var/opt/memos
+      - [custom-dir]:/var/opt/memos
     ports:
-      - [local-port]:5230
+      - [custom-port]:5230
 ```
 
 **移动端 App**：[Moe Memos](https://memos.moe/)
 
-**备注**：因用户数据以数据库格式储存，如需导入 / 导出数据，可使用 VS Code 插件 [**SQLite**](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)，下载并打开 `[local-dir]` 下的 `memos_prod.db` 即可进行增删改查、导入导出备份等操作。注意，只有在 docker 容器关闭 / 重启的时候才会更新 `memos_prod.db` 文件。
+**备注**：因用户数据以数据库格式储存，如需导入 / 导出数据，可使用 VS Code 插件 [**SQLite**](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)，下载并打开 `[custom-dir]` 下的 `memos_prod.db` 即可进行增删改查、导入导出备份等操作。注意，只有在 docker 容器关闭 / 重启的时候才会更新 `memos_prod.db` 文件。
 
 ---
 
@@ -327,7 +327,7 @@ services:
       driver: "none"
     restart: unless-stopped
     volumes:
-      - [local-dir]/db-data:/var/lib/postgresql/data
+      - [custom-dir]/db-data:/var/lib/postgresql/data
 
   wiki:
     image: ghcr.io/requarks/wiki:2
@@ -343,7 +343,7 @@ services:
       DB_NAME: wiki
     restart: unless-stopped
     ports:
-      - "[local-port]:3000"
+      - "[custom-port]:3000"
 
 volumes:
   db-data:
@@ -371,9 +371,9 @@ services:
     image: halcyonazure/lsky-pro-docker:latest
     restart: unless-stopped
     ports:
-      - "[local-port]:80"
+      - "[custom-port]:80"
     volumes:
-      - [local-dir]:/var/www/html
+      - [custom-dir]:/var/www/html
 
 ```
 
@@ -388,7 +388,7 @@ services:
 **官网**：<https://docs.cloudreve.org/>  
 **文档**：<https://docs.cloudreve.org/getting-started/install#docker-compose>
 
-首先创建目录结构，切换到你的 [local-dir] 下并执行：
+首先创建目录结构，切换到你的 [custom-dir] 下并执行：
 
 ```shell
 mkdir -vp cloudreve/{uploads,avatar,data} \
@@ -408,13 +408,13 @@ services:
     image: cloudreve/cloudreve:latest
     restart: unless-stopped
     ports:
-      - "[local-port]:5212"
+      - "[custom-port]:5212"
     volumes:
       - temp_data:/data
-      - [local-dir]/uploads:/cloudreve/uploads
-      - [local-dir]/conf.ini:/cloudreve/conf.ini
-      - [local-dir]/cloudreve.db:/cloudreve/cloudreve.db
-      - [local-dir]/avatar:/cloudreve/avatar
+      - [custom-dir]/uploads:/cloudreve/uploads
+      - [custom-dir]/conf.ini:/cloudreve/conf.ini
+      - [custom-dir]/cloudreve.db:/cloudreve/cloudreve.db
+      - [custom-dir]/avatar:/cloudreve/avatar
     depends_on:
       - aria2
   aria2:
@@ -425,7 +425,7 @@ services:
       - RPC_SECRET=[your_aria_rpc_token]
       - RPC_PORT=6800
     volumes:
-      - [local-dir]/config:/config
+      - [custom-dir]/config:/config
       - temp_data:/data
 volumes:
   temp_data:
@@ -462,10 +462,10 @@ services:
       options:
         max-size: 10m
     ports:
-      - "[local-port]:80"
+      - "[custom-port]:80"
     volumes:
-      - [local-dir]/data:/var/www/FreshRSS/data
-      - [local-dir]/extensions:/var/www/FreshRSS/extensions
+      - [custom-dir]/data:/var/www/FreshRSS/data
+      - [custom-dir]/extensions:/var/www/FreshRSS/extensions
     environment:
       TZ: Asia/Shanghai
       CRON_MIN: '*/5'
@@ -490,7 +490,7 @@ services:
   guacd:
     image: dushixiang/guacd:latest
     volumes:
-      - [local-dir]/data:/usr/local/next-terminal/data
+      - [custom-dir]/data:/usr/local/next-terminal/data
     restart:
           always
   next-terminal:
@@ -500,10 +500,10 @@ services:
       GUACD_HOSTNAME: guacd
       GUACD_PORT: 4822
     ports:
-      - "[local-port]:8088"
+      - "[custom-port]:8088"
     volumes:
       - /etc/localtime:/etc/localtime
-      - [local-dir]/data:/usr/local/next-terminal/data
+      - [custom-dir]/data:/usr/local/next-terminal/data
     restart:
       always
 ```
@@ -609,7 +609,7 @@ version: "3.3"
 services:
   s-pdf:
     ports:
-      - "[local-port]:8080"
+      - "[custom-port]:8080"
     image: frooodle/s-pdf
 ```
 
@@ -626,9 +626,9 @@ services:
     container_name: yacht
     restart: unless-stopped
     ports:
-      - [local-port]:8000
+      - [custom-port]:8000
     volumes:
-      - [local-dir]:/config
+      - [custom-dir]:/config
       - /var/run/docker.sock:/var/run/docker.sock
     image: selfhostedpro/yacht
 ```
@@ -649,12 +649,12 @@ version: '3.3'
 services:
     portainer:
         ports:
-            - [local-dir]:9000 #HTTP
-            - [local-dir]:9443 #HTTPS
+            - [custom-dir]:9000 #HTTP
+            - [custom-dir]:9443 #HTTPS
         restart: always
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
-            - [local-dir]/portainer_data:/data
+            - [custom-dir]/portainer_data:/data
         image: portainer/portainer-ce:latest
 ```
 
@@ -668,12 +668,12 @@ services:
   audiobookshelf:
     image: ghcr.io/advplyr/audiobookshelf:latest
     ports:
-      - [local-port]:80
+      - [custom-port]:80
     volumes:
-      - [local-dir]/audiobooks:/audiobooks
-      - [local-dir]/podcasts:/podcasts
-      - [local-dir]/config:/config
-      - [local-dir]/metadata:/metadata
+      - [custom-dir]/audiobooks:/audiobooks
+      - [custom-dir]/podcasts:/podcasts
+      - [custom-dir]/config:/config
+      - [custom-dir]/metadata:/metadata
 ```
 
 ---

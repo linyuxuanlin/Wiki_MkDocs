@@ -12,7 +12,7 @@ services:
     restart: always
     network_mode: "host"
     volumes:
-      - [local-dir]/conf:/conf
+      - [custom-dir]/conf:/conf
 ```
 
 ### 客户端 npc
