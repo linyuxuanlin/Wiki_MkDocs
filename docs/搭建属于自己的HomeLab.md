@@ -30,23 +30,6 @@ Homelab 是指可在家中搭建的实验（折腾）环境，用于进行实验
 
 ---
 
-## Watchtower - 自动监视更新 Docker 容器的工具
-
-**主要功能**：自动更新全部 / 部分 Docker 容器。
-
-**文档**：<https://containrrr.dev/watchtower>
-
-```yml title="docker-compose.yml"
-version: "3"
-services:
-  watchtower:
-    image: containrrr/watchtower
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-```
-
----
-
 ## frps - 内网穿透工具（服务端）
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304195137.png)
