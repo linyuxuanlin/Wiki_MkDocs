@@ -5,8 +5,6 @@ title: Homelab - 极简个人书签导航站 Flare
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230410170939.png)
 
-**Nginx Proxy Manager** 是一个 Nginx 图形化面板，能让用户在 Web 界面上轻松配置反向代理、申请网站 SSL 证书，而无需了解过多 Nginx / Letsencrypt 的底层原理。
-
 **Flare** 是一个轻量、快速、美观的个人导航页面，无任何数据库依赖，应用数据完全开放透明，支持在线编辑，内置 Material Design Icons 6k+ 图标。
 
 ## 部署（docker-compose）
