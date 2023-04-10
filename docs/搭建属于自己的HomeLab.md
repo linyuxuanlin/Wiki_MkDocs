@@ -168,31 +168,6 @@ services:
 
 ---
 
-## Uptime Kuma - 网站状态监控工具
-
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304195250.png)
-
-**主要功能**：监控网站的可用状态、响应时长、证书有效期等。
-
-**官网**：<https://uptime.kuma.pet/>  
-**文档**：<https://github.com/louislam/uptime-kuma/wiki>
-
-```yml title="docker-compose.yml"
-version: '3'
-services:
-  uptime-kuma:
-    image: louislam/uptime-kuma
-    restart: always
-    ports:
-      - "[custom-port]:3001"
-    volumes:
-      - [custom-dir]:/app/data
-```
-
-**备注**：如需使用反向代理，请开启 `Websockets Support`。
-
----
-
 ## memos - 开源的自托管备忘录
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304195311.png)
