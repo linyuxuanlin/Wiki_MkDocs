@@ -74,11 +74,17 @@ services:
 
 ## iconserver - favicon 服务器
 
+网站图标favicon抓取服务器iconserver
+
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304195157.png)
 
 **主要功能**：抓取网站的 favicon。
 
 **文档**：<https://github.com/mat/besticon#docker>
+
+https://hub.docker.com/r/matthiasluedtke/iconserver/
+
+[Demo site](https://besticon-demo.herokuapp.com/)
 
 ```yml title="docker-compose.yml"
 version: "3"
