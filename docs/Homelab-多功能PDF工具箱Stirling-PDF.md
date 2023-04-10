@@ -18,8 +18,6 @@ services:
     image: frooodle/s-pdf
 ```
 
-<https://laosu.ml/2023/02/06/PDF%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7%E7%AE%B1Stirling-PDF/>
-
 ## 参考与致谢
 
 - [文档 / GitHub repo](https://github.com/Frooodle/Stirling-PDF)
