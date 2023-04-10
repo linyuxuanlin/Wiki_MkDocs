@@ -338,13 +338,12 @@ nav:
               - 如何在iPad上运行VSCode.md #  CSDN
               - Docker方法部署code-server.md
           - 技术流:
-              - 如何用Markdown写一份简历.md #  CSDN
               - 使用Rclone同步网盘数据.md
               - 为什么你需要一个知识库.md #  CSDN
-              - 个人文案排版规范.md #  CSDN todo
-              - 技术文档写作规范.md #  CSDN todo
-              - 如何保存易逝的文字.md
               - 个人知识库的搭建-基于Docusaurus.md #  CSDN
+              - 个人文案排版规范.md #  CSDN todo
+              - 如何保存易逝的文字.md
+              - 如何用Markdown写一份简历.md #  CSDN
               - MkDocs测试实验室.md
               - Windows初始化与软件推荐（旧）.md #  CSDN todo
               - Personal_Onboarding_Workflow_(Windows).md
@@ -354,6 +353,7 @@ nav:
               - 用树莓派架设云打印服务器.md #  CSDN todo
               - 用Graphviz绘制关系图.md #  CSDN todo
               - RSS-高效率的阅读方式.md
+              - 技术文档写作规范.md #  CSDN todo
               - 如何在Markdown中使用LaTeX.md
               - 把回忆放心交给GooglePhotos.md
               - VSCode生产力指南-环境配置.md #  CSDN todo
