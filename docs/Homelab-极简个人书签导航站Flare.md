@@ -1,18 +1,13 @@
 ---
 id: Homelab-极简个人书签导航站Flare
-title: Homelab-极简个人书签导航站Flare
+title: Homelab - 极简个人书签导航站 Flare
 ---
-
-## 参考与致谢
-
-- []()
-
-> 原文地址：<https://wiki-power.com/>  
-> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230408182138.png)
 
 **Nginx Proxy Manager** 是一个 Nginx 图形化面板，能让用户在 Web 界面上轻松配置反向代理、申请网站 SSL 证书，而无需了解过多 Nginx / Letsencrypt 的底层原理。
+
+**Flare** 是一个轻量、快速、美观的个人导航页面，无任何数据库依赖，应用数据完全开放透明，支持在线编辑，内置 Material Design Icons 6k+ 图标。
 
 ## 部署（docker-compose）
 
@@ -37,17 +32,16 @@ services:
 
 ## 配置说明
 
-获取 Docker 的 IP 地址：
+可在修改 `[custom-dir]/flare` 内的 `apps.yml` 与 `bookmarks.yml` 配置应用和书签的地址。容器会实时更新。也可在 url 后面加上以下参数进行调试：
 
-```shell
-ip addr show docker0
-```
-
-注：自托管服务尽量通过反代，绑定二级域名访问（80/443 端口），并在公网服务器管理控制台防火墙中关闭其他端口，这样可以提高安全性。
+- 引导操作：`/guide`
+- 设置页面：`/settings`
+- 在线编辑：`/editor`
+- 图标获取：`/icons`
+- 帮助页面：`/help`
 
 ## 参考与致谢
 
-- [官网](https://nginxproxymanager.com)
-- [文档](https://nginxproxymanager.com/guide)
-- [GitHub repo](https://github.com/NginxProxyManager/nginx-proxy-manager)
-- [Docker Hub](https://hub.docker.com/r/jlesage/nginx-proxy-manager)
+- [官网](https://soulteary.com/2022/02/23/building-a-personal-bookmark-navigation-app-from-scratch-flare.html)
+- [文档 / GitHub repo](https://github.com/soulteary/docker-flare)
+- [Docker Hub](https://hub.docker.com/r/soulteary/flare/)

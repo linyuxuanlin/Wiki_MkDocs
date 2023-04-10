@@ -573,12 +573,3 @@ services:
 
 ---
 
-[从零开始搭建个人书签导航应用：Flare](https://soulteary.com/2022/02/23/building-a-personal-bookmark-navigation-app-from-scratch-flare.html)
-
-https://hub.docker.com/r/soulteary/flare/
-
-- 引导操作：/guide
-- 设置页面：/settings
-- 图标获取：/icons
-- 在线编辑：/editor
-- 帮助页面：/help
