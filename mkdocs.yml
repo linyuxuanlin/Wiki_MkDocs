@@ -34,6 +34,7 @@ theme:
     #- navigation.instant # Instant loading，像个单页应用
     - navigation.tracking # Anchor tracking
     - navigation.tabs # 导航栏
+    - navigation.footer # 上一篇 / 下一篇导航按钮
     #- navigation.tabs.sticky # 导航栏不随页面滚动隐藏
     - navigation.sections # 侧边栏分组显示
     #- navigation.expand # 导航栏自动展开
