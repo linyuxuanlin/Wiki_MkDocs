@@ -493,21 +493,6 @@ services:
 
 ---
 
-## Stirling-PDF
-
-```yml title="docker-compose.yml"
-version: "3.3"
-services:
-  s-pdf:
-    ports:
-      - "[custom-port]:8080"
-    image: frooodle/s-pdf
-```
-
-<https://laosu.ml/2023/02/06/PDF%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7%E7%AE%B1Stirling-PDF/>
-
----
-
 ## Yacht
 
 ```yml title="docker-compose.yml"
@@ -572,4 +557,3 @@ services:
 一键启动多个 docker-compose 配置容器:https://juejin.cn/post/7082842557482270734
 
 ---
-
