@@ -451,9 +451,9 @@ services:
     container_name: todo
     restart: always
     ports:
-      - 5015:8000
+      - [custom-port]:8000
     volumes:
-      - /DATA/AppData/todo_db:/usr/local/go/src/todo/todo.db
+      - [custom-dir]/todo/todo_db:/usr/local/go/src/todo/todo.db
     environment:
       - THEME=dracula
 ```
@@ -477,9 +477,9 @@ services:
       - HBOX_LOG_FORMAT=text
       - HBOX_WEB_MAX_UPLOAD_SIZE=10
     volumes:
-      - /DATA/AppData/homebox:/data/
+      - [custom-dir]/homebox:/data/
     ports:
-      - 5016:7745
+      - [custom-port]:7745
 ```
 
 ---
