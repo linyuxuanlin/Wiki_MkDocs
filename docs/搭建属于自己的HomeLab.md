@@ -26,7 +26,7 @@ Homelab 是指可在家中搭建的实验（折腾）环境，用于进行实验
 
 ---
 
-以下内容有待逐步排版，将分散为多篇文章。
+以下内容将会被拆分为多篇文章，正在编辑中。
 
 ---
 
@@ -74,8 +74,7 @@ services:
 
 ## iconserver - favicon 服务器
 
-网站图标favicon抓取服务器iconserver
-
+网站图标 favicon 抓取服务器 iconserver
 
 **主要功能**：抓取网站的 favicon。
 
@@ -119,9 +118,7 @@ services:
 
 ## Syncthing - 跨设备同步工具
 
-
 **主要功能**：把本地的文件同步至其他服务器上。
-
 
 在 CasaOS 内可一键安装。
 
@@ -173,7 +170,6 @@ services:
 
 ## memos - 开源的自托管备忘录
 
-
 **主要功能**：支持公开分享、Markdown 语法、iframe 嵌入、标签管理、日历视图、简单数据迁移与备份等。
 
 **官网**：<>  
@@ -199,11 +195,7 @@ services:
 
 ## Wiki.js - 功能强大的 wiki 文档工具
 
-
-
 **主要功能**：带后台编辑器和管理页面的 wiki 文档工具，包括多用户权限管理、Markdown、多种储存方式（含 git）等功能。
-
-
 
 ```yml title="docker-compose.yml"
 version: "3"
@@ -248,7 +240,6 @@ volumes:
 
 ## Vaultwarden - 密码管理器（可在 CasaOS 内一键安装）
 
-
 **备注**：因 Bitwarden 官方浏览器拓展与旧版本（低于 1.27.0）不兼容导致无法登录，请勿直接使用一键安装的版本（版本默认为 1.24.0）。需要一键安装后手动导出 appjson，再重新导入、改版本号后安装。（issue 详见：https://github.com/dani-garcia/vaultwarden/issues/3082）
 
 ---
@@ -272,10 +263,7 @@ services:
 
 ## Cloudreve - 支持多家云存储驱动的公有云文件系统
 
-
-
 **主要功能**：支持本地、从机、七牛、阿里云 OSS、腾讯云 COS、又拍云、OneDrive、S3 兼容协议作为储存端，可对接 Aria2 离线下载，多用户，拖拽上传 / 管理，在线预览 / 编辑，WebDAV 等。经典的实例是用作个人图床 / 网盘文件管理。
-
 
 首先创建目录结构，切换到你的 [custom-dir] 下并执行：
 
@@ -335,7 +323,6 @@ volumes:
 **官网**：<https://freshrss.org>  
 **文档**：<https://github.com/FreshRSS/FreshRSS/tree/edge/Docker>
 
-
 **主要功能**：自带网页阅读，导入 OPML 订阅源，API 移动端阅读，插件生态齐全。
 
 ```yml title="docker-compose.yml"
@@ -366,9 +353,6 @@ services:
 ## Next Terminal - 堡垒机
 
 Next Terminal 是集成了 Apache Guacamole 无客户端的远程桌面网关的堡垒机（也称跳板机）方案，能直接通过 web 访问内网资源，跨平台兼容性佳，协议支持 RDP、SSH、VNC、Telnet、Kubernetes。支持 MFA 多因子认证登录，也有审计录像功能和其他记录。
-
-
-
 
 ```yml title="docker-compose.yml"
 version: '3.3'
@@ -402,7 +386,6 @@ services:
 ## Podgrab - 自托管播客管理器
 
 Podgrab 是一个自托管的播客管理器 / 下载器 / 存档工具，可通过 RSS 或内置搜索订阅播客，在播客节目上线后立即下载，web 带内置的播放器。
-
 
 **官网**：<>  
 **文档**：<>
