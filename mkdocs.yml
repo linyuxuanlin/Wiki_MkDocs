@@ -358,6 +358,17 @@ nav:
               - Homelab-网站状态监控工具UptimeKuma.md
               - Homelab-极简个人书签导航站Flare.md
               - Homelab-多功能PDF工具箱Stirling-PDF.md
+              - Homelab-网站favicon抓取工具iconserver.md
+              - Homelab-跨设备同步工具Syncthing.md
+              - Homelab-碎片笔记工具memos.md
+              - Homelab-功能强大的wiki系统Wikijs.md
+              - Homelab-自托管密码管理器Vaultwarden.md
+              - Homelab-支持公有云的图床系统Cloudreve.md
+              - Homelab-自托管RSS聚合器FreshRSS.md
+              - Homelab-支持多种协议的堡垒机NextTerminal.md
+              - Homelab-播客订阅管理器Podgrab.md
+              - Homelab-极简的待办系统todo.md
+              - Homelab-容器应用管理平台Portainer.md
               - Docker简易指南.md
               - DockerCompose-更优雅的打开方式.md
               - 使用RSSHub搭建RSS生成器（群晖Docker）.md #  CSDN
