@@ -1,11 +1,11 @@
 ---
 id: Homelab-播客订阅管理器Podgrab
-title: Homelab - 播客订阅管理器 Podgrab 🚧
+title: Homelab - 播客订阅管理器 Podgrab
 ---
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230316131448.png)
 
-**xxx** 是一个
+**Podgrab** 是一个自托管的播客管理器 / 下载器 / 存档工具，可通过 RSS 或内置搜索引擎搜索订阅播客节目，可自动下载新上线节目，并且自带 web 播放器。
 
 ## 部署（docker-compose）
 
@@ -15,7 +15,7 @@ title: Homelab - 播客订阅管理器 Podgrab 🚧
 version: "2.1"
 services:
   podgrab:
-    image: akhilrex/podgrab
+    image: akhilrex/podgrab:latest
     environment:
       - CHECK_FREQUENCY=240
     # - PASSWORD=${PASSWORD} # 加访问密码，username = podgrab
@@ -26,8 +26,6 @@ services:
       - ${PORT}:8080
     restart: unless-stopped
 ```
-
-## 配置说明
 
 ## 参考与致谢
 

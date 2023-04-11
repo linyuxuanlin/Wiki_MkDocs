@@ -1,11 +1,12 @@
 ---
 id: Homelab-网站favicon抓取工具iconserver
-title: Homelab - 网站 favicon 抓取工具 iconserver 🚧
+title: Homelab - 网站 favicon 抓取工具 iconserver
 ---
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304195157.png)
 
-**xxx** 是一个
+**iconserver** 是一个网站 favicon 图标抓取工具。支持抓取 `favicon.ico` 与
+`apple-touch-icon.png`，拥有简单的 URL API 与 web 操作页面，如果抓取失败则会生成首字母开头的 favicon。
 
 ## 部署（docker-compose）
 

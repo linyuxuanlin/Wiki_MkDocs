@@ -1,11 +1,11 @@
 ---
 id: Homelab-自托管RSS聚合器FreshRSS
-title: Homelab - 自托管 RSS 聚合器 FreshRSS 🚧
+title: Homelab - 自托管 RSS 聚合器 FreshRSS
 ---
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304102312005.png)
 
-**xxx** 是一个
+**FreshRSS** 是一个托管的 RSS 聚合器，支持订阅多个 RSS 源，并自动刷新。提供 web 在线阅读和 API 供移动端 app 使用。
 
 ## 部署（docker-compose）
 
@@ -28,10 +28,16 @@ services:
       - ${DIR}/freshrss/extensions:/var/www/FreshRSS/extensions
     environment:
       TZ: Asia/Shanghai
-      CRON_MIN: '*/5' # 每 5 分钟拉取一次文章更新
+      CRON_MIN: "*/5" # 每 5 分钟拉取一次文章更新
 ```
 
 ## 配置说明
+
+RSS 源可推荐 saveweb 的中文博客列表 [**rss-list**](https://github.com/saveweb/rss-list)。
+
+移动端 App 推荐使用 FeedMe(Android)，NetNewsWire(iOS)。
+
+更多 RSS 相关的内容可参考文章 [**RSS - 高效率的阅读方式**](https://wiki-power.com/RSS-%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E9%98%85%E8%AF%BB%E6%96%B9%E5%BC%8F/)。
 
 ## 参考与致谢
 

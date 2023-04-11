@@ -1,11 +1,11 @@
 ---
 id: Homelab-极简的待办系统todo
-title: Homelab - 极简的待办系统 todo 🚧
+title: Homelab - 极简的待办系统 todo
 ---
 
-![1](1)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304111520508.png)
 
-**xxx** 是一个
+**todo** 是一个极简的待办系统工具。
 
 ## 部署（docker-compose）
 
@@ -27,6 +27,10 @@ services:
 ```
 
 ## 配置说明
+
+配置主题的变量 `THEME` 可根据需要替换为以下值：`ayu, dracula, gruvbox-dark, gruvbox-light, lucario, monokai, nord, solarized-dark, solarized-light, tomorrow, tomorrow-night, zenburn`。
+
+如果不满足需求，也可以自定义主题，请参考官方文档 `Custom Color Themes` 部分的内容。
 
 ## 参考与致谢
 

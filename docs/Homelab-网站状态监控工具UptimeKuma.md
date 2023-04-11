@@ -12,7 +12,7 @@ title: Homelab - 网站状态监控工具 Uptime Kuma
 先创建 `docker-compose.yml` ，并将以下的 `${DIR}` 替换为本地的目录（比如我的是 `/DATA/AppData`）；`${PORT}` 替换为自定义的端口号（比如 `1234`，选择不被占用就可以了）：
 
 ```yml title="docker-compose.yml"
-version: '3'
+version: "3"
 services:
   uptime-kuma:
     image: louislam/uptime-kuma

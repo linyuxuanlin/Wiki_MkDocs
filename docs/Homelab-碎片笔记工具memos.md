@@ -1,11 +1,11 @@
 ---
 id: Homelab-碎片笔记工具memos
-title: Homelab - 碎片笔记工具 memos 🚧
+title: Homelab - 碎片笔记工具 memos
 ---
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304195311.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304111548420.png)
 
-**xxx** 是一个
+**memos** 是一个开源的自托管 memos 工具。支持 Markdown 语法、公开分享、iframe 嵌入、标签管理、日历视图、简单的数据迁移与备份功能。
 
 ## 部署（docker-compose）
 
@@ -23,6 +23,10 @@ services:
 ```
 
 ## 配置说明
+
+移动端 iOS/Android App：[**Moe Memos**](https://memos.moe/)。还有更多第三方客户端（如微信小程序、浏览器扩展、Telegram Bot 等）请参考文档 [**contribution·memos**](https://github.com/usememos/memos#contribution)。
+
+用户数据的导入导出，可使用 VS Code 插件 [**SQLite**](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)，下载并打开 `${DIR}` 下的 `memos_prod.db` 即可进行增删改查、导入导出备份等操作。注意，只有在 docker 容器关闭 / 重启的时候才会更新 `memos_prod.db` 文件。
 
 ## 参考与致谢
 
