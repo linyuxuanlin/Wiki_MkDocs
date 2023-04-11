@@ -24,5 +24,10 @@ Homelab 是指可在家中搭建的实验（折腾）环境，用于进行实验
 
 在接下来的一系列文章中，我将介绍一些基础的配置，还有许多有趣的服务。上面提到的铁三角组合，只是我个人的差异化配置，如果你只有一台机器，折腾起来也是完全没有问题的。我将介绍的内容大多是基于 Docker 与 Docker-compose 部署的，因为这种方式兼容性极佳，在不同配置的机器上都能做到开箱即用。但需要提及的一点是，机器的选择最好是 X86 架构的，因为有些许容器没有做 ARM 适配，需要自己编译安装。
 
+## 参考与致谢
+
+- [你们的 NAS 部署了什么有趣的服务?](https://www.v2ex.com/t/901954)
+- [整理全网有趣好玩的 Docker](https://github.com/itgoyo/awesome-docker)
+
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
