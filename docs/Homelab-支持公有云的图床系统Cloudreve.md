@@ -61,7 +61,7 @@ volumes:
 
 首次启动时，会自动创建初始的管理员账号，可以在 log 中找到。如果错过了，请删除目录下的 cloudreve.db，重新启动主程序以初始化新的管理员账户。
 
-我使用的图像命名规则：`{year}{month}{day}{hour}{minute}{second}{ext}`。
+我采用的图像命名规则：`{year}{month}{day}{hour}{minute}{second}{ext}`。
 
 ## 参考与致谢
 
