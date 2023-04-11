@@ -304,6 +304,8 @@ nav:
               - BeagleBone系列-BBAI入坑.md
               - JetsonNano系列-入坑.md
           - OTHERS:
+              - Docker简易指南.md
+              - DockerCompose-更优雅的打开方式.md
               - 双系统极简安装指南.md
               - 网页版串口助手的开发.md
               - Ubuntu配置笔记.md
@@ -355,11 +357,9 @@ nav:
               - 搭建属于自己的HomeLab.md
               - Homelab-轻量服务器管理面板CasaOS.md
               - Homelab-反代证书管理面板NginxProxyManager.md
-              - Homelab-自动更新Docker容器的工具Watchtower.md
               - Homelab-网站状态监控工具UptimeKuma.md
               - Homelab-极简个人书签导航站Flare.md
-              - Homelab-多功能PDF工具箱Stirling-PDF.md
-              - Homelab-网站favicon抓取工具iconserver.md
+              - Homelab-容器应用管理平台Portainer.md
               - Homelab-跨设备同步工具Syncthing.md
               - Homelab-碎片笔记工具memos.md
               - Homelab-功能强大的wiki系统Wikijs.md
@@ -368,19 +368,19 @@ nav:
               - Homelab-自托管RSS聚合器FreshRSS.md
               - Homelab-支持多种协议的堡垒机NextTerminal.md
               - Homelab-播客订阅管理器Podgrab.md
+              - Homelab-多功能PDF工具箱Stirling-PDF.md
+              - Homelab-网站favicon抓取工具iconserver.md
               - Homelab-极简的待办系统todo.md
-              - Homelab-容器应用管理平台Portainer.md
-              - Docker简易指南.md
-              - DockerCompose-更优雅的打开方式.md
+              - Homelab-自动更新Docker容器的工具Watchtower.md
+              - 如何在iPad上运行VSCode.md #  CSDN
+              - Docker方法部署code-server.md
+          - 群晖 NAS:
+              - 使用frp访问群晖NAS.md #  CSDN
               - 使用RSSHub搭建RSS生成器（群晖Docker）.md #  CSDN
               - 使用Bitwarden搭建密码管理器（群晖Docker）.md #  CSDN
               - 使用acme.sh自动申请域名证书（群晖Docker）.md #  CSDN
               - 使用Calibre搭建在线书库（群晖Docker）.md #  CSDN
               - 使用Watchtower自动更新容器（群晖Docker）.md
-              - 如何实现外网RDP远控（frp）.md #  CSDN
-              - 使用frp访问群晖NAS.md #  CSDN
-              - 如何在iPad上运行VSCode.md #  CSDN
-              - Docker方法部署code-server.md
           - 技术流:
               - 使用Rclone同步网盘数据.md
               - 为什么你需要一个知识库.md #  CSDN
@@ -397,6 +397,7 @@ nav:
               - 用树莓派架设云打印服务器.md #  CSDN todo
               - 用Graphviz绘制关系图.md #  CSDN todo
               - RSS-高效率的阅读方式.md
+              - 如何实现外网RDP远控（frp）.md #  CSDN
               - 技术文档写作规范.md #  CSDN todo
               - 如何在Markdown中使用LaTeX.md
               - 把回忆放心交给GooglePhotos.md
