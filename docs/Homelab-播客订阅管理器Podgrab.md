@@ -9,7 +9,7 @@ title: Homelab - 播客订阅管理器 Podgrab 🚧
 
 ## 部署（docker-compose）
 
-先创建 `docker-compose.yml` ，并将以下的 `[custom-dir]` 替换为本地的目录（比如我的是 `/DATA/AppData`）；`[custom-port]` 替换为自定义的端口号（比如 `1234`，选择不被占用就可以了）：
+先创建 `docker-compose.yml` ，并将以下的 `${DIR}` 替换为本地的目录（比如我的是 `/DATA/AppData`）；`${PORT}` 替换为自定义的端口号（比如 `1234`，选择不被占用就可以了）：
 
 ```yml title="docker-compose.yml"
 version: "2.1"
@@ -18,12 +18,12 @@ services:
     image: akhilrex/podgrab
     environment:
       - CHECK_FREQUENCY=240
-    # - PASSWORD=[custom-password] # 加访问密码，username = podgrab
+    # - PASSWORD=${PASSWORD} # 加访问密码，username = podgrab
     volumes:
-      - [custom-dir]/podgrab/config:/config
-      - [custom-dir]/podgrab/assets:/assets
+      - ${DIR}/podgrab/config:/config
+      - ${DIR}/podgrab/assets:/assets
     ports:
-      - [custom-port]:8080
+      - ${PORT}:8080
     restart: unless-stopped
 ```
 

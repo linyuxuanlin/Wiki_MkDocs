@@ -9,7 +9,7 @@ title: Homelab - 反代证书管理面板 Nginx Proxy Manager
 
 ## 部署（docker-compose）
 
-先创建 `docker-compose.yml` ，并将以下的 `[custom-dir]` 替换为本地的目录（比如我的是 `/DATA/AppData`）；`[custom-port]` 替换为自定义的端口号（比如 `1234`，选择不被占用就可以了）：
+先创建 `docker-compose.yml` ，并将以下的 `${DIR}` 替换为本地的目录（比如我的是 `/DATA/AppData`）；`${PORT}` 替换为自定义的端口号（比如 `1234`，选择不被占用就可以了）：
 
 ```yml title="docker-compose.yml"
 version: "3"
@@ -18,12 +18,12 @@ services:
     image: "jc21/nginx-proxy-manager:latest"
     restart: unless-stopped
     ports:
-      - "[custom-port]:80"
-      - "[custom-port]:81" # 面板地址
-      - "[custom-port]:443"
+      - "${PORT}:80"
+      - "${PORT}:81" # 面板地址
+      - "${PORT}:443"
     volumes:
-      - [custom-dir]/nginx-proxy-manager/data:/data
-      - [custom-dir]/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
+      - ${DIR}/nginx-proxy-manager/data:/data
+      - ${DIR}/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
 ```
 
 初始账户密码：

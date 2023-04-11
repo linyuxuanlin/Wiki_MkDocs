@@ -14,7 +14,7 @@ version: "3.3"
 services:
   s-pdf:
     ports:
-      - "[custom-port]:8080"
+      - "${PORT}:8080"
     image: frooodle/s-pdf
 ```
 

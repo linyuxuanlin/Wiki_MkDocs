@@ -9,7 +9,7 @@ title: Homelab - 极简个人书签导航站 Flare
 
 ## 部署（docker-compose）
 
-先创建 `docker-compose.yml` ，并将以下的 `[custom-dir]` 替换为本地的目录（比如我的是 `/DATA/AppData`）；`[custom-port]` 替换为自定义的端口号（比如 `1234`，选择不被占用就可以了）；自定义 `[custom-username]` 与 `[custom-password]`：
+先创建 `docker-compose.yml` ，并将以下的 `${DIR}` 替换为本地的目录（比如我的是 `/DATA/AppData`）；`${PORT}` 替换为自定义的端口号（比如 `1234`，选择不被占用就可以了）；自定义 `${USERNAME}` 与 `${PASSWORD}`：
 
 ```yml title="docker-compose.yml"
 version: "3.6"
@@ -20,17 +20,17 @@ services:
     # 更多启动参数文档 https://github.com/soulteary/docker-flare/blob/main/docs/advanced-startup.md
     command: flare --nologin=0 # 开启用户登录模式，需要先设置 `nologin` 启动参数为 `0`
     environment:
-      - FLARE_USER=[custom-username] # 如开启用户登录模式，且未设置 FLARE_USER，则默认用户为 `flare`
-      - FLARE_PASS=[custom-password] # 如开启用户登录模式，且未设置 FLARE_USER，则会默认生成密码并展示在应用启动日志中
+      - FLARE_USER=${USERNAME} # 如开启用户登录模式，且未设置 FLARE_USER，则默认用户为 `flare`
+      - FLARE_PASS=${PASSWORD} # 如开启用户登录模式，且未设置 FLARE_USER，则会默认生成密码并展示在应用启动日志中
     ports:
-      - [custom-port]:5005
+      - ${PORT}:5005
     volumes:
-      - [custom-dir]/flare:/app
+      - ${DIR}/flare:/app
 ```
 
 ## 配置说明
 
-可在修改 `[custom-dir]/flare` 内的 `apps.yml` 与 `bookmarks.yml` 配置应用和书签的地址。容器会实时更新。也可在 url 后面加上以下参数进行调试：
+可在修改 `${DIR}/flare` 内的 `apps.yml` 与 `bookmarks.yml` 配置应用和书签的地址。容器会实时更新。也可在 url 后面加上以下参数进行调试：
 
 - 引导操作：`/guide`
 - 设置页面：`/settings`
