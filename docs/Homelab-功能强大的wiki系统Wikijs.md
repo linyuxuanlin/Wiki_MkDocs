@@ -9,7 +9,7 @@ title: Homelab - 功能强大的 wiki 系统 Wiki.js
 
 ## 部署（docker-compose）
 
-先创建 `docker-compose.yml` ，并将以下的 `${DIR}` 替换为本地的目录（比如我的是 `/DATA/AppData`）；`${PORT}` 替换为自定义的端口号（比如 `1234`，选择不被占用就可以了）；自定义 `${USERNAME-DB}` 与 `${PASSWORD-DB}`：
+先创建 `docker-compose.yml` ，并将以下的 `${DIR}` 替换为本地的目录（比如我的是 `/DATA/AppData`）；`${PORT}` 替换为自定义的端口号（比如 `1234`，选择不被占用的端口就可以）；自定义 `${USERNAME-DB}` 与 `${PASSWORD-DB}`：
 
 ```yml title="docker-compose.yml"
 version: "3"
