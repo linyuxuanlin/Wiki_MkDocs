@@ -7,15 +7,13 @@ title: 如何在 iPad 上运行 VS Code
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20201221140748.jpg)
 
-## 补充更新
-
-更推荐以 Docker 方式安装 code-server 服务。  
+更推荐以 Docker compose 的方式安装 code-server 服务。  
 仅需一行命令部署，且无需配置后台运行，自带 Git 等环境。  
-详见：[**Docker 方法部署 code-server**](https://wiki-power.com/Docker%E6%96%B9%E5%BC%8F%E8%BF%90%E8%A1%8Ccode-server)
+详见：[**Homelab - 在线代码编辑器 code-server**](https://wiki-power.com/Homelab-%E5%9C%A8%E7%BA%BF%E4%BB%A3%E7%A0%81%E7%BC%96%E8%BE%91%E5%99%A8code-server)
 
-如果你不想用 Docker 的方式部署，请继续阅读下文。
+如果你不想用 Docker compose 的方式部署，请继续阅读下文。
 
-## 一、配置服务器
+## 配置服务器
 
 首先，你需要有一台 24h 不停机的服务器（推荐买阿里云 / 腾讯云学生机，只需 ¥9.9/月）  
 为保证使用体验，这里推荐服务器的配置：
@@ -25,7 +23,7 @@ title: 如何在 iPad 上运行 VS Code
 
 刷 Linux（这里我使用 CentOS 8.2），确保 ssh 能正常连上即可。
 
-## 二、安装 code-server
+## 安装 code-server
 
 在新的版本下（≥v3.8.0），可以直接使用脚本安装：
 
@@ -35,7 +33,7 @@ curl -fsSL https://code-server.dev/install.sh | sh
 
 如果发现半天下载不下来，多半是因为 DNS 污染，参考 [**GitHub 改 Host**](https://wiki-power.com/GitHub改Host) 解决。
 
-## 三、运行 code-server
+## 运行 code-server
 
 使用命令：
 
@@ -45,24 +43,24 @@ export PASSWORD="设置一个访问密码" && code-server --port 80 --host 0.0.0
 
 如果没有出现错误，那么打开浏览器，输入服务器的 IP 地址访问，就可以看到一个在线的 VS Code 了。
 
-## 四、配置后台运行
+## 配置后台运行
 
 运行在前台的 code-server ，会因为 ssh 退出而结束进程。  
 为了使其能在后台运行，我们可以使用 screen 程序（可以把它理解为一个容器）。
 
-### 1. 安装 screen
+### 安装 screen
 
 ```shell
 yum install screen
 ```
 
-### 2. 创建 screen 作业
+### 创建 screen 作业
 
 ```shell
 screen -S VSCode-online # VSCode-online 为自取的名字
 ```
 
-### 3. 开启 code-server 服务
+### 开启 code-server 服务
 
 ```shell
 export PASSWORD="设置一个访问密码" && code-server --port 80 --host 0.0.0.0 --auth password

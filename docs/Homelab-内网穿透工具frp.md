@@ -1,6 +1,6 @@
 ---
 id: Homelab-内网穿透工具frp
-title: Homelab-内网穿透工具frp
+title: Homelab - 内网穿透工具 frp
 ---
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304195137.png)
