@@ -478,7 +478,7 @@ nav:
 # - archive/命令行基本操作-
 # - archive/科技X的访谈.md
 # - archive/极简面包-烘培.md
-# - 电路设计中常用的接口及关键点.md
+# - archive/电路设计中常用的接口及关键点.md
 # - archive/Bash基础.md
 # - archive/从零搭建视觉开发环境（Docker-Linux）.md
 # - archive/Excel批量激活链接并转为图片.md
@@ -488,6 +488,7 @@ nav:
 # - archive/麦昆小车-测评.md
 # - archive/STM32模块设计-LED.md
 # - archive/团队公开知识库的搭建.md
+# - archive/Docker方法部署code-server.md
 
 #  unlist：
 # - unlist/电源设计-LDO跳变抑制能力对比测试记录.md
