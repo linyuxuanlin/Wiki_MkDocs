@@ -75,7 +75,7 @@ echo $var | sh
 ## 参考与致谢
 
 - [你们的 NAS 部署了什么有趣的服务?](https://www.v2ex.com/t/901954)
-- [整理全网有趣好玩的 Docker](https://github.com/itgoyo/awesome-docker)
+- [一键启动多个 docker-compose 配置容器](https://juejin.cn/post/7082842557482270734)
 
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
