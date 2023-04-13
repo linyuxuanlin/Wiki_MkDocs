@@ -357,6 +357,7 @@ nav:
               - 搭建属于自己的HomeLab.md
               - Homelab-轻量服务器管理面板CasaOS.md
               - Homelab-反代证书管理面板NginxProxyManager.md
+              - Homelab-内网穿透工具frp.md
               - Homelab-网站状态监控工具UptimeKuma.md
               - Homelab-极简个人书签导航站Flare.md
               - Homelab-容器应用管理平台Portainer.md
