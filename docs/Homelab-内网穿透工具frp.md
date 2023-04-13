@@ -5,7 +5,7 @@ title: Homelab-内网穿透工具frp
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304195137.png)
 
-**frp** 是一种内网穿透的方法。如果你由一台有公网 IP 的服务器，就可以把其他没有公网的机器的端口中转暴露到公网访问。frp 支持 TCP、UDP、HTTP、HTTPS 等多种协议多种协议。
+**frp** 是一种内网穿透的方法。你可以通过有公网 IP 的服务器，将内网主机端口暴露到互联网。frp 支持 TCP、UDP、HTTP、HTTPS 等多种协议多种协议。
 
 ## 服务端 frps
 
@@ -72,8 +72,9 @@ local_port = xx # 内网的端口号
 - [GitHub repo · stilleshan/frpc
   ](https://github.com/stilleshan/frpc)
 - [Docker Hub · snowdreamtech/frps](https://hub.docker.com/r/snowdreamtech/frps)
-- [Docker Hub · stilleshan/frpc
-  ](https://hub.docker.com/r/stilleshan/frpc)
+- [Docker Hub · stilleshan/frpc](https://hub.docker.com/r/stilleshan/frpc)
+- [如何实现外网 RDP 远控（frp）](https://wiki-power.com/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91RDP%E8%BF%9C%E6%8E%A7%EF%BC%88frp%EF%BC%89/)
+- [使用 frp 访问群晖 NAS](https://wiki-power.com/%E4%BD%BF%E7%94%A8frp%E8%AE%BF%E9%97%AE%E7%BE%A4%E6%99%96NAS/)
 
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
