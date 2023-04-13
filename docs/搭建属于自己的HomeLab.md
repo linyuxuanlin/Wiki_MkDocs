@@ -41,6 +41,31 @@ Homelab 是指可在家中搭建的实验（折腾）环境，用于进行实验
 
 我在 NAS 上部署的，主要是设备资料备份、网盘同步、照片库、书库等储存需求型的服务。
 
+## 如何一键启动所有的 Docker compose
+
+凭借着折腾不止的精神，三天两头给设备刷系统是不可避免的。部署了那么多的应用，总不可能一个个单独 bring up 吧。这儿有个简单的 shell 脚本，可以一键部署所有 Docker compose：
+
+```shell title="compose.sh"
+var=` find ./ -maxdepth 2 -name "*.yml"   -printf "docker-compose -f %p up -d; " `
+echo $var | sh
+```
+
+文件的目录结构是这样的：
+
+```
+├── compose
+│   ├── code-server
+|   |   ├──docker-compose.yml
+│   ├── frp
+|   |   ├──docker-compose.yml
+│   ├── xxx
+|   |   ├──docker-compose.yml
+│   ├── ……
+│   └── compose.sh
+```
+
+只要在 compose 目录下执行 `sh compose.sh`，就能一键启动所有的 `docker-compose.yml` 了。
+
 ## 自托管的优势
 
 相比于第三方托管，让别人替你保管数据，**自托管（Self-Hosted）** 具有十足的优势，表现在你对个人数据拥有完全的掌控权，可以根据自己的喜好去定制所需，能帮你获取到更多优质的信息源（个人书库、影视库、RSS 服务）。前提是要有一定的时间精力与资金投入，并且拥有一颗乐于折腾的心。
