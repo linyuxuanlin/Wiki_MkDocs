@@ -62,7 +62,7 @@ echo $var | sh
 |   |   ├──docker-compose.yml
 │   ├── ……
 │   └── compose.sh
-```
+``` 
 
 只要在 compose 目录下执行 `sh compose.sh`，就能一键启动所有的 `docker-compose.yml` 了。
 
