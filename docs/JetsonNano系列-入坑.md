@@ -10,7 +10,6 @@ title: Jetson Nano系列 - 入坑
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 
-
 ## 下载镜像并烧录 SD 卡
 
 下载 [J**etson Nano 开发者套件 SD 卡镜像**]( Jetson Nano 开发者套件 SD 卡镜像)，使用 Etcher 之类的工具烧录进 SD 卡。

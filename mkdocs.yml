@@ -1,5 +1,5 @@
 site_name: Power's Wiki
-site_description: ATE, hardware, STM32, Arduino, NAS, software, blog
+site_description: 读万卷书，行万里路，做个有趣的人
 site_url: https://wiki-power.com/
 repo_url: https://github.com/linyuxuanlin/Wiki_MkDocs
 #remote_name: linyuxuanlin/Wiki_MkDocs
@@ -359,6 +359,8 @@ nav:
               - 搭建属于自己的HomeLab.md
               - Homelab-轻量服务器管理面板CasaOS.md
               - Homelab-反代证书管理面板NginxProxyManager.md
+              - Homelab-内网穿透工具frp.md
+              - Homelab-在线代码编辑器code-server.md
               - Homelab-网站状态监控工具UptimeKuma.md
               - Homelab-极简个人书签导航站Flare.md
               - Homelab-容器应用管理平台Portainer.md
@@ -374,8 +376,6 @@ nav:
               - Homelab-网站favicon抓取工具iconserver.md
               - Homelab-极简的待办系统todo.md
               - Homelab-自动更新Docker容器的工具Watchtower.md
-              - 如何在iPad上运行VSCode.md #  CSDN
-              - Docker方法部署code-server.md
           - 群晖 NAS:
               - 使用frp访问群晖NAS.md #  CSDN
               - 使用RSSHub搭建RSS生成器（群晖Docker）.md #  CSDN
@@ -392,6 +392,7 @@ nav:
               - 个人文案排版规范.md #  CSDN todo
               - 如何保存易逝的文字.md
               - 如何用Markdown写一份简历.md #  CSDN
+              - 如何在iPad上运行VSCode.md #  CSDN
               - MkDocs测试实验室.md
               - Windows初始化与软件推荐（旧）.md #  CSDN todo
               - Personal_Onboarding_Workflow_(Windows).md
@@ -479,7 +480,7 @@ nav:
 # - archive/命令行基本操作-
 # - archive/科技X的访谈.md
 # - archive/极简面包-烘培.md
-# - 电路设计中常用的接口及关键点.md
+# - archive/电路设计中常用的接口及关键点.md
 # - archive/Bash基础.md
 # - archive/从零搭建视觉开发环境（Docker-Linux）.md
 # - archive/Excel批量激活链接并转为图片.md
@@ -489,6 +490,7 @@ nav:
 # - archive/麦昆小车-测评.md
 # - archive/STM32模块设计-LED.md
 # - archive/团队公开知识库的搭建.md
+# - archive/Docker方法部署code-server.md
 
 #  unlist：
 # - unlist/电源设计-LDO跳变抑制能力对比测试记录.md
