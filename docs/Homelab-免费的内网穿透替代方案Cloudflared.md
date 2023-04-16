@@ -50,7 +50,7 @@ services:
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230416183438.png)
 
-即可通过 <https://dashboard.wiki-power.com> 访问我的服务。并且，它会帮你自动申请 SSL 证书，直接在公网通过 https 访问。
+即可通过 <https://dashboard.wiki-power.com> 访问本地的端口。并且，它会帮你自动申请 SSL 证书，直接在公网通过 https 访问。
 
 ## 参考与致谢
 
