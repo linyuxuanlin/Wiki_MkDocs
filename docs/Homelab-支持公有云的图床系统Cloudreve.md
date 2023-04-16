@@ -67,6 +67,7 @@ volumes:
 
 - [官网](https://docs.cloudreve.org/)
 - [文档](https://docs.cloudreve.org/getting-started/install#docker-compose)
+- [论坛](https://forum.cloudreve.org/)
 - [GitHub repo](https://github.com/cloudreve/Cloudreve)
 - [Docker Hub](https://hub.docker.com/r/cloudreve/cloudreve)
 - [Demo site](https://demo.cloudreve.org/)
