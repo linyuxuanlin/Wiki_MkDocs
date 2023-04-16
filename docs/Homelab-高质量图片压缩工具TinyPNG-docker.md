@@ -160,7 +160,7 @@ docker push linyuxuanlin/tinypng-docker:latest
 
 上传完成后，其他人便可以通过以下命令拉取镜像：
 
-```shell
+```bash
 docker pull linyuxuanlin/tinypng-docker:latest
 ```
 
