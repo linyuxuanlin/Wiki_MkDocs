@@ -1,6 +1,6 @@
 ---
 id: Homelab-免费的内网穿透替代方案Cloudflared
-title: Homelab - 免费的内网穿透替代方案 Cloudflared 🚧
+title: Homelab - 免费的内网穿透替代方案 Cloudflared
 ---
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230416143051.png)
@@ -11,11 +11,7 @@ title: Homelab - 免费的内网穿透替代方案 Cloudflared 🚧
 
 - 虽然 Cloudflared 是免费的，但需要绑定 VISA/PayPal。
 - 域名 NameServer 需要指向 Cloudflare
-- 需要启用 Cloudflare CDN
-
-- paypal/visa（免费但要绑定）
-- 域名绑定至 Cloudflare
-- DNS 记录启用
+- 需要启用 Cloudflare CDN（国内访问速度偏慢）
 
 优点：
 
@@ -27,8 +23,8 @@ title: Homelab - 免费的内网穿透替代方案 Cloudflared 🚧
 
 缺点：
 
-- 速度慢
-- 依赖 Cloudflare
+- 国内访问速度慢
+- 相对依赖 Cloudflare 平台
 
 ## 部署（docker-compose）
 
@@ -48,6 +44,14 @@ services:
 
 ## 配置说明
 
+访问 [**Cloudflare Zero Trust**](https://one.dash.cloudflare.com/) 面板，在左侧栏选择 `Access` - `Tunnels`，点击 `Create a tunnel` 创建隧道，填写隧道名称（用于区分不同的物理机器）然后保存。记录下 token 后填写在 `docker-compose.yml` 中。
+
+随后点进你创建的隧道，在 `Public Hostname Page` 选项卡中添加代理的端口。举个例子，我绑定在 Cloudflare 的域名是 `wiki-power.com`，我需要代理的服务本地的端口是 `80`、`HTTP` 协议，那么我只需要这样填写：
+
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230416183438.png)
+
+即可通过 <https://dashboard.wiki-power.com> 访问我的服务。并且，它会帮你自动申请 SSL 证书，直接在公网通过 https 访问。
+
 ## 参考与致谢
 
 - [官网 / 文档](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/)
@@ -56,24 +60,3 @@ services:
 
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-
----
-
----
-
-[免费的 Cloudflared 实现外网访问群晖](https://laosu.ml/2022/04/06/%E5%85%8D%E8%B4%B9%E7%9A%84Cloudflared%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE%E7%BE%A4%E6%99%96/#%E8%8E%B7%E5%8F%96%E9%9A%A7%E9%81%93-token)
-
-Cloudflare Zero Trust - Tunnels - Create a tunnel
-
-记录 Tunnel ID (UUID)（格式为：xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx）
-
-记录 token `xxx`
-
-在 docker/cloudflared 目录下放 config.yaml 文件:
-
-```yml
-tunnel: [Tunnel UUID]
-credentials-file: /root/.cloudflared/[Tunnel UUID].json
-```
-
-在 cloudflare 面板配置域名
