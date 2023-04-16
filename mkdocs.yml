@@ -360,7 +360,7 @@ nav:
               - Homelab-轻量服务器管理面板CasaOS.md
               - Homelab-反代证书管理面板NginxProxyManager.md
               - Homelab-内网穿透工具frp.md
-              - Homelab-免费内网穿透替代方案Cloudflared.md
+              - Homelab-免费的内网穿透替代方案Cloudflared.md
               - Homelab-在线代码编辑器code-server.md
               - Homelab-网站状态监控工具UptimeKuma.md
               - Homelab-高质量图片压缩工具TinyPNG-docker.md
