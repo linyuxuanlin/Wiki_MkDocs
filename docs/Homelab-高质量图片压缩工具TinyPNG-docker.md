@@ -115,7 +115,7 @@ if __name__ == "__main__":
     observer.join()
 ```
 
-这里首先导入了必需的 Python 库：tinify，os，time，sys，watchdog。随后定义了一个名为 MyHandler 的类，继承自 watchdog.events.FileSystemEventHandler。这个类包含一个 on_created 方法，当监测到指定文件夹下有新文件被创建时会被调用。on_created 函数获取源图像的路径，并将其压缩到指定的输出路径。最后开始监测输入文件夹，一旦检测到指定文件夹下有新文件被创建，就会自动执行压缩操作，并将压缩后的图像输出到指定的输出文件夹。
+这里首先导入必需的 Python 库：tinify，os，time，sys，watchdog。随后定义了一个名为 MyHandler 的类，继承自 watchdog.events.FileSystemEventHandler。这个类包含一个 on_created 方法，当监测到指定文件夹下有新文件被创建时会被调用。on_created 函数获取源图像的路径，并将其压缩到指定的输出路径。最后开始监测输入文件夹，一旦检测到指定文件夹下有新文件被创建，就会自动执行压缩操作，并将压缩后的图像输出到指定的输出文件夹。
 
 ### 编译容器
 
