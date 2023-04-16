@@ -9,7 +9,7 @@ title: Homelab - 在线代码编辑器 code-server
 
 ## 部署（docker-compose）
 
-先创建 `docker-compose.yml` ，并将以下的 `${DIR}` 替换为本地的目录（比如我的是 `/DATA/AppData`）；`${PORT}` 替换为自定义的端口号（比如 `1234`，选择不被占用的端口就可以）；将登陆密码 `${PASSWORD}` 也替换为你自己的：
+先创建 `docker-compose.yml` ，并将以下的 `${DIR}` 替换为本地的目录（例如 `/DATA/AppData`）；`${PORT}` 替换为自定义的端口号（比如 `1234`，选择不被占用的端口就可以）；将登陆密码 `${PASSWORD}` 也替换为你自己的：
 
 ```yml title="docker-compose.yml"
 version: "2.1"

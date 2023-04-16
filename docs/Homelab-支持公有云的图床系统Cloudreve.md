@@ -21,7 +21,7 @@ mkdir -vp cloudreve/{uploads,avatar,data} \
 && mkdir data
 ```
 
-随后创建 `docker-compose.yml` ，并将以下的 `${DIR}` 替换为本地的目录（比如我的是 `/DATA/AppData`）；`${PORT}` 替换为自定义的端口号（比如 `1234`，选择不被占用的端口就可以）；最后自定义 `${PASSWORD-ARIA2}`：
+随后创建 `docker-compose.yml` ，并将以下的 `${DIR}` 替换为本地的目录（例如 `/DATA/AppData`）；`${PORT}` 替换为自定义的端口号（比如 `1234`，选择不被占用的端口就可以）；最后自定义 `${PASSWORD-ARIA2}`：
 
 ```yml title="docker-compose.yml"
 version: "3.8"

@@ -1,9 +1,11 @@
 ---
-id: Homelab-跨设备同步工具Syncthing
-title: Homelab - 跨设备同步工具 Syncthing
+id: Homelab-免费内网穿透替代方案Cloudflared
+title: Homelab - 免费内网穿透替代方案 Cloudflared 🚧
 ---
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304111529987.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230416143051.png)
+
+仍在撰写中。
 
 **Syncthing** 是一款免费开源的文件同步应用程序，可在多个设备间同步文件和文件夹，支持增量同步。我用它将服务器的数据备份到 NAS 上做统一管理。
 

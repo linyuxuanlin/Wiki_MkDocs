@@ -360,8 +360,10 @@ nav:
               - Homelab-轻量服务器管理面板CasaOS.md
               - Homelab-反代证书管理面板NginxProxyManager.md
               - Homelab-内网穿透工具frp.md
+              - Homelab-免费内网穿透替代方案Cloudflared.md
               - Homelab-在线代码编辑器code-server.md
               - Homelab-网站状态监控工具UptimeKuma.md
+              - Homelab-高质量图片压缩工具TinyPNG-docker.md
               - Homelab-极简个人书签导航站Flare.md
               - Homelab-容器应用管理平台Portainer.md
               - Homelab-跨设备同步工具Syncthing.md
@@ -376,7 +378,6 @@ nav:
               - Homelab-网站favicon抓取工具iconserver.md
               - Homelab-极简的待办系统todo.md
               - Homelab-自动更新Docker容器的工具Watchtower.md
-              - Homelab-支持多存储的文件列表程序Alist.md
           - 群晖 NAS:
               - 使用frp访问群晖NAS.md #  CSDN
               - 使用RSSHub搭建RSS生成器（群晖Docker）.md #  CSDN
