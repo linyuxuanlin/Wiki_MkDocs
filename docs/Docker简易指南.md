@@ -15,9 +15,9 @@ Docker 把软件本身和它所需的运行环境打包起来，你用的时候�
 
 Docker 有三要素，分别是 image，container，repository.
 
-- **image（镜像）**：把软件与环境打包在一起，可以看作是一个模板
-- **container（容器）**：把 image 实例化，相当于把模板拿来用
-- **repository（仓库）**：【待补充】
+- **image（镜像）**：一个包含完整的软件运行环境的可执行文件，其中包含代码、运行时、系统工具、库文件和配置等，可以看作是一个模板。
+- **container（容器）**：根据 image 创建的并运行在其中的一个进程，把 image 实例化，相当于把模板拿来用。
+- **repository（仓库）**：存储 Docker image 的地方，可以下载、上传、分享 image。
 
 image 与 container 是一对多的关系，就是同一个模子印多个饼，每个饼可以加不一样的佐料调味。
 
