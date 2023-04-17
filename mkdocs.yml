@@ -282,7 +282,7 @@ nav:
               - CubeMX与CubeIDE避坑.md
               - STM32的启动模式.md
               - KeilMDK配置指南.md
-          - OTHERS:
+          - 杂项:
               - 如何读写单个bit.md
               - PlatformIO—一站式嵌入式开发工具.md
               - PlatformIO搭配CubeMX食用.md
@@ -305,7 +305,7 @@ nav:
               - BeagleBone系列-使用BBIO库开发.md
               - BeagleBone系列-BBAI入坑.md
               - JetsonNano系列-入坑.md
-          - OTHERS:
+          - 杂七杂八:
               - Docker简易指南.md
               - DockerCompose-更优雅的打开方式.md
               - 双系统极简安装指南.md
