@@ -21,8 +21,8 @@ services:
       - INPUT_DIR=/app/input
       - OUTPUT_DIR=/app/output
     volumes:
-      - ${DIR}/tinypng/input:/app/input
-      - ${DIR}/tinypng/output:/app/output
+      - ${DIR}/tinypng-docker/input:/app/input
+      - ${DIR}/tinypng-docker/output:/app/output
 ```
 
 ## 配置说明
