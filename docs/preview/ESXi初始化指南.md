@@ -15,7 +15,12 @@ VMware ESXi 是一个可裸机安装的虚拟机管理器。本篇教程基于 E
 
 ### Windows 11 虚拟机的安装
 
+Win11 对系统配置比较严苛，安装的时候可能会出现 `这台电脑无法运行Windows 11`。一般问题来自于 TPM 检查，可以通过以下的方法避开：
+
 1. 在虚拟机的初始化页面，启用 `Windows 基于虚拟化的安全性`。
-2. 在进入 Windows 虚拟机后的 `现在安装` 页面，按快捷键 `Shift` + `F10` 唤醒 cmd 窗口，输入 regedit 打开注册表。在 `HKEY_LOCAL_MACHINE\SYSTEM\Setup` 路径下，创建两个 32 位的 DWORD 值：
+2. 在进入 Windows 虚拟机后的 `现在安装` 页面，按快捷键 `Shift` + `F10` 启动 cmd 窗口（如果调出 cmd 界面，有可能是笔记本的键盘键位问题，可以尝试外接一个键盘）。
+3. 输入 regedit，打开注册表。在 `HKEY_LOCAL_MACHINE\SYSTEM\Setup` 路径下，创建两个 32 位的 DWORD 值：
    - `BypassTPMCheck`，数值为 16 进制 `1`。
    - `BypassSecureBootCheck`，数值为 16 进制 `1`。
+
+如果仍然无法安装，可以尝试检查其他的条件。可能是有一些条件达不到要求，比如 1GHz 以上的主频、64GB 以上的磁盘空间、4G 以上的内存。
