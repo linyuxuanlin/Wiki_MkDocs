@@ -23,4 +23,4 @@ Win11 对系统配置比较严苛，安装的时候可能会出现 `这台电脑
    - `BypassTPMCheck`，数值为 16 进制 `1`。
    - `BypassSecureBootCheck`，数值为 16 进制 `1`。
 
-如果仍然无法安装，可以尝试检查其他的条件。可能是有一些条件达不到要求，比如 1GHz 以上的主频、64GB 以上的磁盘空间、4G 以上的内存。
+如果仍然无法安装，可以尝试检查其他的条件。可能是有一些条件达不到要求，比如 1GHz 以上的主频、64GB 以上的磁盘空间、4G 以上的内存。具体可参考 [**System requirements**](https://www.microsoft.com/en-us/windows/windows-11-specifications?r=1)。
