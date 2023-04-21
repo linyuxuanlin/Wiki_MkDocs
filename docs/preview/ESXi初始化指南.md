@@ -17,5 +17,5 @@ VMware ESXi 是一个可裸机安装的虚拟机管理器。本篇教程基于 E
 
 1. 在虚拟机的初始化页面，启用 `Windows 基于虚拟化的安全性`。
 2. 在进入 Windows 虚拟机后的 `现在安装` 页面，按快捷键 `Shift` + `F10` 唤醒 cmd 窗口，输入 regedit 打开注册表。在 `HKEY_LOCAL_MACHINE\SYSTEM\Setup` 路径下，创建两个 32 位的 DWORD 值：
-   - `BypassTPMCheck`，数值为16进制 `1`。
-   - `BypassSecureBootCheck`，数值为16进制 `1`。
+   - `BypassTPMCheck`，数值为 16 进制 `1`。
+   - `BypassSecureBootCheck`，数值为 16 进制 `1`。
