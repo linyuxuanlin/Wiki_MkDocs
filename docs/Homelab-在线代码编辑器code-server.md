@@ -33,7 +33,31 @@ services:
 
 ## 配置说明
 
+### 配置 git
+
 安装完成后，如果需要使用 Git，对用户名和邮箱初始化配置，请参考文章 [**Git 学习笔记**](https://wiki-power.com/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE)。
+
+### 读写权限问题
+
+如果在操作文件时遇到 `Error: EACCES: permission denied` 错误，可以用 `Ctrl` + `\`` 打开终端，输入以下命令赋予当前用户所有权：
+
+```shell
+sudo chown -R 用户名 文件夹路径
+```
+
+例如，以下是给 `abc` 用户赋予当前目录的所有权的操作：
+
+```shell
+sudo chown -R abc .
+```
+
+### 设置 root 账户密码
+
+如果需要用到 root 账户，可以使用以下命令初始化其密码：
+
+```shell
+sudo passwd root
+```
 
 ## 参考与致谢
 
