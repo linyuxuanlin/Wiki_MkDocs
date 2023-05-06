@@ -50,6 +50,13 @@ sudo sysctl -p
 
 在 VS Code 的设置中找到 `Remote.SSH: Config File`，填写覆盖值为 `C:\Users\你需要的用户名\.ssh\config`，并在本地创建相应的配置文件即可。
 
+### 连接失败，但使用其他 SSH 客户端可以连上
+
+有可能是远程服务器上的 sshd 的版本低于 7.6.0，缺失了显示远程端口的特性所导致的。解决这个问题需要升级 sshd 的版本：
+
+- 对于 Debian 或 Ubuntu：`sudo apt-get update && sudo apt-get install openssh-server`
+- 对于 Red Hat 或 CentOS：`sudo yum update openssh-server`
+
 ## 参考与致谢
 
 - [VSCode Remote 体验 | 远程 Linux 环境开发真香](https://zhuanlan.zhihu.com/p/64849549)
