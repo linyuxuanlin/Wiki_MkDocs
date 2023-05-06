@@ -20,7 +20,7 @@ hide:
 [![badge](https://img.shields.io/badge/dynamic/json?labelColor=FE7398&label=BILIBILI&query=%24.data.totalSubs&url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dbilibili%26queryKey%3D349536948&color=282c34&longCache=true?&style=for-the-badge){ loading=lazy }](https://space.bilibili.com/349536948)
 -->
 
-> 读万卷书，行万里路，做个有趣的人。
+> 纵览万物，上下求索。
 
 Hi there~ 欢迎来到我的知识库。
 
