@@ -378,6 +378,7 @@ nav:
               - Homelab-网站favicon抓取工具iconserver.md
               - Homelab-极简的待办系统todo.md
               - Homelab-自动更新Docker容器的工具Watchtower.md
+              - Homelab-支持多存储的文件列表程序Alist.md
           - 群晖 NAS:
               - 使用frp访问群晖NAS.md #  CSDN
               - 使用RSSHub搭建RSS生成器（群晖Docker）.md #  CSDN
