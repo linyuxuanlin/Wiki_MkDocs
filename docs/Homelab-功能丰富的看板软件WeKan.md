@@ -91,7 +91,6 @@ APP_PORT=xxxx # 自定义访问端口，选择不被占用的即可
 接着我们初始化目录结构。切换到我们自定义的 `STACK_DIR` 下（例如 `./wekan`），执行命令创建文件夹：
 
 ```shell
-cd ${STACK_DIR}
 mkdir -vp {wekan-files,wekan-db,wekan-db-dump}
 ```
 
