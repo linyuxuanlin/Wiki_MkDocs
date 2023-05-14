@@ -41,21 +41,31 @@ Homelab 是指可在家中搭建的实验（折腾）环境，用于进行实验
 
 我在 NAS 上部署的，主要是设备资料备份、网盘同步、照片库、书库等储存需求型的服务。
 
-## 如何一键启动所有的 Docker compose
+## 如何一键批量部署 Docker compose
 
-凭借着折腾不止的精神，三天两头给设备刷系统是不可避免的。部署了那么多的应用，总不可能一个个单独 bring up 吧。这儿有个简单的 shell 脚本，可以一键部署所有 Docker compose：
+有了折腾不止的精神，三天两头刷系统是不可避免的。部署了那么多的应用，总不可能一个个单独 bring up 吧。这儿有个简单的 shell 脚本，可以一键部署所有 Docker compose：
 
 ```shell title="compose.sh"
-var=` find ./ -maxdepth 2 -name "*.yml"   -printf "docker-compose -f %p up -d; " `
-echo $var | sh
+echo "starting compose.sh..."
+
+# 遍历当前目录下的一级文件夹
+for folder in */; do
+  [ "$folder" != "Archive/" ] # 忽略 Archive 文件夹
+  cd "$folder"  # 进入文件夹
+  docker-compose up -d # 执行 docker compose up -d 命令
+  cd .. # 返回上级目录
+done
+
+echo "done."
 ```
 
-文件的目录结构是这样的：
+我的目录结构是这样的：
 
 ```
 ├── compose
 │   ├── code-server
 |   |   ├──docker-compose.yml
+|   |   ├──.env
 │   ├── frp
 |   |   ├──docker-compose.yml
 │   ├── xxx
