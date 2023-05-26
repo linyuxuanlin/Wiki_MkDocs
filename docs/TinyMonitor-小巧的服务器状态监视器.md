@@ -54,7 +54,7 @@ MQTT 是一种基于客户端 - 服务器的消息发布 / 订阅传输协议。
 
 ### 部署 Mosquitto 服务
 
-Mosquitto 是一款实现了消息推送协议 MQTT v3.1 的开源消息代理软件，在这里我用的是 Docker 方式部署的 [**eclipse-mosquitto**](https://hub.docker.com/_/eclipse-mosquitto) 作为 MQTT 代理服务器。
+Mosquitto 是一款实现了消息推送协议 MQTT v3.1 的开源消息代理软件，在这里我用的是 Docker 方式部署的 [**eclipse-mosquitto**](https://hub.docker.com/_/eclipse-mosquitto) 作为 MQTT 代理服务器。如果不熟悉 Docker 部署的方式，可以参考文章 [**Docker 简易指南**](https://wiki-power.com/Docker%E7%AE%80%E6%98%93%E6%8C%87%E5%8D%97/) 与 [**Docker Compose - 更优雅的打开方式**](https://wiki-power.com/DockerCompose-%E6%9B%B4%E4%BC%98%E9%9B%85%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/)。
 
 根据官方的说明，首先需要创建以下目录和文件供 Mosquitto 使用，并赋予足够的权限：（请将 `${STACK_DIR}` 修改为本地存放数据的路径，例如 `/DATA/AppData/mosquitto`，下文同）
 
@@ -78,7 +78,7 @@ allow_anonymous false
 password_file /mosquitto/config/pwfile.conf
 ```
 
-使用 `docker-compose` 方式部署容器（需要）：
+使用 `docker-compose` 方式部署容器：
 
 ```yml title="docker-compose.yml"
 version: "3"
@@ -289,6 +289,7 @@ void loop() {
 - [eclipse-mosquitto](https://hub.docker.com/_/eclipse-mosquitto)
 - [Docker - 通过容器安装部署 Mosquitto 服务教程（MQTT 服务器）](https://www.hangge.com/blog/cache/detail_2896.html)
 - [MQTT 系列教程 3（客户端工具 MQTTBox 的安装和使用）](https://www.hangge.com/blog/cache/detail_2350.html)
+
 
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
