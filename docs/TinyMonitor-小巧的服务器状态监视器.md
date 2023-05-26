@@ -9,7 +9,7 @@ TinyMonitor 是一个小巧极简的服务器状态监视终端，它仅由一�
 
 ## 前期准备
 
-本项目用到的硬件物料非常简单，一个支持 Wi-Fi 连接的 Beetle ESP32-C3，还有一块 128x64 的 OLED 屏。
+本项目用到的硬件物料非常简单，一个自带 Wi-Fi 蓝牙的 Beetle ESP32-C3，还有一块 128x64 的 OLED 屏。
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261541993.png)
 
