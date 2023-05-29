@@ -9,7 +9,7 @@ TinyPNG-docker 是一个调用 TinyPNG API 进行图片高质量压缩的工具�
 
 ## 部署（docker-compose）
 
-先创建 `docker-compose.yml` ，并将以下的 `${DIR}` 替换为本地的目录（例如 `/DATA/AppData`）；将 `${API}` 替换为自己申请的 TinyPNG 密钥：
+首先创建 `docker-compose.yml` ，并将以下的 `${DIR}` 替换为本地的目录（例如 `/DATA/AppData`）；将 `${API}` 替换为自己申请的 TinyPNG 密钥：
 
 ```yml title="docker-compose.yml"
 version: "3"

@@ -9,7 +9,7 @@ title: Homelab - 支持公有云的图床系统 Cloudreve
 
 ## 部署（docker-compose）
 
-首先创建目录结构，切换到存放 Cloudreve 的目录下（我的是 `/DATA/AppData/cloudreve`）并执行：
+我们首先需要创建目录结构。切换到存放 Cloudreve 的目录下（例如 `/DATA/AppData/cloudreve`）并执行：
 
 ```shell
 mkdir -vp cloudreve/{uploads,avatar,data} \
