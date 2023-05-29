@@ -20,7 +20,7 @@ hide:
 [![badge](https://img.shields.io/badge/dynamic/json?labelColor=FE7398&label=BILIBILI&query=%24.data.totalSubs&url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dbilibili%26queryKey%3D349536948&color=282c34&longCache=true?&style=for-the-badge){ loading=lazy }](https://space.bilibili.com/349536948)
 -->
 
-> 纵览万物，上下求索。
+> 博览万物，融会贯通。
 
 Hi there~ 欢迎来到我的知识库。
 
@@ -35,4 +35,4 @@ Hi there~ 欢迎来到我的知识库。
 
 [硬件 & 半导体](/信号完整性-基础概念){ .md-button }
 [嵌入式 & 软件开发](/HAL库开发笔记-串口通信){ .md-button }
-[效率 & 生活](/搭建属于自己的HomeLab){ .md-button }
+[生活 & 折腾](/搭建属于自己的HomeLab){ .md-button }
