@@ -19,17 +19,17 @@ title: Linux 下挂载群晖 NAS 硬盘拓展空间（NFS）
 
 ## 在服务器上执行挂载
 
-在服务器上创建挂载的路径，比如：
-
-```bash
-sudo mkdir /DATA/nfs/music
-```
-
-随后，安装 nfs 服务：
+首先，安装 nfs 服务：
 
 ```bash
 apt update
 apt install nfs-common
+```
+
+随后，在服务器上创建挂载的路径，比如：
+
+```bash
+sudo mkdir /DATA/nfs/music
 ```
 
 最后执行挂载命令：
