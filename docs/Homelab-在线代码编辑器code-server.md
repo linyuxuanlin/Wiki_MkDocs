@@ -39,7 +39,7 @@ services:
 
 ### 读写权限问题
 
-如果在操作文件时遇到 `Error: EACCES: permission denied` 错误，可以用 `Ctrl` + `\`` 打开终端，输入以下命令赋予当前用户所有权：
+如果在操作文件时遇到 `Error: EACCES: permission denied` 错误，可以打开终端，输入以下命令赋予当前用户所有权：
 
 ```shell
 sudo chown -R 用户名 文件夹路径
