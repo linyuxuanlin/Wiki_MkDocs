@@ -381,6 +381,9 @@ nav:
               - Homelab-自动更新Docker容器的工具Watchtower.md
               - Homelab-支持多存储的文件列表程序Alist.md
               - Homelab-功能丰富的看板软件WeKan.md
+              #- Homelab-Audiobookshelf.md
+              #- Homelab-Navidrome.md
+              #- Homelab-Jellyfin.md
               - TinyMonitor-小巧的服务器状态监视器.md
           - 群晖 NAS:
               - 使用frp访问群晖NAS.md #  CSDN
