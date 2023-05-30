@@ -358,32 +358,33 @@ nav:
       - 折腾不止:
           - 自托管 Self-Host:
               - 搭建属于自己的HomeLab.md
-              - Homelab-轻量服务器管理面板CasaOS.md
-              - Homelab-反代证书管理面板NginxProxyManager.md
-              - Homelab-内网穿透工具frp.md
-              - Homelab-免费的内网穿透替代方案Cloudflared.md
-              - Homelab-在线代码编辑器code-server.md
-              - Homelab-网站状态监控工具UptimeKuma.md
-              - Homelab-高质量图片压缩工具TinyPNG-docker.md
-              - Homelab-极简个人书签导航站Flare.md
-              - Homelab-容器应用管理平台Portainer.md
-              - Homelab-跨设备同步工具Syncthing.md
-              - Homelab-碎片笔记工具memos.md
-              - Homelab-功能强大的wiki系统Wikijs.md
-              - Homelab-自托管密码管理器Vaultwarden.md
-              - Homelab-支持公有云的图床系统Cloudreve.md
-              - Homelab-自托管RSS聚合器FreshRSS.md
-              - Homelab-支持多种协议的堡垒机NextTerminal.md
-              - Homelab-播客订阅管理器Podgrab.md
-              - Homelab-多功能PDF工具箱Stirling-PDF.md
-              - Homelab-网站favicon抓取工具iconserver.md
-              - Homelab-极简的待办系统todo.md
-              - Homelab-自动更新Docker容器的工具Watchtower.md
-              - Homelab-支持多存储的文件列表程序Alist.md
-              - Homelab-功能丰富的看板软件WeKan.md
-              #- Homelab-Audiobookshelf.md
-              #- Homelab-Navidrome.md
-              #- Homelab-Jellyfin.md
+              - Docker 自托管应用收纳：
+                  - Homelab-轻量服务器管理面板CasaOS.md
+                  - Homelab-反代证书管理面板NginxProxyManager.md
+                  - Homelab-内网穿透工具frp.md
+                  - Homelab-免费的内网穿透替代方案Cloudflared.md
+                  - Homelab-在线代码编辑器code-server.md
+                  - Homelab-网站状态监控工具UptimeKuma.md
+                  - Homelab-高质量图片压缩工具TinyPNG-docker.md
+                  - Homelab-极简个人书签导航站Flare.md
+                  - Homelab-容器应用管理平台Portainer.md
+                  - Homelab-跨设备同步工具Syncthing.md
+                  - Homelab-碎片笔记工具memos.md
+                  - Homelab-功能强大的wiki系统Wikijs.md
+                  - Homelab-自托管密码管理器Vaultwarden.md
+                  - Homelab-支持公有云的图床系统Cloudreve.md
+                  - Homelab-自托管RSS聚合器FreshRSS.md
+                  - Homelab-支持多种协议的堡垒机NextTerminal.md
+                  - Homelab-播客订阅管理器Podgrab.md
+                  - Homelab-多功能PDF工具箱Stirling-PDF.md
+                  - Homelab-网站favicon抓取工具iconserver.md
+                  - Homelab-极简的待办系统todo.md
+                  - Homelab-自动更新Docker容器的工具Watchtower.md
+                  - Homelab-支持多存储的文件列表程序Alist.md
+                  - Homelab-功能丰富的看板软件WeKan.md
+                  #- Homelab-Audiobookshelf.md
+                  #- Homelab-Navidrome.md
+                  #- Homelab-Jellyfin.md
               - TinyMonitor-小巧的服务器状态监视器.md
           - 群晖 NAS:
               - 使用frp访问群晖NAS.md #  CSDN
