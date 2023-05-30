@@ -358,7 +358,7 @@ nav:
       - 折腾不止:
           - 自托管 Self-Host:
               - 搭建属于自己的HomeLab.md
-              - Docker 自托管应用收纳：
+              - Docker 自托管应用收纳:
                   - Homelab-轻量服务器管理面板CasaOS.md
                   - Homelab-反代证书管理面板NginxProxyManager.md
                   - Homelab-内网穿透工具frp.md
