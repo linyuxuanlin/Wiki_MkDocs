@@ -58,7 +58,7 @@ APP_PORT=xxxx # 自定义访问端口，选择不被占用的即可
 - [文档](https://www.navidrome.org/docs/installation/docker/)
 - [GitHub repo](https://github.com/navidrome/navidrome/)
 - [Docker Hub](https://hub.docker.com/r/deluan/navidrome)
-- [Demo Site](https://demo.navidrome.org/app/)（用户名密码均为 demo）
+- [Demo site](https://demo.navidrome.org/app/)（用户名密码均为 demo）
 
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
