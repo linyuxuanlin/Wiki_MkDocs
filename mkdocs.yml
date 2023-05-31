@@ -385,6 +385,7 @@ nav:
                   - Homelab-播客与有声书服务器Audiobookshelf.md
                   - Homelab-云端音乐服务器Navidrome.md
                   - Homelab-影视媒体服务器Jellyfin.md
+                  - Homelab-电子书管理服务器calibre-web.md
               #- 掌握自己的数据权.md
               - ESXi初始化指南.md
               - Linux下挂载群晖NAS硬盘拓展空间（NFS）.md
