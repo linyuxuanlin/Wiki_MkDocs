@@ -3,7 +3,7 @@ id: ESXi初始化指南
 title: ESXi 初始化指南
 ---
 
-VMware ESXi 是一个可裸机安装的虚拟机管理器。本篇教程基于 ESXi 8，草稿阶段仍未发布。
+VMware ESXi 是一个可裸机安装的虚拟机管理器。本篇教程基于 ESXi 8，仍在草稿阶段。
 
 可以先跟着这篇教程上手：[**『软路由踩坑指南』 篇二：ESXi 8.0 虚拟机必备知识与保姆级安装过程**](https://post.smzdm.com/p/a8x6o5on/p3/?sort_tab=hot/#comments)
 
