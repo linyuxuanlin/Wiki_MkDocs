@@ -387,6 +387,7 @@ nav:
                   #- Homelab-影视媒体服务器Jellyfin.md
               #- 掌握自己的数据权.md
               - ESXi初始化指南.md
+              - Linux下挂载群晖NAS硬盘拓展空间（NFS）.md
               - TinyMonitor-小巧的服务器状态监视器.md
           - 群晖 NAS:
               - 使用frp访问群晖NAS.md #  CSDN
@@ -395,7 +396,6 @@ nav:
               - 使用acme.sh自动申请域名证书（群晖Docker）.md #  CSDN
               - 使用Calibre搭建在线书库（群晖Docker）.md #  CSDN
               - 使用Watchtower自动更新容器（群晖Docker）.md
-              - Linux下挂载群晖NAS硬盘拓展空间（NFS）.md
           - 技术流:
               - 使用Rclone同步网盘数据.md
               - 为什么你需要一个知识库.md #  CSDN
