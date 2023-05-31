@@ -385,6 +385,7 @@ nav:
                   #- Homelab-Audiobookshelf.md
                   #- Homelab-Navidrome.md
                   #- Homelab-Jellyfin.md
+              #- 掌握自己的数据权.md
               - TinyMonitor-小巧的服务器状态监视器.md
           - 群晖 NAS:
               - 使用frp访问群晖NAS.md #  CSDN
