@@ -78,7 +78,7 @@ networks:
 
 ```env title=".env"
 STACK_NAME=wekan
-STACK_DIR=xxx # 自定义文件存放路径，例如 ./wekan
+STACK_DIR=xxx # 自定义项目储存路径，例如 ./wekan
 
 # wekandb
 DB_VERSION=6

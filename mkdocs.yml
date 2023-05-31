@@ -382,9 +382,9 @@ nav:
                   - Homelab-自动更新Docker容器的工具Watchtower.md
                   - Homelab-支持多存储的文件列表程序Alist.md
                   - Homelab-功能丰富的看板软件WeKan.md
-                  #- Homelab-Audiobookshelf.md
-                  #- Homelab-Navidrome.md
-                  #- Homelab-Jellyfin.md
+                  - Homelab-播客与有声书服务器Audiobookshelf.md
+                  #- Homelab-现代化音乐服务器Navidrome.md
+                  #- Homelab-影视媒体服务器Jellyfin.md
               #- 掌握自己的数据权.md
               - ESXi初始化指南.md
               - TinyMonitor-小巧的服务器状态监视器.md
