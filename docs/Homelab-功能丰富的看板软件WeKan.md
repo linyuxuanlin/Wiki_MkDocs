@@ -76,7 +76,7 @@ networks:
 
 接下来，在与 `docker-compose.yml` 相同的目录下创建 `.env` 文件，并自定义你的环境变量（推荐）。如果不想使用环境变量的方式，也可以直接在 `docker-compose.yml` 自定义你的参数（比如把 `${STACK_NAME}` 替换为 `wekan`）。
 
-```env title=".env"
+```dotenv title=".env"
 STACK_NAME=wekan
 STACK_DIR=xxx # 自定义项目储存路径，例如 ./wekan
 
