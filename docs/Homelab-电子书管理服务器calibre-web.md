@@ -59,7 +59,7 @@ SELECT * FROM 'user' LIMIT 0,30 --也可也手动切换到名为 user 的表
 UPDATE user SET password='pbkdf2:sha256:150000$ODedbYPS$4d1bd12adb1eb63f78e49873cbfc731e35af178cb9eb6b8b62c09dcf8db76670' WHERE name='xxx'; -- 需要修改xxx为你当前的用户名
 ```
 
-然后把修改的 `app.db` 替换掉原来的，随后登录密码被修改为 `hello` 了。
+把修改的 `app.db` 替换掉原来的，随后使用新的密码 `hello` 登录即可。
 
 ## 参考与致谢
 
