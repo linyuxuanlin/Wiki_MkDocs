@@ -11,7 +11,7 @@ title: Homelab - 播客与有声书服务器 Audiobookshelf
 
 首先创建 `docker-compose.yml` 文件，并粘贴以下内容：
 
-```yml title="docker-compose.yml"
+```yaml title="docker-compose.yml"
 version: "3.7"
 services:
   audiobookshelf:

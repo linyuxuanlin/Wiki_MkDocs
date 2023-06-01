@@ -11,7 +11,7 @@ title: Homelab - 云端音乐服务器 Navidrome
 
 首先创建 `docker-compose.yml` 文件，并粘贴以下内容：
 
-```yml title="docker-compose.yml"
+```yaml title="docker-compose.yml"
 version: "3"
 services:
   navidrome:

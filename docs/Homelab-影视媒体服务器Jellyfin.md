@@ -11,7 +11,7 @@ title: Homelab - 影视媒体服务器 Jellyfin
 
 首先创建 `docker-compose.yml` 文件，并粘贴以下内容：
 
-```yml title="docker-compose.yml"
+```yaml title="docker-compose.yml"
 version: "3.5"
 services:
   jellyfin:

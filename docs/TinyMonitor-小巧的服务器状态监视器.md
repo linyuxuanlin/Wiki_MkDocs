@@ -80,7 +80,7 @@ password_file /mosquitto/config/pwfile.conf
 
 使用 `docker-compose` 方式部署容器：
 
-```yml title="docker-compose.yml"
+```yaml title="docker-compose.yml"
 version: "3"
 services:
   mosquitto:

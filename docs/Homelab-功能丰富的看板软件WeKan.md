@@ -11,7 +11,7 @@ title: Homelab - 功能丰富的看板软件 WeKan
 
 首先创建 `docker-compose.yml` 文件，并粘贴以下内容：
 
-```yml title="docker-compose.yml"
+```yaml title="docker-compose.yml"
 version: "2"
 services:
   wekandb:

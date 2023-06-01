@@ -9,7 +9,7 @@ title: Homelab - 自动更新 Docker 容器的工具 Watchtower
 
 ## 部署（docker-compose）
 
-```yml title="docker-compose.yml"
+```yaml title="docker-compose.yml"
 version: "3"
 services:
   watchtower:
