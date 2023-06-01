@@ -47,7 +47,19 @@ APP_PORT_SERVER=xxxx # 自定义 calibre-server 的访问端口，选择不被�
 ## 配置说明
 
 默认的账号是 `admin`，密码是 `admin123`。  
-需要注意的是，系统默认是没有书籍上传功能的，需要依次点击右上角 `管理权限` - `编辑基本配置` — `启用上传`，这样才能启用书籍上传功能。
+系统默认是没有书籍上传功能的，需要依次点击右上角 `管理权限` - `编辑基本配置` — `启用上传`，这样才能启用书籍上传功能。
+
+如果忘记密码，可以将 `calibre-web` 中的 `app.db` 数据库下载下来，使用 SQLite 查看软件（或在线工具如 [**Sqlite 查看器 | 修改器**](https://www.lzltool.com/sqlite-viewer)），分别执行以下语句：
+
+```sql
+SELECT * FROM 'user' LIMIT 0,30 --也可也手动切换到名为 user 的表
+```
+
+```sql
+UPDATE user SET password='pbkdf2:sha256:150000$ODedbYPS$4d1bd12adb1eb63f78e49873cbfc731e35af178cb9eb6b8b62c09dcf8db76670' WHERE name='xxx'; -- 需要修改xxx为你当前的用户名
+```
+
+然后把修改的 `app.db` 替换掉原来的，随后登录密码被修改为 `hello` 了。
 
 ## 参考与致谢
 
