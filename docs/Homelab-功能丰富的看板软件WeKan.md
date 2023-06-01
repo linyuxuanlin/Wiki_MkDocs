@@ -27,10 +27,11 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - wekan-db:/data/db
       - wekan-db-dump:/dump
-    restart: always
+    restart: no
   wekan:
     container_name: ${STACK_NAME}_app
     image: quay.io/wekan/wekan:${APP_VERSION}
+    user: 0:0
     networks:
       - wekan-tier
     ports:
@@ -49,7 +50,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - wekan-files:/data:rw
-    restart: always
+    restart: no
 volumes:
   wekan-files:
     driver: local
