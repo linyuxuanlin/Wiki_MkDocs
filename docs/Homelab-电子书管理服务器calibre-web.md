@@ -46,8 +46,17 @@ APP_PORT_SERVER=xxxx # 自定义 calibre-server 的访问端口，选择不被�
 
 ## 配置说明
 
-默认的账号是 `admin`，密码是 `admin123`。  
+默认的账号是 `admin`，密码是 `admin123`。
+
+### 书籍上传功能
+
 系统默认是没有书籍上传功能的，需要依次点击右上角 `管理权限` - `编辑基本配置` — `启用上传`，这样才能启用书籍上传功能。
+
+### 移动端使用
+
+Android 上可使用 Librera，通过 OPDS 协议连接 calibre-web。添加书库的 url 是在原 url 最后加上`/opds`，例如`calibre.xxx.com/opds`。
+
+### 忘记密码
 
 如果忘记密码，可以将 `calibre-web` 中的 `app.db` 数据库下载下来，使用 SQLite 查看软件（或在线工具如 [**Sqlite 查看器 | 修改器**](https://www.lzltool.com/sqlite-viewer)），分别执行以下语句：
 
