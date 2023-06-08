@@ -11,7 +11,7 @@ title: Homelab - 功能丰富的看板软件 WeKan
 
 首先创建 `docker-compose.yml` 文件，并粘贴以下内容：
 
-```yml title="docker-compose.yml"
+```yaml title="docker-compose.yml"
 version: "2"
 services:
   wekandb:
@@ -27,10 +27,11 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - wekan-db:/data/db
       - wekan-db-dump:/dump
-    restart: always
+    restart: no
   wekan:
     container_name: ${STACK_NAME}_app
     image: quay.io/wekan/wekan:${APP_VERSION}
+    user: 0:0
     networks:
       - wekan-tier
     ports:
@@ -49,7 +50,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - wekan-files:/data:rw
-    restart: always
+    restart: no
 volumes:
   wekan-files:
     driver: local
@@ -76,7 +77,7 @@ networks:
 
 接下来，在与 `docker-compose.yml` 相同的目录下创建 `.env` 文件，并自定义你的环境变量（推荐）。如果不想使用环境变量的方式，也可以直接在 `docker-compose.yml` 自定义你的参数（比如把 `${STACK_NAME}` 替换为 `wekan`）。
 
-```env title=".env"
+```dotenv title=".env"
 STACK_NAME=wekan
 STACK_DIR=xxx # 自定义项目储存路径，例如 ./wekan
 

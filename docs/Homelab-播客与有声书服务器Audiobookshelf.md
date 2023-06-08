@@ -11,7 +11,7 @@ title: Homelab - 播客与有声书服务器 Audiobookshelf
 
 首先创建 `docker-compose.yml` 文件，并粘贴以下内容：
 
-```yml title="docker-compose.yml"
+```yaml title="docker-compose.yml"
 version: "3.7"
 services:
   audiobookshelf:
@@ -29,7 +29,7 @@ services:
 
 接下来，在与 `docker-compose.yml` 相同的目录下创建 `.env` 文件，并自定义你的环境变量（推荐）。如果不想使用环境变量的方式，也可以直接在 `docker-compose.yml` 自定义你的参数（比如把 `${STACK_NAME}` 替换为 `audiobookshelf`）。
 
-```env title=".env"
+```dotenv title=".env"
 STACK_NAME=audiobookshelf
 STACK_DIR=xxx # 自定义项目储存路径，例如 ./audiobookshelf
 DATA_DIR=xxx # 自定义播客储存路径，例如 ./podcast

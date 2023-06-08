@@ -30,7 +30,7 @@ title: Homelab - 免费的内网穿透替代方案 Cloudflared
 
 首先创建 `docker-compose.yml` ，并将以下的 `${TOKEN}` 替换为你自己的 tunnel token：
 
-```yml title="docker-compose.yml"
+```yaml title="docker-compose.yml"
 version: "3"
 services:
   cloudflared:
