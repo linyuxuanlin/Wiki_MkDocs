@@ -8,7 +8,7 @@
 (若出现故障，请访问备用网址：https://linyuxuanlin.github.io/Wiki_MkDocs/ 或 https://mkdocs.wiki-power.com/)
 
 Check the version of MkDocs: `mkdocs --version`  
-Upgrade MkDocs: `pip install -U mkdocs`  
+Upgrade MkDocs: `pip install -U mkdocs`
 
 Check the version of Material theme: `pip show mkdocs-material`  
 Upgrade Material theme: `pip install --upgrade mkdocs-material`
@@ -42,4 +42,4 @@ todo:
 
 - post time
 - index page of groups
-- speed up page loading 
+- speed up page loading
