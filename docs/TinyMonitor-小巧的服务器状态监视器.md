@@ -289,6 +289,7 @@ void loop() {
 - [eclipse-mosquitto](https://hub.docker.com/_/eclipse-mosquitto)
 - [Docker - 通过容器安装部署 Mosquitto 服务教程（MQTT 服务器）](https://www.hangge.com/blog/cache/detail_2896.html)
 - [MQTT 系列教程 3（客户端工具 MQTTBox 的安装和使用）](https://www.hangge.com/blog/cache/detail_2350.html)
+- [linyuxuanlin/TinyMonitor](https://github.com/linyuxuanlin/TinyMonitor)
 
 
 > 原文地址：<https://wiki-power.com/>  
