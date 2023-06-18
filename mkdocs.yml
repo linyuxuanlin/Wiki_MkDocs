@@ -264,7 +264,7 @@ nav:
                       - VBT_Syntax-TheHdw-DCVI.md
                   - VBT_Syntax-TheExec-Flow.md
               - Pattern_Syntax_Notes.md
-              - DCVI_Alarms.md
+              - Tester_Alarms.md
   - 嵌入式 & 软件开发:
       - 嵌入式开发:
           - STM32:
