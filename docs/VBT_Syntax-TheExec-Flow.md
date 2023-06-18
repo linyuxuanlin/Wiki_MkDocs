@@ -3,13 +3,13 @@ id: VBT_Syntax-TheExec-Flow
 title: VBT Syntax - TheExec - Flow
 ---
 
-```vb
+```vbscript
 TheExec.Flow
 ```
 
 ## TestLimit
 
-```vb
+```vbscript
 TheExec.Flow.TestLimit(resultVal, lowVal, hiVal, lowCompareSign,
 highCompareSign, scaletype, unit, formatStr, TName, compareMode, pinName,
 forceVal, forceunit, customUnit, customForceunit, ForceResults, TNum)
@@ -28,7 +28,7 @@ Parameters most used:
 
 For an example:
 
-```vb
+```vbscript
     TheExec.Flow.TestLimit  resultVal:=Vout_Measure, _
                             unit:=unitVolt, _
                             Tname:="Output_Voltage", _

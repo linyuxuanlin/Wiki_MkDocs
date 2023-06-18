@@ -9,7 +9,7 @@ title: VBT Syntax - TheHdw 🚧
 
 ### Pins
 
-```vb
+```vbscript
 TheHdw.DCVI.Pins(PinList)
 ```
 
@@ -25,7 +25,7 @@ To load the level and timing data.
 
 #### Usage
 
-```VB
+```vbscript
 TheHdw.Digital.ApplyLevelsTiming(ConnectAllPins, LoadLevels, LoadTiming, RelayMode, InitPinsHi, InitPinsLo, InitPinsHiZ, PinLevelsSheet, DCCategory, DCSelector, TimeSetSheet, ACCategory, ACSelector, EdgeSetSheet)
 ```
 

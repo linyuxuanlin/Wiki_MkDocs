@@ -138,7 +138,7 @@ remote_port = 7002
 
 为了在后台运行 frpc，我们创建脚本 `frpc.vbs`，将以下内容粘贴进去：
 
-```vb title="frpc.vbs"
+```vbscript title="frpc.vbs"
 set ws=WScript.CreateObject("WScript.Shell")
 ws.Run "c:\frp\frpc.exe -c c:\frp\frpc.ini",0
 ```

@@ -3,13 +3,13 @@ id: VBT_Syntax-TheHdw-DCVI
 title: VBT Syntax - TheHdw - DCVI 🚧
 ---
 
-```vb
+```vbscript
 TheHdw.DCVI
 ```
 
 ## Pins
 
-```vb
+```vbscript
 .Pins(PinList)
 
 ' thehdw.DCVI.Pins(vin_pin)

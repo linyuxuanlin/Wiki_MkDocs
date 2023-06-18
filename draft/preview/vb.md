@@ -76,7 +76,7 @@ We can also try out type conversion in the IDE's Immediate Window before writing
 
 Variable declarations are **optional** in VB. But we can prevent VB from auto-declaring variant variables if we don't like this feature, by adding the following construct at the top of every file:
 
-```VBScript
+```vbscript
 Option Explicit
 ```
 
@@ -84,7 +84,7 @@ It forces VB to complain about variables that haven't been declared. We can also
 
 Variables are declared with the **Dim** (dimension) keyword as follows:
 
-```VBScript
+```vbscript
 Dim x As Integer
 ```
 
@@ -98,7 +98,7 @@ Variables which declared at the top of a module are **global** to that module, a
 
 We can create project-global variables by using the **Public** keyword rather than Dim when you declare the variable. And in contrast, we can create a module scope variable by using the **Private** keyword.
 
-```VBScript
+```vbscript
 Public g_var As Integer
 Private p_var As Integer
 ```
@@ -115,7 +115,7 @@ VB allows static/dynamic arrays of any type and with any number of dimensions. A
 
 The syntax of for declaring an unsized array is as follows:
 
-```VBScript
+```vbscript
 Dim x() As Long 'undimensioned
 ```
 
@@ -123,7 +123,7 @@ Sizing and resizing of the array can be done at runtime with the **ReDim** funct
 
 VB has a flexible syntax for describing how we want to index an array:
 
-```VBScript
+```vbscript
 Dim x(5) As Long 'dimension an array of 6 elements
 Dim x(1 To 5) As Long '5 elements from 1 to 5, more prefer
 Dim y(100 To 200) As String 'legal index values range from 100 to 200
@@ -134,7 +134,7 @@ Dim y(100 To 200) As String 'legal index values range from 100 to 200
 We can declare an array to have as many dimensions. For example, a
 declaration for a 2 dimension array of Longs:
 
-```VBScript
+```vbscript
 Dim x(1 To 5, 1 To 10) As Long
 ```
 
