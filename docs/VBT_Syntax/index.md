@@ -12,7 +12,7 @@ There are two global handles in VBT interface, to operate the hardware of the te
 
 Below are examples of their usage:
 
-````vbF
+````vb
 ' Set the current range of pin p0
 TheHdw.DCVI.Pins("p0").CurrentRange = 0.002
 

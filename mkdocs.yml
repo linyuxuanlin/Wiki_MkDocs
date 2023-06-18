@@ -257,10 +257,11 @@ nav:
           - Block Fundamental:
               - CPR-Fundamental.md
           - ATE Coding Syntax:
-              - VBT_Syntax.md
-              - VBT_Syntax-TheHdw.md
-              - VBT_Syntax-TheHdw-DCVI.md
-              - VBT_Syntax-TheExec-Flow.md
+              - VBT Syntax:
+                  - VBT_Syntax/index.md
+                  - VBT_Syntax-TheHdw.md
+                  - VBT_Syntax-TheHdw-DCVI.md
+                  - VBT_Syntax-TheExec-Flow.md
               - Pattern_Syntax_Notes.md
               - DCVI_Alarms.md
   - 嵌入式 & 软件开发:
