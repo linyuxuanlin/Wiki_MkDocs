@@ -233,7 +233,7 @@ nav:
               - 宽带注入变压器的使用.md
               - 线性注入器的使用.md
       - 半导体测试:
-          - 半导体测试基础:
+          - ATE 基础:
               - 半导体测试基础-基本概念.md
               - 半导体测试基础-OS测试.md
               - 半导体测试基础-DC参数测试.md
@@ -260,8 +260,8 @@ nav:
               - VBT Syntax:
                   - VBT_Syntax/index.md
                   - TheHdw:
-                    - VBT_Syntax-TheHdw/index.md
-                    - VBT_Syntax-TheHdw-DCVI.md
+                      - VBT_Syntax-TheHdw/index.md
+                      - VBT_Syntax-TheHdw-DCVI.md
                   - VBT_Syntax-TheExec-Flow.md
               - Pattern_Syntax_Notes.md
               - DCVI_Alarms.md
