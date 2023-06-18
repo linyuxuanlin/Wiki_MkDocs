@@ -254,8 +254,8 @@ nav:
               - DAC-Static_Parameters.md
               - DAC-Dynamic_Parameters.md
               - Troubleshooting_of_ADC_and_DAC.md
-          - Block Fundamental:
-              - CPR-Fundamental.md
+          #- Block Fundamental:
+          #    - CPR-Fundamental.md
           - ATE Coding Syntax:
               - VBT Syntax:
                   - VBT_Syntax/index.md
