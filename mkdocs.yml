@@ -259,7 +259,8 @@ nav:
           - ATE Coding Syntax:
               - VBT Syntax:
                   - VBT_Syntax/index.md
-                  - TheHdw: VBT_Syntax-TheHdw/index.md
+                  - TheHdw:
+                      - VBT_Syntax-TheHdw/index.md
                       - VBT_Syntax-TheHdw-DCVI.md
                   - VBT_Syntax-TheExec-Flow.md
               - Pattern_Syntax_Notes.md
