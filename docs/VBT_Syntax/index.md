@@ -12,14 +12,15 @@ There are two global handles in VBT interface, to operate the hardware of the te
 
 Below are examples of their usage:
 
-````vbscript
+```vbscript
 ' Set the current range of pin p0
 TheHdw.DCVI.Pins("p0").CurrentRange = 0.002
+```
 
 ```vbscript
 ' Get the path of the current output STDF file
 CurrStdfFile = TheExec.Datalog.Setup.STDFOutputFile
-````
+```
 
 ## Other Data Objects
 
