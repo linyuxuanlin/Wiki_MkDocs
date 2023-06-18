@@ -13,8 +13,6 @@ title: VBT Syntax - TheHdw 🚧
 TheHdw.DCVI.Pins(PinList)
 ```
 
-
-
 ## TheHdw.PPMU
 
 🚧
