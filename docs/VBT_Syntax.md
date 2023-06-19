@@ -70,9 +70,9 @@ For the **test limits**, you can use the following code:
 TheExec.Flow.TestLimit
 ```
 
-to compares a result value against low/high limits, and sends the test result(`TL_SUCCESS`/`TL_ERROR`) and other information to the datalog.
+to compare a result value against low/high limits, and send the test result(`TL_SUCCESS`/`TL_ERROR`) and other information to the datalog.
 
-Below is a sample VBT test function, which is obviously to see the basic structure:
+To see more clearly **the basic structure** of a VBT test function, here is a sample:
 
 ```vbscript
 Public Function VBTLeakTest(Pins As PinList, ForceVoltage As Double, PrePattern As PatternSet) As Long
