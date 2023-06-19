@@ -56,9 +56,51 @@ End With
 
 A VBT code file must be named as `VBT_xxx`, and the name must be unique.
 
-The return value of a VBT function is expected to be 0 by default, or may cause unexpected results.
+The **return value** of a VBT function is expected to be 0 by default, or may cause unexpected results.
 
-### Instance Editor
+For the parameters about **timing** and **levels**, you may add them in the Instance Editor or Test Instant sheet, don't need to include in the VBT function. And you can control whether to enable them in the VBT function by following usage:
 
-🚧
-###
+```vbscript
+TheHdw.Digital.ApplyLevelsTiming
+```
+
+For the **test limits**, you can use the following code:
+
+```vbscript
+TheExec.Flow.TestLimit
+```
+
+to compares a result value against low/high limits, and sends the test result(`TL_SUCCESS`/`TL_ERROR`) and other information to the datalog.
+
+Below is a sample VBT test function, which is obviously to see the basic structure:
+
+```vbscript
+Public Function VBTLeakTest(Pins As PinList, ForceVoltage As Double, PrePattern As PatternSet) As Long
+    On Error GoTo errHandler
+
+    Dim measure_results As New PinListData
+
+    ' Set up timing and levels for Preconditioning Pattern
+    TheHdw.Digital.ApplyLevelsTiming ConnectAllPins:=True, loadLevels:=True, loadTiming:=True, relaymode:=tlPowered
+
+    ' Run Preconditioning Pattern and test for Pass/Fail
+    TheHdw.Patterns(PrePattern).test pfAlways, 0
+
+    ' Force V, Measure I
+    With TheHdw.DCVI.Pins(Pins)
+        .Mode = tlDCVIModeVoltage
+            ... ' Addition code
+        measure_results = .Meter.Read
+    End With
+
+    ' Test using limits in flow and write datalog
+    Call TheExec.Flow.TestLimit(resultval:=measure_results, unit:=unitAmp, forceval:=ForceVoltage, forceunit:=unitVolt, ForceResults:=tlForceFlow)
+
+    ' Reset the variable
+    measure_results = Nothing
+
+    Exit Function
+errHandler:
+    If AbortTest Then Exit Function Else Resume Next
+End Function
+```
