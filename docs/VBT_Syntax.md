@@ -48,10 +48,6 @@ With TheHdw.Pins("Vcc,Vdd,Vee")
 End With
 ```
 
-## Tips in VBA
-
-- Avoid saving code in VBA, because this will create internal hard links in the workbook. Saving in DataTool interface instead.
-
 ## Structure of the VBT code
 
 A VBT code file must be named as `VBT_xxx`, and the name must be unique.
@@ -104,3 +100,8 @@ errHandler:
     If AbortTest Then Exit Function Else Resume Next
 End Function
 ```
+
+## Tips in VBA
+
+- Avoid saving code in VBA, because this will create internal hard links in the workbook. Saving in DataTool interface instead.
+- If you meet the error "Procedure Too Large", you may against the Excel restriction of 64K limit per vb file. But actually, it is possible that you forgot to switch the version from 32bit to 64bit of the Windows system
