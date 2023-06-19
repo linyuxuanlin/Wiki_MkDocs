@@ -3,7 +3,9 @@ id: VBT_Syntax
 title: VBT Syntax
 ---
 
-## TheHdw and TheExec
+## Data Objects
+
+### TheHdw and TheExec
 
 There are two global handles in VBT interface, to operate the hardware of the tester:
 
@@ -22,6 +24,26 @@ TheHdw.DCVI.Pins("p0").CurrentRange = 0.002
 CurrStdfFile = TheExec.Datalog.Setup.STDFOutputFile
 ```
 
-## Other Data Objects
+### Other Data Objects
 
 More global handles are included in the VBT interface, such as **PinListData**, **DSPWave**, **RtaDataObj (Run-Time Adjust Data Object)** and so on. We will continue to explore them in future articles.
+
+## Access By-instrument or By-pin
+
+The VBT syntax supports access tester hardware **by-instrument** or **by-pin**, they are equivalent in the result. Below are examples of their usage:
+
+```vbscript
+' By-instrument Access, applies a single instrument to different pins
+With TheHdw.instrument
+    .Pins("Vcc").CurrentLimit = 0.75
+    .Pins("Vee").ForceValue = 3.2
+End With
+```
+
+```vbscript
+' By-pin Access, defines a pin list and then using different instruments
+With TheHdw.Pins("Vcc,Vdd,Vee")
+    .instrument1.Disconnect
+    .instrument2.CurrentLimit = 0.75
+End With
+```
