@@ -47,3 +47,18 @@ With TheHdw.Pins("Vcc,Vdd,Vee")
     .instrument2.CurrentLimit = 0.75
 End With
 ```
+
+## Tips in VBA
+
+- Avoid saving code in VBA, because this will create internal hard links in the workbook. Saving in DataTool interface instead.
+
+## Structure of the VBT code
+
+A VBT code file must be named as `VBT_xxx`, and the name must be unique.
+
+The return value of a VBT function is expected to be 0 by default, or may cause unexpected results.
+
+### Instance Editor
+
+🚧
+###
