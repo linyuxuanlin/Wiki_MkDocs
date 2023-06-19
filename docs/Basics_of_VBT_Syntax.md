@@ -1,6 +1,6 @@
 ---
-id: VBT_Syntax
-title: VBT Syntax
+id: Basics_of_VBT_Syntax
+title: Basics of VBT Syntax
 ---
 
 ## Data Objects
@@ -100,6 +100,14 @@ errHandler:
     If AbortTest Then Exit Function Else Resume Next
 End Function
 ```
+
+## Multi-site
+
+🚧
+
+## PinList Operation
+
+🚧
 
 ## Tips in VBA
 

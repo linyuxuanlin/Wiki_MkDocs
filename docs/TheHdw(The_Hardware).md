@@ -1,11 +1,15 @@
 ---
-id: VBT_Syntax-TheHdw
-title: VBT Syntax - TheHdw 🚧
+id: TheHdw(The_Hardware)
+title: TheHdw (The Hardware) 🚧
 ---
 
 **TheHdw** is an object to accesses properties and methods relating to test system hardware.
 
 ## TheHdw.DCVI
+
+```vbscript
+TheHdw.DCVI
+```
 
 ### Pins
 
