@@ -3,6 +3,8 @@ id: TheExec(The_Executive)
 title: TheExec (The Executive) 🚧
 ---
 
+**TheExec(The Executive)** one of the highest-level object, which gives access to test executive related properties.
+
 ## Flow
 
 ```vbscript
