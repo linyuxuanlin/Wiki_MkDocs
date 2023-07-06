@@ -1,6 +1,6 @@
 ---
-id: Linux如何开机自动运行脚本
-title: Linux 如何开机自动运行脚本
+id: Linux如何配置开机自动运行脚本
+title: Linux 如何配置开机自动运行脚本
 ---
 
 ## 适用于使用 SysV init 的系统
