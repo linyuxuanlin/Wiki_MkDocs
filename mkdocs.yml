@@ -425,6 +425,7 @@ nav:
               - VSCode生产力指南-环境配置.md #  CSDN todo
               - VSCode生产力指南-JupyterNotebook.md #  CSDN todo
               - 在浏览器上运行VSCode（旧）.md
+              - Linux如何配置开机自动运行脚本.md
               - 如何配一台电脑.md
               - 团队影像资源管理.md
               - 团队知识库的搭建.md
@@ -464,7 +465,6 @@ nav:
               - 如何快速制作一个启动盘.md
               - 使用VSCode进行远程开发.md
               - Node.js和npm的安装与卸载（MacOS）.md
-              - Linux如何配置开机自动运行脚本.md
       #- 杂七杂八:
       #    - 机器人队行政:
       #        - 四校交流-策划案.md
