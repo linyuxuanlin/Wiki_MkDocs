@@ -5,23 +5,27 @@ title: Docker 简易指南
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210116153041.png)
 
-通常我们知道，软件开发中最麻烦的事情之一就是配环境。运行环境的差异，可能导致意想不到的结果，而使用 Docker 可以避免出现这样的问题。
+众所周知，软件开发中最麻烦的事情之一，就是环境的配置。运行环境的差异，可能导致意想不到的结果，而使用 Docker 可以避免出现这样的问题。
 
-## Docker 是什么
+## Docker 与容器化技术
 
-Docker 把软件本身和它所需的运行环境打包起来，你用的时候就不需要再去配环境了（环境都在包里），这样就能确保你的环境和开发者的一模一样，杜绝因运行环境而出现的错误。
+Docker 把软件本身和它所需的运行环境打包起来，使用的时候就不需要再去配置环境了（因为环境都在包里），这样就能确保你的环境和开发者的一模一样，避免因运行环境差异而造成问题。
 
-说起来，虚拟机也是这个原理，但虚拟机的缺点是相对庞大、占用资源也多。简而言之，可以但没必要。Docker 相比虚拟机，不是模拟一个完整的操作系统，而是对进程进行隔离，这样做带来的优势是资源占用少、启动快、体积小。
+Docker 使用的是 **容器化技术**。当我们谈论容器化技术时，可以将其类比 **集装箱**。它是一种 **标准化** 的大型容器，可以在各种运输工具（如船舶、火车、卡车）之间进行简单的装载和卸载，而无需考虑其内部的具体内容组成。类似地，容器化技术将应用程序及其所有依赖项打包在一个独立的、可移植的环境中，称为容器。
 
-Docker 有三要素，分别是 image，container，repository.
+容器化技术的主要目标是实现应用程序的快速部署、可扩展性和环境隔离。通过将应用程序和相关依赖项打包在一个容器中，我们可以确保在不同的计算机或服务器上以一致的方式运行应用程序，而无需担心环境差异或依赖冲突的问题。这使得开发人员可以更快速地交付应用程序，同时也简化了应用程序的部署和管理过程。
 
-- **image（镜像）**：一个包含完整的软件运行环境的可执行文件，其中包含代码、运行时、系统工具、库文件和配置等，可以看作是一个模板。
-- **container（容器）**：根据 image 创建的并运行在其中的一个进程，把 image 实例化，相当于把模板拿来用。
-- **repository（仓库）**：存储 Docker image 的地方，可以下载、上传、分享 image。
+容器化技术的一大优势是它提供了轻量级的虚拟化解决方案。与传统的虚拟机相比，容器化技术更加轻巧且资源消耗更少。每个容器都运行在宿主操作系统的相同内核上，共享操作系统的资源，因此容器启动更快、占用更少的内存，也可以在同一台机器上同时运行多个容器。
 
-image 与 container 是一对多的关系，就是同一个模子印多个饼，每个饼可以加不一样的佐料调味。
+Docker 是目前比较流行的容器化解决方案。它主要包含三要素，分别是 Image（镜像）、Container（容器）和 Repository（仓库）。
 
-## Docker 安装配置
+- **Image（镜像）**：镜像是一个可执行文件，包含了应用程序及其依赖的所有文件系统（代码、runtime、系统工具、库文件）和配置。我们可以将镜像看作是容器的模板，通过它可以创建多个不同的容器实例。
+- **Container（容器）**：容器是由镜像创建的运行实例。每个容器都是相互隔离的、独立运行的环境，可以在其中运行应用程序。
+- **Repository（仓库）**：仓库是用来存储和分享镜像。我们可以将自己创建的镜像推送到仓库中，也可以从仓库中拉取他人创建的镜像。
+
+## Docker 的安装配置
+
+
 
 各版本系统的下载安装详见 [**Install Docker Engine**](https://docs.docker.com/engine/install/)
 
@@ -80,29 +84,29 @@ sudo service docker restart
 
 ## Docker 基本操作
 
-### image 操作
+### Image 操作
 
-#### 列出本地所有 image
-
-```shell
-docker image ls
-```
-
-#### 删除 image
+#### 列出本地所有 Image
 
 ```shell
-docker image rm [imageName]
+docker Image ls
 ```
 
-虽然 image 可以自己造，但我们推荐直接用别人的，既省时省力，又有利于维护环境统一。  
-你可以在 [**Docker Hub**](https://hub.docker.com/) 搜索并下载 image 文件，拣下载量较多的用。
+#### 删除 Image
 
-### container 操作
+```shell
+docker Image rm [ImageName]
+```
+
+虽然 Image 可以自己造，但我们推荐直接用别人的，既省时省力，又有利于维护环境统一。  
+你可以在 [**Docker Hub**](https://hub.docker.com/) 搜索并下载 Image 文件，拣下载量较多的用。
+
+### Container 操作
 
 #### 列出正在运行的容器
 
 ```shell
-docker container ls
+docker Container ls
 ```
 
 可以加上 `--all` 参数，列出所有（包括已经停止的）容器。
@@ -112,66 +116,66 @@ docker container ls
 #### 新建并运行容器
 
 ```shell
-docker container run [imageName]
+docker Container run [ImageName]
 ```
 
 #### 运行已经存在的容器
 
 ```shell
-docker container start [containerID]
+docker Container start [ContainerID]
 ```
 
 #### 停止容器的运行
 
 ```shell
-docker container stop [containerID]
+docker Container stop [ContainerID]
 ```
 
 #### 删除容器
 
 ```shell
-docker container rm [containerID]
+docker Container rm [ContainerID]
 ```
 
 #### 查看容器的输出
 
 ```shell
-docker container logs [containerID]
+docker Container logs [ContainerID]
 ```
 
 #### 操作容器
 
 ```shell
-docker container exec -it [containerID] /bin/bash
+docker Container exec -it [ContainerID] /bin/bash
 ```
 
 ## 实例：Hello World
 
 下面将用官方 hello-world 例子来演示 Docker。
 
-首先，将 image 拉拉取到本地：
+首先，将 Image 拉拉取到本地：
 
 ```shell
-docker image pull library/hello-world
+docker Image pull library/hello-world
 ```
 
 拉取后，使用 ls 命令检查是否已经下载：
 
 ```shell
-docker image ls
+docker Image ls
 ```
 
 生成容器并运行：
 
 ```shell
-docker container run hello-world
+docker Container run hello-world
 ```
 
 因为这个 hello-world 只运行一次，所以不用手动去停止。  
 对于持续运行的容器，如果需要停止，就用以下命令：
 
 ```shell
-docker container kill [containID]
+docker Container kill [containID]
 ```
 
 ## 参考与致谢
