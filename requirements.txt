@@ -1,5 +1,5 @@
 mkdocs
-mkdocs-material:latest
+mkdocs-material==latest
 mkdocs-roamlinks-plugin
 mkdocs-rss-plugin
 markdown
