@@ -23,15 +23,26 @@ Docker 是目前比较流行的容器化解决方案。它主要包含三要素�
 - **Container（容器）**：容器是由镜像创建的运行实例。每个容器都是相互隔离的、独立运行的环境，可以在其中运行应用程序。
 - **Repository（仓库）**：仓库是用来存储和分享镜像。我们可以将自己创建的镜像推送到仓库中，也可以从仓库中拉取他人创建的镜像。
 
+容器与镜像的关系，就像面向对象编程中的对象与类。
+
 ## Docker 的安装配置
 
+对于主流的 Linux 系统，可以使用官方脚本的方法下载安装 Docker：
 
+```shell
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+```
 
-各版本系统的下载安装详见 [**Install Docker Engine**](https://docs.docker.com/engine/install/)
+因为 Docker 运行在并依赖于 Linux 环境，所以它几乎没有效率损耗。但是，如果在其他系统上部署 Docker，就必须先安装一个虚拟 Linux 环境。
 
-- [**CentOS 安装 Docker**](https://wiki-power.com/unlist/CentOS%E5%AE%89%E8%A3%85Docker)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230708005714.png)
 
-验证是否安装成功：
+Windows 下 Docker 的安装方法，请参考官方文档 [**Install Docker Desktop on Windows**](https://docs.docker.com/desktop/install/windows-install/)。
+
+MacOS 下的安装方法，请参考官方文档 [**Install Docker Desktop on Mac**](https://docs.docker.com/desktop/install/mac-install/)。
+
+按照流程安装后，我们可以使用以下的命令，验证 Docker 是否安装成功：
 
 ```shell
 docker version
@@ -181,6 +192,7 @@ docker Container kill [containID]
 ## 参考与致谢
 
 - [Docker 入门教程](http://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html)
+- [CentOS 安装 Docker](https://wiki-power.com/unlist/CentOS%E5%AE%89%E8%A3%85Docker)
 
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
