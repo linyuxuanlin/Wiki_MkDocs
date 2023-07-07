@@ -48,7 +48,8 @@ theme:
     #edit: material/pencil
 
 plugins:
-  - search
+  - search:
+      jieba_dict: dict.txt
   - rss:
       abstract_chars_count: -1 # -1 for full content
       #categories:
