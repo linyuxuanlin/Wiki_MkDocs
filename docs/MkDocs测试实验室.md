@@ -8,6 +8,15 @@ title: MkDocs 测试实验室
 ## Mermaid
 
 ```mermaid
+graph TD
+    a1("Collect Voltage vs. QUOT data across skew and temperature")
+    a2("Select RO and define Target QUOT (fix value)" )
+    a1-->a2 
+    
+    
+```
+
+```mermaid
 graph LR
     A[Square Rect] -- Link text --> B((Circle))
     A --> C(Round Rect)
