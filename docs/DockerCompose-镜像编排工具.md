@@ -7,7 +7,7 @@ title: Docker Compose - 镜像编排工具
 
 Docker Compose 是 Docker 镜像的编排工具。推荐使用 Docker Compose 作为 Docker 的默认打开方式，因为它不仅可以方便地配置与部署镜像，还可以更方便地配置多镜像服务，甚至区分它们的启动顺序，这是使用命令的打开方式所不具备的。
 
-虽然 Docker 的思想是解耦（一个镜像一个进程），提高复用率，不在一个镜像内封装多个服务，但是，例如一个典型的 web 应用，至少需要服务端和数据库配合。这样一来，你需要分别部署两个容器，甚至有些服务需要按一定先后顺序启动。这样一来，需要的镜像和操作步骤会很复杂。
+虽然 Docker 的思想是解耦（一个镜像一个进程）、提高复用率、不在一个镜像内封装多个服务，但是，有些应用是需要多个服务同时启动的。例如，一个典型的 web 应用，至少需要服务端和数据库配合。这样一来，你需要分别部署两个容器，甚至有些服务需要按一定先后顺序启动。这样一来，需要的镜像和操作步骤会很复杂。
 
 Docker Compose 把所需要调用的镜像（所有需要的服务、容器的属性、网络配置以及存储卷的挂载）和顺序等，全部写在一个 YAML 文件里，直接运行这个配置文件，就可以按照你所需的方法和步骤运行容器，而不需要手动操作每个容器。以下是一个 Docker Compose 示例，用于部署一个 web 服务：
 
@@ -145,7 +145,7 @@ volumes:
 - `docker compose unpause`：恢复已经暂停的 compose 中的容器，使其继续运行。
 - `docker compose ps`：显示 **所有** 正在运行的 compose 中的容器的状态。
 - `docker compose logs`：查看 compose 中的容器的日志输出。
-- `docker compose exec`：在运行的 compose 中的容器中执行命令。
+- `docker compose exec`：在运行的 compose 中的容器中执行命令。比如 `docker exec -it [compose-name] /bin/bash`
 
 这是一些常见的命令，你也可以执行 `docker compose --help` 查看更多可用的命令。
 
@@ -173,11 +173,9 @@ services:
     image: "webapp:${TAG}"
 ```
 
-## 更多技巧
+## 小技巧
 
-将 Docker CLI 转换为 `docker-compose.yml` 的网站：[**composerize**](https://www.composerize.com/)
-
-访问容器：`docker exec -it [compose-name] /bin/bash`
+有一个将 Docker CLI 转换为 Docker Compose YAML 的网站：[**composerize**](https://www.composerize.com/)，转换结果不一定准确，需检验。
 
 ## 参考与致谢
 
