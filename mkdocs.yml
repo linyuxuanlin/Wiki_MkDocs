@@ -42,7 +42,7 @@ theme:
     - toc.follow # 目录自动跟随
     - navigation.top # 返回顶部按钮
     - search.suggest # 搜索推荐
-    - navigation.prune # 导航修剪，仅渲染可见链接，优化文档数量超过100的站点（实验），会减慢页面间跳转速度
+    - navigation.prune # 导航修剪，仅渲染可见链接，优化文档数量超过100的站点（实验），会导致页面间跳转速度变慢
     #- search.highlight
   icon:
     repo: material/github
@@ -75,7 +75,7 @@ extra:
   generator: false # 不显示 MkDocs 的版权
   analytics:
     provider: google
-    property: G-QBB3SQMGLN # Fork 我的网站，请把这串代码改成你自己的
+    property: G-QBB3SQMGLN # 如果克隆我的站点，请把这串代码改成你自己的
   social:
     - name: 友链 & 导航站
       link: https://nav.wiki-power.com/
@@ -308,22 +308,26 @@ nav:
               - BeagleBone系列-使用BBIO库开发.md
               - BeagleBone系列-BBAI入坑.md
               - JetsonNano系列-入坑.md
+          - DOCKER:
+              - Docker基础知识.md
+              - DockerCompose-镜像编排工具.md
+              #- Docker安装与基础命令.md
+              - 将应用封装为Docker容器.md
+              #- Docker简易指南.md
           - 杂七杂八:
-              - Docker简易指南.md
-              - DockerCompose-更优雅的打开方式.md
+              - HTML学习笔记.md
+              - CSS学习笔记.md
+              - JavaScript学习笔记.md
+              - Git学习笔记.md
               - 双系统极简安装指南.md
               - 网页版串口助手的开发.md
               - Ubuntu配置笔记.md
               - ROS入门笔记.md
               - 机器视觉入门.md
               - 使用R语言进行数据分析.md
-              - CSS学习笔记.md
-              - HTML学习笔记.md
-              - JavaScript学习笔记.md
               - 自适应网页设计.md
               - 前端开发-环境搭建.md
               - BookJourney-二手书商城小程序.md
-              - Git学习笔记.md
   - 生活 & 折腾:
       - 生活琐记:
           - LIFEHACK:
