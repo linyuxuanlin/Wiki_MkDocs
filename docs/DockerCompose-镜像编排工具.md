@@ -183,7 +183,7 @@ services:
 - [Install Docker Compose](https://docs.docker.com/compose/install/#prerequisites)
 - [Docker-Compose 模板文件参数详解](https://blog.51cto.com/14154700/2466054)
 - [原来，群晖也能用 Docker Compose！](https://www.himiku.com/archives/docker-compose-for-synology-nas.html)
-- [Docker — 从入门到实践](https://docker-practice.github.io/zh-cn/)
+- [Docker - 从入门到实践](https://docker-practice.github.io/zh-cn/)
 - [Docker 系列 - 了解 Docker Compose 的配置文件](https://blognas.hwb0307.com/linux/docker/3880)
 
 > 原文地址：<https://wiki-power.com/>  
