@@ -69,7 +69,7 @@ docker compose version
 
 ## 如何使用 Docker Compose
 
-一般我们将 `compose.yaml` 文件放到一个以应用名称命名目录下，比如 `web/compose.yaml`
+一般我们创建一个 `compose.yaml` 文件（老版本为 `docker-compose.yml`，也是兼容的），并将其放到一个以应用名称命名目录下，比如 `web/compose.yaml`。
 
 要运行这个程序，只要在这个目录下执行 `docker compose up` 命令，即可按 YAML 文件中的配置启动服务。（加参数 `-d` 可以后台运行）
 
