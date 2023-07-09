@@ -65,6 +65,34 @@ sudo usermod -aG docker $USER
 
 如果安装出现问题，请参考官方文档 [**Troubleshoot Docker Engine installation**](https://docs.docker.com/engine/install/troubleshoot/)。
 
+## 实例：Hello World
+
+下面将用官方 hello-world 例子来演示 Docker。打开终端或命令提示符，并输入以下命令运行 hello-world 容器：
+
+```shell
+docker run hello-world
+```
+
+这将从 Docker 镜像仓库中下载 hello-world 镜像，创建并运行容器。当看见 hello world 的输出时，说明运行成功。
+
+## 一些常用命令
+
+Docker 提供了一组强大而丰富的命令，用于管理和操作容器、镜像、网络等资源。下面是一些常用的 Docker 命令：
+
+- `docker run`：基于指定的镜像创建并运行一个新容器。例如，`docker run -d -p 8080:80 nginx` 会在后台运行一个 NGINX 容器，将主机的 8080 端口映射到容器的 80 端口。
+- `docker ps`：列出正在运行的容器。默认情况下，它会显示正在运行的容器的 ID、镜像、命令等信息。使用`docker ps -a`命令可以显示所有的容器，包括已停止的容器。
+- `docker stop`：停止一个或多个运行中的容器。可以指定容器的 ID 或名称。例如，`docker stop mycontainer` 会停止名为 `mycontainer` 的容器。
+- `docker start`：启动一个或多个已停止的容器。可使用容器的 ID 或名称来指定容器。
+- `docker stop`：停止一个或多个运行中的容器。
+- `docker restart`：重启一个或多个容器。
+- `docker rm`：删除一个或多个容器。如果要删除运行中的容器，可以使用 `docker rm -f` 命令。
+- `docker images`：列出本地镜像。它会显示本地计算机上已经下载和创建的 Docker 镜像的列表，包括镜像 ID、大小和创建时间等信息。
+- `docker rmi`：删除一个或多个镜像。可以使用镜像的 ID 或标签来指定镜像。例如，`docker rmi myimage:1.0` 会删除名为 `myimage` 且标签为 `1.0` 的镜像。
+- `docker build`：基于 Dockerfile 构建一个自定义镜像。例如，`docker build -t myimage:1.0 .`会根据当前目录下的 Dockerfile 构建一个名为 `myimage` 且标签为 `1.0` 的镜像。
+- `docker exec`：在运行中的容器中执行命令。可以指定容器的 ID 或名称，以及要执行的命令。例如，`docker exec -it mycontainer bash`会在名为 `mycontainer` 的容器中启动一个新的交互式终端。
+
+这些是一些常用的 Docker 命令，用于管理和操作容器和镜像。还有更多的命令可以探索，可以通过`docker --help`命令查看完整的命令列表和其它可用选项，也可以参考官方文档 [**Use the Docker command line**](https://docs.docker.com/engine/reference/commandline/cli/)。
+
 ## 参考与致谢
 
 - [Docker - 从入门到实践](https://yeasy.gitbook.io/docker_practice/)

@@ -28,9 +28,9 @@ title: Homelab - 免费的内网穿透替代方案 Cloudflared
 
 ## 部署（docker-compose）
 
-首先创建 `docker-compose.yml` ，并将以下的 `${TOKEN}` 替换为你自己的 tunnel token：
+首先创建 `compose.yaml` ，并将以下的 `${TOKEN}` 替换为你自己的 tunnel token：
 
-```yaml title="docker-compose.yml"
+```yaml title="compose.yaml"
 version: "3"
 services:
   cloudflared:
@@ -44,7 +44,7 @@ services:
 
 ## 配置说明
 
-访问 [**Cloudflare Zero Trust**](https://one.dash.cloudflare.com/) 面板，在左侧栏选择 `Access` - `Tunnels`，点击 `Create a tunnel` 创建隧道，填写隧道名称（用于区分不同的物理机器）然后保存。记录下 token 后填写在 `docker-compose.yml` 中。
+访问 [**Cloudflare Zero Trust**](https://one.dash.cloudflare.com/) 面板，在左侧栏选择 `Access` - `Tunnels`，点击 `Create a tunnel` 创建隧道，填写隧道名称（用于区分不同的物理机器）然后保存。记录下 token 后填写在 `compose.yaml` 中。
 
 随后点进你创建的隧道，在 `Public Hostname Page` 选项卡中添加代理的端口。举个例子，我绑定在 Cloudflare 的域名是 `wiki-power.com`，我需要代理的服务本地的端口是 `80`、`HTTP` 协议，那么我只需要这样填写：
 

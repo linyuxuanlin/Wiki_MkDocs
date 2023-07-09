@@ -9,9 +9,9 @@ title: Homelab - 内网穿透工具 frp
 
 ## 服务端 frps
 
-首先创建 `docker-compose.yml` ，并将以下的 `${DIR}` 替换为本地的目录（例如 `/DATA/AppData`）：
+首先创建 `compose.yaml` ，并将以下的 `${DIR}` 替换为本地的目录（例如 `/DATA/AppData`）：
 
-```yaml title="docker-compose.yml"
+```yaml title="compose.yaml"
 version: "3"
 services:
   frps:
@@ -37,9 +37,9 @@ dashboard_pwd = ${PASSWORD-FRPS} # 密码
 
 ## 客户端 frpc
 
-首先创建 `docker-compose.yml` ，并将以下的 `${DIR}` 替换为本地的目录（例如 `/DATA/AppData`）：
+首先创建 `compose.yaml` ，并将以下的 `${DIR}` 替换为本地的目录（例如 `/DATA/AppData`）：
 
-```yaml title="docker-compose.yml"
+```yaml title="compose.yaml"
 version: "3.3"
 services:
   frpc:

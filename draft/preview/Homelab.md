@@ -12,7 +12,7 @@ VS Code:
 ```shell
 mkdir -p docker/portainer
 cd docker/portainer
-nano docker-compose.yml
+nano compose.yaml
 ```
 
 ```docker

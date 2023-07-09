@@ -9,7 +9,7 @@ title: Homelab - 多功能 PDF 工具箱 Stirling-PDF
 
 ## 部署（docker-compose）
 
-```yaml title="docker-compose.yml"
+```yaml title="compose.yaml"
 version: "3.3"
 services:
   s-pdf:

@@ -64,12 +64,12 @@ echo "done."
 ```
 ├── compose
 │   ├── code-server
-|   |   ├──docker-compose.yml
+|   |   ├──compose.yaml
 |   |   ├──.env
 │   ├── frp
-|   |   ├──docker-compose.yml
+|   |   ├──compose.yaml
 │   ├── xxx
-|   |   ├──docker-compose.yml
+|   |   ├──compose.yaml
 │   ├── ……
 │   └── compose.sh
 ```

@@ -7,7 +7,7 @@ title: 将应用封装为 Docker 容器
 
 ## 基本模板
 
-将应用 Docker 容器化，首先需要确保 Docker 已经安装。接着，需要在你的 Python 应用程序根目录下，创建这两个文件：`Dockerfile` 和 `docker-compose.yml`，它们大致包含以下内容：
+将应用 Docker 容器化，首先需要确保 Docker 已经安装。接着，需要在你的 Python 应用程序根目录下，创建这两个文件：`Dockerfile` 和 `compose.yaml`，它们大致包含以下内容：
 
 ```Dockerfile title="Dockerfile"
 # 设置基础镜像为 Python 官方镜像，版本可自定义
@@ -29,13 +29,13 @@ COPY . .
 CMD ["python", "app.py"]
 ```
 
-```yaml title="docker-compose.yml"
+```yaml title="compose.yaml"
 version: "3"
 services:
   app:
     build: .
 ```
 
-在这个 `docker-compose.yml` 文件中，我们定义了一个服务名为 `app` 的服务。通过 `build: .` 指令，它将使用当前目录下的 `Dockerfile` 文件来构建镜像。最后，在 `docker-compose.yml` 的目录下执行 `docker compose up`，即可构建并启动容器。
+在这个 `compose.yaml` 文件中，我们定义了一个服务名为 `app` 的服务。通过 `build: .` 指令，它将使用当前目录下的 `Dockerfile` 文件来构建镜像。最后，在 `compose.yaml` 的目录下执行 `docker compose up`，即可构建并启动容器。
 
 ## 实例：

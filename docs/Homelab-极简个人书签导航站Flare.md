@@ -9,9 +9,9 @@ title: Homelab - 极简个人书签导航站 Flare
 
 ## 部署（docker-compose）
 
-首先创建 `docker-compose.yml` ，并将以下的 `${DIR}` 替换为本地的目录（例如 `/DATA/AppData`）；`${PORT}` 替换为自定义的端口号（比如 `1234`，选择不被占用的端口就可以）；自定义 `${USERNAME}` 与 `${PASSWORD}`：
+首先创建 `compose.yaml` ，并将以下的 `${DIR}` 替换为本地的目录（例如 `/DATA/AppData`）；`${PORT}` 替换为自定义的端口号（比如 `1234`，选择不被占用的端口就可以）；自定义 `${USERNAME}` 与 `${PASSWORD}`：
 
-```yaml title="docker-compose.yml"
+```yaml title="compose.yaml"
 version: "3.6"
 services:
   flare:

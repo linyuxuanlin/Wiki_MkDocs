@@ -9,9 +9,9 @@ TinyPNG-docker 是一个调用 TinyPNG API 进行图片高质量压缩的工具�
 
 ## 部署（docker-compose）
 
-首先创建 `docker-compose.yml` ，并将以下的 `${DIR}` 替换为本地的目录（例如 `/DATA/AppData`）；将 `${API}` 替换为自己申请的 TinyPNG 密钥：
+首先创建 `compose.yaml` ，并将以下的 `${DIR}` 替换为本地的目录（例如 `/DATA/AppData`）；将 `${API}` 替换为自己申请的 TinyPNG 密钥：
 
-```yaml title="docker-compose.yml"
+```yaml title="compose.yaml"
 version: "3"
 services:
   tinypng-docker:
@@ -33,7 +33,7 @@ services:
 
 如果容器无法正常使用，可以用以下的方法排除：
 
-1. 确保 `docker-compose.yml` 文件中指定的 `input` 和 `output` 文件夹路径正确。
+1. 确保 `compose.yaml` 文件中指定的 `input` 和 `output` 文件夹路径正确。
 2. 检查你的 TinyPNG 账户，是否已达到 API 密钥允许的最大压缩次数。
 3. 检查 `input` 文件夹是否包含正确格式的图像文件（WebP, PNG, JPEG）。注意，此容器只会检测并压缩 `created` 事件，因此如果文件已经存在，则需要手动将其移到 `input` 目录当中。
 4. 检查压缩的图片是否在失真度上高于 API 的压缩设置，可能导致 API 解码失败（例如压缩前的图片已经压缩过）。

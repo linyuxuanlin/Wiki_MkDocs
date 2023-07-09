@@ -11,7 +11,7 @@ Docker Compose 是 Docker 镜像的编排工具。推荐使用 Docker Compose �
 
 Docker Compose 把所需要调用的镜像（所有需要的服务、容器的属性、网络配置以及存储卷的挂载）和顺序等，全部写在一个 YAML 文件里，直接运行这个配置文件，就可以按照你所需的方法和步骤运行容器，而不需要手动操作每个容器。以下是一个 Docker Compose 示例，用于部署一个 web 服务：
 
-```yaml title="docker-compose.yml"
+```yaml title="compose.yaml"
 version: "3"
 services:
   web:
@@ -69,7 +69,7 @@ docker compose version
 
 ## 如何使用 Docker Compose
 
-一般我们将 `docker-compose.yml` 文件放到一个以应用名称命名目录下，比如 `web/docker-compose.yml`
+一般我们将 `compose.yaml` 文件放到一个以应用名称命名目录下，比如 `web/compose.yaml`
 
 要运行这个程序，只要在这个目录下执行 `docker compose up` 命令，即可按 YAML 文件中的配置启动服务。（加参数 `-d` 可以后台运行）
 
@@ -77,9 +77,9 @@ docker compose version
 
 ## Docker Compose 文件的写法
 
-Docker Compose 的默认打开方式，是创建一个 YAML 格式的文件，默认命名为 `docker-compose.yml`。以下是一个示例的模板，包含所有可用的参数（但并不一定要全部用上）：
+Docker Compose 的默认打开方式，是创建一个 YAML 格式的文件，默认命名为 `compose.yaml`。以下是一个示例的模板，包含所有可用的参数（但并不一定要全部用上）：
 
-```yaml title="docker-compose.yml"
+```yaml title="compose.yaml"
 version: "3"
 
 services:
@@ -115,9 +115,9 @@ volumes:
   db-data:
 ```
 
-在一个 `docker-compose.yml` 中，通常会包含以下的参数：
+在一个 `compose.yaml` 中，通常会包含以下的参数：
 
-- **version**：指定 compose 文件的版本，与 Docker Engine 版本相关联，更新的版本可能会有新增功能特性或语法。请参考官方文档 [**Compose file versions and upgrading**](https://docs.docker.com/compose/compose-file/compose-versioning/)。
+- **version**：仅用来展示 compose 文件的版本信息。与 Docker Engine 版本相关联，更新的版本可能会有新增功能特性或语法。请参考官方文档 [**Compose file versions and upgrading**](https://docs.docker.com/compose/compose-file/compose-versioning/)。
 - **services**：定义了此 compose 文件中包含的各个服务（容器）。每个服务都是一个独立的容器，可以定义其镜像、端口映射、环境变量等。
 - **container_name**：容器名称，非必须，但不能出现重名。
 - **networks**：定义了服务之间的网络配置。可以创建自定义网络，并将服务连接到这些网络上，实现容器之间的通信。
@@ -133,7 +133,7 @@ volumes:
 
 ## 一些常用命令
 
-以下是一些常见的 Docker Compose 命令，用于管理和操作 docker-compose.yml 文件定义的服务：
+以下是一些常见的 Docker Compose 命令，用于管理和操作 compose.yaml 文件定义的服务：
 
 - `docker compose up`：构建 compose 中定义的镜像并启动容器。如果需要，它会自动构建镜像（如果 Dockerfile 已更改），然后启动所有定义的服务。如果需要在后台启动，请加上 `-d` 参数。
 - `docker compose down`：停止并移除 compose 中的所有容器、网络和卷。它会停止正在运行的服务并清理所有相关的资源。
@@ -159,15 +159,15 @@ volumes:
 4. **部署和管理的简化**：通过统一使用环境变量来配置不同容器的参数，可以减少配置文件中的重复内容，使整个过程更加清晰和易于维护。
 5. **集成和自动化**：通过与 CI/CD 和自动化工具结合，可自动将应用的配置参数传递给 Docker 容器，实现自动化部署和集成。
 
-环境变量是一个 `.env` 后缀的文件，一般是直接在 `docker-compose.yml` 同级目录下创建一个名为 `.env` 的文件，以下是一个示例：
+环境变量是一个 `.env` 后缀的文件，一般是直接在 `compose.yaml` 同级目录下创建一个名为 `.env` 的文件，以下是一个示例：
 
 ```dotenv title=".env"
 TAG=v1.5
 ```
 
-在 `docker-compose.yml` 中可以直接调用环境变量：
+在 `compose.yaml` 中可以直接调用环境变量：
 
-```yaml title="docker-compose.yml"
+```yaml title="compose.yaml"
 services:
   web:
     image: "webapp:${TAG}"

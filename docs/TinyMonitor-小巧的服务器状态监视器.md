@@ -80,7 +80,7 @@ password_file /mosquitto/config/pwfile.conf
 
 使用 `docker-compose` 方式部署容器：
 
-```yaml title="docker-compose.yml"
+```yaml title="compose.yaml"
 version: "3"
 services:
   mosquitto:
@@ -100,7 +100,7 @@ services:
 进入容器并修改密码：
 
 ```bash
-cd 存放docker-compose.yml的路径
+cd 存放compose.yaml的路径
 docker compose up
 
 docker compose ps # 找到运行的容器的ID
