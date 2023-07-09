@@ -298,6 +298,10 @@ nav:
               - 一个舵机的自我修养.md
               - FreeRTOS开发笔记.md
       - 软件开发:
+          - DOCKER:
+              - Docker基础知识.md
+              - DockerCompose-镜像编排工具.md
+              - 将应用封装为Docker容器.md
           - LINUX:
               - Linux学习笔记-基础知识.md
               - Linux学习笔记-用户操作.md
@@ -308,12 +312,6 @@ nav:
               - BeagleBone系列-使用BBIO库开发.md
               - BeagleBone系列-BBAI入坑.md
               - JetsonNano系列-入坑.md
-          - DOCKER:
-              - Docker基础知识.md
-              - DockerCompose-镜像编排工具.md
-              #- Docker安装与基础命令.md
-              - 将应用封装为Docker容器.md
-              #- Docker简易指南.md
           - 杂七杂八:
               - HTML学习笔记.md
               - CSS学习笔记.md
