@@ -42,7 +42,7 @@ theme:
     - toc.follow # 目录自动跟随
     - navigation.top # 返回顶部按钮
     - search.suggest # 搜索推荐
-    - navigation.prune # 导航修剪，仅渲染可见链接，优化文档数量超过100的站点（实验），会导致页面间跳转速度变慢
+    #- navigation.prune # 导航修剪，仅渲染可见链接，优化文档数量超过100的站点（实验），会导致页面间跳转速度变慢
     #- search.highlight
   icon:
     repo: material/github
