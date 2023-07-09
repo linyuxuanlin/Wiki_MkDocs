@@ -131,9 +131,9 @@ volumes:
 - **command**：指定容器启动时要执行的命令，可用于覆盖容器镜像中默认的启动命令。
 - **volumes_from**：指定容器要挂载卷的来源容器。
 
-## 一些常用命令
+## 一些常用的 Docker Compose 命令
 
-以下是一些常见的 Docker Compose 命令，用于管理和操作 compose.yaml 文件定义的服务：
+以下是一些常见的 Docker Compose 命令，用于管理和操作 `compose.yaml`` 文件定义的服务：
 
 - `docker compose up`：构建 compose 中定义的镜像并启动容器。如果需要，它会自动构建镜像（如果 Dockerfile 已更改），然后启动所有定义的服务。如果需要在后台启动，请加上 `-d` 参数。
 - `docker compose down`：停止并移除 compose 中的所有容器、网络和卷。它会停止正在运行的服务并清理所有相关的资源。

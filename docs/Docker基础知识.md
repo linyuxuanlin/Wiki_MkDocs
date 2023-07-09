@@ -75,9 +75,9 @@ docker run hello-world
 
 这将从 Docker 镜像仓库中下载 hello-world 镜像，创建并运行容器。当看见 hello world 的输出时，说明运行成功。
 
-## 一些常用命令
+## 一些常用的 Docker CLI 命令
 
-Docker 提供了一组强大而丰富的命令，用于管理和操作容器、镜像、网络等资源。下面是一些常用的 Docker 命令：
+Docker 提供了一组强大而丰富的命令，用于管理和操作容器、镜像、网络等资源。下面是一些常用的 Docker CLI 命令：
 
 - `docker run`：基于指定的镜像创建并运行一个新容器。例如，`docker run -d -p 8080:80 nginx` 会在后台运行一个 NGINX 容器，将主机的 8080 端口映射到容器的 80 端口。
 - `docker ps`：列出正在运行的容器。默认情况下，它会显示正在运行的容器的 ID、镜像、命令等信息。使用`docker ps -a`命令可以显示所有的容器，包括已停止的容器。
