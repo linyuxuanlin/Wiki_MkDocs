@@ -93,6 +93,11 @@ Docker 提供了一组强大而丰富的命令，用于管理和操作容器、�
 
 这些是一些常用的 Docker 命令，用于管理和操作容器和镜像。还有更多的命令可以探索，可以通过`docker --help`命令查看完整的命令列表和其它可用选项，也可以参考官方文档 [**Use the Docker command line**](https://docs.docker.com/engine/reference/commandline/cli/)。
 
+如需了解更多 Docker 相关的知识，请移步后续的文章：
+
+- [Docker Compose - 镜像编排工具](https://wiki-power.com/DockerCompose-%E9%95%9C%E5%83%8F%E7%BC%96%E6%8E%92%E5%B7%A5%E5%85%B7/)
+- [将应用封装为 Docker 容器](https://wiki-power.com/%E5%B0%86%E5%BA%94%E7%94%A8%E5%B0%81%E8%A3%85%E4%B8%BADocker%E5%AE%B9%E5%99%A8/)
+
 ## 参考与致谢
 
 - [Docker - 从入门到实践](https://yeasy.gitbook.io/docker_practice/)
