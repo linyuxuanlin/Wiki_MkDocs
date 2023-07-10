@@ -95,8 +95,41 @@ Docker 提供了一组强大而丰富的命令，用于管理和操作容器、�
 
 如需了解更多 Docker 相关的知识，请移步后续的文章：
 
-- [Docker Compose - 镜像编排工具](https://wiki-power.com/DockerCompose-%E9%95%9C%E5%83%8F%E7%BC%96%E6%8E%92%E5%B7%A5%E5%85%B7/)
-- [将应用封装为 Docker 容器](https://wiki-power.com/%E5%B0%86%E5%BA%94%E7%94%A8%E5%B0%81%E8%A3%85%E4%B8%BADocker%E5%AE%B9%E5%99%A8/)
+- [**Docker Compose - 镜像编排工具**](https://wiki-power.com/DockerCompose-%E9%95%9C%E5%83%8F%E7%BC%96%E6%8E%92%E5%B7%A5%E5%85%B7/)
+- [**将应用封装为 Docker 容器**](https://wiki-power.com/%E5%B0%86%E5%BA%94%E7%94%A8%E5%B0%81%E8%A3%85%E4%B8%BADocker%E5%AE%B9%E5%99%A8/)
+
+如果你想直接上手实践，也可参考以下系列的文章：
+
+- [搭建属于自己的 HomeLab](https://wiki-power.com/搭建属于自己的HomeLab)
+- [Homelab - 轻量服务器管理面板 CasaOS](https://wiki-power.com/Homelab-轻量服务器管理面板CasaOS)
+- [Homelab - 反代证书管理面板 Nginx Proxy Manager](https://wiki-power.com/Homelab-反代证书管理面板NginxProxyManager)
+- [Homelab - 内网穿透工具 frp](https://wiki-power.com/Homelab-内网穿透工具frp)
+- [Homelab - 免费的内网穿透替代方案 Cloudflared](https://wiki-power.com/Homelab-免费的内网穿透替代方案Cloudflared)
+- [Homelab - 在线代码编辑器 code-server](https://wiki-power.com/Homelab-在线代码编辑器code-server)
+- [Homelab - 网站状态监控工具 Uptime Kuma](https://wiki-power.com/Homelab-网站状态监控工具UptimeKuma)
+- [Homelab - 高质量图片压缩工具 TinyPNG-docker](https://wiki-power.com/Homelab-高质量图片压缩工具TinyPNG-docker)
+- [Homelab - 极简个人书签导航站 Flare](https://wiki-power.com/Homelab-极简个人书签导航站Flare)
+- [Homelab - 容器应用管理平台 Portainer](https://wiki-power.com/Homelab-容器应用管理平台Portainer)
+- [Homelab - 跨设备同步工具 Syncthing](https://wiki-power.com/Homelab-跨设备同步工具Syncthing)
+- [Homelab - 碎片笔记工具 memos](https://wiki-power.com/Homelab-碎片笔记工具memos)
+- [Homelab - 功能强大的 wiki 系统 Wiki.js](https://wiki-power.com/Homelab-功能强大的wiki系统Wikijs)
+- [Homelab - 自托管密码管理器 Vaultwarden](https://wiki-power.com/Homelab-自托管密码管理器Vaultwarden)
+- [Homelab - 支持公有云的图床系统 Cloudreve](https://wiki-power.com/Homelab-支持公有云的图床系统Cloudreve)
+- [Homelab - 自托管 RSS 聚合器 FreshRSS](https://wiki-power.com/Homelab-自托管RSS聚合器FreshRSS)
+- [Homelab - 支持多种协议的堡垒机 Next Terminal](https://wiki-power.com/Homelab-支持多种协议的堡垒机NextTerminal)
+- [Homelab - 播客订阅管理器 Podgrab](https://wiki-power.com/Homelab-播客订阅管理器Podgrab)
+- [Homelab - 多功能 PDF 工具箱 Stirling-PDF](https://wiki-power.com/Homelab-多功能PDF工具箱Stirling-PDF)
+- [Homelab - 网站 favicon 抓取工具 iconserver](https://wiki-power.com/Homelab-网站favicon抓取工具iconserver)
+- [Homelab - 极简的待办系统 todo](https://wiki-power.com/Homelab-极简的待办系统todo)
+- [Homelab - 自动更新 Docker 容器的工具 Watchtower](https://wiki-power.com/Homelab-自动更新Docker容器的工具Watchtower)
+- [Homelab - 支持多存储的文件列表程序 Alist](https://wiki-power.com/Homelab-支持多存储的文件列表程序Alist)
+- [Homelab - 功能丰富的看板软件 WeKan](https://wiki-power.com/Homelab-功能丰富的看板软件WeKan)
+- [Homelab - 播客与有声书服务器 Audiobookshelf](https://wiki-power.com/Homelab-播客与有声书服务器Audiobookshelf)
+- [Homelab - 云端音乐服务器 Navidrome](https://wiki-power.com/Homelab-云端音乐服务器Navidrome)
+- [Homelab - 影视媒体服务器 Jellyfin](https://wiki-power.com/Homelab-影视媒体服务器Jellyfin)
+- [Homelab - 电子书管理服务器 calibre-web](https://wiki-power.com/Homelab-电子书管理服务器calibre-web)
+- [Homelab - 智能家居服务器 Home Assistant](https://wiki-power.com/Homelab-智能家居服务器HomeAssistant)
+- [Homelab - 卡片辅助记忆软件 Anki](https://wiki-power.com/Homelab-卡片辅助记忆软件Anki)
 
 ## 参考与致谢
 
