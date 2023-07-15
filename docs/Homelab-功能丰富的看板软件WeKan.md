@@ -7,7 +7,7 @@ title: Homelab - 功能丰富的看板软件 WeKan
 
 **WeKan** 是一款灵活、易用且高效的开源看板软件，它可以帮助团队协作管理任务、项目和工作流程。它提供了一个简单而强大的用户界面，用户可以轻松创建多个看板，为每个看板添加列表和卡片，并将任务分配给不同的成员，从而更好地管理项目并跟踪进度。
 
-## 部署（docker-compose）
+## 部署（Docker Compose）
 
 首先创建 `compose.yaml` 文件，并粘贴以下内容：
 
@@ -75,7 +75,7 @@ networks:
     driver: bridge
 ```
 
-接下来，在与 `compose.yaml` 相同的目录下创建 `.env` 文件，并自定义你的环境变量（推荐）。如果不想使用环境变量的方式，也可以直接在 `compose.yaml` 自定义你的参数（比如把 `${STACK_NAME}` 替换为 `wekan`）。
+（可选）推荐在 `compose.yaml` 同级目录下创建 `.env` 文件，并自定义你的环境变量。如果不想使用环境变量的方式，也可以直接在 `compose.yaml` 内自定义你的参数（比如把 `${STACK_NAME}` 替换为 `wekan`）。
 
 ```dotenv title=".env"
 STACK_NAME=wekan
@@ -95,7 +95,7 @@ APP_PORT=xxxx # 自定义访问端口，选择不被占用的即可
 mkdir -vp {wekan-files,wekan-db,wekan-db-dump}
 ```
 
-最后，在 `compose.yaml` 目录下执行 `docker compose up -d` 命令即可启动编排的容器。
+最后，在 `compose.yaml` 同级目录下执行 `docker compose up -d` 命令即可启动编排的容器。
 
 ## 配置说明
 

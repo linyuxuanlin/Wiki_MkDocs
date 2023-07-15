@@ -7,7 +7,7 @@ title: Homelab - 电子书管理服务器 calibre-web
 
 **calibre-web** 是一个一站式电子书解决方案，它基于 Calibre，可在网页上阅读电子书，集成了 calibre-server 服务，也带电子书格式转换。
 
-## 部署（docker-compose）
+## 部署（Docker Compose）
 
 首先创建 `compose.yaml` 文件，并粘贴以下内容：
 
@@ -27,7 +27,7 @@ services:
     restart: unless-stopped
 ```
 
-接下来，在与 `compose.yaml` 相同的目录下创建 `.env` 文件，并自定义你的环境变量（推荐）。如果不想使用环境变量的方式，也可以直接在 `compose.yaml` 自定义你的参数（比如把 `${STACK_NAME}` 替换为 `audiobookshelf`）。
+（可选）推荐在 `compose.yaml` 同级目录下创建 `.env` 文件，并自定义你的环境变量。如果不想使用环境变量的方式，也可以直接在 `compose.yaml` 内自定义你的参数（比如把 `${STACK_NAME}` 替换为 `audiobookshelf`）。
 
 ```dotenv title=".env"
 STACK_NAME=calibre-web
@@ -42,7 +42,7 @@ APP_PORT_SERVER=xxxx # 自定义 calibre-server 的访问端口，选择不被�
 
 如果你有个 NAS，也可以通过 NFS 协议挂载 NAS 上的储存空间，把音乐储存在 NAS 上以节省服务器空间，详情请参考 [**Linux 下挂载群晖 NAS 硬盘拓展空间（NFS）**](https://wiki-power.com/Linux%E4%B8%8B%E6%8C%82%E8%BD%BD%E7%BE%A4%E6%99%96NAS%E7%A1%AC%E7%9B%98%E6%8B%93%E5%B1%95%E7%A9%BA%E9%97%B4%EF%BC%88NFS%EF%BC%89/)。
 
-最后，在 `compose.yaml` 目录下执行 `docker compose up -d` 命令即可启动编排的容器。
+最后，在 `compose.yaml` 同级目录下执行 `docker compose up -d` 命令即可启动编排的容器。
 
 ## 配置说明
 

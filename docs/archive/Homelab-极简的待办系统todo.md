@@ -7,7 +7,7 @@ title: Homelab - 极简的待办系统 todo
 
 **todo** 是一个极简的待办系统工具。
 
-## 部署（docker-compose）
+## 部署（Docker Compose）
 
 首先创建 `compose.yaml` ，并将以下的 `${DIR}` 替换为本地的目录（例如 `/DATA/AppData`）；`${PORT}` 替换为自定义的端口号（比如 `1234`，选择不被占用的端口就可以）：
 

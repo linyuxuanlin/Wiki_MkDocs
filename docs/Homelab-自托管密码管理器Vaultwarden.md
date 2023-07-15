@@ -7,22 +7,35 @@ title: Homelab - 自托管密码管理器 Vaultwarden
 
 **Vaultwarden** 是一个第三方自托管的 Bitwarden 服务器，通过一个主密码保护并管理各个网站的密码，可生成随机的密码供不同网站使用。
 
-## 部署（docker-compose）
+## 部署（Docker Compose）
 
-首先创建 `compose.yaml` ，并将以下的 `${DIR}` 替换为本地的目录（例如 `/DATA/AppData`）；`${PORT}` 替换为自定义的端口号（比如 `1234`，选择不被占用的端口就可以）：
+首先创建 `compose.yaml` 文件，并粘贴以下内容：
 
 ```yaml title="compose.yaml"
 version: "3"
-
 services:
-  todo:
-    image: vaultwarden/server:latest
-    restart: always
+  vaultwarden:
+    container_name: ${STACK_NAME}_app
+    image: vaultwarden/server:${APP_VERSION}
     ports:
-      - ${PORT}:80
+      - ${APP_PORT}:80
     volumes:
-      - ${DIR}/vaultwarden/:/data/
+      - ${STACK_DIR}:/data/
+    restart: always
 ```
+
+（可选）推荐在 `compose.yaml` 同级目录下创建 `.env` 文件，并自定义你的环境变量。如果不想使用环境变量的方式，也可以直接在 `compose.yaml` 内自定义你的参数（比如把 `${STACK_NAME}` 替换为 `vaultwarden`）。
+
+```dotenv title=".env"
+STACK_NAME=vaultwarden
+STACK_DIR=xxx # 自定义项目储存路径，例如 ./vaultwarden
+
+# vaultwarden
+APP_VERSION=latest
+APP_PORT=xxxx # 自定义访问端口，选择不被占用的即可
+```
+
+最后，在 `compose.yaml` 同级目录下执行 `docker compose up -d` 命令即可启动编排的容器。
 
 ## 配置说明
 

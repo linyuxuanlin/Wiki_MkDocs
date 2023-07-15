@@ -7,20 +7,35 @@ title: Homelab - 碎片笔记工具 memos
 
 **memos** 是一个开源的自托管 memos 工具。支持 Markdown 语法、公开分享、iframe 嵌入、标签管理、日历视图、简单的数据迁移与备份功能。
 
-## 部署（docker-compose）
+## 部署（Docker Compose）
 
-首先创建 `compose.yaml` ，并将以下的 `${DIR}` 替换为本地的目录（例如 `/DATA/AppData`）；`${PORT}` 替换为自定义的端口号（比如 `1234`，选择不被占用的端口就可以）：
+首先创建 `compose.yaml` 文件，并粘贴以下内容：
 
 ```yaml title="compose.yaml"
 version: "3.0"
 services:
   memos:
-    image: neosmemo/memos:latest
-    volumes:
-      - ${DIR}/memos:/var/opt/memos
+    container_name: ${STACK_NAME}_app
+    image: neosmemo/memos:${APP_VERSION}
     ports:
-      - ${PORT}:5230
+      - ${APP_PORT}:5230
+    volumes:
+      - ${STACK_DIR}:/var/opt/memos
+    restart: always
 ```
+
+（可选）推荐在 `compose.yaml` 同级目录下创建 `.env` 文件，并自定义你的环境变量。如果不想使用环境变量的方式，也可以直接在 `compose.yaml` 内自定义你的参数（比如把 `${STACK_NAME}` 替换为 `memos`）。
+
+```dotenv title=".env"
+STACK_NAME=memos
+STACK_DIR=xxx # 自定义项目储存路径，例如 ./memos
+
+# memos
+APP_VERSION=latest
+APP_PORT=xxxx # 自定义访问端口，选择不被占用的即可
+```
+
+最后，在 `compose.yaml` 同级目录下执行 `docker compose up -d` 命令即可启动编排的容器。
 
 ## 配置说明
 

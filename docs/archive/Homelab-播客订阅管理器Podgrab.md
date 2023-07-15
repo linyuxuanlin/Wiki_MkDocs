@@ -7,7 +7,7 @@ title: Homelab - 播客订阅管理器 Podgrab
 
 **Podgrab** 是一个自托管的播客管理器 / 下载器 / 存档工具，可通过 RSS 或内置搜索引擎搜索订阅播客节目，可自动下载新上线节目，并且自带 web 播放器。
 
-## 部署（docker-compose）
+## 部署（Docker Compose）
 
 首先创建 `compose.yaml` ，并将以下的 `${DIR}` 替换为本地的目录（例如 `/DATA/AppData`）；`${PORT}` 替换为自定义的端口号（比如 `1234`，选择不被占用的端口就可以）：
 

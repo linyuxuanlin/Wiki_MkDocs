@@ -9,7 +9,7 @@ title: Homelab - 卡片辅助记忆软件 Anki
 
 由于同步服务器在国外，有时候可能会无法正常同步，我们可以使用 **anki-sync-server** 自己搭建同步服务。以下教程使用的是 `johngong/anki-sync-server` 镜像，可正常使用，其他版本未经测试。
 
-## 部署（docker-compose）
+## 部署（Docker Compose）
 
 首先创建 `compose.yaml` 文件，并粘贴以下内容：
 
@@ -31,7 +31,7 @@ services:
     restart: unless-stopped
 ```
 
-接下来，在与 `compose.yaml` 相同的目录下创建 `.env` 文件，并自定义你的环境变量（推荐）。如果不想使用环境变量的方式，也可以直接在 `compose.yaml` 自定义你的参数（比如把 `${STACK_NAME}` 替换为 `anki-sync-server`）。
+（可选）推荐在 `compose.yaml` 同级目录下创建 `.env` 文件，并自定义你的环境变量。如果不想使用环境变量的方式，也可以直接在 `compose.yaml` 内自定义你的参数（比如把 `${STACK_NAME}` 替换为 `anki-sync-server`）。
 
 ```dotenv title=".env"
 STACK_NAME=anki-sync-server
@@ -44,7 +44,7 @@ APP_USERNAME=xxx@xx.com  # 自定义账户名，需要邮箱格式
 APP_PASSWORD=xxxxxx # 自定义密码
 ```
 
-最后，在 `compose.yaml` 目录下执行 `docker compose up -d` 命令即可启动编排的容器。
+最后，在 `compose.yaml` 同级目录下执行 `docker compose up -d` 命令即可启动编排的容器。
 
 ## 配置说明
 

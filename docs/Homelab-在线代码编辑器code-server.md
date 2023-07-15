@@ -7,29 +7,47 @@ title: Homelab - 在线代码编辑器 code-server
 
 **code-server** 是一个能在浏览器中运行的 VS Code。相比于桌面端的优势是，你可以用任意设备在线码字，包括手机与平板这一类无法直接安装 VS Code 的设备。
 
-## 部署（docker-compose）
-
-首先创建 `compose.yaml` ，并将以下的 `${DIR}` 替换为本地的目录（例如 `/DATA/AppData`）；`${PORT}` 替换为自定义的端口号（比如 `1234`，选择不被占用的端口就可以）；将登陆密码 `${PASSWORD}` 也替换为你自己的：
+## 部署（Docker Compose）
+首先创建 `compose.yaml` 文件，并粘贴以下内容：
 
 ```yaml title="compose.yaml"
 version: "2.1"
 services:
   code-server:
-    image: ghcr.io/linuxserver/code-server
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Asia/Shanghai
-      - PASSWORD=${PASSWORD} #optional
-    # - SUDO_PASSWORD=  #optional
-    # - SUDO_PASSWORD_HASH=  #optional
-    # - PROXY_DOMAIN= #optional
-    volumes:
-      - ${DIR}/code-server/config:/config
+    container_name: ${STACK_NAME}_app
+    image: ghcr.io/linuxserver/code-server:${APP_VERSION}
     ports:
-      - ${PORT}:8443
+      - ${APP_PORT}:8443
+    volumes:
+      - ${STACK_DIR}/config:/config
+      - ${DATA_DIR_LOCAL}:/DATA
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Asia/Shanghai
+      - PASSWORD=${APP_PASSWORD} #optional
+      - SUDO_PASSWORD=${APP_SUDO_PASSWORD} #optional
+      #- SUDO_PASSWORD_HASH= #optional
+      #- PROXY_DOMAIN=code.wiki-power.com #optional
     restart: unless-stopped
 ```
+
+（可选）推荐在 `compose.yaml` 同级目录下创建 `.env` 文件，并自定义你的环境变量。如果不想使用环境变量的方式，也可以直接在 `compose.yaml` 内自定义你的参数（比如把 `${STACK_NAME}` 替换为 `code-server`）。
+
+```dotenv title=".env"
+STACK_NAME=code-server
+STACK_DIR=xxx # 自定义项目储存路径，例如 ./code-server
+DATA_DIR_LOCAL=xxx # 自定义挂载本地目录，例如 /DATA 
+
+# code-server
+APP_VERSION=latest
+APP_PORT=xxxx # 自定义访问端口，选择不被占用的即可
+APP_PASSWORD=xxx # 登录密码
+APP_SUDO_PASSWORD=xxx # 超级用户权限密码
+
+```
+
+最后，在 `compose.yaml` 同级目录下执行 `docker compose up -d` 命令即可启动编排的容器。
 
 ## 配置说明
 

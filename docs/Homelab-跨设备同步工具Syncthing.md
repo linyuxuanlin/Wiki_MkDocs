@@ -7,29 +7,41 @@ title: Homelab - 跨设备同步工具 Syncthing
 
 **Syncthing** 是一款免费开源的文件同步应用程序，可在多个设备间同步文件和文件夹，支持增量同步。我用它将服务器的数据备份到 NAS 上做统一管理。
 
-## 部署（docker-compose）
+## 部署（Docker Compose）
 
-首先创建 `compose.yaml` ，并将以下的 `${DIR}` 替换为本地的目录（例如 `/DATA/AppData`）；`${PORT}` 替换为自定义的端口号（比如 `1234`，选择不被占用的端口就可以）：
+首先创建 `compose.yaml` 文件，并粘贴以下内容：
 
 ```yaml title="compose.yaml"
 version: "3"
 services:
   syncthing:
-    image: syncthing/syncthing
+    container_name: ${STACK_NAME}_app
+    image: syncthing/syncthing:${APP_VERSION}
     hostname: my-syncthing
-    environment:
-      - PUID=1000
-      - PGID=1000
     volumes:
-      # - /DATA:/DATA # 需要同步的目录
-      - ${DIR}/syncthing/config:/var/syncthing/config/
+      - ${APP_SYNC_DIR}:/DATA
+      - ${STACK_DIR}/config:/var/syncthing/config/
     ports:
-      - ${PORT}:8384 # Web UI
+      - ${APP_PORT}:8384 # Web UI
       - 22000:22000/tcp # TCP file transfers
       - 22000:22000/udp # QUIC file transfers
       - 21027:21027/udp # Receive local discovery broadcasts
     restart: unless-stopped
 ```
+
+（可选）推荐在 `compose.yaml` 同级目录下创建 `.env` 文件，并自定义你的环境变量。如果不想使用环境变量的方式，也可以直接在 `compose.yaml` 内自定义你的参数（比如把 `${STACK_NAME}` 替换为 `syncthing`）。
+
+```dotenv title=".env"
+STACK_NAME=syncthing
+STACK_DIR=xxx # 自定义项目储存路径，例如 ./syncthing
+
+# syncthing
+APP_VERSION=latest
+APP_PORT=xxxx # 自定义访问端口，选择不被占用的即可
+APP_SYNC_DIR=xxxx # 自定义需要同步的路径，比如 /DATA
+```
+
+最后，在 `compose.yaml` 同级目录下执行 `docker compose up -d` 命令即可启动编排的容器。
 
 ## 配置说明
 

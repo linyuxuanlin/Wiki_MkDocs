@@ -7,7 +7,7 @@ title: Homelab - 高质量图片压缩工具 TinyPNG-docker
 
 TinyPNG-docker 是一个调用 TinyPNG API 进行图片高质量压缩的工具，可以自动压缩指定路径下的 WEBP、JPEG 和 PNG 图片，然后输出到你想要的路径下。它能有效减少网站的带宽占用、流量和加载时间。顺带说一句，这是我借助 ChatGPT 开发的一个 Docker 应用。
 
-## 部署（docker-compose）
+## 部署（Docker Compose）
 
 首先创建 `compose.yaml` ，并将以下的 `${DIR}` 替换为本地的目录（例如 `/DATA/AppData`）；将 `${API}` 替换为自己申请的 TinyPNG 密钥：
 

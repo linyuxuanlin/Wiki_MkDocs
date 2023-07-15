@@ -379,10 +379,8 @@ nav:
                   - Homelab-支持公有云的图床系统Cloudreve.md
                   - Homelab-自托管RSS聚合器FreshRSS.md
                   - Homelab-支持多种协议的堡垒机NextTerminal.md
-                  - Homelab-播客订阅管理器Podgrab.md
                   - Homelab-多功能PDF工具箱Stirling-PDF.md
                   - Homelab-网站favicon抓取工具iconserver.md
-                  - Homelab-极简的待办系统todo.md
                   - Homelab-自动更新Docker容器的工具Watchtower.md
                   - Homelab-支持多存储的文件列表程序Alist.md
                   - Homelab-功能丰富的看板软件WeKan.md
@@ -513,6 +511,8 @@ nav:
 # - archive/STM32模块设计-LED.md
 # - archive/团队公开知识库的搭建.md
 # - archive/Docker方法部署code-server.md
+# - archive/Homelab-极简的待办系统todo.md
+# - archive/Homelab-播客订阅管理器Podgrab.md
 
 #  unlist：
 # - unlist/电源设计-LDO跳变抑制能力对比测试记录.md

@@ -7,25 +7,37 @@ title: Homelab - 支持多存储的文件列表程序 Alist
 
 **Alist** 是一个文件列表程序，支持多种储存方式如本地、阿里云盘、OneDrive、GoogleDrive、百度网盘、夸克网盘、蓝奏云、S3、FTP / SFTP 等等，带在线视频播放器与各类文件预览（兼容 Office、PDF、Markdown 等），还有离线下载功能。
 
-## 部署（docker-compose）
+## 部署（Docker Compose）
 
-首先创建 `compose.yaml` ，并将以下的 `${DIR}` 替换为本地的目录（例如 `/DATA/AppData`）；`${PORT}` 替换为自定义的端口号（比如 `1234`，选择不被占用的端口就可以）：
+首先创建 `compose.yaml` 文件，并粘贴以下内容：
 
 ```yaml title="compose.yaml"
 version: "3.3"
 services:
   alist:
-    restart: always
+    container_name: ${STACK_NAME}_app
+    image: "xhofe/alist:${APP_VERSION}"
     volumes:
-      - ${DIR}/alist:/opt/alist/data
+      - ${STACK_DIR}:/opt/alist/data
     ports:
-      - ${PORT}:5244
+      - ${APP_PORT}:5244
     environment:
-      - PUID=0
-      - PGID=0
       - UMASK=022
-    image: xhofe/alist:latest
+    restart: always
 ```
+
+（可选）推荐在 `compose.yaml` 同级目录下创建 `.env` 文件，并自定义你的环境变量。如果不想使用环境变量的方式，也可以直接在 `compose.yaml` 内自定义你的参数（比如把 `${STACK_NAME}` 替换为 `alist`）。
+
+```dotenv title=".env"
+STACK_NAME=alist
+STACK_DIR=xxx # 自定义项目储存路径，例如 ./alist
+
+# alist
+APP_VERSION=latest
+APP_PORT=xxxx # 自定义访问端口，选择不被占用的即可
+```
+
+最后，在 `compose.yaml` 同级目录下执行 `docker compose up -d` 命令即可启动编排的容器。
 
 ## 配置说明
 
