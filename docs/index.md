@@ -9,8 +9,8 @@ hide:
 
 <!--  一个不会讲故事的攻城狮，算不上一个很酷的产品汪~-->
 
-[![badge](https://img.shields.io/github/deployments/linyuxuanlin/Wiki_Docusaurus/Production?label=Build&style=flat-square){ loading=lazy }](https://vercel.com/linyuxuanlin/wiki-mkdocs/deployments)
-[![badge](https://img.shields.io/github/last-commit/linyuxuanlin/Wiki_Docusaurus?color=FCD734&label=Last%20commit&style=flat-square){ loading=lazy }](https://github.com/linyuxuanlin/Wiki_mkdocs/commits/main)
+[![badge](https://img.shields.io/github/deployments/linyuxuanlin/Wiki_MkDocs/Production?label=Build&style=flat-square){ loading=lazy }](https://vercel.com/linyuxuanlin/wiki-mkdocs/deployments)
+[![badge](https://img.shields.io/github/last-commit/linyuxuanlin/Wiki_MkDocs?color=FCD734&label=Last%20commit&style=flat-square){ loading=lazy }](https://github.com/linyuxuanlin/Wiki_mkdocs/commits/main)
 [![badge](https://img.shields.io/badge/Contact%20%26%20Subscribe-me-34ABE0?&style=flat-square){ loading=lazy }](Contact-and-Subscribe)
 
 <!--
