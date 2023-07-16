@@ -18,6 +18,9 @@ services:
     container_name: ${STACK_NAME}_app
     image: syncthing/syncthing:${APP_VERSION}
     hostname: my-syncthing
+    environment: # 需要以 root 权限运行，否则无法读取其他 docker 目录或宿主机 root 目录
+      - PUID=0
+      - PGID=0
     volumes:
       - ${APP_SYNC_DIR}:/DATA
       - ${STACK_DIR}/config:/var/syncthing/config/

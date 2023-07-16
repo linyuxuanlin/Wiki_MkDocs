@@ -8,6 +8,7 @@ title: Homelab - 在线代码编辑器 code-server
 **code-server** 是一个能在浏览器中运行的 VS Code。相比于桌面端的优势是，你可以用任意设备在线码字，包括手机与平板这一类无法直接安装 VS Code 的设备。
 
 ## 部署（Docker Compose）
+
 首先创建 `compose.yaml` 文件，并粘贴以下内容：
 
 ```yaml title="compose.yaml"
@@ -21,7 +22,7 @@ services:
     volumes:
       - ${STACK_DIR}/config:/config
       - ${DATA_DIR_LOCAL}:/DATA
-    environment:
+    environment: # 需要以 root 权限运行，否则无法读取其他 docker 目录或宿主机 root 目录
       - PUID=0
       - PGID=0
       - TZ=Asia/Shanghai
@@ -37,7 +38,7 @@ services:
 ```dotenv title=".env"
 STACK_NAME=code-server
 STACK_DIR=xxx # 自定义项目储存路径，例如 ./code-server
-DATA_DIR_LOCAL=xxx # 自定义挂载本地目录，例如 /DATA 
+DATA_DIR_LOCAL=xxx # 自定义挂载本地目录，例如 /DATA
 
 # code-server
 APP_VERSION=latest
