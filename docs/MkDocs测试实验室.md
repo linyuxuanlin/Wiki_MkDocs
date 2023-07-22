@@ -13,9 +13,7 @@ title: MkDocs 测试实验室
 graph TD
     a1("Collect Voltage vs. QUOT data across skew and temperature")
     a2("Select RO and define Target QUOT (fix value)" )
-    a1-->a2 
-    
-    
+    a1-->a2
 ```
 
 ```mermaid
