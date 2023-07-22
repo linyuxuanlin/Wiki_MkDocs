@@ -185,11 +185,7 @@ void loop()
 }
 ```
 
-**模型：**
-
-![屏幕快照 2017-07-17 下午 5.00.16 (2).png](http://upload-images.jianshu.io/upload_2218072-c2cb025a94089a51.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240)
-
-比赛时间所限，只能粗略画出模型，打印出来组装。
+因比赛时间所限，只能粗略画出模型，打印出来组装。
 
 ## FAQ
 
