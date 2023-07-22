@@ -107,13 +107,9 @@ git config --global user.email "email@example.com"
 
 完成之后，点击网页上的 `New Project`，导入 GitHub 响应的仓库（例如我们之前建立的 `wiki` 仓库），此处可能需要根据提示，再进行一次 GitHub 的登录。导入之后，一路点击 `Next` 继续，很快网站就能部署成功了。
 
-
 ## 总结
 
 这篇文章我们实现了基于 Docusaurus 的知识库的本地和云端部署。本文的过程中如果遇到问题，可以联系我 [**微信**](https://wiki-power.com/WeChat) 反馈。在下一篇文章【待更新】中，我将对个性化的配置做详细的讲解。
-
-
-
 
 ## 参考与致谢
 
@@ -121,4 +117,3 @@ git config --global user.email "email@example.com"
 
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-

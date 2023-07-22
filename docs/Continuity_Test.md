@@ -54,8 +54,8 @@ Power Pin Short Test is performed by applying a small voltage to VDD, and measur
 
 ## References & Acknowledgements
 
-- *The Fundamentals Of Digital Semiconductor Testing*
-- *Fundamentals of Testing Using ATE*
+- _The Fundamentals Of Digital Semiconductor Testing_
+- _Fundamentals of Testing Using ATE_
 
 > Original: <https://wiki-power.com/>  
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.

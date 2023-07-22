@@ -44,4 +44,3 @@ S22 指的是相对于端口 2 的入射信号，端口 2 的反射信号，$S22
 
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-

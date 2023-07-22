@@ -35,7 +35,6 @@ APP_PORT=xxxx # 自定义访问端口，选择不被占用的即可
 
 最后，在 `compose.yaml` 同级目录下执行 `docker compose up -d` 命令即可启动编排的容器。
 
-
 ## 参考与致谢
 
 - [文档 / GitHub repo](https://github.com/Frooodle/Stirling-PDF)

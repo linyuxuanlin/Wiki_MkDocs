@@ -43,8 +43,7 @@ __attribute__((weak)) int _write(int file, char *ptr, int len)
 
 - [STM32CubeIDE 实现 printf 重定向输出到串口](https://blog.51cto.com/u_15353042/3751177)
 - [STM32CubeIDE 之 printf 重定向及串口（uart）输出浮点型数据的修改](https://blog.csdn.net/qq_42980638/article/details/98359026)
-- [再次质疑 HAL_UART_Receive_IT函数](https://shequ.stmicroelectronics.cn/forum.php?mod=viewthread&tid=615546)
+- [再次质疑 HAL_UART_Receive_IT 函数](https://shequ.stmicroelectronics.cn/forum.php?mod=viewthread&tid=615546)
 
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-

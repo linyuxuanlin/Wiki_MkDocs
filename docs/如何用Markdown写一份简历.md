@@ -21,7 +21,6 @@ title: 如何用 Markdown 写一份简历
 - `BUILD COMMAND`：填入 `npm run build`
 - `OUTPUT DIRECTORY`：填入 `dist`
 
-
 点击下一步，等待几十秒，网站就生成了。
 
 如需修改简历的内容，请编辑根目录下的 `_config.yml` 和 `markdown/resume-template.md` 文件，推送到 GitHub 仓库后，可自动触发 Vercel 构建。
@@ -34,5 +33,3 @@ title: 如何用 Markdown 写一份简历
 
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-
-

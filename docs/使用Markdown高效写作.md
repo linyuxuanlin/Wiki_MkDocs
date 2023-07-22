@@ -3,7 +3,6 @@ id: 使用Markdown高效写作
 title: 使用 Markdown 高效写作
 ---
 
-
 如果你习惯使用 Word 之类的工具写作，你可能会常常遇到以下的场景：
 
 - 加粗的按钮在哪里？列表的按钮在哪里？怎样才能正常地插图？
@@ -261,4 +260,3 @@ int fputc(int ch,FILE *f)
 
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-

@@ -3,9 +3,7 @@ id: Hugo极简搭建指南
 title: Hugo 极简搭建指南
 ---
 
-
 Hugo 是一个搭建网页的框架，有极高的构建和部署速度。至于在 Windows 下的安装配置，官方文档并未详细说明，第三方教程也参差不齐，所以我写了这一篇教程。
-
 
 ## 下载安装
 
@@ -36,7 +34,7 @@ hugo new site quickstart
 
 ## 添加主题
 
-主题的挑选可以到官方的 [**主题页面**](https://themes.gohugo.io/) 
+主题的挑选可以到官方的 [**主题页面**](https://themes.gohugo.io/)
 
 直接跳转至 GitHub 下载主题文件夹，解压至站点的 `theme` 目录下即可。
 
@@ -76,12 +74,9 @@ Build static pages
 
 将站点部署进行本地部署（输出于 `public` 文件夹目录下）。
 
-## 参考与致谢 
+## 参考与致谢
 
-* [Quick Start · Hugo](https://gohugo.io/getting-started/quick-start/)
-
-
+- [Quick Start · Hugo](https://gohugo.io/getting-started/quick-start/)
 
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-

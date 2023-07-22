@@ -46,8 +46,5 @@ PlatformIO 是一个强大的一站式工具，来看看它的特点：
 - [用 VS Code 作为 STM32 开发平台（platformIO）](https://www.jianshu.com/p/49cfa03d6164)
 - [PlatformIO IDE(VSCode) - stm32cube 框架的工程](https://www.smslit.top/2019/08/24/platformio-stm32-cubemx/)
 
-
-
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-

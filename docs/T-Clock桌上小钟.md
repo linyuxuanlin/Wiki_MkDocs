@@ -48,8 +48,5 @@ title: T-Clock 桌上小钟
 - [OLED Graphic Display Interfacing with NodeMCU](https://www.electronicwings.com/nodemcu/oled-graphic-display-interfacing-with-nodemcu)
 - [adafruit/Adafruit_SSD1306](https://github.com/adafruit/Adafruit_SSD1306)
 
-
-
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-

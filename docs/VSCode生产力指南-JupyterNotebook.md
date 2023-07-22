@@ -5,7 +5,6 @@ title: VS Code 生产力指南 - Jupyter Notebook
 
 用 VS Code 打造高效率的生产力工具。
 
-
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323155728.png)
 
 Jupyter Notebook 是一个很强大的工具，它允许我们在一个文档环境内编写、运行代码、查看输出、将数据可视化并查看结果……总之，有了它，我们写含代码的文档就方便多了。
@@ -20,7 +19,6 @@ Jupyter Notebook 是一个很强大的工具，它允许我们在一个文档环
 如果没有 Python 环境，可以通过以下方法安装：
 
 1. 在 [**Python 官网**](https://www.python.org/) 下载最新版本安装包（尽量选择 `web-based installer` 版本）
-
 
 配置完本地 Python 环境后，我们还需要在 VS Code 内安装 [**Python**](https://marketplace.visualstudio.com/items?itemName=ms-python.python) 插件。在近期的一次更新中，Jupyter Notebooks 已经被包含在这个插件内，不用再单独安装了。
 
@@ -78,15 +76,10 @@ Jupyter Notebook 使用 **代码单元（code cells）** 的形式来创建、�
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154832.png)
 
-
-
 ## 参考与致谢
 
 - [Working with Jupyter Notebooks in Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support)
 - [VS Code Python 全新发布！Jupyter Notebook 原生支持终于来了！](https://zhuanlan.zhihu.com/p/85445777)
 
-
-
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-

@@ -71,4 +71,3 @@ EN 为使能脚，大于 1.5 V 时启动，小于 0.4 V 时关闭，请勿悬空
 
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-

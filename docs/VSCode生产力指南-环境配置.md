@@ -11,8 +11,6 @@ title: VS Code 生产力指南 - 环境配置
 
 > 工欲善其事，必先利其器。创造是一件美好的事情，如有利器相辅，这个过程将会变得更加舒适。
 
-
-
 ### 为什么选用 VS Code ?
 
 - 开源免费，颜值出众
@@ -142,8 +140,5 @@ git config --global credential.helper store
 - [Vscode 编辑 markdown 代码块（snippets）](https://www.jianshu.com/p/a87e9ca2d208)
 - [在 Visual Studio Code 中添加自定义的代码片段](https://blog.walterlv.com/post/add-custom-code-snippet-for-vscode.html##%E5%85%B3%E4%BA%8E%E6%96%87%E4%BB%B6%E5%90%8D%E7%A7%B0)
 
-
-
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-

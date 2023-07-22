@@ -62,8 +62,8 @@ The DFT algorithm uses each sample point in the summation from 0 to N-1 for each
 
 ## References & Acknowledgements
 
-- *Fundamentals of Testing Using ATE*
-- *The-Fundamentals-of-Mixed-Signal-Testing_Brian-Lowe*
+- _Fundamentals of Testing Using ATE_
+- _The-Fundamentals-of-Mixed-Signal-Testing_Brian-Lowe_
 
 > Original: <https://wiki-power.com/>  
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
