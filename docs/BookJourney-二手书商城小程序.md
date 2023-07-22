@@ -5,7 +5,7 @@ title: BookJourney - 二手书商城小程序
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/书程小驿.jpg)
 
-项目仓库：[**linyuxuanlin/BookJourney**](https://github.com/linyuxuanlin/BookJourney)
+项目仓库：**[linyuxuanlin/BookJourney](https://github.com/linyuxuanlin/BookJourney)**
 
 Demo（微信扫码体验）：
 

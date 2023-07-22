@@ -7,7 +7,7 @@ XC6206 系列是高精度、低功耗的三端正电压调节器，提供大电�
 
 本篇选用的是 TOREX（特瑞仕）的 XC6206 系列，SOT-23 封装，其他厂商相同型号可替代，但请校对详细参数。
 
-项目仓库： [**Collection_of_Power_Module_Design/LDO/XC6206**](https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/LDO/XC6206)
+项目仓库：**[Collection_of_Power_Module_Design/LDO/XC6206**](https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/LDO/XC6206)**
 
 ## 主要特性
 

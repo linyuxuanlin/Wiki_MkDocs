@@ -7,7 +7,7 @@ title: Hack.init( ) 黑客马拉松
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/wight.jpg)
 
-项目仓库：[**linyuxuanlin / Wight**](https://github.com/linyuxuanlin/Wight)
+项目仓库：**[linyuxuanlin/Wight](https://github.com/linyuxuanlin/Wight)**
 
 ## 背景
 

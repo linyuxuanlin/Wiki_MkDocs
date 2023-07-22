@@ -5,7 +5,7 @@ title: 电源方案（Buck）- XL2009E1
 
 XL2009E1 是芯龙的一款最高 36V 输入、3A 输出、固定 180kHz 的 Buck 芯片，被指过流保护功能，当短路的时候，频率会降到 48kHz。
 
-项目仓库：[**Collection_of_Power_Module_Design/DC-DC(Buck)/XL2009E1**](https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/DC-DC(Buck)/XL2009E1)
+项目仓库：**Collection_of_Power_Module_Design/DC-DC(Buck)/XL2009E1](https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/DC-DC(Buck)/XL2009E1)**
 
 ## 主要特性
 
