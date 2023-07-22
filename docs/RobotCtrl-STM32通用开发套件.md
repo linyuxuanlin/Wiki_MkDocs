@@ -5,7 +5,7 @@ title: RobotCtrl - STM32 通用开发套件
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220416181125.jpeg)
 
-项目仓库：**[linyuxuanlin/RobotCtrl](https://github.com/linyuxuanlin/RobotCtrl)**
+项目仓库：[**linyuxuanlin/RobotCtrl**](https://github.com/linyuxuanlin/RobotCtrl)
 
 RobotCtrl - STM32 通用开发套件包含三块板子：
 

@@ -11,7 +11,7 @@ AirForce 项目是一款电机驱动组合套件，包含集成稳压功能的�
 - 接口不完全黑盒子封装，提高布线的能力
 - 不占用单片机（STM32）过多的定时器引脚资源
 
-项目仓库：**[linyuxuanlin/AirForceDVR](https://github.com/linyuxuanlin/AirForceDVR)**
+项目仓库：[**linyuxuanlin/AirForceDVR**](https://github.com/linyuxuanlin/AirForceDVR)
 
 ## AirPort - 集成稳压功能的母板
 

@@ -5,7 +5,7 @@ title: RobotCtrl_Power - 电源供电板
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220527113517.png)
 
-项目仓库：**[linyuxuanlin/RobotCtrl/RobotCtrl_Power](https://github.com/linyuxuanlin/RobotCtrl/tree/main/RobotCtrl_MultiBoard_Project/RobotCtrl_Power)**
+项目仓库：[**linyuxuanlin/RobotCtrl/RobotCtrl_Power**](https://github.com/linyuxuanlin/RobotCtrl/tree/main/RobotCtrl_MultiBoard_Project/RobotCtrl_Power)
 
 项目在线预览：
 

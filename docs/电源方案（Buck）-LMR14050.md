@@ -5,7 +5,7 @@ title: 电源方案（Buck）- LMR14050
 
 LMR14050 是 TI 的一款 Buck 转换器芯片，输入电压范围很宽（4-40V），且能提供 5A 的持续输出电流，轻载有休眠模式提高效率。它的内部集成度高，所以外围需要设计的元器件很少。开关频率能通过外部电阻 $R_T$ 在 200kHz-2.5MHz 范围内选择，也能够与 250 kHz-2.3 MHz 频率范围内的外部时钟同步。保护功能有过温关断、$V_{OUT}$ 过压保护（OVP）、$V_{IN}$ 欠压锁定（UVLO）、逐周期电流限制和带频率折返的短路保护。
 
-项目仓库：**[Collection_of_Power_Module_Design/DC-DC(Buck)/LMR14050](https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/DC-DC(Buck)/LMR14050)**
+项目仓库： [**Collection_of_Power_Module_Design/DC-DC(Buck)/LMR14050**](<https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/DC-DC(Buck)/LMR14050>)
 
 项目在线预览：
 

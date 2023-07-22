@@ -5,7 +5,7 @@ title: ZenDriver - 高性能的电机驱动
 
 —— 基于 V5.1 Release 版本
 
-项目仓库：**[linyuxuanlin/ZenDriver](https://github.com/linyuxuanlin/ZenDriver)**
+项目仓库：[**linyuxuanlin/ZenDriver**](https://github.com/linyuxuanlin/ZenDriver)
 
 ## 基本参数
 

@@ -5,7 +5,7 @@ title: RobotCtrl_Core - 核心板
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220527113423.png)
 
-项目仓库：**[linyuxuanlin/RobotCtrl/RobotCtrl_Core](https://github.com/linyuxuanlin/RobotCtrl/tree/main/RobotCtrl_MultiBoard_Project/RobotCtrl_Core)**
+项目仓库：[**linyuxuanlin/RobotCtrl/RobotCtrl_Core**](https://github.com/linyuxuanlin/RobotCtrl/tree/main/RobotCtrl_MultiBoard_Project/RobotCtrl_Core)
 
 项目在线预览：
 

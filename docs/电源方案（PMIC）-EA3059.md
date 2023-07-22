@@ -5,7 +5,7 @@ title: 电源方案（PMIC）- EA3059
 
 EA3059 是一款 4 路 PMIC，适用于由锂电池或直流 5V 供电的应用。它内部集成四个同步降压转换器，可在轻载和重载运行时提供高效率输出。内部补偿架构使应用电路设计简单。此外，独立的使能控制方便控制上电顺序。EA3059 采用 24 脚 QFN 4x4 封装。
 
-项目仓库：**[Collection_of_Power_Module_Design/PMIC/EA3059](https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/PMIC/EA3059)**
+项目仓库： [**Collection_of_Power_Module_Design/PMIC/EA3059**](https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/PMIC/EA3059)
 
 项目在线预览：
 

@@ -7,7 +7,7 @@ SwiftCtrl 是一款基于 Arduino 的蓝牙（HC-06）遥控手柄，提供双�
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200221145040.png)
 
-项目仓库：**[linyuxuanlin/SwiftCtrl](https://github.com/linyuxuanlin/SwiftCtrl)**
+项目仓库：[**linyuxuanlin/SwiftCtrl**](https://github.com/linyuxuanlin/SwiftCtrl)
 
 项目在线预览：
 
