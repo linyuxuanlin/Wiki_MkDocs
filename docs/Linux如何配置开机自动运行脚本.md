@@ -83,7 +83,6 @@ sudo systemctl start autorun.service
 
 现在，你的服务已经设置为在系统启动时自动运行。你可以重新启动系统来验证服务是否正常启动。
 
-
 ---
 
 > 原文地址：<https://wiki-power.com/>  

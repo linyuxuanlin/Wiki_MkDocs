@@ -31,7 +31,7 @@ graph graph_name {
 }
 ```
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/屏幕快照%202019-02-01%20 下午 2.02.44.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20190201140244.png)
 
 ## 总结
 
@@ -43,8 +43,5 @@ graph graph_name {
 - [Drawing graphs with dot](http://www.graphviz.org/pdf/dotguide.pdf)
 - [Windows 下 Graphviz 安装及入门教程](https://blog.csdn.net/lanchunhui/article/details/49472949)
 
-
-
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-

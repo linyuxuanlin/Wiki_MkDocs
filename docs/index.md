@@ -9,8 +9,8 @@ hide:
 
 <!--  一个不会讲故事的攻城狮，算不上一个很酷的产品汪~-->
 
-[![badge](https://img.shields.io/github/deployments/linyuxuanlin/Wiki_Docusaurus/Production?label=Build&style=flat-square){ loading=lazy }](https://vercel.com/linyuxuanlin/wiki-mkdocs/deployments)
-[![badge](https://img.shields.io/github/last-commit/linyuxuanlin/Wiki_Docusaurus?color=FCD734&label=Last%20commit&style=flat-square){ loading=lazy }](https://github.com/linyuxuanlin/Wiki_mkdocs/commits/main)
+[![badge](https://img.shields.io/github/deployments/linyuxuanlin/Wiki_MkDocs/Production?label=Build&style=flat-square){ loading=lazy }](https://vercel.com/linyuxuanlin/wiki-mkdocs/deployments)
+[![badge](https://img.shields.io/github/last-commit/linyuxuanlin/Wiki_MkDocs?color=FCD734&label=Last%20commit&style=flat-square){ loading=lazy }](https://github.com/linyuxuanlin/Wiki_mkdocs/commits/main)
 [![badge](https://img.shields.io/badge/Contact%20%26%20Subscribe-me-34ABE0?&style=flat-square){ loading=lazy }](Contact-and-Subscribe)
 
 <!--
@@ -24,11 +24,11 @@ hide:
 
 Hi there~ 欢迎来到我的知识库。
 
-[![badge](https://img.shields.io/badge/知识库-Wiki-34ABE0?&style=flat-square)](https://wiki-power.com/)
-[![badge](https://img.shields.io/badge/友链%20%26%20导航站-Nav-yellow?&style=flat-square)](https://nav.wiki-power.com/)
-[![badge](https://img.shields.io/badge/书摘-Digest-green?&style=flat-square)](https://digest.wiki-power.com/)
-[![badge](https://img.shields.io/badge/只言片语-Memos-orange?&style=flat-square)](https://memos.wiki-power.com/)
-[![badge](https://img.shields.io/badge/硬件作品集-Works-a5b0ed?&style=flat-square)](https://works.wiki-power.com/)
+[![badge](https://img.shields.io/badge/知识库-Wiki-34ABE0?&style=flat-square){ loading=lazy }](https://wiki-power.com/)
+[![badge](https://img.shields.io/badge/友链%20%26%20导航站-Nav-yellow?&style=flat-square){ loading=lazy }](https://nav.wiki-power.com/)
+[![badge](https://img.shields.io/badge/书摘-Digest-green?&style=flat-square){ loading=lazy }](https://digest.wiki-power.com/)
+[![badge](https://img.shields.io/badge/只言片语-Memos-orange?&style=flat-square){ loading=lazy }](https://memos.wiki-power.com/)
+[![badge](https://img.shields.io/badge/硬件作品集-Works-a5b0ed?&style=flat-square){ loading=lazy }](https://works.wiki-power.com/)
 
 为了避免遗忘、便于分享，我在这里收录知识。  
 请随意浏览～

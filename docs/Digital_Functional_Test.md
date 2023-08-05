@@ -5,8 +5,8 @@ title: Digital Functional Test 🚧
 
 ## References & Acknowledgements
 
-- *The Fundamentals Of Digital Semiconductor Testing*
-- *Fundamentals of Testing Using ATE*
+- _The Fundamentals Of Digital Semiconductor Testing_
+- _Fundamentals of Testing Using ATE_
 
 > Original: <https://wiki-power.com/>  
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
@@ -28,8 +28,8 @@ title: Digital Functional Test 🚧
 4. Use Shmoo method to analyze.
 5. Switching the order of test execution, in prevent of the interaction between tests.
 6. Pay attention to the Pin Electronic Driver Mode
-. Vt, Hi-Z, Largeswing-VT1K or Smallswing-VT?
-    - Hi-Z: the balance bridge will be used for driving, and VCOM will be used for current loads.
-    - Vt: directly connect to Vt level through a 50Ω resistance. If the DUT output is running at a high speed, using the VT results in fewer reflections seen by the comparator.
-7. Check if TDR is calibrated.
-8. Defects with pattern itself.
+7. Vt, Hi-Z, Largeswing-VT1K or Smallswing-VT?
+   - Hi-Z: the balance bridge will be used for driving, and VCOM will be used for current loads.
+   - Vt: directly connect to Vt level through a 50Ω resistance. If the DUT output is running at a high speed, using the VT results in fewer reflections seen by the comparator.
+8. Check if TDR is calibrated.
+9. Defects with pattern itself.

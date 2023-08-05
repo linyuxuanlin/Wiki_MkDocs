@@ -39,7 +39,6 @@ APP_PORT=xxxx # 自定义访问端口，选择不被占用的即可
 
 最后，在 `compose.yaml` 同级目录下执行 `docker compose up -d` 命令即可启动编排的容器。
 
-
 ## 配置说明
 
 需注意社区版的镜像是 `portainer/portainer-ce`，与商业版（portainer-be）区分开。

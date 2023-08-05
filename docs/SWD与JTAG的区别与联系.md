@@ -3,7 +3,6 @@ id: SWD与JTAG的区别与联系
 title: SWD 与 JTAG 的区别与联系
 ---
 
-
 众所周知，SWD 和 JTAG 是单片机下载程序与调试的常用接口。其共同之处：
 
 - **供电电压范围**: 1.2 V - 5.5 V
@@ -27,7 +26,6 @@ JTAG 一般使用 5 个引脚：
 - **TCK**（Test Clock）：时钟引脚，一般附加 100k 下拉电阻
 - **TMS**（Test Mode Select）：模式选择（控制信号）引脚
 - **TRST**（Test Reset）：复位引脚
-
 
 JTAG 的优势：
 
@@ -67,15 +65,12 @@ SWD 的优势：
 - PCB 在尺寸方面有限制，SWD 可以节省空间
 - MCU 已经没有多余的引脚给 JTAG 用了
 
-## 参考与致谢 
+## 参考与致谢
 
 - [下载调试接口 SWD 和 JTAG 的区别](https://mp.weixin.qq.com/s/MW57t266yvv6TOweeFEUVA)
 - [Cortex JTAG，SWD Debug Port Sharing](https://southlife.tistory.com/107)
 - [JTAG/SWD Interface](https://www.keil.com/support/man/docs/ulinkplus/ulinkplus_jtagswd_interface.htm)
 - [JTAG](https://en.wikipedia.org/wiki/JTAG)
 
-
-
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-

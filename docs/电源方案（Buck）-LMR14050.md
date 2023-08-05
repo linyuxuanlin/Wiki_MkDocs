@@ -9,7 +9,6 @@ LMR14050 是 TI 的一款 Buck 转换器芯片，输入电压范围很宽（4-40
 
 项目在线预览：
 
-
 <div class="altium-iframe-viewer">
   <div
     class="altium-ecad-viewer"
@@ -258,4 +257,3 @@ LMR14050 需要一个 BOOT 自举电容，在前文有提及，BOOT 电容的参
 
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-

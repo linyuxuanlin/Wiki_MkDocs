@@ -21,7 +21,9 @@ services:
       - ${STACK_DIR}:/opt/alist/data
     ports:
       - ${APP_PORT}:5244
-    environment:
+    environment: # 需要以 root 权限运行，否则无法读取其他 docker 目录或宿主机 root 目录
+      - PUID=0
+      - PGID=0
       - UMASK=022
     restart: always
 ```

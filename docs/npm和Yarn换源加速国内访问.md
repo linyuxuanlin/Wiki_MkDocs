@@ -45,9 +45,5 @@ cgr test taobao
 - [yarn 国内加速，修改镜像源](https://learnku.com/articles/15976/yarn-accelerate-and-modify-mirror-source-in-china)
 - [cgr -- change registry | yarn & npm registry manager](https://www.npmjs.com/package/cgr)
 
-
-
-
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-

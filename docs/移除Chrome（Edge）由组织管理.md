@@ -22,7 +22,7 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge
 HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Edge
 ```
 
-## 参考与致谢 
+## 参考与致谢
 
 - [Works! Fix Chrome (or Edge) is Managed by your Organization (in 3 steps!)](https://www.joshualowcock.com/guide/fix-chrome-is-managed-by-your-organization-in-3-steps/)
 

@@ -10,7 +10,6 @@ title: 嵌入式 Linux - GPIO 子系统
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 
-
 ## GPIO 子系统简介
 
 GPIO（General Purpose I/O）即通用输入输出端口。这些引脚通常有多种功能，最基本的是高低电平输入检测和输出，部分引脚还会与主控器的片上外设绑定，可作为串口、I2C、网络、电压检测等的通信引脚。
@@ -20,4 +19,3 @@ GPIO（General Purpose I/O）即通用输入输出端口。这些引脚通常有
 ## GPIO 设备目录
 
 GPIO 驱动子系统导出到用户空间的目录是 `/sys/class/gpio`，使用如下的命令查看：
-

@@ -1,5 +1,5 @@
 mkdocs
-mkdocs-material==9.2.0b0
+mkdocs-material
 mkdocs-roamlinks-plugin
 mkdocs-rss-plugin
 markdown

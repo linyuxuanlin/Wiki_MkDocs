@@ -172,8 +172,5 @@ AD 插件：
 - [Altium Designer 使用 Git 构想](https://blog.csdn.net/weifengdq/article/details/78406438)
 - [Using Version Control](https://www.altium.com/documentation/altium-designer/using-version-control-ad)
 
-
-
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-

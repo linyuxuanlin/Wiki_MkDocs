@@ -166,4 +166,3 @@ JTAG 引脚不能悬空（因为他们直接连着用于模式调试控制的触
 
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-

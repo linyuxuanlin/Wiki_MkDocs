@@ -10,7 +10,7 @@ title: 使用 gitignore 忽略特殊文件
 ## 规范
 
 - 空行或者以注释符号 `#` 开头的行会被忽略
-- 标准的glob模式匹配
+- 标准的 glob 模式匹配
 - 匹配模式最后跟反斜杠（/）说明要忽略的是目录
 - 要忽略指定模式以外的文件和目录，可以在模式前加上 `!` 取反
 
@@ -38,7 +38,7 @@ doc/*.txt
 doc/**/*.txt
 ```
 
-## 参考与致谢 
+## 参考与致谢
 
 - [zxhfighter/git-ignore.md](https://gist.github.com/zxhfighter/6320b9a08698bb8703ee)
 - [github/gitignore](https://github.com/github/gitignore)

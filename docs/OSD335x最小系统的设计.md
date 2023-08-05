@@ -166,4 +166,3 @@ https://octavosystems.com/octavosystems.com/wp-content/uploads/2017/07/JTAG.jpg
 
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-

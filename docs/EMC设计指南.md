@@ -5,7 +5,7 @@ title: EMC 设计指南
 
 电磁兼容性（Electromagnetic Compatibility, EMC）指的是设备在其电磁环境中能正常工作且不对环境中任何事物构成不能承受的电磁骚扰的能力，通俗地说，就是你的板子不怕别人干扰，也尽量不去干扰别人，达到「兼容」的状态。
 
-**电磁兼容性（EMC）** 包括l了 **电磁干扰（EMI，Electro-Magnetic Interference）** 和 **电磁耐受性（EMS，Electro-Magnetic Susceptibility）**。
+**电磁兼容性（EMC）** 包括了 **电磁干扰（EMI，Electro-Magnetic Interference）** 和 **电磁耐受性（EMS，Electro-Magnetic Susceptibility）**。
 
 EMI 有以下要素：
 

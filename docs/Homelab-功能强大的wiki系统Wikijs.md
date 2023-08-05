@@ -53,7 +53,7 @@ STACK_DIR=xxx # 自定义项目储存路径，例如 ./wikijs
 
 # wikijs
 APP_VERSION=2
-APP_PORT=xxxx # 自定义访问端口，选择不被占用的即可 
+APP_PORT=xxxx # 自定义访问端口，选择不被占用的即可
 APP_DB_TYPE=postgres
 APP_DB_HOST=db
 APP_DB_PORT=5432 # 默认数据库的内部端口

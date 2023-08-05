@@ -219,7 +219,6 @@ e/n/d/r/c/s/q> q
 
 配置完成后，切换到 Tasks 标签页，选择相应的任务，点击 `Run` 即可开始下载。
 
-
 ## 在群晖 NAS 上配置
 
 注：在群晖上建议使用 CloudSync，不要对底层代码进行修改。
@@ -280,4 +279,3 @@ rclone sync COS_backup:/wiki-media-1253965369 /volume1/wiki-media -P
 
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-
