@@ -10,10 +10,10 @@ Testing DC parameters is essentially measuring the resistivity of the silicon. T
   - Static IDD Test
   - Dynamic IDD Test
   - Quiescent IDD Test (IDDQ)
-- [**Leakage Test**](https://wiki-power.com/DC-Leakage_Test)
+- [**Leakage Test**](https://wiki-power.com/Leakage_Test/)
   - Input Leakage Test (IIL & IIH)
   - Output Tristate Leakage Test (IOZL & IOZH)
-- [**Level Threshold Test**](https://wiki-power.com/DC-Level_Threshold_Test)
+- [**Level Threshold Test**](https://wiki-power.com/Level_Threshold_Test/)
   - Output Level Threshold Test (VOL/IOL & VOH/IOH)
   - Input Level Threshold Test (VIL & VIH)
 - Optional tests
