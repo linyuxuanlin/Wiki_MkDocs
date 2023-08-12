@@ -57,9 +57,8 @@ ref：
 - 采集图像
 - 通过网络发送到远程主机（或直接使用 mj api）
 
-2. 延时摄像机： https://www.hackster.io/pradeeplogu0/live-security-camera-with-unihiker-firebeetle-2-esp32s3-5d478e
-3. 人脸识别：https://www.hackster.io/mauriciobarroso/face-detection-with-mtcnn-and-tensorflow-lite-for-esp32-s3-30b242
-4. 当网卡用
+1. 人脸识别：https://www.hackster.io/mauriciobarroso/face-detection-with-mtcnn-and-tensorflow-lite-for-esp32-s3-30b242
+2. 当网卡用
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308121947216.png)
 
@@ -69,8 +68,3 @@ ref：
 - 局域网内访问失败：检查是否为访客网络，有 AP 隔离
 - 没有画面：要点 Start Stream
 
----
-
-## 示例：摄像头使用
-
-https://wiki.dfrobot.com.cn/_SKU_DFR0975_FireBeetle_2_Board_ESP32_S3_Advanced_Tutorial#target_12
