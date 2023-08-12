@@ -47,8 +47,11 @@ ref：
 - GDI 显示屏接口，使用 18pin-FPC
 - 摄像头使用: https://wiki.dfrobot.com.cn/_SKU_DFR0975_FireBeetle_2_Board_ESP32_S3_Advanced_Tutorial#target_12
 - ESP32-S3 屏幕驱动: https://wiki.dfrobot.com.cn/_SKU_DFR0975_FireBeetle_2_Board_ESP32_S3_Advanced_Tutorial#target_1
+- 应用参考：https://wiki.seeedstudio.com/xiao_esp32s3_speech2chatgpt/
 
 想法：
 
 1. +TFT 屏幕，按钮和摄像头采集图像，交给 AI 重绘制，输出到 TFT 屏幕上。（在本地跑 stable diffusion?
-2.
+  - 采集图像
+  - 通过网络发送到远程主机（或直接使用mj api）
+2. 延时摄像机： https://www.hackster.io/pradeeplogu0/live-security-camera-with-unihiker-firebeetle-2-esp32s3-5d478e
