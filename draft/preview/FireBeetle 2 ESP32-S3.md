@@ -38,6 +38,8 @@
 - 2 × 12 位 SAR ADC， 20 个通道
 - DMA 控制器，5 个接收通道和 5 个发送通道
 
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308121952628.png)
+
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230811172428.png)
 
 ref：
@@ -45,14 +47,30 @@ ref：
 - https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json - esp32 - DFRobot FireBeetle 2 ESP32-S3
 - CDC: 当您选择 Disabled 时,串口为 RX(44)、TX(43)，如果您需要通过 USB 在 Arduino 监视器上打印，您需要选择 Enable
 - GDI 显示屏接口，使用 18pin-FPC
-- 摄像头使用: https://wiki.dfrobot.com.cn/_SKU_DFR0975_FireBeetle_2_Board_ESP32_S3_Advanced_Tutorial#target_12
 - ESP32-S3 屏幕驱动: https://wiki.dfrobot.com.cn/_SKU_DFR0975_FireBeetle_2_Board_ESP32_S3_Advanced_Tutorial#target_1
 - 应用参考：https://wiki.seeedstudio.com/xiao_esp32s3_speech2chatgpt/
 
 想法：
 
 1. +TFT 屏幕，按钮和摄像头采集图像，交给 AI 重绘制，输出到 TFT 屏幕上。（在本地跑 stable diffusion?
-  - 采集图像
-  - 通过网络发送到远程主机（或直接使用mj api）
+
+- 采集图像
+- 通过网络发送到远程主机（或直接使用 mj api）
+
 2. 延时摄像机： https://www.hackster.io/pradeeplogu0/live-security-camera-with-unihiker-firebeetle-2-esp32s3-5d478e
 3. 人脸识别：https://www.hackster.io/mauriciobarroso/face-detection-with-mtcnn-and-tensorflow-lite-for-esp32-s3-30b242
+4. 当网卡用
+
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308121947216.png)
+
+疑难解答：
+
+- 如果烧不进程序：按住 boot 上电后松开
+- 局域网内访问失败：检查是否为访客网络，有 AP 隔离
+- 没有画面：要点 Start Stream
+
+---
+
+## 示例：摄像头使用
+
+https://wiki.dfrobot.com.cn/_SKU_DFR0975_FireBeetle_2_Board_ESP32_S3_Advanced_Tutorial#target_12
