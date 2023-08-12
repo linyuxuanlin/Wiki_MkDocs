@@ -55,3 +55,4 @@ ref：
   - 采集图像
   - 通过网络发送到远程主机（或直接使用mj api）
 2. 延时摄像机： https://www.hackster.io/pradeeplogu0/live-security-camera-with-unihiker-firebeetle-2-esp32s3-5d478e
+3. 人脸识别：https://www.hackster.io/mauriciobarroso/face-detection-with-mtcnn-and-tensorflow-lite-for-esp32-s3-30b242
