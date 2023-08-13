@@ -285,10 +285,10 @@ nav:
               - CubeMX与CubeIDE避坑.md
               - STM32的启动模式.md
               - KeilMDK配置指南.md
-          - 杂项:
+          - Arduino & 杂项:
               - TinyTimelapseCam-基于ESP32-S3的迷你延时相机.md
               - StyleTransferCam-基于ESP32-S3的风格迁移相机.md
-              - TinyMonitor-小巧的服务器状态监视器.md # 复用
+              - TinyMonitor-小巧的服务器状态监视器.md
               - TinyWeatherStation-简约而不简单的桌面天气站.md
               - 如何读写单个bit.md
               - PlatformIO—一站式嵌入式开发工具.md
@@ -397,7 +397,6 @@ nav:
               #- 掌握自己的数据权.md
               - ESXi初始化指南.md
               - Linux下挂载群晖NAS硬盘拓展空间（NFS）.md
-              - TinyMonitor-小巧的服务器状态监视器.md
           - 群晖 NAS:
               - 使用frp访问群晖NAS.md #  CSDN
               - 使用RSSHub搭建RSS生成器（群晖Docker）.md #  CSDN
