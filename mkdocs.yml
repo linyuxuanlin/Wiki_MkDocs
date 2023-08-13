@@ -287,6 +287,9 @@ nav:
               - KeilMDK配置指南.md
           - 杂项:
               - TinyTimelapseCam-基于ESP32-S3的迷你延时相机.md
+              - StyleTransferCam-基于ESP32-S3的风格迁移相机.md
+              - TinyMonitor-小巧的服务器状态监视器.md # 复用
+              - TinyWeatherStation-简约而不简单的桌面天气站.md
               - 如何读写单个bit.md
               - PlatformIO—一站式嵌入式开发工具.md
               - PlatformIO搭配CubeMX食用.md
