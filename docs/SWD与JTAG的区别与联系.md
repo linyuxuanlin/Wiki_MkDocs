@@ -32,6 +32,19 @@ JTAG 的优势：
 - 不限于 ARM 系列芯片
 - 具有更多用于编程，调试和生产测试的用途
 
+### JTAG 状态机
+
+JTAG 状态机的全称是 The JTAG Test Access Port (TAP) State Machine。它由两个部分组成：
+
+- **DR(Data Register)**：用于加载指令。
+- **IR(Instruction Register)**：用于从数据寄存器读取数据，或向数据寄存器写入数据，包括边界扫描寄存器（BSR）。
+
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230815135556.png)
+
+状态机随着 TCK（测试时钟）的边沿运行，通过 TMS（测试模式选择）引脚的值控制其行为。假设状态机从测试逻辑复位开始，我们首先设置 TMS = 0 以进入运行测试 / 空闲状态，然后设置 TMS = 1 以开始选择路径。
+
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230815145417.png)
+
 ## SWD
 
 全称为 Serial Wire Debug（串行线调试），是 ARM 专门设计的协议，仅支持 ARM（所以在 ARM 系列单片机中性能表现较佳）。
