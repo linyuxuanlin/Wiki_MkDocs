@@ -58,13 +58,14 @@ ref：
 - 通过网络发送到远程主机（或直接使用 mj api）
 
 1. 人脸识别：https://www.hackster.io/mauriciobarroso/face-detection-with-mtcnn-and-tensorflow-lite-for-esp32-s3-30b242
-2. 当网卡用
-
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308121947216.png)
+2. 当网卡用![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308121947216.png)
+3. 延时摄像机： https://www.hackster.io/pradeeplogu0/live-security-camera-with-unihiker-firebeetle-2-esp32s3-5d478e
+4. 人脸识别：https://www.hackster.io/mauriciobarroso/face-detection-with-mtcnn-and-tensorflow-lite-for-esp32-s3-30b242
+5. Camera Bot telegram: https://www.hackster.io/pradeeplogu0/camera-bot-using-firebeetle-esp32-s3-5147e7
+6. TinyML 物品分类识别：https://www.hackster.io/mjrobot/tinyml-made-easy-image-classification-cb42ae
 
 疑难解答：
 
 - 如果烧不进程序：按住 boot 上电后松开
 - 局域网内访问失败：检查是否为访客网络，有 AP 隔离
 - 没有画面：要点 Start Stream
-
