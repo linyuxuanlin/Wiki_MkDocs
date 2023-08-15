@@ -1,6 +1,6 @@
 ## MOS
 
-[图说MOSFET](https://zhuanlan.zhihu.com/p/55826021?utm_campaign=shareopn&utm_content=group3_article&utm_medium=social&utm_oi=54113962295296&utm_psn=1556640030088716288&utm_source=wechat_session)
+[图说 MOSFET](https://zhuanlan.zhihu.com/p/55826021?utm_campaign=shareopn&utm_content=group3_article&utm_medium=social&utm_oi=54113962295296&utm_psn=1556640030088716288&utm_source=wechat_session)
 
 ## 路由器
 
@@ -51,7 +51,6 @@ Start git-bash
 Terminal SSH
 TinyPNG
 vscode-pandoc
-
 
 - Markdown 写论文（论文生成器）
 - 极简的生活方式，尽量减少物理依赖
@@ -148,8 +147,3 @@ vscode-pandoc
 [【杂谈】关于风口和不变的东西](https://mp.weixin.qq.com/s/0KWpt8gAsls3gTZ8DTeGlw)
 
 ---
-
-《禅与摩托车维修艺术》
-《牧羊少年的奇幻之旅》
-《道德经》
-《易经》
