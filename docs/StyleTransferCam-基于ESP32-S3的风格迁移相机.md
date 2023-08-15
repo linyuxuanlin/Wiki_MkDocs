@@ -13,6 +13,8 @@ StyleTransferCam 大致由以下几个流程组成：
 2. 自动启动风格迁移的 Python 程序，对照片进行处理，并输出风格化的照片。
 3. 如果 ESP32-S3 有附带 TFT 屏幕的话，也可以回传屏幕显示出来。
 
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308152244791.png)
+
 ## 测试板载按钮与 LED
 
 首先是一个简单的 Arduino 程序，用于测试板载按钮与 LED 能否正常使用。程序中设置了硬件中断，捕捉按钮按下的事件，点亮 LED 半秒后自动熄灭。
@@ -532,6 +534,8 @@ display(Image(result_prefix + "_at_iteration_4000.png"))
 现在，你可以试试单独运行这个 Python 程序，如果程序没有报错，等上一小会儿（具体时间取决于你电脑的性能），你就可以在当前目录下找到风格迁移后的照片了。
 
 如果这个程序能正常运行，你可以直接运行 `receive-photo.py`，使用自动化的方式接收来自 ESP32-S3 拍摄的照片，直接生成风格化的照片。
+
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308152246623.png)
 
 ## 参考与致谢
 
