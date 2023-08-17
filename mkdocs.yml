@@ -294,6 +294,7 @@ nav:
               - PlatformIO—一站式嵌入式开发工具.md
               - PlatformIO搭配CubeMX食用.md
               - SWD与JTAG的区别与联系.md
+              #- JTAG状态机详解.md
               - 大疆N3飞控-参考资料.md
               - ATTiny85调试记录.md
               - T-Clock桌上小钟.md
