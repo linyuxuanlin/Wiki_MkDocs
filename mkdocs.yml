@@ -316,7 +316,6 @@ nav:
               - BeagleBone系列-无线连接.md
               - BeagleBone系列-使用BBIO库开发.md
               - BeagleBone系列-BBAI入坑.md
-              - JetsonNano系列-入坑.md
           - 杂七杂八:
               - HTML学习笔记.md
               - CSS学习笔记.md
@@ -538,4 +537,4 @@ nav:
 # - 如何用Markdown写学术论文.md
 # - AD基本操作-PCB绘制.md
 # - AD基本操作-库文件绘制.md
-
+# - JetsonNano系列-入坑.md

@@ -12,7 +12,7 @@ title: Jetson Nano系列 - 入坑
 
 ## 下载镜像并烧录 SD 卡
 
-下载 [J**etson Nano 开发者套件 SD 卡镜像**]( Jetson Nano 开发者套件 SD 卡镜像)，使用 Etcher 之类的工具烧录进 SD 卡。
+下载 Jetson Nano 开发者套件 SD 卡镜像(……链接丢了？)，使用 Etcher 之类的工具烧录进 SD 卡。
 
 ## 启动系统
 
