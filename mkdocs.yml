@@ -70,11 +70,6 @@ plugins:
         utm_source: "documentation"
         utm_medium: "RSS"
         utm_campaign: "feed-syndication"
-  - git-revision-date-localized:
-      enable_creation_date: true
-      enabled: !ENV [CI, false]
-      type: date
-      fallback_to_build_date: true
 
 extra:
   generator: false # 不显示 MkDocs 的版权
