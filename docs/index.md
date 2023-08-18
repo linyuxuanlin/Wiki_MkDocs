@@ -11,7 +11,7 @@ hide:
 
 [![badge](https://img.shields.io/github/deployments/linyuxuanlin/Wiki_MkDocs/Production?label=Build&style=flat-square){ loading=lazy }](https://vercel.com/linyuxuanlin/wiki-mkdocs/deployments)
 [![badge](https://img.shields.io/github/last-commit/linyuxuanlin/Wiki_MkDocs?color=FCD734&label=Last%20commit&style=flat-square){ loading=lazy }](https://github.com/linyuxuanlin/Wiki_mkdocs/commits/main)
-[![badge](https://img.shields.io/badge/Contact%20%26%20Subscribe-me-34ABE0?&style=flat-square){ loading=lazy }](Contact-and-Subscribe)
+[![badge](https://img.shields.io/badge/Contact%20%26%20Subscribe-me-34ABE0?&style=flat-square){ loading=lazy }](Contact-and-Subscribe.md)
 
 <!--
 [![badge](https://img.shields.io/badge/dynamic/json?label=GitHub&query=%24.data.totalSubs&url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dgithub%26queryKey%3Dlinyuxuanlin&labelColor=555555&color=282c34&longCache=true?&style=for-the-badge){ loading=lazy }](https://github.com/linyuxuanlin)
