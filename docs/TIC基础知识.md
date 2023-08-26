@@ -3,8 +3,6 @@ id: TIC基础知识
 title: TIC 基础知识
 ---
 
-## TIC 是什么
-
 在半导体测试中，**TIC（Test Interface Controller，测试接口控制器）** 是一个总线主控器，它遵循的是 **AMBA（Advanced Microcontroller Bus Architecture，高级微控制器总线架构）** 规范中的 **Test Interface** 协议。AMBA 是嵌入式微控制器的片上通信标准，囊括三类总线协议：
 
 - **AHB**（the Advanced High-performance Bus，高性能总线）
