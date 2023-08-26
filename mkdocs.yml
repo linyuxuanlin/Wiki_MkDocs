@@ -240,6 +240,7 @@ nav:
               - 半导体测试基础-DC参数测试.md
               - 半导体测试基础-功能测试.md
               - 半导体测试基础-AC参数测试.md
+              - TIC 基础知识.md
           - ATE Test Fundamental:
               - Continuity_Test.md
               - DC_Parameters.md
