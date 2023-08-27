@@ -121,7 +121,7 @@ TurnAround Vector 可用于在 Write/Read 操作间切换时，改变 TBUS 传�
 
 ---
 
-以上是 Test Interface 与 TIC 的一些基础知识。TIC 在 AHB 上的具体运行情况，请参考下一篇文章 [**AHB 上的 TIC**](https://wiki-power.com/AHB%E4%B8%8A%E7%9A%84TIC) (撰写中……)。
+以上是 Test Interface 与 TIC 的一些基础知识。关于 TIC 在 AHB 上的具体运行情况，请参考下一篇文章 [**AHB 上的 TIC**](https://wiki-power.com/AHB%E4%B8%8A%E7%9A%84TIC) (撰写中……)。
 
 ## 参考与致谢
 
