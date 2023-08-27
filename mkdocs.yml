@@ -234,13 +234,15 @@ nav:
               - 宽带注入变压器的使用.md
               - 线性注入器的使用.md
       - 半导体测试:
+          - 测试协议：
+              - TestInterface与TIC基础.md
+              - AHB上的TIC.md
           - ATE 基础知识:
               - 半导体测试基础-基本概念.md
               - 半导体测试基础-OS测试.md
               - 半导体测试基础-DC参数测试.md
               - 半导体测试基础-功能测试.md
               - 半导体测试基础-AC参数测试.md
-              - TIC基础知识.md
           - ATE Test Fundamental:
               - Continuity_Test.md
               - DC_Parameters.md
