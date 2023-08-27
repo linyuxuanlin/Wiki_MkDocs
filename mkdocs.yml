@@ -234,7 +234,7 @@ nav:
               - 宽带注入变压器的使用.md
               - 线性注入器的使用.md
       - 半导体测试:
-          - 测试协议：
+          - 测试协议:
               - TestInterface与TIC基础.md
               - AHB上的TIC.md
           - ATE 基础知识:
