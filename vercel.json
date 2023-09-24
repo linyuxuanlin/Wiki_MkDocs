@@ -1,5 +1,3 @@
 {
-    "build": {
-      "command": "python translate.py && mkdocs build -d public"
-    }
+    "build": "python translate.py && mkdocs build -d public"
 }
