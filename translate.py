@@ -32,4 +32,4 @@ for filename in os.listdir("docs"):
         input_file = os.path.join("docs", filename)
         output_file = os.path.join("docs", "en", filename)
         translate_file(input_file, output_file)
-        print(f"Translated {input_file} to {output_file}")
+        #print(f"Translated {input_file} to {output_file}")
