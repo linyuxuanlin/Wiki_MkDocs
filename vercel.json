@@ -1,3 +1,28 @@
 {
-    "buildCommand": "pip install openai && python translate.py && mkdocs build -d public"
-}
+    "builds": [
+      {
+        "src": "translate.py",
+        "use": "@vercel/python",
+        "src": "mkdocs.yml",
+        "use": "@vercel/static-build"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "public/$1"
+      }
+    ],
+    "env": {
+      "PYTHON_VERSION": "3.9"
+    },
+    "functions": {
+      "api": {
+        "handler": "api.handler",
+        "runtime": "python3.9",
+        "includeFiles": [
+          "requirements.txt"
+        ]
+      }
+    }
+  }
