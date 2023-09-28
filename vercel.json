@@ -1,22 +1,3 @@
 {
-    "version": 2,
-    "builds": [
-        {
-            "src": "translate.py",
-            "use": "@vercel/python",
-            "config": {
-                "maxLambdaSize": "50mb"
-            }
-        },
-        {
-            "use": "@vercel/static",
-            "src": "public/(.*)"
-        }
-    ],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "/public/$1"
-        }
-    ]
+    "buildCommand": "pip install -r requirements.txt && python translate.py && mkdocs build -d public"
 }
