@@ -1,3 +1,0 @@
-{
-    "buildCommand": "pip install -r requirements.txt && python translate.py && mkdocs build -d public"
-}
