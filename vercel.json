@@ -1,28 +1,22 @@
 {
+    "version": 2,
     "builds": [
-      {
-        "src": "translate.py",
-        "use": "@vercel/python",
-        "src": "mkdocs.yml",
-        "use": "@vercel/static-build"
-      }
+        {
+            "src": "translate.py",
+            "use": "@vercel/python",
+            "config": {
+                "maxLambdaSize": "50mb"
+            }
+        },
+        {
+            "use": "@vercel/static",
+            "src": "public/(.*)"
+        }
     ],
     "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "public/$1"
-      }
-    ],
-    "env": {
-      "PYTHON_VERSION": "3.9"
-    },
-    "functions": {
-      "api": {
-        "handler": "api.handler",
-        "runtime": "python3.9",
-        "includeFiles": [
-          "requirements.txt"
-        ]
-      }
-    }
-  }
+        {
+            "src": "/(.*)",
+            "dest": "/public/$1"
+        }
+    ]
+}
