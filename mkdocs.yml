@@ -51,7 +51,6 @@ theme:
 plugins:
   - search:
       jieba_dict: dict.txt
-  - google-translate
   - rss:
       abstract_chars_count: -1 # -1 for full content
       #categories:
@@ -73,17 +72,6 @@ plugins:
         utm_campaign: "feed-syndication"
 
 extra:
-  alternate:
-      # Original Language
-    - name: Chinese
-      lang: 'zh'
-      link: '%GT_RELATIVE_URL%'  # For relative urls back to original language
-      # Extra languages
-    - name: English
-      lang: 'en'
-      link: 'https://translate.goog/?_x_tr_sl=zh&_x_tr_tl=en'
-      # _x_tr_sl = source language
-      # _x_tr_tl = translation language
   generator: false
   analytics:
     provider: google
