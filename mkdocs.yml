@@ -59,8 +59,7 @@ plugins:
         - locale: en
           name: English
           build: true
-  - search:
-      jieba_dict: dict.txt
+  - search
   - rss:
       abstract_chars_count: -1 # -1 for full content
       #categories:
