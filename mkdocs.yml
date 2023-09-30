@@ -49,6 +49,12 @@ theme:
     #edit: material/pencil
 
 plugins:
+  - translation:
+      api_key: os.environ.get('CHATGPT_API_KEY')
+      max_length: 1000
+      languages:
+        en: en
+        zh: zh
   - search:
       jieba_dict: dict.txt
   - rss:
