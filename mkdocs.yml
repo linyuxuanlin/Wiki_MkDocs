@@ -50,7 +50,7 @@ theme:
 
 plugins:
   - i18n:
-      docs_structure: folder
+      docs_structure: suffix 
       languages:
         - locale: zh
           default: true
