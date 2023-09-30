@@ -49,6 +49,14 @@ theme:
     #edit: material/pencil
 
 plugins:
+  - i18n:
+      languages:
+        zh: "简体中文"
+        en: "English"
+      default_language: 'zh'
+      no_translation:
+        zh: "此页面未翻译成简体中文"
+        en: "This page isn't translated to English."
   - search:
       jieba_dict: dict.txt
   - rss:
@@ -72,6 +80,13 @@ plugins:
         utm_campaign: "feed-syndication"
 
 extra:
+  alternate:
+    - name: 简体中文
+      link: /
+      lang: zh
+    - name: English
+      link: index.en/
+      lang: en
   generator: false
   analytics:
     provider: google
@@ -125,6 +140,8 @@ extra_css:
 
 nav:
   #- Home: index.md
+  - index.md
+  - index.en.md
   - 硬件 & 半导体:
       - 硬件设计:
           - 基础知识:
