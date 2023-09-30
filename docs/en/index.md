@@ -34,5 +34,5 @@ In order to avoid forgetting and facilitate sharing, I collect knowledge here.
 Please feel free to browse~
 
 [Hardware & Semiconductor](/信号完整性-基础概念){ .md-button }
-[Embedded Hardware & Software Development](/HAL库开发笔记-串口通信){ .md-button }
+[Embedded & Software](/HAL库开发笔记-串口通信){ .md-button }
 [Life & Hacks](/搭建属于自己的HomeLab){ .md-button }
