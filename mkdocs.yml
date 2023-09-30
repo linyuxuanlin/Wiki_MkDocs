@@ -85,7 +85,7 @@ extra:
       link: /
       lang: zh
     - name: English
-      link: index.en/
+      link: /en/
       lang: en
   generator: false
   analytics:
