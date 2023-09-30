@@ -48,7 +48,6 @@ theme:
     repo: material/github
     #edit: material/pencil
 
-
 plugins:
   - mkdocs_auto_i18n:
       api_key: os.environ.get('CHATGPT_API_KEY')
