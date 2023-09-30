@@ -49,7 +49,7 @@ theme:
     #edit: material/pencil
 
 plugins:
-  - translation:
+  - TranslationPlugin:
       api_key: os.environ.get('CHATGPT_API_KEY')
       max_length: 1000
       languages:
