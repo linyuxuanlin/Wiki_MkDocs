@@ -142,8 +142,6 @@ extra_css:
 
 nav:
   #- Home: index.md
-  - index.md
-  - index.en.md
   - 硬件 & 半导体:
       - 硬件设计:
           - 基础知识:
