@@ -1,21 +1,21 @@
-# AD 使用 Git 的注意事项
+# Notes on Using Git with Altium Designer
 
-## 使用 Git 管理项目
+## Managing Projects with Git
 
-Altium Designer 支持使用 Git/SVN 用以版本控制。如果使用 Git, 直接在项目所在路径建立 Git 仓库即可。重启 Altium Designer, 会看到文件树边上出现了版本状态：
+Altium Designer supports version control using Git/SVN. To use Git, simply create a Git repository in the project directory. After restarting Altium Designer, you will see the version status appear on the file tree:
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200421100348.png)
 
-图标的含义如下：
+The icons have the following meanings:
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200421101221.png)
 
-可以在 `工程（C） - 版本控制（E）` 菜单直接进行 Git 操作，甚至可以直接提交 GitHub.
+You can perform Git operations directly in the `Project (C) - Version Control (E)` menu, and even submit to GitHub directly.
 
-## .gitignore 文件
+## .gitignore File
 
-在使用 Altium Designer 时，软件会自动生成一些缓存文件（例如 `History` 文件夹），它们不但拖慢了提交速度，也污染了提交记录。这时候就要使用 `.gitignore`，用来忽略这些缓存文件。
+When using Altium Designer, the software automatically generates some cache files (such as the `History` folder), which not only slows down the submission speed, but also pollutes the submission record. This is where `.gitignore` comes in, to ignore these cache files.
 
-适用于 Altium Designer 的 `.gitignore` 文件包含以下内容：
+The `.gitignore` file for Altium Designer includes the following content:
 
 ```gitignore
 # ============================= Projects =============================
@@ -182,11 +182,13 @@ Project Logs for */
 # Altium Database Link File
 ```
 
-直接将其放在 Git 仓库的根目录即可，如果显示重复，则需与原先的 `.gitignore` 合并。
+Simply place it in the root directory of the Git repository. If there are duplicates, merge it with the original `.gitignore`.
 
-## 参考与致谢
+## References and Acknowledgements
 
-- [.gitignore 文件配置：Altium Designer 工程文件类型](https://blog.csdn.net/u010160335/article/details/80100232)
+- [.gitignore file configuration: Altium Designer project file types](https://blog.csdn.net/u010160335/article/details/80100232)
 
-> 原文地址：<https://wiki-power.com/>  
-> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
+> Original: <https://wiki-power.com/>  
+> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
+
+> This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.
