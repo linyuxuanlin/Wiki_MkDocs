@@ -9,7 +9,7 @@ openai.api_key = os.environ.get('CHATGPT_API_KEY')
 openai.api_base = os.environ.get('CHATGPT_API_BASE')
 
 # 设置路径
-dir_to_translate = "../docs/to-translate"
+dir_to_translate = "../docs/zh"
 dir_translated = "../docs/en"
 
 # 创建一个包含多个替换规则的列表
@@ -130,10 +130,16 @@ def translate_file(input_file, output_file, max_length=1000):
     with open(output_file, "w", encoding="utf-8") as f:
         f.write(output_text)
 
+
+# 按文件名称顺序排序
+file_list = os.listdir(dir_to_translate)
+sorted_file_list = sorted(file_list)
+#print(sorted_file_list)
+
 # 遍历docs目录下的所有.md文件，并进行翻译
-for filename in os.listdir(dir_to_translate):
+for filename in os.listdir(sorted_file_list):
     if filename.endswith(".md"):
-        input_file = os.path.join(dir_to_translate, filename)
+        input_file = os.path.join(sorted_file_list, filename)
         output_file = os.path.join(dir_translated, filename)
         with open(input_file, 'r', encoding='utf-8') as f:
             md_content = f.read()
