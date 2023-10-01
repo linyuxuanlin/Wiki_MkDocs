@@ -8,7 +8,7 @@ edit_uri: edit/main/docs/ #
 theme:
   name: material
   font: #false #国内网络访问可能 Google 源可能会导致加载速度慢
-    text: "Noto Sans SC - local" # , Roboto
+    text: "Noto Sans SC - local" 
     #code: Roboto Mono
   palette:
     - media: "(prefers-color-scheme: light)" # 检查用户系统配置是否为亮色
@@ -49,16 +49,16 @@ theme:
     #edit: material/pencil
 
 plugins:
-#  - i18n:
-#      docs_structure: folder 
-#      languages:
-#        - locale: zh
-#          default: true
-#          name: 简体中文
-#          build: true
-#        - locale: en
-#          name: English
-#          build: true
+  - i18n:
+      docs_structure: folder 
+      languages:
+        - locale: zh
+          default: true
+          name: 简体中文
+          build: true
+        - locale: en
+          name: English
+          build: true
   - search
   - rss:
       abstract_chars_count: -1 # -1 for full content
