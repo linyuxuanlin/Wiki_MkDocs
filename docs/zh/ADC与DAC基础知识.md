@@ -1,7 +1,5 @@
 # ADC 与 DAC 基础知识
 
-> This post is only available in English.
-
 在现实世界中，常见的信号大都是模拟量，像温度、声音、气压等，但在信号的处理与传输中，为了减少噪声的干扰，较多使用的是数字量。因此我们经常会将现实中的模拟信号，通过 ADC 转换为数字信号进行运算、传输、储存，再通过 DAC 转换为模拟信号，呈现出来。
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220724210409.png)

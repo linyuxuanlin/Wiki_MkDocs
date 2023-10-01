@@ -144,7 +144,7 @@ for filename in sorted_file_list:
         with open(input_file, 'r', encoding='utf-8') as f:
             md_content = f.read()
         if "> This post is only available in English." in md_content:
-            print("Pass the EN post.")
+            print("Pass the EN post: ", filename)
         elif filename=="index.md" or filename=="Contact-and-Subscribe.md" or filename=="WeChat.md":
             print("Pass the post: ", filename)
         else:
