@@ -1,5 +1,7 @@
 # Basics of Fourier Transform
 
+> This post is only available in English.
+
 There are several algorithms for transforming data from the time domain to the frequency domain as below.
 
 ## Fourier Series

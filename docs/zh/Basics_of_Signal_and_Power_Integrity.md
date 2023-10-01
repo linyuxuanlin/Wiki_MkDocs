@@ -1,5 +1,7 @@
 # Basics of Signal and Power Integrity 🚧
 
+> This post is only available in English.
+
 ## References & Acknowledgements
 
 - _Signal and Power Integrity - Simplified, 3rd Edition_

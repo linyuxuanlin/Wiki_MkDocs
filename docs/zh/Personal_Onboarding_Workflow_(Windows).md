@@ -1,5 +1,7 @@
 # Personal Onboarding Workflow (Windows)
 
+> This post is only available in English.
+
 ## Settings
 
 ### Initialization

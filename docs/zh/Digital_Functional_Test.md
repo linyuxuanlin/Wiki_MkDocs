@@ -1,5 +1,7 @@
 # Digital Functional Test 🚧
 
+> This post is only available in English.
+
 ## References & Acknowledgements
 
 - _The Fundamentals Of Digital Semiconductor Testing_

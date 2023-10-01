@@ -1,5 +1,7 @@
 # Tester Alarms
 
+> This post is only available in English.
+
 ## DCVI Alarms
 
 ### Mode (0010)

@@ -1,5 +1,7 @@
 # Basics of VBT Syntax
 
+> This post is only available in English.
+
 ## Data Objects
 
 ### TheHdw and TheExec

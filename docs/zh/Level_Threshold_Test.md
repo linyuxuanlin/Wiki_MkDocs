@@ -1,5 +1,7 @@
 # Level Threshold Test 🚧
 
+> This post is only available in English.
+
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220912163403.png)
 
 Level threshold test includes Output Level Threshold (VOL & VOH) and Input Level Threshold (VIL & VIH). They are originated from typical TTL and CMOS level threshold:

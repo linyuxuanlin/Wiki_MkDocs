@@ -1,5 +1,7 @@
 # TheHdw (The Hardware) 🚧
 
+> This post is only available in English.
+
 **TheHdw** is an object to access properties and methods related to test system hardware.
 
 ## DCVI

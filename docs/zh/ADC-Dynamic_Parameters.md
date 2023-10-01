@@ -1,5 +1,7 @@
 # ADC - Dynamic Parameters
 
+> This post is only available in English.
+
 ## Dynamic Parameters
 
 ADC's dynamic parameters mainly contain:

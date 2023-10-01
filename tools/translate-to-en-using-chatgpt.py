@@ -139,6 +139,8 @@ for filename in os.listdir(dir_to_translate):
             md_content = f.read()
         if "> This post is only available in English." in md_content:
             print("Pass the EN post.")
+        elif filename=="index.md" or filename=="Contact-and-Subscribe.md" or filename=="WeChat.md":
+            print("Pass the post: ", filename)
         else:
             translate_file(input_file, output_file)
-            print("Translated done:", filename)
+            print("Translated done: ", filename)

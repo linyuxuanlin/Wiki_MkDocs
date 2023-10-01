@@ -1,5 +1,7 @@
 # DAC - Dynamic Parameters
 
+> This post is only available in English.
+
 ## Dynamic Parameters
 
 DAC's dynamic parameters mainly contain:
@@ -83,8 +85,8 @@ Where $Fs$ is the DAC sampling rate also the Digital Capture's sample rate, $Fi$
 
 ## References & Acknowledgements
 
-- *Fundamentals of Testing Using ATE*
-- *The-Fundamentals-of-Mixed-Signal-Testing_Brian-Lowe*
+- _Fundamentals of Testing Using ATE_
+- _The-Fundamentals-of-Mixed-Signal-Testing_Brian-Lowe_
 
 > Original: <https://wiki-power.com/>  
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
