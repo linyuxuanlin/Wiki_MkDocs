@@ -130,6 +130,7 @@ def translate_file(input_file, output_file, max_length=1000):
     with open(output_file, "w", encoding="utf-8") as f:
         f.write(output_text)
 
+    os.remove(input_file) #?can use?
 
 # 按文件名称顺序排序
 file_list = os.listdir(dir_to_translate)
