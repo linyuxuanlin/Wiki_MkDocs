@@ -1,7 +1,4 @@
----
-id: ROS入门笔记
-title: ROS入门笔记
----
+# ROS入门笔记
 
 本教程基于 ROS2 Foxy，Ubuntu20.04。
 

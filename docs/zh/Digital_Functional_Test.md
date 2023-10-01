@@ -1,7 +1,4 @@
----
-id: Digital_Functional_Test
-title: Digital Functional Test 🚧
----
+# Digital Functional Test 🚧
 
 ## References & Acknowledgements
 

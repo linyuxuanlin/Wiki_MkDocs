@@ -1,6 +1,3 @@
----
-id: WeChat
-title: WeChat
----
+# WeChat
 
 My WeChat： `linyuxuanlin`

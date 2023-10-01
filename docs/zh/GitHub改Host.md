@@ -1,7 +1,4 @@
----
-id: GitHub改Host
-title: GitHub 改 Host
----
+# GitHub 改 Host
 
 ## 问题
 

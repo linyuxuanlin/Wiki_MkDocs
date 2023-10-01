@@ -1,7 +1,4 @@
----
-id: BookJourney-二手书商城小程序
-title: BookJourney - 二手书商城小程序
----
+# BookJourney - 二手书商城小程序
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/书程小驿.jpg)
 

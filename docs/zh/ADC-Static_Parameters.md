@@ -1,7 +1,4 @@
----
-id: ADC-Static_Parameters
-title: ADC - Static Parameters
----
+# ADC - Static Parameters
 
 Analog to Digital Converter (ADC) is a device to converts analog signals into a sequence of digital data.
 

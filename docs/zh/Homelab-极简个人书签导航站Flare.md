@@ -1,7 +1,4 @@
----
-id: Homelab-极简个人书签导航站Flare
-title: Homelab - 极简个人书签导航站 Flare
----
+# Homelab - 极简个人书签导航站 Flare
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230410170939.png)
 

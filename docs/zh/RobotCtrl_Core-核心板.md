@@ -1,7 +1,4 @@
----
-id: RobotCtrl_Core-核心板
-title: RobotCtrl_Core - 核心板
----
+# RobotCtrl_Core - 核心板
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220527113423.png)
 

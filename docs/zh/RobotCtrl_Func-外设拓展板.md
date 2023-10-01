@@ -1,7 +1,4 @@
----
-id: RobotCtrl_Func-外设拓展板
-title: RobotCtrl_Func - 外设拓展板
----
+# RobotCtrl_Func - 外设拓展板
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220527113505.png)
 

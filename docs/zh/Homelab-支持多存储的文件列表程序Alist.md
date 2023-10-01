@@ -1,7 +1,4 @@
----
-id: Homelab-支持多存储的文件列表程序Alist
-title: Homelab - 支持多存储的文件列表程序 Alist
----
+# Homelab - 支持多存储的文件列表程序 Alist
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304141808001.png)
 

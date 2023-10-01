@@ -1,7 +1,4 @@
----
-id: DockerCompose-镜像编排工具
-title: Docker Compose - 镜像编排工具
----
+# Docker Compose - 镜像编排工具
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210117130925.jpg)
 

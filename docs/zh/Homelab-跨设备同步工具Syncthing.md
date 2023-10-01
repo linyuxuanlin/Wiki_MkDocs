@@ -1,7 +1,4 @@
----
-id: Homelab-跨设备同步工具Syncthing
-title: Homelab - 跨设备同步工具 Syncthing
----
+# Homelab - 跨设备同步工具 Syncthing
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304111529987.png)
 

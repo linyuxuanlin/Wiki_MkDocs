@@ -1,7 +1,4 @@
----
-id: 3D打印：ABS与PLA的区别
-title: 3D 打印：ABS 与 PLA 的区别
----
+# 3D 打印：ABS 与 PLA 的区别
 
 3D 打印中，该如何合理选择 ABS 和 PLA 材料？
 

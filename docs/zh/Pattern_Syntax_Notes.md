@@ -1,7 +1,4 @@
----
-id: Pattern_Syntax_Notes
-title: Pattern Syntax Notes 🚧
----
+# Pattern Syntax Notes 🚧
 
 A digital pattern file contains mainly 3 parts:
 **Header Statement**, **Setup Statement** and **Pattern Module**. (**Preprocessing statements** and **Comments** are optional).

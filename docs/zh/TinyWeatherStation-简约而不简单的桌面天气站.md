@@ -1,7 +1,4 @@
----
-id: TinyWeatherStation-简约而不简单的桌面天气站
-title: TinyWeatherStation - 简约而不简单的桌面天气站
----
+# TinyWeatherStation - 简约而不简单的桌面天气站
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308132245962.png)
 

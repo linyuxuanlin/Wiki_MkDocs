@@ -1,7 +1,4 @@
----
-id: TinyMonitor-小巧的服务器状态监视器
-title: TinyMonitor - 小巧的服务器状态监视器
----
+# TinyMonitor - 小巧的服务器状态监视器
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261716469.jpg)
 

@@ -1,7 +1,4 @@
----
-id: 通信协议-SPI
-title: 通信协议 - SPI
----
+# 通信协议 - SPI
 
 SPI（Serial Peripheral Interface）是一种 **全双工、同步、串行、主从、总线** 通信协议，其数据传输速率为 8 Mbit。SPI 只能有一个主机，可连接一个或多个从机。连接多设备时，需要用到片选引脚（chip select，CS）。
 

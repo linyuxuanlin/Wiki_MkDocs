@@ -1,7 +1,4 @@
----
-id: 使用Bitwarden搭建密码管理器（群晖Docker）
-title: 使用 Bitwarden 搭建密码管理器（群晖 Docker）
----
+# 使用 Bitwarden 搭建密码管理器（群晖 Docker）
 
 注：由于 bitwarden_rs 镜像更名，且 Bitwarden 官方浏览器拓展与旧版本不兼容无法登录，请将下文出现的 `bitwardenrs/server` 替换为 `vaultwardenrs/server`，并确保版本不低于 1.27.0！
 

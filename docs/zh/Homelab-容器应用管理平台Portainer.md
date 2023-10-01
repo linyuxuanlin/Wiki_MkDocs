@@ -1,7 +1,4 @@
----
-id: Homelab-容器应用管理平台Portainer
-title: Homelab - 容器应用管理平台 Portainer
----
+# Homelab - 容器应用管理平台 Portainer
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304111545899.png)
 

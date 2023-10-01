@@ -1,7 +1,4 @@
----
-id: Homelab-智能家居服务器HomeAssistant
-title: Homelab - 智能家居服务器 Home Assistant
----
+# Homelab - 智能家居服务器 Home Assistant
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202306011647498.png)
 

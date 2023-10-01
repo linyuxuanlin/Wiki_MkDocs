@@ -1,7 +1,4 @@
----
-id: DAC-Dynamic_Parameters
-title: DAC - Dynamic Parameters
----
+# DAC - Dynamic Parameters
 
 ## Dynamic Parameters
 

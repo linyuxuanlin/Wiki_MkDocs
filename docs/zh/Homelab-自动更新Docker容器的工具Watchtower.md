@@ -1,7 +1,4 @@
----
-id: Homelab-自动更新Docker容器的工具Watchtower
-title: Homelab - 自动更新 Docker 容器的工具 Watchtower
----
+# Homelab - 自动更新 Docker 容器的工具 Watchtower
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304092337531.png)
 

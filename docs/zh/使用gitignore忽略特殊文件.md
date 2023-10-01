@@ -1,7 +1,4 @@
----
-id: 使用gitignore忽略特殊文件
-title: 使用 gitignore 忽略特殊文件
----
+# 使用 gitignore 忽略特殊文件
 
 有些文件我们不想纳入 Git 版本管理，也不希望它们总出现在未跟踪列表，例如 node_modules、一些开发依赖、编译日志等等。
 

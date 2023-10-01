@@ -1,7 +1,4 @@
----
-id: DC_Parameters
-title: DC Parameters
----
+# DC Parameters
 
 Testing DC parameters is essentially measuring the resistivity of the silicon. They can be tested DC method, with DCVI/PPMU forcing current then measuring voltage, or forcing voltage then measuring current. Will compare the measured value with the spec value out of the tester, then conclude a test result with PASS or FAIL. Items can be tested under DC method are as follows:
 

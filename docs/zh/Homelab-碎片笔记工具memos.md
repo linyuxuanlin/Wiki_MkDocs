@@ -1,7 +1,4 @@
----
-id: Homelab-碎片笔记工具memos
-title: Homelab - 碎片笔记工具 memos
----
+# Homelab - 碎片笔记工具 memos
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304111548420.png)
 

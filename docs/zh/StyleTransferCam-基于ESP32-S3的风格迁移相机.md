@@ -1,7 +1,4 @@
----
-id: StyleTransferCam-基于ESP32-S3的风格迁移相机
-title: StyleTransferCam - 基于 ESP32-S3 的风格迁移相机
----
+# StyleTransferCam - 基于 ESP32-S3 的风格迁移相机
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308152238959.png)
 

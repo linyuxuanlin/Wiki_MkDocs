@@ -1,7 +1,4 @@
----
-id: 用reveal.js制作幻灯片
-title: 用 reveal.js 制作幻灯片
----
+# 用 reveal.js 制作幻灯片
 
 ## 快捷键
 

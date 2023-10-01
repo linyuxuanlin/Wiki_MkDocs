@@ -1,7 +1,4 @@
----
-id: Homelab-卡片辅助记忆软件Anki
-title: Homelab - 卡片辅助记忆软件 Anki
----
+# Homelab - 卡片辅助记忆软件 Anki
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202306191745527.png)
 

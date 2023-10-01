@@ -1,7 +1,4 @@
----
-id: 使用Watchtower自动更新容器（群晖Docker）
-title: 使用 Watchtower 自动更新容器（群晖 Docker）
----
+# 使用 Watchtower 自动更新容器（群晖 Docker）
 
 使用 Watchtower 自动更新群晖 Docker 上的容器。
 

@@ -1,7 +1,4 @@
----
-id: Homelab-支持公有云的图床系统Cloudreve
-title: Homelab - 支持公有云的图床系统 Cloudreve
----
+# Homelab - 支持公有云的图床系统 Cloudreve
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304195423.png)
 

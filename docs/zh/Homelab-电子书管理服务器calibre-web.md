@@ -1,7 +1,4 @@
----
-id: Homelab-电子书管理服务器calibre-web
-title: Homelab - 电子书管理服务器 calibre-web
----
+# Homelab - 电子书管理服务器 calibre-web
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210429125418.png)
 

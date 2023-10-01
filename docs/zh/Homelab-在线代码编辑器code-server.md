@@ -1,7 +1,4 @@
----
-id: Homelab-在线代码编辑器code-server
-title: Homelab - 在线代码编辑器 code-server
----
+# Homelab - 在线代码编辑器 code-server
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304132214418.png)
 

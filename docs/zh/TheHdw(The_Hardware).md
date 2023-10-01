@@ -1,7 +1,4 @@
----
-id: TheHdw(The_Hardware)
-title: TheHdw (The Hardware) 🚧
----
+# TheHdw (The Hardware) 🚧
 
 **TheHdw** is an object to access properties and methods related to test system hardware.
 

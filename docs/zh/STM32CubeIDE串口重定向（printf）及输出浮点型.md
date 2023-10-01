@@ -1,7 +1,4 @@
----
-id: STM32CubeIDE串口重定向（printf）及输出浮点型
-title: STM32CubeIDE 串口重定向（printf）及输出浮点型
----
+# STM32CubeIDE 串口重定向（printf）及输出浮点型
 
 ## 重定向 printf 至串口
 

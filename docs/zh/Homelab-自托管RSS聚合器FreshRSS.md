@@ -1,7 +1,4 @@
----
-id: Homelab-自托管RSS聚合器FreshRSS
-title: Homelab - 自托管 RSS 聚合器 FreshRSS
----
+# Homelab - 自托管 RSS 聚合器 FreshRSS
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304102312005.png)
 

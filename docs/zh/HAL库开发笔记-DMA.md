@@ -1,7 +1,4 @@
----
-id: HAL库开发笔记-DMA
-title: HAL 库开发笔记 - DMA
----
+# HAL 库开发笔记 - DMA
 
 DMA（Direct Memory Access，直接存储器访问）允许不同速度的硬件装置直接沟通，而不需要依赖于 CPU 的大量中断负载。
 

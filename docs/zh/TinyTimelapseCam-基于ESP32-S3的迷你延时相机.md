@@ -1,7 +1,4 @@
----
-id: TinyTimelapseCam-基于ESP32-S3的迷你延时相机
-title: TinyTimelapseCam - 基于 ESP32-S3 的迷你延时相机
----
+# TinyTimelapseCam - 基于 ESP32-S3 的迷你延时相机
 
 这是一个基于 ESP32-S3 的迷你延时相机，你可以用它来拍摄白天的云层飘动、一整晚的斗转星移，也可以用来抓取城市街道上形形色色的人群。
 

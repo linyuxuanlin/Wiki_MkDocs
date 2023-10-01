@@ -1,7 +1,4 @@
----
-id: Homelab-免费的内网穿透替代方案Cloudflared
-title: Homelab - 免费的内网穿透替代方案 Cloudflared
----
+# Homelab - 免费的内网穿透替代方案 Cloudflared
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230416143051.png)
 

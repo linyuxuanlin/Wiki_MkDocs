@@ -1,7 +1,4 @@
----
-id: ADC-Dynamic_Parameters
-title: ADC - Dynamic Parameters
----
+# ADC - Dynamic Parameters
 
 ## Dynamic Parameters
 

@@ -1,7 +1,4 @@
----
-id: Homelab-播客与有声书服务器Audiobookshelf
-title: Homelab - 播客与有声书服务器 Audiobookshelf
----
+# Homelab - 播客与有声书服务器 Audiobookshelf
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230531204505.png)
 

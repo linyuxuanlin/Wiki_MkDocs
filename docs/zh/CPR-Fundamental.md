@@ -1,7 +1,4 @@
----
-id: CPR-Fundamental
-title: CPR - Fundamental
----
+# CPR - Fundamental
 
 **CPR** represents of **Core Power Reduction**, an **adaptive power management technology** that determine the optimal product voltage, allow closed loop compensation of DC voltage, temperature variation, process（制程） and aging degradation（老化退化）, to optimize device power and performance,
 

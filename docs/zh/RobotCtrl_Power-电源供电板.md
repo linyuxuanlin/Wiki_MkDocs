@@ -1,7 +1,4 @@
----
-id: RobotCtrl_Power-电源供电板
-title: RobotCtrl_Power - 电源供电板
----
+# RobotCtrl_Power - 电源供电板
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220527113517.png)
 

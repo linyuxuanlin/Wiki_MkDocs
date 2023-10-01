@@ -1,7 +1,4 @@
----
-id: 用群晖自带反向代理实现HTTPS访问
-title: 用群晖自带反向代理实现 HTTPS 访问
----
+# 用群晖自带反向代理实现 HTTPS 访问
 
 首先，你需要一个外部访问群晖的 IP 或域名，并且已经申请了 SSL 证书。详细说明可跳转文章 [**使用 acme.sh 自动申请域名证书（群晖 Docker）**](https://wiki-power.com/%E5%9F%BA%E4%BA%8Eacme.sh%E8%87%AA%E5%8A%A8%E7%94%B3%E8%AF%B7%E5%9F%9F%E5%90%8D%E8%AF%81%E4%B9%A6%EF%BC%88%E7%BE%A4%E6%99%96Docker%EF%BC%89)
 

@@ -1,7 +1,4 @@
----
-id: SWD与JTAG的区别与联系
-title: SWD 与 JTAG 的区别与联系
----
+# SWD 与 JTAG 的区别与联系
 
 众所周知，SWD 和 JTAG 是单片机下载程序与调试的常用接口。其共同之处：
 

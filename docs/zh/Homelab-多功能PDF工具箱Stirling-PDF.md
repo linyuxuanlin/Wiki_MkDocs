@@ -1,7 +1,4 @@
----
-id: Homelab-多功能PDF工具箱Stirling-PDF
-title: Homelab - 多功能 PDF 工具箱 Stirling-PDF
----
+# Homelab - 多功能 PDF 工具箱 Stirling-PDF
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230410172939.png)
 

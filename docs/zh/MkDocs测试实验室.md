@@ -1,7 +1,4 @@
----
-id: MkDocs测试实验室
-title: MkDocs 测试实验室
----
+# MkDocs 测试实验室
 
 `MkDocs-Lab`
 

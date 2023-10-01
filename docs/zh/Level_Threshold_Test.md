@@ -1,7 +1,4 @@
----
-id: Level_Threshold_Test
-title: Level Threshold Test 🚧
----
+# Level Threshold Test 🚧
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220912163403.png)
 

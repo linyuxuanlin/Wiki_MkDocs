@@ -1,7 +1,4 @@
----
-id: Leakage_Test
-title: Leakage Test
----
+# Leakage Test
 
 Leakage test contains input leakage test (IIL & IIH) and output tristate leakage test (IOZL & IOZH).
 

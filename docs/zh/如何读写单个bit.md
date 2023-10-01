@@ -1,7 +1,4 @@
----
-id: 如何读写单个bit
-title: 如何读写单个 bit
----
+# 如何读写单个 bit
 
 ```c
 #define BitVal(data,y) ( (data>>y) & 1)             // Return Data.Y value

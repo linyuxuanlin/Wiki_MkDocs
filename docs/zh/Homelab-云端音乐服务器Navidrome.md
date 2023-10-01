@@ -1,7 +1,4 @@
----
-id: Homelab-云端音乐服务器Navidrome
-title: Homelab - 云端音乐服务器 Navidrome
----
+# Homelab - 云端音乐服务器 Navidrome
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230531212854.png)
 

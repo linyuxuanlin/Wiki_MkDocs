@@ -1,7 +1,4 @@
----
-id: Homelab-轻量服务器管理面板CasaOS
-title: Homelab - 轻量服务器管理面板 CasaOS
----
+# Homelab - 轻量服务器管理面板 CasaOS
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304192541.png)
 

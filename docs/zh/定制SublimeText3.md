@@ -1,7 +1,4 @@
----
-id: 定制SublimeText3
-title: 定制 SublimeText3
----
+# 定制 SublimeText3
 
 ## 背景
 

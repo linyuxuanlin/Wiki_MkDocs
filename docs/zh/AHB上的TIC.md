@@ -1,7 +1,4 @@
----
-id: AHB上的TIC
-title: AHB 上的 TIC
----
+# AHB 上的 TIC
 
 撰写中……
 

@@ -1,7 +1,4 @@
----
-id: 自制CMSIS-DAP
-title: 自制 CMSIS-DAP 🚧
----
+# 自制 CMSIS-DAP 🚧
 
 CMSIS DAP 是 ARM 官方推出的开源仿真器，支持所有的 Cortex - ARM 器件，支持 JTAG / SWD 接口，在最新的固件版本中，还支持单线 SWO 接口，可以直接在程序里把相应的数据通过 SWO 接口输出到调试窗口，起到类似串口调试的目的。DAP 主要有以下特点：
 

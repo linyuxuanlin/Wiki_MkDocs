@@ -1,7 +1,4 @@
----
-id: 使用Markdown高效写作
-title: 使用 Markdown 高效写作
----
+# 使用 Markdown 高效写作
 
 如果你习惯使用 Word 之类的工具写作，你可能会常常遇到以下的场景：
 

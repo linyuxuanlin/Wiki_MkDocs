@@ -1,7 +1,4 @@
----
-id: TheExec(The_Executive)
-title: TheExec (The Executive) 🚧
----
+# TheExec (The Executive) 🚧
 
 **TheExec(The Executive)** is one of the highest-level objects, which gives access to test executive related properties.
 

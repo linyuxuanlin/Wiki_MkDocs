@@ -1,7 +1,4 @@
----
-id: T-Clock桌上小钟
-title: T-Clock 桌上小钟
----
+# T-Clock 桌上小钟
 
 ## 准备材料
 

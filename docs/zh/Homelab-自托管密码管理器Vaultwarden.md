@@ -1,7 +1,4 @@
----
-id: Homelab-自托管密码管理器Vaultwarden
-title: Homelab - 自托管密码管理器 Vaultwarden
----
+# Homelab - 自托管密码管理器 Vaultwarden
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304195414.jpg)
 

@@ -1,7 +1,4 @@
----
-id: 移除Chrome（Edge）由组织管理
-title: 移除 Chrome（Edge） 由组织管理
----
+# 移除 Chrome（Edge） 由组织管理
 
 ## 步骤
 

@@ -1,7 +1,4 @@
----
-id: Homelab-网站状态监控工具UptimeKuma
-title: Homelab - 网站状态监控工具 Uptime Kuma
----
+# Homelab - 网站状态监控工具 Uptime Kuma
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230410160253.jpg)
 

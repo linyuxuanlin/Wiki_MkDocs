@@ -1,7 +1,4 @@
----
-id: 电源方案（Buck）-TPS54531
-title: 电源方案（Buck）- TPS54531
----
+# 电源方案（Buck）- TPS54531
 
 TPS54531 是 TI 的一款具有 Eco-mode 的 3.5V 至 28V 输入、5A、570kHz Buck 转换器。
 

@@ -1,7 +1,4 @@
----
-id: Continuity_Test
-title: Continuity Test
----
+# Continuity Test
 
 Continuity test contains open/short test and power pin short test. The former checks the signal pins, while the latter checks the power pin.
 

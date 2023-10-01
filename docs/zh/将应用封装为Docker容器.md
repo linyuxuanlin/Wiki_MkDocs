@@ -1,7 +1,4 @@
----
-id: 将应用封装为Docker容器
-title: 将应用封装为 Docker 容器
----
+# 将应用封装为 Docker 容器
 
 将应用封装为 Docker 容器，可以更加方便地部署管理。下面是一个示例，演示了如何将一个 Python 应用封装为 Docker 容器，并使用 Docker Compose 的方式执行。
 

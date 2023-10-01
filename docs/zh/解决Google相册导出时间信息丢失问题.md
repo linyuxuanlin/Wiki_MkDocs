@@ -1,7 +1,4 @@
----
-id: 解决Google相册导出时间信息丢失问题
-title: 解决 Google 相册导出时间信息丢失问题
----
+# 解决 Google 相册导出时间信息丢失问题
 
 在 Google Takeout 导出 Google 相册后，很多照片的时间信息都被另存为 `.json` 文件。如何将其导入对应照片呢？
 

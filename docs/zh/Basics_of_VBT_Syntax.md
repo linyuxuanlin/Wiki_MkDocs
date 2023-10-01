@@ -1,7 +1,4 @@
----
-id: Basics_of_VBT_Syntax
-title: Basics of VBT Syntax
----
+# Basics of VBT Syntax
 
 ## Data Objects
 

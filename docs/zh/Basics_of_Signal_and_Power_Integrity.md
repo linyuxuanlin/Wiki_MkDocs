@@ -1,7 +1,4 @@
----
-id: Basics_of_Signal_and_Power_Integrity
-title: Basics of Signal and Power Integrity 🚧
----
+# Basics of Signal and Power Integrity 🚧
 
 ## References & Acknowledgements
 

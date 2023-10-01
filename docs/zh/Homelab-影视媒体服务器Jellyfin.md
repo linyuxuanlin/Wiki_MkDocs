@@ -1,7 +1,4 @@
----
-id: Homelab-影视媒体服务器Jellyfin
-title: Homelab - 影视媒体服务器 Jellyfin
----
+# Homelab - 影视媒体服务器 Jellyfin
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230531213856.png)
 

@@ -1,7 +1,4 @@
----
-id: RobotCtrl-STM32通用开发套件
-title: RobotCtrl - STM32 通用开发套件
----
+# RobotCtrl - STM32 通用开发套件
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220416181125.jpeg)
 

@@ -1,7 +1,4 @@
----
-id: 如何在Markdown中使用LaTeX
-title: 如何在 Markdown 中使用 LaTeX
----
+# 如何在 Markdown 中使用 LaTeX
 
 Markdown 原生支持使用 LaTeX 编写数学公式和符号。
 

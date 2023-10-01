@@ -1,7 +1,4 @@
----
-id: Node.js和npm的安装与卸载（MacOS）
-title: Node.js 和 npm 的安装与卸载（MacOS）
----
+# Node.js 和 npm 的安装与卸载（MacOS）
 
 ## 安装
 

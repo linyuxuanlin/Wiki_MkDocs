@@ -1,7 +1,4 @@
----
-id: AD基本操作-基础知识
-title: AD 基本操作 - 基础知识
----
+# AD 基本操作 - 基础知识
 
 —— Altium Designer 系列教程
 

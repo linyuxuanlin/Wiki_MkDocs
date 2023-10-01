@@ -1,7 +1,4 @@
----
-id: Troubleshooting_of_ADC_and_DAC
-title: Troubleshooting of ADC and DAC
----
+# Troubleshooting of ADC and DAC
 
 
 ## Why AC Source should be 2-4 bits more resolution than the ADC under test?

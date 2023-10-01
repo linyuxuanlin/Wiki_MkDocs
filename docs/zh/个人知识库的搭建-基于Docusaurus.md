@@ -1,7 +1,4 @@
----
-id: 个人知识库的搭建-基于Docusaurus
-title: 个人知识库的搭建 - 基于 Docusaurus
----
+# 个人知识库的搭建 - 基于 Docusaurus
 
 续上一篇文章 [**为什么你需要一个知识库**](https://wiki-power.com/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%A0%E9%9C%80%E8%A6%81%E4%B8%80%E4%B8%AA%E7%9F%A5%E8%AF%86%E5%BA%93)，本篇文章将基于 Docusaurus 框架，对知识库的搭建展开详细讲解。
 

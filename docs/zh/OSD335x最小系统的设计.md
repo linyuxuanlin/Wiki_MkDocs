@@ -1,7 +1,4 @@
----
-id: OSD335x最小系统的设计
-title: OSD335x 最小系统的设计
----
+# OSD335x 最小系统的设计
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211012144907.png)
 

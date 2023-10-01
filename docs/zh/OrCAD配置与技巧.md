@@ -1,7 +1,4 @@
----
-id: OrCAD配置与技巧
-title: OrCAD 配置与技巧
----
+# OrCAD 配置与技巧
 
 注：本文基于 Cadence OrCAD Capture CIS。
 

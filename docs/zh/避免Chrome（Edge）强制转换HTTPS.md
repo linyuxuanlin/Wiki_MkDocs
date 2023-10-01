@@ -1,7 +1,4 @@
----
-id: 避免Chrome（Edge）强制转换HTTPS
-title: 避免 Chrome（Edge）强制转换 HTTPS
----
+# 避免 Chrome（Edge）强制转换 HTTPS
 
 有些网站只能用 http 访问，但有时候浏览器会强制转换为 https，导致访问错误。以下步骤将展示如何禁用浏览器的自动转换。
 

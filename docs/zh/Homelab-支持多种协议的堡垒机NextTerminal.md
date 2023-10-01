@@ -1,7 +1,4 @@
----
-id: Homelab-支持多种协议的堡垒机NextTerminal
-title: Homelab - 支持多种协议的堡垒机 Next Terminal
----
+# Homelab - 支持多种协议的堡垒机 Next Terminal
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230312001443.png)
 

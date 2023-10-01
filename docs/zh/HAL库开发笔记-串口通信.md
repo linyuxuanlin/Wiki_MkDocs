@@ -1,7 +1,4 @@
----
-id: HAL库开发笔记-串口通信
-title: HAL 库开发笔记 - 串口通信
----
+# HAL 库开发笔记 - 串口通信
 
 本篇基于自研 RobotCtrl 开发套件，单片机内核为 STM32F407ZET6，RS-232 通信使用 SP3232EEN 芯片，原理图及详细介绍请见 [**RobotCtrl - STM32 通用开发套件**](https://wiki-power.com/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6)。
 

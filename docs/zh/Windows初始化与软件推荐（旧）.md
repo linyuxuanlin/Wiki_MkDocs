@@ -1,7 +1,4 @@
----
-id: Windows初始化与软件推荐（旧）
-title: Windows 初始化与软件推荐（旧）
----
+# Windows 初始化与软件推荐（旧）
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210117142759.jpg)
 

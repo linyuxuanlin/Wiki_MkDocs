@@ -1,7 +1,4 @@
----
-id: JavaScript学习笔记
-title: JavaScript 学习笔记
----
+# JavaScript 学习笔记
 
 ## 调用外部 JS
 

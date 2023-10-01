@@ -1,7 +1,4 @@
----
-id: CubeMX与CubeIDE避坑
-title: CubeMX 与 CubeIDE 避坑
----
+# CubeMX 与 CubeIDE 避坑
 
 ## 项目名称路径不能是中文
 

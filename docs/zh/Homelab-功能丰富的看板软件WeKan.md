@@ -1,7 +1,4 @@
----
-id: Homelab-功能丰富的看板软件WeKan
-title: Homelab - 功能丰富的看板软件 WeKan
----
+# Homelab - 功能丰富的看板软件 WeKan
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230508175842.png)
 

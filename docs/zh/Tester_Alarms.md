@@ -1,7 +1,4 @@
----
-id: Tester_Alarms
-title: Tester Alarms
----
+# Tester Alarms
 
 ## DCVI Alarms
 

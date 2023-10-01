@@ -1,7 +1,4 @@
----
-id: Basics_of_Mixed_Signal_Test
-title: Basics of Mixed Signal Test
----
+# Basics of Mixed Signal Test
 
 Mixed signal contains both analog and digital signals. Devices processing mixed signal typically include ADCs, DACs, analog switches and multiplexers, sample-and-hold amplifiers, and so on.
 

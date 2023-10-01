@@ -1,7 +1,4 @@
----
-id: AirForce-充满灵性的电机驱动模块
-title: AirForce - 充满灵性的电机驱动模块
----
+# AirForce - 充满灵性的电机驱动模块
 
 AirForce 项目是一款电机驱动组合套件，包含集成稳压功能的母板 AirPort, 和双路电机驱动子板 AirCraft. 可以根据电机数量需求，自由拓展驱动最多 16 路电机。因外观小巧轻便，性能强劲、拓展性高，故命名为 Project AirForce.
 

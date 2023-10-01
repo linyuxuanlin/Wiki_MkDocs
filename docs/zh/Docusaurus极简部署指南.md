@@ -1,7 +1,4 @@
----
-id: Docusaurus极简部署指南
-title: Docusaurus 极简部署指南
----
+# Docusaurus 极简部署指南
 
 使用 [**这个模板**](https://github.com/linyuxuanlin/Docusaurus-Vercel) 生成自己的仓库
 

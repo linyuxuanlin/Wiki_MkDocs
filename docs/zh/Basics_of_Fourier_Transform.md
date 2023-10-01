@@ -1,7 +1,4 @@
----
-id: Basics_of_Fourier_Transform
-title: Basics of Fourier Transform
----
+# Basics of Fourier Transform
 
 There are several algorithms for transforming data from the time domain to the frequency domain as below.
 

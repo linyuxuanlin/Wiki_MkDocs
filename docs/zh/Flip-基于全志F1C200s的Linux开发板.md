@@ -1,7 +1,4 @@
----
-id: Flip-基于全志F1C200s的Linux开发板
-title: Flip - 基于全志 F1C200s 的 Linux 开发板
----
+# Flip - 基于全志 F1C200s 的 Linux 开发板
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220527234815.jpeg)
 

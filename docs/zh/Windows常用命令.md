@@ -1,7 +1,4 @@
----
-id: Windows常用命令
-title: Windows 常用命令
----
+# Windows 常用命令
 
 ## Win+R 常用命令
 

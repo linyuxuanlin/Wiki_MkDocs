@@ -1,7 +1,4 @@
----
-id: HAL库开发笔记-以太网通信（LwIP）
-title: HAL 库开发笔记 - 以太网通信（LwIP） 🚧
----
+# HAL 库开发笔记 - 以太网通信（LwIP） 🚧
 
 以下是基于 [**反客 STM32F407 主控核心板**](https://item.taobao.com/item.htm?spm=a230r.1.14.16.57314534365ZlN&id=569068950037&ns=1&abbucket=4#detail) 与 [**DP83848 以太网 PHY 模块**](https://item.taobao.com/item.htm?spm=a230r.1.14.1.38df5bd3YTS6rE&id=12873819988&ns=1&abbucket=4#detail) 的教程。
 

@@ -1,7 +1,4 @@
----
-id: HAL库开发笔记-I2C通信（MPU6050）
-title: HAL 库开发笔记 - I2C 通信（MPU6050）
----
+# HAL 库开发笔记 - I2C 通信（MPU6050）
 
 本篇基于自研 RobotCtrl 开发套件，单片机内核为 STM32F407ZET6，使用 MPU6050 模组讲解 HAL 库 I2C 通信的方式，开发套件原理图及详细介绍请见 [**RobotCtrl - STM32 通用开发套件**](https://wiki-power.com/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6)。
 

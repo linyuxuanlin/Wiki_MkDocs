@@ -1,7 +1,4 @@
----
-id: Homelab-高质量图片压缩工具TinyPNG-docker
-title: Homelab - 高质量图片压缩工具 TinyPNG-docker
----
+# Homelab - 高质量图片压缩工具 TinyPNG-docker
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230416163137.png)
 

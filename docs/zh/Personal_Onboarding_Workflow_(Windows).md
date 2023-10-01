@@ -1,7 +1,4 @@
----
-id: Personal_Onboarding_Workflow_(Windows)
-title: Personal Onboarding Workflow (Windows)
----
+# Personal Onboarding Workflow (Windows)
 
 ## Settings
 

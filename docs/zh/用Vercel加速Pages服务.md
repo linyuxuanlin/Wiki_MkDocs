@@ -1,7 +1,4 @@
----
-id: 用Vercel加速Pages服务
-title: 用 Vercel 加速 Pages 服务
----
+# 用 Vercel 加速 Pages 服务
 
 前一段时间，我的博客（托管在 GitHub Pages）被墙了。因为受众大多是国内用户，所以问题很大。  
 一般来说，解决方法只有买服务器 / 迁移到 OSS. 但方法都偏复杂，也费钱。

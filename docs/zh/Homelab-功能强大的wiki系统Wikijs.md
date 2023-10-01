@@ -1,7 +1,4 @@
----
-id: Homelab-功能强大的wiki系统Wikijs
-title: Homelab - 功能强大的 wiki 系统 Wiki.js
----
+# Homelab - 功能强大的 wiki 系统 Wiki.js
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304195348.png)
 

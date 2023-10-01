@@ -1,7 +1,4 @@
----
-id: Homelab-网站favicon抓取工具iconserver
-title: Homelab - 网站 favicon 抓取工具 iconserver
----
+# Homelab - 网站 favicon 抓取工具 iconserver
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304195157.png)
 

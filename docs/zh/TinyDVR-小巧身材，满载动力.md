@@ -1,7 +1,4 @@
----
-id: TinyDVR-小巧身材，满载动力
-title: TinyDVR - 小巧身材，满载动力
----
+# TinyDVR - 小巧身材，满载动力
 
 —— 基于 TinyDVR Master V1.1 & Slave V7.2 Release
 

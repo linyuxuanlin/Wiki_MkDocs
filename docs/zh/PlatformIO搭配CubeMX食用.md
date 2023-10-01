@@ -1,7 +1,4 @@
----
-id: PlatformIO搭配CubeMX食用
-title: PlatformIO 搭配 CubeMX 食用
----
+# PlatformIO 搭配 CubeMX 食用
 
 ## 背景
 

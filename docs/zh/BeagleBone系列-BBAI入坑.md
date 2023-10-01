@@ -1,7 +1,4 @@
----
-id: BeagleBone系列-BBAI入坑
-title: BeagleBone 系列 - BBAI 入坑
----
+# BeagleBone 系列 - BBAI 入坑
 
 ## 初始化
 

@@ -1,7 +1,4 @@
----
-id: 如何用Markdown写公众号文章
-title: 如何用 Markdown 写公众号文章
----
+# 如何用 Markdown 写公众号文章
 
 在 Markdown 介绍文章 [**使用 Markdown 进行高效写作**](https://wiki-power.com/%E4%BD%BF%E7%94%A8Markdown%E8%BF%9B%E8%A1%8C%E9%AB%98%E6%95%88%E5%86%99%E4%BD%9C) 中，我们得以见识 Markdown 用于排版的便捷性。假如我想用它来写微信公众号，该怎么操作呢？
 

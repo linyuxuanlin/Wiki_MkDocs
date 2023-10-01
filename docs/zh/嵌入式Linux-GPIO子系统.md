@@ -1,7 +1,4 @@
----
-id: 嵌入式Linux-GPIO子系统
-title: 嵌入式 Linux - GPIO 子系统
----
+# 嵌入式 Linux - GPIO 子系统
 
 ## 参考与致谢
 
