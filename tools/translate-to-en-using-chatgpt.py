@@ -9,7 +9,7 @@ openai.api_key = os.environ.get('CHATGPT_API_KEY')
 openai.api_base = os.environ.get('CHATGPT_API_BASE')
 
 # 设置路径
-dir_to_translate = "../docs/zh"
+dir_to_translate = "../docs/to-translate"
 dir_translated = "../docs/en"
 
 # 创建一个包含多个替换规则的列表
@@ -84,8 +84,7 @@ def translate_file(input_file, output_file, max_length=1000):
         input_text = input_text.replace(find_text, placeholder)
         placeholder_dict[placeholder] = replace_with
 
-
-    print(input_text)
+    #print(input_text)
 
     # 拆分文章
     paragraphs = input_text.split("\n\n")
@@ -120,6 +119,9 @@ def translate_file(input_file, output_file, max_length=1000):
     # 将输出段落合并为字符串
     output_text = "\n\n".join(output_paragraphs)
 
+    # 加入由 ChatGPT 翻译的提示
+    output_text=output_text+"\n\n> This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions."
+
     # 最后，将占位词替换为对应的替换文本
     for placeholder, replacement in placeholder_dict.items():
         output_text = output_text.replace(placeholder, replacement)
@@ -133,4 +135,10 @@ for filename in os.listdir(dir_to_translate):
     if filename.endswith(".md"):
         input_file = os.path.join(dir_to_translate, filename)
         output_file = os.path.join(dir_translated, filename)
-        translate_file(input_file, output_file)
+        with open(input_file, 'r', encoding='utf-8') as f:
+            md_content = f.read()
+        if "> This post is only available in English." in md_content:
+            print("Pass the EN post.")
+        else:
+            translate_file(input_file, output_file)
+            print("Translated done:", filename)
