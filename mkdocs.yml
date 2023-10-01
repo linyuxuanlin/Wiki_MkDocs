@@ -7,7 +7,7 @@ edit_uri: edit/main/docs/ #
 
 theme:
   name: material
-  font: #false #如果遇到国内网络问题，可选用 false，不启用特殊字体
+  font: false #如果遇到国内网络问题，可选用 false，不启用特殊字体
     text: "Noto Sans SC" # , Roboto
     code: Roboto Mono
   palette:
