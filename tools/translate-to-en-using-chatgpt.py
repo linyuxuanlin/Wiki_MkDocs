@@ -9,7 +9,7 @@ openai.api_key = os.environ.get('CHATGPT_API_KEY')
 openai.api_base = os.environ.get('CHATGPT_API_BASE')
 
 # 设置路径
-dir_to_translate = "../docs/zh"
+dir_to_translate = "../docs/zh" #to-translate
 dir_translated = "../docs/en"
 
 # 创建一个包含多个替换规则的列表
@@ -148,5 +148,5 @@ for filename in sorted_file_list:
         elif filename=="index.md" or filename=="Contact-and-Subscribe.md" or filename=="WeChat.md":
             print("Pass the post: ", filename)
         else:
+            print("Translating: ", filename)
             translate_file(input_file, output_file)
-            print("Translated done: ", filename)
