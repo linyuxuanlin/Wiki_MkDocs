@@ -2,7 +2,7 @@ import os
 import re
 
 # 定义要处理的目录路径
-directory_path = "../docs/en"
+directory_path = "../docs/zh"
 
 # 正则表达式模式，用于匹配包含id和title字段的Markdown头部
 pattern = r"---\s*id:\s*(.*?)\s*title:\s*(.*?)\s*---\s"
