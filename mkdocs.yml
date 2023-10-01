@@ -51,6 +51,7 @@ theme:
 plugins:
   - i18n:
       docs_structure: folder 
+      fallback_to_default: false
       languages:
         - locale: zh
           default: true
