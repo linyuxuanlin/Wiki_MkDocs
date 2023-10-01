@@ -137,9 +137,9 @@ sorted_file_list = sorted(file_list)
 #print(sorted_file_list)
 
 # 遍历docs目录下的所有.md文件，并进行翻译
-for filename in os.listdir(sorted_file_list):
+for filename in sorted_file_list:
     if filename.endswith(".md"):
-        input_file = os.path.join(sorted_file_list, filename)
+        input_file = os.path.join(dir_to_translate, filename)
         output_file = os.path.join(dir_translated, filename)
         with open(input_file, 'r', encoding='utf-8') as f:
             md_content = f.read()
