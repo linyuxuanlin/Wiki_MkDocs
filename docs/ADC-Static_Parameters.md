@@ -173,7 +173,7 @@ for DNL[1](Code 001),
 - Actual Output Code Count = 14
 - Idea Output Code Count = (14 +18 +15 + 17+ 17 + 15) / (8 -2 ) = 16.
 
-Therefore $DNL[1] (Code 001) = (14-16)/16 \* LSB => -0.125 \* LSB$.
+Therefore $DNL[1] (Code 001) = (14-16)/16 \ LSB => -0.125 \ LSB$.
 
 #### 4. Get the max and min DNL
 
