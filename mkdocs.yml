@@ -49,6 +49,16 @@ theme:
     #edit: material/pencil
 
 plugins:
+  - i18n:
+      docs_structure: folder 
+      languages:
+        - locale: zh
+          default: true
+          name: 简体中文
+          build: true
+        - locale: en
+          name: English
+          build: true
   - search
   - rss:
       abstract_chars_count: -1 # -1 for full content
