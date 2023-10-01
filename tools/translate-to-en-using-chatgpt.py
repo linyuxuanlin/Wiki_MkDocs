@@ -9,7 +9,7 @@ openai.api_key = os.environ.get('CHATGPT_API_KEY')
 openai.api_base = os.environ.get('CHATGPT_API_BASE')
 
 # 设置路径
-dir_to_translate = "../docs/to-translate"
+dir_to_translate = "../draft/to-translate"
 dir_translated = "../docs/en"
 
 # 创建一个包含多个替换规则的列表
@@ -136,7 +136,7 @@ file_list = os.listdir(dir_to_translate)
 sorted_file_list = sorted(file_list)
 #print(sorted_file_list)
 
-# 遍历docs目录下的所有.md文件，并进行翻译
+# 遍历目录下的所有.md文件，并进行翻译
 for filename in sorted_file_list:
     if filename.endswith(".md"):
         input_file = os.path.join(dir_to_translate, filename)
