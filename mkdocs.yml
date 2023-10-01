@@ -59,6 +59,7 @@ plugins:
         - locale: en
           name: English
           build: true
+          site_description:  To have an extensive knowledge of all things and integrate them into a coherent whole.
   - search
   - rss:
       abstract_chars_count: -1 # -1 for full content
