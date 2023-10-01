@@ -1,3 +1,0 @@
-# WeChat
-
-My WeChat： `linyuxuanlin`
