@@ -1,8 +1,8 @@
-# 解决 Google 相册导出时间信息丢失问题
+# Solving the problem of lost time information when exporting from Google Photos
 
-在 Google Takeout 导出 Google 相册后，很多照片的时间信息都被另存为 `.json` 文件。如何将其导入对应照片呢？
+After exporting from Google Photos using Google Takeout, the time information for many photos is saved as a `.json` file. How can we import this information back into the corresponding photos?
 
-新建一个 Python 文件 `update-data.py`：
+Create a new Python file called `update-data.py`:
 
 ```python
 from win32file import CreateFile, SetFileTime, GetFileTime, CloseHandle
@@ -10,16 +10,16 @@ from win32file  import GENERIC_READ, GENERIC_WRITE, OPEN_EXISTING
 from pywintypes import Time
 import os,json,time
 
-# 获取指定后缀的文件名
+# Get all file names with a specified extension
 def get_all_file(ext_name):
     file_list = []
     datanames = os.listdir()
     for dataname in datanames:
-        if os.path.splitext(dataname)[1] == ext_name:  #目录下包含.json的文件
+        if os.path.splitext(dataname)[1] == ext_name:  # Directory contains files with .json extension
             file_list.append(dataname)
     return file_list
 
-# 读取json
+# Load JSON file
 def load_json(json_file_name):
     f = open(json_file_name,'r',encoding = 'UTF-8')
     text = f.read()
@@ -28,15 +28,15 @@ def load_json(json_file_name):
 
 def modifyFileTime(filePath, createTime, modifyTime, accessTime, offset):
     """
-    用来修改任意文件的相关时间属性，时间格式：YYYY-MM-DD HH:MM:SS 例如：2019-02-02 00:01:02
-    :param filePath: 文件路径名
-    :param createTime: 创建时间
-    :param modifyTime: 修改时间
-    :param accessTime: 访问时间
-    :param offset: 时间偏移的秒数,tuple格式，顺序和参数时间对应
+    Used to modify the relevant time properties of any file, time format: YYYY-MM-DD HH:MM:SS, for example: 2019-02-02 00:01:02
+    :param filePath: file path name
+    :param createTime: creation time
+    :param modifyTime: modification time
+    :param accessTime: access time
+    :param offset: time offset in seconds, in tuple format, in the order corresponding to the parameter time
     """
     try:
-        format = "%Y-%m-%d %H:%M:%S"  # 时间格式
+        format = "%Y-%m-%d %H:%M:%S"  # Time format
         cTime_t = timeOffsetAndStruct(createTime, format, offset[0])
         mTime_t = timeOffsetAndStruct(modifyTime, format, offset[1])
         aTime_t = timeOffsetAndStruct(accessTime, format, offset[2])
@@ -53,11 +53,11 @@ def modifyFileTime(filePath, createTime, modifyTime, accessTime, offset):
     except:
         return 1
 
-
+```python
 def timeOffsetAndStruct(times, format, offset):
     return time.localtime(time.mktime(time.strptime(times, format)) + offset)
 
-#日期转换，将谷歌的日期转化为数值
+# Date conversion, convert Google date to numerical value
 def time_format(data_string):
     print(data_string)
     year = data_string.split('年')[0]
@@ -73,27 +73,26 @@ def time_format(data_string):
 
 
 if __name__ == '__main__':
-    file_name_json = get_all_file('.json')                      #获取当前目录下所有文件图片文件名list
+    file_name_json = get_all_file('.json')                      # Get a list of all file names in the current directory
 
     for fnj in file_name_json:
-        dic = load_json(fnj)                                        #提取字典信息
-        st = dic['creationTime']['formatted']                       #获取文件日期
-        output_format = time_format(st)                             #转换日期格式
+        dic = load_json(fnj)                                        # Extract dictionary information
+        st = dic['creationTime']['formatted']                       # Get file date
+        output_format = time_format(st)                             # Convert date format
 
-        file_name = fnj[0:-5]                                       #获取对应文件的照片名字
+        file_name = fnj[0:-5]                                       # Get the corresponding photo name for the file
         print(file_name)
         offset = (0, 1, 2)
-        #修改文件日期
+        # Modify file date
         modifyFileTime(file_name, output_format, output_format, output_format,offset)
 ```
 
-这个脚本的作用是根据 json 修改文件创建日期，并将其导入同名的照片。
+This script is used to modify the file creation date based on the JSON file and import it into the corresponding photo with the same name.
 
-直接将此脚本放入每个相册的目录中运行即可。执行过后，照片的时间信息就回来了。
+Simply place this script in each album directory and run it. After execution, the time information of the photos will be restored.
 
-## 参考与致谢
+## References and Acknowledgments
 
-- [谷歌相册下载后的时间丢失问题](https://zhuanlan.zhihu.com/p/356718593)
+- [Google Photos download time loss problem](https://zhuanlan.zhihu.com/p/356718593)
 
-> 原文地址：<https://wiki-power.com/>  
-> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
+> This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.
