@@ -63,6 +63,7 @@ plugins:
           site_description: To have an extensive knowledge of all things and integrate them into a coherent whole.
           copyright: Copyright &copy; 2015 - 2023 by Power | <a href="https://beian.miit.gov.cn"> ICP License No. 20014898 in Guangdong </a>
           nav_translations:
+            Home: Home
             硬件 & 半导体: Hardware & Semiconductor
             硬件设计: Hardware Design
             基础知识: Basics
@@ -104,6 +105,7 @@ plugins:
           site_description: Abarcar todo, integrar todo.
           copyright: Derechos de autor &copy; 2015 - 2023 por Power | <a href="https://beian.miit.gov.cn"> Número de registro ICP 20014898 en Guangdong </a>
           nav_translations:
+            Home: Inicio
             硬件 & 半导体: Hardware & Semiconductor
             硬件设计: Diseño de hardware
             基础知识: Fundamentos
@@ -223,7 +225,7 @@ extra_css:
 #############################################################
 
 nav:
-  #- Home: index.md
+  - Home: index.md
   - 硬件 & 半导体:
       - 硬件设计:
           - 基础知识:
