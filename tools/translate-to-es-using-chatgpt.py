@@ -14,8 +14,8 @@ dir_translated = "../docs/es"
 
 # 创建一个包含多个替换规则的列表
 replace_rules = [
-    {"find": "> 原文地址：<https://wiki-power.com/>", "replace_with": "> Original: <https://wiki-power.com/>"},
-    {"find": "> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。", "replace_with": "> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution."},
+    {"find": "> 原文地址：<https://wiki-power.com/>", "replace_with": "> Dirección original del artículo: <https://wiki-power.com/>"},
+    {"find": "> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。", "replace_with": "> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente."},
 ]
 
 # 定义翻译函数
@@ -27,7 +27,7 @@ def translate_text(text):
         messages=[
             {
                 "role": "user",
-                "content": "Translate the following Chinese article into Español, maintain the original markdown format.\n\n{}\n\nEspañol:".format(
+                "content": "Translate the following article into Español, maintain the original markdown format.\n\n{}\n\nEspañol:".format(
                     text
                 ),
             }
@@ -120,7 +120,7 @@ def translate_file(input_file, output_file, max_length=1800):
     output_text = "\n\n".join(output_paragraphs)
 
     # 加入由 ChatGPT 翻译的提示
-    output_text=output_text+"\n\n> This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions."
+    output_text=output_text+"\n\n> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión."
 
     # 最后，将占位词替换为对应的替换文本
     for placeholder, replacement in placeholder_dict.items():
