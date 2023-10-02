@@ -84,8 +84,8 @@ plugins:
             STM32: STM32
             Arduino & 杂项: Arduino & Miscellaneous
             软件开发: Software Development
-            DOCKER: DOCKER
-            LINUX: LINUX
+            DOCKER: Docker
+            LINUX: Linux
             杂七杂八: Miscellaneous
             生活 & 折腾: Life & Exploration
             生活琐记: Life Musings
