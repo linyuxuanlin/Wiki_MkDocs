@@ -61,6 +61,7 @@ plugins:
           name: English
           build: true
           site_description: To have an extensive knowledge of all things and integrate them into a coherent whole.
+          copyright: Copyright &copy; 2015 - 2023 by Power
           nav_translations:
             硬件 & 半导体: Hardware & Semiconductor
             硬件设计: Hardware Design
