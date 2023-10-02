@@ -98,47 +98,48 @@ plugins:
             群晖 NAS: Synology NAS
             技术流: Tech Flow
             一些小技巧: Some Tips and Tricks
-        #- locale: es
-        #  name: Español
-        #  build: true
-        #  site_description: Abarcar todo, integrar todo.
-        #  copyright: Derechos de autor &copy; 2015 - 2023 por Power | <a href="https://beian.miit.gov.cn"> Número de registro ICP 20014898 en Guangdong </a>
-        #  nav_translations:
-        #    硬件 & 半导体: Hardware & Semiconductor
-        #    硬件设计: Hardware Design
-        #    基础知识: Basics
-        #    嵌入式硬件: Embedded Hardware
-        #    电机驱动: Motor Drive
-        #    通信协议: Communication Protocols
-        #    电源设计: Power Design
-        #    信号与电源完整性: Signal and Power Integrity
-        #    射频设计: RF Design
-        #    软件与仪器: Software and Tools
-        #    半导体测试: Semiconductor Testing
-        #    测试协议: Testing Protocols
-        #    ATE 基础知识: ATE Basics
-        #    ATE Test Fundamental: ATE Test Fundamentals
-        #    ATE Mixed Signal Test: ATE Mixed Signal Test
-        #    ATE Coding Syntax: ATE Coding Syntax
-        #    VBT Syntax: VBT Syntax
-        #    嵌入式 & 软件开发: Embedded & Software Development
-        #    嵌入式开发: Embedded Development
-        #    STM32: STM32
-        #    Arduino & 杂项: Arduino & Miscellaneous
-        #    软件开发: Software Development
-        #    DOCKER: Docker
-        #    LINUX: Linux
-        #    杂七杂八: Miscellaneous
-        #    生活 & 折腾: Life & Exploration
-        #    生活琐记: Life Musings
-        #    LIFEHACK: Life Hack
-        #    BLOG: Blog
-        #    折腾不止: Continuous Exploration
-        #    自托管 Self-Host: Self-Hosting
-        #    自托管应用收藏（Docker）: Self-Hosted App Collection (Docker)
-        #    群晖 NAS: Synology NAS
-        #    技术流: Tech Flow
-        #    一些小技巧: Some Tips and Tricks
+        - locale: es
+          name: Español
+          build: true
+          site_description: Abarcar todo, integrar todo.
+          copyright: Derechos de autor &copy; 2015 - 2023 por Power | <a href="https://beian.miit.gov.cn"> Número de registro ICP 20014898 en Guangdong </a>
+          nav_translations:
+            硬件 & 半导体: Hardware & Semiconductor
+            硬件设计: Diseño de hardware
+            基础知识: Fundamentos
+            嵌入式硬件: Hardware incrustado
+            电机驱动: Control de motores
+            通信协议: Protocolos de comunicación
+            电源设计: Diseño de energía
+            信号与电源完整性: Integridad de señal y energía
+            射频设计: Diseño de RF
+            软件与仪器: Software y herramientas
+            半导体测试: Pruebas de semiconductores
+            测试协议: Protocolos de prueba
+            ATE 基础知识: Fundamentos de ATE
+            ATE Test Fundamental: Fundamentos de prueba ATE
+            ATE Mixed Signal Test: Prueba de señal mixta ATE
+            ATE Coding Syntax: Sintaxis de codificación ATE
+            VBT Syntax: Sintaxis VBT
+            嵌入式 & 软件开发: Desarrollo de software y hardware incrustado
+            嵌入式开发: Desarrollo incrustado
+            STM32: STM32
+            Arduino & 杂项: Arduino y miscelánea
+            软件开发: Desarrollo de software
+            DOCKER: Docker
+            LINUX: Linux
+            杂七杂八: Miscelánea
+            生活 & 折腾: Vida y exploración
+            生活琐记: Anécdotas de vida
+            LIFEHACK: Trucos de vida
+            BLOG: Blog
+            折腾不止: Exploración continua
+            自托管 Self-Host: Autohospedaje
+            自托管应用收藏（Docker）: Colección de aplicaciones autohospedadas (Docker)
+            群晖 NAS: Synology NAS
+            技术流: Flujo técnico
+            一些小技巧: Algunos consejos y trucos
+
   - search
   - rss:
       abstract_chars_count: -1 # -1 for full content
@@ -168,6 +169,9 @@ extra:
     - name: English
       link: /en/
       lang: en
+    - name: Español
+      link: /es/
+      lang: es
   generator: false
   analytics:
     provider: google
