@@ -148,6 +148,7 @@ for filename in sorted_file_list:
             print("Pass the EN post: ", filename)
             os.remove(input_file)
         elif filename=="index.md" or filename=="Contact-and-Subscribe.md" or filename=="WeChat.md":
+            os.remove(input_file)
             print("Pass the post: ", filename)
         else:
             print("Translating: ", filename)

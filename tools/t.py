@@ -68,7 +68,7 @@ def split_text(text, max_length):
     return output_text
 
 # 定义翻译文件函数
-def translate_file(input_file, output_file, max_length=1000):
+def translate_file(input_file, output_file, max_length=1800):
     # 读取输入文件内容
     with open(input_file, "r", encoding="utf-8") as f:
         input_text = f.read()
@@ -130,7 +130,7 @@ def translate_file(input_file, output_file, max_length=1000):
     with open(output_file, "w", encoding="utf-8") as f:
         f.write(output_text)
 
-    os.remove(input_file) #?can use?
+    os.remove(input_file)
 
 # 按文件名称顺序排序
 file_list = os.listdir(dir_to_translate)
@@ -146,6 +146,7 @@ for filename in sorted_file_list:
             md_content = f.read()
         if "> This post is only available in English." in md_content:
             print("Pass the EN post: ", filename)
+            os.remove(input_file)
         elif filename=="index.md" or filename=="Contact-and-Subscribe.md" or filename=="WeChat.md":
             print("Pass the post: ", filename)
         else:
