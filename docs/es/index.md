@@ -4,8 +4,7 @@ hide:
   - navigation
   - toc
 ---
-
-# Wiki de Power
+# Power's Wiki
 
 <!--  Un desarrollador que no sabe contar historias, no es un buen producto ~-->
 
@@ -30,9 +29,10 @@ hide:
 [![badge](https://img.shields.io/badge/Memos-Memos-orange?&style=flat-square){ loading=lazy }](https://memos.wiki-power.com/)
 [![badge](https://img.shields.io/badge/Works-Works-a5b0ed?&style=flat-square){ loading=lazy }](https://works.wiki-power.com/)
 
-Para evitar olvidos y facilitar el intercambio, aquí recopilo conocimientos.  
+Para evitar olvidos y facilitar el intercambio, aquí recopilo conocimientos.
 ¡Por favor, siéntete libre de navegar!
 
 [Hardware y semiconductores](/es/信号完整性-基础概念){ .md-button }
-[Desarrollo de software y sistemas embebidos](/es/HAL库开发笔记-串口通信){ .md-button }
+
+[Software y Embebidos](/es/HAL库开发笔记-串口通信){ .md-button }
 [Vida y experimentos](/es/搭建属于自己的HomeLab){ .md-button }
