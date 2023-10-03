@@ -65,7 +65,7 @@ Note: RSS is not suitable for subscribing to news websites, as the refresh rate 
 I exported my own subscription source, which you can refer to: [**My Subscription**](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/doc/Blogs.opml)  
 You can import the `.opml` file into Inoreader or other RSS readers.
 
-Added in April 2023: Method for building a self-hosted RSS aggregator: [**Homelab - Self-hosted RSS aggregator FreshRSS**](https://wiki-power.com/Homelab-%E8%87%AA%E6%89%98%E7%AE%A1RSS%E8%81%9A%E5%90%88%E5%99%A8FreshRSS/).
+Added in April 2023: Method for building a self-hosted RSS aggregator: [**Homelab - Self-hosted RSS aggregator FreshRSS**](https://wiki-power.com/en/Homelab-%E8%87%AA%E6%89%98%E7%AE%A1RSS%E8%81%9A%E5%90%88%E5%99%A8FreshRSS/).
 
 ## FAQ
 

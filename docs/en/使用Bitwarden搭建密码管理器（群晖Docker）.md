@@ -30,7 +30,7 @@ After completing the configuration, start the container. Enter the Synology loca
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210503212146.png)
 
-This is because the Docker container itself does not provide https port configuration, and Bitwarden can only log in through https (SSL encryption to prevent man-in-the-middle attacks). Therefore, we must use Synology's built-in reverse proxy service to access the internal http port through https. For specific tutorials, please refer to the article [**Implementing HTTPS Access with Synology's Built-in Reverse Proxy**](https://wiki-power.com/%E7%94%A8%E7%BE%A4%E6%99%96%E8%87%AA%E5%B8%A6%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0HTTPS%E8%AE%BF%E9%97%AE).
+This is because the Docker container itself does not provide https port configuration, and Bitwarden can only log in through https (SSL encryption to prevent man-in-the-middle attacks). Therefore, we must use Synology's built-in reverse proxy service to access the internal http port through https. For specific tutorials, please refer to the article [**Implementing HTTPS Access with Synology's Built-in Reverse Proxy**](https://wiki-power.com/en/%E7%94%A8%E7%BE%A4%E6%99%96%E8%87%AA%E5%B8%A6%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0HTTPS%E8%AE%BF%E9%97%AE).
 
 ## Multi-device Usage
 

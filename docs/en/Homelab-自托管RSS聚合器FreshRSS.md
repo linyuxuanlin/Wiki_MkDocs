@@ -49,7 +49,7 @@ Recommended RSS sources include saveweb's Chinese blog list [**rss-list**](https
 
 For mobile apps, we recommend using FeedMe (Android) and NetNewsWire (iOS).
 
-For more RSS-related content, please refer to the article [**RSS - Efficient Reading Method**](https://wiki-power.com/RSS-%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E9%98%85%E8%AF%BB%E6%96%B9%E5%BC%8F/).
+For more RSS-related content, please refer to the article [**RSS - Efficient Reading Method**](https://wiki-power.com/en/RSS-%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E9%98%85%E8%AF%BB%E6%96%B9%E5%BC%8F/).
 
 ## References and Acknowledgements
 

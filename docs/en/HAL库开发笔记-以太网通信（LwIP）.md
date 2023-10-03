@@ -109,7 +109,7 @@ if (netif_is_link_up(&gnetif) && !netif_is_up(&gnetif)) {
 ---
 
 ```
-This article is based on our self-developed RobotCtrl development kit, with the STM32F407ZET6 microcontroller as the core and the LAN8720A Ethernet PHY chip. For the schematic and detailed introduction, please refer to [**RobotCtrl - STM32 Universal Development Kit**](https://wiki-power.com/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
+This article is based on our self-developed RobotCtrl development kit, with the STM32F407ZET6 microcontroller as the core and the LAN8720A Ethernet PHY chip. For the schematic and detailed introduction, please refer to [**RobotCtrl - STM32 Universal Development Kit**](https://wiki-power.com/en/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
 
 LwIP is a lightweight IP protocol that can run regardless of whether there is operating system support. The focus of LwIP implementation is to reduce RAM usage while maintaining the main functions of the TCP protocol. It only requires about a dozen KB of RAM and around 40K of ROM to run, making it suitable for use in low-end embedded systems.
 

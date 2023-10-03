@@ -11,7 +11,7 @@ When the time spent on formatting exceeds the time spent on writing itself, it p
 ## Tools
 
 First, you need an editor that supports Markdown. I recommend using VS Code or Typora. 
-For installation and configuration of the software, you can refer to my tutorial: [**VS Code Productivity Guide - Environment Configuration**](https://wiki-power.com/VSCode%E7%94%9F%E4%BA%A7%E5%8A%9B%E6%8C%87%E5%8D%97-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE)
+For installation and configuration of the software, you can refer to my tutorial: [**VS Code Productivity Guide - Environment Configuration**](https://wiki-power.com/en/VSCode%E7%94%9F%E4%BA%A7%E5%8A%9B%E6%8C%87%E5%8D%97-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE)
 
 ## Common Syntax
 
@@ -244,7 +244,7 @@ If you are using VS Code, you can directly use [**Markdown PDF**](https://market
 
 WeChat Official Account uses a rich text editor. We can use the web tool [**MD2WeChat**](https://md2wechat.wiki-power.com/) to parse and render Markdown, and then paste it into the official account editor.
 
-For more information, please refer to the article [**Efficient Writing with Markdown**](https://wiki-power.com/%E5%A6%82%E4%BD%95%E7%94%A8Markdown%E5%86%99%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0).
+For more information, please refer to the article [**Efficient Writing with Markdown**](https://wiki-power.com/en/%E5%A6%82%E4%BD%95%E7%94%A8Markdown%E5%86%99%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0).
 
 ## References and Acknowledgments
 

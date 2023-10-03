@@ -51,7 +51,7 @@ MQTT is a message publishing/subscribing transmission protocol based on client-s
 
 ### Deploy Mosquitto Service
 
-Mosquitto is an open-source message broker software that implements the MQTT v3.1 messaging protocol. Here, I am using the Docker deployment method of [**eclipse-mosquitto**](https://hub.docker.com/_/eclipse-mosquitto) as the MQTT broker server. If you are not familiar with Docker deployment, you can refer to the articles [**Docker Simple Guide**](https://wiki-power.com/Docker%E7%AE%80%E6%98%93%E6%8C%87%E5%8D%97/) and [**Docker Compose - A More Elegant Way to Open**](https://wiki-power.com/DockerCompose-%E6%9B%B4%E4%BC%98%E9%9B%85%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/).
+Mosquitto is an open-source message broker software that implements the MQTT v3.1 messaging protocol. Here, I am using the Docker deployment method of [**eclipse-mosquitto**](https://hub.docker.com/_/eclipse-mosquitto) as the MQTT broker server. If you are not familiar with Docker deployment, you can refer to the articles [**Docker Simple Guide**](https://wiki-power.com/en/Docker%E7%AE%80%E6%98%93%E6%8C%87%E5%8D%97/) and [**Docker Compose - A More Elegant Way to Open**](https://wiki-power.com/en/DockerCompose-%E6%9B%B4%E4%BC%98%E9%9B%85%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/).
 
 According to the official instructions, you first need to create the following directories and files for Mosquitto to use, and give them sufficient permissions: (please modify `${STACK_DIR}` to the local data storage path, such as `/DATA/AppData/mosquitto`, the same below)
 

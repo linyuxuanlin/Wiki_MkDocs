@@ -129,7 +129,7 @@ echo 0 > beaglebone:green:cape1/brightness # Cannot turn off
 
 ## LiDAR
 
-If prompted with no permission, please refer to [**Enabling the Root Account with SSH**](https://wiki-power.com/BeagleBone%E7%B3%BB%E5%88%97-%E5%9F%BA%E6%9C%AC%E5%8F%82%E6%95%B0%E4%B8%8E%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE#%E5%90%AF%E7%94%A8-ssh-%E7%9A%84-root-%E5%B8%90%E6%88%B7), and execute with root permission.
+If prompted with no permission, please refer to [**Enabling the Root Account with SSH**](https://wiki-power.com/en/BeagleBone%E7%B3%BB%E5%88%97-%E5%9F%BA%E6%9C%AC%E5%8F%82%E6%95%B0%E4%B8%8E%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE#%E5%90%AF%E7%94%A8-ssh-%E7%9A%84-root-%E5%B8%90%E6%88%B7), and execute with root permission.
 
 First, operate GPIO to make the LIDAR spin.
 

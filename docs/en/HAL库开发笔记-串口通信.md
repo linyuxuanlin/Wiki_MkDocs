@@ -1,15 +1,15 @@
 # HAL Library Development Notes - Serial Communication
 
-This article is based on the self-developed RobotCtrl development kit, with the MCU core being STM32F407ZET6 and RS-232 communication using the SP3232EEN chip. For schematic and detailed introduction, please refer to [**RobotCtrl - STM32 Universal Development Kit**](https://wiki-power.com/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
+This article is based on the self-developed RobotCtrl development kit, with the MCU core being STM32F407ZET6 and RS-232 communication using the SP3232EEN chip. For schematic and detailed introduction, please refer to [**RobotCtrl - STM32 Universal Development Kit**](https://wiki-power.com/en/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
 
 ## Basic Principle
 
-For the basic principle of serial communication, please refer to the article [**Communication Protocol - Serial Communication**](https://wiki-power.com/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1).
+For the basic principle of serial communication, please refer to the article [**Communication Protocol - Serial Communication**](https://wiki-power.com/en/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1).
 
 ## Serial Communication Experiment
 
 Before proceeding to the next experiment, it is necessary to configure various parameters such as serial download and clock in CubeMX. 
-For specific steps, please refer to the method in the article [**HAL Library Development Notes - Environment Configuration**](https://wiki-power.com/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE).
+For specific steps, please refer to the method in the article [**HAL Library Development Notes - Environment Configuration**](https://wiki-power.com/en/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE).
 
 ### Configuring Serial Communication in CubeMX
 
@@ -92,7 +92,7 @@ HAL_UART_Transmit(&huart1, (uint8_t*) aTxBuffer, sizeof(aTxBuffer) - 1, 0xFFFF);
 /* USER CODE END 2 */
 ```
 
-If you need to redirect printf (use printf function for serial output function in STM32), please refer to [**STM32CubeIDE Serial Redirection (printf) and Output Floating Point**](https://wiki-power.com/STM32CubeIDE%E4%B8%B2%E5%8F%A3%E9%87%8D%E5%AE%9A%E5%90%91%EF%BC%88printf%EF%BC%89%E5%8F%8A%E8%BE%93%E5%87%BA%E6%B5%AE%E7%82%B9%E5%9E%8B).
+If you need to redirect printf (use printf function for serial output function in STM32), please refer to [**STM32CubeIDE Serial Redirection (printf) and Output Floating Point**](https://wiki-power.com/en/STM32CubeIDE%E4%B8%B2%E5%8F%A3%E9%87%8D%E5%AE%9A%E5%90%91%EF%BC%88printf%EF%BC%89%E5%8F%8A%E8%BE%93%E5%87%BA%E6%B5%AE%E7%82%B9%E5%9E%8B).
 
 ### Download Verification
 

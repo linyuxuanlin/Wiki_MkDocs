@@ -1,6 +1,6 @@
 # Building a Personal Knowledge Base - Based on Docusaurus
 
-Continuing from the previous article [**Why You Need a Knowledge Base**](https://wiki-power.com/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%A0%E9%9C%80%E8%A6%81%E4%B8%80%E4%B8%AA%E7%9F%A5%E8%AF%86%E5%BA%93), this article will provide a detailed explanation on building a knowledge base based on the Docusaurus framework.
+Continuing from the previous article [**Why You Need a Knowledge Base**](https://wiki-power.com/en/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%A0%E9%9C%80%E8%A6%81%E4%B8%80%E4%B8%AA%E7%9F%A5%E8%AF%86%E5%BA%93), this article will provide a detailed explanation on building a knowledge base based on the Docusaurus framework.
 
 Before we begin, please ensure that you are prepared with:
 
@@ -27,7 +27,7 @@ After installing the software, we can choose to install the following two plugin
 
 After installing the plugins, you may need to restart VS Code as prompted.
 
-For more detailed configuration instructions, refer to [**VS Code Productivity Guide - Environment Configuration**](https://wiki-power.com/VSCode%E7%94%9F%E4%BA%A7%E5%8A%9B%E6%8C%87%E5%8D%97-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE) (in Chinese).
+For more detailed configuration instructions, refer to [**VS Code Productivity Guide - Environment Configuration**](https://wiki-power.com/en/VSCode%E7%94%9F%E4%BA%A7%E5%8A%9B%E6%8C%87%E5%8D%97-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE) (in Chinese).
 
 ### Installing the Docusaurus Framework
 
@@ -86,7 +86,7 @@ git config --global user.email "email@example.com"
 
 Here, replace `"username"` with your Git commit username, which is recommended to be the same as the account name just registered on GitHub. For example, I replaced it with `linyuxuanlin`. `"email@example.com"` should also be replaced with the email registered on GitHub.
 
-For more detailed configuration instructions, refer to this article on [**Git Learning Notes**](https://wiki-power.com/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0).
+For more detailed configuration instructions, refer to this article on [**Git Learning Notes**](https://wiki-power.com/en/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0).
 
 ### Configure the project repository in VS Code
 
@@ -106,7 +106,7 @@ After completing this, click `New Project` on the webpage, import the correspond
 
 ## Summary
 
-In this article, we have achieved local and cloud deployment of a knowledge base based on Docusaurus. If you encounter any problems during the process, you can contact me for feedback on [**WeChat**](https://wiki-power.com/WeChat). In the next article [to be updated], I will provide a detailed explanation of personalized configuration.
+In this article, we have achieved local and cloud deployment of a knowledge base based on Docusaurus. If you encounter any problems during the process, you can contact me for feedback on [**WeChat**](https://wiki-power.com/en/WeChat). In the next article [to be updated], I will provide a detailed explanation of personalized configuration.
 
 ## References and Acknowledgments
 

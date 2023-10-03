@@ -120,7 +120,7 @@ If an external crystal oscillator is used, the frequency range is 32.768 kHz, wh
 
 The boot mode is also called the bootstrap mode. Three different boot modes can be selected by using the BOOT0 and BOOT1 pins: boot from main flash memory, boot from system memory, and boot from internal SRAM.
 
-For a detailed introduction to the boot mode, please refer to the article [STM32 Boot Mode](https://wiki-power.com/STM32%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F).
+For a detailed introduction to the boot mode, please refer to the article [STM32 Boot Mode](https://wiki-power.com/en/STM32%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F).
 
 In general, we connect a 10K pull-down resistor to the BOOT0 pin and leave the BOOT1 pin unconnected. If mode switching is required, the following design can be used:
 
@@ -132,7 +132,7 @@ The STM32 generally uses the SWJ protocol for download and debugging.
 
 ### SWJ Debug Port
 
-The STM32F4 has a built-in SWJ (SW/JTAG) interface. Among them, SW-DP has 2 pins (clock + data), JTAG-DP has 5 pins, and some pins are multiplexed. For detailed differences, please refer to the article [Difference and Connection between SWD and JTAG](https://wiki-power.com/SWD%E4%B8%8EJTAG%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB).
+The STM32F4 has a built-in SWJ (SW/JTAG) interface. Among them, SW-DP has 2 pins (clock + data), JTAG-DP has 5 pins, and some pins are multiplexed. For detailed differences, please refer to the article [Difference and Connection between SWD and JTAG](https://wiki-power.com/en/SWD%E4%B8%8EJTAG%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB).
 
 In STM32F4, the pin allocation of SWJ is as follows:
 

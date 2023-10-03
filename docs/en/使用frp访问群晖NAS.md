@@ -10,7 +10,7 @@ Access Synology NAS using frp in any network.
 
 ## Server Configuration
 
-Refer to the article [**How to Implement External Network RDP Remote Control (frp) · Server Configuration**](https://wiki-power.com/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91RDP%E8%BF%9C%E6%8E%A7%EF%BC%88frp%EF%BC%89#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%85%8D%E7%BD%AE). Note that the `vhost_http_port` / `vhost_https_port` parameters in the `frpc.ini` configuration file must be retained.
+Refer to the article [**How to Implement External Network RDP Remote Control (frp) · Server Configuration**](https://wiki-power.com/en/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91RDP%E8%BF%9C%E6%8E%A7%EF%BC%88frp%EF%BC%89#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%85%8D%E7%BD%AE). Note that the `vhost_http_port` / `vhost_https_port` parameters in the `frpc.ini` configuration file must be retained.
 
 ### Bind Domain Name
 

@@ -43,7 +43,7 @@ dashboard_pwd = ${PASSWORD-FRPS} # The password for the dashboard.
 
 Finally, execute the command `docker compose up -d` in the directory where `compose.yaml` is located to start the orchestrated containers.
 
-If you don't use the docker method, you can also refer to this article: [**Server Configuration·How to Implement External Network RDP Remote Control (frp)**](https://wiki-power.com/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91RDP%E8%BF%9C%E6%8E%A7%EF%BC%88frp%EF%BC%89#_2).
+If you don't use the docker method, you can also refer to this article: [**Server Configuration·How to Implement External Network RDP Remote Control (frp)**](https://wiki-power.com/en/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91RDP%E8%BF%9C%E6%8E%A7%EF%BC%88frp%EF%BC%89#_2).
 
 ## Client frpc Deployment (Docker Compose)
 
@@ -95,7 +95,7 @@ Finally, execute the command `docker compose up -d` in the same directory as `co
 - [GitHub repo · stilleshan/frpc](https://github.com/stilleshan/frpc)
 - [Docker Hub · snowdreamtech/frps](https://hub.docker.com/r/snowdreamtech/frps)
 - [Docker Hub · stilleshan/frpc](https://hub.docker.com/r/stilleshan/frpc)
-- [How to implement external network RDP remote control (frp)](https://wiki-power.com/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91RDP%E8%BF%9C%E6%8E%A7%EF%BC%88frp%EF%BC%89/)
-- [Access Synology NAS using frp](https://wiki-power.com/%E4%BD%BF%E7%94%A8frp%E8%AE%BF%E9%97%AE%E7%BE%A4%E6%99%96NAS/)
+- [How to implement external network RDP remote control (frp)](https://wiki-power.com/en/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91RDP%E8%BF%9C%E6%8E%A7%EF%BC%88frp%EF%BC%89/)
+- [Access Synology NAS using frp](https://wiki-power.com/en/%E4%BD%BF%E7%94%A8frp%E8%AE%BF%E9%97%AE%E7%BE%A4%E6%99%96NAS/)
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

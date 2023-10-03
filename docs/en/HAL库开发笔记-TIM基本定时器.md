@@ -100,7 +100,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 /* USER CODE END 1 */
 ```
 
-For LED configuration, please refer to the previous article [**HAL Development Notes - GPIO**](https://wiki-power.com/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89-GPIO).
+For LED configuration, please refer to the previous article [**HAL Development Notes - GPIO**](https://wiki-power.com/en/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89-GPIO).
 
 After downloading and burning, we can see that the LED switches its state according to the preset 500ms period (that is, an overflow event occurs every 500ms, and we flip the LED in the callback function).
 

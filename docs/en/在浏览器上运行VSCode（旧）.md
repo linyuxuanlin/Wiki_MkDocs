@@ -1,6 +1,6 @@
 # Running VS Code on a Browser (Old Version)
 
-Note: For deploying code-server version ≥v3.8.0, please refer to [**How to Run VS Code on iPad**](https://wiki-power.com/如何在iPad上运行VSCode) for a simpler method.
+Note: For deploying code-server version ≥v3.8.0, please refer to [**How to Run VS Code on iPad**](https://wiki-power.com/en/如何在iPad上运行VSCode) for a simpler method.
 
 ## Background
 

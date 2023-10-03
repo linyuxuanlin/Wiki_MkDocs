@@ -2,7 +2,7 @@
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210117142759.jpg)
 
-> For updated information, please refer to [**Personal Onboarding Workflow (Windows)**](https://wiki-power.com/Personal_Onboarding_Workflow_%28Windows%29/)
+> For updated information, please refer to [**Personal Onboarding Workflow (Windows)**](https://wiki-power.com/en/Personal_Onboarding_Workflow_%28Windows%29/)
 
 You just installed a Windows system, what are the necessary settings and software to install?
 
@@ -21,7 +21,7 @@ You just installed a Windows system, what are the necessary settings and softwar
 - Update system and drivers
 - Configure browser (Edge Canary)
   - Extensions
-  - [**Enable Chrome (Edge) multi-threaded download**](https://wiki-power.com/%E5%BC%80%E5%90%AFChrome%EF%BC%88Edge%EF%BC%89%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BD)
+  - [**Enable Chrome (Edge) multi-threaded download**](https://wiki-power.com/en/%E5%BC%80%E5%90%AFChrome%EF%BC%88Edge%EF%BC%89%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BD)
 - User Account Control Settings: Set to Never Notify
 - Customize taskbar
 - Configure personalization settings

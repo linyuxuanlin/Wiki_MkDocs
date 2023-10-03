@@ -36,7 +36,7 @@ APP_VERSION=latest
 APP_PORT=xxxx # Customize the access port, choose one that is not already in use
 ```
 
-If you have a NAS, you can also mount the storage space on the NAS through the NFS protocol to save server space for storing podcasts. For details, please refer to [Mounting Synology NAS Hard Disk Expansion Space (NFS) under Linux](https://wiki-power.com/Linux%E4%B8%8B%E6%8C%82%E8%BD%BD%E7%BE%A4%E6%99%96NAS%E7%A1%AC%E7%9B%98%E6%8B%93%E5%B1%95%E7%A9%BA%E9%97%B4%EF%BC%88NFS%EF%BC%89/).
+If you have a NAS, you can also mount the storage space on the NAS through the NFS protocol to save server space for storing podcasts. For details, please refer to [Mounting Synology NAS Hard Disk Expansion Space (NFS) under Linux](https://wiki-power.com/en/Linux%E4%B8%8B%E6%8C%82%E8%BD%BD%E7%BE%A4%E6%99%96NAS%E7%A1%AC%E7%9B%98%E6%8B%93%E5%B1%95%E7%A9%BA%E9%97%B4%EF%BC%88NFS%EF%BC%89/).
 
 Finally, execute the `docker compose up -d` command in the same directory as `compose.yaml` to start the orchestrated container.
 

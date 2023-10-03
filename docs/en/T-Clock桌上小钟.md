@@ -37,7 +37,7 @@ Note: Custom hardware projects are in progress~
 
 ## References and Acknowledgements
 
-- [T-Clock Desktop Clock (Old)](https://wiki-power.com/unlist/T-Clock桌上小钟（旧）)
+- [T-Clock Desktop Clock (Old)](https://wiki-power.com/en/unlist/T-Clock桌上小钟（旧）)
 - [Seniverse](https://www.seniverse.com/)
 - [ESP8266 Accesses Seniverse API [Program + Detailed Explanation]](https://www.bilibili.com/video/av89935868/?spm_id_from=333.788.b_636f6d6d656e74.4)
 - [ESP8266 + OLED = Network Clock and Future 3-Day Weather Forecast](https://www.bilibili.com/video/av88920975/)

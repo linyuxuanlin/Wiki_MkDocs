@@ -7,7 +7,7 @@
 After trying various SSH tools, I finally returned to the good-looking and powerful VS Code interface. 
 This article only records for future reference, and some content is not explained in detail. For more tutorials, please refer to the link at the end of the article.
 
-VS Code Basic Configuration: [**VS Code Productivity Guide - Environment Configuration**](https://wiki-power.com/VSCode生产力指南-环境配置)
+VS Code Basic Configuration: [**VS Code Productivity Guide - Environment Configuration**](https://wiki-power.com/en/VSCode生产力指南-环境配置)
 
 ## Extension Configuration
 

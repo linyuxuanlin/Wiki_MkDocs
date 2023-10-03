@@ -1,6 +1,6 @@
 # Implementing HTTPS Access with Synology's Built-in Reverse Proxy
 
-First, you need an external IP or domain name to access Synology, and you have already applied for an SSL certificate. For detailed instructions, please refer to the article [**Using acme.sh to Automatically Apply Domain Certificates (Synology Docker)**](https://wiki-power.com/%E5%9F%BA%E4%BA%8Eacme.sh%E8%87%AA%E5%8A%A8%E7%94%B3%E8%AF%B7%E5%9F%9F%E5%90%8D%E8%AF%81%E4%B9%A6%EF%BC%88%E7%BE%A4%E6%99%96Docker%EF%BC%89).
+First, you need an external IP or domain name to access Synology, and you have already applied for an SSL certificate. For detailed instructions, please refer to the article [**Using acme.sh to Automatically Apply Domain Certificates (Synology Docker)**](https://wiki-power.com/en/%E5%9F%BA%E4%BA%8Eacme.sh%E8%87%AA%E5%8A%A8%E7%94%B3%E8%AF%B7%E5%9F%9F%E5%90%8D%E8%AF%81%E4%B9%A6%EF%BC%88%E7%BE%A4%E6%99%96Docker%EF%BC%89).
 
 ## Configuring Reverse Proxy
 

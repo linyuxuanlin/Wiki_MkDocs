@@ -43,7 +43,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 
 ## External Interrupt Button Controls LED
 
-Before proceeding to the next experiment, various parameters such as serial port download and clock need to be configured in CubeMX. For specific steps, please refer to the method in the article [**HAL Library Development Notes - Environment Configuration**](https://wiki-power.com/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE).
+Before proceeding to the next experiment, various parameters such as serial port download and clock need to be configured in CubeMX. For specific steps, please refer to the method in the article [**HAL Library Development Notes - Environment Configuration**](https://wiki-power.com/en/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE).
 
 ### Configuring Interrupts in CubeMX
 

@@ -55,7 +55,7 @@ HAL_GPIO_TogglePin(GPIOx, GPIO_Pin);
 ## Light up LED
 
 Before proceeding to the next experiment, you need to configure various parameters such as serial port download and clock in CubeMX.  
-This will not be repeated here. Please refer to the method in the article [**HAL Library Development Notes - Environment Configuration**](https://wiki-power.com/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE) for configuration.
+This will not be repeated here. Please refer to the method in the article [**HAL Library Development Notes - Environment Configuration**](https://wiki-power.com/en/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE) for configuration.
 
 ### Configure GPIO in CubeMX
 

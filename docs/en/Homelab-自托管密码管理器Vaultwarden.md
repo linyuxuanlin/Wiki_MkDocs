@@ -36,7 +36,7 @@ Finally, execute the `docker compose up -d` command in the same directory as `co
 
 ## Configuration Instructions
 
-Vaultwarden requires https login by default, and it is recommended to use a reverse proxy (the setup of a reverse proxy server can refer to the article [Homelab - Reverse Proxy Certificate Management Panel Nginx Proxy Manager](https://wiki-power.com/Homelab-%E5%8F%8D%E4%BB%A3%E8%AF%81%E4%B9%A6%E7%AE%A1%E7%90%86%E9%9D%A2%E6%9D%BFNginxProxyManager/)).
+Vaultwarden requires https login by default, and it is recommended to use a reverse proxy (the setup of a reverse proxy server can refer to the article [Homelab - Reverse Proxy Certificate Management Panel Nginx Proxy Manager](https://wiki-power.com/en/Homelab-%E5%8F%8D%E4%BB%A3%E8%AF%81%E4%B9%A6%E7%AE%A1%E7%90%86%E9%9D%A2%E6%9D%BFNginxProxyManager/)).
 
 When using browser extensions, desktop and mobile apps, you need to click on settings on the login page and configure the server URL to use the self-hosted service normally.
 

@@ -41,7 +41,7 @@ APP_VERSION=latest
 APP_PORT=xxxx # Custom access port, choose one that is not occupied
 ```
 
-If you have a NAS, you can also mount the storage space on the NAS through the NFS protocol, store the music on the NAS to save server space, please refer to [**Mount Synology NAS hard disk expansion space (NFS) under Linux**](https://wiki-power.com/Linux%E4%B8%8B%E6%8C%82%E8%BD%BD%E7%BE%A4%E6%99%96NAS%E7%A1%AC%E7%9B%98%E6%8B%93%E5%B1%95%E7%A9%BA%E9%97%B4%EF%BC%88NFS%EF%BC%89/) for details.
+If you have a NAS, you can also mount the storage space on the NAS through the NFS protocol, store the music on the NAS to save server space, please refer to [**Mount Synology NAS hard disk expansion space (NFS) under Linux**](https://wiki-power.com/en/Linux%E4%B8%8B%E6%8C%82%E8%BD%BD%E7%BE%A4%E6%99%96NAS%E7%A1%AC%E7%9B%98%E6%8B%93%E5%B1%95%E7%A9%BA%E9%97%B4%EF%BC%88NFS%EF%BC%89/) for details.
 
 Finally, execute the command `docker compose up -d` in the same directory as `compose.yaml` to start the orchestrated container.
 

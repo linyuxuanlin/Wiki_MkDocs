@@ -81,11 +81,11 @@ Equivalent model of common mode inductor:
 
 ### Magnetic Beads
 
-For the introduction and selection of magnetic beads, please refer to the [**Basic Components - Inductors and Magnetic Beads · Magnetic Beads**](https://wiki-power.com/%E5%9F%BA%E6%9C%AC%E5%85%83%E5%99%A8%E4%BB%B6-%E7%94%B5%E6%84%9F%E4%B8%8E%E7%A3%81%E7%8F%A0#%E7%A3%81%E7%8F%A0) section.
+For the introduction and selection of magnetic beads, please refer to the [**Basic Components - Inductors and Magnetic Beads · Magnetic Beads**](https://wiki-power.com/en/%E5%9F%BA%E6%9C%AC%E5%85%83%E5%99%A8%E4%BB%B6-%E7%94%B5%E6%84%9F%E4%B8%8E%E7%A3%81%E7%8F%A0#%E7%A3%81%E7%8F%A0) section.
 
 ### Filter Capacitors
 
-For the introduction and selection of capacitors, please refer to the [**Basic Components - Capacitors**](https://wiki-power.com/%E5%9F%BA%E6%9C%AC%E5%85%83%E5%99%A8%E4%BB%B6-%E7%94%B5%E5%AE%B9) section.
+For the introduction and selection of capacitors, please refer to the [**Basic Components - Capacitors**](https://wiki-power.com/en/%E5%9F%BA%E6%9C%AC%E5%85%83%E5%99%A8%E4%BB%B6-%E7%94%B5%E5%AE%B9) section.
 
 ## EMC Design for PCB 🚧
 

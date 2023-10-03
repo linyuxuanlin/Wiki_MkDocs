@@ -20,7 +20,7 @@ Friendly reminder: try to extract all the components required for your own proje
 - [**JLCSMT_LIB**](https://gitee.com/JLC_SMT/JLCSMT_LIB): A standard integrated library provided by JiaLiChuang, including all components that JiaLiChuang can SMT. Using this integrated library will ensure better compatibility when making boards/SMT.
 - [**Hare_Library**](https://github.com/linyuxuanlin/Power_Lib_Altium/tree/master/Other_Libs/Hare_Library): A schematic library/packaging library compiled by Bin Ge, covering most of the components required by the team's hardware.
 
-How to install library files: refer to [**Altium Designer Install Library Files**](https://wiki-power.com/AltiumDesigner安装库文件)
+How to install library files: refer to [**Altium Designer Install Library Files**](https://wiki-power.com/en/AltiumDesigner安装库文件)
 
 ### Uncommon Components
 
@@ -114,17 +114,17 @@ The basic process for designing a circuit board from scratch is as follows:
       - Fix mounting holes
         - M3 screw holes: inner diameter **3.1** mm, outer diameter **4** mm
    4. Arrange components
-      - Refer to [**PCB Component Layout Specification**](https://wiki-power.com/PCB%E5%85%83%E4%BB%B6%E5%B8%83%E5%B1%80%E8%A7%84%E8%8C%83)
+      - Refer to [**PCB Component Layout Specification**](https://wiki-power.com/en/PCB%E5%85%83%E4%BB%B6%E5%B8%83%E5%B1%80%E8%A7%84%E8%8C%83)
    5. Route traces
       - Set routing rules
-        - Refer to [**PCB Routing Specification**](https://wiki-power.com/PCB%E5%B8%83%E7%BA%BF%E8%A7%84%E8%8C%83)
+        - Refer to [**PCB Routing Specification**](https://wiki-power.com/en/PCB%E5%B8%83%E7%BA%BF%E8%A7%84%E8%8C%83)
       - **Do not enable auto-routing!**
       - **Enable teardrop function**
    6. Add text labels (pin labels / copyright / misleading text)
       - Place on silkscreen layer (top / bottom)
       - If placing on bottom layer, mirror first
    7. Apply copper pour (**PG**)
-      - Refer to [**PCB Routing Specification**](https://wiki-power.com/PCB%E5%B8%83%E7%BA%BF%E8%A7%84%E8%8C%83)
+      - Refer to [**PCB Routing Specification**](https://wiki-power.com/en/PCB%E5%B8%83%E7%BA%BF%E8%A7%84%E8%8C%83)
 4. PCB fabrication
    1. Save project
    2. Compress the **.pcb** file (although exporting Gerber is preferred)
@@ -155,7 +155,7 @@ Refer to [**Adding a Logo**](https://seujxh.wordpress.com/2018/10/03/logo%E6%B7%
 
 ### Using Git to Manage Projects
 
-Refer to [**Git Usage Notes for Altium Designer**](https://wiki-power.com/AD%E4%BD%BF%E7%94%A8Git%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9) for more information.
+Refer to [**Git Usage Notes for Altium Designer**](https://wiki-power.com/en/AD%E4%BD%BF%E7%94%A8Git%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9) for more information.
 
 ## Summary
 

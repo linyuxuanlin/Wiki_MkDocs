@@ -42,7 +42,7 @@ In this YAML file, two instances, `web` and `database`, are defined and started.
 
 ## Installation and Configuration of Docker Compose
 
-Docker Compose depends on Docker Engine, so please make sure you have installed Docker Engine environment first. If you haven't installed it yet, you can refer to the previous tutorial: [**Docker Basics**](https://wiki-power.com/Docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/), to install Docker Engine.
+Docker Compose depends on Docker Engine, so please make sure you have installed Docker Engine environment first. If you haven't installed it yet, you can refer to the previous tutorial: [**Docker Basics**](https://wiki-power.com/en/Docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/), to install Docker Engine.
 
 If you are using the Windows/MacOS/Linux desktop client, you do not need to install Docker Compose separately, as it is already included. The following introduces the installation method of Docker Compose under Linux Docker Engine environment.
 

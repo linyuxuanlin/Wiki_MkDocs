@@ -85,7 +85,7 @@ Return value: 0 (resuming), 1 (resumed)
 
 ### Configuring DMA in CubeMX
 
-For the configuration of the UART section, please refer to the article [**HAL Library Development Notes - Serial Communication**](https://wiki-power.com/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1).
+For the configuration of the UART section, please refer to the article [**HAL Library Development Notes - Serial Communication**](https://wiki-power.com/en/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1).
 
 After configuring the USART pins and NVIC interrupts, switch to the `DMA Settings` tab and configure as shown in the following figure:
 

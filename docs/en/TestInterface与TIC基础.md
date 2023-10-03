@@ -118,7 +118,7 @@ The TurnAround Vector can be used to change the direction of TBUS transmission b
 
 ---
 
-The above is some basic knowledge about Test Interface and TIC. For the specific operation of TIC on AHB, please refer to the next article [**TIC on AHB**](https://wiki-power.com/AHB%E4%B8%8A%E7%9A%84TIC) (in progress...).
+The above is some basic knowledge about Test Interface and TIC. For the specific operation of TIC on AHB, please refer to the next article [**TIC on AHB**](https://wiki-power.com/en/AHB%E4%B8%8A%E7%9A%84TIC) (in progress...).
 
 ## References and Acknowledgments
 

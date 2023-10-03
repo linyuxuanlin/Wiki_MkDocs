@@ -1,6 +1,6 @@
 # HAL Library Development Notes - I2C Communication (MPU6050)
 
-This article is based on the self-developed RobotCtrl development kit, with the STM32F407ZET6 microcontroller core, and uses the MPU6050 module to explain the HAL library's I2C communication method. For the development kit's schematic and detailed introduction, please refer to [**RobotCtrl - STM32 Universal Development Kit**](https://wiki-power.com/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
+This article is based on the self-developed RobotCtrl development kit, with the STM32F407ZET6 microcontroller core, and uses the MPU6050 module to explain the HAL library's I2C communication method. For the development kit's schematic and detailed introduction, please refer to [**RobotCtrl - STM32 Universal Development Kit**](https://wiki-power.com/en/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
 
 ## Basic Principles
 
@@ -8,7 +8,7 @@ This article is based on the self-developed RobotCtrl development kit, with the 
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026174634.png)
 
-The basic principle of I2C communication can be found in the article [**Communication Protocol - I2C**](https://wiki-power.com/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-I2C).
+The basic principle of I2C communication can be found in the article [**Communication Protocol - I2C**](https://wiki-power.com/en/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-I2C).
 
 ### MPU6050 Module
 
@@ -411,7 +411,7 @@ printf("XAngle: %.2f°\t", MPU6050.KalmanAngleX);
 ## References and Acknowledgements
 
 - [leech001/MPU6050](https://github.com/leech001/MPU6050)
-- [Communication Protocol - I2C](https://wiki-power.com/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-I2C)
+- [Communication Protocol - I2C](https://wiki-power.com/en/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-I2C)
 
 > Original: <https://wiki-power.com/>  
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.

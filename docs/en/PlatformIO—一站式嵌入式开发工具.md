@@ -25,7 +25,7 @@ In short, it's time to abandon various IDEs (such as Arduino IDE/Keil/IAR) and e
 
 ## Download and Installation
 
-First, make sure you have VSCode installed (you can jump to [**this article**](https://wiki-power.com/VSCode生产力指南-环境配置) for VSCode download and installation).
+First, make sure you have VSCode installed (you can jump to [**this article**](https://wiki-power.com/en/VSCode生产力指南-环境配置) for VSCode download and installation).
 
 Search and install Python and PlatformIO IDE in the `Extensions` (`Ctrl + Shift + X`) section.
 

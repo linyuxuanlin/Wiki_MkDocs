@@ -173,7 +173,7 @@ docker pull linyuxuanlin/tinypng-docker:latest
 
 ## References and Acknowledgments
 
-- [Documentation](https://wiki-power.com/Homelab-%E9%AB%98%E8%B4%A8%E9%87%8F%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9%E5%B7%A5%E5%85%B7TinyPNG-docker)
+- [Documentation](https://wiki-power.com/en/Homelab-%E9%AB%98%E8%B4%A8%E9%87%8F%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9%E5%B7%A5%E5%85%B7TinyPNG-docker)
 - [GitHub repo](https://github.com/linyuxuanlin/Dockerfiles/tree/main/tinypng-docker)
 - [Docker Hub](https://hub.docker.com/r/linyuxuanlin/tinypng-docker)
 

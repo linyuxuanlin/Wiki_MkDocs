@@ -6,7 +6,7 @@ Note: This tutorial is based on code-server v3.8.0 and CentOS 8.2.
 
 It is recommended to install code-server service using Docker compose.  
 With just one command, you can deploy it without configuring background running and it comes with Git and other environments.  
-See: [**Homelab - Online Code Editor code-server**](https://wiki-power.com/Homelab-%E5%9C%A8%E7%BA%BF%E4%BB%A3%E7%A0%81%E7%BC%96%E8%BE%91%E5%99%A8code-server)
+See: [**Homelab - Online Code Editor code-server**](https://wiki-power.com/en/Homelab-%E5%9C%A8%E7%BA%BF%E4%BB%A3%E7%A0%81%E7%BC%96%E8%BE%91%E5%99%A8code-server)
 
 If you don't want to deploy it using Docker compose, please continue reading.
 
@@ -28,7 +28,7 @@ In the new version (≥v3.8.0), you can directly use the script to install:
 curl -fsSL https://code-server.dev/install.sh | sh
 ```
 
-If you find that it cannot be downloaded for a long time, it is probably due to DNS pollution. Refer to [**GitHub Change Host**](https://wiki-power.com/GitHub改Host) to solve it.
+If you find that it cannot be downloaded for a long time, it is probably due to DNS pollution. Refer to [**GitHub Change Host**](https://wiki-power.com/en/GitHub改Host) to solve it.
 
 ## Run code-server
 
@@ -108,8 +108,8 @@ Purchase a domain name and add the server IP address in DNS resolution using the
 
 ## References and Acknowledgments
 
-- [Running VSCode in the browser (old)](https://wiki-power.com/在浏览器上运行VSCode（旧）)
-- [GitHub Host Modification](https://wiki-power.com/GitHub改Host)
+- [Running VSCode in the browser (old)](https://wiki-power.com/en/在浏览器上运行VSCode（旧）)
+- [GitHub Host Modification](https://wiki-power.com/en/GitHub改Host)
 - [Installation and Usage of screen](https://www.jianshu.com/p/420569381e74)
 - [Setup Guide · cdr/code-server](https://github.com/cdr/code-server/blob/v3.8.0/doc/guide.md)
 

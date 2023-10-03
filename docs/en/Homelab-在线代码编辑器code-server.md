@@ -51,7 +51,7 @@ Finally, execute the `docker compose up -d` command in the same directory as `co
 
 ### Configure Git
 
-After installation, if you need to use Git, please refer to the article [**Git Learning Notes**](https://wiki-power.com/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE) for initializing configuration of username and email.
+After installation, if you need to use Git, please refer to the article [**Git Learning Notes**](https://wiki-power.com/en/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE) for initializing configuration of username and email.
 
 ### Read and Write Permission Issues
 

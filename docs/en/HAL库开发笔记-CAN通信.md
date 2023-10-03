@@ -1,6 +1,6 @@
 # HAL Library Development Notes - CAN Communication 🚧
 
-This article is based on the self-developed RobotCtrl development kit, with the MCU core being STM32F407ZET6 and the CAN communication using TJA1050 chip. For schematic and detailed introduction, please refer to [**RobotCtrl - STM32 Universal Development Kit**](https://wiki-power.com/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
+This article is based on the self-developed RobotCtrl development kit, with the MCU core being STM32F407ZET6 and the CAN communication using TJA1050 chip. For schematic and detailed introduction, please refer to [**RobotCtrl - STM32 Universal Development Kit**](https://wiki-power.com/en/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
 
 ## Simple Steps for Loopback Test
 
