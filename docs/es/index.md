@@ -24,17 +24,15 @@ hide:
 
 ¡Hola! Bienvenido a mi biblioteca de conocimientos.
 
-[![badge](https://img.shields.io/badge/知识库-Wiki-34ABE0?&style=flat-square){ loading=lazy }](https://wiki-power.com/)
-[![badge](https://img.shields.io/badge/友链%20%26%20导航站-Nav-yellow?&style=flat-square){ loading=lazy }](https://nav.wiki-power.com/)
-[![badge](https://img.shields.io/badge/书摘-Digest-green?&style=flat-square){ loading=lazy }](https://digest.wiki-power.com/)
-[![badge](https://img.shields.io/badge/只言片语-Memos-orange?&style=flat-square){ loading=lazy }](https://memos.wiki-power.com/)
-[![badge](https://img.shields.io/badge/硬件作品集-Works-a5b0ed?&style=flat-square){ loading=lazy }](https://works.wiki-power.com/)
+[![badge](https://img.shields.io/badge/Wiki-Wiki-34ABE0?&style=flat-square){ loading=lazy }](https://wiki-power.com/)
+[![badge](https://img.shields.io/badge/Links%20%26%20Navigation-Nav-yellow?&style=flat-square){ loading=lazy }](https://nav.wiki-power.com/)
+[![badge](https://img.shields.io/badge/Digest-Digest-green?&style=flat-square){ loading=lazy }](https://digest.wiki-power.com/)
+[![badge](https://img.shields.io/badge/Memos-Memos-orange?&style=flat-square){ loading=lazy }](https://memos.wiki-power.com/)
+[![badge](https://img.shields.io/badge/Works-Works-a5b0ed?&style=flat-square){ loading=lazy }](https://works.wiki-power.com/)
 
-Para evitar olvidos y facilitar el intercambio, aquí recopilo conocimientos.
+Para evitar olvidos y facilitar el intercambio, aquí recopilo conocimientos.  
 ¡Por favor, siéntete libre de navegar!
 
 [Hardware y semiconductores](/信号完整性-基础概念){ .md-button }
 [Desarrollo de software y sistemas embebidos](/HAL库开发笔记-串口通信){ .md-button }
 [Vida y experimentos](/搭建属于自己的HomeLab){ .md-button }
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
