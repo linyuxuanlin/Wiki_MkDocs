@@ -64,7 +64,7 @@ En este artículo, se describe cómo implementar Ethernet en un microcontrolador
 
 ## Configuración de hardware
 
-Para la implementación de Ethernet en STM32, se utiliza el chip PHY LAN8720A. La configuración de hardware se puede encontrar en el siguiente enlace: [RobotCtrl - STM32 通用开发套件](https://wiki-power.com/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
+Para la implementación de Ethernet en STM32, se utiliza el chip PHY LAN8720A. La configuración de hardware se puede encontrar en el siguiente enlace: [RobotCtrl - STM32 通用开发套件](https://wiki-power.com/es/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
 
 ## Configuración de software
 

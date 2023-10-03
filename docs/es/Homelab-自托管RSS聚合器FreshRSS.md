@@ -48,7 +48,7 @@ Se recomienda la lista de blogs en chino de saveweb [**rss-list**](https://githu
 
 Se recomienda la aplicación FeedMe (Android) y NetNewsWire (iOS) para dispositivos móviles.
 
-Para obtener más información sobre RSS, consulte el artículo [**RSS - Una forma eficiente de leer**](https://wiki-power.com/RSS-%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E9%98%85%E8%AF%BB%E6%96%B9%E5%BC%8F/) (en chino).
+Para obtener más información sobre RSS, consulte el artículo [**RSS - Una forma eficiente de leer**](https://wiki-power.com/es/RSS-%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E9%98%85%E8%AF%BB%E6%96%B9%E5%BC%8F/) (en chino).
 
 ## Referencias y agradecimientos
 

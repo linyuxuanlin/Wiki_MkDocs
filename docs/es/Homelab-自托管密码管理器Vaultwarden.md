@@ -36,7 +36,7 @@ Por último, ejecute el comando `docker compose up -d` en el mismo directorio qu
 
 ## Instrucciones de configuración
 
-Vaultwarden requiere https para iniciar sesión de forma predeterminada, se recomienda utilizar un proxy inverso (consulte el artículo [**Homelab - Panel de gestión de certificados de proxy inverso Nginx Proxy Manager**](https://wiki-power.com/Homelab-%E5%8F%8D%E4%BB%A3%E8%AF%81%E4%B9%A6%E7%AE%A1%E7%90%86%E9%9D%A2%E6%9D%BFNginxProxyManager/) para obtener información sobre cómo configurar un servidor de proxy inverso).
+Vaultwarden requiere https para iniciar sesión de forma predeterminada, se recomienda utilizar un proxy inverso (consulte el artículo [**Homelab - Panel de gestión de certificados de proxy inverso Nginx Proxy Manager**](https://wiki-power.com/es/Homelab-%E5%8F%8D%E4%BB%A3%E8%AF%81%E4%B9%A6%E7%AE%A1%E7%90%86%E9%9D%A2%E6%9D%BFNginxProxyManager/) para obtener información sobre cómo configurar un servidor de proxy inverso).
 
 Cuando se utiliza la extensión del navegador, la aplicación de escritorio o la aplicación móvil, es necesario hacer clic en Configuración en la página de inicio de sesión y configurar la URL del servidor para utilizar el servicio autohospedado correctamente.
 

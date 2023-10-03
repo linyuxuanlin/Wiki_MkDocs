@@ -1,6 +1,6 @@
 # Notas de desarrollo de la biblioteca HAL - Comunicación CAN 🚧
 
-Este artículo se basa en el kit de desarrollo RobotCtrl, con núcleo de microcontrolador STM32F407ZET6 y uso del chip TJA1050 para la comunicación CAN. Para obtener el esquema y una introducción detallada, consulte [**RobotCtrl - Kit de desarrollo STM32 universal**](https://wiki-power.com/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
+Este artículo se basa en el kit de desarrollo RobotCtrl, con núcleo de microcontrolador STM32F407ZET6 y uso del chip TJA1050 para la comunicación CAN. Para obtener el esquema y una introducción detallada, consulte [**RobotCtrl - Kit de desarrollo STM32 universal**](https://wiki-power.com/es/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
 
 ## Pasos simples para la prueba de bucle de retorno
 

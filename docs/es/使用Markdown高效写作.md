@@ -11,7 +11,7 @@ Cuando el tiempo dedicado a la maquetación supera al de la escritura en sí mis
 ## Herramientas
 
 En primer lugar, necesitarás un editor que admita Markdown. Recomiendo usar VS Code o Typora. 
-Para la instalación y configuración del software, puedes consultar el tutorial que he escrito: [**Guía de productividad de VS Code - Configuración del entorno**](https://wiki-power.com/VSCode生产力指南-环境配置)
+Para la instalación y configuración del software, puedes consultar el tutorial que he escrito: [**Guía de productividad de VS Code - Configuración del entorno**](https://wiki-power.com/es/VSCode生产力指南-环境配置)
 
 ## Sintaxis común
 
@@ -244,7 +244,7 @@ Si estás usando VS Code, puedes usar [**Markdown PDF**](https://marketplace.vis
 
 WeChat utiliza un editor de texto enriquecido, pero puedes usar la herramienta web [**MD2WeChat**](https://md2wechat.wiki-power.com/) para convertir y renderizar tu Markdown y luego pegarlo en el editor de WeChat.
 
-Para más detalles, consulta el artículo [**Cómo escribir de manera eficiente con Markdown**](https://wiki-power.com/%E5%A6%82%E4%BD%95%E7%94%A8Markdown%E5%86%99%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0) (en chino).
+Para más detalles, consulta el artículo [**Cómo escribir de manera eficiente con Markdown**](https://wiki-power.com/es/%E5%A6%82%E4%BD%95%E7%94%A8Markdown%E5%86%99%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0) (en chino).
 
 ## Referencias y agradecimientos
 

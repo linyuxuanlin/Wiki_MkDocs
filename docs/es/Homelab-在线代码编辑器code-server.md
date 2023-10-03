@@ -51,7 +51,7 @@ Finalmente, ejecuta el comando `docker compose up -d` en el mismo directorio que
 
 ### Configurar Git
 
-Después de la instalación, si necesitas usar Git, configura tu nombre de usuario y correo electrónico. Consulta el artículo [**Notas de aprendizaje de Git**](https://wiki-power.com/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE) para obtener más información.
+Después de la instalación, si necesitas usar Git, configura tu nombre de usuario y correo electrónico. Consulta el artículo [**Notas de aprendizaje de Git**](https://wiki-power.com/es/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE) para obtener más información.
 
 ### Problemas de permisos de lectura y escritura
 

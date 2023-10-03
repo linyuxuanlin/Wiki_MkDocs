@@ -1,6 +1,6 @@
 # Ejecutar VS Code en el navegador (antiguo)
 
-Nota: Para la implementación de code-server v3.8.0 o superior, consulte [**Cómo ejecutar VS Code en iPad**](https://wiki-power.com/如何在iPad上运行VSCode) para obtener un método más simple.
+Nota: Para la implementación de code-server v3.8.0 o superior, consulte [**Cómo ejecutar VS Code en iPad**](https://wiki-power.com/es/如何在iPad上运行VSCode) para obtener un método más simple.
 
 ## Antecedentes
 

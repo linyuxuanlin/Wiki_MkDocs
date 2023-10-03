@@ -1,14 +1,14 @@
 # Notas de desarrollo de la biblioteca HAL - Comunicación por puerto serie
 
-Este artículo se basa en el kit de desarrollo RobotCtrl, con núcleo de microcontrolador STM32F407ZET6 y chip SP3232EEN para comunicación RS-232. Para ver el esquema y una introducción detallada, consulte [**RobotCtrl - Kit de desarrollo STM32 universal**](https://wiki-power.com/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
+Este artículo se basa en el kit de desarrollo RobotCtrl, con núcleo de microcontrolador STM32F407ZET6 y chip SP3232EEN para comunicación RS-232. Para ver el esquema y una introducción detallada, consulte [**RobotCtrl - Kit de desarrollo STM32 universal**](https://wiki-power.com/es/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
 
 ## Principios básicos
 
-Para conocer los principios básicos de la comunicación por puerto serie, consulte el artículo [**Protocolo de comunicación - Comunicación por puerto serie**](https://wiki-power.com/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1) (en chino).
+Para conocer los principios básicos de la comunicación por puerto serie, consulte el artículo [**Protocolo de comunicación - Comunicación por puerto serie**](https://wiki-power.com/es/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1) (en chino).
 
 ## Experimento de comunicación por puerto serie
 
-Antes de realizar el siguiente experimento, es necesario configurar varios parámetros, como la descarga por puerto serie y el reloj, en CubeMX. Para obtener información detallada, consulte el artículo [**Notas de desarrollo de la biblioteca HAL - Configuración del entorno**](https://wiki-power.com/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE) (en chino).
+Antes de realizar el siguiente experimento, es necesario configurar varios parámetros, como la descarga por puerto serie y el reloj, en CubeMX. Para obtener información detallada, consulte el artículo [**Notas de desarrollo de la biblioteca HAL - Configuración del entorno**](https://wiki-power.com/es/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE) (en chino).
 
 ### Configuración del puerto serie en CubeMX
 
@@ -91,7 +91,7 @@ HAL_UART_Transmit(&huart1, (uint8_t*) aTxBuffer, sizeof(aTxBuffer) - 1, 0xFFFF);
 /* USER CODE END 2 */
 ```
 
-Si necesita redirigir printf (utilice la función printf para la función de salida de la UART en STM32), consulte [**STM32CubeIDE Serial Redirect (printf) y salida de punto flotante**](https://wiki-power.com/STM32CubeIDE%E4%B8%B2%E5%8F%A3%E9%87%8D%E5%AE%9A%E5%90%91%EF%BC%88printf%EF%BC%89%E5%8F%8A%E8%BE%93%E5%87%BA%E6%B5%AE%E7%82%B9%E5%9E%8B).
+Si necesita redirigir printf (utilice la función printf para la función de salida de la UART en STM32), consulte [**STM32CubeIDE Serial Redirect (printf) y salida de punto flotante**](https://wiki-power.com/es/STM32CubeIDE%E4%B8%B2%E5%8F%A3%E9%87%8D%E5%AE%9A%E5%90%91%EF%BC%88printf%EF%BC%89%E5%8F%8A%E8%BE%93%E5%87%BA%E6%B5%AE%E7%82%B9%E5%9E%8B).
 
 ### Descarga y verificación
 

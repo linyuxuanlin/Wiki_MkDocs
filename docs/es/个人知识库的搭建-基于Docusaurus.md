@@ -1,6 +1,6 @@
 # Construyendo una base de conocimientos personal - Basado en Docusaurus
 
-Continuando con el artículo anterior [**Por qué necesitas una base de conocimientos**](https://wiki-power.com/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%A0%E9%9C%80%E8%A6%81%E4%B8%80%E4%B8%AA%E7%9F%A5%E8%AF%86%E5%BA%93), este artículo detallará la construcción de una base de conocimientos basada en el marco de trabajo Docusaurus.
+Continuando con el artículo anterior [**Por qué necesitas una base de conocimientos**](https://wiki-power.com/es/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%A0%E9%9C%80%E8%A6%81%E4%B8%80%E4%B8%AA%E7%9F%A5%E8%AF%86%E5%BA%93), este artículo detallará la construcción de una base de conocimientos basada en el marco de trabajo Docusaurus.
 
 Antes de comenzar, asegúrese de tener lo siguiente:
 
@@ -27,7 +27,7 @@ Después de instalar el software, puede instalar los siguientes dos complementos
 
 Es posible que deba reiniciar VS Code después de instalar los complementos.
 
-Para obtener instrucciones de configuración más detalladas, consulte [**Guía de productividad de VS Code - Configuración del entorno**](https://wiki-power.com/VSCode%E7%94%9F%E4%BA%A7%E5%8A%9B%E6%8C%87%E5%8D%97-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE) (en chino).
+Para obtener instrucciones de configuración más detalladas, consulte [**Guía de productividad de VS Code - Configuración del entorno**](https://wiki-power.com/es/VSCode%E7%94%9F%E4%BA%A7%E5%8A%9B%E6%8C%87%E5%8D%97-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE) (en chino).
 
 ### Instalación del marco de trabajo Docusaurus
 
@@ -86,7 +86,7 @@ git config --global user.email "email@example.com"
 
 Aquí, debe reemplazar `"username"` con su nombre de usuario de Git para enviar confirmaciones, se recomienda que sea el mismo que el nombre de usuario de la cuenta que acaba de registrar en GitHub. Por ejemplo, lo reemplacé con `linyuxuanlin`. `"email@example.com"` también debe reemplazarse con el correo electrónico registrado en GitHub.
 
-Para obtener más información sobre la configuración, consulte este artículo [**Git学习笔记**](https://wiki-power.com/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0).
+Para obtener más información sobre la configuración, consulte este artículo [**Git学习笔记**](https://wiki-power.com/es/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0).
 
 ### Configurar el repositorio del proyecto en VS Code
 
@@ -106,7 +106,7 @@ Después de completar el registro, haga clic en `New Project` en la página web 
 
 ## Conclusión
 
-En este artículo, hemos implementado la implementación local y en la nube de una base de conocimientos basada en Docusaurus. Si tiene algún problema durante el proceso, puede ponerse en contacto conmigo a través de [**WeChat**](https://wiki-power.com/WeChat). En el próximo artículo (por actualizar), explicaré en detalle la configuración personalizada.
+En este artículo, hemos implementado la implementación local y en la nube de una base de conocimientos basada en Docusaurus. Si tiene algún problema durante el proceso, puede ponerse en contacto conmigo a través de [**WeChat**](https://wiki-power.com/es/WeChat). En el próximo artículo (por actualizar), explicaré en detalle la configuración personalizada.
 
 ## Referencias y agradecimientos
 

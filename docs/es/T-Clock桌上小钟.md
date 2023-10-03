@@ -37,7 +37,7 @@ Nota: ¡El proyecto de hardware personalizado está en camino!
 
 ## Referencias y agradecimientos
 
-- [T-Clock Reloj de escritorio (antiguo)](https://wiki-power.com/unlist/T-Clock桌上小钟（旧）)
+- [T-Clock Reloj de escritorio (antiguo)](https://wiki-power.com/es/unlist/T-Clock桌上小钟（旧）)
 - [Seniverse](https://www.seniverse.com/)
 - [Conexión de ESP8266 a la API de Seniverse (programa + explicación detallada)](https://www.bilibili.com/video/av89935868/?spm_id_from=333.788.b_636f6d6d656e74.4)
 - [ESP8266 + OLED = Reloj de red y pronóstico del tiempo para los próximos 3 días](https://www.bilibili.com/video/av88920975/)

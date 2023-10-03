@@ -24,7 +24,7 @@ hide:
 
 ¡Hola! Bienvenido a mi biblioteca de conocimientos.
 
-[![badge](https://img.shields.io/badge/Wiki-Wiki-34ABE0?&style=flat-square){ loading=lazy }](https://wiki-power.com/)
+[![badge](https://img.shields.io/badge/Wiki-Wiki-34ABE0?&style=flat-square){ loading=lazy }](https://wiki-power.com/es/)
 [![badge](https://img.shields.io/badge/Links%20%26%20Navigation-Nav-yellow?&style=flat-square){ loading=lazy }](https://nav.wiki-power.com/)
 [![badge](https://img.shields.io/badge/Digest-Digest-green?&style=flat-square){ loading=lazy }](https://digest.wiki-power.com/)
 [![badge](https://img.shields.io/badge/Memos-Memos-orange?&style=flat-square){ loading=lazy }](https://memos.wiki-power.com/)

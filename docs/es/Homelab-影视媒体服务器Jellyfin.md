@@ -43,7 +43,7 @@ APP_VERSION=latest
 APP_PORT=xxxx # Puerto de acceso personalizado, simplemente elija uno que no esté en uso
 ```
 
-Si tiene un NAS, también puede montar el espacio de almacenamiento en el NAS a través del protocolo NFS, almacenar la música en el NAS para ahorrar espacio en el servidor. Para obtener más detalles, consulte [**Montar el disco duro de expansión del NAS Synology en Linux (NFS)**](https://wiki-power.com/Linux%E4%B8%8B%E6%8C%82%E8%BD%BD%E7%BE%A4%E6%99%96NAS%E7%A1%AC%E7%9B%98%E6%8B%93%E5%B1%95%E7%A9%BA%E9%97%B4%EF%BC%88NFS%EF%BC%89/).
+Si tiene un NAS, también puede montar el espacio de almacenamiento en el NAS a través del protocolo NFS, almacenar la música en el NAS para ahorrar espacio en el servidor. Para obtener más detalles, consulte [**Montar el disco duro de expansión del NAS Synology en Linux (NFS)**](https://wiki-power.com/es/Linux%E4%B8%8B%E6%8C%82%E8%BD%BD%E7%BE%A4%E6%99%96NAS%E7%A1%AC%E7%9B%98%E6%8B%93%E5%B1%95%E7%A9%BA%E9%97%B4%EF%BC%88NFS%EF%BC%89/).
 
 Por último, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar el contenedor.
 

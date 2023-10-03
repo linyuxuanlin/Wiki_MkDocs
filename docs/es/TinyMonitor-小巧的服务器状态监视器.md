@@ -51,7 +51,7 @@ MQTT es un protocolo de transmisión de mensajes basado en cliente-servidor y pu
 
 ### Despliegue del servicio Mosquitto
 
-Mosquitto es un software de agente de mensajes de código abierto que implementa el protocolo de envío de mensajes MQTT v3.1. En este caso, he utilizado la implementación de Docker [**eclipse-mosquitto**](https://hub.docker.com/_/eclipse-mosquitto) como servidor de agente MQTT. Si no está familiarizado con la implementación de Docker, puede consultar los artículos [**Guía sencilla de Docker**](https://wiki-power.com/Docker%E7%AE%80%E6%98%93%E6%8C%87%E5%8D%97/) y [**Docker Compose - Una forma más elegante de abrir**](https://wiki-power.com/DockerCompose-%E6%9B%B4%E4%BC%98%E9%9B%85%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/).
+Mosquitto es un software de agente de mensajes de código abierto que implementa el protocolo de envío de mensajes MQTT v3.1. En este caso, he utilizado la implementación de Docker [**eclipse-mosquitto**](https://hub.docker.com/_/eclipse-mosquitto) como servidor de agente MQTT. Si no está familiarizado con la implementación de Docker, puede consultar los artículos [**Guía sencilla de Docker**](https://wiki-power.com/es/Docker%E7%AE%80%E6%98%93%E6%8C%87%E5%8D%97/) y [**Docker Compose - Una forma más elegante de abrir**](https://wiki-power.com/es/DockerCompose-%E6%9B%B4%E4%BC%98%E9%9B%85%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/).
 
 Según las instrucciones oficiales, primero debe crear los siguientes directorios y archivos para que Mosquitto los use y otorgarles permisos suficientes: (por favor, cambie `${STACK_DIR}` a la ruta local donde se almacenan los datos, por ejemplo, `/DATA/AppData/mosquitto`, lo mismo a continuación)
 

@@ -54,7 +54,7 @@ HAL_GPIO_TogglePin(GPIOx, GPIO_Pin);
 
 ## Encender el LED
 
-Antes de continuar con el siguiente experimento, es necesario configurar varios parámetros como la descarga de la serie, el reloj, etc. en CubeMX. No se explicará aquí, por favor consulte el método en el artículo [**Notas de desarrollo de la biblioteca HAL - Configuración del entorno**](https://wiki-power.com/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE).
+Antes de continuar con el siguiente experimento, es necesario configurar varios parámetros como la descarga de la serie, el reloj, etc. en CubeMX. No se explicará aquí, por favor consulte el método en el artículo [**Notas de desarrollo de la biblioteca HAL - Configuración del entorno**](https://wiki-power.com/es/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE).
 
 ### Configuración GPIO en CubeMX
 

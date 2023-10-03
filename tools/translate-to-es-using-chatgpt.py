@@ -16,6 +16,7 @@ dir_translated = "../docs/es"
 replace_rules = [
     {"find": "> 原文地址：<https://wiki-power.com/>", "replace_with": "> Dirección original del artículo: <https://wiki-power.com/>"},
     {"find": "> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。", "replace_with": "> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente."},
+    {"find": "](https://wiki-power.com/", "replace_with": "](https://wiki-power.com/es/"},
 ]
 
 # 定义翻译函数
@@ -148,6 +149,9 @@ for filename in sorted_file_list:
             md_content.replace("> This post is only available in English.","")
             print("Translating: ", filename)
             translate_file(input_file, output_file)
+        elif filename=="index.md" or filename=="Contact-and-Subscribe.md" or filename=="WeChat.md":
+            #os.remove(input_file)
+            print("Pass the post: ", filename)
         else:
             print("Translating: ", filename)
             translate_file(input_file, output_file)

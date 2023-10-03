@@ -118,7 +118,7 @@ El Vector de TurnAround se puede utilizar para cambiar la dirección de transfer
 
 ---
 
-Estos son algunos conocimientos básicos sobre la Interfaz de Prueba y TIC. Para obtener información específica sobre el funcionamiento de TIC en AHB, consulte el siguiente artículo [**TIC en AHB**](https://wiki-power.com/AHB%E4%B8%8A%E7%9A%84TIC) (en proceso de escritura...).
+Estos son algunos conocimientos básicos sobre la Interfaz de Prueba y TIC. Para obtener información específica sobre el funcionamiento de TIC en AHB, consulte el siguiente artículo [**TIC en AHB**](https://wiki-power.com/es/AHB%E4%B8%8A%E7%9A%84TIC) (en proceso de escritura...).
 
 ## Referencias y Agradecimientos
 

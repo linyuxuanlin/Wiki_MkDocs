@@ -20,7 +20,7 @@ Consejo: intente extraer todos los componentes necesarios para su proyecto de su
 - [**JLCSMT_LIB**](https://gitee.com/JLC_SMT/JLCSMT_LIB): biblioteca de integración estándar proporcionada por Jialichuang, que incluye todos los componentes que Jialichuang puede pegar con SMT. Si usa esta biblioteca de integración, la compatibilidad al imprimir / SMT será mejor.
 - [**Hare_Library**](https://github.com/linyuxuanlin/Power_Lib_Altium/tree/master/Other_Libs/Hare_Library): biblioteca de esquemas / encapsulamientos organizada por Bingge, que cubre la mayoría de los componentes necesarios para el hardware del equipo.
 
-Cómo instalar archivos de biblioteca: consulte [**Cómo instalar archivos de biblioteca Altium Designer**](https://wiki-power.com/AltiumDesigner安装库文件)
+Cómo instalar archivos de biblioteca: consulte [**Cómo instalar archivos de biblioteca Altium Designer**](https://wiki-power.com/es/AltiumDesigner安装库文件)
 
 ### Componentes poco comunes
 
@@ -114,17 +114,17 @@ El proceso básico para diseñar una placa de circuito impreso desde cero es el 
       - Agujeros fijos
         - Tornillo M3: interno 3,1 mm, externo 4 mm
    4. Disposición de componentes
-      - Ver artículo [**Normas de disposición de componentes de PCB**](https://wiki-power.com/PCB%E5%85%83%E4%BB%B6%E5%B8%83%E5%B1%80%E8%A7%84%E8%8C%83)
+      - Ver artículo [**Normas de disposición de componentes de PCB**](https://wiki-power.com/es/PCB%E5%85%83%E4%BB%B6%E5%B8%83%E5%B1%80%E8%A7%84%E8%8C%83)
    5. Enrutamiento
       - Establecer reglas de enrutamiento
-        - Consultar [**Normas de enrutamiento de PCB**](https://wiki-power.com/PCB%E5%B8%83%E7%BA%BF%E8%A7%84%E8%8C%83)
+        - Consultar [**Normas de enrutamiento de PCB**](https://wiki-power.com/es/PCB%E5%B8%83%E7%BA%BF%E8%A7%84%E8%8C%83)
       - ¡No activar el enrutamiento automático!
       - Activar la función de gota de lágrima
    6. Identificación de fuentes (identificación de pines / derechos de autor / texto engañoso)
       - Colocar en la capa de serigrafía (superior / inferior)
       - Si se coloca en la capa inferior, hay que invertirlo primero
    7. Cobertura de cobre (PG)
-      - Consultar [**Normas de enrutamiento de PCB**](https://wiki-power.com/PCB%E5%B8%83%E7%BA%BF%E8%A7%84%E8%8C%83)
+      - Consultar [**Normas de enrutamiento de PCB**](https://wiki-power.com/es/PCB%E5%B8%83%E7%BA%BF%E8%A7%84%E8%8C%83)
 4. Fabricación de la placa
    1. Guardar el proyecto
    2. Comprimir el archivo .pcb (si es posible, exportar Gerber)
@@ -155,7 +155,7 @@ Consultar el artículo [**Agregar un logotipo**](https://seujxh.wordpress.com/20
 
 ### Gestión del proyecto con Git
 
-Consultar [**Consideraciones al utilizar Git en AD**](https://wiki-power.com/AD%E4%BD%BF%E7%94%A8Git%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)
+Consultar [**Consideraciones al utilizar Git en AD**](https://wiki-power.com/es/AD%E4%BD%BF%E7%94%A8Git%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)
 
 ## Conclusión
 

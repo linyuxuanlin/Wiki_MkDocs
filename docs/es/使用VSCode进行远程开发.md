@@ -6,7 +6,7 @@
 
 Después de probar varias herramientas SSH, finalmente volví a VS Code por su interfaz atractiva y su gran potencial. Este artículo es solo una guía de referencia para futuras consultas, y algunos detalles no se explican en profundidad. Para obtener más tutoriales, consulte los enlaces al final del artículo.
 
-Guía de configuración básica de VS Code: [**Guía de productividad de VS Code - Configuración del entorno**](https://wiki-power.com/VSCode生产力指南-环境配置)
+Guía de configuración básica de VS Code: [**Guía de productividad de VS Code - Configuración del entorno**](https://wiki-power.com/es/VSCode生产力指南-环境配置)
 
 ## Configuración de extensiones
 

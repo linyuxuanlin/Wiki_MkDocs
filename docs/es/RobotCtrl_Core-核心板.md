@@ -13,7 +13,7 @@ Vista previa en línea del proyecto:
   ></div>
 </div>
 
-Nota: el proyecto está incluido en [**RobotCtrl - Kit de desarrollo universal STM32**](https://wiki-power.com/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
+Nota: el proyecto está incluido en [**RobotCtrl - Kit de desarrollo universal STM32**](https://wiki-power.com/es/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
 
 ## Diseño del esquemático
 
@@ -34,11 +34,11 @@ Las principales funciones de RobotCtrl_Core son las siguientes:
 
 RobotCtrl_Core puede recibir una fuente de alimentación de 5V a través del puerto USB o del conector B2B, y convertirla en una fuente de 3.3V para el núcleo del microcontrolador y los periféricos integrados en la placa. El circuito de regulación de alimentación utiliza un LDO (AMS1117-3.3, con una corriente máxima de 1A), incluye un indicador de alimentación y tiene puntos de prueba clave reservados.
 
-El principio básico del LDO se puede encontrar en el artículo [**Topología de alimentación - Regulación lineal**](https://wiki-power.com/%E7%94%B5%E6%BA%90%E6%8B%93%E6%89%91-%E7%BA%BF%E6%80%A7%E7%A8%B3%E5%8E%8B).
+El principio básico del LDO se puede encontrar en el artículo [**Topología de alimentación - Regulación lineal**](https://wiki-power.com/es/%E7%94%B5%E6%BA%90%E6%8B%93%E6%89%91-%E7%BA%BF%E6%80%A7%E7%A8%B3%E5%8E%8B).
 
 ### Sistema mínimo de microcontrolador
 
-El diseño del sistema mínimo de microcontrolador se divide en varias partes: alimentación, reinicio, descarga y depuración, reloj y modo de arranque. Se pueden encontrar conocimientos básicos en los artículos [**Cómo diseñar el sistema mínimo de un microcontrolador**](https://wiki-power.com/%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E6%AC%BE%E5%8D%95%E7%89%87%E6%9C%BA%E7%9A%84%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F) y [**Desarrollo de hardware STM32F4**](https://wiki-power.com/STM32F4%E7%A1%AC%E4%BB%B6%E5%BC%80%E5%8F%91).
+El diseño del sistema mínimo de microcontrolador se divide en varias partes: alimentación, reinicio, descarga y depuración, reloj y modo de arranque. Se pueden encontrar conocimientos básicos en los artículos [**Cómo diseñar el sistema mínimo de un microcontrolador**](https://wiki-power.com/es/%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E6%AC%BE%E5%8D%95%E7%89%87%E6%9C%BA%E7%9A%84%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F) y [**Desarrollo de hardware STM32F4**](https://wiki-power.com/es/STM32F4%E7%A1%AC%E4%BB%B6%E5%BC%80%E5%8F%91).
 
 ### Circuito de alimentación
 

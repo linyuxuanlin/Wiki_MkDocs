@@ -16,6 +16,7 @@ dir_translated = "../docs/en"
 replace_rules = [
     {"find": "> 原文地址：<https://wiki-power.com/>", "replace_with": "> Original: <https://wiki-power.com/>"},
     {"find": "> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。", "replace_with": "> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution."},
+    {"find": "](https://wiki-power.com/", "replace_with": "](https://wiki-power.com/en/"},
 ]
 
 # 定义翻译函数

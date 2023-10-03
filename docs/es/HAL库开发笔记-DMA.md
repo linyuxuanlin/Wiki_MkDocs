@@ -85,7 +85,7 @@ Valor de retorno: 0 (reanudando); 1 (recuperación completada)
 
 ### Configuración de DMA en CubeMX
 
-Para la configuración de la parte de puerto serie, consulte el artículo [**HAL 库开发笔记 - 串口通信**](https://wiki-power.com/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1) (en chino).
+Para la configuración de la parte de puerto serie, consulte el artículo [**HAL 库开发笔记 - 串口通信**](https://wiki-power.com/es/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1) (en chino).
 
 Después de configurar los pines USART y las interrupciones NVIC, cambie a la pestaña `DMA Settings` y configure según la siguiente imagen:
 

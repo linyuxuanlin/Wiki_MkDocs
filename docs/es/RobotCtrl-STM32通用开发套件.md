@@ -6,9 +6,9 @@ Repositorio del proyecto: [**linyuxuanlin/RobotCtrl**](https://github.com/linyux
 
 RobotCtrl - Kit de desarrollo universal STM32 consta de tres placas:
 
-- [**RobotCtrl_Core - Placa principal**](https://wiki-power.com/RobotCtrl_Core-%E6%A0%B8%E5%BF%83%E6%9D%BF)
-- [**RobotCtrl_Core - Placa de expansión de periféricos**](https://wiki-power.com/RobotCtrl_Func-%E5%A4%96%E8%AE%BE%E6%8B%93%E5%B1%95%E6%9D%BF)
-- [**RobotCtrl_Power - Placa de suministro de energía**](https://wiki-power.com/RobotCtrl_Power-%E7%94%B5%E6%BA%90%E4%BE%9B%E7%94%B5%E6%9D%BF)
+- [**RobotCtrl_Core - Placa principal**](https://wiki-power.com/es/RobotCtrl_Core-%E6%A0%B8%E5%BF%83%E6%9D%BF)
+- [**RobotCtrl_Core - Placa de expansión de periféricos**](https://wiki-power.com/es/RobotCtrl_Func-%E5%A4%96%E8%AE%BE%E6%8B%93%E5%B1%95%E6%9D%BF)
+- [**RobotCtrl_Power - Placa de suministro de energía**](https://wiki-power.com/es/RobotCtrl_Power-%E7%94%B5%E6%BA%90%E4%BE%9B%E7%94%B5%E6%9D%BF)
 
 ## Requisitos de diseño
 

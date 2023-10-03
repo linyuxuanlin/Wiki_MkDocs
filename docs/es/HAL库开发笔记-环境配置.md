@@ -6,7 +6,7 @@ Nota: Este tutorial se basa en la placa STM32F429IGT6 de Reverse Costumer.
 
 ### Keil MDK
 
-Consulte el artículo [**Guía de configuración de Keil MDK**](https://wiki-power.com/KeilMDK%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97) para obtener más información.
+Consulte el artículo [**Guía de configuración de Keil MDK**](https://wiki-power.com/es/KeilMDK%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97) para obtener más información.
 
 ### Java Runtime Environment
 
@@ -26,7 +26,7 @@ Cree un nuevo proyecto y guarde después de seleccionar el chip.
 
 `Pinout & Configurations` - `System Core` - `SYS`
 
-Cambie la opción `Debug` a `Serial Wire` (consulte el artículo [**Evite problemas con CubeMX y CubeIDE**](https://wiki-power.com/CubeMX与CubeIDE避坑) para obtener más información).
+Cambie la opción `Debug` a `Serial Wire` (consulte el artículo [**Evite problemas con CubeMX y CubeIDE**](https://wiki-power.com/es/CubeMX与CubeIDE避坑) para obtener más información).
 
 ### Configuración RCC
 

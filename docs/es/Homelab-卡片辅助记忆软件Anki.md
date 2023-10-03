@@ -57,7 +57,7 @@ Si aún no puede sincronizar, consulte [**Configuración de Anki**](https://gith
 
 ### Android
 
-En Android, se utiliza AnkiDroid, que permite personalizar la dirección del servidor sin necesidad de instalar complementos, pero se requiere iniciar sesión con https. Se recomienda utilizar un proxy inverso (se puede consultar el artículo [**Homelab - Nginx Proxy Manager para la gestión de certificados de proxy inverso**](https://wiki-power.com/Homelab-%E5%8F%8D%E4%BB%A3%E8%AF%81%E4%B9%A6%E7%AE%A1%E7%90%86%E9%9D%A2%E6%9D%BFNginxProxyManager/)).
+En Android, se utiliza AnkiDroid, que permite personalizar la dirección del servidor sin necesidad de instalar complementos, pero se requiere iniciar sesión con https. Se recomienda utilizar un proxy inverso (se puede consultar el artículo [**Homelab - Nginx Proxy Manager para la gestión de certificados de proxy inverso**](https://wiki-power.com/es/Homelab-%E5%8F%8D%E4%BB%A3%E8%AF%81%E4%B9%A6%E7%AE%A1%E7%90%86%E9%9D%A2%E6%9D%BFNginxProxyManager/)).
 
 Después de iniciar sesión con https, en la pantalla principal, seleccione `Advanced` - `Custom sync server` para configurar el servidor personalizado. Tenga en cuenta que en el campo `Media sync url`, debe agregar `/msync` después de la dirección original para sincronizar correctamente.
 

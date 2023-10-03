@@ -13,7 +13,7 @@ Vista previa en línea del proyecto:
   ></div>
 </div>
 
-Nota: el proyecto está incluido en [**RobotCtrl - Kit de desarrollo universal STM32**](https://wiki-power.com/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
+Nota: el proyecto está incluido en [**RobotCtrl - Kit de desarrollo universal STM32**](https://wiki-power.com/es/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
 
 ## Diseño del esquemático
 
@@ -30,13 +30,13 @@ Las principales funciones de RobotCtrl_Power son las siguientes:
 
 Se utilizan dos conectores XT60PW-M para la entrada de alimentación, como entrada de alimentación de respaldo doble (también se puede utilizar como una entrada y una salida), y se proporcionan dos filas de pines para pruebas de salida.
 
-La función de protección contra polaridad inversa se implementa mediante P-MOS. Aunque XT60 tiene un diseño a prueba de errores, aún es necesario evitar la soldadura inversa de los cables de alimentación positivo y negativo. Cuando se invierte la polaridad, el P-MOS no se encenderá y la alimentación no se suministrará al sistema. El diseño de la función de protección contra polaridad inversa se puede consultar en el artículo [**Diseño de circuitos de protección contra polaridad inversa**](https://wiki-power.com/%E9%98%B2%E5%8F%8D%E6%8E%A5%E7%94%B5%E8%B7%AF%E7%9A%84%E8%AE%BE%E8%AE%A1).
+La función de protección contra polaridad inversa se implementa mediante P-MOS. Aunque XT60 tiene un diseño a prueba de errores, aún es necesario evitar la soldadura inversa de los cables de alimentación positivo y negativo. Cuando se invierte la polaridad, el P-MOS no se encenderá y la alimentación no se suministrará al sistema. El diseño de la función de protección contra polaridad inversa se puede consultar en el artículo [**Diseño de circuitos de protección contra polaridad inversa**](https://wiki-power.com/es/%E9%98%B2%E5%8F%8D%E6%8E%A5%E7%94%B5%E8%B7%AF%E7%9A%84%E8%AE%BE%E8%AE%A1).
 
 La protección contra sobretensión transitoria y la protección contra ESD se realizan mediante un diodo TVS. Cuando se conecta una tensión superior a 30V, el diodo TVS desvía el exceso de voltaje para proteger el sistema.
 
 ### Circuitos reguladores de voltaje de 12V y 5V
 
-Los circuitos reguladores de voltaje de 12V y 5V utilizan el esquema Buck DC-DC LMR14050 de TI para dos rutas, cada una de las cuales puede soportar una corriente máxima de 5A. El diseño específico se puede consultar en el artículo [**Esquema de alimentación (Buck) - LMR14050**](https://wiki-power.com/%E7%94%B5%E6%BA%90%E6%96%B9%E6%A1%88%EF%BC%88Buck%EF%BC%89-LMR14050).
+Los circuitos reguladores de voltaje de 12V y 5V utilizan el esquema Buck DC-DC LMR14050 de TI para dos rutas, cada una de las cuales puede soportar una corriente máxima de 5A. El diseño específico se puede consultar en el artículo [**Esquema de alimentación (Buck) - LMR14050**](https://wiki-power.com/es/%E7%94%B5%E6%BA%90%E6%96%B9%E6%A1%88%EF%BC%88Buck%EF%BC%89-LMR14050).
 
 Además, cada ruta tiene un interruptor de habilitación y una luz indicadora de alimentación.
 

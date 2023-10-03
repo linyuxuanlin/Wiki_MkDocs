@@ -81,11 +81,11 @@ Modelo equivalente del inductor común:
 
 ### Perlas magnéticas
 
-Para obtener información sobre la introducción y selección de perlas magnéticas, consulte la sección [**Componentes básicos - Inductores y perlas magnéticas · Perlas magnéticas**](https://wiki-power.com/%E5%9F%BA%E6%9C%AC%E5%85%83%E5%99%A8%E4%BB%B6-%E7%94%B5%E6%84%9F%E4%B8%8E%E7%A3%81%E7%8F%A0#%E7%A3%81%E7%8F%A0).
+Para obtener información sobre la introducción y selección de perlas magnéticas, consulte la sección [**Componentes básicos - Inductores y perlas magnéticas · Perlas magnéticas**](https://wiki-power.com/es/%E5%9F%BA%E6%9C%AC%E5%85%83%E5%99%A8%E4%BB%B6-%E7%94%B5%E6%84%9F%E4%B8%8E%E7%A3%81%E7%8F%A0#%E7%A3%81%E7%8F%A0).
 
 ### Capacitores de filtro
 
-Para obtener información sobre la introducción y selección de capacitores, consulte la sección [**Componentes básicos - Capacitores**](https://wiki-power.com/%E5%9F%BA%E6%9C%AC%E5%85%83%E5%99%A8%E4%BB%B6-%E7%94%B5%E5%AE%B9).
+Para obtener información sobre la introducción y selección de capacitores, consulte la sección [**Componentes básicos - Capacitores**](https://wiki-power.com/es/%E5%9F%BA%E6%9C%AC%E5%85%83%E5%99%A8%E4%BB%B6-%E7%94%B5%E5%AE%B9).
 
 ## Diseño de EMC en PCB 🚧
 

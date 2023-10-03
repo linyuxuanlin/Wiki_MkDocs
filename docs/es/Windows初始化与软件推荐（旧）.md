@@ -2,7 +2,7 @@
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210117142759.jpg)
 
-> Para la versión actualizada, consulte [**Personal Onboarding Workflow (Windows)**](https://wiki-power.com/Personal_Onboarding_Workflow_%28Windows%29/)
+> Para la versión actualizada, consulte [**Personal Onboarding Workflow (Windows)**](https://wiki-power.com/es/Personal_Onboarding_Workflow_%28Windows%29/)
 
 ¿Cuáles son las opciones de configuración y software necesarios después de instalar un sistema Windows?
 
@@ -21,7 +21,7 @@
 - Actualizar el sistema y los controladores
 - Configurar el navegador (Edge Canary)
   - Extensiones
-  - [**Activar la descarga en múltiples hilos de Chrome (Edge)**](https://wiki-power.com/%E5%BC%80%E5%90%AFChrome%EF%BC%88Edge%EF%BC%89%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BD)
+  - [**Activar la descarga en múltiples hilos de Chrome (Edge)**](https://wiki-power.com/es/%E5%BC%80%E5%90%AFChrome%EF%BC%88Edge%EF%BC%89%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BD)
 - Configuración de control de cuentas de usuario: establecer en "Nunca notificar"
 - Personalizar la barra de tareas
 - Configurar la configuración personalizada

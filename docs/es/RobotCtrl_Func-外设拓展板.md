@@ -13,7 +13,7 @@ Vista previa en línea del proyecto:
   ></div>
 </div>
 
-Nota: el proyecto está incluido en [**RobotCtrl - Kit de desarrollo universal STM32**](https://wiki-power.com/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
+Nota: el proyecto está incluido en [**RobotCtrl - Kit de desarrollo universal STM32**](https://wiki-power.com/es/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
 
 ## Diseño del esquemático
 
@@ -40,15 +40,15 @@ RobotCtrl_Func tiene 2 LDO, similar al RobotCtrl_Core, donde uno se utiliza para
 
 ### Circuito de comunicación Ethernet
 
-La comunicación Ethernet se basa en el chip PHY Ethernet, que se comunica con el microcontrolador a través de la interfaz RMII y se comunica a través del puerto RJ45 con aislamiento incorporado. El reloj del circuito Ethernet utiliza un oscilador pasivo externo de 25M y requiere una fuente de alimentación independiente para reducir la interferencia de la fuente de alimentación. Aquí se utiliza el mismo esquema de alimentación lineal de baja caída que en la placa principal para proporcionar energía al circuito Ethernet de forma independiente. Se puede consultar el artículo [**HAL 库开发笔记 - 以太网通信（LwIP）**](https://wiki-power.com/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E4%BB%A5%E5%A4%AA%E7%BD%91%E9%80%9A%E4%BF%A1%EF%BC%88LwIP%EF%BC%89) para obtener más información sobre el principio de la comunicación Ethernet.
+La comunicación Ethernet se basa en el chip PHY Ethernet, que se comunica con el microcontrolador a través de la interfaz RMII y se comunica a través del puerto RJ45 con aislamiento incorporado. El reloj del circuito Ethernet utiliza un oscilador pasivo externo de 25M y requiere una fuente de alimentación independiente para reducir la interferencia de la fuente de alimentación. Aquí se utiliza el mismo esquema de alimentación lineal de baja caída que en la placa principal para proporcionar energía al circuito Ethernet de forma independiente. Se puede consultar el artículo [**HAL 库开发笔记 - 以太网通信（LwIP）**](https://wiki-power.com/es/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E4%BB%A5%E5%A4%AA%E7%BD%91%E9%80%9A%E4%BF%A1%EF%BC%88LwIP%EF%BC%89) para obtener más información sobre el principio de la comunicación Ethernet.
 
 ### Circuito de comunicación CAN
 
-El circuito de comunicación CAN se basa en el chip transceptor CAN y se transmite a través del nivel de voltaje diferencial CAN. El controlador de protocolo CAN (como el microcontrolador) se conecta al transceptor a través de un cable serie (RX / TX), que se convierte en una señal CAN (CANH / CANL) en el transceptor y se selecciona el modo de alta velocidad / silencioso a través del pin RS. Es necesario agregar una resistencia terminal de 120Ω en el bus CAN para adaptar la impedancia y reducir la reflexión de la señal. Se puede consultar el artículo [**通信协议 - CAN**](https://wiki-power.com/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-CAN) y [**HAL 库开发笔记 - 串口通信**](https://wiki-power.com/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-CAN%E9%80%9A%E4%BF%A1) para obtener más información sobre el principio de la comunicación CAN.
+El circuito de comunicación CAN se basa en el chip transceptor CAN y se transmite a través del nivel de voltaje diferencial CAN. El controlador de protocolo CAN (como el microcontrolador) se conecta al transceptor a través de un cable serie (RX / TX), que se convierte en una señal CAN (CANH / CANL) en el transceptor y se selecciona el modo de alta velocidad / silencioso a través del pin RS. Es necesario agregar una resistencia terminal de 120Ω en el bus CAN para adaptar la impedancia y reducir la reflexión de la señal. Se puede consultar el artículo [**通信协议 - CAN**](https://wiki-power.com/es/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-CAN) y [**HAL 库开发笔记 - 串口通信**](https://wiki-power.com/es/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-CAN%E9%80%9A%E4%BF%A1) para obtener más información sobre el principio de la comunicación CAN.
 
 ### Circuito de comunicación en serie
 
-La placa RobotCtrl_Func tiene un circuito de comunicación en serie con niveles RS-232 integrado y también tiene un USART1/UART5 con niveles TTL adicionales. El principio de la comunicación en serie se puede encontrar en los artículos [**Protocolo de comunicación - Comunicación en serie**](https://wiki-power.com/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1) y [**Nota de desarrollo de la biblioteca HAL - Comunicación en serie**](https://wiki-power.com/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1).
+La placa RobotCtrl_Func tiene un circuito de comunicación en serie con niveles RS-232 integrado y también tiene un USART1/UART5 con niveles TTL adicionales. El principio de la comunicación en serie se puede encontrar en los artículos [**Protocolo de comunicación - Comunicación en serie**](https://wiki-power.com/es/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1) y [**Nota de desarrollo de la biblioteca HAL - Comunicación en serie**](https://wiki-power.com/es/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1).
 
 El circuito de comunicación RS-232 utiliza un chip que convierte los niveles TTL en niveles RS-232. Para mejorar el rendimiento de EMC, el conector DB9 tiene un pin de conexión a tierra que se puede conectar a un diodo TVS y el chip TTL a RS-232 requiere una fuente de alimentación externa y capacitores de arranque.
 
@@ -62,11 +62,11 @@ El principio de los botones y LED del usuario se puede encontrar en RobotCtrl_Co
 
 ### Módulo de sensor de actitud
 
-Se utiliza directamente el módulo MPU6050, con una interfaz I2C reservada para la comunicación con el microcontrolador. El principio de la comunicación I2C se puede encontrar en los artículos [**Protocolo de comunicación - I2C**](https://wiki-power.com/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-I2C) y [**Nota de desarrollo de la biblioteca HAL - Comunicación I2C (MPU6050)**](https://wiki-power.com/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-I2C%E9%80%9A%E4%BF%A1%EF%BC%88MPU6050%EF%BC%89).
+Se utiliza directamente el módulo MPU6050, con una interfaz I2C reservada para la comunicación con el microcontrolador. El principio de la comunicación I2C se puede encontrar en los artículos [**Protocolo de comunicación - I2C**](https://wiki-power.com/es/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-I2C) y [**Nota de desarrollo de la biblioteca HAL - Comunicación I2C (MPU6050)**](https://wiki-power.com/es/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-I2C%E9%80%9A%E4%BF%A1%EF%BC%88MPU6050%EF%BC%89).
 
 ### Interfaz del sensor de distancia por infrarrojos
 
-El circuito de la interfaz del sensor de distancia por infrarrojos consta de cuatro chips de aislamiento óptico y se alimenta con 12V y señales (tipo NPN normalmente abierto) del sensor de infrarrojos desde RobotCtrl_Power. El diseño del circuito de aislamiento óptico requiere calcular el valor de la resistencia limitadora de corriente según la corriente para garantizar que esté dentro del rango de voltaje de activación especificado en la hoja de datos. El principio del acoplador óptico se puede encontrar en el artículo [**Componentes básicos - Acoplador óptico**](https://wiki-power.com/%E5%9F%BA%E6%9C%AC%E5%85%83%E5%99%A8%E4%BB%B6-%E5%85%89%E7%94%B5%E8%80%A6%E5%90%88%E5%99%A8).
+El circuito de la interfaz del sensor de distancia por infrarrojos consta de cuatro chips de aislamiento óptico y se alimenta con 12V y señales (tipo NPN normalmente abierto) del sensor de infrarrojos desde RobotCtrl_Power. El diseño del circuito de aislamiento óptico requiere calcular el valor de la resistencia limitadora de corriente según la corriente para garantizar que esté dentro del rango de voltaje de activación especificado en la hoja de datos. El principio del acoplador óptico se puede encontrar en el artículo [**Componentes básicos - Acoplador óptico**](https://wiki-power.com/es/%E5%9F%BA%E6%9C%AC%E5%85%83%E5%99%A8%E4%BB%B6-%E5%85%89%E7%94%B5%E8%80%A6%E5%90%88%E5%99%A8).
 
 ### Interfaz de entrada de alimentación y conector B2B
 

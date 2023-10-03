@@ -1,6 +1,6 @@
 # Notas de desarrollo de la biblioteca HAL - Comunicación I2C (MPU6050)
 
-Este artículo se basa en el kit de desarrollo RobotCtrl de desarrollo propio, con un núcleo de microcontrolador STM32F407ZET6, y utiliza el módulo MPU6050 para explicar el método de comunicación I2C de la biblioteca HAL. Para obtener información detallada sobre el esquema del kit de desarrollo y una introducción detallada, consulte [**RobotCtrl - STM32 Kit de desarrollo universal**](https://wiki-power.com/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
+Este artículo se basa en el kit de desarrollo RobotCtrl de desarrollo propio, con un núcleo de microcontrolador STM32F407ZET6, y utiliza el módulo MPU6050 para explicar el método de comunicación I2C de la biblioteca HAL. Para obtener información detallada sobre el esquema del kit de desarrollo y una introducción detallada, consulte [**RobotCtrl - STM32 Kit de desarrollo universal**](https://wiki-power.com/es/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
 
 ## Principios básicos
 
@@ -8,7 +8,7 @@ Este artículo se basa en el kit de desarrollo RobotCtrl de desarrollo propio, c
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026174634.png)
 
-Para obtener información sobre los principios básicos de la comunicación I2C, consulte el artículo [**Protocolo de comunicación - I2C**](https://wiki-power.com/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-I2C).
+Para obtener información sobre los principios básicos de la comunicación I2C, consulte el artículo [**Protocolo de comunicación - I2C**](https://wiki-power.com/es/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-I2C).
 
 ### Módulo MPU6050
 
@@ -301,6 +301,6 @@ printf("XAngle: %.2f°\t", MPU6050.KalmanAngleX);
 ## Referencias y agradecimientos
 
 - [leech001/MPU6050](https://github.com/leech001/MPU6050)
-- [I2C Communication Protocol](https://wiki-power.com/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-I2C)
+- [I2C Communication Protocol](https://wiki-power.com/es/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-I2C)
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

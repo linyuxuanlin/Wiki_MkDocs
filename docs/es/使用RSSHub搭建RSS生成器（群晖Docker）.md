@@ -24,7 +24,7 @@ Tomemos un ejemplo simple. En la documentación oficial, se puede encontrar el m
 
 Entonces, puedes utilizar "tu dominio/douban/movie/playing" para generar tu propia fuente RSS utilizando tu propio servidor.
 
-Se recomienda utilizar el proxy inverso integrado en el sistema Synology para lograr el acceso HTTPS cifrado. Puedes consultar el tutorial en el artículo [**Cómo utilizar el proxy inverso integrado en Synology para lograr el acceso HTTPS**](https://wiki-power.com/%E7%94%A8%E7%BE%A4%E6%99%96%E8%87%AA%E5%B8%A6%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0HTTPS%E8%AE%BF%E9%97%AE).
+Se recomienda utilizar el proxy inverso integrado en el sistema Synology para lograr el acceso HTTPS cifrado. Puedes consultar el tutorial en el artículo [**Cómo utilizar el proxy inverso integrado en Synology para lograr el acceso HTTPS**](https://wiki-power.com/es/%E7%94%A8%E7%BE%A4%E6%99%96%E8%87%AA%E5%B8%A6%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0HTTPS%E8%AE%BF%E9%97%AE).
 
 ## Utiliza RSSHub Radar para detectar automáticamente la ruta
 

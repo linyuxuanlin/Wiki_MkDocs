@@ -40,7 +40,7 @@ Tenga en cuenta que la función de carga de libros no está habilitada de forma 
 
 ### Usar el proxy inverso incorporado en Synology (recomendado)
 
-Puede consultar el tutorial específico en el artículo [**Implementar acceso HTTPS con proxy inverso incorporado en Synology**](https://wiki-power.com/%E7%94%A8%E7%BE%A4%E6%99%96%E8%87%AA%E5%B8%A6%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0HTTPS%E8%AE%BF%E9%97%AE).
+Puede consultar el tutorial específico en el artículo [**Implementar acceso HTTPS con proxy inverso incorporado en Synology**](https://wiki-power.com/es/%E7%94%A8%E7%BE%A4%E6%99%96%E8%87%AA%E5%B8%A6%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0HTTPS%E8%AE%BF%E9%97%AE).
 
 ### Método de agregar certificado directamente
 

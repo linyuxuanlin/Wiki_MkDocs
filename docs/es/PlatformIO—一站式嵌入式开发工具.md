@@ -25,7 +25,7 @@ En resumen, es hora de abandonar los diferentes IDE (como Arduino IDE / Keil / I
 
 ## Descarga e instalación
 
-Primero, asegúrate de tener VSCode instalado en tu computadora (la descarga e instalación de VSCode se puede encontrar en [**este artículo**](https://wiki-power.com/VSCode生产力指南-环境配置))
+Primero, asegúrate de tener VSCode instalado en tu computadora (la descarga e instalación de VSCode se puede encontrar en [**este artículo**](https://wiki-power.com/es/VSCode生产力指南-环境配置))
 
 Busca e instala `Python` y `PlatformIO IDE` en la sección de `Extensiones` (`Ctrl + Shift + X`).
 

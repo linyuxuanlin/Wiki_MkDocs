@@ -120,7 +120,7 @@ Si se utiliza un cristal externo, el rango de frecuencia es de 32.768 kHz y se p
 
 El modo de arranque también se llama modo de autorecuperación. Se pueden seleccionar tres modos de arranque diferentes mediante los pines BOOT0 y BOOT1: arranque desde la memoria flash principal, arranque desde la memoria del sistema, arranque desde la SRAM incorporada.
 
-Para obtener más información sobre el modo de arranque, consulte el artículo [**Modo de arranque de STM32**](https://wiki-power.com/STM32%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F)
+Para obtener más información sobre el modo de arranque, consulte el artículo [**Modo de arranque de STM32**](https://wiki-power.com/es/STM32%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F)
 
 En general, conectamos una resistencia de 10 K en serie con BOOT0 y BOOT1 es arbitrario. Si es necesario cambiar de modo, se puede diseñar de la siguiente manera:
 
@@ -132,7 +132,7 @@ STM32 generalmente utiliza el protocolo SWJ para la descarga y depuración.
 
 ### Puerto de depuración SWJ
 
-El STM32F4 tiene una interfaz SWJ (SW/JTAG) integrada. Entre ellas, SW-DP tiene 2 pines (reloj + datos) y JTAG-DP tiene 5 pines, algunos de los cuales son compartidos. Para obtener más información, consulte el artículo [**Diferencias y conexiones entre SWD y JTAG**](https://wiki-power.com/SWD%E4%B8%8EJTAG%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB)
+El STM32F4 tiene una interfaz SWJ (SW/JTAG) integrada. Entre ellas, SW-DP tiene 2 pines (reloj + datos) y JTAG-DP tiene 5 pines, algunos de los cuales son compartidos. Para obtener más información, consulte el artículo [**Diferencias y conexiones entre SWD y JTAG**](https://wiki-power.com/es/SWD%E4%B8%8EJTAG%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB)
 
 En STM32F4, la asignación de pines SWJ es la siguiente:
 

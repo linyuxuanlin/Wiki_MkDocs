@@ -44,7 +44,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 ## Control de luz de tecla de interrupción externa
 
 Antes de realizar el siguiente experimento, debe configurar varios parámetros como la descarga de serie, el reloj, etc. en CubeMX.  
-Para obtener información detallada, consulte el método en el artículo [**Notas de desarrollo de la biblioteca HAL - Configuración del entorno**](https://wiki-power.com/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE).
+Para obtener información detallada, consulte el método en el artículo [**Notas de desarrollo de la biblioteca HAL - Configuración del entorno**](https://wiki-power.com/es/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE).
 
 ### Configuración de interrupción en CubeMX
 

@@ -2,7 +2,7 @@
 
 ## Antecedentes
 
-En el [**artículo anterior**](https://wiki-power.com/PlatformIO—一站式嵌入式开发工具), pudimos ver que PlatformIO es mucho más elegante que Keil.  
+En el [**artículo anterior**](https://wiki-power.com/es/PlatformIO—一站式嵌入式开发工具), pudimos ver que PlatformIO es mucho más elegante que Keil.  
 Es bien sabido que en el modo de apertura de STM32, la biblioteca HAL es más conveniente y fácil de usar que la biblioteca estándar (en combinación con la herramienta CubeMX), pero la compatibilidad de PlatformIO con CubeMX no es perfecta (se requiere la conversión de código a través de middleware Python).
 
 En este artículo, presentaré un método único para hacer que la combinación de PlatformIO y CubeMX sea aún más deliciosa.

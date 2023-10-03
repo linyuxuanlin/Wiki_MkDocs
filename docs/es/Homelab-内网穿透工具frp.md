@@ -43,7 +43,7 @@ dashboard_pwd = ${PASSWORD-FRPS} # Contraseña
 
 Finalmente, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores de la implementación.
 
-Si no desea utilizar Docker, también puede consultar este artículo: [**Configuración del servidor · Cómo implementar el control remoto RDP en Internet (frp)**](https://wiki-power.com/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91RDP%E8%BF%9C%E6%8E%A7%EF%BC%88frp%EF%BC%89#_2).
+Si no desea utilizar Docker, también puede consultar este artículo: [**Configuración del servidor · Cómo implementar el control remoto RDP en Internet (frp)**](https://wiki-power.com/es/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91RDP%E8%BF%9C%E6%8E%A7%EF%BC%88frp%EF%BC%89#_2).
 
 ## Implementación del cliente frpc (Docker Compose)
 
@@ -106,8 +106,8 @@ Finalmente, ejecute el comando `docker compose up -d` en el directorio del mismo
   ](https://github.com/stilleshan/frpc)
 - [Docker Hub · snowdreamtech/frps](https://hub.docker.com/r/snowdreamtech/frps)
 - [Docker Hub · stilleshan/frpc](https://hub.docker.com/r/stilleshan/frpc)
-- [Cómo implementar el control remoto RDP de Internet (frp)](https://wiki-power.com/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91RDP%E8%BF%9C%E6%8E%A7%EF%BC%88frp%EF%BC%89/)
-- [Acceso a Synology NAS con frp](https://wiki-power.com/%E4%BD%BF%E7%94%A8frp%E8%AE%BF%E9%97%AE%E7%BE%A4%E6%99%96NAS/) 
+- [Cómo implementar el control remoto RDP de Internet (frp)](https://wiki-power.com/es/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91RDP%E8%BF%9C%E6%8E%A7%EF%BC%88frp%EF%BC%89/)
+- [Acceso a Synology NAS con frp](https://wiki-power.com/es/%E4%BD%BF%E7%94%A8frp%E8%AE%BF%E9%97%AE%E7%BE%A4%E6%99%96NAS/) 
 
 a_reemplazar[1]  
 a_reemplazar[2]

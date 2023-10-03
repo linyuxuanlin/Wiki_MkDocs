@@ -98,7 +98,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 /* USER CODE END 1 */
 ```
 
-Para la configuración del LED, consulte el artículo anterior [**HAL 库开发笔记-GPIO**](https://wiki-power.com/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89-GPIO).
+Para la configuración del LED, consulte el artículo anterior [**HAL 库开发笔记-GPIO**](https://wiki-power.com/es/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89-GPIO).
 
 Después de descargar y grabar, el LED cambiará de estado según el período de 500 ms que hemos establecido (es decir, cuando ocurre un desbordamiento y se produce un evento de desbordamiento en cada 500 ms, realizamos una operación de volteo en el LED en la función de devolución de llamada).
 

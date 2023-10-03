@@ -69,7 +69,7 @@ Nota: RSS no es adecuado para suscribirse a sitios web de noticias, ya que la ac
 Exporté mi fuente de suscripción, puede consultarla: [**Mi fuente de suscripción**](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/doc/Blogs.opml)  
 Puede importar el archivo `.opml` en Inoreader u otro lector de RSS.
 
-Actualización de abril de 2023: Método para construir un agregador de RSS autoalojado: [**Homelab - FreshRSS, un agregador de RSS autoalojado**](https://wiki-power.com/Homelab-%E8%87%AA%E6%89%98%E7%AE%A1RSS%E8%81%9A%E5%90%88%E5%99%A8FreshRSS/)。
+Actualización de abril de 2023: Método para construir un agregador de RSS autoalojado: [**Homelab - FreshRSS, un agregador de RSS autoalojado**](https://wiki-power.com/es/Homelab-%E8%87%AA%E6%89%98%E7%AE%A1RSS%E8%81%9A%E5%90%88%E5%99%A8FreshRSS/)。
 
 ## Preguntas frecuentes
 
