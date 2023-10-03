@@ -30,7 +30,7 @@ Hi there~ Welcome to my knowledge base.
 [![badge](https://img.shields.io/badge/Memos-Memos-orange?&style=flat-square){ loading=lazy }](https://memos.wiki-power.com/)
 [![badge](https://img.shields.io/badge/Works-Works-a5b0ed?&style=flat-square){ loading=lazy }](https://works.wiki-power.com/)
 
-In order to avoid forgetting and facilitate sharing, I collect knowledge here.  
+To avoid forgetting and facilitate sharing, I collect knowledge here.  
 Please feel free to browse~
 
 [Hardware & Semiconductor](/en/信号完整性-基础概念){ .md-button }
