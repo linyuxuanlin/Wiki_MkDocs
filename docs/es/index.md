@@ -33,6 +33,6 @@ hide:
 Para evitar olvidos y facilitar el intercambio, aquí recopilo conocimientos.  
 ¡Por favor, siéntete libre de navegar!
 
-[Hardware y semiconductores](/信号完整性-基础概念){ .md-button }
-[Desarrollo de software y sistemas embebidos](/HAL库开发笔记-串口通信){ .md-button }
-[Vida y experimentos](/搭建属于自己的HomeLab){ .md-button }
+[Hardware y semiconductores](/es/信号完整性-基础概念){ .md-button }
+[Desarrollo de software y sistemas embebidos](/es/HAL库开发笔记-串口通信){ .md-button }
+[Vida y experimentos](/es/搭建属于自己的HomeLab){ .md-button }
