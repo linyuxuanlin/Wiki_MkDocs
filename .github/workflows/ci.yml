@@ -17,5 +17,7 @@ jobs:
         with:
           key: ${{ github.ref }}
           path: .cache
-      - run: pip install pip install -r requirements.txt 
+      - name: Translate to Arabic
+        run: pip install -r tools/requirements_translate.txt && python tools/translate-to-ar-using-chatgpt.py
+      - run: pip install -r requirements.txt 
       - run: mkdocs gh-deploy --force
