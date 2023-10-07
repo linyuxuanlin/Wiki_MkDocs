@@ -17,6 +17,8 @@ replace_rules = [
     {"find": "> 原文地址：<https://wiki-power.com/>", "replace_with": "> Dirección original del artículo: <https://wiki-power.com/>"},
     {"find": "> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。", "replace_with": "> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente."},
     {"find": "](https://wiki-power.com/", "replace_with": "](https://wiki-power.com/es/"},
+    {"find": "![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/", "replace_with": "![](https://f004.backblazeb2.com/file/wiki-media/"},
+    #{"find": "", "replace_with": ""},
 ]
 
 # 定义翻译函数
