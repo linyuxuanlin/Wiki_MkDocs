@@ -32,6 +32,6 @@ hide:
 Para evitar olvidos y facilitar el intercambio, aquí recopilo conocimientos.
 ¡Por favor, siéntete libre de navegar!
 
-[Hardware y Semiconductores](/es/信号完整性-基础概念){ .md-button }
-[Software y Embebidos](/es/HAL库开发笔记-串口通信){ .md-button }
-[Vida y Experimentos](/es/搭建属于自己的HomeLab){ .md-button }
+[Hardware y Semiconductores](https://wiki-power.com/es/信号完整性-基础概念){ .md-button }
+[Software y Embebidos](https://wiki-power.com/es/HAL库开发笔记-串口通信){ .md-button }
+[Vida y Experimentos](https://wiki-power.com/es/搭建属于自己的HomeLab){ .md-button }

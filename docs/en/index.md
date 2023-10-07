@@ -33,6 +33,6 @@ Hi there~ Welcome to my knowledge base.
 To avoid forgetting and facilitate sharing, I collect knowledge here.  
 Please feel free to browse~
 
-[Hardware & Semiconductor](/en/信号完整性-基础概念){ .md-button }
-[Embedded & Software](/en/HAL库开发笔记-串口通信){ .md-button }
-[Life & Hacks](/en/搭建属于自己的HomeLab){ .md-button }
+[Hardware & Semiconductor](https://wiki-power.com/en/信号完整性-基础概念){ .md-button }
+[Embedded & Software](https://wiki-power.com/en/HAL库开发笔记-串口通信){ .md-button }
+[Life & Hacks](https://wiki-power.com/en/搭建属于自己的HomeLab){ .md-button }

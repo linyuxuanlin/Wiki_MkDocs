@@ -18,6 +18,7 @@ replace_rules = [
     {"find": "> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。", "replace_with": "> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution."},
     {"find": "](https://wiki-power.com/", "replace_with": "](https://wiki-power.com/en/"},
     {"find": "![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/", "replace_with": "![](https://f004.backblazeb2.com/file/wiki-media/"},
+    {"find": "](/en/", "replace_with": "](https://wiki-power.com/en/"},
     #{"find": "", "replace_with": ""},
 ]
 
