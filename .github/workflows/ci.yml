@@ -22,5 +22,14 @@ jobs:
           CHATGPT_API_KEY: ${{ secrets.CHATGPT_API_KEY }}
           CHATGPT_API_BASE: ${{ secrets.CHATGPT_API_BASE }}
         run: pip install -r tools/requirements_translate.txt && python tools/translate-to-ar-using-chatgpt.py
+      - name: Commit translated
+        run: |
+          git config --global user.email 824676271@qq.com
+          git config --global user.name linyuxuanlin
+          git commit -m "update" -a
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       - run: pip install -r requirements.txt 
       - run: mkdocs gh-deploy --force
