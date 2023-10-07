@@ -9,8 +9,12 @@ openai.api_key = os.environ.get('CHATGPT_API_KEY')
 openai.api_base = os.environ.get('CHATGPT_API_BASE')
 
 # 设置路径
-dir_to_translate = "/draft/to-translate_ar"
-dir_translated = "/docs/ar"
+## Codespaces
+#dir_to_translate = "/workspaces/Wiki_MkDocs/draft/to-translate_ar"
+#dir_translated = "/workspaces/Wiki_MkDocs/docs/ar"
+## local
+dir_to_translate = "../draft/to-translate_ar"
+dir_translated = "../docs/ar"
 
 # 创建一个包含多个替换规则的列表
 replace_rules = [
