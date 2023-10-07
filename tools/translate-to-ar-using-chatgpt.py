@@ -8,6 +8,7 @@ import openai
 openai.api_key = os.environ.get('CHATGPT_API_KEY')
 openai.api_base = os.environ.get('CHATGPT_API_BASE')
 
+
 # 设置路径
 ## Codespaces
 #dir_to_translate = "/workspaces/Wiki_MkDocs/draft/to-translate_ar"
