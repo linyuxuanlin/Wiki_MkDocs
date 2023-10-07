@@ -1,0 +1,6 @@
+{
+    "crons": [{
+      "path": "/tools/auto",
+      "schedule": "*/1 * * * *"
+    }]
+  }
