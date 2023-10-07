@@ -1,9 +1,10 @@
-# Instalación de archivos de biblioteca en Altium Designer
+# Altium Designer 安装库文件
 
-1. Copie todos los archivos de biblioteca en la carpeta correspondiente de **Shared\Library** del software;
-2. Abra Altium Designer, haga clic en la página **Components** en el panel derecho, haga clic en el icono de **tres barras** en la esquina superior derecha, seleccione la opción **File-based Library Preferences**, haga clic en la página **Installed**, haga clic en el botón **Install** e instale los archivos de biblioteca correspondientes;
-3. Algunas situaciones especiales:
-   - La ruta de la biblioteca integrada de JLC se encuentra en la carpeta **JLCSMT_LIB\Project Outputs for Miscellaneous Devices LC**;
-   - Si los archivos de biblioteca de terceros no son en formato de **biblioteca integrada (.IntLib)**, sino en forma de **biblioteca esquemática (SchLib)** o **biblioteca de encapsulamiento (PcbLib)**, es necesario **instalar ambos** archivos. En este caso, debe hacer clic en la lista desplegable a la derecha de la ventana de selección de ruta que aparece al instalar los archivos de biblioteca y cambiar el comodín a **All Files\(\*.\*\)**, de lo contrario solo se mostrarán archivos en formato **.Intlib**.
+1. 将库文件全部 **拷贝** 至软件对应的 **Shared\Library** 文件夹下；
+2. 打开 Altium Designer ，在右侧面板点击 **Components** 页面，点击右上角 **三条杠** 标志，点击 **File-based Library Preferences** 选项，点击 **已安装** 页面，点击 **安装** 按钮，安装对应的库文件；
+3. 几种特殊情况：
+   - 嘉立创集成库的路径位于 **JLCSMT_LIB\Project Outputs for Miscellaneous Devices LC** 文件夹内；
+   - 若第三方库文件非 **集成库（.IntLib）**，而是 **原理图库（SchLib）** 或 **封装库（PcbLib）** 的形式，则需 **同时安装** 以上两个文件。此时需要在安装库文件时弹出的路径选择窗口右侧点击下拉框切换 **All Files\(\*.\*\)** 通配符，否则只能看到 **.Intlib** 格式的文件。
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

@@ -1,12 +1,12 @@
-# Homelab - Herramienta de monitoreo de estado del sitio web Uptime Kuma
+# Homelab - 网站状态监控工具 Uptime Kuma
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230410160253.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230410160253.jpg)
 
-**Uptime Kuma** es una herramienta de monitoreo de estado que admite varios protocolos de red. Puede monitorear el estado en tiempo real, la duración de la respuesta, la validez del certificado, etc. de varios sitios web personalizados y proporciona varios métodos de notificación.
+**Uptime Kuma** 是一个支持多种网络协议的状态监控工具，可监控多个自定义网站的实时可用状态、响应时长、证书有效期等，并提供了多种通知推送方式。
 
-## Implementación (Docker Compose)
+## 部署（Docker Compose）
 
-Primero, cree el archivo `compose.yaml` y pegue el siguiente contenido:
+首先创建 `compose.yaml` 文件，并粘贴以下内容：
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -21,31 +21,29 @@ services:
     restart: always
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplace `${STACK_NAME}` con `uptime-kuma`).
+（可选）推荐在 `compose.yaml` 同级目录下创建 `.env` 文件，并自定义你的环境变量。如果不想使用环境变量的方式，也可以直接在 `compose.yaml` 内自定义你的参数（比如把 `${STACK_NAME}` 替换为 `uptime-kuma`）。
 
 ```dotenv title=".env"
 STACK_NAME=uptime-kuma
-STACK_DIR=xxx # Ruta personalizada de almacenamiento del proyecto, por ejemplo, ./uptime-kuma
+STACK_DIR=xxx # 自定义项目储存路径，例如 ./uptime-kuma
 
 # uptime-kuma
 APP_VERSION=latest
-APP_PORT=xxxx # Puerto de acceso personalizado, simplemente elija uno que no esté en uso
+APP_PORT=xxxx # 自定义访问端口，选择不被占用的即可
 ```
 
-Por último, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores.
+最后，在 `compose.yaml` 同级目录下执行 `docker compose up -d` 命令即可启动编排的容器。
 
-## Instrucciones de configuración
+## 配置说明
 
-Nota: Si utiliza un proxy inverso, habilite la función "Soporte de Websockets".
+注：如使用反向代理，请开启 `Websockets Support` 功能。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Sitio web oficial](https://uptime.kuma.pet/)
-- [Documentación](https://github.com/louislam/uptime-kuma/wiki)
-- [Repositorio de GitHub](https://github.com/louislam/uptime-kuma)
+- [官网](https://uptime.kuma.pet/)
+- [文档](https://github.com/louislam/uptime-kuma/wiki)
+- [GitHub repo](https://github.com/louislam/uptime-kuma)
 - [Docker Hub](https://hub.docker.com/r/louislam/uptime-kuma)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

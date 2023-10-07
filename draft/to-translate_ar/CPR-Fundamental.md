@@ -1,9 +1,7 @@
 # CPR - Fundamental
 
-> Esta publicación solo está disponible en inglés.
+> This post is only available in English.
 
-**CPR** representa **Core Power Reduction**, una **tecnología de gestión de energía adaptativa** que determina el voltaje óptimo del producto, permite la compensación en bucle cerrado del voltaje DC, la variación de temperatura, el proceso y la degradación por envejecimiento para optimizar la energía y el rendimiento del dispositivo.
+**CPR** represents of **Core Power Reduction**, an **adaptive power management technology** that determine the optimal product voltage, allow closed loop compensation of DC voltage, temperature variation, process（制程） and aging degradation（老化退化）, to optimize device power and performance,
 
-El núcleo CPR consta de un controlador y varios sensores integrados en el SoC para controlar el nivel VDD de un chip. Los sensores consisten en múltiples osciladores de anillo para estimar la velocidad de funcionamiento del chip. Luego, el controlador proporciona un resultado de comando de modificación VDD al PMIC, que se puede programar con software.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+CPR core consists of one controller, and a number of sensors embedded into the SoC, to control the VDD level of a chip. The sensors consists of multiple ring oscillators, to estimate the running speed of the chip. Then the controller provide a VDD modification command result to the PMIC, which can be programmed with software.

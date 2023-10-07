@@ -1,46 +1,44 @@
-# Cómo dibujar gráficos de relaciones con Graphviz
+# 用 Graphviz 绘制关系图
 
-Una forma de dibujar gráficos de relaciones mediante código.
+一种用代码绘制关系图的方式。
 
-## Contexto
+## 背景
 
-[Graphviz](http://www.graphviz.org/) es una herramienta útil para dibujar gráficos de relaciones. A diferencia de Visio, Graphviz genera gráficos con **distribución automática**, lo que significa que no es necesario ajustar manualmente la posición de los elementos. Cuando una red de relaciones es compleja, la distribución automática puede minimizar **la intersección de líneas**.
+[Graphviz](http://www.graphviz.org/) 是个好东西，可用来绘制关系图。与 Visio 有一个本质上的差异： Graphviz 生成图是**自动布局**的，不需要手动调整元素的位置。当一个关系网络比较复杂时，用自动布局可实现**最小化连线交叉**。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/Graphviz.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/Graphviz.png)
 
-## Instalación
+## 安装
 
-Se ha descubierto un editor en línea muy útil: \[GraphvizOnline\]\([http://dreampuf.github.io/GraphvizOnline/\#digraph graph_name { ](http://dreampuf.github.io/GraphvizOnline/#digraph%20graph_name%20{%20) %20%20A-&gt;B\[label%3D"关系"\]%20 }\) que admite la representación en tiempo real y la exportación en formatos como `.png` y `.svg`.
+发现一个很好用的在线编辑器：\[GraphvizOnline\]\([http://dreampuf.github.io/GraphvizOnline/\#digraph graph_name { ](http://dreampuf.github.io/GraphvizOnline/#digraph%20graph_name%20{%20) %20%20A-&gt;B\[label%3D"关系"\]%20 }\) 支持即时渲染，导出 `.png` 与 `.svg` 等格式。
 
-Para macOS, la instalación es: `brew install graphviz`
+macOS 安装：`brew install graphviz`
 
-## Proceso de dibujo
+## 作图流程
 
-1. Crear `xxx.dot`
-2. Editar el documento `.dot`
-3. Cambiar al directorio correspondiente y exportar: `dot xxx.dot -T png -o xxx.png`
+1. 新建 `xxx.dot`
+2. 编辑 `.dot` 文档
+3. 切换到所在目录，导出：`dot xxx.dot -T png -o xxx.png`
 
-## Sintaxis sencilla
+## 简易语法
 
 ```
 graph graph_name {
-  A--B[label="relación de conexión"]
+  A--B[label="连接关系"]
 }
 ```
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20190201140244.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20190201140244.png)
 
-## Conclusión
+## 总结
 
-La distribución automática es la esencia de Graphviz. Al igual que cuando usamos la sintaxis de Markdown para generar presentaciones, estas herramientas estandarizan el contenido, lo que permite que las personas se centren en el **contenido en lugar de la forma y la distribución**.
+自动布局是 Graphviz 的精髓。类比我之前用 Markdown 语法直接生成幻灯片，这些工具把内容标准化，让人能够**更加注重于内容，而非形式与布局**。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Tutorial sencillo de Graphviz](https://blog.zengrong.net/post/2294.html)
-- [Dibujar gráficos con dot](http://www.graphviz.org/pdf/dotguide.pdf)
-- [Instalación y tutorial básico de Graphviz en Windows](https://blog.csdn.net/lanchunhui/article/details/49472949)
+- [Graphviz 简易教程](https://blog.zengrong.net/post/2294.html)
+- [Drawing graphs with dot](http://www.graphviz.org/pdf/dotguide.pdf)
+- [Windows 下 Graphviz 安装及入门教程](https://blog.csdn.net/lanchunhui/article/details/49472949)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

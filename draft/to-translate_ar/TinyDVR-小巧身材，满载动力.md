@@ -1,14 +1,14 @@
-# TinyDVR - Pequeño pero poderoso
+# TinyDVR - 小巧身材，满载动力
 
-—— Basado en TinyDVR Master V1.1 & Slave V7.2 Release
+—— 基于 TinyDVR Master V1.1 & Slave V7.2 Release
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200125191345.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200125191345.jpg)
 
-TinyDVR es un kit de accionamiento de motor que incluye una placa base (Master) y una placa secundaria (Slave). La parte de alimentación y la parte de accionamiento están separadas, lo que reduce significativamente el tamaño en comparación con su predecesor ZenDriver y mejora en gran medida la escalabilidad. Puede apilar diferentes cantidades de placas secundarias según sus necesidades para controlar n motores.
+TinyDVR 是一款电机驱动套件，包含母板（Master）与子板（Slave），供电部分与驱动部分分离，相比前身 ZenDriver 大幅度缩减了体积，极大提升了可拓展性。你可以根据自己的需求，堆叠不同数量的子板，驱动 n 个电机。
 
-Repositorio del proyecto: [**linyuxuanlin/TinyDVR**](https://github.com/linyuxuanlin/TinyDVR)
+项目仓库：[**linyuxuanlin/TinyDVR**](https://github.com/linyuxuanlin/TinyDVR)
 
-Vista previa en línea del proyecto:
+项目在线预览：
 
 **TinyDVR_Master**：
 
@@ -28,60 +28,58 @@ Vista previa en línea del proyecto:
   ></div>
 </div>
 
-## Parámetros básicos
+## 基本参数
 
-1. Voltaje de entrada: **7.2 ~ 20 V**
-2. Corriente de salida: **0 ~ 68 A**
-3. Proporciona una salida de alimentación de **5V / 3A** para el controlador y otros módulos.
-4. Dispositivos de protección: circuito integrado de protección contra polaridad inversa y aislamiento óptico.
-5. Conexión sencilla del motor: para motores reductores de corriente continua comunes en el mercado (con codificador), se pueden conectar directamente con un cable plano de 6 pines (sin necesidad de cruzar cables).
-6. Escalable: una placa base puede apilar n placas secundarias para controlar n motores.
+1. 输入电压：**7.2 ~ 20 V**
+2. 输出电流：**0 ~ 68 A**
+3. 提供 **5V / 3A** 的电源输出，可供控制器及其他模块使用
+4. 保护装置：集成防反接、光耦隔离电路
+5. 电机简便接插：对市面上通用的直流减速电机（带编码器），可直接用 6 pin 排线接插（免对线）
+6. 可拓展：一块母板可堆叠 n 块子板，实现 n 路电机驱动
 
-## Definición de interfaces
+## 接口定义
 
 ### TinyDVR Master
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200125191439.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200125191439.png)
 
 ### TinyDVR Slave
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200125191457.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200125191457.png)
 
-Explicación detallada de los pines traseros:
+背面引脚详解：
 
-- \+ : Proporciona una salida de alimentación de 5V / 3A
-- 1 : Puerto IN1, entrada de señal PWM 1
-- 2 : Puerto IN2, entrada de señal PWM 2
-- A : Puerto de señal de fase A del codificador
-- B : Puerto de señal de fase B del codificador
-- \- : GND
+- \+ ：提供 5V / 3A 的电源输出
+- 1 ：IN1 端口，输入 PWM 信号 1
+- 2 ：IN2 端口，输入 PWM 信号 2
+- A : 编码器 A 相信号端口
+- B : 编码器 B 相信号端口
+- \- ：GND
 
-## Guía de uso
+## 使用指南
 
-### Método de prueba
+### 测试方法
 
-1. Conecte la alimentación de la batería de **7.2 ~ 20 V**
-2. Conecte el motor correspondiente en la placa secundaria correspondiente
-3. Conecte la salida de alimentación de **5V** a los puertos **IN1/ IN2** respectivamente. En este momento, el motor girará en **dirección positiva / negativa**.
+1. 接入 **7.2 ~ 20 V** 电池供电
+2. 在对应的子板处接上电机
+3. 用 **5V** 供电口分别接 **IN1/ IN2** 端口，此时电机将 **正 / 反转**
 
-### Conexión con microcontrolador
+### 连接单片机
 
-4. Conecte la alimentación de la batería de **7.2 ~ 20 V**
-5. Conecte el motor correspondiente en la placa secundaria correspondiente
-6. Conexión a tierra común (conectar GND de la placa de accionamiento con GND del microcontrolador)
-7. Los puertos IN1 e IN2 se conectan a los puertos PWM correspondientes del microcontrolador (configuración en el código)
-8. Método de prueba: consulte el programa de prueba en el repositorio del proyecto.
+4. 接入 **7.2 ~ 20 V** 电池供电
+5. 在对应的子板处接上电机
+6. 共地（驱动板 GND 接单片机 GND）
+7. IN1，IN2 端口接单片机对应 PWM 端口（代码内设置）
+8. 测试方法：请见项目仓库内的测试例程
 
-## Detalles interesantes
+## 花絮
 
-Placa secundaria temprana:
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200311182442.jpg)
+早期子板：
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200311182442.jpg)
 
-Soldadura en masa:
+批量焊接：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200311182441.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200311182441.jpg)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

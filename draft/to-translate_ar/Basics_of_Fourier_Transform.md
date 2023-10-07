@@ -1,76 +1,68 @@
-# Fundamentos de la Transformada de Fourier
+# Basics of Fourier Transform
 
-> Esta publicación solo está disponible en inglés.
+> This post is only available in English.
 
-Existen varios algoritmos para transformar datos del dominio del tiempo al dominio de la frecuencia, como se muestra a continuación.
+There are several algorithms for transforming data from the time domain to the frequency domain as below.
 
-## Serie de Fourier
+## Fourier Series
 
-Una **Serie de Fourier** es un resumen de cómo crear una forma de onda compleja sumando ondas senoidales puras con diferentes amplitudes y frecuencias, y descomponer una señal compleja en una suma de sinusoides de diferentes amplitudes y frecuencias.
+A **Fourier Series**（傅里叶级数） is summarized as creating a complex waveform by summing pure sine waves with different amplitudes and frequencies, and to decompose a complex signal into a sum of sinusoids of different amplitudes and frequencies.
 
-### Condiciones de Dirichlet
+### Dirichlet Conditions
 
-Las Condiciones de Dirichlet especifican un conjunto de condiciones que deben cumplirse antes de que una señal pueda descomponerse en una Serie de Fourier:
+Dirichlet Conditions specify a set of conditions that must be met before a signal can be decomposed into a Fourier Series:
 
-- La señal es una función matemática, es decir, un solo punto y solo uno de y corresponde a cada punto de x.
-- La señal es periódica.
-- El área limitada por la señal en un período es finita.
+- The signal is a mathematical function, i.e., one and only one y-point corresponds to each x-point.
+- The signal is periodic.
+- The area bounded by the signal over one period is finite.
 
-### Descomposición en una Serie de Fourier
+### Decompose into a Fourier Series
 
-Una señal compleja que cumple las Condiciones de Dirichlet puede representarse como una suma de sinusoides:
+A complex signal that meets the Dirichlet Conditions can be represented by a sum of sinusoids:
 
 $$
 f(t)=a_0+A\{\sum_{n=1}^\infty[a_n cos(n \omega_1 t+\phi_n)+b_n sin(n \omega_1 t+\phi_n)]\}
 $$
 
-donde:
+where:
 
-- $a_0$ es el componente DC.
-- $A$ es un factor de escala general para todos los componentes armónicos.
-- $\omega_1$ es la frecuencia fundamental.
-- $n$ es un multiplicador entero de la frecuencia fundamental para cada término armónico.
+- $a_0$ is the DC component.
+- $A$ is an overall scale factor for all harmonic components.
+- $\omega_1$ is the frequency of the fundamental.
+- $n$ is an integer multiplier of the fundamental frequency for each harmonic term.
 
-Esto demuestra que no solo podemos sumar una serie de ondas senoidales para crear cualquier otra onda, sino que también que las frecuencias de las sinusoides son múltiplos enteros (armónicos) de una sola frecuencia fundamental.
+This proves that not only can we sum a series of sine and cosine waves to create any other wave, but also that the frequencies of the sinusoids are integer multiples (harmonics) of a single fundamental frequency.
 
-## Transformada de Fourier Discreta (DFT)
+## Discrete Fourier Transform (DFT)
 
-La **Transformada de Fourier Discreta (DFT)** toma datos de amplitud versus tiempo y los traduce a datos de amplitud versus frecuencia.
+**Discrete Fourier Transform (DFT)**: takes amplitude versus time data, and then translates to amplitude versus frequency data.
 
-Matemáticamente, el algoritmo es una suma de la serie del producto de cada muestra por un número complejo:
+Mathematically, the algorithm is a series summation of the product of each sample times a complex number:
 
 $$
 X(b)=\sum_{n=0}^{N-1}x[n](cos(2\pi nb/N)-jsin(2\pi nb/N))
 $$
 
-# Transformada de Fourier Discreta (DFT)
+where:
 
-La **Transformada de Fourier Discreta (DFT)** es una técnica matemática utilizada para analizar señales en el dominio de la frecuencia. La DFT se utiliza para convertir una señal de tiempo discreto en su representación de frecuencia discreta. La DFT se define como:
+- $n$ is one of $N$ samples.
+- $N$ is total number of samples.
+- $b$ is one of $B$ frequency bins (each bin represents a frequency range of $F_s /N$).
+- $j$ is the imaginary operator.
 
-$$X_b = \sum_{n=0}^{N-1} x_n e^{-j2\pi bn/N}$$
+The DFT algorithm uses each sample point in the summation from 0 to N-1 for each analyzed frequency. All N sample points contain information about all B frequencies, thus each of the B frequencies for which information is desired requires a summation of N time sample products. Because of the reasons above, processing a DFT is slow, because $N^2$ calculations are necessary. For example, a 2000 point DFT requires 4 million calculations, often floating point calculations, which are slower than integer calculations.
 
-donde:
+## Fast Fourier Transform (FFT)
 
-- $n$ es uno de $N$ muestras.
-- $N$ es el número total de muestras.
-- $b$ es uno de $B$ intervalos de frecuencia (cada intervalo representa un rango de frecuencia de $F_s /N$).
-- $j$ es el operador imaginario.
+**Fast Fourier Transform (FFT)** remedies the DFT speed problem by skipping over portions of the summations which produce redundant information. Rules for using FFT:
 
-El algoritmo DFT utiliza cada punto de muestra en la suma de 0 a N-1 para cada frecuencia analizada. Todos los puntos de muestra N contienen información sobre todas las B frecuencias, por lo que cada una de las B frecuencias para las que se desea información requiere una suma de N productos de muestra de tiempo. Debido a las razones anteriores, procesar una DFT es lento, porque se necesitan $N^2$ cálculos. Por ejemplo, una DFT de 2000 puntos requiere 4 millones de cálculos, a menudo cálculos de punto flotante, que son más lentos que los cálculos enteros.
+- The number of sample points must be a power of 2 ($2^n$).
+- The number of additions and multiplications is: $\frac{N}{2}\log_2 N$.
 
-## Transformada Rápida de Fourier (FFT)
+## References & Acknowledgements
 
-La **Transformada Rápida de Fourier (FFT)** remedia el problema de velocidad de la DFT saltando sobre porciones de las sumas que producen información redundante. Reglas para usar FFT:
-
-- El número de puntos de muestra debe ser una potencia de 2 ($2^n$).
-- El número de sumas y multiplicaciones es: $\frac{N}{2}\log_2 N$.
-
-## Referencias y Agradecimientos
-
-- _Fundamentos de Pruebas Utilizando ATE_
+- _Fundamentals of Testing Using ATE_
 - _The-Fundamentals-of-Mixed-Signal-Testing_Brian-Lowe_
 
 > Original: <https://wiki-power.com/>  
-> Esta publicación está protegida por el acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en), debe ser reproducida con atribución.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.

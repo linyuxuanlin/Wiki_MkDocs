@@ -1,186 +1,176 @@
-# Análisis de datos con R
+# 使用 R 语言进行数据分析
 
-## Instalación de software
+## 软件安装
 
 - [**R-software**](https://cran.r-project.org/)
-  - Si se utiliza en Windows, haga clic en `Download R for Windows` en la página principal del sitio web, luego haga clic en `install R for the first time` y finalmente haga clic en `Download R 4.0.4 for Windows`. Después de descargar el software, complete la instalación por su cuenta.
-  - El software de soporte de R solo se ejecuta en segundo plano y no tiene una interfaz gráfica.
+  - 如果是在 Windows 上使用，请在网站主页点击 `Download R for Windows`，然后点击 `install R for the first time`，最后点击 `Download R 4.0.4 for Windows`，下载软件后请自行完成安装。
+  - R 语言支持软件仅在后台运行，没有图形化界面。
 - [**RStudio**](https://rstudio.com/products/rstudio/download/#download)
-  - Simplemente haga clic en el botón azul `Download` o seleccione otra versión del sistema en la parte inferior de la página para descargar el software. Después de descargar el software, complete la instalación por su cuenta.
+  - 直接点击蓝色的 `Download` 按钮，或者在页面下方选择其他系统版本下载。下载软件后请自行完成安装。
 
-## Recursos de enseñanza
+## 教学资源
 
-### Recursos en línea (recomendados)
+### 在线资源（推荐）
 
 - [R-tutorial](http://www.r-tutor.com/r-introduction)
-- [Aprende R desde cero](https://bookdown.org/qiyuandong/intro_r/)
+- [零基础学 R 语言](https://bookdown.org/qiyuandong/intro_r/)
 
-### Libros
+### 书籍
 
 - [The R-book](https://www.cs.upc.edu/~robert/teaching/estadistica/TheRBook.pdf)
-- [R para Ciencia de Datos](https://r4ds.had.co.nz/index.html)
+- [R for Data Science](https://r4ds.had.co.nz/index.html)
 
-## Tipos de datos básicos
+## 基本数据类型
 
-Los tipos de datos en R se dividen principalmente en los siguientes:
+R 语言的数据类型，主要有以下这几种：
 
-- **Numérico (numerics)**
-- **Entero (integer)**
-- **Complejo (complex)**
-- **Lógico (logical)**
-- **Carácter (characters)**
+- **数值型（numerics）**
+- **整数型（integer）**
+- **复数型（complex）**
+- **逻辑型（logical）**
+- **字符型（characters）**
 
-### Numérico (numerics)
+### 数值型（numerics）
 
-El tipo numérico es el tipo de datos más básico en R. Cuando asignamos un valor numérico a una variable, el tipo de la variable es numérico:
+数值型是 R 语言中最基本的数据类型。当我们把一个数字值赋给变量，那变量的类型就是数值型：
 
 ```r
-> x = 11.15       # Asignar el valor numérico 11.15 a la variable x
-> x              # Imprimir el valor de x
+> x = 11.15       # 把 11.15 这个数值赋给变量 x
+> x              # 输出出 x 的值
 [1] 11.15
-> class(x)       # Imprimir el tipo de x
+> class(x)       # 输出 x 的类型
 [1] "numeric"
 ```
 
-Tanto los enteros como los decimales pueden ser variables numéricas. Pero si se crea de esta manera, las variables enteras también se considerarán variables decimales.
+整数或小数都可以是数值型变量。但如果按照以上的方法创建，那么整数变量也会被视为小数变量。
 
-### Entero (integer)
+### 整数型（integer）
 
-Si desea crear una variable entera, debe usar la función `is.integer`:
+如果要创建整数型变量，就得使用函数 `is.integer`：
 
 ```r
 > y = as.integer(3)
-> y              # Imprimir el valor de y
+> y              # 输出 y 的值
 [1] 3
-> class(y)       # Imprimir el tipo de y
+> class(y)       # 输出 y 的类型
 [1] "integer"
-> is.integer(y)  # ¿Es y un número entero?
+> is.integer(y)  # y 是否为整数？
 [1] TRUE
 ```
 
-Además de usar la función `is.integer`, también puede agregar el sufijo `L` para lograrlo:
+除了使用 `is.integer` 函数，你也可以附加 `L` 后缀来实现：
 
 ```r
 > y = 3L
-> is.integer(y)  # ¿Es y un número entero?
+> is.integer(y)  # y 是否为整数？
 [1] TRUE
 ```
 
-Si desea redondear un decimal, puede usar la función `as.integer`:
+如果要对小数进行取整，我们可以使用函数 `as.integer`：
 
 ```r
-> as.integer(3.14)    # Convertir la variable en un número entero
+> as.integer(3.14)    # 对变量进行强制数值转换
 [1] 3
 ```
 
-También puede analizar y redondear variables de tipo cadena:
+也可以对字符串类型进行解析并取整：
 
 ```r
-> as.integer("5.27")  # Convertir la variable en un número entero
+> as.integer("5.27")  # 对变量进行强制数值转换
 [1] 5
 ```
 
-Pero si la cadena analizada no es un número, se producirá un error:
+但如果解析的字符串不是数值，那就会出错：
 
 ```r
-> as.integer("Joe")   # Analizar una cadena que no es numérica
+> as.integer("Joe")   # 解析一个非数值型的字符串
 [1] NA
 Warning message:
 NAs introduced by coercion
 ```
 
-Al igual que en C, en R, los enteros `1` `0` y los lógicos `TRUE` `FALSE` se corresponden:
+R 语言像 C 语言一样，把整数 `1` `0` 与逻辑 `TRUE` `FALSE`对应了起来：
 
 ```r
-> as.integer(TRUE)    # Variable numérica de TRUE
+> as.integer(TRUE)    # TRUE 的数值型变量
 [1] 1
-> as.integer(FALSE)   # Variable numérica de FALSE
+> as.integer(FALSE)   # FALSE 的数值型变量
 [1] 0
 ```
 
-### Complejo (complex)
+### 复数型（complex）
 
-En R, las variables complejas se definen mediante `i`:
-
-```r
-> z = 2 + 3i       # Asignar el valor complejo 2 + 3i a la variable z
-> z              # Imprimir el valor de z
-[1] 2+3i
-> class(z)       # Imprimir el tipo de z
-[1] "complex"
-```
-
-Español:
+在 R 语言中，复数变量通过 `i` 来定义：
 
 ```r
-> z = 1 + 2i     # Crear una variable compleja z
-> z              # Imprimir el valor de z
+> z = 1 + 2i     # 创建一个复数变量 z
+> z              # 输出 z 的值
 [1] 1+2i
-> class(z)       # Imprimir el tipo de z
+> class(z)       # 输出 z 的类型
 [1] "complex"
 ```
 
-Si intentamos calcular la raíz cuadrada de `-1`, obtendremos un error:
+如果我们单纯对 `-1` 开方，那将会出错：
 
 ```r
-> sqrt(−1)       # Calcular la raíz cuadrada de -1
+> sqrt(−1)       # 对 -1 开方
 [1] NaN
 Warning message:
 In sqrt(−1) : NaNs produced
 ```
 
-Pero si calculamos la raíz cuadrada de `-1+0i`, no habrá problema:
+但是对复数 `−1+0i` 开方，那就没问题：
 
 ```r
-> sqrt(−1+0i)    # Calcular la raíz cuadrada de −1+0i
+> sqrt(−1+0i)    # 对 −1+0i 开方
 [1] 0+1i
 ```
 
-También podemos realizar operaciones con conversión de tipo forzado:
+也可以用强制类型转换来进行运算：
 
 ```r
 > sqrt(as.complex(−1))
 [1] 0+1i
 ```
 
-### Tipo lógico (logical)
+### 逻辑型（logical）
 
-El tipo lógico se genera generalmente al comparar variables:
+逻辑型通常通过比较变量而产生：
 
 ```r
-> x = 1; y = 2   # Variables de muestra
-> z = x > y      # ¿Es x mayor que y?
-> z              # Imprimir la variable lógica
+> x = 1; y = 2   # 样本变量
+> z = x > y      # x 比 y 大吗？
+> z              # 输出逻辑变量
 [1] FALSE
-> class(z)       # Imprimir el tipo de z
+> class(z)       # 输出 z 的类型
 [1] "logical"
 ```
 
-Las operaciones lógicas básicas son `&` (y), `|` (o), `!` (no):
+基本逻辑操作有 `&`（与），`|`（或）, `!`（非）：
 
 ```r
 > u = TRUE; v = FALSE
-> u & v          # Operación "y" entre u y v
+> u & v          # 对 u，v 进行 "与" 运算
 [1] FALSE
-> u | v          # Operación "o" entre u y v
+> u | v          # 对 u，v 进行 "或" 运算
 [1] TRUE
-> !u             # Operación "no" en u
+> !u             # 对 u 进行 "非" 运算
 [1] FALSE
 ```
 
-### Tipo caracter (character)
+### 字符型（character）
 
-El tipo caracter se puede obtener mediante la conversión forzada con la función `as.character`:
+字符型可通过函数 `as.character` 进行强制类型转换得到：
 
 ```r
 > x = as.character(3.14)
-> x              # Imprimir la cadena
+> x              # 输出字符串
 [1] "3.14"
-> class(x)       # Imprimir el tipo de x
+> class(x)       # 输出 x 的类型
 [1] "character"
 ```
 
-Para combinar dos variables de tipo caracter, se puede utilizar la función `paste`:
+要合并两个字符型变量，可以使用函数 `paste`：
 
 ```r
 > fname = "Joe"; lname ="Smith"
@@ -188,64 +178,64 @@ Para combinar dos variables de tipo caracter, se puede utilizar la función `pas
 [1] "Joe Smith"
 ```
 
-Al igual que en la sintaxis de C, se puede utilizar la función `sprintf` para imprimir con formato y mejorar la legibilidad:
+像 C 语法一样，可以用格式输出以增加可读性，用函数 `sprintf` 即可：
 
 ```r
 > sprintf("%s has %d dollars", "Sam", 100)
 [1] "Sam has 100 dollars"
 ```
 
-Si se desea extraer una subcadena de una cadena, se puede utilizar la función `substr` (en el ejemplo se extraen los caracteres entre el tercero y el duodécimo):
+如果要从字符串中提取子串，可以使用函数 `substr`（示例中把第 `3` 到第 `12` 个字符之间的字符截取了下来）：
 
 ```r
 > substr("Mary has a little lamb.", start=3, stop=12)
 [1] "ry has a l"
 ```
 
-Si se desea reemplazar el primer carácter encontrado por otro, se puede utilizar la función `sub` (en el ejemplo se reemplaza `little` por `big`):
+如果要把第一个遇见的字符替换成另外一个，可以使用函数 `sub`（示例中把 `little` 替换成了 `big`）：
 
 ```r
 > sub("little", "big", "Mary has a little lamb.")
 [1] "Mary has a big lamb."
 ```
 
-## Vectores
+## 向量
 
-### Vectores en R
+### R 语言中的向量
 
-Un vector es un arreglo que contiene elementos del mismo tipo, y los elementos de un vector se llaman componentes.
+向量是一个包含相同类型元素的数组，向量中的成员被官方称为 components。
 
-A continuación se muestra un ejemplo de vector (que contiene tres variables numéricas `2`, `3` y `5`):
+以下是一个示例向量（包含三个数值变量 `2` `3` `5`）：
 
 ```r
 > c(2, 3, 5)
 [1] 2 3 5
 ```
 
-También puede estar compuesto completamente de valores lógicos:
+也可以全部由逻辑型构成：
 
 ```r
 > c(TRUE, FALSE, TRUE, FALSE, FALSE)
 [1] TRUE FALSE TRUE FALSE FALSE
 ```
 
-O puede estar compuesto de valores de tipo caracter:
+也可以由字符型构成：
 
 ```r
 > c("aa", "bb", "cc", "dd", "ee")
 [1] "aa" "bb" "cc" "dd" "ee"
 ```
 
-Para conocer la cantidad de componentes de un vector, se puede utilizar la función `length`:
+如果想知道一个向量内有多少个成员，可以使用函数 `length`：
 
 ```r
 > length(c("aa", "bb", "cc", "dd", "ee"))
 [1] 5
 ```
 
-### Combinando vectores
+### 合并向量
 
-Si desea combinar dos vectores, puede usar la función `c`:
+如果要合并两个向量，可以使用函数 `c`：
 
 ```r
 > n = c(2, 3, 5)
@@ -254,18 +244,18 @@ Si desea combinar dos vectores, puede usar la función `c`:
 [1] "2"  "3"  "5"  "aa" "bb" "cc" "dd" "ee"
 ```
 
-Tenga en cuenta que en el ejemplo anterior, si combina dos vectores de diferentes tipos de datos, el tipo combinado será compatible hacia abajo (es decir, el tipo más estricto se convertirá en el tipo más relajado, como convertir un tipo numérico en un tipo de carácter).
+注意在上面的例子中，如果合并两个不同数据类型的向量，那合并后的类型将会是向下兼容的（即将比较严格的类型，进行强制类型转换为比较宽松的类型，例如将数值型变成字符型）
 
-### Operaciones básicas de vectores
+### 向量基本运算
 
-Supongamos que tenemos dos vectores `a` y `b`:
+我们先假定两个向量 `a` `b`：
 
 ```r
 > a = c(1, 3, 5, 7)
 > b = c(1, 2, 4, 8)
 ```
 
-A continuación se muestran las operaciones básicas de vectores:
+以下就是向量的基本运算：
 
 ```r
 > a + b
@@ -284,7 +274,7 @@ A continuación se muestran las operaciones básicas de vectores:
 [1] 1.000 1.500 1.250 0.875
 ```
 
-Si la cantidad de miembros de los dos vectores que se suman no es la misma, el resultado será compatible hacia abajo, es decir, la longitud de la variable de salida dependerá del más largo:
+如果相加的两个向量成员数量不一致，那么结果将会向下兼容，即输出变量的长度取决于较长的那个：
 
 ```r
 > u = c(10, 20, 30)
@@ -293,30 +283,28 @@ Si la cantidad de miembros de los dos vectores que se suman no es la misma, el r
 [1] 11 22 33 14 25 36 17 28 39
 ```
 
-### Recuperando vectores
+### 检索向量
 
-Si desea recuperar un miembro del vector, puede usar el método de índice declarando el índice en `[ ]`, es decir, `[número de miembro]`:
+如果要从向量中取出成员，可以使用在 `[ ]` 中声明索引的方法，也就是 `[第几个成员]` ：
 
 ```r
 > s = c("aa", "bb", "cc", "dd", "ee")
-> s[3]  # recupera el valor del tercer miembro y lo muestra
+> s[3]  # 取出第三个成员的值并输出
 [1] "cc"
 ```
 
-Si agrega un signo menos antes del índice, como `[-3]`, significa que recupera todos los miembros excepto el tercer miembro:
+如果索引前加一个负号，比如 `[-3]`，就意味着取出除第三个成员外的其他成员：
 
 ```r
 > s[-3]
 [1] "aa" "bb" "dd" "ee"
 ```
 
-Si el índice está fuera de la longitud del vector, se producirá un error:
+如果索引超出了向量的长度，那就会报错：
 
 ```r
 > s[10]
 [1] NA
 ```
 
-【En proceso de actualización】
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+【更新中】

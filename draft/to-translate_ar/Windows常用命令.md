@@ -1,22 +1,20 @@
-# Comandos comunes de Windows
+# Windows 常用命令
 
-## Comandos comunes de Win+R
+## Win+R 常用命令
 
-- `control` Panel de control
-- `regedit` Editor del registro
-- `eventvwr` Visor de eventos
-- `mmc` Consola de administración de Microsoft
-- `gpedit.msc` Directivas de grupo
-- `devmgmt.msc` Administrador de dispositivos
-- `diskmgmt.msc` Administración de discos
-- `services.msc` Servicios
-- `certmgr.msc` Certificados
-- `taskschd.msc` Programador de tareas
-- `wf.msc` Firewall de Windows avanzado
-- `%windir%\explorer.exe shell:::{4234d49b-0245-4df3-b780-3893943456e1}` Abrir el directorio de aplicaciones
+- `control` 控制面板
+- `regedit` 注册表编辑器
+- `eventvwr` 事件查看器
+- `mmc` Microsoft 管理控制台
+- `gpedit.msc` 组策略
+- `devmgmt.msc` 设备管理器
+- `diskmgmt.msc` 磁盘管理
+- `services.msc` 服务
+- `certmgr.msc` 证书
+- `taskschd.msc` 计划任务程序
+- `wf.msc` 高级安全 Windows 防火墙
+- `%windir%\explorer.exe shell:::{4234d49b-0245-4df3-b780-3893943456e1}` 打开 Applications 目录
 
-## Referencias y agradecimientos
+## 参考与致谢
 
 - [Windows](https://canwdev.github.io/pages/278ffc/)
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

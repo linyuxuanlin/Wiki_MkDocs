@@ -1,84 +1,82 @@
-# Guía de productividad de VS Code - Jupyter Notebook
+# VS Code 生产力指南 - Jupyter Notebook
 
-Crea herramientas de productividad eficientes con VS Code.
+用 VS Code 打造高效率的生产力工具。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200323155728.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323155728.png)
 
-Jupyter Notebook es una herramienta muy poderosa que nos permite escribir, ejecutar y visualizar código, datos y resultados en un solo documento. En resumen, nos facilita mucho la tarea de escribir documentos que contienen código.
+Jupyter Notebook 是一个很强大的工具，它允许我们在一个文档环境内编写、运行代码、查看输出、将数据可视化并查看结果……总之，有了它，我们写含代码的文档就方便多了。
 
-En el artículo anterior, completamos la configuración básica de VS Code. En este artículo, explicaré cómo usar Jupyter con VS Code.
+在上一篇文章中，我们完成了 VS Code 基本环境的搭建。这篇文章我将对 Jupyter with VS Code 进行详细讲解。
 
-## Configuración del entorno
+## 环境配置
 
-Como se sabe, Jupyter Notebooks depende del entorno de Python.  
-Para confirmar si tienes un entorno de Python, en el panel de comandos de VS Code (`Ctrl + Shift + P`), escribe **Python: Select Interpreter**. Si ves que hay una versión de Python disponible para seleccionar, entonces no hay problema.
+众所周知，Jupyter Notebooks 依赖 Python 环境。  
+为了确认你是否拥有 Python 环境，在 VS Code 命令面板（`Ctrl + Shift + P`）内键入 **Python: Select Interpreter**，如果看到有可以选择的 Python 版本，那就没问题。
 
-Si no tienes un entorno de Python, puedes instalarlo de la siguiente manera:
+如果没有 Python 环境，可以通过以下方法安装：
 
-1. Descarga el paquete de instalación de la última versión en la [**página web oficial de Python**](https://www.python.org/) (preferiblemente la versión "web-based installer").
+1. 在 [**Python 官网**](https://www.python.org/) 下载最新版本安装包（尽量选择 `web-based installer` 版本）
 
-Después de configurar el entorno de Python local, también necesitamos instalar el complemento [**Python**](https://marketplace.visualstudio.com/items?itemName=ms-python.python) en VS Code. En una actualización reciente, Jupyter Notebooks ya está incluido en este complemento, así que no es necesario instalarlo por separado.
+配置完本地 Python 环境后，我们还需要在 VS Code 内安装 [**Python**](https://marketplace.visualstudio.com/items?itemName=ms-python.python) 插件。在近期的一次更新中，Jupyter Notebooks 已经被包含在这个插件内，不用再单独安装了。
 
-## Creación de un cuaderno
+## 创建笔记本
 
-Después de configurar el entorno, puedes crear un cuaderno Jupyter en blanco (archivo `.ipynb`) en el panel de comandos de VS Code (`Ctrl + Shift + P`) escribiendo **Python: Create Blank New Jupyter**. A continuación, se muestra una prueba simple:
+环境配置完成后，我们可以在 VS Code 命令面板（`Ctrl + Shift + P`）输入 **Python: Create Blank New Jupyter** 创建一个空白的 Jupyter 笔记本（`.ipynb` 文件）。如下图简单测试一下：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200323153020.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323153020.png)
 
-Como se puede ver, el código se ejecuta correctamente.
+可以看到，代码正常运行。
 
-## Operaciones básicas
+## 基本操作
 
-Jupyter Notebook utiliza **celdas de código (code cells)** para crear, editar y ejecutar código.
+Jupyter Notebook 使用 **代码单元（code cells）** 的形式来创建、编辑和运行代码。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200323153717.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323153717.png)
 
-### Agregar celdas de código
+### 添加 code cells
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200323153850.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323153850.png)
 
-### Ejecutar una sola celda de código
+### 运行单个 code cell
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200323153939.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323153939.png)
 
-### Ejecutar varias celdas de código
+### 运行多个 code cells
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200323154005.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154005.png)
 
-### Mover celdas de código
+### 移动 code cell
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200323154059.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154059.png)
 
-### Eliminar celdas de código
+### 删除 code cell
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200323154148.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154148.png)
 
-### Cambiar entre código y Markdown
+### 在代码与 Markdown 之间切换
 
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154242.png)
 
+### 图表查看器
 
-### Visor de gráficos
+通过图表查看器，你可以轻松查看代码输出的图表，也可以将图标导出各种格式的图片：
 
-Con el visor de gráficos, puede ver fácilmente los gráficos generados por el código y exportarlos en varios formatos de imagen:
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154555.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200323154555.png)
+### 数据与变量查看器
 
-### Visor de datos y variables
+变量的类型、数量与值可以通过变量查看器实时查看：
 
-Puede ver el tipo, la cantidad y el valor de las variables en tiempo real a través del visor de variables:
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154758.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200323154758.png)
+也可以通过数据查看器浏览更具体的数据：
 
-También puede explorar datos más específicos a través del visor de datos:
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154832.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200323154832.png)
+## 参考与致谢
 
-## Referencias y agradecimientos
+- [Working with Jupyter Notebooks in Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support)
+- [VS Code Python 全新发布！Jupyter Notebook 原生支持终于来了！](https://zhuanlan.zhihu.com/p/85445777)
 
-- [Trabajando con cuadernos Jupyter en Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support)
-- [¡Nuevo lanzamiento de VS Code Python! ¡Finalmente llegó el soporte nativo para Jupyter Notebook!](https://zhuanlan.zhihu.com/p/85445777)
-
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

@@ -1,18 +1,16 @@
-# Cómo leer/escribir un solo bit
+# 如何读写单个 bit
 
 ```c
-#define BitVal(data,y) ( (data>>y) & 1)             // Devuelve el valor de Data.Y
-#define SetBit(data,y)    data |= (1 << y)          // Establece Data.Y en 1
-#define ClearBit(data,y)  data &= ~(1 << y)         // Borra Data.Y a 0
-#define TogleBit(data,y)     (data ^=BitVal(y))     // Alterna el valor de Data.Y
-#define Togle(data)   (data =~data )                // Alterna el valor de Data
+#define BitVal(data,y) ( (data>>y) & 1)             // Return Data.Y value
+#define SetBit(data,y)    data |= (1 << y)          // Set Data.Y to 1
+#define ClearBit(data,y)  data &= ~(1 << y)         // Clear Data.Y to 0
+#define TogleBit(data,y)     (data ^=BitVal(y))     // Togle Data.Y value
+#define Togle(data)   (data =~data )                // Togle Data value
 ```
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Cómo leer/escribir bits arbitrarios en C/C++](https://stackoverflow.com/questions/11815894/how-to-read-write-arbitrary-bits-in-c-c)
+- [How to read/write arbitrary bits in C/C++](https://stackoverflow.com/questions/11815894/how-to-read-write-arbitrary-bits-in-c-c)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

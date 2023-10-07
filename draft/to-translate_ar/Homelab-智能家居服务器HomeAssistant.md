@@ -1,12 +1,12 @@
-# Homelab - Servidor de hogar inteligente Home Assistant
+# Homelab - 智能家居服务器 Home Assistant
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202306011647498.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202306011647498.png)
 
-**Home Assistant** es un servidor de hogar inteligente de código abierto que puede monitorear todos los dispositivos de su hogar. Tiene funciones similares a Mi Home y una interfaz amigable y atractiva, y su implementación es relativamente sencilla.
+**Home Assistant** 是一个开源的智能家居服务器，能够监控家里的所有设备，功能类似米家，界面友好美观，部署也相对简单。
 
-## Implementación (Docker Compose)
+## 部署（Docker Compose）
 
-Primero, cree un archivo `compose.yaml` y pegue el siguiente contenido:
+首先创建 `compose.yaml` 文件，并粘贴以下内容：
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -24,32 +24,30 @@ services:
     restart: unless-stopped
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplace `${STACK_NAME}` con `audiobookshelf`).
+（可选）推荐在 `compose.yaml` 同级目录下创建 `.env` 文件，并自定义你的环境变量。如果不想使用环境变量的方式，也可以直接在 `compose.yaml` 内自定义你的参数（比如把 `${STACK_NAME}` 替换为 `audiobookshelf`）。
 
 ```dotenv title=".env"
 STACK_NAME=homeassistant
-STACK_DIR=xxx # Personalice la ruta de almacenamiento del proyecto, por ejemplo, ./homeassistant
+STACK_DIR=xxx # 自定义项目储存路径，例如 ./homeassistant
 
 # homeassistant
 APP_VERSION=latest
-APP_PORT=xxxx # Personalice el puerto de acceso, simplemente elija uno que no esté ocupado
+APP_PORT=xxxx # 自定义访问端口，选择不被占用的即可
 ```
 
-Finalmente, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores.
+最后，在 `compose.yaml` 同级目录下执行 `docker compose up -d` 命令即可启动编排的容器。
 
-## Instrucciones de configuración
+## 配置说明
 
-La aplicación móvil se puede utilizar directamente con la aplicación oficial de Home Assistant.
+移动端 App 可直接使用官方的 Home Assistant App
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Sitio web oficial](https://www.home-assistant.io/)
-- [Documentación](https://www.home-assistant.io/installation/generic-x86-64#docker-compose)
-- [Repositorio de GitHub](https://github.com/home-assistant)
+- [官网](https://www.home-assistant.io/)
+- [文档](https://www.home-assistant.io/installation/generic-x86-64#docker-compose)
+- [GitHub repo](https://github.com/home-assistant)
 - [Docker Hub](https://hub.docker.com/r/homeassistant/home-assistant)
-- [Sitio de demostración](https://demo.home-assistant.io/#/lovelace/0)
+- [Demo site](https://demo.home-assistant.io/#/lovelace/0)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

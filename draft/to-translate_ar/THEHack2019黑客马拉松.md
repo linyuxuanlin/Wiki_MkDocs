@@ -1,26 +1,24 @@
-# THE Hack 2019 Hackathon
+# THE Hack 2019 黑客马拉松
 
-## Introducción
+## 前言
 
-El concurso de Hackathon THE Hack 2019 se llevó a cabo en la Universidad de Shanghai Jiao Tong, donde mi equipo y yo participamos y después de 36 horas de arduo trabajo, logramos obtener el octavo lugar en general y el premio individual Ruff.
+THE Hack 2019 创客马拉松比赛在上交大举办，我和小伙伴们参加了这次比赛，在经历了 36 小时的艰难构想后，最终取得全场第 8 名和 Ruff 单项奖的成绩。
 
-## Proceso del proyecto
+## 项目历程
 
-Este año, el concurso tenía diferentes temas, inicialmente elegimos la dirección de hogares inteligentes y planeamos hacer un kit de hogar inteligente relacionado con los dormitorios, pero finalmente elegimos el tema **cómo permitir que los grupos vulnerables en la tecnología también disfruten de la diversión de la tecnología**. Un pequeño equipo de chicos y chicas se encargó del producto, y este año nuestra perspectiva se amplió, no solo desde el punto de vista técnico, sino también desde la psicología y las necesidades del usuario, analizando el tema y pensando en lo que los jueces y patrocinadores valoran más.
+今年的比赛有不同的 topics，我们一开始选择了智能家居的方向，打算做宿舍相关的智能家居套件，后来还是选择了 **如何让科技上的弱势群体也能享受科技的乐趣** 这个 topic。有负责产品的小哥哥和小姐姐一起组队，我们今年的视角变得更广，不只是从技术，而是从心理学和用户需求出发，分析 topic，思考评委和赞助商更看重的是什么。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/72fa421a32841af4c9cb339132b30fe.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/72fa421a32841af4c9cb339132b30fe.jpg)
 
-El nombre de nuestro proyecto este año fue AIO - Care, una plataforma inteligente de asistencia para personas mayores basada en un modelo de aprendizaje activo. Me encargué de la implementación simple de la parte de hardware, recopilando datos para el servidor a través de la interacción de algunos sensores, para analizar y servir a las personas mayores, brindándoles una experiencia de vida en el hogar más cómoda.
+我们今年的项目名称是 AIO - Care，是一款基于主动学习模型的智慧助老平台。我所负责的是硬件部分的简单实现，通过一些传感器的联动，为服务端采集数据，用以分析并服务于老年人，为他们提供更舒适的居家养老体验。
 
-La idea y dirección del producto fueron responsabilidad de Amihua Lau y Ada, quienes fueron excelentes en este aspecto. Además, Amihua Lau también se encargó del algoritmo de aprendizaje automático y la producción de la presentación en PowerPoint; mientras que Ada, como Recursos Humanos, nos brindó mucha ayuda y consejos (lo que directamente determinó la dirección de nuestro producto), así como también nos proporcionó innumerables bocadillos y bebidas, brindándonos un sólido apoyo logístico. Su responsabilidad en el proyecto es algo que admiro como líder del equipo. Además, agradezco a Yi Lin Weng del equipo vecino por crear el modelo 3D de nuestro producto.
+产品的理念和方向由作为产品经理的 Amihua Lau 和 Ada 负责，他们在这个方面做得很棒。除此之外，Amihua Lau 还负责了机器学习的算法和 PPT 的制作；而 Ada 作为 Human Resource，也为我们小队拉到了许多的帮助和建议（这直接决定了我们产品的方向），也为我们薅来了数不清的零食和饮料，为我们提供了强大的后勤保障。他们负责的方面我望尘莫及，作为团队的 Leader 当之无愧。除此之外，也感谢隔壁朋友队里的翁艺林，为我们产品建了 3D 模型。
 
-Me encargué de la implementación simple del hardware del producto, el código ya está disponible en [GtiHub](https://github.com/linyuxuanlin/Project-of-THE-Hack), basado en Arduino, es un demo muy simple, así que no profundizaré en ello.
+我负责产品硬件的简单实现，代码已开源至 [GtiHub](https://github.com/linyuxuanlin/Project-of-THE-Hack) ，基于 Arduino ，很简单的一个 Demo，就不展开说了。
 
-En comparación con el concurso de hace dos años, esta vez no solo partimos desde el punto de vista técnico, sino que también creamos un modelo comercial completo y un modelo de beneficios. Comenzamos a comprender las reglas de este tipo de competencias y aprendimos mucho de los excelentes proyectos de otros equipos. Esto es solo el comienzo, creo que el próximo año en el Hackathon podremos obtener mejores resultados.
+相较前年的比赛，只是从技术出发；这一次的项目，我们把完整的商业模型和盈利模式都做了出来。我们开始了解这种比赛的套路，并从优秀的团队项目中吸取了很多经验。这只是一个开始，相信明年的 Hackathon 我们能取得更好的成绩。
 
-En este tipo de competencias, siempre es importante tener en cuenta el cuidado humano; desde la perspectiva de los patrocinadores, siempre es más importante que el nivel técnico. Durante las 36 horas de la competencia, solo se puede crear un demo simple de desarrollo técnico; pero la presentación y el empaque del producto son lo que lo hacen destacar. Con una presentación creativa y una idea única, se puede mostrar el concepto y la filosofía del producto a los patrocinadores, lo que es la clave para ganar en este tipo de competencias.
+在这类型的比赛里，人文关怀的方向永远吃香；从赞助商的角度出发，永远比技术的高级程度重要得多。36 个小时的比赛历程，技术开发只能做出简单的 Demo；而对产品的渲染与包装，才能够独树一帜。薄积而厚发，把产品的创意和理念展现在赞助商面前，这才是这类比赛拿奖的套路。
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

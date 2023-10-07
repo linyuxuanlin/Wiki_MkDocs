@@ -1,36 +1,34 @@
-# Parámetros DC
+# DC Parameters
 
-> Este artículo solo está disponible en inglés.
+> This post is only available in English.
 
-La prueba de parámetros DC es esencialmente la medición de la resistividad del silicio. Pueden ser probados mediante el método DC, con corriente forzada DCVI/PPMU y luego midiendo el voltaje, o forzando el voltaje y midiendo la corriente. Se comparará el valor medido con el valor de especificación fuera del probador, luego se concluirá un resultado de prueba con PASA o FALLA. Los elementos que se pueden probar bajo el método DC son los siguientes:
+Testing DC parameters is essentially measuring the resistivity of the silicon. They can be tested DC method, with DCVI/PPMU forcing current then measuring voltage, or forcing voltage then measuring current. Will compare the measured value with the spec value out of the tester, then conclude a test result with PASS or FAIL. Items can be tested under DC method are as follows:
 
-- [**Prueba de corriente de suministro de energía (IDD)**](https://wiki-power.com/es/DC-IDD_Test)
-  - Prueba bruta de IDD
-  - Prueba estática de IDD
-  - Prueba dinámica de IDD
-  - Prueba de IDD quiescente (IDDQ)
-- [**Prueba de fugas**](https://wiki-power.com/es/Leakage_Test/)
-  - Prueba de fuga de entrada (IIL y IIH)
-  - Prueba de fuga de tristate de salida (IOZL y IOZH)
-- [**Prueba de umbral de nivel**](https://wiki-power.com/es/Level_Threshold_Test/)
-  - Prueba de umbral de nivel de salida (VOL/IOL y VOH/IOH)
-  - Prueba de umbral de nivel de entrada (VIL y VIH)
-- Pruebas opcionales
-  - Abrazadera de entrada (VI)
-  - Prueba de corriente de cortocircuito de salida (IOS)
-  - Prueba de entradas resistivas
-  - Prueba de fanout de salida
+- [**Power Supply Current Test (IDD)**](https://wiki-power.com/DC-IDD_Test)
+  - Gross IDD Test
+  - Static IDD Test
+  - Dynamic IDD Test
+  - Quiescent IDD Test (IDDQ)
+- [**Leakage Test**](https://wiki-power.com/Leakage_Test/)
+  - Input Leakage Test (IIL & IIH)
+  - Output Tristate Leakage Test (IOZL & IOZH)
+- [**Level Threshold Test**](https://wiki-power.com/Level_Threshold_Test/)
+  - Output Level Threshold Test (VOL/IOL & VOH/IOH)
+  - Input Level Threshold Test (VIL & VIH)
+- Optional tests
+  - Input Clamp (VI)
+  - Output Short-circuit Current (IOS) Test
+  - Resistive Inputs Test
+  - Output Fanout Test
 
-Los parámetros DC también se pueden probar con el método funcional digital, se compararán con el valor de especificación mediante el comparador de voltaje dentro del PE (Pin Electronic) durante el procedimiento de prueba funcional, y se concluirá un resultado de prueba de Go/No-Go sin valores específicos.
+DC parameters can also be tested with digital functional method, will be compared with the spec value by voltage comparator inside the PE (Pin Electronic) during functional test procedure, and conclude a Go/No-Go test result without specific values.
 
-Se menciona que la corriente se define como positiva cuando fluye hacia el DUT y negativa cuando fluye fuera del DUT.
+Metions that current is defined to positive when flow into DUT, and negative when flow outside of DUT.
 
-## Referencias y agradecimientos
+## References & Acknowledgements
 
-- *Los fundamentos de la prueba de semiconductores digitales*
-- *Fundamentos de la prueba utilizando ATE*
+- *The Fundamentals Of Digital Semiconductor Testing*
+- *Fundamentals of Testing Using ATE*
 
 > Original: <https://wiki-power.com/>  
-> Este artículo está protegido por el acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en), debe ser reproducido con atribución.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.

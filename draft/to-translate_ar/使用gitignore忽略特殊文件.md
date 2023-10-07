@@ -1,43 +1,41 @@
-# Ignorando archivos especiales con gitignore
+# 使用 gitignore 忽略特殊文件
 
-Hay algunos archivos que no queremos incluir en la gestión de versiones de Git, y tampoco queremos que aparezcan constantemente en la lista de archivos sin seguimiento, como node_modules, algunas dependencias de desarrollo, registros de compilación, entre otros.
+有些文件我们不想纳入 Git 版本管理，也不希望它们总出现在未跟踪列表，例如 node_modules、一些开发依赖、编译日志等等。
 
-En estos casos, podemos crear un archivo `.gitignore` y listar los archivos que queremos ignorar.
+这时，我们可以创建一个 `.gitignore` 文件，列出需要忽略的清单。
 
-## Reglas
+## 规范
 
-- Las líneas vacías o las líneas que comienzan con el símbolo de comentario `#` serán ignoradas por Git.
-- Se pueden utilizar patrones glob estándar.
-- Si el patrón de coincidencia termina con una barra diagonal invertida (/), se ignorará el directorio.
-- Para ignorar todos los archivos y directorios excepto los especificados en el patrón, se puede agregar el signo de exclamación (!) antes del patrón.
+- 空行或者以注释符号 `#` 开头的行会被忽略
+- 标准的 glob 模式匹配
+- 匹配模式最后跟反斜杠（/）说明要忽略的是目录
+- 要忽略指定模式以外的文件和目录，可以在模式前加上 `!` 取反
 
-## Ejemplos
+## 示例
 
 ```gitignore
-# Esta línea es un comentario y será ignorada por Git.
+# 此行为注释，将被 Git 忽略
 
-# Ignorar todos los archivos con formato .a
+# 忽略所有 .a 格式的文件
 *.a
 
-# No ignorar lib.a
+# 不忽略 lib.a
 !lib.a
 
-# Ignorar el archivo TODO en la raíz del proyecto
+# 忽略根目录下的 TODO 文件
 /TODO
 
-# Ignorar la carpeta build
+# 忽略 build 文件夹
 build/
 
-# Ignorar todos los archivos txt en el directorio doc (sin incluir subdirectorios)
+# 忽略 doc 目录下的所有 txt 文件（不包含次级目录）
 doc/*.txt
 
-# Ignorar todos los archivos txt en el directorio doc (incluyendo subdirectorios)
+# 忽略doc目录下的所有 txt 文件（包含所有次级目录）
 doc/**/*.txt
 ```
 
-## Referencias y agradecimientos
+## 参考与致谢
 
 - [zxhfighter/git-ignore.md](https://gist.github.com/zxhfighter/6320b9a08698bb8703ee)
 - [github/gitignore](https://github.com/github/gitignore)
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

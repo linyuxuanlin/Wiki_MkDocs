@@ -1,65 +1,65 @@
-# Definiciones de macros comunes en C y STM32
+# C 与 STM32 常用宏定义
 
-En el desarrollo de sistemas embebidos, existen algunas definiciones de macros comunes que pueden mejorar la compatibilidad y portabilidad del proyecto.
+在嵌入式开发中，有些通用的宏定义，可以让项目兼容性和可移植性更佳。
 
-## Evitar la redefinición de archivos de cabecera
+## 防止头文件被重复定义
 
 ```c
 #ifndef COMDEF_H
 #define COMDEF_H
 
-// Contenido del archivo de cabecera
+//头文件内容
 
 #endif
 ```
 
-## Definición de tipos de datos personalizados
+## 自定义数据类型
 
-Definir algunos tipos de datos personalizados para evitar diferencias en el número de bytes debido a las diferentes plataformas y compiladores. Esto también facilita la portabilidad.
+自定义一些类型，防止由于各种平台和编译器的不同，而产生的类型字节数差异。这样也方便移植。
 
 ```c
-typedef unsigned char boolean; /* Tipo de valor booleano */
-typedef unsigned long int uint32; /* Valor sin signo de 32 bits */
-typedef unsigned short uint16; /* Valor sin signo de 16 bits */
-typedef unsigned char uint8; /* Valor sin signo de 8 bits */
-typedef signed long int int32; /* Valor con signo de 32 bits */
-typedef signed short int16; /* Valor con signo de 16 bits */
-typedef signed char int8; /* Valor con signo de 8 bits */
+typedef unsigned char boolean; /* Boolean value type. */
+typedef unsigned long int uint32; /* Unsigned 32 bit value */
+typedef unsigned short uint16; /* Unsigned 16 bit value */
+typedef unsigned char uint8; /* Unsigned 8 bit value */
+typedef signed long int int32; /* Signed 32 bit value */
+typedef signed short int16; /* Signed 16 bit value */
+typedef signed char int8; /* Signed 8 bit value */
 ```
 
-## Obtener un byte o palabra de una dirección específica
+## 获取指定地址上的一个字或字节
 
 ```c
 #define MEM_B( x ) ( *( (byte *) (x) ) )
 #define MEM_W( x ) ( *( (word *) (x) ) )
 ```
 
-## Obtener el valor máximo / mínimo
+## 获取最大 / 最小值
 
 ```c
 #define MAX( x, y ) ( ((x) > (y)) ? (x) : (y) )
 #define MIN( x, y ) ( ((x) < (y)) ? (x) : (y) )
 ```
 
-## Devolver el número de elementos de un arreglo
+## 返回数组元素的个数
 
 ```c
 #define ARR_SIZE( a ) ( sizeof( (a) ) / sizeof( (a[0]) ) )
 ```
 
-## Convertir la primera letra en mayúscula
+## 将首字母转换为大写
 
 ```c
 #define UPCASE( c ) ( ((c) >= 'a' && (c) <= 'z') ? ((c) - 0x20) : (c) )
 ```
 
-## Verificar si un carácter es decimal
+## 判断字符是否为十进制
 
 ```c
 #define DECCHK( c ) ((c) >= '0' && (c) <= '9')
 ```
 
-## Verificar si un carácter es hexadecimal
+## 判断字符是否为十六进制
 
 ```c
 #define HEXCHK( c ) ( ((c) >= '0' && (c) <= '9') ||\
@@ -67,8 +67,9 @@ typedef signed char int8; /* Valor con signo de 8 bits */
 ((c) >= 'a' && (c) <= 'f') )
 ```
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Definiciones de macros comunes para ingenieros embebidos](https://mp.weixin.qq.com/s/4YPwxtBX6Qdlz9fGKvSCUg)
+- [嵌入式工程师常用的宏定义](https://mp.weixin.qq.com/s/4YPwxtBX6Qdlz9fGKvSCUg)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

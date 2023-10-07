@@ -1,12 +1,12 @@
-# Homelab - Programa de lista de archivos con soporte para múltiples almacenamientos: Alist
+# Homelab - 支持多存储的文件列表程序 Alist
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202304141808001.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304141808001.png)
 
-**Alist** es un programa de lista de archivos que admite varios métodos de almacenamiento, como local, Alibaba Cloud Drive, OneDrive, GoogleDrive, Baidu Netdisk, KuaiPan, Lanzou Cloud, S3, FTP / SFTP, etc., con un reproductor de video en línea y varios tipos de vista previa de archivos (compatible con Office, PDF, Markdown, etc.), y también tiene funciones de descarga sin conexión.
+**Alist** 是一个文件列表程序，支持多种储存方式如本地、阿里云盘、OneDrive、GoogleDrive、百度网盘、夸克网盘、蓝奏云、S3、FTP / SFTP 等等，带在线视频播放器与各类文件预览（兼容 Office、PDF、Markdown 等），还有离线下载功能。
 
-## Implementación (Docker Compose)
+## 部署（Docker Compose）
 
-Primero, cree el archivo `compose.yaml` y pegue el siguiente contenido:
+首先创建 `compose.yaml` 文件，并粘贴以下内容：
 
 ```yaml title="compose.yaml"
 version: "3.3"
@@ -18,39 +18,37 @@ services:
       - ${STACK_DIR}:/opt/alist/data
     ports:
       - ${APP_PORT}:5244
-    environment: # necesita ejecutarse con permisos de root, de lo contrario no podrá leer otros directorios de docker o el directorio raíz del host
+    environment: # 需要以 root 权限运行，否则无法读取其他 docker 目录或宿主机 root 目录
       - PUID=0
       - PGID=0
       - UMASK=022
     restart: always
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `alist`).
+（可选）推荐在 `compose.yaml` 同级目录下创建 `.env` 文件，并自定义你的环境变量。如果不想使用环境变量的方式，也可以直接在 `compose.yaml` 内自定义你的参数（比如把 `${STACK_NAME}` 替换为 `alist`）。
 
 ```dotenv title=".env"
 STACK_NAME=alist
-STACK_DIR=xxx # ruta de almacenamiento personalizada del proyecto, por ejemplo, ./alist
+STACK_DIR=xxx # 自定义项目储存路径，例如 ./alist
 
 # alist
 APP_VERSION=latest
-APP_PORT=xxxx # puerto de acceso personalizado, simplemente elija uno que no esté ocupado
+APP_PORT=xxxx # 自定义访问端口，选择不被占用的即可
 ```
 
-Por último, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores.
+最后，在 `compose.yaml` 同级目录下执行 `docker compose up -d` 命令即可启动编排的容器。
 
-## Instrucciones de configuración
+## 配置说明
 
-La documentación oficial explica muy detalladamente cómo conectarse a varios tipos de almacenamiento. Solo siga la configuración paso a paso.
+接入各类网盘的方法，官方的文档写得非常详细，一步步按着配置就可以了。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Sitio web oficial](https://alist.nn.ci/)
-- [Documentación](https://alist.nn.ci/guide/install/docker.html#release-version)
-- [Repositorio de GitHub](https://github.com/alist-org/alist)
+- [官网](https://alist.nn.ci/)
+- [文档](https://alist.nn.ci/guide/install/docker.html#release-version)
+- [GitHub repo](https://github.com/alist-org/alist)
 - [Docker Hub](https://hub.docker.com/r/xhofe/alist)
-- [Sitio de demostración](https://al.nn.ci/)
+- [Demo site](https://al.nn.ci/)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

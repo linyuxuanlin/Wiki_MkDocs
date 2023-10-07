@@ -1,29 +1,26 @@
-# Instalación y desinstalación de Node.js y npm (MacOS)
+# Node.js 和 npm 的安装与卸载（MacOS）
 
-## Instalación
+## 安装
 
 [http://nodejs.cn/download/](http://nodejs.cn/download/)
 
-## Desinstalación
+## 卸载
 
-Si se instaló a través de `homebrew`:
+通过 `homebrew` 安装的：
 
 ```shell
 brew uninstall node
 ```
 
-Si se instaló a través de un paquete `.pkg`:
+通过 `.pkg` 安装包安装的：
 
 ```shell
 sudo rm -rf /usr/local/{bin/{node,npm},lib/node_modules/npm,lib/node,share/man/*/node.*}
 ```
 
-## Solución de problemas
+## 疑难解答
 
-P: Después de cambiar el nombre de usuario en MacOS, aparece el mensaje de error "EACCES: permission denied". 
-R: Ejecute `sudo npm install -g appium --unsafe-perm=true --allow-root` en modo no seguro. 
+Q：MacOS 修改用户名后，提示权限不足：`EACCES: permission denied` A：`sudo npm install -g appium --unsafe-perm=true --allow-root` ，以非安全模式运行。
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

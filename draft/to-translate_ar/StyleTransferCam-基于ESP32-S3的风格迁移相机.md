@@ -1,26 +1,26 @@
-# StyleTransferCam - Cámara de transferencia de estilo basada en ESP32-S3
+# StyleTransferCam - 基于 ESP32-S3 的风格迁移相机
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202308152238959.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308152238959.png)
 
-Cuando el arte y la tecnología se unen, un nuevo mundo se despliega ante nosotros, es un maravilloso banquete visual y una exploración de infinitas posibilidades. StyleTransferCam es una cámara de transferencia de estilo basada en ESP32-S3. Utiliza una técnica de aprendizaje automático llamada "transferencia de estilo". Cuando presionas el botón de la placa, toma una foto de la escena actual y la mezcla con una foto de plantilla de estilo preestablecida (como "Starry Night" de Van Gogh) para generar una obra única y creativa.
+当艺术与技术交汇，一幅新的世界在我们面前展开，这是一场视觉上的奇妙盛宴，也是一份无限可能的探索。StyleTransferCam 是一个基于 ESP32-S3 的风格迁移相机。它使用的是一种叫「风格迁移」的机器学习技术，当你按下板载按钮时，它将拍下当前的景色，并与一张预设的风格模板照片混合（可以是梵高的「星空」），生成一张别具匠心的作品。
 
-StyleTransferCam consta de los siguientes procesos:
+StyleTransferCam 大致由以下几个流程组成：
 
-1. Presionar el botón de la placa - tomar una foto - cargarla en un servidor backend (también puede ser una PC o un teléfono antiguo).
-2. Iniciar automáticamente el programa Python de transferencia de estilo para procesar la foto y generar una foto estilizada.
-3. Si el ESP32-S3 tiene una pantalla TFT adjunta, también puede devolver la foto para mostrarla en la pantalla.
+1. 按下板载按钮 - 拍摄照片 - 上传到后端服务器上（也可以是 PC 或旧手机）。
+2. 自动启动风格迁移的 Python 程序，对照片进行处理，并输出风格化的照片。
+3. 如果 ESP32-S3 有附带 TFT 屏幕的话，也可以回传屏幕显示出来。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202308152244791.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308152244791.png)
 
-## Probar el botón de la placa y el LED
+## 测试板载按钮与 LED
 
-Primero, escribimos un programa de Arduino simple para probar si el botón de la placa y el LED funcionan correctamente. El programa establece una interrupción de hardware para capturar el evento de presionar el botón y enciende el LED durante medio segundo antes de apagarse automáticamente.
+首先是一个简单的 Arduino 程序，用于测试板载按钮与 LED 能否正常使用。程序中设置了硬件中断，捕捉按钮按下的事件，点亮 LED 半秒后自动熄灭。
 
 ```cpp title="Onboard-Key-ctrl-LED_interrupt.ino"
-#define ONBOARD_KEY 47  // Botón de la placa
-#define ONBOARD_LED 21  // LED de la placa
+#define ONBOARD_KEY 47  // 板载按钮
+#define ONBOARD_LED 21  // 板载 LED
 
-volatile bool buttonPressed = false;  // Bandera de interrupción de flanco descendente del botón
+volatile bool buttonPressed = false;  // 按钮下降沿中断标志位
 
 void setup() {
   pinMode(ONBOARD_LED, OUTPUT);
@@ -35,38 +35,38 @@ void loop() {
     delay(500);
     digitalWrite(ONBOARD_LED, LOW);
     Serial.println("buttonPressed");
-    buttonPressed = false;  // Restablecer la bandera de interrupción
+    buttonPressed = false;  // 重置中断标志位
   }
 }
 
 void buttonInterrupt() {
-  buttonPressed = true;  // Establecer la bandera de interrupción de flanco descendente
+  buttonPressed = true;  // 设置下降沿中断标志位
 }
 ```
 
-## Tomar una foto y cargarla con el botón
+## 使用按钮拍摄照片并上传
 
-A continuación, escribimos un programa de Arduino para usar el botón de la placa para controlar la toma de una foto con ESP32-S3 y cargarla en una ubicación de red específica. Esta ubicación de red se establece en el código como `serverName = "http://192.168.31.2:9000/upload"`, que debe modificarse para la dirección de su servidor backend. Utilizamos un servicio de carga de archivos Python backend (que se explicará en los siguientes pasos), y aquí debe modificarse a la dirección IP de la máquina que ejecuta este servicio. (`9000` y `/upload` se establecen en el programa `receive-photo.py` a continuación)
+接下来，我们编写一个 Arduino 程序，使用板载按钮控制 ESP32-S3 拍摄一张照片，并将其上传到指定的网络位置。这个网络位置在代码中的 `serverName = "http://192.168.31.2:9000/upload"` 进行设置，需要修改为你后端服务器的地址。我们用的是一个后端 Python 文件上传服务（会在接下来的步骤中说明），而这里需要修改为运行这个服务的机器 IP 地址。（`9000` 与 `/upload` 在下文的 `receive-photo.py` 程序中设置）
 
 ```cpp title="Capture-and-Upload.ino"
 #include "esp_camera.h"
 #include <WiFi.h>
 #include <HTTPClient.h>
 
-// Dirección del servidor para cargar fotos
+// 用于上传照片的服务器地址
 const char *serverName = "http://192.168.31.2:9000/upload";
 
 //
-// ¡¡¡ADVERTENCIA!!! Se requiere un IC PSRAM para la resolución UXGA y alta calidad JPEG
-//            Asegúrese de seleccionar el módulo ESP32 Wrover o cualquier otra placa con PSRAM
-//            Se transmitirán imágenes parciales si la imagen excede el tamaño del búfer
+// WARNING!!! PSRAM IC required for UXGA resolution and high JPEG quality
+//            Ensure ESP32 Wrover Module or other board with PSRAM is selected
+//            Partial images will be transmitted if image exceeds buffer size
 //
-//            Debe seleccionar el esquema de partición del menú de la placa que tenga al menos 3 MB de espacio APP.
-//            El reconocimiento facial está DESACTIVADO para ESP32 y ESP32-S2, porque tarda alrededor de 15
-//            segundos en procesar un solo fotograma. La detección facial está ACTIVADA si PSRAM también está habilitado.
+//            You must select partition scheme from the board menu that has at least 3MB APP space.
+//            Face Recognition is DISABLED for ESP32 and ESP32-S2, because it takes up from 15
+//            seconds to process single frame. Face Detection is ENABLED if PSRAM is enabled as well
 
 // ===================
-// Seleccionar modelo de cámara
+// Select camera model
 // ===================
 #define PWDN_GPIO_NUM -1
 #define RESET_GPIO_NUM -1
@@ -86,17 +86,17 @@ const char *serverName = "http://192.168.31.2:9000/upload";
 #define HREF_GPIO_NUM 42
 #define PCLK_GPIO_NUM 5
 
-#define ONBOARD_KEY 47 // Botón de la placa
-#define ONBOARD_LED 21 // LED de la placa
+#define ONBOARD_KEY 47 // 板载按钮
+#define ONBOARD_LED 21 // 板载 LED
 
-volatile bool buttonPressed = false; // Bandera de interrupción de flanco descendente del botón
+volatile bool buttonPressed = false; // 按钮下降沿中断标志位
 
 #include "DFRobot_AXP313A.h"
 
 DFRobot_AXP313A axp;
 
 // ===========================
-// Ingrese sus credenciales de WiFi
+// Enter your WiFi credentials
 // ===========================
 const char *ssid = "WiFi_SSID";
 const char *password = "********";
@@ -113,10 +113,10 @@ void setup()
   Serial.println();
   while (axp.begin() != 0)
   {
-    Serial.println("error de inicialización");
+    Serial.println("init error");
     delay(1000);
   }
-  axp.enableCameraPower(axp.eOV2640); // Configurar alimentación de la cámara
+  axp.enableCameraPower(axp.eOV2640); // 设置摄像头供电
   camera_config_t config;
   config.ledc_channel = LEDC_CHANNEL_0;
   config.ledc_timer = LEDC_TIMER_0;
@@ -137,12 +137,12 @@ void setup()
   config.pin_pwdn = PWDN_GPIO_NUM;
   config.pin_reset = RESET_GPIO_NUM;
   config.xclk_freq_hz = 20000000;
-  config.frame_size = FRAMESIZE_UXGA;   // Resolución de la foto. Aquí se establece en FRAMESIZE_UXGA por defecto
-  config.pixel_format = PIXFORMAT_JPEG; // para streaming
-  // config.pixel_format = PIXFORMAT_RGB565; // para detección/reconocimiento facial
+  config.frame_size = FRAMESIZE_UXGA;   // 照片分辨率。这里默认为 FRAMESIZE_UXGA
+  config.pixel_format = PIXFORMAT_JPEG; // for streaming
+  // config.pixel_format = PIXFORMAT_RGB565; // for face detection/recognition
   config.grab_mode = CAMERA_GRAB_WHEN_EMPTY;
   config.fb_location = CAMERA_FB_IN_PSRAM;
-  config.jpeg_quality = 0; // 63; // Calidad de la foto. Aquí se establece en 12 por defecto
+  config.jpeg_quality = 0; // 63; // 照片质量。这里默认为 12
   config.fb_count = 1;
 
   /*
@@ -155,54 +155,54 @@ void setup()
   FRAMESIZE_UXGA (1600 x 1200)
   */
 
-// si el IC PSRAM está presente, inicializar con resolución UXGA y calidad JPEG más alta
-// para un búfer de fotograma preasignado más grande.
-if (config.pixel_format == PIXFORMAT_JPEG)
-{
-  if (psramFound())
+  // if PSRAM IC present, init with UXGA resolution and higher JPEG quality
+  //                      for larger pre-allocated frame buffer.
+  if (config.pixel_format == PIXFORMAT_JPEG)
   {
-    config.jpeg_quality = 0; // 63; // Calidad de la foto. Por defecto es 10.
-    config.fb_count = 2;
-    config.grab_mode = CAMERA_GRAB_LATEST;
+    if (psramFound())
+    {
+      config.jpeg_quality = 0; // 63; // 照片质量。这里默认为 10
+      config.fb_count = 2;
+      config.grab_mode = CAMERA_GRAB_LATEST;
+    }
+    else
+    {
+      // Limit the frame size when PSRAM is not available
+      config.frame_size = FRAMESIZE_UXGA; // 照片分辨率。这里默认为 FRAMESIZE_SVGA
+      config.fb_location = CAMERA_FB_IN_DRAM;
+    }
   }
   else
   {
-    // Limitar el tamaño del fotograma cuando PSRAM no está disponible
-    config.frame_size = FRAMESIZE_UXGA; // Resolución de la foto. Por defecto es FRAMESIZE_SVGA.
-    config.fb_location = CAMERA_FB_IN_DRAM;
-  }
-}
-else
-{
-  // Mejor opción para la detección/reconocimiento facial
-  config.frame_size = FRAMESIZE_UXGA; // FRAMESIZE_240X240;
+    // Best option for face detection/recognition
+    config.frame_size = FRAMESIZE_UXGA; // FRAMESIZE_240X240;
 #if CONFIG_IDF_TARGET_ESP32S3
-  config.fb_count = 2;
+    config.fb_count = 2;
 #endif
-}
+  }
 
 #if defined(CAMERA_MODEL_ESP_EYE)
   pinMode(13, INPUT_PULLUP);
   pinMode(14, INPUT_PULLUP);
 #endif
 
-  // inicialización de la cámara
+  // camera init
   esp_err_t err = esp_camera_init(&config);
   if (err != ESP_OK)
   {
-    Serial.printf("La inicialización de la cámara falló con el error 0x%x", err);
+    Serial.printf("Camera init failed with error 0x%x", err);
     return;
   }
 
   sensor_t *s = esp_camera_sensor_get();
-  // los sensores iniciales están volteados verticalmente y los colores están un poco saturados
+  // initial sensors are flipped vertically and colors are a bit saturated
   if (s->id.PID == OV3660_PID)
   {
-    s->set_vflip(s, 1);       // voltear de vuelta
-    s->set_brightness(s, 1);  // aumentar el brillo un poco
-    s->set_saturation(s, -2); // reducir la saturación
+    s->set_vflip(s, 1);       // flip it back
+    s->set_brightness(s, 1);  // up the brightness just a bit
+    s->set_saturation(s, -2); // lower the saturation
   }
-  // reducir el tamaño del fotograma para una velocidad de fotograma inicial más alta
+  // drop down frame size for higher initial frame rate
   if (config.pixel_format == PIXFORMAT_JPEG)
   {
     s->set_framesize(s, FRAMESIZE_QVGA);
@@ -220,82 +220,82 @@ else
   WiFi.begin(ssid, password);
   WiFi.setSleep(false);
 
-while (WiFi.status() != WL_CONNECTED)
-{
-  delay(500);
-  Serial.print(".");
-}
-Serial.println("");
-Serial.println("WiFi conectado");
+  while (WiFi.status() != WL_CONNECTED)
+  {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println("");
+  Serial.println("WiFi connected");
 
-startCameraServer();
+  startCameraServer();
 
-Serial.print("¡Cámara lista! Use 'http://");
-Serial.print(WiFi.localIP());
-Serial.println("' para conectarse");
-digitalWrite(ONBOARD_LED, LOW);
+  Serial.print("Camera Ready! Use 'http://");
+  Serial.print(WiFi.localIP());
+  Serial.println("' to connect");
+  digitalWrite(ONBOARD_LED, LOW);
 }
 
 void loop()
 {
-  // No hacer nada. Todo se hace en otra tarea por el servidor web
+  // Do nothing. Everything is done in another task by the web server
   // delay(10000);
 
-  // Lógica después de presionar el botón
+  // 按钮按下后的逻辑
   if (buttonPressed)
   {
     digitalWrite(ONBOARD_LED, HIGH);
     delay(300);
     digitalWrite(ONBOARD_LED, LOW);
 
-    // Tomar una foto
+    // 拍摄照片
     camera_fb_t *fb = esp_camera_fb_get();
     if (!fb)
     {
-      Serial.println("Error al obtener el búfer de fotogramas de la cámara");
+      Serial.println("获取摄像头帧缓冲失败");
       return;
     }
 
-    // Establecer cliente HTTP
+    // 建立HTTP客户端
     HTTPClient http;
 
-    // Subir la foto al servidor
+    // 将照片上传到服务器
     http.begin(serverName);
     http.addHeader("Content-Type", "image/jpeg");
     int httpResponseCode = http.POST(fb->buf, fb->len);
     if (httpResponseCode > 0)
     {
-      Serial.printf("Foto subida con éxito, código de respuesta del servidor: %d\n", httpResponseCode);
+      Serial.printf("照片上传成功，服务器返回代码：%d\n", httpResponseCode);
 
-      // Parpadear para indicar que se ha subido correctamente
+      // 再闪一下提示上传成功
       digitalWrite(ONBOARD_LED, HIGH);
       delay(300);
       digitalWrite(ONBOARD_LED, LOW);
     }
     else
     {
-      Serial.printf("Error al subir la foto, código de error: %s\n", http.errorToString(httpResponseCode).c_str());
+      Serial.printf("照片上传失败，错误代码：%s\n", http.errorToString(httpResponseCode).c_str());
     }
     http.end();
 
-    // Liberar el búfer de fotogramas
+    // 释放帧缓冲
     esp_camera_fb_return(fb);
 
-    // delay(1000); // Esperar 1 segundo antes de tomar y subir otra foto
+    // delay(1000); // 等待 1 秒后才可再次拍摄和上传
 
-    buttonPressed = false; // Restablecer la bandera de interrupción
+    buttonPressed = false; // 重置中断标志位
   }
 }
 
 void buttonInterrupt()
 {
-  buttonPressed = true; // Establecer la bandera de interrupción de flanco descendente
+  buttonPressed = true; // 设置下降沿中断标志位
 }
 ```
 
-## Servicio de recepción de fotos subidas
+## 接收照片上传的服务
 
-Aquí usamos la biblioteca flask de Python para construir un servidor HTTP que reciba fotos subidas.
+在这里我们使用 Python 的 flask 库搭建一个接收照片上传的 HTTP 服务器。
 
 ```python title="receive-photo.py"
 from flask import Flask, request
@@ -308,33 +308,33 @@ def upload():
     try:
         image = request.data
 
-# Guardar foto en un directorio específico
-con open('base.png', 'wb') como f:
-    f.write(imagen)
-print("Foto guardada, renderizando...")
-# Ejecutar el script de transferencia de estilo en Python
-subprocess.run(['python', './style_transfer.py'])
+        # 保存照片到指定目录
+        with open('base.png', 'wb') as f:
+            f.write(image)
+        print("照片已保存，正在渲染中……")
+        # 启动风格迁移的 python 脚本
+        subprocess.run(['python', './style_transfer.py'])
 
-return "Foto cargada exitosamente", 200
-except Exception as e:
-    print("Error al cargar la foto:", str(e))
-    return "Error al cargar la foto", 500
+        return "照片上传成功", 200
+    except Exception as e:
+        print("照片上传失败：", str(e))
+        return "照片上传失败", 500
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=9000)
 ```
 
-No ejecute el programa todavía, `style_transfer.py` es el programa de transferencia de estilo que se mostrará en el siguiente paso. La lógica de este programa es que si la foto enviada por ESP32-S3 se recibe correctamente, se iniciará automáticamente el script de transferencia de estilo utilizando `subprocess`.
+先不要急着运行程序，`style_transfer.py` 是风格迁移的程序，将会在下一个步骤展示。这个程序的逻辑是，如果成功接收了 ESP32-S3 传回来的照片，就会使用 `subprocess` 自动调起运行风格迁移的脚本。
 
-Tenga en cuenta que si hay una excepción en el programa y se muestra un mensaje de puerto ocupado, puede intentar cambiar `port=9000` por otro valor.
+需要注意的是，如果程序出现异常，提示端口被占用，你可以试试将 `port=9000` 换一个值。
 
-## Programa de transferencia de estilo
+## 风格迁移的程序
 
-En el mismo directorio que `receive-photo.py`, utilizaremos TensorFlow para escribir un programa de transferencia de estilo en Python. Primero, instale las dependencias necesarias para el programa (debido a la red en China, es difícil descargar TensorFlow, así que tenga paciencia) y luego prepare una foto para ser estilizada en el mismo directorio, nómbrela como `base.png`. También necesitará una imagen de referencia de estilo, nómbrela como `style_reference.png`. Esta imagen puede ser una pintura artística, como "La noche estrellada" de Van Gogh:
+在 `receive-photo.py` 相同的目录下，我们使用 TensorFlow 编写一个风格迁移的 Python 程序。首先安装程序所需的依赖（国内的网络环境导致 TensorFlow 很难下载，需要多一些耐心），然后在相同目录下准备一张待风格化的照片，将其命名为 `base.png`；还有一张风格参考的图片，命名为 `style_reference.png`，这副图片可以是一副艺术画，比如梵高的「星空」:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202308152239917.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308152239917.png)
 
-A continuación, escriba el programa de transferencia de estilo:
+接下来，编写风格迁移的程序:
 
 ```python title="style_transfer.py"
 from IPython.display import Image, display
@@ -343,29 +343,31 @@ import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras.applications import vgg19
 
-base_image_path = "./base.png"  # Dirección de la imagen a estilizar
-style_reference_image_path = "./style_reference.png"  # Dirección de la imagen de referencia de estilo
+base_image_path = "./base.png"  # 待风格迁移的图片地址
+style_reference_image_path = "./style_reference.png"  # 风格样式图片地址
 
 result_prefix = "img_generated"
 
-# Peso de cada parte de la pérdida
+# 各部分损失的权重设置
 total_variation_weight = 1e-6
 style_weight = 1e-6
 content_weight = 2.5e-8
 
-# Tamaño de la imagen generada
+# 生成图片的尺寸
 width, height = keras.preprocessing.image.load_img(base_image_path).size
 img_nrows = 400
 img_ncols = int(width * img_nrows / height)
 
-# Ver la imagen base y la imagen de referencia de estilo que se utilizarán para la transferencia de estilo
+# 通过下面命令查看要进行风格迁移的基本图片和样式参考图片
+
 display(Image(base_image_path))
 display(Image(style_reference_image_path))
 
-# Preprocesamiento de la imagen
+# 图像预处理
+
 
 def preprocess_image(image_path):
-    # Utilizamos la función de la biblioteca Keras para abrir la imagen, ajustar su tamaño y formatearla como un tensor adecuado
+    # 利用Keras库函数的来打开图片，调整图片大小并将其格式化为适当的张量
     img = keras.preprocessing.image.load_img(
         image_path, target_size=(img_nrows, img_ncols)
     )
@@ -376,9 +378,9 @@ def preprocess_image(image_path):
 
 
 def deprocess_image(x):
-    # Utilizamos otra función para convertir el tensor en una imagen válida
+    # 再利用函数将张量转换为有效图像
     x = x.reshape((img_nrows, img_ncols, 3))
-    # Eliminamos el centro cero mediante el promedio de píxeles
+    # 通过平均像素去除零中心
     x[:, :, 0] += 103.939
     x[:, :, 1] += 116.779
     x[:, :, 2] += 123.68
@@ -388,7 +390,7 @@ def deprocess_image(x):
     return x
 
 
-# La matriz Gram de un tensor de imagen (el producto de la matriz de características y su transposición)
+# 图像张量的gram矩阵（特征矩阵和特征矩阵转置的乘积）
 
 def gram_matrix(x):
     x = tf.transpose(x, (2, 0, 1))
@@ -396,9 +398,9 @@ def gram_matrix(x):
     gram = tf.matmul(features, tf.transpose(features))
     return gram
 
-# La "pérdida de estilo" tiene como objetivo mantener el estilo de la imagen de referencia en la imagen generada.
-# Se basa en la matriz Gram (extracción de estilo) de la imagen de referencia de estilo
-# y los mapas de características de la imagen generada a partir de ella.
+# “风格损失”旨在保持生成图像中参考图像的样式。
+# 它基于的gram矩阵（样式提取）来自样式参考图像
+# 和从它生成的图像的特征图
 
 
 def style_loss(style, combination):
@@ -408,14 +410,15 @@ def style_loss(style, combination):
     size = img_nrows * img_ncols
     return tf.reduce_sum(tf.square(S - C)) / (4.0 * (channels ** 2) * (size ** 2))
 
-# La función de pérdida de contenido se utiliza para mantener el contenido básico de la imagen en la imagen generada.
+# 辅助损失函数设计来是为了
+# 维护生成的图像中的基本图像的内容
 
 
 def content_loss(base, combination):
     return tf.reduce_sum(tf.square(combination - base))
 
-# La tercera función de pérdida es la pérdida total de variación,
-# diseñada para mantener la coherencia local en la imagen generada.
+# 第三个损失函数是总变化损失，
+# 设计此函数是为了使生成的图像保持局部连贯。
 
 
 def total_variation_loss(x):
@@ -427,24 +430,24 @@ def total_variation_loss(x):
     )
     return tf.reduce_sum(tf.pow(a + b, 1.25))
 
-# A continuación, creamos un modelo de extracción de características que recupera las activaciones intermedias de VGG19 (creando un diccionario según el nombre).
+# 接下来，让我们创建一个特征提取模型，该模型检索VGG19的中间激活（根据名字制成字典）。
 
 
-# Reemplaza con la ruta de archivo de peso descargado localmente
+# 替换为你本地下载的权重文件路径
 weights_path = "./dependencies/vgg19_weights_tf_dim_ordering_tf_kernels_notop.h5"
 
-# Crear un modelo VGG19 con pesos pre-entrenados de ImageNet
+# 建立一个加载了已经训练好的ImageNet的权重的VGG19模型
 model = vgg19.VGG19(weights=weights_path, include_top=False)
 
-# Obtener la salida simbólica de cada capa "clave" (a las que hemos asignado un nombre único).
+# 获取每个“关键”层的符号输出（我们给它们指定了唯一的名称）。
 outputs_dict = dict([(layer.name, layer.output) for layer in model.layers])
 
-# Crear un modelo que devuelva los valores de activación de cada capa en VGG19 (en forma de diccionario).
+# 建立一个模型，以返回VGG19中每层的激活值（以字典的方式）。
 feature_extractor = keras.Model(inputs=model.inputs, outputs=outputs_dict)
 
-# Finalmente, aquí está el código para calcular la pérdida de transferencia de estilo.
+# 最后，这是计算样式转移损失的代码。
 
-# Lista de capas para la pérdida de estilo.
+# 用于样式丢失的图层列表。
 style_layer_names = [
     "block1_conv1",
     "block2_conv1",
@@ -452,7 +455,7 @@ style_layer_names = [
     "block4_conv1",
     "block5_conv1",
 ]
-# Capa para la pérdida de contenido.
+# 用于内容丢失的层。
 content_layer_name = "block5_conv2"
 
 
@@ -462,17 +465,17 @@ def compute_loss(combination_image, base_image, style_reference_image):
     )
     features = feature_extractor(input_tensor)
 
-    # Inicializar la pérdida.
+    # 初始化损失
     loss = tf.zeros(shape=())
 
-    # Agregar la pérdida de contenido.
+    # 加入内容丢失
     layer_features = features[content_layer_name]
     base_image_features = layer_features[0, :, :, :]
     combination_features = layer_features[2, :, :, :]
     loss = loss + content_weight * content_loss(
         base_image_features, combination_features
     )
-    # Agregar la pérdida de estilo.
+    # 加入风格损失
     for layer_name in style_layer_names:
         layer_features = features[layer_name]
         style_reference_features = layer_features[1, :, :, :]
@@ -480,12 +483,13 @@ def compute_loss(combination_image, base_image, style_reference_image):
         sl = style_loss(style_reference_features, combination_features)
         loss += (style_weight / len(style_layer_names)) * sl
 
-    # Agregar la pérdida total de variación.
+    # 加入总变化损失
     loss += total_variation_weight * total_variation_loss(combination_image)
     return loss
 
 
-# Agregar el decorador tf.function a los cálculos de pérdida y gradiente para que se ejecuten más rápido durante la compilación.
+# 将tf.function装饰器添加到损耗计算和梯度计算中，使在编译过程中能运行更快
+
 
 @tf.function
 def compute_loss_and_grads(combination_image, base_image, style_reference_image):
@@ -495,8 +499,8 @@ def compute_loss_and_grads(combination_image, base_image, style_reference_image)
     grads = tape.gradient(loss, combination_image)
     return loss, grads
 
-# Repetir el proceso de descenso de gradiente en lotes para minimizar la pérdida al máximo y guardar la imagen generada cada 100 iteraciones.
-# Reduzca la tasa de aprendizaje en un 0,96 cada 100 pasos.
+# 重复执行批量梯度下降步骤，以最大程度地减少损失，并每100次迭代保存生成的图像。
+# 每100步将学习率降低0.96。
 
 optimizer = keras.optimizers.SGD(
     keras.optimizers.schedules.ExponentialDecay(
@@ -515,28 +519,26 @@ for i in range(1, iterations + 1):
     )
     optimizer.apply_gradients([(grads, combination_image)])
     if i % 100 == 0:
-        print("Iteración %d: pérdida=%.2f" % (i, loss))
+        print("Iteration %d: loss=%.2f" % (i, loss))
         img = deprocess_image(combination_image.numpy())
-        fname = result_prefix + "_en_iteracion_%d.png" % i
+        fname = result_prefix + "_at_iteration_%d.png" % i
         keras.preprocessing.image.save_img(fname, img)
 
-# Después de 4000 iteraciones, se produce la siguiente salida:
-display(Image(result_prefix + "_en_iteracion_4000.png"))
+# 经过 4000 次迭代，输出结果：
+display(Image(result_prefix + "_at_iteration_4000.png"))
 ```
 
-Ahora puedes probar a ejecutar este programa de Python por separado. Si no hay errores, espera un momento (el tiempo exacto depende del rendimiento de tu ordenador) y encontrarás la foto con estilo transferido en el directorio actual.
+现在，你可以试试单独运行这个 Python 程序，如果程序没有报错，等上一小会儿（具体时间取决于你电脑的性能），你就可以在当前目录下找到阶梯次风格迁移迭代后的照片了。
 
-Si este programa funciona correctamente, puedes ejecutar `receive-photo.py` directamente para recibir automáticamente las fotos tomadas por ESP32-S3 y generar fotos con estilo transferido.
+如果这个程序能正常运行，你可以直接运行 `receive-photo.py`，使用自动化的方式接收来自 ESP32-S3 拍摄的照片，直接生成风格化的照片。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202308152246623.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308152246623.png)
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Implementación de estilo de transferencia en TensorFlow](https://zhuanlan.zhihu.com/p/349072196)
-- [Transferencia de estilo neuronal](https://www.tensorflow.org/tutorials/generative/style_transfer?hl=zh-cn)
-- [Uso de la cámara](https://wiki.dfrobot.com.cn/_SKU_DFR0975_FireBeetle_2_Board_ESP32_S3_Advanced_Tutorial#target_12)
+- [风格迁移 TensorFlow 实现](https://zhuanlan.zhihu.com/p/349072196)
+- [神经风格迁移](https://www.tensorflow.org/tutorials/generative/style_transfer?hl=zh-cn)
+- [摄像头使用](https://wiki.dfrobot.com.cn/_SKU_DFR0975_FireBeetle_2_Board_ESP32_S3_Advanced_Tutorial#target_12)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

@@ -1,84 +1,82 @@
-# Serie BeagleBone - Parámetros básicos y configuración del entorno
+# BeagleBone 系列 - 基本参数与环境配置
 
-## Recursos de hardware
+## 硬件资源
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211008090724.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211008090724.png)
 
-- USB tipo A: se utiliza como modo de host USB
-- USB Micro: alimenta la placa y actúa como esclavo
+- USB Type-A：作为 USB 从机（Host）模式使用
+- USB Micro：为板子供电并且作为从机
 - LEDs
-  - D2: parpadea como un latido al arrancar
-  - D3: se enciende al leer/escribir datos en la tarjeta SD
-  - D4: se enciende cuando la CPU está activa
-  - D5: se enciende al leer/escribir en la memoria eMMC
-- Botones de arranque/usuario: si hay una tarjeta SD, se iniciará desde ella por defecto (el mismo resultado se obtiene de cualquier manera). Después del arranque, actúa como un botón normal conectado a GPIO_72.
-- Interfaz I2C Grove: conectado a I2C2
-- Interfaz Uart Grove: conectado a UART2
-- Depuración en serie: conectado a UART0, el pin cerca del USB es el pin1, y los pines del 1 al 6 son: GND, NC, NC, RX, TX, NC.
+  - D2：在启动时以心跳灯闪烁
+  - D3：读写 SD 卡数据时亮起
+  - D4：当 CPU 活动时亮起
+  - D5：当 eMMC 读写时亮起
+- Boot/User 按钮：不管按不按，如果有 SD 卡都会默认从 SD 卡启动（殊途同归），当启动后就作为一个普通按钮，连接到 GPIO_72
+- I2C Grove 接口：连接到 I2C2
+- Uart Grove 接口：连接到 UART2
+- Serial Debug：连接到 UART0，靠近 USB 的引脚为 pin1，从 pin1-pin6 分别为：GND, NC, NC, RX, TX, NC
 
-## Configuración del entorno
+## 环境配置
 
-### Problemas de instalación de controladores
+### 驱动安装问题
 
-En Windows 10 y versiones posteriores, se utiliza por defecto la firma de controladores obligatoria, lo que puede ser la causa de la falla en la instalación de controladores.
+在 Windows 10 及以上版本系统，默认采用驱动程序强制签名，这可能是驱动安装失败的原因。
 
-Solución:
+解决方法：
 
-- Mantenga presionada la tecla `shift` y haga clic en reiniciar la computadora.
-- Ingrese a `Solución de problemas` - `Opciones avanzadas` - `Configuración de inicio` y haga clic en `Reiniciar`.
-- Después del reinicio, siga las instrucciones de la página y presione la tecla `7` en el teclado para deshabilitar la firma de controladores obligatoria.
-- Después del inicio, se pueden instalar los controladores de BeagleBone normalmente.
+- 按住 `shift`，点击重启电脑
+- 进入 `疑难解答` - `高级选项` - `启动设置`，点击 `重启`
+- 重启后，按页面提示，按键盘 `7`，即可禁用驱动程序强制签名
+- 开机后，即可正常安装 BeagleBone 的驱动程序
 
-### Descarga e instalación de imágenes
+### 镜像下载烧录
 
-Dirección de descarga de imágenes oficiales: https://beagleboard.org/latest-images  
-Herramienta de grabación: https://sourceforge.net/projects/win32diskimager/files/latest/download
+官网镜像下载地址：https://beagleboard.org/latest-images  
+烧录工具：https://sourceforge.net/projects/win32diskimager/files/latest/download
 
-Grabe la imagen en la tarjeta SD, desconecte la alimentación e inserte la tarjeta SD en BeagleBone. La próxima vez que se encienda, el sistema se iniciará desde la tarjeta SD.
+将镜像烧录进 SD 卡，断电插入 BeagleBone，下次上电就会从 SD 卡启动系统
 
-## Acceso mediante herramientas de línea de comandos
+## 使用命令行工具访问
 
-### Acceso mediante puerto serie
+### 使用串口访问
 
-Conecte el puerto serie integrado en la placa mediante un convertidor USB a serie y abra una herramienta de serie en la computadora (como WindTerm) para conectarse. (El nombre de usuario y la contraseña predeterminados son `root`).
+使用 USB 转串口连接板载的串行端子，在电脑端打开串口工具（如 WindTerm）进行连接。（初始用户名和密码均为 `root`）
 
-La velocidad de transmisión es de 115200.
+波特率是 115200！
 
-### Acceso mediante Ethernet
+### 使用以太网访问
 
-En la conexión serie, use el comando `ifconfig` para encontrar la dirección Ethernet y conectarse a ella mediante la dirección. El nombre de usuario es `debian` y la contraseña es `temppwd`.
+在串口连接内使用命令 `ifconfig` 找到以太网地址，通过地址连接。用户名为 `debian`，密码为 `temppwd`。
 
-### Acceso mediante USB
+### 通过 USB 访问
 
-usb0: 192.168.7.2  
-usb1: 192.168.6.2
+usb0：192.168.7.2  
+usb1：192.168.6.2
 
-Conéctese mediante SSH, el nombre de usuario es `debian` y la contraseña es `temppwd`.
+使用 SSH 方式访问，用户名为 `debian`，密码为 `temppwd`。
 
-## Habilitar la cuenta root con SSH
+## 启用 ssh 的 root 帐户
 
 ```shell
 vi /etc/ssh/sshd_config
 ```
 
-Cambie `#PermitRootLogin prohibit-password` a `PermitRootLogin yes`.
+将 `#PermitRootLogin prohibit-password` 修改为 `PermitRootLogin yes` 即可。
 
-## Controlador Seeed OLED (SSD1306, I2C, 12864)
+## 驱动 Seeed OLED（SSD1306，I2C，12864）
 
-Descargue el paquete smbus2 con pip3:
+使用 pip3 下载 smbus2 包：
 
 ```py
 sudo apt-get install python3-pip
 pip3 install smbus2
 ```
 
-El programa se puede encontrar en [**Grove - OLED Display 0.96 inch**](https://wiki.seeedstudio.com/Grove-OLED_Display_0.96inch/#play-with-beaglebone-green).
+程序参考 [**Grove - OLED Display 0.96 inch**](https://wiki.seeedstudio.com/Grove-OLED_Display_0.96inch/#play-with-beaglebone-green)。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Problemas en la depuración de Beaglebone black 4G](https://blog.csdn.net/qq_32543253/article/details/53536266)
-- [Proyecto](https://beagleboard.org/p)
-- [Actualiza el software de tu Beagle](https://beagleboard.org/upgrade#connect)
-- [Firmware de prueba](http://plm.seeedstudio.com.cn:9002/Windchill/app/#ptc1/tcomp/infoPage?oid=VR%3Awt.doc.WTDocument%3A30844361&u8=1)
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+- [Beaglebone black 4G 调试中的问题](https://blog.csdn.net/qq_32543253/article/details/53536266)
+- [项目](https://beagleboard.org/p)
+- [Upgrade the software on your Beagle](https://beagleboard.org/upgrade#connect)
+- [测试固件](http://plm.seeedstudio.com.cn:9002/Windchill/app/#ptc1/tcomp/infoPage?oid=VR%3Awt.doc.WTDocument%3A30844361&u8=1)

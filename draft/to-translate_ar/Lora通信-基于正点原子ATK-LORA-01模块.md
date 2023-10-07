@@ -1,271 +1,271 @@
-# Comunicación Lora - Módulo ATK-LORA-01 de Atom de Punto
-
-El ATK-LORA-01 es un módulo de comunicación inalámbrica LORA de larga distancia de bajo consumo, bajo consumo de energía y alto rendimiento con un tamaño pequeño. El diseño del módulo utiliza el chip de expansión de espectro SX1278 de banda ISM eficiente, y la frecuencia de trabajo del módulo es de 410 MHz a 441 MHz, con un canal de paso de 1 MHz y un total de 32 canales. Se pueden modificar en línea varios parámetros, como la velocidad de transmisión de la interfaz serie, la potencia de transmisión, la velocidad aérea, el modo de trabajo, etc. mediante comandos AT, y también se admite la función de actualización de firmware.
-
-## Parámetros básicos del módulo
-
-- Frecuencia de trabajo: 410-441 MHz, 32 canales
-- Banda industrial: banda libre de 433 MHz de fábrica
-- Velocidad inalámbrica: 6 niveles ajustables (0,3, 1,2, 2,4, 4,8, 9,6, 19,2 Kbps)
-- Modo de comunicación: TTL de serie, puerto serie UART, 8N1, 8E1, 8O1, desde 1200-115200, un total de 8 velocidades de transmisión (predeterminado 9600, 8N1)
-- Potencia de transmisión: 100 mW (20 dB), 4 niveles ajustables (0-3), cada nivel aumenta o disminuye aproximadamente 3 dBm
-- Voltaje de trabajo: 3,3-5V
-- Corriente de trabajo: 2,3uA-118mA
-  - Transmisión: 118 mA (20 dBm 100 mW voltaje 5V)
-  - Recepción: 17 mA (modo 0, modo 1), mínimo de aproximadamente 2,3 uA (modo 2+2S de activación)
-- Temperatura de trabajo: -40 ~ 85 ℃
-- Sensibilidad de recepción de hasta -136 dBm, distancia de transmisión de 3000 metros
-- Doble FIFO circular de 512
+# Lora 通信 - 基于正点原子 ATK-LORA-01 模块
+
+ATK-LORA-01 一款体积小、微功率、低功耗、高性能远距离 LORA 无线串口模块。模块设计是采用高效的 ISM 频段射频 SX1278 扩频芯片，模块的工作频率在 410Mhz~441Mhz，以 1Mhz 频率为步进信道，共 32 个信道。可通过 AT 指令在线修改串口速率，发射功率，空中速率，工作模式等各种参数，并且支持固件升级功能。
+
+## 模块基本参数
+
+- 工作频率：410-441 MHz，32 个信道
+- 工业频段：出厂默认 433Mhz 免申请频段
+- 无线速率：6 级可调（0.3、1.2、2.4、4.8、9.6、19.2Kbps）
+- 通信方式：串口 TTL，UART 串口，8N1、8E1、8O1，从 1200-115200 共 8 种波特率（默认 9600、8N1）
+- 发射功率：100mW（20dB），4 级可调（0-3），每一级增减约 3dBm
+- 工作电压：3.3-5V
+- 工作电流：2.3uA-118mA
+  - 发射：118ma（20dbm 100mw 电压 5V）
+  - 接收：17ma（模式 0、模式 1），最低约 2.3uA（模式 2+2S 唤醒）
+- 工作温度：-40~85℃
+- 接收灵敏度达-136dBm，传输距离 3000 米
+- 双 512 环形 FIFO
 
-## Definición de interfaz
+## 接口定义
 
-| Nombre | Modo IO        | Descripción                                                                 |
-| ------ | -------------- | --------------------------------------------------------------------------- |
-| MD0    | Entrada        | Configuración de parámetros de entrada; en el encendido, entra en el modo de actualización de firmware en combinación con el pin AUX |
-| AUX    | ① Salida; ② Entrada | ① Se utiliza para indicar el estado de funcionamiento del módulo y despertar el MCU externo; ② En el encendido, entra en el modo de actualización de firmware en combinación con el pin MD0 |
-| RXD    | Entrada        | Entrada de serie TTL, conectada al pin de salida TXD externo                  |
-| TXD    | Salida         | Salida de serie TTL, conectada al pin de entrada RXD externo                  |
-| GND    |                | Tierra                                                                      |
-| VCC    |                | Entrada de alimentación DC3.3~5V                                             |
-
-Notas:
+| 名称 | IO 模式        | 说明                                                                              |
+| ---- | -------------- | --------------------------------------------------------------------------------- |
+| MD0  | 输入           | 配置进入参数配置；上电时与 AUX 引脚配合进入固件升级模式                           |
+| AUX  | ① 输出；② 输入 | ① 用于指示模块工作状态，用户唤醒外部 MCU；② 上电时与 MD0 引脚配合进入固件升级模式 |
+| RXD  | 输入           | TTL 串口输入，连接到外部 TXD 输出引脚                                             |
+| TXD  | 输出           | TTL 串口输出，连接到外部 RXD 输入引脚                                             |
+| GND  |                | 接地                                                                              |
+| VCC  |                | DC3.3~5V 电源输入                                                                 |
+
+注意事项：
 
-1. El nivel de voltaje de los pines del módulo es de 3,3 V, y se requiere una adaptación de nivel de voltaje para comunicarse con un MCU de 5 V.
-2. El módulo de comunicación inalámbrica es de nivel TTL, por lo que debe conectarse a un MCU de nivel TTL.
+1. 模块的引脚电平是 3.3V，与 5V 的单片机通信需要做电平转换适配
+2. 无线串口模块为 TTL 电平，请与 TTL 电平的 MCU 进行连接
 
-## Configuración del modo
+## 模式配置
 
-Los pines MD0 y AUX tienen dos funciones, y se ingresa a diferentes estados según la combinación de ambos. Cuando el módulo se enciende por primera vez, el pin AUX está en modo de entrada. Si los pines MD0 y AUX se conectan simultáneamente a un nivel alto de 3,3 V TTL y se mantienen durante 1 segundo (sin cambios en el nivel de los pines), el módulo entrará en modo de actualización de firmware y esperará la actualización del firmware. De lo contrario, entra en el modo de comunicación inalámbrica (el pin AUX volverá al modo de salida para indicar el estado de funcionamiento del módulo).
+MD0 与 AUX 引脚有两个功能，根据两者配合进入不同状态。模块在初次上电时，AUX 引脚为输入状态模式，若 MD0 与 AUX 引脚同时接入 3.3V TTL 高电平，并且保持 1 秒时间（引脚电平不变），则模块会进入固件升级模式，等待固件升级。否则进入无线通信模式（AUX 引脚会变回输出状态模式，用于指示模块的工作状态）
 
-Los pines MD0 y AUX tienen una resistencia interna de pull-down y están en nivel bajo si no se conectan. Si se conectan, están en nivel alto de 3,3 V TTL.
+MD0、AUX 引脚内部下拉，悬空为低电平。拉高为 3.3V TTL 高电平
 
-| Función       | Descripción              | Método de acceso                   |
-| ------------- | ------------------------| ---------------------------------- |
-| Configuración | Configuración de parámetros del módulo (comandos AT) | Después de encender, AUX en flotante, MD0 en alto |
-| Comunicación  | Utilizado para comunicación inalámbrica | Después de encender, AUX en flotante, MD0 en flotante |
-| Actualización de firmware | Utilizado para actualizar el firmware | Después de encender, AUX en alto, MD0 en alto, mantener por 1s |
+| 功能         | 介绍                    | 进入方法                            |
+| ------------ | ----------------------- | ----------------------------------- |
+| 配置功能     | 模块参数配置（AT 指令） | 上电后，AUX 悬空，MD0 拉高          |
+| 通信功能     | 用于无线通信            | 上电后，AUX 悬空，MD0 悬空          |
+| 固件升级功能 | 用于固件升级            | 上电后，AUX 拉高，MD0 拉高，保持 1s |
 
-En el modo de comunicación inalámbrica, el pin AUX es de salida y se utiliza para indicar el estado de trabajo del módulo.
+无线通信模式下，AUX 引脚为输出，用于指示模块的工作状态。
 
-## Configuración de funciones
+## 功能配置
 
-En "Configuración de funciones", el puerto serie debe configurarse como ASDASD: velocidad de transmisión "115200", bits de parada "1", bits de datos "8", paridad "ninguna", y se deben configurar los parámetros de trabajo del módulo mediante comandos AT. Consulte la siguiente tabla de comandos AT como referencia al configurar el software:
+在“配置功能”下，串口需设置 ASDASD：波特率“115200”、停止位“1”、数据位“8”、奇偶校验位“无”，通过 AT 指令设置模块的工作参数。通过配置软件，参考以下 AT 指令表：
 
-| Comando      | Función                       |
-| ------------ | -----------------------------|
-| AT           | Prueba de respuesta del módulo |
-| AT+MODEL?    | Consulta del modelo del dispositivo |
-| AT+CGMR?     | Obtención del número de versión del software |
-| AT+UPDATE    | Consulta si el dispositivo está en modo de actualización de firmware |
-| ATE1         | Eco de comandos                |
-| ATE0         | Sin eco de comandos            |
-| AT+RESET     | Reinicio del módulo            |
-| AT+DEFAULT   | Restablecimiento de la configuración de fábrica |
-| AT+FLASH=    | Guardar parámetros              |
-| AT+ADDR=?    | Consulta del rango de direcciones de configuración del dispositivo |
-| AT+ADDR?     | Consulta de la dirección del dispositivo |
-| AT+ADDR=     | Configuración de la dirección del dispositivo |
-| AT+TPOWER=?  | Consulta del rango de configuración de la potencia de transmisión |
-| AT+TPOWER?   | Consulta de la potencia de transmisión |
-| AT+TPOWER=   | Configuración de la potencia de transmisión |
-| AT+CWMODE=?  | Consulta del rango de configuración del modo de trabajo |
-| AT+CWMODE?   | Consulta del modo de trabajo |
-| AT+CWMODE=   | Configuración del modo de trabajo |
-| AT+TMODE=?   | Consulta del rango de configuración del estado de envío |
-| AT+TMODE?    | Consulta del estado de envío |
-| AT+TMODE=    | Configuración del estado de envío |
-| AT+WLRATE=?  | Consulta del rango de configuración de la velocidad inalámbrica y el canal |
-| AT+WLRATE?   | Consulta de la velocidad inalámbrica y el canal |
-| AT+WLRATE=   | Configuración de la velocidad inalámbrica y el canal |
-| AT+WLTIME=?  | Consulta del rango de configuración del tiempo de inactividad |
-| AT+WLTIME?   | Consulta del tiempo de inactividad |
-| AT+WLTIME=   | Configuración del tiempo de inactividad |
-| AT+UART=?    | Consulta del rango de configuración del puerto serie |
-| AT+UART?     | Consulta de la configuración del puerto serie |
-| AT+UART=     | Configuración del puerto serie |
+| 指令        | 作用                         |
+| ----------- | ---------------------------- |
+| AT          | 测试模块响应情况             |
+| AT+MODEL?   | 查询设备型号                 |
+| AT+CGMR?    | 获取软件版本号               |
+| AT+UPDATE   | 查询设备是否处于固件升级模式 |
+| ATE1        | 指令回显                     |
+| ATE0        | 指令不回显                   |
+| AT+RESET    | 模块复位（重启）             |
+| AT+DEFAULT  | 恢复出厂设置                 |
+| AT+FLASH=   | 参数保存                     |
+| AT+ADDR=?   | 查询设备配置地址范围         |
+| AT+ADDR?    | 查询设备地址                 |
+| AT+ADDR=    | 配置设备地址                 |
+| AT+TPOWER=? | 查询发射功率配置范围         |
+| AT+TPOWER?  | 查询发射功率                 |
+| AT+TPOWER=  | 配置发射功率                 |
+| AT+CWMODE=? | 查询配置工作模式范围         |
+| AT+CWMODE?  | 查询工作模式                 |
+| AT+CWMODE=  | 配置工作模式                 |
+| AT+TMODE=?  | 查询配置发送状态范围         |
+| AT+TMODE?   | 查询发送状态                 |
+| AT+TMODE=   | 配置发送状态                 |
+| AT+WLRATE=? | 查询无线速率和信道配置范围   |
+| AT+WLRATE?  | 查询无线速率和信道           |
+| AT+WLRATE=  | 配置无线速率和信道           |
+| AT+WLTIME=? | 查询配置休眠时间范围         |
+| AT+WLTIME?  | 查询休眠时间                 |
+| AT+WLTIME=  | 配置休眠时间                 |
+| AT+UART=?   | 查询串口配置范围             |
+| AT+UART?    | 查询串口配置                 |
+| AT+UART=    | 配置串口                     |
 
-Cuando se sale de la función de configuración (MD0=0), el módulo volverá a configurar los parámetros. Durante el proceso de configuración, AUX se mantendrá en alto y después de completar la configuración, se establecerá en bajo, lo que indica que el módulo ha vuelto al estado inactivo.
+当退出配置功能（MD0=0），模块会重新配置参数，在配置过程中，AUX 保持高电平，完成后输出低电平，模块返回空闲状态。
 
-## Tiempo de suspensión
+## 休眠时间
 
-El tiempo de suspensión es el intervalo de escucha para el receptor y el tiempo de transmisión continua del código de activación para el emisor. Cuando el modo de trabajo del módulo está en "modo de activación", se agregará automáticamente un código de activación de tiempo de suspensión antes de los datos del usuario. Cuando el modo de trabajo del módulo está en "modo de ahorro de energía", el tiempo de suspensión configurado se convierte en el intervalo de escucha.
+休眠时间对接收方来说是监听间隔的时间；对发射方来说，是持续发射唤醒码的时间。当模块工作模式在“唤醒模式”时，会在用户数据前自动添加配置休眠时间的唤醒码，当模块工作模式在“省电模式”时，以配置的休眠时间为监听间隔的时间。
 
-## Modo de dispositivo
+## 设备模式
 
-### Modo general (modo 0)
+### 一般模式（模式 0）
 
-- Emisión: El módulo recibe los datos del usuario desde el puerto serie y emite un paquete de datos inalámbrico de 58 bytes. Cuando los datos de entrada del usuario alcanzan los 58 bytes, el módulo iniciará la transmisión inalámbrica. Si el usuario necesita transmitir menos de 58 bytes, el módulo esperará un byte. Si no hay más datos de entrada del usuario, se considera que los datos han terminado y el módulo enviará todos los datos a través de la radio. Cuando el módulo comienza a enviar el primer paquete de datos del usuario, el pin AUX emitirá una señal de alto. Después de que el módulo haya transmitido todos los datos a través del chip RF y haya iniciado la transmisión, AUX emitirá una señal de bajo. Esto indica que se ha enviado el último paquete de datos inalámbricos y que el usuario puede seguir ingresando datos de hasta 512 bytes. Los paquetes de datos enviados por el modo general solo pueden ser recibidos por los módulos de recepción en modo general y de activación.
-- Recepción: El módulo siempre está activado para recibir datos inalámbricos y puede recibir paquetes de datos enviados por el modo general y el modo de activación. Después de recibir el paquete de datos, AUX emitirá una señal de alto. Después de un retraso de 2-3 ms, el módulo comenzará a enviar los datos inalámbricos a través del pin TXD del puerto serie. Después de que se hayan enviado todos los datos inalámbricos a través del puerto serie, AUX emitirá una señal de bajo.
+- 发射：模块接收来自串口的用户数据，模块发射无线数据包长度为 58 字节，当用户输入数据达到 58 字节时，模块将启动无线发射，此时用户可以继续输入需要发射的数据，当用户需要传输的字节小于 58 字节时，模块等待 1 个字节时间，若无用户数据继续输入则认为数据终止，此时模块将所有数据都包经无线发出，当模块开始发送第一包用户数据时，AUX 引脚将输出高电平，当模块把所有数据通过 RF 芯片并启动发射后，AUX 输出低电平。此时表明最后一包无线数据已经发射完毕，用户可以继续输入长达 512 字节的数据，通过一般模式 发出的数据包，只能被处于一般模式、唤醒模式的接收模块收到。
+- 接收：模块一直打开无线接收功能，可以接收来自一般模式、唤醒模式发出的数据包。收到数据包后，模块 AUX 输出高电平，2-3ms 延迟后，开始将无线数据通过串口 TXD 引脚发出，所有无线数据都通过串口输出后，模块将 AUX 引脚输出低电平。
 
-### Modo de activación (modo 1)
+### 唤醒模式（模式 1）
 
-- Emisión: Las condiciones para iniciar la transmisión de paquetes de datos son las mismas que en el modo general, con la única diferencia de que el módulo agregará automáticamente un código de activación de tiempo de suspensión antes de cada paquete de datos (el código de activación de tiempo de suspensión tiene una longitud que depende del tiempo de suspensión configurado por el usuario). El propósito del código de activación de tiempo de suspensión es activar el modo de ahorro de energía del módulo receptor. Por lo tanto, los datos enviados en el modo de activación pueden ser recibidos por el modo general y los modos 1 y 2 de recepción.
-- Recepción: Es igual que en el modo general.
+- 发射：模块启动数据包发射的条件与 AUX 功能等于一般模式，唯一不同的是：模块会在每个数据包前自动添加唤醒码（休眠时间），唤醒码的长度取决于用户参数中设置的休眠时间。唤醒码的目的是用于唤醒工作省电模式的接收模块。所以，唤醒模式发射的数据可以被一般模式、1、2 接收到。
+- 接收：与一般模式相同。
 
-### Modo de ahorro de energía (modo 2)
+### 省电模式（模式 2）
 
-- Emisión: El módulo está en estado de suspensión y el puerto serie está cerrado, por lo que no puede recibir datos del MCU externo. Por lo tanto, este modo no tiene función de transmisión inalámbrica.
-- Recepción: En el modo de ahorro de energía, el emisor debe estar en modo de activación. El módulo inalámbrico escuchará el código de activación de forma periódica. Una vez que se recibe un código de activación válido, el módulo permanecerá en modo de recepción hasta que se complete la recepción de todo el paquete de datos válido. Luego, AUX emitirá una señal de alto y, después de un retraso de 2-3 ms, el módulo abrirá el puerto serie y enviará los datos inalámbricos recibidos a través del pin TXD. Después de que se hayan enviado todos los datos inalámbricos a través del puerto serie, AUX emitirá una señal de bajo. El módulo inalámbrico continuará trabajando en el modo "suspensión-escucha". Al configurar diferentes tiempos de activación, el módulo tendrá diferentes tiempos de respuesta y consumo de energía. Los usuarios deben encontrar un equilibrio entre el tiempo de retraso de comunicación y el consumo de energía promedio.
+- 发射：模块处于休眠状态，串口将关闭，无法接收来自外部 MCU 的串口数据，所以该模式不具有无线发射的功能。
+- 接收：在省电模式下，要求发射方必须工作在唤醒模式，无线模块定时监听唤醒码，一旦收到有效的唤醒码后，模块将持续处于接收状态，在等待整个有效数据包接收接收完毕，然后模块将 AUX 输出高电平，并延迟 2-3ms 后，打开串口将收到的无线数据通过 TXD 发出，完毕后将 AUX 输出低电平。无线模块将继续进制“休眠-监听”的工作状态，通过设置不同的唤醒时间，模块具有不同的接收响应延迟和功耗，用户需要在通讯延迟时间和平均功耗之间取得一个平衡点。
 
-### Modo de intensidad de señal (modo 3)
+### 信号强度模式（模式 3）
 
-El modo de intensidad de señal se utiliza para ver la intensidad de la señal de ambas partes de la comunicación y evaluar la calidad de la comunicación.
+信号强度模式可查看通讯双方的信号强度，评估双方的通信质量提供参考。
 
-- Emisión: Es igual que en el modo general.
-- Recepción: Se muestra la información de la intensidad de la señal.
+- 发射：与一般模式相同。
+- 接收：输出信号强度的信息。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220118110058.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220118110058.png)
 
-SNR: relación señal-ruido (cuanto mayor sea, más estable), RSSI: indicador de intensidad de señal recibida (cuanto mayor sea, más estable).
+SNR：信噪比（越大越稳定），RSSI：接收信号的强度指示（越大越稳定）
 
-## Modo de comunicación
+## 通信方式
 
-- Transmisión transparente: Por ejemplo, el dispositivo A envía datos de 5 bytes AA BB CC DD EE al dispositivo B, y el dispositivo B recibirá los datos AA BB CC DD EE. (Transmisión transparente, para la comunicación entre dispositivos con la misma dirección y canal de comunicación, los datos del usuario pueden ser caracteres o datos en formato hexadecimal).
-  - Punto a punto
-  - Punto a múltiples
-  - Escucha de difusión
-- Transmisión dirigida: Por ejemplo, el dispositivo A (dirección: 0x1400, canal: 0x17 (canal 23, 433 MHz)) necesita enviar datos AA BB CC al dispositivo B (dirección: 0x1234, canal: 0x10 (canal 16, 426 MHz)). El formato de comunicación es: 12 34 10 AA BB CC, donde 1234 es la dirección del módulo B y 10 es el canal. El módulo B recibirá AA BB CC. De manera similar, si el dispositivo B necesita enviar datos AA BB CC al dispositivo A, el formato de comunicación es: 14 00 17 AA BB CC, y el dispositivo A recibirá AA BB CC. (Transmisión dirigida, para la comunicación entre dispositivos con direcciones y canales de comunicación diferentes, el formato de datos es hexadecimal, el formato de envío es: dirección de bits altos + dirección de bits bajos + canal + datos de usuario).
-  - Punto a múltiples
-  - Escucha de difusión
+- 透明传输：例如 A 设备发 5 字节数据 AA BB CC DD EE 到 B 设备，B 设备就收到数据 AA BB CC DD EE。（透明传输，针对设备相同地址、相同的通信信道之间通信，用户数据可以是字符或 16 进制数据形式）。
+  - 点对点
+  - 点对多
+  - 广播监听
+- 定向传输：例如 A 设备（地址为：0x1400，信道为 0x17（23 信道 433Mhz））需要向 B 设备（地址为 0x1234，信道为 0x10（16 信道、426Mhz））发送数据 AA BB CC，其通信格式为：12 34 10 AA BB CC，其中 1234 为模块 B 的地址，10 为信道，则模块 B 可以收到 AA BB CC。同理，如果 B 设备需要向 A 设备发送数据 AA BB CC，其通信格式为：14 00 17 AA BB CC，则 A 设备可以收到 AA BB CC。（定向传输，可实现设备间地址和通信信道不同之间通信，数据格式为 16 进制，发送格式：高位地址+低位地址+信道+用户数据）。
+  - 点对多
+  - 广播监听
 
-Radio y monitoreo de datos: al establecer la dirección del módulo como 0xFFFF, se puede monitorear la transmisión de datos de todos los módulos en el mismo canal; los datos enviados pueden ser recibidos por cualquier módulo en la misma canal, lo que cumple la función de radiodifusión y monitoreo.
+广播与数据监听：将模块地址设置为 0xFFFF，可以监听相同信道上的所有模块的数据传输；发送的数据，可以被相同信道上任意地址的模块收到，从而起到广播和监听的作用。
 
-## Modo de transmisión transparente
+## 透明传输方式
 
-### Punto a punto
+### 点对点
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220118110614.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220118110614.png)
 
-- Dos módulos con la misma dirección, canal y velocidad inalámbrica (no la velocidad de baudios del puerto serie) pueden enviar y recibir datos entre sí (uno envía, el otro recibe).
-- Cada módulo puede enviar / recibir.
-- Los datos son completamente transparentes, lo que se envía es lo que se recibe.
+- 地址相同、信道相同、无线速率（非串口波特率）相同的两个模块，一个模块发送，另外一个模块接收（必须是：一个发，一个收）。
+- 每个模块都可以做发送/接收。
+- 数据完全透明，所发即所得。
 
-|          | Módulo emisor | Módulo receptor |
-| -------- | ------------- | --------------- |
-| Cantidad | 1             | 1               |
-| Contenido de transmisión | Datos | Datos |
+|          | 发送模块 | 接收模块 |
+| -------- | -------- | -------- |
+| 个数     | 1        | 1        |
+| 传输内容 | 数据     | 数据     |
 
-Por ejemplo:
+例如：
 
-Los dispositivos A y B tienen la dirección 0x1234, el canal es 0x12 y la velocidad es la misma.  
-El dispositivo A envía: AA BB CC DD  
-El dispositivo B recibe: AA BB CC DD
+设备 A、B 地址都为 0x1234，信道都为 0x12，速率相同。  
+设备 A 发送：AA BB CC DD  
+设备 B 接收：AA BB CC DD
 
-La transmisión transparente es simple, solo se usa el módulo Lora como un puerto serie, el dispositivo A envía datos a través del puerto serie y el dispositivo B puede recibirlos a través del puerto serie, y viceversa.
+透传的方式很简单，把 Lora 模块当串口用就行，设备 A 通过串口发数据，设备 B 就可以从串口接收到，反之如此。
 
-### Punto a varios
+### 点对多
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220118110709.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220118110709.png)
 
-- Los módulos con la misma dirección, canal y velocidad inalámbrica (no la velocidad de baudios del puerto serie) pueden enviar y recibir datos entre sí (uno envía, varios reciben).
-- Cada módulo puede enviar / recibir.
-- Los datos son completamente transparentes, lo que se envía es lo que se recibe.
+- 地址相同、信道相同、无线速率（非串口波特率）相同的模块，任意一个模块发送，其他模块都可以接收到。
+- 每个模块都可以做发送/接收.
+- 数据完全透明，所发即所得。
 
-|          | Módulo emisor | Módulo receptor |
-| -------- | ------------- | --------------- |
-| Cantidad | 1             | N               |
-| Contenido de transmisión | Datos | Datos |
+|          | 发送模块 | 接收模块 |
+| -------- | -------- | -------- |
+| 个数     | 1        | N        |
+| 传输内容 | 数据     | 数据     |
 
-La diferencia con el punto a punto es que varios módulos pueden recibir.
+与点对点的区别是，接收模块可以多个。
 
-Por ejemplo:
-Los dispositivos A a F tienen la dirección 0x1234 y el canal es 0x12, y la velocidad es la misma.  
-El dispositivo A envía: AA BB CC DD  
-Los dispositivos B a F reciben: AA BB CC DD
+例如：
+设备 A~F 地址为 0x1234，信道为 0x12，速率相同。  
+设备 A 发送：AA BB CC DD  
+设备 B~F 接收：AA BB CC DD
 
-### Radiodifusión y monitoreo
+### 广播监听
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220118110853.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220118110853.png)
 
-- Si la dirección del módulo es 0xFFFF, el módulo está en modo de radiodifusión y monitoreo, los datos enviados pueden ser recibidos por todos los demás módulos en el mismo canal y velocidad (radiodifusión); al mismo tiempo, se puede monitorear la transmisión de datos de todos los módulos en el mismo canal y velocidad (monitoreo).
-- La radiodifusión y el monitoreo no requieren la misma dirección.
+- 模块地址为 0xFFFF，则该模块处于广播监听模式，发送的数据可以被相同速率和信道的其他所有模块接收到（广播）；同时，可以监听相同速率和信道上所有模块的数据传输（监听）。
+- 广播监听无需地址相同。
 
-|          | Módulo emisor | Módulo receptor |
-| -------- | ------------- | --------------- |
-| Cantidad | 1             | N               |
-| Contenido de transmisión | Datos | Datos |
+|          | 发送模块 | 接收模块 |
+| -------- | -------- | -------- |
+| 个数     | 1        | N        |
+| 传输内容 | 数据     | 数据     |
 
-La diferencia con el punto a varios es que las direcciones pueden ser diferentes.
+与点对多的区别是，地址可以不同。
 
-Por ejemplo:
-El dispositivo A tiene la dirección 0xFFFF, las direcciones de los dispositivos B a F no son todas iguales, las direcciones de los dispositivos B y C son 0x1234, y las direcciones de los dispositivos D, E y F son 0x5678. Todos los dispositivos A a F tienen la misma velocidad.  
-Radiodifusión:  
-El dispositivo A transmite: AA BB CC DD  
-Los dispositivos B a F reciben: AA BB CC DD  
-Monitoreo:  
-El dispositivo B envía a C: AA BB CC DD  
-El dispositivo A monitorea: AA BB CC DD  
-El dispositivo D envía a E y F: 11 22 33 44  
-El dispositivo A monitorea: 11 22 33 44
+例如：
+设备 A 地址为 0xFFFF，设备 B~F 地址不全部一样，设备 B 与 C 地址为 0x1234，设备 D、E、F 地址为 0x5678。设备 A~F 速率全部相同。  
+广播：  
+设备 A 广播：AA BB CC DD  
+设备 B~F 接收：AA BB CC DD  
+监听：  
+设备 B 向 C 发送：AA BB CC DD  
+设备 A 监听：AA BB CC DD  
+设备 D 向 E、F 发送：11 22 33 44  
+设备 A 监听：11 22 33 44
 
-## Modo de transmisión direccionado
+## 定向传输方式
 
-### Punto a punto
+### 点对点
 
-- Al enviar el módulo, se puede modificar la dirección y el canal, y el usuario puede especificar que los datos se envíen a cualquier dirección y canal.
-- Se pueden realizar funciones de red y de relé.
+- 模块发送时可修改地址和信道，用户可以指定数据发送到任意地址和信道。
+- 可以实现组网和中继功能。
 
-|          | Módulo emisor | Módulo receptor |
-| -------- | ------------- | --------------- |
-| Cantidad | 1             | 1               |
-| Contenido de transmisión | Dirección + canal + datos | Datos |
+|          | 发送模块       | 接收模块 |
+| -------- | -------------- | -------- |
+| 个数     | 1              | 1        |
+| 传输内容 | 地址+信道+数据 | 数据     |
 
+与点对点透传的区别是，模块地址可变，信道可变，但速率仍然相同。
 
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220118111903.png)
 
-La diferencia con la transmisión punto a punto es que la dirección del módulo y el canal son variables, pero la velocidad sigue siendo la misma.
+例如：  
+设备 A 地址 0X1234，信道 0X17；  
+设备 B 地址 0xABCD，信道 0X01；  
+设备 C 地址 0X1256，信道 0x13。
 
-Por ejemplo:
-Dispositivo A con dirección 0X1234 y canal 0X17;
-Dispositivo B con dirección 0xABCD y canal 0X01;
-Dispositivo C con dirección 0X1256 y canal 0x13.
+设备 A 发送：AB CD 01 AA BB CC DD  
+设备 B 接收：AA BB CC DD  
+设备 C 接收：无
 
-Dispositivo A envía: AB CD 01 AA BB CC DD
-Dispositivo B recibe: AA BB CC DD
-Dispositivo C recibe: nada
+设备 A 发送：12 56 13 AA BB CC DD  
+设备 B 接收：无  
+设备 C 接收：AA BB CC DD
 
-Dispositivo A envía: 12 56 13 AA BB CC DD
-Dispositivo B recibe: nada
-Dispositivo C recibe: AA BB CC DD
+#### 无代码测试
 
-#### Prueba sin código
+准备 2 个 USB 转 TTL，2 个 LoRa 模块。分别接在 USB 转 TTL 上（电源、共地、TX/RX 对接），将两个 LoRa 的 MD0 接 VCC 后，插入电脑 USB，打开配置软件，配置以下参数：
 
-Prepara 2 USB a TTL, 2 módulos LoRa. Conéctalos a los USB a TTL (alimentación, tierra común, TX/RX conectados), conecta los dos MD0 a VCC, enchufa los USB a la computadora, abre el software de configuración y configura los siguientes parámetros:
+设备 A：
 
-Dispositivo A:
+- 一般模式
+- 定向传输
+- **波特率：115200（必须是 115200）**
+- 校验位：无
+- 空中速率：19.2k
+- 休眠时间：1s
+- **模块地址：0**
+- **通信信道：0**
+- 发射功率：20dBm
 
-- Modo normal
-- Transmisión direccionada
-- **Velocidad de transmisión: 115200 (debe ser 115200)**
-- Bit de paridad: ninguno
-- Velocidad en el aire: 19.2k
-- Tiempo de espera: 1s
-- **Dirección del módulo: 0**
-- **Canal de comunicación: 0**
-- Potencia de transmisión: 20dBm
+设备 B：
 
-Dispositivo B:
+- 一般模式
+- 定向传输
+- **波特率：115200（必须是 115200）**
+- 校验位：无
+- 空中速率：19.2k
+- 休眠时间：1s
+- **模块地址：65534**
+- **通信信道：10**
+- 发射功率：20dBm
 
-- Modo normal
-- Transmisión direccionada
-- **Velocidad de transmisión: 115200 (debe ser 115200)**
-- Bit de paridad: ninguno
-- Velocidad en el aire: 19.2k
-- Tiempo de espera: 1s
-- **Dirección del módulo: 65534**
-- **Canal de comunicación: 10**
-- Potencia de transmisión: 20dBm
+配置后，点击 `保存配置`，**拔掉 MD0 再断电**。
 
-Después de configurar, haz clic en "Guardar configuración" y **desconecta MD0 y luego desconecta la alimentación**.
+将两个模块重新上电，打开配置软件，**收发都勾选 `HEX`（16 进制）**
 
-Vuelve a encender los dos módulos, abre el software de configuración y marca "HEX" (hexadecimal) tanto en enviar como en recibir.
+在 A 的发送区填入 `FF FE 0A 11 12 13 14`，点击发送，就能在 B 的接收区收到 `11 12 13 14` 了；或者在 B 的发送区填入 `00 00 00 11 12 13`，就能在 A 的接收区收到 `11 12 13` 了。
 
-En el área de envío de A, ingresa "FF FE 0A 11 12 13 14", haz clic en enviar y podrás recibir "11 12 13 14" en el área de recepción de B; o en el área de envío de B, ingresa "00 00 00 11 12 13" y podrás recibir "11 12 13" en el área de recepción de A.
+其中，`FF FE` 是 B 地址 65534 的 16 进制数，信道是 10（16 进制数就是 `0A`），发送的内容数据是 `11 12 13 14`。同理，B 发出的数据包含 A 的地址 `00 00`，信道 `00`，内容 `11 12 13`。发送数据的格式是 **高位地址 + 低位地址 + 信道 + 用户数据**。
 
-Entre ellos, "FF FE" es el número hexadecimal de la dirección 65534 de B, el canal es 10 (el número hexadecimal es "0A"), y los datos enviados son "11 12 13 14". De manera similar, los datos enviados por B incluyen la dirección de A "00 00", el canal "00" y los datos "11 12 13". El formato de envío de datos es **dirección de alta orden + dirección de baja orden + canal + datos de usuario**.
+#### 使用代码测试
 
-#### Prueba con código
-
-La transmisión punto a punto solo tiene un byte de dirección más que la transmisión punto a punto transparente. Puedes definirlo de esta manera:
+点对点定传仅仅是比点对点透传多了地址字节。可以这样定义：
 
 ```c title="main.c"
 /* USER CODE BEGIN PV */
@@ -274,50 +274,53 @@ uint8_t B_Chan[1] = { 0x0A };
 /* USER CODE END PV */
 ```
 
-Después de configurar el código (entorno de biblioteca HAL), envía el byte de dirección antes de enviar los datos cada vez:
+配置了串口的代码（HAL 库环境）后，在每次发送数据之前发送地址字节：
 
 ```c title="main.c"
 HAL_UART_Transmit(&huart1, B_Addr, 2, 0xFFFF);
 HAL_UART_Transmit(&huart1, B_Chan, 1, 0xFFFF);
 ```
 
-De esta manera, el dispositivo receptor (dispositivo B) puede recibir un marco de datos enviado por A (sin byte de dirección).
+这样，接收的设备（B 设备）就能接收到 A 发出的一帧数据（不含地址字节）。
 
-### Escucha de difusión
+### 广播监听
 
-- Si la dirección del módulo es 0xFFFF, el módulo está en modo de escucha de difusión, los datos enviados pueden ser recibidos por todos los demás módulos con la misma velocidad y canal (difusión); al mismo tiempo, se pueden escuchar todas las transmisiones de datos en el mismo canal y velocidad de todos los demás módulos (escucha);
-- La escucha de difusión no requiere que las direcciones sean iguales.
-- La dirección del canal se puede configurar. Cuando la dirección es 0xFFFF, es el modo de difusión; de lo contrario, es el modo de transmisión direccionada.
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220118112544.png)
 
-|          | Módulo de envío  | Módulo de recepción |
-| -------- | ---------------- | -------------------- |
-| Cantidad | 1                | N                    |
-| Contenido de transmisión | 0xFFFF + canal + datos | Datos                |
+- 模块地址为 0xFFFF，则该模块处于广播监听模式，发送的数据可以被具有相同速率和信道的其他所有模块接收到（广播）；同时，可以监听相同速率和信道上所有模块的数据传输（监听）；
+- 广播监听无需地址相同。
+- 信道地址可设置。当地址为 0xFFFF 时，为广播模式；为其他时，为定向传输模式。
 
-Por ejemplo:
+|          | 发送模块         | 接收模块 |
+| -------- | ---------------- | -------- |
+| 个数     | 1                | N        |
+| 传输内容 | 0xFFFF+信道+数据 | 数据     |
 
-Dispositivo A con dirección 0xFFFF y canal 0x12;
-Dispositivos B y C con dirección 0x1234 y canal 0x13;
-Dispositivo D con dirección 0xAB00 y canal 0x01;
-Dispositivo E con dirección 0xAB01 y canal 0x12;
-Dispositivo F con dirección 0xAB02 y canal 0x12;
+例如：
 
-Dispositivo A transmite: FF FF 13 AA BB CC DD
-Dispositivos B y C reciben: AA BB CC DD
+设备 A 地址 0xFFFF 信道 0x12；  
+设备 B、C 地址 0x1234，信道 0x13；  
+设备 D 地址 0xAB00，信道 0x01；  
+设备 E 地址 0xAB01，信道 0x12；  
+设备 F 地址 0xAB02，信道 0x12；
 
-Dispositivo A envía: AB 00 01 11 22 33 44
-Solo el dispositivo D recibe: 11 22 33 44
+设备 A 广播：FF FF 13 AA BB CC DD  
+设备 B、C 接收：AA BB CC DD
 
-Dispositivo E envía: AB 02 12 66 77 88 99
-Dispositivo F recibe: 66 77 88 99
-Dispositivo A escucha: 66 77 88 99
+设备 A 发送：AB 00 01 11 22 33 44  
+只有设备 D 接收：11 22 33 44
 
-## Referencias y agradecimientos
+设备 E 发送：AB 02 12 66 77 88 99  
+设备 F 接收：66 77 88 99  
+设备 A 监听：66 77 88 99
 
-- [Módulo LORA ATK-LORA-01](http://www.openedv.com/docs/modules/iot/atk-lora-01.html)
-- [Tutorial de uso del módulo LORA ATK-LORA de la marca Zhengdianyuan](https://www.bilibili.com/video/BV1D44y1t7bn)
-- [Descarga de materiales y enlaces de discusión técnica del módulo LORA ATK-LORA-01 de la marca Zhengdianyuan](http://www.openedv.com/thread-309019-1-1.html)
-- [Método de prueba de transmisión de datos en modo general con dos módulos LORA (prueba con una computadora)](http://www.openedv.com/forum.php?mod=viewthread&tid=288951)
-- [Módulo inalámbrico de puerto serie ATK-LORA-01 solo recibe 00](http://www.openedv.com/forum.php?mod=viewthread&tid=328190&highlight=ATK-LORA-01)
+## 参考与致谢
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+- [LORA 模块 ATK-LORA-01](http://www.openedv.com/docs/modules/iot/atk-lora-01.html)
+- [正点原子 LORA 模块 ATK-LORA 使用教程](https://www.bilibili.com/video/BV1D44y1t7bn)
+- [【正点原子产品资料】LORA 模块 ATK-LORA-01 资料下载和技术讨论链接](http://www.openedv.com/thread-309019-1-1.html)
+- [两个 LORA 模块工作在一般模式定向传输数据的测试方法（使用上位机测试）](http://www.openedv.com/forum.php?mod=viewthread&tid=288951)
+- [ATK-LORA-01 无线串口模块只接收到 00](http://www.openedv.com/forum.php?mod=viewthread&tid=328190&highlight=ATK-LORA-01)
+
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

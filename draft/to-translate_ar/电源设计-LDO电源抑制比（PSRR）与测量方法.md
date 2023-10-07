@@ -1,143 +1,139 @@
-# Diseño de fuentes de alimentación - Relación de rechazo de fuente de alimentación (PSRR) y métodos de medición de LDO
+# 电源设计 - LDO 电源抑制比（PSRR）与测量方法
 
-Una de las ventajas de los reguladores lineales de baja caída de voltaje (LDO) en comparación con los convertidores DC-DC es que tienen una pequeña ondulación de voltaje de salida. Sin embargo, en circuitos de alta velocidad, la relación de rechazo de fuente de alimentación (PSRR) de LDO también es un factor importante que no se puede ignorar. A menudo se confunde con un valor estático único, este artículo explicará en detalle la relación de rechazo de fuente de alimentación (PSRR) y cómo medirla.
+低压差线性稳压器（LDO）相比 DC-DC 的优点之一，是输出电压纹波小。但是高速电路下，LDO 的电源抑制比（PSRR）也是不可忽略的因素，通常被误认为是单一的静态值，本篇文章将详细讲解电源抑制比（PSRR）及如何测量它。
 
-## Definición de la relación de rechazo de fuente de alimentación (PSRR)
+## 电源抑制比（PSRR）的定义
 
-La relación de rechazo de fuente de alimentación (Power Supply Rejection Ratio, PSRR), también conocida como relación de rechazo de ondulación, se puede encontrar en el manual de datos de LDO. Representa la atenuación de LDO desde la entrada hasta la salida a una determinada frecuencia y representa la capacidad de supresión de ondulación a diferentes frecuencias. En algunos circuitos de comunicación de alta velocidad, como Wi-Fi, Bluetooth, etc., se requieren LDO de alta velocidad con una gran relación de rechazo de fuente de alimentación para responder rápidamente cuando el chip necesita aumentar la corriente instantáneamente, evitando que la carga se reinicie debido a una caída de voltaje por debajo del voltaje nominal. En algunos casos, se utiliza un convertidor DC-DC como reductor de voltaje de primer nivel y LDO como reductor de voltaje / filtro de segundo nivel, ya que la frecuencia de conmutación del convertidor DC-DC está en el rango de kHz-MHz, es decir, por encima de 100 kHz para LDO, por lo que es necesario considerar estrictamente la PSRR.
+电源抑制比（Power Supply Rejection Ratio, PSRR）也称纹波抑制比，通常在 LDO 的数据手册中能找到，它代表 LDO 在某个频率下从输入到输出的衰减程度，代表不同频率下纹波抑制能力。在有些高速通信电路如 Wi-Fi、蓝牙等，就需要用上电源抑制比较大的高速 LDO，当芯片需要瞬间拉大电流时能快速响应，不至于掉到低于额定电压导致负载重启。还有一些场景是使用 DC-DC 作为一级降压、LDO 作为二级降压 / 滤波，因为 DC-DC 开关频率在 kHz-MHz 级别，即 LDO 在 100kHz 以上，就需要严格考虑 PSRR 了。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220516174303.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220516174303.png)
 
-La relación de rechazo de fuente de alimentación (PSRR) se expresa mediante la fórmula:
+电源抑制比（PSRR）用公式表示为：
 
 $$
 PSRR(dB)=20\log\frac{V_{rp(in)}}{V_{rp(out)}}
 $$
 
-Donde $V_{rp(in)}$ representa la ondulación de entrada y $V_{rp(out)}$ representa la ondulación de salida. La PSRR de LDO de alta velocidad generalmente es superior a 60 dB, mientras que la PSRR de LDO común es de alrededor de 20 dB. Una PSRR de 60 dB significa que cuando la ondulación de entrada es de 1 V, la ondulación de salida será de 1 mV.
+其中，$V_{rp(in)}$ 表示输入纹波，$V_{rp(out)}$ 表示输出纹波。高速 LDO 的 PSRR 一般大于 60dB，而普通 LDO 的 PSRR 一般在 20dB 左右。60dB 的 PSRR 代表表当输入纹波为 1V 时，输出纹波将为 1mV。
 
-Primero, veamos la curva de supresión de ondulación del LDO común (serie XC6206):
+我们先看普通 LDO（XC6206 系列）的纹波抑制曲线：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220421142140.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220421142140.png)
 
-Se puede ver que a una frecuencia de 1 kHz, la relación de rechazo de ondulación de XC6206P302 es de aproximadamente 23 dB.
+可以看出，在频率为 1kHz 时，XC6206P302 的纹波抑制比约为 23dB。
 
-Ahora, veamos la curva de supresión de ondulación del LDO de alta velocidad (XC6217x302):
+再看高速 LDO（XC6217x302）的纹波抑制曲线：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220421141923.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220421141923.png)
 
-A una frecuencia de 1 kHz, la relación de rechazo de ondulación de XC6217x302 es de aproximadamente 68 dB.
+在频率为 1kHz 时，XC6217x302 的纹波抑制比约为 68dB。
 
-## Métodos de medición de la relación de rechazo de fuente de alimentación (PSRR)
+## 电源抑制比（PSRR）的测量方法
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220424104353.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220424104353.png)
 
-La medición de la relación de rechazo de fuente de alimentación (PSRR) se divide en dos partes: la inyección de entrada y la medición de salida. Se puede calcular el valor de PSRR mediante la siguiente prueba y registrando la ondulación de voltaje de entrada y salida según la fórmula.
+电源抑制比（PSRR）的测量分 **输入注入** 和 **输出测量** 两个部分。通过以下方法测试，并记录输入与输出的电压纹波，根据公式即可算出 PSRR 的值。
 
-### Inyección de entrada
+### 输入注入
 
-#### Generador de señales
+#### 信号发生器
 
-Se utiliza un generador de señales para generar directamente una onda sinusoidal y se conecta al terminal de entrada de LDO. Este método está limitado por la corriente de salida del generador de señales (como el pico de corriente de salida de DG4062 a una onda sinusoidal de 100 kHz es de 1,65 A).
+使用信号发生器直接产生正弦波，接在 LDO 的输入端。此方法受限于信号发生器的输出电流（像 DG4062 输出电流峰值在 100kHz 正弦波下是 1.65A）。
 
-#### Amplificador operacional
+#### 运算放大器
 
-La función del amplificador operacional es superponer la ondulación de CA en el voltaje de CC de la fuente de alimentación.
+放大器的作用是将 AC 纹波叠加到直流电源的 DC 电压上。
 
-La elección del amplificador operacional debe cumplir con varios requisitos básicos:
+运放的选择需要满足几个基本条件：
 
-1. La banda de paso del amplificador operacional cumple con el rango de prueba de LDO.
-2. La corriente de salida máxima del amplificador operacional no es menor que la corriente de salida máxima de LDO.
-3. El rango de voltaje de salida del amplificador operacional cubre el rango de voltaje de entrada de LDO.
+1. 运放带宽满足 LDO 测试范围。
+2. 运放最大输出电流不小于 LDO 最大输出电流。
+3. 运放输出电压范围覆盖 LDO 输入电压范围。
 
-Se puede diseñar un sumador según el siguiente diagrama:
+可按照以下的示意图设计加法器：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220424101211.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220424101211.png)
 
-Donde R1 y R2 son iguales, la frecuencia de corte inferior más baja está determinada por C1 y R1, y la frecuencia de corte superior más alta está determinada por la banda de paso del amplificador operacional.
+其中，R1 与 R2 相等，最低截止频率由 C1 和 R1 共同决定，最高截止频率由运放的带宽所决定。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220424104709.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220424104709.png)
 
-#### Generador de señales + amplificador operacional
+#### 信号发生器 + 运算放大器
 
+使用运放作为信号发生器的电压跟随器，可解除信号发生器驱动电流不足的限制。
 
+#### LC 节点法
 
-El uso de un seguidor de voltaje con amplificador operacional como generador de señal puede eliminar las limitaciones de corriente de conducción del generador de señal.
+利用电感和电容实现 DC 电压和 AC 电压的叠加，一起作为 LDO 的输入：
 
-#### Método de nodo LC
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220424102617.png)
 
-Utilizando inductores y capacitores para superponer voltajes de CC y CA, se utilizan juntos como entrada de LDO:
+其中，电容 C1 用于防止 VAC 对 VDC 产生高脉冲影响，电感 L1 防止 VDC 使 VAC 发生短路，使用 LC 隔离两个电源
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220424102617.png)
+这个电路的最高频率由电感 L1 和电容 C1 共同决定，最低频率由 C1 决定。
 
-Donde el capacitor C1 se utiliza para evitar que VAC tenga un alto impacto de pulso en VDC, el inductor L1 evita que VDC cause un cortocircuito en VAC, y se utiliza LC para aislar las dos fuentes de alimentación.
+#### 音频分析仪（Audio Precision）
 
-La frecuencia máxima de este circuito está determinada por el inductor L1 y el capacitor C1, y la frecuencia mínima está determinada por C1.
+音频分析仪自身没有能力产生 DC 直流电压，且驱动能力弱，所以需要通过一个高带宽大电流的运放，把它产生的 AC 纹波叠加到直流电源的 DC 电压上，然后再连接到 LDO 的输入端。但因为音频分析仪带宽的限制，不能测到频率 100kHz 以上的 PSRR。
 
-#### Analizador de audio (Audio Precision)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220424095319.png)
 
-El analizador de audio en sí no tiene la capacidad de generar voltajes de CC y tiene una capacidad de conducción débil, por lo que se necesita un amplificador operacional de alta banda ancha y alta corriente para superponer la ondulación de CA que produce en el voltaje de CC de la fuente de alimentación y luego conectarlo a la entrada de LDO. Pero debido a las limitaciones de ancho de banda del analizador de audio, no se pueden medir PSRR por encima de 100 kHz.
+#### 专用注入器
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220424095319.png)
+此方法需要用到专用的输入注入器（例如 J2120A，带宽 10Hz-10MHz，直流电压最大值为 50V，输出电流最高 5A），它可以把 AC 纹波和直流电源 DC 电压直接叠加，但经过注入器后的输入电压会有所衰减。配合网分仪分别测量输入与输出电压纹波值：
 
-#### Inyector especial
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220421145125.png)
 
-Este método requiere un inyector de entrada especial (como J2120A, con un ancho de banda de 10 Hz a 10 MHz, un voltaje máximo de CC de 50 V y una corriente de salida máxima de 5 A), que puede superponer directamente la ondulación de CA y el voltaje de CC de la fuente de alimentación, pero la tensión de entrada después del inyector se atenuará. Use un analizador de red para medir los valores de ondulación de voltaje de entrada y salida:
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220424095347.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220421145125.png)
+### 输出测量
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220424095347.png)
+#### 示波器
 
-### Medición de salida
+一般的示波器可以测量到毫伏级电压，当 LDO 的 PSRR 不高于 40-50dB 时，如果输入交流电压峰峰值为 1V，那么 LDO 输出中的同频率交流电压峰峰值为 3mV~10mV，可以用示波器直接测量。
 
-#### Osciloscopio
+示波器不适用于测量高 PSRR 的 LDO，如果输出纹波太小，示波器无法精确测量。
 
-Un osciloscopio común puede medir voltajes en milivoltios. Cuando el PSRR de LDO no es superior a 40-50 dB, si el voltaje de CA de entrada tiene una amplitud de 1 V, la amplitud de voltaje de CA de la misma frecuencia en la salida de LDO es de 3 mV a 10 mV, lo que se puede medir directamente con un osciloscopio.
+#### 运放 + 示波器
 
-El osciloscopio no es adecuado para medir LDO de alta PSRR. Si la ondulación de salida es demasiado pequeña, el osciloscopio no puede medir con precisión.
+当 LDO 的 PSRR 大于 50dB 时，由于输出纹波幅值通常小于 1mV，无法利用示波器直接测量。这时可以考虑使用运算放大器将 LDO 输出交流电压放大 100 倍甚至更高，在设计运放电路时需要考虑:
 
-#### Amplificador operacional + osciloscopio
+- LDO 输出有直流电压，电路需要将直流电压去掉。
+- 放大电路自身产生的噪声要远小于放大后交流电压。
+- 运放输入失调电压不能太大，否则经放大电路放大后会输出很大的直流电压。
+- 放大电路的带宽需要满足 LDO 的 PSRR 测量频率范围。
 
-Cuando el PSRR de LDO es superior a 50 dB, debido a que la amplitud de ondulación de salida generalmente es inferior a 1 mV, no se puede medir directamente con un osciloscopio. En este caso, se puede considerar utilizar un amplificador operacional para amplificar el voltaje de CA de salida de LDO en 100 veces o más. Al diseñar el circuito del amplificador operacional, se deben considerar los siguientes aspectos:
+放大电路的设计：
 
-- La salida de LDO tiene un voltaje de CC, por lo que el circuito debe eliminar el voltaje de CC.
-- El ruido generado por el circuito de amplificación debe ser mucho menor que el voltaje de CA amplificado.
-- El voltaje de desviación de entrada del amplificador operacional no debe ser demasiado grande, de lo contrario, el circuito amplificado producirá un voltaje de CC muy grande.
-- La banda ancha del circuito de amplificación debe cumplir con el rango de frecuencia de medición de PSRR de LDO.
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220424103037.png)
 
-Diseño del circuito de amplificación:
+该电路的最低截止频率由 C1 和 R1 所决定，最高截止频率由运放的带宽所决定。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220424103037.png)
+#### 频谱分析仪 / 网分仪
 
-La frecuencia de corte más baja de este circuito está determinada por C1 y R1, y la frecuencia de corte más alta está determinada por la banda ancha del amplificador operacional.
+频谱分析仪可以测量微伏级电压信号，可以配合使用高阻抗输入探头来测量 LDO 输出交流电压。如果没有高阻抗探头，可以用运放搭建：
 
-#### Analizador de espectro / analizador de red
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220424103409.png)
 
-El analizador de espectro puede medir señales de voltaje en microvoltios y se puede utilizar con una sonda de entrada de alta impedancia para medir el voltaje de CA de salida de LDO. Si no hay una sonda de alta impedancia, se puede utilizar un amplificador operacional:
+## 测量注意事项
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220424103409.png)
+1. 测试时应首先使用示波器观察 LDO 输入端交流电压波形是否正常。
+2. LDO 电路最好按数据手册，加相应的电容去耦，但使用运放方法测试时，需要去掉 LDO 的输入电容，避免运放不稳定。
+3. 如果使用注入器，输出电压有衰减，则电压需要适当增加。
+4. LDO 的输出负载不要用电子负载提供，建议用功率电阻。
+5. 输出使用接地弹簧探头以降低噪声，如下图。
 
-## Precauciones de medición
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220424104154.png)
 
-1. Al realizar pruebas, primero use un osciloscopio para observar si la forma de onda de voltaje de CA en la entrada de LDO es normal.
-2. Es mejor agregar capacitores de acoplamiento correspondientes al circuito LDO según el manual de datos, pero al realizar pruebas con amplificadores operacionales, se debe eliminar el capacitor de entrada de LDO para evitar la inestabilidad del amplificador operacional.
-3. Si se utiliza un inyector y la tensión de salida se atenúa, la tensión debe aumentarse adecuadamente.
-4. No use una carga electrónica para la carga de salida de LDO, se recomienda usar una resistencia de potencia.
-5. Use una sonda de tierra para reducir el ruido en la salida, como se muestra en la siguiente figura.
+## 参考与致谢
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220424104154.png)
+- [Reducing high-speed signal chain power supply issues](https://e2e.ti.com/blogs_/b/powerhouse/posts/reducing-high-speed-signal-chain-power-supply-issues)
+- [LDO 基础知识：电源抑制比](https://e2echina.ti.com/blogs_/b/analogwire/posts/ldo)
+- [LDO PSRR Measurement Simplified](https://www.ti.com/lit/an/slaa414a/slaa414a.pdf?ts=1650484764171&ref_url=https%253A%252F%252Fwww.google.com%252F)
+- [LDO 的 PSRR 测量](http://www.3peakic.com.cn/Public/Uploads/files/LDO%E7%9A%84PSRR%E6%B5%8B%E9%87%8F.pdf)
+- [LDO 的 PSRR 测量 · 电子研习社](https://zhuanlan.zhihu.com/p/35112931)
+- [电源抑制比（PSRR）测量](https://www.rohde-schwarz.com.cn/applications/-psrr-application-card_56279-601516.html)
+- [关于 DC-DC 瞬态测试的一些东西 🚧](http://www.oliverkung.top/%e5%85%b3%e4%ba%8edc-dc%e7%9e%ac%e6%80%81%e6%b5%8b%e8%af%95%e7%9a%84%e4%b8%80%e4%ba%9b%e4%b8%9c%e8%a5%bf/)
 
-## Referencias y Agradecimientos
-
-- [Reduciendo problemas de suministro de energía de cadena de señal de alta velocidad](https://e2e.ti.com/blogs_/b/powerhouse/posts/reducing-high-speed-signal-chain-power-supply-issues)
-- [Conocimientos básicos de LDO: Relación de supresión de fuente de alimentación](https://e2echina.ti.com/blogs_/b/analogwire/posts/ldo)
-- [Simplificación de la medición de PSRR de LDO](https://www.ti.com/lit/an/slaa414a/slaa414a.pdf?ts=1650484764171&ref_url=https%253A%252F%252Fwww.google.com%252F)
-- [Medición de PSRR de LDO](http://www.3peakic.com.cn/Public/Uploads/files/LDO%E7%9A%84PSRR%E6%B5%8B%E9%87%8F.pdf)
-- [Medición de PSRR de LDO · Comunidad de Investigación Electrónica](https://zhuanlan.zhihu.com/p/35112931)
-- [Medición de la relación de supresión de fuente de alimentación (PSRR)](https://www.rohde-schwarz.com.cn/applications/-psrr-application-card_56279-601516.html)
-- [Algo sobre las pruebas transitorias de DC-DC 🚧](http://www.oliverkung.top/%e5%85%b3%e4%ba%8edc-dc%e7%9e%ac%e6%80%81%e6%b5%8b%e8%af%95%e7%9a%84%e4%b8%80%e4%ba%9b%e4%b8%9c%e8%a5%bf/) 
-
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

@@ -1,90 +1,84 @@
-# Cómo usar LaTeX en Markdown
+# 如何在 Markdown 中使用 LaTeX
 
-Markdown admite nativamente el uso de LaTeX para escribir fórmulas y símbolos matemáticos.
+Markdown 原生支持使用 LaTeX 编写数学公式和符号。
 
-## Estilos de fuente
+## 字体样式
 
-- Salto de línea: `\\`
-- Espacio: `\`
-- Centrado: usar `$$` para envolver
-- Estilos de fuente: negrita: `\mathbf`, cursiva: `\mathit`
-- Tamaño de fuente: `\tiny`, `\scriptsize`, `\small`, `\normalsize`, `\large`, `\Large`, `\huge`, `\Huge`
-- Color: `\color{valor de color}{número / letra / símbolo}`
-- Comentario: `\text{contenido}`
+- 换行：`\\`
+- 空格：`\`
+- 居中：使用 `$$` 包裹
+- 字体样式：加粗：`\mathbf`、斜体：`\mathit`
+- 字体大小：`\tiny`、`\scriptsize`、`\small`、`\normalsize`、`\large`、`\Large`、`\huge`、`\Huge`
+- 颜色：`\color{颜色值}{数/字/符}`
+- 注释：`\text{内容}`
 
-## Operaciones aritméticas
+## 四则运算
 
-- Producto punto: `\cdot`
-- Producto cruzado: `\times`
+- 点乘：`\cdot`
+- 叉乘：`\times`
 
-## Subíndices / Superíndices
+## 上 / 下标
 
-- Superíndice: `^`
-- Subíndice: `_`
-- Si hay anidamiento, use `{}` para contener.
+- 上标：`^`
+- 下标：`_`
+- 如有嵌套，使用 `{}` 包含。
 
-Ejemplo: $$X^{2m}_{3n}$$
+例： $$X^{2m}_{3n}$$
 
-## Subrayado / Sobrescrito
+## 上 / 下划线
 
-- Sobrescrito: `\overline`
-- Subrayado: `\underline`
+- 上划线：`\overline`
+- 下划线：`\underline`
 
-Ejemplo: $$\overline{x^2+a+b}$$
+例：$$\overline{x^2+a+b}$$
 
-## Fracciones
+## 分数
 
-Representación de fracciones: `\frac{numerador}{denominador}`
+分数的表示：`\frac{分子}{分母}`
 
-## Sistemas de ecuaciones
+## 方程组
 
-Método 1: `\begin{array}{c} expresión 1\\expresión 2... \end{array}`
-Método 2: `\begin{cases}…\end{cases}`
+方式一：`\begin{array}{c} 表达式一\\表达式二... \end{array}`
+方式二：`\begin{cases}…\end{cases}`
 
-## Raíz cuadrada
+## 开平方根
 
-Formato: `\sqrt[n`]{x}`, donde `n` representa la raíz cuadrada y `x` representa el término que se está sacando raíz.
+格式：`\sqrt[n`]{x}`，其中 `n` 表示开根次数，`x` 表示被开方项。
 
-## Letras griegas
+## 希腊字母
 
-| Letra griega (mayúscula) | Expresión | Letra griega (minúscula) | Expresión |
-| :---------------------: | :------: | :---------------------: | :-------: |
-|            A            |    A     |            α            |  \alpha   |
-|            B            |    B     |            β            |   \beta   |
-|            Γ            |  \Gamma  |            γ            |  \gamma   |
-|            Δ            |  \Delta  |            δ            |  \delta   |
-|            E            |    E     |            ϵ            | \epsilon |
-|            Z            |    Z     |            ε            | \varepsilon |
-|            H            |    H     |            η            |   \eta    |
-|            Θ            |  \Theta  |            θ            |  \theta   |
-|            I            |    I     |            ι            |   \iota   |
-|            K            |    K     |            κ            |  \kappa   |
-|            Λ            | \Lambda  |            λ            |  \lambda  |
-|            M            |    M     |            μ            |    \mu    |
-|            N            |    N     |            ν            |    \nu    |
-|            Ξ            |   \Xi    |            ξ            |    \xi    |
-|            O            |    O     |            ο            | \omicron |
-|            Π            |   \Pi    |            π            |   \pi    |
-|            P            |    P     |            ρ            |   \rho   |
-|            Σ            |  \Sigma  |            σ            |  \sigma  |
-|            T            |    T     |            τ            |   \tau   |
-|            Υ            | \Upsilon |            υ            | \upsilon |
-|            Φ            |   \Phi   |            ϕ            |   \phi   |
-|            −            |    -     |            φ            | \varphi |
-|            X            |    X     |            χ            |   \chi   |
-|            Ψ            |   \Psi   |            ψ            |   \psi   |
-|            Ω            |  \Omega  |            ω            |  \omega  |
+| 希腊字母（大写） |  表达式  | 希腊字母 （小写） |   表达式    |
+| :--------------: | :------: | :---------------: | :---------: |
+|        A         |    A     |         α         |   \alpha    |
+|        B         |    B     |         β         |    \beta    |
+|        Γ         |  \Gamma  |         γ         |   \gamma    |
+|        Δ         |  \Delta  |         δ         |   \delta    |
+|        E         |    E     |         ϵ         |  \epsilon   |
+|        Z         |    Z     |         ε         | \varepsilon |
+|        H         |    H     |         η         |    \eta     |
+|        Θ         |  \Theta  |         θ         |   \theta    |
+|        I         |    I     |         ι         |    \iota    |
+|        K         |    K     |         κ         |   \kappa    |
+|        Λ         | \Lambda  |         λ         |   \lambda   |
+|        M         |    M     |         μ         |     \mu     |
+|        N         |    N     |         ν         |     \nu     |
+|        Ξ         |   \Xi    |         ξ         |     \xi     |
+|        O         |    O     |         ο         |  \omicron   |
+|        Π         |   \Pi    |         π         |     \pi     |
+|        P         |    P     |         ρ         |    \rho     |
+|        Σ         |  \Sigma  |         σ         |   \sigma    |
+|        T         |    T     |         τ         |    \tau     |
+|        Υ         | \Upsilon |         υ         |  \upsilon   |
+|        Φ         |   \Phi   |         ϕ         |    \phi     |
+|        −         |    -     |         φ         |   \varphi   |
+|        X         |    X     |         χ         |    \chi     |
+|        Ψ         |   \Psi   |         ψ         |    \psi     |
+|        Ω         |  \Omega  |         ω         |   \omega    |
 
-## Operadores
+## 运算符
 
-# Símbolos matemáticos en Markdown
-
-Aquí hay una lista de símbolos matemáticos comunes que se pueden usar en Markdown. 
-
-## Operadores
-
-| Operador | Expresión | Operador | Expresión |
-| :-----: | :------: | :-----: | :------: |
+| 运算符 |   表达式   | 运算符 |  表达式   |
+| :----: | :--------: | :----: | :-------: |
 |   ±    |    \pm     |   ∅    | \emptyset |
 |   ×    |   \times   |   ∈    |    \in    |
 |   ÷    |    \div    |   ∉    |  \notin   |
@@ -99,25 +93,23 @@ Aquí hay una lista de símbolos matemáticos comunes que se pueden usar en Mark
 |   ≥    |    \geq    |   ≠    |   \neq    |
 |   ≈    |  \approx   |   ≡    |  \equiv   |
 
-## Símbolos de cálculo
+## 微积分符号
 
-| Operador | Expresión | Operador | Expresión |
-| :-----: | :------: | :-----: | :------: |
+| 运算符 | 表达式 | 运算符 | 表达式 |
+| :----: | :----: | :----: | :----: |
 |   ∮    | \oint  |   ∞    | \infty |
 |   ∇    | \nabla |   ∫    |  \int  |
 |   ∑    |  \sum  |  lim   |  \lim  |
 |   →    | \vec{} |   -    |   -    |
 
-## Símbolos lógicos
+## 逻辑符号
 
-| Operador |  Expresión  | Operador |   Expresión   |
-| :-----: | :------: | :-----: | :--------: |
+| 运算符 |  表达式  | 运算符 |   表达式   |
+| :----: | :------: | :----: | :--------: |
 |   ∵    | \because |   ∴    | \therefore |
 |   ∀    | \forall  |   ∃    |  \exists   |
 
-## Referencias y agradecimientos
+## 参考与致谢
 
 - [Markdown 数学公式](https://markdown.budshome.com/formula.html)
 - [LaTeX-Symbols.pdf](https://def.fe.up.pt/latex/Symbols.pdf)
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

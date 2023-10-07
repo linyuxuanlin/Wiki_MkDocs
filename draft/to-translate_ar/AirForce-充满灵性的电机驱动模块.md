@@ -1,71 +1,69 @@
-# AirForce - Módulo de control de motor con gran capacidad espiritual
+# AirForce - 充满灵性的电机驱动模块
 
-El proyecto AirForce es un kit de combinación de control de motor que incluye una placa base AirPort con función de regulación de voltaje integrada y una placa secundaria de control de motor de doble canal llamada AirCraft. Puede expandir libremente el control de hasta 16 motores según sus necesidades. Debido a su tamaño compacto, ligereza, alto rendimiento y gran capacidad de expansión, se le ha dado el nombre de Proyecto AirForce.
+AirForce 项目是一款电机驱动组合套件，包含集成稳压功能的母板 AirPort, 和双路电机驱动子板 AirCraft. 可以根据电机数量需求，自由拓展驱动最多 16 路电机。因外观小巧轻便，性能强劲、拓展性高，故命名为 Project AirForce.
 
-Características:
+特征：
 
-- Tamaño pequeño y fácil de conectar.
-- Interfaz no completamente sellada en una caja negra, lo que mejora la capacidad de conexión.
-- No utiliza demasiados pines de temporizador del microcontrolador (STM32).
+- 体积较小，接口方便布线
+- 接口不完全黑盒子封装，提高布线的能力
+- 不占用单片机（STM32）过多的定时器引脚资源
 
-Repositorio del proyecto: [**linyuxuanlin/AirForceDVR**](https://github.com/linyuxuanlin/AirForceDVR)
+项目仓库：[**linyuxuanlin/AirForceDVR**](https://github.com/linyuxuanlin/AirForceDVR)
 
-## AirPort - Placa base con función de regulación de voltaje integrada
-
-🚧
-
-## AirCraft - Placa secundaria de control de motor de doble canal
-
-![](https://f004.backblazeb2.com/file/wiki-media/img/20201101231734.jpg)
-
-La placa secundaria de control de motor de doble canal AirCraft está diseñada con el chip integrado de control TB6612FNG y un método de control lógico que solo requiere 4 pines (2 canales normales + 2 canales PWM) para controlar dos motores (dirección / velocidad). En comparación con las soluciones generales del mercado, se reducen dos pines de entrada/salida, lo que reduce el uso de los valiosos pines de entrada/salida del microcontrolador principal. En cuanto a los parámetros del chip de control, la corriente máxima de conducción continua de un solo canal puede alcanzar los 1,2 A, con un pico de 2 A/3,2 A (pulso continuo / pulso único), lo que es más que suficiente para controlar los motores de un robot común.
-
-### Parámetros del producto
-
-- Voltaje de entrada de la parte lógica VCC: 3,3 ~ 5 V (predeterminado **5 V**)
-- Voltaje de entrada del controlador VM: 2,5 ~ 12 V (predeterminado **12 V**)
-- Número de canales de control de motor: 2 canales
-- Corriente máxima de conducción continua de **un solo canal**: **1,2 A**
-- Pico de arranque: **2 A/3,2 A** (pulso continuo / pulso único)
-- Método de conexión: clavija de fila de 2,54 mm, conector hembra XH2.54
-- Tamaño del módulo: 23,7 × 15,8 (mm)
-
-### Descripción de los pines
-
-![](https://f004.backblazeb2.com/file/wiki-media/img/20201022104033.png)
-
-| Grupo de interfaz | Nombre | Descripción de la función |
-| :--------------: | :----: | :----------------------: |
-| Interfaz de control | PWM1 | Pin de control de velocidad del motor M1 |
-| Interfaz de control | DIR1 | Pin de control de dirección del motor M1 |
-| Interfaz de control | DIR2 | Pin de control de dirección del motor M2 |
-| Interfaz de control | PWM2 | Pin de control de velocidad del motor M2 |
-| Interfaz de alimentación | 5V | Fuente de alimentación para la parte de control lógico |
-| Interfaz de alimentación | G | Tierra |
-| Interfaz de alimentación | 12V | Fuente de alimentación para el motor |
-| Interfaz del motor | M1+ | Salida 1 del motor M1 |
-| Interfaz del motor | M1- | Salida 2 del motor M1 |
-| Interfaz del motor | M2+ | Salida 1 del motor M2 |
-| Interfaz del motor | M1- | Salida 2 del motor M2 |
-
-### Tutorial de control
-
-- Interfaz de control
-  - **DIR1/DIR2**: Entrada de señal de control de avance y retroceso.
-    - Por ejemplo, si se asigna un valor de 1 (nivel alto) a DIR1, el motor M1 girará en sentido horario; si se asigna un valor de 0 (nivel bajo), el motor M1 girará en sentido antihorario.
-  - **PWM1/PWM2**: Son los dos pines de habilitación del control de los dos motores (se pueden utilizar para controlar la velocidad mediante PWM).
-- Interfaz de alimentación: Conectar a cualquier interfaz de alimentación de la placa base AirPort (o conectar una fuente de alimentación externa de 12V y 5V).
-- Interfaz del motor: Conectar a la entrada del motor.
-
-### Diagrama de tamaño
+## AirPort - 集成稳压功能的母板
 
 🚧
 
-## Referencias y agradecimientos
+## AirCraft - 双路电机驱动子板
 
-- [Módulo de controlador de motor dual TB6612 para motores pequeños](https://wiki.dfrobot.com.cn/_SKU_DRI0044_Dual_Motor_Driver__TB6612__%E5%BE%AE%E5%9E%8B%E7%94%B5%E6%9C%BA%E9%A9%B1%E5%8A%A8%E6%A8%A1%E5%9D%97)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20201101231734.jpg)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+AirCraft 双路电机驱动子板基于 TB6612FNG 集成驱动芯片设计，外加逻辑控制方式，仅需 4 根引脚（2 路普通+2 路 PWM）即可实现双路电机控制（转向 / 速度），相比市面上一般方案，减少了两路 IO, 减少占用主控器宝贵的引脚资源。至于驱动芯片的参数，单通道最大连续驱动电流可达 1.2A，峰值 2A/3.2A（连续脉冲 / 单脉冲），驱动一般机器人上的电机绰绰有余。
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+### 产品参数
+
+- 逻辑部分输入电压 VCC：3.3~5V（默认 **5V**）
+- 驱动部分输入电压 VM：2.5~12V（默认 **12V**）
+- 驱动电机路数：2 通道
+- **单通道** 最大连续驱动电流：**1.2A**
+- 启动峰值：**2A/3.2A** （连续脉冲 / 单脉冲）
+- 接口方式：2.54mm 间距排针、XH2.54 母座
+- 模块尺寸：23.7 × 15.8 (mm)
+
+### 引脚说明
+
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20201022104033.png)
+
+| 接口分组 | 名称 |       功能描述       |
+| :------: | :--: | :------------------: |
+| 控制接口 | PWM1 | 电机 M1 速度控制引脚 |
+| 控制接口 | DIR1 | 电机 M1 方向控制引脚 |
+| 控制接口 | DIR2 | 电机 M2 方向控制引脚 |
+| 控制接口 | PWM2 | 电机 M2 速度控制引脚 |
+| 电源接口 |  5V  |   逻辑控制部分电源   |
+| 电源接口 |  G   |        GND 地        |
+| 电源接口 | 12V  |       电机电源       |
+| 电机接口 | M1+  |    电机 M1 输出 1    |
+| 电机接口 | M1-  |    电机 M1 输出 2    |
+| 电机接口 | M2+  |    电机 M2 输出 1    |
+| 电机接口 | M1-  |    电机 M2 输出 2    |
+
+### 控制教程
+
+- 控制接口
+  - **DIR1/DIR2**：正反转控制信号输入端
+    - e.g. DIR1 赋值为 1（高电平），则 M1 电机正转；DIR1 赋值为 0（低电平），则 M1 电机反转
+  - **PWM1/PWM2**：分别为两个电机控制的使能端 （可使用 PWM 调速）
+- 电源接口：接至 AirPort 母板上任意电源接口（或外接 12V 与 5V 输入）
+- 电机接口：接至电机的输入口
+
+### 尺寸图
+
+🚧
+
+## 参考与致谢
+
+- [Dual Motor Driver TB6612 微型电机驱动模块](https://wiki.dfrobot.com.cn/_SKU_DRI0044_Dual_Motor_Driver__TB6612__%E5%BE%AE%E5%9E%8B%E7%94%B5%E6%9C%BA%E9%A9%B1%E5%8A%A8%E6%A8%A1%E5%9D%97)
+
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

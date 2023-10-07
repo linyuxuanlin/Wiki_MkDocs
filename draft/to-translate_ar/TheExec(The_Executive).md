@@ -1,10 +1,10 @@
-# TheExec (El Ejecutivo) 🚧
+# TheExec (The Executive) 🚧
 
-> Esta publicación solo está disponible en inglés.
+> This post is only available in English.
 
-**TheExec (El Ejecutivo)** es uno de los objetos de mayor nivel, que da acceso a las propiedades relacionadas con la ejecución de pruebas.
+**TheExec(The Executive)** is one of the highest-level objects, which gives access to test executive related properties.
 
-## Flujo
+## Flow
 
 ```vbscript
 TheExec.Flow
@@ -18,18 +18,18 @@ highCompareSign, scaletype, unit, formatStr, TName, compareMode, pinName,
 forceVal, forceunit, customUnit, customForceunit, ForceResults, TNum)
 ```
 
-Parámetros más utilizados:
+Parameters most used:
 
-- **resultVal** (obligatorio): El valor del resultado que se escribirá.
-- **lowVal**, **hiVal**: Los límites inferior y superior. El valor predeterminado es lowVal <= resultVal <= hiVal.
-- **unit**: La unidad de medida
-  - `unitAmp` `unitVolt` `unitDb` `unitHz` `unitTime`.
-- **TName**: Un nombre de prueba para registrar en el registro de datos. Si se deja en blanco, se utilizará el nombre de la instancia de prueba.
-- **pinName**: El nombre del pin para registrar en el registro de datos.
-- **forceVal**, **forceunit**: El valor y la unidad de la condición de prueba.
-- **ForceResults**: Si se debe forzar un resultado de aprobado o reprobado o si se deben utilizar los límites especificados en una tabla de flujo.
+- **resultVal** (required): Which the result value will been written.
+- **lowVal**, **hiVal** : The low and high limits. Default is lowVal <= resultVal <= hiVal.
+- **unit**: The unit of measurement
+  - `unitAmp` `unitVolt` `unitDb` `unitHz` `unitTime` .
+- **TName**: A test name to be datalogged. If left blank, test instance's name will be used.
+- **pinName**: The pin name to be datalogged.
+- **forceVal**, **forceunit**: The test condition value and unit.
+- **ForceResults**: Whether to force a pass or fail or to use the limits specified in a flow table.
 
-Por ejemplo:
+For an example:
 
 ```vbscript
 TheExec.Flow.TestLimit  resultVal:=Vout_Measure, _
@@ -42,5 +42,3 @@ TheExec.Flow.TestLimit  resultVal:=Vout_Measure, _
                          lowval:=VOT_LowLimit, _
                          hival:=VOT_HiLimit
 ```
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

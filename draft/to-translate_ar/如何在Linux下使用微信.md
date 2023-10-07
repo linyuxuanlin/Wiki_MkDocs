@@ -1,24 +1,22 @@
-# Cómo usar WeChat en Linux
+# 如何在 Linux 下使用微信
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200311141406.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200311141406.png)
 
-DoChat (WeChat en una caja) es una aplicación de WeChat en contenedor para escritorio Linux.
+DoChat（盒装微信）是一款适用于 Linux 桌面的容器化微信。
 
-Características principales:
+主要特色：
 
-- Fácil instalación con una sola línea de comando
-- Soporte para entrada de caracteres chinos
-- Pegar imágenes en WeChat con Ctrl+V
+- 安装便捷，一行 shell 命令即可启动
+- 支持汉字输入
+- Ctrl+V 粘贴图片到微信
 
-Requisitos: Ubuntu Linux de escritorio y Docker instalado.
+运行条件：Ubuntu Linux 桌面并安装 Docker
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200311141459.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200311141459.png)
 
-## Referencias y agradecimientos
+## 参考与致谢
 
 - [huan/docker-wechat](https://github.com/huan/docker-wechat)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

@@ -1,42 +1,40 @@
-# Notas de aprendizaje de Linux - Operaciones de usuario
+# Linux 学习笔记 - 用户操作
 
-## Operaciones básicas
+## 基本操作
 
-### Agregar usuario
-
-```shell
-useradd -m nombre_de_usuario
-```
-
-### Establecer contraseña
+### 添加用户
 
 ```shell
-passwd nombre_de_usuario
+useradd -m 用户名
 ```
 
-### Eliminar usuario
+### 设置密码  
 
 ```shell
-userdel -r nombre_de_usuario
+passwd 用户名
 ```
 
-### Eliminar directorio de usuario
+### 删除用户
 
 ```shell
-rm -rf nombre_de_usuario
+userdel  -r  用户名
 ```
 
-### Cambiar al usuario actual
+### 删除用户目录
 
 ```shell
-su nombre_de_usuario
+rm -rf 用户名
 ```
 
-## Referencias y agradecimientos
+### 切换当前用户
 
-- [Linux crear usuario, establecer contraseña](https://blog.csdn.net/li_101357/article/details/69367457)
+```shell
+su 用户名
+```
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+## 参考与致谢
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+- [linux 创建用户、设置密码](https://blog.csdn.net/li_101357/article/details/69367457)
+
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

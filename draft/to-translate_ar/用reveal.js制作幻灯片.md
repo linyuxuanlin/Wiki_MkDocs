@@ -1,20 +1,20 @@
-# Creando presentaciones con reveal.js
+# 用 reveal.js 制作幻灯片
 
-## Atajos de teclado
+## 快捷键
 
-- Siguiente diapositiva: **Barra espaciadora**
-- Seleccionar diapositiva: **Teclas de dirección**
-- Vista general: **Esc**
-- Vista del presentador: **S**
-- Pausar presentación / pantalla negra: **V/B/.**
+- 下一张幻灯片：**空格**
+- 方向选择幻灯片：**方向键**
+- 总览视图：**Esc**
+- 演讲者视图：**S**
+- 暂停演讲 / 黑屏：**V/B/.**
 
-## Exportación a PDF
+## PDF 导出
 
-Agrega `?print-pdf` al final de la dirección, por ejemplo `http://localhost:8000/?print-pdf`
+在地址后加 `?print-pdf`，例如 `http://localhost:8000/?print-pdf`
 
-## Sintaxis de referencia
+## 参考语法
 
-### Imágenes
+### 图片
 
 ```html
 <img
@@ -31,13 +31,13 @@ Agrega `?print-pdf` al final de la dirección, por ejemplo `http://localhost:800
 align="left"
 ```
 
-### Texto
+### 文字
 
 ```html
 <p style="white-space: pre-line;"><small> </small></p>
 ```
 
-### Video
+### 视频
 
 ```html
 <section
@@ -49,11 +49,9 @@ align="left"
 </section>
 ```
 
-## Referencias y agradecimientos
+## 参考与致谢
 
 - [reveal.js](https://revealjs.com/)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

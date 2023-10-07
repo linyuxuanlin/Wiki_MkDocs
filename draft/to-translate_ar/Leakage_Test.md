@@ -1,103 +1,93 @@
-# Prueba de Fuga
+# Leakage Test
 
-> Esta publicación solo está disponible en inglés.
+> This post is only available in English.
 
-La prueba de fuga contiene la prueba de fuga de entrada (IIL y IIH) y la prueba de fuga de tristado de salida (IOZL y IOZH).
+Leakage test contains input leakage test (IIL & IIH) and output tristate leakage test (IOZL & IOZH).
 
-## Prueba de Fuga de Entrada (IIL y IIH)
+## Input Leakage Test (IIL & IIH)
 
-La fuga de entrada ocurre en el circuito de búfer de un pin de entrada. IIH es la ruta de fuga desde el pin de entrada a GND cuando el DUT se impulsa a "1", e IIL es la ruta de fuga desde VDD al pin de entrada cuando se impulsa a "0":
+Input leakage occurs in a input pin's buffer circuit. IIH is the leakage path from input pin to GND when the DUT is driven to "1", and IIL is the leakage path from VDD to input pin when driven to "0":
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220911215421.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220911215421.png)
 
-En realidad, la medición de IIL es la resistencia desde el pin de entrada a VDD, e IIH es la resistencia desde el pin de entrada a GND. La prueba de fuga de entrada es para garantizar que el búfer de entrada del pin no suministre o absorba más corriente no deseada de lo especificado.
+Actually, the measurement of IIL is the resistance from input pin to VDD, and IIH is the resistance from input pin to GND. Input leakage test is to ensure the pin's input buffer will not source or sink more unwanted current than specified.
 
-### Método de Prueba (Serie)
+### Test Method (Serial)
 
-La prueba de fuga de entrada en serie (IIL y IIH) se realiza aplicando un voltaje de VDDmax y forzando el pin de entrada específico a VDDmax (para IIH) o 0V (para IIL), mientras que otros pines de entrada se fuerzan al lado opuesto del Pin bajo prueba.
+Serial input leakage test (IIL & IIH) is performed with applying a voltage of VDDmax, and force the specific input pin to VDDmax (for IIH) or 0V (for IIL), while other input pins are forced to oppisite side of the Pin under Test.
 
-#### Prueba de IIL (Serie)
+#### IIL Test (Serial)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220911225521.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220911225521.png)
 
-1. Aplicar VDDmax al pin VDD (con pinza de corriente).
-2. Forzar VDDmax a todos los pines de entrada excepto el Pin bajo prueba.
-3. Forzar 0V al Pin bajo prueba y medir el flujo de corriente:
-   - **Mayor que el valor especificado (> -10uA)**: APROBADO
-   - **Menor que el valor especificado (<-10uA)**: FALLIDO
-4. Repetir para probar el siguiente pin.
+1. Apply VDDmax to VDD pin (with current clamp).
+2. Force VDDmax to all input pins except for the Pin under Test.
+3. Force 0V to the Pin under Test, and measure the current flow out:
+   - **Higher than spec value(>-10uA)**: PASS
+   - **Lower than spec value(<-10uA)**: FAIL
+4. Repeat to test next pin.
 
-#### Prueba de IIH (Serie)
+#### IIH Test (Serial)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220912113044.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220912113044.png)
 
-## Prueba de Fuga de Corriente de Entrada (IIH & IIL)
+1. Apply VDDmax to VDD pin (with current clamp).
+2. Force 0V to all input pins except for the Pin under Test.
+3. Force VDDmax to the Pin under Test, and measure the current flow into:
+   - **Higher than spec value(>10uA)**: FAIL
+   - **Lower than spec value(<10uA)**: PASS
+4. Repeat to test next pin.
 
-La fuga de corriente de entrada se refiere a la corriente que fluye en los pines de entrada del DUT cuando se aplica un voltaje de entrada específico. IIH significa la corriente que fluye en el pin de entrada cuando se aplica un voltaje alto, mientras que IIL significa la corriente que fluye en el pin de entrada cuando se aplica un voltaje bajo.
+### Test Method (Parallel)
 
-Para realizar esta prueba, se siguen los siguientes pasos:
+Since serial method can identify the leakage between input pins, but it's too inefficient. Parallel test method is more commonly used actually. PPMU is used in parallel method, to drive all input pins to VDDmax (for IIH) or 0V (for IIL) and measure the current of per input pin.
 
-1. Aplicar VDDmax al pin VDD (con pinza amperimétrica).
-2. Forzar 0V a todos los pines de entrada excepto el Pin bajo prueba.
-3. Forzar VDDmax al Pin bajo prueba y medir el flujo de corriente en:
-   - **Valor superior al especificado (>10uA)**: FALLA
-   - **Valor inferior al especificado (<10uA)**: APROBADO
-4. Repetir para probar el siguiente pin.
+The only disadvantage of parallel method is pin to pin leakage will not be detected, because all the pins are forced to the same voltage level at the same time.
 
-### Método de Prueba (Paralelo)
+## Output Tristate Leakage Test (IOZL & IOZH)
 
-Aunque el método serial puede identificar la fuga entre los pines de entrada, es demasiado ineficiente. El método de prueba paralelo es el más comúnmente utilizado. Se utiliza el PPMU en el método paralelo para impulsar todos los pines de entrada a VDDmax (para IIH) o 0V (para IIL) y medir la corriente de cada pin de entrada.
+Tristate also named as High-Z or floating state, indicates appear to be high impedance externally of DUT's pin.
 
-La única desventaja del método paralelo es que no se detectará la fuga de pin a pin, ya que todos los pines se fuerzan al mismo nivel de voltaje al mismo tiempo.
+Output tristate leakage occurs in HIGH or LOW voltage level is applied on the DUT's output pin, while the pin is preconditioned to be disabled. IOZL means the current flow out when the LOW level is applied, and IOZH means the current flow into when the HIGH level is applied.
 
-## Prueba de Fuga de Estado de Tristate de Salida (IOZL & IOZH)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220912120527.png)
 
-El estado de tristate, también conocido como estado de alta impedancia o flotante, indica que el pin del DUT parece tener una alta impedancia externamente.
+Essentially, IOZL indicates the resistance from an output pin to VDD when disabled, and IOZH indicates the resistance to GND. The test insures the pin will not source or sink more unwanted current than specified.
 
-La fuga de corriente de estado de tristate de salida ocurre cuando se aplica un nivel de voltaje alto o bajo en el pin de salida del DUT, mientras que el pin está preacondicionado para estar deshabilitado. IOZL significa la corriente que fluye hacia afuera cuando se aplica el nivel bajo, e IOZH significa la corriente que fluye hacia adentro cuando se aplica el nivel alto.
+Additionally, a control input (enable signal) is required in this test , to controls the specific output pin to LOW, HIGH or High-Z (disable) state.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220912120527.png)
+### Test Method (Serial)
 
-Básicamente, IOZL indica la resistencia desde un pin de salida a VDD cuando está deshabilitado, e IOZH indica la resistencia a GND. La prueba asegura que el pin no suministre o consuma más corriente no deseada de lo especificado.
+#### IOZL Test (Serial)
 
-Además, se requiere una entrada de control (señal de habilitación) en esta prueba, para controlar el pin de salida específico en estado bajo, alto o tristate (deshabilitado).
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220912121730.png)
 
-### Método de Prueba (Serial)
+1. Apply VDDmax to VDD pin (with current clamp).
+2. Precondition the specific out pin to Hi-Z (disable) state.
+3. Force 0V to the Pin under Test, and measure the current flow out:
+   - **Higher than spec value(>-10uA)**: PASS
+   - **Lower than spec value(<-10uA)**: FAIL
+4. Repeat to test next pin.
 
-#### Prueba de IOZL (Serial)
+#### IOZH Test (Serial)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220912121730.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220912122050.png)
 
-### Prueba IOZL (Paralelo)
+1. Apply VDDmax to VDD pin (with current clamp).
+2. Precondition the specific out pin to Hi-Z (disable) state.
+3. Force VDDmax to the Pin under Test, and measure the current flow into:
+   - **Higher than spec value(>10uA)**: FAIL
+   - **Lower than spec value(<10uA)**: PASS
+4. Repeat to test next pin.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220912122050.png)
+### Test Method (Parallel)
 
-1. Aplicar VDDmax al pin VDD (con pinza de corriente).
-2. Preacondicionar el pin de salida específico al estado Hi-Z (deshabilitado).
-3. Forzar 0V al Pin bajo prueba y medir el flujo de corriente saliente:
-   - **Valor más alto que el especificado (> -10uA)**: APROBADO
-   - **Valor más bajo que el especificado (< -10uA)**: FALLIDO
-4. Repetir para probar el siguiente pin.
+Parallel method is more commonly used actually with PPMU, to drive all output pins to VDDmax (for IOZH) or 0V (for IOZL) and measure the current of per output pin.
 
-### Prueba IOZH (Serial)
+## References & Acknowledgements
 
-1. Aplicar VDDmax al pin VDD (con pinza de corriente).
-2. Preacondicionar el pin de salida específico al estado Hi-Z (deshabilitado).
-3. Forzar VDDmax al Pin bajo prueba y medir el flujo de corriente entrante:
-   - **Valor más alto que el especificado (> 10uA)**: FALLIDO
-   - **Valor más bajo que el especificado (< 10uA)**: APROBADO
-4. Repetir para probar el siguiente pin.
-
-### Método de prueba (Paralelo)
-
-El método paralelo es en realidad el más comúnmente utilizado con PPMU, para conducir todos los pines de salida a VDDmax (para IOZH) o 0V (para IOZL) y medir la corriente de cada pin de salida.
-
-## Referencias y Agradecimientos
-
-- _Los Fundamentos de la Prueba de Semiconductores Digitales_
-- _Fundamentos de la Prueba Utilizando ATE_
+- _The Fundamentals Of Digital Semiconductor Testing_
+- _Fundamentals of Testing Using ATE_
 
 > Original: <https://wiki-power.com/>  
-> Esta publicación está protegida por el acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en), debe ser reproducida con atribución.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.

@@ -1,88 +1,88 @@
-# Esquema de alimentación (Buck) - XL2009E1
+# 电源方案（Buck）- XL2009E1
 
-XL2009E1 es un chip Buck de 36V de entrada máxima, 3A de salida y 180kHz fijo de Longan, con protección contra sobrecorriente. Cuando hay un cortocircuito, la frecuencia se reduce a 48kHz.
+XL2009E1 是芯龙的一款最高 36V 输入、3A 输出、固定 180kHz 的 Buck 芯片，被指过流保护功能，当短路的时候，频率会降到 48kHz。
 
-Repositorio del proyecto: [**Collection_of_Power_Module_Design/DC-DC(Buck)/XL2009E1**](https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/DC-DC(Buck)/XL2009E1)
+项目仓库：[**Collection_of_Power_Module_Design/DC-DC(Buck)/XL2009E1**](https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/DC-DC(Buck)/XL2009E1)
 
-## Características principales
+## 主要特性
 
-- Topología: DC/DC (Buck)
-- Modelo del dispositivo: XL2009E1
-- Encapsulado: SOP8L
-- Voltaje de entrada: 8-36 V
-- Voltaje de salida: 1.25-32V
-- Diferencia mínima de entrada/salida: 0.3V
-- Ciclo de trabajo máximo: 100%
-- Frecuencia de trabajo: 180kHz fijo
-- Corriente de salida máxima: 3A
-- Eficiencia (entrada 12V, salida 5V@2.1A): 89%
-- Precio de referencia: ¥2.1
-- Otras características
-  - Con anillo de corriente constante de salida
-  - Protección contra cortocircuitos incorporada
-  - Protección contra sobrecorriente incorporada
+- 拓扑：DC/DC（Buck）
+- 器件型号：XL2009E1
+- 封装：SOP8L
+- 输入电压：8-36 V
+- 输出电压：1.25-32V
+- 最小输入输出差：0.3V
+- 最大占空比：100%
+- 工作频率：固定 180kHz
+- 最大输出电流： 3A
+- 效率（输入 12V，输出5V@2.1A）：89%
+- 参考价格：￥ 2.1
+- 其他特性
+  - 带输出恒流环
+  - 内置短路保护
+  - 内置限流保护
 
-## Circuito de aplicación típico
+## 典型应用电路
 
-Según el circuito de aplicación típico proporcionado por el manual de datos (entrada 8-36V, salida 5V@2.1A):
+根据数据手册提供的典型应用电路（输入 8-36V，输出 5V@2.1A）：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220407103157.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407103157.png)
 
-## Definición de pines
+## 引脚定义
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220407065806.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407065806.png)
 
-- FB: Pin de entrada de retroalimentación, se introduce una retroalimentación a través de una resistencia desde $V_{OUT}$ y no se puede conectar directamente a tierra. La tensión de referencia de retroalimentación es de 1.25V.
-- OCSET: Pin de configuración de corriente constante de salida.
-- VC: Capacitor de derivación del regulador interno. Por lo general, se conecta de 1uF a VIN.
-- VIN: Pin de entrada de alimentación. El voltaje de entrada es de 8-36V. Se requiere un gran capacitor de acoplamiento.
-- SW: Salida de conmutación Buck.
+- FB：反馈输入引脚，由电阻从 $V_{OUT}$ 分压输入反馈，不可直接接地。反馈参考电压为 1.25V。
+- OCSET：输出恒流设置引脚。
+- VC：内部稳压器旁路电容。一般接 1uF 到 VIN。
+- VIN：供电输入引脚。输入电压为 8-36V。需要有大电容去耦。
+- SW：Buck 开关输出。
 
-## Descripción de características
+## 特性描述
 
-### Diagrama de funciones internas
+### 内部功能框图
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220407070413.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407070413.png)
 
-### Regulación de voltaje de salida
+### 输出电压调节
 
-XL2009E1 proporciona una tensión de referencia interna de 1.25V. La tensión de salida se divide mediante un divisor de resistencia y se introduce en el pin FB desde $V_{OUT}$ para su comparación y regulación interna. Se recomienda utilizar resistencias de desviación con una desviación del 1% o inferior y un coeficiente de temperatura de 100 ppm o inferior. El uso de valores de resistencia más grandes para el divisor de resistencia es beneficioso para mejorar la eficiencia de carga ligera, pero si son demasiado grandes, el regulador será más susceptible al ruido y al error de voltaje de entrada de la corriente de entrada de FB. Se recomienda que el valor de la resistencia de bajo lado $R_1$ sea de 4.7k, y el valor de la resistencia de alto lado $R_2$ se calcule mediante la fórmula:
+XL2009E1 提供一个 1.25V 的内部参考电压。输出电压通过电阻分压器，从 $V_{OUT}$ 分压出来输入 FB 引脚，在内部进行比较调节。分压电阻建议使用偏差 1% 或更低的、温度系数 100 ppm 或更低的。分压电阻选择较大的阻值有利于提高轻载效率，但如果太大，稳压器将更容易受到来自 FB 输入电流的噪声和电压误差的影响。推荐低侧电阻 $R_1$ 取值为 4.7k，并通过公式计算高侧电阻 $R_2$：
 
 $$
 V_{OUT}=1.25*(1+\frac{R_2}{R_1})
 $$
 
-### Selección de diodo Schottky
+### 肖特基二极管选型
 
-La tensión de ruptura nominal del diodo debe ser al menos un 25% mayor que el voltaje de entrada máximo. Para obtener la mejor confiabilidad, la corriente nominal del diodo debe ser igual a la corriente de salida máxima del regulador. Cuando el voltaje de entrada es mucho mayor que el voltaje de salida, la corriente media del diodo será más baja. En este caso, se puede utilizar un diodo con una corriente nominal media más baja, aproximadamente $(1-D) * I_{OUT}$, pero la corriente nominal de pico debe ser mayor que la corriente de carga máxima.
+二极管的额定击穿电压最好比最大输入电压高 25%。为了最佳可靠性，二极管的额定电流应等于稳压器最大输出电流。在输入电压远大于输出电压的情况下，二极管平均电流会更低，这时候可以使用平均电流额定值较低的二极管，约为 $(1-D) * I_{OUT}$，但峰值电流额定值应高于最大负载电流。
 
-El manual de datos de XL2009E1 proporciona una tabla de selección directa de diodos (3A):
+XL2009E1 的数据手册提供了直接选型表（3A）：
 
-| Voltaje de entrada | Modelo |
-| ----------------- | ------ |
-| 20V               | SK32   |
-| 30V               | SK33/30WQ03 |
-| 40V               | SK34/30WQ04 |
-| 50V               | SK35/30WQ05 |
-| 60V               | SK36   |
+| 输入电压 | 型号        |
+| -------- | ----------- |
+| 20V      | SK32        |
+| 30V      | SK33/30WQ03 |
+| 40V      | SK34/30WQ04 |
+| 50V      | SK35/30WQ05 |
+| 60V      | SK36        |
 
-### Curvas de parámetros
+### 参数曲线
 
-Relación entre voltaje de salida y corriente:
+输出电压与电流的关系：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220407100229.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407100229.png)
 
-Relación entre eficiencia y corriente de salida:
+效率与输出电流的关系：
 
-Relación entre la corriente de salida y la resistencia RCS (control de corriente constante):
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407103033.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220407102905.png)
+输出电流与 RCS 电阻的关系（恒流控制）：
 
-## Referencias y agradecimientos
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407102905.png)
 
-- [Hoja de datos XL2009](https://datasheet.lcsc.com/lcsc/1806111754_XLSEMI-XL2009E1_C73335.pdf)
+## 参考与致谢
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+- [XL2009_Datasheet](https://datasheet.lcsc.com/lcsc/1806111754_XLSEMI-XL2009E1_C73335.pdf)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

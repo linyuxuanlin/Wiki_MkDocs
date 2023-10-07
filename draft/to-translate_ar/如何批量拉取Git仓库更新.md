@@ -1,10 +1,10 @@
-# Cómo actualizar múltiples repositorios de Git en masa
+# 如何批量拉取 Git 仓库更新
 
-Cuando tienes muchos repositorios, actualizarlos manualmente uno por uno puede ser tedioso. Con el método descrito en este artículo, puedes actualizar múltiples repositorios de Git en masa.
+仓库一多，逐个手动拉取就会变得很麻烦。使用本文的方法，可以对 Git 仓库进行批量拉取操作。
 
-## Pasos
+## 步骤
 
-1. Crea un archivo de script llamado `pull-master.sh` y pega el siguiente código:
+1. 新建脚本文件 `pull-master.sh`，并将以下代码粘贴进去：
 
 ```shell title="pull-master.sh"
 #!/bin/bash
@@ -28,49 +28,48 @@ function getdir(){
         fi
     done
 }
-root_dir="【ruta que contiene múltiples repositorios】"
+root_dir="【包含多个仓库的路径】"
 getdir $root_dir
 ```
 
-2. Reemplaza `【ruta que contiene múltiples repositorios】` con tu propia ruta, por ejemplo `C:\repos`.
-3. Ejecuta el comando:
+2. 将 `【包含多个仓库的路径】` 替换为你的路径，例如 `C:\repos`。
+3. 运行命令：
 
 ```shell
 sh pull-master.sh
-o
+或
 ./pull-master.sh
 ```
 
-O simplemente haz doble clic en `pull-master.sh` para ejecutarlo.
+或直接双击 `pull-master.sh` 运行
 
-## Ejecución programada
+## 定时执行
 
-1. Busca y abre `Programador de tareas`.
-2. Haz clic en `Crear tarea`.
-   1. En la pestaña `General`, escribe un nombre para la tarea.
-   2. En la pestaña `Desencadenadores`, establece la frecuencia de ejecución.
-   3. En la pestaña `Acciones`, crea una nueva acción, escribe el `Programa o script` (por ejemplo, `F:\pull-master.sh`), agrega los argumentos (por ejemplo, `pull-master.sh`), y establece el `Comenzar en` (por ejemplo, `F:\`).
-3. Prueba la ejecución. Si no hay problemas, la tarea se ejecutará automáticamente según la frecuencia establecida. (Si no funciona, consulta [**Pull-Git-Repo.xml**](https://github.com/linyuxuanlin/File-host/blob/main/software-development/Pull-Git-Repo.xml)).
+1. 搜索并打开 `任务计划程序`
+2. 点击 `创建任务`
+   1. 在 `常规` 标签页内填写名称
+   2. 在 `触发器` 标签页内设置周期
+   3. 在 `操作` 标签页内新建操作，填写 `程序或脚本`（例如 `F:\pull-master.sh`），添加参数（例如 `pull-master.sh`），起始于（例如 `F:\`）
+3. 测试运行，如果没问题即可。（如不成功可参考 [**Pull-Git-Repo.xml**](https://github.com/linyuxuanlin/File-host/blob/main/software-development/Pull-Git-Repo.xml)）
 
-## Implementación en un NAS de Synology
+## 在群晖 NAS 上部署
 
-1. Coloca el script (por ejemplo, `github-pull.sh`) en cualquier ruta en el NAS.
-2. Modifica la ruta `root_dir` en `github-pull.sh` a la ruta donde colocaste tus repositorios de Git (por ejemplo, `"/volume1/projects"`).
-3. En `Panel de control` - `Programador de tareas` - `Nueva tarea` - `Tarea definida por el usuario`, configura la frecuencia de ejecución y el comando para ejecutar el script (por ejemplo, `bash /volume1/stash/permanent/github-pull.sh`).
-4. En `Configuración`, configura la salida y luego selecciona la tarea y haz clic en `Ejecutar` para probar la ejecución. Puedes abrir la ruta de salida configurada para ver los resultados.
+1. 将脚本（比如我是 `github-pull.sh`）放在 NAS 上任意路径
+2. 修改 `github-pull.sh` 内 `root_dir` 的路径，比如我改为 `"/volume1/projects"`，也就是你放 Git 仓库的地方
+3. `控制面板` - `任务计划` - `新增` - `计划的任务` - `用户定义的脚本`，在 `计划` 和 `任务设置` 标签页配置周期运行时间，和运行脚本的命令（比如 `bash /volume1/stash/permanent/github-pull.sh`）
+4. 可在 `设置` 内配置输出结果，后选择任务，点击 `运行`，可测试运行，可打开配置的输出路径看运行结果
 
-Si necesitas ingresar la contraseña cada vez, puedes ejecutar el siguiente comando (debes habilitar el directorio de inicio del usuario de antemano):
+如果每次都需要输入密码，可以输入以下命令（需提前开启用户家目录）：
 
 ```shell
 git config –global credential.helper store
 ```
 
-Esto creará un archivo de texto local que almacena tu nombre de usuario y contraseña. La próxima vez que necesites ingresar la contraseña, solo necesitas hacerlo una vez y no tendrás que ingresarla de nuevo.
+这会在本地生成一个文本，上边记录账号和密码。  
+接下来遇到要输入密码时，只需再输入一次，以后就不用重新输入了。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
 - [批量 git pull 小脚本](https://www.jianshu.com/p/42e8da5eb0af)
 - [git 批量 pull_shell 脚本 -- 多个代码库批量 pull 最新 master 代码](https://blog.csdn.net/weixin_39618730/article/details/113024998)
 - [Windows 定时执行 shell 脚本](https://blog.csdn.net/qq_40463753/article/details/84976977)
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

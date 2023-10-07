@@ -1,12 +1,12 @@
-# SwiftCtrl - Controlador Bluetooth
+# SwiftCtrl - 蓝牙手柄
 
-SwiftCtrl es un controlador remoto Bluetooth (HC-06) basado en Arduino que ofrece control de doble joystick, dos botones y una pantalla OLED.
+SwiftCtrl 是一款基于 Arduino 的蓝牙（HC-06）遥控手柄，提供双摇杆、两个按钮的控制，以及 OLED 显示的功能。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200221145040.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200221145040.png)
 
-Repositorio del proyecto: [**linyuxuanlin/SwiftCtrl**](https://github.com/linyuxuanlin/SwiftCtrl)
+项目仓库：[**linyuxuanlin/SwiftCtrl**](https://github.com/linyuxuanlin/SwiftCtrl)
 
-Vista previa en línea del proyecto:
+项目在线预览：
 
 <div class="altium-iframe-viewer">
   <div
@@ -15,14 +15,12 @@ Vista previa en línea del proyecto:
   ></div>
 </div>
 
-## Parámetros básicos
+## 基本参数
 
-- Controlador principal: basado en Arduino Nano (ATmega328)
-- Voltaje del sensor: 3.3V
+- 主控：基于 Arduino Nano（ATmega328）
+- 传感器电压：3.3V
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200311182440.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200311182440.png)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

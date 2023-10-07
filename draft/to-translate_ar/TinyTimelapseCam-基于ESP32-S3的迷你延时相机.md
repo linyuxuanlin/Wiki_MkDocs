@@ -1,54 +1,54 @@
-# TinyTimelapseCam - Mini cámara de lapso de tiempo basada en ESP32-S3
+# TinyTimelapseCam - 基于 ESP32-S3 的迷你延时相机
 
-Esta es una mini cámara de lapso de tiempo basada en ESP32-S3, que se puede utilizar para capturar el movimiento de las nubes durante el día, el movimiento de las estrellas durante toda la noche, o para capturar la diversidad de personas en las calles de la ciudad.
+这是一个基于 ESP32-S3 的迷你延时相机，你可以用它来拍摄白天的云层飘动、一整晚的斗转星移，也可以用来抓取城市街道上形形色色的人群。
 
-## Despliegue de la cámara de red
+## 部署网络摄像头
 
-Por favor, consulte la sección [**Uso de la cámara**](https://wiki.dfrobot.com.cn/_SKU_DFR0975_FireBeetle_2_Board_ESP32_S3_Advanced_Tutorial#target_12) para desplegar la cámara, no se repetirá aquí.
+请参考 [**摄像头使用**](https://wiki.dfrobot.com.cn/_SKU_DFR0975_FireBeetle_2_Board_ESP32_S3_Advanced_Tutorial#target_12) 章节进行部署，此处不赘述。
 
-## Prueba de transmisión de flujo con Python
+## 测试使用 Python 调用推流
 
 ```py title="StreamViewer.py"
-# Llamando a la biblioteca OpenCV
+# 调用 OpenCV 库
 import cv2
 
-# Definir la dirección de la cámara
+# 定义摄像头地址
 camera_url = "http://192.168.31.203:81/stream"
 
-# Crear un objeto VideoCapture
+# 创建VideoCapture对象
 cap = cv2.VideoCapture(camera_url)
 
-# Comprobar si la cámara se ha abierto correctamente
+# 检查摄像头是否成功打开
 if not cap.isOpened():
-    print("No se puede conectar a la cámara. Por favor, compruebe la dirección de la cámara o la conexión de red.")
+    print("无法连接到摄像头。请检查摄像头地址或网络连接。")
     exit()
 
 while True:
-    # Leer el marco
+    # 读取帧
     ret, frame = cap.read()
 
-    # Comprobar si el marco se ha leído correctamente
+    # 检查帧是否成功读取
     if not ret:
-        print("No se puede obtener el marco.")
+        print("无法获取帧。")
         break
 
-    # Mostrar la vista previa de la cámara
-    cv2.imshow('Vista previa de la cámara', frame)
+    # 显示预览画面
+    cv2.imshow('Camera Preview', frame)
 
-    # Presione la tecla 'q' para salir de la vista previa
+    # 按下 'q' 键退出预览
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-# Liberar los recursos
+# 释放资源
 cap.release()
 cv2.destroyAllWindows()
 ```
 
-Es importante tener en cuenta que la dirección de transmisión se basa en la dirección IP original, seguida del sufijo `:81/stream`. También puede hacer clic con el botón derecho del ratón en la imagen en tiempo real que se muestra en la página web para copiar la dirección de transmisión.
+需要注意的是，推流的地址是在原 IP 的基础上，加上 `:81/stream` 后缀。你也可以在网页端显示的实时画面上点击右键，复制推流的地址。
 
-## Cámara de lapso de tiempo
+## 延时相机
 
-Si la prueba de transmisión anterior es exitosa, puede probar el siguiente programa de cámara de lapso de tiempo:
+如果前面的推流测试成功，就可以尝试以下延时相机的程序了：
 
 ```py title="TimelapseCam.py"
 import cv2
@@ -56,61 +56,63 @@ import numpy as np
 import time
 import os
 
-nframes = 500  # Número de fotos a tomar
-interval = 0.00001  # Intervalo de tiempo (segundos)
+nframes = 500  # 拍摄多少张照片
+interval = 0.00001  # 间隔时间（秒）
 
-# Cambiar por la dirección IP de su ESP32
+# 需要改为你的 ESP32 的 IP 地址
 cap = cv2.VideoCapture('http://192.168.31.203:81/stream')
 
-print("Cámara de lapso de tiempo iniciada")
+print("延时相机启动")
 for i in range(nframes):
-    # Capturar el marco de la imagen
+    # 捕获图像帧
     ret, img = cap.read()
-    # Guardar la imagen en un archivo
+    # 保存图像文件
     if img is None:
-        print("No se puede obtener la imagen")
+        print("无法获取图像")
     else:
         cv2.imwrite('temp_destination/photos/img_' +
                     str(i + 1000).zfill(4) + '.png', img)
-    # Esperar un tiempo
+    # 等待一段时间
     time.sleep(interval)
-    print("Número de foto:", i)
+    print("照片编号：", i)
 
-# Definir la ruta de la carpeta de fotos
+# 定义照片文件夹路径
 photos_path = "temp_destination/photos/"
-# Si la carpeta no existe, crearla
+# 如果文件夹不存在，则创建文件夹
 os.makedirs(photos_path, exist_ok=True)
-# Obtener la lista de nombres de archivo de fotos
+# 获取照片文件名列表
 photos = os.listdir(photos_path)
-# Ordenar las fotos por nombre
+# 按名称对照片进行排序
 photos.sort()
-# Crear objeto de escritura de video
+# 创建视频写入对象
 video = cv2.VideoWriter("temp_destination/video.avi",
                         cv2.VideoWriter_fourcc(*"MJPG"), 100, (1280, 720))
 
-# Recorrer las fotos
+# 遍历照片
 for photo in photos:
-    # Leer la foto como imagen
+    # 读取照片作为图像
     image = cv2.imread(photos_path + photo)
-    # Ajustar el tamaño de la imagen para que se ajuste al tamaño del marco del video
+    # 调整图像大小以适应视频帧大小
     image = cv2.resize(image, (1280, 720))
-    # Escribir la imagen en el video
+    # 将图像写入视频
     video.write(image)
 
-# Liberar el objeto de escritura de video
+# 释放视频写入对象
 video.release()
-print("Video de lapso de tiempo generado")
+print("延时摄影视频生成完成")
+```
 
-Después de ejecutar el programa, puede encontrar el video generado en la carpeta "temp_destination". También puede modificar los parámetros "nframes" e "interval" para que la cámara de lapso de tiempo sea adecuada para diferentes escenarios de filmación.
+运行程序后，你可以在 `temp_destination` 文件夹下找到生成的视频。你也可以修改 `nframes` 和 `interval` 参数，使延时相机可以适用于不同的拍摄场景。
 
-## Solución de problemas y sugerencias
+## 疑难解答与建议
 
-- Si la vista previa en la página web puede mostrar la imagen en tiempo real, pero no se puede capturar la transmisión en local, esto se debe a que solo se puede abrir una transmisión al mismo tiempo. Intente cerrar la página web.
-- Si planea grabar un video durante todo el día, puede ejecutar el programa de Python en un servidor de bajo consumo de energía o en un teléfono móvil antiguo para que no tenga que mantener la computadora encendida todo el tiempo.
+- 如果网页端可以显示实时画面，但本地无法抓取推流，这是因为同一时间只能开一个推流，请尝试把网页关掉。
+- 如果你打算拍一整天的视频，可以把 Python 程序运行在低功耗的服务器或旧手机上，这样就不用一直开着电脑。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
 - [ESP32-CAM Python stream OpenCV Example](https://www.hackster.io/onedeadmatch/esp32-cam-python-stream-opencv-example-1cc205)
 - [Live Security Camera with UNIHIKER & FireBeetle 2 ESP32S3](https://www.hackster.io/pradeeplogu0/live-security-camera-with-unihiker-firebeetle-2-esp32s3-5d478e)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

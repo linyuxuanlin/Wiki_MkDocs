@@ -1,37 +1,35 @@
-# Notas de desarrollo de la biblioteca HAL - Comunicación USB 🚧
+# HAL 库开发笔记 - USB 通信 🚧
 
-Este artículo se basa en el kit de desarrollo RobotCtrl, desarrollado internamente, con un núcleo de microcontrolador STM32F407ZET6, y los pines USB_Slave son `PA11` y `PA12`. Para obtener el esquema y una descripción detallada, consulte [**RobotCtrl - Kit de desarrollo STM32 universal**](https://wiki-power.com/es/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
+本篇基于自研 RobotCtrl 开发套件，单片机内核为 STM32F407ZET6，USB_Slave 引脚为 `PA11` 和 `PA12`，原理图及详细介绍请见 [**RobotCtrl - STM32 通用开发套件**](https://wiki-power.com/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6)。
 
-## Pasos simples para la prueba de bucle de retroalimentación
+## 回环测试简单步骤
 
-### Configuración interna de CubeMX
+### CubeMX 内配置
 
-1. Configure el reloj externo de alta velocidad (HSE).
-2. Configure el árbol de reloj para asegurarse de que el extremo del árbol de reloj "48MHz Clocks (MHz)" sea 48MHz.
-3. En la página `USB_OTG_FS`, configure el `Mode` como `Device_Only`, y los pines predeterminados son `PA11` y `PA12`.
-4. En la página `USB_DEVICE`, configure `Class For FS IP` como `Commmunication Device Class (Virtual Port Com)`.
+1. 配置为外部高速时钟（HSE）。
+2. 配置时钟树，确保时钟树末端 `48MHz Clocks (MHz)` 为 48MHz。
+3. 在 `USB_OTG_FS` 页面，将 `Mode` 配置为 `Device_Only`，默认引脚是 `PA11` 和 `PA12`。
+4. 在 `USB_DEVICE` 页面，将 `Class For FS IP` 配置为 `Commmunication Device Class (Virtual Port Com)`。
 
-### Configuración interna del código
+### 代码内配置
 
-Para implementar la función de retroalimentación de datos, solo necesita agregar una línea en la función `CDC_Receive_FS` del archivo `usbd_cdc_if.c`:
+实现数据回环功能，只需要在 `usbd_cdc_if.c` 文件的 `CDC_Receive_FS` 函数内添加一行：
 
 ```c title="usbd_cdc_if.c"
-CDC_Transmit_FS(Buf,*Len); // Devuelve los mismos datos
+CDC_Transmit_FS(Buf,*Len); // 返回相同数据
 ```
 
-### Prueba
+### 测试
 
-Abra el Administrador de dispositivos para ver si el dispositivo se ha mostrado. Si no se encuentra el dispositivo o hay un signo de exclamación amarillo, descargue el controlador de la página web de ST [**STM32 Virtual COM Port Driver**](https://www.st.com/content/st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-utilities/stsw-stm32102.html).
+打开设备管理器查看设备是否已经显示，如果没有发现设备，或有黄色的感叹号，请到 ST 官网下载驱动 [**STM32 Virtual COM Port Driver**](https://www.st.com/content/st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-utilities/stsw-stm32102.html)。
 
-Si ha instalado el controlador pero aún no se puede reconocer correctamente, intente ajustar el `Minimum Heap Size` a `0x600` o superior en CubeMX - `Project Manager` - `Project` - `Linker Settings`.
+如果安装了驱动还是未能正常识别，可尝试在 CubeMX - `Project Manager` - `Project` - `Linker Settings`，将 `Minimum Heap Size` 调整为 `0x600` 或更高。
 
-Abra la herramienta de puerto serie (cualquier velocidad de transmisión) y envíe cualquier carácter. Devolverá el mismo carácter.
+打开串口工具（波特率任意），可发现发送任意字符，将返回相同字符。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [STM32 utiliza CubeMX HAL para generar rápidamente el proyecto USBVCP Virtual Serial Port](https://blog.csdn.net/yxy244/article/details/102620249)
+- [STM32 使用 CubeMX HAL 库快速生成 USBVCP 虚拟串口工程](https://blog.csdn.net/yxy244/article/details/102620249)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

@@ -1,62 +1,60 @@
-# Prueba de continuidad
+# Continuity Test
 
-> Esta publicación solo está disponible en inglés.
+> This post is only available in English.
 
-La prueba de continuidad contiene la prueba de circuito abierto/cortocircuito y la prueba de cortocircuito de los pines de alimentación. La primera verifica los pines de señal, mientras que la segunda verifica el pin de alimentación.
+Continuity test contains open/short test and power pin short test. The former checks the signal pins, while the latter checks the power pin.
 
-## Prueba de continuidad de circuito abierto/cortocircuito
+## Open/Short Continuity Test
 
-La prueba de continuidad de circuito abierto/cortocircuito es para confirmar el contacto electrónico entre el probador y el DUT, y si existe un cortocircuito a otros pines o a tierra.
+Open/short continuity test is to confirm the electronical contact between tester and DUT, and whether if short-circuit existed to other pins or to ground.
 
-### Método de prueba
+### Test Method
 
-La prueba de continuidad de circuito abierto/cortocircuito se realiza probando los diodos de protección (diodos a VDD y a GND). Por lo general, se utiliza PPMU con el código VBT (también se puede probar con PE y patrón funcional).
+Open/short continuity test is performed with testing the protection diodes (diodes to VDD and to GND). Usually use PPMU with VBT code (also can be tested using PE and functional pattern).
 
-#### Prueba a través del diodo de protección de GND
+#### Test through GND protection diode
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220909003924.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220909003924.png)
 
-1. Forzar 0V a todos los demás pines que no se están probando (incluido el pin de alimentación).
-2. Forzar una corriente negativa pequeña (-100uA) en el Pin bajo prueba (con pinza de voltaje).
-3. Medir el voltaje en el Pin bajo prueba:
-   - **Mayor que la especificación máxima (> -0.2V)**: FALLA (Cortocircuito)
-   - **Banda media (-1.5V ~ -0.2V)**: APROBADO
-   - **Menor que la especificación mínima (<-1.5V)**: FALLA (Circuito abierto)
+1. Force 0V to all other pins that are not tested (include power pin).
+2. Force a small negative current (-100uA) on the Pin Under Test (with voltage clamp).
+3. Meaure voltage on the Pin Under Test：
+   - **Higher than max spec(>-0.2V)**: FAIL (Short)
+   - **Midband(-1.5V~-0.2V**): PASS
+   - **Lower than min spec(<-1.5V)**: FAIL (Open)
 
-#### Prueba a través del diodo de protección de VDD
+#### Test through VDD protection diode
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220909004139.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220909004139.png)
 
-1. Forzar 0V a todos los demás pines que no se están probando (incluido el pin de alimentación).
-2. Forzar una corriente positiva pequeña (+100uA) en el Pin bajo prueba (con pinza de voltaje).
-3. Medir el voltaje en el Pin bajo prueba:
-   - **Mayor que la especificación máxima (> 1.5V)**: FALLA (Cortocircuito)
-   - **Banda media (0.2V ~ 1.5V)**: APROBADO
-   - **Menor que la especificación mínima (<0.2V)**: FALLA (Circuito abierto)
+1. Force 0V to all other pins that are not tested (include power pin).
+2. Force a small positive current (+100uA) on the Pin Under Test (with voltage clamp).
+3. Meaure voltage on the Pin Under Test：
+   - **Higher than max spec(>1.5V)**: FAIL (Short)
+   - **Midband(0.2V~1.5V)**: PASS
+   - **Lower than min spec(<0.2V)**: FAIL (Open)
 
-## Prueba de cortocircuito de los pines de alimentación
+## Power Pin Short Test
 
-La prueba de cortocircuito de pines de alimentación es para verificar si hay un cortocircuito desde el pin VDD hasta el pin GND, lo que causará daños al DUT o al probador. La prueba de cortocircuito de pines de alimentación siempre se ejecuta inmediatamente después de la prueba de continuidad abierta/cerrada, y cuando falla, se apagará la alimentación del dispositivo y se rechazará el DUT.
+Power pin short test is to check if there is a short-circuit from VDD to GND pin, which will cause damagement to DUT or tester. Power pin short test always run immediately after open/short continuity test, and when it fails, device power will be shut off and the DUT will be rejected.
 
-### Método de prueba
+### Test Method
 
-La prueba de cortocircuito de pines de alimentación se realiza aplicando un pequeño voltaje a VDD y midiendo la corriente que entra en él para verificar si existe un cortocircuito. Por lo general, se utiliza DCVI con código VBT.
+Power Pin Short Test is performed by applying a small voltage to VDD, and measure the current into it, to check if a short-circuit existed. Usually use DCVI with VBT code.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220910155805.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220910155805.png)
 
-1. Aplicar un pequeño voltaje a VDD (100 mV) (con pinza amperimétrica).
-2. Forzar todos los demás pines a 0V con PPMU.
-3. Medir la corriente que fluye hacia el pin VDD:
-   - **Mayor que la especificación máxima (>20uA)**: FALLA (Cortocircuito)
-   - **Banda media (-1uA~20uA)**: APROBADO
-   - **Menor que la especificación mínima (<-1uA)**: FALLA
+1. Apply a small voltage to VDD (100mV) (with current clamp).
+2. Force all other pins to 0V with PPMU.
+3. Measure current flowing into VDD pin:
+   - **Higher than max spec(>20uA)**: FAIL (Short)
+   - **Midband(-1uA~20uA)**: PASS
+   - **Lower than min spec(<-1uA)**: FAIL
 
-## Referencias y Agradecimientos
+## References & Acknowledgements
 
-- _Los fundamentos de la prueba de semiconductores digitales_
-- _Fundamentos de la prueba utilizando ATE_
+- _The Fundamentals Of Digital Semiconductor Testing_
+- _Fundamentals of Testing Using ATE_
 
 > Original: <https://wiki-power.com/>  
-> Esta publicación está protegida por el acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) y debe ser reproducida con atribución.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.

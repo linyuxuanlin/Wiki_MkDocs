@@ -1,57 +1,55 @@
-# Operaciones básicas de AD - Diseño de sistemas de múltiples placas 🚧
+# AD 基本操作 - 多板系统设计 🚧
 
-La razón por la que se utiliza el diseño de sistemas de múltiples placas es que un proyecto de hardware puede contener varias placas PCB y varios elementos de ensamblaje, como carcasas. Si se diseña desde la perspectiva de cada placa, el producto final puede tener errores de ajuste o interferencia. Al diseñar proyectos de hardware con múltiples elementos, es mejor utilizar la colaboración mecánica. Para los ingenieros de hardware, esto se puede lograr directamente en Altium Designer sin necesidad de software como SolidWorks.
+使用多板系统设计的原因是，一个硬件项目内可能包含多块 PCB、各种装配元素例如外壳，如果仅仅从每块板的角度去设计，最终做出来的产品有可能会出现配合误差或干涉。在设计多元素的硬件项目时，我们最好使用机电协同。对于硬件工程师来说，可以不用 SolidWorks 等软件，直接在 Altium Designer 里实现。
 
-## Crear un proyecto de múltiples placas
+## 创建多板项目
 
-En primer lugar, cree un archivo de tipo de proyecto de múltiples placas (`.PrjMbd`), cree un archivo de diseño lógico basado en el esquemático del proyecto (`.MbsDoc`) y un archivo basado en PCB (`.MbaDoc`), y luego guárdelo. En el nivel del sistema de archivos, copie varias carpetas de proyectos de PCB individuales en el mismo nivel de directorio que `.PrjMbd`, por ejemplo:
+首先，新建多板项目类型文件（`.PrjMbd`），在项目下创建基于原理图的逻辑设计文件（`.MbsDoc`）和基于 PCB 的文件（`.MbaDoc`），然后先保存。在文件系统的层面上把多个单独的 PCB 项目文件夹拷贝到 `.PrjMbd` 同级目录下，例如：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220106152537.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220106152537.png)
 
-## Entrada de diseño lógico
+## 输入逻辑设计
 
-La entrada de diseño lógico se realiza en función de los conectores físicos de la PCB. Antes de esto, debemos agregar parámetros a los conectores en el esquemático del proyecto (abrir las propiedades del conector, agregar `Parameters`, el nombre es `System`, el valor es `Connector`).
+输入逻辑设计是根据 PCB 上的物理连接器来进行的。在此之前，我们需要先给项目原理图内的连接器添加参数（点开连接器的属性，添加 `Parameters`，名字为 `System`，值为 `Connector`）。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220106163315.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220106163315.png)
 
-### Crear un módulo y vincular el proyecto
+### 创建模块并链接项目
 
-Coloque el módulo en el archivo de diseño lógico (`.MbsDoc`) y haga doble clic en él para abrir las propiedades y seleccione el proyecto de PCB correspondiente.
+在逻辑设计文件（`.MbsDoc`）内放置模块，并双击它弹出属性，选择对应的源 PCB 项目。
 
-### Importar datos de interfaz de subproyectos
+### 导入子项目的接口数据
 
-Haga clic derecho con el mouse y seleccione `Design` - `Import from Subproject` para importar automáticamente los puertos que tienen parámetros como conectores.
+单机鼠标右键，选择 `设计` - `从子项目导入`，就可以自动导入参数为连接器的端口。
 
-### Agregar conexiones lógicas entre módulos
+### 添加模块间的逻辑连接
 
-Use el atajo de teclado `P` - `W` para dibujar una línea de conexión.
+使用快捷键 `P` - `W`，绘制连接线。
 
-Haga clic en la línea de conexión para modificar los detalles de conexión de los dos módulos correspondientes en el panel de propiedades.
+点击连接线，就可以在属性面板修改两个模块对应的详细端口连接。
 
-Si un conector necesita conectarse a varias placas correspondientes, puede dividir un puerto en las propiedades.
+如果一个连接器需要连接对应多块板，那么可以在属性里面拆分某个端口。
 
-## Ensamblaje físico de múltiples placas
+## 物理多板装配
 
-### Importar PCB desde el archivo de diseño lógico
+### 从逻辑设计文件导入 PCB
 
-Use el atajo de teclado `D` - `I` para importar el PCB correspondiente del archivo de diseño lógico.
+使用快捷键 `D` - `I`，就可以从逻辑设计文件导入项目对应的的 PCB
 
-### Simulación de ensamblaje
+### 模拟装配
 
-Arrastre los ejes de coordenadas de cada PCB para simular el ensamblaje.
+拖动每个 PCB 的坐标轴，就可以进行模拟装配了。
 
-## Generación de datos de producción
+## 生成生产数据
 
 🚧
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [¿Cómo es la experiencia de diseñar múltiples placas en PCB?](https://www.altium.com.cn/blog/pcb%E4%B8%AD%E8%BF%9B%E8%A1%8C%E5%A4%9A%E6%9D%BF%E8%AE%BE%E8%AE%A1%E4%BC%9A%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84%E4%BD%93%E9%AA%8C%EF%BC%9F)
-- [Captura del diseño lógico del sistema](https://www.altium.com/cn/documentation/altium-designer/capturing-the-logical-system-design-ad)
-- [Creación del ensamblaje físico de múltiples placas](https://www.altium.com/cn/documentation/altium-designer/creating-the-physical-multi-board-assembly-ad)
-- [Generación de datos de producción de múltiples placas](https://www.altium.com/cn/documentation/altium-designer/generating-multi-board-production-data-ad)
+- [PCB 中进行多板设计会是怎样的体验？](https://www.altium.com.cn/blog/pcb%E4%B8%AD%E8%BF%9B%E8%A1%8C%E5%A4%9A%E6%9D%BF%E8%AE%BE%E8%AE%A1%E4%BC%9A%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84%E4%BD%93%E9%AA%8C%EF%BC%9F)
+- [输入逻辑系统设计](https://www.altium.com/cn/documentation/altium-designer/capturing-the-logical-system-design-ad)
+- [创建物理多板装配](https://www.altium.com/cn/documentation/altium-designer/creating-the-physical-multi-board-assembly-ad)
+- [生成多板设计的生产数据](https://www.altium.com/cn/documentation/altium-designer/generating-multi-board-production-data-ad)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

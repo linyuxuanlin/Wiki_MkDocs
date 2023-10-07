@@ -1,51 +1,51 @@
-# Cómo configurar la ejecución automática de scripts al iniciar Linux
+# Linux 如何配置开机自动运行脚本
 
-## Para sistemas que utilizan SysV init
+## 适用于使用 SysV init 的系统
 
-Nota: Los siguientes métodos son aplicables a distribuciones de Linux que utilizan el sistema SysV init (como Ubuntu 18.04 y versiones posteriores, o Debian). Para distribuciones que utilizan Systemd (como Ubuntu 18.04 y versiones posteriores), utilice el método `systemctl` para administrar los servicios de inicio.
+注：以下方法适用于使用 SysV init 系统的 Linux 发行版（如 Ubuntu 18.04 及更新版本，或 Debian）。对于使用 Systemd 的发行版（如 Ubuntu 18.04 及更新版本），请使用 `systemctl` 方法来管理启动服务。
 
-Supongamos que el script que deseamos ejecutar automáticamente al iniciar es `xxx.sh`. Primero, cree un script de inicio en el directorio `/etc/init.d`, por ejemplo, llamado `autorun.sh`:
+假如我们需要开机自动执行的脚本是 `xxx.sh`。首先在 `/etc/init.d` 目录下创建一个用于启动的脚本，例如名为 `autorun.sh`：
 
 ```shell
 sudo nano /etc/init.d/autorun.sh
 ```
 
-Agregue el script que desea ejecutar automáticamente al inicio:
+在其中添加你需要开机自动执行的脚本：
 
 ```bash title="autorun.sh"
 #!/bin/bash
-/path/to/xxx.sh  # cambiar por la ruta específica
+/path/to/xxx.sh  # 修改为具体路径
 ```
 
-Agregue el script `autorun.sh` al servicio de inicio del sistema:
+将 `autorun.sh` 脚本添加到系统的启动服务中:
 
 ```shell
 sudo update-rc.d autorun.sh defaults
 ```
 
-Configure el script `autorun.sh` para que se inicie automáticamente al iniciar el sistema:
+将 `autorun.sh` 脚本设置为开机启动:
 
 ```shell
 sudo update-rc.d autorun.sh enable
 ```
 
-De esta manera, el script `autorun.sh` se ejecutará automáticamente después de reiniciar.
+这样，当重新启动后，`autorun.sh` 脚本将会自动运行。
 
-## Para sistemas que utilizan Systemd
+## 适用于使用 Systemd 的系统
 
-Si su distribución de Linux utiliza Systemd como administrador de inicio (como Ubuntu 18.04 y versiones posteriores), puede utilizar el comando `systemctl` para configurar la ejecución automática.
+如果你的 Linux 发行版使用 Systemd 作为启动管理器（例如 Ubuntu 18.04 及更高版本），你可以使用 `systemctl` 命令来设置自动启动。
 
-Supongamos que el script que desea ejecutar automáticamente al iniciar es `xxx.sh`. Primero, cree un archivo Unit que describa el servicio que desea iniciar automáticamente, como `autorun.service`:
+假如我们需要开机自动执行的脚本是 `xxx.sh`。首先创建一个描述你想自启动服务的 Unit 文件，比如 `autorun.service`：
 
 ```shell
 sudo nano /etc/systemd/system/autorun.service
 ```
 
-En el archivo Unit, defina la configuración de su servicio. Aquí hay un ejemplo:
+在 Unit 文件中，定义你的服务的配置。以下是一个示例：
 
 ```service title="autorun.service"
 [Unit]
-Description=Mi servicio
+Description=My Service
 After=network.target
 [Service]
 ExecStart=/path/to/xxx.sh
@@ -53,36 +53,34 @@ ExecStart=/path/to/xxx.sh
 WantedBy=default.target
 ```
 
-Los parámetros son:
+其中的参数分别为：
 
-- `Description`: descripción de su servicio.
-- `After`: especifica qué otros servicios deben iniciarse antes de su servicio. Por ejemplo, `network.target` significa que su servicio se iniciará después de que se inicien los servicios de red.
-- `ExecStart`: especifica la ruta del script o comando que desea ejecutar.
-- `WantedBy`: especifica el objetivo (target) en el que su servicio debe iniciarse. `default.target` significa que su servicio se iniciará cuando se inicie el objetivo predeterminado.
+- `Description`：描述你的服务。
+- `After`：指定你的服务在哪些其他服务之后启动。例如，`network.target` 表示在网络服务启动后才启动你的服务。
+- `ExecStart`：指定你要执行的脚本或命令的路径。
+- `WantedBy`：指定你的服务应该被启动的目标（target）。`default.target` 表示在默认目标启动时启动你的服务。
 
-Guarde y cierre el archivo, luego ejecute el siguiente comando para recargar la configuración de Systemd:
+保存并关闭文件，运行以下命令以重新加载 systemd 配置：
 
 ```shell
 sudo systemctl daemon-reload
 ```
 
-Habilite su servicio con el siguiente comando:
+使用以下命令使能你的服务：
 
 ```shell
 sudo systemctl enable autorun.service
 ```
 
-Finalmente, inicie el servicio con el siguiente comando:
+最后，使用以下命令启动：
 
 ```shell
 sudo systemctl start autorun.service
 ```
 
-Ahora, su servicio está configurado para ejecutarse automáticamente al iniciar el sistema. Puede reiniciar el sistema para verificar si el servicio se inicia correctamente.
+现在，你的服务已经设置为在系统启动时自动运行。你可以重新启动系统来验证服务是否正常启动。
 
 ---
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

@@ -1,167 +1,165 @@
-# Desarrollo de hardware STM32F4
+# STM32F4 硬件开发
 
-Este artículo explicará el sistema mínimo de MCU de STM32F4 (alimentación, reloj, reinicio, modo de arranque, gestión de depuración).
+本篇文章将会对 STM32F4 的 MCU 最小系统（电源、时钟、复位、启动模式、调试管理）展开讲解。
 
-## Alimentación
+## 电源
 
-La tensión de trabajo normal de STM32F4 es de 1,8-3,6 V (en algunos casos puede ser inferior a 1,7 V, como se indica en la hoja de datos), y cuenta con un regulador interno que proporciona una fuente de alimentación digital de 1,2 V.
+STM32F4 的正常工作电压是 1.8-3.6 V（在某些情况下可降至 1.7 V 以下，在数据手册有说明），有内置稳压器提供内部 1.2 V 的数字电源。
 
-Cuando se interrumpe la alimentación principal VDD, se puede suministrar energía a la RTC y a los registros de copia de seguridad a través del voltaje de VBAT.
+当主电源 VDD 断电时，可通过 VBAT 的电压为 RTC 和备份寄存器供电。
 
-### Introducción a los pines
+### 各引脚的介绍
 
-#### Alimentación y voltaje de referencia ADC
+#### ADC 电源和参考电压
 
-Para mejorar la precisión de conversión, ADC cuenta con pines de alimentación independientes que pueden filtrarse y aislar el ruido de la PCB.
+为了提高转换精度，ADC 配有独立的电源引脚，可单独滤波并屏蔽 PCB 上的噪声。
 
-La fuente de voltaje ADC proviene del pin VDDA independiente. En el diseño del circuito, se debe conectar VSSA al mismo suministro de tierra en lugar de VSS.
+ADC 电压源从单独的 VDDA 引脚输入。在电路设计时，应该把 VSSA 接到同个供电地，而非 VSS。
 
-Si el encapsulado del chip tiene más de 100 pines, habrá pines VREF+ y VREF-, que se utilizan para proporcionar voltaje de referencia externo al ADC. VREF- debe conectarse a VSSA interno. Si el número de pines del chip es inferior a 100, estos dos pines no se conectan y se conectan internamente a VDDA y VSSA.
+如果芯片的封装是 100 引脚以上的，就会有 VREF+ 和 VREF- 引脚，它们的作用是给 ADC 输入外部参考电压。VREF- 要接至内部 VSSA。如果芯片引脚小于 100，那么这两个引脚没有引出，在内部接在了 VDDA 和 VSSA。
 
-#### Alimentación de la batería de respaldo
+#### 后备电池电源
 
-Si se necesita mantener el contenido del registro de copia de seguridad después de que se interrumpe VDD, se puede conectar VBAT a una batería u otra fuente de alimentación.
+如果需要在 VDD 断电后保留备份寄存器内容，可将 VBAT 连到电池或其他电源。
 
-VBAT también puede suministrar energía a la RTC, controlada por el circuito de reinicio por caída de energía (PDR) integrado en el módulo de reinicio.
+VBAT 也可为 RTC 供电，由复位模块中内置的掉电复位 （PDR）电路进行控制。
 
-#### Regulador interno
+#### 内置稳压器
 
-El regulador interno siempre está habilitado después del reinicio y tiene tres modos de funcionamiento:
+内置稳压器在复位后始终处于使能态，有三种工作模式：
 
-- Ejecución: el regulador proporciona suministro de energía de plena potencia de 1,2 V (núcleo, memoria y periféricos digitales).
-- Parada: el regulador proporciona suministro de energía de baja potencia de 1,2 V al núcleo y conserva el contenido de los registros y la SRAM.
-- En espera: el regulador se apaga. Se perderá el contenido de los registros y la SRAM, excepto el circuito de espera y el dominio de copia de seguridad.
+- 运行：稳压器为 1.2 V 域（内核、存储器和数字外设）提供全功率电源供应。
+- 停止：稳压器为 1.2 V 域提供低功率电源供应，同时保留寄存器和 SRAM 中的内容。
+- 待机：稳压器掉电。除待机电路和备份域，寄存器和 SRAM 的内容都将丢失。
 
-### Diseño del circuito
+### 电路设计
 
-A continuación se muestra el método de diseño de los pines de alimentación:
+以下是电源引脚的设计方法：
 
 - **VDD**
-  - **Condensador de desacoplamiento**: un condensador cerámico/tantalio de 10 μF en total, más un condensador cerámico de 100 nF conectado a cada pin VDD.
+  - **去耦电容**：总的一个 10 μF 的陶瓷/钽电容，外加每个 VDD 引脚旁接一个 100 nF 陶瓷电容。
 - **VDDA**
-  - **Condensador de desacoplamiento**: un condensador cerámico de 100 nF + un condensador cerámico/tantalio de 1 µF.
-  - **Filtrar el ruido analógico**: se puede conectar a VDD mediante un núcleo magnético.
+  - **去耦电容**：100 nF 陶瓷电容 + 1 µF 陶瓷/钽电容。
+  - **过滤模拟噪声**：可通过磁珠接至 VDD。
 - **VREF+**
-  - **Condensador de desacoplamiento**: si se utiliza la función VREF+, se necesitan un condensador de 100 nF y otro de 1 µF.
-  - **Filtrar el ruido analógico**: se puede conectar a VDDA mediante una resistencia de 47 Ω.
-- **VBAT**: conecte una batería externa (1,65 V-3,6 V). Si no se necesita una fuente de alimentación de batería, conéctela al pin VDD.
-- **VCAP1/VCAP2**: conecte un condensador cerámico de 2,2 µF (ESR < 2 Ω) a tierra para cada uno; si solo hay VCAP1, conecte un condensador cerámico de 4,7 µF (ESR < 1 Ω).
+  - **去耦电容**：如果启用 VREF+ 功能，则需接一个 100 nF 和一个 1 µF 的电容。
+  - **过滤模拟噪声**：可通过 47 Ω 电阻连至 VDDA。
+- **VBAT**：接外部电池（1.65 V-3.6 V）。如果不需要电池电源，则接至 VDD 引脚。
+- **VCAP1/VCAP2**：各对地连接一个 2.2 µF 陶瓷电容（ESR < 2 Ω）；如果只有 VCAP1，则连一个 4.7 µF 陶瓷电容（ESR < 1 Ω）。
 
-### Reinicio y supervisión de alimentación
+### 复位与电源监控
 
-#### Reinicio por encendido (POR) / Reinicio por caída de energía (PDR)
+#### 上电复位（POR）/ 掉电复位（PDR）
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210529143014.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529143014.png)
 
-El chip STM32F4 integra el circuito POR/PDR, y las características específicas del reinicio por encendido / caída de energía se muestran en la figura anterior. Si se desea deshabilitar esta función, se puede hacer a través del pin PDR_ON.
+STM32F4 芯片中集成 POR/PDR 电路，具体上电 / 掉电复位的特征见上图。如需禁用此功能，可通过 PDR_ON 引脚实现。
 
-#### Reinicio del sistema
+#### 系统复位
 
-Las condiciones de activación del reinicio del sistema son:
+系统复位的触发条件：
 
-- Bajo nivel de voltaje en el pin NRST (reinicio externo)
-- Finalización del conteo del perro guardián de ventana (reinicio WWDG)
-- Finalización del conteo del perro guardián independiente (reinicio IWDG)
-- Reinicio de software (reinicio SW)
-- Reinicio de gestión de baja potencia
+- NRST 引脚低电平（外部复位）
+- 窗口看门狗计数结束（WWDG 复位）
+- 独立看门狗计数结束（IWDG 复位）
+- 软件复位（SW 复位）
+- 低功耗管理复位
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210529143925.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529143925.png)
 
-Se puede determinar la fuente de reinicio mediante la visualización de la bandera de reinicio en el registro de control / estado (RCC_CSR).
+可通过查看控制 / 状态寄存器 （RCC_CSR）中的复位标志确定复位源。
 
-Incluso si no se necesita un circuito de reinicio externo, se recomienda agregar un condensador de descarga para mejorar el rendimiento de EMS.
+即使不需要外部复位电路，也建议外加一个下拉电容以提高 EMS 性能。
 
-## Reloj
+## 时钟
 
-En STM32F4, se pueden utilizar tres fuentes de reloj diferentes para impulsar el reloj del sistema (SYSCLK):
+在 STM32F4 上，可使用三种不同的时钟源来驱动系统时钟（SYSCLK）：
 
-- HSI (señal de reloj interno de alta velocidad)
-- HSE (señal de reloj externo de alta velocidad)
-- Reloj PLL
+- HSI（高速内部时钟信号）
+- HSE（高速外部时钟信号）
+- PLL 时钟
 
-También hay dos fuentes de reloj secundarias:
+也有两种次级时钟源：
 
-- LSI RC (32 kHz RC interno de baja velocidad), utilizado para conducir un watchdog independiente, también se puede utilizar para despertar automáticamente en modo de apagado / espera RTC.
-- LSE (32.768 kHz cristal externo de baja velocidad), utilizado para conducir RTC.
+- LSI RC（32 kHz 低速内部 RC），用于驱动独立看门狗，也可用于 RTC 停机 / 待机模式下自动唤醒。
+- LSE（32.768 kHz 低速外部晶振），用于驱动 RTC。
 
-Si se necesita reducir el consumo de energía, cada reloj se puede apagar individualmente cuando no se está utilizando.
+如果需要降低功耗，每个时钟在未使用时都可以单独关闭。
 
-### Reloj externo de alta velocidad (HSE)
+### 外部高速时钟（HSE）
 
-Hay dos formas de proporcionar la fuente de reloj HSE: fuente externa (activa) y cristal externo / resonador cerámico (pasivo).
+HSE 时钟源可以有两种提供方式：外部源（有源）、外部晶振 / 陶瓷谐振器（无源）。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210529145726.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529145726.png)
 
-#### Fuente externa (bypass HSE)
+#### 外部源（HSE 旁路）
 
-Si se elige la entrada de señal de reloj externa activa, se debe proporcionar una fuente de reloj de 1-50 MHz, OSC_IN se conecta a una señal de reloj externa con un ciclo de trabajo de aproximadamente el 50% (onda cuadrada, senoidal o triangular), y OSC_OUT se mantiene en alta impedancia.
+如果选择有源外部时钟信号输入，则需提供 1-50 MHz 的时钟源，OSC_IN 连接占空比约为 50% 的外部时钟信号（方波、正弦波或三角波），OSC_OUT 保持高阻态。
 
-#### Cristal externo / resonador cerámico (HSE cristal)
+#### 外部晶振 / 陶瓷谐振器（HSE 晶振）
 
-Si se utiliza un cristal externo, el rango de frecuencia es de 4-26 MHz. Al diseñar el circuito, el resonador y la capacidad de carga deben estar lo más cerca posible de los pines del oscilador para minimizar la distorsión de salida y el tiempo de estabilización de la oscilación. El valor de la capacidad de carga debe ajustarse adecuadamente según el oscilador seleccionado.
+如果选用外部晶振，那么频率范围为 4-26 MHz。设计电路时，谐振器和负载电容必须尽可能地靠近振荡器的引脚，以尽量减小输出失真和起振稳定时间。负载电容值必须根据所选振荡器的不同做适当调整。
 
-CL1 y CL2 deben tener el mismo tamaño (5-25 pF, valor típico 25 pF) de capacidad de cerámica.
+CL1 和 CL2 应选用大小相同（5-25 pF，典型值 25 pF）的陶瓷电容。
 
-### Reloj externo de baja velocidad (LSE)
+### 外部低速时钟（LSE）
 
-Hay dos formas de proporcionar la fuente de reloj LSE: fuente externa (activa) y cristal externo / resonador cerámico (pasivo).
+LSE 时钟源可以有两种提供方式：外部源（有源）、外部晶振 / 陶瓷谐振器（无源）。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210529152354.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529152354.png)
 
-#### Fuente externa (bypass LSE)
+#### 外部源 （LSE 旁路）
 
-Si se elige la entrada de señal de reloj externa activa, se debe proporcionar una fuente de reloj de menos de 1 MHz, OSC32_IN se conecta a una señal de reloj externa con un ciclo de trabajo de aproximadamente el 50% (onda cuadrada, senoidal o triangular), y OSC32_OUT se mantiene en alta impedancia.
+如果选择有源外部时钟信号输入，则需提供 1 MHz 以下的时钟源，OSC32_IN 连接占空比约为 50% 的外部时钟信号（方波、正弦波或三角波），OSC32_OUT 保持高阻态。
 
-#### Cristal externo / resonador cerámico (LSE cristal)
+#### 外部晶振 / 陶瓷谐振器（LSE 晶振）
 
-Si se utiliza un cristal externo, el rango de frecuencia es de 32.768 kHz y se puede utilizar como fuente de reloj RTC. Al diseñar el circuito, el resonador y la capacidad de carga deben estar lo más cerca posible de los pines del oscilador para minimizar la distorsión de salida y el tiempo de estabilización de la oscilación. El valor de la capacidad de carga debe ajustarse adecuadamente según el oscilador seleccionado.
+如果选用外部晶振，那么频率范围为 32.768 kHz，可作为 RTC 的时钟源。设计电路时，谐振器和负载电容必须尽可能地靠近振荡器的引脚，以尽量减小输出失真和起振稳定时间。负载电容值必须根据所选振荡器的不同做适当调整。
 
-## Modo de arranque
+## 启动模式
 
-El modo de arranque también se llama modo de autorecuperación. Se pueden seleccionar tres modos de arranque diferentes mediante los pines BOOT0 y BOOT1: arranque desde la memoria flash principal, arranque desde la memoria del sistema, arranque desde la SRAM incorporada.
+启动模式也叫自举模式。可通过 BOOT0 和 BOOT1 引脚来共同选择三种不同的启动模式：从主闪存存储器启动、从系统存储器启动、从内置 SRAM 启动。
 
-Para obtener más información sobre el modo de arranque, consulte el artículo [**Modo de arranque de STM32**](https://wiki-power.com/es/STM32%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F)
+启动模式的详细介绍请见文章 [**STM32 的启动模式**](https://wiki-power.com/STM32%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F)
 
-En general, conectamos una resistencia de 10 K en serie con BOOT0 y BOOT1 es arbitrario. Si es necesario cambiar de modo, se puede diseñar de la siguiente manera:
+一般情况下，我们在 BOOT0 串接 10 K 的下拉电阻，BOOT1 任意即可。如果需要模式切换，那么可以参照以下的设计：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200605163537.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200605163537.png)
 
-## Gestión de depuración
+## 调试管理
 
-STM32 generalmente utiliza el protocolo SWJ para la descarga y depuración.
+STM32 一般使用 SWJ 协议进行下载调试。
 
-### Puerto de depuración SWJ
+### SWJ 调试端口
 
-El STM32F4 tiene una interfaz SWJ (SW/JTAG) integrada. Entre ellas, SW-DP tiene 2 pines (reloj + datos) y JTAG-DP tiene 5 pines, algunos de los cuales son compartidos. Para obtener más información, consulte el artículo [**Diferencias y conexiones entre SWD y JTAG**](https://wiki-power.com/es/SWD%E4%B8%8EJTAG%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB)
+STM32F4 内置 SWJ（SW/JTAG）接口。其中，SW-DP 是 2 引脚（时钟 + 数据），JTAG-DP 是 5 引脚，他们有些引脚是复用的。详细区别请见文章 [**SWD 与 JTAG 的区别与联系**](https://wiki-power.com/SWD%E4%B8%8EJTAG%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB)
 
-En STM32F4, la asignación de pines SWJ es la siguiente:
+在 STM32F4 中，SWJ 的引脚分配如下：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210529210858.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529210858.png)
 
-### Pull-up y pull-down internos de JTAG
+### JTAG 的内部上下拉
 
-Los pines JTAG no pueden estar en el aire (porque están conectados directamente a los disparadores utilizados para el control de depuración de modo), por lo que se integran en el chip para tirar hacia arriba y hacia abajo:
+JTAG 引脚不能悬空（因为他们直接连着用于模式调试控制的触发器），所以在芯片内部有集成了对他们的上下拉：
 
-- **JNTRST**: Pull-up interno
-- **JTDI**: Pull-up interno
-- **JTMS/SWDIO**: Pull-up interno
-- **TCK/SWCLK**: Pull-down interno
+- **JNTRST**：内部上拉
+- **JTDI**：内部上拉
+- **JTMS/SWDIO**：内部上拉
+- **TCK/SWCLK**：内部下拉
 
-Después de liberar el I/O de JTAG mediante software, se puede utilizar como un puerto I/O normal.
+软件释放 JTAG 的 I/O 后，可以作为普通的 I/O 口使用。
 
-### Diseño de hardware para conectar un conector JTAG estándar
+### 连接标准 JTAG 座的硬件设计
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210529211840.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529211840.png)
 
-## Diseño de referencia
+## 参考设计
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210529213723.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529213723.png)
 
-## Referencias y agradecimientos
+## 参考与致谢
 
 - [AN4488: Getting started with STM32F4xxxx MCU hardware development](https://www.st.com/content/ccc/resource/technical/document/application_note/76/f9/c8/10/8a/33/4b/f0/DM00115714.pdf/files/DM00115714.pdf/jcr:content/translations/en.DM00115714.pdf)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

@@ -1,48 +1,46 @@
-# BookJourney - Tienda de libros de segunda mano en miniatura
+# BookJourney - 二手书商城小程序
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/书程小驿.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/书程小驿.jpg)
 
-Repositorio del proyecto: [**linyuxuanlin/BookJourney**](https://github.com/linyuxuanlin/BookJourney)
+项目仓库：[**linyuxuanlin/BookJourney**](https://github.com/linyuxuanlin/BookJourney)
 
-Demo (escanea con WeChat para probar):
+Demo（微信扫码体验）：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/1.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/1.jpg)
 
-## Antecedentes
+## 背景
 
-Un amigo quería hacer un trabajo secundario vendiendo libros de segunda mano en su círculo de amigos de WeChat, así que me pidió que hiciera una miniatura de WeChat. Como estaba libre durante las vacaciones de verano, decidí practicar. La demanda era crear una miniatura de una tienda en línea, con información de libros nuevos que se publican regularmente, para que los compradores puedan elegir por sí mismos.
+朋友想搞些副业，做在微信朋友圈卖二手书，于是托我做一个微信小程序。正逢暑假闲着没事干，于是练练手。需求是搞一个商城类的小程序，定时上架新的书籍信息，让买家自行选购。
 
-## Desarrollo
+## 开发
 
-No quería reinventar la rueda, así que encontré un proyecto de código abierto bastante bueno para una miniatura de tienda en línea: [wechat-app-mall](https://github.com/EastWorld/wechat-app-mall), y lo modifiqué y agregué mi propio estilo. (La búsqueda global es muy útil). El estilo predeterminado de esta miniatura de código abierto no se ajustaba a mi estética. Lo que necesitaba era un diseño que pudiera enfocar la atención del usuario en el contenido que se muestra en una página simple. Después de muchas iteraciones, el estilo básico se ajustó a mis necesidades.
+不想自己造轮子，我发现了一个不错的商城类小程序的开源项目： [wechat-app-mall](https://github.com/EastWorld/wechat-app-mall) 于是在它的基础上，修改、添加自己想要的样式。（全局搜索很实用） 这个开源小程序原有的默认样式很不符合我的审美。我需要的效果，是能在简洁的页面上，把用户的专注聚焦在要展现的内容上。 后来，经过很多个版本的迭代，样式基本已经符合要求。
 
-En cuanto a la funcionalidad, eliminé una serie de cosas relacionadas con la negociación y el intercambio de recompensas, y solo dejé las funciones principales.
+功能上，我删去了与砍价、分享有赏有关的一系列乱七八糟的东西，只留下核心功能。
 
-Como no soy responsable de agregar nuevos productos, la edición de productos en el backend debe ser una interfaz gráfica. BookJourney utiliza el backend de [api factory](https://www.it120.cc/), lo que elimina la necesidad de construir su propio servidor y facilita la adición de nuevos productos por parte de los miembros del equipo. Sin embargo, los usuarios gratuitos tienen limitaciones de almacenamiento.
+因为后期商品上新不由我负责，所以后台商品编辑必须是图形化界面。BookJourney 用的是 [api 工厂](https://www.it120.cc/) 的后台，省去了自己搭建服务器的过程，也方便团队成员上架新的商品。相应地，免费用户有储存限制。
 
-## Evitar problemas
+## 避坑
 
-En el proceso de desarrollo de BookJourney, encontré muchos problemas. Por ejemplo, el problema del pago. El sentido común me dice que debería integrar WeChat Pay para que los usuarios puedan hacer pedidos fácilmente, pero WeChat ha eliminado la ventana de pago de WeChat Pay para los usuarios que se registran en una miniatura personal. (Aunque también considera la seguridad financiera del usuario). La única forma es registrarse en una cuenta empresarial, pero primero necesito una empresa. Después de investigar más, descubrí que no es fácil registrar una empresa. Necesitas encontrar una firma de contabilidad para representarte, tener una dirección de oficina, un contrato de libro rojo, ser revisado por un gerente de banco, el proceso de solicitud dura casi dos o tres meses, el costo es de casi mil yuanes, sin incluir varios cargos adicionales ... La solución es cambiar el botón de pedido directamente a "contactar al servicio al cliente". En este punto, los usuarios solo necesitan tomar una captura de pantalla en la página del "carrito de compras" y enviarla directamente a los miembros del equipo responsables del servicio al cliente para hacer un pedido.
+开发 BookJourney 的过程中，遇到的坑不少。 就比如支付的问题，常识告诉我应该接入微信支付，方便用户下单，但微信官方阉割掉了个人注册小程序的微信支付窗口。（虽说也考虑到用户的资金安全）唯一的方法是注册一个企业账户，但首先我得有个公司。 进一步了解，我发现注册一个公司似乎并不容易。找会计事务所代理，要有办公地址，红本合同，去银行被经理审核；申请时间接近两三个月；费用要近千元，还不包括各种杂七杂八的收费…… 解决方法是，把下单的按钮直接改为联系客服。此时，用户只需要在「购物车」页面截图，直接发给负责客服的团队成员，就能下单了。
 
-## Preguntas frecuentes
+## FAQ
 
-P: ¿Por qué se llama BookJourney?
-R: Originalmente tenía un nombre chino bonito llamado "书程小驿", pero descubrí que ya estaba ocupado cuando registré la miniatura, así que tuve que comprometerme.
+Q：为什么叫 BookJourney?  
+A：本来有个好听的中文名字叫「书程小驿」，但在注册小程序的时候发现已经被占用了，只好妥协。
 
-P: ¿Ganaste dinero?
-R: Ingresos totales de ganancias: ¥16.66 ...
+Q：赚到钱了吗？  
+A：总利润收入：¥16.66……
 
-## Conclusión
+## 总结
 
-Después del tiempo, este fue un proyecto fallido.
+经过了时间的证明，这是一个失败的项目。
 
-Al principio, no investigué cuidadosamente el mercado ni aclaré las necesidades de los usuarios, solo hice un producto que pensé que era genial. En el futuro, al hacer proyectos, debe prestar atención no solo a la tecnología, sino también al mercado y saber qué tipo de productos necesita el mercado.
+前期没有认真调研市场，没有理清用户的需求，而只是做出来一个自己认为很酷的产品。以后做项目要注意不能只专攻于技术，还要更多关注市场，知道市场需要一些什么样的产品。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
 - [EastWorld / wechat-app-mall](https://github.com/EastWorld/wechat-app-mall)
 
-> Dirección original del artículo: <https://wiki-power.com/>
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

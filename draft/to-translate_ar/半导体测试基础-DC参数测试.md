@@ -1,270 +1,298 @@
-# Fundamentos de prueba de semiconductores - Prueba de parámetros DC
+# 半导体测试基础 - DC 参数测试
 
-La prueba de parámetros DC mide principalmente algunas características de un solo pin en el dispositivo. Para la mayoría de los parámetros DC, esencialmente se está midiendo la resistividad del semiconductor, y la ley de Ohm se utiliza para explicar la resistividad. Si se necesita verificar la viabilidad del proceso de prueba DC, también se puede utilizar un resistor para equivaler al DUT y descartar problemas fuera del DUT. Por ejemplo, para el parámetro VOL que aparece en la hoja de especificaciones del chip:
+DC 参数测试，测的主要是器件上单个引脚的一些特性。对大多数的 DC 参数来说，实质上是在测半导体的电阻率，而解释电阻率用的是欧姆定律。如需验证 DC 测试流程的可行性，也可以借电阻器来等效 DUT，以排除 DUT 之外的问题。比方说，在芯片规格书里出现的参数 VOL：
 
-| Parámetro | Descripción         | Condiciones de prueba    | Min | Max | Unidades |
-| --------- | ------------------ | ----------------------- | --- | --- | -------- |
-| VOL       | Voltaje de salida   | VDD = Min, IOL = 8.0mA   |     | 0.4 | V        |
+| Parameter | Description        | Test Conditions        | Min | Max | Units |
+| --------- | ------------------ | ---------------------- | --- | --- | ----- |
+| VOL       | Output LOW Voltage | VDD = Min, IOL = 8.0mA |     | 0.4 | V     |
 
-Podemos ver que el valor máximo de VOL es 0.4V, IOL es 8mA, lo que significa que cuando se produce una corriente de 8mA en una situación de nivel bajo lógico de salida, debe ser a un voltaje no superior a 0.4V, por lo que podemos concluir que la resistencia máxima del dispositivo no supera los 50Ω. Por lo tanto, se puede utilizar una resistencia no superior a 50Ω para reemplazar el DUT y verificar el proceso de prueba. Nuestro objetivo es centrar el problema en el DUT, no en problemas fuera del DUT.
+我们可以看出，VOL 最大值为 0.4V，IOL 为 8mA，即当输出逻辑低电平的情况下，必须是在不大于 0.4V 的电压下产生 8mA 的电流，所以我们可以得出，这个器件的最大电阻不超过 50Ω。所以，可以借用不大于 50Ω 的电阻替代 DUT，以验证测试流程。我们的目的是把问题聚焦在 DUT 上，而非 DUT 以外的问题。
 
-## IDD y Gross IDD
+## IDD & Gross IDD
 
-IDD representa la corriente (I) desde el drenador (D) hasta el drenador (D) en un circuito CMOS, y si es un circuito TTL, se llama ICC (corriente desde el colector hasta el colector). Gross IDD se refiere a la corriente total que fluye hacia el pin VDD (se puede probar en la etapa de prueba de Wafer Probe o producto terminado). IDD se utiliza para verificar si la corriente total del chip cumple con las especificaciones, generalmente se debe verificar la corriente en el consumo de energía mínimo y la frecuencia de trabajo máxima.
+IDD 表示的是 CMOS 电路中从漏极（D）到漏极（D）的电流（I），如果是 TTL 电路则称为 ICC（从集电极到集电极的电流）。Gross IDD 指的是流入 VDD 管脚的总电流（在 Wafer Probe 或成品阶段都可测试）。IDD 是看芯片总电流会不会超标，一般要看最低功耗和最大工频下的电流。
 
-La prueba de Gross IDD se realiza para determinar si se puede continuar probando el DUT. Por lo general, esta prueba se realiza inmediatamente después de la prueba del sistema operativo y es la primera prueba después de que el DUT se enciende. Si la prueba de Gross IDD no pasa (como una corriente demasiado grande), entonces no se puede continuar probando.
+测试 Gross IDD 是为了判断能否继续测 DUT。通常这个测试紧接 OS 测试，是 DUT 通电后的第一个测试。如果 Gross IDD 测试不通过（如电流过大），那就不能接着测下去了。
 
-Durante la etapa de prueba de Gross IDD, aún no se sabe si el preprocesamiento se puede realizar normalmente, por lo que se debe relajar la especificación de IDD. Después de que la prueba de Gross IDD pase, se puede definir con precisión la corriente de especificación de IDD mediante el programa de preprocesamiento.
+在 Gross IDD 测试阶段时，还不知道预处理是否可以正常进行，所以需要放宽 IDD 规范。待 Gross IDD 测试通过之后进行预处理程序，才可以准确定义出 IDD 规范电流。
 
-La prueba de Gross IDD debe comenzar con un reinicio para establecer todos los pines de entrada en un nivel bajo / alto. Por lo general, VIL se establece en 0V y VIH se establece en VDD, y todos los pines de salida están en carga libre (para evitar la corriente de fuga flotante que aumenta IDD). El diagrama de prueba es el siguiente:
+Gross IDD 测试需要先通过重置，以将所有输入引脚设低 / 高电平，通常 VIL 设置为 0V、VIH 设置为 VDD，所有输出引脚空载（防止悬空产生漏电流，使 IDD 变大）。测试的示意图如下：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220728162655.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220728162655.png)
 
-Algunos puntos a tener en cuenta:
+需要注意的事项：
 
-- Se debe establecer un pinza de corriente para evitar dañar el equipo de prueba debido a una corriente demasiado grande.
-- Si hay corriente negativa, también significa que la prueba no pasa.
-- Si hay un error en la prueba, primero se debe descartar el problema del equipo de prueba. Si se ejecuta la prueba con el zócalo vacío, la corriente debería ser 0, de lo contrario, significa que otros dispositivos fuera del DUT también están consumiendo corriente.
+- 需要设置电流钳，防止电流过大损坏测试设备。
+- 如果出现负电流，也代表测试不通过。
+- 如果测试发生错误，可以先排除是测试设备的问题，不加芯片空着 socket 跑测试，其电流应该是 0，否则意味着 DUT 以外的设备也在消耗电流。
 
-### Prueba IDD - Método estático
+### IDD 测试 - 静态法
 
-La prueba IDD estática mide la corriente total que fluye hacia el pin VDD y generalmente requiere que el DUT funcione en modo de consumo de energía mínimo. La diferencia entre la prueba IDD estática y la prueba de Gross IDD es que la prueba de Gross IDD aún no tiene un programa de preprocesamiento y es una prueba aproximada, mientras que la prueba IDD estática ya tiene un modo de preprocesamiento y se realiza después del preprocesamiento.
+静态 IDD 测试，测量的是流入 VDD 引脚的总电流一般需要 DUT 运行在最低功耗的模式下。静态 IDD 与 Gross IDD 测试的区别是，Gross IDD 还没有预处理程序，只是一种粗测，而静态 IDD 测试是已有预处理模式，通过预处理后再进行的测试。
 
-Por ejemplo, la siguiente tabla es una muestra de parámetros IDD:
+举个例子，下表是一个 IDD 参数样本：
 
-| Parámetro  | Descripción          | Condiciones de prueba              | Min | Max | Unidades |
-| ---------- | -------------------- | --------------------------------- | --- | --- | -------- |
-| IDD estática | Corriente de alimentación | VDD = 5.25V, entradas = VDD, Iout=0 |     | +22 | µA    |
+| Parameter  | Description          | Test Conditions                   | Min | Max | Units |
+| ---------- | -------------------- | --------------------------------- | --- | --- | ----- |
+| IDD Static | Power Supply Current | VDD = 5.25V, inputs = VDD, Iout=0 |     | +22 | µA    |
 
-El diagrama de prueba IDD estática es el siguiente:
+IDD 静态测试的示意图如下：
 
-El proceso de prueba es el siguiente:
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220728162341.png)
 
-1. Configure el DUT con el vector de prueba para consumir la corriente mínima y mantenerse en estado estático.
-2. Verifique el valor de corriente de los pines
-   - Mayor que IDD Spec: Fail
-   - Otro rango: Pass
+测试流程如下：
 
-Durante la prueba, generalmente se requiere un retraso entre la alimentación y la toma de muestras para permitir que los capacitores parásitos se carguen y evitar interferencias.
+1. 用测试矢量将 DUT 设置为消耗电流最少、保持在静态的状态。
+2. 检测引脚电流值
+   - 高于 IDD Spec：Fail
+   - 其他区间：Pass
 
-Si necesita probar la corriente estática en diferentes lógicas, puede medir el parámetro IDDQ para aumentar la cobertura de prueba (IDDQ mide la corriente en un estado lógico estático, como probar un estado con algunos MOSFET abiertos).
+测试时，通常需要在上电与采样之间加延时，让寄生电容充满电，避免造成干扰。
 
-### Prueba IDD - Método dinámico
+如果需要测试不同逻辑下的静态电流，可以测 IDDQ 参数，增加测试覆盖率（IDDQ 是测某个静止逻辑状态下的电流，比如说开一部分 MOS 管进行某个状态下的测试）。
 
-El propósito de la prueba dinámica IDD es medir la corriente consumida por el DUT durante la **ejecución dinámica de la función** (generalmente a la máxima frecuencia del DUT) para garantizar que no supere el valor nominal.
+### IDD 测试 - 动态法
 
-Por ejemplo, la siguiente tabla es una muestra de parámetros IDD dinámicos:
+IDD 动态测试的目的，是测试 DUT 在 **动态执行功能** 时（通常为 DUT 最大工频）消耗的电流，确保其不会超过标称值。
 
-| Parámetro   | Descripción           | Condiciones de prueba                            | Min | Max | Unidades |
-| ----------- | --------------------- | ----------------------------------------------- | --- | --- | ------- |
-| IDD Dinámico | Corriente de suministro | VDD = 5.25V (comercial), f = f_max (66MHz) |     | +18 | mA      |
+举个例子，下表是一个动态 IDD 参数样本：
 
-Diagrama de prueba:
+| Parameter   | Description          | Test Conditions                             | Min | Max | Units |
+| ----------- | -------------------- | ------------------------------------------- | --- | --- | ----- |
+| IDD Dynamic | Power Supply Current | VDD = 5.25V（commercial）, f=f_max（66MHz） |     | +18 | mA    |
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220728171447.png)
+测试的示意图：
 
-El proceso de prueba es similar al método estático.
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220728171447.png)
+
+测试流程与静态法相似。
 
 ## VOL/IOL & VOH/IOH
 
-VOL representa la limitación de voltaje máximo cuando se produce una salida de nivel bajo (L) (no se reconocerá como lógica 1). IOL representa la capacidad de conducción de corriente de drenaje (I, sink) cuando se produce una salida de nivel bajo (L). Juntos miden la impedancia del pin del buffer cuando se produce una salida de nivel bajo para garantizar que pueda absorber un valor constante de corriente en el voltaje de salida adecuado.
+VOL 表示低电平（L）输出（O）时的最高电压（V）限制（不会被识别成逻辑 1）。IOL 表示低电平（L）输出（O）时灌电流（I，sink）的驱动能力。它们共同衡量的是引脚 Buffer 在输出低电平时的阻抗，保证在适当输出的电压下能吸收恒定的电流值。
 
-VOH representa la limitación de voltaje mínimo cuando se produce una salida de nivel alto (H) (no se reconocerá como lógica 0). IOH representa la capacidad de conducción de corriente de fuente (I, source) cuando se produce una salida de nivel alto (H). Juntos miden la impedancia del buffer cuando se produce una salida de nivel alto para garantizar que pueda producir un valor constante de corriente en el voltaje de salida adecuado.
+VOH 表示高电平（H）输出（O）时的最低电压（V）限制（不会被识别成逻辑 0）。IOL 表示高电平（H）输出（O）时拉电流（I，source）的驱动能力。它们共同衡量的是 Buffer 在输出高电平时的阻抗，保证在适当输出的电压下能输出恒定的电流值。
 
-Por ejemplo, la siguiente tabla muestra los parámetros VOL/IOL y VOH/IOH de una RAM estática de 256 x 4:
+举个例子，下表是 256 x 4 Static RAM 的 VOL/IOL & VOH/IOH 参数：
 
-| Parámetro | Descripción         | Condiciones de prueba         | Min | Max | Unidades |
-| --------- | ------------------- | ----------------------------- | --- | --- | ------- |
-| VOL       | Voltaje de salida bajo | VDD = 4.75V, IOL = 8.0mA  |     | 0.4 | V       |
-| VOH       | Voltaje de salida alto | VDD = 4.75V, IOH = -5.2mA | 2.4 |     | V       |
+| Parameter | Description         | Test Conditions           | Min | Max | Units |
+| --------- | ------------------- | ------------------------- | --- | --- | ----- |
+| VOL       | Output LOW Voltage  | VDD = 4.75V, IOL = 8.0mA  |     | 0.4 | V     |
+| VOH       | Output HIGH Voltage | VDD = 4.75V, IOH = -5.2mA | 2.4 |     | V     |
 
-La prueba de VOL/IOL y VOH/IOH se realiza principalmente para verificar si VOL/VOH está en el nivel correcto cuando se aplica corriente de fuente o drenaje (si puede alcanzar el umbral de voltaje en la corriente de salida adecuada). Hay dos métodos de prueba: estático y dinámico. **El método estático aplica corriente a los pines y luego mide el voltaje uno por uno; el método dinámico proporciona VREF durante la prueba de función para formar una corriente de carga dinámica y luego mide el voltaje.**
+对 VOL/IOL & VOH/IOH 的测试，主要是验证当施加拉或灌电流时，VOL/VOH 是否处于正确的电平（在输出一定的电流下能不能达到电平阈值）。测试方法有静态法与动态法。**静态法是对引脚施加电流，再逐一测电压；动态法是在功能测试中提供 VREF，形成动态负载电流再测电压的。**。
 
-### Prueba VOL/IOL - Método estático en serie
+### VOL/IOL 测试 - 串行静态法
 
-El diagrama de prueba de VOL/IOL utilizando el método estático en serie es el siguiente:
+使用串行静态法测量 VOL/IOL 的测试示意图如下：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220728150542.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220728150542.png)
 
-El proceso de prueba es el siguiente:
+测试流程如下：
 
-## Pruebas de VOH/IOH - Método estático en serie
+1. 需要先通过预处理，将待测引脚设置为低电平输出。
+2. 向引脚施加恒定的 IOH，等待 1-5 毫秒再测量（在 PMU 设 delay）。
+3. 检测引脚电压
+   - 高于 VOL（+0.4V）：Fail
+   - 其他区间：Pass
 
-El diagrama de prueba para medir VOH/IOH utilizando el método estático en serie es el siguiente:
+需要注意的事项：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220728143124.png)
+- IOL 是一个正电流值，因为它是从 PMU 流向 DUT。
+- 因为施加的是恒流，所以需要设置电压钳，如果测出电压比钳位电压还低，有可能是逻辑设成了高电平，触发了对电源保护二极管正偏。
+- VDDmin 参数表示能使 DUT 正常进行测试的最小供电电压，再小将无法得出准确的测试结果。
 
-El proceso de prueba es el siguiente:
+### VOH/IOH 测试 - 串行静态法
 
-1. Primero, se debe configurar el pin de prueba como una salida de nivel alto mediante preprocesamiento.
-2. Se aplica IOH constante al pin y se espera de 1 a 5 milisegundos antes de medir (según la configuración de delay en el PMU).
-3. Se mide el voltaje del pin.
-   - Si es mayor que VOL (+0.4V): Fail
-   - En cualquier otro rango: Pass
+使用串行静态法测量 VOH/IOH 的测试示意图如下：
 
-Consideraciones importantes:
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220728143124.png)
 
-- IOL es un valor de corriente positiva, ya que fluye desde el PMU hacia el DUT.
-- Debido a que se aplica una corriente constante, se debe configurar un clamp de voltaje. Si se mide un voltaje más bajo que el voltaje del clamp, es posible que la lógica del pin se haya configurado como un nivel alto, lo que activa el diodo de protección de la fuente.
-- El parámetro VDDmin indica el voltaje mínimo de suministro de energía que permite que el DUT se pruebe correctamente. Si es menor, no se pueden obtener resultados de prueba precisos.
+测试流程如下：
+
+1. 需要先通过预处理，将待测引脚设置为高电平输出。
+2. 向引脚施加恒定的 IOH，等待 1-5 毫秒再测量（在 PMU 设 delay）。
+3. 检测引脚电压
+   - 低于 VOH（+2.4V）：Fail
+   - 其他区间：Pass
+
+需要注意的事项：
+
+- 因为 IOL 是从 PMU 流向 DUT，所以它是一个负值。
+- 因为施加的是恒流，所以需要设置电压钳，如果测出电压比钳位电压还高，有可能是引脚逻辑设成了低电平，触发了对地保护二极管正偏。
+- VDDmin 参数表示能使 DUT 正常进行测试的最小供电电压，再小将无法得出准确的测试结果。
 
 ## IIL/IIH
 
-IIL se refiere a la corriente máxima de pull-up permitida (I, source, desde VSS del DUT a través del pin hacia el exterior) cuando la lógica del pin de entrada (I) es un nivel bajo (L). Esto se utiliza para verificar si la corriente de fuga del pin al suministro de energía está dentro de los límites y para verificar el grado de aislamiento. IIH se refiere a la corriente máxima de pull-down permitida (I, sink, desde VDD del DUT a través del pin hacia el exterior) cuando la lógica del pin de entrada (I) es un nivel alto (H). Por ejemplo, los parámetros IIL y IIH para una RAM estática de 256 x 4 son los siguientes:
+IIL 指的是输入引脚（I）逻辑为低电平（L）时，允许的最大拉电流（I，source，从外部经引脚往 DUT 的 VSS 漏），用来看引脚对电源的漏电流会不会超标，也是看隔离的程度，IIH 指的是输入引脚（I）逻辑为高电平（H）时，允许的最大灌电流（I，sink，从 DUT 的 VDD 经引脚往外漏）。举个例子，下表是 256 x 4 Static RAM 的 IIL 和 IIH 参数：
 
-| Parámetro | Descripción         | Condiciones de prueba | Mínimo | Máximo | Unidades |
-| --------- | ------------------ | --------------------- | ------ | ------ | -------- |
-| IIL, IIH  | Corriente de carga de entrada | Vss ≤ Vin ≤ VDD(5.25V) | -10 | +10 | µA    |
+| Parameter | Description        | Test Conditions        | Min | Max | Units |
+| --------- | ------------------ | ---------------------- | --- | --- | ----- |
+| IIL, IIH  | Input Load Current | Vss ≤ Vin ≤ VDD(5.25V) | -10 | +10 | µA    |
 
-IIL mide la resistencia del pin de entrada al suministro de energía VDD; IIH mide la resistencia del pin de entrada a VSS. Esta prueba se utiliza para garantizar que la impedancia de entrada cumpla con los requisitos de diseño y que la corriente de entrada no exceda los límites. IIL/IIH se pueden medir mediante métodos en serie, paralelos o combinados, así como mediante pruebas de función. El método en serie prueba los pines uno por uno, lo que es preciso pero relativamente lento.
+IIL 衡量的是输入引脚到 VDD 的电阻值；IIH 衡量的是输入引脚到 VSS 的电阻值。该测试是为了确保输入阻抗满足设计需求、输入电流不会超标。IIL/IIH 可用串行 / 并行 / 合并法测试，也可用功能测试的方法。串行法对引脚一个一个测试，准确但相对耗时间。
 
-Además, las pruebas de IIL/IIH generalmente solo se pueden realizar en pines de entrada pura. Si se encuentra un pin bidireccional, se debe agregar una carga de salida para estabilizar el nivel alto o bajo y evitar que se genere corriente en los dispositivos de protección, lo que afectaría los resultados de la prueba.
+另外，IIL/IIH 测试通常仅能在纯输入引脚上执行。如果遇到双向引脚，则需要加输出负载，将其电平稳定拉高或拉低，避免在保护器件上产生电流，影响测试结果。
 
-### Pruebas de IIL/IIH - Método estático en serie
+### IIL/IIH 测试 - 串行静态法
 
-El diagrama de prueba para medir IIL en pines de entrada utilizando el método estático en serie es el siguiente:
+使用串行法测试输入引脚 IIL 的示意图如下：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220729100620.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220729100620.png)
 
-El proceso de prueba es el siguiente:
+测试流程如下：
 
-1. Primero, se debe suministrar la fuente de alimentación VDDmax (peor caso) al DUT.
-2. Se configuran todos los pines de entrada del DUT en nivel alto (VIH).
-3. Se baja un solo pin de entrada a VSS utilizando el PMU.
-4. Se espera de 1 a 5 microsegundos y se mide el valor de corriente.
-   - Si es menor que IIL (-10µA): Fail (la corriente que fluye hacia el DUT excede los límites)
-   - En cualquier otro rango: Pass
+1. 首先要供 VDDmax（最差情况）的电源给 DUT。
+2. 将 DUT 所有输入引脚设高电平（VIH）。
+3. 使用 PMU 将单个输入引脚拉低到 VSS。
+4. 等待 1~5 微秒，检测电流值。
+   - 低于 IIL（-10µA）：Fail（灌进 DUT 的电流超标）
+   - 其他区间：Pass
 
-El diagrama de prueba para medir IIH en pines de entrada utilizando el método estático en serie es el siguiente:
+使用串行法测试输入引脚 IIH 的示意图如下：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220729100739.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220729100739.png)
 
-El proceso de prueba es el siguiente:
+测试流程如下：
 
-# Pruebas de IIL/IIH
+1. 首先要供 VDDmax 的电源给 DUT。
+2. 将 DUT 所有输入引脚设低电平（VIL）。
+3. 使用 PMU 将单个输入引脚拉高到 VDDmax。
+4. 等待 1~5 微秒，检测电流值。
+   - 高于 IIH（+10µA）：Fail（流出 DUT 的电流超标）
+   - 其他区间：Pass
 
-## Método estático en serie
+### IIL/IIH 测试 - 并行静态法
 
-1. Proporcionar la fuente de alimentación VDDmax al DUT.
-2. Establecer todos los pines de entrada del DUT en nivel bajo (VIL).
-3. Usar PMU para elevar un solo pin de entrada a VDDmax.
-4. Esperar de 1 a 5 microsegundos y medir la corriente.
-   - Si es mayor que IIH (+10µA): Fail (la corriente que sale del DUT es demasiado alta)
-   - En otros intervalos: Pass
+在一些测试系统上，能对漏电流进行并行测量（Parallel Test Method）。并行测漏电流是用多个 PMU 对多个 pin 分别进行测量，所有输入引脚都被强制拉高，并且同时并行测量每个引脚的电流，随后将测试结果与标称值做比较得出结论。
 
-## Método estático en paralelo
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220729103317.png)
 
-En algunos sistemas de prueba, se puede medir la corriente de fuga en paralelo (Método de prueba paralela). La medición de corriente de fuga en paralelo implica la medición de múltiples pines con múltiples PMU, donde todos los pines de entrada se elevan a un nivel alto y se mide la corriente de cada pin en paralelo. Luego, los resultados se comparan con los valores nominales para obtener una conclusión.
+1. 首先要供 VDDmax 的电源给 DUT。
+2. 使用多个 PMU 对每个输入引脚强制拉高到 VDDmax（测 IIH）。
+3. 等待 1~5 微秒，检测电流，对比得出结论。
+4. 随后再拉低至 VSS，重复以上步骤测 IIL。
 
-1. Proporcionar la fuente de alimentación VDDmax al DUT.
-2. Usar múltiples PMU para elevar cada pin de entrada a VDDmax (medir IIH).
-3. Esperar de 1 a 5 microsegundos y medir la corriente para obtener una conclusión.
-4. Luego, bajar a VSS y repetir los pasos anteriores para medir IIL.
+并行法的特点是可以同时测量每个引脚单个电流，快速完成 IIL/IIH 测试；缺点是输入引脚间的泄露更难检测到，因为所有输入都保持在相同的水平。
 
-La característica del método en paralelo es que se pueden medir rápidamente las corrientes individuales de cada pin de entrada. La desventaja es que es más difícil detectar las fugas entre los pines de entrada, ya que todos los pines se mantienen en el mismo nivel.
+### IIL/IIH 测试 - 合并静态法
+
+合并测试（Ganged Method）指的是将所有输入引脚合并为一个引脚，用一个 PMU 测漏电流的总和。测试示意图如下：
+
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220729104449.png)
+
+组合测试方法与以上类似。其电流总限额是单个引脚的标称值，如果测试结果超限，则必须换回串行测试重测，这种测试对 CMOS 器件（高阻抗输入）测试效果比较好。
 
 ## IOZL/IOZH
 
-La corriente de alta impedancia IOZ se refiere a la corriente de fuga (I) de un pin de salida (O) en estado de alta impedancia (Z). IOZL se refiere a la corriente de fuga en el estado de nivel bajo (L) del pin, mientras que IOZH se refiere a la corriente de fuga en el estado de nivel alto (H) del pin. Se utiliza para verificar si la corriente de fuga está dentro de los límites cuando se apaga el pin de salida de doble dirección o de alta impedancia.
+高阻电流 IOZ 指输出引脚（O）高阻态（Z）下的漏电流（I）。其中，IOZL 指引脚低电平（L）状态时的漏电流；IOZH 指高电平（H）状态时的漏电流。用来看引脚关断时漏电流会不会超标。
 
-Este parámetro garantiza que los pines de salida bidireccionales o de alta impedancia se puedan apagar correctamente (estado de alta impedancia de salida). IOZL mide la resistencia del pin a VDD en estado de alta impedancia de salida, mientras que IOZH mide la resistencia del pin a VSS. Por lo general, se expresa en las especificaciones de la siguiente manera:
+此参数是确保 **双向或高阻输出引脚能正常关断（输出高阻态）**。IOZL 测的是输出高阻状态时，引脚对 VDD 的阻值；IOZH 测的是引脚对 VSS 的阻值。通常在规格书内是这么表示的：
 
-| Parámetro | Descripción | Condiciones de prueba | Mínimo | Máximo | Unidades |
+| Parameter | Description           | Test Conditions                         | Min  | Max  | Units |
 | --------- | --------------------- | --------------------------------------- | ---- | ---- | ----- |
-| IOZ | Corriente de salida de alta impedancia | VSS ≤ Vout ≤VDD(5.25V), Salida desactivada | -2.0 | +2.0 | µA |
+| IOZ       | Output Current High-Z | VSS ≤ Vout ≤VDD(5.25V), Output Disabled | -2.0 | +2.0 | µA    |
 
-## Método estático en serie
+### IOZL/IOZH 测试 - 串行静态法
 
-1. Proporcionar la fuente de alimentación VDD al dispositivo.
-2. Establecer los pines del dispositivo en estado de alta impedancia y usar PMU para forzar el pin a un estado alto o bajo.
-3. Medir la corriente del pin.
-   - Si es menor que -IOZ (-2µA): Fail
-   - Si es mayor que +IOZ (+2µA): Fail
-   - En otros intervalos: Pass
+串行静态测试 IOZL/IOZH 的示意图如下：
 
-La ventaja de la prueba en serie es que se puede medir con precisión la corriente de cada pin. La desventaja es que es lenta y requiere la configuración de la corriente de pinza.
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220807202447.png)
 
-## Método estático en paralelo
+测试流程如下：
 
-El método estático en paralelo implica el uso de múltiples PMU para medir múltiples pines en paralelo. No se profundizará en este método aquí, pero su ventaja es la velocidad.
+1. 首先需要给器件供 VDD 的电源。
+2. 将器件引脚预设为高阻状态，使用 PMU 强制将引脚拉高 / 拉低。
+3. 测量引脚的电流值
+   - 低于 -IOZ（-2µA）：Fail
+   - 高于 +IOZ（+2µA）：Fail
+   - 其他区间：Pass
 
-La pinza de voltaje de entrada VI se refiere al voltaje medido en el pin de entrada (I) de un dispositivo TTL (no CMOS) cuando se aplica una corriente negativa (corriente de extracción) en el pin. El propósito de esta prueba es **verificar la integridad del diodo de pinza entre el emisor del transistor y la tierra**. Se representa en las especificaciones de la siguiente manera:
+串行测试的优点是可以准确测量单个引脚的电流值，缺点是慢。另外，此测试需要设置钳位电流。
 
-| Parámetro | Descripción           | Condiciones de prueba   | Mín | Máx  | Unidades |
-| --------- | --------------------- | ----------------------- | --- | ---- | -------- |
-| VI        | Voltaje de pinza de entrada | VCC = Min, Iin = -18mA |     | +1.5 | V        |
+### IOZL/IOZH 测试 - 并行静态法
 
-### Prueba VI - Método estático en serie
+并行静态法即多个 PMU 同时对多个引脚进行，此处不多赘述，其优点是快。
 
-La prueba VI estática en serie se realiza de la siguiente manera:
+## VI（Input Clamp，输入电压钳）
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220729145425.png)
+输入电压钳 VI 指的是当在 TTL 器件（非 CMOS）输入引脚（I）上施加负电流（抽取电流）时，在引脚上测得的电压（V）。此测试的目的是 **验证三极管发射极和地之间钳位二极管的完整性**。它在规格书上是这样表示的：
 
-El proceso de prueba es el siguiente:
+| Parameter | Description         | Test Conditions        | Min | Max  | Units |
+| --------- | ------------------- | ---------------------- | --- | ---- | ----- |
+| VI        | Input Clamp Voltage | VCC = Min, Iin = -18mA |     | +1.5 | V     |
 
-1. Asegurarse de que es un pin de entrada de un dispositivo TTL y suministrar energía a VCCmin.
-2. Después de configurar la pinza de voltaje, utilizar PMU para extraer una corriente de -15mA~-20mA.
-3. Medir el voltaje en el pin:
-   - Por debajo de VI (-1.5V): Fallo
-   - En cualquier otro rango: Aprobado
+### VI 测试 - 串行静态法
 
-## IOS (Corriente de cortocircuito de salida)
+串行静态法测 VI，测试示意图如下：
 
-La corriente de cortocircuito de salida indica la corriente (I) generada en el pin de salida (O) cuando se produce un cortocircuito (S). El propósito es **medir la impedancia de salida cuando el pin de salida está en un estado alto pero se cortocircuita a cero voltios, para asegurarse de que la corriente de salida no sea demasiado alta en las peores condiciones de carga, y también indica la corriente máxima instantánea que el pin DUT puede proporcionar para cargar la carga capacitiva, lo que se puede utilizar para calcular el tiempo de subida**. IOS se representa en las especificaciones de la siguiente manera:
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220729145425.png)
 
-| Parámetro | Descripción                  | Condiciones de prueba                                                                 | Mín  | Máx  | Unidades |
-| --------- | ---------------------------- | ----------------------------------------------------------------------------------- | ---- | ---- | -------- |
-| IOS       | Corriente de cortocircuito de salida | Vout = 0V, VDD = 5.25V, \*Solo cortocircuitar una salida a la vez durante no más de 1 segundo | -85  | -30  | mA       |
+测试流程如下：
 
-### Prueba IOS - Método estático en serie
+1. 首先要确保这是个 TTL 器件的输入引脚，然后供 VCCmin 的电源。
+2. 在设置了电压钳后，使用 PMU 抽取 -15mA~-20mA 的电流。
+3. 测量引脚上的电压值
+   - 低于 VI（-1.5V）：Fail
+   - 其他区间：Pass
 
-La prueba IOS estática en serie se realiza de la siguiente manera:
+## IOS（短路输出电流）
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220729152549.png)
+短路输出电流表示的是当输出引脚（O）在短路条件（S）下产生的电流（I）。目的是 **衡量当引脚输出高电平，但被短路至零电压时的输出阻抗，确保在最坏的负载条件下，输出电流也不会太大**；也表示了 DUT 引脚可提供容性负载充电的最大瞬时电流，可据此计算上升时间。IOS 在规格书中是这样表示的：
 
-El proceso de prueba es el siguiente:
+| Parameter | Description                  | Test Conditions                                                                  | Min | Max | Units |
+| --------- | ---------------------------- | -------------------------------------------------------------------------------- | --- | --- | ----- |
+| IOS       | Output Short Circuit Current | Vout = 0V, VDD = 5.25V, \*Short only 1 output at a time for no longer than 1 sec | -85 | -30 | mA    |
 
-1. Suministrar energía a VDDmax, preparar el dispositivo para que el pin de salida tenga un estado alto.
-2. Utilizar PMU para bajar el pin a 0V, medir la corriente de salida y compararla con el valor nominal para obtener una conclusión.
+### IOS 测试 - 串行静态法
 
-En la prueba de IOS, se necesita una lógica razonable para evitar el cambio térmico. En primer lugar, se debe configurar PMU en el modo de medición de voltaje de corriente cero forzado, conectarlo a la salida DUT, medir y guardar el voltaje VOH de DUT, luego desconectarlo y configurar PMU para subir a VOH justo, y luego volver a conectar DUT (en este momento, ambos extremos tienen el mismo voltaje de VOH), y luego bajar PMU a 0V para medir el valor de corriente. Después de completar la medición, PMU debe volver a subir a VOH antes de desconectarlo. De esta manera, se puede garantizar que cuando el relé cambia de estado, los voltajes en ambos extremos sean consistentes.
+测试示意图如下：
 
-Factores que pueden causar una prueba fallida:
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220729152549.png)
 
-- **Exceder el límite superior**
-  - La impedancia de salida es demasiado alta, lo que resulta en una corriente absoluta insuficiente.
-  - La abrazadera en sí tiene resistencia.
-  - No se ha realizado el pretratamiento correcto.
-- **Por debajo del límite inferior**
-  - La impedancia de salida es demasiado baja, lo que resulta en una corriente absoluta demasiado alta.
+测试流程如下：
 
-Algunos pines de entrada pueden tener una estructura activa de pull-up o pull-down, lo que requiere garantizar que la ruta de resistencia de pull-up/down del buffer de entrada esté funcionando correctamente. Solo se puede probar en serie, ya que la estructura de pull-up/down interna de diferentes pines puede ser diferente. Diagrama esquemático de la estructura del pin:
+1. 供 VDDmax 的电源，对器件预处理，使得引脚输出高电平。
+2. 用 PMU 将引脚拉低至 0V，测量输出电流并与标称值对比，得出结论。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220729130655.png)
+在对 IOS 的测试中，需要有合理的逻辑以避免热切换。需要首先将 PMU 设置为强制零电流的电压测量模式，连接到 DUT 输出，测量并保存 DUT 的 VOH 电压，随后断开连接并设定 PMU 为拉高至刚刚的 VOH 电压，然后重新连接 DUT（此时两端电压都是 VOH），随后再让 PMU 拉低为 0V，测量电流值。测量完成后，PMU 要恢复拉高到 VOH 才能断开连接。这样可以确保继电器在开关切换时，两端的电压是一致的。
 
-## Capacidad de ventilador de salida (Output Fanout)
+导致测试不通过的因素：
 
-La capacidad de ventilador (Fanout) se refiere a la capacidad del pin de salida para conducir varios pines de entrada según sus parámetros de voltaje y corriente. Es decir, la capacidad de conducción del pin es un indicador de cuántos pines de entrada puede conducir un pin de salida.
+- **超过上限值**
+  - 输出阻抗太高，导致电流绝对值不足。
+  - 夹具本身有电阻。
+  - 没有经过正确的预处理。
+- **低于下限值**
+  - 输出阻抗太低，导致电流绝对值过大。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220729132621.png)
+## Resistive Inputs（上下拉阻性输入）
 
-Como se muestra en la figura anterior, esta salida TTL puede elevar aproximadamente 17 pines de entrada o bajar 30 pines de entrada. En las especificaciones del pin, los parámetros se expresan de la siguiente manera:
+有些输入引脚可能有主动上拉、下拉结构，需要保证 **输入 Buffer 的上下拉电阻路径正常**。只能串行测试，因为不同引脚内部上下拉结构可能不一样。引脚结构的示意图：
 
-| Parámetro | Descripción             | Condiciones de prueba       | Mínimo | Máximo | Unidades |
-| --------- | ----------------------- | --------------------------- | ------ | ------ | -------- |
-| VOH       | Voltaje alto de salida   | VCC = 4.75V, IOH = -2.6mA    | 2.4    |        | V        |
-| VOL       | Voltaje bajo de salida   | VCC = 4.75V, IOH = 24mA      |        | 0.4    | V        |
-| IIL       | Corriente de carga baja de entrada | Vin = 0.4V         | -800   |        | µA       |
-| IIH       | Corriente de carga alta de entrada | Vin = 2.4V         |        | 150    | µA       |
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220729130655.png)
 
-La capacidad de ventilador varía mucho entre los dispositivos TTL y CMOS, ya que la impedancia de entrada de CMOS es alta, teóricamente una salida CMOS puede conducir cualquier número de entradas CMOS. Pero los pines de entrada CMOS tienen capacitancia parásita, cuanto más se conectan las entradas, mayor es la capacitancia, lo que produce un efecto de carga y descarga de la capacitancia al cambiar entre los niveles alto y bajo, lo que produce una demora.
+## Output Fanout（输出扇出能力）
 
-## Referencias y agradecimientos
+扇出（Fanout）能力是指输出引脚根据其电压电流参数，驱动多个输入引脚的能力。也就是 **引脚的带驱能力，是衡量一个输出引脚可以带得动多少个输入引脚的指标**。
 
-- "The Fundamentals Of Digital Semiconductor Testing"
-- "DC Test Theory"
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220729132621.png)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+如上图，这个 TTL 输出可以拉高大约 17 个输入引脚，或者拉低 30 个输入引脚。在规格书中，引脚的参数会这样表示出来：
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+| Parameter | Description             | Test Conditions           | Min  | Max | Units |
+| --------- | ----------------------- | ------------------------- | ---- | --- | ----- |
+| VOH       | Output HIGH Voltage     | VCC = 4.75V, IOH = -2.6mA | 2.4  |     | V     |
+| VOL       | Output LOW Voltage      | VCC = 4.75V, IOH = 24mA   |      | 0.4 | V     |
+| IIL       | Input LOW Load Current  | Vin = 0.4V                | -800 |     | µA    |
+| IIH       | Input HIGH Load Current | Vin = 2.4V                |      | 150 | µA    |
+
+扇出能力在 TTL 和 CMOS 器件之间差别很大，因为 CMOS 输入阻抗高，所以理论上一个 CMOS 输出可驱动任意多个 CMOS 输入。但 CMOS 输入引脚有寄生电容，连接越多输入，电容越大，在高低电平切换时会存在电容充放电效应，产生延时。
+
+## 参考与致谢
+
+- 《The Fundamentals Of Digital Semiconductor Testing》
+- 《DC Test Theory》
+
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

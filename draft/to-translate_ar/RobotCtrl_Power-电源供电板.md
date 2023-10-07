@@ -1,10 +1,10 @@
-# RobotCtrl_Power - Placa de alimentación
+# RobotCtrl_Power - 电源供电板
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220527113517.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220527113517.png)
 
-Repositorio del proyecto: [**linyuxuanlin/RobotCtrl/RobotCtrl_Power**](https://github.com/linyuxuanlin/RobotCtrl/tree/main/RobotCtrl_MultiBoard_Project/RobotCtrl_Power)
+项目仓库：[**linyuxuanlin/RobotCtrl/RobotCtrl_Power**](https://github.com/linyuxuanlin/RobotCtrl/tree/main/RobotCtrl_MultiBoard_Project/RobotCtrl_Power)
 
-Vista previa en línea del proyecto:
+项目在线预览：
 
 <div class="altium-iframe-viewer">
   <div
@@ -13,47 +13,48 @@ Vista previa en línea del proyecto:
   ></div>
 </div>
 
-Nota: el proyecto está incluido en [**RobotCtrl - Kit de desarrollo universal STM32**](https://wiki-power.com/es/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
+注：项目包含于 [**RobotCtrl - STM32 通用开发套件**](https://wiki-power.com/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6)。
 
-## Diseño del esquemático
+## 原理图设计
 
-Las principales funciones de RobotCtrl_Power son las siguientes:
+RobotCtrl_Power 的主要功能如下：
 
-- Entrada de alimentación de 24V (teóricamente puede ser de 15-40V)
-- Regulador de voltaje de batería a 12V/5A (con interruptor de habilitación y luz indicadora)
-- Regulador de voltaje de batería a 5V/5A (con interruptor de habilitación y luz indicadora)
-- Protección contra polaridad inversa (P-MOS)
-- Protección contra sobretensión (comienza a proteger por encima de 30V)
-- Interfaces de salida de alimentación de batería, alimentación de 12V y alimentación de 5V
+- 24V 电源输入（理论可以 15-40V）
+- 电池电源转 12V/5A 稳压器（带使能开关与指示灯）
+- 电池电源转 5V/5A 稳压器（带使能开关与指示灯）
+- 防反接保护（P-MOS）
+- 过压保护（大于 30V 开始保护）
+- 电池电源输出、12V 电源输出、5V 电源输出接口
 
-### Entrada de alimentación
+### 电源输入
 
-Se utilizan dos conectores XT60PW-M para la entrada de alimentación, como entrada de alimentación de respaldo doble (también se puede utilizar como una entrada y una salida), y se proporcionan dos filas de pines para pruebas de salida.
+电源输入选用了两个 XT60PW-M 座子，做双电源备份输入（也可以作为一个输入一个输出使用），并提供两排排针供输出测试。
 
-La función de protección contra polaridad inversa se implementa mediante P-MOS. Aunque XT60 tiene un diseño a prueba de errores, aún es necesario evitar la soldadura inversa de los cables de alimentación positivo y negativo. Cuando se invierte la polaridad, el P-MOS no se encenderá y la alimentación no se suministrará al sistema. El diseño de la función de protección contra polaridad inversa se puede consultar en el artículo [**Diseño de circuitos de protección contra polaridad inversa**](https://wiki-power.com/es/%E9%98%B2%E5%8F%8D%E6%8E%A5%E7%94%B5%E8%B7%AF%E7%9A%84%E8%AE%BE%E8%AE%A1).
+防反接功能使用 P-MOS 实现，虽然 XT60 是防呆设计，但还是需要防止正负电源线焊反的情况。反接时，P-MOS 不会导通，电源不会灌入系统。防反接功能的设计可参考文章 [**防反接电路的设计**](https://wiki-power.com/%E9%98%B2%E5%8F%8D%E6%8E%A5%E7%94%B5%E8%B7%AF%E7%9A%84%E8%AE%BE%E8%AE%A1)。
 
-La protección contra sobretensión transitoria y la protección contra ESD se realizan mediante un diodo TVS. Cuando se conecta una tensión superior a 30V, el diodo TVS desvía el exceso de voltaje para proteger el sistema.
+瞬时过压保护与 ESD 防护，使用的是 TVS 管，当接入大于 30V 时，它将分走多余的电压保护后置系统。
 
-### Circuitos reguladores de voltaje de 12V y 5V
+### 12V 与 5V 稳压电路
 
-Los circuitos reguladores de voltaje de 12V y 5V utilizan el esquema Buck DC-DC LMR14050 de TI para dos rutas, cada una de las cuales puede soportar una corriente máxima de 5A. El diseño específico se puede consultar en el artículo [**Esquema de alimentación (Buck) - LMR14050**](https://wiki-power.com/es/%E7%94%B5%E6%BA%90%E6%96%B9%E6%A1%88%EF%BC%88Buck%EF%BC%89-LMR14050).
+12V 与 5V 稳压电路选用的是两路 TI 的 LMR14050 DC-DC Buck 方案，每一路最高能带 5A 电流。具体设计可参考文章 [**电源方案（Buck）- LMR14050**](https://wiki-power.com/%E7%94%B5%E6%BA%90%E6%96%B9%E6%A1%88%EF%BC%88Buck%EF%BC%89-LMR14050)。
 
-Además, cada ruta tiene un interruptor de habilitación y una luz indicadora de alimentación.
+另外，每一路都增加了使能开关和电源指示灯。
 
-### Puertos de salida de alimentación
+### 电源输出端口
 
-VBAT, 12V y 5V de salida utilizan un par de pines de 4 pines cada uno, y la salida de 12V también utiliza un conector KF2EDGR-3.81 para suministrar energía a sensores especiales.
+VBAT、12V、5V 输出各自使用一对 4pin 排针，12V 输出额外增加 KF2EDGR-3.81 座子为特殊传感器提供供电。
 
-## Diseño de PCB
+## PCB 设计
 
-El diseño de PCB de RobotCtrl_Power requiere que las resistencias de división de voltaje de retroalimentación estén lo más cerca posible del pin FB del chip, y que la ruta de muestreo de Vout se genere lo más cerca posible del camino de generación de ruido de la teoría de la inductancia y el diodo, preferiblemente a través de un orificio pasante en la capa de blindaje. El inductor debe colocarse cerca del pin SW para reducir el ruido magnético y el ruido electrostático; los nodos de conexión a tierra de los diodos, los capacitores de entrada y salida deben ser lo más pequeños posible, y preferiblemente conectarse a la tierra del sistema en un solo punto para minimizar el ruido de conducción en la capa de tierra del sistema; los capacitores de salida deben colocarse lo más cerca posible de los nodos del inductor y el diodo, y las líneas deben ser cortas y gruesas para reducir el ruido de conducción y radiación y mejorar la eficiencia.
+RobotCtrl_Power 的 PCB layout，需要注意反馈网络的上下分压电阻需要尽量靠近芯片的 FB 引脚，Vout 采样路径应尽量原理噪声产生路径（电感二极管环路），最好是通过过孔走屏蔽层后的层；电感应该靠近 SW 引脚放置，以降低磁噪声和静电噪声；二极管、输入和输出电容的接地节点应尽可能小，最好是仅在一个点连接到系统阶地层，以最大限度减少系统接地层中的传导噪声；输出电容应尽量靠近电感和二极管的节点放置，且走线尽可能短而粗，以降低传导和辐射噪声，提高效率。
 
-El diseño de PCB de RobotCtrl_Power utiliza señales y alimentación en la capa superior e inferior, e inserta dos capas de plano de tierra en el medio para mejorar la integridad de la señal y la alimentación.
+RobotCtrl_Power 的 PCB 顶层和底层走信号和电源，中间插入两层地平面以增强信号与电源完整性。
 
-## Pruebas de hardware
+## 硬件测试
 
-- Prueba de protección contra inversión de polaridad: ¿el sistema puede funcionar sin encenderse cuando se invierte la polaridad de entrada de voltaje?
-- Interruptor de habilitación y luz indicadora de alimentación: prueba si pueden funcionar correctamente.
-- Salida: prueba si las salidas de 12V/5V cumplen con los estándares y el tamaño de la ondulación.
+- 防反接测试：输入电压反接时是否可不开启系统。
+- 使能开关与电源指示灯：测试是否可以正常运行。
+- 输出：测试 12V/5V 输出是否达标，以及纹波大小。
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

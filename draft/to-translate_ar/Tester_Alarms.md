@@ -1,22 +1,20 @@
-# Alarmas del Tester
+# Tester Alarms
 
-> Esta publicación solo está disponible en inglés.
+> This post is only available in English.
 
-## Alarmas DCVI
+## DCVI Alarms
 
-### Modo (0010)
+### Mode (0010)
 
-El V/I está programado para forzar el modo de voltaje y alcanzó la abrazadera de corriente; o está programado para forzar el modo de corriente y alcanzó la abrazadera de voltaje.
+The V/I is programmed to force voltage mode, and reached the current clamp; or is programmed to force current mode, and reached the voltage clamp.
 
-**Solución**:
+**Solution**:
 
-- **En modo de voltaje forzado**: verificar si el circuito está en cortocircuito o tiene una carga capacitiva.
-- **En modo de corriente forzada**: verificar si el circuito está abierto.
+- **In force voltage mode**: check if circuit shorted or has a capacitive load.
+- **In force voltage mode**: check if circuit opend.
 
-### Captura (0016)
+### Capture (0016)
 
-Se produjo una alarma durante una captura.
+An alarm occurred during a capture.
 
-**Solución**: Verificar la operación relacionada con la captura.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+**Solution**: Check the operation related to the capture.

@@ -1,6 +1,6 @@
-# Notas de estudio de JavaScript
+# JavaScript 学习笔记
 
-## Llamando a JS externo
+## 调用外部 JS
 
 ```markup
 <!DOCTYPE html>
@@ -14,42 +14,40 @@
 </html>
 ```
 
-## Salida
+## 输出
 
-### Alerta emergente
+### 弹出警告框
 
 ```javascript
-window.alert("Hola");
+window.alert("Hello");
 ```
 
-### Manipulación de elementos HTML
+### 操作 HTML 元素
 
 ```markup
 <!DOCTYPE html>
 <html>
     <body>
-        <h1> Mi primera página web </h1>
-        <p id="demo"> Mi primer párrafo </p>
+        <h1> 我的第一个 Web 页面 </h1>
+        <p id="demo"> 我的第一个段落 </p>
         <script>
-            document.getElementById ("demo").innerHTML = "El párrafo ha sido modificado.";
+            document.getElementById ("demo").innerHTML = "段落已修改。";
         </script>
     </body>
 </html>
 ```
 
-## Tipos de datos
+## 数据类型
 
-Creando variables:
+创建变量：
 
 ```javascript
 var carname = "Volvo";
 ```
 
-**Tipos de valores \ (tipos básicos)**: cadena (String), número (Number), booleano (Boolean), nulo (Null), indefinido (Undefined), símbolo.
+**值类型 \（基本类型、)**：字符串（String）、数字 \(Number\)、布尔 \(Boolean\)、对空（Null）、未定义（Undefined）、Symbol。
 
-**Tipos de datos de referencia**: objeto (Object), matriz (Array), función (Function).
+**引用数据类型**：对象 \(Object\)、数组 \(Array\)、函数 \(Function\)。
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

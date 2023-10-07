@@ -1,102 +1,106 @@
-# Notas de aprendizaje de Git
+# Git 学习笔记
 
-## Instalación y configuración
+## 安装与配置
 
-Descargar el paquete de instalación: [**git-scm.com/downloads**](https://git-scm.com/downloads)
+下载安装包：[**git-scm.com/downloads**](https://git-scm.com/downloads)
 
-Configuración:
+配置：
 
 ```shell
-git config --global user.name "nombre de usuario"
-git config --global user.email "correo@example.com"
+git config --global user.name "username"
+git config --global user.email "email@example.com"
 ```
 
-## Sentencias básicas
+## 基础语句
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200216204934.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200216204934.png)
 
-### Proceso básico
+### 基本流程
 
-1. Cambiar al directorio especificado: `cd git-learning`
-2. Inicializar el repositorio de Git: `git init`
-3. Transferir archivos existentes / nuevos del **área de trabajo** al **área de preparación**:
-   - `git add .`: agregar todos los archivos del área de trabajo
-   - `git add xxx.xx`: agregar un archivo individual
-4. Enviar actualizaciones al **branch de área de preparación**: `git commit -m "descripción"`
-5. Cambiar a una versión específica: `git reset --hard commit_id`
+1. 切换到指定的路径下：`cd git-learning`
+2. 初始化 Git 仓库：`git init`
+3. 将已存在 / 新增的文件，由 **工作区** 转移至 **暂存区** ：
+   - `git add .` ：添加工作区的所有文件
+   - `git add xxx.xx` ：添加单个文件
+4. 提交更新至 **暂存区分支** ：`git commit -m "description"`
+5. 切换至某一个版本：`git reset --hard commit_id`
 
-### Sentencias comunes
+### 常用语句
 
-- Ver cambios (solo se puede usar cuando el archivo está en el área de trabajo): `git diff`
-- Ver el estado del repositorio: `git status`
-- Ver el historial de envío (en orden de envío): `git log`, presione `q` para salir
-- Ver el historial de comandos (todos los registros de envío): `git reflog`
+- 查看修改（仅文件在工作区时可以使用）：`git diff`
+- 查看仓库状态：`git status`
+- 查看提交历史（按照提交顺序）：`git log` ，按 `q` 退出
+- 查看命令历史（所有提交记录）：`git reflog`
 
-## Repositorio remoto
+## 远程仓库
 
-### Convertir un proyecto local en remoto
+### 本地项目远程化
 
-Adecuado para casos en los que ya se tienen archivos de proyecto locales.
+适用于本地已有项目文件的情况。
 
-1. Crear una clave SSH: `ssh-keygen -t rsa -C "tu_correo@example.com"`
-   - Reemplazar con tu correo electrónico, presionar Enter en todo momento
-2. Abrir [**Configuración personal - Claves SSH y GPG**](https://github.com/settings/keys) en GitHub y agregar una nueva clave SSH
-   - El título es arbitrario, la clave es el contenido del archivo `id_rsa.pub`
-3. Crear un nuevo repositorio en GitHub, no seleccione `Initialize this repository with a README`
-   - Si accidentalmente se inicializa el repositorio, primero hay que hacer pull: `git pull origin master`
-4. Copiar la dirección SSH (por ejemplo: `git@github.com:linyuxuanlin/git-learning.git`) y ejecutar el comando en el repositorio local de Git: `git remote add origin git@server-name:user/repo-name.git`
-5. Enviar el contenido local al repositorio remoto: `git push -u origin master`
-   - Ingrese `yes` y presione Enter para continuar cuando aparezca el mensaje de confirmación
-   - Como el repositorio remoto está vacío, al enviar la rama principal por primera vez, se agrega el parámetro `-u`, lo que hace que Git no solo envíe el contenido de la rama principal local al nuevo branch principal remoto, sino que también relacione la rama principal local y la rama principal remota. Esto simplifica los comandos de envío o extracción en el futuro.
-6. Para cada envío futuro: `git push origin master`
+1. 创建 SSH Key：`ssh-keygen -t rsa -C "youremail@example.com"`
+   - 更换为你的邮箱，一路回车即可
+2. 点开 GitHub [**个人设置 - SSH and GPG keys**](https://github.com/settings/keys)，添加新的 SSH key
+   - Title 任意，Key 为 `id_rsa.pub` 文件中的内容
+3. 在 GitHub 新建仓库，不要勾选 `Initialize this repository with a README`
+   - 如果不小心初始化了仓库，则要先 pull 下来：`git pull origin master`
+4. 复制 SSH 地址（示例：`git@github.com:linyuxuanlin/git-learning.git`），在本地 Git 仓库下运行命令：`git remote add origin git@server-name:user/repo-name.git`
+5. 将本地内容推送到远程仓库：`git push -u origin master`
+   - 在出现提示信息时输入 `yes` 并回车继续
+   - 由于远程库是空的，我们第一次推送 master 分支时，加上了 `-u` 参数，Git 不但会把本地的 master 分支内容推送的远程新的 master 分支，还会把本地的 master 分支和远程的 master 分支关联起来，在以后的推送或者拉取时就可以简化命令
+6. 未来每一次提交：`git push origin master`
 
-### Convertir un proyecto remoto en local
+### 远程项目本地化
 
-Adecuado para comenzar desde cero o para desarrollar sobre el proyecto de otra persona.
+适用于从零开始，或基于别人的项目开发的情况。
 
-1. Clonar el repositorio remoto: `git clone git@server-name:user/repo-name.git`
+1. 将远程仓库克隆下来：`git clone git@server-name:user/repo-name.git`
 
-## Gestión de ramas
+## 分支管理
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200217195056.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200217195056.png)
 
-Las ramas en Git son como universos paralelos en las películas de ciencia ficción. Mientras estás trabajando duro en aprender Git en tu computadora, en otro universo paralelo, estás trabajando duro en aprender SVN. Si estos universos paralelos no interfieren entre sí, no tendrán ningún impacto en ti. Pero en algún momento, estos universos paralelos se fusionan y resulta que has aprendido tanto Git como SVN.
+> 分支就是科幻电影里面的平行宇宙，当你正在电脑前努力学习 Git 的时候，另一个你正在另一个平行宇宙里努力学习 SVN。  
+> 如果两个平行宇宙互不干扰，那对现在的你也没啥影响。不过，在某个时间点，两个平行宇宙合并了，结果，你既学会了 Git 又学会了 SVN!
+>
+> 分支在实际中有什么用呢？假设你准备开发一个新功能，但是需要两周才能完成，第一周你写了 50% 的代码，如果立刻提交，由于代码还没写完，不完整的代码库会导致别人不能干活了。如果等代码全部写完再一次提交，又存在丢失每天进度的巨大风险。  
+> 现在有了分支，就不用怕了。你创建了一个属于你自己的分支，别人看不到，还继续在原来的分支上正常工作，而你在自己的分支上干活，想提交就提交，直到开发完毕后，再一次性合并到原来的分支上，这样，既安全，又不影响别人工作。
 
-¿Para qué sirven las ramas en la práctica? Supongamos que estás desarrollando una nueva función que tardará dos semanas en completarse. En la primera semana, has escrito el 50% del código. Si lo envías de inmediato, el repositorio incompleto impedirá que otros trabajen. Si esperas a que todo el código esté escrito antes de enviarlo, existe un gran riesgo de perder el progreso diario.
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200217202649.png)
 
-Ahora, con las ramas, no tienes que preocuparte. Creas una rama propia que nadie más puede ver y continúas trabajando en la rama original. Cuando quieras enviar el código, lo envías a tu propia rama. Cuando hayas terminado, lo fusionas con la rama original. De esta manera, es seguro y no afecta el trabajo de los demás.
+1. 创建并切换至新分支：`git switch -c branch_name`
+   - `-c` 代表创建并切换分支
+2. 查看当前分支：`git branch`
+3. 将新分支内容合并到 master 上：`git merge branch_name`
+   - 先切换到待合并的分支，再使用合并命令（示例：先切换到 master，再执行以上命令）
+   - 当 Git 无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成
+   - 解决冲突就是把 Git 合并失败的文件手动编辑为我们希望的内容，再提交
+4. 删除某个分支：`git branch -d dev`
+5. 禁用 Fast forward 合并分支：`git merge --no-ff -m "commit text" branch_name`
+   - 因为本次合并要创建一个新的 commit，所以加上 `-m` 参数，把 commit 描述写进去
+   - Fast forward 模式下，删除分支后，会丢掉分支信息
 
-1. Crear y cambiar a una nueva rama: `git switch -c nombre_rama`
-   - `-c` significa crear y cambiar de rama
-2. Ver la rama actual: `git branch`
-3. Fusionar el contenido de la nueva rama con la rama principal: `git merge nombre_rama`
-   - Cambia a la rama que deseas fusionar y luego usa el comando de fusión (por ejemplo, cambia a la rama principal y luego ejecuta el comando anterior).
-   - Cuando Git no puede fusionar automáticamente las ramas, primero debes resolver los conflictos. Después de resolver los conflictos, envía el código y completa la fusión.
-   - Resolver conflictos significa editar manualmente los archivos que Git no pudo fusionar y ajustarlos a lo que deseas. Luego, envía los cambios.
-4. Eliminar una rama: `git branch -d nombre_rama`
-5. Deshabilitar la fusión Fast forward de la rama: `git merge --no-ff -m "texto de confirmación" nombre_rama`
-   - Como esta fusión creará un nuevo commit, agrega el parámetro `-m` para incluir la descripción del commit.
-   - En el modo Fast forward, la información de la rama se pierde cuando se elimina.
+## GitHub 漫游指南
 
-## Guía de GitHub
-
-Con la plataforma de GitHub, podemos descubrir proyectos de código abierto y construir un mundo de código abierto con desarrolladores de todo el mundo. Cuando encontramos un proyecto de código abierto excelente, podemos hacer un Fork en nuestra cuenta de GitHub (para tener permisos de lectura y escritura) y luego clonarlo en nuestro equipo para desarrollar. Después de completar el desarrollo, podemos enviar una solicitud de extracción en GitHub. Si el propietario del proyecto original cree que tus cambios son adecuados, se fusionarán con el proyecto de código abierto original.
+借助 GitHub 平台，我们可以发现丰富多彩的开源项目，并于全世界的开发者一起搭建开源世界。  
+当我们发现了一个优秀的开源项目，可以先 Fork 到自己的 GitHub 账户下（这样才拥有读写权限），然后再通过 SSH 克隆到本地进行开发。  
+开发完成后，可以在 GitHub 上发起一个 pull request，如果原项目所有者觉得你的修改合适，那么将并入原有的开源项目中。
 
 ### GitHub CLI
 
-GitHub CLI es una herramienta de línea de comandos de GitHub que permite utilizar funciones como pull requests e issues en la línea de comandos. Descarga: [**cli.github.com**](https://cli.github.com/) GitHub CLI está actualmente en versión beta y vale la pena probarlo.
+GitHub CLI 是 GitHub 的命令行工具，将 pull requests，issues 等功能搬到命令行使用。  
+下载地址：[**cli.github.com**](https://cli.github.com/)  
+GitHub CLI 目前正处于 Beta 版本，值得一试。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Tutorial de Git - Liao Xuefeng](https://www.liaoxuefeng.com/wiki/896043488029600)
-- [Cómo utilizar Git para la gestión de ramas en proyectos reales](https://blog.csdn.net/ShuSheng0007/article/details/80791849)
-- [Un modelo de ramificación exitoso para Git](https://nvie.com/posts/a-successful-git-branching-model/)
+- [Git 教程 - 廖雪峰](https://www.liaoxuefeng.com/wiki/896043488029600)
+- [实际项目中如何使用 Git 做分支管理](https://blog.csdn.net/ShuSheng0007/article/details/80791849)
+- [A successful Git branching model](https://nvie.com/posts/a-successful-git-branching-model/)
 - [git-cheatsheet.pdf](https://github.com/linyuxuanlin/File-host/blob/main/software-development/git-cheatsheet.pdf)
 - [Pro Git](https://git-scm.com/book/zh/v2)
 - [GitHub CLI - Manual](https://cli.github.com/manual/)
-- [Más de 20 hermosas imágenes para adentrarse en el mundo de Git](https://mp.weixin.qq.com/s/oTtMQFEI9J5ymqt6SQ0PFg)
+- [20 多张精美图带你进入 Git 大门](https://mp.weixin.qq.com/s/oTtMQFEI9J5ymqt6SQ0PFg)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

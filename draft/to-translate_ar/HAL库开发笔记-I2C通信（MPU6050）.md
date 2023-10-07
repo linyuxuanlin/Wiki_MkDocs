@@ -1,32 +1,32 @@
-# Notas de desarrollo de la biblioteca HAL - Comunicación I2C (MPU6050)
+# HAL 库开发笔记 - I2C 通信（MPU6050）
 
-Este artículo se basa en el kit de desarrollo RobotCtrl de desarrollo propio, con un núcleo de microcontrolador STM32F407ZET6, y utiliza el módulo MPU6050 para explicar el método de comunicación I2C de la biblioteca HAL. Para obtener información detallada sobre el esquema del kit de desarrollo y una introducción detallada, consulte [**RobotCtrl - STM32 Kit de desarrollo universal**](https://wiki-power.com/es/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
+本篇基于自研 RobotCtrl 开发套件，单片机内核为 STM32F407ZET6，使用 MPU6050 模组讲解 HAL 库 I2C 通信的方式，开发套件原理图及详细介绍请见 [**RobotCtrl - STM32 通用开发套件**](https://wiki-power.com/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6)。
 
-## Principios básicos
+## 基本原理
 
-### Comunicación I2C
+### I2C 通信
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211026174634.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026174634.png)
 
-Para obtener información sobre los principios básicos de la comunicación I2C, consulte el artículo [**Protocolo de comunicación - I2C**](https://wiki-power.com/es/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-I2C).
+I2C 通信的基本原理可跳转文章 [**通信协议 - I2C**](https://wiki-power.com/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-I2C)
 
-### Módulo MPU6050
+### MPU6050 模组
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220404145145.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220404145145.png)
 
-Definición de pines del módulo:
+模组的引脚定义：
 
-- VCC: 3.3V~5V
-- GND: Tierra
-- SCL: Reloj I2C / Reloj SPI
-- SDA: Datos I2C / Entrada de datos SPI
-- XDA: Proporciona un reloj principal para el dispositivo I2C
-- AD0: Bit de selección de dirección del dispositivo I2C / Salida de datos SPI
-- INT: Pin de interrupción
+- VCC：3.3V~5V
+- GND：地
+- SCL：I2C 时钟 / SPI 时钟
+- SDA：I2C 数据 / SPI 数据输入
+- XDA：给 I2C 设备提供主时钟
+- AD0：I2C 器件地址选择位 / SPI 数据输出
+- INT：中断引脚
 
-### Biblioteca MPU6050 con filtro de Kalman
+### 带卡尔曼滤波的 MPU6050 库
 
-Aquí utilizamos la biblioteca MPU6050 con filtro de Kalman: [**leech001/MPU6050**](https://github.com/leech001/MPU6050). Copie los archivos `mpu6050.c` y `mpu6050.h` descargados en la carpeta del proyecto y agréguelos al proyecto en STM32CubeIDE/Keil:
+这里我们调用带卡尔曼滤波的 MPU6050 库：[**leech001/MPU6050**](https://github.com/leech001/MPU6050)，将下载的 `mpu6050.c` 和 `mpu6050.h` 拷贝至项目文件夹下，并在 STM32CubeIDE/Keil 内将其添加到项目中：
 
 ```c title="mpu6050.h"
 
@@ -38,7 +38,7 @@ Aquí utilizamos la biblioteca MPU6050 con filtro de Kalman: [**leech001/MPU6050
 #include <stdint.h>
 #include "i2c.h"
 
-// Estructura MPU6050
+// MPU6050 structure
 typedef struct
 {
 
@@ -62,7 +62,7 @@ typedef struct
     double KalmanAngleY;
 } MPU6050_t;
 
-// Estructura Kalman
+// Kalman structure
 typedef struct
 {
     double Q_angle;
@@ -79,24 +79,75 @@ void MPU6050_Read_Accel(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct);
 
 void MPU6050_Read_Gyro(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct);
 
-La función `MPU6050_Read_Temp` lee la temperatura del sensor MPU6050 y la almacena en la estructura `DataStruct`. La función `MPU6050_Read_All` lee los valores de aceleración, giroscopio y temperatura del sensor MPU6050 y los almacena en la estructura `DataStruct`. La función `Kalman_getAngle` utiliza el filtro de Kalman para calcular el ángulo a partir de los valores de ángulo, velocidad y tiempo. 
+void MPU6050_Read_Temp(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct);
 
-El archivo `mpu6050.c` contiene las definiciones de las constantes y variables utilizadas en el código. También se define la dirección del sensor MPU6050 y se inicializan las variables del filtro de Kalman. La función `MPU6050_Init` inicializa el sensor MPU6050 y configura la tasa de datos y el registro de gestión de energía.
+void MPU6050_Read_All(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct);
 
-void MPU6050_Init(I2C_HandleTypeDef *I2Cx)
+double Kalman_getAngle(Kalman_t *Kalman, double newAngle, double newRate, double dt);
+```
+
+```c title="mpu6050.c"
+#include <math.h>
+#include "mpu6050.h"
+
+#define RAD_TO_DEG 57.295779513082320876798154814105
+
+#define WHO_AM_I_REG 0x75
+#define PWR_MGMT_1_REG 0x6B
+#define SMPLRT_DIV_REG 0x19
+#define ACCEL_CONFIG_REG 0x1C
+#define ACCEL_XOUT_H_REG 0x3B
+#define TEMP_OUT_H_REG 0x41
+#define GYRO_CONFIG_REG 0x1B
+#define GYRO_XOUT_H_REG 0x43
+
+// Setup MPU6050
+#define MPU6050_ADDR 0xD0
+const uint16_t i2c_timeout = 100;
+const double Accel_Z_corrector = 14418.0;
+
+uint32_t timer;
+
+Kalman_t KalmanX = {
+    .Q_angle = 0.001f,
+    .Q_bias = 0.003f,
+    .R_measure = 0.03f};
+
+Kalman_t KalmanY = {
+    .Q_angle = 0.001f,
+    .Q_bias = 0.003f,
+    .R_measure = 0.03f,
+};
+
+uint8_t MPU6050_Init(I2C_HandleTypeDef *I2Cx)
 {
+    uint8_t check;
     uint8_t Data;
 
-    // Configuración del acelerómetro en el registro ACCEL_CONFIG
-    // XA_ST=0, YA_ST=0, ZA_ST=0, FS_SEL=0 -> ±2g
-    Data = 0x00;
-    HAL_I2C_Mem_Write(I2Cx, MPU6050_ADDR, ACCEL_CONFIG_REG, 1, &Data, 1, i2c_timeout);
+    // check device ID WHO_AM_I
 
-    // Configuración del giroscopio en el registro GYRO_CONFIG
-    // XG_ST=0, YG_ST=0, ZG_ST=0, FS_SEL=0 -> ±250 °/s
-    Data = 0x00;
-    HAL_I2C_Mem_Write(I2Cx, MPU6050_ADDR, GYRO_CONFIG_REG, 1, &Data, 1, i2c_timeout);
-    return 0;
+    HAL_I2C_Mem_Read(I2Cx, MPU6050_ADDR, WHO_AM_I_REG, 1, &check, 1, i2c_timeout);
+
+    if (check == 104) // 0x68 will be returned by the sensor if everything goes well
+    {
+        // power management register 0X6B we should write all 0's to wake the sensor up
+        Data = 0;
+        HAL_I2C_Mem_Write(I2Cx, MPU6050_ADDR, PWR_MGMT_1_REG, 1, &Data, 1, i2c_timeout);
+
+        // Set DATA RATE of 1KHz by writing SMPLRT_DIV register
+        Data = 0x07;
+        HAL_I2C_Mem_Write(I2Cx, MPU6050_ADDR, SMPLRT_DIV_REG, 1, &Data, 1, i2c_timeout);
+
+        // Set accelerometer configuration in ACCEL_CONFIG Register
+        // XA_ST=0,YA_ST=0,ZA_ST=0, FS_SEL=0 -> � 2g
+        Data = 0x00;
+        HAL_I2C_Mem_Write(I2Cx, MPU6050_ADDR, ACCEL_CONFIG_REG, 1, &Data, 1, i2c_timeout);
+
+        // Set Gyroscopic configuration in GYRO_CONFIG Register
+        // XG_ST=0,YG_ST=0,ZG_ST=0, FS_SEL=0 -> � 250 �/s
+        Data = 0x00;
+        HAL_I2C_Mem_Write(I2Cx, MPU6050_ADDR, GYRO_CONFIG_REG, 1, &Data, 1, i2c_timeout);
+        return 0;
     }
     return 1;
 }
@@ -105,7 +156,7 @@ void MPU6050_Read_Accel(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct)
 {
     uint8_t Rec_Data[6];
 
-    // Leer 6 BYTES de datos a partir del registro ACCEL_XOUT_H
+    // Read 6 BYTES of data starting from ACCEL_XOUT_H register
 
     HAL_I2C_Mem_Read(I2Cx, MPU6050_ADDR, ACCEL_XOUT_H_REG, 1, Rec_Data, 6, i2c_timeout);
 
@@ -113,10 +164,10 @@ void MPU6050_Read_Accel(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct)
     DataStruct->Accel_Y_RAW = (int16_t)(Rec_Data[2] << 8 | Rec_Data[3]);
     DataStruct->Accel_Z_RAW = (int16_t)(Rec_Data[4] << 8 | Rec_Data[5]);
 
-    /*** convertir los valores RAW en aceleración en 'g'
-         tenemos que dividir según el valor de escala completa establecido en FS_SEL
-         He configurado FS_SEL = 0. Así que estoy dividiendo por 16384.0
-         para más detalles, consulte el registro ACCEL_CONFIG              ****/
+    /*** convert the RAW values into acceleration in 'g'
+         we have to divide according to the Full scale value set in FS_SEL
+         I have configured FS_SEL = 0. So I am dividing by 16384.0
+         for more details check ACCEL_CONFIG Register              ****/
 
     DataStruct->Ax = DataStruct->Accel_X_RAW / 16384.0;
     DataStruct->Ay = DataStruct->Accel_Y_RAW / 16384.0;
@@ -127,22 +178,22 @@ void MPU6050_Read_Gyro(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct)
 {
     uint8_t Rec_Data[6];
 
-    // Leer 6 BYTES de datos a partir del registro GYRO_XOUT_H
+    // Read 6 BYTES of data starting from GYRO_XOUT_H register
 
     HAL_I2C_Mem_Read(I2Cx, MPU6050_ADDR, GYRO_XOUT_H_REG, 1, Rec_Data, 6, i2c_timeout);
 
-DataStruct->Gyro_X_RAW = (int16_t)(Rec_Data[0] << 8 | Rec_Data[1]);
-DataStruct->Gyro_Y_RAW = (int16_t)(Rec_Data[2] << 8 | Rec_Data[3]);
-DataStruct->Gyro_Z_RAW = (int16_t)(Rec_Data[4] << 8 | Rec_Data[5]);
+    DataStruct->Gyro_X_RAW = (int16_t)(Rec_Data[0] << 8 | Rec_Data[1]);
+    DataStruct->Gyro_Y_RAW = (int16_t)(Rec_Data[2] << 8 | Rec_Data[3]);
+    DataStruct->Gyro_Z_RAW = (int16_t)(Rec_Data[4] << 8 | Rec_Data[5]);
 
-/*** convertir los valores RAW en dps (�/s)
-     tenemos que dividir según el valor de escala completa establecido en FS_SEL
-     He configurado FS_SEL = 0. Así que estoy dividiendo por 131.0
-     para más detalles, consulte el registro GYRO_CONFIG              ****/
+    /*** convert the RAW values into dps (�/s)
+         we have to divide according to the Full scale value set in FS_SEL
+         I have configured FS_SEL = 0. So I am dividing by 131.0
+         for more details check GYRO_CONFIG Register              ****/
 
-DataStruct->Gx = DataStruct->Gyro_X_RAW / 131.0;
-DataStruct->Gy = DataStruct->Gyro_Y_RAW / 131.0;
-DataStruct->Gz = DataStruct->Gyro_Z_RAW / 131.0;
+    DataStruct->Gx = DataStruct->Gyro_X_RAW / 131.0;
+    DataStruct->Gy = DataStruct->Gyro_Y_RAW / 131.0;
+    DataStruct->Gz = DataStruct->Gyro_Z_RAW / 131.0;
 }
 
 void MPU6050_Read_Temp(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct)
@@ -150,7 +201,7 @@ void MPU6050_Read_Temp(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct)
     uint8_t Rec_Data[2];
     int16_t temp;
 
-    // Leer 2 BYTES de datos a partir del registro TEMP_OUT_H_REG
+    // Read 2 BYTES of data starting from TEMP_OUT_H_REG register
 
     HAL_I2C_Mem_Read(I2Cx, MPU6050_ADDR, TEMP_OUT_H_REG, 1, Rec_Data, 2, i2c_timeout);
 
@@ -163,53 +214,53 @@ void MPU6050_Read_All(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct)
     uint8_t Rec_Data[14];
     int16_t temp;
 
-    // Leer 14 BYTES de datos a partir del registro ACCEL_XOUT_H
+    // Read 14 BYTES of data starting from ACCEL_XOUT_H register
 
     HAL_I2C_Mem_Read(I2Cx, MPU6050_ADDR, ACCEL_XOUT_H_REG, 1, Rec_Data, 14, i2c_timeout);
 
-DataStruct->Accel_X_RAW = (int16_t)(Rec_Data[0] << 8 | Rec_Data[1]);
-DataStruct->Accel_Y_RAW = (int16_t)(Rec_Data[2] << 8 | Rec_Data[3]);
-DataStruct->Accel_Z_RAW = (int16_t)(Rec_Data[4] << 8 | Rec_Data[5]);
-temp = (int16_t)(Rec_Data[6] << 8 | Rec_Data[7]);
-DataStruct->Gyro_X_RAW = (int16_t)(Rec_Data[8] << 8 | Rec_Data[9]);
-DataStruct->Gyro_Y_RAW = (int16_t)(Rec_Data[10] << 8 | Rec_Data[11]);
-DataStruct->Gyro_Z_RAW = (int16_t)(Rec_Data[12] << 8 | Rec_Data[13]);
+    DataStruct->Accel_X_RAW = (int16_t)(Rec_Data[0] << 8 | Rec_Data[1]);
+    DataStruct->Accel_Y_RAW = (int16_t)(Rec_Data[2] << 8 | Rec_Data[3]);
+    DataStruct->Accel_Z_RAW = (int16_t)(Rec_Data[4] << 8 | Rec_Data[5]);
+    temp = (int16_t)(Rec_Data[6] << 8 | Rec_Data[7]);
+    DataStruct->Gyro_X_RAW = (int16_t)(Rec_Data[8] << 8 | Rec_Data[9]);
+    DataStruct->Gyro_Y_RAW = (int16_t)(Rec_Data[10] << 8 | Rec_Data[11]);
+    DataStruct->Gyro_Z_RAW = (int16_t)(Rec_Data[12] << 8 | Rec_Data[13]);
 
-DataStruct->Ax = DataStruct->Accel_X_RAW / 16384.0;
-DataStruct->Ay = DataStruct->Accel_Y_RAW / 16384.0;
-DataStruct->Az = DataStruct->Accel_Z_RAW / Accel_Z_corrector;
-DataStruct->Temperature = (float)((int16_t)temp / (float)340.0 + (float)36.53);
-DataStruct->Gx = DataStruct->Gyro_X_RAW / 131.0;
-DataStruct->Gy = DataStruct->Gyro_Y_RAW / 131.0;
-DataStruct->Gz = DataStruct->Gyro_Z_RAW / 131.0;
+    DataStruct->Ax = DataStruct->Accel_X_RAW / 16384.0;
+    DataStruct->Ay = DataStruct->Accel_Y_RAW / 16384.0;
+    DataStruct->Az = DataStruct->Accel_Z_RAW / Accel_Z_corrector;
+    DataStruct->Temperature = (float)((int16_t)temp / (float)340.0 + (float)36.53);
+    DataStruct->Gx = DataStruct->Gyro_X_RAW / 131.0;
+    DataStruct->Gy = DataStruct->Gyro_Y_RAW / 131.0;
+    DataStruct->Gz = DataStruct->Gyro_Z_RAW / 131.0;
 
-// Solución del ángulo de Kalman
-double dt = (double)(HAL_GetTick() - timer) / 1000;
-timer = HAL_GetTick();
-double roll;
-double roll_sqrt = sqrt(
-    DataStruct->Accel_X_RAW * DataStruct->Accel_X_RAW + DataStruct->Accel_Z_RAW * DataStruct->Accel_Z_RAW);
-if (roll_sqrt != 0.0)
-{
-    roll = atan(DataStruct->Accel_Y_RAW / roll_sqrt) * RAD_TO_DEG;
-}
-else
-{
-    roll = 0.0;
-}
-double pitch = atan2(-DataStruct->Accel_X_RAW, DataStruct->Accel_Z_RAW) * RAD_TO_DEG;
-if ((pitch < -90 && DataStruct->KalmanAngleY > 90) || (pitch > 90 && DataStruct->KalmanAngleY < -90))
-{
-    KalmanY.angle = pitch;
-    DataStruct->KalmanAngleY = pitch;
-}
-else
-{
-    DataStruct->KalmanAngleY = Kalman_getAngle(&KalmanY, pitch, DataStruct->Gy, dt);
-}
-if (fabs(DataStruct->KalmanAngleY) > 90)
-    DataStruct->Gx = -DataStruct->Gx;
-DataStruct->KalmanAngleX = Kalman_getAngle(&KalmanX, roll, DataStruct->Gx, dt);
+    // Kalman angle solve
+    double dt = (double)(HAL_GetTick() - timer) / 1000;
+    timer = HAL_GetTick();
+    double roll;
+    double roll_sqrt = sqrt(
+        DataStruct->Accel_X_RAW * DataStruct->Accel_X_RAW + DataStruct->Accel_Z_RAW * DataStruct->Accel_Z_RAW);
+    if (roll_sqrt != 0.0)
+    {
+        roll = atan(DataStruct->Accel_Y_RAW / roll_sqrt) * RAD_TO_DEG;
+    }
+    else
+    {
+        roll = 0.0;
+    }
+    double pitch = atan2(-DataStruct->Accel_X_RAW, DataStruct->Accel_Z_RAW) * RAD_TO_DEG;
+    if ((pitch < -90 && DataStruct->KalmanAngleY > 90) || (pitch > 90 && DataStruct->KalmanAngleY < -90))
+    {
+        KalmanY.angle = pitch;
+        DataStruct->KalmanAngleY = pitch;
+    }
+    else
+    {
+        DataStruct->KalmanAngleY = Kalman_getAngle(&KalmanY, pitch, DataStruct->Gy, dt);
+    }
+    if (fabs(DataStruct->KalmanAngleY) > 90)
+        DataStruct->Gx = -DataStruct->Gx;
+    DataStruct->KalmanAngleX = Kalman_getAngle(&KalmanX, roll, DataStruct->Gx, dt);
 }
 
 double Kalman_getAngle(Kalman_t *Kalman, double newAngle, double newRate, double dt)
@@ -234,73 +285,107 @@ double Kalman_getAngle(Kalman_t *Kalman, double newAngle, double newRate, double
     double P00_temp = Kalman->P[0][0];
     double P01_temp = Kalman->P[0][1];
 
-Cómo usar el MPU6050 con I2C en STM32
+    Kalman->P[0][0] -= K[0] * P00_temp;
+    Kalman->P[0][1] -= K[0] * P01_temp;
+    Kalman->P[1][0] -= K[1] * P00_temp;
+    Kalman->P[1][1] -= K[1] * P01_temp;
 
-El MPU6050 es un sensor de movimiento de seis ejes que combina un acelerómetro de tres ejes y un giroscopio de tres ejes en un solo chip. En este tutorial, aprenderás cómo usar el MPU6050 con I2C en STM32.
-
-## Conexión del MPU6050 con STM32
-
-La conexión del MPU6050 con STM32 se realiza mediante el protocolo I2C. Los pines SDA y SCL del MPU6050 se conectan a los pines SDA y SCL del STM32, respectivamente. Además, se debe conectar la alimentación y la tierra.
-
-## Configuración del MPU6050 en STM32
-
-Para configurar el MPU6050 en STM32, se puede utilizar una biblioteca de terceros. En este tutorial, utilizaremos la biblioteca de [leech001/MPU6050](https://github.com/leech001/MPU6050).
-
-Primero, descarga la biblioteca y agrega los archivos `mpu6050.c` y `mpu6050.h` a tu proyecto STM32. Luego, incluye el archivo `mpu6050.h` en tu archivo `main.c`.
-
-A continuación, inicializa el MPU6050 en la función `main()` de la siguiente manera:
-
-```c
-while (MPU6050_Init(&hi2c1) == 1);
+    return Kalman->angle;
+};
 ```
 
-Esta función inicializa el MPU6050 y devuelve `1` si hay un error.
+可以看到，在设置了 I2C 的地址后，在 `MPU6050_Init` 函数内初始化，并在其余的函数中操作读取各个数值。
 
-Después de inicializar el MPU6050, puedes leer los valores del acelerómetro y el giroscopio utilizando la función `MPU6050_Read_All()`. Por ejemplo:
+## 使用 I2C 读取 MPU6050 返回的信息
 
-```c
-MPU6050_Read_All(&hi2c1, &MPU6050);
+### 在 CubeMX 内配置 I2C 总线
+
+在 CubeMX 左侧功能分类栏选择 `通信` - `I2Cx`，将 I2C 的选项设置从 `disable` 更改为 `I2C`，并在弹出的配置界面配置参数（默认即可）：
+
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220403190116.png)
+
+### 在代码内配置 I2C 读取 MPU6050 返回的信息
+
+首先，在 `main.c` 中调用 MPU6050 的库：
+
+```c title="main.c"
+/* USER CODE BEGIN Includes */
+
+#include "mpu6050.h"
+
+/* USER CODE END Includes */
 ```
 
-Esta función lee los valores del acelerómetro y el giroscopio y los guarda en la estructura `MPU6050_t`.
+接着，实例化对象：
 
-## Filtro de Kalman
+```c title="main.c"
+/* USER CODE BEGIN PV */
 
-El filtro de Kalman es un algoritmo utilizado para estimar el estado de un sistema dinámico a partir de una serie de mediciones incompletas y ruidosas. En este tutorial, utilizaremos el filtro de Kalman para filtrar los valores del MPU6050.
-
-La biblioteca de [leech001/MPU6050](https://github.com/leech001/MPU6050) ya incluye el filtro de Kalman. Puedes obtener el ángulo filtrado utilizando la función `MPU6050_GetAngle()`. Por ejemplo:
-
-```c
-double angle = MPU6050_GetAngle(&MPU6050, dt);
-```
-
-Esta función devuelve el ángulo filtrado y toma como argumento el tiempo transcurrido desde la última llamada a la función.
-
-## Uso de I2C para leer la información devuelta por el MPU6050
-
-Para leer la información devuelta por el MPU6050 utilizando I2C, primero debes configurar el bus I2C en CubeMX. Luego, en tu código, inicializa el objeto MPU6050 y lee sus valores utilizando la función `MPU6050_Read_All()`.
-
-```c
 MPU6050_t MPU6050;
 
-while (MPU6050_Init(&hi2c1) == 1);
-
-while (1)
-{
-    MPU6050_Read_All(&hi2c1, &MPU6050);
-    HAL_Delay(100);
-}
+/* USER CODE END PV */
 ```
 
-Después de leer los valores, puedes acceder a ellos a través de la estructura `MPU6050_t`. Por ejemplo:
+在主函数里面初始化，完毕时才继续执行程序：
+
+```c title="main.c"
+/* USER CODE BEGIN 2 */
+
+while (MPU6050*Init(&hi2c1) == 1);
+
+/* USER CODE END 2 */
+```
+
+在 while 循环内读取库计算出来的变量，并给一定的延时缓冲：
+
+```c title="main.c"
+
+/* USER CODE BEGIN 3 */
+
+		MPU6050_Read_All(&hi2c1, &MPU6050);
+		HAL_Delay(100);
+	}
+
+/* USER CODE END 3 */
+```
+
+执行了这条语句，就能读出 MPU6050 结构体内的变量，比如`MPU6050.KalmanAngleX`（X 轴滤波后角度）。MPU6050 结构体的元素及类型如下：
+
+```c
+typedef struct
+{
+
+    int16_t Accel_X_RAW;
+    int16_t Accel_Y_RAW;
+    int16_t Accel_Z_RAW;
+    double Ax;
+    double Ay;
+    double Az;
+
+    int16_t Gyro_X_RAW;
+    int16_t Gyro_Y_RAW;
+    int16_t Gyro_Z_RAW;
+    double Gx;
+    double Gy;
+    double Gz;
+
+    float Temperature;
+
+    double KalmanAngleX;
+    double KalmanAngleY;
+} MPU6050_t;
+```
+
+可以在配置串口后，通过以下语句输出变量：
 
 ```c
 printf("XAngle: %.2f°\t", MPU6050.KalmanAngleX);
 ```
 
-## Referencias y agradecimientos
+## 参考与致谢
 
 - [leech001/MPU6050](https://github.com/leech001/MPU6050)
-- [I2C Communication Protocol](https://wiki-power.com/es/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-I2C)
+- [通信协议 - I2C](https://wiki-power.com/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-I2C)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

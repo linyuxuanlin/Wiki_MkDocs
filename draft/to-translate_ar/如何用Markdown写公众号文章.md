@@ -1,24 +1,22 @@
-# Cómo escribir artículos de WeChat utilizando Markdown
+# 如何用 Markdown 写公众号文章
 
-En el artículo de introducción a Markdown "Writing Efficiently with Markdown" (en inglés) pudimos ver la conveniencia de utilizar Markdown para la maquetación. Pero, ¿cómo podemos utilizarlo para escribir artículos en WeChat?
+在 Markdown 介绍文章 [**使用 Markdown 进行高效写作**](https://wiki-power.com/%E4%BD%BF%E7%94%A8Markdown%E8%BF%9B%E8%A1%8C%E9%AB%98%E6%95%88%E5%86%99%E4%BD%9C) 中，我们得以见识 Markdown 用于排版的便捷性。假如我想用它来写微信公众号，该怎么操作呢？
 
-Como sabemos, WeChat utiliza un editor de texto enriquecido que no puede interpretar directamente la sintaxis de Markdown. Sin embargo, podemos convertir el Markdown en texto enriquecido y luego pegarlo en el editor de WeChat.
+我们都知道，微信公众号用的是富文本编辑器，是无法直接解析 Markdown 语法的。但我们可以自己先将 Markdown 解析为富文本，再粘贴进公众号文章的编辑界面。
 
 ## MD2WeChat
 
-[**MD2WeChat**](https://md2wechat.wiki-power.com/) es una herramienta web que personalicé basándome en el proyecto de código abierto [lyricat/wechat-format](https://github.com/lyricat/wechat-format), que permite convertir fácilmente la sintaxis de Markdown en texto enriquecido:
+[**MD2WeChat**](https://md2wechat.wiki-power.com/) 是我根据开源项目 [lyricat/wechat-format](https://github.com/lyricat/wechat-format) 定制的一个网页工具，可以很方便地将 Markdown 语法解析为富文本：
 
-[![](https://f004.backblazeb2.com/file/wiki-media/img/20210216125752.png)](https://md2wechat.wiki-power.com/)
+[![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210216125752.png)](https://md2wechat.wiki-power.com/)
 
-Simplemente pegue el artículo escrito en Markdown en la columna de la izquierda y haga clic en "Copiar" en la columna de la derecha para pegarlo en el editor de WeChat.
+将 Markdown 语法的文章粘贴到左栏，并在右栏点击一键复制，粘贴进公众号的编辑器即可。
 
-Nota: Debido a que los artículos de WeChat no permiten enlaces externos, los enlaces se convertirán en notas al pie y se agregarán al final del artículo.
+注：因公众号文章中不允许有外部链接，所以外链会被自动加脚注，并在底部附上。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
 - [lyricat/wechat-format](https://github.com/lyricat/wechat-format)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

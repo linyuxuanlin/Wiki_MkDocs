@@ -1,138 +1,137 @@
-# Fundamentos de Docker
+# Docker 基础知识
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210116153041.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210116153041.png)
 
-Es bien sabido que una de las cosas más molestas en el desarrollo de software es la configuración del entorno. Las diferencias en los entornos de ejecución pueden causar resultados inesperados, pero el uso de Docker puede evitar este tipo de problemas.
+众所周知，软件开发中最麻烦的事情之一，就是环境的配置。运行环境的差异，可能导致意想不到的结果，而使用 Docker 可以避免出现这样的问题。
 
-## Docker y la tecnología de contenedores
+## Docker 与容器化技术
 
-Docker empaqueta el software en sí mismo y su entorno de ejecución necesario, por lo que no es necesario configurar el entorno al utilizarlo (ya que el entorno está dentro del paquete). Esto asegura que su entorno sea exactamente igual al del desarrollador, evitando problemas causados por diferencias en los entornos de ejecución.
+Docker 把软件本身和它所需的运行环境打包起来，使用的时候就不需要再去配置环境了（因为环境都在包里），这样就能确保你的环境和开发者的一模一样，避免因运行环境差异而造成问题。
 
-Docker utiliza la tecnología de **contenedores**. Cuando hablamos de tecnología de contenedores, podemos compararla con los **contenedores de carga**. Son contenedores grandes y estandarizados que se pueden cargar y descargar fácilmente entre diferentes medios de transporte (como barcos, trenes y camiones) sin tener que preocuparse por su contenido interno específico. De manera similar, la tecnología de contenedores empaqueta la aplicación y todas sus dependencias en un entorno independiente y portátil, llamado contenedor.
+Docker 使用的是 **容器化技术**。当我们谈论容器化技术时，可以将其类比 **集装箱**。它是一种 **标准化** 的大型容器，可以在各种运输工具（如船舶、火车、卡车）之间进行简单的装载和卸载，而无需考虑其内部的具体内容组成。类似地，容器化技术将应用程序及其所有依赖项打包在一个独立的、可移植的环境中，称为容器。
 
-El objetivo principal de la tecnología de contenedores es lograr una implementación rápida, escalabilidad y aislamiento del entorno de las aplicaciones. Al empaquetar la aplicación y sus dependencias en un contenedor, podemos asegurarnos de que se ejecute de manera consistente en diferentes computadoras o servidores sin preocuparnos por las diferencias en los entornos o conflictos de dependencias. Esto permite a los desarrolladores entregar aplicaciones más rápidamente y simplifica el proceso de implementación y gestión de aplicaciones.
+容器化技术的主要目标是实现应用程序的快速部署、可扩展性和环境隔离。通过将应用程序和相关依赖项打包在一个容器中，我们可以确保在不同的计算机或服务器上以一致的方式运行应用程序，而无需担心环境差异或依赖冲突的问题。这使得开发人员可以更快速地交付应用程序，同时也简化了应用程序的部署和管理过程。
 
-Una de las principales ventajas de la tecnología de contenedores es que proporciona una solución de virtualización ligera. En comparación con las máquinas virtuales tradicionales, la tecnología de contenedores es más liviana y consume menos recursos. Cada contenedor se ejecuta en el mismo kernel del sistema operativo host, compartiendo los recursos del sistema operativo, lo que significa que los contenedores se inician más rápido, ocupan menos memoria y pueden ejecutarse varios contenedores en la misma máquina.
+容器化技术的一大优势是它提供了轻量级的虚拟化解决方案。与传统的虚拟机相比，容器化技术更加轻巧且资源消耗更少。每个容器都运行在宿主操作系统的相同内核上，共享操作系统的资源，因此容器启动更快、占用更少的内存，也可以在同一台机器上同时运行多个容器。
 
-Docker es una solución de contenedorización popular en la actualidad. Incluye principalmente tres elementos: Image (imagen), Container (contenedor) y Repository (repositorio).
+Docker 是目前比较流行的容器化解决方案。它主要包含三要素，分别是 Image（镜像）、Container（容器）和 Repository（仓库）。
 
-- **Image (imagen)**: Una imagen es un archivo ejecutable que contiene todos los sistemas de archivos (código, tiempo de ejecución, herramientas del sistema, archivos de biblioteca) y configuraciones necesarias para la aplicación y sus dependencias. Podemos considerar una imagen como una plantilla para contenedores, a través de la cual se pueden crear múltiples instancias de contenedores diferentes.
-- **Container (contenedor)**: Un contenedor es una instancia de ejecución creada a partir de una imagen. Cada contenedor es un entorno aislado e independiente en el que se puede ejecutar una aplicación.
-- **Repository (repositorio)**: Un repositorio es un lugar para almacenar y compartir imágenes. Podemos cargar nuestras propias imágenes en el repositorio y descargar imágenes creadas por otros.
+- **Image（镜像）**：镜像是一个可执行文件，包含了应用程序及其依赖的所有文件系统（代码、runtime、系统工具、库文件）和配置。我们可以将镜像看作是容器的模板，通过它可以创建多个不同的容器实例。
+- **Container（容器）**：容器是由镜像创建的运行实例。每个容器都是相互隔离的、独立运行的环境，可以在其中运行应用程序。
+- **Repository（仓库）**：仓库是用来存储和分享镜像。我们可以将自己创建的镜像推送到仓库中，也可以从仓库中拉取他人创建的镜像。
 
-La relación entre contenedores e imágenes es similar a la relación entre objetos y clases en la programación orientada a objetos.
+容器与镜像的关系，就像面向对象编程中的对象与类。
 
-## Instalación y configuración de Docker
+## Docker 的安装与配置
 
-Antes de instalar Docker, puede desinstalar los paquetes de versiones antiguas con el siguiente comando para evitar conflictos:
+在安装 Docker 之前，可以先用以下的命令卸载旧版本包，避免冲突：
 
 ```shell
 for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
 ```
 
-Para los sistemas Linux principales, puede descargar e instalar Docker Engine utilizando el script oficial (se requieren permisos de usuario root):
+对于主流的 Linux 系统，可以使用官方脚本的方法下载安装 Docker Engine：（需要使用 root 用户权限）
 
 ```shell
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh ./get-docker.sh --dry-run
 ```
 
-Dado que Docker se ejecuta y depende del entorno de Linux, prácticamente no tiene pérdida de eficiencia. Sin embargo, si desea implementar Docker en otros sistemas, primero debe instalar un entorno de Linux virtual.
+因为 Docker 运行在并依赖于 Linux 环境，所以它几乎没有效率损耗。但是，如果在其他系统上部署 Docker，就必须先安装一个虚拟 Linux 环境。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230708005714.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230708005714.png)
 
-Para obtener información sobre cómo instalar Docker en Windows, consulte la documentación oficial [**Instalar Docker Desktop en Windows**](https://docs.docker.com/desktop/install/windows-install/).
+Windows 下 Docker 的安装方法，请参考官方文档 [**Install Docker Desktop on Windows**](https://docs.docker.com/desktop/install/windows-install/)。
 
-Para instalar Docker Desktop en MacOS, consulte la documentación oficial [**Install Docker Desktop on Mac**](https://docs.docker.com/desktop/install/mac-install/).
+MacOS 下的安装方法，请参考官方文档 [**Install Docker Desktop on Mac**](https://docs.docker.com/desktop/install/mac-install/)。
 
-Una vez instalado, podemos verificar si Docker se ha instalado correctamente con el siguiente comando:
+按照流程安装后，我们可以使用以下的命令，验证 Docker 是否安装成功：
 
 ```shell
 docker version
 ```
 
-Después de instalar Docker Engine en Linux, si desea usarlo como usuario no root, puede configurar los permisos con el siguiente comando:
+在 Linux 下安装 Docker Engine 后，如果想要以非 root 用户使用，可以使用以下的命令配置权限：
 
 ```shell
 sudo groupadd docker
 sudo usermod -aG docker $USER
 ```
 
-Después de completar la configuración, es posible que deba cerrar sesión y volver a iniciar sesión para actualizar los permisos.
+完成配置后，可能需要注销重新登录，以更新权限。
 
-Si tiene problemas durante la instalación, consulte la documentación oficial [**Troubleshoot Docker Engine installation**](https://docs.docker.com/engine/install/troubleshoot/).
+如果安装出现问题，请参考官方文档 [**Troubleshoot Docker Engine installation**](https://docs.docker.com/engine/install/troubleshoot/)。
 
-## Ejemplo: Hola mundo
+## 实例：Hello World
 
-A continuación, usaremos el ejemplo oficial de hello-world para demostrar Docker. Abra la terminal o el símbolo del sistema e ingrese el siguiente comando para ejecutar el contenedor hello-world:
+下面将用官方 hello-world 例子来演示 Docker。打开终端或命令提示符，并输入以下命令运行 hello-world 容器：
 
 ```shell
 docker run hello-world
 ```
 
-Esto descargará la imagen hello-world del repositorio de imágenes de Docker, creará y ejecutará el contenedor. Cuando vea la salida de hello world, significa que se ha ejecutado correctamente.
+这将从 Docker 镜像仓库中下载 hello-world 镜像，创建并运行容器。当看见 hello world 的输出时，说明运行成功。
 
-## Algunos comandos de Docker CLI comunes
+## 一些常用的 Docker CLI 命令
 
-Docker proporciona un conjunto de comandos poderosos y ricos para administrar y operar recursos como contenedores, imágenes, redes, etc. A continuación se muestran algunos comandos de Docker CLI comunes:
+Docker 提供了一组强大而丰富的命令，用于管理和操作容器、镜像、网络等资源。下面是一些常用的 Docker CLI 命令：
 
-- `docker run`: crea y ejecuta un nuevo contenedor basado en la imagen especificada. Por ejemplo, `docker run -d -p 8080:80 nginx` ejecutará un contenedor NGINX en segundo plano y mapeará el puerto 8080 del host al puerto 80 del contenedor.
-- `docker ps`: lista los contenedores en ejecución. De forma predeterminada, mostrará información como el ID del contenedor, la imagen y el comando en ejecución. Use `docker ps -a` para mostrar todos los contenedores, incluidos los detenidos.
-- `docker stop`: detiene uno o más contenedores en ejecución. Puede especificar el ID o el nombre del contenedor. Por ejemplo, `docker stop mycontainer` detendrá el contenedor llamado `mycontainer`.
-- `docker start`: inicia uno o más contenedores detenidos. Puede especificar el ID o el nombre del contenedor.
-- `docker restart`: reinicia uno o más contenedores.
-- `docker rm`: elimina uno o más contenedores. Use `docker rm -f` para eliminar un contenedor en ejecución.
-- `docker images`: lista las imágenes locales. Muestra una lista de imágenes de Docker descargadas y creadas en la computadora local, incluida información como el ID de la imagen, el tamaño y la hora de creación.
-- `docker rmi`: elimina una o más imágenes. Puede especificar el ID o la etiqueta de la imagen. Por ejemplo, `docker rmi myimage:1.0` eliminará la imagen llamada `myimage` con la etiqueta `1.0`.
-- `docker build`: construye una imagen personalizada basada en un Dockerfile. Por ejemplo, `docker build -t myimage:1.0 .` construirá una imagen llamada `myimage` con la etiqueta `1.0` basada en el Dockerfile en el directorio actual.
-- `docker exec`: ejecuta un comando en un contenedor en ejecución. Puede especificar el ID o el nombre del contenedor y el comando a ejecutar. Por ejemplo, `docker exec -it mycontainer bash` iniciará una nueva terminal interactiva en el contenedor llamado `mycontainer`.
+- `docker run`：基于指定的镜像创建并运行一个新容器。例如，`docker run -d -p 8080:80 nginx` 会在后台运行一个 NGINX 容器，将主机的 8080 端口映射到容器的 80 端口。
+- `docker ps`：列出正在运行的容器。默认情况下，它会显示正在运行的容器的 ID、镜像、命令等信息。使用`docker ps -a`命令可以显示所有的容器，包括已停止的容器。
+- `docker stop`：停止一个或多个运行中的容器。可以指定容器的 ID 或名称。例如，`docker stop mycontainer` 会停止名为 `mycontainer` 的容器。
+- `docker start`：启动一个或多个已停止的容器。可使用容器的 ID 或名称来指定容器。
+- `docker stop`：停止一个或多个运行中的容器。
+- `docker restart`：重启一个或多个容器。
+- `docker rm`：删除一个或多个容器。如果要删除运行中的容器，可以使用 `docker rm -f` 命令。
+- `docker images`：列出本地镜像。它会显示本地计算机上已经下载和创建的 Docker 镜像的列表，包括镜像 ID、大小和创建时间等信息。
+- `docker rmi`：删除一个或多个镜像。可以使用镜像的 ID 或标签来指定镜像。例如，`docker rmi myimage:1.0` 会删除名为 `myimage` 且标签为 `1.0` 的镜像。
+- `docker build`：基于 Dockerfile 构建一个自定义镜像。例如，`docker build -t myimage:1.0 .`会根据当前目录下的 Dockerfile 构建一个名为 `myimage` 且标签为 `1.0` 的镜像。
+- `docker exec`：在运行中的容器中执行命令。可以指定容器的 ID 或名称，以及要执行的命令。例如，`docker exec -it mycontainer bash`会在名为 `mycontainer` 的容器中启动一个新的交互式终端。
 
-Estos son algunos comandos de Docker comunes utilizados para administrar y operar contenedores e imágenes. Hay muchos más comandos para explorar, se pueden ver la lista completa de comandos y otras opciones disponibles a través del comando `docker --help`, o consultando la documentación oficial [**Use the Docker command line**](https://docs.docker.com/engine/reference/commandline/cli/).
+这些是一些常用的 Docker 命令，用于管理和操作容器和镜像。还有更多的命令可以探索，可以通过`docker --help`命令查看完整的命令列表和其它可用选项，也可以参考官方文档 [**Use the Docker command line**](https://docs.docker.com/engine/reference/commandline/cli/)。
 
-Para obtener más información sobre Docker, consulte los siguientes artículos:
+如需了解更多 Docker 相关的知识，请移步后续的文章：
 
-- [**Docker Compose - Herramienta de orquestación de imágenes**](https://wiki-power.com/es/DockerCompose-%E9%95%9C%E5%83%8F%E7%BC%96%E6%8E%92%E5%B7%A5%E5%85%B7/)
-- [**Empaquetar aplicaciones como contenedores Docker**](https://wiki-power.com/es/%E5%B0%86%E5%BA%94%E7%94%A8%E5%B0%81%E8%A3%85%E4%B8%BADocker%E5%AE%B9%E5%99%A8/)
+- [**Docker Compose - 镜像编排工具**](https://wiki-power.com/DockerCompose-%E9%95%9C%E5%83%8F%E7%BC%96%E6%8E%92%E5%B7%A5%E5%85%B7/)
+- [**将应用封装为 Docker 容器**](https://wiki-power.com/%E5%B0%86%E5%BA%94%E7%94%A8%E5%B0%81%E8%A3%85%E4%B8%BADocker%E5%AE%B9%E5%99%A8/)
 
-Si desea comenzar a practicar directamente, también puede consultar la siguiente serie de artículos:
+如果你想直接上手实践，也可参考以下系列的文章：
 
-- [Cómo construir tu propio HomeLab](https://wiki-power.com/es/Construyendo-tu-propio-HomeLab)
-- [Homelab - Panel de gestión de servidores ligero CasaOS](https://wiki-power.com/es/Homelab-Panel-de-gestión-de-servidores-ligero-CasaOS)
-- [Homelab - Panel de gestión de certificados de proxy inverso Nginx Proxy Manager](https://wiki-power.com/es/Homelab-Panel-de-gestión-de-certificados-de-proxy-inverso-Nginx-Proxy-Manager)
-- [Homelab - Herramienta de penetración de red frp](https://wiki-power.com/es/Homelab-Herramienta-de-penetración-de-red-frp)
-- [Homelab - Alternativa gratuita de penetración de red interna Cloudflared](https://wiki-power.com/es/Homelab-Alternativa-gratuita-de-penetración-de-red-interna-Cloudflared)
-- [Homelab - Editor de código en línea code-server](https://wiki-power.com/es/Homelab-Editor-de-código-en-línea-code-server)
-- [Homelab - Herramienta de monitoreo de estado de sitio web Uptime Kuma](https://wiki-power.com/es/Homelab-Herramienta-de-monitoreo-de-estado-de-sitio-web-Uptime-Kuma)
-- [Homelab - Herramienta de compresión de imágenes de alta calidad TinyPNG-docker](https://wiki-power.com/es/Homelab-Herramienta-de-compresión-de-imágenes-de-alta-calidad-TinyPNG-docker)
-- [Homelab - Sitio de navegación de marcadores personales minimalista Flare](https://wiki-power.com/es/Homelab-Sitio-de-navegación-de-marcadores-personales-minimalista-Flare)
-- [Homelab - Plataforma de gestión de aplicaciones de contenedores Portainer](https://wiki-power.com/es/Homelab-Plataforma-de-gestión-de-aplicaciones-de-contenedores-Portainer)
-- [Homelab - Herramienta de sincronización entre dispositivos Syncthing](https://wiki-power.com/es/Homelab-Herramienta-de-sincronización-entre-dispositivos-Syncthing)
-- [Homelab - Herramienta de notas fragmentadas memos](https://wiki-power.com/es/Homelab-Herramienta-de-notas-fragmentadas-memos)
-- [Homelab - Sistema wiki potente Wiki.js](https://wiki-power.com/es/Homelab-Sistema-wiki-potente-Wiki.js)
-- [Homelab - Gestor de contraseñas autohospedado Vaultwarden](https://wiki-power.com/es/Homelab-Gestor-de-contraseñas-autohospedado-Vaultwarden)
-- [Homelab - Sistema de almacenamiento de imágenes en la nube compatible con la nube pública Cloudreve](https://wiki-power.com/es/Homelab-Sistema-de-almacenamiento-de-imágenes-en-la-nube-compatible-con-la-nube-pública-Cloudreve)
-- [Homelab - Agregador de RSS autohospedado FreshRSS](https://wiki-power.com/es/Homelab-Agregador-de-RSS-autohospedado-FreshRSS)
-- [Homelab - Bastión que admite varios protocolos Next Terminal](https://wiki-power.com/es/Homelab-Bastión-que-admite-varios-protocolos-Next-Terminal)
-- [Homelab - Caja de herramientas PDF multifuncional Stirling-PDF](https://wiki-power.com/es/Homelab-Caja-de-herramientas-PDF-multifuncional-Stirling-PDF)
-- [Homelab - Herramienta de captura de favicon de sitio web iconserver](https://wiki-power.com/es/Homelab-Herramienta-de-captura-de-favicon-de-sitio-web-iconserver)
-- [Homelab - Herramienta de actualización automática de contenedores Docker Watchtower](https://wiki-power.com/es/Homelab-Herramienta-de-actualización-automática-de-contenedores-Docker-Watchtower)
-- [Homelab - Programa de lista de archivos compatible con múltiples almacenamientos Alist](https://wiki-power.com/es/Homelab-Programa-de-lista-de-archivos-compatible-con-múltiples-almacenamientos-Alist)
-- [Homelab - Software de pizarra rico en funciones WeKan](https://wiki-power.com/es/Homelab-Software-de-pizarra-rico-en-funciones-WeKan)
-- [Homelab - Servidor de podcast y audiolibros Audiobookshelf](https://wiki-power.com/es/Homelab-Servidor-de-podcast-y-audiolibros-Audiobookshelf)
-- [Homelab - Servidor de música en la nube Navidrome](https://wiki-power.com/es/Homelab-Servidor-de-música-en-la-nube-Navidrome)
-- [Homelab - Servidor multimedia de películas y series Jellyfin](https://wiki-power.com/es/Homelab-Servidor-multimedia-de-películas-y-series-Jellyfin)
-- [Homelab - Servidor de gestión de libros electrónicos calibre-web](https://wiki-power.com/es/Homelab-Servidor-de-gestión-de-libros-electrónicos-calibre-web)
-- [Homelab - Servidor de hogar inteligente Home Assistant](https://wiki-power.com/es/Homelab-Servidor-de-hogar-inteligente-Home-Assistant)
-- [Homelab - Software de memoria asistida por tarjetas Anki](https://wiki-power.com/es/Homelab-Software-de-memoria-asistida-por-tarjetas-Anki)
+- [搭建属于自己的 HomeLab](https://wiki-power.com/搭建属于自己的HomeLab)
+- [Homelab - 轻量服务器管理面板 CasaOS](https://wiki-power.com/Homelab-轻量服务器管理面板CasaOS)
+- [Homelab - 反代证书管理面板 Nginx Proxy Manager](https://wiki-power.com/Homelab-反代证书管理面板NginxProxyManager)
+- [Homelab - 内网穿透工具 frp](https://wiki-power.com/Homelab-内网穿透工具frp)
+- [Homelab - 免费的内网穿透替代方案 Cloudflared](https://wiki-power.com/Homelab-免费的内网穿透替代方案Cloudflared)
+- [Homelab - 在线代码编辑器 code-server](https://wiki-power.com/Homelab-在线代码编辑器code-server)
+- [Homelab - 网站状态监控工具 Uptime Kuma](https://wiki-power.com/Homelab-网站状态监控工具UptimeKuma)
+- [Homelab - 高质量图片压缩工具 TinyPNG-docker](https://wiki-power.com/Homelab-高质量图片压缩工具TinyPNG-docker)
+- [Homelab - 极简个人书签导航站 Flare](https://wiki-power.com/Homelab-极简个人书签导航站Flare)
+- [Homelab - 容器应用管理平台 Portainer](https://wiki-power.com/Homelab-容器应用管理平台Portainer)
+- [Homelab - 跨设备同步工具 Syncthing](https://wiki-power.com/Homelab-跨设备同步工具Syncthing)
+- [Homelab - 碎片笔记工具 memos](https://wiki-power.com/Homelab-碎片笔记工具memos)
+- [Homelab - 功能强大的 wiki 系统 Wiki.js](https://wiki-power.com/Homelab-功能强大的wiki系统Wikijs)
+- [Homelab - 自托管密码管理器 Vaultwarden](https://wiki-power.com/Homelab-自托管密码管理器Vaultwarden)
+- [Homelab - 支持公有云的图床系统 Cloudreve](https://wiki-power.com/Homelab-支持公有云的图床系统Cloudreve)
+- [Homelab - 自托管 RSS 聚合器 FreshRSS](https://wiki-power.com/Homelab-自托管RSS聚合器FreshRSS)
+- [Homelab - 支持多种协议的堡垒机 Next Terminal](https://wiki-power.com/Homelab-支持多种协议的堡垒机NextTerminal)
+- [Homelab - 多功能 PDF 工具箱 Stirling-PDF](https://wiki-power.com/Homelab-多功能PDF工具箱Stirling-PDF)
+- [Homelab - 网站 favicon 抓取工具 iconserver](https://wiki-power.com/Homelab-网站favicon抓取工具iconserver)
+- [Homelab - 自动更新 Docker 容器的工具 Watchtower](https://wiki-power.com/Homelab-自动更新Docker容器的工具Watchtower)
+- [Homelab - 支持多存储的文件列表程序 Alist](https://wiki-power.com/Homelab-支持多存储的文件列表程序Alist)
+- [Homelab - 功能丰富的看板软件 WeKan](https://wiki-power.com/Homelab-功能丰富的看板软件WeKan)
+- [Homelab - 播客与有声书服务器 Audiobookshelf](https://wiki-power.com/Homelab-播客与有声书服务器Audiobookshelf)
+- [Homelab - 云端音乐服务器 Navidrome](https://wiki-power.com/Homelab-云端音乐服务器Navidrome)
+- [Homelab - 影视媒体服务器 Jellyfin](https://wiki-power.com/Homelab-影视媒体服务器Jellyfin)
+- [Homelab - 电子书管理服务器 calibre-web](https://wiki-power.com/Homelab-电子书管理服务器calibre-web)
+- [Homelab - 智能家居服务器 Home Assistant](https://wiki-power.com/Homelab-智能家居服务器HomeAssistant)
+- [Homelab - 卡片辅助记忆软件 Anki](https://wiki-power.com/Homelab-卡片辅助记忆软件Anki)
 
-## Referencias y Agradecimientos
+## 参考与致谢
 
-- [Docker - Desde principiante hasta práctico](https://yeasy.gitbook.io/docker_practice/)
-- [Tutorial de Docker](https://www.runoob.com/docker/docker-tutorial.html)
-- [Tutorial de introducción a Docker](http://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html)
-- [Instalación de Docker en CentOS](https://wiki-power.com/es/unlist/CentOS%E5%AE%89%E8%A3%85Docker)
+- [Docker - 从入门到实践](https://yeasy.gitbook.io/docker_practice/)
+- [Docker 教程](https://www.runoob.com/docker/docker-tutorial.html)
+- [Docker 入门教程](http://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html)
+- [CentOS 安装 Docker](https://wiki-power.com/unlist/CentOS%E5%AE%89%E8%A3%85Docker)
 
-por_reemplazar[1]  
-por_reemplazar[2]
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

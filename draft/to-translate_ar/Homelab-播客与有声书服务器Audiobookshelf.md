@@ -1,12 +1,12 @@
-# Homelab - Servidor de podcasts y audiolibros Audiobookshelf
+# Homelab - 播客与有声书服务器 Audiobookshelf
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230531204505.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230531204505.png)
 
-**Audiobookshelf** es un servidor de podcasts y audiolibros autohospedado que permite buscar fácilmente podcasts, detectar actualizaciones y descargarlos automáticamente, y organizarlos automáticamente.
+**Audiobookshelf** 是一款自托管的播客与有声书服务器，可以方便地搜索播客、自动检测更新并下载播客、自动归档整理。
 
-## Implementación (Docker Compose)
+## 部署（Docker Compose）
 
-Primero, cree el archivo `compose.yaml` y pegue el siguiente contenido:
+首先创建 `compose.yaml` 文件，并粘贴以下内容：
 
 ```yaml title="compose.yaml"
 version: "3.7"
@@ -24,34 +24,32 @@ services:
     restart: unless-stopped
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `audiobookshelf`).
+（可选）推荐在 `compose.yaml` 同级目录下创建 `.env` 文件，并自定义你的环境变量。如果不想使用环境变量的方式，也可以直接在 `compose.yaml` 内自定义你的参数（比如把 `${STACK_NAME}` 替换为 `audiobookshelf`）。
 
 ```dotenv title=".env"
 STACK_NAME=audiobookshelf
-STACK_DIR=xxx # Personalice la ruta de almacenamiento del proyecto, por ejemplo, ./audiobookshelf
-DATA_DIR=xxx # Personalice la ruta de almacenamiento de podcasts, por ejemplo, ./podcast
+STACK_DIR=xxx # 自定义项目储存路径，例如 ./audiobookshelf
+DATA_DIR=xxx # 自定义播客储存路径，例如 ./podcast
 
 # audiobookshelf
 APP_VERSION=latest
-APP_PORT=xxxx # Personalice el puerto de acceso, elija uno que no esté en uso
+APP_PORT=xxxx # 自定义访问端口，选择不被占用的即可
 ```
 
-Si tiene un NAS, también puede montar el espacio de almacenamiento en el NAS a través del protocolo NFS, almacenar los podcasts en el NAS para ahorrar espacio en el servidor. Para obtener más detalles, consulte [**Cómo montar un disco duro de NAS Synology en Linux (NFS)**](https://wiki-power.com/es/Linux%E4%B8%8B%E6%8C%82%E8%BD%BD%E7%BE%A4%E6%99%96NAS%E7%A1%AC%E7%9B%98%E6%8B%93%E5%B1%95%E7%A9%BA%E9%97%B4%EF%BC%88NFS%EF%BC%89/).
+如果你有个 NAS，也可以通过 NFS 协议挂载 NAS 上的储存空间，把播客储存在 NAS 上以节省服务器空间，详情请参考 [**Linux 下挂载群晖 NAS 硬盘拓展空间（NFS）**](https://wiki-power.com/Linux%E4%B8%8B%E6%8C%82%E8%BD%BD%E7%BE%A4%E6%99%96NAS%E7%A1%AC%E7%9B%98%E6%8B%93%E5%B1%95%E7%A9%BA%E9%97%B4%EF%BC%88NFS%EF%BC%89/)。
 
-Por último, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores.
+最后，在 `compose.yaml` 同级目录下执行 `docker compose up -d` 命令即可启动编排的容器。
 
-## Instrucciones de configuración
+## 配置说明
 
-Aplicación móvil: hay una aplicación oficial disponible para iOS y Android que se puede utilizar directamente.
+移动端 App：在 iOS 与 Android 端都有官方的 App，可直接使用。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Sitio web oficial](https://www.audiobookshelf.org/)
-- [Documentación](https://www.audiobookshelf.org/docs#docker-compose-install)
-- [Repositorio de GitHub](https://github.com/advplyr/audiobookshelf)
+- [官网](https://www.audiobookshelf.org/)
+- [文档](https://www.audiobookshelf.org/docs#docker-compose-install)
+- [GitHub repo](https://github.com/advplyr/audiobookshelf)
 - [Docker Hub](https://hub.docker.com/r/advplyr/audiobookshelf)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

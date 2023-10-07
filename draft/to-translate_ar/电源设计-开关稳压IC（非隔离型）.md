@@ -1,74 +1,73 @@
-# Diseño de fuentes de alimentación - IC regulador de conmutación (no aislado)
+# 电源设计 - 开关稳压 IC（非隔离型）
 
-## Factores a considerar en el diseño
+## 设计需考虑因素
 
-El diseño de fuentes de alimentación conmutadas debe considerar al menos las siguientes condiciones:
+开关电源的设计至少要考虑以下条件：
 
-- **Voltaje de entrada / salida**: seleccione dentro del rango de voltaje de trabajo recomendado por el dispositivo, considere el rango de fluctuación del voltaje real y asegúrese de no exceder las especificaciones del dispositivo.
-- **Corriente de salida**: la corriente de salida debe tener un margen de reserva, también es necesario evaluar la corriente pico instantánea del circuito y la situación de calentamiento, y cumplir con los requisitos de reducción de carga.
-- **Ondulación**: la ondulación es un parámetro importante para medir la fluctuación del voltaje de salida del circuito, preste atención a la ondulación en carga ligera y pesada. Por lo general, se utiliza un osciloscopio con una banda de 20 MHz para la prueba.
-- **Eficiencia**: debe prestar atención tanto a la carga ligera como a la pesada. La carga ligera afectará la potencia en espera y la carga pesada afectará la temperatura. Por lo general, se observa la eficiencia de 10 mA a 5 V de salida con una entrada de 12 V, y generalmente se requiere un 80% o más.
-- **Respuesta transitoria**: la característica de respuesta transitoria refleja si el sistema puede ajustarse rápidamente para garantizar la estabilidad del voltaje de salida cuando la carga cambia drásticamente. Se requiere una fluctuación de voltaje de salida más pequeña, generalmente se requiere menos del 10% del valor pico a pico.
-- **Frecuencia de conmutación**: generalmente por encima de 500 kHz, está relacionado con la selección de inductancia y capacitancia, y otros problemas como EMC y ruido en carga ligera también están relacionados con esto.
-- **Voltaje de referencia y precisión de retroalimentación**: el voltaje de retroalimentación se compara con el voltaje de referencia interno, y se utiliza en conjunto con la resistencia de retroalimentación externa para producir diferentes voltajes de salida. Los diferentes productos tendrán diferentes voltajes de referencia, como 0.6-0.8 V, y se debe seleccionar una resistencia de retroalimentación con una precisión del 1%.
-- **Estabilidad lineal y de carga**: la estabilidad lineal refleja la estabilidad del voltaje de salida cuando el voltaje de entrada cambia; la estabilidad de carga refleja la estabilidad del voltaje de salida cuando la carga cambia. Por lo general, se requiere un 1%, y no se debe exceder el 3% como máximo.
-- **Nivel EN**: el nivel alto y bajo de EN debe cumplir con las especificaciones del dispositivo, algunos IC no pueden exceder un rango de voltaje específico. Debido a la necesidad de control de tiempo, este pin agregará capacitancia, por lo que se requiere una resistencia a tierra para la regulación de nivel y la descarga de apagado.
-- **Rendimiento de protección**: debe tener protección contra sobrecorriente OCP, protección contra sobrecalentamiento OTP, etc., y las condiciones deben desaparecer después de la protección y recuperarse automáticamente.
-- **Otros**: se requiere inicio suave para el proyecto; resistencia térmica y encapsulamiento; el rango de temperatura de uso debe cubrir tanto alta como baja temperatura, etc.
+- **输入 / 输出电压**：按照器件的推荐工作电压范围选用，考虑实际电压的波动范围，确保不超出器件规格。
+- **输出电流**：输出电流要保留一定的余量，还需要评估电路的瞬间峰值电流和发热的情况，并满足降额要求。
+- **纹波**：纹波是衡量电路的输出电压波动的重要参数，要关注轻载和重载纹波。通常选用示波器 20 M 带宽来测试。
+- **效率**：要同时关注轻载和重载两种情况。轻载会影响待机功率，重载影响温升。通常看 12 V 输入，5 V 输出下 10 mA 的效率，一般需要达到 80% 以上。
+- **瞬态响应**：瞬态响应特性反应负载剧烈变化时，系统是否能及时调整以保证输出电压的稳定。要求输出电压波动越小越好，一般按峰峰值 10 % 以下要求。
+- **开关频率**：通常在 500 kHz 以上，关系到电感电容的选用，其它如 EMC，轻载下噪音等问题也与之有关。
+- **反馈参考电压及精度**：反馈电压要与内部的参考电压相比较，配合外部的反馈分压电阻，输出不同电压。不同产品的参考电压会有不同，如 0.6-0.8 V，反馈电阻要选用 1% 精度。
+- **线性稳定度和负载稳定度**：线性稳定度反映输入电压变化输出电压稳定性；负载稳定度反映输出负载变化输出电压稳定性。一般要求 1%，最大不要超 3%。
+- **EN 电平**：EN 高低电平要满足器件规格要求，有些 IC 不能超出特定电压范围。由于时序控制的需要，该引脚会增加电容，为了电平调节和关断放电，同时要有对地电阻。
+- **保护性能**：要有过流保护 OCP，过热保护 OTP 等，并且保护后条件消失能自恢复。
+- **其它**：项目要求有软启动；热阻和封装；使用温度范围要能覆盖高低温等。
 
-Principios de selección: universalidad, alta relación calidad-precio, fácil adquisición, larga vida útil, compatibilidad y sustituibilidad, reducción de carga, fácil producción y normalización.
+选用原则：普遍性、高性价比、易采购、生命周期长、兼容和可替代、降额、易生产和归一化。
 
-## Modulación
+## 调制方式
 
-### PFM (Modulación de frecuencia de pulso)
+### PFM（脉冲频率调制方式）
 
-El ancho de pulso del interruptor no cambia, y la frecuencia de salida del pulso se cambia para estabilizar el voltaje de salida. Adecuado para uso a largo plazo (especialmente con carga ligera), tiene la ventaja de un bajo consumo de energía.
+开关脉冲宽度不变，通过改变脉冲输出频率，使输出电压达到稳定。适合长时间使用（尤其是小负载），具有耗电小的优点。
 
-### PWM (Modulación de ancho de pulso)
+### PWM（脉冲宽度调制方式）
 
-La frecuencia de pulso del interruptor no cambia, y el ancho de pulso se cambia para estabilizar el voltaje de salida. Tiene una alta eficiencia y una ondulación y ruido relativamente bajos.
+开关脉冲的频率不变，通过改变脉冲宽度，使输出电压达到稳定。效率高且具有较低的纹波和噪声。
 
-## ¿Se puede colocar cobre en la parte inferior del inductor de potencia?
+## 功率电感底部是否可以铺地铜
 
-Desde la perspectiva de EMI, se recomienda colocar cobre; desde la perspectiva de la inductancia, para inductores blindados, la inductancia básicamente no se ve afectada, por lo que también se recomienda colocar cobre; para inductores de tipo E, colocar cobre tiene un ligero efecto en la inductancia, por lo que puede decidirse según la situación.
+从 EMI 的角度，建议铺铜；从电感感量的角度，对于屏蔽型电感，电感感量基本没有影响，因此也建议铺铜；对于工字型电感，铺铜对电感感量有少许影响，可以视情况而定。
 
-## Cómo juzgar si el inductor de potencia está saturado
+## 实验判断电感是否饱和
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210723133831.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210723133831.png)
 
-Además, también se puede juzgar a partir de la temperatura anormal, el zumbido, etc.
+除此之外，也可从异常温升、啸叫等情况来判断。
 
-## Requisitos de selección de componentes periféricos
+## 外围器件选择的要求
 
-- **Capacitancia de entrada / salida**: debe cumplir con los requisitos de voltaje (1.5-2 veces el voltaje de entrada) y ondulación de entrada.
-- **Capacitancia BST**: capacitancia de arranque de autoalimentación, se utiliza para elevar el voltaje para encender el tubo superior dentro del chip. Por lo general, se selecciona el valor recomendado en el manual de datos (generalmente 0.1-1uF), y la resistencia a la tensión generalmente debe ser mayor que la tensión de entrada.
-- **Inductancia**: se requiere una inductancia diferente para diferentes voltajes de salida; preste atención a la temperatura y asegúrese de que la corriente de saturación cumpla con los requisitos de margen, generalmente más del 1.3 veces la corriente máxima (o la corriente de saturación de la inductancia debe ser mayor que la corriente máxima de salida + 0.5 * corriente de ondulación de la inductancia).
-- **Capacitancia de retroalimentación**: seleccione el valor según lo requerido en el manual de datos, diferentes fabricantes de chips tendrán diferentes requisitos de valor, y diferentes voltajes de salida también tendrán diferentes requisitos.
-- **Resistencia de retroalimentación y resistencia de división EN**: se requiere que se seleccione el valor según las especificaciones, y se debe seleccionar una precisión del 1%.
+- **输入 / 输出电容**：需要满足耐压（1.5-2 倍以上输入电压）和输入纹波的要求。
+- **BST 电容**：自举启动电容，用于抬高电压开启芯片内上管。一半按照数据手册的推荐值（一般 0.1-1uF），耐压一般要高于输入电压。
+- **电感**：不同输出电压的要求感量不同；注意温升和饱和电流要满足余量要求，一般最大电流的 1.3 倍以上（或电感饱和电流必须大于最大输出电流＋ 0.5\*电感纹波电流）。
+- **反馈电容**：按数据手册要求取值，不同厂家芯片取值不同，输出电压不同也会有不同的要求。
+- **反馈电阻和 EN 分压电阻**：要求按规格书取值，精度需选取 1%。
 
-## Análisis de ondulación de la fuente de alimentación conmutada
+## 开关电源纹波分析
 
 🚧
 
-## Requisitos de diseño de PCB
+## PCB Layout 要求
 
+- 电感：优先选择一体成型的电感，因为它们有较低的 EMI。
+- 反馈网络：反馈走线需要尽可能离电感和电源噪声走线远。在满足第一个条件下，可以尽量让走线短而粗。最好是走线在与电感相对的 PCB 的另一侧，并在中间用地平面隔开。下分压电阻通常接信号地 AGND 反馈走线可以包地。
+- 去耦电容：输入去耦陶瓷小电容应该尽量靠近芯片的 $V_IN$ 和 GND，减少寄生电感；电容负极可增加过孔，减少阻抗。一般还需要前馈电解大电容，电源输入先过大电容再过小电容。
+- 功率回路尽可能的短粗，保持较小的环路面积，较少噪声辐射。电感靠近 SW 引脚，远离反馈线。输出电容靠近电感，地端增加地过孔。
+- BST 的电容走线尽量短，不要太细。
+- 芯片散热要按设计要求，尽量在底下增加过孔散热。
 
+## 参考与致谢
 
-- Inductores: Se debe priorizar la selección de inductores moldeados en una sola pieza, ya que tienen una EMI más baja.
-- Red de retroalimentación: Las líneas de retroalimentación deben estar lo más alejadas posible de las líneas de ruido del inductor y la fuente de alimentación. Si se cumple la primera condición, se pueden hacer las líneas lo más cortas y gruesas posible. Lo mejor es que las líneas estén en el otro lado de la PCB opuesto al inductor y separadas por una tierra intermedia. La resistencia de división de voltaje inferior generalmente se conecta a la tierra de la señal AGND y la línea de retroalimentación se puede conectar a tierra.
-- Capacitores de desacoplamiento: Los capacitores cerámicos de desacoplamiento de entrada deben estar lo más cerca posible de las entradas $V_{IN}$ y GND del chip para reducir la inductancia parásita. El polo negativo del capacitor se puede aumentar con un orificio pasante para reducir la impedancia. Por lo general, también se necesita un gran capacitor electrolítico de alimentación hacia adelante, y la entrada de alimentación debe pasar primero por un gran capacitor y luego por un capacitor más pequeño.
-- El circuito de potencia debe ser lo más corto y grueso posible, manteniendo un área de bucle pequeña y reduciendo la radiación de ruido. El inductor debe estar cerca del pin SW y lejos de la línea de retroalimentación. El capacitor de salida debe estar cerca del inductor y se debe agregar un orificio de tierra en el terminal de tierra.
-- Las líneas de los capacitores BST deben ser lo más cortas posible y no demasiado delgadas.
-- La disipación de calor del chip debe cumplir con los requisitos de diseño y se deben agregar orificios de disipación de calor debajo del chip tanto como sea posible.
+- [详解开关电源的三大基础拓扑 - 全文](http://www.elecfans.com/article/83/116/2016/20160307404422_a.html)
+- [掌握这些技巧，让你轻松操作 DC-DC 电路](https://mp.weixin.qq.com/s/fqTPyfAKdTlbRxy0-ho9gA)
+- [MPS，电感底部铺地平面违章吗？](https://mp.weixin.qq.com/s/CgR2jUgujLy3nqwU52rW2Q)
+- [【短视频】MPS 电源小课堂第三话: 判断电感饱和的几个小窍门](https://mp.weixin.qq.com/s?__biz=MzIwMTE4MzQwMw==&mid=2884003106&idx=1&sn=41c7eef3377037a1a1d21179447d0df1&scene=19#wechat_redirect)
+- [怎么选择 BUCK 降压电源的电感？](https://mp.weixin.qq.com/s/tTSoUaeaVQI4TM6ruKpeKw)
+- [AN-1149 Layout Guidelines for Switching Power Supplies](https://www.ti.com/lit/an/snva021c/snva021c.pdf?ts=1641814411004)
+- [开关电源纹波分析 🚧](http://www.oliverkung.top/%e5%bc%80%e5%85%b3%e7%94%b5%e6%ba%90%e7%ba%b9%e6%b3%a2%e5%88%86%e6%9e%90/)
 
-## Referencias y agradecimientos
-
-- [Explicación detallada de las tres topologías básicas de fuentes de alimentación conmutadas - Texto completo](http://www.elecfans.com/article/83/116/2016/20160307404422_a.html)
-- [Dominar estas habilidades te permitirá operar fácilmente circuitos DC-DC](https://mp.weixin.qq.com/s/fqTPyfAKdTlbRxy0-ho9gA)
-- [¿Es ilegal colocar una tierra intermedia debajo del inductor en las fuentes de alimentación MPS?](https://mp.weixin.qq.com/s/CgR2jUgujLy3nqwU52rW2Q)
-- [【Video corto】Sala de clases de fuentes de alimentación MPS Episodio 3: Algunos consejos para detectar la saturación del inductor](https://mp.weixin.qq.com/s?__biz=MzIwMTE4MzQwMw==&mid=2884003106&idx=1&sn=41c7eef3377037a1a1d21179447d0df1&scene=19#wechat_redirect)
-- [¿Cómo elegir el inductor para una fuente de alimentación reductora BUCK?](https://mp.weixin.qq.com/s/tTSoUaeaVQI4TM6ruKpeKw)
-- [AN-1149 Pautas de diseño para fuentes de alimentación conmutadas](https://www.ti.com/lit/an/snva021c/snva021c.pdf?ts=1641814411004)
-- [Análisis de ondulación en fuentes de alimentación conmutadas 🚧](http://www.oliverkung.top/%e5%bc%80%e5%85%b3%e7%94%b5%e6%ba%90%e7%ba%b9%e6%b3%a2%e5%88%86%e6%9e%90/)
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

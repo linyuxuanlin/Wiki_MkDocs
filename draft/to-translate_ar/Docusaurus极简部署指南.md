@@ -1,9 +1,7 @@
-# Guía de implementación mínima de Docusaurus
+# Docusaurus 极简部署指南
 
-Utilice [**esta plantilla**](https://github.com/linyuxuanlin/Docusaurus-Vercel) para generar su propio repositorio.
+使用 [**这个模板**](https://github.com/linyuxuanlin/Docusaurus-Vercel) 生成自己的仓库
 
-Regístrese en una cuenta de [**Vercel**](https://Vercel.com) (elija registrarse con su cuenta de GitHub) e importe el repositorio recién creado.
+注册 [**Vercel**](https://Vercel.com) 账户（选择用 GitHub 账户注册），并导入刚刚的仓库
 
-¡Listo!
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+行了。

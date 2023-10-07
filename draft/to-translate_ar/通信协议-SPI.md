@@ -1,90 +1,91 @@
-# Protocolo de comunicación - SPI
+# 通信协议 - SPI
 
-SPI (Serial Peripheral Interface) es un protocolo de comunicación **full-duplex, sincrónico, serial, maestro-esclavo, de bus** con una velocidad de transferencia de datos de 8 Mbit. SPI solo puede tener un host y puede conectarse a uno o varios esclavos. Cuando se conectan múltiples dispositivos, se requiere el uso de pines de selección de chip (chip select, CS).
+SPI（Serial Peripheral Interface）是一种 **全双工、同步、串行、主从、总线** 通信协议，其数据传输速率为 8 Mbit。SPI 只能有一个主机，可连接一个或多个从机。连接多设备时，需要用到片选引脚（chip select，CS）。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210911095950.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210911095950.png)
 
-## Pines de SPI
+## SPI 的引脚
 
-- **SCLK** (reloj serial): señal de reloj de onda cuadrada impulsada por el host, muestreada como entrada desde el extremo. Las señales en SDO y SDI se bloquean según la señal de reloj en SCLK. Un ciclo de reloj transmite 1 bit de datos, por lo que la velocidad de transmisión es igual a la frecuencia de reloj generada por el host.
-- **SDI/SDO** (entrada de datos serial / salida de datos serial): describe la dirección del flujo de datos en relación con el host, pero en la placa, aparecen más MOSI (Master Out Slave In) y MISO (Master In Slave Out). Correspondientemente, SDO es MOSI en el host y MISO en el esclavo; mientras que SDI es MISO en el host y MOSI en el esclavo; en una topología de cadena, el dispositivo A MISO se conecta al dispositivo B MISO.
-- **CS/SS** (selección de chip / selección de esclavo): impulsado por el host, se utiliza para arbitrar la prioridad de comunicación en el bus SPI. Cuando la línea CS es de bajo nivel, activa la comunicación SPI. CS es efectivo en bajo nivel.
+- **SCLK**（serial clock）：由主机驱动的方波时钟信号，从端为输入采样。SDO 和 SDI 上的信号根据 SCLK 上的时钟信号来进行锁存操作。一个时钟周期传输 1bit 数据，所以传输速率等同于主机产生的时钟频率。
+- **SDI/SDO**（serial data in / serial data out）：描述了相对于主机的数据流的方向，但更多时候在板子上出现的是 MOSI（Master Out Slave In）和 MISO（Master In Slave Out）。对应地，SDO 在主机上是 MOSI，在从机上是 MISO；而 SDI 在主机上是 MISO，在从机上是 MOSI；在菊花链拓扑中，A 器件 MISO 连接到 B 器件的 MISO。
+- **CS/SS**（chip select / slave select）：由主机驱动，用于仲裁 SPI 总线上通信的优先级。当 CS 线上为低电平时，就会激活 SPI 通信。CS 是低电平有效。
 
-## Operación de bloqueo de datos SPI
+## SPI 数据锁存操作
 
-- Los datos SPI se bloquean en el flanco ascendente o descendente de SCLK.
-- El borde que bloquea los datos se llama borde crítico.
-- Por ejemplo, la imagen izquierda a continuación representa el bloqueo de la lógica `1` en el flanco ascendente de SDO, y la imagen derecha representa el bloqueo de la lógica `0` en el flanco descendente.
+- SPI 数据在 SCLK 上升或下降沿时进行锁存。
+- 锁存数据的边沿称为临界边沿。
+- 举个例子，以下左图表示 SDO 在上升沿锁存逻辑 `1`，右图表示在下降沿锁存逻辑 `0`。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211026151750.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026151750.png)
 
-## Ejemplo de segmento de lectura SPI
+## SPI 读取句段示例
 
-1. El borde crítico es el flanco ascendente.
-2. El host envía datos al esclavo (SDI en el esclavo).
-3. El pin CS se baja a 0V para activar SPI.
-4. Los datos se transmiten en orden de bits de MSB a LSB en el flanco ascendente de SCLK.
-5. Se completa la transmisión de datos: `1011001`
+1. 临界边沿为上升沿
+2. 主机输出到从机（在从机上为 SDI）
+3. CS 脚被拉低为 0V，以激活 SPI
+4. 数据在 SCLK 上升沿时，从高位（MSB）到低位（LSB）按顺序进行传输
+5. 完成传输数据：`1011001`
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211026152228.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026152228.png)
 
-## Bordes críticos de SPI
+## SPI 临界边沿
 
-- $t_{SU}$ (tiempo de configuración): define cuánto tiempo antes de que ocurra el evento del borde crítico, los datos en SDI deben ser determinados y estabilizados.
-- $t_{HO}$ (tiempo de retención): define cuánto tiempo los datos en SDI deben mantenerse después del evento del borde crítico.
-- $t_{DO}$ (tiempo de retardo): define el tiempo de retardo de los datos efectivos en SDO después del evento del borde crítico.
+- $t_{SU}$（setup time）：定义在临界边沿事件发生多久前，SDI 数据就该被确定并稳定下来。
+- $t_{HO}$（hold time）：定义在临界边沿事件发生后，SDI 上的数据必须保留多长时间。
+- $t_{DO}$（delay time）：定义在临界边沿事件发生后，SDO 上的有效数据的延迟时间。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211026160940.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026160940.png)
 
-## Modos de transferencia SPI (4)
+## SPI 传输模式（4 种）
 
-- **CPOL** (polaridad del reloj): la polaridad del reloj en estado inactivo (sin transferencia de datos), `0` representa nivel bajo, `1` representa nivel alto.
-- **CPHA** (fase del reloj): define si el bloqueo se realiza en el flanco ascendente o descendente. `0` representa el bloqueo en el primer borde de cambio; `1` representa el bloqueo en el segundo borde de cambio.
+- **CPOL**（clock polarity，时钟极性）：空闲（不传输数据）时钟的极性，`0` 代表低电平，`1` 代表高电平。
+- **CPHA**（clock phase，时钟相位）：定义在上升还是下降沿进行锁存。`0` 代表在第一个变化的边沿进行锁存；`1` 代表在第二个变化的边沿进行锁存。
 
-| Modo | CPOL (Polaridad del reloj) | CPHA (Fase del reloj) | Flanco de captura |
-| ---- | ------------------------ | --------------------- | ----------------- |
-| 0    | 0 (Bajo)                 | 0 (Captura en primer flanco) | Flanco ascendente |
-| 1    | 0 (Bajo)                 | 1 (Captura en segundo flanco) | Flanco descendente |
-| 2    | 1 (Alto)                 | 0 (Captura en primer flanco) | Flanco descendente |
-| 3    | 1 (Alto)                 | 1 (Captura en segundo flanco) | Flanco ascendente |
+| 模式编号 | CPOL（时钟极性） | CPHA（时钟相位）          | 锁存边沿 |
+| -------- | ---------------- | ------------------------- | -------- |
+| 0        | 0（低电平）      | 0（在第一个边沿进行锁存） | 上升沿   |
+| 1        | 0（低电平）      | 1（在第二个边沿进行锁存） | 下降沿   |
+| 2        | 1（高电平）      | 0（在第一个边沿进行锁存） | 下降沿   |
+| 3        | 1（高电平）      | 1（在第二个边沿进行锁存） | 上升沿   |
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211026162028.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026162028.png)
 
-## Cadena Daisy (Daisy Chain)
+## 菊花链（Daisy Chain）
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211026164011.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026164011.png)
 
-En el modo normal, cada esclavo SPI necesita una línea CS. Cuando hay muchos esclavos, esto ocupa demasiados pines de entrada/salida del maestro. Con la topología de cadena Daisy, solo se necesita una línea CS para controlar todos los esclavos.
+在普通模式下，SPI 每个从机都需要一条 CS 线。当从机一多，会占用主机过多的 IO 口。使用菊花链的拓扑连接，就可以只用一条 CS 线，驱动所有的从机。
 
-El principio de la cadena Daisy es que los datos se transmiten desde el maestro al primer esclavo, luego del primer esclavo al segundo esclavo, y así sucesivamente, los datos se encadenan en serie a lo largo de la línea hasta el último esclavo, y el último esclavo transmite los datos al maestro a través de SDO.
+菊花链的原理是，数据从主机传输到第一个从机，然后从第一个从机传输到第二个从机，依此下去，数据沿着线路级联，直到系列中的最后一个从机，最后的一个从机通过 SDO 将数据传送到主机。
 
-## Ventajas y desventajas de SPI
+## SPI 的优缺点
 
-Ventajas:
+优点：
 
-- Comunicación full-duplex
-- Conducido por push-pull, puede proporcionar una buena integridad de señal y una velocidad relativamente alta
-- Protocolo flexible, no se limita a 8 bits por byte
-- Diseño de hardware simple
-  - No se necesitan resistencias pull-up, por lo que el consumo de energía es menor
-  - No hay mecanismo de arbitraje o modos de falla relacionados
-  - Los esclavos no necesitan un reloj (proporcionado por el maestro)
-  - Los dispositivos esclavos no necesitan una dirección separada
-  - No se necesitan transceptores
-  - Las señales son unidireccionales, lo que facilita el aislamiento de corriente
-- La velocidad del reloj no tiene límite superior
+- 全双工通信
+- 推挽驱动，能提供比较好的信号完整性和较高的速度
+- 协议灵活，不仅限于 8-bit 一个字节
+- 硬件设计简单
+  - 不需要上拉电阻，因此功耗更低
+  - 没有仲裁机制或相关的失效模式
+  - 从机不需要时钟（由主机提供）
+  - 从设备不需要单独的地址
+  - 不需要收发器
+  - 信号都是单向的，容易进行电流隔离
+- 时钟速率没有上限
 
-Desventajas:
+缺点：
 
-- Utiliza más pines que I2C
-- Los esclavos no pueden responder con hardware
-- No hay mecanismo de detección de errores, como el bit de paridad en UART
-- Solo puede haber un maestro
-- La especificación no es uniforme, por lo que no se puede verificar la consistencia
-- La distancia de transmisión es relativamente corta (en comparación con CAN, RS232, RS485, etc.)
+- 用到的引脚比 I2C 多
+- 从机无法进行硬件应答
+- 没有错误检查机制，如 UART 中的奇偶校验位
+- 只能有一个主机
+- 规范不统一，无法验证一致性
+- 传输距离相对比较近（相比 CAN、RS232、RS485 等）
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- "Analog Engineer's Pocket Reference"
+- 《Analog Engineer’s Pocket Reference》
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

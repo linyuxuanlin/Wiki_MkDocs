@@ -1,15 +1,13 @@
-# Notas de desarrollo de FreeRTOS 🚧
+# FreeRTOS 开发笔记 🚧
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [FreeRTOS (sitio web oficial)](https://www.freertos.org/)
-- [Manual de desarrollo de FreeRTOS para STM32F429 | ZHENGDIANYUANZI](https://www.amobbs.com/forum.php?mod=attachment&aid=NDE1MDY4fDZkYTVmZjIzfDE2NTUxMTY4NjB8MHw1NjkzMTMw)
+- [FreeRTOS(Official Website)](https://www.freertos.org/)
+- [STM32F429 FreeRTOS 开发手册 | 正点原子](https://www.amobbs.com/forum.php?mod=attachment&aid=NDE1MDY4fDZkYTVmZjIzfDE2NTUxMTY4NjB8MHw1NjkzMTMw)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 
-## Descarga e instalación
+## 下载安装
 
-En primer lugar, dirígete a la página de descarga oficial [**Descargar FreeRTOS**](https://www.freertos.org/a00104.html) y descarga el instalador más reciente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+首先，跳转官方下载页面 [**Download FreeRTOS**](https://www.freertos.org/a00104.html) 下载最新的安装器。

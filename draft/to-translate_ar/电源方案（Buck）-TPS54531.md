@@ -1,10 +1,10 @@
-# Esquema de alimentación (Buck) - TPS54531
+# 电源方案（Buck）- TPS54531
 
-TPS54531 es un convertidor Buck de 3.5V a 28V de entrada, 5A y 570kHz con Eco-mode de TI.
+TPS54531 是 TI 的一款具有 Eco-mode 的 3.5V 至 28V 输入、5A、570kHz Buck 转换器。
 
-Repositorio del proyecto: [**Collection_of_Power_Module_Design/DC-DC(Buck)/TPS54531**](<https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/DC-DC(Buck)/TPS54531>)
+项目仓库： [**Collection_of_Power_Module_Design/DC-DC(Buck)/TPS54531**](<https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/DC-DC(Buck)/TPS54531>)
 
-Vista previa en línea del proyecto:
+项目在线预览：
 
 <div class="altium-iframe-viewer">
   <div
@@ -13,67 +13,68 @@ Vista previa en línea del proyecto:
   ></div>
 </div>
 
-## Características principales
+## 主要特性
 
-- **Principio**: DC/DC (Buck)
-- **Voltaje de entrada**: 3.5-28 V
-- **Voltaje de salida**: mínimo 0.8 V
-- **Corriente de salida**: 5 A
-- **Frecuencia de trabajo**: 570 kHz
-- **Eficiencia**: hasta un 92%
-- **Precio**: ¥ 3.80
-- **Características**
-  - Función Eco-mode de salto de pulso en carga ligera
-  - Arranque lento ajustable para limitar la corriente de entrada
-  - Umbral de bloqueo de subvoltaje programable (UVLO)
-  - Protección contra sobretensión transitoria
-  - Protección de límite de corriente por ciclo, plegado de frecuencia y apagado térmico
+- **原理**：DC/DC（Buck）
+- **输入电压**：3.5-28 V
+- **输出电压**： 最低 0.8 V
+- **输出电流**： 5 A
+- **工作频率**： 570 kHz
+- **效率**：最高 92%
+- **价格**：￥ 3.80
+- **特性**
+  - 轻负载时脉冲跳跃 Eco-mode 功能
+  - 可调慢启动可限制涌入电流
+  - 可编程欠压闭锁（UVLO）阈值
+  - 过压瞬态保护
+  - 逐周期电流限制、频率折返和热关断保护
 
-## Definición de pines
+## 引脚定义
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210713153815.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210713153815.png)
 
-## Diseño de referencia
+## 参考设计
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210713173605.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210713173605.png)
 
-## Ajuste de parámetros
+## 参数调节
 
-(Para obtener parámetros más detallados, consulte el manual de datos)
+（更详细的参数请参考数据手册）
 
-### Ajuste del voltaje de salida
+### 输出电压调节
 
-Ajuste el voltaje de salida (voltaje de referencia $V_{REF}=0.8 V$) ajustando la resistencia de división de retroalimentación $R_5$ y $R_6$:
+通过调整反馈分压电阻 $R_5$ 和 $R_6$ 来设置输出电压（反馈电压 $V_{REF}=0.8 V$）：
 
 $$
 V_{OUT}=V_{REF}\times[\frac{R5}{R6}+1]
 $$
 
-$R_5$ se toma aproximadamente como 10 kΩ. En el diseño de referencia, necesitamos una salida de 4.96 V, por lo que se toma $R_5$ = 10.2 kΩ y $R_6$ = 1.96 kΩ.
+$R_5$ 大约取值 10 kΩ，在参考设计中，我们需要输出 4.96 V，所以取 $R_5$ = 10.2 kΩ，$R_6$ = 1.96 kΩ。
 
-### Pin de habilitación
+### 使能引脚
 
-El pin EN se desactiva por debajo de 1.25 V y se habilita en flotación. Aquí se utilizan dos resistencias para el bloqueo de subvoltaje.
+EN 引脚低于 1.25 V 失能，浮空以使能。这里使用两个电阻进行欠压锁定。
 
-### Modo de ahorro de energía Eco-mode
+### Eco-mode 节能模式
 
-Cuando la corriente pico del inductor es inferior a 160 mA, el chip entra en modo de ahorro de energía y se cierra la salida.
+当电感器的峰值电流低于 160 mA 时，芯片进入节能模式，关闭输出。
 
-### Apagado térmico
+### 热关机
 
-Cuando la temperatura del chip supera los 165℃, el chip se detiene y se reinicia cuando la temperatura baja a menos de 165℃.
+当芯片温度超过 165℃ 时，芯片停止运行；当低于 165℃ 时重新启动。
 
-## Referencia de diseño de PCB
+## PCB 布局参考
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210713161521.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210713161521.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210713162833.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210713162833.png)
 
-## Resumen de problemas comunes
+## 踩坑总结
 
-- La corriente del diodo de continuación y del inductor debe ser mayor que la corriente de salida.
-- La parte posterior del chip debe tener cobre desnudo con estaño para la disipación de calor.
-- El diseño debe seguir la dirección de la corriente Buck.
-- La placa terminada puede proporcionar una corriente de salida de 5 A, pero se necesita disipación de calor adicional para correr durante largos períodos de tiempo con más de 3 A. Los dispositivos de potencia como el diodo y el inductor pueden calentarse.
+- 续流二极管和电感的电流应该大于输出电流。
+- 芯片背面需裸铜上锡用于散热。
+- 布局应按照 Buck 电流流向。
+- 成品板可输出 5 A 电流，但长跑 3 A 以上需要另加散热。功率器件如二极管和电感会发烫。
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

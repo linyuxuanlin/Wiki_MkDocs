@@ -1,6 +1,6 @@
-# Notas de aprendizaje de HTML
+# HTML 学习笔记
 
-## Estructura básica
+## 基本框架
 
 ```markup
 <!DOCTYPE html>
@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Título</title>
+    <title>标题</title>
 </head>
 <body>
 
@@ -17,15 +17,15 @@
 </html>
 ```
 
-Puede abrir un archivo `.html` y escribir `html:5` para llamarlo.
+可打开 `.html` 文件，直接输入 `html:5` 调出
 
-## Declaraciones
+## 语句
 
-Algunas convenciones:
+一些规范：
 
-1. Las etiquetas se escriben en minúsculas y los elementos deben cerrarse.
-2. Los elementos vacíos deben cerrarse con una barra diagonal, por ejemplo `<br />`.
-3. No se utiliza la semántica, todos los estilos se almacenan en CSS, separando el contenido de los estilos.
+1. 标签使用小写，元素必须闭合
+2. 空元素要加斜杠以闭合 eg. `<br />`
+3. 不使用语义化，所有样式都存放于 CSS 中，内容与样式分离
 
 ```markup
 <!DOCTYPE html>
@@ -35,114 +35,81 @@ Algunas convenciones:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Título</title>
+    <title>标题</title>
 </head>
 
 <body>
-    <h1>Título de nivel 1</h1>
-    <h2>Título de nivel 2</h2>
-    <p>Párrafo</p>
+    <h1>一级标题</h1>
+    <h2>二级标题</h2>
+    <p>段落</p>
 
-    <!--Salto de línea-->
+    <!--换行符-->
     <br />
-    <!--Línea divisoria-->
+    <!--分割线-->
     <hr />
 
-    <!--Listas, pueden ser anidadas-->
-    <!--Lista ordenada-->
+    <!--列表，可嵌套-->
+    <!--有序列表-->
     <ol>
-        <li>Primer elemento</li>
-        <li>Segundo elemento</li>
+        <li>第一项</li>
+        <li>第二项</li>
     </ol>
-    <!--Lista desordenada-->
+    <!--无序列表-->
     <ul>
-        <li>Primer elemento</li>
-        <li>Segundo elemento</li>
+        <li>第一项</li>
+        <li>第二项</li>
     </ul>
 
-    <!--Enlaces-->
-    <a href="https://www.google.com/">Texto del enlace</a>
-    <!--Enlace a una ubicación específica de la página, utilizando el atributo ID-->
-    <a href="#top">Volver arriba</a>
-    <p id="top">Arriba</p>
-    <!--Enlace a una ubicación específica en otra página-->
-    <a href="http://wiki-power.com/#top">Saltar a una ubicación en otra página</a>
+    <!--链接-->
+    <a href="https://www.google.com/">链接显示的文本</a>
+    <!--链接到页面特定位置，使用 ID 特性-->
+    <a href="#top">回到顶部</a>
+    <p id="top">顶部</p>
+    <!--链接到其他页面的特定位置-->
+    <a href="http://wiki-power.com/#top">跳转到站外页面的某个位置</a>
 
-    <!--Imágenes-->
-    <img src="/xx.png" alt="Texto alternativo cuando no se puede cargar la imagen" />
+    <!--图像-->
+    <img src="/xx.png" alt="无法加载时的文字说明" />
 
-    <!--Tablas-->
+    <!--表格-->
     <table>
-        <!--Primera fila-->
+        <!--第一行-->
         <tr>
-            <!--Primera columna-->
+            <!--第一列-->
             <th></th>
-            <!--Segunda columna-->
-            <th scope="col">Sábado</th>
-            <!--Tercera columna-->
-            <th scope="col">Domingo</th>
+            <!--第二列-->
+            <th scope="col">周六</th>
+            <!--第三列-->
+            <th scope="col">周日</th>
         </tr>
-        <!--Segunda fila-->
+        <!--第二行-->
         <tr>
-            <th scope="row">Cantidad</th>
+            <th scope="row">数量</th>
             <td>120</td>
             <td>135</td>
         </tr>
-        <!--Tercera fila-->
+        <!--第三行-->
         <tr>
-            <th scope="row">Ingresos</th>
-            <!--Columna que abarca varias celdas, utilizando colspan y rowspan-->
+            <th scope="row">收益</th>
+            <!--跨列 colspan，跨行 rowspan-->
             <td colspan="2">500</td>
         </tr>
     </table>
 
-# Introducción a HTML
+    <!--表单，待补充-->
+    <!--iframe，待补充-->
+    <!--flash/视频/音频，待补充-->
 
-HTML (Lenguaje de Marcado de Hipertexto) es el lenguaje de marcado estándar utilizado para crear páginas web. Con HTML, se pueden crear documentos estructurados y enriquecidos con contenido multimedia, como imágenes, videos y audio.
-
-## Estructura básica de un documento HTML
-
-Un documento HTML comienza con una etiqueta `<!DOCTYPE html>` que indica al navegador que se está utilizando la última versión de HTML. Luego, la estructura básica de un documento HTML consta de dos partes principales: la sección `head` y la sección `body`.
-
-```html
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Título de la página</title>
-</head>
-<body>
-  Contenido de la página
 </body>
+
 </html>
 ```
 
-La sección `head` contiene información sobre la página, como el título, la descripción y las palabras clave. La sección `body` contiene el contenido real de la página, como texto, imágenes y otros elementos multimedia.
+## 参考与致谢
 
-## Etiquetas HTML comunes
+- [HTML 教程 | 菜鸟教程](http://www.runoob.com/html/html-tutorial.html)
+- [HTML 30 分钟入门教程](http://deerchao.net/tutorials/html/html.htm)
+- [HTML - head 头部浅析](https://www.tielemao.com/831.html)
 
-Las etiquetas HTML se utilizan para estructurar y dar formato al contenido de la página. Algunas etiquetas comunes incluyen:
-
-- `<h1>` a `<h6>`: encabezados de diferentes tamaños
-- `<p>`: párrafos de texto
-- `<a>`: enlaces a otras páginas o recursos
-- `<img>`: imágenes
-- `<ul>` y `<ol>`: listas sin ordenar y ordenadas, respectivamente
-- `<table>`: tablas de datos
-- `<form>`: formularios para recopilar información del usuario
-
-## Añadiendo multimedia
-
-HTML también permite la inclusión de contenido multimedia en una página web. Algunos elementos comunes incluyen:
-
-- `<iframe>`: permite incrustar una página web dentro de otra página web
-- `<video>`: permite la inclusión de videos
-- `<audio>`: permite la inclusión de archivos de audio
-- `<img>`: permite la inclusión de imágenes
-
-## Referencias y agradecimientos
-
-- [Tutorial de HTML | Tutorial de novatos](http://www.runoob.com/html/html-tutorial.html)
-- [Tutorial de HTML en 30 minutos](http://deerchao.net/tutorials/html/html.htm)
-- [HTML - Análisis superficial de la sección de encabezado](https://www.tielemao.com/831.html)
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

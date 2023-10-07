@@ -1,3 +1,3 @@
 # WeChat
 
-Mi WeChat: `linyuxuanlin`
+My WeChat： `linyuxuanlin`

@@ -1,132 +1,130 @@
-# Fundamentos de ADC y DAC
+# ADC 与 DAC 基础知识
 
-En el mundo real, la mayoría de las señales son analógicas, como la temperatura, el sonido, la presión, etc. Sin embargo, en el procesamiento y transmisión de señales, se utiliza principalmente la señal digital para reducir la interferencia del ruido. Por lo tanto, a menudo convertimos la señal analógica del mundo real en una señal digital a través de ADC para realizar operaciones, transmisión y almacenamiento, y luego convertirla en una señal analógica a través de DAC para presentarla.
+在现实世界中，常见的信号大都是模拟量，像温度、声音、气压等，但在信号的处理与传输中，为了减少噪声的干扰，较多使用的是数字量。因此我们经常会将现实中的模拟信号，通过 ADC 转换为数字信号进行运算、传输、储存，再通过 DAC 转换为模拟信号，呈现出来。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220724210409.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220724210409.png)
 
-Pero hay que tener en cuenta que la señal analógica en el mundo real es continua, lo que significa que tiene una resolución infinita, pero después de convertirse en una señal digital, perderá cierta precisión y se convertirá en valores discretos en tiempo y amplitud.
+但要注意的是，现实中的模拟量连续的，意味着它有无限的分辨率，但转换为数字量之后，将会丢失一定的精度，在时间和幅度上都会变成离散的值。
 
-## Principios básicos de ADC
+## ADC 基本原理
 
-ADC (Convertidor analógico a digital) se refiere a un convertidor que convierte señales analógicas del mundo real, como temperatura, presión, sonido o imágenes, en una forma digital más fácil de almacenar, procesar y transmitir.
+ADC（Analog-to-Digital Converter）指模拟 / 数字转换器，可将真实世界的模拟信号，例如温度、压力、声音或者图像等，转换成更容易储存、处理和发射的数字形式。
 
-### Muestreo
+### 采样
 
-Dado que la señal analógica de entrada es continua y la señal digital de salida es discreta, solo se puede realizar un muestreo instantáneo, y luego convertir el valor de muestreo en una cantidad digital de salida y comenzar un nuevo ciclo de muestreo.
+因为输入的模拟信号是连续的，而将要输出的数字信号是离散的，所以只能进行瞬时采样，再将采样值转换为输出的数字量，再重新开始下一轮的采样。
 
-Para representar con precisión la señal de entrada analógica $v_1$ con la señal $v_s$, se debe cumplir al menos el teorema de muestreo, es decir, la frecuencia de muestreo $f_s$ debe ser al menos el doble de la frecuencia máxima de la señal de entrada analógica $f_{i(max)}$ (generalmente se toma de 3 a 5 veces, pero las frecuencias demasiado altas requieren una velocidad de trabajo más rápida y deben considerarse los costos):
+为了能准确无误用信号 $v_s$ 表示出模拟输入信号 $v_1$，至少需要满足采样定理，即采样频率 $f_s$ 在模拟输入信号最高频率分量 $f_{i(max)}$ 的 2 倍以上（通常会取 3~5 倍，但太高的频率需要更快的工作速度，需要综合成本考虑）：
 
 $$
 f_s≥2\cdot f_{i(max)}
 $$
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220724180529.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220724180529.png)
 
-Si se cumple el teorema de muestreo, la señal $v_s$ se puede restaurar a $v_1$ mediante un filtro paso bajo. El coeficiente de transferencia de voltaje del filtro debe mantenerse constante por debajo de $f_{i(max)}$ y caer rápidamente a cero antes de $f_s-f_{i(max)}$.
+只要满足了采样定理，即可用低通滤波器，将 $v_s$ 还原为 $v_1$。滤波器电压传输系数应在低于 $f_{i(max)}$ 时保持不变，在 $f_s-f_{i(max)}$ 前迅速下降为 0。
 
-### Mantenimiento
+### 保持
 
-El circuito de mantenimiento permite que la señal se mantenga durante un período de tiempo después del muestreo para que el ADC tenga suficiente tiempo para realizar la conversión. Cuanto mayor sea la frecuencia de pulso de muestreo y la densidad de muestreo, más cerca estará la señal de salida del circuito de mantenimiento de la forma de onda de la señal de entrada. La forma básica del circuito de muestreo-mantenimiento es la siguiente:
+保持电路能够采样结束后，让信号保持一段时间，使 ADC 有充分时间进行转换。一般采样脉冲频率越高、采样越密，采样值就越多，采样保持电路的输出信号就越接近输入信号的波形。采样 - 保持电路的基本形式如下：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220723161306.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220723161306.png)
 
-Los pasos básicos del muestreo-mantenimiento son los siguientes:
+采样 - 保持的基本步骤：
 
-1. Cuando la señal de control de muestreo $v_L$ es alta, el MOSFET $T$ se enciende, la señal $v_1$ pasa a través de la resistencia $R_1$ y el MOSFET $T$ y carga el capacitor $C_H$.
-2. Si se toma $R_1=R_F$, después de que se complete la carga, $v_0=v_c=-v_1$.
-3. Cuando la señal de control de muestreo $v_L$ cae a nivel bajo, el MOSFET $T$ se apaga y la tensión en el capacitor $C_H$ no cambia abruptamente, por lo que $v_0$ también puede mantenerse durante un período de tiempo y el resultado del muestreo se puede registrar.
+1. 当采样控制信号 $v_L$ 为高电平时，使 MOS 管 $T$ 导通，$v_1$ 经过电阻 $R_1$ 和 MOS 管 $T$，给电容 $C_H$ 充电。
+2. 若取 $R_1=R_F$，则充电结束后 $v_0=v_c=-v_1$。
+3. 当采样控制信号 $v_L$ 跌落回电平时，MOS 管 $T$ 截止，电容 $C_H$ 上的电压不会突变，所以 $v_0$ 也能保持一段时间，采样结果得以被记录下来。
 
-### Cuantificación
+### 量化
 
-La cantidad digital obtenida por muestreo debe ser un múltiplo entero de una unidad de cantidad mínima especificada. Este proceso de conversión se llama cuantificación, y la unidad de cantidad mínima tomada se llama unidad de cuantificación $\Delta$. El tamaño de la cantidad representada por el bit menos significativo (LSB) de la señal digital es igual a $\Delta$.
+采样得到的数字量，必须为某个规定的最小数值单位的整数倍，这个转换过程称为量化，所取的最小数量单位称为量化单位 $\Delta$。数字信号最低有效位 LSB 的 1 所代表的数量大小就等于 $\Delta$。
 
-Como el voltaje analógico es continuo, no necesariamente es divisible por $\Delta$, lo que resulta en un error de cuantificación.
+因为模拟电压是连续的，不一定能被 $\Delta$ 整除，因此会出现量化误差。
 
-Cuanto más fina sea la unidad de cuantificación, menor será el error de cuantificación y mayor será el número de bits de código binario utilizado, lo que aumentará la complejidad del circuito.
+量化级越细，量化误差就越小，所用二进制代码的位数就越多，电路也越复杂。
 
-### Codificación
+### 编码
 
-La conversión cuantificada se representa en binario (u otro sistema de numeración), lo que se llama codificación.
+将量化的结果用二进制（或其他进制）表示出来，称为编码。
 
-## Tipos comunes de ADC
+## ADC 常见类型
 
-### Comparador paralelo (Flash)
+### 并联比较型（Flash）
 
-El ADC de comparador paralelo, también conocido como ADC Flash, es un tipo de ADC directo que puede convertir directamente el voltaje analógico de entrada en una cantidad digital de salida sin la necesidad de una conversión intermedia. Está compuesto por una serie de comparadores de voltaje, cada uno de los cuales compara la señal de entrada con un voltaje de referencia único. La salida del comparador se conecta a la entrada del circuito codificador para producir una salida binaria.
+并联比较型 ADC 又称 Flash ADC，属于直接 ADC，能将输入的模拟电压直接转换为输出的数字量，不需要经过中间变量转换。它由一系列电压比较器组成，每个比较器将输入信号与唯一的分压后的参考电压进行比较。比较器的输出连接编码器电路的输入，产生二进制的输出。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220723163931.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220723163931.png)
 
-No solo es la técnica ADC más simple en teoría de operación, sino que también es la más efectiva en velocidad, solo limitada por la propagación de comparadores y retardos de puerta. Desafortunadamente, para cualquier cantidad dada de bits de salida, es el componente más denso.
+不仅在操作理论方面是最简单的，而且在速度方面也是最有效的 ADC 技术，仅受比较器和栅极传播延迟的限制。不幸的是，对于任何给定数量的输出位，它是最密集的组件
 
-El ADC de comparación en paralelo tiene la velocidad de conversión más rápida, pero el inconveniente es que requiere el uso de muchos comparadores de voltaje y circuitos de conversión de código a gran escala (la mayoría de las salidas comunes de comparación en paralelo son de 8 bits o menos).
+并联比较型 ADC 的转换速度是最快的，但缺点是需要使用很多电压比较器和大规模的代码转换电路（常见的并联比较型输出大都在 8 位以下）。
 
-### Tipo de aproximación sucesiva
+### 逐次逼近型
 
-El ADC de aproximación sucesiva utiliza una estructura de circuito de comparación de retroalimentación. Está compuesto por comparadores, DAC, registros, fuente de pulso de reloj y lógica de control:
+逐次逼近型（Successive Approximation）ADC 采用的是一种反馈比较型电路结构。由比较器、DAC、寄存器、时钟脉冲源和控制逻辑等组成：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220723211839.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220723211839.png)
 
-Su principio es establecer una cantidad digital, obtener una tensión de salida analógica correspondiente a través de DAC. Compare secuencialmente esta tensión analógica con la señal de tensión analógica de entrada desde el bit más alto. Si no son iguales, ajuste la cantidad digital tomada hasta que las dos tensiones analógicas sean iguales. La cantidad digital tomada finalmente es el resultado de conversión buscado. Su proceso es como pesar un objeto por su peso en una balanza, primero agregue una pesa grande, luego agregue o cambie a una pesa pequeña de forma secuencial.
+其原理是，设定一个数字量，通过 DAC 得到一个对应的输出模拟电压。将这个模拟电压和输入的模拟电压信号从最高位开始顺序地相比较，如果两者不相等，则调整所取的数字量，直到两个模拟电压相等为止，最后所取的这个数字量就是所求的转换结果。其过程像用天平去称量位置重量的物体，先加大砝码，再逐次添加或换用小砝码。
 
-La ventaja del ADC de aproximación sucesiva es su alta velocidad, bajo consumo de energía y ventaja de costo-beneficio en baja resolución (12 bits); la desventaja es que la velocidad de conversión es generalmente baja y el tamaño del circuito es mediano.
+逐次逼近型 ADC 的优点是速度高，功耗低，在低分辨率（12 位）下具有性价比优势；缺点是转换速率一般，电路规模中等。
 
-### Tipo de doble integración (V-T)
+### 双积分型（V-T）
 
-El ADC de doble integración es un tipo de ADC indirecto que convierte la señal de voltaje analógica de entrada en una señal de ancho de tiempo proporcional a ella primero, y luego cuenta los pulsos de reloj de frecuencia fija dentro de este ancho de tiempo. El valor de conteo es la señal digital proporcional a la entrada analógica. Por lo tanto, también se llama ADC de transformación de voltaje-tiempo (V-T).
+双积分型 ADC 是一种间接 ADC，它首先将输入的模拟电压信号转换成与之成正比的时间宽度信号，随后在此时间宽度内，对固定频率的时钟进行脉冲计数，计数的值就是正比于模拟输入电压的数字信号。因此，也将这种 ADC 称为电压 - 时间变换型（V-T）ADC。
 
-El ADC de doble integración está compuesto por integradores, comparadores, contadores, lógica de control y fuente de señal de reloj, como se muestra en la figura:
+双积分型 ADC 由积分器、比较器、计数器、控制逻辑和时钟信号源组成，如图：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220723213208.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220723213208.png)
 
-La ventaja del ADC de doble integración es su rendimiento de trabajo estable (dos integraciones, excluyendo las diferencias de parámetros RC), fuerte capacidad antiinterferencias (la integración no se ve muy afectada por el ruido); la desventaja es que la velocidad de conversión es baja (la precisión de conversión depende del tiempo de integración).
+双积分型 ADC 的优点是工作性能稳定（两次积分，排除 RC 参数差异）、抗干扰能力强（积分受噪声影响不大）；缺点是转换速率低（转换精度依赖于积分时间）。
 
-### Tipo Σ-Δ
+### Σ-Δ 型
 
-El principio del ADC de modulación Σ-Δ es diferente del tipo de comparación en paralelo y de aproximación sucesiva mencionados anteriormente. No cuantifica y codifica el valor absoluto de la señal de muestreo, sino que cuantifica y codifica la diferencia (incremento) entre dos valores de muestreo adyacentes. Su estructura básica es la siguiente:
+Σ-Δ 调制型 ADC 的原理与上文的并联型与逐次逼近型 ADC 不同，它不是将采样信号的绝对值进行量化编码，而是将两次相邻采样值之差（增量）进行量化与编码的。其基本结构如下：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220723230949.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220723230949.png)
 
-Está compuesto por un integrador de voltaje lineal, un cuantizador de salida de 1 bit, un DAC de entrada de 1 bit y un circuito sumador. El valor digital de salida $V_0$ procesado por el cuantizador se convierte en una señal analógica $V_F$ a través del DAC y se retroalimenta al circuito sumador de entrada. Reste la señal de entrada $v_1$ para obtener la diferencia $v_D$. El integrador realiza una integración lineal en $v_D$, la tensión de salida $v_{INT}$ se cuantifica en un bit y se convierte en una señal digital de salida. Debido al uso de un cuantizador de salida de 1 bit, en un estado de trabajo continuo, la señal de salida $V_0$ es una corriente de datos compuesta por 0 y 1.
+它由线性电压积分器、1 位输出量化器、1 位输入 DAC 和一个求和电路组成。经过量化器处理输出的数字信号 $V_0$，经过 DAC 转换为模拟信号 $V_F$，并负反馈至输入端的求和电路，与输入信号 $v_1$ 相减，得到差值 $v_D$。积分器对 $v_D$ 作线性积分，输出电压 $v_{INT}$ 至量化器，由量化器量化为 1 位的数字量输出。由于采用 1 为输出的量化器，所以在连续工作的状态下，输出信号 $V_0$ 是由 0 和 1 组成的数据流。
 
-La ventaja del ADC de modulación Σ-Δ es que se puede lograr fácilmente una medición de alta resolución; la desventaja es que la velocidad de conversión es baja y el tamaño del circuito es grande.
+Σ-Δ 调制型 ADC 的优点是可以容易地做到高分辨率测量；缺点是转换速率低、电路规模大。
 
-### Transformación de voltaje-frecuencia (V-F)
+### 电压 - 频率变换型（V-F）
 
-El ADC de transformación de voltaje-frecuencia (V-F) es un tipo de ADC indirecto. Está compuesto principalmente por un convertidor V-F (también llamado oscilador controlado por voltaje, VCO), un contador y su puerta de control de señal de reloj, un registro y un disparador de estado estable:
+电压 - 频率变换型（V-F）ADC 是一种间接 ADC。主要由 V-F 变换器（也称为压控振荡器 Voltage Controlled Oscillator，简称 VCO）、计数器及其时钟信号控制闸门、寄存器、单稳态触发器等几部分构成：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220723233236.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220723233236.png)
 
-Su principio es:
+其原理是：
 
-- Convertir la señal de voltaje analógica de entrada en una señal de frecuencia correspondiente.
-- Contar la tasa de señal de frecuencia en un tiempo fijo.
-- El resultado del conteo es proporcional al valor de amplitud de la tensión de entrada.
+- 将输入的模拟电压信号转换为对应的频率信号。
+- 在固定的时间内对频信号率计数。
+- 计数结果正比于输入电压的幅值。
 
-## Parámetros principales del ADC
+## ADC 主要参数
 
-## Principios básicos del ADC
+- **分辨率**：输出数字量变化一个相邻数值所需输入模拟电压的变化量，一般用二进制的位数表示，分辨率为 n 表示是满刻度 Fs 的 2 的 n 次方分之一。
+- **量化误差**：ADC 的有限位数对模拟量进行量化而引起的误差。要准确表示模拟量，ADC 的位数需要很大甚至无穷大，所以 ADC 器件都有量化误差。一个分辨率有限的 ADC 的阶梯状转换特性曲线与具有无限分辨率的 ADC 转化特性曲线之间的最大偏差就是量化误差。
+- **转换速率**：每秒进行转换的次数。
+- **转换量程**：ADC 所能测量的最大电压，一般等于参考电压，超过此电压有可能损毁 ADC。当信号较小时可以考虑降低参考电压来提高分辨率，改变参考电压后，对应的转换值也会改变，计算实际电压时需要将参考电压考虑进去，所以说一般参考电压都要做到很稳定且不带有高次谐波。
+- **偏移误差**：ADC 输入信号为 0 时，但 ADC 转换输出信号不为 0 的值。
+- **满刻度误差**：ADC 满刻度输出时对应的输入信号与理想输入信号值之差。
+- **线性度**：实际 ADC 的转移函数和理想直线的最大偏移。
 
-- **Resolución**: la cantidad de cambio en la tensión analógica de entrada necesaria para producir un cambio de una unidad en la cantidad digital de salida. Por lo general, se expresa en términos de la cantidad de bits binarios utilizados para representar la señal analógica de entrada, y se define como 1/2^n de la escala completa (Fs) del ADC.
-- **Error de cuantificación**: el error que se produce al cuantificar una señal analógica debido a la limitación del número de bits utilizados en el ADC. Para representar con precisión una señal analógica, se necesitaría un número infinito de bits en el ADC, por lo que todos los ADC tienen un error de cuantificación. El error de cuantificación es la máxima desviación entre la curva de conversión de un ADC con resolución limitada y la curva de conversión de un ADC con resolución infinita.
-- **Velocidad de conversión**: la cantidad de conversiones que se realizan por segundo.
-- **Rango de conversión**: la tensión máxima que el ADC puede medir, que generalmente es igual a la tensión de referencia. Si la señal de entrada es demasiado grande, puede dañar el ADC. Si la señal es demasiado pequeña, se puede aumentar la resolución reduciendo la tensión de referencia. Sin embargo, al cambiar la tensión de referencia, también se cambia el valor de conversión correspondiente, por lo que al calcular la tensión real, se debe tener en cuenta la tensión de referencia. Por lo tanto, la tensión de referencia generalmente debe ser estable y no tener armónicos de alta frecuencia.
-- **Error de offset**: el valor de salida del ADC cuando la señal de entrada es cero.
-- **Error de escala completa**: la diferencia entre el valor de entrada ideal y el valor de entrada correspondiente a la salida máxima del ADC.
-- **Linealidad**: la máxima desviación entre la función de transferencia real del ADC y la línea ideal.
+## DAC 基本原理
 
-## Principios básicos del DAC
+DAC（Digital-to-Analog Canverter），指数字 / 模拟转换器。可将数字量转换为成比例的模拟电压或电流。举个例子，计算机可能产生范围从 `00000000` 到 `11111111` 的数字输出，DAC 将其转换为范围从 0 到 10V 的电压。DAC 从基本原理上可以分两类：电流求和型、分压器型。
 
-DAC (convertidor digital-analógico) convierte una señal digital en una señal analógica proporcional. Por ejemplo, una computadora puede generar una salida digital que varía de `00000000` a `11111111`, y el DAC la convierte en una tensión de 0 a 10 V. En términos generales, los DAC se pueden dividir en dos tipos: sumador de corriente y divisor de voltaje.
+## DAC 常见类型
 
-## Tipos comunes de DAC
+### 开关树型
 
-### Árbol de conmutación
+开关树型 DAC 是最简单粗暴的 DAC，由电阻分压器和树状的开关网络组成：
 
-El DAC de árbol de conmutación es el más simple y directo. Está compuesto por una red de resistencias y un árbol de conmutación:
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220724172844.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220724172844.png)
-
-Estos interruptores están controlados por tres entradas $d_0,d_1,d_2$, y la salida se puede calcular como:
+这些开关分别受 3 位输入 $d_0,d_1,d_2$ 控制，由此可得：
 
 $$
 v_0=\frac{V_{REF}}{2^1} d_2+\frac{V_{REF}}{2^2} d_1+\frac{V_{REF}}{2^3} d_0
@@ -136,80 +134,110 @@ $$
 v_0=\frac{V_{REF}}{2^3} (d_2 2^2+d_1 2^1+d_0 2^0)
 $$
 
-Para un DAC de árbol de conmutación de n bits, la salida se puede calcular como:
+进一步看，对于 n 位二进制输入的开关树型 DAC，输出为：
 
 $$
 v_0=\frac{V_{REF}}{2^n} (d_{n-1} 2^{n-1}+d_{n-2} 2^{n-2}+...+d_1 2^1+d_0 2^0)
 $$
 
-La ventaja del DAC de árbol de conmutación es que solo se necesita un tipo de resistencia, y los requisitos de resistencia de conmutación no son altos si la corriente de salida es baja. Sin embargo, la desventaja es que se necesitan muchos interruptores.
+开关树型 DAC 特点是电阻种类单一，且在输出端基本不取电流的情况下，对开关导通电阻要求不高；但缺点是用的开关太多。
 
-### Red de resistencias ponderadas
+### 权电阻网络
 
-El término "ponderado" se refiere al valor que representa cada bit en un número binario. Por ejemplo, en un número binario de n bits $D_n=d_{n-1}d_{n-2}...d_1 d_0$, el valor de cada bit, de MSB a LSB, es $2^{n-1},2^{n-2}...2^1,2^0$.
+权指的是一个多位二进制数中，每一位 1 所代表的数值。例如，一个 n 位二进制数 $D_n=d_{n-1}d_{n-2}...d_1 d_0$ 从最高位（Most Significant Bit, MSB）到最低位（LSB）的权依次为 $2^{n-1},2^{n-2}...2^1,2^0$。
 
-El DAC de red de resistencias ponderadas (que produce una tensión de salida) se compone de una red de resistencias ponderadas, cuatro interruptores analógicos y un amplificador sumador:
+权电阻网络型 DAC（属于电压输出型）的原理如下图所示（4 位），它由权电阻网络，4 个模拟开关和 1 个求和放大器组成：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220724003300.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220724003300.png)
 
-En este artículo se discute el funcionamiento de los convertidores digital-analógico (DAC, por sus siglas en inglés) de tipo red de resistencias y de tipo red de resistencias invertida, así como el DAC de corriente ponderada. 
+其中，$S_0,S_1,S_2,S_3$ 是 4 个电子开关，受 $d_0,d_1,d_2,d_3$ 4 个信号的控制，输入为 1 时开关拨到 $V_{REF}$，输入为 0 时开关接地。所以，当 $d_i=1$ 时有之路电流 $I_i$ 流向求和放大器，$d_i=0$ 时之路电流为零。求和放大器是一个负反馈放大器，当反相输入端 $V_-$ 的电位低于同相输入端的电位 $V_+$ 时，输出端对地电压 $v_0$ 为正；当 $V_->V_+$ 时，$v_0$ 为负。且当 $V_-$ 稍高于 $V_+$ 时，即可在 $v_0$ 产生大幅度的负输出电压。$v_0$ 经 $R_F$ 反馈回 $V_-$，使得 $V_-$ 降低回 $V_+$（0V）。
 
-En el DAC de red de resistencias, se utilizan cuatro interruptores electrónicos, denominados S0, S1, S2 y S3, que son controlados por cuatro señales d0, d1, d2 y d3. Cuando la entrada es 1, el interruptor se conecta a la tensión de referencia VREF, mientras que cuando la entrada es 0, el interruptor se conecta a tierra. Por lo tanto, cuando di=1, la corriente i fluye hacia el amplificador de suma, mientras que cuando di=0, la corriente i es cero. El amplificador de suma es un amplificador de retroalimentación negativa, de tal manera que cuando el potencial en la entrada inversora V- es menor que el potencial en la entrada no inversora V+, la tensión de salida v0 con respecto a tierra es positiva, mientras que cuando V- es mayor que V+, v0 es negativa. Además, cuando V- es ligeramente mayor que V+, se puede obtener una gran tensión de salida negativa en v0. La señal v0 se retroalimenta a través de RF a V-, lo que hace que V- disminuya hasta que se iguala a V+ (0V).
+假设运算放大器为理想器件（输入电流为零），则可得到：
 
-Suponiendo que el amplificador operacional es un dispositivo ideal (es decir, que la corriente de entrada es cero), se puede obtener:
+$$
+v_O=-R_F i_{\sum}=-R_F (I_3+I_2+I_1+I_0)
+$$
 
-vO=-RF iΣ=-RF (I3+I2+I1+I0)
+又因为 $V_-\approx 0$，因此各支路电流分别为：
 
-Además, como V-≈0, las corrientes en cada rama son:
+$$
+I_3=\frac{V_{REF}}{2^0 R} d_3
+$$
 
-I3=VREF/2^0R d3
+$$
+I_2=\frac{V_{REF}}{2^1 R} d_2
+$$
 
-I2=VREF/2^1R d2
+$$
+I_1=\frac{V_{REF}}{2^2 R} d_1
+$$
 
-I1=VREF/2^2R d1
+$$
+I_0=\frac{V_{REF}}{2^3 R} d_0
+$$
 
-I0=VREF/2^3R d0
+其中，$d_n$ 可取 0 或 1。代入上式，并假设反馈电阻 $R_F=\frac{R}{2}$ 时，可得到输出电压：
 
-donde dn puede ser 0 o 1. Sustituyendo en la ecuación anterior y suponiendo que RF=R/2, se obtiene la siguiente ecuación para la tensión de salida:
+$$
+v_O=-\frac{V_{REF}}{2^4}(d_3 2^3+d_2 2^2+d_1 2^1+d_0 2^0)
+$$
 
-vO=-VREF/2^4(d3 2^3+d2 2^2+d1 2^1+d0 2^0)
+进一步看，对于 n 位权电阻网络 DAC，当反馈电阻 $R_F=\frac{R}{2}$ 时，输出电压计算公式是：
 
-Además, para un DAC de red de resistencias ponderadas de n bits, cuando RF=R/2, la fórmula para la tensión de salida es:
+$$
+v_O=-\frac{V_{REF}}{2^n}(d_{n-1} 2^{n-1}+d_{n-2} 2^{n-1}+...+d_{1} 2^{1}+d_{0} 2^{0})
+$$
 
-vO=-VREF/2^n(dn-1 2^n-1+dn-2 2^n-2+...+d1 2^1+d0 2^0)
+$$
+v_O=-\frac{V_{REF}}{2^n}D_n
+$$
 
-vO=-VREF/2^nDn
+所以，输出的模拟电压正比于输入的数字量 $D_n$，其变化范围是 0 至 $-\frac{2^n-1}{2^n}V_{REF}$。另外一方面，如果需要得到正输出电压，则应该提供负的 $V_{REF}$。
 
-Por lo tanto, la tensión analógica de salida es proporcional a la cantidad digital de entrada Dn, y su rango de variación es de 0 a -2^n-1/2^n VREF. Por otro lado, si se desea obtener una tensión de salida positiva, se debe proporcionar una VREF negativa.
+权电阻网络型 DAC 的优点是结构简单，但缺点是个电阻阻值相差较大，在现实中有可能造成比较大的精度差。为了改善，可以采用双极权电阻网络，此处不展开说明，但仍无法从根本上解决。
 
-La ventaja del DAC de red de resistencias es su estructura simple, pero la desventaja es que los valores de resistencia pueden diferir significativamente, lo que puede causar una gran imprecisión en la práctica. Para mejorar esto, se puede utilizar una red de resistencias invertida, que solo utiliza dos valores de resistencia, R y 2R (también conocido como DAC R2R), lo que ayuda a mejorar la precisión de control.
+### 倒 T 形电阻网络
 
-En el DAC de red de resistencias invertida, cuando la resistencia de retroalimentación del amplificador operacional es R, la tensión de salida es:
+为了改善权电阻网络 DAC 阻值相差太大的问题，可以采用倒 T 形电阻网络 DAC，它只用了 R 和 2R 两种阻值的电阻（所以也称为 R2R DAC），对于控制精度有很大的帮助：
 
-vO=-RiΣ=-VREF/2^nDn
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220724165753.png)
 
-Por lo tanto, la fórmula de cálculo es la misma que la del DAC de red de resistencias.
+当求和放大器反馈电阻阻值为 R 时，输出电压：
 
-Cuando se analizan las redes de resistencias y las redes de resistencias invertidas, se consideran los interruptores analógicos como dispositivos ideales, pero en la práctica tienen una resistencia de conducción y una caída de voltaje, y la consistencia entre los interruptores puede ser diferente, lo que puede causar errores de conversión y afectar la precisión. Para solucionar esto, se puede utilizar un DAC de corriente ponderada, que tiene una serie de fuentes de corriente constante, donde la corriente de cada fuente es la mitad de la anterior y está en proporción directa con el peso binario de la entrada. El uso de fuentes de corriente constante hace que el tamaño de cada corriente de rama no esté influenciado por la resistencia de conducción y la caída de voltaje de los interruptores.
+$$
+v_O=-Ri_{\sum}=-\frac{V_{REF}}{2^n}D_n
+$$
 
-En el DAC de corriente ponderada, cuando un bit de entrada es 1, el interruptor correspondiente conecta la fuente de corriente constante al amplificador operacional de entrada, mientras que cuando el código de entrada es 0, el interruptor se conecta a tierra, por lo que la tensión de salida es:
+可见，倒 T 形电阻网络与权电阻网络 DAC 的计算公式是相同的。
 
-vO=RF VREF/2^nRR Dn
+### 权电流型
 
-Los principales parámetros de un DAC son la resolución, la precisión, la velocidad de conversión y la linealidad.
+在分析权电阻网络与倒 T 形电阻网络时，会将模拟开关当理想器件看待，但实际中它们存在一定的导通电阻和压降，开关之间的一致性又有差别，所以会产生转换误差而影响精度。解决方法是采用权电流型 DAC，它有一组恒流源，每个恒流源电流大小依次为前一个的一半，与输入二进制对应位的权成正比。采用恒流源使得每个支路电流大小不再受开关导通电阻和压降的影响。
 
-- **Resolución**: la relación entre la tensión mínima de salida (es decir, la tensión cuando la entrada digital es 1) y la tensión máxima de salida (es decir, la tensión cuando la entrada digital es el valor máximo, con todos los bits en 1). Por lo general, se expresa en función del número de bits de la entrada digital.
-- **Rango de conversión**: la tensión máxima que el DAC puede producir, generalmente en relación con la tensión de referencia o sus múltiplos.
-- **Tiempo de establecimiento**: el tiempo de retardo desde la entrada digital hasta la salida analógica.
-- **Precisión de conversión**: similar a la precisión de conversión del ADC.
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220724171436.png)
 
-## Referencias y agradecimientos
+当输入数字量的某位为 1 时，对应的开关将恒流源接至运算放大器的输入端；当输入代码为 0 时，对应的开
+关接地，故输出电压为：
 
-- [ADC/DAC Application Design Handbook](https://picture.iczhiku.com/resource/eetop/syIFpRpWgQqgOXnx.pdf)
-- [Conversión analógica a digital y digital a analógica](https://www.cnblogs.com/redlightASl/p/15542623.html)
-- [ADC y DAC (convertidores analógico a digital y digital a analógico)](https://www.youtube.com/playlist?list=PLwjK_iyK4LLCnW-df-_53d-6yYrGb9zZc)
-- [Principios de DAC](https://www.bilibili.com/read/cv4873472/)
-- [Referencia de bolsillo del ingeniero analógico](《Analog Engineer’s Pocket Reference》)
-- [Tecnología digital electrónica (6ª edición) \_ Yan Shi](《数字电子技术（第六版）\_阎石》)
+$$
+v_O=\frac{R_F V_{REF}}{2^n R_R}D_n
+$$
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+## DAC 主要参数
+
+- **分辨率**：最小输出电压（也就是输入数字量为 1 时的电压）与最大输出电压（也就是输入数字量为最大，每一位都是 1 时的电压）之比。一般通过输入数字量的位数来表示。
+- **转换量程**：DAC 能输出的最大电压，一般的关于参考电压或其倍数。
+- **建立时间**：从输入数字量到输出模拟量之间的延时时间。
+- **转换精度**：与 ADC 的转换精度类似。
+
+## 参考与致谢
+
+- [《ADC/DAC 应用设计宝典》](https://picture.iczhiku.com/resource/eetop/syIFpRpWgQqgOXnx.pdf)
+- [数模转换与模数转换](https://www.cnblogs.com/redlightASl/p/15542623.html)
+- [ADC and DAC (Analog to Digital And Digital to Analog Converters)](https://www.youtube.com/playlist?list=PLwjK_iyK4LLCnW-df-_53d-6yYrGb9zZc)
+- [漫谈 DAC 原理](https://www.bilibili.com/read/cv4873472/)
+- 《Analog Engineer’s Pocket Reference》
+- 《数字电子技术（第六版）\_阎石》
+
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

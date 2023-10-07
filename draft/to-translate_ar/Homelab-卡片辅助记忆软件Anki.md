@@ -1,14 +1,14 @@
-# Homelab - Software de memoria asistida por tarjetas Anki
+# Homelab - 卡片辅助记忆软件 Anki
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202306191745527.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202306191745527.png)
 
-**Anki** es una aplicación de tarjetas de memoria de código abierto que ayuda a los usuarios a memorizar fácil y eficientemente diversos puntos de conocimiento, generalmente utilizada para aprender vocabulario. Su característica principal es que utiliza la curva de olvido de la memoria, generando un plan de revisión adecuado según el progreso del aprendizaje, ayudando a los usuarios a aprovechar al máximo las leyes de la memoria del cerebro para lograr el mejor efecto de memoria. Anki es altamente personalizable, puedes crear tus propias tarjetas de estudio, incluyendo texto, imágenes e incluso audio y video. Anki también es compatible con múltiples plataformas.
+**Anki** 一款开源的记忆卡片应用程序，可帮助用户轻松高效地记忆各种知识点，一般常用于背单词。它的特点在于采用记忆遗忘曲线，根据学习情况生成适当的复习计划，帮助用户充分利用大脑的记忆规律，达到最佳的记忆效果。Anki 具有极高的定制性，你可以制作自己的学习卡片，包括文字、图片甚至音频和视频。Anki 也支持多平台使用。
 
-Debido a que el servidor de sincronización está en el extranjero, a veces puede haber problemas de sincronización. Podemos usar **anki-sync-server** para construir nuestro propio servicio de sincronización. El siguiente tutorial utiliza la imagen `johngong/anki-sync-server`, que funciona correctamente, pero no se ha probado con otras versiones.
+由于同步服务器在国外，有时候可能会无法正常同步，我们可以使用 **anki-sync-server** 自己搭建同步服务。以下教程使用的是 `johngong/anki-sync-server` 镜像，可正常使用，其他版本未经测试。
 
-## Despliegue (Docker Compose)
+## 部署（Docker Compose）
 
-Primero, crea el archivo `compose.yaml` y pega el siguiente contenido:
+首先创建 `compose.yaml` 文件，并粘贴以下内容：
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -28,47 +28,45 @@ services:
     restart: unless-stopped
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar tus variables de entorno. Si no deseas utilizar variables de entorno, también puedes personalizar tus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `anki-sync-server`).
+（可选）推荐在 `compose.yaml` 同级目录下创建 `.env` 文件，并自定义你的环境变量。如果不想使用环境变量的方式，也可以直接在 `compose.yaml` 内自定义你的参数（比如把 `${STACK_NAME}` 替换为 `anki-sync-server`）。
 
 ```dotenv title=".env"
 STACK_NAME=anki-sync-server
-STACK_DIR=/DATA/AppData/anki-sync-server # Personaliza la ruta de almacenamiento del proyecto, por ejemplo, ./anki-sync-server
+STACK_DIR=/DATA/AppData/anki-sync-server # 自定义项目储存路径，例如 ./anki-sync-server
 
 # anki-sync-server
 APP_VERSION=latest
-APP_PORT=xxxx # Personaliza el puerto de acceso, elige uno que no esté ocupado
-APP_USERNAME=xxx@xx.com  # Personaliza el nombre de usuario, debe ser un correo electrónico
-APP_PASSWORD=xxxxxx # Personaliza la contraseña
+APP_PORT=xxxx # 自定义访问端口，选择不被占用的即可
+APP_USERNAME=xxx@xx.com  # 自定义账户名，需要邮箱格式
+APP_PASSWORD=xxxxxx # 自定义密码
 ```
 
-Finalmente, ejecuta el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores.
+最后，在 `compose.yaml` 同级目录下执行 `docker compose up -d` 命令即可启动编排的容器。
 
-## Instrucciones de configuración
+## 配置说明
 
 ### Windows
 
-En Windows, utilicé [**Anki 2.1.28**](https://github.com/ankitects/anki/releases/download/2.1.28/anki-2.1.28-windows.exe) (probé la versión 2.1.65 y no se pudo sincronizar).
+Windows 端我使用的是 [**Anki 2.1.28**](https://github.com/ankitects/anki/releases/download/2.1.28/anki-2.1.28-windows.exe)（测试过 2.1.65 无法同步）。
 
-Después de la instalación, haz clic en `Herramientas` - `Complementos` en la barra de herramientas, luego haz clic en `Obtener complementos`, ingresa el código del complemento `358444159` y haz clic en `OK`, luego haz clic en `Configuración` y cambia la dirección al servidor donde desplegaste `anki-sync-server` y su puerto, finalmente reinicia el software.
+安装完成后，依次点击顶栏的 `工具` - `附加组件`，然后点击 `获取插件`，输入插件代码 `358444159` 后点击 `OK`，随后点击 `设置`，将地址改为你部署 `anki-sync-server` 的服务器的地址与端口，最后重启软件。
 
-Después de reiniciar, haz clic en `Sincronizar` en la pantalla principal, ingresa el correo electrónico y la contraseña que ingresaste al desplegar el contenedor Docker, y podrás sincronizar tus tarjetas.
+重启后，在主界面点击同步，输入 docker 部署时填写的邮箱和密码，即可进行同步。
 
-Si aún no puede sincronizar, consulte [**Configuración de Anki**](https://github.com/ankicommunity/anki-sync-server/blob/develop/README.md#setting-up-anki).
+如果仍然无法同步，请参考 [**Setting up Anki**](https://github.com/ankicommunity/anki-sync-server/blob/develop/README.md#setting-up-anki)。
 
 ### Android
 
-En Android, se utiliza AnkiDroid, que permite personalizar la dirección del servidor sin necesidad de instalar complementos, pero se requiere iniciar sesión con https. Se recomienda utilizar un proxy inverso (se puede consultar el artículo [**Homelab - Nginx Proxy Manager para la gestión de certificados de proxy inverso**](https://wiki-power.com/es/Homelab-%E5%8F%8D%E4%BB%A3%E8%AF%81%E4%B9%A6%E7%AE%A1%E7%90%86%E9%9D%A2%E6%9D%BFNginxProxyManager/)).
+Android 端使用的是 AnkiDroid，不用安装插件即可自定义服务器地址，但是需要使用 https 登录。推荐通过反向代理使用（反向代理服务器的搭建可参考文章 [**Homelab - 反代证书管理面板 Nginx Proxy Manager**](https://wiki-power.com/Homelab-%E5%8F%8D%E4%BB%A3%E8%AF%81%E4%B9%A6%E7%AE%A1%E7%90%86%E9%9D%A2%E6%9D%BFNginxProxyManager/)。
 
-Después de iniciar sesión con https, en la pantalla principal, seleccione `Advanced` - `Custom sync server` para configurar el servidor personalizado. Tenga en cuenta que en el campo `Media sync url`, debe agregar `/msync` después de la dirección original para sincronizar correctamente.
+可使用 https 登录后，在主界面选择 `Advanced` - `Custom sync server` 可配置自定义服务器。注意，在 `Media sync url` 一栏中，需要在原地址后加上 `/msync`，才可正常进行同步。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Sitio web oficial](https://apps.ankiweb.net/)
-- [Documentación](https://www.navidrome.org/docs/installation/docker/)
-- [Repositorio de GitHub](https://github.com/ankicommunity/anki-sync-server)
+- [官网](https://apps.ankiweb.net/)
+- [文档](https://www.navidrome.org/docs/installation/docker/)
+- [GitHub repo](https://github.com/ankicommunity/anki-sync-server)
 - [Docker Hub](https://hub.docker.com/r/johngong/anki-sync-server)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

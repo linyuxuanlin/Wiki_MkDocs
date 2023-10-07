@@ -1,22 +1,22 @@
-# Configuración y consejos de OrCAD
+# OrCAD 配置与技巧
 
-Nota: Este artículo se basa en Cadence OrCAD Capture CIS.
+注：本文基于 Cadence OrCAD Capture CIS。
 
-## Fundamentos
+## 基础
 
-Para dibujar un esquema, use OrCAD Capture CIS (Menú Inicio -> Cadence -> Capture CIS)
-Para dibujar un PCB, use Allegro PCB Designer (Menú Inicio -> Cadence -> PCB Editor)
+绘制原理图使用 OrCAD Capture CIS（开始菜单-》Cadence-》Capture CIS）  
+绘制 PCB 使用 Allegro PCB Designer （开始菜单-》Cadence-》PCB Editor）
 
-En general, un archivo `.DSN` es suficiente para todo el proyecto, y al abrirlo se generan automáticamente archivos de esquema como `.opj`. Si utiliza git para el control de versiones, puede agregar lo siguiente a su archivo gitignore:
+一般来说，使用一个 `.DSN` 文件即可涵括整个工程，打开会自动生成 `.opj` 等原理图文件。如果使用 git 做版本管理，可以添加以下 gitignore：
 
 ```gitignore
-# Desde el gitignore original
+# From original gitignore 
 
 #############
 ## Allegro
 #############
 
-# Ignorar archivo de registro
+# Ignore log file
 *.log
 *.log,1
 *.log,2
@@ -25,38 +25,38 @@ En general, un archivo `.DSN` es suficiente para todo el proyecto, y al abrirlo 
 *.dml
 *.lst
 
-# Ignorar registros de eventos de allegro
+#ignore 记录操作allegro的事件
 *.jrl
 *.jrl,1
 
 *.tag
 
-# Archivos de informe
+#报告文件
 *.rpt
 
-# Archivos de configuración
+#报告文件
 *.cfg
 *.cfg,1
 
 *.lck
 
-# Archivos de informe
+#报表文件
 *.txt
 *.txt,1
 *.txt,2
 
-# Excluir datos XY
+#XY数据除外
 !place_txt.txt
 
-# Archivos de importación DXF
+#DXF导入文件
 *.cnv
 
-# Excluir archivo de parámetros Gerber
+#Gerber param file除外
 !art_param.txt
 
-# Carpeta
-# Filtrar toda la carpeta
-/signoise.run/ 
+#Folder
+#过滤整个文件夹
+/signoise.run/ 
 
 #############
 ## OrCAD
@@ -66,68 +66,66 @@ En general, un archivo `.DSN` es suficiente para todo el proyecto, y al abrirlo 
 *.DRC
 *.DSNlck
 
-# Ignorar lista de redes
-allegro/ 
+#ignore netlist
+allegro/ 
 ```
 
-## Algunas configuraciones
+## 一些设置
 
-Configuración de DRC:
+DRC 设置：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210810134720.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210810134720.png)
 
-Renombrar automáticamente los identificadores al copiar componentes:
+复制元器件时自动重命名位号：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210810134747.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210810134747.png)
 
-Mover caracteres cerca de la cuadrícula:
+移动字符时贴近栅格：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210810134758.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210810134758.png)
 
-Truco: Cuando se utiliza la biblioteca CIP, si aparece el mensaje "not found in the configured librarie lists", verifique la codificación de los espacios en blanco en la ruta.
+坑：当使用 CIP 库，显示 `not found in the configured librarie lists` 时，要检查路径内空格的编码。
 
-- **Desplazamiento del mouse para hacer zoom**: `Options` - `Preferences…` - `Pan and Zoom` - Configure los dos `Zoom Factor` a 1.1x
-- **Actualizar el esquema al seleccionar una parte**: `Options` - `Preferences…` - `Miscellaneous` - `Place Part` – Seleccione `Refresh part on selection`
-- **Establecer el tamaño de la cuadrícula**: `Options` - `Preferences…` - `Grid Display` - `Grid Spacing` - Establecer en 1/2
+- **鼠标滚轮缩放**：`Options` - `Preferences…` - `Pan and Zoom` - 左右两个 `Zoom Factor` 设置为 1.1 倍
+- **放置元件时刷新原理图**：`Options` - `Preferences…` - `Miscellaneous` - `Place Part` – 勾选 `Refresh part on selection`
+- **设置栅格大小**：`Options` - `Preferences…` - `Grid Display` - `Grid Spacing` - 设置为 1/2
 
-## Atajos de teclado
+## 快捷键
 
-- Dibujar un cable: `W`
-- Cancelar: `ESC`
-- Dibujar una línea de bus: `F4`
-- Colocar un número de red: `N`
-- Rotar / Espejo horizontal / Espejo vertical de componentes: `R` / `H` / `V`
-- Abrir el panel CIS: `Z`
-- Colocar una fuente de alimentación / tierra: `F` / `G`
-- No conectar: `X`
-- Filtro: `Ctrl` + `I`
-- Selección múltiple de elementos: Mantenga presionada la tecla `Ctrl` mientras selecciona
-- Copiar y agregar automáticamente un identificador: Mantenga presionada la tecla `Ctrl` mientras arrastra un componente
-- Mover el esquema con el mouse como centro de gravedad: Mantenga presionada la tecla `C` y arrastre el mouse
-- Colocar un bus: `E`
-- Colocar texto: `T`
+- 拉线：`W`
+- 取消：`ESC`
+- 拉排线：`F4`
+- 放置网络标号：`N`
+- 旋转 / 水平镜像 / 垂直镜像元件：`R` / `H` / `V`
+- 打开 CIS 面板：`Z`
+- 放置电源 / 地：`F` / `G`
+- No connect：`X`
+- 筛选器：`Ctrl` + `I`
+- 多选元素：按住 `Ctrl` 进行选择
+- 复制并自动增加标号：按住 `Ctrl` 拖动元器件
+- 以鼠标为重心移动原理图：按住 `C`，拖动鼠标
+- 放置总线：`E`
+- 放置文字：`T`
 
-## Errores y soluciones
+## 错误与解决
 
-- No se puede mover un componente: En general, reiniciar el programa resuelve el problema.
+- 无法拖动元器件：一般来说，重启能解决问题。
 
-## Consejos
+## 技巧
 
-### Diferencia entre off-page y port
+### off-page 与 port 的区别
 
-Off-page se utiliza generalmente para esquemas planos, mientras que port se utiliza para esquemas jerárquicos.
+off-page 一般用于平坦式原理图，而 port 一般用于层次原理图。
 
-### Verificación de DRC
+### DRC 检查
 
-1. En el árbol de archivos, haga clic para seleccionar todo el proyecto.
-2. Haga clic en la barra de herramientas `Tools` - `Design Rules Check...`
-3. Seleccione `Run Physical Rules` y `View Output`.
-4. Haga clic en Aceptar y se generará un informe que se abrirá automáticamente.
+1. 在文件树点击选择整个项目
+2. 点击工具栏 `Tools` - `Design Rules Check...`
+3. 附加勾选 `Run Physical Rules`、`View Output`
+4. 点击确定，会生成报告并自动打开
 
-## Referencias y agradecimientos
+## 参考与致谢
 
 - [【Cadence 快速入门】一文总结版](https://blog.csdn.net/ReCclay/article/details/101225359)
 - [OrCAD Capture Tutorial](https://resources.orcad.com/orcad-capture-tutorials)
 - [cadence 软件用于高分屏笔记本时候显示字体模糊问题解决](https://blog.csdn.net/qq_34338527/article/details/108846792)
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

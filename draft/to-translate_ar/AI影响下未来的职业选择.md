@@ -1,51 +1,52 @@
-# La elección de carrera en el futuro bajo la influencia de la IA
+# AI 影响下未来的职业选择
 
-## Contexto
+## 背景
 
-[**El futuro del empleo**](http://sep4u.gr/wp-content/uploads/The_Future_of_Employment_ox_2013.pdf) es un artículo que evalúa más de 700 carreras y concluye que la mitad de ellas desaparecerán en los próximos diez años. Entonces, ¿cómo serán las diferentes carreras y cómo deberíamos enfrentarlas? Veamos en detalle.
+[**The future of employment**](http://sep4u.gr/wp-content/uploads/The_Future_of_Employment_ox_2013.pdf) 这篇论文对现在 700 多个职业进行了评估，结论是未来十年将会有一半的职业消失。那么，各类职业的具体情况是怎么样的，以及个人应该如何应对，我们来具体地看一看。
 
-## Carreras que desaparecerán
+## 将会消失的职业
 
-**Las primeras carreras que desaparecerán son**: conductores, empleados de tiendas físicas, árbitros, asistentes administrativos, entre otros. Entre ellos, los conductores de todo tipo de vehículos, incluyendo taxistas, conductores de camiones y pilotos de aviones, serán reemplazados por la conducción autónoma, que tiene menos errores.
+**最先会消失的职业有**：司机、实体店店员、裁判、一般事务员等。其中，司机指各类交通工具的职业驾驶者，包括出租车司机、货车司机、客机飞行员等等，将会被出错更少的自动驾驶取代。
 
-Sus carreras son en su mayoría **reguladas con reglas claras, con pocos puntos técnicos y fácilmente reemplazables**.
+他们的职业大多 **规则比较明确、技术点比较少、可替代性强** 。
 
-**Carreras que no desaparecerán a corto plazo, pero que desaparecerán gradualmente en el futuro**: médicos, programadores de bajo nivel, bomberos, policías, entre otros. Entre ellos, la carrera de médico tiene un alto riesgo y un gran impacto humano debido a errores humanos; los programadores de bajo nivel serán reemplazados por la auto-programación de la inteligencia artificial; para carreras de alto riesgo como bomberos y policías, obviamente, los robots tienen una ventaja mayor, y en el manejo de casos, la inteligencia artificial puede explorar más posibilidades que los humanos.
+**短期内不会消失，但以后会逐渐消失的职业**：医生、搬砖型程序员、消防员、警察等。其中，医生职业风险较高，且人为失误影响大；搬砖型程序员将会被人工智能的自我编程取代；对于消防员和警察这类高风险的职业，显然机器人优势更大，且在对案件的处理中，人工智能可以比人类遍历更多的可能性。
 
-## Carreras que no desaparecerán
+## 不会消失的职业
 
-**Las carreras que difícilmente desaparecerán son**: jueces, maestros de primaria, clérigos, diseñadores innovadores, cantantes, entre otros. Entre ellos, debido a problemas éticos (las máquinas no pueden condenar a las personas o decidir sobre la vida y la muerte de las personas), la carrera de juez difícilmente desaparecerá; en la etapa de educación temprana, los niños necesitan ser cultivados con conciencia de aprendizaje autónomo y humanidades, y necesitan ser guiados por maestros; los clérigos (sacerdotes, monjes, líderes religiosos, etc.) definitivamente no serán reemplazados.
+**很难消失的职业有**：法官、小学教师、神职人员、创新型设计师、歌手等等。其中，因涉及伦理问题（机器不能够给人定罪 / 决定人的生死），法官这个职业很难消失；启蒙教育阶段，儿童需要被培养自主学习的意识与人文关怀，需要有教师带领；神职人员（神父、方丈、主持等）则肯定不会被取代。
 
-Las características comunes de estas carreras son **cuidado humanitario, ética y moral, e innovación**.
+以上职业共有的特性是 **人文关怀、道德伦理、创新** 。
 
-## Cómo elegir una carrera
+## 如何选择职业方向
 
-En la sociedad del futuro, para trabajar sin ser reemplazado por máquinas e inteligencia artificial, se necesitan tres cualidades:
+在未来社会，不被机器与人工智能取代工作，需要的是这三种品质：
 
-- Empatía
-- Trabajo en equipo
-- Habilidad para contar historias
+- 同理心
+- 团队协作
+- 讲故事的能力
 
-La empatía es la capacidad de **pensar en el lugar de otra persona**. Muchas veces, la demanda no surge por sí sola, sino que necesitamos proyectar nuestro pensamiento en los demás para descubrir la demanda, en lugar de solo centrarnos en la implementación técnica.
+同理心，即 **换位思考** 的能力。很多时候，需求不会自己跑出来，而是需要我们把自己的思考投射到别人身上，去挖掘需求，而不要只是顾着技术实现。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200226140150.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200226140150.png)
 
-El trabajo en equipo está relacionado con el "efecto de la tabla larga". La sociedad moderna no requiere que todos completen sus debilidades, sino que se centren en desarrollar sus fortalezas y complementen sus debilidades a través del trabajo en equipo. Un equipo de tabla larga es aquel en el que se combinan las fortalezas de cada persona; de lo contrario, si cada persona se desarrolla "en todas las direcciones" pero tiene habilidades mediocres, ¿cómo puede destacar el equipo en la competencia?
+团队协作与「长板效应」相关。现代社会不要求每个人将短板补齐，而应专注于打造自己的专长，靠团队协作补齐短板。将每个人的长板拼起来，才是一个长板团队；否则如果每个人「全方位发展」却资质平平，这个团队如何从竞争中脱颖而出呢？
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200226140223.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200226140223.png)
 
-La habilidad para contar historias se refleja en la creación de un equipo interno que necesita una comprensión de valores comunes; externamente, para que otros acepten su concepto y usen su producto, también se necesita la habilidad para contar historias.
+讲故事的能力，体现在对内维系一个团队，需要共同的价值认知；对外，让别人接受你的理念，使用你的产品，也需要有讲故事的能力。
 
-Debe aprender a contar una historia que todos los interesados puedan aceptar. El valor no solo se ve afectado por el producto en sí, sino que la promoción también es crucial.
+要学会讲好一个让利益相关者都能认同的故事。价值不仅受产品本身影响，宣传也是至关重要的。
 
-## Conclusión
+## 总结
 
-El movimiento ludita no pudo detener la ola de la Revolución Industrial. Para las personas comunes, el poder personal nunca puede detener la tendencia de la época. Prediciendo la tendencia de la época y aprovechándola, las personas pueden tener un mejor desarrollo personal.
+卢德运动阻挡不了工业革命的浪潮。对普通人而言，个人力量永远阻挡不了时代趋势。预测时代的浪潮，借势而为，个人才能得到更好的发展。
 
-## Enlaces de referencia
+## 参考链接
 
-- [¿Qué habilidades básicas necesitas?](https://mp.weixin.qq.com/s?__biz=MzIyODI1MzYyNA==&mid=2653540387&idx=1&sn=985fbe7c3ca0a3ac90d5f56356eac31a&scene=21##wechat_redirect)
-- [Las carreras que desaparecerán en diez años. Si estás haciendo estos trabajos, es mejor que cambies de carrera lo antes posible](https://www.youtube.com/watch?v=Mshz9DxQLbE&list=PLxaBD9eBZcGTZaMZ-3HN5zXFQ06FDOjzJ&index=2&t=0s)
-- [El futuro del empleo](http://sep4u.gr/wp-content/uploads/The_Future_of_Employment_ox_2013.pdf)
+- [你需要补哪些核心能力？](https://mp.weixin.qq.com/s?__biz=MzIyODI1MzYyNA==&mid=2653540387&idx=1&sn=985fbe7c3ca0a3ac90d5f56356eac31a&scene=21##wechat_redirect)
+- [十年內將會消失的職業，你如果正在做這些工作最好盡快轉行](https://www.youtube.com/watch?v=Mshz9DxQLbE&list=PLxaBD9eBZcGTZaMZ-3HN5zXFQ06FDOjzJ&index=2&t=0s)
+- [The future of employment](http://sep4u.gr/wp-content/uploads/The_Future_of_Employment_ox_2013.pdf)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

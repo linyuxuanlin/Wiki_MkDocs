@@ -1,42 +1,43 @@
-# Radiofrecuencia - Parámetros S
+# 射频 - S 参数
 
-Los parámetros S (Scattering parameters, S-Parameters, parámetros de dispersión) se utilizan para reflejar las características (amplitud/fase) de las señales de reflexión/transmisión en el dominio de la frecuencia. Es una matriz compleja. Podemos considerar el interior del circuito como una caja negra (sin tener en cuenta los elementos del circuito interno) y medir sus características de puerto a través de los parámetros S.
+S 参数（Scattering parameters，S-Parameters，散射参数）用于反映反射信号 / 传输信号在频域范围内的特性（幅度 / 相位），它是一个复数矩阵。我们可以将电路内部视作一个黑盒子（不考虑内部电路元素），通过 S 参数测量它的端口特性。
 
-## Descripción detallada de los parámetros S
+## S 参数的详细说明
 
-La convención de nomenclatura de los parámetros S es que el primer número representa el puerto de medición y el segundo número representa el puerto de referencia. Por ejemplo, S21 representa la señal medida en el puerto 2 en relación con la fuente de excitación de señal en el puerto 1. La forma de onda de los parámetros S puede ser potencia, voltaje o corriente.
+S 参数的名称规范是，第一个数字代表测量的端口，第二个代表参考的端口，比如，S21 代表相对于端口 1 信号激励源，测出来端口 2 的信号。S 参数波的形式可以是功率、电压或电流。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220627100338.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220627100338.png)
 
-Como se muestra en la figura anterior, S11 y S22 representan los coeficientes de reflexión (reflexión/entrada), mientras que S21 y S12 representan los coeficientes de transmisión (transmisión/entrada).
+如上图所示，S11、S22 代表反射系数（反射 / 输入），S21、S12 代表传输系数（传输 / 输入）。
 
 ### S11
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220621000000.gif)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220621000000.gif)
 
-S11 se refiere a la señal de reflexión en el puerto 1 en relación con la señal incidente en el puerto 1, $S11=\frac{S_{Reflection}}{S_{Incident}}$.
+S11 指的是相对于端口 1 的入射信号，端口 1 的反射信号，$S11=\frac{S_{Reflection}}{S_{Incident}}$。
 
 ### S21
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220621000001.gif)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220621000001.gif)
 
-S21 se refiere a la señal de transmisión en el puerto 2 en relación con la señal incidente en el puerto 1, $S21=\frac{S_{Transmission}}{S_{Incident}}$.
+S21 指的是相对于端口 1 的入射信号，端口 2 的传输信号，$S21=\frac{S_{Transmission}}{S_{Incident}}$。
 
 ### S12
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220621000002.gif)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220621000002.gif)
 
-S12 se refiere a la señal de transmisión en el puerto 1 en relación con la señal incidente en el puerto 2, $S12=\frac{S_{Transmission}}{S_{Incident}}$.
+S12 指的是相对于端口 2 的入射信号，端口 1 的传输信号，$S12=\frac{S_{Transmission}}{S_{Incident}}$。
 
 ### S22
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220621000003.gif)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220621000003.gif)
 
-S22 se refiere a la señal de reflexión en el puerto 2 en relación con la señal incidente en el puerto 2, $S22=\frac{S_{Reflection}}{S_{Incident}}$.
+S22 指的是相对于端口 2 的入射信号，端口 2 的反射信号，$S22=\frac{S_{Reflection}}{S_{Incident}}$。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Significado de los parámetros S y método de medición práctica de la red vectorial](http://jietaipu.com/resource/88.html)
-- "S-Parameter Measurements Basics for High Speed Digital"
+- [S 参数的意义及矢网实操测量方法](http://jietaipu.com/resource/88.html)
+- 《S-Parameter Measurements Basics for High Speed Digital》
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

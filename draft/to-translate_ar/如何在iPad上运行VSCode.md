@@ -1,117 +1,117 @@
-# Cómo ejecutar VS Code en iPad
+# 如何在 iPad 上运行 VS Code
 
-Nota: este tutorial se basa en code-server v3.8.0, CentOS 8.2.
+注：本教程基于 code-server v3.8.0，CentOS 8.2.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20201221140748.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20201221140748.jpg)
 
-Se recomienda instalar el servicio code-server mediante Docker compose.  
-Solo se necesita una línea de comando para implementar y no es necesario configurar la ejecución en segundo plano, ya que viene con Git y otros entornos.  
-Consulte: [**Homelab - Editor de código en línea code-server**](https://wiki-power.com/es/Homelab-%E5%9C%A8%E7%BA%BF%E4%BB%A3%E7%A0%81%E7%BC%96%E8%BE%91%E5%99%A8code-server)
+更推荐以 Docker compose 的方式安装 code-server 服务。  
+仅需一行命令部署，且无需配置后台运行，自带 Git 等环境。  
+详见：[**Homelab - 在线代码编辑器 code-server**](https://wiki-power.com/Homelab-%E5%9C%A8%E7%BA%BF%E4%BB%A3%E7%A0%81%E7%BC%96%E8%BE%91%E5%99%A8code-server)
 
-Si no desea implementar mediante Docker compose, continúe leyendo.
+如果你不想用 Docker compose 的方式部署，请继续阅读下文。
 
-## Configurar el servidor
+## 配置服务器
 
-En primer lugar, necesita un servidor que no se detenga las 24 horas (se recomienda comprar una máquina estudiantil de Alibaba Cloud / Tencent Cloud, por solo ¥9.9 / mes)  
-Para garantizar la experiencia de uso, se recomienda la siguiente configuración del servidor:
+首先，你需要有一台 24h 不停机的服务器（推荐买阿里云 / 腾讯云学生机，只需 ¥9.9/月）  
+为保证使用体验，这里推荐服务器的配置：
 
-- 2 núcleos o más
-- 1 GB de RAM o más
+- 2 核以上
+- 1GB 以上内存
 
-Instale Linux (aquí uso CentOS 8.2) y asegúrese de que ssh pueda conectarse correctamente.
+刷 Linux（这里我使用 CentOS 8.2），确保 ssh 能正常连上即可。
 
-## Instalar code-server
+## 安装 code-server
 
-En la nueva versión (≥v3.8.0), puede instalar directamente mediante script:
+在新的版本下（≥v3.8.0），可以直接使用脚本安装：
 
 ```shell
 curl -fsSL https://code-server.dev/install.sh | sh
 ```
 
-Si no puede descargarlo durante mucho tiempo, es probable que se deba a la contaminación DNS. Consulte [**GitHub Change Host**](https://wiki-power.com/es/GitHub改Host) para solucionarlo.
+如果发现半天下载不下来，多半是因为 DNS 污染，参考 [**GitHub 改 Host**](https://wiki-power.com/GitHub改Host) 解决。
 
-## Ejecutar code-server
+## 运行 code-server
 
-Use el comando:
+使用命令：
 
 ```shell
-export PASSWORD="establezca una contraseña de acceso" && code-server --port 80 --host 0.0.0.0 --auth password
+export PASSWORD="设置一个访问密码" && code-server --port 80 --host 0.0.0.0 --auth password
 ```
 
-Si no hay errores, abra el navegador, ingrese la dirección IP del servidor y podrá ver un VS Code en línea.
+如果没有出现错误，那么打开浏览器，输入服务器的 IP 地址访问，就可以看到一个在线的 VS Code 了。
 
-## Configurar la ejecución en segundo plano
+## 配置后台运行
 
-El code-server que se ejecuta en primer plano finalizará el proceso debido a la salida de ssh.  
-Para que se ejecute en segundo plano, puede usar el programa screen (puede considerarlo como un contenedor).
+运行在前台的 code-server ，会因为 ssh 退出而结束进程。  
+为了使其能在后台运行，我们可以使用 screen 程序（可以把它理解为一个容器）。
 
-### Instalar screen
+### 安装 screen
 
 ```shell
 yum install screen
 ```
 
-### Crear un trabajo de screen
+### 创建 screen 作业
 
 ```shell
-screen -S VSCode-online # VSCode-online es un nombre personalizado
+screen -S VSCode-online # VSCode-online 为自取的名字
 ```
 
-### Iniciar el servicio code-server
+### 开启 code-server 服务
 
 ```shell
-export PASSWORD="establezca una contraseña de acceso" && code-server --port 80 --host 0.0.0.0 --auth password
+export PASSWORD="设置一个访问密码" && code-server --port 80 --host 0.0.0.0 --auth password
 ```
 
-Si todo va bien, puede acceder a él ingresando la dirección IP en el navegador.
+如果顺利的话，就可以在浏览器输入 IP 地址访问了。
 
-## Expansión
+## 拓展
 
-### Agregar un acceso directo de escritorio
+### 添加桌面快捷方式
 
-Si lo usa en iPad, puede abrirlo con el navegador Safari, hacer clic en el icono `Compartir` en la esquina superior derecha y luego en `Agregar a la pantalla de inicio`.  
-Puede fingir que es una aplicación y ocultar la barra de estado del navegador.  
-Por cierto, también es compatible con teclado y ratón externos.
+如果在 iPad 上使用，可以用 Safari 浏览器打开，点击右上角 `分享` 图标 --> `添加到主屏幕` 。  
+可以将其假装为一个 App 使用，并隐去浏览器状态栏。  
+顺带说一句，外接键鼠也都支持。
 
-### Otras operaciones de screen
+### screen 的其他操作
 
-- Ver el ID del trabajo en ejecución: `screen -ls`
-- Volver a ingresar al trabajo de screen en ejecución: `screen -r jobid # El ID del trabajo debe incluir un identificador numérico de prefijo`
-- Finalizar la ejecución de un trabajo: `screen -X -S jobid quit`
-- Salir de la interfaz de screen del trabajo actual: `Ctrl + A + D`
+- 查看正在运行的作业 id：`screen -ls`
+- 重新进入运行中的 screen 作业：`screen -r 作业id # 作业 id 需要包含前缀的数字标识`
+- 结束某作业的运行：`screen -X -S 作业id quit`
+- 退出当前作业的 screen 界面：`Ctrl + A + D`
 
-### Parámetros de comando relacionados con code-server
+### code-server 相关命令参数
 
-- Acceso a través de Internet: el servicio code-server se ejecuta de forma predeterminada solo en local (`127.0.0.1`). Para poder acceder a través de una dirección IP, se puede agregar el parámetro `--host 0.0.0.0`.
-- Especificar el puerto de ejecución: `--port xxxx`, donde `xxxx` puede ser reemplazado por `8888` o `80` (para usar el protocolo HTTP y acceder directamente a través de la dirección IP sin agregar el número de puerto).
-- Establecer una contraseña de acceso: agregar `--auth password` para establecer una contraseña o no agregar ningún parámetro o agregar `--auth none` si no se necesita.
+- 通过外网访问：code-server 服务默认只运行在本地（`127.0.0.1`）。为了能通过 IP 访问，可以添加 `--host 0.0.0.0` 参数
+- 指定运行端口：`--port xxxx`，你可以将 `xxxx` 替换为 `8888` ；也可以是 `80` （走 Http 协议，直接用 IP 访问，不用加端口号）
+- 设置访问密码：加上`--auth password` ；如不需要，则不加任何参数，或加上 `--auth none`
 
-### Instalación de Git
+### 安装 Git
 
-VS Code se puede utilizar junto con Git para facilitar el desarrollo en la nube. Se puede instalar Git con el siguiente comando:
+VS Code 配合 Git 使用，方便进行云开发。  
+可以使用如下命令安装 Git：
 
 ```shell
 yum install git
 ```
 
-### Acceso a través de un nombre de dominio
+### 使用域名访问
 
-Puede resultar extraño acceder al servicio code-server a través de la dirección IP del servidor. Para solucionarlo, se puede vincular un nombre de dominio personalizado y acceder al servicio a través de él. Para ello, se debe comprar un nombre de dominio y agregar la dirección IP del servidor en la configuración DNS utilizando el tipo A.
+通过服务器 IP 访问也许会有些奇怪，我们可以绑定一个自定义的域名，通过域名来访问 code-server 服务。  
+购买一个域名，在 DNS 解析处添加服务器 IP 的，使用 A 类型即可。
 
-### Errores conocidos y soluciones en la versión actual
+### 当前版本 bugs 及解决
 
-- No se puede sincronizar la configuración del usuario a través del servicio de sincronización de configuración integrado en VS Code: se puede solucionar instalando el complemento [**Settings Sync**](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync).
-- Error al iniciar sesión en GitHub a través de Settings Sync: se puede solucionar configurando la extensión en un navegador web en lugar de en VS Code.
-- No se puede desplazar la página con la rueda del ratón en un iPad: actualmente, solo se puede desplazar la página tocando directamente la pantalla o utilizando las teclas de dirección del teclado.
+- 无法通过 VS Code 内置的 Settings Sync 服务同步用户设置：可以通过额外安装 [**Settings Sync**](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync) 插件解决
+- Settings Sync 跳转 GitHub 登录出错：使用电脑浏览器进行配置
+- iPad 上用鼠标滚轮无法正常滚动页面：目前只能使用直接触摸滚动，或用键盘方向键替代
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Running VSCode in a Browser (Old)](https://wiki-power.com/es/在浏览器上运行VSCode（旧）)
-- [GitHub Hosts](https://wiki-power.com/es/GitHub改Host)
-- [Installation and Usage of screen](https://www.jianshu.com/p/420569381e74)
+- [在浏览器上运行 VSCode（旧）](https://wiki-power.com/在浏览器上运行VSCode（旧）)
+- [GitHub 改 Host](https://wiki-power.com/GitHub改Host)
+- [screen 的安装和使用](https://www.jianshu.com/p/420569381e74)
 - [Setup Guide · cdr/code-server](https://github.com/cdr/code-server/blob/v3.8.0/doc/guide.md)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

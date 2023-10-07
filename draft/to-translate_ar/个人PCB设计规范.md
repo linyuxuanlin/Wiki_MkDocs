@@ -1,104 +1,104 @@
-# Normas de diseño de PCB personalizado
+# 个人 PCB 设计规范
 
-## Normas de diseño de la disposición de PCB
+## PCB 布局规范
 
-### Disposición modular
+### 分模块布局
 
-**Por módulos de función**: Los circuitos que realizan la misma función (compuestos por componentes discretos que implementan un módulo específico) deben colocarse lo más cerca posible.
+**按功能模块**：完成同一功能的电路（指由分立元件组成，实现特定功能的模块），应尽量靠近放置。
 
-**Por rendimiento eléctrico**:
+**按电气性能**：
 
-- Área de circuitos digitales: **sensible a interferencias y generador de interferencias**
-- Área de circuitos analógicos: **sensible a interferencias**
-- Área de conducción de potencia: **generador de interferencias**
+- 数字电路区：**即怕干扰、又产生干扰**
+- 模拟电路区：**怕干扰**
+- 功率驱动区：**产生干扰**
 
-### Principios de diseño
+### 布局原则
 
-- Colocar primero los componentes más grandes
-- Todos los componentes deben colocarse en la capa superior (para facilitar la soldadura)
-- Generador de reloj (cristal, etc.): colocar lo más cerca posible de los componentes que lo utilizan
-- Agregar capacitores de desacoplamiento en la entrada de alimentación de cada módulo: para filtrar las señales de interferencia de la fuente de alimentación. Asegurarse de colocarlos lo más cerca posible del módulo de alimentación.
-- Agregar un diodo de descarga en la bobina del relé (como 1N4148)
+- 较大的元器件优先排布
+- 元器件全部放置于顶层（焊接方便）
+- 时钟产生器 （晶振等） ：尽量靠近用到该时钟的器件
+- 在每个模块的电源输入端 **增加去耦电容**：滤除电源上的干扰信号。注意尽量靠近取电模块。
+- 继电器线圈处加上放电二极管（如 1N4148 ）
 
-## Normas de enrutamiento de PCB
+## PCB 布线规范
 
-### Principios de enrutamiento
+### 布线原则
 
-- Evitar que las líneas sean paralelas
-- No dejar un extremo flotando (puede generar un efecto de antena)
-- Mantener la longitud total de las líneas lo más corta posible
-- Los ángulos de las líneas deben ser mayores a 90°
-- Regla de los 3W: cuando la distancia entre los centros de las líneas es al menos 3 veces el ancho de la línea, se puede mantener un 70% de campo eléctrico sin interferencia mutua
-- Regla de lazo mínimo: evitar que las líneas formen un bucle
-- Se pueden reservar puntos de prueba en lugares críticos de la señal
-- La anchura de los pines de los componentes debe ser uniforme en ambos lados (usar la función de "tear drop")
-- Después de completar el enrutamiento, activar la función de "tear drop" (para mejorar la estética y la compatibilidad electromagnética)
-- No hacer agujeros en los pines de los componentes (los componentes SMT pueden causar soldaduras frías)
-- Evitar en la medida de lo posible el enrutamiento / cobre debajo del chip del microcontrolador
+- 线之间 **避免平行**
+- 勿出现一端浮空（可能产生天线效应）
+- 走线总长度能短就短
+- 走线拐弯角度应大于 90°
+- **3W** 规则：当线中心间距不少于 3 倍线宽时，则可保持 70% 的电场不互相干扰
+- 环路最小规则，走线 **尽量不要形成环路**
+- 关键信号处可预留测试点
+- 元件焊盘两边的引线宽度要一致（用泪滴功能）
+- 布线完成后开启 **泪滴** 功能（增加美观度，增强 EMC）
+- **不在元件焊盘上打过孔**（SMT 容易引起漏锡虚焊）
+- 单片机芯片下面尽量不走线 / 不铺铜
 
-### Orden de enrutamiento
+### 布线顺序
 
-1. Línea de alimentación
-2. Línea general
-3. Línea de tierra (cobre)
+1. 电源线
+2. 一般走线
+3. 地线（铺铜）
 
-Cuando se realiza el enrutamiento de PCB, generalmente se coloca primero la línea de alimentación. En la mayoría de los casos, la línea de alimentación debe ser **corta, gruesa, recta y con pocos agujeros**, por lo que tiene la prioridad más alta.
+在为 PCB 布线时，我们一般先布电源线，在绝大多数情况下，电源线要求 **短、粗、直、较少过孔** ，所以布线优先权最高。
 
-Después de completar el enrutamiento de las líneas de señal general, finalmente debemos colocar el cobre. Para una placa de doble capa común, la propiedad del cobre generalmente se establece como **tierra**.
+在完成一般信号线的布线之后，最终我们要铺铜。对于普通双层板，铺铜属性一般设置为 **地**。
 
-### Configuración de reglas
+### 规则设置
 
-**Ancho de línea**:
+**走线宽度**：
 
-- Línea de alimentación: **30-50** mil
-- Línea de señal: **12** mil
+- 电源线：**30~50** mil
+- 信号线：**12** mil
 
-**Tamaño del agujero**:
+**过孔大小**：
 
-- Diámetro interno: **0,45** mm
-- Diámetro externo: **0,75** mm
+- 内径：**0.45** mm
+- 外径：**0.75** mm
 
-**Conexión de cobre**:
+**铺铜连接**：
 
-Usar el método Direct
+用 Direct 的方式
 
-(Algunas explicaciones no están claras, se agregarán más adelante)
+（有点解释不清，待有空补充说明
 
-- Distancia de seguridad de cobre: **10** mil
-- Propiedad: **GND**
-- Selección de cobre: Pour Over All Same Net Objectc,
-- Eliminar el cobre muerto: Remove Dead Copper
+- 铺铜安全间距：**10** mil
+- 属性：**GND**
+- 铺铜选择：Pour Over All Same Net Objectc,
+- 去除死铜：Remove Dead Copper
 
-**Tamaño de caracteres**:
+**字符大小**：
 
-- Ancho de línea mínimo: **6** mil
-- Altura mínima de caracteres: **32** mil
+- 最小线宽：**6** mil
+- 最小字符高：**32** mil
 
-Si es menor que los valores anteriores, los caracteres impresos en la placa pueden no ser claros. 
+小于以上值，印制在板子上的字符可能会不清晰。
 
-**Relación entre el ancho de línea de PCB y la corriente**:
+**PCB 线宽与电流的关系**：
 
-
-|  Ancho de línea / Espesor de cobre  | 70µm (2 oz) | 50µm (1.5 oz) | 35µm (1 oz) |
+|  线宽/铜箔厚度  | 70µm（2 oz） | 50µm（1.5 oz） | 35µm（1 oz） |
 | :-------------: | :----------: | :------------: | :----------: |
-| 2.50mm (98mil) | 6.00A | 5.10A | 4.50A |
-| 2.00mm (78mil) | 5.10A | 4.30A | 4.00A |
-| 1.50mm (59mil) | 4.20A | 3.50A | 3.20A |
-| 1.20mm (47mil) | 3.60A | 3.00A | 2.70A |
-| 1.00mm (40mil) | 3.20A | 2.60A | 2.30A |
-| 0.80mm (32mil) | 2.80A | 2.40A | 2.00A |
-| 0.60mm (24mil) | 2.30A | 1.90A | 1.60A |
-| 0.50mm (20mil) | 2.00A | 1.70A | 1.35A |
-| 0.40mm (16mil) | 1.70A | 1.35A | 1.10A |
-| 0.30mm (12mil) | 1.30A | 1.10A | 0.80A |
-| 0.20mm (8mil) | 0.90A | 0.70A | 0.55A |
-| 0.15mm (6mil) | 0.70A | 0.50A | 0.20A |
+| 2.50mm（98mil） |    6.00A     |     5.10A      |    4.50A     |
+| 2.00mm（78mil） |    5.10A     |     4.30A      |    4.00A     |
+| 1.50mm（59mil） |    4.20A     |     3.50A      |    3.20A     |
+| 1.20mm（47mil） |    3.60A     |     3.00A      |    2.70A     |
+| 1.00mm（40mil） |    3.20A     |     2.60A      |    2.30A     |
+| 0.80mm（32mil） |    2.80A     |     2.40A      |    2.00A     |
+| 0.60mm（24mil） |    2.30A     |     1.90A      |    1.60A     |
+| 0.50mm（20mil） |    2.00A     |     1.70A      |    1.35A     |
+| 0.40mm（16mil） |    1.70A     |     1.35A      |    1.10A     |
+| 0.30mm（12mil） |    1.30A     |     1.10A      |    0.80A     |
+| 0.20mm（8mil）  |    0.90A     |     0.70A      |    0.55A     |
+| 0.15mm（6mil）  |    0.70A     |     0.50A      |    0.20A     |
 
-Generalmente se requiere una reserva del 15% de margen.
+一般需多预留 15% 的余量。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [JLC PCB Rango de capacidad de procesamiento de tecnología](https://www.sz-jlc.com/portal/vtechnology.html)
-- [¿Qué ancho de línea es adecuado para el cableado de PCB? ¡Ya lo hemos preparado para ti!](https://mp.weixin.qq.com/s?__biz=MzI4NDAwOTgzMw==&mid=2650625562&idx=1&sn=29d145ed112c23464ac74bfeeb212aa1&chksm=f388021cc4ff8b0a2e1701726340afb0b60738f8ae448e8f8d0c3b0dee0758a89fe954433011&scene=126&sessionid=1607139114&key=f9ff6c6605e545f8046d3325f95411b620e846faa9864c6589c1a6b69f1ce0d00f26f595bea2995ab23bf54727f1c9f219239f6d2c840605db0dac7f884190fcd2134daa54c87cbf6f249bfa9c29f8ddd39b20d50744335451d3acb3466ebcc44d8918dba7d35a22569e0b7a780088439cf35fe0ff5ea9bddbafef36c64bfd3f&ascene=1&uin=MTk5MDUwOTA0Mg%3D%3D&devicetype=Windows+10+x64&version=6300002f&lang=zh_CN&exportkey=A1GQK2ccX%2BvsjA6n1%2BOfSNU%3D&pass_ticket=kq2QkQn3wCfkzXnTBMjx4zRHCHr2TH9lX0mMASdXW7ugPzIdfcJaNdCq2VwvOmMs&wx_header=0)
+- [嘉立创 PCB 工艺加工能力范围说明](https://www.sz-jlc.com/portal/vtechnology.html)
+- [PCB 在走线时线宽为多大才合适？已经帮你整理好了！](https://mp.weixin.qq.com/s?__biz=MzI4NDAwOTgzMw==&mid=2650625562&idx=1&sn=29d145ed112c23464ac74bfeeb212aa1&chksm=f388021cc4ff8b0a2e1701726340afb0b60738f8ae448e8f8d0c3b0dee0758a89fe954433011&scene=126&sessionid=1607139114&key=f9ff6c6605e545f8046d3325f95411b620e846faa9864c6589c1a6b69f1ce0d00f26f595bea2995ab23bf54727f1c9f219239f6d2c840605db0dac7f884190fcd2134daa54c87cbf6f249bfa9c29f8ddd39b20d50744335451d3acb3466ebcc44d8918dba7d35a22569e0b7a780088439cf35fe0ff5ea9bddbafef36c64bfd3f&ascene=1&uin=MTk5MDUwOTA0Mg%3D%3D&devicetype=Windows+10+x64&version=6300002f&lang=zh_CN&exportkey=A1GQK2ccX%2BvsjA6n1%2BOfSNU%3D&pass_ticket=kq2QkQn3wCfkzXnTBMjx4zRHCHr2TH9lX0mMASdXW7ugPzIdfcJaNdCq2VwvOmMs&wx_header=0)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

@@ -1,36 +1,34 @@
-# Prueba Funcional Digital 🚧
+# Digital Functional Test 🚧
 
-> Esta publicación solo está disponible en inglés.
+> This post is only available in English.
 
-## Referencias y Agradecimientos
+## References & Acknowledgements
 
-- _Los Fundamentos de la Prueba de Semiconductores Digitales_
-- _Fundamentos de la Prueba Utilizando ATE_
+- _The Fundamentals Of Digital Semiconductor Testing_
+- _Fundamentals of Testing Using ATE_
 
 > Original: <https://wiki-power.com/>  
-> Esta publicación está protegida por el acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en), debe ser reproducida con atribución.
+> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
-## Tiempo de Conducción y Comparación
+## Drive and Compare Timing
 
-- D0 o Conducción Encendida: Inicio del ciclo para cada canal.
-- D1 o Conducción de Datos: Inicio del pulso de conducción para cada canal.
-- D2 o Retorno de Conducción: Fin del pulso de conducción para cada canal.
-- D3 o Conducción Apagada: Tiempo del interruptor de E/S.
-- R0 o Inicio de Comparación (Encendido): Inicio de la ventana de comparación para cada canal (disparo de ventana).
-- R1 o Fin de Comparación (Apagado): Fin de la ventana de comparación para cada canal (disparo de ventana) o borde de disparo.
+- D0 or Drive On: Start of cycle for each channel
+- D1 or Drive Data: Start of drive pulse for each channel
+- D2 or Drive Return: End of drive pulse for each channel
+- D3 or Drive Off: Time of I/O switch
+- R0 or Compare Start (On): Start of compare window for each channel (window strobe)
+- R1 or Compare End (Off): End of compare window for each channel (window strobe) or edge strobe
 
-## Solución de Problemas de Depuración Funcional Digital
+## Troubleshooting of Digital Functional Debug
 
-1. Reducir la frecuencia de prueba.
-2. Ver la forma de onda real, modificar la posición de comparación.
-3. Repetir las líneas de patrón varias veces para evitar la influencia del tiempo de configuración.
-4. Utilizar el método Shmoo para analizar.
-5. Cambiar el orden de ejecución de la prueba, para evitar la interacción entre pruebas.
-6. Prestar atención al Modo de Conductor Electrónico de Pin.
-7. ¿Vt, Hi-Z, Largeswing-VT1K o Smallswing-VT?
-   - Hi-Z: se utilizará el puente de equilibrio para la conducción, y VCOM se utilizará para las cargas de corriente.
-   - Vt: conectarse directamente al nivel Vt a través de una resistencia de 50Ω. Si la salida del DUT está funcionando a alta velocidad, el uso de VT resulta en menos reflexiones vistas por el comparador.
-8. Verificar si TDR está calibrado.
-9. Defectos con el patrón en sí mismo.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+1. Reduce test frequency.
+2. View the actual waveform, modify the position of comparison.
+3. Repeat pattern lines for more times in prevent of the influence of setup time.
+4. Use Shmoo method to analyze.
+5. Switching the order of test execution, in prevent of the interaction between tests.
+6. Pay attention to the Pin Electronic Driver Mode
+7. Vt, Hi-Z, Largeswing-VT1K or Smallswing-VT?
+   - Hi-Z: the balance bridge will be used for driving, and VCOM will be used for current loads.
+   - Vt: directly connect to Vt level through a 50Ω resistance. If the DUT output is running at a high speed, using the VT results in fewer reflections seen by the comparator.
+8. Check if TDR is calibrated.
+9. Defects with pattern itself.

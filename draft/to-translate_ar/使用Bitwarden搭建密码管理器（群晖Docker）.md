@@ -1,67 +1,68 @@
-# Cómo configurar un gestor de contraseñas con Bitwarden (Docker en Synology)
+# 使用 Bitwarden 搭建密码管理器（群晖 Docker）
 
-Nota: Debido a que la imagen de Bitwarden_rs ha cambiado de nombre y la extensión de navegador oficial de Bitwarden no es compatible con versiones antiguas, es necesario reemplazar `bitwardenrs/server` por `vaultwardenrs/server` en el siguiente texto y asegurarse de que la versión sea igual o superior a 1.27.0.
+注：由于 bitwarden_rs 镜像更名，且 Bitwarden 官方浏览器拓展与旧版本不兼容无法登录，请将下文出现的 `bitwardenrs/server` 替换为 `vaultwardenrs/server`，并确保版本不低于 1.27.0！
 
-En este artículo se explica cómo realizar una implementación privada del servidor de gestión de contraseñas Bitwarden en Synology mediante Docker, para su uso en múltiples plataformas.
+本文介绍如何在自己的群晖上使用 Docker 对全平台密码管理服务器 Bitwarden 进行私有部署。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210503221838.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210503221838.png)
 
-Actualmente, existen varias soluciones de gestión de contraseñas, como 1Password, Lastpass, KeePass y Bitwarden, cada una con sus propias ventajas e inconvenientes. En mi caso, necesitaba una solución que permitiera la sincronización en múltiples dispositivos, fuera de código abierto y pudiera ser implementada de forma privada, además de contar con una función de relleno automático y una interfaz atractiva. Por ello, elegí implementar el servicio Bitwarden en mi Synology.
+目前的密码管理器方案有 1Password，Lastpass，KeePass，Bitwarden 等，这几种方案各有优劣。在这里我的需求是可多端同步使用，开源可自部署，且有自动填充的功能，同时兼顾界面美观，所以我选择了在自己的群晖上部署 Bitwarden 服务。
 
-## Implementación en Docker en Synology
+## 在群晖 Docker 上部署
 
-### Creación de una carpeta para almacenar los datos
+### 建立存放数据的文件夹
 
-Se debe crear una carpeta para almacenar los datos de Bitwarden en el directorio `docker` (por ejemplo, `docker/bitwarden`).
+我们在 `docker` 目录下建立存放 Bitwarden 数据的文件夹（比如 `docker/bitwarden`）。
 
-### Descarga de la imagen y configuración del contenedor
+### 下载镜像并配置容器
 
-Abrir el paquete Docker de Synology, descargar la imagen `bitwardenrs/server`, iniciarla haciendo doble clic y seleccionar "Habilitar reinicio automático". Luego, acceder a "Configuración avanzada".
+打开群晖 Docker 套件，下载 `bitwardenrs/server` 镜像，双击启动，勾选 `启用自动重新启动`，然后进入 `高级设置`。
 
-En la página "Volúmenes", configurar la carpeta montada haciendo clic en "Agregar carpeta", seleccionar la ruta local `docker/bitwarden` y establecer la ruta de montaje en `/data` (que no se puede cambiar por defecto):
+在 `卷` 页面配置挂载的文件夹，点击 `添加文件夹`，选择本地的 `docker/bitwarden` 路径，装载路径填 `/data`（默认不可变）：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210503211711.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210503211711.png)
 
-En la página "Configuración de puertos", establecer manualmente el puerto local correspondiente al puerto 80 del contenedor (por ejemplo, establecerlo en `8003`):
+在 `端口设置` 页面，手动设置容器端口 80 所对应的本地端口（比如我设置为 `8003`）：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210503211759.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210503211759.png)
 
-Finalmente, iniciar el contenedor. Al acceder a la dirección IP local de Synology seguida del puerto `8003`, se mostrará la página de inicio de sesión de Bitwarden. Sin embargo, al crear una cuenta e intentar iniciar sesión, se mostrará el siguiente mensaje:
+随后完成配置，启动容器。输入群晖本地 IP:8003，我们就能看到 Bitwarden 的登陆页面了。但是当我们创建账户后登录时，会看到这样一条提示：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210503212146.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210503212146.png)
 
-Esto se debe a que el contenedor Docker no proporciona una configuración de puerto HTTPS y Bitwarden solo permite el inicio de sesión a través de HTTPS (para evitar ataques de intermediarios mediante cifrado SSL). Por lo tanto, es necesario utilizar el servicio de proxy inverso integrado en Synology para acceder al puerto HTTP interno a través de HTTPS. Para obtener más información, consulte el artículo [**Cómo implementar HTTPS mediante proxy inverso en Synology**](https://wiki-power.com/es/%E7%94%A8%E7%BE%A4%E6%99%96%E8%87%AA%E5%B8%A6%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0HTTPS%E8%AE%BF%E9%97%AE).
+这是因为，Docker 容器本身没有提供 https 端口配置，而 Bitwarden 又只能够通过 https 来进行登录（SSL 加密防止中间人攻击）。所以，在这里我们必须使用群晖自带的反向代理服务，通过 https 来访问内部 http 端口了。具体教程可以跳转文章 [**用群晖自带反向代理实现 HTTPS 访问**](https://wiki-power.com/%E7%94%A8%E7%BE%A4%E6%99%96%E8%87%AA%E5%B8%A6%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0HTTPS%E8%AE%BF%E9%97%AE)
 
-## Uso en múltiples dispositivos
+## 多设备使用
 
-Se pueden descargar las diferentes versiones de clientes de Bitwarden desde la [**página de descarga oficial**](https://bitwarden.com/download/).
+可以在 Bitwarden 官方的 [**下载页面**](https://bitwarden.com/download/)，下载各版本的客户端
 
-### Cliente de escritorio
+### 桌面端
 
-Se recomienda utilizar la extensión de navegador [**Bitwarden - Free Password Manager**](https://chrome.google.com/webstore/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb).
+推荐直接使用浏览器扩展 [**Bitwarden - 免费密码管理器**](https://chrome.google.com/webstore/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb)
 
-Al iniciar sesión, hacer clic en el engranaje en la esquina superior izquierda para acceder a la configuración:
+在登录的时候，先点击左上角的小齿轮，进入设置：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210503215149.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210503215149.png)
 
-En el entorno de `autohospedaje`, ingrese la dirección IP:puerto externo del NAS de Synology en la `URL del servidor` para iniciar sesión correctamente.
+在 `自托管环境` 中的 `服务器 URL` 填入群晖 NAS 的 IP:外部端口，即可正常登录。
 
-Si lo desea, también puede descargar el cliente de escritorio.
+如果需要，也可以下载桌面客户端使用。
 
-### Móvil
+### 移动端
 
-Simplemente descargue la aplicación Bitwarden en AppStore o en cualquier tienda de aplicaciones, y configure el entorno de autohospedaje en la página de inicio de sesión, siguiendo los mismos pasos que en la versión de escritorio.
+直接在 AppStore 或各应用商城下载 Bitwarden App，在登录页面也需要配置自托管环境，步骤与桌面端相同。
 
-## Copia de seguridad de la base de datos de contraseñas
+## 备份密码数据库
 
-Hay dos formas de hacer una copia de seguridad de la base de datos de Bitwarden:
+备份 Bitwarden 数据库的方法有两种：
 
-1. Seleccione `Exportar base de datos de contraseñas` en la versión web o en el cliente.
-2. Haga una copia de seguridad directa de la carpeta `data`.
+1. 在网页端或客户端内选择 `导出密码库`
+2. 直接备份 `data` 文件夹
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Servicios avanzados de Synology NAS - Implementación de Bitwarden, un administrador de contraseñas multiplataforma](https://www.ioiox.com/archives/70.html)
-- [Construyendo un servidor de contraseñas de Bitwarden de terceros con Synology](https://ppgg.in/blog/10271.html#comment-8463)
+- [群晖 NAS 高级服务 - docker 部署 bitwarden 全平台密码管理器](https://www.ioiox.com/archives/70.html)
+- [使用群晖搭建第三方 Bitwarden 密码服务器](https://ppgg.in/blog/10271.html#comment-8463)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

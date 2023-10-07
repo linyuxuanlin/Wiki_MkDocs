@@ -1,42 +1,42 @@
-# Esquema de alimentación (Boost) - SX1308
+# 电源方案（Boost）- SX1308
 
-Nota: Este IC de esquema no es estable, no se recomienda su uso.
+注：此方案 IC 不稳定，不推荐使用。
 
-Dirección del proyecto: **<https://github.com/linyuxuanlin/Modularity_of_Functional_Circuit/tree/master/Power/SX1308>**
+项目地址：**<https://github.com/linyuxuanlin/Modularity_of_Functional_Circuit/tree/master/Power/SX1308>**
 
-- **Principio**: DC/DC (Boost)
-- **Voltaje de entrada**: 2-24 V
-- **Voltaje de salida**: hasta 28 V
-- **Corriente de salida**: 2 A
-- **Frecuencia de trabajo**: 1.2 MHz
-- **Eficiencia**: hasta el 97%
-- **Precio**: ¥ 0.57
-- **Características**
-  - Arranque suave incorporado
-  - Bloqueo de subvoltaje de entrada
-  - Cambio automático al modo PFM en carga ligera
-  - Limitación de corriente
-  - Protección contra sobrecalentamiento
+- **原理**：DC/DC（Boost）
+- **输入电压**：2-24 V
+- **输出电压**： 最高 28 V
+- **输出电流**： 2 A
+- **工作频率**： 1.2 MHz
+- **效率**：最高 97%
+- **价格**：￥ 0.57
+- **特性**
+  - 内置软启动
+  - 输入欠压锁定
+  - 轻载时自动切换至 PFM 模式
+  - 电流限制
+  - 过热保护
 
-## Definición de pines
+## 引脚定义
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210713154103.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210713154103.png)
 
-## Diseño de referencia
+## 参考设计
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210715141625.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210715141625.png)
 
-## Ajuste de parámetros
+## 参数调节
 
-(Para obtener parámetros más detallados, consulte el manual de datos)
+（更详细的参数请参考数据手册）
 
-### Ajuste del voltaje de salida
+### 输出电压调节
 
-Ajuste el voltaje de salida (voltaje de retroalimentación $V_{REF}=0.6 V$) ajustando las resistencias de división de retroalimentación $R_1$ y $R_2$:
+通过调整反馈分压电阻 $R_1$ 和 $R_2$ 来设置输出电压（反馈电压 $V_{REF}=0.6 V$）：
 
 $V_{OUT}=V_{REF}\times(1+\frac{R_1}{R_2})$
 
-Por lo general, si se selecciona $R_2$ como 10 kΩ, la relación entre $V_{OUT}$ y $R_1$ es la siguiente:
+一般来说，$R_2$ 选取 10 kΩ，则 $V_{OUT}$ 与 $R_1$ 对应关系如下：
 
 | $V_{OUT}$ |  $R_1$  |
 | :-------: | :-----: |
@@ -46,24 +46,25 @@ Por lo general, si se selecciona $R_2$ como 10 kΩ, la relación entre $V_{OUT}$
 |   15 V    | 240 kΩ  |
 |   20 V    | 324 kΩ  |
 
-### Pin de habilitación
+### 使能引脚
 
-EN es el pin de habilitación, se inicia cuando es mayor de 1.5 V y se apaga cuando es menor de 0.4 V. No deje este pin sin conexión.
+EN 为使能脚，大于 1.5 V 时启动，小于 0.4 V 时关闭，请勿悬空此引脚。
 
-## Referencia de diseño de PCB
+## PCB 布局参考
 
-- Coloque el capacitor de entrada de alimentación cerca de los pines de alimentación del IC.
-- Coloque los capacitores de entrada y salida cerca de la GND del IC para reducir el área del circuito de corriente.
-- Amplíe y acorte las líneas de alimentación VIN, SW y VOUT para permitir un mayor flujo de corriente alterna.
-- Reduzca el cobre en el pie de SW del chip para prevenir EMI causado por voltaje alterno.
-- Acorte las líneas de retroalimentación para evitar interferencias de ruido, coloque la resistencia de retroalimentación cerca del chip, la GND de R2 debe colocarse lo más cerca posible del pin GND del IC, y la línea de distribución de VOUT a R1 debe estar lejos del inductor y los nodos de conmutación.
+- 输入电容电源靠近 IC 电源引脚放置。
+- 输入输出电容靠近 IC 的 GND，以减小电流环路面积。
+- 加宽、缩短 VIN，SW 和 VOUT 的走线，以通过较大的交流电流。
+- 缩小芯片 SW 脚处铜皮，预防因交变电压引起的 EMI。
+- 缩短 FB 走线以防噪声干扰，反馈电阻要靠近芯片放置，R2 的 GND 应尽量靠近 IC 的 GND 引脚放置，且 VOUT 到 R1 的布线应该远离电感和开关节点。
 
-## Resumen de problemas comunes
+## 踩坑总结
 
-- El diagrama de referencia en el manual de datos en chino probablemente dibujó mal el capacitor NP0 de 15 pF, que debería ser un capacitor de filtro conectado a tierra (también se puede omitir). Si no se elimina, no podrá manejar grandes cargas.
-  - Consulte el hilo técnico <http://www.crystalradio.cn/thread-1497661-1-1.html>
-- Este circuito es muy sensible a la disposición de PCB. El cobre en el pie de SW no debe ser demasiado grande, de lo contrario habrá capacitancia parásita. Otros aspectos deben seguir estrictamente la referencia de diseño anterior.
-- La corriente máxima de salida medida es de alrededor de 800 mA, y el voltaje de salida se mantiene estable (11.6 V de salida).
-- El pin EN no debe dejarse sin conexión, debe ser pull-up (para habilitar Boost) o pull-down (para deshabilitar), de lo contrario el voltaje original se mantendrá como salida.
+- 中文数据手册中的参考原理图，15 pF 的 NP0 电容估计画错了，应该是接地的滤波电容（也可以不加）。如果不去掉的话，带不了大负载。
+  - 参考技术贴 <http://www.crystalradio.cn/thread-1497661-1-1.html>
+- **此电路受 PCB 布局的影响很大**，SW 脚处引出的铜皮不能多，否则会有寄生电容。其他应严格按照上文的布局参考。
+- 实测负载最大输出电流 800 mA 左右，能基本保持输出电压稳定（输出 11.6 V）。
+- **EN 引脚不能悬空**，必须上拉（开启 Boost）或下拉（关闭），否则将会以原电压输出。
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

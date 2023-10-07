@@ -1,48 +1,49 @@
-# Cómo implementar el control remoto RDP en Internet (frp)
+# 如何实现外网 RDP 远控（frp）
 
-Usando frp para controlar el escritorio de forma remota en cualquier red.
+使用 frp 在任意网络下实现远程桌面控制。
 
-## ¿Por qué usar RDP?
+## 为什么使用 RDP
 
-RDP es un protocolo incorporado en Windows. En comparación con otros software de escritorio remoto en el mercado, como Todesk, Anydesk, y TeamViewer, tiene las siguientes ventajas:
+RDP 是 Windows 自带的协议。相比市面上的远程桌面软件，如 Todesk、Anydesk、向日葵等，有以下优势：
 
-- Mejor compatibilidad, se adapta automáticamente a la resolución del dispositivo y se puede usar para conectar teclados y ratones.
-- Mayor libertad, sin límite de cantidad de dispositivos ni sistema de membresía.
-- La velocidad de conexión depende de la velocidad de la red de la computadora y la configuración del servidor.
+- 兼容性更佳，根据设备自适应分辨率，可连接键鼠使用
+- 自由度高，不限制设备数量，也没有会员体系
+- 连接速度取决于电脑网速和服务器配置
 
-## ¿Por qué usar frp?
+## 为什么使用 frp
 
-RDP solo admite el uso en la misma red IP, por lo que para controlar de forma remota en Internet, necesitamos usar el método frp para penetrar en la red interna.
+RDP 仅支持同 IP 段使用，为了在外网下实现远控，我们需要用 frp 方法给内网做穿透。
 
-frp es un software de proxy inverso, es ligero pero potente y puede hacer que los dispositivos detrás de una red interna o un firewall proporcionen servicios al mundo exterior. Admite muchos protocolos, como HTTP, TCP, UDP, etc. El principio de usar frp para controlar el escritorio de forma remota en Internet es conectar el dispositivo controlado al servidor, y luego conectarnos indirectamente al dispositivo controlado a través del servidor.
+frp 是一个反向代理软件，体积轻量但功能强大，可以使处于内网或防火墙后的设备对外界提供服务，它支持 HTTP、TCP、UDP 等众多协议。  
+用 frp 实现外网 RDP 远控的原理，就是让被控端与服务器相连，我们通过服务器来间接连接被控端，从而实现远控。
 
-## Preparación
+## 准备
 
-- Servidor (puede ser un servidor en la nube o una máquina física con IP pública)
-- Dispositivo controlado (Windows debe ser una versión profesional o superior)
-- Dispositivo de control remoto (compatible con todas las plataformas)
+- 服务端（可以是云服务器，也可以是有公网 IP 的实体机）
+- 被控端（Windows 必须是专业版以上）
+- 远控端（全平台都适用）
 
-## Configuración del servidor
+## 服务端配置
 
-Primero, verifique la arquitectura del servidor:
+首先，查看服务器架构：
 
 ```shell
 arch
 ```
 
-Consulte la página de [**Releases**](https://github.com/fatedier/frp/releases) de frp, seleccione la versión que se adapte a su arquitectura (por ejemplo, si su arquitectura es `X86_64`, seleccione `amd64`):
+参考 frp 的 [**Releases**](https://github.com/fatedier/frp/releases) 页面，选择符合自己架构的版本下载（比如我是 `X86_64` 架构，即选择 `amd64`）:
 
 ```shell
 wget https://github.com/fatedier/frp/releases/download/v0.36.2/frp_0.36.2_linux_amd64.tar.gz
 ```
 
-Después de descargarlo, descomprímalo y cámbiele el nombre:
+下载后，解压并改名：
 
 ```shell
 tar -zxvf frp_0.36.2_linux_amd64.tar.gz && mv frp_0.36.2_linux_amd64 frp
 ```
 
-Veamos los archivos en la carpeta frp:
+我们看一下 frp 文件夹内的文件：
 
 ```shell
 cd frp && ls
@@ -53,13 +54,13 @@ cd frp && ls
 - frpc
 - frpc.ini
 
-Entre ellos, `frps` y `frps.ini` son los programas y archivos de configuración del servidor (la "s" al final significa "servidor"), mientras que `frpc` y `frpc.ini` están relacionados con el cliente (la "c" al final significa "cliente"), que no usaremos por ahora y se pueden eliminar:
+其中，`frps` 与 `frps.ini` 是服务端的程序与配置文件（s 结尾代表 server），而 `frpc` 与 `frpc.ini` 是客户端相关的（c 结尾代表 client），我们现在暂时不用，可以删除：
 
 ```shell
 rm -f frpc frpc.ini
 ```
 
-A continuación, modifiquemos el archivo `frps.ini`:
+接下来，我们修改 `frps.ini` 文件：
 
 ```shell
 vim frps.ini
@@ -74,32 +75,32 @@ dashboard_user = admin
 dashboard_pwd = admin
 ```
 
-- **bind_port**: el puerto al que se conectan el cliente y el servidor, que se utilizará más adelante al configurar el cliente. Por lo general, se puede dejar en el valor predeterminado.
-- **dashboard_port**: el puerto del panel de control del servidor, que se puede dejar en el valor predeterminado. Si se establece en el valor predeterminado de `7500`, se puede acceder al panel de control (por ejemplo, `IP del servidor:7500`) para ver el estado de frp.
-- **token**: la contraseña para la conexión entre el cliente y el servidor, que debe establecerse por sí mismo.
-- **dashboard_user** / **dashboard_pwd**: el nombre de usuario y la contraseña del panel de control, que deben establecerse por sí mismos.
+- **bind_port**：客户端和服务端连接的端口，在之后配置客户端时会用上，一般默认即可。
+- **dashboard_port**：服务端仪表板的端口，一般默认即可。如果按默认设置为 `7500`，则可通过 `7500` 端口访问仪表盘（例如 `服务器 IP:7500`），查看 frp 状态。
+- **token**：客户端和服务端连接的口令，请自行设置。
+- **dashboard_user** / **dashboard_pwd**：仪表盘用户名和密码，请自行设置。
 
-Después de editar, presione `Esc` y luego ingrese `:wq` para guardar y salir.
+编辑完成后，按 `Esc` 后输入 `:wq` 保存退出。
 
-Para ejecutar el servicio frp en segundo plano, podemos usar el comando nohup:
+为了在后台运行 frp 服务，我们可以使用 nohup 命令：
 
 ```shell
 nohup ./frps -c frps.ini &
 ```
 
-Si ve la siguiente salida:
+如果看到以下输出：
 
 ```shell
 nohup: ignoring input and appending output to 'nohup.out'
 ```
 
-significa que el servicio se está ejecutando correctamente. También podemos usar el comando `jobs` para ver los servicios en ejecución.
+即表示服务正常运行。我们也可以用 `jobs` 命令，查看正在运行的服务。
 
-Para probar si la configuración del servidor se ha realizado correctamente, podemos acceder a `x.x.x.x:7500` utilizando el nombre de usuario y la contraseña configurados anteriormente, para ver si podemos acceder al panel de control sin problemas. Si no se puede acceder al panel de control, es posible que se deba a que el puerto correspondiente no está abierto en el firewall del servidor.
+为了测试服务端是否配置成功，我们可以访问 `x.x.x.x:7500`，使用上面配置的用户名和密码，看看能否顺利进入仪表盘。如果访问不了仪表盘，也有可能在服务器的防火墙处放开相关端口。
 
-## Configuración del cliente
+## 被控端配置
 
-De nuevo, consulte la página de [**Releases**](https://github.com/fatedier/frp/releases) de frp y descargue la versión adecuada para su arquitectura. Después de descargarlo, descomprima y cambie el nombre del archivo, y puede eliminar los archivos `frps` y `frps.ini`. Abra el archivo `frpc.ini`:
+还是参考 frp 的 [**Releases**](https://github.com/fatedier/frp/releases) 页面，选择符合自己架构的版本下载。下载后解压重命名，可删除 `frps` 和 `frps.ini` 文件。打开 `frpc.ini` 文件：
 
 ```ini title="frpc.ini"
 [common]
@@ -118,53 +119,54 @@ local_port = 445
 remote_port = 7002
 ```
 
-- **server_addr**: la dirección IP del servidor, por favor modifíquela según sea necesario.
-- **server_port**: mantenga el mismo valor que el `bind_port` del servidor, que por defecto es `7000`.
-- **token**: la contraseña de conexión, manténgala igual que la configurada en el servidor.
+- **server_addr**：服务器 IP 地址，请自行修改。
+- **server_port**：保持与服务端 `bind_port` 的值相同即可，默认是 `7000`。
+- **token**：连接口令，保持与服务端配置的 `token` 相同。
 
-A continuación, configuramos las reglas personalizadas:
+接下来，我们配置自定义的规则：
 
-- **[rdp]**: [xxx] indica el nombre de la regla, que se puede personalizar.
-- **type**: el tipo de protocolo de reenvío, que puede ser TCP/UDP.
-- **local_port**: el número de puerto local, que aquí es el puerto del protocolo RDP (3389).
-- **remote_port**: el número de puerto abierto en el servidor, que se puede personalizar.
+- **[rdp]**：[xxx] 表示规则名称，可自定义。
+- **type**：转发的协议类型，可选 TCP/UDP
+- **local_port**：本地端口号，这里填写的是 RDP 协议的端口（3389）
+- **remote_port**：在服务端开放的端口号，可自定义。
 
-> El número de puerto predeterminado para el protocolo RDP (Protocolo de escritorio remoto) en Windows es 3389, y el protocolo es TCP.
-> El número de puerto predeterminado para el protocolo SMB (Protocolo de uso compartido de archivos de Windows) es 445, y el protocolo es TCP.
+> RDP（Remote Desktop 协议）在 Windows 上默认的端口号为 3389，协议 TCP。
+> SMB（Windows 文件共享协议）默认端口号为 445，协议 TCP。
 
-Para ejecutar frpc en segundo plano, creamos el script `frpc.vbs` y pegamos el siguiente contenido:
+为了在后台运行 frpc，我们创建脚本 `frpc.vbs`，将以下内容粘贴进去：
 
 ```vbscript title="frpc.vbs"
 set ws=WScript.CreateObject("WScript.Shell")
 ws.Run "c:\frp\frpc.exe -c c:\frp\frpc.ini",0
 ```
 
-Tenga en cuenta que es posible que deba modificar la ruta.
+注意可能需要修改路径。
 
-Coloque `frpc.vbs` en el directorio `C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp` para que se inicie automáticamente al arrancar.
+将 `frpc.vbs` 放入 `C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp` 目录内，即可实现开机自启动。
 
-Si desea probarlo, puede ejecutar el script directamente o reiniciar para que se ejecute automáticamente.
+如果想测试使用，可以直接运行脚本，或重启自动运行。
 
-## Configuración del cliente remoto
+## 远控端配置
 
-### El cliente de control es un dispositivo móvil
+### 控制端是移动设备
 
-Si desea controlar su computadora de forma remota en su teléfono o iPad, primero debe instalar la aplicación `Microsoft Remote Desktop` y luego seguir estos pasos:
+如果需要在手机、iPad 上远控电脑，则需要先安装 `Microsoft 远程桌面` App，然后执行以下步骤：
 
-1. Haga clic en `+` - `Agregar computadora` en la esquina superior derecha de la aplicación.
-2. En `Nombre de la computadora`, ingrese `IP:remote_port`, por ejemplo, `x.x.x.x:7001`, y luego haga clic en Atrás.
-3. En `Nombre de usuario`, ingrese el nombre de usuario y la contraseña de la computadora controlada, y luego haga clic en Atrás.
+1. 在 App 内右上角点击 `+` - `添加电脑`
+2. `电脑名称` 填入 `IP:remote_port`，例如 `x.x.x.x:7001`，点击返回
+3. `账户名称` 填入被控端电脑的账户密码，点击返回
 
-Si todo está configurado correctamente, debería poder controlar su computadora de forma remota.
+如果一切配置正常，这时候应该可以成功远程控制了。
 
-### El cliente de control es Windows
+### 控制端是 Windows
 
-Simplemente busque y abra `Conexión a Escritorio remoto` en el menú Inicio, ingrese `IP:remote_port`, por ejemplo, `x.x.x.x:7001`, y siga las instrucciones para ingresar su nombre de usuario y contraseña para controlar su computadora de forma remota.
+直接在开始菜单搜索打开 `远程桌面连接`，填入 `IP:remote_port` 例如 `x.x.x.x:7001`，按提示输入用户名密码，即可实现远程控制。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Cómo usar frp para la penetración de red interna](https://sspai.com/post/52523)
-- [Cómo utilizar el comando nohup en Linux](https://ehlxr.me/2017/01/18/Linux-%E7%9A%84-nohup-%E5%91%BD%E4%BB%A4%E7%9A%84%E7%94%A8%E6%B3%95/)
-- [Cómo crear un escritorio remoto personalizado utilizando frp](https://pa.ci/77.html)
+- [使用 frp 进行内网穿透](https://sspai.com/post/52523)
+- [Linux 的 nohup 命令的用法](https://ehlxr.me/2017/01/18/Linux-%E7%9A%84-nohup-%E5%91%BD%E4%BB%A4%E7%9A%84%E7%94%A8%E6%B3%95/)
+- [【教程】通过 frp 实现自建远程桌面](https://pa.ci/77.html)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

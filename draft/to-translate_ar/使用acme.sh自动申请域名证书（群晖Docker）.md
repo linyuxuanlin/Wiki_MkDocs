@@ -1,82 +1,80 @@
-# Cómo solicitar automáticamente un certificado de dominio utilizando acme.sh (Docker en Synology)
+# 使用 acme.sh 自动申请域名证书（群晖 Docker）
 
-Este artículo describe cómo utilizar la imagen Docker acme.sh para implementar la función de solicitud y renovación automática de certificados de dominio.
+本文介绍如何使用 Docker 镜像 acme.sh，实现名证书自动申请和续签功能。
 
-[**acme.sh**](https://github.com/acmesh-official/acme.sh) puede generar certificados gratuitos de letsencrypt, admite la implementación de Docker, admite dos métodos de verificación de dominio, http y DNS, que incluyen modos manuales, automáticos de DNS y alias de DNS para facilitar diversos entornos y requisitos. Puede solicitar y combinar múltiples certificados de dominio único, certificados de dominio comodín y renovar y implementar automáticamente certificados en proyectos.
+[**acme.sh**](https://github.com/acmesh-official/acme.sh) 可以从 letsencrypt 生成免费的证书，支持 Docker 部署，支持 http 和 DNS 两种域名验证方式，其中包括手动，自动 DNS 及 DNS alias 模式方便各种环境和需求。可同时申请合并多张单域名，泛域名证书，并自动续签证书和部署到项目。
 
-## Preparar la API de DNS
+## 准备 DNS API
 
-Este artículo utiliza Tencent Cloud como ejemplo para solicitar la API de DNS. Para otras plataformas de análisis, consulte la documentación oficial de [**dnsapi**](https://github.com/acmesh-official/acme.sh/wiki/dnsapi).
+本文以腾讯云为例申请 DNS API，其他解析平台请参考官方文档 [**dnsapi**](https://github.com/acmesh-official/acme.sh/wiki/dnsapi)。
 
-Primero, abra [**DNSPOD**](https://console.dnspod.cn/), haga clic en el avatar en la esquina superior derecha y seleccione `Administración de claves`.
+首先，打开 [**DNSPOD**](https://console.dnspod.cn/)，点击右上角头像 - `密钥管理`
 
-Luego, cree una nueva clave y copie el **ID** y el **Token**.
+接着，创建一个新的密钥，并拷贝 **ID** 与 **Token**。
 
-## Implementación en Docker de Synology
+## 在群晖 Docker 上部署
 
-Este tutorial describe el modo de demonio de Docker, que mantiene el contenedor en ejecución y realiza la función de renovación automática de certificados cuando caducan.
+本教程介绍的是 Docker 的 daemon 守护模式，一直挂着容器，实现证书到期自动续期的功能。
 
-### Crear una carpeta de configuración
+### 创建配置文件夹
 
-Primero, cree la carpeta `/docker/acme.sh` y luego cree manualmente el archivo `account.conf`:
+我们先创建 `/docker/acme.sh` 文件夹，再手动创建 `account.conf` 文件：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210430212420.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210430212420.png)
 
-Luego, edite este archivo y agregue manualmente estas líneas:
+接着，我们编辑这个文件，手动添加这几行：
 
 ```conf
-export DP_Id="ID recién solicitado"
-export DP_Key="TOKEN recién solicitado"
+export DP_Id="刚刚申请的 ID"
+export DP_Key="刚刚申请的 TOKEN"
 AUTO_UPGRADE='1'
 ```
 
-Luego guarde y cierre el archivo.
+随后保存并关闭文件。
 
-### Descargar la imagen y configurar el contenedor
+### 下载镜像并配置容器
 
-Abra el paquete Docker de Synology, descargue la imagen `neilpang/acme.sh`, haga doble clic para iniciar y seleccione `Configuración avanzada`.
+打开群晖 Docker 套件，下载 `neilpang/acme.sh` 镜像，双击启动并进入 `高级设置`
 
-En la página `Volumen`, configure la carpeta montada, haga clic en `Agregar carpeta`, seleccione la ruta local `docker/acme.sh` y complete la ruta de montaje como `/acme.sh` (predeterminado e inmutable):
+在 `卷` 页面配置挂载的文件夹，点击 `添加文件夹`，选择本地的 `docker/acme.sh` 路径，装载路径填 `/acme.sh`（默认不可变）：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210430214221.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210430214221.png)
 
-En la página `Red`, seleccione `Usar la misma red que el host de Docker`.
+在 `网络` 页面，勾选 `使用与 Docker Host 相同的网络`。
 
-Luego, cambie a la página `Entorno` y escriba el comando `daemon` en el cuadro de comando:
+接着，切换到 `环境` 页面，在 `命令` 框里填入 `daemon` 命令：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210430215244.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210430215244.png)
 
-Luego, cree y ejecute el contenedor. Haga doble clic en el contenedor en ejecución, cambie a la página `Terminal` y haga clic en `Iniciar mediante comando`, escriba `sh` y haga clic en Aceptar.
+随后创建并运行容器。双击已运行的容器，切换到 `终端机` 页面，点击 `通过命令启动`，输入 `sh` 后点确定。
 
-Escriba el siguiente comando para actualizar automáticamente:
+输入以下命令实现自动更新：
 
 ```shell
 acme.sh --upgrade --auto-upgrade
 ```
 
-Luego, escriba el siguiente comando para solicitar un certificado:
+然后输入以下命令申请证书：
 
 ```shell
 acme.sh --issue --dns dns_dp -d wiki-power.com -d *.wiki-power.com
 ```
 
-Donde `dns_dp` representa Tencent Cloud DNSPod, si es Alibaba Cloud, escriba `dns_ali`, Cloudflare escriba `dns_cf`, otros consulte el manual oficial de [**dnsapi**](https://github.com/acmesh-official/acme.sh/wiki/dnsapi). Además, `*.wiki-power.com` representa un certificado de dominio comodín. Si necesita solicitar múltiples dominios al mismo tiempo, puede hacerlo de la siguiente manera:
+其中，`dns_dp` 代表腾讯云 DNSPod，如果是阿里云请填写 `dns_ali`，CLoudflare 填写 `dns_cf`，其他请参考官方手册 [**dnsapi**](https://github.com/acmesh-official/acme.sh/wiki/dnsapi)。另外，其中 `*.wiki-power.com` 代表申请的是泛域名证书。如果需要同时申请多域名，可以按照以下的方式：
 
 ```shell
 acme.sh --issue --dns dns_dp -d aaa.com -d *.aaa.com -d bbb.com -d *.bbb.com -d ccc.com -d *.ccc.com
 ```
 
-En el modo de demonio, acme.sh actualizará automáticamente los certificados cada 60 días según los registros de solicitud.
+在 daemon 守护模式下，acme.sh 会根据申请记录，每 60 天自动更新证书。
 
-### Generación de certificados
+### 生成证书
 
-Si todo va bien, encontrará los archivos `domain.cer` y `domain.key` en la carpeta `docker/acme.sh/nombre_de_dominio`, que son el certificado y el archivo de clave, y se pueden copiar a donde se necesiten.
+如果一切顺利，你可以在 `docker/acme.sh/域名命名的文件夹` 内发现 `域名.cer` 和 `域名.key`，这就是证书和密钥文件，可以拷贝至需要用到的地方。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Servicios avanzados de Synology NAS - Implementación de acme.sh en Docker para la solicitud automática de certificados de dominio](https://www.ioiox.com/archives/88.html)
+- [群晖 NAS 高级服务 - docker 部署 acme.sh 自动申请域名证书](https://www.ioiox.com/archives/88.html)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

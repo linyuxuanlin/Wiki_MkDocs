@@ -1,22 +1,20 @@
-# TinyWeatherStation - Estación meteorológica de escritorio minimalista pero no simple
+# TinyWeatherStation - 简约而不简单的桌面天气站
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202308132245962.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308132245962.png)
 
-【Artículo en edición...】
+【文章编辑中……】
 
-## Información
+## 资料
 
-- Repositorio de GitHub: [**linyuxuanlin/TinyWeatherStation**](https://github.com/linyuxuanlin/TinyWeatherStation)
+- GitHub 仓库：[**linyuxuanlin/TinyWeatherStation**](https://github.com/linyuxuanlin/TinyWeatherStation)
 
-## Miscelánea
+## 杂项
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202308132244295.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308132244295.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202308132245903.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308132245903.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202308132245214.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308132245214.png)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

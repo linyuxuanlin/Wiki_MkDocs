@@ -1,50 +1,51 @@
-# Fundamentos de pruebas de semiconductores - Pruebas OS
+# 半导体测试基础 - OS 测试
 
-Las pruebas de circuito abierto y cortocircuito (OS, Open-Short Test, también conocidas como pruebas de continuidad o contacto) se utilizan para **verificar la continuidad eléctrica de todos los pines del dispositivo y del sistema de prueba, y para asegurarse de que no haya cortocircuitos con otros pines o con la fuente de alimentación (tierra)**. Las pruebas OS pueden detectar rápidamente defectos físicos eléctricos en el DUT, como cortocircuitos de pines, falta de alambres de conexión, daño electrostático de pines y defectos de fabricación, así como problemas relacionados con los accesorios de prueba, como problemas de contacto en la ProbeCard o el socket del dispositivo.
+开路与短路测试（OS，Open-Short Test，也称连续性或接触测试），用于 **验证测试系统与器件所有引脚的电接触性，且不会与其他引脚、与电源（地）发生短路**。OS 测试能快速检测出 DUT 是否存在电性物理缺陷，如引脚短路、bond wire 缺失、引脚的静电损坏、以及制造缺陷等；也能检测出与测试配件有关的问题，如 ProbeCard 或器件的 Socket 接触有问题。
 
-El proceso de prueba OS utiliza diodos de protección para VDD y tierra. En general, hay dos métodos de prueba: uno utiliza PMU para inyectar corriente y medir voltaje, y el otro utiliza un método de prueba funcional para proporcionar VREF y medir voltaje con carga dinámica.
+**OS 测试的过程是借用对 VDD 和对地保护二极管进行的**。一般有两种测试方法，一种是用 PMU 灌入电流测电压；一种是用功能测试的方法提供 VREF，形成动态负载电流再测电压的。
 
-### Pruebas OS - Método estático
+### OS 测试 - 静态法
 
-Las pruebas OS estáticas en serie / paralelo son esencialmente la inyección de corriente y la medición de voltaje, ya que esta corriente hace que un diodo de protección superior o inferior se polarice positivamente, lo que permite detectar anomalías de circuito abierto o cortocircuito midiendo la caída de voltaje polarizado positivamente. El diagrama de prueba para polarizar positivamente el diodo de la fuente de alimentación se muestra a continuación:
+串行 / 并行静态法测试 OS，实际上就是灌入电流测电压，因为这个电流会让上下某个保护二极管发生正偏，所以可以通过检测正偏压降来测出开短路异常。**施加正电流使对电源二极管正偏** 的测试示意图如下：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220805165031.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220805165031.png)
 
-El proceso de prueba es el siguiente:
+测试流程如下：
 
-1. Conecte todos los pines del DUT (incluyendo la fuente de alimentación y la tierra) a tierra.
-2. PMU aplica corriente a los pines (aproximadamente 100µA).
-3. Mida el voltaje del pin
-   - Mayor que VOH (+1,5V): Falla (abierto)
-   - Menor que VOL (+0,2V): Falla (cortocircuito)
-   - Otro intervalo (voltaje polarizado positivamente, como 0,65V): Aprobado
+1. 将 DUT 所有引脚（包括电源和地）接地。
+2. PMU 给引脚施加电流（约 100µA）。
+3. 检测引脚电压
+   - 高于 VOH（+1.5V）：Fail（Open）
+   - 低于 VOL（+0.2V）：Fail（Short）
+   - 其他区间（正偏电压，比如 0.65V）：Pass
 
-El diagrama de prueba para polarizar positivamente el diodo a tierra se muestra a continuación:
+**施加负电流使对地二极管正偏** 的测试示意图如下：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220728142155.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220728142155.png)
 
-El proceso de prueba es el siguiente:
+测试流程如下：
 
-1. Conecte todos los pines del DUT (incluyendo la fuente de alimentación y la tierra) a tierra.
-2. PMU aplica corriente a los pines (aproximadamente -100µA).
-3. Mida el voltaje del pin
-   - Mayor que VOH (-0,2V): Falla (cortocircuito)
-   - Menor que VOL (-1,5V): Falla (abierto)
-   - Otro intervalo (caída de voltaje polarizada positivamente de aproximadamente -0,65V): Aprobado
+1. 将 DUT 所有引脚（包括电源和地）接地。
+2. PMU 给引脚施加电流（约 -100µA）。
+3. 检测引脚电压
+   - 高于 VOH（-0.2V）：Fail（Short）
+   - 低于 VOL（-1.5V）：Fail（Open）
+   - 其他区间（正偏后的压降约 -0.65V）：Pass
 
-Debido a que PMU proporciona corriente constante, se requiere un clamp de voltaje para limitar el voltaje generado durante la prueba de circuito abierto, de lo contrario, el voltaje será infinito. Si el voltaje de clamp se establece en 3V, entonces cuando un pin está abierto, el resultado de la prueba es 3V.
+因 PMU 提供的是恒流，所以需要设置电压钳，以钳制住开路引脚测试时产生的电压，否则电压会无穷大。如果钳制电压设置为 3V，那么当一个引脚为开路时，其测试结果就是 3V。
 
-Este método solo se aplica a la prueba de pines de señal IO y no se puede utilizar para la prueba de pines de alimentación. Aunque los pines de alimentación también se pueden probar en condiciones de circuito abierto, debido a su estructura interna diferente, se requieren límites de prueba diferentes.
+这种方法仅限于测试信号 IO 引脚，不能用于测试电源引脚。电源引脚虽然也可在开路条件下进行测试，但因其内部结构不同，需要设定不同的测试限度。
 
-En resumen, las características de las pruebas OS estáticas son:
+综上，OS 静态测试的特点是：
 
-- El método en serie prueba un solo pin a la vez, es simple pero ineficiente, y es adecuado para DUT con pocos pines.
-- El método en paralelo requiere que el sistema de prueba tenga PPMU, la desventaja es que no puede detectar cortocircuitos entre pines adyacentes, la solución es realizar dos pruebas separadas (por ejemplo, la primera prueba de los pines 1357, la segunda prueba de los pines 2468).
-- Se aplica corriente y se mide el voltaje.
+- 串行法一次只测一个引脚，步骤简单但效率低，适用于引脚少的 DUT。
+- 并行法需要测试系统有 PPMU，缺点是检测不出相邻引脚短路，解决方法是分两次测试（比如第一次测 1357 引脚，第二次测 2468 引脚）。
+- 施加电流，测量电压。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- "The Fundamentals Of Digital Semiconductor Testing"
-- "DC Test Theory"
+- 《The Fundamentals Of Digital Semiconductor Testing》
+- 《DC Test Theory》
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

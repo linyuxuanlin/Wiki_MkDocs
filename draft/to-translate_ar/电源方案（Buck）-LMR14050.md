@@ -1,10 +1,10 @@
-# Esquema de alimentación (Buck) - LMR14050
+# 电源方案（Buck）- LMR14050
 
-LMR14050 es un chip convertidor Buck de TI que tiene un amplio rango de voltaje de entrada (4-40V) y puede proporcionar una corriente de salida continua de 5A. Tiene un modo de suspensión en carga ligera para mejorar la eficiencia. Debido a su alta integración interna, se requieren pocos componentes periféricos en el diseño. La frecuencia de conmutación se puede seleccionar en el rango de 200kHz-2.5MHz mediante una resistencia externa $R_T$, o se puede sincronizar con un reloj externo en el rango de frecuencia de 250 kHz-2.3 MHz. Las funciones de protección incluyen apagado por sobrecalentamiento, protección contra sobretensión $V_{OUT}$ (OVP), bloqueo por subvoltaje $V_{IN}$ (UVLO), limitación de corriente por ciclo y protección contra cortocircuitos con plegado de frecuencia.
+LMR14050 是 TI 的一款 Buck 转换器芯片，输入电压范围很宽（4-40V），且能提供 5A 的持续输出电流，轻载有休眠模式提高效率。它的内部集成度高，所以外围需要设计的元器件很少。开关频率能通过外部电阻 $R_T$ 在 200kHz-2.5MHz 范围内选择，也能够与 250 kHz-2.3 MHz 频率范围内的外部时钟同步。保护功能有过温关断、$V_{OUT}$ 过压保护（OVP）、$V_{IN}$ 欠压锁定（UVLO）、逐周期电流限制和带频率折返的短路保护。
 
-Repositorio del proyecto: [**Collection_of_Power_Module_Design/DC-DC(Buck)/LMR14050**](<https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/DC-DC(Buck)/LMR14050>)
+项目仓库： [**Collection_of_Power_Module_Design/DC-DC(Buck)/LMR14050**](<https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/DC-DC(Buck)/LMR14050>)
 
-Vista previa en línea del proyecto:
+项目在线预览：
 
 <div class="altium-iframe-viewer">
   <div
@@ -13,79 +13,77 @@ Vista previa en línea del proyecto:
   ></div>
 </div>
 
-## Características principales
+## 主要特性
 
-- Topología: DC/DC (Buck)
-- Modelo del dispositivo: LMR14050SDDA
-- Encapsulado: HSOIC-8
-- Voltaje de entrada: 4-40 V
-- Voltaje de salida: 0.8-28V
-- Corriente de salida: 5A continua
-- Frecuencia de trabajo: 200kHz-2.5MHz
-- Precio de referencia: ¥11.3
-- Otras características
-  - Corriente estática de trabajo ultra baja de 40µA
-  - Corriente de apagado: 1µA
-  - MOSFET de alta lateral de 90mΩ
-  - Tiempo de conducción más corto: 75ns
-  - Control de modo de corriente
-  - Protección térmica, protección contra sobretensión y protección contra cortocircuitos
+- 拓扑：DC/DC（Buck）
+- 器件型号：LMR14050SDDA
+- 封装：HSOIC-8
+- 输入电压：4-40 V
+- 输出电压：0.8-28V
+- 输出电流： 5A 持续
+- 工作频率： 200kHz-2.5MHz
+- 参考价格：￥ 11.3
+- 其他特性
+  - 40µA 超低工作静态电流
+  - 关断电流：1µA
+  - 90mΩ 高侧 MOS 管
+  - 最短导通时间：75ns
+  - 电流模式控制
+  - 热保护、过压保护和短路保护
 
-## Diagrama de funciones internas
+## 内部功能框图
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220111090855.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111090855.png)
 
-## Definición de pines
+## 引脚定义
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220110170233.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220110170233.png)
 
-- BOOT: Capacitor de arranque para el MOSFET de alta lateral. Conecte un capacitor de 0.1uF entre BOOT y SW.
-- VIN: Entrada de alimentación, conectada a través de un capacitor de desacoplamiento $C_{IN}$.
-- EN: Interruptor de habilitación, con una resistencia interna de pull-up. La salida se puede desactivar mediante una señal de entrada inferior a 1.2V. La salida se habilita mediante una señal flotante o conectada a $V_{IN}$. Consulte la sección de ajuste de bloqueo por subvoltaje a continuación.
-- RT/SYNC: Entrada de temporización de resistencia o reloj externo. Cuando se utiliza una resistencia externa conectada a tierra para establecer la frecuencia de conmutación, el amplificador interno mantiene este pin a un voltaje fijo. Si el pin se tira por encima del umbral superior del PLL, se producirá un cambio de modo y el pin se convertirá en una entrada sincronizada. El amplificador interno se desactiva y el pin es una entrada de reloj de alta impedancia del PLL interno. Si el borde del reloj se detiene, el amplificador interno se reactiva y el modo de operación vuelve a la programación de frecuencia a través del resistor.?
-- FB: Pin de entrada de retroalimentación, conectado a través de una resistencia de división de voltaje desde $V_{OUT}$. No se puede conectar directamente a tierra.
-- SS: Pin de control de arranque suave, conectado a un capacitor para establecer el tiempo de arranque suave.
-- SW: Salida de conmutación regulada, conectada internamente al MOSFET de alta lateral. Conecte la bobina de potencia.
+- BOOT：给高侧 MOS 管的自举电容。在 BOOT 和 SW 间接一个 0.1uF 电容。
+- VIN：电源输入，经过去耦电容 $C_{IN}$ 后接到此引脚。
+- EN：使能开关，内部上拉。外部拉低于 1.2V 可关闭输出，浮空或接 $V_{IN}$ 使能输出。欠压锁定的调节请见下文。
+- RT/SYNC：电阻时序或外部时钟输入。当使用外部电阻接地来设置开关频率时，内部放大器将此引脚保持在固定电压。如果引脚被拉至高于 PLL 上限阈值，则会发生模式更改并且引脚变为同步输入。内部放大器被禁用，引脚是内部 PLL 的高阻抗时钟输入。如果时钟边沿停止，则重新启用内部放大器并且操作模式返回到通过电阻器进行的频率编程。？
+- FB：反馈输入引脚，由电阻从 $V_{OUT}$ 分压输入反馈，不可直接接地。
+- SS：缓启动控制引脚，接电容设置缓启动时间。
+- SW：稳压开关输出，在内部连高侧 MOS 管。接功率电感。
 
-## Descripción de características
+## 特性描述
 
-### Principio de regulación
+### 稳压原理
 
+LMR14050 的输出电压通过开启高侧 N-MOS 并控制导通时间来调节。在高侧 N-MOS 导通期间，SW 引脚电压摆动至大约 $V_{IN}$，电感电流 iL 随线性斜率 ($V_{IN}$ – $V_{OUT}$) / L 增加；当高侧 N-MOS 关断时，电感电流通过续流二极管，以 $V_{OUT}$ / L 的斜率放电。稳压器的控制参数由占空比 $D = t_{ON} /T_{SW}$ 决定，其中 $t_{ON}$ 是高端开关导通时间，TSW 是开关周期。稳压器控制环路通过调整占空比 D 来保持恒定的输出电压。在理想的降压转换器中，损耗被忽略，D 与输出电压成正比，与输入电压成反比：$D = V_{OUT} / V_{IN}$。
 
+连续导通模式（CCM）下的 SW 电压与电感电流的对应关系：
 
-La tensión de salida del LMR14050 se ajusta abriendo el N-MOS de alta lateral y controlando el tiempo de conducción. Durante el tiempo de conducción del N-MOS de alta lateral, la tensión en el pin SW oscila a aproximadamente $V_{IN}$ y la corriente de la bobina L aumenta con una pendiente lineal ($V_{IN}$ - $V_{OUT}$) / L; cuando se apaga el N-MOS de alta lateral, la corriente de la bobina L se descarga con una pendiente de $V_{OUT}$ / L a través del diodo de recuperación. Los parámetros de control del regulador están determinados por el ciclo de trabajo $D = t_{ON} / T_{SW}$, donde $t_{ON}$ es el tiempo de conducción del interruptor superior y $T_{SW}$ es el período de conmutación. El lazo de control del regulador ajusta el ciclo de trabajo D para mantener una tensión de salida constante. En un convertidor reductor ideal, las pérdidas se ignoran, D es proporcional a la tensión de salida y es inversamente proporcional a la tensión de entrada: $D = V_{OUT} / V_{IN}$.
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111095020.png)
 
-La relación entre la tensión SW y la corriente de la bobina L en el modo de conducción continua (CCM) es la siguiente:
+### 睡眠模式
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220111095020.png)
+轻载状态下会进入睡眠模式，以提高效率、减少门极驱动损耗（通过减少开关切换）。如果输出的峰值低于 300mA 将会触发睡眠模式。
 
-### Modo de suspensión
+### BOOT 自举电路的设计
 
-En condiciones de carga ligera, el regulador entra en modo de suspensión para mejorar la eficiencia y reducir las pérdidas de conducción de la puerta (al reducir el número de conmutaciones). Si el pico de salida es inferior a 300 mA, se activará el modo de suspensión.
+LMR14050 内部集成了自举电压转换器，在 BOOT 和 SW 引脚接一个自举电容，就可以提供足以驱动高侧 MOS 管门极的电压。BOOT 电容的参考值为 0.1uF（X7R 或 X5R 陶瓷电容，耐压至少 16V）。
 
-### Diseño del circuito de arranque automático (BOOT)
+### 输出电压调节
 
-El LMR14050 integra un convertidor de voltaje de arranque automático. Conectando un capacitor de arranque entre los pines BOOT y SW, se puede proporcionar suficiente voltaje para conducir la puerta del MOS de alta lateral. El valor de referencia del capacitor BOOT es de 0,1 uF (capacitor cerámico X7R o X5R con una tensión nominal de al menos 16 V).
+LMR14050 提供一个 0.75V 的内部参考电压。输出电压通过电阻分压器，从 $V_{OUT}$ 分压出来输入 FB 引脚，在内部进行比较调节。分压电阻建议使用偏差 1% 或更低的、温度系数 100 ppm 或更低的。通过所需分压电流选择低侧电阻 $R_{FBB}$（参考值是 10-100kΩ），并通过公式计算高侧电阻 $R_{FBT}$。选择较大的阻值有利于提高轻载效率，但如果太大，稳压器将更容易受到来自 FB 输入电流的噪声和电压误差的影响。
 
-### Ajuste de la tensión de salida
-
-El LMR14050 proporciona una tensión de referencia interna de 0,75 V. La tensión de salida se ajusta mediante un divisor de resistencia conectado al pin FB, que se compara y ajusta internamente. Se recomienda utilizar resistencias de desviación del 1% o menos y un coeficiente de temperatura de 100 ppm o menos para el divisor de resistencia. Seleccione la resistencia inferior $R_{FBB}$ (valor de referencia de 10-100 kΩ) en función de la corriente de división de tensión deseada y calcule la resistencia superior $R_{FBT}$ mediante la fórmula. Se recomienda utilizar valores de resistencia más altos para mejorar la eficiencia en condiciones de carga ligera, pero si son demasiado altos, el regulador será más susceptible al ruido y los errores de voltaje de entrada de la corriente de entrada de FB.
-
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220111105814.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111105814.png)
 
 $$
 R_{FBT}=\frac{V_{OUT}-0.75}{0.75}R_{FBB}
 $$
 
-### Ajuste de la habilitación y el bloqueo de subvoltaje
+### EN 使能与欠压锁定调节
 
-Cuando $V_{IN}$ es superior a 3,7 V y EN es superior al umbral de 1,2 V, el LMR14050 activa la salida. Cuando $V_{IN}$ cae por debajo de 3,52 V o EN cae por debajo de 1,2 V, el regulador se apaga. EN tiene una fuente de corriente interna de pull-up (1 uA) para garantizar que el regulador produzca una salida normal cuando el pin EN está flotando.
+当 $V_{IN}$ 高于 3.7V，且 EN 高于 1.2V 阈值时 LMR14050 开启输出，当 $V_{IN}$ 掉落到低于 3.52V 或 EN 低于 1.2V 时稳压器关闭。EN 有内部上拉电流源（1uA）以确保 EN 脚浮空时稳压器正常输出。
 
-Puede ajustar los umbrales de voltaje de inicio y apagado ajustando las resistencias de pull-up y pull-down externas de EN:
+可通过调节 EN 的外部上下拉电阻，以调节启动和关闭的电压阈值：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220111111613.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111111613.png)
 
-$R_{ENT}$ y $R_{ENB}$ se calculan según las siguientes fórmulas:
+$R_{ENT}$ 和 $R_{ENB}$ 遵从以下公式计算：
 
 $$
 R_{ENT}=\frac{V_{STRAT}-V_{STOP}}{I_{HYS}}
@@ -96,74 +94,74 @@ $$
 R_{ENB}=\frac{V_{EN}}{\frac{V_{START}-V_{EN}}{R_{ENT}}+I_{EN}}
 $$
 
-Donde $V_{STRAT}$ es el umbral de voltaje de inicio deseado, $V_{STOP}$ es el umbral de voltaje de apagado deseado e $I_{HYS}$ es la corriente de histéresis de EN cuando el voltaje de EN supera los 1,2 V (valor típico de 3,6 uA).
+其中，$V_{STRAT}$ 是希望使能启动的电压阈值，$V_{STOP}$ 是希望欠压关闭的电压阈值，$I_{HYS}$ 是当 EN 电压超过 1.2V 时从 EN 来的滞后电流（典型值为 3.6uA）。
 
-### Arranque suave externo
+### 外部缓启动
 
-El arranque suave se utiliza para resistir las corrientes transitorias de sobretensión en el regulador y la carga al encender. Puede configurarlo conectando un capacitor $C_{SS}$ entre los pines SS y GND. Hay una fuente de corriente interna $I_{SS}$ (valor típico de 3 uA) que carga el capacitor y genera una pendiente de 0 V a $V_{REF}$. El tiempo de arranque suave se puede configurar mediante la siguiente fórmula:
+缓启动用于抵御通电时冲击稳压器与负载的浪涌电流，可通过外置连接于 SS 与 GND 之间的电容 $C_{SS}$ 来进行配置。有一个内部电流源 $I_{SS}$（典型值为 3uA）为电容充电并生成一个从 0V 到 $V_{REF}$ 的斜坡。缓启动时间可通过公式配置：
 
 $t_{SS}(ms)=\frac{C_{SS}(nF)*V_{REF}(V)}{I_{SS}(uA)}$
 
-El arranque suave se restablecerá cuando el regulador se desactive o se apague internamente.
+在稳压器失能或内部关闭时，缓启动将会被重置。
 
-### Frecuencia de conmutación y sincronización (RT/SYNC)
+### 开关频率与同步（RT/SYNC）
 
-La frecuencia de conmutación del LMR14050 se puede programar mediante una resistencia $R_T$ conectada entre RT/SYNC y GND. El pin RT/SYNC no puede dejarse flotando o conectarse a tierra, y su valor de resistencia se determina según la siguiente fórmula o gráfico:
+LMR14050 的开关频率可以被接在 RT/SYNC 和 GND 之间的电阻 $R_T$ 编程设定。RT/SYNC 引脚不可浮空或端接到地，根据以下公式或图表决定其阻值：
 
 $$
 R_T(kΩ)=32537*f_{SW}^{-1.045}(kHz)
 $$
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220111135021.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111135021.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220111135034.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111135034.png)
 
-La acción de conmutación del LMR14050 también se puede sincronizar con una señal de entrada de reloj externa (250kHz-2.3MHz):
+LMR14050 开关动作也可以被外部时钟输入信号同步（250kHz-2.3MHz）:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220111141247.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111141247.png)
 
-El oscilador interno se sincroniza con el flanco descendente del reloj externo. Se recomienda que el nivel alto del reloj externo no sea inferior a 1.7V, el nivel bajo no sea superior a 0.5V y el ancho de pulso mínimo no sea inferior a 30ns. Si se conecta una fuente de señal de baja impedancia, la resistencia de programación de frecuencia $R_T$ debe conectarse en paralelo con una resistencia de acoplamiento de CA $C_{COUP}$ (puede ser un condensador cerámico de 10pF) y una resistencia terminal $R_{TERM}$ (por ejemplo, 50Ω) para lograr una mejor coincidencia de impedancia.
+内部晶振将会被外部时钟的下降沿同步。外部时钟推荐高电平不低于 1.7V，低电平不高于 0.5V，最小脉宽不低于 30ns。如果接低内阻信号源，那么频率设定电阻 $R_T$ 需要被并联到 AC 耦合电阻 $C_{COUP}$（可为 10pF 陶瓷电容），接到终端电阻 $R_{TERM}$（例如 50Ω），这样可以较好地匹配阻抗。
 
-### Protección contra sobrecorriente y cortocircuito
+### 过流与短路保护
 
-El LMR14050 limita el pico de corriente del MOSFET de alta lateral en cada ciclo para evitar situaciones de sobrecorriente. En cada ciclo de conmutación, se compara la corriente máxima del MOSFET de alta lateral con la salida del amplificador de error (EA) menos la compensación de pendiente. La corriente máxima del MOSFET de alta lateral está limitada por un umbral máximo de corriente de pinza constante. Por lo tanto, la limitación del pico de corriente del MOSFET de alta lateral no se ve afectada por la compensación de pendiente y se mantiene constante en todo el rango de ciclo de trabajo.
+LMR14050 通过对高侧 MOS 管的峰值电流进行逐周期电流限制，以防止过流情况。每个开关周期都会将高端开关电流与误差放大器（EA）的输出减去斜率补偿进行比较。高侧开关的峰值电流受限于恒定的钳位最大峰值电流阈值。因此，高侧开关的峰值电流限制不受斜率补偿的影响，并且在整个占空比范围内保持恒定。
 
-### Protección contra sobretensión
+### 过压保护
 
-El LMR14050 tiene un circuito de protección contra sobretensión de salida (OVP) incorporado para minimizar el sobrevoltaje. Cuando el voltaje de retroalimentación (FB) alcanza el umbral de OVP ascendente (109% de VREF), se apaga el MOSFET de alta lateral; cuando cae por debajo del umbral de OVP descendente (107% de VREF), el MOSFET de alta lateral vuelve a funcionar normalmente.
+LMR14050 内置输出过压保护（OVP）电路，以最大限度减少电压过冲。当 FB 电压达到上升 OVP 阈值（VREF 的 109%）时会关闭高侧 MOS 管；当降至低于 OVP 下降阈值（VREF 的 107%）时，高侧 MOS 管恢复正常工作。
 
-### Protección de apagado térmico
+### 热关断保护
 
-El LMR14050 tiene una función de protección de apagado térmico interna. Cuando la temperatura de la unión supera los 170℃, se activa el apagado térmico y se detiene la conmutación del MOSFET de alta lateral. El reinicio interno se produce cuando la temperatura del chip cae por debajo de 158℃.
+LMR14050 有内部热关断保护功能。当结温超过 170℃ 时热关断激活，高侧 MOS 管停止开关。当芯片温度降至 158℃ 以下，才会从内部软重启。
 
-## Diseño de referencia
+## 参考设计
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220111143510.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111143510.png)
 
-Parámetros de diseño:
+设计参数：
 
-- Voltaje de entrada $V_{IN}$: 7-36V, valor típico de 12V
-- Voltaje de salida $V_{OUT}$: 5V
-- Corriente máxima de salida $I_{O\_MAX}$: 5A
-- Respuesta transitoria (0.5-5A): 5%
-- Ondulación del voltaje de salida: 50mV
-- Ondulación del voltaje de entrada: 400mV
-- Frecuencia de conmutación $f_{SW}$: 300kHz
-- Tiempo de arranque suave: 5ms
+- 输入电压 $V_{IN}$：7-36V，典型值为 12V
+- 输出电压 $V_{OUT}$：5V
+- 最大输出电流 $I_{O\_MAX}$：5A
+- 瞬态响应（0.5-5A）：5%
+- 输出电压纹波：50mV
+- 输入电压纹波：400mV
+- 开关频率 $f_{SW}$：300kHz
+- 缓启动时间：5ms
 
-### Configuración del voltaje de salida
+### 输出电压设置
 
-Según la fórmula anterior, si necesitamos una salida de 5V, podemos elegir $R_{FBT}$ como 100kΩ y $R_{FBB}$ como 17.4kΩ (valor aproximado de 17.65kΩ, equilibrado mediante ajuste).
+根据上面的公式，如果我们需要输出电压为 5V，则可选 $R_{FBT}$ 为 100kΩ，$R_{FBB}$ 为 17.4kΩ（17.65kΩ 的近似值，经调试均衡损耗）。
 
-Si necesitamos una salida de 12V, podemos elegir $R_{FBT}$ como 100kΩ y $R_{FBB}$ como 6.34kΩ (valor aproximado de 6.666kΩ, equilibrado mediante ajuste).
+如果我们需要输出电压为 12V，则可选 $R_{FBT}$ 为 100kΩ，$R_{FBB}$ 为 6.34kΩ（6.666kΩ 的近似值，经调试均衡损耗）。
 
-### Configuración de la frecuencia de conmutación
+### 开关频率设置
 
-Elegimos una frecuencia de conmutación de 300kHz, por lo que según la fórmula anterior, elegimos $R_T$ como 84.5kΩ (valor aproximado de 83.9kΩ).
+我们选择 300kHz 的开关频率，根据上面的公式，$R_T$ 选取 84.5kΩ（83.9kΩ 的近似值）。
 
-### Selección de la inductancia de salida
+### 输出电感选型
 
-En un convertidor DC-DC, los parámetros más críticos de la inductancia son el valor de inductancia, la corriente de saturación y la corriente RMS. La selección del valor de inductancia se basa en la corriente de pico a pico de ondulación deseada $Δi_L$. Debido a que la corriente de ondulación aumenta con el voltaje de entrada, siempre se utiliza el voltaje de entrada máximo para calcular el valor mínimo de inductancia $L_{MIN}$. El valor mínimo de la inductancia de salida se puede calcular mediante la siguiente fórmula:
+在 DC-DC 中，电感最关键的参数是电感值、饱和电流和 RMS 电流。电感值的选取基于所需的峰-峰纹波电流 $Δi_L$。由于纹波电流随着输入电压的增加而增加，所以始终使用最大输入电压来计算最小电感值 $L_{MIN}$。输出电感的最小值可通过公式计算：
 
 $$
 Δi_L=\frac{V_{OUT}*(V_{IN\_MAX}-V_{OUT})}{V_{IN\_MAX}*L*f_{SW}}
@@ -173,85 +171,86 @@ $$
 L_{MIN}=\frac{V_{IN\_MAX}-V_{OUT}}{I_{OUT}*K_{IND}}*\frac{V_{OUT}}{V_{IN\_MAX}*f_{SW}}
 $$
 
-Donde $K_{IND}$ es el coeficiente que representa la corriente de ondulación del inductor en relación a la corriente máxima de salida, y su valor razonable debería estar entre el 20% y el 40%. Durante eventos de operación de cortocircuito o sobrecarga instantánea, la corriente de inductor RMS y de pico puede ser muy alta. El valor nominal de la corriente del inductor debe ser mayor que el límite de corriente.
+其中，$K_{IND}$ 是表示电感器纹波电流相对于最大输出电流的系数，合理值应该是 20%-40%。在瞬时短路或过流操作事件期间，RMS 和峰值电感电流可能很高。电感电流额定值应高于电流限制。
 
-En general, es mejor tener un valor de inductancia más bajo, ya que generalmente proporciona una respuesta transitoria más rápida, una DCR más pequeña y un tamaño más pequeño. Sin embargo, un valor de inductancia demasiado bajo puede provocar una gran corriente de ondulación en el inductor, lo que puede activar incorrectamente la protección contra sobrecarga en carga completa. Debido a que la corriente RMS es ligeramente alta, también produce más pérdidas de conducción. Una corriente de ondulación en el inductor más grande también significa una ondulación de voltaje de salida más grande. Para el control de modo de corriente pico, no se recomienda una corriente de ondulación en el inductor demasiado pequeña, y una corriente de pico más grande puede mejorar la relación señal-ruido del comparador.
+一般来说，电感值越低越好，因为它通常带来更快的瞬态响应、更小的 DCR 及更小的尺寸。但是太低的电感值会带来较大的电感电流纹波，从而可能错误触发满载时的过流保护。由于 RMS 电流略高，它还会产生更多的传导损耗。较大的电感电流纹波，也意味着较大的输出电压纹波。对于峰值电流模式控制，不建议电感电流纹波过小，较大的峰值电流纹波可提高比较器的信噪比。
 
-En el diseño de referencia, el valor de $K_{IND}$ se toma como 0,4, por lo que el valor mínimo de inductancia se calcula como 7,17 uH, y el valor cercano es 8,2 uH. Se puede utilizar un inductor de ferrita de 8,2 μH con una corriente RMS de 7A y una corriente de saturación de 10A.
+在参考设计中，$K_{IND}$ 的值取 0.4，所以计算得到最小的电感值为 7.17uH，接近的取值为 8.2uH。可选用 7A RMS 电流和 10A 饱和电流的 8.2 μH 铁氧体电感器。
 
-### Selección del capacitor de salida
+### 输出电容选型
 
-La selección del capacitor de salida $C_{OUT}$ afecta directamente la ondulación de voltaje de salida en estado estable, la estabilidad del lazo y el sobrevoltaje y la caída de voltaje durante la transición de corriente de carga. La ondulación de salida se compone esencialmente de dos partes. Uno es causado por la corriente de ondulación del inductor a través de la resistencia equivalente en serie (ESR) del capacitor de salida:
+输出电容 $C_{OUT}$ 的选择直接影响稳态输出电压纹波、环路稳定性、负载电流瞬变期间的电压过冲和下冲。输出纹波本质上由两部分组成。一是电感电流纹波通过输出电容的等效串联电阻（ESR）引起的：
 
 $$
 ΔV_{OUT\_ESR}=Δi_L*ESR=K_{IND}*I_{OUT}*ESR
 $$
 
-El otro es causado por la carga y descarga del capacitor de salida por la corriente de ondulación del inductor:
+另一种是由电感电流纹波对输出电容充放电引起的：
 
 $$
 ΔV_{OUT\_C}=\frac{Δi_L}{8*f_{SW}*C_{OUT}}=\frac{K_{IND}*I_{OUT}}{8*f_{SW}*C_{OUT}}
 $$
 
-Estas dos ondulaciones de voltaje no están en fase, por lo que la ondulación pico a pico real será menor que la suma de ambas.
+这两种电压纹波并不同相，所以实际的峰-峰纹波会比两者之和小。
 
-Si el sistema requiere una regulación de voltaje estricta (escalones de corriente grandes y una tasa de cambio de voltaje rápida), entonces la selección del capacitor de salida estará limitada por las especificaciones de rendimiento transitorio. Cuando se produce un aumento rápido de carga grande, el capacitor de salida puede proporcionar la carga necesaria antes de que la corriente del inductor alcance el nivel adecuado. El lazo de control del regulador generalmente requiere al menos tres ciclos de reloj para responder a la caída de voltaje de salida. El capacitor de salida debe ser lo suficientemente grande como para proporcionar la diferencia de corriente de tres ciclos de reloj para mantener el voltaje de salida dentro del rango especificado.
+如果系统需要严格的电压调节（大电流阶跃和快速压摆率），则输出电容会受到瞬态性能规范的约束。当发生快速大负载提升时，输出电容能够在电感电流上升到适当水平之前，提供所需的电荷。稳压器的控制环路通常需要至少三个时钟周期，来响应输出电压下降。输出电容必须足够大，以提供三个时钟周期的电流差，以将输出电压保持在指定范围内。
 
-Cuando la carga disminuye repentinamente, el capacitor de salida absorberá la energía almacenada en el inductor. El diodo de pinza no puede conducir corriente, por lo que la energía eléctrica en el inductor provocará un sobrevoltaje en la salida. La fórmula para calcular el valor mínimo del capacitor de salida necesario para una caída de voltaje específica es:
+当负载突然大幅下降时，输出电容会吸取电感中储存的能量。钳位二极管没法灌电流，所以电感中的电能将会导致输出电压过冲。计算特定输出下冲所需的最小输出电容的公式：
 
 $C_{OUT}>\frac{3*(I_{OH}-I_{OL})}{f_{SW}*V_{US}}$
 
-La fórmula para calcular el valor mínimo del capacitor de salida necesario para mantener el sobrevoltaje dentro del rango especificado es:
+将电压过冲保持在指定范围内，所需的最小电容计算公式：
 
 $C_{OUT}>\frac{I_{OH}^2-I_{OL}^2}{(V_{OUT}+V_{OS})^2-V_{OUT}^2}*L$
 
-Donde:
+其中，
 
-- $K_{IND}$ es la relación de ondulación de corriente del inductor ($Δi_L/I_{OUT}$)
-- $I_{OL}$ es la corriente de salida baja durante la transición de carga
-- $I_{OH}$ es la corriente de salida alta durante la transición de carga
-- $V_{US}$ es la caída de voltaje de salida objetivo
-- $V_{OS}$ es el sobrevoltaje de salida objetivo
+- $K_{IND}$ 为电感纹波电流的纹波比（$Δi_L/I_{OUT}$）
+- $I_{OL}$ 为负载瞬态期间的低电平输出电流
+- $I_{OH}$ 为负载瞬态期间的高电平输出电流
+- $V_{US}$ 为目标输出电压下冲
+- $V_{OS}$ 为目标输出电压过冲
 
-En el diseño de referencia, la ondulación de salida objetivo es de 50 mV. Suponiendo que $ΔV_{OUT\_ESR}=ΔV_{OUT\_C}=50mV$, $K_{IND}$ tiene un valor de 0,4, $ESR$ no es mayor a 25 mΩ, y $C_{OUT}$ no es menor a 16,7 μF, el rango de sobrevoltaje y caída de voltaje en el diseño de referencia es de $V_{US}=V_{OS}=5%*V_{OUT}=250mV$. Por lo tanto, $C_{OUT}$ se puede calcular como no menor a 180 uF y 79,2 uF, y se selecciona el estándar más estricto de 180 uF, utilizando 4 capacitores cerámicos de 47 uF (16V, X7R, ESR de 5 mΩ) en paralelo.
+在参考设计中，目标输出纹波为 50mV。假设 $ΔV_{OUT\_ESR}=ΔV_{OUT\_C}=50mV$，$K_{IND}$ 取值为 0.4，$ESR$ 不大于 25mΩ，$C_{OUT}$ 不小于 16.7 μF，参考设计的过冲和下冲范围 $V_{US}=V_{OS}=5%*V_{OUT}=250mV$。所以 $C_{OUT}$ 可分别被计算出不小于 180uF 和 79.2uF，所以选取较严格的标准为 180uF，即使用 4 个 47uF（16V，X7R 陶瓷电容，ESR 为 5mΩ）并联。
 
-### Selección del diodo Schottky
+### 肖特基二极管选型
 
-La tensión de ruptura nominal del diodo debe ser al menos un 25% mayor que la tensión de entrada máxima. Para obtener la mejor confiabilidad, la corriente nominal del diodo debe ser igual a la corriente máxima de salida del regulador. Cuando la tensión de entrada es mucho mayor que la tensión de salida, la corriente promedio del diodo será más baja, y en este caso se puede utilizar un diodo con una corriente nominal promedio más baja, aproximadamente $(1-D) * I_{OUT}$, pero la corriente nominal de pico debe ser mayor que la corriente máxima de carga. Por lo general, se recomienda comenzar con una corriente nominal de 6-7 A. 
+二极管的额定击穿电压最好比最大输入电压高 25%。为了最佳可靠性，二极管的额定电流应等于稳压器最大输出电流。在输入电压远大于输出电压的情况下，二极管平均电流会更低，这时候可以使用平均电流额定值较低的二极管，约为 $(1-D) * I_{OUT}$，但峰值电流额定值应高于最大负载电流。一般选 6-7A 起步。
 
-### Selección del capacitor de entrada
+### 输入电容选型
 
-LMR14050 requiere un condensador de acoplamiento de alta frecuencia y un condensador de entrada de alta capacidad. El valor típico recomendado para el condensador de acoplamiento de alta frecuencia es de 4.7-10 μF (X5R/X7R, condensador cerámico, con una resistencia de voltaje de al menos el doble del voltaje de entrada máximo). En el diseño de referencia, se utilizan dos condensadores cerámicos X7R de 2.2 μF y 100 V de voltaje nominal. El condensador de filtrado de alta frecuencia debe colocarse cerca del regulador de voltaje.
+LMR14050 需要高频输入去耦电容和大容量输入电容。高频去耦电容的典型推荐值为 4.7-10 μF（X5R/X7R，陶瓷电容，耐压为最大输入电压两倍以上）。在参考设计中，使用了两个额定电压为 100 V 的 2.2 μF X7R 陶瓷电容器。高频滤波电容需要靠近稳压器放置。
 
-El condensador de alta capacidad proporciona amortiguación para los picos de voltaje, con un valor de referencia de 47uF o 100uF de condensador electrolítico.
+大容量电容为电压尖峰提供阻尼，参考值为 47uF 或 100uF 电解电容。
 
-### Selección del condensador de arranque BOOT
+### BOOT 自举电容选型
 
-LMR14050 requiere un condensador de arranque BOOT, como se mencionó anteriormente, el valor de referencia del condensador BOOT es de 0.1uF (condensador cerámico X7R o X5R, resistencia de voltaje de al menos 16V).
+LMR14050 需要一个 BOOT 自举电容，在前文有提及，BOOT 电容的参考值为 0.1uF（X7R 或 X5R 陶瓷电容，耐压至少 16V）。
 
-### Selección del condensador de arranque suave
+### 缓启动电容选型
 
-Según la fórmula anterior, si se establece un tiempo de arranque suave de 5ms, se puede obtener un valor de condensador de arranque suave de 22 nF (aproximadamente 20nF de valor calculado).
+根据前文公式，如果设定缓启动时间为 5ms，则可得出 22 nF（接近计算值 20nF）的缓启动电容。
 
-## Referencia de diseño de Layout
+## Layout 参考
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220110183248.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220110183248.png)
 
-Sugerencias de diseño de Layout para reducir la EMI:
+减小 EMI 的 Layout 建议：
 
-1. La red de retroalimentación, la resistencia $R_{FBT}$ y $R_{FBB}$ deben colocarse lo más cerca posible del pin FB. La ruta de muestreo de $V_{OUT}$ debe estar alejada de la ruta de generación de ruido, preferiblemente a través de una capa de blindaje en el otro lado.
-2. El condensador de acoplamiento de entrada debe colocarse lo más cerca posible de $V_{IN}$ y GND.
-3. La inductancia debe colocarse cerca del pin SW para reducir el ruido magnético y electrostático.
-4. El condensador de salida $C_{OUT}$ debe colocarse cerca del nodo de la inductancia y el diodo, con líneas lo más cortas posible para reducir el ruido de conducción y radiación y mejorar la eficiencia.
-5. La conexión a tierra del diodo, $C_{IN}$ y $C_{OUT}$ debe ser lo más pequeña posible y solo conectarse en un punto (preferiblemente en el punto de conexión a tierra de $C_{OUT}$) al plano de tierra del sistema para minimizar el ruido de conducción en el plano de tierra del sistema.
+1. 反馈网络、电阻 $R_{FBT}$ 和 $R_{FBB}$ 应尽量靠近 FB 引脚。 $V_{OUT}$ 的采样路径应远离噪声产生路径，最好通过屏蔽层另一侧的层。
+2. 输入去耦电容需要尽可能靠近 $V_{IN}$ 和 GND 放置。
+3. 电感应靠近 SW 引脚放置，以减少磁噪声和静电噪声。
+4. 输出电容 $C_{OUT}$ 应靠近电感和二极管的节点放置，走线尽可能短，以降低传导和辐射噪声，提高效率。
+5. 二极管、$C_{IN}$ 和 $C_{OUT}$ 的接地连接应尽可能小，并仅在一个点（最好在 $C_{OUT}$ 接地点）连接到系统接地层，以最大限度地减少系统接地层中的传导噪声。
 
-## Pruebas reales
+## 实际测试
 
-Entrada de 24V, salida de carga completa de 5V/5A, salida real de 4.95V/5.00A, ondulación de 15mV, temperatura de 110℃.
+24V 输入，5V/5A 满载输出，实际输出 4.95V/5.00A，纹波 15mV，温度 110℃。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Documentación técnica · LMR14050](https://www.ti.com.cn/product/cn/LMR14050#tech-docs)
-- [N-1149 Directrices de diseño de Layout para fuentes de alimentación conmutadas](https://www.ti.com/lit/an/snva021c/snva021c.pdf?ts=1641814411004)
+- [技术文档 · LMR14050](https://www.ti.com.cn/product/cn/LMR14050#tech-docs)
+- [N-1149 Layout Guidelines for Switching Power Supplies](https://www.ti.com/lit/an/snva021c/snva021c.pdf?ts=1641814411004)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

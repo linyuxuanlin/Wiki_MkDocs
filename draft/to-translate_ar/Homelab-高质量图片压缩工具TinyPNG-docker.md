@@ -1,12 +1,12 @@
-# Homelab - Herramienta de compresión de imágenes de alta calidad TinyPNG-docker
+# Homelab - 高质量图片压缩工具 TinyPNG-docker
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230416163137.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230416163137.png)
 
-TinyPNG-docker es una herramienta que utiliza la API de TinyPNG para comprimir imágenes de alta calidad. Puede comprimir automáticamente imágenes WEBP, JPEG y PNG en la ruta especificada y luego guardarlas en la ruta deseada. Esto puede reducir efectivamente el ancho de banda, el tráfico y el tiempo de carga del sitio web. Por cierto, esta es una aplicación Docker que desarrollé con la ayuda de ChatGPT.
+TinyPNG-docker 是一个调用 TinyPNG API 进行图片高质量压缩的工具，可以自动压缩指定路径下的 WEBP、JPEG 和 PNG 图片，然后输出到你想要的路径下。它能有效减少网站的带宽占用、流量和加载时间。顺带说一句，这是我借助 ChatGPT 开发的一个 Docker 应用。
 
-## Implementación (Docker Compose)
+## 部署（Docker Compose）
 
-Primero, cree `compose.yaml` y reemplace `${DIR}` con el directorio local (por ejemplo, `/DATA/AppData`); reemplace `${API}` con su propia clave de API de TinyPNG:
+首先创建 `compose.yaml` ，并将以下的 `${DIR}` 替换为本地的目录（例如 `/DATA/AppData`）；将 `${API}` 替换为自己申请的 TinyPNG 密钥：
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -22,39 +22,39 @@ services:
       - ${DIR}/tinypng-docker/output:/app/output
 ```
 
-## Instrucciones de configuración
+## 配置说明
 
-Antes de usar este contenedor Docker, debe registrarse en el sitio web de TinyPNG y solicitar una clave de API.
+使用这个 Docker 容器前，你需要先在 TinyPNG 官网上注册一个账户，并申请获取一个 API 密钥。
 
-El uso es muy simple, simplemente coloque las imágenes que necesita comprimir en la carpeta `${DIR}/tinypng/input`, y encontrará las imágenes comprimidas en la carpeta `${DIR}/tinypng/output`.
+使用方法很简单，把需要压缩的图片贴进 `${DIR}/tinypng/input` 文件夹中，就能在 `${DIR}/tinypng/output` 文件夹找到压缩后的图片了。
 
-Si el contenedor no se puede usar normalmente, puede excluirlo de la siguiente manera:
+如果容器无法正常使用，可以用以下的方法排除：
 
-1. Asegúrese de que la ruta de la carpeta `input` y `output` especificada en el archivo `compose.yaml` sea correcta.
-2. Verifique su cuenta de TinyPNG para ver si ha alcanzado el número máximo de compresiones permitidas por la clave de API.
-3. Verifique si la carpeta `input` contiene archivos de imagen con el formato correcto (WebP, PNG, JPEG). Tenga en cuenta que este contenedor solo detectará y comprimirá eventos `created`, por lo que si el archivo ya existe, debe moverlo manualmente a la carpeta `input`.
-4. Verifique si las imágenes comprimidas tienen una tasa de distorsión mayor que la configuración de compresión de la API, lo que puede provocar un fallo en la decodificación de la API (por ejemplo, si la imagen antes de la compresión ya se ha comprimido).
-5. Intente usar la herramienta de compresión de la API proporcionada por Tinify para cargar las imágenes comprimidas y determinar el problema. También puede imprimir información de depuración en la consola para localizar el problema.
+1. 确保 `compose.yaml` 文件中指定的 `input` 和 `output` 文件夹路径正确。
+2. 检查你的 TinyPNG 账户，是否已达到 API 密钥允许的最大压缩次数。
+3. 检查 `input` 文件夹是否包含正确格式的图像文件（WebP, PNG, JPEG）。注意，此容器只会检测并压缩 `created` 事件，因此如果文件已经存在，则需要手动将其移到 `input` 目录当中。
+4. 检查压缩的图片是否在失真度上高于 API 的压缩设置，可能导致 API 解码失败（例如压缩前的图片已经压缩过）。
+5. 尝试手动使用 tinify 官网提供的 API 压缩工具，上传压缩后的图片以进一步确定问题的所在，同时你可以在控制台输出调试信息定位问题。
 
 ---
 
-## Proceso de desarrollo de la imagen Docker
+## Docker 镜像开发流程
 
-### Preparación
+### 准备工作
 
-1. Si aún no ha registrado una cuenta de Docker Hub, primero debe crear una cuenta en Docker Hub.
+1. 如还未注册 Docker Hub 账户，则需要先在 Docker Hub 上创建一个账户。
 
-2. Inicie sesión en Docker Hub:
+2. 登录 Docker Hub：
 
 ```shell
 docker login
 ```
 
-Ingrese su nombre de usuario y contraseña según las instrucciones para iniciar sesión en Docker Hub.
+根据提示输入用户名和密码，登录到 Docker Hub。
 
-### Crear contenedor
+### 创建容器
 
-Cree el archivo `Dockerfile`:
+创建 `Dockerfile` 文件：
 
 ```Dockerfile title="Dockerfile"
 FROM python:3.8-slim-buster
@@ -72,40 +72,7 @@ ENV OUTPUT_DIR=/app/output
 CMD ["python", "main.py"]
 ```
 
-Cree `main.py` en la misma ruta:
-
-```python
-import os
-import tinify
-import time
-from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler
-
-tinify.key = os.environ.get('TINYPNG_API_KEY')
-
-class MyHandler(FileSystemEventHandler):
-    def on_created(self, event):
-        if event.is_directory:
-            return
-        print(f'Compressing {event.src_path}...')
-        source = tinify.from_file(event.src_path)
-        source.to_file(event.src_path.replace(os.environ.get('INPUT_DIR'), os.environ.get('OUTPUT_DIR')))
-        print(f'Compressed {event.src_path} successfully.')
-
-if __name__ == "__main__":
-    event_handler = MyHandler()
-    observer = Observer()
-    observer.schedule(event_handler, os.environ.get('INPUT_DIR'), recursive=True)
-    observer.start()
-    try:
-        while True:
-            time.sleep(1)
-    except KeyboardInterrupt:
-        observer.stop()
-    observer.join()
-```
-
-¡Listo! Ahora puede construir y publicar su imagen Docker en Docker Hub.
+在相同路径下创建 `main.py`：
 
 ```py title="main.py"
 import tinify
@@ -120,7 +87,7 @@ class MyHandler(FileSystemEventHandler):
         if event.is_directory:
             return None
         elif event.event_type == 'created':
-            print("Evento creado recibido - %s." % event.src_path)
+            print("Received created event - %s." % event.src_path)
             source_path = event.src_path
             output_path = os.path.join(os.environ['OUTPUT_DIR'], os.path.basename(source_path))
             compress_image(source_path, output_path)
@@ -129,10 +96,10 @@ def compress_image(source_path, output_path):
     tinify.key = os.environ['TINYPNG_API_KEY']
     source = tinify.from_file(source_path)
     source.to_file(output_path)
-    print(f"{source_path} comprimido y guardado en {output_path}")
+    print(f"{source_path} compressed and saved to {output_path}")
 
 if __name__ == "__main__":
-    print("Observando nuevas imágenes...")
+    print("Watching for new images...")
     event_handler = MyHandler()
     observer = Observer()
     observer.schedule(event_handler, path=os.environ['INPUT_DIR'], recursive=False)
@@ -145,62 +112,60 @@ if __name__ == "__main__":
     observer.join()
 ```
 
-Aquí se importan las bibliotecas de Python necesarias: tinify, os, time, sys, watchdog. Luego se define una clase llamada MyHandler, que hereda de watchdog.events.FileSystemEventHandler. Esta clase contiene un método llamado on_created, que se llama cuando se crea un nuevo archivo en la carpeta especificada. La función on_created obtiene la ruta de la imagen de origen y la comprime en la ruta de salida especificada. Finalmente, comienza a observar la carpeta de entrada y, una vez que se detecta un nuevo archivo en la carpeta especificada, se ejecuta automáticamente la operación de compresión y se guarda la imagen comprimida en la carpeta de salida especificada.
+这里首先导入必需的 Python 库：tinify，os，time，sys，watchdog。随后定义了一个名为 MyHandler 的类，继承自 watchdog.events.FileSystemEventHandler。这个类包含一个 on_created 方法，当监测到指定文件夹下有新文件被创建时会被调用。on_created 函数获取源图像的路径，并将其压缩到指定的输出路径。最后开始监测输入文件夹，一旦检测到指定文件夹下有新文件被创建，就会自动执行压缩操作，并将压缩后的图像输出到指定的输出文件夹。
 
-### Compilar el contenedor
+### 编译容器
 
-Ejecute el siguiente comando para compilar el contenedor en la misma ruta que el archivo `Dockerfile`:
+在 `Dockerfile` 相同路径下执行以下命令编译容器：
 
 ```shell
 docker build -t tinypng-docker .
 ```
 
-Donde `tingpng-docker` es el nombre de la imagen que se va a construir y `.` es la ruta del archivo `Dockerfile`.
+其中，`tingpng-docker` 为要构建的镜像名称，`.` 为 `Dockerfile` 文件所在的路径。
 
-### Etiquetar la imagen
+### 为镜像打标签
 
-Use el siguiente comando para etiquetar la imagen:
+使用以下命令为镜像打标签：
 
 ```shell
 docker tag <image-name> <dockerhub-username>/<repository-name>:<tag>
 ```
 
-Por ejemplo:
+例如：
 
 ```shell
 docker tag tinypng-docker linyuxuanlin/tinypng-docker:latest
 ```
 
-### Subir una imagen a Docker Hub
+### 推送镜像到 Docker Hub
 
-Utilice el siguiente comando para subir una imagen a Docker Hub:
+使用以下命令将镜像上传到 Docker Hub：
 
 ```shell
-docker push <nombre-de-usuario-de-dockerhub>/<nombre-del-repositorio>:<etiqueta>
+docker push <dockerhub-username>/<repository-name>:<tag>
 
 ```
 
-Por ejemplo:
+例如：
 
 ```shell
 docker push linyuxuanlin/tinypng-docker:latest
 ```
 
-### Descargar una imagen
+### 拉取镜像
 
-Una vez que se haya subido la imagen, otros usuarios pueden descargarla con el siguiente comando:
+上传完成后，其他人便可以通过以下命令拉取镜像：
 
 ```shell
 docker pull linyuxuanlin/tinypng-docker:latest
 ```
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Documentación](https://wiki-power.com/es/Homelab-%E9%AB%98%E8%B4%A8%E9%87%8F%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9%E5%B7%A5%E5%85%B7TinyPNG-docker)
-- [Repositorio de GitHub](https://github.com/linyuxuanlin/Dockerfiles/tree/main/tinypng-docker)
+- [文档](https://wiki-power.com/Homelab-%E9%AB%98%E8%B4%A8%E9%87%8F%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9%E5%B7%A5%E5%85%B7TinyPNG-docker)
+- [GitHub repo](https://github.com/linyuxuanlin/Dockerfiles/tree/main/tinypng-docker)
 - [Docker Hub](https://hub.docker.com/r/linyuxuanlin/tinypng-docker)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

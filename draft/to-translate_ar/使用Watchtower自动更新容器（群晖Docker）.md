@@ -1,31 +1,32 @@
-# Cómo actualizar automáticamente los contenedores en Docker de Synology utilizando Watchtower
+# 使用 Watchtower 自动更新容器（群晖 Docker）
 
-Utilice Watchtower para actualizar automáticamente los contenedores en Docker de Synology.
+使用 Watchtower 自动更新群晖 Docker 上的容器。
 
-## Descargar la imagen en la aplicación Docker de Synology
+## 在群晖 Docker 应用中下载镜像
 
-Abra el paquete Docker de Synology y descargue la imagen `containrrr/watchtower`.
+打开群晖 Docker 套件，下载 `containrrr/watchtower` 镜像即可。
 
-## Configurar Watchtower en la tarea programada
+## 在任务计划中配置 Watchtower
 
-Abra el `Panel de control` de Synology - `Tarea programada` - `Agregar` - `Tarea programada` - `Script definido por el usuario`, y luego complete la configuración según las siguientes imágenes:
+打开群晖的 `控制面板` - `任务计划` - `新增` - `计划的任务` - `用户定义的脚本`，随后按以下图片填写配置：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202301092319956.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202301092319956.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202301092321592.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202301092321592.png)
 
-El script es el siguiente:
+其中的脚本：
 
 ```shell
 docker run --rm --name watchtower -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --cleanup --run-once calibre-web freshrss code-server
 ```
 
-Tenga en cuenta que `calibre-web freshrss code-server` al final del script son los nombres de los contenedores que se deben actualizar. Reemplácelos con los nombres de los contenedores que desea actualizar o déjelos en blanco para actualizar todos los contenedores.
+注意，脚本的最后 `calibre-web freshrss code-server` 是需要更新的容器名，请替换为你需要更新的；或者留空表示更新全部容器。
 
-Guarde y ejecute el script para actualizar los contenedores de Docker de forma programada.
+保存，运行脚本即可实现 Docker 容器批量定时更新。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Cómo actualizar los contenedores de Docker de Synology de manera elegante con un solo comando - Tutorial de Watchtower](https://post.smzdm.com/p/awzggnqp/)
+- [如何优雅地使用一条命令更新群晖 docker 容器 - Watchtower 教程](https://post.smzdm.com/p/awzggnqp/)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

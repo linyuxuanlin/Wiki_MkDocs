@@ -1,12 +1,12 @@
-# Homelab - Gestor de contraseñas autohospedado Vaultwarden
+# Homelab - 自托管密码管理器 Vaultwarden
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230304195414.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304195414.jpg)
 
-**Vaultwarden** es un servidor de Bitwarden autohospedado de terceros que protege y administra las contraseñas de diferentes sitios web con una contraseña maestra, y puede generar contraseñas aleatorias para diferentes sitios web.
+**Vaultwarden** 是一个第三方自托管的 Bitwarden 服务器，通过一个主密码保护并管理各个网站的密码，可生成随机的密码供不同网站使用。
 
-## Implementación (Docker Compose)
+## 部署（Docker Compose）
 
-Primero, cree el archivo `compose.yaml` y pegue el siguiente contenido:
+首先创建 `compose.yaml` 文件，并粘贴以下内容：
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -21,37 +21,35 @@ services:
     restart: always
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `vaultwarden`).
+（可选）推荐在 `compose.yaml` 同级目录下创建 `.env` 文件，并自定义你的环境变量。如果不想使用环境变量的方式，也可以直接在 `compose.yaml` 内自定义你的参数（比如把 `${STACK_NAME}` 替换为 `vaultwarden`）。
 
 ```dotenv title=".env"
 STACK_NAME=vaultwarden
-STACK_DIR=xxx # Personalice la ruta de almacenamiento del proyecto, por ejemplo, ./vaultwarden
+STACK_DIR=xxx # 自定义项目储存路径，例如 ./vaultwarden
 
 # vaultwarden
 APP_VERSION=latest
-APP_PORT=xxxx # Personalice el puerto de acceso, elija uno que no esté en uso
+APP_PORT=xxxx # 自定义访问端口，选择不被占用的即可
 ```
 
-Por último, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores.
+最后，在 `compose.yaml` 同级目录下执行 `docker compose up -d` 命令即可启动编排的容器。
 
-## Instrucciones de configuración
+## 配置说明
 
-Vaultwarden requiere https para iniciar sesión de forma predeterminada, se recomienda utilizar un proxy inverso (consulte el artículo [**Homelab - Panel de gestión de certificados de proxy inverso Nginx Proxy Manager**](https://wiki-power.com/es/Homelab-%E5%8F%8D%E4%BB%A3%E8%AF%81%E4%B9%A6%E7%AE%A1%E7%90%86%E9%9D%A2%E6%9D%BFNginxProxyManager/) para obtener información sobre cómo configurar un servidor de proxy inverso).
+Vaultwarden 默认需要使用 https 登录，推荐通过反向代理使用（反向代理服务器的搭建可参考文章 [**Homelab - 反代证书管理面板 Nginx Proxy Manager**](https://wiki-power.com/Homelab-%E5%8F%8D%E4%BB%A3%E8%AF%81%E4%B9%A6%E7%AE%A1%E7%90%86%E9%9D%A2%E6%9D%BFNginxProxyManager/)。
 
-Cuando se utiliza la extensión del navegador, la aplicación de escritorio o la aplicación móvil, es necesario hacer clic en Configuración en la página de inicio de sesión y configurar la URL del servidor para utilizar el servicio autohospedado correctamente.
+使用浏览器扩展、桌面与移动端 App 时，需要在登录页面点击设置，并配置服务器的 URL，才能正常使用自托管的服务。
 
-Además, las versiones antiguas (inferiores a 1.27.0) de Vaultwarden no son compatibles con la extensión del navegador de Bitwarden, lo que puede impedir el inicio de sesión. Consulte el problema: [**Client fails to connect or login**](https://github.com/dani-garcia/vaultwarden/issues/3082).
+另外，旧版本（低于 1.27.0）的 Vaultwarden 与 Bitwarden 的浏览器拓展不兼容，会导致无法登录。详见 issue：[**Client fails to connect or login**](https://github.com/dani-garcia/vaultwarden/issues/3082)。
 
-Debido a que es un servicio autohospedado, es importante prestar atención a la seguridad de los datos. Recuerde hacer copias de seguridad regulares de la base de datos de contraseñas.
+因为是自托管的服务，所以需要自己留意数据安全。记得定期备份密码数据库。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Sitio web oficial](https://github.com/dani-garcia/vaultwarden/wiki)
-- [Documentación](https://github.com/dani-garcia/vaultwarden/wiki/Using-Docker-Compose)
-- [Repositorio de GitHub](https://github.com/dani-garcia/vaultwarden)
+- [官网](https://github.com/dani-garcia/vaultwarden/wiki)
+- [文档](https://github.com/dani-garcia/vaultwarden/wiki/Using-Docker-Compose)
+- [GitHub repo](https://github.com/dani-garcia/vaultwarden)
 - [Docker Hub](https://hub.docker.com/r/vaultwarden/server)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

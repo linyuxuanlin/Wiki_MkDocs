@@ -1,12 +1,12 @@
-# Homelab - Herramienta de notas fragmentadas memos
+# Homelab - 碎片笔记工具 memos
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202304111548420.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304111548420.png)
 
-**memos** es una herramienta de notas de autohospedaje de código abierto. Admite sintaxis Markdown, uso compartido público, incrustación de iframes, gestión de etiquetas, vista de calendario, migración de datos simple y funciones de copia de seguridad.
+**memos** 是一个开源的自托管 memos 工具。支持 Markdown 语法、公开分享、iframe 嵌入、标签管理、日历视图、简单的数据迁移与备份功能。
 
-## Implementación (Docker Compose)
+## 部署（Docker Compose）
 
-Primero, cree el archivo `compose.yaml` y pegue el siguiente contenido:
+首先创建 `compose.yaml` 文件，并粘贴以下内容：
 
 ```yaml title="compose.yaml"
 version: "3.0"
@@ -21,34 +21,32 @@ services:
     restart: always
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `memos`).
+（可选）推荐在 `compose.yaml` 同级目录下创建 `.env` 文件，并自定义你的环境变量。如果不想使用环境变量的方式，也可以直接在 `compose.yaml` 内自定义你的参数（比如把 `${STACK_NAME}` 替换为 `memos`）。
 
 ```dotenv title=".env"
 STACK_NAME=memos
-STACK_DIR=xxx # Ruta de almacenamiento personalizada del proyecto, por ejemplo, ./memos
+STACK_DIR=xxx # 自定义项目储存路径，例如 ./memos
 
 # memos
 APP_VERSION=latest
-APP_PORT=xxxx # Puerto de acceso personalizado, simplemente elija uno que no esté en uso
+APP_PORT=xxxx # 自定义访问端口，选择不被占用的即可
 ```
 
-Por último, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores.
+最后，在 `compose.yaml` 同级目录下执行 `docker compose up -d` 命令即可启动编排的容器。
 
-## Instrucciones de configuración
+## 配置说明
 
-Aplicación móvil iOS/Android: [**Moe Memos**](https://memos.moe/). Para obtener más clientes de terceros (como mini programas de WeChat, extensiones de navegador, bots de Telegram, etc.), consulte la documentación [**contribution·memos**](https://github.com/usememos/memos#contribution).
+移动端 iOS/Android App：[**Moe Memos**](https://memos.moe/)。还有更多第三方客户端（如微信小程序、浏览器扩展、Telegram Bot 等）请参考文档 [**contribution·memos**](https://github.com/usememos/memos#contribution)。
 
-Para importar y exportar datos de usuario, puede utilizar la extensión de VS Code [**SQLite**](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite), descargar y abrir `memos_prod.db` en `${DIR}` para realizar operaciones de agregar, eliminar, modificar y consultar, así como para realizar copias de seguridad de importación y exportación. Tenga en cuenta que el archivo `memos_prod.db` solo se actualizará cuando el contenedor de Docker se cierre o reinicie.
+用户数据的导入导出，可使用 VS Code 插件 [**SQLite**](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)，下载并打开 `${DIR}` 下的 `memos_prod.db` 即可进行增删改查、导入导出备份等操作。注意，只有在 docker 容器关闭 / 重启的时候才会更新 `memos_prod.db` 文件。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Sitio web oficial](https://usememos.com/)
-- [Documentación](https://usememos.com/docs/install#docker-compose)
-- [Repositorio de GitHub](https://github.com/usememos/memos)
+- [官网](https://usememos.com/)
+- [文档](https://usememos.com/docs/install#docker-compose)
+- [GitHub repo](https://github.com/usememos/memos)
 - [Docker Hub](https://hub.docker.com/r/neosmemo/memos)
-- [Sitio de demostración](https://demo.usememos.com/)
+- [Demo site](https://demo.usememos.com/)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

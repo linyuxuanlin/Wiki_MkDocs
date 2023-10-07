@@ -1,62 +1,62 @@
-# Cómo construir tu propio HomeLab
+# 搭建属于自己的 HomeLab
 
-Homelab se refiere a un entorno de experimentación (tinkering) que se puede construir en casa para realizar experimentos y aprender. Por lo general, se refiere a una serie de dispositivos de hardware (servidores domésticos, mini ordenadores, viejos ordenadores portátiles, Raspberry Pi, etc.) que ejecutan sistemas operativos y software (Linux, máquinas virtuales, Docker, etc.). Homelab tiene muchos usos, como ser un enrutador suave, un host remoto, o desplegar una serie de servicios de auto-alojamiento, como una biblioteca personal, una biblioteca de películas, un gestor de contraseñas, un sitio web personal, un lector de RSS, un servidor de podcasts, una libreta de notas, etc. No sólo es práctico, sino que también puede ser un hobby que añade diversión a la vida.
+Homelab 是指可在家中搭建的实验（折腾）环境，用于进行实验和学习。通常指一系列硬件设备（家用服务器、小主机、旧电脑手机、树莓派等），上面运行着操作系统环境和软件（Linux、虚拟机、Docker 等）。Homelab 有很多种用途，比如作为软路由、远程主机，也可以部署一系列的自托管服务，如个人书库、影视库、密码管理器、个人网站、RSS 阅读器、播客服务器、备忘录等等。不仅实用，也可以作一门兴趣，为生活增添乐趣。
 
-## Mi configuración de Homelab
+## 我的 Homelab 配置
 
-Mi configuración de Homelab es un **servidor en la nube ligero** + **mini ordenador** + **NAS**, cada uno con su propia configuración y uso:
+我自己的 Homelab 配置是 **轻量云服务器** + **小主机** + **NAS**，它们的配置与用途各有千秋：
 
-|          | Servidor en la nube ligero (Alibaba Cloud 1C2G) | Mini ordenador (CPU N100) | NAS (Synology DS220+) |
-| -------- | --------------------------------------------- | ------------------------ | --------------------- |
-| IP pública | Sí | No | No |
-| Espacio de almacenamiento | Pequeño | Mediano | Grande |
-| Rendimiento | Bajo | Alto | Bajo |
+|          | 轻量云服务器（阿里云 1C2G） | 小主机（N100 CPU） | NAS（群晖 DS220+） |
+| -------- | --------------------------- | ------------------ | ------------------ |
+| 公网 IP  | 有                          | 无                 | 无                 |
+| 储存空间 | 小                          | 中                 | 大                 |
+| 性能     | 低                          | 高                 | 低                 |
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202304130031463.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304130031463.png)
 
-No es difícil ver que cada uno tiene sus propias fortalezas, pero juntos forman un equipo triangular. El **servidor en la nube ligero** se centra en el acceso a la red, el **mini ordenador** se centra en el procesamiento de rendimiento, y el **NAS** se centra en el almacenamiento de espacio.
+不难看出，它们都是偏科生，但只要合作起来便是三边形战士。**轻量云服务器** 偏向网络访问型，**小主机** 偏向性能处理型，**NAS** 偏向空间存储型。
 
-### Servidor en la nube ligero
+### 轻量云服务器
 
-El **servidor en la nube ligero** es en realidad el excedente de los proveedores de servidores en la nube, con una configuración no muy alta, pero con un precio asequible, como el Alibaba Cloud que compré por sólo 96 yuanes al año (si tienes un paquete más barato, házmelo saber).
+**轻量云服务器** 其实就是云服务器厂商多余的边角料，配置不高，但胜在价格实惠，比如我购买的阿里云轻量仅 ￥ 96 / 年（如果你有更便宜的套餐不妨让我了解一下）。
 
-Debido a que tiene una IP pública (los puertos 80/443 también están abiertos), los servicios que despliego en este servidor en la nube ligero son principalmente un servidor frp, un servidor proxy inverso, un salto para acceder a otras máquinas, un panel de monitorización de otros hosts, un servicio de sitio web de pequeña escala, un monitor de tiempo de actividad del sitio web, etc., que necesitan ser accesibles directamente desde la red pública.
+因为有公网 IP （80/443 端口也是开放的），我在这台轻量云主机上部署的服务，主要是 frp 服务器、反向代理服务器、访问其他机器的跳板机、监控其它主机的面板、小型网站服务、网站 uptime 监测等需要通过公网直接访问的服务。
 
-### Mini ordenador
+### 小主机
 
-Para el **mini ordenador**, elegí el sistema N100 CPU de Zero-Knowledge, con 16 GB de memoria DDR5 y un disco duro SSD de 250 GB, que en general cuesta alrededor de 1.000 yuanes. El consumo diario de energía no es alto, y puede ser llamado cuando se necesita rendimiento.
+**小主机** 我选用了零刻 N100 CPU 的准系统，自配 16G DDR5 内存条与 250G SSD 硬盘，总体下来大概 ￥ 1000 出头。日常功耗不高，在需要性能的时候也能呼之即来。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202304130043744.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304130043744.png)
 
-Los tipos de aplicaciones que despliego en el mini ordenador son principalmente servicios que consumen rendimiento, como el editor de código web VS Code, la biblioteca privada de notas, el lector de RSS, el servidor de podcasts, la biblioteca de películas, el navegador interno de la red local, etc.
+在小主机上部署的应用类型，主要是 web VS Code 代码编辑器、私有笔记库、RSS 阅读器、播客服务器、影视库、内网浏览器等这一类需要消耗性能的服务。
 
 ### NAS
 
-Para el **NAS**, elegí el Synology DS220+, que tiene una arquitectura X86 que facilita la ejecución del entorno Docker. Hace un tiempo, también le añadí una memoria RAM de 16 GB para intentar mejorar su rendimiento. Pero luego descubrí que el cuello de botella seguía siendo la débil CPU J4025. El Synology blanco es como comprar software y obtener hardware gratis, pero por la seguridad de los datos, todavía vale la pena.
+**NAS** 我选用的是群晖 DS220+，X86 架构方便运行 Docker 环境。前一段时间，我还给它加上了一条 16G 的内存条，企图提升它的性能。但随后发现，瓶颈仍然是那颗孱弱的 J4025 CPU。白群晖算是买软件送硬件了，但是为了资料的安全性，还算是值得的。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202304130053483.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304130053483.png)
 
-Los servicios que despliego en el NAS son principalmente para necesidades de almacenamiento, como la copia de seguridad de datos de dispositivos, la sincronización de la nube, la biblioteca de fotos, la biblioteca de libros, etc.
+我在 NAS 上部署的，主要是设备资料备份、网盘同步、照片库、书库等储存需求型的服务。
 
-## Cómo desplegar Docker Compose en un solo paso
+## 如何一键批量部署 Docker compose
 
-Con el espíritu de experimentación, es inevitable que se tenga que reinstalar el sistema cada dos o tres días. Después de desplegar tantas aplicaciones, no es posible que se inicien una por una. Aquí hay un sencillo script de shell que puede desplegar todas las composiciones de Docker en un solo paso:
+有了折腾不止的精神，三天两头刷系统是不可避免的。部署了那么多的应用，总不可能一个个单独 bring up 吧。这儿有个简单的 shell 脚本，可以一键部署所有 Docker compose：
 
 ```shell title="compose.sh"
-echo "iniciando compose.sh..."
+echo "starting compose.sh..."
 
-# Recorre todas las carpetas de primer nivel en el directorio actual
+# 遍历当前目录下的一级文件夹
 for folder in */; do
-  [ "$folder" != "Archive/" ] # Ignora la carpeta Archive
-  cd "$folder"  # Entra en la carpeta
-  docker-compose up -d # Ejecuta el comando docker compose up -d
-  cd .. # Regresa al directorio anterior
+  [ "$folder" != "Archive/" ] # 忽略 Archive 文件夹
+  cd "$folder"  # 进入文件夹
+  docker-compose up -d # 执行 docker compose up -d 命令
+  cd .. # 返回上级目录
 done
 
-echo "listo."
+echo "done."
 ```
 
-Mi estructura de directorios es la siguiente:
+我的目录结构是这样的：
 
 ```
 ├── compose
@@ -71,20 +71,18 @@ Mi estructura de directorios es la siguiente:
 │   └── compose.sh
 ```
 
-Simplemente ejecutando `sh compose.sh` en el directorio compose, se pueden iniciar todos los Docker compose con un solo comando.
+只要在 compose 目录下执行 `sh compose.sh`，就能一键启动所有的 Docker compose 了。
 
-## Ventajas del autohospedaje
+## 自托管的优势
 
-En comparación con el alojamiento de terceros, donde alguien más se encarga de tus datos, el **autohospedaje (Self-Hosted)** tiene muchas ventajas, como el control total sobre tus datos personales, la capacidad de personalizar según tus necesidades y la posibilidad de acceder a más fuentes de información de calidad (biblioteca personal, biblioteca de películas y series, servicios RSS). La única condición es tener tiempo, recursos y la disposición para experimentar.
+相比于第三方托管，让别人替你保管数据，**自托管（Self-Hosted）** 具有十足的优势，表现在你对个人数据拥有完全的掌控权，可以根据自己的喜好去定制所需，能帮你获取到更多优质的信息源（个人书库、影视库、RSS 服务）。前提是要有一定的时间精力与资金投入，并且拥有一颗乐于折腾的心。
 
-En los próximos artículos, presentaré algunas configuraciones básicas y servicios interesantes. La combinación de "triángulo de hierro" mencionada anteriormente es solo una configuración personalizada, pero si solo tienes una máquina, también puedes experimentar con ella. La mayoría de los servicios que presentaré se basan en Docker y Docker-compose, ya que son altamente compatibles y se pueden utilizar en diferentes configuraciones de máquinas. Sin embargo, es importante mencionar que es mejor elegir una máquina con arquitectura X86, ya que algunos contenedores no están adaptados para ARM y deben compilarse e instalarse manualmente.
+在接下来的一系列文章中，我将介绍一些基础的配置，还有许多有趣的服务。上面提到的铁三角组合，只是我个人的差异化配置，如果你只有一台机器，折腾起来也是完全没有问题的。我将介绍的内容大多是基于 Docker 与 Docker-compose 部署的，因为这种方式兼容性极佳，在不同配置的机器上都能做到开箱即用。但需要提及的一点是，机器的选择最好是 X86 架构的，因为有些许容器没有做 ARM 适配，需要自己编译安装。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [¿Qué servicios interesantes tienes en tu NAS?](https://www.v2ex.com/t/901954)
-- [Iniciar varios contenedores de docker-compose con un solo comando](https://juejin.cn/post/7082842557482270734)
+- [你们的 NAS 部署了什么有趣的服务?](https://www.v2ex.com/t/901954)
+- [一键启动多个 docker-compose 配置容器](https://juejin.cn/post/7082842557482270734)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

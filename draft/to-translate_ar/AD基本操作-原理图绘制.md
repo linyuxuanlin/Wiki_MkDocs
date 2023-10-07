@@ -1,78 +1,79 @@
-# Operaciones básicas de AD - Dibujo de esquemas
+# AD 基本操作 - 原理图绘制
 
-- Tutorial de la serie Altium Designer
+—— Altium Designer 系列教程
 
-## Antecedentes
+## 背景
 
-Después del calentamiento en el capítulo anterior, comenzamos con la etapa de dibujo de esquemas.
+经过上一章节的预热，从这一章开始，我们进入原理图绘制环节。
 
-## Dibujo de esquemas
+## 绘制原理图
 
-### Ajuste del papel
+### 调整图纸
 
-Siguiendo el proceso básico mencionado anteriormente, creamos un nuevo proyecto y agregamos el archivo de esquema al proyecto. En este punto, aparece una hoja de papel en blanco. Podemos dibujar directamente en ella. Si el esquema se vuelve complicado, también podemos **cambiar el tamaño del papel** para que los componentes no se vean demasiado apretados:
+按照前文提到的基本流程，我们新建了一个项目，将原理图文件添加到项目中。此时，出现了一张空白的图纸。我们可以直接在上绘制原理图。如果原理图变得复杂，也可以 **更改图纸的尺寸**，使元器件不显得过于拥挤：
 
-1. **Haga doble clic** en cualquier lugar en blanco de la hoja,
-2. En el panel Propiedades, busque la sección **Opciones de página**,
-3. Haga clic en el menú desplegable Tamaño de hoja para cambiar el tamaño del papel.
+1. **双击** 图纸任意空白处，
+2. 在 Properties 面板内找到 **Page Options** 栏目，
+3. 点击 Sheet Size 下拉框更改图纸尺寸。
 
-### Colocación de componentes
+### 放置元件
 
-A continuación, comenzamos a colocar componentes. La instalación de la biblioteca se explicó en el capítulo anterior. Abrimos el panel **Componentes**, hacemos clic en el menú desplegable que muestra el nombre de la biblioteca y podemos cambiar a la biblioteca instalada. Después de buscar el componente necesario en la barra de búsqueda (no es necesario presionar Enter después de escribir), podemos arrastrar el componente directamente al esquema con el botón izquierdo del mouse, lo que colocará el componente con éxito.
+接下来我们开始放置元件。库的安装在前一章已讲解，我们打开 **Components** 面板，点击显示为库的名称的下拉框，即可切换已经安装的库。切换之后。在搜索框搜索所需的元器件（键入后不用按回车），找到对应的之后，可用鼠标左键 **直接拖进** 原理图中，这就成功放置了一个元件。
 
-Si olvidamos a qué biblioteca pertenece un componente, también podemos utilizar la función de búsqueda global. Haga clic en el icono de **tres barras** a la izquierda del nombre de la biblioteca y seleccione **Búsqueda de bibliotecas basadas en archivos**, lo que nos permitirá buscar todas las bibliotecas disponibles.
+如果忘记元件是属于哪个库的，也可以用全局搜索的功能。点击库名称左边的 **三条杠** 标志，在下拉框选择 **File-based Librarys Search** ，即可搜索所有可用的库。
 
-### Propiedades del componente
+### 元件属性
 
-Los componentes colocados tienen varias propiedades clave:
+放置的元件有几个关键属性：
 
-- **Designator**: número de posición del componente. Es una identificación única del componente y no puede tener el mismo nombre. Por lo general, se utilizan R1, R2 ... para resistencias y C1, C2 ... para capacitores (consulte los puntos de conocimiento del capítulo anterior).
-- **Comment**: parámetros de tamaño del componente, como valor de resistencia, valor de capacitancia, modelo de chip, etc.
-- **Description**: descripción de la función del componente.
-- **Footprint**: enlazado a la biblioteca de encapsulados, lo que permite que el componente se corresponda con un encapsulado de PCB.
-- **Models**: incluye modelos de simulación, integridad de señal, etc.
+- **Designator**：元件位号。元件唯一标识，不可重名。通常用 R1, R2 ... 代表电阻，C1, C2 ... 代表电容（参考上一章的知识点），
+- **Comment**：元件大小参数，如阻值、容值、芯片型号等，
+- **Description**：元件的功能描述，
+- **Footprint**：链接到封装库，将元件与某个 PCB 封装对应上，
+- **Models**：包括 Simulation（仿真模型）、Signal Integrity（信号完整性）等。
 
-### Operaciones básicas
+### 基本操作
 
-- **Clic izquierdo**: seleccionar comando
-- **Clic izquierdo prolongado**: arrastrar objeto
-- **Doble clic izquierdo**: establecer propiedades del objeto
-- **Clic derecho**: cancelar o mostrar menú de comandos
-- **Clic derecho prolongado**: arrastrar página de esquema
-- **Ctrl + rueda de desplazamiento**: acercar o alejar la página
-- **Mayús + clic izquierdo/selección de cuadro**: seleccionar varios componentes
+- **左键单击**：选择命令
+- **左键长按**：拖动对象
+- **左键双击**：设置对象属性
+- **右键单击**：取消或弹出命令菜单
+- **右键长按**：拖动原理图页面
+- **Ctrl + 滚轮**：缩放页面
+- **Shift + 左键单击/框选**：选择多个元器件
 
-Para operaciones más avanzadas, use el comando **S** (Seleccionar) para mostrar el menú de comandos:
+更高级的操作，使用命令 **S**（Select），弹出命令菜单：
 
-| Atajo | Comando detallado | Función |
+| 快捷键 | 详细命令          | 功能                                                                 |
 | :----- | :---------------- | :------------------------------------------------------------------- |
-| E      | Selección de lazo | Selección de componentes dentro del área del lazo; haga clic con el botón izquierdo para comenzar a dibujar el lazo y haga clic nuevamente para finalizar el dibujo del área |
-| I      | Área interior | Seleccione todos los componentes dentro del área seleccionada |
-| O      | Área exterior | Seleccione todos los componentes fuera del área seleccionada |
-| L      | Línea de contacto | Seleccione los componentes tocados por la línea |
-| C      | Conexión | Seleccione los componentes con el mismo nombre de red |
-| A      | Todos | Seleccione todos los componentes |
-| T      | Alternar selección | Selección inversa, haga clic en los componentes seleccionados para cancelar la selección y haga clic en los componentes no seleccionados para seleccionarlos |
+| E      | Lasso S**e**lect  | 套索，选择范围内元件；单击左键开始绘制套索，再次单击完成范围结束绘制 |
+| I      | **I**nside Area   | 框选，选中区域内所有的元件                                           |
+| O      | **O**utside Area  | 反选，选中区域外所有的元件                                           |
+| L      | Touching **L**ine | 线选，选中被线条触碰到的元件                                         |
+| C      | **C**onnection    | 选中网络名称相同的元件                                               |
+| A      | **A**ll           | 选择所有元件                                                         |
+| T      | **T**oggle Select | 反选，单击原来选中的将取消选中，原来未选中的将选中                   |
 
-- Rotación de componentes: seleccione el componente y presione la tecla **Espacio**
-- Copiar, cortar y pegar: **Ctrl + C**, **Ctrl + X**, **Ctrl + V**
-- Copiar y pegar con relleno automático de identificadores: seleccione el componente, mantenga presionada la tecla **Shift** y arrastre para pegar componentes con identificadores incrementales. El incremento se puede configurar en **TP** (**T**ools-**P**reference-Schematic-General).
-- Dibujar cables: **Ctrl + W**
-- Dibujar etiquetas de red: **PN**
-- Colocar alimentación/tierra: seleccione directamente en la barra de herramientas con el botón **izquierdo**, o haga clic con el botón **derecho** para seleccionar diferentes estilos.
+- 元件的旋转：选中元件后按 **Space** 空格键
+- 复制剪切粘贴：**Ctrl + C**，**Ctrl + X**，**Ctrl + V**
+- 复制后自动填充位号：选中元件，**按住 Shift 同时拖动**，即可粘贴递增位号的元件。步长可在 **TP**（**T**ools-**P**reference-Schematic-General）中设置。
+- 绘制导线：**Ctrl + W**
+- 绘制网络标签：**PN**
+- 放置电源/地：直接在工具栏中**左键**选取，**右键**则可以选择不同样式
 
-### Numeración automática global de componentes
+### 全局元件自动编号
 
-Cuando el proyecto del esquemático es grande y hay muchos componentes, a veces puede haber identificadores duplicados o faltantes. En este caso, se puede utilizar la gestión global de identificadores: **TAA**, en lugar de verificar manualmente.
+当原理图工程比较庞大，元件比较多，有时候可能会出现元件位号重名、缺失的情况。这时候可以用全局位号管理：**TAA**，代替手动检查。
 
-Seleccione los componentes que necesitan numeración automática, haga clic en **Actualizar lista de cambios**, luego haga clic en **Aceptar cambios (crear ECO)** y **Ejecutar cambios** para completar la numeración automática de los componentes.
+勾选需要自动排号的元器件，点击 **更新更改列表**，再点击 **接收更改（创建 ECO）**，**执行变更**，即可完成元件的自动编号。
 
-## Conclusión
+## 总结
 
-Estas son solo las operaciones básicas para dibujar un esquemático, como proporcionar un conjunto de utensilios de cocina. Para hacer platos más sabrosos, se necesita más **imaginación** y **práctica constante**.
+以上仅仅是绘制原理图的最基本操作，就像提供了一套厨具。至于怎么做出更香的饭菜，更多靠的是 **想象力** 与 **不断的练习** 。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Sección de Altium Designer de la empresa Altium](https://seujxh.wordpress.com/2018/09/30/altium%e5%85%ac%e5%8f%b8altium-designer%e4%b8%93%e6%a0%8f/)
+- [Altium 公司 Altium Designer 专栏](https://seujxh.wordpress.com/2018/09/30/altium%e5%85%ac%e5%8f%b8altium-designer%e4%b8%93%e6%a0%8f/)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

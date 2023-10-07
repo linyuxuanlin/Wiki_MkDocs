@@ -1,106 +1,107 @@
-# Guía de diseño EMC
+# EMC 设计指南
 
-La compatibilidad electromagnética (EMC, por sus siglas en inglés) se refiere a la capacidad de un dispositivo para funcionar correctamente en su entorno electromagnético sin causar interferencias electromagnéticas inaceptables en otros dispositivos del entorno. En términos simples, significa que su placa no debe ser susceptible a interferencias y debe evitar interferir con otros dispositivos para lograr un estado de "compatibilidad".
+电磁兼容性（Electromagnetic Compatibility, EMC）指的是设备在其电磁环境中能正常工作且不对环境中任何事物构成不能承受的电磁骚扰的能力，通俗地说，就是你的板子不怕别人干扰，也尽量不去干扰别人，达到「兼容」的状态。
 
-La EMC incluye la interferencia electromagnética (EMI) y la susceptibilidad electromagnética (EMS).
+**电磁兼容性（EMC）** 包括了 **电磁干扰（EMI，Electro-Magnetic Interference）** 和 **电磁耐受性（EMS，Electro-Magnetic Susceptibility）**。
 
-Los elementos de EMI son:
+EMI 有以下要素：
 
-- Emisión radiada (RE): se refiere a la interferencia de una fuente que acopla su señal a otra red eléctrica a través del espacio.
-- Emisión conducida (CE): se refiere a la interferencia de una señal en una red eléctrica que se acopla a otra red eléctrica a través de un medio conductor.
-- Armónicos: prueba de interferencia de corriente armónica.
-- Parpadeo: prueba de cambio y parpadeo de voltaje.
+- **辐射发射（RE，Radiated Emission）**：指干扰源通过空间把其信号耦合（干扰）到另一个电网络。
+- **传导发射（CE，Conducted Emission）**：指通过导电介质把一个电网络上的信号耦合（干扰）到另一个电网络。
+- **谐波（Harmonic）**：谐波电流骚扰测试。
+- **闪烁（Flicker）**：电压变化和闪烁测试。
 
-Los elementos de EMS son:
+EMS 有以下要素：
 
-- Resistencia a la radiación (RS): prueba de resistencia a la radiación de campo electromagnético de radiofrecuencia.
-- Resistencia a la conducción (CS): prueba de resistencia a la interferencia de conducción inducida por campo de radiofrecuencia (inyección de corriente alta).
-- Protección contra descargas electrostáticas (ESD): prueba de resistencia a la descarga electrostática (prueba de descarga electrostática).
-- Interferencia de pulso transitorio (EFT): prueba de resistencia a grupos de pulsos de transición rápida.
-- Caída de voltaje (DIP): prueba de resistencia a interrupciones y cambios de voltaje a corto plazo.
-- Sobretensión, rayo (SURGE): prueba de resistencia a sobretensión (rayo).
-- Resistencia al campo magnético de frecuencia de potencia (PFMF): prueba de resistencia al campo magnético de frecuencia de potencia.
+- **辐射抗扰（RS）**：射频电磁场辐射抗扰度测试。
+- **传导抗扰（CS）**：射频场感应的传导骚扰抗扰度测试（大电流注入）。
+- **防静电（ESD）**：静电抗扰度测试（静电放电实验）。
+- **瞬态脉冲干扰（EFT）**：电快速瞬变脉冲群抗扰度测试。
+- **电压暂降（DIP）**：短时中断和电压变化抗扰度测试。
+- **浪涌、雷击（SURGE）**：浪涌（雷击）抗扰度测试。
+- **工频磁场抗扰（PFMF）**：工频磁场抗扰度测试。
 
-## Métodos básicos de optimización de EMC
+## EMC 优化基本方法
 
-Los elementos que causan problemas de EMC son: fuentes de interferencia electromagnética, vías de acoplamiento y dispositivos sensibles.
+产生 EMC 问题的要素是：电磁干扰源、耦合途径、敏感设备。
 
-Reglas:
+规律：
 
-1. Cuanto mayor sea el área del circuito de corriente de alta frecuencia S, mayor será la emisión radiada de EMI.
-2. Cuanto mayor sea la frecuencia de la corriente del circuito f, mayor será la emisión radiada de EMI, y la intensidad del campo electromagnético radiado aumentará proporcionalmente al cuadrado de la frecuencia de la corriente f.
+1. 高频电流环路面积 S 越大, EMI 辐射越严重。
+2. 环路电流频率 f 越高，引起的 EMI 辐射越严重，电磁辐射场强随电流频率 f 的平方成正比增大。
 
-Métodos básicos de respuesta:
+基本应对方法：
 
-- Supresión del canal de transmisión: los métodos específicos incluyen filtrado, blindaje, conexión a tierra, superposición y enrutamiento razonable.
-- Separación espacial: es un método efectivo para suprimir la interferencia de radiación espacial y la interferencia de acoplamiento de inducción al aumentar la distancia entre la fuente de interferencia y el circuito sensible.
-- Separación temporal: la señal útil se cierra temporalmente cuando se emite una señal de interferencia y se transmite durante el tiempo en que la señal de interferencia se detiene.
-- Procesamiento de espectro: cambio de espectro, tecnología de expansión de espectro.
-- Aislamiento eléctrico: aislamiento fotoeléctrico, aislamiento de relé, aislamiento de transformador, conversión DC/DC.
+- 传输通道抑制：具体的方法有滤波、屏蔽、接地、搭接、合理的布线；
+- 空间分离：即通过加大骚扰源和敏感电路间的距离，抑制空间辐射骚扰和感应耦合骚扰的有效方法；
+- 时间分离：有用信号在干扰信号发射时短暂关闭，而在干扰信号停止的时间内传输；
+- 频谱处理：频谱改变、展频技术；
+- 电气隔离：光电隔离、继电器隔离、变压器隔离、DC/DC 变换。
 
-### Minimizar el área del circuito de alta frecuencia y del circuito de alimentación
+### 最小化高频线和电源环路的面积
 
-Principios básicos:
+基本原则：
 
-1. La señal siempre regresa al extremo fuente.
-2. El flujo de retorno de la señal siempre sigue el camino de menor impedancia.
+1. 信号总是返回到源端。
+2. 信号回流总是走阻抗最小的路径。
 
-En señales de alta frecuencia, el camino de retorno de la señal suele ser el camino de menor inductancia, que suele ser el camino de menor área de circuito. En frecuencias bajas (generalmente por debajo de la frecuencia de kHz), el flujo de retorno de la señal suele seguir el camino de menor resistencia.
+在高频信号中，信号回流路径通常是最小电感的路径，这通常也是环路面积最小的路径。在低频中（通常为 KHz 频率及以下），信号回流往往走阻值最小的路径。
 
-### Mantener la integridad de la pantalla de retorno de la señal tanto como sea posible
+### 尽量保持信号回流屏幕完整
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211215190631.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211215190631.png)
 
-Como se muestra en la figura, si se corta el plano de retorno de la señal, la corriente de la señal no podrá volver al origen a través de la ruta óptima (más corta), lo que aumentará el área del circuito de la señal al buscar una ruta alternativa de retorno de la señal, lo que aumentará el área del circuito de la señal.
+如图，如果切割了信号回流平面，则信号电流将不能经最优化（最短）路径返回源头，在寻找替代回流路径的时候将变得不可预期，增大信号环路面积。
 
-En casos especiales, la tierra digital y la tierra analógica deben estar aisladas para evitar interferencias cruzadas.
+特殊情况下，数字地和模拟地需要隔离，防止串扰。
 
-### Alejar las señales de alta velocidad de los conectores
+### 高速信号远离连接器
 
-Los cables conectados a la PCB a través de conectores son antenas eficientes, y las señales de alta velocidad son propensas a generar diferencias de potencial que impulsan la corriente hacia los cables conectados, lo que provoca una radiación excesiva.
+通过连接器连接到 PCB 的线缆是高效的天线，而高速信号容易产生电位差，这些电压会驱动电流到连接的线缆上，引发辐射超标。
 
-### Suprimir el tiempo de subida y bajada de la señal de alta velocidad
+### 抑制高速信号上升沿和下降沿时间
 
-Al ralentizar el tiempo de subida y bajada de la señal digital, se puede controlar eficazmente la frecuencia armónica de alta orden. Un tiempo de transición demasiado largo puede provocar problemas de integridad de la señal y sobrecalentamiento.
+通过减慢数字信号的上升沿和下降沿时间，可以很好地控制高次谐波频率。过长的转换时间会导致信号完整性和过热问题。
 
-## Componentes EMC
+## EMC 元器件
 
-Los componentes comunes de EMC incluyen inductores comunes, perlas magnéticas y capacitores de filtrado.
+EMC 常用元件有共模电感、磁珠与滤波电容器。
 
-Modelos comunes de filtros:
+常见滤波器模型：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211219173751.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211219173751.png)
 
-### Inductor común
+### 共模电感
 
-Modelo equivalente del inductor común:
+共模电感的等效模型：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211219173856.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211219173856.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211219174546.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211219174546.png)
 
-### Perlas magnéticas
+### 磁珠
 
-Para obtener información sobre la introducción y selección de perlas magnéticas, consulte la sección [**Componentes básicos - Inductores y perlas magnéticas · Perlas magnéticas**](https://wiki-power.com/es/%E5%9F%BA%E6%9C%AC%E5%85%83%E5%99%A8%E4%BB%B6-%E7%94%B5%E6%84%9F%E4%B8%8E%E7%A3%81%E7%8F%A0#%E7%A3%81%E7%8F%A0).
+磁珠的介绍与选型请见 [**基本元器件-电感与磁珠 · 磁珠**](https://wiki-power.com/%E5%9F%BA%E6%9C%AC%E5%85%83%E5%99%A8%E4%BB%B6-%E7%94%B5%E6%84%9F%E4%B8%8E%E7%A3%81%E7%8F%A0#%E7%A3%81%E7%8F%A0) 部分。
 
-### Capacitores de filtro
+### 滤波电容
 
-Para obtener información sobre la introducción y selección de capacitores, consulte la sección [**Componentes básicos - Capacitores**](https://wiki-power.com/es/%E5%9F%BA%E6%9C%AC%E5%85%83%E5%99%A8%E4%BB%B6-%E7%94%B5%E5%AE%B9).
+电容的介绍与选型请见 [**基本元器件 - 电容**](https://wiki-power.com/%E5%9F%BA%E6%9C%AC%E5%85%83%E5%99%A8%E4%BB%B6-%E7%94%B5%E5%AE%B9) 部分。
 
-## Diseño de EMC en PCB 🚧
+## PCB 的 EMC 设计 🚧
 
-### Principios 3W y 20H
+### 3W 与 20H 原则
 
-El principio 3W establece que si la distancia entre los centros de las líneas es al menos 3 veces el ancho de la línea, se puede mantener un 70% de campo eléctrico entre las líneas sin interferencias mutuas. Para lograr un 98% de campo eléctrico sin interferencias mutuas, se utiliza la regla de 10W.
+3W 原则指的是线中心距不少于 3 倍线宽时，则可保持 70%的线间电场不互相干扰。如要达到 98% 的电场不互相干扰，则使用 10W 规则。
 
-El principio 20H establece que el borde del plano de alimentación debe estar al menos a una distancia de 20 veces la separación entre los planos de tierra para suprimir los efectos de radiación en el borde. Esto puede limitar el 70% del campo eléctrico dentro del borde de tierra; si se reduce en 100H, se puede limitar el 98% del campo eléctrico dentro.
+20H 原则指的是确保电源平面的边缘要比地平面边缘至少缩入相当于两个平面间层距的 20 倍，是为抑制边缘辐射效应，可以将 70% 的电场限制在接地边沿内；内缩 100H 则可以将 98% 的电场限制在内。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Introducción a la compatibilidad electromagnética](https://blog.infonet.io/2021/04/04/%E7%94%B5%E7%A3%81%E5%85%BC%E5%AE%B9%E4%BB%8B%E7%BB%8D/)
-- [Compatibilidad electromagnética (EMC): Guía de diseño de EMC simple y efectiva](https://zhuanlan.zhihu.com/p/142866381)
-- [Secretos de diseño EMI/EMC - Manual esencial para ingenieros de diseño de productos electrónicos](https://www.mr-wu.cn/emc-emi-she-ji-mi-ji/)
-- [Supresión de interferencias electromagnéticas conducidas mediante inductores comunes híbridos](https://www.richtek.com/Design%20Support/Technical%20Document/AN008?sc_lang=zh-CN)
-- [[Circuito] Conceptos básicos de EMC\_Interferencia común y diferencial](https://zhenhuizhang.tk/post/dian-lu-emc-ji-chu-gai-nian-_-gong-mo-chai-mo-gan-rao/)
+- [电磁兼容介绍](https://blog.infonet.io/2021/04/04/%E7%94%B5%E7%A3%81%E5%85%BC%E5%AE%B9%E4%BB%8B%E7%BB%8D/)
+- [电磁兼容（EMC）：简单粗暴的 EMC 设计指南](https://zhuanlan.zhihu.com/p/142866381)
+- [EMI/EMC 设计秘籍–电子产品设计工程师必备手册](https://www.mr-wu.cn/emc-emi-she-ji-mi-ji/)
+- [利用混成式共模电感抑制传导电磁干扰](https://www.richtek.com/Design%20Support/Technical%20Document/AN008?sc_lang=zh-CN)
+- [[电路]EMC 基础概念\_共模差模干扰](https://zhenhuizhang.tk/post/dian-lu-emc-ji-chu-gai-nian-_-gong-mo-chai-mo-gan-rao/)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

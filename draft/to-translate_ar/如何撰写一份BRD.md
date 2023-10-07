@@ -1,70 +1,68 @@
-# Cómo escribir un BRD
+# 如何撰写一份 BRD
 
-- Guía para escribir un documento de requisitos comerciales (BRD)
+—— 商业需求文档（BRD）写作指南
 
-## ¿Qué es un BRD?
+## BRD 是什么
 
-En pocas palabras, un BRD sistematiza y organiza las ideas, por un lado, para ayudar a definir la dirección del proyecto y, por otro, para presentarlas a las personas que tienen los recursos necesarios para el desarrollo del producto.
+简而言之，BRD 将 ideas 系统化整理，一方面帮自己梳理项目方向，一方面用于展示给手握资源的人，以获取产品开发流程中所需的资源。
 
-En el proceso de desarrollo del producto, la aprobación del proyecto es un punto de inflexión. Antes de la aprobación, se lleva a cabo una gran cantidad de investigación y análisis, y se produce un plan basado en los resultados de la investigación, que es el BRD.
+产品开发流程中，立项是一个分水岭。立项前往往要进行大量的考察和调研，最后基于调研结果输出一个方案，这个方案就是 BRD.
 
-## ¿Cómo escribir un BRD?
+## BRD 怎么写
 
-### 1. Introducción del producto
+### 1. 产品介绍
 
-La introducción del producto debe explicar de manera breve y concisa qué tipo de producto se va a desarrollar. La explicación debe ser breve y preferiblemente se debe poder explicar en una sola oración (función del producto, posicionamiento, visión, etc.). Se puede describir desde la perspectiva del **usuario** y de los **profesionales**.
+产品介绍，就是要简明扼要的说明你要做一个什么样的产品。说明要简短，最好一句话能讲明白（产品的作用，定位，愿景等）。可以分别从 **用户** 与 **专业人士** 的角度分析描述。
 
-### 2. Valor del producto
+### 2. 产品价值
 
-El valor del producto debe explicar a los tomadores de decisiones por qué se debe desarrollar este producto. Se puede describir desde dos perspectivas: las **necesidades del usuario** (cómo se satisfacen las necesidades, cómo se resuelven los problemas, etc.) y la **estrategia** (qué valor puede aportar a la empresa, cómo se pueden obtener beneficios del mercado, cómo se puede ampliar la cuota de mercado, etc.).
+产品的价值，就是要告诉决策层为什么要做这个产品。可以从 **用户需求** （满足了什么需求、解决了哪些痛点等）和 **战略** （能为企业带来什么价值、获取市场利润、扩大市场份额等等）两个层面描述
 
-### 3. Solución del producto
+### 3. 产品解决方案
 
-La solución del producto debe explicar a los tomadores de decisiones el marco y el contorno general del producto, que incluye principalmente los siguientes aspectos:
+产品解决方案，就是告诉决策者这个产品大概的框架和轮廓，主要包含以下几个方面：
 
-1. **Forma del producto**: ¿Qué tipo de arquitectura tiene el producto? ¿Es una forma de información, una forma social, una forma de búsqueda o una forma O2O?
-2. **Modelo de negocio**: ¿Es un negocio 2C o 2B? ¿Quiénes son los participantes y cómo se forma el ciclo cerrado?
-3. **Modelo de operación**: ¿Qué estrategias y medios se utilizarán para hacer funcionar el producto, como los recursos de los profesores en los productos educativos, la contratación o la colaboración masiva?
-4. **Modelo de beneficio**: ¿Cómo se puede ganar dinero, por ejemplo, a través de publicidad, servicios de valor añadido, venta de productos, etc.?
+1. **产品形态**：这个产品架构大概是什么样的，是资讯形态的，社交形态的，搜索形态的，还是 O2O 的
+2. **业务模式**：这个业务是 2C 的还是 2B 的，参与者都有谁，怎么形成闭环等
+3. **运营模式**：采用什么样的运营策略和手段让产品运营起来，如教育类产品中的教师资源，是招聘还是众包等等
+4. **盈利模式**：通过什么方式来赚钱，例如广告，增值服务，出售商品等
 
-### 4. Análisis de mercado
+### 4. 市场分析
 
-No se puede desarrollar un producto sin conocer el mercado, lo que incluye principalmente:
+做产品不能闭门造车，还要看看市场上的情况，主要包括：
 
-- **Capacidad del mercado**: se debe evaluar a través del análisis de la demanda y la evaluación de la población objetivo. Los tomadores de decisiones utilizarán esta evaluación para determinar si vale la pena invertir.
-- **Análisis de la competencia**: se debe analizar los productos similares en el mercado, cómo se resuelven los problemas, qué necesidades de los usuarios se satisfacen, qué necesidades no se satisfacen, cómo se invierte, cómo es el equipo, qué resultados se obtienen, cuáles son las ventajas y desventajas en comparación con nuestro producto.
-- **Predicción del futuro del mercado**: incluye la predicción del patrón de competencia del mercado, los riesgos de la industria, los cambios en las políticas y la dirección del desarrollo de la industria.
-- **Oportunidades de mercado**: ¿Cómo encontrar un punto de apoyo? ¿Qué posición puede alcanzar nuestro producto?
+- **市场容量**：需要通过对需求的分析，对人群判断后评估得出。决策者会通过这个判断值不值得投入
+- **竞争对手分析**：看看市面市面上还有哪些竞品，他们是怎么解决的，满足了用户的哪些需求，还有哪些没有满足，投入怎么样，团队怎么样，产出怎么样，与我们对比我们的优势是什么，劣势是什么
+- **对市场未来的判断**：包括未来市场竞争格局，行业的风险，政策的变化，行业的发展方向等判断
+- **市场机会**：怎么找到突破口，这个机会可以让我们发展成为一个什么样的地位
 
-### 5. Plan de ejecución
+### 5. 执行计划
 
-Descripción general de cómo se va a desarrollar el producto:
+大致描述要怎么做这个产品：
 
-- **Primera etapa**: verificar las necesidades del usuario con el MVP, desde xxx hasta xxx.
-- **Segunda etapa**: mejorar el producto y ampliar la base de usuarios, desde xxx hasta xxx.
-- **Tercera, cuarta etapa, etc.**
+- **第一阶段**：用 MVP 验证用户需求，时间段从 xxx 到 xxx
+- **第二阶段**：完善产品，扩大用户规模，时间段从 xxx 到 xxx
+- **第三、第四阶段等等**
 
-### 6. Estimación financiera
+### 6. 财务预估
 
-Estimación de los costos de inversión y los ingresos, que es lo que más les importa a los tomadores de decisiones. La inversión es relativamente fácil de calcular; los ingresos se pueden estimar en función de los valores de referencia del modelo de beneficio (como CPC/CPA para publicidad).
+预估投入成本和产出收益，决策者最看重这部分。投入相对容易计算；收入可以根据盈利模式的参考值估算得出（像广告可以参考 CPC/CPA 等）
 
-### 7. Estimación de riesgos
+### 7. 风险预估
 
-El riesgo se refiere a los comportamientos y factores que pueden afectar el logro de los objetivos del producto o aumentar los costos del producto. Al considerar los riesgos, no solo se deben evaluar todos los posibles riesgos, determinar la probabilidad y la gravedad de los riesgos, sino también proporcionar planes de mitigación correspondientes y aclarar los beneficios de la mitigación.
+风险是指有可能影响产品目标实现，或增加产品成本的行为和因素，在考虑风险的时候，我们不仅要对所有可能出现的风险进行评估，确定风险出现的可能性和严重性，而且要给出对应的规避预案，并明确预案的规避效益。
 
-## Consideraciones
+## 注意事项
 
-- El BRD no es solo un documento simple, requiere mucho trabajo preparatorio.
-- Prestar menos atención a los detalles del producto y más atención a la parte del valor comercial del producto.
-- Prestar atención a la lógica rigurosa y tratar de ser conciso.
-- Basarse en la realidad y tratar de inclinar el contenido hacia su propio beneficio.
+- BRD 并不只是简单写个文档，背后需要有很多准备工作要做
+- 在文档中少关注产品细节，多关注产品商业价值的部分
+- 注意逻辑严谨，尽量言简意赅
+- 在真实的基础上，尽量让内容偏向自己有利的一边引导
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [No busques plantillas, un artículo te dice cómo escribir un documento de requisitos comerciales (BRD)](http://www.woshipm.com/pmd/645578.html)
+- [不要找模板了，一篇文章告诉你商业需求文档（BRD）怎么写](http://www.woshipm.com/pmd/645578.html)
 
-> Autor del artículo: **Power Lin**
-> Dirección original: <https://wiki-power.com>
-> Declaración de derechos de autor: el artículo utiliza la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh), por lo que se permite la reproducción con la atribución correspondiente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 文章作者：**Power Lin**
+> 原文地址：<https://wiki-power.com>
+> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。

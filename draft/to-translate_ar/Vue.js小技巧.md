@@ -1,19 +1,17 @@
-# Consejos pequeños de Vue.js
+# Vue.js 小技巧
 
-## Eliminar el `#` de la URL
+## 去除 url 中的 `#`
 
-**Problema**: Al construir un proyecto con Vue.js, la URL contendrá un `#`, lo que afectará la apariencia.
+**问题**：使用 Vue.js 搭建的项目，url 中会包含 `#`，影响观感。
 
-**Solución**:
+**解决方法**：
 
-1. Busque globalmente la función `const router = new VueRouter({})` en el proyecto.
-2. Agregue la declaración `mode: 'history'` dentro de la función.
+1. 在项目中全局搜索 `const router = new VueRouter({})` 函数
+2. 在函数内添加语句：`mode: 'history'`
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Cómo eliminar el `#` en un proyecto de Vue - Modo Historia](https://www.cnblogs.com/zhuzhenwei918/p/6892066.html)
+- [如何去除 vue 项目中的 # --- History 模式](https://www.cnblogs.com/zhuzhenwei918/p/6892066.html)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

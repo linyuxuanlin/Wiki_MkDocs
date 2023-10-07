@@ -1,58 +1,58 @@
-# Flujo de trabajo personal de incorporación (Windows)
+# Personal Onboarding Workflow (Windows)
 
-> Esta publicación solo está disponible en inglés.
+> This post is only available in English.
 
-## Configuraciones
+## Settings
 
-### Inicialización
+### Initialization
 
-- Inicie Windows sin una cuenta de Microsoft.
-- Abra el diagnóstico (para la versión de desarrollo).
-- Verifique las actualizaciones del sistema y los controladores.
+- Bring up Windows without Microsoft account.
+- Open diagnosis (for dev version).
+- Check for system and driver update
 
-### Configuraciones del sistema
+### System Settings
 
-- Sistema
-  - Multitarea
-    - No mostrar pestañas de Edge
-  - Pantalla
-    - Luz nocturna
-  - Escritorio remoto - encendido
-- Personalización
-  - Tema oscuro
-  - Fondo de pantalla y pantalla de bloqueo
-  - Barra de tareas
-- Privacidad y seguridad
-  - Permisos de búsqueda - desactivados
-  - Para desarrolladores - encendido
-- Actualización de Windows
+- System
+  - Multitasking
+    - Don't show Edge tabs
+  - Display
+    - Night Light
+  - Remote Desktop - on
+- Personalization
+  - Dark theme
+  - Background & Lockscreen
+  - Taskbar
+- Privacy & security
+  - Search permissions - off
+  - For developers - on
+- Windows Update
 
-### Otras configuraciones
+### Other Settings
 
-- Rendimiento máximo (powershell - `powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61`)
-- Explorador de archivos
-  - Barra lateral
-- Configuraciones de controladores NVIDIA e Intel
-- Formato de idioma / hora / escritura
-- Edge: habilitar [**descarga paralela**](edge://flags/#enable-parallel-downloading)
-- Desactivar hibernación: `powercfg /hibernate off`
+- Ultimate Performance (powershell - `powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61`)
+- File Explorer
+  - Sidebar
+- NVIDIA and Intel driver settings
+- Language format / time / typing
+- Edge: enable [**parallel downloading**](edge://flags/#enable-parallel-downloading)
+- Disable hibernate: `powercfg /hibernate off`
 - frp
 
-## Instalación de software
+## Software Install
 
-### Ejecutable
+### Executable
 
 - HuoRong Security
-- Synology Drive (con configuraciones)
-- [Visual Studio Code Insiders](https://code.visualstudio.com/insiders/) (con configuraciones)
-- (Solo para Matebook) Huawei PC Manager (con configuraciones)
-- Logi Options+ (con configuraciones)
-- [Powertoys](https://github.com/microsoft/PowerToys/releases) (con copia de seguridad)
-- Wechat (con configuraciones)
+- Synology Drive (with settings)
+- [Visual Studio Code Insiders](https://code.visualstudio.com/insiders/) (with settings)
+- (Only for Matebook) Huawei PC Manager (with settings)
+- Logi Options+ (with settings)
+- [Powertoys](https://github.com/microsoft/PowerToys/releases) (with backup)
+- Wechat (with settings)
 - [Git](https://git-scm.com/downloads)
 - [GitHub Desktop](https://desktop.github.com/)
 
-### Portátil (sincronizado con Synology Drive)
+### Portable (Sync with Synology Drive)
 
 - 0_init
 - Clash
@@ -70,19 +70,17 @@
 - SumatraPDF
 - JPEGView
 - Telegram
-- Peazip (con asociaciones de archivos e integración en el menú del sistema)
+- Peazip (with File associations and system menu integration)
 - DeepL
 
 ### Microsoft Store
 
-- (Solo para Matebook) Centro de comando de gráficos Intel® (Beta)
+- (Only for Matebook) Intel® Graphics Command Center (Beta)
 
-## Desinstalación de software
+## Software Uninstall
 
-- Onedrive (por HiBit Uninstaller)
-- Aplicaciones innecesarias de Windows (por Win10Apps)
+- Onedrive (by HiBit Uninstaller)
+- Unnecessary Windows apps (by Win10Apps)
 
 > Original: <https://wiki-power.com/>  
-> Este artículo está protegido por el acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) y debe ser reproducido con atribución.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.

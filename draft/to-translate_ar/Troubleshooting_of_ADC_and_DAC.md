@@ -1,40 +1,38 @@
-# Solución de problemas de ADC y DAC
+# Troubleshooting of ADC and DAC
 
-> Esta publicación solo está disponible en inglés.
+> This post is only available in English.
 
-## ¿Por qué la fuente de CA debe tener una resolución de 2-4 bits más que el ADC en prueba?
+## Why AC Source should be 2-4 bits more resolution than the ADC under test?
 
-Como una definición a menudo utilizada de ENOB:
+As an often used definition of ENOB:
 
 $$
 ENOB=\frac{SINAD-1.76}{6.02}
 $$
 
-Entonces, si el ENOB del DAC (en la fuente de CA) disminuye, el SINAD también disminuirá, lo que significa que el ruido y las distorsiones aumentarán relativamente, lo que afectará la precisión de la medición.
+So if the ENOB of DAC (in AC Source) get lower, the SINAD will become lower too, means that the noise and distortions will increase relatively, which will affect the accuracy of measurement.
 
-Otro punto es que la resolución de la fuente de CA menor que 2-4 bits inducirá distorsiones armónicas más altas, la señal digital en la salida del ADC se deteriorará tanto por las distorsiones armónicas del DAC como del ADC, y la amplitud del segundo armónico (por ejemplo) podría ser sumada. Debido a que la fuente de CA con una resolución más alta traerá distorsiones armónicas más bajas, los resultados de salida de prueba serán más precisos.
+Another point is, the resolution of AC Source lower than 2-4 bits will induce higher harmonic distortions, the digital signal at the output of the ADC is deteriorated by both DAC's and ADC's harmonic distortions, and the amplitude of 2nd-harmonic (for an example) could be summed. Cause AC Source with higher resolution will bring lower harmonic distortions, the test output results will become more accurate.
 
-Consulte este artículo: [ADC Production Test Technique Using Low-Resolution Arbitrary Waveform Generator](https://www.hindawi.com/journals/vlsi/2008/482159/)
+Refer to this article: [ADC Production Test Technique Using Low-Resolution Arbitrary Waveform Generator](https://www.hindawi.com/journals/vlsi/2008/482159/)
 
-## ¿Existen otras formas de mejorar la precisión de la medición con la entrada de CA en la prueba de ADC?
+## Are there other ways to improve measurement accuracy with the AC input in the test of ADC?
 
-Reducir la pendiente de la onda de rampa de entrada puede mejorar la precisión de la medición.
+Reducing the slope of the input ramp wave can improve measurement accuracy.
 
-## ¿Qué hacer con el ruido de base alto en la prueba de ADC?
+## What to do with high base noise in the test of ADC?
 
-1. Aumente el número de muestras (N) y el número de períodos de señal de prueba muestreados (M), ambos también resultarán en más tiempo de prueba.
-2. Aumente la frecuencia de muestreo (Fs).
+1. Increase the number of samples (N) and the number of test signal periods sampled (M), both will also result in more test time.
+2. Increase sampling frequency (Fs).
 
-No es posible distinguir entre ruido y armónicos si solo se muestrea 1 período de señal.
+It's not possible to distinguish between noise and harmonics if only sample only 1 period of signal.
 
-> ¿Existe esta fórmula? Precisión de ruido = frecuencia de muestreo / M
+> 有这条公式吗？噪声精度=采样频率/M
 
-## ¿Cómo medir el error de ganancia del ADC en la práctica?
+## How to measure the gain error of ADC practically?
 
-El método del histograma se utiliza en la práctica para medir el error de ganancia, porque el borde de transición teórico es difícil de detectar.
+Histogram method is used practically to measure the gain error, because the theoretical transition edge is hard to detect.
 
-## ¿Necesitamos un digitalizador de CA con 2-4 bits más de resolución en la prueba del DAC?
+## Do we need an AC Digitizer with 2-4 bits more resolution in the test of the DAC?
 
-No, no es necesario tener un digitalizador de CA de muy alta resolución. Un digitalizador de CA que cumpla con la resolución de Nyquist cumplirá con el estándar de prueba.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+No, it's no necessary for a very high resolution AC Digitizer. AC Digitizer that satisfied Nyquist resolution will meet the test standard.

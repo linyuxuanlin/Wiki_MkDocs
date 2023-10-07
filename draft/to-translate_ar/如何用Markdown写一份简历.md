@@ -1,34 +1,32 @@
-# Cómo escribir un currículum vitae en Markdown
+# 如何用 Markdown 写一份简历
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210318220041.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210318220041.png)
 
-Escriba un currículum vitae en Markdown que se pueda previsualizar en línea y exportar en formato PDF.
+用 Markdown 写一份可在线预览，也可导出 PDF 的简历。
 
-**URL de previsualización**: [**cv-template.wiki-power.com**](https://cv-template.wiki-power.com/)
+**预览网址**：[**cv-template.wiki-power.com**](https://cv-template.wiki-power.com/)
 
-**Cómo exportar en PDF**: Use la combinación de teclas `Ctrl` + `P` en la página web para abrir la ventana de impresión, seleccione `Microsoft Print to PDF` como impresora y podrá exportar una versión en PDF de su currículum vitae.
+**如何导出 PDF**：在网页上使用快捷键 `Ctrl` + `P` 唤出打印界面，目标打印机选择 `Microsoft Print to PDF`，即可导出 PDF 版本的简历。
 
-## Instrucciones de uso
+## 使用方法
 
-Abra el proyecto [**linyuxuanlin/Markdown-CV-Site**](https://github.com/linyuxuanlin/Markdown-CV-Site), haga clic en el botón verde `Use this template` para inicializar su propio repositorio.
+打开项目 [**linyuxuanlin/Markdown-CV-Site**](https://github.com/linyuxuanlin/Markdown-CV-Site)，点击绿色的按钮 `Use this template` 初始化为自己的仓库。
 
-Abra [**Vercel**](https://vercel.com/), haga clic en `New Project`, importe el repositorio de GitHub que acaba de inicializar y configure los siguientes parámetros:
+打开 [**Vercel**](https://vercel.com/)，点击 `New Project`，导入刚刚初始化的 GitHub 仓库，设置下列参数：
 
-- `FRAMEWORK PRESET`: seleccione `Other`
-- `BUILD COMMAND`: escriba `npm run build`
-- `OUTPUT DIRECTORY`: escriba `dist`
+- `FRAMEWORK PRESET`：选择 `Other`
+- `BUILD COMMAND`：填入 `npm run build`
+- `OUTPUT DIRECTORY`：填入 `dist`
 
-Haga clic en siguiente y espere unos segundos para que se genere el sitio web.
+点击下一步，等待几十秒，网站就生成了。
 
-Si desea modificar el contenido de su currículum vitae, edite los archivos `_config.yml` y `markdown/resume-template.md` en el directorio raíz y, después de enviarlos al repositorio de GitHub, se iniciará automáticamente la construcción en Vercel.
+如需修改简历的内容，请编辑根目录下的 `_config.yml` 和 `markdown/resume-template.md` 文件，推送到 GitHub 仓库后，可自动触发 Vercel 构建。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-Este proyecto se basa en [**BigLiao/markCV**](https://github.com/BigLiao/markCV) y se han realizado algunas mejoras en la interfaz de usuario. La plantilla del currículum vitae utiliza el contenido predeterminado de [**冷熊简历**](https://cv.ftqq.com/).
+本项目基于 [**BigLiao/markCV**](https://github.com/BigLiao/markCV)，做了一些 UI 的简化和改善。简历模板使用的是 [**冷熊简历**](https://cv.ftqq.com/) 的默认内容。
 
-- [¿Cómo escribir un currículum vitae?](https://mp.weixin.qq.com/s/P64bm-SBYXyQymfHAR1rqA)
+- [聊聊简历怎么写？](https://mp.weixin.qq.com/s/P64bm-SBYXyQymfHAR1rqA)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

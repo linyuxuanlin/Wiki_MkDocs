@@ -1,65 +1,63 @@
-# Configuración de proxy en Git
+# Git 配置代理
 
-## Origen del problema
+## 问题来源
 
-La velocidad de `git clone` y `git pull` es demasiado lenta en China.
+国内 `git clone` 与 `git pull` 速度太慢。
 
-## Solución
+## 解决方法
 
-### 1. Configuración en el software de proxy
+### 1. 代理软件内设置
 
-1. Marque la opción "Permitir conexiones de la red local" en el software de proxy.
-2. Tome nota del número de puerto (por ejemplo: 1080).
-3. Active el "modo global".
+1. 在代理软件内勾选 `允许来自局域网的连接`
+2. 记下端口号（例如：1080）
+3. 开启 `全局模式`
 
-### 2. Configuración global de proxy http en Git
+### 2. 给 Git 全局配置 http 代理
 
 ```shell
-git config --global http.proxy http://127.0.0.1:【número de puerto】
-git config --global https.proxy https://127.0.0.1:【número de puerto】
+git config --global http.proxy http://127.0.0.1:【端口号】
+git config --global https.proxy https://127.0.0.1:【端口号】
 
-# Por ejemplo:
+# 例如：
 git config --global http.proxy http://127.0.0.1:10808
 git config --global https.proxy https://127.0.0.1:10808
 
-# Si lo anterior no funciona, intente usar el puerto socks5:
-git config --global http.proxy socks5://127.0.0.1:【número de puerto】
-git config --global https.proxy socks5://127.0.0.1:【número de puerto】
+# 如果上面的不生效，则试试走 socks5 端口：
+git config --global http.proxy socks5://127.0.0.1:【端口号】
+git config --global https.proxy socks5://127.0.0.1:【端口号】
 
-# Si solo desea usar el proxy para GitHub y no afectar los repositorios locales (no recomendado si no está familiarizado con los archivos de configuración):
-git config --global http.https://github.com.proxy https://127.0.0.1:【número de puerto】
-git config --global https.https://github.com.proxy https://127.0.0.1:【número de puerto】
+# 如果只对 GitHub 进行代理，对国内的仓库不影响（不熟悉配置文件不建议使用）：
+git config --global http.https://github.com.proxy https://127.0.0.1:【端口号】
+git config --global https.https://github.com.proxy https://127.0.0.1:【端口号】
 
-# Si solo desea usar el proxy para GitLab y no afectar los repositorios locales (no recomendado si no está familiarizado con los archivos de configuración):
+# 只对 GitLab 进行代理，对国内的仓库不影响（不熟悉配置文件不建议使用）：
 git config --global https.https://https://gitlab.com.proxy https://127.0.0.1:1080
 ```
 
-Configuración en Ubuntu:
+Ubuntu 下配置：
 
 ```shell
 git config --global http.https://github.com.proxy socks5://127.0.0.1:10808
 ```
 
-### Ver la ruta del archivo de configuración
+### 查看配置文件的路径
 
 ```
 git config –list –show-origin
 ```
 
-### Desactivar el proxy
+### 恢复
 
-Si no desea utilizar un proxy, puede desactivarlo con los siguientes comandos:
+如果不想用代理，可以用以下的方法恢复：
 
 ```shell
 git config --global --unset http.proxy
 git config --global --unset https.proxy
 ```
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [**Conquista la lentitud de git clone y git pull**](https://c.lanmit.com/czxt/Linux/16965.html)
+- [**征服 git clone 与 git pull 的龟速提交**](https://c.lanmit.com/czxt/Linux/16965.html)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

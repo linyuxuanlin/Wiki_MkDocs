@@ -1,27 +1,25 @@
-# Linux Embebido - Conocimientos Básicos
+# 嵌入式 Linux - 基础知识
 
-## Comandos Comunes
+## 常用命令
 
-- Ver información de la CPU: `cat /proc/cpuinfo`
-- Ver la versión del kernel: `cat /proc/version`
-- Ver el uso de memoria: `cat /proc/meminfo`
-  - También se puede usar el comando `free` para tener una idea simple del uso de memoria
-- Ver el uso de la memoria FLASH: `cat /proc/partitions`
-- Ver los procesos en ejecución: `top`
-- Ver los sistemas de archivos soportados: `cat /proc/filesystems` (nodev indica que no se necesita montar un dispositivo de bloque)
-- Ver la frecuencia principal de la CPU: `cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_cur_freq`
+- 查看 CPU 信息：`cat /proc/cpuinfo`
+- 查看内核版本：`cat /proc/version`
+- 查看内存使用情况：`cat /proc/meminfo`
+  - 也可以使用命令 `free` 来简单了解内存使用情况
+- 查看 FLASH 存储器使用情况：`cat /proc/partitions`
+- 查看任务进程：`top`
+- 查看支持的文件系统：`cat /proc/filesystems`（nodev 表示不需要挂载块设备）
+- 查看 CPU 主频：`cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_cur_freq`
 
-## Controladores en Linux
+## Linux 的驱动
 
-En Linux, los controladores tienen la función de establecer una relación de mapeo entre los dispositivos de hardware y los archivos de Linux.
+Linux 上驱动的作用，就是把硬件设备与 Linux 文件建立了映射关系。
 
-Por ejemplo, al controlar los LED y los botones, no es necesario conocer la conexión de hardware específica, solo se necesita saber qué archivo representa qué dispositivo, y luego se puede controlar el dispositivo de la misma manera a través del archivo.
+比如，控制 LED 灯和按键时，我们不需要知道他们的具体硬件连接，只要知道哪个文件代表哪个设备，然后就可以通过文件以同样的方式操控同类设备了。
 
-## Referencias y Agradecimientos
+## 参考与致谢
 
 - [[野火]i.MX Linux 开发实战指南](https://doc.embedfire.com/linux/imx6/base/zh/latest/index.html)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

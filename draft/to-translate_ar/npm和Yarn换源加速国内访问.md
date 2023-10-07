@@ -1,48 +1,46 @@
-# npm y Yarn: acelerando el acceso en China a través del cambio de origen
+# npm 和 Yarn 换源加速国内访问
 
-## Contexto
+## 背景
 
-Las fuentes predeterminadas de npm y Yarn se encuentran en el extranjero, lo que ralentiza el acceso en China.  
-El siguiente comando muestra el origen del espejo actualmente en uso:
+npm 和 Yarn 默认源地址在国外，国内访问速度慢。  
+以下命令查看当前使用的镜像源：
 
 ```shell
 yarn config get registry
 ```
 
-## Solución
+## 解决方法
 
-Utilice el software cgr para cambiar rápidamente el origen del espejo de npm y Yarn.
+使用软件 cgr 快速切换 npm 和 Yarn 的镜像源。
 
-### Instalar cgr
+### 安装 cgr
 
 ```shell
 npm install -g cgr
 ```
 
-### Enumerar los orígenes del espejo disponibles actualmente
+### 列出当前可用的镜像源
 
 ```
 cgr ls
 ```
 
-### Seleccione un origen del espejo para cambiar (taobao)
+### 选择一个镜像源进行切换（淘宝）
 
 ```
 cgr use taobao
 ```
 
-### Prueba de velocidad de acceso
+### 测试访问速度
 
 ```
 cgr test taobao
 ```
 
-## Referencias y agradecimientos
+## 参考与致谢
 
 - [yarn 国内加速，修改镜像源](https://learnku.com/articles/15976/yarn-accelerate-and-modify-mirror-source-in-china)
 - [cgr -- change registry | yarn & npm registry manager](https://www.npmjs.com/package/cgr)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

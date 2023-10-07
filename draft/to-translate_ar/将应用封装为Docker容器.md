@@ -1,28 +1,28 @@
-# Empaquetar una aplicación como contenedor Docker
+# 将应用封装为 Docker 容器
 
-Empaquetar una aplicación como contenedor Docker puede facilitar su implementación y gestión. A continuación, se muestra un ejemplo de cómo empaquetar una aplicación Python como contenedor Docker y ejecutarla utilizando Docker Compose.
+将应用封装为 Docker 容器，可以更加方便地部署管理。下面是一个示例，演示了如何将一个 Python 应用封装为 Docker 容器，并使用 Docker Compose 的方式执行。
 
-## Plantilla básica
+## 基本模板
 
-Para contenerizar una aplicación, primero asegúrate de tener Docker instalado. Luego, en el directorio raíz de tu aplicación Python, crea estos dos archivos: `Dockerfile` y `compose.yaml`, que contendrán lo siguiente:
+将应用 Docker 容器化，首先需要确保 Docker 已经安装。接着，需要在你的 Python 应用程序根目录下，创建这两个文件：`Dockerfile` 和 `compose.yaml`，它们大致会包含以下内容：
 
 ```Dockerfile title="Dockerfile"
-# Establecer la imagen base como la imagen oficial de Python, la versión puede ser personalizada
+# 设置基础镜像为 Python 官方镜像，版本可自定义
 FROM python:3.9
 
-# Establecer el directorio de trabajo como /app
+# 设置工作目录为 /app
 WORKDIR /app
 
-# Copiar los archivos de dependencias de la aplicación Python
+# 复制 Python 应用程序的依赖文件
 COPY requirements.txt .
 
-# Instalar las dependencias de la aplicación
+# 安装应用程序依赖
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiar los archivos de la aplicación, desde el directorio actual al directorio dentro del contenedor
+# 复制应用程序文件，从当前目录拷贝进容器内的目录
 COPY . .
 
-# Establecer el comando de ejecución predeterminado
+# 设置默认执行命令
 CMD ["python", "app.py"]
 ```
 
@@ -33,11 +33,13 @@ services:
     build: .
 ```
 
-En el archivo `compose.yaml`, se define un servicio llamado `app`. Con la instrucción `build: .`, se utilizará el archivo `Dockerfile` en el directorio actual para construir la imagen. Ejecuta `docker compose up` en el directorio de `compose.yaml` para construir y ejecutar la aplicación.
+在这个 `compose.yaml` 文件中，我们定义了一个服务名为 `app` 的服务。通过 `build: .` 指令，它将使用当前目录下的 `Dockerfile` 文件来构建镜像。在 `compose.yaml` 的目录下执行 `docker compose up`，即可构建并启动这个应用。
 
-## Ejemplo: Empaquetar una aplicación Python simple como contenedor Docker
+## 实例：将一个简单的 Python 应用封装为 Docker 容器
 
-A continuación, se muestra un ejemplo de una aplicación Hello World simple que imprime "Hello World" en una página web:
+以下是一个简单的 Hello World 应用示例，
+
+这是一个示例的 Python 应用，用于在网页上打印 Hello World：
 
 ```python title="app.py"
 from flask import Flask
@@ -49,31 +51,31 @@ if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int("8000"), debug=True)
 ```
 
-Si implementamos la aplicación Python de manera convencional, sin contenerizarla, necesitamos instalar las dependencias primero. Para algunas dependencias que requieren la compilación de paquetes, esto puede dar problemas en entornos de Windows, donde pueden faltar archivos de encabezado necesarios. Si la contenerizamos como Docker, podemos ignorar las diferencias de entorno; incluso si el host no está conectado a Internet, solo necesitamos copiar la imagen para implementarla. Los siguientes pasos muestran cómo contenerizarla y implementarla con Docker Compose.
+如果我们按照普通的流程部署 Python 应用，而不采用容器化的方法，则需要先安装依赖，对于某些需要编译安装包，在 Windows 环境下还可能出错，可能会缺失必要的头文件。如果我们将其封装为 Docker，就可以忽略环境的差；即使 Host 主机不联网，也只需拷贝镜像即可完成部署。以下的步骤展示将其 Docker 容器化，并用 Docker Compose 部署。
 
-Primero, crea un archivo llamado `Dockerfile` y escribe lo siguiente:
+首先，创建一个名为 `Dockerfile` 的文件，在其中填写以下内容：
 
 ```Dockerfile title="Dockerfile"
-# Establecer la imagen base como la imagen oficial de Python
+# 设置基础镜像为Python官方镜像
 FROM python:3.9
 
-# Copiar los archivos de la aplicación
+# 复制应用程序文件
 COPY . /app
 
-# Establecer el directorio de trabajo
+# 设置工作目录
 WORKDIR /app
 
-# Instalar las dependencias
+# 安装依赖
 RUN pip install flask
 
-# Exponer el puerto 8000 para acceder a la aplicación
+# 暴露 8000 端口用于访问
 EXPOSE 8000
 
-# Iniciar la aplicación
+# 启动应用程序
 CMD python ./app.py
 ```
 
-Luego, en el mismo directorio, crea un archivo llamado `compose.yaml` y copia lo siguiente:
+然后，在同一目录下创建一个名为`compose.yaml`的文件，将以下内容复制到其中：
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -81,20 +83,18 @@ services:
   helloworld-flask:
     build: .
     ports:
-      - "8099:8000" # El puerto 8099 se puede personalizar
+      - "8099:8000" # 端口 8099 可自定义
 ```
 
-Ahora, abre la terminal, ve al directorio que contiene los archivos `Dockerfile` y `compose.yaml`, y ejecuta el siguiente comando para iniciar la aplicación:
+现在，你可以打开终端，进入包含 `Dockerfile` 和 `compose.yaml` 文件的目录，并运行以下命令来启动应用程序：
 
 ```shell
 docker compose up
 ```
 
-Docker construirá la imagen y lanzará el contenedor. Acceda a <http://localhost:8099> para ver los caracteres de Hello World. Con estos pasos, se puede contenerizar una aplicación Python simple y desplegarla utilizando Docker Compose.
+Docker 将会构建镜像并启动容器。访问 <http://localhost:8099> 即可看到 Hello World 的字符。通过以上步骤，可以将一个简单的 Python 应用容器化，并使用 Docker Compose 进行部署。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Contenerizar una aplicación](https://docs.docker.com/get-started/02_our_app/)
-- [Contenerizar una aplicación Python en 3 minutos](https://cloud.tencent.com/developer/article/1752513)
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+- [Containerize an application](https://docs.docker.com/get-started/02_our_app/)
+- [3 分钟将 Python 应用容器化](https://cloud.tencent.com/developer/article/1752513)

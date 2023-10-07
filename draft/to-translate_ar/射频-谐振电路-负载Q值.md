@@ -1,65 +1,63 @@
-# Radiofrecuencia - Circuito resonante - Factor Q de carga 🚧
+# 射频 - 谐振电路 - 负载Q值 🚧
 
-Definimos el factor Q de un circuito resonante como la relación entre la frecuencia central y la banda de atenuación de 3dB, también conocido como factor Q de carga, ya que describe las características de paso del circuito resonante en condiciones de carga o dentro del circuito real. El factor Q de carga de un circuito resonante depende de tres factores principales:
+我们将谐振电路的中心频率与其 3dB 衰减带宽之比定义为谐振电路的 Q 值，也称为负载 Q 值，因为它描述了实际电路内或负载条件下谐振电路的通带特性。谐振电路的负载 Q 取决于三个主要因素：
 
-- Impedancia de fuente $R_s$
-- Resistencia de carga $R_L$
-- Factor Q de los componentes mencionados en el capítulo anterior
+- 源阻抗 $R_s$
+- 负载电阻 $R_L$
+- 上一章提到的元器件的 Q 值
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220418111129.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220418111129.png)
 
-## Influencia de $R_s$ y $R_L$ en el factor Q de carga
+## $R_s$ 和 $R_L$ 对负载 Q 的影响
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220418111200.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220418111200.png)
 
-La influencia de la impedancia de fuente y la resistencia de carga en el factor Q de carga del circuito resonante se muestra en la figura anterior. La curva original (línea punteada) es la curva de resonancia del circuito compuesto por una impedancia de fuente de 50Ω, un inductor sin pérdidas de 0.05uH y un capacitor sin pérdidas de 25pF, cuyo factor Q se calcula con la fórmula mencionada anteriormente, siendo aproximadamente 1.1, lo que no es un diseño de banda estrecha o alto factor Q.
+源阻抗和负载阻抗对谐振电路的负载 Q 的影响如上图所示。原始曲线（虚线）是由 50Ω 源阻抗，0.05uH 的无损电感器和 25pF 无损电容器组成的电路的谐振曲线，它的 Q 值由上文的公式 $Q=\frac{f_e}{f_2-f_1}$ 计算约为 1.1，显然这不是一个非常窄带或高 Q 值的设计。
 
-Al cambiar la impedancia de fuente a 1000Ω, se traza una nueva curva de resonancia (línea sólida) y el factor Q del circuito resonante aumenta significativamente a 22.4. Al aumentar la impedancia de fuente, aumentamos el factor Q del circuito resonante.
+把源阻抗变为 1000Ω，绘制出一条新的谐振曲线（实线），谐振电路的 Q 值明显增加到 22.4。通过提高源阻抗，我们增加了谐振电路的 Q 值。
 
-El método anterior no muestra la influencia de la resistencia de carga en la curva de resonancia. Si conectamos una carga externa al circuito resonante de esta manera:
+上面的方法并不能看出负载阻抗对谐振曲线的影响。如果像这样把外部负载连接到谐振电路：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220419163311.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220419163311.png)
 
-Puede ser equivalente a:
+可以等效为：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220419163441.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220419163441.png)
 
-En este caso, el factor Q de carga se puede expresar como:
+此时负载 Q 可以表示为：
 
 $$
 Q=\frac{R_p}{X_p}
 $$
 
-Donde $R_p$ es la resistencia total equivalente en paralelo y $X_p$ representa la reactancia capacitiva / inductiva (son iguales en resonancia).
+其中，$R_p$ 是等效总并联电阻，$X_p$ 表示容抗 / 感抗（他们在谐振时是相等的）。
 
-> Por ejemplo, si queremos diseñar un circuito resonante para que funcione con una impedancia de fuente de 150Ω y una resistencia de carga de 1000Ω. A una frecuencia de resonancia de 50 MHz, el factor Q de carga debe ser de 20. Suponiendo que los componentes son sin pérdidas y no hay coincidencia de impedancia, podemos obtener $R_p=130Ω$. Según la fórmula anterior, $X_p=\frac{R_p}{Q}=\frac{130}{20} =6.5Ω$, y como $X_p=\omega L=\frac{1}{\omega C}$, podemos elegir un inductor de 20.7nH y un capacitor de 489.7pF.
+> e.g. 如果我们要设计一个谐振电路，使其在 150Ω 的源阻抗和 1000Ω 的负载阻抗条件下运行。在 50 MHz 的谐振频率下，负载 Q 须等于 20。假设无损耗元件且无阻抗匹配。那么我们可以得出 $R_p=130Ω$，根据上文公式，$X_p=\frac{R_p}{Q}=\frac{130}{20} =6.5Ω$，又因为 $X_p=\omega L=\frac{1}{\omega C}$，因此，可选 20.7nH 的电感、489.7pF 的电容。
 
-Se puede ver que la disminución de $R_p$ disminuirá el factor Q del circuito resonante y, si $R_p$ permanece constante y se cambia $X_p$, se puede lograr el mismo efecto. Por lo tanto, para una impedancia de fuente y una resistencia de carga dadas, se puede obtener el mejor factor Q del circuito resonante cuando el inductor es de valor pequeño y el capacitor es de valor grande. En cualquier caso, $X_p$ disminuirá. Por ejemplo:
+可以看出，$R_p$ 的降低会降低谐振电路的 Q 值，并且，如果 $R_p$ 不变、改变 $X_p$，可以获得相同的效果。因此，对于给定的源阻抗和负载阻抗，当电感为小值而电容器为大值时，可以获得谐振电路的最佳 Q 值。无论哪种情况，$X_p$ 都会降低。例如：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220419165555.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220419165555.png)
 
-Por lo tanto, se pueden utilizar ambos métodos para ajustar el factor Q:
+因此，采用这两种方法都可以对 Q 值进行调整：
 
-1. Seleccione los valores óptimos de impedancia de fuente y resistencia de carga.
-2. Seleccione los valores óptimos de los componentes L y C para optimizar el factor Q.
+1. 选择源阻抗和负载阻抗的最佳值。
+2. 选择优化 Q 的 L 和 C 的分量值。
 
-Pero generalmente solo podemos usar el segundo método, ya que en muchos casos, la fuente y la carga están fijas y no se pueden cambiar. En este caso, $X_p$ está definido por un valor Q dado, pero el valor calculado generalmente no tiene un valor físico adecuado para emparejarlo, se dará una solución en el siguiente texto.
+但通常我们只能用第二种方法，因为在许多情况下，源和负载是定好的，没法去改变他们。这种情况下，$X_p$ 受一个给定的 Q 值定义，但通常算出来的值没有合适的实物值与之匹配，在下文将给出解决方法。
 
-## Influencia del factor Q de los componentes en el factor Q de carga
+## 元器件的 Q 值对负载 Q 值的影响
 
-En el texto anterior, supusimos que los componentes utilizados en el circuito resonante eran componentes sin pérdidas y que el factor Q de los componentes no afectaría el factor Q de carga. Pero en situaciones no ideales, debemos considerar el factor Q de cada componente.
+在上文中，我们都是假设谐振电路中使用的元件是无损器件，元器件的 Q 值不会对负载 Q 值产生影响。但在非理想情况下，我们必须考虑单个元件的 Q 值。
 
-En un circuito resonante sin pérdidas, la impedancia en los terminales del circuito es infinita en resonancia. Pero en un circuito real, debido a las pérdidas de los componentes, habrá alguna resistencia en paralelo equivalente:
+在无损谐振电路中，谐振时电路端子上的阻抗是无限大的。但在实际电路中，由于元件损耗，会存在一些等效并联电阻：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220419174200.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220419174200.png)
 
-La resistencia (Rp) y la reactancia en paralelo relacionada (Xp) se pueden obtener de 
+电阻 (Rp) 及其相关的并联电抗 (Xp) 可以从
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- "RF-Circuit-Design (segunda edición) _Chris-Bowick" 
+- 《RF-Circuit-Design(second-edition)\_Chris-Bowick》
 
-> Dirección original del artículo: <https://wiki-power.com/> 
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

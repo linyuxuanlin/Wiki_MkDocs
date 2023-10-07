@@ -1,31 +1,31 @@
-# Homelab - Alternativa gratuita a la conexión a través de la red interna: Cloudflared
+# Homelab - 免费的内网穿透替代方案 Cloudflared
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230416143051.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230416143051.png)
 
-**Cloudflared** es una solución gratuita para la conexión a través de la red interna, utilizada para acceder a máquinas sin dirección IP pública desde la red externa.
+**Cloudflared** 是一个免费的内网穿透方案，用于外网访问无公网 IP 的主机。
 
-Requisitos:
+必需条件：
 
-- Aunque Cloudflared es gratuito, se requiere una cuenta VISA/PayPal.
-- El servidor de nombres de dominio (DNS) debe apuntar a Cloudflare.
-- Se debe habilitar el CDN de Cloudflare (la velocidad de acceso desde China es lenta).
+- 虽然 Cloudflared 是免费的，但需要绑定 VISA/PayPal。
+- 域名 NameServer 需要指向 Cloudflare
+- 需要启用 Cloudflare CDN（国内访问速度偏慢）
 
-Ventajas:
+优点：
 
-- No se requiere una dirección IP pública para el servidor.
-- No se requiere un firewall ni un servidor proxy inverso.
-- Se pueden utilizar los puertos 80 y 443 sin necesidad de registro.
-- No se requiere una solicitud de certificado SSL.
-- Es gratuito.
+- 不需要公网 IP 的服务器
+- 不需要防火墙、反向代理
+- 不需要备案就可以使用 80 和 443 端口
+- 不需要自行申请 SSL 证书
+- 免费
 
-Desventajas:
+缺点：
 
-- La velocidad de acceso desde China es lenta.
-- Depende en cierta medida de la plataforma de Cloudflare.
+- 国内访问速度慢
+- 相对依赖 Cloudflare 平台
 
-## Implementación (Docker Compose)
+## 部署（Docker Compose）
 
-Primero, cree un archivo `compose.yaml` y pegue el siguiente contenido:
+首先创建 `compose.yaml` 文件，并粘贴以下内容：
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -40,35 +40,33 @@ services:
       - TUNNEL_TOKEN=${APP_TUNNEL_TOKEN}
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `cloudflared`).
+（可选）推荐在 `compose.yaml` 同级目录下创建 `.env` 文件，并自定义你的环境变量。如果不想使用环境变量的方式，也可以直接在 `compose.yaml` 内自定义你的参数（比如把 `${STACK_NAME}` 替换为 `cloudflared`）。
 
 ```dotenv title=".env"
 STACK_NAME=cloudflared
 
 # cloudflared
 APP_VERSION=latest
-APP_TUNNEL_TOKEN=xxx # Reemplace con su token
+APP_TUNNEL_TOKEN=xxx # 替换为你的 token
 ```
 
-Por último, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores.
+最后，在 `compose.yaml` 同级目录下执行 `docker compose up -d` 命令即可启动编排的容器。
 
-## Instrucciones de configuración
+## 配置说明
 
-Acceda al panel [**Cloudflare Zero Trust**](https://one.dash.cloudflare.com/), seleccione `Access` - `Tunnels` en la barra lateral izquierda y haga clic en `Create a tunnel` para crear un túnel. Escriba un nombre para el túnel (para distinguir entre diferentes máquinas físicas) y guarde. Anote el token y escríbalo en `compose.yaml`.
+访问 [**Cloudflare Zero Trust**](https://one.dash.cloudflare.com/) 面板，在左侧栏选择 `Access` - `Tunnels`，点击 `Create a tunnel` 创建隧道，填写隧道名称（用于区分不同的物理机器）然后保存。记录下 token 后填写在 `compose.yaml` 中。
 
-A continuación, haga clic en el túnel que ha creado y, en la pestaña `Public Hostname Page`, agregue el puerto que desea utilizar como proxy. Por ejemplo, si su dominio está vinculado a Cloudflare y es `wiki-power.com`, y desea utilizar el puerto `80` y el protocolo `HTTP` en su máquina local, simplemente escriba lo siguiente:
+随后点进你创建的隧道，在 `Public Hostname Page` 选项卡中添加代理的端口。举个例子，我绑定在 Cloudflare 的域名是 `wiki-power.com`，我需要代理的服务本地的端口是 `80`、`HTTP` 协议，那么我只需要这样填写：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230416183438.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230416183438.png)
 
-De esta manera, podrá acceder al puerto local a través de <https://dashboard.wiki-power.com>, y automáticamente se solicitará un certificado SSL para el acceso a través de https desde la red externa.
+即可通过 <https://dashboard.wiki-power.com> 访问本地的端口。并且，它会帮你自动申请 SSL 证书，直接在公网通过 https 访问。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Sitio web / Documentación oficial](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/)
-- [Repositorio de GitHub](https://github.com/cloudflare/cloudflared)
+- [官网 / 文档](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/)
+- [GitHub repo](https://github.com/cloudflare/cloudflared)
 - [Docker Hub](https://hub.docker.com/r/cloudflare/cloudflared)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

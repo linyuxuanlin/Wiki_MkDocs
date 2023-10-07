@@ -1,10 +1,10 @@
-# Notas de introducción a ROS
+# ROS入门笔记
 
-Este tutorial se basa en ROS2 Foxy y Ubuntu20.04.
+本教程基于 ROS2 Foxy，Ubuntu20.04。
 
-## Instalación del entorno ROS
+## ROS 环境安装
 
-### Configuración de la codificación UTF-8
+### 设置 UTF-8 编码
 
 ```shell
 sudo locale-gen en_US en_US.UTF-8
@@ -12,7 +12,7 @@ sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 export LANG=en_US.UTF-8
 ```
 
-### Configuración de la fuente de software
+### 设置软件源
 
 ```shell
 sudo apt update && sudo apt install curl gnupg2 lsb-release
@@ -23,119 +23,117 @@ curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo ap
 sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture)] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/ros2-latest.list'
 ```
 
-### Instalación de ROS2
+### 安装 ROS2
 
 ```shell
 sudo apt update
 sudo apt install ros-foxy-desktop
 ```
 
-### Configuración de variables de entorno
+### 设置环境变量
 
 ```shell
 source /opt/ros/foxy/setup.bash
 ```
 
-### Instalación de herramientas de autocompletado
+### 安装自动补全工具
 
 ```shell
 sudo apt install python3-argcomplete
 ```
 
-### Prueba después de la instalación exitosa
+### 安装成功后的测试
 
-Ejecutar Talker:
+运行 Talker：
 
 ```shell
 source /opt/ros/foxy/setup.bash
 ros2 run demo_nodes_cpp talker
 ```
 
-Abrir una nueva ventana de línea de comandos y ejecutar Listener:
+打开一个新的命令行窗口，运行 Listener：
 
 ```shell
 source /opt/ros/foxy/setup.bash
 ros2 run demo_nodes_py listener
 ```
 
-### Si desea desinstalar ROS
+### 如果想卸载 ROS
 
 ```shell
 sudo apt remove ros-foxy-* && sudo apt autoremove
 ```
 
-Luego, verifique si hay una carpeta de ROS en ~ / .bashrc o / opt / directorio.
+随后检查～/.bashrc 　以及／opt / 目录是否有 ros 文件夹存在。
 
-## Configuración del entorno ROS2
+## ROS2 环境配置
 
 ```shell
 source /opt/ros/foxy/setup.bash
 ```
 
-Comprobación después de la configuración:
+设置完成后的检查：
 
 ```shell
 printenv | grep -i ROS
 ```
 
-## Simulador de tortuga pequeña
+## 小海龟仿真器
 
-### Instalación
+### 安装
 
 ```shell
 sudo apt update
 sudo apt install ros-foxy-turtlesim
 ```
 
-Comprobar si la instalación fue exitosa:
+检查是否安装成功：
 
 ```shell
 ros2 pkg executables turtlesim
 ```
 
-### Iniciar el simulador de tortuga
+### 启动海龟模拟器
 
 ```shell
 ros2 run turtlesim turtlesim_node
 ```
 
-Para hacer que la tortuga pequeña se mueva, abra una nueva ventana de línea de comandos e ingrese el siguiente comando:
+想要让小海龟动起来，可以打开一个新的命令行窗口，输入命令：
 
 ```shell
 ros2 run turtlesim turtle_teleop_key
 ```
 
-Siga las instrucciones en la línea de comandos para controlar la tortuga.
+按命令行中的提示即可实现操控。
 
-### Instalación de la herramienta rqt
+### 安装 rqt 工具
 
 ```shell
 sudo apt update
 sudo apt install ~nros-foxy-rqt*
 ```
 
-### Iniciar la herramienta rqt
+### 启动 rqt 工具
 
-Primero, asegúrese de que una tortuga pequeña esté ejecutándose en segundo plano. En la línea de comandos, ingrese:
+首先，要确保有一只小海龟在后台运行。在命令行输入：
 
 ```shell
 rqt
 ```
 
-Despierte la herramienta rqt, abra `Plugins > Services > Service Caller` en orden, haga clic en el botón de actualización y podrá ver todos los servicios.
+唤醒 rqt 工具，依次打开 `Plugins > Services > Service Caller`，点击刷新按钮，即可看到所有服务。
 
-Seleccione el servicio `/spawn`, ingrese el nombre (por ejemplo, `'GuaiGuai'`) y la ubicación de la tortuga pequeña para generar otra tortuga. Si desea modificar la forma y el color de su trayectoria, puede modificar el contenido del servicio `/set_pen`.
+选择 `/spawn` 服务，填写小海龟的名字（例如 `'GuaiGuai'`）和位置，就可以多生成一只海龟。如果要修改其轨迹的颜色形状，可以修改 `/set_pen` 服务的内容。
 
-Para controlar el movimiento de una nueva tortuga generada, se puede utilizar el siguiente comando (prestar atención al nombre de la tortuga):
+控制新生成海龟的运动，可以通过以下命令（注意海龟的名字）：
 
 ```shell
 ros2 run turtlesim turtle_teleop_key --ros-args --remap turtle1/cmd_vel:=guaiguai/cmd_vel
 ```
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Tutorial de introducción a ROS2 - 2. Instalación de ROS2 Foxy en Ubuntu 20.04](https://www.guyuehome.com/10226)
-- [Tutorial de introducción a ROS2 - 3. Configuración del entorno de ROS2](https://www.guyuehome.com/10243)
-- [Tutorial de introducción a ROS2 - 4. Uso básico del simulador de la tortuga](https://www.guyuehome.com/10386)
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+- [ROS2 入门教程 ——2. Ubuntu20.04 安装 ROS2 Foxy](https://www.guyuehome.com/10226)
+- [ROS2 入门教程 ——3. ROS2 环境配置](https://www.guyuehome.com/10243)
+- [ROS2 入门教程 ——4. 小海龟仿真器基础使用](https://www.guyuehome.com/10386)

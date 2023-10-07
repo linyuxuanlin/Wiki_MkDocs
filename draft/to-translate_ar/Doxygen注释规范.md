@@ -1,6 +1,6 @@
-# Normas de comentarios Doxygen
+# Doxygen 注释规范
 
-## Encabezado de archivo con índice desplegable
+## 文件头标注展开目录
 
 ```c
 /****************************************************************************
@@ -24,81 +24,79 @@
 
 /**
  * @file doxygen_c.h
- * @author alguien
+ * @author someone
  * @date 2018.1.4
- * @brief Normas de comentarios de archivos C con Doxygen, pueden haber saltos de línea,
- * todos los resúmenes son iguales.
+ * @brief doxygen 规范的 C 文件注释规范文档，可以换行，
+ * 所有 brief 同
  *
- * @details Descripción detallada y explicación de este documento, pueden haber saltos de línea,
- * todas las descripciones detalladas son iguales.
+ * @details 对该文档的详细说明和解释，可以换行，
+ * 所有详细说明同
  */
 
-#include "header.h"
+#include "hearder.h"
 ```
 
-## Encabezado de estructuras y tipos de enumeración con índice desplegable
+## 结构体、枚举类型标注展开目录
 
 ```c
 /**
- * @brief Breve descripción
+ * @brief 简要说明
  *
- * @details Descripción detallada
+ * @details 详细说明
  */
 typedef enum BoxEnum_enum {
-  BOXENUM_FIRST,  /**< Alguna documentación para el primero. */
-  BOXENUM_SECOND, /**< Alguna documentación para el segundo. */
+  BOXENUM_FIRST,  /**< Some documentation for first. */
+  BOXENUM_SECOND, /**< Some documentation for second. */
   BOXENUM_ETC     /**< Etc. */
 } BoxEnum;
 ```
 
-## Desglose de comentarios de encabezado de función
+## 函数头注释展开目录
 
 ```c
 /**
- * @brief Descripción breve de la función, puede ser en varias líneas
+ * @brief 函数简要说明，可以换行
  *
- * @details Descripción detallada y explicación de la función, puede ser en varias líneas
+ * @details 对函数的详细说明和解释，可以换行
  *
- * @note Contenido de notas importantes
+ * @note 注意事项内容
  *
- * @param index Texto explicativo
- * @param cent Texto explicativo
+ * @param index 说明文字
+ * @param cent 说明文字
  *
- * @return Descripción del contenido devuelto por la función
- * @retval 1 Prueba exitosa
- * @retval -1 Prueba fallida
+ * @return 描述函数返回的内容
+ * @retval 1 测试成功
+ * @retval -1 测试失败
  */
 bool Test(int index, char *cent);
 ```
 
-## Desglose de comentarios de variables
+## 变量注释展开目录
 
 ```c
-int element = 0; /**< Breve descripción de la variable */
+int element = 0; /**< 变量简单说明 */
 ```
 
 ```
 /**
- * @brief Descripción breve de la variable
+ * @brief 变量简要说明
  *
- * @details Descripción detallada de la variable
+ * @details 变量详细说明
  */
 unsigned int variable = 0;
 ```
 
-## Desglose de comentarios de macros
+## 宏注释展开目录
 
 ```c
 /**
- * @brief Breve descripción de la macro
+ * @brief 宏简要说明
  *
- * @details Descripción detallada de la macro
+ * @details 宏详细说明
  */
 #define variable 10
 ```
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Especificación de comentarios breves de C con Doxygen](https://www.liuguogy.com/archives/doxygen-c-brief-annotation.html)
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+- [基于 Doxygen 的 C 语言简要注释规范](https://www.liuguogy.com/archives/doxygen-c-brief-annotation.html)

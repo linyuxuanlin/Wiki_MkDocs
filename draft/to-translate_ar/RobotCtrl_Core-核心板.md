@@ -1,10 +1,10 @@
-# RobotCtrl_Core - Placa central
+# RobotCtrl_Core - 核心板
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220527113423.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220527113423.png)
 
-Repositorio del proyecto: [**linyuxuanlin/RobotCtrl/RobotCtrl_Core**](https://github.com/linyuxuanlin/RobotCtrl/tree/main/RobotCtrl_MultiBoard_Project/RobotCtrl_Core)
+项目仓库：[**linyuxuanlin/RobotCtrl/RobotCtrl_Core**](https://github.com/linyuxuanlin/RobotCtrl/tree/main/RobotCtrl_MultiBoard_Project/RobotCtrl_Core)
 
-Vista previa en línea del proyecto:
+项目在线预览：
 
 <div class="altium-iframe-viewer">
   <div
@@ -13,90 +13,88 @@ Vista previa en línea del proyecto:
   ></div>
 </div>
 
-Nota: el proyecto está incluido en [**RobotCtrl - Kit de desarrollo universal STM32**](https://wiki-power.com/es/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
+注：项目包含于 [**RobotCtrl - STM32 通用开发套件**](https://wiki-power.com/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6)。
 
-## Diseño del esquemático
+## 原理图设计
 
-Las principales funciones de RobotCtrl_Core son las siguientes:
+RobotCtrl_Core 的主要功能如下：
 
-- Circuito de regulación de alimentación (5V a 3.3V, con puntos de prueba)
-- Sistema mínimo de microcontrolador
-  - Circuito de alimentación (desacoplamiento de alimentación, fuente de alimentación analógica ADC)
-  - Circuito de reinicio (botón de reinicio externo)
-  - Circuito de reloj (oscilador pasivo HSE)
-  - Interfaz de descarga y depuración (SW)
-  - Modo de arranque (seleccionar el arranque desde la memoria flash principal)
-  - Circuito de alimentación y comunicación USB (USB-Micro)
-- Conector B2B (con todos los IO)
-- Periféricos integrados en la placa
+- 供电稳压电路（5V 转 3.3V，引出测试点）
+- 单片机最小系统
+  - 电源电路（供电去耦、ADC 模拟电源）
+  - 复位电路（外部复位按键）
+  - 时钟电路（HSE 无源晶振）
+  - 下载调试接口（SW）
+  - 启动模式（选择从主闪存存储器启动）
+  - USB 供电与通信电路（USB-Micro）
+- B2B 连接器（引出所有 IO）
+- 板载外设
 
-### Circuito de alimentación
+### 供电电路
 
-RobotCtrl_Core puede recibir una fuente de alimentación de 5V a través del puerto USB o del conector B2B, y convertirla en una fuente de 3.3V para el núcleo del microcontrolador y los periféricos integrados en la placa. El circuito de regulación de alimentación utiliza un LDO (AMS1117-3.3, con una corriente máxima de 1A), incluye un indicador de alimentación y tiene puntos de prueba clave reservados.
+RobotCtrl_Core 可由 USB 接口或 B2B 连接器输入 5V 电源，并转换为 3.3V 供单片机核心及板载外设使用。稳压电路使用了 LDO（AMS1117-3.3，最大电流为 1A），附带了一颗电源指示灯，并预留了关键测试点。
 
-El principio básico del LDO se puede encontrar en el artículo [**Topología de alimentación - Regulación lineal**](https://wiki-power.com/es/%E7%94%B5%E6%BA%90%E6%8B%93%E6%89%91-%E7%BA%BF%E6%80%A7%E7%A8%B3%E5%8E%8B).
+LDO 的基础原理可以参考文章 [**电源拓扑 - 线性稳压**](https://wiki-power.com/%E7%94%B5%E6%BA%90%E6%8B%93%E6%89%91-%E7%BA%BF%E6%80%A7%E7%A8%B3%E5%8E%8B)。
 
-### Sistema mínimo de microcontrolador
+### 单片机最小系统
 
-El diseño del sistema mínimo de microcontrolador se divide en varias partes: alimentación, reinicio, descarga y depuración, reloj y modo de arranque. Se pueden encontrar conocimientos básicos en los artículos [**Cómo diseñar el sistema mínimo de un microcontrolador**](https://wiki-power.com/es/%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E6%AC%BE%E5%8D%95%E7%89%87%E6%9C%BA%E7%9A%84%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F) y [**Desarrollo de hardware STM32F4**](https://wiki-power.com/es/STM32F4%E7%A1%AC%E4%BB%B6%E5%BC%80%E5%8F%91).
+单片机最小系统的设计，分为几个部分：供电、复位、下载调试、时钟、启动模式。基础知识可参考文章 [**如何设计一款单片机的最小系统**](https://wiki-power.com/%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E6%AC%BE%E5%8D%95%E7%89%87%E6%9C%BA%E7%9A%84%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F) 和 [**STM32F4 硬件开发**](https://wiki-power.com/STM32F4%E7%A1%AC%E4%BB%B6%E5%BC%80%E5%8F%91)。
 
-### Circuito de alimentación
+### 电源电路
 
-Capacitores de desacoplamiento:
+去耦电容：
 
-- VDD: un capacitor cerámico total de 10 μF, más un capacitor cerámico de 100 nF junto a cada pin VDD.
-- VDDA: un capacitor cerámico de 100 nF + un capacitor cerámico de 1 µF.
+- VDD：总的一个 10 μF 的陶瓷电容，外加每个 VDD 引脚旁接一个 100 nF 陶瓷电容。
+- VDDA：100 nF 陶瓷电容 + 1 µF 陶瓷电容。
 
-Capacitores VCAP
+VCAP 电容
 
-- Conectar cada uno a tierra con un capacitor cerámico de 2.2 µF.
+- 各对地接一个 2.2 µF 陶瓷电容。
 
-### Circuito de reinicio
+### 复位电路
 
-Se utiliza un monitor de alimentación, es decir, PDR_ON se tira hacia arriba a través de una resistencia de 120Ω. Además, se ha añadido un botón de reinicio con un sistema antirrebote de hardware.
+启用电源监控器，即 PDR_ON 通过 120Ω 电阻上拉。除此之外，也添加了复位按键，带硬件防抖。
 
-### Circuito de reloj
+### 时钟电路
 
-Se utiliza un oscilador pasivo HSE de 8M de Murata.
+外部高速时钟（HSE）选用村田 8M 无源晶振。
 
-### Interfaz de descarga y depuración
+### 下载调试接口
 
-Este diseño tiene una interfaz de descarga y depuración directamente conectada, sin necesidad de resistencias de pull-up/pull-down externas (ya que están integradas en el STM32).
+本设计直接引出下载调试接口，不需要外部上拉／下拉电阻（因为 STM32 内部有集成）。
 
-### Modo de arranque
+### 启动模式
 
-Seleccionar el arranque desde la memoria flash principal, es decir, BOOT0 se conecta en serie con una resistencia de 10 K, y BOOT1 es arbitrario.
+选择从主闪存存储器启动，即 BOOT0 串接 10 K 的下拉电阻，BOOT1 任意。
 
-### Circuito de alimentación y comunicación USB (USB-Micro)
+### USB 供电与通信电路（USB-Micro）
 
-El STM32 tiene un periférico USB incorporado, por lo que solo es necesario sacar el puerto (en el chip STM32F07ZE es PA11 y PA12) para lograr la comunicación USB.
+STM32 有内置 USB 外设，只需要直接引出接口（在 STM32F07ZE 芯片上是 PA11 和 PA12）就可以实现 USB 通信。
 
-La interfaz USB también admite la función de alimentación externa (VUSB).
+USB 接口也支持了外部供电功能（VUSB）。
 
-## Conector B2B
+## B2B 连接器
 
-El conector B2B utiliza la serie 3710 de Elecrow, la placa central RobotCtrl_Core utiliza un par de 3710M060037G3FT01 (macho) y la placa de expansión RobotCtrl_Func utiliza un par de F060037G0FR01 (hembra) para la combinación. Un par de B2B (120 pines en total) es suficiente para sacar todos los IO del STM32F407ZE y maximizar el uso de los recursos del sistema.
+B2B 连接器选用正点原子的 3710 系列，RobotCtrl_Core 核心板使用一对 3710M060037G3FT01（公座），RobotCtrl_Func 拓展板使用一对 F060037G0FR01（母座）进行配合。一对 B2B（共 120 pin）足以将 STM32F407ZE 的所有 IO 完全引出使用，最大化利用了系统资源。
 
-Consulte la [hoja de datos del terminal 3710F](http://www.openedv.com/thread-78182-1-1.html) para obtener información sobre el conector B2B.
+B2B 连接器的相关资料请参考 [**3710F 端子资料**](http://www.openedv.com/thread-78182-1-1.html)
 
-## Botón de usuario y LED
+## 用户按键与 LED
 
-Para poder realizar una verificación y depuración simples, RobotCtrl_Core tiene un botón de usuario y un LED de usuario integrados. El botón está configurado como modo de entrada GPIO, con una resistencia de pull-up interna y un condensador MLCC para evitar el rebote del hardware. El LED está configurado como modo de salida GPIO, con el pin en alto para encenderlo y una resistencia en serie para limitar la corriente.
+为了能够进行简单的验证调试，RobotCtrl_Core 板载了一颗用户按键与一颗用户 LED，按键配置为 GPIO 输入模式、内部上拉，并加一个 MLCC 电容以硬件抖动。LED 配置为 GPIO 输出模式，引脚置高电平点亮，中间串联一个电阻以限流。
 
-Consulte el esquemático para obtener información específica sobre los pines.
+具体引脚请参考原理图。
 
-## Pruebas de hardware
+## 硬件测试
 
-Las pruebas de alimentación deben realizarse con una fuente de alimentación de 5V conectada al puerto USB (o mediante la placa de expansión de dispositivos externos a través del conector B2B), y midiendo el voltaje correspondiente en el punto de prueba de 3.3V. La prueba real dio como resultado 3.32V, lo que fue validado.
+电源测试需要在 USB 座子接入 5V 供电（或者通过 B2B 连接器通过外设拓展版供电），在 3.3V 的测试点测得相应电压即可。实际测试为 3.32V，验证通过。
 
-Las pruebas de función se realizaron mediante la grabación del programa inicial (el botón de usuario controla el LED de usuario), y se probaron el encendido, la grabación del programa, los botones de reinicio y de usuario, los LED de alimentación y de usuario, y la función USB. En las pruebas reales, el programa inicial se grabó correctamente en la placa central del microcontrolador a través de ST-Link. El botón de reinicio reinició el sistema correctamente; en el programa de prueba, el LED de usuario se encendió/apagó mediante el botón de usuario; al encenderse, el LED de alimentación se encendió correctamente. La prueba de la función USB utilizó un programa de puerto serie virtual USB, abriendo la herramienta de puerto serie (con cualquier velocidad de transmisión), enviando cualquier carácter y recibiendo el mismo carácter, lo que validó la función.
+功能测试通过烧录初始程序（用户按键控制用户 LED），测试上电及程序的烧录、复位按键与用户按键、电源 LED 与用户 LED、USB 功能。在实际的测试中，初始程序可正常通过 ST-Link 烧录进单片机核心板。复位按键可正常复位系统；在测试程序中，可以通过用户按键点亮/关闭用户 LED；上电时，电源 LED 正常亮起。USB 功能测试，使用的是 USB 虚拟串口的程序，打开串口工具（波特率任意），发送任意字符，将返回相同字符，测试通过。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Explicación detallada del pin PDR_ON de STM32 (reimpresión + complemento)](https://blog.csdn.net/Frankenstien_/article/details/105971841)
-- [Capítulo 56 de Elecrow [STM32-F407 Explorer] Experimento de lector de tarjetas USB (esclavo)](https://zhuanlan.zhihu.com/p/136163591)
+- [STM32 的 PDR_ON 引脚，比较好的解释（转载+补充）](https://blog.csdn.net/Frankenstien_/article/details/105971841)
+- [正点原子【STM32-F407 探索者】第五十六章 USB 读卡器(Slave)实验](https://zhuanlan.zhihu.com/p/136163591)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

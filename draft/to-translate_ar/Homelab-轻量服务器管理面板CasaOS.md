@@ -1,26 +1,24 @@
-# Homelab - Panel de gestión de servidor ligero CasaOS
+# Homelab - 轻量服务器管理面板 CasaOS
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230304192541.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304192541.png)
 
-**CasaOS** es un panel personal de código abierto simple, elegante y fácil de usar que incluye un administrador de archivos, monitoreo del estado del servidor, terminal, administración de contenedores Docker, tienda de aplicaciones Docker integrada, entre otras funciones.
+**CasaOS** 是一个简单易用、优雅的开源个人面板，功能包含了文件管理器、服务器状态监测、终端、Docker 容器管理、内置 Docker 应用商店等。
 
-## Implementación (shell)
+## 部署（shell）
 
 ```shell
 curl -fsSL https://get.casaos.io | sudo bash
 ```
 
-Dirección de acceso predeterminada del panel: <http://localhost:80>
+默认面板访问地址：<http://localhost:80>
 
-Nota: Si se implementa en un servidor con un proxy inverso asignado, es mejor cambiar el puerto de acceso del panel en la configuración y dejar el puerto 80 para Nginx.
+注：如果是部署在有分配反向代理的服务器上，最好在设置内更换面板访问端口，把 80 端口留给 Nginx。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Sitio web oficial](https://casaos.io)
-- [Documentación](https://wiki.casaos.io/en/home)
-- [Repositorio de GitHub](https://github.com/IceWhaleTech/CasaOS)
+- [官网](https://casaos.io)
+- [文档](https://wiki.casaos.io/en/home)
+- [GitHub repo](https://github.com/IceWhaleTech/CasaOS)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

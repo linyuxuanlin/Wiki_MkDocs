@@ -1,68 +1,68 @@
-# Guía de configuración de Keil MDK
+# Keil MDK 配置指南
 
-## 1. Descarga
+## 1. 下载
 
-**Ingrese a la página de descarga de Keil en el sitio web oficial:** [https://www.keil.com/demo/eval/arm.htm](https://www.keil.com/demo/eval/arm.htm)
+**进入 Keil 官网下载页面：** [https://www.keil.com/demo/eval/arm.htm](https://www.keil.com/demo/eval/arm.htm)
 
-**Complete la información requerida como se muestra en la imagen y haga clic en el botón `Submit`:**
+**如图填写相关信息并点击 `Submit` 按钮：**
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564402348383.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564402348383.png)
 
-**Haga clic en el botón de descarga del paquete de instalación:**
+**点击下载安装包：**
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564402469518.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564402469518.png)
 
-## 2. Instalación
+## 2. 安装
 
-**Abra el paquete de instalación descargado y siga los siguientes pasos:**
+**打开下载完成的安装包，按如下步骤操作：**
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564405005991.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405005991.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564405034468.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405034468.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564405123578.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405123578.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564405166784.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405166784.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564405201092.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405201092.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564405260737.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405260737.png)
 
-**Instale los paquetes de chips (necesitamos las series STM32 F1 y F4):**
+**安装芯片包（我们需要 STM32 F1 和 F4 系列）：**
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564405574756.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405574756.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564405648731.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405648731.png)
 
-## 3. Crackeo
+## 3. 破解
 
-Haga clic en el enlace de descarga del [**crackeador**](https://github.com/linyuxuanlin/File-host/blob/main/software/KEIL_Lic.exe)
+点击下载 [**破解器**](https://github.com/linyuxuanlin/File-host/blob/main/software/KEIL_Lic.exe)
 
-**Cierre MDK, haga clic derecho y abra como administrador:**
+**关闭 MDK，右键以管理员身份打开：**
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564406135091.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564406135091.png)
 
-**Abra la barra de menú - File - License Management:**
+**打开菜单栏 - File - License Management ：**
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564406171844.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564406171844.png)
 
-**Copie esta cadena `CID`:**
+**复制这一串 `CID`：**
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564406230209.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564406230209.png)
 
-**Pegue la cadena en el crackeador, seleccione `Arm` en el menú desplegable `Target` y haga clic en `Generate` para generar el código de activación:**
+**在破解器中粘贴，并在 `Target` 下拉框中选择 `Arm` ，然后点击 `Generate` 生成激活码：**
 
-**Copie el código de activación, péguelo en MDK y luego haga clic en `Add LIC`:**
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564406292113.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564406431978.png)
+**拷贝激活码，到 MDK 中粘贴，后点击 `Add LIC`：**
 
-## Referencias y agradecimientos
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564406431978.png)
 
-- [Configuración del color de fondo de protección ocular de Keil](https://blog.csdn.net/w5862338/article/details/50984536)
-- [Formateo de código de Keil](https://blog.csdn.net/sudaroot/article/details/88095269)
-- [Configuración de la interfaz personal](https://github.com/linyuxuanlin/File-host/blob/main/software-development/global.prop)
+## 参考与致谢
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+- [Keil 保护视力背景颜色设置](https://blog.csdn.net/w5862338/article/details/50984536)
+- [keil 代码格式化](https://blog.csdn.net/sudaroot/article/details/88095269)
+- [个人界面配置](https://github.com/linyuxuanlin/File-host/blob/main/software-development/global.prop)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

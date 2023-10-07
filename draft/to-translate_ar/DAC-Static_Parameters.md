@@ -1,153 +1,151 @@
-# DAC - Parámetros Estáticos
+# DAC - Static Parameters
 
-> Esta publicación solo está disponible en inglés.
+> This post is only available in English.
 
-El Convertidor Digital a Analógico (DAC) es un dispositivo que convierte una secuencia de datos de entrada digital en señales analógicas.
+Digital to Analog Converter (ADC) is a device to converts a sequence of digital input data into analog signals.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011141644.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011141644.png)
 
-## Parámetros Estáticos
+## Static Parameters
 
-Los parámetros estáticos del DAC contienen principalmente:
+DAC's static parameters mainly contain:
 
-- Salida de escala cero
-- Rango de escala completa (FSR)
-- Tamaño del LSB
-- Error de desplazamiento
-- Error de ganancia
-- Error de no linealidad diferencial (DNE o DNL)
-- Error de no linealidad integral (INE o INL)
+- Zero Scale Output
+- Full Scale Range (FSR)
+- LSB Size
+- Offset Error
+- Gain Error
+- Differential Non-Linearity Error (DNE or DNL)
+- Integral Non-Linearity Error (INE or INL)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011144045.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011144045.png)
 
-### Salida de escala cero
+### Zero Scale Output
 
-La **Salida de escala cero** es el valor de salida medido cuando se presenta el código de entrada digital de nivel cero/nulo al DUT.
+**Zero Scale Output** is the measured output value when the zero/null level digital input code is presented to the DUT.
 
-### Rango de escala completa (FSR)
+### Full Scale Range (FSR)
 
-El rango de voltaje de salida del DAC entre las salidas analógicas mínima ($V_{ZS}$) y máxima ($V_{FS}$) se llama **Rango de escala completa (FSR)**:
+Range of DAC output voltage between the minimum ($V_{ZS}$) and maximum ($V_{FS}$) analog outputs is called **Full Scale Range (FSR)**:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011142249.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011142249.png)
 
-### Tamaño del LSB
+### LSB Size
 
-El cambio promedio en voltaje cuando se encuentra entre los códigos de entrada se define como LSB:
-
-$$
-LSB=\frac{FSR_{medido}}{2^{bits}-1}
-$$
-
-### Error de desplazamiento
-
-El **Error de desplazamiento** (Error de escala cero) es la diferencia de voltaje entre los puntos de desplazamiento (inicial) ideal y real.
+Average change in voltage when in between the input codes is defined as LSB:
 
 $$
-ErrorDeDesplazamiento=V_{ZS(Real)}-V_{ZS(Ideal)}
+LSB=\frac{FSR_{measured}}{2^{bits}-1}
 $$
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011144415.png)
+### Offset Error
 
-### Error de ganancia
-
-El **Error de ganancia** es la diferencia de voltaje entre los puntos de ganancia ideal y real en la función de transferencia.
+**Offset Error** (Zero-Scale Error) is the voltage difference between ideal and actual offset (initial) points.
 
 $$
-ErrorDeGanancia=FSR_{Ideal}-FSR_{Real}
+OffsetError=V_{ZS(Actual)}-V_{ZS(ideal)}
 $$
 
-Donde
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011144415.png)
+
+### Gain Error
+
+**Gain Error** is the voltage difference between ideal and actual gain points on the transfer function.
 
 $$
-FSR_{Ideal}=V_{FS(Ideal)}-V_{ZS(Ideal)}
+GainError=FSR_{Ideal}-FSR_{Actual}
 $$
 
-$$
-FSR_{Real}=V_{FS(Real)}-V_{ZS(Real)}
-$$
-
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011144925.png)
-
-### Error de no linealidad diferencial (DNL)
-
-**Error de no linealidad diferencial (DNL)** es la diferencia en el voltaje de salida en un punto específico, en comparación con la salida en la entrada anterior, menos un LSB del dispositivo:
+Where
 
 $$
-DNL=(V_{in2}-V_{in1})-LSB_{promedio}
-$$
-
-donde $V_{in2}$ es el voltaje de la transición superior, $V_{in1}$ es el inferior.
-
-DNL es una medida del error de linealidad de "señal pequeña". La medición de DNL se realiza de un paso al siguiente, no de cada paso al valor ideal.
-
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011153556.png)
-
-### Error de no linealidad integral (INL)
-
-**Error de no linealidad integral (INL)** es el efecto acumulativo de todos los valores de no linealidad diferencial. Es una medida del error de linealidad de "señal grande". INL en cualquier punto a lo largo de la curva es la desviación de la línea de linealidad ideal.
-
-$$
-SalidaEsperada[i]=FSR*CódigoDeEntrada[i]+ErrorDeDesplazamiento
+FSR_{Ideal}=V_{FS(ideal)}-V_{ZS(ideal)}
 $$
 
 $$
-INL[i]=\frac{SalidaReal[i]-SalidaEsperada[i]}{LSB_{promedio}}
+FSR_{Actual}=V_{FS(Actual)}-V_{ZS(Actual)}
 $$
 
-Además, INL también se puede expresar como una función de DNL:
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011144925.png)
+
+### Differential Non-Linearity Error (DNL)
+
+**Differential Non-Linearity Error (DNL)** is the difference in the output voltage at a specific, compared to the output at the previous input, then minus one device LSB:
+
+$$
+DNL=(V_{in2}-V_{in1})-LSB_{average}
+$$
+
+where $V_{in2}$ is the voltage of the upper transition, $V_{in1}$ is the lower.
+
+DNL is a measure of "small-signal" linearity error. Measurement of DNL is made from one step to the next, not each step to the ideal value.
+
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011153556.png)
+
+### Integral Non-Linearity Error (INL)
+
+**Integral Non-Linearity Error (INL)** is the cumulative effect of all differential non-linearity values.It is a measure of "large-signal" linearity error. INL at any point along the curve is the deviation of the ideal linearity line.
+
+$$
+ExpectedOutput[i]=FSR*InputCode[i]+OffsetError
+$$
+
+$$
+INL[i]=\frac{ActualOutput[i]-ExpectedOutput[i]}{LSB_{average}}
+$$
+
+Also, INL can also be expressed as a function of DNL:
 
 $$
 INL[i]=\sum_{n=1}^{n=i}DNL[n]
 $$
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011184739.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011184739.png)
 
-## Cómo probar parámetros estáticos
+## How to Test Static Parameters
 
-### Configuración del sistema de prueba
+### Test System Setup
 
-Configuración del sistema de prueba para pruebas de parámetros estáticos de DAC:
+Test system setup for DAC static parameter tests:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011185006.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011185006.png)
 
-Diagrama de bloques de la configuración de la señal:
+Block diagram of signal setup:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011185447.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011185447.png)
 
-### Concepto de pruebas
+### Tests Concept
 
-El procedimiento para probar los parámetros estáticos de un DAC DUT se muestra a continuación.
+Procedure of testing the static parameters of an DAC DUT is listed below.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011185739.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011185739.png)
 
-#### 1. Medir el voltaje de salida aplicando las entradas de datos digitales desde Cero Escala hasta Escala Completa
+#### 1. Measure the output voltage by applying the digital data inputs from Zero Scale to Full Scale
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011185711.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011185711.png)
 
-#### 2. Calcular DNL para cada código de entrada
+#### 2. Calculate DNL for each input code
 
 $$
 DNL[i]=\frac{OutputMeasured[i]-OutputMeasured[i-1]-LSB_{average}}{LSB_{average}}
 $$
 
-Donde
+Where
 
 $$
 LSB_{average}=\frac{OutputMeasured[n]-OutputMeasured[0]}{2^{bits}-1}
 $$
 
-#### 3. Obtener el DNL máximo y mínimo
+#### 3. Get the max and min DNL
 
-#### 4. Calcular INL para cada paso
+#### 4. Calculate for INL for each step
 
-#### 5. Obtener el INL máximo y mínimo
+#### 5. Get the max and min INL
 
-## Referencias y Agradecimientos
+## References & Acknowledgements
 
-- *Fundamentos de Pruebas Usando ATE*
+- *Fundamentals of Testing Using ATE*
 - *The-Fundamentals-of-Mixed-Signal-Testing_Brian-Lowe*
 
 > Original: <https://wiki-power.com/>  
-> Este post está protegido por el acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en), debe ser reproducido con atribución.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.

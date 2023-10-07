@@ -1,129 +1,127 @@
-# Fundamentos de prueba de semiconductores - Prueba de parámetros AC
+# 半导体测试基础 - AC 参数测试
 
-La prueba AC asegura que la secuencia de tiempo de un DUT cumpla con los requisitos de sus especificaciones.
+AC 测试确保 DUT 的时特性序满足其规格需求。
 
-## Parámetros AC básicos
+## 基本 AC 参数
 
-### Tiempo de establecimiento (Setup Time)
+### 建立时间（Setup Time）
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220809094845.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220809094845.png)
 
-El tiempo de establecimiento se refiere al tiempo mínimo que los datos (en la imagen, `DATA IN`) deben mantenerse estables e invariables antes de que la señal de referencia (en la imagen, `WE`) cambie (tomando un valor medio de 1,5 V) para garantizar que se puedan leer correctamente. Antes del tiempo mínimo de establecimiento, los datos pueden cambiar libremente, pero si se excede el tiempo mínimo de establecimiento (manteniéndose estables demasiado tarde), es posible que no se puedan reconocer, lo que puede provocar errores. Se representa en las especificaciones de la siguiente manera:
+建立时间指的是在参考信号（图中为 `WE`）发生变化（取中间值 1.5V）前，为了确保能被正确读取，数据（图中为 `DATA IN`）必须提前保持稳定不变的最短时间。在最小建立时间之前，数据可以随意变化，但如果超过了最小建立时间（保持稳定得太晚），就有可能无法被识别，导致错误。在规格书中的表示如下：
 
-| Parámetro | Descripción                | Mín | Máx | Unidad |
-| --------- | -------------------------- | --- | --- | ------ |
-| $t_{SD}$  | Configuración de datos al final de la escritura | 11  |     | ns     |
+| Parameter | Description              | Min | Max | Unit |
+| --------- | ------------------------ | --- | --- | ---- |
+| $t_{SD}$  | Data Set-Up to Write End | 11  |     | ns   |
 
-### Tiempo de retención (Hold Time)
+### 保持时间（Hold Time）
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220809094858.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220809094858.png)
 
-El tiempo de retención se refiere al tiempo mínimo que los datos (en la imagen, `DATA IN`) deben mantenerse estables después de que la señal de referencia (en la imagen, `WE`) cambie (alcanzando un cierto umbral de voltaje) para garantizar que no haya errores. Si el tiempo de retención es demasiado corto, existe la posibilidad de que los datos no se reconozcan correctamente. Se representa en las especificaciones de la siguiente manera:
+保持时间指的是参考信号（图中为 `WE`）发生变化（到达一定电压阈值）后，为了确保无误，数据（图中为 `DATA IN`）必须保持稳定持续的最短时间（或者说在时钟信号触发前多久要保持稳定电平）。如果保持时间太短，数据有概率不能被正确识别。在规格书中的表示如下：
 
-| Parámetro | Descripción                | Mín | Máx | Unidad |
-| --------- | -------------------------- | --- | --- | ------ |
-| $t_{HD}$  | Retención de datos desde el final de la escritura | 1   |     | ns     |
+| Parameter | Description              | Min | Max | Unit |
+| --------- | ------------------------ | --- | --- | ---- |
+| $t_{HD}$  | Data Hold from Write End | 1   |     | ns   |
 
-### Retardo de propagación (Propagation Delay)
+### 传播时延（Propagation Delay）
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220809094910.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220809094910.png)
 
-El retardo de propagación se refiere al intervalo de tiempo entre la transmisión de una señal y la transmisión de otra señal relacionada. En la mayoría de los casos, se mide el intervalo de tiempo entre el cambio de la señal de entrada (en la imagen, `ADDR`) y la respuesta correspondiente de la salida (en la imagen, `DATA OUT`) (el tiempo necesario desde la entrada hasta la salida). Garantiza que la señal de salida pueda aparecer dentro de un cierto tiempo después de que aparezca la señal de entrada. Se representa en las especificaciones de la siguiente manera:
+传播时延指的是一个信号的传输和另一个相关信号的传输之间的时间间隔。大多时候测量的是输入信号（图中为 `ADDR`）发生变化，到相应输出（图中为 `DATA OUT`）反应之间的时间间隔（从输入端到输出端所需的时间）。它保证了输出信号可在输入信号出现后多久内出现。在规格书中的表示如下：
 
-| Parámetro | Descripción           | Mín | Máx | Unidad |
-| --------- | --------------------- | --- | --- | ------ |
-| $t_{AA}$  | Dirección a datos válidos |     | 15  | ns     |
+| Parameter | Description           | Min | Max | Unit |
+| --------- | --------------------- | --- | --- | ---- |
+| $t_{AA}$  | Address to Data Valid |     | 15  | ns   |
 
-### Ancho de pulso mínimo (Minimum Pulse Widths)
+### 最小脉宽（Minimum Pulse Widths）
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220809094924.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220809094924.png)
 
-El ancho de pulso mínimo generalmente incluye el ancho de pulso mínimo bajo y el ancho de pulso mínimo alto, que se utilizan para garantizar que el tiempo de operación mínimo de temporización de pulso sea el valor mínimo. Se representa en las especificaciones de la siguiente manera:
+最小脉宽通常包含最小低脉冲宽度和最小高脉冲宽度，用于确保脉冲定时时的最小可操作的值。在规格书中的表示如下：
 
-| Parámetro | Descripción             | Mín | Máx | Unidad |
-| --------- | ----------------------- | --- | --- | ------ |
-| $t_{WL}$  | Tiempo mínimo de reloj bajo | 20  |     | ns     |
-| $t_{WH}$  | Tiempo mínimo de reloj alto | 25  |     | ns     |
+| Parameter | Description             | Min | Max | Unit |
+| --------- | ----------------------- | --- | --- | ---- |
+| $t_{WL}$  | Minimum clock low time  | 20  |     | ns   |
+| $t_{WH}$  | Minimum clock high time | 25  |     | ns   |
 
-### Frecuencia Máxima (Maximum Frequency)
+### 最大频率（Maximum Frequency）
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220809094934.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220809094934.png)
 
-La frecuencia máxima de trabajo se refiere a la velocidad máxima a la que un dispositivo puede funcionar. Se representa en las especificaciones de la siguiente manera:
+最大工作频率通俗地讲，就是设备可运行的最大速度。在规格书中的表示如下：
 
-| Parámetro | Descripción               | Mín | Máx  | Unidad |
-| --------- | ------------------------- | --- | ---- | ------ |
-| $f_{MAX}$ | Frecuencia máxima de reloj |     | 22.2 | MHz    |
+| Parameter | Description             | Min | Max  | Unit |
+| --------- | ----------------------- | --- | ---- | ---- |
+| $f_{MAX}$ | Maximum clock frequency |     | 22.2 | MHz  |
 
-### Tiempo de Habilitación de Salida (Output Enable Time)
+### 输出使能时间（Output Enable Time）
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220809094941.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220809094941.png)
 
-Se refiere al tiempo necesario para que un pin cambie de un estado de alta impedancia (deshabilitado) a un estado de nivel de conducción válido (alto o bajo), asegurando que el buffer de salida pueda cambiar el estado del pin dentro del tiempo especificado. Se mide calculando el intervalo de tiempo desde que se emite la señal de control hasta que se detecta el cambio de salida. Se representa en las especificaciones de la siguiente manera:
+指的是引脚从高阻状态（关断失能）切换到有效驱动电平（高低电平）状态所需的时间，确保输出 Buffer 可以在规定的时间内改变引脚状态。测量时计算从控制信号发出到检测到开关输出的时间间隔。在规格书中的表示如下：
 
-| Parámetro | Descripción              | Mín | Máx | Unidad |
-| --------- | ------------------------ | --- | --- | ------ |
-| $t_{DOE}$ | OE bajo a datos válidos   |     | 10  | ns     |
+| Parameter | Description          | Min | Max | Unit |
+| --------- | -------------------- | --- | --- | ---- |
+| $t_{DOE}$ | OE LOW to Data Valid |     | 10  | ns   |
 
-### Tiempo de Deshabilitación de Salida (Output Disable Time)
+### 输出失能时间（Output Disable Time）
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220809094948.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220809094948.png)
 
-Se refiere al tiempo necesario para que un pin cambie de un estado de nivel de conducción válido (alto o bajo) a un estado de alta impedancia (deshabilitado), asegurando que el buffer de salida pueda cambiar el estado del pin dentro del tiempo especificado. Se mide calculando el intervalo de tiempo desde que se emite la señal de control hasta que se detecta el cambio de salida. Se representa en las especificaciones de la siguiente manera:
+指的是引脚从有效驱动电平（高低电平）状态切换到高阻状态（关断失能）所需的时间，确保输出 Buffer 可以在规定的时间内改变引脚状态。测量时计算从控制信号发出到检测到开关输出的时间间隔。在规格书中的表示如下：
 
-| Parámetro  | Descripción                | Mín | Máx | Unidad |
-| ---------- | -------------------------- | --- | --- | ------ |
-| $t_{HZOE}$ | OE alto a datos válidos     |     | 8   | ns     |
+| Parameter  | Description           | Min | Max | Unit |
+| ---------- | --------------------- | --- | --- | ---- |
+| $t_{HZOE}$ | OE High to Data Valid |     | 8   | ns   |
 
-## Parámetros de Temporización
+## 时序参数
 
-### Temporización del Ciclo de Lectura (Read Cycle Timing)
+### 读取周期时序（Read Cycle Timing）
 
-Un ejemplo del ciclo de lectura de una RAM estática de 256 x 4:
+一个 256 x 4 静态 RAM 的读取周期示例：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220731190300.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220731190300.png)
 
-| Parámetro  | Descripción                | Min | Max | Unidad |
-| ---------- | -------------------------- | --- | --- | ------ |
-| $t_{RC}$   | Tiempo de ciclo de lectura  | 15  |     | ns     |
-| $t_{AA}$   | Dirección a datos válidos   |     | 15  | ns     |
-| $t_{ACS}$  | Selección de chip a datos válidos |     | 10  | ns     |
-| $t_{DOE}$  | OE bajo a datos válidos     |     | 10  | ns     |
-| $t_{HZCS}$ | Selección de chip a alta impedancia |     | 8   | ns     |
-| $t_{HZOE}$ | OE alto a alta impedancia   |     | 8   | ns     |
-| $t_{LZCS}$ | Selección de chip a baja impedancia | 2   |     | ns     |
-| $t_{LZOE}$ | OE bajo a baja impedancia   | 2   |     | ns     |
+| Parameter  | Description               | Min | Max | Unit |
+| ---------- | ------------------------- | --- | --- | ---- |
+| $t_{RC}$   | Read Cycle Time           | 15  |     | ns   |
+| $t_{AA}$   | Address to Data Valid     |     | 15  | ns   |
+| $t_{ACS}$  | Chip Select to Data Valid |     | 10  | ns   |
+| $t_{DOE}$  | OE LOW to Data Valid      |     | 10  | ns   |
+| $t_{HZCS}$ | Chip Select to High Z     |     | 8   | ns   |
+| $t_{HZOE}$ | OE HIGH to High Z         |     | 8   | ns   |
+| $t_{LZCS}$ | Chip Select to Low Z      | 2   |     | ns   |
+| $t_{LZOE}$ | OE LOW to Low             | 2   |     | ns   |
 
-1. Primero, el parámetro $t_{RC}$ determina la duración del ciclo de lectura.
-2. Determine qué señal controla la función de lectura. En el ejemplo de la figura anterior, la salida de datos de la RAM está controlada por el flanco descendente de OE.
+1. 首先由 $t_{RC}$ 参数确定写入周期的长度。
+2. 确定哪个信号控制读取的功能。在上图的示例中，RAM 的数据输出是由 OE 的下降沿控制的。
 
-### Temporización del ciclo de escritura (Write Cycle Timing)
+### 写入周期时序（Write Cycle Timing）
 
-Un ejemplo de ciclo de escritura para una RAM estática de 256 x 4:
+一个 256 x 4 静态 RAM 的写入周期示例：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220731190328.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220731190328.png)
 
-| Parámetro  | Descripción                   | Min | Max | Unidad |
-| ---------- | ----------------------------- | --- | --- | ------ |
-| $t_{WC}$   | Tiempo de ciclo de escritura  | 15  |     | ns     |
-| $t_{HZWE}$ | WE bajo a alta impedancia     |     | 8   | ns     |
-| $t_{LZWE}$ | WE alto a baja impedancia     | 2   |     | ns     |
-| $t_{PWE}$  | Ancho de pulso de WE          | 11  |     | ns     |
-| $t_{SD}$   | Configuración de datos hasta el final de escritura | 11  |     | ns     |
-| $t_{HD}$   | Retención de datos desde el final de escritura | 1   |     | ns     |
-| $t_{SA}$   | Configuración de dirección hasta el inicio de escritura | 2   |     | ns     |
-| $t_{HA}$   | Retención de dirección desde el final de escritura | 2   |     | ns     |
-| $t_{SCS}$  | CS bajo hasta el final de escritura | 11  |     | ns     |
-| $t_{AW}$   | Configuración de dirección hasta el final de escritura | 13  |     | ns     |
+| Parameter  | Description                   | Min | Max | Unit |
+| ---------- | ----------------------------- | --- | --- | ---- |
+| $t_{WC}$   | Write Cycle Time              | 15  |     | ns   |
+| $t_{HZWE}$ | WE LOW to High Z              |     | 8   | ns   |
+| $t_{LZWE}$ | WE HIGH to Low Z              | 2   |     | ns   |
+| $t_{PWE}$  | WE Pulse Width                | 11  |     | ns   |
+| $t_{SD}$   | Data Set-Up to Write End      | 11  |     | ns   |
+| $t_{HD}$   | Data Hold from Write End      | 1   |     | ns   |
+| $t_{SA}$   | Address Set-Up to Write Start | 2   |     | ns   |
+| $t_{HA}$   | Address Hold from Write End   | 2   |     | ns   |
+| $t_{SCS}$  | CS LOW to Write End           | 11  |     | ns   |
+| $t_{AW}$   | Address Set-Up to Write End   | 13  |     | ns   |
 
-1. Primero, el parámetro $t_{WC}$ determina la duración del ciclo de escritura.
-2. Determine qué señal controla la función de escritura. En el ejemplo de la figura anterior, la entrada de datos de la RAM está controlada por el flanco ascendente de WE.
+1. 首先由 $t_{WC}$ 参数确定写入周期的长度。
+2. 确定哪个信号控制写入的功能。在上图的示例中，RAM 的数据读入是由 WE 的上升沿控制的。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- "The Fundamentals Of Digital Semiconductor Testing"
+- 《The Fundamentals Of Digital Semiconductor Testing》
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

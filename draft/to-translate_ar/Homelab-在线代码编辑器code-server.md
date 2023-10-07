@@ -1,12 +1,12 @@
-# Homelab - Editor de código en línea code-server
+# Homelab - 在线代码编辑器 code-server
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202304132214418.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304132214418.png)
 
-**code-server** es un VS Code que se puede ejecutar en un navegador. En comparación con la versión de escritorio, la ventaja es que puedes escribir código en cualquier dispositivo en línea, incluyendo dispositivos como teléfonos móviles y tabletas que no pueden instalar directamente VS Code.
+**code-server** 是一个能在浏览器中运行的 VS Code。相比于桌面端的优势是，你可以用任意设备在线码字，包括手机与平板这一类无法直接安装 VS Code 的设备。
 
-## Implementación (Docker Compose)
+## 部署（Docker Compose）
 
-Primero, crea el archivo `compose.yaml` y pega el siguiente contenido:
+首先创建 `compose.yaml` 文件，并粘贴以下内容：
 
 ```yaml title="compose.yaml"
 version: "2.1"
@@ -19,69 +19,67 @@ services:
     volumes:
       - ${STACK_DIR}/config:/config
       - ${DATA_DIR_LOCAL}:/DATA
-    environment: # necesita ejecutarse con permisos de root, de lo contrario no podrá leer otros directorios de docker o el directorio raíz del host
+    environment: # 需要以 root 权限运行，否则无法读取其他 docker 目录或宿主机 root 目录
       - PUID=0
       - PGID=0
       - TZ=Asia/Shanghai
-      - PASSWORD=${APP_PASSWORD} #opcional
-      - SUDO_PASSWORD=${APP_SUDO_PASSWORD} #opcional
-      #- SUDO_PASSWORD_HASH= #opcional
-      #- PROXY_DOMAIN=code.wiki-power.com #opcional
+      - PASSWORD=${APP_PASSWORD} #optional
+      - SUDO_PASSWORD=${APP_SUDO_PASSWORD} #optional
+      #- SUDO_PASSWORD_HASH= #optional
+      #- PROXY_DOMAIN=code.wiki-power.com #optional
     restart: unless-stopped
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar tus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `code-server`).
+（可选）推荐在 `compose.yaml` 同级目录下创建 `.env` 文件，并自定义你的环境变量。如果不想使用环境变量的方式，也可以直接在 `compose.yaml` 内自定义你的参数（比如把 `${STACK_NAME}` 替换为 `code-server`）。
 
 ```dotenv title=".env"
 STACK_NAME=code-server
-STACK_DIR=xxx # ruta personalizada de almacenamiento del proyecto, por ejemplo, ./code-server
-DATA_DIR_LOCAL=xxx # directorio local montado personalizado, por ejemplo, /DATA
+STACK_DIR=xxx # 自定义项目储存路径，例如 ./code-server
+DATA_DIR_LOCAL=xxx # 自定义挂载本地目录，例如 /DATA
 
 # code-server
 APP_VERSION=latest
-APP_PORT=xxxx # puerto de acceso personalizado, elige uno que no esté en uso
-APP_PASSWORD=xxx # contraseña de inicio de sesión
-APP_SUDO_PASSWORD=xxx # contraseña de permisos de superusuario
+APP_PORT=xxxx # 自定义访问端口，选择不被占用的即可
+APP_PASSWORD=xxx # 登录密码
+APP_SUDO_PASSWORD=xxx # 超级用户权限密码
 
 ```
 
-Finalmente, ejecuta el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores.
+最后，在 `compose.yaml` 同级目录下执行 `docker compose up -d` 命令即可启动编排的容器。
 
-## Instrucciones de configuración
+## 配置说明
 
-### Configurar Git
+### 配置 git
 
-Después de la instalación, si necesitas usar Git, configura tu nombre de usuario y correo electrónico. Consulta el artículo [**Notas de aprendizaje de Git**](https://wiki-power.com/es/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE) para obtener más información.
+安装完成后，如果需要使用 Git，对用户名和邮箱初始化配置，请参考文章 [**Git 学习笔记**](https://wiki-power.com/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE)。
 
-### Problemas de permisos de lectura y escritura
+### 读写权限问题
 
-Si encuentras el error `Error: EACCES: permission denied` al trabajar con archivos, abre la terminal e ingresa el siguiente comando para otorgar la propiedad al usuario actual:
+如果在操作文件时遇到 `Error: EACCES: permission denied` 错误，可以打开终端，输入以下命令赋予当前用户所有权：
 
 ```shell
-sudo chown -R username folder_path
+sudo chown -R 用户名 文件夹路径
 ```
 
-Por ejemplo, el siguiente comando otorga la propiedad del directorio actual al usuario `abc`:
+例如，以下是给 `abc` 用户赋予当前目录的所有权的操作：
 
 ```shell
 sudo chown -R abc .
 ```
 
-### Configurar la contraseña de la cuenta root
+### 设置 root 账户密码
 
-Si necesitas usar la cuenta root, usa el siguiente comando para configurar su contraseña:
+如果需要用到 root 账户，可以使用以下命令初始化其密码：
 
 ```shell
 sudo passwd root
 ```
 
-## Referencias y Agradecimientos
+## 参考与致谢
 
-- [Sitio web oficial](https://coder.com/docs/code-server/latest)
-- [Documentación / Repositorio de GitHub](https://github.com/linuxserver/docker-code-server)
+- [官网](https://coder.com/docs/code-server/latest)
+- [文档 / GitHub repo](https://github.com/linuxserver/docker-code-server)
 - [Docker Hub](https://hub.docker.com/r/linuxserver/code-server)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

@@ -1,87 +1,85 @@
-# Configuración de Oh My Zsh en CentOS
+# CentOS 配置 Oh My Zsh
 
-## Verificar la shell actual
+## 查看当前 Shell
 
 ```Shell
 echo $SHELL
 ```
 
-Por lo general, devolverá `bin/bash`
+一般情况下会返回 `bin/bash`
 
-## Instalar zsh
+## 安装 zsh
 
 ```shell
 yum install -y zsh
 ```
 
-## Cambiar la shell predeterminada a zsh
+## 切换默认 Shell 为 zsh
 
-Debe ejecutar este comando como usuario root:
+需要在 root 用户下运行此命令：
 
 ```shell
 chsh -s /bin/zsh
 ```
 
-## Instalar git
+## 安装 git
 
 ```shell
 yum install -y git
 ```
 
-## Instalar Oh My Zsh
+## 安装 Oh My Zsh
 
-### Automático
+### 自动
 
 ```shell
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-o
+或
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 ```
 
-### Manual
+### 手动
 
-Si no se puede instalar de la manera anterior (posiblemente debido a un bloqueo), se puede instalar manualmente de la siguiente manera:
+如果无法通过上面的方式安装（可能因为墙），则可通过以下方式手动安装：
 
-Descargar el código fuente:
+下载源码：
 
 ```shell
 git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 ```
 
-Copiar la configuración:
+复制配置：
 
 ```shell
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 ```
 
-## Cambiar el tema de Oh My Zsh
+## 修改 Oh My Zsh 主题
 
-Listar todos los temas:
+列出所有主题：
 
 ```shell
 ls ~/.oh-my-zsh/themes
 ```
 
-Cambiar el tema:
+修改主题：
 
 ```shell
 vim ~/.zshrc
 ```
 
-Cambiar el tema predeterminado `ZSH_THEME="robbyrussell"` por el que prefiera.
+将默认主题是 `ZSH_THEME="robbyrussell"` 修改为自己喜欢的即可。
 
-## Reiniciar para que surta efecto
+## 重启生效
 
 ```shell
 reboot
 ```
 
-## Referencias y agradecimientos
+## 参考与致谢
 
 - [centos7 安装 zsh 配置 oh-my-zsh](https://www.jianshu.com/p/4ce7d511bc13)
 - [CentOs 安装 oh my zsh](https://www.jianshu.com/p/556ff130fc65)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

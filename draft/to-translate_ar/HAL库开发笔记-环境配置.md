@@ -1,78 +1,76 @@
-# Notas de desarrollo de la biblioteca HAL - Configuración del entorno
+# HAL 库开发笔记 - 环境配置
 
-Nota: Este tutorial se basa en la placa STM32F429IGT6 de Reverse Costumer.
+注：本教程基于反客的 STM32F429IGT6 板子。
 
-## Instalación de software
+## 软件安装
 
 ### Keil MDK
 
-Consulte el artículo [**Guía de configuración de Keil MDK**](https://wiki-power.com/es/KeilMDK%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97) para obtener más información.
+详见文章 [**Keil MDK 配置指南**](https://wiki-power.com/KeilMDK%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97)
 
 ### Java Runtime Environment
 
-Este es el entorno Java necesario para STM32CubeMX. Descárguelo e instálelo desde el [**enlace oficial**](https://www.java.com/en/download/).
+这是 STM32CubeMX 所需要的 Java 环境，从 [**官网链接**](https://www.java.com/en/download/) 下载安装即可。
 
 ### STM32CubeMX
 
-Descargue e instale STM32CubeMX desde el [**enlace oficial**](https://my.st.com/content/my_st_com/zh/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-configurators-and-code-generators/stm32cubemx.license=1611899126599.product=STM32CubeMX.version=6.1.1.html).
+从 [**官网链接**](https://my.st.com/content/my_st_com/zh/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-configurators-and-code-generators/stm32cubemx.license=1611899126599.product=STM32CubeMX.version=6.1.1.html) 下载并安装 STM32CubeMX。
 
-## Configuración del proyecto
+## 项目的配置
 
-### Inicialización
+### 初始化
 
-Cree un nuevo proyecto y guarde después de seleccionar el chip.
+新建项目，选择芯片后先保存。
 
-### Configuración SYS
+### 配置 SYS
 
 `Pinout & Configurations` - `System Core` - `SYS`
 
-Cambie la opción `Debug` a `Serial Wire` (consulte el artículo [**Evite problemas con CubeMX y CubeIDE**](https://wiki-power.com/es/CubeMX与CubeIDE避坑) para obtener más información).
+将 `Debug` 选项改为 `Serial Wire`（原因详见文章 [**CubeMX 与 CubeIDE 避坑**](https://wiki-power.com/CubeMX与CubeIDE避坑)）
 
-### Configuración RCC
+### 配置 RCC
 
 `Pinout & Configurations` - `System Core` - `RCC`
 
-Configure según la placa.
+按照板子的情况设置就行了。
 
-Por ejemplo, consulte el esquemático de la placa:
+举个例子，参照板子原理图：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210205205030.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210205205030.png)
 
-Configure las opciones `HSE` y `LSE` como cristales externos:
+将 `HSE` 和 `LSE` 的选项都设置为外部晶振就可以了：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210205205140.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210205205140.png)
 
-### Configuración del árbol de reloj
+### 配置时钟树
 
-Configure en la interfaz `Clock Configuration`.
+在 `Clock Configuration` 界面进行配置。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210205205550.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210205205550.png)
 
-Siga los pasos de la imagen anterior:
+根据上图的步骤如下：
 
-1. Ingrese los valores de las dos frecuencias más a la izquierda según los parámetros del cristal externo de la placa.
-2. Seleccione `HSE`, ya que la frecuencia y precisión del cristal externo son mayores que las del interno.
-3. Seleccione `PLLCLK` para obtener una frecuencia alta mediante multiplicación de fase de bucle cerrado (PLL).
-4. Ingrese el valor de `HCKL`, generalmente según la frecuencia máxima indicada en la parte inferior, y presione Enter para calcular automáticamente la frecuencia de división y multiplicación.
+1. 根据板载外部晶振的参数，填入最左侧两个频率的值
+2. 勾选 `HSE` ，因为外部晶振频率和精度都比内部的高
+3. 勾选 `PLLCLK` ，使用 PLL 锁相环倍频得到高频率
+4. 填入 `HCKL` 的值，一般根据下方提示的最大频率填写，填写后按回车，便可自动计算分频倍频数
 
-### Configuración de opciones de gestión de proyectos
+### 配置项目管理选项
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210130095224.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210130095224.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210130095239.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210130095239.png)
 
-## Diferencias entre la biblioteca HAL y la biblioteca estándar
+## HAL 库与标准库的区别
 
-Para aumentar la portabilidad, la biblioteca HAL tiene tres funciones adicionales en comparación con la biblioteca estándar: **manejador, funciones MSP y funciones de devolución de llamada**. Consulte el contenido en los enlaces de referencia al final del artículo para obtener más información.
+为了增加可移植性，HAL 库相比标准库多了 **句柄、MSP 函数、Callback 函数** 这三个功能，具体可参见文末引用链接中的内容。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [【STM32】Explicación detallada del RCC del reloj del sistema](https://blog.csdn.net/as480133937/article/details/98845509)
-- [Inicialización de la placa, configuración completa y detallada del árbol de reloj RCC](https://www.notion.so/2-RCC-770c0c454f954408a3956257aa0fb523)
-- [Resumen completo del conocimiento de STM32 HAL](https://mp.weixin.qq.com/s/ffcjKtl7JdRibLRNGquGXA)
-- [Resumen claro del conocimiento completo de STM32 HAL](https://mp.weixin.qq.com/s/qkj0fQS5NrCXmbppKEhaAg)
+- [【STM32】系统时钟 RCC 详解](https://blog.csdn.net/as480133937/article/details/98845509)
+- [板子初始化，RCC 时钟树完整配置的方式和详细过程](https://www.notion.so/2-RCC-770c0c454f954408a3956257aa0fb523)
+- [STM32 HAL 的超全知识总结](https://mp.weixin.qq.com/s/ffcjKtl7JdRibLRNGquGXA)
+- [清晰了，STM32 HAL 的超全知识总结](https://mp.weixin.qq.com/s/qkj0fQS5NrCXmbppKEhaAg)
 
-a_reemplazar[1]  
-a_reemplazar[2]
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

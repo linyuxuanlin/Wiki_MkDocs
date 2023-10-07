@@ -1,28 +1,26 @@
-# RaptorDVR - Controlador de doble motor con regulador integrado de 30 A 🚧
+# RaptorDVR - 集成稳压的 30 A 双电机驱动 🚧
 
-RaptorDVR es una placa controladora de doble motor de corriente continua con reducción de velocidad capaz de manejar corrientes de hasta 30 A. También cuenta con un regulador de voltaje de 5 V/5 A integrado para alimentar dispositivos externos como la Raspberry Pi y placas controladoras de microcontroladores.
+RaptorDVR 是一款能驱动 30 A 电流的直流减速双电机驱动板，上面也集成了 5 V/5 A 稳压电源，供树莓派和单片机主控板等外设使用。
 
-## Características
+## 特性
 
-- Tipo de controlador: controlador de puente H de doble canal con MOSFET
-- Voltaje de entrada externo: 3.5-28 V (por confirmar)
-- Corriente de motor (por canal): 15 A
-- Protección de circuito: fusible de 30 A (LED indicador de estado del fusible)
+- 驱动类型：双路全桥 MOS 管驱动
+- 外部输入电压：3.5-28 V（待测试）
+- 电机驱动电流（单路）：15 A
+- 电路保护：30 A 保险丝（LED 显示保险丝状态）
 
-## Diseño de hardware
+## 硬件设计
 
-### Controlador de puente H
+### 全桥驱动
 
-### Regulador de voltaje
+### 电源稳压
 
-## Programa de ejemplo
+## 示例程序
 
-## Referencias y agradecimientos
+## 参考与致谢
 
 - [Hercules Dual 15A 6-20V Motor Controller](https://wiki.seeedstudio.com/Hercules_Dual_15A_6-20V_Motor_Controller/)
 - 105010000
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

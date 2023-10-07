@@ -1,20 +1,18 @@
-# Linux embebido - Subsistema GPIO
+# 嵌入式 Linux - GPIO 子系统
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [8. Control de zumbador (Subsistema GPIO)](https://doc.embedfire.com/linux/stm32mp1/linux_base/zh/latest/linux_app/gpio_subsystem/gpio_subsystem.html)
+- [8. 控制蜂鸣器（GPIO 子系统）](https://doc.embedfire.com/linux/stm32mp1/linux_base/zh/latest/linux_app/gpio_subsystem/gpio_subsystem.html)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 
-## Introducción al subsistema GPIO
+## GPIO 子系统简介
 
-GPIO (General Purpose I/O) se refiere a los puertos de entrada/salida generales. Estos pines suelen tener múltiples funciones, siendo la más básica la detección de entrada de nivel alto o bajo y la salida. Algunos pines también se pueden vincular a los periféricos integrados del controlador principal, y se pueden utilizar como pines de comunicación para UART, I2C, red, detección de voltaje, entre otros.
+GPIO（General Purpose I/O）即通用输入输出端口。这些引脚通常有多种功能，最基本的是高低电平输入检测和输出，部分引脚还会与主控器的片上外设绑定，可作为串口、I2C、网络、电压检测等的通信引脚。
 
-Al igual que con el subsistema LED, Linux proporciona un marco de controlador para el subsistema GPIO. Este marco de controlador exporta los pines GPIO de la CPU al espacio de usuario, y podemos controlarlos accediendo al sistema de archivos `/sys`. El subsistema GPIO admite el uso de pines para funciones básicas de entrada/salida, y la función de entrada admite la detección de interrupciones. (En el directorio `Documentation/gpio` del código fuente del kernel de Linux se puede encontrar una explicación más detallada sobre el subsistema GPIO).
+与 LED 子系统类似，Linux 提供了 GPIO 子系统驱动框架，使用该驱动框架将 CPU 的 GPIO 引脚导出到用户空间，我们通过访问 `/sys` 文件系统进行控制。GPIO 子系统支持把引脚用于基本的输入输出功能，其中输入功能支持中断检测。（在 Linux 内核源码 `Documentation/gpio` 目录可找到关于 GPIO 子系统更详细的说明）
 
-## Directorio de dispositivos GPIO
+## GPIO 设备目录
 
-El directorio exportado por el subsistema GPIO al espacio de usuario es `/sys/class/gpio`, que se puede ver con el siguiente comando:
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+GPIO 驱动子系统导出到用户空间的目录是 `/sys/class/gpio`，使用如下的命令查看：

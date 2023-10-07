@@ -1,38 +1,38 @@
-# Acelerando el servicio de Pages con Vercel
+# 用 Vercel 加速 Pages 服务
 
-Hace un tiempo, mi blog (alojado en GitHub Pages) fue bloqueado. Como la mayoría de mi audiencia es de China, esto fue un gran problema. Por lo general, la solución es comprar un servidor o migrar a OSS. Pero ambos métodos son complicados y costosos. Afortunadamente, encontré esta herramienta llamada Vercel. Ahora puedo escribir mi blog felizmente de nuevo.
+前一段时间，我的博客（托管在 GitHub Pages）被墙了。因为受众大多是国内用户，所以问题很大。  
+一般来说，解决方法只有买服务器 / 迁移到 OSS. 但方法都偏复杂，也费钱。
+恰巧碰上了这个神器 Vercel. 于是又可以愉快地写博客了。
 
-## Ventajas de Vercel
+## Vercel 的优势
 
-- Dominio personalizado gratuito con soporte HTTPS
-- Servicio Serverless
-- Nodos de Google Cloud y AWS, con nodos en Hong Kong y Taiwán, lo que permite una velocidad de acceso decente desde China
-- 20 GB de cuota gratuita, suficiente para la mayoría de los sitios web
-- Sin límite en la cantidad de sitios y API Serverless
-- Serverless compatible con Node.js, Go, Python y Ruby
-- Compatible con la CLI now.sh, GitHub, GitLab y Bitbucket para importar y desplegar
+- 免费自定义域名，支持 HTTPS
+- 提供 Serverless 服务
+- 提供 Google Cloud 与 AWS 节点，有香港与台湾节点，国内访问速度还可以
+- 免费额度有 20 GB，够用
+- 不限站点与 Serverless API 数量
+- Serverless 支持 Node.js，Go，Python，Ruby
+- 支持 now.sh CLI，GitHub，GitLab，Bitbucket 导入 / 部署
 
-## Cómo usarlo
+## 用法
 
-La configuración es sencilla, así que solo proporcionaré una breve explicación en texto.
+因配置步骤不复杂，所以只以文字进行简要的说明。
 
-1. Inicia sesión con tu cuenta de GitHub
-2. Importa tu sitio web (importa directamente desde el repositorio de GitHub)
-3. Configura las instrucciones de despliegue (para la plataforma VuePress, se puede dejar en blanco)
-4. Configura la ruta de salida (para VuePress, es `docs/.vuepress/dist`)
-5. Asegúrate de establecer la rama de producción como `gh-pages` en la configuración
-6. Asocia tu dominio
+1. 用 GitHub 账号直接登录
+2. 导入站点（直接导入 GitHub Repo）
+3. 配置部署指令（VuePress 平台可放空）
+4. 配置输出路径（VuePress 是 `docs/.vuepress/dist`）
+5. 要在设置里面把生产分支设为 `gh-pages`
+6. 绑定域名
 
-## Notas
+## 注意
 
-Asegúrate de escribir un mensaje de commit de más de 1 carácter, de lo contrario, no se desplegará.
+每次 commit message 要写超过 1 个字符，否则不会部署。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
 - [Vercel](https://vercel.com/)
-- [ZEIT (Vercel) now.sh Free Deployment of Blog Websites, Supporting Serverless Python Go Node.js](https://wivwiv.com/post/zeit-use-guide/)
+- [ZEIT (Vercel) now.sh 免费部署博客网站，支持 Serverless Python Go Node.js](https://wivwiv.com/post/zeit-use-guide/)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

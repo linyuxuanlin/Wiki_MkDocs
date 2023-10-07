@@ -1,15 +1,16 @@
-# Diseño EMC entre la tierra de señal y la tierra de la carcasa
+# 信号地与机壳地间的 EMC 设计
 
-Por lo general, entre la tierra de señal y la tierra de la carcasa en una PCB, se utiliza un condensador de alta tensión (1 ~ 100nF / 2kV) y una gran resistencia (1MΩ) en paralelo para mejorar el rendimiento EMC:
+通常，在 PCB 的信号地与机壳地之间，我们会使用一个高压电容（1~100nF/2kV）与大电阻（1MΩ）并联连接，以提高 EMC 性能：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220620162528.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220620162528.png)
 
-El condensador actúa como un filtro de paso alto. Desde el punto de vista de EMI, puede evitar la radiación de antena al hacer que las interferencias de alta frecuencia generadas internamente en el circuito fluyan a través de la carcasa hacia la tierra; desde el punto de vista de EMS, puede suprimir la diferencia de voltaje común transitoria entre la fuente de interferencia de alta frecuencia y el circuito, ya que a veces no se puede conectar directamente (la tierra después del puente rectificador de 220VAC no se puede conectar directamente a la tierra de la carcasa) o la conexión directa no es lo suficientemente segura.
+其中，电容的作用是通交阻直。从 EMI 角度看，可将电路内部产生的高频干扰会经过机壳流入大地，避免产生天线辐射；从 EMS 角度看，可抑制高频干扰源和电路之间的瞬态共模压差，因电路有时不可直连（220VAC 过整流桥后的 GND 不可直连机壳地）或直连不够安全。
 
-La resistencia actúa como una descarga de carga para evitar daños en el circuito por ESD. Si solo se conecta la tierra de señal y la tierra de la carcasa con un condensador, la tierra de señal estará flotando. Durante las pruebas de ESD, la tierra de señal acumulará gradualmente cargas de alta tensión. Una vez que supere la tensión que los dos puntos de tierra más cercanos pueden soportar, se producirá una descarga de arco que generará una corriente muy grande en unos pocos nanosegundos, dañando el circuito. Al agregar esta resistencia en paralelo, se puede descargar lentamente la carga.
+电阻的作用是泄放电荷，防 ESD 损害电路。假如只有电容连接信号地与机壳地，那么信号地是浮空的。ESD 测试时，信号地会逐渐积累高压电荷，一旦超过两个地之间最近的地方所能耐受的电压，就会发生电弧放电，将在几纳秒之内产生很大的电流，损害电路。并联了这个电阻，即可缓慢泄放掉电荷。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [¿Qué se dice sobre la conexión de resistencia y capacitancia entre la tierra de PCB y la carcasa metálica?](https://mp.weixin.qq.com/s/vAdoDyBed4uIfISrP0Zeyw)
+- [PCB 地与金属机壳用阻容连接，什么说法？](https://mp.weixin.qq.com/s/vAdoDyBed4uIfISrP0Zeyw)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

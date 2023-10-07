@@ -1,101 +1,99 @@
-# Consejos útiles de AD
+# AD 常用技巧
 
-—— Organización y recopilación de algunos consejos prácticos.
+—— 收纳整理了一些实用的小技巧。
 
-## Biblioteca de esquemas
+## 原理图库部分
 
-### Subrayado de nombres de pines (activo en bajo)
+### 引脚名称上划线（低电平有效）
 
-**Método**: Agregar el símbolo "\" después de cada letra que necesite ser subrayada.  
-**Ejemplo**: Agregar subrayado a `RESET` - `R\E\S\E\T`
+**方法**：给需要加上划线的每个字母后面加 “\” 符号  
+**示例**：`RESET` 加上划线 - `R\E\S\E\T`
 
-## Biblioteca de encapsulados de PCB
+## PCB 封装库部分
 
-(pendiente de actualización)
+（待更新）
 
-## Esquemas
+## 原理图部分
 
-### Desactivar la operación "Add Room"
+### 禁止 Add Room 操作
 
-**Razón**: La operación Room es útil en la distribución de múltiples canales y permite aplicar la distribución de un canal a otros canales. No es necesario usar Room en un solo canal.  
-**Método**:
+**原因**：Room 操作在多通道布线中比较有用，可将一个通道内的布线直接应用到其他通道。单通道可以不用 Room.  
+**方法**：
 
-1. Barra de menú - Proyecto - Selección de proyecto - Pestaña Generación de clase
-2. Desmarcar "Generar Room"
+1. 菜单栏 - 工程 - 工程选择 - Class Generation 选项卡
+2. 取消勾选 “生成 Room”
 
-## PCB
+## PCB 部分
 
-### Agregar logotipos e identificadores
+### Logo 及标识的添加
 
-**Razón**: Si se utiliza la importación directa de imágenes, el logotipo creado no se puede ajustar libremente en tamaño.  
-**Método**: Utilice el software de fuentes Font Creator, descargue mi fuente en [GitHub](https://github.com/linyuxuanlin/Modularity_of_Functional_Circuit/tree/master/%E4%B8%93%E7%94%A8%E5%AD%97%E4%BD%93) como plantilla y personalice su propia fuente exclusiva. Después de crear la fuente, instale el archivo .ttf y podrá llamar al logotipo correspondiente con los caracteres apropiados en Altium.
+**原因**：如果用直接导入图片的方式，创建的 Logo 无法自由调整大小。  
+**方法**：使用字库软件 Font Creator, 在 [GitHub](https://github.com/linyuxuanlin/Modularity_of_Functional_Circuit/tree/master/%E4%B8%93%E7%94%A8%E5%AD%97%E4%BD%93) 下载我的字库作为模板，定制自己的专属字库。字库制作完成后，安装 .ttf 文件，即可在 Altium 内用相应字符调出 Logo 。
 
-El logotipo correspondiente a cada carácter se muestra en la siguiente imagen:  
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200207200606.png)
+字符对应 Logo 如下图：  
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200207200606.png)
 
-### Distribución automática de componentes en un área designada
+### 自动排布元器件至划定区域
 
-**Razón**: Al actualizar el esquema al PCB, algunos componentes pueden moverse lejos.  
-**Método**: Seleccionar todo - **TOL** - Seleccionar con un cuadro
+**原因**：原理图更新到 PCB 时，有些元件会跑很远。  
+**方法**：全选 - **TOL** - 框选
 
-### Distribución circular
+### 圆形阵列布局
 
-**Método**:
+**方法**：
 
-1. Seleccionar el objeto - Copiar
-2. **EA** - Marcar Pegar en la capa actual
-3. Hacer clic en Pegar matriz - Establecer la cantidad de objetos y el espaciado
+1. 选中对象 - 复制
+2. **EA** - 勾选 粘贴到当前层
+3. 点击 粘贴阵列 - 设置对象数量与间距
 
-### Perforaciones rápidas y cambio de capa
+### 快捷打过孔并换层
 
-**Método**: Cambiar con el teclado numérico + / -
+**方法**：布线时用小键盘 + / - 切换
 
-### Configuración uniforme de la red de perforaciones
+### 统一设置过孔网络属性
 
-**Método**:
+**方法**：
 
-1. Hacer clic con el botón derecho en cualquier perforación sin atributos - Buscar objetos similares - Establecer Net como Same
-2. Agregar uniformemente los atributos de la red de perforaciones en el panel de propiedades
+1. 右键单击任意无属性过孔 - 查找相似对象 - 设置 Net 为 Same
+2. 在属性面板中统一添加过孔网络属性
 
-### Agregar gotas de lágrima
+### 添加泪滴
 
-**Razón**: Las gotas de lágrima mejoran la integridad de la señal, reducen la pérdida y la reflexión de la señal, y reducen el riesgo de rotura del punto de contacto entre el cable y la perforación durante el impacto externo.  
-**Método**: Usar el atajo **TE**
+**原因**：泪滴的作用是提高信号的完整性，减少信号损失和反射，降低外力冲撞时导线与过孔接触点断裂的风险。  
+**方法**：使用快捷键 **TE**
 
-### Ventana de cableado
+### 导线开窗
 
-**Razón**: El estañado en la ventana de cableado puede aumentar el flujo de corriente.  
-**Método**: Copiar la línea requerida y pegarla en la capa de soldadura superior / inferior correspondiente.
+**原因**：导线开窗上锡可增加载流量。  
+**方法**：将所需走线复制，特殊粘贴到相应 Top / Bottom Solder 层
 
-### Operaciones en la vista previa en 3D
+### 3D 预览下的操作
 
-**Método**:
+**方法**：
 
-- Presionar la tecla "3" para ingresar a la vista previa en 3D
-- Presionar la tecla "2" para volver a la edición de PCB
-- Presionar la tecla "0" para restaurar la vista predeterminada
-- Ctrl + F para voltear
-- Ctrl + rueda de desplazamiento para hacer zoom
-- Shift + clic derecho para cambiar la perspectiva
+- 按数字键 “3” 进入 3D 预览界面
+- 按数字键 “2” 返回 PCB 编辑
+- 按数字键 “0” 恢复默认视角
+- Ctrl + F 翻面
+- Ctrl + 滚轮 缩放
+- Shift + 右键 改变视角
 
-### Mantener las propiedades de la red al copiar y pegar
+### 复制粘贴中保持网络属性
 
-**Razón**: Al copiar y pegar objetos con propiedades eléctricas, se pierden las propiedades de la red.  
-**Método**: Copiar objeto - **EA** - Marcar Mantener el nombre de la red - Pegar
+**原因**：复制粘贴具有电气属性时，网络属性会丢失。  
+**方法**：复制对象 - **EA** - 勾选 保持网络名称 - 粘贴
 
-### Salida del diagrama de posición de soldadura
+### 焊接位号图的输出
 
-(pendiente de actualización)
+（待更新）
 
-### Cómo hacer una ranura en el PCB
+### 如何在 PCB 上开槽
 
-En la **capa mecánica 1** del PCB, dibuje una figura cerrada para la ranura, selecciónela y use el atajo `T` - `V` - `B` para generar la ranura (es mejor cambiar a la vista 3D para confirmar).
+在 PCB 上的 **机械 1 层** 绘制开槽的封闭图形，选中并使用快捷键 `T` - `V` - `B` 即可生成开槽（最好切换 3D 视角进行确认）。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Altium Designer19 Design Compendium: Practical Operation Skills and Problem Solving Methods](https://item.jd.com/12756518.html)
+- [Altium Designer19 设计宝典：实战操作技巧与问题解决方法](https://item.jd.com/12756518.html)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

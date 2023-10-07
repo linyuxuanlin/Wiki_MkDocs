@@ -1,158 +1,159 @@
-# Notas de estudio de Linux - Conocimientos básicos
+# Linux 学习笔记 - 基础知识
 
-## Conexión a un host remoto
+## 连接远程主机
 
-Usando ssh:
+使用 ssh：
 
 ```shell
-ssh usuario@IP
+ssh user@IP
 ```
 
-## Estructura del directorio raíz
+## 根目录结构
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211009094302.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211009094302.png)
 
-| Directorio  | Contenido del directorio                                                                                                               |
+| 目录        | 目录放置的内容                                                                                                                         |
 | ----------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| bin         | Archivos binarios, donde se almacenan los comandos del sistema, como cat, cp, mkdir.                                                  |
-| boot        | Contiene los archivos necesarios para el proceso de arranque, como el gestor de arranque grub2.                                        |
-| dev         | Directorio que contiene todos los archivos de dispositivos, como tarjetas de sonido, discos duros, unidades de CD/DVD.                  |
-| etc         | Directorio que contiene los archivos de configuración principales del sistema.                                                         |
-| home        | Directorio donde se almacenan los datos de los usuarios.                                                                               |
-| lib         | Biblioteca, donde se almacenan los archivos de biblioteca necesarios para los comandos en los directorios sbin y bin, para evitar duplicados.|
-| lib32/lib64 | Directorios que contienen bibliotecas de funciones binarias, compatibles con 32/64 bits.                                               |
-| lost+found  | En sistemas EXT3/4, cuando el sistema se bloquea o se apaga inesperadamente, se generan algunos archivos fragmentados en este directorio. El comando fcsk los revisa y repara los archivos dañados. |
-| media       | Directorio utilizado para montar dispositivos como CD, DVD, disquetes, etc.                                                             |
-| mnt         | Directorio utilizado para montar dispositivos de almacenamiento temporalmente.                                                           |
-| opt         | Directorio donde se instalan aplicaciones de terceros.                                                                                  |
-| proc        | Directorio donde se almacena información del proceso y del kernel, no ocupa espacio en disco.                                           |
-| root        | Directorio de inicio del usuario root.                                                                                                  |
-| run         | Es un sistema de archivos temporal, donde se almacena información desde el inicio del sistema. Cuando se reinicia el sistema, los archivos de este directorio deben eliminarse o limpiarse. |
-| sbin        | Binarios del sistema, donde se almacenan los comandos que utiliza el usuario root, como el comando de formato mkfs.                     |
-| srv         | Directorio que contiene archivos de datos necesarios para algunos servicios de red.                                                     |
-| sys         | Al igual que el directorio proc, se utiliza para registrar información relacionada con la CPU y el hardware del sistema.                 |
-| tmp         | Directorio donde se almacenan los archivos temporales generados durante la ejecución de programas.                                       |
-| usr         | Directorio donde se almacenan los programas del sistema, similar a la carpeta programefiles en Windows.                                  |
-| var         | Directorio donde se almacenan los archivos que cambian con frecuencia, como los archivos de registro del sistema.                        |
+| bin         | binary 二进制文件，存放系统命令，如 cat，cp，mkdir                                                                                     |
+| boot        | 存放开机启动过程所需的内容，如开机管理程序 grub2                                                                                       |
+| dev         | 所有设备文件的目录（如声卡、硬盘、光驱）                                                                                               |
+| etc         | etcetera，存放系统的主要配置文件                                                                                                       |
+| home        | 用户家目录数据的存放目录                                                                                                               |
+| lib         | library，存放 sbin 和 bin 目录下命令所需的库文件，避免重复                                                                             |
+| lib32/lib64 | 存放二进制函数库，支持 32/64 位                                                                                                        |
+| lost+found  | 在 EXT3/4 系统中，当系统意外崩溃或意外关机时，会产生一些碎片文件在这个目录下面，系统启动 fcsk 工具会检查这个目录，并修复已损坏的文件。 |
+| media       | 用于挂载光盘，软盘和 DVD 等设备                                                                                                        |
+| mnt         | mount，同 media 作用一样，用于临时挂载存储设备                                                                                         |
+| opt         | 第三方软件安装存放目录。                                                                                                               |
+| proc        | 进程及内核信息存放目录，不占用硬盘空间。                                                                                               |
+| root        | root 用户的家目录                                                                                                                      |
+| run         | 是一个临时文件系统，存储系统启动以来的信息。当系统重启时，这个目录下的文件应该被删掉或清除。                                           |
+| sbin        | system bin，存放 root 用户使用的命令，如格式化命令 mkfs                                                                                |
+| srv         | 一些网络服务所需要的数据文件                                                                                                           |
+| sys         | 同 proc 目录，用于记录 CPU 与系统硬件的相关信息                                                                                        |
+| tmp         | 存放程序运行时产生的临时文件                                                                                                           |
+| usr         | 系统存放程序的目录，类似于在 windows 下的文件夹 programefiles                                                                          |
+| var         | 存放内容常变动的文件目录，如系统日志文件                                                                                               |
 
-## Tipos de archivos
+## 文件类型
 
-En Linux, todo es un archivo.
+在 Linux 下，一切皆文件。
 
-Las extensiones de archivo comunes son las siguientes:
+常见的文件拓展名如下：
 
-- Los sufijos .tar, .tar.gz, .tgz, .zip, .tar.bz indican archivos comprimidos, y los comandos de creación suelen ser tar, gzip, zip, etc. El sufijo en el archivo comprimido generalmente indica el formato de compresión utilizado para empaquetarlo, lo que facilita la selección del comando a utilizar para descomprimirlo.
-- .sh indica un archivo de script de shell, un programa desarrollado en lenguaje shell.
-- .pl indica un archivo de lenguaje Perl, un programa desarrollado en lenguaje Perl.
-- .py indica un archivo de lenguaje Python, un programa desarrollado en lenguaje Python.
-- .html, .htm, .php, .jsp, .do indican archivos de lenguaje web.
-- .conf indica archivos de configuración de servicios del sistema.
-- .rpm indica archivos de paquetes de instalación RPM.
+- 后缀.tar、.tar.gz、.tgz、.zip、.tar.bz 表示压缩文件，创建命令一般为 tar，gzip，zip 等。在压缩文件中的后缀名来通常表示自身由什么压缩格式打包的，以便解压时方便选择要使用的命令。
+- .sh 表示 shell 脚本文件，通过 shell 语言开发的程序。
+- .pl 表示 perl 语言文件，通过 perl 语言开发的程序。
+- .py 表示 python 语言文件，通过 python 语言开发的程序。
+- .html、.htm、.php、.jsp、.do 表示网页语言的文件。
+- .conf 表示系统服务的配置文件。
+- .rpm 表示 rpm 安装包文件。
 
-Los archivos tienen principalmente los siguientes tipos:
+文件主要有以下类型：
 
-### Archivos normales
+### 普通文件
 
-Archivos de texto, binarios, etc.
+文本文件，bin 文件等。
 
-### Archivos ejecutables
+### 可执行文件
 
-Incluyen scripts y aplicaciones, estos archivos pueden ser cargados y ejecutados por el sistema, similares a los archivos de script bat y los archivos de programa exe en Windows.
+包括脚本和应用程序，这些文件可被系统加载运行，类似 Windows 下的 bat 脚本、exe 程序文件等。
 
-### Archivos de enlace
+### 链接文件
 
-Los archivos de enlace se dividen en enlaces duros y enlaces simbólicos:
+链接文件分为硬链接和软链接：
 
-- Los enlaces duros se refieren a diferentes nombres para el mismo archivo.
-- Los enlaces simbólicos son similares a los accesos directos de Windows. En realidad, es un archivo especial. En el enlace simbólico, el archivo es en realidad un archivo de texto que contiene información sobre la ubicación de otro archivo.
+- 硬链接是指同一个文件的不同别名。
+- 软链接类似于 Windows 的快捷方式。它实际上是一个特殊的文件。在符号连接中，文件实际上是一个文本文件，其中包含的有另一文件的位置信息。
 
-### Archivos de directorio
+### 目录文件
 
-En Linux, los directorios también son archivos.
+在 Linux 下，目录也是文件。
 
-### Archivos de dispositivo
+### 设备文件
 
-Los dispositivos de hardware también son archivos, se pueden inicializar a través de los archivos de dispositivo correspondientes, y algunos dispositivos también se pueden controlar mediante la lectura y escritura de archivos de dispositivo.
+硬件设备也是文件，通过打开对应的设备文件可以初始化设备，部分设备还可以通过读写设备文件实现对硬件的控制。
 
-## Usuarios y permisos de archivo
+## 用户与文件权限
 
-### Permisos de usuario
+### 用户权限
 
-Linux es un sistema operativo multiusuario, donde los usuarios que tienen acceso a todos los recursos de otros usuarios y computadoras se llaman cuentas de root. En Linux, cada usuario tiene un número de identificación único (UID) para identificar a un usuario del sistema. El UID de la cuenta root es el número 0. Podemos usar el comando `id` para ver el valor UID del usuario actual. Un usuario puede pertenecer a varios GID (grupos) para obtener diferentes permisos de archivo.
+Linux 是多用户操作系统，其中具有管理其他用户和计算机的全部资源的用户，称为 root 账户。在 Linux 中，每个用户都有一个特定的编号 —— UID，用于标识一个系统用户。root 账户的 UID 是标号 0。我们可以用命令 `id` 以查看当前用户的 UID 值。一个用户可以归属于多个 GID（组），以获得不同的文件权限。
 
-### Permisos de archivo
+### 文件权限
 
-Las propiedades de archivo de Linux se dividen en permisos de lectura, escritura y ejecución (archivos que se pueden cargar en la memoria y ejecutar por el sistema operativo).
+Linux 的文件属性，分为读权限、写权限、执行权限（可以加载到内存中，并由操作系统加载程序执行的文件）。
 
-Los permisos de archivo se pueden modificar mediante el comando `chmod`.
+可以通过 `chmod` 命令修改文件权限。
 
-## Línea de comandos
+## 命令行
 
-### Indicador de terminal
+### 终端提示符
 
-Cuando abrimos una terminal, aparece una cadena de indicadores como:
+当我们打开终端的时候，会出现一串提示符如：
 
 ```shell
 power@Linuxbook:~$
 ```
 
-Esto representa que el usuario actual es `power`, el nombre del host en ejecución es `Linuxbook`, `~` representa el directorio actual es el directorio de inicio (es decir, `/home/power`), y `$` es el indicador de comando, lo que indica que es un usuario normal. Si es un usuario superusuario, será `#`.
+这代表当前的用户是 `power`，运行的主机名称是 `Linuxbook`，`~` 表示当前的目录是家目录（即 `/home/power`），而 `$` 为命令提示符，代表这是个普通用户，如果是超级用户则为 `#`。
 
-### Comandos
+### 命令
 
-El formato básico de un comando (los dos últimos elementos son opcionales) es:
+命令的基本格式（其中后两项代表非必须）：
 
 ```shell
 command [-options] [argument]
 ```
 
-Puede usar la tecla `Tab` para completar automáticamente y `Ctrl` + `C` para detener la ejecución en la línea de comandos.
+可使用 `Tab` 键进行自动补全，在命令行执行中可以用 `Ctrl` + `C` 终止运行。
 
-- command: nombre del comando, como `cd`, `ls`, etc.
-- -options: opciones adicionales del comando, como `ls -l`. El comando realizará diferentes operaciones según las opciones específicas.
-- argument: argumento del comando, como en `cd /home`, `/home` es el nombre del argumento.
+- command：命令名，如 `cd`、`ls` 等。
+- -options：命令的附加选项，如 `ls -l`。命令会根据具体的选项执行不同的操作。
+- argument：命令参数，比如 `cd /home` 中，`/home` 作为参数名。
 
-Los comandos comunes son:
+常用的命令有：
 
-- `ls`: Lista los nombres de los archivos y directorios
-  - `-a`: Muestra los archivos ocultos (nombres de archivo que comienzan con `.`)
-  - `-l`: Muestra información detallada sobre el tipo de archivo, permisos, propietario, tamaño, etc.
-  - `-t`: Lista los archivos en orden cronológico de creación
-  - `-A`: Igual que `-a`, pero no muestra `.` y `..` (directorio actual y directorio padre)
-  - `-R`: Si hay archivos en el directorio, también se listarán los archivos en ese directorio, es decir, se mostrarán de forma recursiva.
-- `cd`: Cambia de directorio
-  - Rutas especiales
-    - `~`: Directorio home del usuario actual
-    - `/`: Directorio raíz
-    - `.`: Directorio actual
-    - `..`: Directorio superior
-    - `-`: Cambia al directorio anterior al último `cd`
-- `pwd`: Muestra el directorio actual
-- `mkdir`: Crea un directorio
-  - `-p`: Crea directorios en caso de que no existan
-- `rmdir`: Elimina un directorio vacío
-- `touch`: Crea un archivo
-- `cp`: Copia archivos o directorios
-- `rm`: Elimina archivos o directorios
-  - `-r`: Elimina todos los subdirectorios y archivos dentro del directorio
-  - `-f`: Elimina forzosamente
-- `mv`: Mueve archivos o directorios, o cambia el nombre de archivos o directorios
-- `cat`: Muestra el contenido de un archivo
-- `echo`: Muestra el contenido en la terminal
-- Redireccionamiento de salida a un archivo: Guarda el resultado de un comando en un archivo
-  - `comando > nombre_archivo`, si el archivo no existe, se creará, si ya existe, se sobrescribirá
-  - `comando >> nombre_archivo`, si el archivo no existe, se creará, si ya existe, se agregará al final
-- `sudo`: Switch user do, agrega `sudo` antes de un comando que requiere permisos de root para que el usuario actual obtenga permisos de root y ejecute el comando. Si el usuario normal no tiene permisos y falla la ejecución, se puede usar `sudo !!` para volver a ejecutar el último comando con permisos.
-- `clear`: Limpia la pantalla
-- `reboot`/`poweroff`: Reinicia / Apaga el sistema
+- `ls`：列出目录及文件名
+  - `-a`：显示隐藏文件（文件名前带 `.`）
+  - `-l`：将文件型态、权限、拥有者、文件大小等信息详细列出
+  - `-t`：将文件依建立时间之先后次序列出
+  - `-A`：同 `-a`，但不列出 `.` 和 `..`（当前目录与父目录）
+  - `-R`：若目录下有文件，则该目录下的文件也会列出，即递归显示
+- `cd`：切换目录
+  - 特殊路径
+    - `~`：当前用户的 home 目录
+    - `/`：根目录
+    - `.`：当前目录
+    - `..`：上层目录
+    - `-`：切换上一次 `cd` 的目录
+- `pwd`：显示目前的目录
+- `mkdir`：创建目录
+  - `-p` 可创建不存在的目录下的目录
+- `rmdir`：删除一个空的目录
+- `touch`：创建文件
+- `cp`：复制文件或目录
+- `rm`：移除文件或目录
+  - `-r`：将目录包含的子目录和文件全部删除
+  - `-f`：强制删除
+- `mv`：移动文件与目录，或修改文件与目录的名称
+- `cat`：查看文件
+- `echo`：将内容输出到终端
+- 输出重定向到文件：将命令执行结果保存到文件
+  - `命令 > 文件名` ，如文件不存在则会创建，如重复则覆盖
+  - `命令 >> 文件名` ，如文件不存在则会创建，如重复则追加到末尾
+- `sudo`：switch user do，在需要 root 权限的命令前添加 `sudo`，从而使当前用户获得 root 权限， 并执行其后的命令。如果在普通用户下没权限执行失败，那么可以用 `sudo !!` 重新加权执行上一条命令。
+- `clear`：清屏
+- `reboot`/`poweroff`：重启 / 关机
 
-## Gestión de paquetes
+## 包管理
 
-La gestión de paquetes es el uso de comandos para instalar software. En el sistema operativo Linux, los dos tipos de paquetes más comunes son deb y rpm.
+包管理简单来说就是使用命令来安装软件。在 Linux 操作系统中，最常见的两种包分别是 deb 和 rpm。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Tutorial de Linux](https://www.runoob.com/linux/linux-tutorial.html)
-- [[Wildfire] Guía práctica de desarrollo de Linux i.MX](https://doc.embedfire.com/linux/imx6/base/zh/latest/index.html)
+- [Linux 教程](https://www.runoob.com/linux/linux-tutorial.html)
+- [[野火]i.MX Linux 开发实战指南](https://doc.embedfire.com/linux/imx6/base/zh/latest/index.html)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

@@ -1,77 +1,78 @@
-# Protocolo de comunicación - I2C
+# 通信协议 - I2C
 
-I2C (Inter-Integrated Circuit) es un bus de comunicación serial que permite la presencia de múltiples maestros, pero solo puede haber un maestro en línea en un momento dado. I2C consta de dos líneas de señal de drenador abierto, con una conexión simple utilizando resistencias pull-up, con niveles típicos de lógica positiva de 3.3V o 5V. La velocidad de transmisión se divide en modo rápido (400Kb/s), modo estándar (100Kb/s) y modo lento (10Kb/s).
+I2C（Inter-Integrated Circuit）是一种串行通讯总线，可允许存在多主机，但同一时刻只能有一个主机在线。I2C 由两条开漏信号线组成，接线简单，利用电阻上拉，典型电平为正逻辑 3.3V 或 5V。传输速率分快速模式（400Kb/s）、标准模式（100Kb/s）、低速模式（10Kb/s）。
 
-En el bus I2C, el esclavo se selecciona mediante su dirección I2C. Esto permite que un maestro controle varios esclavos a través de dos líneas.
+在 I2C 总线上，从机以它的 I2C 地址被选择。这样子可以用在一个主机上通过两根线控制多个从机。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211026174634.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026174634.png)
 
-## Pines de I2C
+## I2C 的引脚
 
-- **SCL** (reloj serial): una señal de onda producida por el maestro que controla la velocidad de transmisión y el bloqueo de datos.
-- **SDA** (datos seriales): una señal de línea sincrónica y semidúplex que transmite datos, incluyendo señales de dirección, control y comunicación.
+- **SCL**（serial clock）：由主机产生的方波，用来控制传输速率和数据的锁存。
+- **SDA**（serial data）：这是一个 **半双工、同步** 的信号线，传输的数据包括地址、控制信号与通信数据。
 
-## Direcciones de I2C
+## I2C 地址
 
-- La dirección de I2C se divide en una dirección de 7 bits y una indicación de lectura/escritura de 1 bit.
-- Cada dispositivo en el bus I2C debe tener una dirección única, y si hay una dirección duplicada, se producirán problemas. Algunos dispositivos permiten la programación de la dirección de I2C.
+- I2C 地址划分，是 7 bit 地址加上 1 bit 读写指示。
+- I2C 总线上的每个设备都必须有一个唯一的地址，如果地址重复会出问题。有些设备的 I2C 地址是可以编程设置的。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211027112717.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211027112717.png)
 
-## Comunicación de I2C
+## I2C 通信
 
-- **START**: el maestro inicia la transmisión al bajar SDA mientras SCL está en alto.
-- **STOP**: el maestro finaliza la transmisión al liberar SDA (volviendo a alto) mientras SCL está en alto.
-- **ACK** (reconocimiento): cada transmisión de I2C implica la transmisión de 1 byte (8 bits) con cada pulso de SCL. El noveno pulso se reserva para la señal de confirmación del esclavo, y la señal ACK indica que la transmisión anterior fue exitosa.
+- **START**：主机在 SCL 为高时，拉低 SDA 发起。
+- **STOP**：主机在 SCL 为高时，释放 SDA（变为高电平）发起。
+- **ACK**（acknowledge）：I2C 传输都是随着每个 SCL 脉冲，每次传输 1 个字节（8 个位）。每次传输的第 9 个脉冲被保留为从机的确认信号，每次的 ACK 信号表示前一次传输成功。
 
-### Ejemplo de segmento de transmisión de I2C
+### I2C 传输句段示例
 
-Este segmento de transmisión es `11001101`:
+这一段传输的值为 `11001101`：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211104172952.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211104172952.png)
 
-1. El maestro baja SDA para iniciar la señal START.
-2. El primer bit se establece, el maestro baja SCL y envía la señal de reloj a través del DAC.
-3. Cuando se transmite el noveno bit, el maestro no baja SDA. Si el esclavo confirma la transmisión completa, baja SDA para que el maestro lo sepa.
+1. 主机拉低 SDA 电平以产生 START 信号。
+2. 第一个位被设置，主机拉低 SCL，将时钟信号经过 DAC 进行输出。
+3. 传输到第九个位时，主机不会拉低 SDA，如果从机确认传输完整，则将 SDA 拉低让主机知道。
 
-### Transmisión de datos efectiva
+### 有效的数据传输
 
-1. Durante el tiempo en que SCL se mantiene en alto (transmisión de datos), SDA debe mantenerse estable para que sea efectivo.
-2. Solo se permite que SDA cambie de valor durante los pulsos bajos de SCL.
-3. Cuando SDA cambia mientras SCL está en alto, se interpreta como un evento de START, RESTART o STOP.
+1. 在 SCL 保持高电平（传输数据）时，SDA 在这段时间内必须保持稳定才有效。
+2. 在 SCL 节拍间的低电平，才允许 SDA 切换数值。
+3. 当 SCL 为高电平，SDA 发生变化时，就会被解释为 START、RESTART 或 STOP 事件。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211105172139.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211105172139.png)
 
-### Temporización de subida/bajada en el circuito de interfaz
+### 接口电路上升 / 下降计时
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211108093819.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211108093819.png)
 
-En la figura, el transistor se enciende cuando la señal está en bajo, descargando el capacitor $C_b$ a bajo. Por otro lado, el transistor se apaga cuando la señal está en alto, y la resistencia pull-up carga $C_b$ a alto.
+如图，晶体管将在低电平时导通，并将 $C_b$ 电容放电到低电平。反之，晶体管将在高电平时截止，上拉电阻会将 $C_b$ 充电至高电平。
 
-- $t_r$ (tiempo de subida): el tiempo máximo que tarda la señal en pasar de bajo a alto. Debido a que I2C es una señal de drenador abierto, el tiempo de subida depende de la resistencia pull-up y la constante de tiempo RC del bus.
-- $t_f$ (tiempo de bajada): el tiempo máximo que tarda la señal en pasar de alto a bajo.
+- $t_r$（上升时间）：信号从低电平过渡到高电平的最大时间。因为 I2C 是开漏信号，所以上升时间由上拉电阻和总线电容的 RC 时间常数决定。
+- $t_f$（下降时间）：信号从高电平过渡到低电平的最大时间。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211108095142.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211108095142.png)
 
-### Cálculo de la resistencia pull-up de I2C
+### I2C 上拉电阻计算
 
-- Valor mínimo de la resistencia pull-up: $R_{Pull(Min)}=\frac{V_{DD}-V_{OLMAX}}{I_{SinkMax}}$
-- Valor máximo de la resistencia pull-up: $R_{Pull(Max)}=\frac{t_r}{0.8473*C_b}$
+- 上拉电阻最小值：$R_{Pull(Min)}=\frac{V_{DD}-V_{OLMAX}}{I_{SinkMax}}$
+- 上拉电阻最大值：$R_{Pull(Max)}=\frac{t_r}{0.8473*C_b}$
 
-El valor mínimo de la resistencia pull-up proporcionará el tiempo de subida más corto. Si se utiliza un valor de resistencia menor que este, se consumirá demasiada corriente cuando el transistor de salida esté activado (nivel lógico bajo), lo que violará la especificación de salida lógica baja máxima.
+其中，上拉电阻最小值会带来最短的上升时间。如果用的阻值比这个再小，就会导致当输出晶体管开启（逻辑低电平）时，消耗过多的电流，违反最大逻辑低电平输出的规范。
 
-El valor máximo de la resistencia pull-up proporcionará el tiempo de subida más largo. Si se utiliza una resistencia pull-up mayor que este valor, se violarán los requisitos de sincronización.
+上拉电阻最大值会带来最长的上升时间。如果使用大于此值的上拉电阻，将会违反时序要求。
 
-$V_{DD}$ representa el voltaje de alimentación; $V_{OLMAX}$ representa el nivel lógico bajo máximo (valor típico de 0.4V); $I_{SinkMax}$ representa la corriente máxima de drenaje (valor típico de 3mA); $C_b$ representa la capacitancia total del bus, que depende de la longitud y el ancho de las pistas de PCB y de la capacitancia de los dispositivos conectados al bus.
+$V_{DD}$ 表示供电电压；$V_{OLMAX}$ 表示最大逻辑低电平（典型值为 0.4V）；$I_{SinkMax}$ 表示最大灌电流（典型值为 3mA）；$C_b$ 表示总线电容，取决于 PCB 走线的长度和宽度，与连接至总线的设备的电容。
 
-Ejemplo de cálculo:
+计算示例：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211108103406.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211108103406.png)
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- "Analog Engineer's Pocket Reference"
-- [¿Cómo utilizar el bus I2C? Después de leer esto, lo sabrás](https://mp.weixin.qq.com/s/IeL77NTyVdTdkcNtqjjFPA)
-- [[Circuito] Protocolo del bus I2C 🚧](https://zhenhuizhang.tk/post/dian-lu-i2c-zong-xian-xie-yi/)
+- 《Analog Engineer’s Pocket Reference》
+- [I2C 总线该怎么用？看完你就会了](https://mp.weixin.qq.com/s/IeL77NTyVdTdkcNtqjjFPA)
+- [[电路]I2C 总线协议 🚧](https://zhenhuizhang.tk/post/dian-lu-i2c-zong-xian-xie-yi/)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

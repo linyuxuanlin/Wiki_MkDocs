@@ -1,118 +1,116 @@
-# Construyendo una base de conocimientos personal - Basado en Docusaurus
+# 个人知识库的搭建 - 基于 Docusaurus
 
-Continuando con el artículo anterior [**Por qué necesitas una base de conocimientos**](https://wiki-power.com/es/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%A0%E9%9C%80%E8%A6%81%E4%B8%80%E4%B8%AA%E7%9F%A5%E8%AF%86%E5%BA%93), este artículo detallará la construcción de una base de conocimientos basada en el marco de trabajo Docusaurus.
+续上一篇文章 [**为什么你需要一个知识库**](https://wiki-power.com/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%A0%E9%9C%80%E8%A6%81%E4%B8%80%E4%B8%AA%E7%9F%A5%E8%AF%86%E5%BA%93)，本篇文章将基于 Docusaurus 框架，对知识库的搭建展开详细讲解。
 
-Antes de comenzar, asegúrese de tener lo siguiente:
+在本文开始之前，请先确保你准备就绪：
 
-- Acceso a internet sin restricciones
-- Capacidad para adaptarse a situaciones imprevistas
-- Un poco de conocimiento de inglés
+- 科学上网的条件
+- 随机应变的能力
+- 一点儿英语基础
 
-## Configuración del entorno local
+## 配置本地环境
 
-### Instalación de Node.js
+### 安装 Node.js
 
-Visite el [**sitio web oficial de Node.js**](https://nodejs.org/zh-cn/) para descargar e instalar Node.js.
+访问 [**Node.js 官网**](https://nodejs.org/zh-cn/)，下载并安装 Node.js。
 
-### Instalación y configuración de VS Code
+### VS Code 的安装配置
 
-Usaremos VS Code como editor local para modificar el marco del sitio web y escribir artículos.
+我们用 VS Code 作为本地编辑器，用于修改网站框架、编写文章。
 
-Primero, descargue e instale VS Code desde el [**sitio web oficial de VS Code**](https://code.visualstudio.com/).
+首先，到 [**VS Code 官网**](https://code.visualstudio.com/) 下载安装 VS Code。
 
-Después de instalar el software, puede instalar los siguientes dos complementos:
+软件安装完成后，我们可以选装以下两个插件：
 
-- [**Chinese (Simplified) Language Pack**](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hans): para traducir la interfaz de usuario de VS Code al chino
-- [**Markdown All in One**](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one): para proporcionar soporte para más sintaxis de Markdown
+- [**Chinese (Simplified) Language Pack**](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hans)：汉化 VS Code 界面
+- [**Markdown All in One**](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)：提供更多 Markdown 语法支持
 
-Es posible que deba reiniciar VS Code después de instalar los complementos.
+安装插件后，可能需要按提示重启 VS Code。
 
-Para obtener instrucciones de configuración más detalladas, consulte [**Guía de productividad de VS Code - Configuración del entorno**](https://wiki-power.com/es/VSCode%E7%94%9F%E4%BA%A7%E5%8A%9B%E6%8C%87%E5%8D%97-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE) (en chino).
+更加详细的配置说明可以参考 [**VS Code 生产力指南 - 环境配置**](https://wiki-power.com/VSCode%E7%94%9F%E4%BA%A7%E5%8A%9B%E6%8C%87%E5%8D%97-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE) 这篇文章。
 
-### Instalación del marco de trabajo Docusaurus
+### 安装 Docusaurus 框架
 
-Cambie al directorio donde desea crear el proyecto del sitio web.
+切换到需要建立网站项目的目录。
 
-Por ejemplo, si desea crear una carpeta llamada `wiki` en la unidad D de su computadora como proyecto de base de conocimientos, seleccione `Archivo` - `Abrir carpeta` en VS Code, haga clic en la unidad D y seleccione la carpeta `wiki`.
+例如：我想要在电脑的 D 盘下建立一个名为 `wiki` 的文件夹，作为这个知识库项目。那么请在 VS Code 内选择 `文件` - `打开文件夹`，点击 D 盘，并点击 `选择文件夹`
 
-Inicialice el sitio web usando npx:
+使用 npx 初始化网站：
 
 ```shell
 npx @docusaurus/init@latest init [name] [template]
 ```
 
-Por ejemplo, si el nombre de la carpeta del proyecto del sitio web es `wiki`, reemplace `[name]` con `wiki`. Según la [**documentación oficial**](https://v2.docusaurus.io/docs/installation#scaffold-project-website), `[template]` se refiere al tema de la plantilla del sitio web. Aquí, reemplazaremos `[template]` con `classic`. Por lo tanto, el comando que ejecutaremos es:
+例如，如果我的网站项目文件夹的名字为 `wiki`，那就用 `wiki` 替换掉 `[name]`，而根据 [**官方文档**](https://v2.docusaurus.io/docs/installation#scaffold-project-website)， `[template]` 指的是网站模板的主题，这里我们将其替换为 `classic` 即可。所以此处我们执行的命令为：
 
 ```shell
 npx @docusaurus/init@latest init wiki classic
 ```
 
-En VS Code, use el atajo `Ctrl` + <code>`</code> para abrir la terminal, pegue el comando anterior y presione Enter. Espere a que se complete la carga.
+我们在 VS Code 内使用快捷键 `Ctrl` + <code>`</code> 打开终端，把上面的那行代码粘贴进来并敲击回车，耐心等待加载完成。
 
-Una vez que se complete la carga, use el siguiente comando en la terminal para cambiar al directorio del proyecto del sitio web:
+当加载完成后，我们在终端内使用命令切换到网站文件夹目录：
 
 ```shell
 cd [name]
 ```
 
-Reemplace `[name]` con el nombre de la carpeta del proyecto del sitio web. Por ejemplo, si usó `wiki` en el paso anterior, use `wiki` aquí.
+其中，`[name]` 替换为你网站项目文件夹的名字，例如在上一步我们使用的是 `wiki`。
 
-Luego, ejecute el siguiente comando:
+接着，执行以下命令：
 
 ```shell
 npm run start
 ```
 
-Esto iniciará la implementación local del sitio web. Espere a que se complete la implementación y se abrirá automáticamente la página [**localhost:3000**](localhost:3000) en su navegador. Si todo va bien, verá que el sitio web se ha generado correctamente.
+执行网站的本地部署。等待部署进度完成后，它会自动在浏览器打开 [**localhost:3000**](localhost:3000) 页面，如果一切顺利，你可以看到网站已经成功生成。
 
-## Implementación del sitio web en la nube
+## 将网站部署至云端
 
-En el paso anterior, hemos generado con éxito un sitio web, pero solo se ha implementado localmente y no se puede acceder a él desde Internet. Necesitamos implementar el sitio web en un servidor en la nube para que otros usuarios puedan acceder a él desde Internet.
+上一个步骤，我们成功生成了网站，但它只是被部署在了本地，从互联网上是无法访问到这个站点的。我们需要将网站部署至云服务器，让别的用户也可以从互联网任意访问。
 
-### Registrarse en GitHub
+### 注册 GitHub 账户
 
-Regístrese en GitHub en la [**página web oficial de GitHub**](https://github.com/join).
+在 [**GitHub 官网**](https://github.com/join) 注册 GitHub 账户。
 
-### Instalar Git
+### 安装 Git
 
-Descargue el software Git desde el [**sitio web oficial de Git**](https://git-scm.com/downloads) y complete la instalación.
+我们从 [**Git 官网**](https://git-scm.com/downloads) 下载 Git 软件，并完成安装。
 
-Reinicie VS Code, abra la terminal y pegue el siguiente comando para inicializar Git:
+重启 VS Code，召出终端，粘贴以下的命令初始化 Git：
 
 ```shell
 git config --global user.name "username"
 git config --global user.email "email@example.com"
 ```
 
-Aquí, debe reemplazar `"username"` con su nombre de usuario de Git para enviar confirmaciones, se recomienda que sea el mismo que el nombre de usuario de la cuenta que acaba de registrar en GitHub. Por ejemplo, lo reemplacé con `linyuxuanlin`. `"email@example.com"` también debe reemplazarse con el correo electrónico registrado en GitHub.
+此处需要把 `"username"` 替换为你的 Git 提交用户名，推荐与刚刚在 GitHub 注册的账户名一致，例如我将其替换为 `linyuxuanlin`。`"email@example.com"` 同理，替换为 GitHub 注册的邮箱即可。
 
-Para obtener más información sobre la configuración, consulte este artículo [**Git学习笔记**](https://wiki-power.com/es/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0).
+更加详细的配置说明可以参考 [**Git 学习笔记**](https://wiki-power.com/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0) 这篇文章。
 
-### Configurar el repositorio del proyecto en VS Code
+### 在 VS Code 内配置项目仓库
 
-Para poder enviar el proyecto al servidor de GitHub, debemos configurar el repositorio Git del proyecto en VS Code y cargarlo en GitHub.
+为了接下来能推送到 GitHub 服务器上，我们需要在 VS Code 内配置项目 Git 仓库，并上传到 GitHub 上。
 
-En VS Code, use el atajo `Ctrl` + `Shift` + `G` para cambiar a la interfaz de gestión de código fuente, inicialice el repositorio Git del proyecto y realice la primera confirmación.
+在 VS Code 内使用快捷键 `Ctrl` + `Shift` + `G` 切换到源代码管理界面，初始化项目 Git 仓库，并作出首次提交。
 
-Luego, use el atajo `Ctrl` + `Alt` + `S` para enviar el repositorio Git local a GitHub (inicie sesión en su cuenta de GitHub según las instrucciones).
+随后，使用快捷键 `Ctrl` + `Alt` + `S` 将本地 Git 仓库推送到 GitHub（按提示登录 GitHub 账户即可）。
 
-### Implementar el sitio web en la nube con Vercel
+### 使用 Vercel 云端部署网站
 
-La función de Vercel es similar a GitHub Action + GitHub Pages, es decir, implementación continua automática + presentación de sitios web estáticos. Elegí Vercel porque los sitios web estáticos que genera son mucho más rápidos que los de GitHub Pages cuando se accede desde China.
+此处 Vercel 的功能，相当于 GitHub Action + GitHub Pages，即自动持续部署 + 静态网站展示。选择 Vercel 是因为其生成的静态网站，国内访问速度相比 GitHub Pages 会快很多。
 
-Primero, vaya directamente a la [**página de inicio de sesión de GitHub de Vercel**](https://github.com/login?client_id=Iv1.9d7d662ea00b8481&return_to=%2Flogin%2Foauth%2Fauthorize%3Fclient_id%3DIv1.9d7d662ea00b8481%26scope%3Dread%253Auser%252Cuser%253Aemail%26state%3DFdx6thivZ89LeAihPfRiiYf9) y regístrese en Vercel con su cuenta de GitHub.
+首先，直接访问 [**Vercel 的 GitHub 登录页面**](https://github.com/login?client_id=Iv1.9d7d662ea00b8481&return_to=%2Flogin%2Foauth%2Fauthorize%3Fclient_id%3DIv1.9d7d662ea00b8481%26scope%3Dread%253Auser%252Cuser%253Aemail%26state%3DFdx6thivZ89LeAihPfRiiYf9) ，使用 GitHub 账户注册 Vercel 账户。
 
-Después de completar el registro, haga clic en `New Project` en la página web e importe el repositorio correspondiente de GitHub (por ejemplo, el repositorio `wiki` que creamos anteriormente). Es posible que deba iniciar sesión en GitHub nuevamente según las instrucciones. Después de la importación, haga clic en `Next` para continuar y el sitio web se implementará rápidamente.
+完成之后，点击网页上的 `New Project`，导入 GitHub 响应的仓库（例如我们之前建立的 `wiki` 仓库），此处可能需要根据提示，再进行一次 GitHub 的登录。导入之后，一路点击 `Next` 继续，很快网站就能部署成功了。
 
-## Conclusión
+## 总结
 
-En este artículo, hemos implementado la implementación local y en la nube de una base de conocimientos basada en Docusaurus. Si tiene algún problema durante el proceso, puede ponerse en contacto conmigo a través de [**WeChat**](https://wiki-power.com/es/WeChat). En el próximo artículo (por actualizar), explicaré en detalle la configuración personalizada.
+这篇文章我们实现了基于 Docusaurus 的知识库的本地和云端部署。本文的过程中如果遇到问题，可以联系我 [**微信**](https://wiki-power.com/WeChat) 反馈。在下一篇文章【待更新】中，我将对个性化的配置做详细的讲解。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
 - [Docs·Docusaurus](https://v2.docusaurus.io/docs/)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

@@ -1,4 +1,4 @@
-# Laboratorio de pruebas de MkDocs
+# MkDocs 测试实验室
 
 `MkDocs-Lab`
 
@@ -8,39 +8,38 @@
 
 ```mermaid
 graph TD
-    a1("Recopilar datos de voltaje vs. QUOT en diferentes temperaturas y desviaciones")
-    a2("Seleccionar RO y definir QUOT objetivo (valor fijo)")
+    a1("Collect Voltage vs. QUOT data across skew and temperature")
+    a2("Select RO and define Target QUOT (fix value)" )
     a1-->a2
 ```
 
 ```mermaid
 graph LR
-    A[Rectángulo cuadrado] -- Texto de enlace --> B((Círculo))
-    A --> C(Rectángulo redondeado)
-    B --> D{Rombo}
+    A[Square Rect] -- Link text --> B((Circle))
+    A --> C(Round Rect)
+    B --> D{Rhombus}
     C --> D
 ```
 
 ```mermaid
 graph LR
-  A[Inicio] --> B{¿Error?};
-  B -->|Sí| C[Hmm...];
-  C --> D[Depurar];
+  A[Start] --> B{Error?};
+  B -->|Yes| C[Hmm...];
+  C --> D[Debug];
   D --> B;
-  B ---->|No| E[¡Hurra!];
+  B ---->|No| E[Yay!];
 ```
-
 
 ```mermaid
 sequenceDiagram
-  Alice->>John: ¡Hola John, cómo estás?
+  Alice->>John: Hello John, how are you?
   loop Healthcheck
-      John->>John: Lucha contra la hipocondría
+      John->>John: Fight against hypochondria
   end
-  Note right of John: ¡Pensamientos racionales!
-  John-->>Alice: ¡Genial!
-  John->>Bob: ¿Y tú?
-  Bob-->>John: ¡Muy bien!
+  Note right of John: Rational thoughts!
+  John-->>Alice: Great!
+  John->>Bob: How about you?
+  Bob-->>John: Jolly good!
 ```
 
 ```mermaid
@@ -57,13 +56,11 @@ stateDiagram-v2
     State4 --> [*]
 ```
 
-## Referencias y Agradecimientos
+## References & Acknowledgements
 
-- [Los mejores plugins y personalizaciones de MkDocs](https://chrieke.medium.com/the-best-mkdocs-plugins-and-customizations-fc820eb19759)
-- [Plugins de MkDocs](https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins)
-- [Diagramas](https://squidfunk.github.io/mkdocs-material/reference/diagrams/)
+- [The best MkDocs plugins and customizations](https://chrieke.medium.com/the-best-mkdocs-plugins-and-customizations-fc820eb19759)
+- [MkDocs Plugins](https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins)
+- [Diagrams](https://squidfunk.github.io/mkdocs-material/reference/diagrams/)
 
 > Original: <https://wiki-power.com/>  
-> Este post está protegido por el acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en), debe ser reproducido con atribución.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.

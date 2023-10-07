@@ -1,11 +1,11 @@
-# Notas de sintaxis de patrones 🚧
+# Pattern Syntax Notes 🚧
 
-> Esta publicación solo está disponible en inglés.
+> This post is only available in English.
 
-Un archivo de patrón digital contiene principalmente 3 partes:
-**Declaración de encabezado**, **Declaración de configuración** y **Módulo de patrón**. (**Las declaraciones de preprocesamiento** y **comentarios** son opcionales).
+A digital pattern file contains mainly 3 parts:
+**Header Statement**, **Setup Statement** and **Pattern Module**. (**Preprocessing statements** and **Comments** are optional).
 
-A continuación se muestra un archivo de patrón de ejemplo en formato `.atp` que se utiliza principalmente:
+Below is an mostly used example pattern file in `.atp` format:
 
 ```atp
 // example.atp
@@ -30,74 +30,72 @@ HALT
 }
 ```
 
-## Declaración de encabezado
+## Header Statement
 
-La **Declaración de encabezado** contiene estas declaraciones: instrumento digital, asignación de pines, control de compilador, importación de tset o etiqueta. Aquí hay un ejemplo:
+**Header Statement** contains these statements: digital instrument, pin map, compiler control, import tset or label. Here is an example:
 
 ```
-digital_inst = HSDMQ;           // Declaración de instrumento digital
-opcode_mode = single;           // Declaración de compilación
-import tset tset1, tset1;       // importar conjuntos de tiempo
-import subr xxx;                // importar subrutinas
+digital_inst = HSDMQ;           // Digital instrument statement
+opcode_mode = single;           // Compile statement
+import tset tset1, tset1;       // import Time sets
+import subr xxx;                // import Subroutines
 ```
 
-Parámetros frecuentemente utilizados:
+Frequently used parameters:
 
-- Declaraciones de instrumentos digitales
+- Digital Instrument Statements
   - **digital_inst**: `hsdm`(HSD1000, UltraPin800), `hsdmq`(UltraPin1600), `hsdp`(UltraPin2200) ...
-- Especificaciones del mapa de pines:
-  - **pinmap_workbook**: nombre del libro de trabajo IG‑XL, como `"xxx.igxl"`
-  - **sheetname**: nombre de la hoja del mapa de pines, como `"pinmap"`
-- Declaraciones de control de compilador
-  - **compressed**: `sí` o `no`
-  - **opcode_mode**: `single` o `dual` o `quad`(UltraPin1600), cada 1/2/4 vectores pueden incluir un opcode.
-  - **save_comments**: `sí` o `no`
-  - **version**: como `V1.0`
-- Tset y etiqueta
+- Pin Map Specifications:
+  - **pinmap_workbook**: IG‑XL workbook name, such as `"xxx.igxl"`
+  - **sheetname**: Pin Map sheet name, such as `"pinmap"`
+- Compiler Control Statements
+  - **compressed**: `yes` or `no`
+  - **opcode_mode**: `single` or `dual` or `quad`(UltraPin1600), every 1/2/4 vectors can include an opcode.
+  - **save_comments**: `yes` or `no`
+  - **version**: such as `V1.0`
+- Tset and Label
   - **Tset**: `import tset tset1, tset2, ... ;`
-  - **Etiqueta**: `import label label1, label2, ... ;`
+  - **Label**: `import label label1, label2, ... ;`
 
-## Declaración de configuración
+## Setup Statement
 
-La **Declaración de configuración** contiene la configuración de pines, instrumentos y pines de escaneo.
+**Setup Statement** contains pin setup, instruments, scan pin.
 
 ```
 pin_setup = {
-    gpio_1    2x;                                           //Configuración de pines: gpio_1 configurado en modo 2X
+    gpio_1    2x;                                           //Pin setup: gpio_1 set to 2X mode
 }
 instruments = {
-vcc:DCVS 1;                                                 // Instrumento DCVS
-    tdo:DigCap 32:format=twos_complement:auto_trig_enable;  // Instrumento DigCap
+vcc:DCVS 1;                                                 // DCVS instrument
+    tdo:DigCap 32:format=twos_complement:auto_trig_enable;  // DigCap instrument
 }
 scan_pins = {
-    tdi, tdo;                                               // tdi - escaneo de entrada, tdo - escaneo de salida
+    tdi, tdo;                                               // tdi - scan in, tdo - scan out
 }
 ```
 
-Parámetros frecuentemente utilizados:
+Frequently used parameters:
 
-- Caracteres de Estado de Pin y Microcódigos
-  - **Caracteres de Estado de Pin**: `0`(Conducir Bajo), `1`(Conducir Alto), `2`(Conducir Voltaje Alto solo para UP800), `L`(Esperar Bajo), `H`(Esperar Alto), `M`(Esperar Banda Media), `V`(Esperar Válido), `X`(Máscara), `W`(Strobe de Ventana), `D`(Conducir ADS (DigSrc/MTO)), `I`(Conducir ADS inverso (DigSrc/MTO)), `E`(Esperar ADS (DigSrc/MTO)), `C`(Esperar ADS inverso (DigSrc/MTO)), `-`(Repetir estado anterior).
-  - **Microcódigos de DigCap**: `Trig`(Iniciar una captura), `Store`(Almacenar una muestra de datos), `Trig, Store`(Combinación de Trig y Store), `Store, Inst_Cond_Strobe`(Almacenar y activar la señal interna de `condición` para actuar sobre ella).
+- Pin State Characters and Microcodes
+  - **Pin State Characters**: `0`(Drive Low), `1`(Drive High), `2`(Drive High Voltage only for UP800), `L`(Expect Low), `H`(Expect High), `M`(Expect Mid-band), `V`(Expect Valid), `X`(Mask), `W`(Window Strobe), `D`(Drive ADS (DigSrc/MTO)), `I`(Drive inverse ADS (DigSrc/MTO)), `E`(Expect ADS (DigSrc/MTO)), `C`(Expect inverse ADS (DigSrc/MTO)), `-`(Repeat previous state).
+  - **DigCap Microcodes**: `Trig`(Start a capture), `Store`(Store a data sample), `Trig, Store`(Combination of Trig and Store), `Store, Inst_Cond_Strobe`(Store and gate the internally generated `condition` signal to be acted on).
 
-## Módulo de Patrón
+## Pattern Module
 
-Un **módulo de patrón** contiene una lista de pines y un conjunto de vectores. Hay 2 tipos de módulos: memoria de vector (VM) y memoria (SRM):
+A **pattern module** contains pin list and a set of vectors. There are 2 types of it: vector memory (VM) and memory (SRM):
 
 ```
-vm_vector [nombre-de-módulo] (lista-de-pines)
-{ vectores }
+vm_vector [module-name] (pin-list)
+{ vectors }
 
-srm_vector [nombre-de-módulo] (lista-de-pines)
-{ vectores }
+srm_vector [module-name] (pin-list)
+{ vectors }
 ```
 
-Se requiere al menos 1 módulo de patrón en un archivo de patrón. Si hay más de 1, sus columnas y listas de pines deben ser iguales.
+At least 1 pattern module is required in a pattern file. If more than 1, their colummns and pin lists need to be the same.
 
-Parámetros frecuentemente utilizados:
+Frequently used parameters:
 
-- lista-de-pines
-  - **Elementos de Pin**: `pin-o-grupo[.modificador][:radix]`, el radix podría ser `:S`(Simbólico, por defecto), `:B`(Bin), `:D`(Dec), `:O`(Oct), `:H`(Hex)
-- Etiqueta: por determinar
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+- pin-list
+  - **Pin Items**: `pin-or-group[.modifier][:radix]`, radix could be `:S`(Symbolic, default), `:B`(Bin), `:D`(Dec), `:O`(Oct), `:H`(Hex)
+- Label: tbd

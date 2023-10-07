@@ -1,122 +1,119 @@
-# Protocolo de comunicación - CAN 🚧
+# 通信协议 - CAN 🚧
 
-CAN (Controller Area Network) es un bus de comunicación serie de múltiples maestros. El diseño básico requiere una alta velocidad de bits, alta resistencia a interferencias electromagnéticas y la capacidad de detectar cualquier error que se produzca. Cuando la distancia de transmisión de la señal alcanza los 10 km, el bus CAN aún puede proporcionar una velocidad de transmisión de datos de hasta 5 Kbps.
+CAN（Controller Area Network）是一种多主方式的串行通讯总线。基本设计规范要求有高的位速率、高抗电磁干扰性，而且能够检测出产生的任何错误，当信号传输距离达到 10Km 时 CAN-bus 仍可提供高达 5Kbps 的数据传输速率。
 
-## Diseño del circuito CAN
+## CAN 电路设计
 
-El diseño del módulo CAN se basa en el chip CAN, que convierte la señal serie (RX/TX) en la señal diferencial CAN (CANH/CANL). A continuación se presentan dos transceptores CAN comúnmente utilizados.
+CAN 模块的设计，是基于 CAN 芯片，对串行信号（RX/TX）与 CAN 差分信号（CANH/CANL）进行互相转换。以下是两种较为常用的 CAN 收发器。
 
-### Basado en TJA1050
+### 基于 TJA1050
 
-Para obtener información completa, consulte [**Modularity_of_Functional_Circuit/ Modulación de diseño - Comunicación CAN / Basado en TJA1050**](https://github.com/linyuxuanlin/Modularity_of_Functional_Circuit/tree/master/%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1-CAN%E9%80%9A%E4%BF%A1/%E5%9F%BA%E4%BA%8ETJA1050)
+完整资料请见 [**Modularity_of_Functional_Circuit/ 模块设计 - CAN 通信 / 基于 TJA1050**](https://github.com/linyuxuanlin/Modularity_of_Functional_Circuit/tree/master/%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1-CAN%E9%80%9A%E4%BF%A1/%E5%9F%BA%E4%BA%8ETJA1050)
 
-#### Características
+#### 特性
 
-- Alimentación: **5 V** (4.75-5.25 V)
-- Velocidad alta: 60 Kbps-1 Mbps
-- Cumple completamente con la norma ISO 11898
-- Baja radiación electromagnética (EME)
-- Receptor diferencial con rango de entrada de préstamo, resistente a interferencias electromagnéticas (EMI)
-- Se pueden conectar al menos 110 nodos
-- Los nodos sin alimentación no interferirán con el bus
+- 供电：**5 V**（4.75-5.25 V）
+- 高速率：60 Kbps-1 Mbps
+- 完全符合 ISO 11898 标准
+- 低电磁辐射（EME）
+- 具有贷款输入范围的差动接收器，可抗电磁干扰（EMI）
+- 可以连接至少 110 个节点
+- 没有上电的节点不会对总线造成干扰
 
-#### Modo de trabajo
+#### 工作模式
 
-TJA1050 tiene dos modos de trabajo (alta velocidad / silencioso), controlados por el pin S (RS).
+TJA1050 有两种工作模式（高速 / 静音），由引脚 S（RS） 来控制。
 
-**Modo de alta velocidad**:
+**高速模式**：
 
-El modo de alta velocidad es el modo de trabajo normal, y se puede ingresar a este modo conectando el pin S a tierra. Debido a que el pin S tiene una resistencia de pull-down incorporada, incluso si no está conectado externamente, el modo de alta velocidad es el modo predeterminado.
+高速模式是普通的工作模式，将引脚 S 接地即可进入该模式。因引脚 S 内置下拉，所以即使外部没有连接，默认也是高速模式。
 
-En este modo, la señal de salida del bus tiene una pendiente fija y cambia a la velocidad más rápida, lo que es adecuado para la velocidad de bits máxima o la longitud máxima del bus, y su retardo de transmisión es mínimo.
+在这个模式中，总线输出信号有固定的斜率，并以最快的速度切换，适合于最大的位
+速率和，或最大的总线长度，此时它的收发器循环延迟最小。
 
-**Modo silencioso**:
+**静音模式**：
 
-En el modo silencioso, el transmisor está deshabilitado y no importa la señal de entrada de TXD, por lo que el consumo de energía en el estado de no transmisión es el mismo que en el estado de silencio. Se puede ingresar al modo silencioso conectando el pin S a un nivel alto.
+静音模式中，发送器是禁能的，不管 TXD 的输入信号，所以运行在非发送状态中消耗的电源电流，和在隐形状态中是一样的。将引脚 S 接高电平就可以进入静音模式。
 
-En el modo silencioso, los nodos se pueden configurar en un estado absolutamente pasivo con respecto al bus, y el microcontrolador ya no accede directamente al controlador CAN. TJA1050 liberará el bus.
+静音模式中，节点可以被设置成对总线绝对无源的状态，此时微控制器不再直接访问 CAN 控制器，TJA1050 将会释放总线。
 
-#### Pines del chip
+#### 芯片管脚
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210607102222.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210607102222.png)
 
-#### Circuito de referencia
+#### 参考电路
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210607115611.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210607115611.png)
 
-Como se muestra en la figura, el controlador de protocolo CAN (por ejemplo, un microcontrolador) se conecta al transceptor a través de la línea serie (RX/TX), que se convierte en una señal CAN (CANH/CANL) en el transceptor y se selecciona el modo de alta velocidad / silencioso mediante el pin S.
+如图，CAN 协议控制器（例如单片机）通过串行线（RX/TX）连接到收发器，在收发器上转换为 CAN 信号（CANH/CANL），并通过引脚 S 来选择高速 / 静音模式。
 
-### Basado en SN65HVD230
+### 基于 SN65HVD230
 
-Para obtener información completa, consulte [**Modularity_of_Functional_Circuit/ Modulación de diseño - Comunicación CAN / Basado en SN65HVD230**](https://github.com/linyuxuanlin/Modularity_of_Functional_Circuit/tree/master/%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1-CAN%E9%80%9A%E4%BF%A1/%E5%9F%BA%E4%BA%8ESN65HVD230)
+完整资料请见 [**Modularity_of_Functional_Circuit/ 模块设计 - CAN 通信 / 基于 SN65HVD230**](https://github.com/linyuxuanlin/Modularity_of_Functional_Circuit/tree/master/%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1-CAN%E9%80%9A%E4%BF%A1/%E5%9F%BA%E4%BA%8ESN65HVD230)
 
-#### Características
+#### 特性
 
-- Alimentado por una sola fuente de **3.3 V**
-- Se pueden conectar al menos 120 nodos
-- Modo de espera de baja corriente
-- Velocidad: hasta 1 Mbps
+- 由 **3.3 V** 单电源供电
+- 可以连接至少 120 个节点
+- 低电流待机模式
+- 速率：最高 1 Mbps
 
-#### Modo de trabajo
+#### 工作模式
 
-SN65HVD230 tiene tres modos de trabajo (alta velocidad / pendiente / silencioso), controlados por el pin S (RS). Generalmente usamos el modo de alta velocidad.
+SN65HVD230 有三种工作模式（高速 / 斜率 / 静音），由引脚 S（RS） 来控制。一般我们使用高速模式。
 
-**Modo de alta velocidad**:
+**高速模式**：
 
-Conecte Rs a tierra para habilitar el modo de alta velocidad.
+将 Rs 强下拉至 GND 以启用高速模式。
 
-**Modo de pendiente**:
+**斜率模式**：
 
-Use una resistencia entre 10k y 100k para bajar Rs a tierra. Consulte el manual de datos para obtener la relación específica entre la resistencia y la velocidad.
+使用 10k 至 100k 之间的电阻，将 Rs 下拉至 GND。具体电阻阻值与速率的关系，请参考数据手册。
 
+**低功耗模式**：
 
+将 Rs 强上拉至 3.3V
 
-**Modo de baja potencia**:
+#### 芯片管脚
 
-Elevar Rs a 3.3V
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210607155539.png)
 
-#### Pines del chip
+#### 参考电路
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210607155539.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210607171051.png)
 
-#### Circuito de referencia
+PESD2CAN 是 CAN 专用的 ESD 保护二极管，保护芯片免受静电和其他瞬变因素的损害。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210607171051.png)
+参考的 PCB 布局如下：
 
-PESD2CAN es un diodo de protección ESD especializado para CAN, que protege al chip de daños por descargas electrostáticas y otros transitorios.
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210607171427.png)
 
-El diseño de PCB de referencia es el siguiente:
+### TJA1050 与 SN65HVD230 的异同
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210607171427.png)
+TJA1050 与 SN65HVD230 主要的区别是工作电压的不同，TJA1050 工作在 5 V 环境下的，而 SN65HVD230 工作在 3.3 V 环境下。
 
-### Diferencias entre TJA1050 y SN65HVD230
+共同的注意事项:
 
-La principal diferencia entre TJA1050 y SN65HVD230 es el voltaje de trabajo, TJA1050 trabaja en un entorno de 5V, mientras que SN65HVD230 trabaja en un entorno de 3.3V.
+- CAN 信号线在 PCB 布线的时候，要走差分线。
+- 末端电阻一般在 CAN 线起始端和末端才需要使用，中间端不需要外加。
+- 如果需要对总线的共模电压进行过滤和稳定，也可以使用分体式末端电阻（如上文所示，分为两个 60 Ω 电阻，中间加连接到地的电容）。
 
-Consideraciones comunes:
+## CAN 接口 EMC 设计
 
-- Las líneas de señal CAN deben ser diferencialmente enrutadas en el diseño de PCB.
-- Las resistencias terminales generalmente solo se necesitan en el extremo inicial y final de la línea CAN, no en el medio.
-- Si se requiere filtrado y estabilización del voltaje común del bus, también se pueden utilizar resistencias terminales separadas (como se muestra arriba, divididas en dos resistencias de 60 Ω con un capacitor conectado a tierra en el medio).
+CAN 通讯中，电缆容易耦合外部干扰，对信号传输造成影响，甚至会通过接口电路影响内部核心敏感电路。
 
-## Diseño EMC de la interfaz CAN
+CAN 接口防护器件主要包括：滤波电容、共模电感、跨接电容、TVS 管。
 
-En la comunicación CAN, el cable es propenso a acoplar interferencias externas, lo que afecta la transmisión de señales e incluso puede afectar los circuitos internos sensibles del núcleo a través del circuito de interfaz.
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211220134905.png)
 
-Los dispositivos de protección de la interfaz CAN incluyen principalmente: capacitores de filtrado, inductores comunes, capacitores de derivación y tubos TVS.
+- 滤波电容 $C_1,C_2$：用于给干扰提供低阻抗的回流路径，选取范围为 22pF~1000pF，典型值为 100pF。
+- 共模电感 $L_1$：用于滤除差分线上的共模干扰，阻抗选取范围为 120Ω/100MHz~2200Ω/100MHz，典型值为 600Ω/100MHz。
+- 跨接电容 $C_3,C_4$：用于接口地和数字地之间的隔离，典型值为 1000pF/2kV。
+- TVS 管 $D_1,D_2$：用于防 ESD 或瞬间的高能量冲击，使其线路的电压钳位在一个预定的数值内，从而确保后面的电路器件免受瞬态高能量的冲击而损坏。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211220134905.png)
+## 参考与致谢
 
-- Capacitores de filtrado $C_1, C_2$: se utilizan para proporcionar una ruta de retorno de baja impedancia para las interferencias, el rango de selección es de 22pF a 1000pF, y el valor típico es de 100pF.
-- Inductor común $L_1$: se utiliza para filtrar las interferencias comunes en la línea diferencial, el rango de impedancia seleccionado es de 120Ω/100MHz a 2200Ω/100MHz, y el valor típico es de 600Ω/100MHz.
-- Capacitores de derivación $C_3, C_4$: se utilizan para el aislamiento entre la tierra de la interfaz y la tierra digital, el valor típico es de 1000pF/2kV.
-- Tubos TVS $D_1, D_2$: se utilizan para proteger contra ESD o impactos de alta energía momentánea, limitando el voltaje del circuito a un valor predeterminado para garantizar que los dispositivos de circuito posteriores no se dañen por impactos de alta energía momentánea.
+- [接口电路的防护设计](https://blog.csdn.net/weixin_40877615/article/details/94381422)
 
-## Referencias y agradecimientos
-
-- [Diseño de protección de circuito de interfaz](https://blog.csdn.net/weixin_40877615/article/details/94381422)
-
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

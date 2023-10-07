@@ -1,37 +1,37 @@
-# Notas de aprendizaje de CSS
+# CSS 学习笔记
 
-## Llamado
+## 调用
 
-Agregar una hoja de estilo externa en la sección `<head>` de HTML:
+在 HTML 的 `<head>` 下添加外部样式表：
 
 ```
 <link rel="stylesheet" href="xxx.css">
 ```
 
-Donde `xxx.css` es el archivo CSS en el mismo directorio.  
-Nota: Se recomienda usar **hojas de estilo externas vinculadas** (como se muestra arriba).
+其中，`xxx.css` 为同目录下的 CSS 文件。  
+注意：尽量使用 **链接式的外部样式表**（如上）
 
-## Selectores
+## 选择器
 
-### Sintaxis básica
+### 基本语法
 
 ```css
 selector {
-  propiedad: valor;
+  prpperty: value;
 }
 ```
 
-### Comparación de varios selectores
+### 几种选择器对比
 
-| Selector       | Definición                     | Llamado                   | Prioridad |
-| :------------- | :----------------------------- | :------------------------| :--------|
-| Selector de etiqueta | p {...}                        | &lt;p&gt; ... &lt;/p&gt; | Baja     |
-| Selector de clase   | .carrot {...} / p.carrot {...} | class = "carrot"         | Media    |
-| Selector de ID      | \#first {...}                  | id = "first"             | Alta     |
+| 选择器     | 定义                           | 调用                     | 优先级 |
+| :--------- | :----------------------------- | :----------------------- | :----- |
+| 标签选择器 | p {...}                        | &lt;p&gt; ... &lt;/p&gt; | 低     |
+| 类选择器   | .carrot {...} / p.carrot {...} | class = "carrot"         | 中     |
+| ID 选择器  | \#first {...}                  | id = "first"             | 高     |
 
-### Grupo de selectores
+### 选择器组
 
-Definir diferentes elementos con el mismo estilo.
+用相同样式定义不同元素。
 
 ```css
 h1,
@@ -41,142 +41,142 @@ h3 {
 }
 ```
 
-## Color
+## 颜色
 
 ```css
-/*Color de fuente*/
+/*字体颜色*/
 color: #56a455;
 
-/*Color de fondo*/
+/*背景色*/
 background-color: blue;
 
-/*Transparencia*/
-/*Valores de 0.0 a 1.0*/
+/*透明度*/
+/*取值 0.0 ~ 1.0*/
 opacity: 0.5;
 ```
 
-## Texto
+## 文本
 
-### Tamaño de fuente
+### 字体大小
 
-| Estilo | Porcentaje | Valor EM |
-| :----- | :--------- | :------- |
-| h1     | 200%       | 2em      |
-| h2     | 150%       | 1.5em    |
-| h3     | 133%       | 1.125em  |
-| body   | 100%       | 1em      |
+| 样式 | 百分比 | EM 值   |
+| :--- | :----- | :------ |
+| h1   | 200%   | 2em     |
+| h2   | 150%   | 1.5em   |
+| h3   | 133%   | 1.125em |
+| body | 100%   | 1em     |
 
 ```css
-/*Tamaño de fuente*/
+/*字体大小*/
 font-size: 200%;
 ```
 
-### Selección de fuente
+### 字体选用
 
-Nota: Los nombres de fuentes compuestos por varias palabras deben ir entre comillas, por ejemplo, 'Courier New'
+注：多单词组成的字体名称，要放引号，eg. 'Courier New'
 
 ```css
-/*Selección de fuente*/
-/*Local*/
-font-family: "Courier New", Courier, monospace, nombre_fuente_externa;
-/*Externa*/
+/*字体选用*/
+/*本地*/
+font-family: "Courier New", Courier, monospace, 外链字体名称；
+/*外链*/
 @font-face {
-  font-family: nombre_fuente_externa;
-  src: url("dirección_externa");
+  font-family: 外链字体名称；
+  src: url("外链地址");
 }
 ```
 
-### Formato de texto
+### 文本格式化
 
-El valor predeterminado es `normal`
+默认值为 `normal`
 
 ```css
-/*Negrita*/
+/*粗体*/
 font-weight: bold;
 
-/*Cursiva*/
+/*斜体*/
 font-style: italic;
 
-/*Mayúsculas y minúsculas*/
-/*uppercase, lowercase, capitalize (primera letra en mayúscula)*/
+/*大小写*/
+/*uppercase，lowercase，capitalize（首字母大写）*/
 text-transform: uppercase;
 
-/*Subrayado*/
+/*下划线*/
 text-decoration: underline;
 
-/*Tachado*/
+/*删除线*/
 text-decoration: line-through;
 
-/*Espacio entre líneas*/
+/*行间距*/
 line-height: 1.4em;
 
-/*Alineación*/
-/*left, right, center, justify (justificado)*/
+/*对齐*/
+/*left,right,center,justify（两端对齐）*/
 text-align: left;
 ```
 
-### Pseudo-clases
+### 伪类
 
 ```css
-/* Enlace no visitado */
+/* 未访问的链接 */
 a:link {
   color: #ff0000;
 }
 
-/* Enlace visitado */
+/* 已访问的链接 */
 a:visited {
   color: #00ff00;
 }
 
-/* Pase el cursor sobre el enlace */
+/* 鼠标划过链接 */
 a:hover {
   color: #ff00ff;
 }
 
-/* Enlace seleccionado */
+/* 已选中的链接 */
 a:active {
   color: #0000ff;
 }
 ```
 
-## Cajas
+## 盒子
 
-## Listas, tablas y formularios
+## 列表，表格与表单
 
-Por completar
+待补充
 
-## Diseño
+## 布局
 
-Por completar
+待补充
 
-## Normas
+## 规范
 
-### Orden de clasificación de propiedades
+### 属性分类顺序
 
-- Métodos de visualización y diseño
-- Posicionamiento
-- Cajas de modelo de caja
-  - Margen externo
-  - Borde
-  - Relleno
-- Tamaño
-- Estilo de texto
-  - Fuente
-  - Texto
-  - Color de texto
-- Fondo
-- Contorno
-- Opacidad y sombras
-- Efectos de animación
-  - Transición
-  - Transformación
-  - Animación
-- Otros
-  - Pseudo-clases y pseudo-elementos
-  - Referencia
-  - Consultas de medios
+- 显示方法 & 布局
+- 定位
+- 盒模型框
+  - 外边距
+  - 边框
+  - 内边距
+- 尺寸
+- 文本样式
+  - 字体
+  - 文本
+  - 文字颜色
+- 背景
+- 轮廓
+- 透明度 & 阴影
+- 动效
+  - 过渡
+  - 转换变形
+  - 动画
+- 其他
+  - 伪类 & 伪元素
+  - 引用
+  - 媒体查询
 
-### Lista de orden de propiedades
+### 属性顺序列表
 
 ```css
 [
@@ -358,13 +358,11 @@ Por completar
 ]
 ```
 
-## Referencias y Agradecimientos
+## 参考与致谢
 
-- [Tutorial de introducción a CSS](https://developer.mozilla.org/es/docs/Learn/CSS/First_steps)
-- [Tutorial de CSS3](https://waylau.gitbooks.io/css3-tutorial/content/)
-- [Especificación de orden de declaración de propiedades CSS](https://wiki.zthxxx.me/wiki/程序语言/CSS/CSS%20 属性声明顺序规范/)
+- [CSS 入门教程](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Getting_started)
+- [CSS3 Tutorial 《CSS3 教程》](https://waylau.gitbooks.io/css3-tutorial/content/)
+- [CSS 属性声明顺序规范](https://wiki.zthxxx.me/wiki/程序语言/CSS/CSS%20 属性声明顺序规范/)
 
-por_reemplazar[1]  
-por_reemplazar[2]
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

@@ -1,137 +1,141 @@
-# Guía de productividad de VS Code - Configuración del entorno
+# VS Code 生产力指南 - 环境配置
 
-—— Cómo crear una herramienta de productividad eficiente con VS Code.
+—— 如何用 VS Code 打造高效率的生产力工具。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200319135609.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200319135609.png)
 
-## Antecedentes
+## 背景
 
-> Si quieres hacer bien tu trabajo, debes primero tener las herramientas adecuadas. La creación es algo hermoso, y si tienes herramientas adecuadas, el proceso será más cómodo.
+> 工欲善其事，必先利其器。创造是一件美好的事情，如有利器相辅，这个过程将会变得更加舒适。
 
-### ¿Por qué usar VS Code?
+### 为什么选用 VS Code ?
 
-- Es de código abierto y gratuito, y tiene una excelente apariencia.
-- Tiene funciones de edición completas (autocompletado, resaltado de sintaxis, etc.).
-- Puedes depurar el código directamente en el editor.
-- Tiene integración con Git.
-- Tiene un amplio soporte de complementos y opciones de personalización.
+- 开源免费，颜值出众
+- 完善的编辑功能（自动补全、语法突出等）
+- 可直接在编辑器内调试代码
+- 集成 Git
+- 丰富的插件支持与自定义项
 
-## Instalación del software
+## 软件安装
 
-Puedes descargar la última versión de VS Code en el sitio web oficial: <https://code.visualstudio.com/>
+你可以在 VS Code 官网下载最新的版本：<https://code.visualstudio.com/>
 
-Por lo general, elegimos descargar la versión **Estable**. Si no temes a los errores y quieres experimentar con las últimas características, también puedes probar la versión **Insiders**.
+一般我们选择下载 **Stable** 版本。如果你不惧 bug，想体验最新的特性，也可以试试 **Insiders** 版本。
 
-Después de descargar e instalar el software, lo abrimos y lo primero que vemos es la página de inicio:
+下载安装完成后，我们打开软件，首先看到的是启动页面：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200318224855.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200318224855.png)
 
-## Instalación de complementos
+## 插件安装
 
-Para reducir el tamaño, VS Code solo conserva algunas funciones básicas. Pero si quieres aumentar la eficiencia, estas funciones no son suficientes. 
+为了精简体积，VS Code 仅保留一些最基础的功能。但如果想提高效率，这些功能是远远不够的。  
+好在 VS Code 有各式各样的第三方插件加成，可以真正做到按需取用。
 
-Afortunadamente, VS Code tiene una variedad de complementos de terceros que pueden ser realmente útiles según tus necesidades.
+下面推荐一些好用的插件（可直接点击链接安装）：
 
-A continuación, se recomiendan algunos complementos útiles (puedes hacer clic en los enlaces para instalarlos directamente):
+### 基本
 
-### Básicos
-
-- [**Paquete de idioma chino (simplificado)**](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hans): traduce VS Code al chino.
-- [**Settings Sync**](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync): realiza una copia de seguridad de la configuración y los complementos, y sincroniza entre dispositivos.
-  - **Configuración**: configura el `GitHub Gist ID` y el `GitHub Access Token` correspondientes.
-  - **Uso**: `Shift + Alt + U` para cargar, `Shift + Alt + D` para descargar.
-  - (La última versión de VS Code ya tiene una función de sincronización incorporada, pero si necesitas una gestión de versiones, aún puedes usar este complemento).
+- [**Chinese (Simplified) Language Pack**](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hans)：汉化 VS Code
+- [**Settings Sync**](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)：备份设置项和插件，多设备同步
+  - **配置项**：配置相应的 `GitHub Gist ID` 和 `GitHub Access Token`
+  - **用法**：`Shift + Alt + U` 上传，`Shift + Alt + D` 下载
+  - （最新版本 VS Code 已自带同步功能，但如果需要版本管理还是可以用这个插件）
 
 ### Markdown
 
-- [**Markdown All in One**](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one): proporciona un soporte de sintaxis Markdown más potente.
-- [**Markdown Paste Image**](https://marketplace.visualstudio.com/items?itemName=onesdev.vscode-paste-image-plus): pega imágenes en Markdown y las copia en la carpeta /res.
-- [**Pangu-Markdown**](https://marketplace.visualstudio.com/items?itemName=xlthu.Pangu-Markdown): formatea el Markdown de manera más estándar (agrega espacios entre caracteres chinos e ingleses, reemplaza la puntuación estándar, etc.).
-  - **Configuración**: habilita la opción de formatear automáticamente al guardar.
-- [**vscode-pandoc**](https://marketplace.visualstudio.com/items?itemName=DougFinke.vscode-pandoc): agrega soporte para Pandoc, que exporta Markdown a PDF/Word/HTML, etc.
-  - **Configuración**: asegúrate de que [Pandoc](https://pandoc.org/installing.html) esté instalado.
+- [**Markdown All in One**](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)：提供更强大的 Markdown 语法支持
+- [**Markdown Paste Image**](https://marketplace.visualstudio.com/items?itemName=onesdev.vscode-paste-image-plus)：将图片粘贴到 Markdown，并拷贝至 /res 文件夹内
+- [**Pangu-Markdown**](https://marketplace.visualstudio.com/items?itemName=xlthu.Pangu-Markdown)：规范 Markdown 格式（中英文间加空格、替换规范标点等）
+  - **配置项**：启用保存时自动格式化
+- [**vscode-pandoc**](https://marketplace.visualstudio.com/items?itemName=DougFinke.vscode-pandoc)：增加 Pandoc 支持，将 Markdown 导出为 PDF/Word/HTML 等格式
+  - **配置项**：确保 [Pandoc](https://pandoc.org/installing.html) 已经安装
 
-- [**Indenticator**](https://marketplace.visualstudio.com/items?itemName=SirTori.indenticator): Destaca la profundidad de la indentación del código.
-- [**vscode-icons**](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons): Agrega iconos atractivos para diferentes formatos de archivo.
+### 美化
 
-### Lenguajes de programación
+- [**Indenticator**](https://marketplace.visualstudio.com/items?itemName=SirTori.indenticator)：高亮代码缩进深度
+- [**vscode-icons**](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)：为不同的文件格式添加好看的图标
+
+### 编程语言
 
 - [**C/C++**](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
 - [**Python**](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 
-### Front-end
+### 前端
 
-- [**Prettier - Code formatter**](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode): Herramienta de formateo automático para lenguajes front-end como HTML/CSS/JavaScript.
-  - **Uso**: `Ctrl + Shift + P`
-- [**Color Manager**](https://marketplace.visualstudio.com/items?itemName=RoyAction.color-manager): Muestra el color correspondiente a un valor de color.
-- [**Live Server**](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer): Ejecuta páginas web locales en VS Code.
+- [**Prettier - Code formatter**](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)：HTML/CSS/JavaScript 等前端语言自动格式化工具
+  - **用法**：`Ctrl + Shift + P`
+- [**Color Manager**](https://marketplace.visualstudio.com/items?itemName=RoyAction.color-manager)：直接预览色值对应的颜色
+- [**Live Server**](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)：在 VS Code 内运行本地网页
 
-### Otros
+### 其他
 
-- [**Google Translate**](https://marketplace.visualstudio.com/items?itemName=hancel.google-translate): Proporciona traducción en VS Code.
-  - **Uso**: `Ctrl + Alt + T`
-- [**Start git-bash**](https://marketplace.visualstudio.com/items?itemName=McCarter.start-git-bash): Agrega `bash` a la terminal de VS Code.
-- [**TinyPNG**](https://marketplace.visualstudio.com/items?itemName=andi1984.tinypng): Comprime imágenes.
-  - **Configuración**: Configura la clave de API de `TinyPNG` correctamente.
-  - **Uso**: Haz clic derecho en la imagen en el árbol de archivos - `TinyPNG:Compress`
-- [**Zhihu Daily**](https://marketplace.visualstudio.com/items?itemName=YRM.zhihu): Ideal para procrastinar, lee noticias de Zhihu Daily en VS Code.
-- [**Kunkun Encouragement**](https://marketplace.visualstudio.com/items?itemName=sakura1357.cxk): Si escribes código durante una hora, recibirás un recordatorio de descanso con el baile de baloncesto exclusivo de Cai Xukun.
+- [**Google Translate**](https://marketplace.visualstudio.com/items?itemName=hancel.google-translate)：在 VS Code 内提供翻译
+  - **用法**：`Ctrl + Alt + T`
+- [**Start git-bash**](https://marketplace.visualstudio.com/items?itemName=McCarter.start-git-bash)：将 `bash` 添加至 VS Code 的终端
+- [**TinyPNG**](https://marketplace.visualstudio.com/items?itemName=andi1984.tinypng)：压缩图片
+  - **配置项**：设置正确的 `TinyPNG API Key`
+  - **用法**：右键文件树内的图片 - `TinyPNG:Compress`
+- [**Zhihu Daily**](https://marketplace.visualstudio.com/items?itemName=YRM.zhihu)：摸鱼必备，在 VS Code 内刷知乎日报
+- [**坤坤鼓励师**](https://marketplace.visualstudio.com/items?itemName=sakura1357.cxk)：连续打代码一小时，会有蔡徐坤专属篮球舞提醒你休息
 
-## Temas
+## 主题
 
-Puedes seleccionar el tema que más te guste en `Archivo - Preferencias - Tema de color`. Por ejemplo, yo he seleccionado el tema `Monokai Dimmed`:
+你可以通过 `文件 - 首选项 - 颜色主题` 来选择自己喜欢的主题，例如我选的是 `Monokai Dimmed` 主题：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200319132727.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200319132727.png)
 
-Si no te gusta ninguno de los temas proporcionados por defecto, puedes buscar y descargar temas que te gusten en la tienda de extensiones con la palabra clave `theme`.
+如果你觉得默认提供的主题不够用，也可以在插件商店内，用关键词 `theme` 搜索并下载自己喜欢的主题。
 
-## Configuraciones comunes
+## 常用设置
 
-Para hacer que VS Code sea más fácil de usar, puedes cambiar algunas configuraciones comunes. Puedes abrir la página de configuración a través de `Archivo - Preferencias - Configuración`.
+初次使用，可以修改一些常用的设置，使 VS Code 用起来更加顺手。
+通过 `文件 - 首选项 - 设置` 即可打开设置页面。
 
-### Guardado automático
+### 自动保存
 
-Se puede configurar `Files: Auto Save` en tres opciones diferentes además de `off`. Es muy útil tener la opción de guardar automáticamente en el uso diario.
+可将 `Files: Auto Save` 设置为除 `off` 外其他 3 个选项。日常使用，自动保存还是很有必要的。
 
-### Fuente
+### 字体
 
-La fuente de ancho fijo es esencial para escribir código, personalmente recomiendo la fuente [**Microsoft YaHei Mono**](https://github.com/linyuxuanlin/File-host/blob/main/software-development/Microsoft-YaHei-Mono.ttf).
+等宽字体是写代码的必备，我个人推荐 [**雅黑等宽 (Microsoft YaHei Mono)**](https://github.com/linyuxuanlin/File-host/blob/main/software-development/Microsoft-YaHei-Mono.ttf) 字体。
 
-Después de descargar el archivo de fuente .ttf, instálalo, reinicia VS Code y agrega `'Microsoft YaHei Mono'` al principio de la opción `Settings - Text Editor - Font - Font Family` para habilitar la fuente.
+下载 .ttf 字体文件后安装，重启 VS Code，并在 `设置 - 文本编辑器 - 字体 - Font Family` 选项中将 `'Microsoft YaHei Mono'` 添加至头部，即可启用字体。
 
-## Atajos de teclado comunes
+## 常用快捷键
 
-|     Acción     |           Atajo           |
-| :------------: | :-----------------------: |
-|   Panel de comandos   | `F1` o `Ctrl + Shift + P` |
-|     Terminal     | <code>Ctrl + &#96;</code>  |
-|  Explorador de archivos  |     `Ctrl + Shift + E`     |
-|   Búsqueda global   |     `Ctrl + Shift + F`     |
-| Control de código fuente |     `Ctrl + Shift + G`     |
-|     Ejecutar     |     `Ctrl + Shift + D`     |
-|   Administrador de extensiones   |     `Ctrl + Shift + X`     |
-| Cambiar rápidamente entre archivos |         `Ctrl + D`         |
+|     操作     |           快捷键           |
+| :----------: | :------------------------: |
+|   命令面板   | `F1` 或 `Ctrl + Shift + P` |
+|     终端     | <code>Ctrl + &#96;</code>  |
+|  资源管理器  |     `Ctrl + Shift + E`     |
+|   全局搜索   |     `Ctrl + Shift + F`     |
+| 源代码管理器 |     `Ctrl + Shift + G`     |
+|     运行     |     `Ctrl + Shift + D`     |
+|   插件管理   |     `Ctrl + Shift + X`     |
+| 快速切换文件 |         `Ctrl + D`         |
 
-## Control de código fuente
+## 源代码控制
 
-¿Tienes que ingresar tu nombre de usuario y contraseña cada vez que envías algo a Github? Ingresa el siguiente comando:
+提交 Github 每次都需要输入用户名及密码？
+输入命令：
 
 ```shell
 git config --global credential.helper store
 ```
 
-Reinicia VS Code y listo.
+重启 VS Code 即可。
 
-## Conclusión
+## 总结
 
-Estas son las configuraciones básicas de VS Code. En el próximo artículo, discutiremos detalladamente cómo usar Git, Jupyter Notebook y fragmentos de código personalizados. ¡Mantente atento!
+以上为 VS Code 基本的环境配置，下一篇将详细讨论 Git，Jupyter NoteBook 及用户代码片段等操作方法，敬请期待。
 
-### Enlaces de referencia
+### 参考链接
 
 - [Docs · Visual Studio Code](https://code.visualstudio.com/docs)
-- [¿Por qué elegí usar VS Code para el desarrollo web?](https://zhuanlan.zhihu.com/p/28631442)
+- [为什么我选择使用 VS Code 进行前端开发？](https://zhuanlan.zhihu.com/p/28631442)
 - [vscode git 提交总让输入用户名及密码](https://www.jianshu.com/p/8854713433c5)
 - [Vscode 编辑 markdown 代码块（snippets）](https://www.jianshu.com/p/a87e9ca2d208)
-- [Agregar fragmentos de código personalizados en Visual Studio Code](https://blog.walterlv.com/post/add-custom-code-snippet-for-vscode.html##%E5%85%B3%E4%BA%8E%E6%96%87%E4%BB%B6%E5%90%8D%E7%A7%B0)
+- [在 Visual Studio Code 中添加自定义的代码片段](https://blog.walterlv.com/post/add-custom-code-snippet-for-vscode.html##%E5%85%B3%E4%BA%8E%E6%96%87%E4%BB%B6%E5%90%8D%E7%A7%B0)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

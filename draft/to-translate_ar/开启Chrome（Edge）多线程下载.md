@@ -1,19 +1,17 @@
-# Activar descarga en paralelo en Chrome (Edge)
+# 开启 Chrome（Edge）多线程下载
 
-## Cómo activar
+## 如何开启
 
-Ingrese el siguiente enlace en la barra de direcciones y presione enter:
+在地址栏输入链接并回车：
 
-- Chrome: `chrome://flags/#enable-parallel-downloading`
-- Edge: `edge://flags/#enable-parallel-downloading`
+- Chrome：`chrome://flags/#enable-parallel-downloading`
+- Edge：`edge://flags/#enable-parallel-downloading`
 
-Luego, cambie la opción `Default` de `Parallel downloading` a `Enabled`.
+将 `Parallel downloading` 选项的 `Default` 改为 `Enabled` 即可。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Una forma de acelerar la descarga del navegador hasta 20 veces: activar la función de descarga en paralelo oculta en Chrome / Edge de forma gratuita](https://www.iplaysoft.com/chrome-parallel-download.html)
+- [一招加速浏览器下载 20 倍！免费开启 Chrome / Edge “隐藏” 自带的多线程下载功能](https://www.iplaysoft.com/chrome-parallel-download.html)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

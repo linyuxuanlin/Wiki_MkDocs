@@ -1,28 +1,26 @@
-# Evita la conversión forzada de HTTPS en Chrome (Edge)
+# 避免 Chrome（Edge）强制转换 HTTPS
 
-Algunos sitios web solo se pueden acceder a través de HTTP, pero a veces el navegador los convierte automáticamente a HTTPS, lo que provoca errores de acceso. Los siguientes pasos muestran cómo desactivar la conversión automática del navegador.
+有些网站只能用 http 访问，但有时候浏览器会强制转换为 https，导致访问错误。以下步骤将展示如何禁用浏览器的自动转换。
 
-## Pasos a seguir
+## 操作步骤
 
-Escribe la siguiente dirección en la barra de direcciones y presiona Enter:
+在地址栏输入链接并回车：
 
-- Chrome: `chrome://net-internals/#hsts`
-- Edge: `edge://net-internals/#hsts`
+- Chrome：`chrome://net-internals/#hsts`
+- Edge：`edge://net-internals/#hsts`
 
-En la sección "Eliminar políticas de seguridad de dominio", ingresa los enlaces que no deseas que se conviertan automáticamente. Por ejemplo, si deseas que `wiki-power.com` no se convierta automáticamente a HTTPS, ingresa `wiki-power.com` y haz clic en "Eliminar".
+在 `Delete domain security policies` 栏，将你不需要自动转换的链接填进。比如，我要求 `wiki-power.com` 不被强制转换为 https 访问，则填入 `wiki-power.com` 然后点击 `Delete` 删除即可。
 
-Luego, escribe la siguiente dirección en la barra de direcciones y presiona Enter:
+随后在地址栏输入链接并回车：
 
-- Chrome: `chrome://flags/#edge-automatic-https`
-- Edge: `edge://flags/#edge-automatic-https`
+- Chrome：`chrome://flags/#edge-automatic-https`
+- Edge：`edge://flags/#edge-automatic-https`
 
-Cambia la opción "HTTPS automático" de "Predeterminado" a "Deshabilitado" y reinicia el navegador.
+将 `Automatic HTTPS` 选项的 `Default` 改为 `Disabled`，并重启浏览器。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Edge o Google Chrome convierten automáticamente las direcciones web HTTP en HTTPS, y cambiarlas manualmente a HTTP no funciona](https://blog.csdn.net/Thinker001/article/details/117717690)
+- [Edge 或谷歌浏览器输入 http 的网址被强制转化为 https，手工修改为 http 都无效](https://blog.csdn.net/Thinker001/article/details/117717690)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

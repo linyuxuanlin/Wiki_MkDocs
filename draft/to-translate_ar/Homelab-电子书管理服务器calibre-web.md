@@ -1,12 +1,12 @@
-# Homelab - Servidor de gestión de libros electrónicos calibre-web
+# Homelab - 电子书管理服务器 calibre-web
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210429125418.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210429125418.png)
 
-**calibre-web** es una solución integral de libros electrónicos basada en Calibre, que permite leer libros electrónicos en línea, integra el servicio calibre-server y también incluye la conversión de formatos de libros electrónicos.
+**calibre-web** 是一个一站式电子书解决方案，它基于 Calibre，可在网页上阅读电子书，集成了 calibre-server 服务，也带电子书格式转换。
 
-## Implementación (Docker Compose)
+## 部署（Docker Compose）
 
-Primero, cree el archivo `compose.yaml` y pegue el siguiente contenido:
+首先创建 `compose.yaml` 文件，并粘贴以下内容：
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -24,55 +24,53 @@ services:
     restart: unless-stopped
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `audiobookshelf`).
+（可选）推荐在 `compose.yaml` 同级目录下创建 `.env` 文件，并自定义你的环境变量。如果不想使用环境变量的方式，也可以直接在 `compose.yaml` 内自定义你的参数（比如把 `${STACK_NAME}` 替换为 `audiobookshelf`）。
 
 ```dotenv title=".env"
 STACK_NAME=calibre-web
-STACK_DIR=xxx # Ruta personalizada de almacenamiento del proyecto, por ejemplo, ./calibre-web
-DATA_DIR=xxx # Ruta personalizada de almacenamiento de libros, por ejemplo, ./book
+STACK_DIR=xxx # 自定义项目储存路径，例如 ./calibre-web
+DATA_DIR=xxx # 自定义播客储存路径，例如 ./book
 
 # calibre-web
 APP_VERSION=latest
-APP_PORT_WEB=xxxx # Puerto de acceso personalizado de la interfaz de usuario web, simplemente elija uno que no esté ocupado
-APP_PORT_SERVER=xxxx # Puerto de acceso personalizado de calibre-server, simplemente elija uno que no esté ocupado
+APP_PORT_WEB=xxxx # 自定义 Web UI 的访问端口，选择不被占用的即可
+APP_PORT_SERVER=xxxx # 自定义 calibre-server 的访问端口，选择不被占用的即可
 ```
 
-Si tiene un NAS, también puede montar el espacio de almacenamiento en el NAS a través del protocolo NFS, almacenar libros en el NAS para ahorrar espacio en el servidor. Para obtener más detalles, consulte **Montar discos duros NAS Synology en Linux (NFS)**.
+如果你有个 NAS，也可以通过 NFS 协议挂载 NAS 上的储存空间，把音乐储存在 NAS 上以节省服务器空间，详情请参考 [**Linux 下挂载群晖 NAS 硬盘拓展空间（NFS）**](https://wiki-power.com/Linux%E4%B8%8B%E6%8C%82%E8%BD%BD%E7%BE%A4%E6%99%96NAS%E7%A1%AC%E7%9B%98%E6%8B%93%E5%B1%95%E7%A9%BA%E9%97%B4%EF%BC%88NFS%EF%BC%89/)。
 
-Finalmente, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores.
+最后，在 `compose.yaml` 同级目录下执行 `docker compose up -d` 命令即可启动编排的容器。
 
-## Instrucciones de configuración
+## 配置说明
 
-La cuenta predeterminada es `admin` y la contraseña es `admin123`.
+默认的账号是 `admin`，密码是 `admin123`。
 
-### Función de carga de libros
+### 书籍上传功能
 
-El sistema no tiene la función de carga de libros habilitada de forma predeterminada. Para habilitar esta función, haga clic en "Permisos de administración" - "Editar configuración básica" - "Habilitar carga".
+系统默认是没有书籍上传功能的，需要依次点击右上角 `管理权限` - `编辑基本配置` — `启用上传`，这样才能启用书籍上传功能。
 
-### Uso en dispositivos móviles
+### 移动端使用
 
-En Android, puede usar Librera para conectarse a calibre-web a través del protocolo OPDS. La URL de la biblioteca de libros es la URL original seguida de `/opds`, por ejemplo, `calibre.xxx.com/opds`.
+Android 上可使用 Librera，通过 OPDS 协议连接 calibre-web。添加书库的 url 是在原 url 最后加上`/opds`，例如`calibre.xxx.com/opds`。
 
-### Olvidó su contraseña
+### 忘记密码
 
-Si olvida su contraseña, puede descargar la base de datos `app.db` de `calibre-web` y usar SQLite para ver el software (o herramientas en línea como **Visor | Editor de SQLite**), y luego ejecutar las siguientes instrucciones:
+如果忘记密码，可以将 `calibre-web` 中的 `app.db` 数据库下载下来，使用 SQLite 查看软件（或在线工具如 [**Sqlite 查看器 | 修改器**](https://www.lzltool.com/sqlite-viewer)），分别执行以下语句：
 
 ```sql
-SELECT * FROM 'user' LIMIT 0,30 -- También se puede cambiar manualmente a la tabla llamada user
+SELECT * FROM 'user' LIMIT 0,30 --也可也手动切换到名为 user 的表
 ```
 
 ```sql
-UPDATE user SET password='pbkdf2:sha256:150000$ODedbYPS$4d1bd12adb1eb63f78e49873cbfc731e35af178cb9eb6b8b62c09dcf8db76670' WHERE name='xxx'; -- Reemplaza xxx con tu nombre de usuario actual
+UPDATE user SET password='pbkdf2:sha256:150000$ODedbYPS$4d1bd12adb1eb63f78e49873cbfc731e35af178cb9eb6b8b62c09dcf8db76670' WHERE name='xxx'; -- 需要修改xxx为你当前的用户名
 ```
 
-Reemplaza el archivo `app.db` modificado por el original y luego inicia sesión con la nueva contraseña `hello`.
+把修改的 `app.db` 替换掉原来的，随后使用新的密码 `hello` 登录即可。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Repositorio de GitHub](https://github.com/janeczku/calibre-web)
+- [GitHub repo](https://github.com/janeczku/calibre-web)
 - [Docker Hub](https://registry.hub.docker.com/r/johngong/calibre-web)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

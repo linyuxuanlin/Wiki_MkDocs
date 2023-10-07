@@ -1,94 +1,92 @@
-# DAC - Parámetros Dinámicos
+# DAC - Dynamic Parameters
 
-> Esta publicación solo está disponible en inglés.
+> This post is only available in English.
 
-## Parámetros Dinámicos
+## Dynamic Parameters
 
-Los parámetros dinámicos de DAC contienen principalmente:
+DAC's dynamic parameters mainly contain:
 
-- Relación Señal-Ruido (SNR)
-- Distorsión Armónica Total (THD)
-- Relación Señal-Ruido y Distorsión (SINAD)
-- Error de Intermodulación (IM)
+- Signal to Noise Ratio (SNR)
+- Total Harmonic Distortion (THD)
+- Signal to Noise and Distortion Ratio (SINAD)
+- Inter-modulation Error (IM)
 
-### Relación Señal-Ruido (SNR)
+### Signal to Noise Ratio (SNR)
 
-La **Relación Señal-Ruido (SNR)** de un DAC se define como la relación de la Potencia de Señal Medida RMS (excluyendo la Distorsión Armónica) a la Potencia de Ruido RMS:
+**Signal to Noise Ratio (SNR)** of an DAC is defined as the ratio of the Measured Signal Power's RMS (excluding Harmonic Distortion) to the Noise Power's RMS:
 
 $$
-SNR(dB)=20log(\frac{V_{Señal(RMS)}}{V_{Ruido(RMS)}})
+SNR(dB)=20log(\frac{V_{Signal(RMS)}}{V_{Noise(RMS)}})
 $$
 
-Dado que SNR es una relación de potencia, el $20$ en la ecuación significa el cuadrado de la relación de voltaje.
+Since SNR is an ratio of power, $20$ in the equation means the square of the ratio of voltage.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221009221450.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221009221450.png)
 
-Aunque la Distorsión Armónica no se incluye en la medición de SNR, se incluyen la Cuantización, el Ruido Térmico y otros ruidos residuales en el convertidor.
+Although the Harmonic Distortion is not included in the measurement of SNR, but the Quantization, Thermal and other residual noise in converter are included.
 
-### Distorsión Armónica Total (THD)
+### Total Harmonic Distortion (THD)
 
-La **Distorsión Armónica Total (THD)** de un DAC se define como la relación del fundamental a toda la distorsión armónica:
+**Total Harmonic Distortion (THD)** of an DAC is defined as the ratio of the fundamental to all the harmonic distortion:
 
 $$
 THD(dB)=20log(\frac{\sqrt{V^2_{2(RMS)}+V^2_{3(RMS)}+...+V^2_{n(RMS)}}}{V_{1(RMS)}}
 $$
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221009225800.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221009225800.png)
 
-## Cómo Probar los Parámetros Dinámicos
+## How to Test Dynamic Parameters
 
-### Configuración del Sistema de Prueba
+### Test System Setup
 
-Configuración del sistema de prueba para las pruebas de parámetros dinámicos de ADC:
+Test system setup for ADC dynamic parameter tests:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221009230212.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221009230212.png)
 
-La resolución del Digitalizador de CA debe ser al menos 2 a 4 bits mejor que el DUT.
+Resolution of AC Digitizer should be at least 2 to 4 bits better than DUT.
 
-### Concepto de Pruebas
+### Tests Concept
 
-El procedimiento para probar los parámetros dinámicos de un DAC se describe a continuación.
+Procedure of testing the dynamic parameters of an DAC is listed below.
 
-#### 1.Crear una señal de datos digitales de entrada continua (de una onda sinusoidal) con el probador para que el DAC la convierta.
+#### 1.Make a continuous input digital data signal (of a Sine wave) with the tester for the DAC to convert
 
-Es una práctica común asegurarse de que el reloj analógico/digital esté referenciado a un reloj maestro común, de modo que la relación de la frecuencia de las fuentes de reloj esté fija y sincronizada, lo que hace que los resultados de las pruebas sean altamente repetibles.
+It is common practice to ensure that the analog/digital clock are referenced to a common master clock, so that the relationship of the clock sources's frequency is fixed and synchronized, which making test results highly repeatable.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011195204.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011195204.png)
 
-#### 2. Colectar coherentemente un conjunto de muestras con el DAC
+#### 2.Coherently collect a set of samples with the DAC
 
-Para la fuente digital:
+For Digital Source:
 
 $$
 \frac{Fs(dut)}{Fi}=\frac{N}{M}
 $$
 
-Donde $Fs(dut)$ es la tasa de muestreo de la fuente digital, $Fi$ es la frecuencia de la señal, $N$ es el número de muestras, $M$ es el número de ciclos enteros.
+Where $Fs(dut)$ is the samping rate of Digital Source, $Fi$ is signal frequency, $N$ is the number of samples, $M$ is the number of integer cycles.
 
-Para la captura digital de CA:
+For AC_Digital Capture:
 
 $$
 \frac{Fs}{Fi}=\frac{Ncap}{Mc}
 $$
 
-Donde $Fs$ es la tasa de muestreo del DAC y también la tasa de muestreo de la captura digital, $Fi$ es la frecuencia de la señal, $Ncap$ es el número de muestras capturadas (2x número), $Mc$ es el número de ciclos enteros (impar).
+Where $Fs$ is the DAC sampling rate also the Digital Capture's sample rate, $Fi$ is the signal frequency, $Ncap$ is the number of samples captured (2x number), $Mc$ is the number of integer cycles (odd).
 
-#### 3. Enviar el conjunto de muestras de tiempo recopiladas al DSP para realizar análisis DFT / FFT
+#### 3.Send the collected set of time samples to the DSP to perform DFT / FFT analysis
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011140834.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011140834.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011140904.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011140904.png)
 
-#### 4. Analizar los bins de frecuencia de interés utilizando ecuaciones o algoritmos de prueba para SNR, THD y comparar con la especificación
+#### 4.Analyze the frequency bins of interest using equations or tester algorithms for SNR, THD and compare to specification
 
-#### 5. Tomar una decisión de aprobación / rechazo basada en los resultados
+#### 5.Make a pass / fail decision based on the results
 
-## Referencias y agradecimientos
+## References & Acknowledgements
 
-- _Fundamentos de pruebas utilizando ATE_
-- _Los fundamentos de las pruebas de señal mixta_Brian-Lowe_
+- _Fundamentals of Testing Using ATE_
+- _The-Fundamentals-of-Mixed-Signal-Testing_Brian-Lowe_
 
 > Original: <https://wiki-power.com/>  
-> Esta publicación está protegida por el acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en), debe ser reproducida con atribución.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.

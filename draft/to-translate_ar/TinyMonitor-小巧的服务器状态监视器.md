@@ -1,28 +1,28 @@
-# TinyMonitor - Monitor de estado del servidor compacto
+# TinyMonitor - 小巧的服务器状态监视器
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202305261716469.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261716469.jpg)
 
-TinyMonitor es un monitor de estado del servidor extremadamente compacto y minimalista que consta solo de un controlador principal ESP32 y una pantalla OLED, que muestra los parámetros de estado en tiempo real del servidor para facilitar la observación y la depuración.
+TinyMonitor 是一个小巧极简的服务器状态监视终端，它仅由一个 ESP32 主控加上 OLED 显示屏，就可以将服务器的实时状态参数展示出来，方便观察调试。
 
-## Preparación previa
+## 前期准备
 
-Los materiales de hardware utilizados en este proyecto son muy simples: un Beetle ESP32-C3 con Wi-Fi y Bluetooth incorporados, y una pantalla OLED de 128x64.
+本项目用到的硬件物料非常简单，一个自带 Wi-Fi 蓝牙的 Beetle ESP32-C3，还有一块 128x64 的 OLED 屏。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202305261541993.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261541993.png)
 
-La definición de pines de Beetle ESP32-C3 es la siguiente.
+Beetle ESP32-C3 的引脚定义如下。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202305261545236.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261545236.png)
 
-Como se puede utilizar el modo I2C de software (es decir, pines I2C personalizados) para controlar la pantalla OLED, he definido los pines `0`/`1` de Beetle ESP32-C3 como funciones `SCL`/`SDA`. De esta manera, el cableado es muy sencillo, solo hay que soldar los 4 pines juntos.
+因为可以使用软件 I2C 的方式（即自定义 I2C 引脚）驱动 OLED 屏，所以我将 Beetle ESP32-C3 的 `0`/`1` 引脚定义为 `SCL`/`SDA` 功能。这样一来，接线十分简单，相互贴着把 4 个引脚焊上就完成了。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202305261546367.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261546367.png)
 
-Nota: antes de cargar el programa en Beetle ESP32-C3, es necesario agregar el paquete ESP32 para reconocer correctamente el modelo de la placa. Consulte su [**página Wiki**](https://wiki.dfrobot.com.cn/_SKU_DFR0868_Beetle_ESP32_C3) para obtener más detalles.
+注：给 Beetle ESP32-C3 烧录程序前，需要先添加 ESP32 的包，以正常识别板子型号。详见其 [**Wiki 页面**](https://wiki.dfrobot.com.cn/_SKU_DFR0868_Beetle_ESP32_C3)。
 
-### Encender la pantalla
+### 点亮屏幕
 
-Se puede utilizar este programa sencillo para comprobar si se puede mostrar información correctamente en la pantalla OLED:
+可以使用这个简单的程序，测试能否在 OLED 上正常显示信息：
 
 ```cpp title="OLED_SoftwareI2C_HelloWorld.ino"
 #include <U8g2lib.h>
@@ -45,15 +45,15 @@ void loop(void) {
 }
 ```
 
-## Servicio de agente MQTT
+## MQTT 代理服务
 
-MQTT es un protocolo de transmisión de mensajes basado en cliente-servidor y publicación/suscripción. En este proyecto, MQTT es el puente de comunicación entre el servidor y ESP32. Para mayor comodidad, he desplegado el servicio MQTT en el servidor que se va a supervisar; si es necesario, también se puede desplegar en otras máquinas.
+MQTT 是一种基于客户端 - 服务器的消息发布 / 订阅传输协议。在本项目中，MQTT 是服务器与 ESP32 通信的桥梁，为了方便，我将 MQTT 服务部署在需要监控的服务器上；如果有需要，你也可以部署在其他的机器上。
 
-### Despliegue del servicio Mosquitto
+### 部署 Mosquitto 服务
 
-Mosquitto es un software de agente de mensajes de código abierto que implementa el protocolo de envío de mensajes MQTT v3.1. En este caso, he utilizado la implementación de Docker [**eclipse-mosquitto**](https://hub.docker.com/_/eclipse-mosquitto) como servidor de agente MQTT. Si no está familiarizado con la implementación de Docker, puede consultar los artículos [**Guía sencilla de Docker**](https://wiki-power.com/es/Docker%E7%AE%80%E6%98%93%E6%8C%87%E5%8D%97/) y [**Docker Compose - Una forma más elegante de abrir**](https://wiki-power.com/es/DockerCompose-%E6%9B%B4%E4%BC%98%E9%9B%85%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/).
+Mosquitto 是一款实现了消息推送协议 MQTT v3.1 的开源消息代理软件，在这里我用的是 Docker 方式部署的 [**eclipse-mosquitto**](https://hub.docker.com/_/eclipse-mosquitto) 作为 MQTT 代理服务器。如果不熟悉 Docker 部署的方式，可以参考文章 [**Docker 简易指南**](https://wiki-power.com/Docker%E7%AE%80%E6%98%93%E6%8C%87%E5%8D%97/) 与 [**Docker Compose - 更优雅的打开方式**](https://wiki-power.com/DockerCompose-%E6%9B%B4%E4%BC%98%E9%9B%85%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/)。
 
-Según las instrucciones oficiales, primero debe crear los siguientes directorios y archivos para que Mosquitto los use y otorgarles permisos suficientes: (por favor, cambie `${STACK_DIR}` a la ruta local donde se almacenan los datos, por ejemplo, `/DATA/AppData/mosquitto`, lo mismo a continuación)
+根据官方的说明，首先需要创建以下目录和文件供 Mosquitto 使用，并赋予足够的权限：（请将 `${STACK_DIR}` 修改为本地存放数据的路径，例如 `/DATA/AppData/mosquitto`，下文同）
 
 ```bash
 mkdir -vp ${STACK_DIR}/{config,data,log} \
@@ -62,27 +62,27 @@ mkdir -vp ${STACK_DIR}/{config,data,log} \
 && chmod -R 777 ${STACK_DIR}/log \
 ```
 
-Luego, escriba el siguiente contenido en el archivo `mosquitto.conf`:
+随后，在 `mosquitto.conf` 文件中写入以下内容：
 
 ```conf title="mosquitto.conf"
 persistence true
 persistence_location /mosquitto/data
 log_dest file /mosquitto/log/mosquitto.log
 
-# Desactivar el modo anónimo
+# 关闭匿名模式
 allow_anonymous false
-# Especificar el archivo de contraseña
+# 指定密码文件
 password_file /mosquitto/config/pwfile.conf
 ```
 
-Implemente el contenedor utilizando `docker-compose`:
+使用 `docker-compose` 方式部署容器：
 
 ```yaml title="compose.yaml"
 version: "3"
 services:
   mosquitto:
     container_name: mosquitto_app
-    image: eclipse-mosquitto:1.6.14 # La versión 2.x puede tener problemas de compatibilidad
+    image: eclipse-mosquitto:1.6.14 # 2.x 版本可能兼容性不佳
     ports:
       - "1883:1883"
       - "9001:9001"
@@ -94,75 +94,75 @@ services:
     restart: always
 ```
 
-Ingrese al contenedor y cambie la contraseña:
+进入容器并修改密码：
 
 ```bash
-cd ruta donde se encuentra compose.yaml
+cd 存放compose.yaml的路径
 docker compose up
 
-docker compose ps # Encuentre el ID del contenedor en ejecución
-docker exec -it ID_del_contenedor sh # Ingrese al shell del contenedor
+docker compose ps # 找到运行的容器的ID
+docker exec -it 容器ID sh # 进入容器 shell
 
 touch /mosquitto/config/pwfile.conf
 chmod -R 755 /mosquitto/config/pwfile.conf
 
-# Cree un usuario y una contraseña, nombre de usuario: test, contraseña: 123
+# 创建用户与密码，用户名：test，密码：123
 mosquitto_passwd -b /mosquitto/config/pwfile.conf test 123
 
-exit # Salga del shell del contenedor
-docker restart ID_del_contenedor # Reinicie el contenedor para que surtan efecto los cambios
+exit # 退出容器 shell
+docker restart 容器ID # 重启容器生效
 ```
 
-### Prueba de la disponibilidad del servidor MQTT
+### 测试 MQTT 服务器的可用性
 
-Después de iniciar normalmente el servicio `mosquitto`, podemos usar [**MQTTBox**](https://apps.microsoft.com/store/detail/mqttbox/9NBLGGH55JZG) para probar la disponibilidad del servidor proxy MQTT.
+正常启动了 `mosquitto` 服务后，我们可以使用 [**MQTTBox**](https://apps.microsoft.com/store/detail/mqttbox/9NBLGGH55JZG) 测试 MQTT 代理服务器的可用性。
 
-Después de instalar el software, haga clic en `Create MQTT Client` para crear una nueva conexión y complete los parámetros relevantes según la siguiente imagen:
+安装软件后，点击 `Create MQTT Client` 新建连接，按照下图填写相关参数：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202305261456592.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261456592.png)
 
-Donde `HOST` es la dirección del servidor donde se encuentra el servicio MQTT (por ejemplo, la dirección de mi servidor en la red local es `192.168.1.2`); el nombre de usuario y la contraseña deben coincidir con los valores configurados al configurar Mosquitto anteriormente.
+其中，`HOST` 为 MQTT 服务所在的服务器的地址（例如，我的服务器在局域网内的地址是 `192.168.1.2`)；用户名和密码需要与上文配置 Mosquitto 时设置的值对应。
 
-Después de hacer clic en `Save`, si ve `Connected` en la barra de estado superior en verde, significa que ya se ha conectado al servidor.
+点击 `Save` 保存后，如果在顶部状态栏看到绿色的 `Connected`，则表示已经连接上服务器。
 
-## Script de monitoreo del servidor
+## 服务端监控脚本
 
-Podemos capturar información en tiempo real del dispositivo y enviarla al tema correspondiente en el servidor MQTT mediante el siguiente programa Python que se ejecuta en el servidor. Primero, debe instalar los siguientes paquetes de dependencia:
+我们可通过在服务端运行以下 Python 程序，实现对设备实时信息的抓取，并推送到 MQTT 服务器的相应主题上。首先需要安装以下依赖包：
 
 ```bash
 pip install paho-mqtt psutil
 ```
 
-Cree y ejecute el programa Python:
+创建并运行 Python 程序：
 
 ```python title="status-collector.py"
 import paho.mqtt.client as mqtt
 import psutil
 import time
 
-# Conéctese al servidor proxy MQTT
+# 连接到 MQTT 代理服务器
 client = mqtt.Client()
 client.username_pw_set("MQTT用户名", "MQTT密码")
 client.connect("MQTT服务器地址", 端口号)
-# Ejemplo: client.connect("192.168.1.2", 1883)
+# 例：client.connect("192.168.1.2", 1883)
 
-# Recopile el estado del servidor y envíelo al tema MQTT
+# 收集服务器状态并发送到 MQTT 主题
 while True:
     client.publish("USAGE_CPU", psutil.cpu_percent())
     client.publish("USAGE_MEM", psutil.virtual_memory().percent)
     client.publish("USAGE_DISK", psutil.disk_usage('/').percent)
-    time.sleep(1) # Publicar cada segundo
+    time.sleep(1) # 每隔一秒发布一次
 ```
 
-Después de ejecutar con éxito, podemos hacer clic en `Add subscriber` en la barra de estado superior de MQTTBox para suscribirse a estos tres temas, por ejemplo:
+成功运行后，我们可以在 MQTTBox 顶部状态栏上点击 `Add subscriber` 添加对这三个主题的订阅，例如：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202305261513642.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261513642.png)
 
-Si todo va bien, debería poder ver la información de estado del servidor que se devuelve constantemente en MQTTBox.
+如果一切正常的话，应该可以在 MQTTBox 中看到不断回传的服务器的状态信息。
 
-## Pantalla Arduino ESP32
+## Arduino ESP32 显示端
 
-Cree el siguiente código de Arduino, modifique los parámetros y grabe en ESP32. Si todo va bien, debería poder ver la información de estado actualizada constantemente.
+创建以下 Arduino 代码，修改其中的参数，并烧录进 ESP32。如果一切正常的话，应该可以看到不断更新的状态信息。
 
 ```cpp title="Received-from-MQTT-and-Display.ino"
 #include <Wire.h>
@@ -170,62 +170,60 @@ Cree el siguiente código de Arduino, modifique los parámetros y grabe en ESP32
 #include <WiFi.h>
 #include <PubSubClient.h>
 
-// Conexión OLED mediante I2C de software, redefinir los pines
+// 使用软件 I2C 方式连接 OLED，重新定义引脚
 #define OLED_SDA 1
 #define OLED_SCL 0
 
-```
-
-// Definición de MQTT
-#define WIFI_SSID "Nombre de Wi-Fi"
-#define WIFI_PASSWORD "Contraseña de Wi-Fi"
-#define MQTT_BROKER "Dirección del servidor MQTT" // por ejemplo 192.168.31.2
-#define MQTT_PORT Puerto MQTT // por ejemplo 1883
-#define MQTT_USERNAME "Nombre de usuario MQTT" //test, debe coincidir con la configuración anterior
-#define MQTT_PASSWORD "Contraseña MQTT" //123, debe coincidir con la configuración anterior
-#define MQTT_TOPIC_CPU "USO_CPU" // tema suscrito
-#define MQTT_TOPIC_MEM "USO_MEM"
-#define MQTT_TOPIC_DISK "USO_DISK"
+// MQTT 定义
+#define WIFI_SSID "Wi-Fi名称"
+#define WIFI_PASSWORD "Wi-Fi密码"
+#define MQTT_BROKER "MQTT服务器地址" // 例如 192.168.31.2
+#define MQTT_PORT MQTT端口 //例如 1883
+#define MQTT_USERNAME "MQTT用户名" //test，应与上文配置对应
+#define MQTT_PASSWORD "MQTT密码" //123，应与上文配置对应
+#define MQTT_TOPIC_CPU "USAGE_CPU" //订阅的主题
+#define MQTT_TOPIC_MEM "USAGE_MEM"
+#define MQTT_TOPIC_DISK "USAGE_DISK"
 
 char msg_cpu_usage[10];
 char msg_mem_usage[10];
 char msg_disk_usage[10];
 
-// Definición del objeto de pantalla OLED
+// 定义 OLED 屏幕对象
 U8G2_SSD1306_128X64_NONAME_F_SW_I2C u8g2(U8G2_R2, OLED_SCL, OLED_SDA, U8X8_PIN_NONE);
 
-// Objeto cliente WIFI
+// WIFI 客户端对象
 WiFiClient wifiClient;
 PubSubClient mqttClient(wifiClient);
 
-// Función de devolución de llamada MQTT
+// MQTT 回调函数
 void mqttCallback(char* topic, byte* payload, unsigned int length) {
   if (strcmp(topic, MQTT_TOPIC_CPU) == 0) {
-    // Registrar el uso de CPU
+    // 记录 CPU 使用率
     for (int i = 0; i < length; i++)
       msg_cpu_usage[i] = (char)payload[i];
   } else if (strcmp(topic, MQTT_TOPIC_MEM) == 0) {
-    // Registrar el uso de memoria
+    // 记录内存使用率
     for (int i = 0; i < length; i++)
       msg_mem_usage[i] = (char)payload[i];
   } else if (strcmp(topic, MQTT_TOPIC_DISK) == 0) {
-    // Registrar el uso de disco
+    // 记录磁盘使用率
     for (int i = 0; i < length; i++)
       msg_disk_usage[i] = (char)payload[i];
   }
 }
 
 void setup() {
-  u8g2.begin();  // Inicializar la pantalla OLED
-  Wire.begin();  // Iniciar la transmisión I2C
+  u8g2.begin();  // 初始化 OLED 屏幕
+  Wire.begin();  // 开始 I2C 传输
 
-  // Conectar a WIFI
+  // 连接 WIFI
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   while (WiFi.status() != WL_CONNECTED) {
     delay(1000);
   }
 
-  // Conectar al servidor proxy MQTT
+  // 连接 MQTT 代理服务器
   mqttClient.setServer(MQTT_BROKER, MQTT_PORT);
   mqttClient.setCallback(mqttCallback);
   if (mqttClient.connect("ESP32", MQTT_USERNAME, MQTT_PASSWORD)) {
@@ -236,61 +234,59 @@ void setup() {
 }
 
 void loop() {
-  mqttClient.loop();  // Procesar mensajes MQTT
+  mqttClient.loop();  // 处理 MQTT 消息
   u8g2.firstPage();
   do {
     u8g2.setFont(u8g2_font_9x15_tf);
 
-// Mostrar el uso de la CPU
-u8g2.setCursor(0, 12);
-u8g2.print("CPU: ");
-for (int i = 0; i < 9; i++)
-  u8g2.print(msg_cpu_usage[i]);
-u8g2.print(" %");
+    // 显示 CPU 使用率
+    u8g2.setCursor(0, 12);
+    u8g2.print("CPU: ");
+    for (int i = 0; i < 9; i++)
+      u8g2.print(msg_cpu_usage[i]);
+    u8g2.print(" %");
 
-// Mostrar el uso de la memoria
-u8g2.setCursor(0, 35);
-u8g2.print("Mem: ");
-for (int i = 0; i < 9; i++)
-  u8g2.print(msg_mem_usage[i]);
-u8g2.print(" %");
+    // 显示内存使用率
+    u8g2.setCursor(0, 35);
+    u8g2.print("Mem: ");
+    for (int i = 0; i < 9; i++)
+      u8g2.print(msg_mem_usage[i]);
+    u8g2.print(" %");
 
-// Mostrar el uso del disco
-u8g2.setCursor(0, 58);
-u8g2.print("Disk: ");
-for (int i = 0; i < 9; i++)
-  u8g2.print(msg_disk_usage[i]);
-u8g2.print(" %");
+    // 显示磁盘使用率
+    u8g2.setCursor(0, 58);
+    u8g2.print("Disk: ");
+    for (int i = 0; i < 9; i++)
+      u8g2.print(msg_disk_usage[i]);
+    u8g2.print(" %");
 
-} while (u8g2.nextPage());
+  } while (u8g2.nextPage());
 }
 ```
 
-## Más ideas de expansión
+## 更多扩展玩法
 
-Las siguientes ideas están pendientes de implementación:
+以下的想法有待实现：
 
-- Agregar batería y una carcasa de impresión 3D para crear un adorno de escritorio más refinado.
-- Agregar un túnel de red interna para crear un adorno de pared que permita observar el estado del servidor incluso cuando no esté en casa.
-- Empaquetar el programa de monitoreo de Python para su implementación en Docker.
-- Optimizar el diseño de la interfaz de usuario para monitorear más parámetros.
-- Agregar la capacidad de monitorear el estado de múltiples servidores.
-- Agregar la capacidad de alertar cuando ciertos parámetros superen los umbrales.
+- 增加电池和 3D 打印的外壳，做成更精致的桌面小摆件
+- 增加内网穿透，打造为小挂件，不在家也可观察服务器状态
+- 将 Python 监测程序封装为 Docker 方式部署
+- 优化 UI 布局，实现更多参数监控
+- 增加多服务器状态监控功能
+- 增加某些参数超出阈值报警的功能
 
-Adjunto: Una foto de Beetle ESP32-C3 y Seeed XIAO ESP32C3 juntos.
+附：Beetle ESP32-C3 与 Seeed XIAO ESP32C3 的合照。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202305261719170.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261719170.jpg)
 
-## Referencias y agradecimientos
+## 参考与致谢
 
 - [DFRobot Wiki · Beetle ESP32 C3](https://wiki.dfrobot.com.cn/_SKU_DFR0868_Beetle_ESP32_C3)
-- [Creación de un sistema de monitoreo de rendimiento de Raspberry Pi con Arduino y MQTT](https://www.zhihu.com/tardis/zm/art/463880669?source_id=1003)
+- [基于 Arduino 和 MQTT 打造一款树莓派性能监控系统](https://www.zhihu.com/tardis/zm/art/463880669?source_id=1003)
 - [eclipse-mosquitto](https://hub.docker.com/_/eclipse-mosquitto)
-- [Docker - Tutorial de instalación y implementación del servicio Mosquitto a través de contenedores (servidor MQTT)](https://www.hangge.com/blog/cache/detail_2896.html)
-- [Serie de tutoriales MQTT 3 (Instalación y uso de la herramienta de cliente MQTTBox)](https://www.hangge.com/blog/cache/detail_2350.html)
+- [Docker - 通过容器安装部署 Mosquitto 服务教程（MQTT 服务器）](https://www.hangge.com/blog/cache/detail_2896.html)
+- [MQTT 系列教程 3（客户端工具 MQTTBox 的安装和使用）](https://www.hangge.com/blog/cache/detail_2350.html)
 - [linyuxuanlin/TinyMonitor](https://github.com/linyuxuanlin/TinyMonitor)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

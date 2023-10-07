@@ -1,43 +1,41 @@
-# Cómo construir un generador de RSS utilizando RSSHub (Docker en Synology)
+# 使用 RSSHub 搭建 RSS 生成器（群晖 Docker）
 
-Construye un servicio RSSHub en Docker en Synology para generar fuentes de suscripción RSS para todo tipo de contenido extraño.
+在群晖 Docker 上搭建 RSSHub 服务，给各种奇奇怪怪的内容生成 RSS 订阅源。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210504105215.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210504105215.png)
 
-## Despliegue en Docker en Synology
+## 在群晖 Docker 上部署
 
-Abre el paquete Docker en Synology, descarga la imagen `diygod/rsshub`, haz doble clic para iniciar, marca la opción "Habilitar reinicio automático" y luego entra en "Configuración avanzada".
+打开群晖 Docker 套件，下载 `diygod/rsshub` 镜像，双击启动，勾选 `启用自动重新启动`，然后进入 `高级设置`。
 
-En la página "Configuración de puertos", configura manualmente el puerto local correspondiente al puerto del contenedor 1200 (por ejemplo, lo he configurado como "8004"):
+在 `端口设置` 页面，手动设置容器端口 1200 所对应的本地端口（比如我设置为 `8004`）：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210504085806.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210504085806.png)
 
-Luego, completa la configuración y arranca el contenedor. Si puedes ver la página de RSSHub al ingresar la IP local de Synology:8004, significa que la instalación se ha realizado correctamente.
+随后完成配置，启动容器。输入群晖本地 IP:8004，如果能看到 RSSHub 的页面，就算安装成功了。
 
-## Pasos para usar
+## 使用步骤
 
-Para obtener información detallada sobre cómo utilizarlo, consulta la [**documentación oficial de RSSHub**](https://docs.rsshub.app/).
+详细的使用方法请参考 [**RSSHub 官方文档**](https://docs.rsshub.app/)
 
-Tomemos un ejemplo simple. En la documentación oficial, se puede encontrar el método de generación de "Películas en cartelera" de Douban como sigue:
+举个简单的例子，在官方文档中查到，豆瓣 `正在上映的电影` 生成方法如下：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210504104630.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210504104630.png)
 
-Entonces, puedes utilizar "tu dominio/douban/movie/playing" para generar tu propia fuente RSS utilizando tu propio servidor.
+那么，使用 `你的域名/douban/movie/playing` 就可以使用自己的服务器来生成 RSS 源了。
 
-Se recomienda utilizar el proxy inverso integrado en el sistema Synology para lograr el acceso HTTPS cifrado. Puedes consultar el tutorial en el artículo [**Cómo utilizar el proxy inverso integrado en Synology para lograr el acceso HTTPS**](https://wiki-power.com/es/%E7%94%A8%E7%BE%A4%E6%99%96%E8%87%AA%E5%B8%A6%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0HTTPS%E8%AE%BF%E9%97%AE).
+建议使用群晖系统自带的反向代理，实现 HTTPS 加密访问。具体教程可以跳转文章 [**用群晖自带反向代理实现 HTTPS 访问**](https://wiki-power.com/%E7%94%A8%E7%BE%A4%E6%99%96%E8%87%AA%E5%B8%A6%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0HTTPS%E8%AE%BF%E9%97%AE)
 
-## Utiliza RSSHub Radar para detectar automáticamente la ruta
+## 使用 RSSHub Radar 自动检测路由
 
-[**RSSHub Radar**](https://github.com/DIYgod/RSSHub-Radar) es una extensión del navegador que te ayuda a descubrir y suscribirte rápidamente a RSS y RSSHub en el sitio web actual.
+[**RSSHub Radar**](https://github.com/DIYgod/RSSHub-Radar) 是一个可以帮助你快速发现和订阅当前网站 RSS 和 RSSHub 的浏览器扩展。
 
-Simplemente ingresa la dirección personalizada en su página de configuración para utilizarla.
+在其设置页面填入自定义地址即可使用。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Documentación oficial de RSSHub](https://docs.rsshub.app/)
-- [Cómo instalar RSSHub en Synology utilizando Docker](https://immwind.com/use-docker-install-rsshub-in-synology)
+- [RSSHub 官方文档](https://docs.rsshub.app/)
+- [在群晖中使用 Docker 安装 RSSHub](https://immwind.com/use-docker-install-rsshub-in-synology)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

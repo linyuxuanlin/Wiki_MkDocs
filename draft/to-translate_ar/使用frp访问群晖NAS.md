@@ -1,72 +1,70 @@
-# Accediendo a Synology NAS con frp
+# 使用 frp 访问群晖 NAS
 
-Acceda a Synology NAS en cualquier red utilizando frp.
+使用 frp 在任意网络下访问群晖 NAS。
 
-## ¿Por qué acceder a Synology a través de frp?
+## 为什么要通过 frp 访问群晖
 
-- Sin IP pública
-- El servicio QuickConnect es demasiado lento
-- Servicios como Peanut Shell requieren la compra de tráfico por separado
+- 无公网 IP
+- QuickConnect 服务太慢
+- 花生壳等服务需要单独买流量
 
-## Configuración del servidor
+## 服务端配置
 
-Ir al artículo [**Cómo implementar el control remoto RDP externo (frp) · Configuración del servidor**](https://wiki-power.com/es/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91RDP%E8%BF%9C%E6%8E%A7%EF%BC%88frp%EF%BC%89#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%85%8D%E7%BD%AE). Tenga en cuenta que los parámetros `vhost_http_port` / `vhost_https_port` en el archivo de configuración `frpc.ini` deben mantenerse.
+跳转文章 [**如何实现外网 RDP 远控（frp）· 服务端配置**](https://wiki-power.com/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91RDP%E8%BF%9C%E6%8E%A7%EF%BC%88frp%EF%BC%89#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%85%8D%E7%BD%AE)。需要注意的是，`frpc.ini` 配置文件中的 `vhost_http_port` / `vhost_https_port` 参数必须保留。
 
-### Asociar un nombre de dominio
+### 绑定域名
 
-- Agregue un registro A en la resolución de nombres de dominio con la dirección IP del servidor.
-- Configure la asociación de nombres de dominio en el servidor en la nube.
+- 在域名解析处以服务器 IP 添加 A 记录
+- 在云服务器处配置域名绑定
 
-## Configuración de Synology NAS
+## 群晖 NAS 配置
 
-### Edite el archivo de configuración
+### 编辑配置文件
 
-Cree un archivo `frpc.ini` en cualquier ubicación y agregue el siguiente contenido:
+在任意位置新建 `frpc.ini` 文件，填入以下内容：
 
 ```ini title="frpc.ini"
 [common]
-server_addr = Dirección IP del servidor
-server_port = Puerto frp del servidor, predeterminado 7000
-token = Clave, debe ser la misma que la configurada en el servidor
+server_addr = 服务器 IP
+server_port = 服务端 frp 端口，默认为 7000
+token = 密钥，需与服务端配置的相同
 
 [dsm-http]
 type = tcp
 local_ip = localhost
-local_port = Puerto http DSM de Synology, predeterminado 5000
-custom_domains = Nombre de dominio asociado
-remote_port = Puerto remoto personalizado
+local_port = 群晖 DSM http 端口，默认为 5000
+custom_domains = 绑定的域名
+remote_port = 自定义远程端口
 
 [dsm-https]
 type = tcp
 local_ip = localhost
-local_port = Puerto https DSM de Synology, predeterminado 5001
-custom_domains = Nombre de dominio asociado
-remote_port = Puerto remoto personalizado
+local_port = 群晖 DSM https 端口，默认为 5001
+custom_domains = 绑定的域名
+remote_port = 自定义远程端口
 
 [ssh]
 type = tcp
 local_ip = localhost
-local_port = predeterminado 22
-custom_domains = Nombre de dominio asociado
-remote_port = Puerto remoto personalizado
+local_port = 默认为 22
+custom_domains = 绑定的域名
+remote_port = 自定义远程端口
 ```
 
-### Método de uso de Docker
+### 使用 Docker 方法
 
-Instale la imagen `stilleshan/frpc` en Docker de Synology y use los siguientes parámetros para inicializar el contenedor:
+在群晖的 Docker 内安装 `stilleshan/frpc` 映像，使用以下参数初始化容器：
 
-- Seleccione "Ejecutar el contenedor con privilegios elevados".
-- Seleccione "Habilitar reinicio automático".
-- Agregue el archivo seleccionando "Volumen" y seleccione el archivo `frpc.ini` local. La ruta de montaje correspondiente es `/frp/frpc.ini`.
-- Seleccione "Usar la misma red que el host de Docker".
+- 勾选 `使用高权限执行容器`
+- 勾选 `启用自动重新启动`
+- 在 `卷` 标签页添加文件，选择本地的 `frpc.ini` 文件，对应装载路径为 `/frp/frpc.ini`
+- 勾选 `使用与 Docker Host 相同的网络`
 
-Inicie el contenedor y espere un momento para acceder a Synology DSM a través del nombre de dominio y el número de puerto http.
+启动容器，稍等片刻，就可以通过域名 + http 端口号的形式访问群晖 DSM 了。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Tutorial de penetración de red interna de Synology NAS con Docker frpc](https://www.ioiox.com/archives/26.html)
+- [群晖 NAS 使用 Docker 安装配置 frpc 内网穿透教程](https://www.ioiox.com/archives/26.html)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

@@ -1,21 +1,21 @@
-# Consideraciones al usar Git con Altium Designer
+# AD 使用 Git 的注意事项
 
-## Gestión de proyectos con Git
+## 使用 Git 管理项目
 
-Altium Designer admite el uso de Git/SVN para el control de versiones. Si se utiliza Git, simplemente se debe crear un repositorio Git en la ruta del proyecto. Al reiniciar Altium Designer, se verá el estado de la versión en el borde del árbol de archivos:
+Altium Designer 支持使用 Git/SVN 用以版本控制。如果使用 Git, 直接在项目所在路径建立 Git 仓库即可。重启 Altium Designer, 会看到文件树边上出现了版本状态：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200421100348.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200421100348.png)
 
-El significado de los iconos es el siguiente:
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200421101221.png)
+图标的含义如下：
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200421101221.png)
 
-Se pueden realizar operaciones de Git directamente en el menú `Proyecto (C) - Control de versiones (E)`, incluso se puede enviar directamente a GitHub.
+可以在 `工程（C） - 版本控制（E）` 菜单直接进行 Git 操作，甚至可以直接提交 GitHub.
 
-## Archivo .gitignore
+## .gitignore 文件
 
-Al utilizar Altium Designer, el software generará algunos archivos de caché (como la carpeta `History`), que no solo ralentizan la velocidad de envío, sino que también contaminan el registro de envío. En este caso, se debe utilizar `.gitignore` para ignorar estos archivos de caché.
+在使用 Altium Designer 时，软件会自动生成一些缓存文件（例如 `History` 文件夹），它们不但拖慢了提交速度，也污染了提交记录。这时候就要使用 `.gitignore`，用来忽略这些缓存文件。
 
-El archivo `.gitignore` para Altium Designer incluye lo siguiente:
+适用于 Altium Designer 的 `.gitignore` 文件包含以下内容：
 
 ```gitignore
 # ============================= Projects =============================
@@ -96,89 +96,97 @@ El archivo `.gitignore` para Altium Designer incluye lo siguiente:
 
 *.Cam
 # Altium CAMtastic Document
-```
 
-# Datos binarios de perforación NC CAMtastic
+*.Drl
+# CAMtastic NC Drill Binary Data
 
 # ============================= Gerber =============================
 *.G[1-30]
-# Datos de capa media 1-30 de CAMtastic Gerber
+# CAMtastic Mid Layer 1-30 Gerber Data
 
-# ============================= Salidas =============================
+# ============================= Outputs =============================
 *.Drc
-# Informe de verificación de reglas de diseño
+# Design Rule Check Report
 
 *.Drr
-# Archivo de informe de perforación NC de Altium
+# Altium NC Drill Report File
 
 *.Net
-# Archivo de lista de red de Altium
+# Altium Netlist File
 
 *.Nsx
-# Documento de lista de simulación
+# Simulation Netlist Document
 
 *.OutJob
-# Archivo de trabajo de salida de Altium
+# Altium Output Job File
 
 *.Rep
-# Archivo de informe
+# Report File
 
 *.Rpt
-# Archivo de informe
+# Report File
 
 # ============================= Scripts =============================
 *.Bas
-# Documento de script de Altium
+# Altium Script Document
 
 *.SrcDoc
-# Documento de script de Altium
+# Altium Script Document
 
 *.Tcl
-# Documento de script de Altium
+# Altium Script Document
 
-# ============================= Simulación =============================
+# ============================= Simulation =============================
 *.Ckt
-# Subcircuito de simulación
+# Simulation Sub-Circuit
 
 *.LaxAn
-# Archivo analógico del analizador lógico
+# Logic Analyser Analog File
 
 *.LaxDig
-# Archivo digital del analizador lógico
+# Logic Analyser Digital File
 
 *.Mdl
-# Modelo de simulación
+# Simulation Model
 
 *.Pld
-# Archivo PLD de CUPL
+# CUPL PLD File
 
 *.Pwl
-# Descripción lineal por tramos de simulación
+# Simulation Piecewise Linear Description
 
 *.Sdf
-# Archivo de datos de simulación de Altium
+# Altium Simulation Data File
 
 *.Si
-# Archivo de entrada de simulación de CUPL
+# CUPL Simulation Input File
 
 *.So
-# Archivo de forma de onda digital
+# Digital Waveform File
 
-# ============================= Carpetas =============================
+# ============================= Folders =============================
 __Previews/
 
 History/
 
-Registros de proyecto para */
+Project Logs for */
 
-# ============================= Otros =============================
+# ============================= Other =============================
 *.BomDoc
-# Documento de lista de materiales
+# Bom Document
 
 *.DBLib
-# Archivo de biblioteca de base de datos de Altium
+# Altium Database Library File
 
 *.DBLink
-# Archivo de enlace de base de datos de Altium
+# Altium Database Link File
+```
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+直接将其放在 Git 仓库的根目录即可，如果显示重复，则需与原先的 `.gitignore` 合并。
+
+## 参考与致谢
+
+- [.gitignore 文件配置：Altium Designer 工程文件类型](https://blog.csdn.net/u010160335/article/details/80100232)
+
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

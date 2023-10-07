@@ -1,45 +1,46 @@
-# Modos de arranque de STM32
+# STM32 的启动模式
 
-STM32 proporciona los pines BOOT1 y BOOT0, que se pueden configurar para seleccionar el modo de arranque después del reinicio.
+STM32 提供了 BOOT1 与 BOOT0 引脚，可以通过设置引脚的状态，以选择上电复位后的启动模式。
 
-A continuación se presentan tres modos de arranque:
+以下为三种启动模式：
 
-## 1. Arranque desde la memoria flash principal
-
-| BOOT0 | BOOT1 |
-| :---: | :---: |
-|  Bajo | Cualquier |
-
-Arranque desde la memoria flash en el chip (es decir, flash con parámetros de 64K / 128K / 256K), que generalmente se configura de esta manera en condiciones normales.
-
-## 2. Arranque desde la memoria del sistema
+## 1. 从主闪存存储器启动
 
 | BOOT0 | BOOT1 |
 | :---: | :---: |
-| Alto | Bajo |
+|  低   | 任意  |
 
-Se requiere esta configuración para descargar programas a través de serie / ISP.
+从片上 Flash 存储器启动（就是参数为 64K / 128K / 256K 的 Flash），一般正常情况下是这样配置的。
 
-## 3. Arranque desde la SRAM incorporada
+## 2. 从系统存储器启动
 
 | BOOT0 | BOOT1 |
 | :---: | :---: |
-| Alto | Alto |
+|  高   |  低   |
 
-El arranque desde la SRAM incorporada tiene dos usos:
+使用串口 / ISP 下载程序时，需要配置这种模式。
 
-- Para aumentar la eficiencia al descargar y depurar repetidamente (ya que la descarga en flash es relativamente lenta). Tenga en cuenta que el programa se perderá después del apagado.
-- Para desbloquear la función de protección de lectura del chip / borrar la flash y restaurar la configuración de fábrica.
+## 3. 从内置 SRAM 启动
 
-## Suplemento
+| BOOT0 | BOOT1 |
+| :---: | :---: |
+|  高   |  高   |
 
-En la tabla anterior, "alto" y "bajo" indican una resistencia de 10K conectada a VCC / GND, no una conexión directa a VCC / GND.
+从内置 SRAM 启动，用途有两个：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200603134417.jpg)
+- 用于反复下载调试时，提高效率（因为下载到 Flash 相对慢）。需要注意的是，断电程序将丢失
+- 用于解除芯片的读保护功能 / 擦除 Flash 恢复出厂
 
-## Referencia y agradecimiento
+## 补充
 
-- [Configuración de STM32 BOOT0, BOOT1](https://blog.csdn.net/Creative_Team/article/details/79315876)
-- [Configuración y función del modo de arranque de STM32 BOOT](https://blog.csdn.net/weixin_34349320/article/details/86231081?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase)
+以上图表中 `高` `低` 表示接 10K 电阻上拉 / 下拉，而非直连 VCC / GND
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200603134417.jpg)
+
+## 参考与致谢
+
+- [STM32 BOOT0、BOOT1 的配置](https://blog.csdn.net/Creative_Team/article/details/79315876)
+- [STM32 BOOT 模式配置以及作用](https://blog.csdn.net/weixin_34349320/article/details/86231081?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase)
+
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

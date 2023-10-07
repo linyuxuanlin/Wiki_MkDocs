@@ -1,34 +1,34 @@
-# Notas de desarrollo de la biblioteca HAL - Interrupción externa
+# HAL 库开发笔记 - 外部中断
 
-En el artículo anterior, mencionamos que eliminar el rebote de los botones y detectar la entrada mediante encuesta puede consumir demasiados recursos del sistema y provocar bloqueos, y también puede perder la detección. Es por eso que necesitamos usar interrupciones.
+上一篇文章我们提到，用轮询的方法消除按键抖动、检测输入，有可能会消耗过多的系统资源并导致卡机，也有可能会错过检测。这就是为什么我们需要使用中断了。
 
-## Principios básicos
+## 基本原理
 
-### Encuesta e interrupción
+### 轮询与中断
 
-¿Qué son la encuesta y la interrupción? Tomemos la entrega de comida como ejemplo. La encuesta es que tengo que ir a la puerta cada minuto para ver si el repartidor de comida ha llegado. Entonces, durante este tiempo, no puedo hacer nada más que mirar la comida; pero si el repartidor de comida llega justo cuando salgo de la puerta, entonces perderé la comida. Por el contrario, la interrupción es que cuando llega el repartidor de comida, me llama por teléfono, dejo lo que estoy haciendo y voy a buscar la comida, de esta manera puedo trabajar con tranquilidad y no perder la comida.
+什么是轮询和中断？以取外卖举个例子，轮询就是每分钟我都要去一趟门口，看看外卖小哥来了没。那么这段时间我做不了别的事情了，就光盯着外卖；但假如外卖小哥在我恰好离开门口的时候送到了，那么就错过了外卖。相反的，中断就是让外卖小哥来的时候打个电话，我搁下手中的活去拿外卖，这样我既能够安心干活，又不怕错过外卖。
 
-### Interrupción externa
+### 外部中断
 
-Las interrupciones se dividen en externas (Interrupt) e internas (Exception). La interrupción externa es interrumpida por un dispositivo externo al MCU, y la interrupción interna es interrumpida por el programa de software interno.
+中断分外部（Interrupt）和内部（Exception）。外部中断由外部外设来打断 MCU，内部中断由内部的软件程序自行打断 MCU.
 
 ### NVIC
 
-NVIC significa Nested Vectored Interrupt Controller, que se traduce como **Controlador de interrupción vectorial anidado**. Tiene tres parámetros principales: habilitación de interrupción, prioridad de preempción y prioridad de respuesta. (Cuanto menor sea el valor de prioridad, mayor será la prioridad).
+NVIC 全称为 Nested Vectored Interrupt Controller，翻译过来就是 **嵌套向量中断控制器** 。它主要有三个参数，分别是：中断使能，抢占优先级，响应优先级。（优先级数值越小，优先级越高）
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210206121058.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210206121058.png)
 
-**Habilitación de interrupción**: se refiere a si se habilita la interrupción. Si se habilita la interrupción, cuando se cumple la condición de activación de la interrupción, se saltará al programa de servicio de interrupción para ejecutar; de lo contrario, el programa de servicio de interrupción no se tendrá en cuenta y el programa principal seguirá ejecutándose.
+**中断使能**：指的就是是否开启中断。如果开启中断，那么当满足中断触发条件的时候，会跳到中断服务程序运行；否则不理会中断服务程序，继续运行主程序。
 
-**Prioridad de preempción**: se utiliza para determinar si una interrupción puede interrumpir el programa de servicio de otra interrupción y ejecutarse primero. Tomemos un ejemplo. Se cumple la condición de activación de la interrupción A, el programa de servicio de la interrupción A está en ejecución, y en este momento se cumple la condición de activación de la interrupción B. Si la prioridad de preempción de la interrupción B es mayor que la de la interrupción A, el programa de servicio de la interrupción A será interrumpido y se ejecutará primero el programa de servicio de la interrupción B, y luego se continuará ejecutando la interrupción A. Esto también se llama interrupción anidada. Si la prioridad de preempción de B no es mayor que la de A, entonces primero se ejecutará A y luego se ejecutará B.
+**抢占优先级**：用于判断一个中断是否可以打断另一个中断的服务程序，抢先运行。举个例子，条件触发了 A 中断，A 中断的服务程序正在运行中，此时条件触发了 B 中断。此时如果 B 中断的抢占优先级比 A 的高，那么 A 的服务程序就会被打断，先去执行 B 的服务程序，执行完之后再继续执行 A，这也称为中断嵌套。如果 B 的抢占优先级不比 A 高，那还是乖乖先执行完 A，再去执行 B.
 
-**Prioridad de respuesta**: si varias interrupciones con la misma prioridad de preempción se activan al mismo tiempo, se ejecutará primero la de mayor prioridad de respuesta.
+**响应优先级**：如果抢占优先相同的几个中断同时被触发，那么响应优先级高的最先运行。
 
-Para determinar la prioridad de la interrupción, primero debe compararse la prioridad de preempción. Si la prioridad de preempción es la misma, la interrupción con la prioridad de respuesta más alta tiene una prioridad más alta. Si ambas prioridades son iguales, entonces se debe determinar según la tabla de vectores de interrupción.
+欲判断中断的优先级，首先要先比较的是抢占优先级。抢占优先级相同的情况下，响应优先高的中断优先级别高。如果两个优先级都一样，那么就要根据中断向量表来确定。
 
-### Referencia de la función de devolución de llamada de interrupción
+### 中断回调函数参考
 
-Después de configurar la interrupción GPIO y la prioridad NVIC, simplemente reescriba la función de devolución de llamada de interrupción al final del archivo `stm32f4xx_it.c` para implementar la función.
+配置了 GPIO 中断和 NVIC 优先级之后，在 `stm32f4xx_it.c` 文件末尾重写中断回调函数即可实现功能。
 
 ```c
 /* USER CODE BEGIN 1 */
@@ -41,54 +41,32 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 /* USER CODE END 1 */
 ```
 
-## Control de luz de tecla de interrupción externa
+## 外部中断按键控灯
 
-Antes de realizar el siguiente experimento, debe configurar varios parámetros como la descarga de serie, el reloj, etc. en CubeMX.  
-Para obtener información detallada, consulte el método en el artículo [**Notas de desarrollo de la biblioteca HAL - Configuración del entorno**](https://wiki-power.com/es/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE).
+在进行下一步实验之前，需要在 CubeMX 里配置串口下载、时钟等各类参数。  
+具体步骤请跳转文章 [**HAL 库开发笔记 - 环境配置**](https://wiki-power.com/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE) 中的方法进行配置。
 
-### Configuración de interrupción en CubeMX
+### 在 CubeMX 内配置中断
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210205150422.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210205150422.png)
 
-Como se muestra en la figura, el LED todavía se configura como salida utilizando el método del artículo anterior; debido a que la tecla es activada por nivel bajo, es decir, se genera un flanco descendente en el momento de la presión, el pin debe configurarse como una interrupción activada por flanco descendente.
+如图，LED 还是按照上一篇文章的方法，配置为输出；按键因为是低电平触发，也就是在按下的一瞬间会产生一个下降沿，所以引脚应该配置为下降沿触发的中断。
 
-En mi placa, se configura `PI8` como modo `GPIO_EXTI8` (interrupción externa, montada en la línea de interrupción 8) y se configura como activada por flanco descendente. Según el esquemático, se selecciona la resistencia pull-up interna. Como se muestra en la figura:
+在我的板子上，就是将 `PI8` 配置为 `GPIO_EXTI8` 模式（外部中断，挂载在中断线 8 上的），并配置为下降沿触发，根据原理图，选择内部上拉（Pull-up）。如图所示：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210403222304.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210403222304.png)
 
-Configuración de interrupciones externas en STM32CubeMX
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210206131409.png)
 
-En este tutorial, aprenderemos cómo configurar interrupciones externas en STM32CubeMX para controlar el encendido y apagado de un LED mediante un botón.
+接着，点击跳转 NVIC 标签页面，使能我们配置的中断：
 
-## Requisitos previos
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210206134916.png)
 
-- STM32CubeMX
-- IDE de desarrollo de STM32 (por ejemplo, STM32CubeIDE)
-- Placa de desarrollo STM32
+另外，要把抢占优先级降低一位（从 0 变为 1，原因下文会解释）。
 
-## Configuración de hardware
+### 在代码内配置中断
 
-Conecte un botón y un LED a la placa de desarrollo STM32. En este tutorial, usaremos el botón KEY1 y el LED LED1.
-
-## Configuración de software
-
-### Configuración de pines
-
-Abra STM32CubeMX y cree un nuevo proyecto. Seleccione la placa de desarrollo STM32 que está utilizando y configure los pines correspondientes al botón y al LED.
-
-En este tutorial, el botón KEY1 está conectado al pin PA0 y el LED LED1 está conectado al pin PD12.
-
-### Configuración de interrupciones externas
-
-Haga clic en la pestaña NVIC y habilite la interrupción externa correspondiente al pin del botón. En este tutorial, la interrupción externa correspondiente al pin PA0 se habilita.
-
-A continuación, haga clic en la página de etiquetas NVIC para habilitar la interrupción que hemos configurado.
-
-Además, debemos reducir la prioridad de prelación en un nivel (de 0 a 1, se explicará más adelante).
-
-### Configuración de interrupciones en el código
-
-Solo necesitamos agregar el siguiente código al final de `stm32f4xx_it.c`:
+只需要在 `stm32f4xx_it.c` 末尾添加如下代码：
 
 ```c title="stm32f4xx_it.c"
 /* USER CODE BEGIN 1 */
@@ -108,13 +86,14 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 /* USER CODE END 1 */
 ```
 
-Este código reescribe la función de devolución de llamada de la interrupción y agrega la función de cambiar el estado del LED mediante el botón. Sin embargo, la función de retardo `HAL_Delay()` tiene un problema porque proviene del temporizador SysTick (genera interrupciones en intervalos de tiempo fijos), por lo que tiene una prioridad de interrupción correspondiente. En la figura de configuración NVIC anterior, podemos ver que SysTick y la prioridad de prelación de la interrupción que configuramos son ambos 0, por lo que no se puede continuar con SysTick después de que se produce una interrupción externa. Por lo tanto, debemos reducir la prioridad de prelación de la interrupción externa (de 0 a 1).
+这段代码的作用是重写中断的回调函数，增加用按键切换灯开关的功能。但是这里的 `HAL_Delay()` 延时函数有坑，因为其来源是 SysTick 定时器（在固定时间间隔内产生中断），所以就有所属的中断优先级。在上面配置 NVIC 的图中可以看出，SysTick 和我们配置的中断抢占优先级都是 0，所以便无法在外部中断触发时接着触发 SysTick 了。所以，我们要把外部中断的抢占优先级改低（由 0 改为 1）。
 
-Después de compilar y cargar el código, puede cambiar el estado del LED presionando el botón.
+编译上传后即可通过按下按键，切换 LED 灯的亮灭状态了。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Advanced II [Interrupt]](https://alchemicronin.github.io/posts/ff6aca34/)
-- [STM32CubeMX Practical Tutorial (3) - External Interrupts (Interrupts and HAL_Delay Function Pitfalls)](https://blog.csdn.net/weixin_43892323/article/details/104383560?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control)
+- [进阶篇 II [Interrupt]](https://alchemicronin.github.io/posts/ff6aca34/)
+- [STM32CubeMX 实战教程（三）—— 外部中断（中断及 HAL_Delay 函数避坑）](https://blog.csdn.net/weixin_43892323/article/details/104383560?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

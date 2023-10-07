@@ -1,23 +1,22 @@
-# Eliminar una carpeta de un repositorio de GitHub
+# 删除 GitHub 仓库中某个文件夹
 
-## Origen del problema
+## 问题来源
 
-Al subir un repositorio local a GitHub, se olvidó de ignorar una carpeta y se hizo push directamente al repositorio remoto. ¿Cómo se puede eliminar la carpeta del repositorio de GitHub sin eliminarla del repositorio local?
+在本地仓库上传到 GitHub 时，忘记忽略某个文件夹，直接 push 到远程仓库了。  
+如何在保留本地文件夹的同时，删除 GitHub 仓库中的文件夹？
 
-## Solución
+## 解决方法
 
 ```shell
-git pull origin master        # Primero, se descarga el proyecto del repositorio remoto
-dir                           # Se verifica qué carpetas hay
-git rm -r --cached target     # Se elimina la carpeta llamada "target"
-git commit -m 'Eliminado target'  # Se agrega una descripción de la operación y se confirma
+git pull origin master        # 先将远程仓库里面的项目拉取下来
+dir                           # 查看有哪些文件夹
+git rm -r --cached target     # 删除名字为 target 的文件夹
+git commit -m '删除了 target'  # 添加操作说明并提交
 ```
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Eliminar una carpeta de GitHub](https://blog.csdn.net/wudinaniya/article/details/77508229)
+- [删除 GitHub 中某个文件夹](https://blog.csdn.net/wudinaniya/article/details/77508229)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

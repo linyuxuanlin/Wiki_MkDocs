@@ -1,45 +1,44 @@
-# ZenDriver - Controlador de motor de alto rendimiento
+# ZenDriver - 高性能的电机驱动
 
-- Basado en la versión V5.1 Release
+—— 基于 V5.1 Release 版本
 
-Repositorio del proyecto: [**linyuxuanlin/ZenDriver**](https://github.com/linyuxuanlin/ZenDriver)
+项目仓库：[**linyuxuanlin/ZenDriver**](https://github.com/linyuxuanlin/ZenDriver)
 
-## Parámetros básicos
+## 基本参数
 
-1. Voltaje de entrada: **7.2 ~ 20 V**
-2. Corriente de salida: **0 ~ 68 A**
-3. Proporciona una salida de alimentación de **5V 1.5A**, que puede ser utilizada por el controlador
-4. Dispositivos de protección: circuito integrado de protección contra polaridad inversa y aislamiento óptico
+1. 输入电压：**7.2 ~ 20 V**
+2. 输出电流：**0 ~ 68 A**
+3. 提供 **5V 1.5A** 的电源输出，可供控制器使用
+4. 保护装置：集成防反接、光耦隔离电路
 
-## Definición de interfaces
+## 接口定义
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200125192433.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200125192433.png)
 
-En el **lado del motor**, de izquierda a derecha, se encuentran: **M-, 5V, codificador A, codificador B, GND, M+**, correspondientes a los pines del motor, que se pueden conectar directamente al motor.
+**电机端** 从左到右依次为：**M-，5V，编码器 A，编码器 B，GND，M+** ，对应电机引脚，可以直接怼电机上去。
 
-En el **lado de la señal**, de derecha a izquierda, se encuentran: **GND, codificador B, codificador A, IN2, IN1, 5V**. Tenga en cuenta que el puerto de 5V **puede proporcionar energía para el microcontrolador** (máximo 1.5 A).
+**信号端** 从右到左依次为：**GND，编码器 B，编码器 A，IN2，IN1，5V** 。注意：5V 端口 **可提供电源给单片机用** （最大 1.5 A）。
 
-En la **entrada de alimentación**, los tres puertos son universales, y se recomienda conectar la batería al puerto central, y los otros dos puertos se pueden utilizar para expandir la alimentación a otras placas de control.
+**电源输入端** 三个接口通用，一般建议中间的接电池，旁边的两个接口用于拓展电源给其他的驱动板。
 
-## Guía de uso
+## 使用指南
 
-### Prueba de alimentación directa
+### 直接供电测试
 
-1. Conecte una batería de **7.2 ~ 20 V**
-2. Conecte el motor
-3. Conecte **IN1, IN2** a la salida de **5V** en el **lado de la señal**, y el motor girará en ambas direcciones.
+1. 接入 **7.2 ~ 20 V** 电池供电
+2. 接上电机
+3. 用 **信号端** 上的 **5V** 分别接 **IN1，IN2**，此时电机将正、反转
 
-### Prueba de conexión al microcontrolador
+### 连接单片机测试
 
-1. Conecte una batería de **7.2 ~ 20 V**
-2. Conecte el motor
-3. Conecte **GND** en el **lado de la señal** al **GND** del microcontrolador, y el puerto **5V** al **5V** del microcontrolador.
-4. Conecte los pines **IN1, IN2** al puerto PWM del microcontrolador.
-5. Depure el código.
+1. 接入 **7.2 ~ 20 V** 电池供电
+2. 接上电机
+3. **信号端 GND** 接 **单片机 GND**，**5V 端口** 接 **单片机** **5V**
+4. 引脚 **IN1，IN2** 接单片机 PWM 端口
+5. 用代码调试
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200125192734.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200125192734.png)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

@@ -1,31 +1,31 @@
-# Cómo hacer tu propio CMSIS-DAP 🚧
+# 自制 CMSIS-DAP 🚧
 
-CMSIS DAP es un simulador de ARM de código abierto lanzado por ARM, que soporta todos los dispositivos Cortex-ARM y las interfaces JTAG / SWD. En la última versión del firmware, también soporta la interfaz SWO de una sola línea, que puede enviar los datos correspondientes directamente a la ventana de depuración a través de la interfaz SWO en el programa, lo que cumple con el propósito de la depuración de la serie de puertos. Las principales características de DAP son las siguientes:
+CMSIS DAP 是 ARM 官方推出的开源仿真器，支持所有的 Cortex - ARM 器件，支持 JTAG / SWD 接口，在最新的固件版本中，还支持单线 SWO 接口，可以直接在程序里把相应的数据通过 SWO 接口输出到调试窗口，起到类似串口调试的目的。DAP 主要有以下特点：
 
-1. Completamente de código abierto, sin restricciones de licencia, por lo que el precio correspondiente será muy barato.
-2. Plug and play, no se requiere controlador.
-3. La última versión de DAP integra un puerto serie, que puede utilizarse como un módulo de conversión USB a serie además de la descarga y la depuración, lo que permite su uso dual.
-4. En cuanto al rendimiento, ya puede satisfacer las necesidades de los usuarios generales.
+1. 完全开源，没有版权限制，所以相应的价格会很便宜
+2. 无须驱动，即插即用
+3. 在新版本的 DAP 里集成了串口，除了下载调试外还能充当 USB 转串口模块，一机两用
+4. 性能方面已经可以满足一般用户的需求
 
-(No terminado)
+（未完成）
 
-Repositorio de GitHub: [**linyuxuanlin/DashDAP**](https://github.com/linyuxuanlin/DashDAP)
+GitHub 仓库：[**linyuxuanlin/DashDAP**](https://github.com/linyuxuanlin/DashDAP)
 
-## Referencias y agradecimientos
+## 参考与致谢
 
 - [x893/CMSIS-DAP](https://github.com/x893/CMSIS-DAP)
-- [Introducción de DAP en el sitio web oficial de ARM](http://www.keil.com/pack/doc/cmsis/DAP/html/index.html)
-- [El entusiasmo de los nerds electrónicos: simulador CMSIS DAP](http://www.stmcu.org.cn/module/forum/thread-610968-1-2.html)
-- [Simulador CMSIS DAP](https://item.taobao.com/item.htm?spm=a1z10.1-c.w5003-21405148310.36.78726a3dta5ieC&id=550828063764&scene=taobao_shop)
+- [ARM 官网的 DAP 介绍](http://www.keil.com/pack/doc/cmsis/DAP/html/index.html)
+- [电子屌丝的的情怀：CMSIS DAP 仿真器](http://www.stmcu.org.cn/module/forum/thread-610968-1-2.html)
+- [CMSIS DAP 仿真器](https://item.taobao.com/item.htm?spm=a1z10.1-c.w5003-21405148310.36.78726a3dta5ieC&id=550828063764&scene=taobao_shop)
 - [konosubakonoakua/Various_MCU_Debugger_DIY](https://github.com/konosubakonoakua/Various_MCU_Debugger_DIY)
 
 ---
 
-`Versión 2.0 en edición`
+`2.0 版本编辑中`
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200613154907.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200613154907.jpg)
 
-Vista previa del proyecto en línea:
+项目在线预览：
 
 <div class="altium-iframe-viewer">
   <div
@@ -34,51 +34,49 @@ Vista previa del proyecto en línea:
   ></div>
 </div>
 
-## Contexto
+## 背景
 
-CMSIS-DAP / DAP-Link tiene las siguientes ventajas en comparación con J-Link / ST-Link:
+CMSIS-DAP / DAP-Link 相比 J-Link / ST-Link 有以下优势：
 
-- Completamente de código abierto, sin riesgo legal.
-- Soporta puerto serie virtual.
-- Sin necesidad de controlador.
-- DAPLink es CMSIS-DAP, que soporta la grabación de arrastrar y soltar / actualización de firmware.
+- 完全开源，无法律风险
+- 支持虚拟串口
+- 免驱
+- DAPLink 是 CMSIS-DAP，支持 U 盘拖拽烧录 / 固件升级
 
-## Parte de hardware
+## 硬件部分
 
 ### MCU
 
-#### Cristal
+#### 晶振
 
-Se selecciona un cristal pasivo de Murata de 8 MHz, modelo CSTCE8M00G53-R0, encapsulado en 3213, con una capacidad de 15 pF. ¿Por qué se selecciona este? Es porque su tamaño es relativamente pequeño y integra dos capacitores de oscilación, lo que ahorra mucho trabajo en el diseño de hardware. En cuanto al método de nomenclatura del modelo de cristal de Murata, se puede consultar la siguiente tabla:
+选用村田 8MHz 无源晶振，型号为 CSTCE8M00G53-R0，封装为 3213，电容为 15pF. 为什么选用这个呢？是因为它体积相对小，并且把两个起振电容整合进去了，硬件设计上能省很多事。至于村田晶振型号的命名方式，可以参考下表：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200612143451.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200612143451.jpg)
 
-### Fuente de alimentación
+### 电源
 
-### Módulo de función
+### 功能模块
 
-## Parte de software
+## 软件部分
 
-### Controlador
+### 驱动
 
-No es necesario instalar el controlador en Win10 / MacOS / Linux; se necesita instalar el controlador manualmente en Win8 y sistemas más antiguos.
+在 Win10 / MacOS / Linux 不需要手动安装驱动；Win8 及更老的系统需要手动安装驱动。
 
-### Grabación de arrastrar y soltar (MSC)
+### 拖拽式下载（MSC）
 
-Simplemente arrastre y suelte el archivo `.hex` o `.bin` compilado en la unidad flash virtual de DAPLink para grabar. Si se produce un error, la información del error se almacenará en `FAIL.txt`.
+讲编译生成的 `.hex` 或 `.bin` 文件直接拖进 DAPLink 的虚拟 U 盘，即可完成烧录。如果发生错误，错误的信息就会存放在 `FAIL.txt` 中。
 
-### Puerto serie virtual (CDC)
+### 虚拟串口（CDC）
 
-La función del puerto serie virtual CDC tiene funciones generales de puerto serie, permite la comunicación bidireccional y permite enviar comandos de interrupción para restablecer la placa objetivo.
+CDC 虚拟串口功能具备一般的串口功能，允许双向通信，允许发送中断命令来重置目标板。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Diferencias en el uso de JLink, STLink, DAPLink y CMSIS DAP](https://blog.csdn.net/zhouml_msn/article/details/105298776)
-- [Tecnología nueva · Simulador DAPLink](https://www.jixin.pro/bbs/topic/4187)
+- [JLink、STLink、DAPLink、CMSIS DAP 使用区别](https://blog.csdn.net/zhouml_msn/article/details/105298776)
+- [技新 · DAPLink 仿真器](https://www.jixin.pro/bbs/topic/4187)
 - [wuxx / nanoDAP](https://github.com/wuxx/nanoDAP)
-- [LGG001 / Folleto DAPLink](https://github.com/LGG001/DAPLink-Brochure)
+- [LGG001 / DAPLink-Brochure](https://github.com/LGG001/DAPLink-Brochure)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

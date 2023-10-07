@@ -1,25 +1,23 @@
-# Guía de Inicialización de ESXi
+# ESXi 初始化指南
 
-VMware ESXi es un administrador de máquinas virtuales que se puede instalar en una máquina desnuda. Este tutorial se basa en ESXi 8 y todavía está en fase de borrador.
+VMware ESXi 是一个可裸机安装的虚拟机管理器。本篇教程基于 ESXi 8，仍在草稿阶段。
 
-Puede seguir este tutorial para comenzar: [**"Guía de solución de problemas de enrutadores de software" Parte 2: Conocimientos esenciales y proceso de instalación de ESXi 8.0 para máquinas virtuales de niñera**](https://post.smzdm.com/p/a8x6o5on/p3/?sort_tab=hot/#comments)
+可以先跟着这篇教程上手：[**『软路由踩坑指南』 篇二：ESXi 8.0 虚拟机必备知识与保姆级安装过程**](https://post.smzdm.com/p/a8x6o5on/p3/?sort_tab=hot/#comments)
 
-Cuando llegue al punto "5. Modificar el espacio predeterminado de ESXI", utilice el siguiente método para cambiar el tamaño predeterminado del espacio de ESXI.
+进行至 `5.修改ESXI的默认空间` 这个地方时，改用以下方法，修改 ESXI 的默认空间大小。
 
-### Reducción de la ocupación de VMFSL
+### 减小 VMFSL 的占用
 
-Dentro de los 5 segundos posteriores a hacer clic en "Instalar sistema", presione `Shift` + `O` e ingrese `cdromBoot runweasel systemMediaSize=min` para configurar la memoria virtual al valor mínimo. Consulte la documentación oficial [**Descripción general del almacenamiento del sistema ESXi**](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.esxi.install.doc/GUID-474D003B-C6FB-465D-BC1B-5FD30F8E2209.html?hWord=N4IghgNiBcIM4E84BcCmBbAsqgJgSzAGU8AvVEAXyA#esxi-70-system-storage-links-2) para obtener más información.
+在点安装系统后 5 秒内，按 `Shift` + `O`，输入 `cdromBoot runweasel systemMediaSize=min`， 将虚拟内存配置到最小值。具体可参考官方文档 [**ESXi System Storage Overview**](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.esxi.install.doc/GUID-474D003B-C6FB-465D-BC1B-5FD30F8E2209.html?hWord=N4IghgNiBcIM4E84BcCmBbAsqgJgSzAGU8AvVEAXyA#esxi-70-system-storage-links-2)。
 
-### Instalación de una máquina virtual de Windows 11
+### Windows 11 虚拟机的安装
 
-Windows 11 tiene requisitos de sistema bastante estrictos y es posible que aparezca el mensaje "Este equipo no puede ejecutar Windows 11" durante la instalación. El problema suele ser causado por la comprobación de TPM, que se puede evitar de la siguiente manera:
+Win11 对系统配置比较严苛，安装的时候可能会出现 `这台电脑无法运行Windows 11`。一般问题来自于 TPM 检查，可以通过以下的方法避开：
 
-1. En la página de inicialización de la máquina virtual, habilite "Seguridad basada en la virtualización de Windows".
-2. En la página "Instalar ahora" después de ingresar a la máquina virtual de Windows, presione las teclas `Shift` + `F10` para abrir la ventana de cmd (si la ventana de cmd no aparece, puede ser un problema con el teclado del portátil, intente conectar un teclado externo).
-3. Ingrese "regedit" para abrir el editor del registro. Cree dos valores DWORD de 32 bits en la ruta "HKEY_LOCAL_MACHINE\SYSTEM\Setup":
-   - "BypassTPMCheck" con un valor hexadecimal de "1".
-   - "BypassSecureBootCheck" con un valor hexadecimal de "1".
+1. 在虚拟机的初始化页面，启用 `Windows 基于虚拟化的安全性`。
+2. 在进入 Windows 虚拟机后的 `现在安装` 页面，按快捷键 `Shift` + `F10` 启动 cmd 窗口（如果调出 cmd 界面，有可能是笔记本的键盘键位问题，可以尝试外接一个键盘）。
+3. 输入 regedit，打开注册表。在 `HKEY_LOCAL_MACHINE\SYSTEM\Setup` 路径下，创建两个 32 位的 DWORD 值：
+   - `BypassTPMCheck`，数值为 16 进制 `1`。
+   - `BypassSecureBootCheck`，数值为 16 进制 `1`。
 
-Si aún no se puede instalar, intente verificar otros requisitos. Puede ser que algunos requisitos no se cumplan, como una frecuencia de reloj principal de más de 1 GHz, más de 64 GB de espacio en disco y más de 4 GB de memoria. Consulte [**Requisitos del sistema**](https://www.microsoft.com/en-us/windows/windows-11-specifications?r=1) para obtener más información.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+如果仍然无法安装，可以尝试检查其他的条件。可能是有一些条件达不到要求，比如 1GHz 以上的主频、64GB 以上的磁盘空间、4G 以上的内存。具体可参考 [**System requirements**](https://www.microsoft.com/en-us/windows/windows-11-specifications?r=1)。

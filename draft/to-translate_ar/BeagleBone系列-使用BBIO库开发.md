@@ -1,6 +1,6 @@
-# Serie BeagleBone - Desarrollo con la biblioteca BBIO
+# BeagleBone 系列 - 使用 BBIO 库开发
 
-## Instalación de Adafruit-BBIO
+## 安装 Adafruit-BBIO
 
 ```
 sudo apt-get update
@@ -8,7 +8,7 @@ sudo apt-get install build-essential python3-dev python3-pip -y
 sudo pip3 install Adafruit_BBIO
 ```
 
-## Estructura básica del programa
+## 基本程序框架
 
 ```py
 import time
@@ -27,31 +27,31 @@ while True:
 
 ## GPIO
 
-Llamando a la biblioteca:
+调用库：
 
 ```py
 import Adafruit_BBIO.GPIO as GPIO
 ```
 
-### Configuración de pines de entrada / salida
+### 设置引脚输入 / 输出
 
 ```py
 GPIO.setup("P8_14", GPIO.OUT)
 ```
 
-`Entrada` / `Salida` se pueden seleccionar como `GPIO.IN`/`GPIO.OUT`.
+`输入` / `输出` 可选 `GPIO.IN`/`GPIO.OUT`。
 
-### Configuración de nivel alto / bajo de salida
+### 设置输出高 / 低电平
 
 ```py
 GPIO.output("P8_14", GPIO.HIGH)
 ```
 
-Los niveles `alto` / `bajo` se pueden seleccionar como `GPIO.HIGH`/`GPIO.LOW`, o `1`/`0`.
+`高` / `低` 电平可选 `GPIO.HIGH`/`GPIO.LOW`，或 `1`/`0`。
 
-### Modo de entrada de pin
+### 引脚输入模式
 
-Verificar el estado del puerto de entrada:
+查看输入端口的状态：
 
 ```py
 if GPIO.input("P8_14"):
@@ -60,17 +60,17 @@ else:
   print("LOW")
 ```
 
-Esperar entrada de borde, los parámetros son `GPIO.RISING`/`GPIO.FALLING`/`GPIO.BOTH`:
+等待边沿输入，参数有 `GPIO.RISING`/`GPIO.FALLING`/`GPIO.BOTH`：
 
 ```py
 GPIO.wait_for_edge(channel, GPIO.RISING)
 
-o
+或
 
 GPIO.wait_for_edge(channel, GPIO.RISING, timeout)
 ```
 
-### Monitoreo de entrada
+### 监测输入
 
 ```py
 GPIO.add_event_detect("P9_12", GPIO.FALLING)
@@ -78,47 +78,47 @@ if GPIO.event_detected("P9_12"):
     print "event detected!"
 ```
 
-## Retardo
+## 延时
 
-Retardo de 1 segundo:
+延时 1 秒：
 
 ```py
 import time
 time.sleep(1)
 ```
 
-## Salida PWM
+## PWM 输出
 
 ```py
 import Adafruit_BBIO.PWM as PWM
 #PWM.start(通道, 占空比, 默认频率=2000, 极性=0)
 PWM.start("P9_14", 50)
 
-#También se pueden definir la frecuencia y la polaridad
+#也可以自己定义频率和极性
 PWM.start("P9_14", 50, 1000, 1)
 ```
 
-El valor efectivo del ciclo de trabajo es de 0.0-100.0, la función start se utiliza para activar el PWM en ese canal.
+其中，占空比的有效值为 0.0-100.0，start 函数用于激活该通道上的 PWM。
 
-Una vez que se ha iniciado el PWM, se pueden establecer el ciclo de trabajo o la frecuencia por separado:
+当启动 PWM 之后，就可单独设置占空比或频率了：
 
 ```py
 PWM.set_duty_cycle("P9_14", 25.5)
 PWM.set_frequency("P9_14", 10)
 ```
 
-Después de su uso, también se puede detener la salida PWM o borrar la información:
+用完之后，也可以停止 PWM 输出，或清除信息：
 
 ```py
 PWM.stop("P9_14")
 PWM.cleanup()
 ```
 
-## Entrada ADC
+## ADC 输入
 
-En este marco, ADC tiene tres métodos de función: setup, read y read_raw. Antes de leer los datos, primero se debe configurar.
+在这个框架里面，ADC 有三个函数方法：setup，read 和 read_raw。在读取数据之前，要先 setup。
 
-En BeagleBone, los siguientes pines se pueden usar como ADC:
+在 BeagleBone 上，以下引脚可以使用 ADC：
 
 ```
 "AIN4", "P9_33"
@@ -130,9 +130,9 @@ En BeagleBone, los siguientes pines se pueden usar como ADC:
 "AIN1", "P9_40"
 ```
 
-Nota: El voltaje máximo del ADC es de 1.8V y la tierra del ADC es el pin GNDA_ADC (P9_34). Si se necesita detectar 3.3V, se puede utilizar una división de voltaje con resistencias, como se muestra en la siguiente imagen, para leer el valor analógico en un rango de 0-1.65V.
+注意：ADC 的最大电压为 1.8V，ADC 的地是 GNDA_ADC (P9_34) 引脚。如果需要检测 3.3V，可以用电阻分压，就像下图，把 0-3.3V 分到 0-1.65V 以读取模拟值。
 
-### Inicialización del ADC
+### 初始化 ADC
 
 ```py
 import Adafruit_BBIO.ADC as ADC
@@ -140,23 +140,23 @@ import Adafruit_BBIO.ADC as ADC
 ADC.setup()
 ```
 
-### Lectura de valores analógicos
+### 读取模拟值
 
 ```py
 value = ADC.read("P9_40")
 
-o
+或
 
 value = ADC.read("AIN1")
 ```
 
-Este marco tiene un error que requiere leer dos veces consecutivas para obtener el valor analógico más reciente.
+这框架有个 bug，需要连续读两次，才能获取最新的的模拟值。
 
-El valor leído es un valor entre 0 y 1.0, que se puede multiplicar por 1.8 para convertirlo en un valor de voltaje. Si no se desea hacer esto, también se puede utilizar read_raw para leer directamente el valor de voltaje real.
+读回来的结果是一个 0-1.0 之间的值，可以乘以 1.8 以转换成电压值。如果不想这么麻烦，也可以用 read_raw 来直接读出真实电压值。
 
-## Comunicación I2C
+## I2C 通信
 
-Para utilizar I2C, solo es necesario importar la biblioteca, establecer la dirección I2C y seleccionar el I2C que se va a utilizar (por defecto es I2C-1).
+使用 I2C，只需要导入库，设置 I2C 地址，选择是哪个 I2C（默认是 I2C-1）。
 
 ```py
 from Adafruit_I2C import Adafruit_I2C
@@ -164,19 +164,19 @@ from Adafruit_I2C import Adafruit_I2C
 i2c = Adafruit_I2C(0x77)
 ```
 
-La función I2C requiere la instalación del paquete de Python `python-smbus`, pero actualmente este paquete solo es compatible con la versión 2 de Python. En su lugar, se puede utilizar [**smbus2**](https://pypi.org/project/smbus2/).
+I2C 功能需要安装 python 包 `python-smbus`，但目前这个包只兼容 python 2 版本。我们可以用 [**smbus2**](https://pypi.org/project/smbus2/) 替换使用。
 
-## Comunicación SPI
+## SPI 通信
 
-Importar la biblioteca SPI:
+导入 SPI 库：
 
 ```py
 from Adafruit_BBIO.SPI import SPI
 ```
 
-## Otros
+## 其他
 
-Si la instalación de Adafruit-BBIO falla, se puede realizar una instalación manual:
+安装 Adafruit-BBIO 时，如果失败可选手动安装：
 
 ```
 sudo apt-get update
@@ -186,21 +186,19 @@ cd adafruit-beaglebone-io-python
 sudo python3 setup.py install
 ```
 
-Actualizar Adafruit-BBIO:
+升级 Adafruit-BBIO：
 
 ```
 sudo pip3 install --upgrade Adafruit_BBIO
 ```
 
-Debido a la dependencia de python-smbus, I2C solo se puede utilizar en Python 2.
+因为 python-smbus 这个依赖的原因，I2C 仅限在 python2 下使用。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
 - [Python Adafruit_GPIO.I2C Examples](https://www.programcreek.com/python/example/92524/Adafruit_GPIO.I2C)
 - [Adafruit-BBIO 1.2.0](https://pypi.org/project/Adafruit-BBIO/#description)
 - [Setting up IO Python Library on BeagleBone Black](https://learn.adafruit.com/setting-up-io-python-library-on-beaglebone-black)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

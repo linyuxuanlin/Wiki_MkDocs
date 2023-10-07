@@ -1,60 +1,58 @@
-# Cómo construir una biblioteca en línea con Calibre (Docker en Synology)
+# 使用 Calibre 搭建在线书库（群晖 Docker）
 
-Cómo construir una biblioteca en línea con calibre-web (Docker) en Synology NAS.
+如何在群晖 NAS 用 calibre-web（Docker）搭建一个在线书库。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210429125418.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210429125418.png)
 
-En comparación con el método tradicional de usar carpetas, el método de gestión de bibliotecas representado por Calibre de código abierto puede proporcionar funciones más ricas, como lectura en línea, descarga, conversión de formato, envío por correo electrónico, eliminación de libros duplicados, etc. Calibre-web es una imagen de Docker basada en Calibre que nos permite implementar la biblioteca en servidores como Synology de manera muy conveniente.
+相比于传统用文件夹的方式，以开源的 Calibre 为代表的书库管理方式，能提供更丰富的功能诸如在线阅读、下载、格式转换、推送到邮箱、去除重复书籍等。calibre-web 是一个基于 Calibre 的 Docker 镜像，可以让我们很方便地将书库部署在像群晖这样的服务器上。
 
-## Crear una carpeta inicial
+## 建立初始文件夹
 
-En primer lugar, cree una carpeta de recursos de biblioteca. Aquí, creé una carpeta compartida llamada `book` directamente en la raíz del disco:
+首先，建立书库资源文件夹，这里我直接在磁盘根目录建立了一个名为 `book` 的共享文件夹：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210429214028.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210429214028.png)
 
-En consecuencia, cree una carpeta llamada `calibre-web` en la carpeta `docker`, que se utiliza específicamente para almacenar los archivos de configuración de la imagen de Docker.
+相应地，在 `docker` 文件夹内创建一个名为 `calibre-web` 文件夹，专门用于存放 Docker 镜像的配置文件。
 
-## Crear contenedor
+## 创建容器
 
-Abra el paquete Docker de Synology, busque `johngong/calibre-web` en el registro, descárguelo haciendo doble clic y luego inicialice el contenedor y haga clic en la configuración avanzada.
+打开群晖的 Docker 套件，在注册表中搜索 `johngong/calibre-web`，双击下载后，初始化容器，点进高级设置。
 
-En la página `Volumen`, agregue carpetas de mapeo y cargue las rutas `/library` y `/config` respectivamente:
+在 `卷` 页面添加映射文件夹，装载路径分别是 `/library` 和 `/config`：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210429214908.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210429214908.png)
 
-En la página `Configuración de puerto`, agregue el mapeo de puerto y principalmente mapee el puerto `8083` interno del contenedor. Aquí elegí `5004`.
+在 `端口设置` 页面添加端口映射，主要将容器内部的 `8083` 端口映射出去，这里我选择 `5004`。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210429215121.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210429215121.png)
 
-Luego, cree y ejecute el contenedor.
+随后，创建并启动容器。
 
-## Ejecutar prueba
+## 运行测试
 
-Abra la dirección IP interna de Synology: 5004 para abrir la interfaz de administración. La cuenta predeterminada es `admin` y la contraseña es `admin123`.
+打开群晖内网 IP:5004 打开管理界面，默认的账号是 `admin`，密码是 `admin123`
 
-Tenga en cuenta que la función de carga de libros no está habilitada de forma predeterminada. Debe hacer clic en `Permisos de administración` - `Editar configuración básica` - `Habilitar carga` en orden para habilitar la función de carga de libros.
+需要注意的是，默认是没有书籍上传功能的，需要依次点击右上角 `管理权限` - `编辑基本配置` — `启用上传`，才能启用书籍上传功能。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210429215628.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210429215628.png)
 
-## Habilitar HTTPS
+## 启用 HTTPS
 
-### Usar el proxy inverso incorporado en Synology (recomendado)
+### 使用群晖系统自带的反向代理（推荐）
 
-Puede consultar el tutorial específico en el artículo [**Implementar acceso HTTPS con proxy inverso incorporado en Synology**](https://wiki-power.com/es/%E7%94%A8%E7%BE%A4%E6%99%96%E8%87%AA%E5%B8%A6%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0HTTPS%E8%AE%BF%E9%97%AE).
+具体教程可以跳转文章 [**用群晖自带反向代理实现 HTTPS 访问**](https://wiki-power.com/%E7%94%A8%E7%BE%A4%E6%99%96%E8%87%AA%E5%B8%A6%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0HTTPS%E8%AE%BF%E9%97%AE)
 
-### Método de agregar certificado directamente
+### 直接添加证书方法
 
-Copia el certificado y el archivo de clave que ha solicitado en la carpeta `docker/calibre-web/`.
+将申请到的证书和密钥文件复制一份到 `docker/calibre-web/` 目录下。
 
-Luego, en calibre-web, haga clic en `Permisos de administración` - `Editar configuración básica` - `Configuración del servidor` en orden para configurar la ruta del archivo de certificado SSL y clave (por ejemplo, `/config/wiki-power.com.cer` y `/config/wiki-power.com.key`), y luego haga clic en Guardar.
+随后在 calibre-web 内依次点击 `管理权限` - `编辑基本配置` - `服务器配置`，配置 SSL 证书及密钥文件的路径（例如我是 `/config/wiki-power.com.cer` 和 `/config/wiki-power.com.key`），随后点击保存。
 
-De esta manera, puede habilitar el acceso HTTPS.
+这样就可以开启 HTTPS 访问了。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Instalación del sistema de gestión de libros calibre-web en Synology Docker](https://www.chrno.cn/index.php/docker/15.html)
+- [群晖 Docker 安装 calibre-web 图书管理系统](https://www.chrno.cn/index.php/docker/15.html)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

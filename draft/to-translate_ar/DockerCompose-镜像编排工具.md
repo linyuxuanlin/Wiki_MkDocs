@@ -1,12 +1,12 @@
-# Docker Compose - Herramienta de orquestación de imágenes
+# Docker Compose - 镜像编排工具
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210117130925.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210117130925.jpg)
 
-Docker Compose es una herramienta de orquestación de imágenes de Docker. Se recomienda utilizar Docker Compose como la forma predeterminada de abrir Docker, ya que no solo permite configurar y desplegar imágenes de manera conveniente, sino que también permite configurar servicios de múltiples imágenes de manera más conveniente e incluso distinguir su orden de inicio, lo que no es posible con la forma de abrir mediante comandos.
+Docker Compose 是 Docker 镜像的编排工具。推荐使用 Docker Compose 作为 Docker 的默认打开方式，因为它不仅可以方便地配置与部署镜像，还可以更方便地配置多镜像服务，甚至区分它们的启动顺序，这是使用命令的打开方式所不具备的。
 
-Aunque la idea de Docker es desacoplar (una imagen por proceso), aumentar la reutilización y no encapsular múltiples servicios en una sola imagen, hay algunas aplicaciones que requieren el inicio simultáneo de múltiples servicios. Por ejemplo, una aplicación web típica requiere al menos la colaboración del servidor y la base de datos. De esta manera, es necesario implementar dos contenedores por separado, e incluso algunos servicios deben iniciarse en un orden determinado. De esta manera, las imágenes y los pasos de operación necesarios serán muy complejos.
+虽然 Docker 的思想是解耦（一个镜像一个进程）、提高复用率、不在一个镜像内封装多个服务，但是，有些应用是需要多个服务同时启动的。例如，一个典型的 web 应用，至少需要服务端和数据库配合。这样一来，你需要分别部署两个容器，甚至有些服务需要按一定先后顺序启动。这样一来，需要的镜像和操作步骤会很复杂。
 
-Docker Compose escribe todas las imágenes necesarias para llamar (todas las propiedades de los servicios y contenedores necesarios, la configuración de red y el montaje del volumen de almacenamiento) y el orden en un archivo YAML. Al ejecutar directamente este archivo de configuración, se pueden ejecutar los contenedores según el método y los pasos que necesite, sin necesidad de operar manualmente cada contenedor. A continuación se muestra un ejemplo de Docker Compose para implementar un servicio web:
+Docker Compose 把所需要调用的镜像（所有需要的服务、容器的属性、网络配置以及存储卷的挂载）和顺序等，全部写在一个 YAML 文件里，直接运行这个配置文件，就可以按照你所需的方法和步骤运行容器，而不需要手动操作每个容器。以下是一个 Docker Compose 示例，用于部署一个 web 服务：
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -36,45 +36,45 @@ services:
     restart: unless-stopped
 ```
 
-En este archivo YAML, se definen y se inician dos instancias, `web` y `database`.
+在这个 YAML 文件中，定义并启动了`web` 和 `database` 这两个实例。
 
-## Instalación y configuración de Docker Compose
+## Docker Compose 的安装与配置
 
-Docker Compose depende de Docker Engine, así que asegúrese de haber instalado el entorno de Docker Engine primero. Si aún no lo ha instalado, consulte el tutorial anterior: [**Conocimientos básicos de Docker**](https://wiki-power.com/es/Docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/) para instalar Docker Engine.
+Docker Compose 依赖 Docker Engine，所以请先确保你已经安装了 Docker Engine 环境。如果你还没安装，可以参考上一篇教程：[**Docker 基础知识**](https://wiki-power.com/Docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/)，安装 Docker Engine.
 
-Si está utilizando el cliente de escritorio de Windows/MacOS/Linux, no es necesario instalar Docker Compose por separado, ya que ya está incluido. A continuación se describe cómo instalar Docker Compose en el entorno de Docker Engine de Linux.
+如果你用的是 Windows/MacOS/Linux 桌面客户端，那就不用另外安装 Docker Compose 了，因为已经包含在内。下面介绍 Linux Docker Engine 环境下 Docker Compose 的安装方法。
 
-Para Ubuntu y Debian, utilice el siguiente comando para instalar Docker Compose:
+对于 Ubuntu 和 Debian，使用以下的命令安装 Docker Compose：
 
 ```shell
 sudo apt-get update
 sudo apt-get install docker-compose-plugin
 ```
 
-Para las distribuciones de Linux basadas en RPM (como CentOS), utilice el siguiente comando para instalar Docker Compose:
+对于 RPM 发行版的 Linux（比如 CentOS），使用以下的命令安装 Docker Compose：
 
 ```shell
 sudo yum update
 sudo yum install docker-compose-plugin
 ```
 
-Después de la instalación, verifique si la instalación fue exitosa con el siguiente comando:
+完成后，使用以下的命令检验安装是否成功：
 
 ```shell
 docker compose version
 ```
 
-## Cómo usar Docker Compose
+## 如何使用 Docker Compose
 
-Por lo general, creamos un archivo `compose.yaml` (la versión anterior es `docker-compose.yml`, que también es compatible) y lo colocamos en un directorio nombrado según el nombre de la aplicación, como `web/compose.yaml`.
+一般我们创建一个 `compose.yaml` 文件（老版本为 `docker-compose.yml`，也是兼容的），并将其放到一个以应用名称命名目录下，比如 `web/compose.yaml`。
 
-Para ejecutar este programa, simplemente ejecute el comando `docker compose up` en este directorio para iniciar los servicios según la configuración en el archivo YAML. (Agregar el parámetro `-d` ejecutará el servicio en segundo plano)
+要运行这个程序，只要在这个目录下执行 `docker compose up` 命令，即可按 YAML 文件中的配置启动服务。（加参数 `-d` 可以后台运行）
 
-Para detener la ejecución del stack de la aplicación, simplemente use `docker compose down`.
+要停止应用栈的运行，用 `docker compose down` 就可以了。
 
-## Cómo escribir un archivo Docker Compose
+## Docker Compose 文件的写法
 
-La forma predeterminada de abrir Docker Compose es crear un archivo en formato YAML, con el nombre predeterminado `compose.yaml`. A continuación se muestra una plantilla de ejemplo que incluye todos los parámetros disponibles (pero no es necesario usarlos todos):
+Docker Compose 的默认打开方式，是创建一个 YAML 格式的文件，默认命名为 `compose.yaml`。以下是一个示例的模板，包含所有可用的参数（但并不一定要全部用上）：
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -112,57 +112,57 @@ volumes:
   db-data:
 ```
 
-En un archivo `compose.yaml`, generalmente incluimos los siguientes parámetros:
+在一个 `compose.yaml` 中，通常会包含以下的参数：
 
-- **version**: Solo se utiliza para mostrar la información de la versión del archivo compose. Está relacionado con la versión de Docker Engine y las nuevas versiones pueden tener nuevas características o sintaxis. Consulte la documentación oficial [**Versiones de archivo Compose y actualización**](https://docs.docker.com/compose/compose-file/compose-versioning/).
-- **services**: Define los diferentes servicios (contenedores) incluidos en este archivo compose. Cada servicio es un contenedor independiente y se pueden definir su imagen, mapeo de puertos, variables de entorno, etc.
-- **container_name**: Nombre del contenedor, no es obligatorio, pero no puede haber nombres duplicados.
-- **networks**: Define la configuración de red entre los servicios. Se pueden crear redes personalizadas y conectar los servicios a ellas para permitir la comunicación entre contenedores.
-- **volumes**: Define la configuración de montaje de volúmenes del contenedor. Se pueden asociar los directorios o archivos del contenedor con los directorios o archivos del host para lograr la persistencia y el intercambio de datos. Equivalente al parámetro `-v` en la CLI de Docker.
-- **environment** (o `env_file`): Especifica el nombre y la ruta del archivo de variables de entorno del contenedor. Si no se configuran variables de entorno, se pueden ignorar. Si las variables de entorno están en el directorio actual y se llaman `.env`, también se pueden omitir. Equivalente al parámetro `-e` en la CLI de Docker.
-- **build**: Inicia el contenedor utilizando la imagen construida. Especifica la ruta del archivo Dockerfile.
-- **image**: Especifica la imagen utilizada por el contenedor. Se pueden utilizar imágenes públicas del repositorio de imágenes o especificar un archivo Dockerfile local.
-- **ports**: Define la relación de mapeo de puertos entre el contenedor y el host. También se puede especificar el protocolo de mapeo (TCP o UDP). Equivalente al parámetro `-p` en la CLI de Docker.
-- **depends_on**: Define la relación de dependencia entre los servicios. Se pueden especificar uno o varios nombres de servicios, lo que indica que el servicio actual depende de que estos servicios se inicien.
-- **restart**: Define la estrategia de reinicio del contenedor. Se puede establecer en `no` (no se reinicia automáticamente), `always` (siempre se reinicia automáticamente), `unless-stopped` (se reinicia automáticamente a menos que se detenga manualmente el contenedor) o `on-failure` (solo se reinicia automáticamente si falla). Equivalente al parámetro `--restart` en la CLI de Docker.
-- **command**: Especifica el comando que se ejecutará al iniciar el contenedor. Se puede utilizar para anular el comando de inicio predeterminado de la imagen del contenedor.
-- **volumes_from**: Especifica la fuente del contenedor de la que se deben montar los volúmenes.
+- **version**：仅用来展示 compose 文件的版本信息。与 Docker Engine 版本相关联，更新的版本可能会有新增功能特性或语法。请参考官方文档 [**Compose file versions and upgrading**](https://docs.docker.com/compose/compose-file/compose-versioning/)。
+- **services**：定义了此 compose 文件中包含的各个服务（容器）。每个服务都是一个独立的容器，可以定义其镜像、端口映射、环境变量等。
+- **container_name**：容器名称，非必须，但不能出现重名。
+- **networks**：定义了服务之间的网络配置。可以创建自定义网络，并将服务连接到这些网络上，实现容器之间的通信。
+- **volumes**：定义了容器的卷的挂载配置。可以将容器的目录或文件与主机的目录或文件进行关联，实现数据持久化和共享。相当于 Docker CLI 中的 `-v` 参数。
+- **environment**（或 `env_file`）：指定容器的环境变量的文件名与路径，指定以这文件来加载环境变量。如果没有配置环境变量可忽略。如果环境变量在当前目录下且名为 `.env`，也可以省略。相当于 Docker CLI 中的 `-e` 参数。
+- **build**：使用构建的镜像启动。指定 Dockerfile 文件的路径。
+- **image**：指定容器所使用的镜像。可以使用公共镜像仓库中的镜像，或者指定本地的 Dockerfile 文件。
+- **ports**：定义容器与宿主机之间的端口映射关系，也可指定映射协议（TCP 或 UDP）。相当于 Docker CLI 中的 `-p` 参数。
+- **depends_on**：定义服务之间的依赖关系。可以指定一个或多个服务的名称，表示当前服务依赖于这些服务的启动。
+- **restart**：定义容器的重启策略。可以设置为 `no`（不自动重启）、`always`（始终自动重启）、`unless-stopped`（自动重启，除非手动停止容器）或 `on-failure`（仅奔溃时自动重启）。相当于 Docker CLI 中的 `--restart` 参数。
+- **command**：指定容器启动时要执行的命令，可用于覆盖容器镜像中默认的启动命令。
+- **volumes_from**：指定容器要挂载卷的来源容器。
 
-## Algunos comandos comunes de Docker Compose
+## 一些常用的 Docker Compose 命令
 
-A continuación se muestran algunos comandos comunes de Docker Compose que se utilizan para administrar y operar los servicios definidos en el archivo `compose.yaml`:
+以下是一些常见的 Docker Compose 命令，用于管理和操作 `compose.yaml`` 文件定义的服务：
 
-- `docker compose up`: Construye las imágenes definidas en el archivo compose y arranca los contenedores. Si es necesario, construye automáticamente las imágenes (si el Dockerfile ha sido modificado) y arranca todos los servicios definidos. Si se desea arrancar en segundo plano, se debe añadir el parámetro `-d`.
-- `docker compose down`: Detiene y elimina todos los contenedores, redes y volúmenes definidos en el archivo compose. Detiene los servicios en ejecución y limpia todos los recursos relacionados.
-- `docker compose pull`: Descarga todas las imágenes definidas en el archivo compose, o las actualiza si ya existen.
-- `docker compose start`: Arranca los contenedores ya creados en el archivo compose, sin crear nuevos contenedores ni construir nuevas imágenes.
-- `docker compose stop`: Detiene los contenedores ya creados en el archivo compose, sin eliminarlos.
-- `docker compose restart`: Reinicia los contenedores ya creados en el archivo compose.
-- `docker compose pause`: Pausa los contenedores ya creados en el archivo compose, deteniendo temporalmente su ejecución.
-- `docker compose unpause`: Reanuda los contenedores pausados en el archivo compose, permitiendo que continúen su ejecución.
-- `docker compose ps`: Muestra el estado de **todos** los contenedores en ejecución definidos en el archivo compose.
-- `docker compose logs`: Muestra los registros de salida de los contenedores definidos en el archivo compose.
-- `docker compose exec`: Ejecuta comandos en los contenedores en ejecución definidos en el archivo compose. Por ejemplo, `docker exec -it [nombre-compose] /bin/bash`.
+- `docker compose up`：构建 compose 中定义的镜像并启动容器。如果需要，它会自动构建镜像（如果 Dockerfile 已更改），然后启动所有定义的服务。如果需要在后台启动，请加上 `-d` 参数。
+- `docker compose down`：停止并移除 compose 中的所有容器、网络和卷。它会停止正在运行的服务并清理所有相关的资源。
+- `docker compose pull`：拉取 compose 中定义的所有镜像，或用于更新镜像、
+- `docker compose start`：启动已经创建的 compose 中的容器，不会重新创建容器或重新构建镜像。
+- `docker compose stop`：停止已经创建的 compose 中的容器，但不会移除容器。
+- `docker compose restart`：重启已经创建的 compose 中的容器。
+- `docker compose pause`：暂停已经创建的 compose 中的容器，使其暂时停止运行。
+- `docker compose unpause`：恢复已经暂停的 compose 中的容器，使其继续运行。
+- `docker compose ps`：显示 **所有** 正在运行的 compose 中的容器的状态。
+- `docker compose logs`：查看 compose 中的容器的日志输出。
+- `docker compose exec`：在运行的 compose 中的容器中执行命令。比如 `docker exec -it [compose-name] /bin/bash`
 
-Estos son algunos de los comandos más comunes, pero se pueden encontrar más ejecutando `docker compose --help`.
+这是一些常见的命令，你也可以执行 `docker compose --help` 查看更多可用的命令。
 
-## Variables de entorno
+## 环境变量
 
-Aunque no son obligatorias en Docker Compose, se recomienda el uso de variables de entorno por las siguientes razones:
+在 Docker Compose 中，虽然环境变量并非必选项，但是推荐多使用，因为以下几个优点：
 
-1. **Flexibilidad y configurabilidad**: Permite ajustar fácilmente la configuración de la aplicación sin necesidad de modificar las imágenes de Docker o reconstruir los contenedores.
-2. **Seguridad y aislamiento**: Almacenar información sensible en variables de entorno en lugar de escribirla directamente en el código o en los archivos de configuración, y otorgar permisos específicos a las variables de entorno, puede mejorar la seguridad de la aplicación.
-3. **Compatibilidad multiplataforma**: Diferentes sistemas operativos o plataformas pueden pasar diferentes configuraciones a través de variables de entorno, sin necesidad de modificar los archivos de configuración o el código de la imagen.
-4. **Simplificación del despliegue y la gestión**: Al utilizar variables de entorno para configurar los parámetros de diferentes contenedores, se puede reducir la duplicación de contenido en los archivos de configuración, lo que hace que todo el proceso sea más claro y fácil de mantener.
-5. **Integración y automatización**: Al combinar con herramientas de CI/CD y automatización, se pueden pasar automáticamente los parámetros de configuración de la aplicación a los contenedores de Docker, lo que permite la implementación y la integración automáticas.
+1. **灵活性和可配置性**：轻松调整应用的配置信息，而无需修改 Docker 镜像或重新构建容器。
+2. **安全性和隔离性**：通过将敏感信息存储在环境变量中，而不是直接写在代码或配置文件中，对环境变量单独授权，可以提高应用程序的安全性。
+3. **跨平台兼容性**：不同的操作系统或平台都可以通过环境变量传递不同的配置信息，无需对配置文件或镜像代码进行修改。
+4. **部署和管理的简化**：通过统一使用环境变量来配置不同容器的参数，可以减少配置文件中的重复内容，使整个过程更加清晰和易于维护。
+5. **集成和自动化**：通过与 CI/CD 和自动化工具结合，可自动将应用的配置参数传递给 Docker 容器，实现自动化部署和集成。
 
-Las variables de entorno se almacenan en un archivo con la extensión `.env`, que generalmente se crea en el mismo directorio que el archivo `compose.yaml`. A continuación se muestra un ejemplo:
+环境变量是一个 `.env` 后缀的文件，一般是直接在 `compose.yaml` 同级目录下创建一个名为 `.env` 的文件，以下是一个示例：
 
 ```dotenv title=".env"
 TAG=v1.5
 ```
 
-Las variables de entorno se pueden llamar directamente en el archivo `compose.yaml`:
+在 `compose.yaml` 中可以直接调用环境变量：
 
 ```yaml title="compose.yaml"
 services:
@@ -170,20 +170,18 @@ services:
     image: "webapp:${TAG}"
 ```
 
-## Consejos
+## 小技巧
 
-Hay un sitio web llamado [**composerize**](https://www.composerize.com/) que convierte la CLI de Docker en YAML de Docker Compose. El resultado de la conversión no siempre es preciso y debe ser verificado.
+有一个将 Docker CLI 转换为 Docker Compose YAML 的网站：[**composerize**](https://www.composerize.com/)，转换结果不一定准确，需检验。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Usar docker compose en lugar de docker run](https://beginor.github.io/2017/06/08/use-compose-instead-of-run.html)
-- [Instalar Docker Compose](https://docs.docker.com/compose/install/#prerequisites)
-- [Explicación detallada de los parámetros del archivo de plantilla Docker-Compose](https://blog.51cto.com/14154700/2466054)
-- [¡Resulta que también se puede usar Docker Compose en Synology NAS!](https://www.himiku.com/archives/docker-compose-for-synology-nas.html)
-- [Docker - De principiante a experto](https://docker-practice.github.io/zh-cn/)
-- [Serie Docker - Comprender el archivo de configuración de Docker Compose](https://blognas.hwb0307.com/linux/docker/3880)
+- [使用 docker compose 替代 docker run](https://beginor.github.io/2017/06/08/use-compose-instead-of-run.html)
+- [Install Docker Compose](https://docs.docker.com/compose/install/#prerequisites)
+- [Docker-Compose 模板文件参数详解](https://blog.51cto.com/14154700/2466054)
+- [原来，群晖也能用 Docker Compose！](https://www.himiku.com/archives/docker-compose-for-synology-nas.html)
+- [Docker - 从入门到实践](https://docker-practice.github.io/zh-cn/)
+- [Docker 系列 - 了解 Docker Compose 的配置文件](https://blognas.hwb0307.com/linux/docker/3880)
 
-a_reemplazar[1]
-a_reemplazar[2]
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

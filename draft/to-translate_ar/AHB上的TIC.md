@@ -1,12 +1,10 @@
-# TIC en AHB
+# AHB 上的 TIC
 
-En proceso...
+撰写中……
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- _IHI0011 - Especificación de la arquitectura avanzada de bus de microcontrolador (AMBA) de ARM. Rev 2.0_
+- _IHI0011 - ARM advanced microcontroller bus architecture (AMBA) specification.Rev 2.0_
 
-  > Dirección original del artículo: <https://wiki-power.com/>
-  > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+  > 原文地址：<https://wiki-power.com/>  
+  > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

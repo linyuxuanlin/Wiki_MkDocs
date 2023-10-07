@@ -1,42 +1,42 @@
-# Ejecutar VS Code en el navegador (antiguo)
+# 在浏览器上运行 VS Code（旧）
 
-Nota: Para la implementación de code-server v3.8.0 o superior, consulte [**Cómo ejecutar VS Code en iPad**](https://wiki-power.com/es/如何在iPad上运行VSCode) para obtener un método más simple.
+注：≥v3.8.0 版本 code-server 的部署请参考 [**如何在 iPad 上跑 VS Code**](https://wiki-power.com/如何在iPad上运行VSCode) ，有更简洁的方法。
 
-## Antecedentes
+## 背景
 
-Como se sabe, VS Code es un editor muy potente. Si se pudiera usar VS Code en plataformas ligeras como el iPad (el soporte de teclado y ratón de iPadOS ya es comparable al de los sistemas de escritorio), podríamos trabajar en cualquier momento y lugar.
+众所周知，VS Code 是一个功能十分强大的编辑器。如果能在 iPad 这类轻便的平台上使用 VS Code（iPadOS 对键鼠的支持已经能够媲美桌面系统），那我们就可以随时随地工作了。
 
-Afortunadamente, hay un servicio que permite ejecutar VS Code en un servidor: code-server. Después de la implementación, se puede acceder a él a través del navegador. De esta manera, cualquier dispositivo puede usar VS Code fácilmente siempre que tenga una conexión a Internet.
+恰好有一个让 VS Code 跑在服务器上的服务：code-server. 部署完成后，可通过浏览器访问。这样，只要有网络，任何设备都能够轻松用上 VS Code.
 
-## Preparar el entorno
+## 准备环境
 
-Un servidor con Linux instalado (utilicé la máquina de estudiante de menor especificación de Alibaba Cloud).
+一台安装有 Linux 的服务器（我用的是阿里云最低配的学生机）。
 
-Los requisitos oficiales son los siguientes:
+官方要求配置如下：
 
-> - Host de 64 bits.
-> - Al menos 1 GB de RAM.
-> - Se recomiendan 2 núcleos o más (1 núcleo funciona pero no de manera óptima).
-> - Conexión segura a través de HTTPS o localhost (requerido para los trabajadores de servicio y el soporte de portapapeles).
-> - Para Linux: GLIBC 2.17 o posterior y GLIBCXX 3.4.15 o posterior.
+> - 64-bit host.
+> - At least 1GB of RAM.
+> - 2 cores or more are recommended (1 core works but not optimally).
+> - Secure connection over HTTPS or localhost (required for service workers and clipboard support).
+> - For Linux: GLIBC 2.17 or later and GLIBCXX 3.4.15 or later.
 
-## Proceso de instalación
+## 安装过程
 
-### 1. Descargar
-
-```shell
-wget https://github.com/cdr/code-server/releases/download/3.1.0/code-server-3.1.0-linux-x86_64.tar.gz # Descargar code-server
-```
-
-No copie el comando directamente, copie el enlace de la última versión en la página de [**Release**](https://github.com/cdr/code-server/releases) de code-server (seleccione según la arquitectura del servidor, yo utilicé la versión `code-server-3.1.0-linux-x86_64.tar.gz`), y descargue o transfiera al servidor con `wget` o `SFTP`.
-
-Si la velocidad de descarga es lenta, puede copiar el enlace de descarga y utilizar el sitio web [**GitHub 文件加速**](https://gh.api.99988866.xyz/) para obtener un enlace de descarga acelerado en China.
+### 1. 下载
 
 ```shell
-tar -xvf code-server-3.1.0-linux-x86_64.tar.gz # Descomprimir
+wget https://github.com/cdr/code-server/releases/download/3.1.0/code-server-3.1.0-linux-x86_64.tar.gz # 下载 code-server
 ```
 
-### 2. Instalar
+不要照搬命令，在 code-server 的 [**Release**](https://github.com/cdr/code-server/releases) 页面复制最新版本的链接（根据服务器的架构来选择，我使用的是 `code-server-3.1.0-linux-x86_64.tar.gz` 版本），用 `wget` 或 `SFTP` 下载 / 传输至服务器上。
+
+如果下载速度很慢，可复制下载链接，使用 [**GitHub 文件加速**](https://gh.api.99988866.xyz/) 这个网站获取国内加速下载链接。
+
+```shell
+tar -xvf code-server-3.1.0-linux-x86_64.tar.gz # 解压
+```
+
+### 2. 安装
 
 ```shell
 cd code-server
@@ -44,63 +44,61 @@ export PASSWORD="yourpassword"
 ./code-server --port 8888 --host 0.0.0.0
 ```
 
-- Cambie `yourpassword` a su propia contraseña, de lo contrario se generará una contraseña aleatoria.
-- `--port 8888` significa especificar el puerto de ejecución. Puede configurarlo en el puerto `80` (protocolo Http) para que no tenga que agregar el número de puerto al acceder.
-- `--host 0.0.0.0` permite que el servicio sea accesible desde Internet. El valor predeterminado `127.0.0.1` solo permite el acceso local.
-- Si no necesita autenticación de contraseña, puede agregar `--auth none`.
-- Si el servicio no se inicia correctamente, es posible que haya seleccionado la **versión de arquitectura del procesador** incorrecta. Simplemente cambie a otra versión.
+- 将 `yourpassword` 改为你设定的密码，否则会随机生成密码
+- `--port 8888` 意为指定运行端口，你可以设置为 `80` 端口（Http 协议），这样访问的时候就不用加端口号了
+- `--host 0.0.0.0` 让服务能通过外网访问。默认的 `127.0.0.1` 只能本地访问
+- 如不需要密码验证，可以加上 `--auth none`
+- 如启动服务不成功，可能为 **处理器架构版本** 选择错误，换一个版本即可
 
-### 3. Configurar la ejecución en segundo plano
+### 3. 配置后台运行
 
-Por defecto, si se ejecuta directamente, se cerrará cuando se desconecte la conexión ssh. Para que se ejecute en segundo plano, puede usar `screen`:
+默认直接运行的情况下，ssh 连接一断就没了。为了使其能够后台运行，可以用 `screen` ：
 
 ```shell
 yum install screen
-o
+或
 apt-get install screen
 ```
 
 ```shell
-screen -S VSCode-online # VS Code-online es el nombre que elija
+screen -S VSCode-online # VS Code-online 为自取的名字
 export PASSWORD="password" && ./code-server --port 8888 --host 0.0.0.0
 ```
 
-Para volver a la tarea en ejecución de la pantalla:
+再次进入运行中的 screen 作业：
 
 ```shell
-screen -r nombre de la tarea
+screen -r 作业名
 ```
 
-Si necesita detener la ejecución en segundo plano de screen:
+如果需要停止后台 screen 的运行：
 
 ```shell
-screen -ls # Ver el ID del servicio en ejecución
-screen -X -S id quit # Reemplazar id
+screen -ls # 查看已运行服务的 id
+screen -X -S id quit # 替换掉 id
 ```
 
-Salir de screen: `Ctrl + A + D`
+退出 screen：`Ctrl + A + D`
 
-### 4. Uso fácil
+### 4. 轻松使用
 
-Ingrese `http://your_server_ip` directamente en su navegador para disfrutar de VS Code en la nube.
+在浏览器直接输入 `http://你的服务器 ip` 即可享用云端 VS Code.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200413181001.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200413181001.jpg)
 
-Configuración de acceso de dominio: `Por explorar...`
+配置域名访问：`待探索……`
 
-## Problemas actuales
+## 现阶段问题
 
-- La cantidad de complementos descargables directamente es limitada, la instalación manual de complementos es complicada y no hay una función de sincronización automática de complementos/configuraciones de usuario. Se espera que se resuelva en futuras versiones.
+- 可直接下载的插件数量，手动安装插件很麻烦，且没有自动同步插件 / 用户设置功能，之后的版本应该会更新解决。
 
-## Referencias y agradecimientos
+## 参考与致谢
 
-- [Ejecutar VS Code en el navegador, code-server (servidor de Alibaba Cloud)](https://copyfuture.com/blogs-details/20200405045150018h4edt0f4q8486jq)
-- [Ejecutar VS Code en el navegador, code-server](https://segmentfault.com/a/1190000022267386)
-- [Herramienta en línea de VS code - Instalación y uso de code-server en un servidor en la nube y solución a problemas comunes (muy detallado)](https://blog.csdn.net/Granery/article/details/90415636)
-- [Entorno de aprendizaje de programación en iPad - Configuración de la versión web de VS Code](https://blog.icodef.com/2019/11/17/1670)
+- [在浏览器上运行 VS Code，code-server（阿里云服务器）](https://copyfuture.com/blogs-details/20200405045150018h4edt0f4q8486jq)
+- [在浏览器上运行 VS Code，code-server](https://segmentfault.com/a/1190000022267386)
+- [（推荐）VS code 在线工具——code-serve 在云服务器上的安装和使用 与常见的问题解决 （超详细）](https://blog.csdn.net/Granery/article/details/90415636)
+- [iPad 编程学习环境---VS Code web 版本搭建](https://blog.icodef.com/2019/11/17/1670)
 
-> Autor del artículo: **Power Lin**
-> Dirección original: <https://wiki-power.com>
-> Declaración de derechos de autor: Este artículo utiliza la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Por favor, indique la fuente al volver a publicar.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> 文章作者：**Power Lin**
+> 原文地址：<https://wiki-power.com>
+> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。
