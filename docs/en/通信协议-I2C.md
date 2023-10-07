@@ -4,7 +4,7 @@ I2C (Inter-Integrated Circuit) is a serial communication bus that allows for mul
 
 On the I2C bus, the slave is selected by its I2C address. This can be used to control multiple slaves with two lines on one master.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026174634.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211026174634.png)
 
 ## I2C Pins
 
@@ -16,7 +16,7 @@ On the I2C bus, the slave is selected by its I2C address. This can be used to co
 - I2C address division is a 7-bit address plus a 1-bit read/write indicator.
 - Each device on the I2C bus must have a unique address, and problems will occur if the addresses are duplicated. Some devices' I2C addresses can be programmed.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211027112717.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211027112717.png)
 
 ## I2C Communication
 
@@ -28,7 +28,7 @@ On the I2C bus, the slave is selected by its I2C address. This can be used to co
 
 This segment transmits the value `11001101`:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211104172952.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211104172952.png)
 
 1. The master pulls SDA low to generate the START signal.
 2. The first bit is set, and the master pulls SCL low to output the clock signal through the DAC.
@@ -40,18 +40,18 @@ This segment transmits the value `11001101`:
 2. SDA can only switch values during the low level between SCL beats.
 3. When SCL is high and SDA changes, it will be interpreted as a START, RESTART, or STOP event.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211105172139.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211105172139.png)
 
 ### Interface Circuit Rise/Fall Timing
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211108093819.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211108093819.png)
 
 As shown in the figure, the transistor will conduct during the low level and discharge the $C_b$ capacitor to the low level. Conversely, the transistor will be cut off during the high level, and the pull-up resistor will charge $C_b$ to the high level.
 
 - $t_r$ (rise time): The maximum time for the signal to transition from low to high. Because I2C is an open-drain signal, the rise time is determined by the RC time constant of the pull-up resistor and the bus capacitance.
 - $t_f$ (fall time): The maximum time for the signal to transition from high to low.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211108095142.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211108095142.png)
 
 ### I2C Pull-Up Resistor Calculation
 
@@ -66,7 +66,7 @@ $V_{DD}$ represents the supply voltage; $V_{OLMAX}$ represents the maximum logic
 
 Calculation example:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211108103406.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211108103406.png)
 
 ## Reference and Acknowledgement
 

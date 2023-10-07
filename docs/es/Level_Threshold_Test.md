@@ -2,7 +2,7 @@
 
 > Esta publicación solo está disponible en inglés.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220912163403.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220912163403.png)
 
 La prueba de umbral de nivel incluye el umbral de nivel de salida (VOL y VOH) y el umbral de nivel de entrada (VIL y VIH). Se originan a partir del umbral de nivel típico de TTL y CMOS:
 
@@ -25,7 +25,7 @@ VOH representa el voltaje de salida mínimo cuando el nivel de voltaje de salida
 
 #### Prueba VOL/IOL (Serie)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220912172403.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220912172403.png)
 
 1. Aplicar VDDmin al pin VDD (con abrazadera de corriente).
 2. Preacondicionar el pin de salida específico a la lógica '0'.
@@ -36,7 +36,7 @@ VOH representa el voltaje de salida mínimo cuando el nivel de voltaje de salida
 
 #### Prueba VOH/IOH (Serie)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220912172445.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220912172445.png)
 
 1. Aplicar VDDmin al pin VDD (con abrazadera de corriente).
 2. Preacondicionar el pin de salida específico a la lógica '1'.

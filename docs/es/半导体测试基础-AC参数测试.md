@@ -6,7 +6,7 @@ La prueba AC asegura que la secuencia de tiempo de un DUT cumpla con los requisi
 
 ### Tiempo de establecimiento (Setup Time)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220809094845.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220809094845.png)
 
 El tiempo de establecimiento se refiere al tiempo mínimo que los datos (en la imagen, `DATA IN`) deben mantenerse estables e invariables antes de que la señal de referencia (en la imagen, `WE`) cambie (tomando un valor medio de 1,5 V) para garantizar que se puedan leer correctamente. Antes del tiempo mínimo de establecimiento, los datos pueden cambiar libremente, pero si se excede el tiempo mínimo de establecimiento (manteniéndose estables demasiado tarde), es posible que no se puedan reconocer, lo que puede provocar errores. Se representa en las especificaciones de la siguiente manera:
 
@@ -16,7 +16,7 @@ El tiempo de establecimiento se refiere al tiempo mínimo que los datos (en la i
 
 ### Tiempo de retención (Hold Time)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220809094858.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220809094858.png)
 
 El tiempo de retención se refiere al tiempo mínimo que los datos (en la imagen, `DATA IN`) deben mantenerse estables después de que la señal de referencia (en la imagen, `WE`) cambie (alcanzando un cierto umbral de voltaje) para garantizar que no haya errores. Si el tiempo de retención es demasiado corto, existe la posibilidad de que los datos no se reconozcan correctamente. Se representa en las especificaciones de la siguiente manera:
 
@@ -26,7 +26,7 @@ El tiempo de retención se refiere al tiempo mínimo que los datos (en la imagen
 
 ### Retardo de propagación (Propagation Delay)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220809094910.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220809094910.png)
 
 El retardo de propagación se refiere al intervalo de tiempo entre la transmisión de una señal y la transmisión de otra señal relacionada. En la mayoría de los casos, se mide el intervalo de tiempo entre el cambio de la señal de entrada (en la imagen, `ADDR`) y la respuesta correspondiente de la salida (en la imagen, `DATA OUT`) (el tiempo necesario desde la entrada hasta la salida). Garantiza que la señal de salida pueda aparecer dentro de un cierto tiempo después de que aparezca la señal de entrada. Se representa en las especificaciones de la siguiente manera:
 
@@ -36,7 +36,7 @@ El retardo de propagación se refiere al intervalo de tiempo entre la transmisi�
 
 ### Ancho de pulso mínimo (Minimum Pulse Widths)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220809094924.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220809094924.png)
 
 El ancho de pulso mínimo generalmente incluye el ancho de pulso mínimo bajo y el ancho de pulso mínimo alto, que se utilizan para garantizar que el tiempo de operación mínimo de temporización de pulso sea el valor mínimo. Se representa en las especificaciones de la siguiente manera:
 
@@ -47,7 +47,7 @@ El ancho de pulso mínimo generalmente incluye el ancho de pulso mínimo bajo y 
 
 ### Frecuencia Máxima (Maximum Frequency)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220809094934.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220809094934.png)
 
 La frecuencia máxima de trabajo se refiere a la velocidad máxima a la que un dispositivo puede funcionar. Se representa en las especificaciones de la siguiente manera:
 
@@ -57,7 +57,7 @@ La frecuencia máxima de trabajo se refiere a la velocidad máxima a la que un d
 
 ### Tiempo de Habilitación de Salida (Output Enable Time)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220809094941.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220809094941.png)
 
 Se refiere al tiempo necesario para que un pin cambie de un estado de alta impedancia (deshabilitado) a un estado de nivel de conducción válido (alto o bajo), asegurando que el buffer de salida pueda cambiar el estado del pin dentro del tiempo especificado. Se mide calculando el intervalo de tiempo desde que se emite la señal de control hasta que se detecta el cambio de salida. Se representa en las especificaciones de la siguiente manera:
 
@@ -67,7 +67,7 @@ Se refiere al tiempo necesario para que un pin cambie de un estado de alta imped
 
 ### Tiempo de Deshabilitación de Salida (Output Disable Time)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220809094948.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220809094948.png)
 
 Se refiere al tiempo necesario para que un pin cambie de un estado de nivel de conducción válido (alto o bajo) a un estado de alta impedancia (deshabilitado), asegurando que el buffer de salida pueda cambiar el estado del pin dentro del tiempo especificado. Se mide calculando el intervalo de tiempo desde que se emite la señal de control hasta que se detecta el cambio de salida. Se representa en las especificaciones de la siguiente manera:
 
@@ -81,7 +81,7 @@ Se refiere al tiempo necesario para que un pin cambie de un estado de nivel de c
 
 Un ejemplo del ciclo de lectura de una RAM estática de 256 x 4:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220731190300.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220731190300.png)
 
 | Parámetro  | Descripción                | Min | Max | Unidad |
 | ---------- | -------------------------- | --- | --- | ------ |
@@ -101,7 +101,7 @@ Un ejemplo del ciclo de lectura de una RAM estática de 256 x 4:
 
 Un ejemplo de ciclo de escritura para una RAM estática de 256 x 4:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220731190328.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220731190328.png)
 
 | Parámetro  | Descripción                   | Min | Max | Unidad |
 | ---------- | ----------------------------- | --- | --- | ------ |

@@ -1,14 +1,14 @@
 # Design of OSD335x Minimum System
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211012144907.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211012144907.png)
 
 The OSD335x-SM chip from TI is a System-in-Package (SIP) module that integrates a Cortex-A8 AM335x processor, DDR3 memory, TPS65217C PMIC (power management chip), TL5209 LDO, necessary passive components, and a 4KB EEPROM in a BGA package.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211012153036.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211012153036.png)
 
 The minimum system of OSD335x includes four parts: power supply, clock, reset, and programming/debugging interface. To make it easier to use, a pair of buttons, several LEDs, and some peripheral pins can also be added.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211012155857.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211012155857.png)
 
 ## Power Supply
 
@@ -18,7 +18,7 @@ The minimum system of OSD335x includes four parts: power supply, clock, reset, a
 - VIN_USB: USB power input (DC5V@0.5A, can be increased to 1.3A through internal PMIC), also serves as reference voltage and current for USB 2.0 host.
 - VIN_BAT: Can be used as battery input (2.75-5.5V) or output (for battery charging), but not as event input.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211012173057.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211012173057.png)
 
 ### Output
 
@@ -33,11 +33,11 @@ It is recommended to add test points for all power outputs to facilitate debuggi
 
 There are also some pins for internal power supply: VDDSHV_3P3V, VDDS_DDR, VDD_MPU, VDD_CORE, VDDS_PLL. They are only for measuring through test points, and should not be connected to external circuits.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211013142917.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211013142917.png)
 
 ### Analog Reference Input and Ground
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211013143532.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211013143532.png)
 
 OSD335x has an ADC interface, and if you want to use the ADC, you must correctly use the analog power and ground. The ADC interface can withstand a maximum analog input of 1.8V (refer to the VREFP pin). Generally, VREFP can be directly connected to SYS_ADC_1P8V, but if necessary, it can be divided to a lower voltage.
 
@@ -56,7 +56,7 @@ The TPS65217C PMIC can set the following parameters through I2C:
 - Power-up/power-down timing
 - Overcurrent/overtemperature threshold
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211013161739.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211013161739.png)
 
 In addition to the I2C connection, the PMIC also has some functional pins that need to be connected to the OSD335x:
 
@@ -69,9 +69,9 @@ In addition to the I2C connection, the PMIC also has some functional pins that n
 - EXTINTN: AM335x external interrupt input pin
 - PMIC_OUT_NINT: PMIC terminal output pin (active low)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211013161927.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211013161927.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211013163119.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211013163119.png)
 
 ### Power button
 
@@ -85,7 +85,7 @@ The TPS65217C PMIC has a low-level effective reset input internally, which is co
 
 We use SYS_VDD2_3P3V (150mA) as the output for the power indicator.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211014092054.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211014092054.png)
 
 ## Reset
 
@@ -102,7 +102,7 @@ OSD335x has 3 reset inputs (with the same name as the reset inputs on AM335x):
 - WARMRSTN: warm reset; some PRCM (power, reset, and clock management) and control module registers are not sensitive to warm reset
 - RTC_PWRONRSTN: dedicated power-on reset input for the RTC module, not affected by cold reset, and does not affect other parts of the device.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211014105556.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211014105556.png)
 
 ## Clock
 
@@ -133,7 +133,7 @@ The boot configuration table can refer to the "SYSBOOT Configuration Pins" secti
 
 In the reference design, we connect as follows:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211014110132.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211014110132.png)
 
 Configure the following parameters:
 
@@ -143,7 +143,7 @@ Configure the following parameters:
 
 ### User Buttons and LEDs
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211014110906.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211014110906.png)
 
 ### Peripheral Pinout
 

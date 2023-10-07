@@ -1,6 +1,6 @@
 # TinyMonitor - A Compact Server Status Monitor
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261716469.jpg)
+![](https://f004.backblazeb2.com/file/wiki-media/img/202305261716469.jpg)
 
 TinyMonitor is a compact and minimalist server status monitoring terminal. It consists of only an ESP32 controller and an OLED display screen, which can display real-time status parameters of the server for easy observation and debugging.
 
@@ -8,15 +8,15 @@ TinyMonitor is a compact and minimalist server status monitoring terminal. It co
 
 The hardware materials used in this project are very simple, a Beetle ESP32-C3 with built-in Wi-Fi and Bluetooth, and a 128x64 OLED screen.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261541993.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/202305261541993.png)
 
 The pin definitions of Beetle ESP32-C3 are as follows.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261545236.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/202305261545236.png)
 
 Because the OLED screen can be driven by software I2C (i.e. custom I2C pins), I defined the `0`/`1` pins of Beetle ESP32-C3 as `SCL`/`SDA` functions. In this way, the wiring is very simple, just solder the 4 pins together.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261546367.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/202305261546367.png)
 
 Note: Before burning the program to Beetle ESP32-C3, you need to add the ESP32 package to recognize the board model normally. See its [**Wiki page**](https://wiki.dfrobot.com.cn/_SKU_DFR0868_Beetle_ESP32_C3) for details.
 
@@ -119,7 +119,7 @@ After starting the `mosquitto` service normally, we can use [**MQTTBox**](https:
 
 After installing the software, click `Create MQTT Client` to create a new connection and fill in the relevant parameters according to the following figure:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261456592.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/202305261456592.png)
 
 Among them, `HOST` is the address of the server where the MQTT service is located (for example, the address of my server in the local area network is `192.168.1.2`); the username and password need to correspond to the values set when configuring Mosquitto in the previous section.
 
@@ -156,7 +156,7 @@ while True:
 
 After running successfully, we can click `Add subscriber` on the top status bar of MQTTBox to subscribe to these three topics, for example:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261513642.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/202305261513642.png)
 
 If everything is normal, you should be able to see the constantly returned server status information in MQTTBox.
 
@@ -278,7 +278,7 @@ The following ideas are waiting to be implemented:
 
 Attachment: Photo of Beetle ESP32-C3 and Seeed XIAO ESP32C3.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261719170.jpg)
+![](https://f004.backblazeb2.com/file/wiki-media/img/202305261719170.jpg)
 
 ## References and Acknowledgments
 

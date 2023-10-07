@@ -6,13 +6,13 @@ La razón por la que se utiliza el diseño de sistemas de múltiples placas es q
 
 En primer lugar, cree un archivo de tipo de proyecto de múltiples placas (`.PrjMbd`), cree un archivo de diseño lógico basado en el esquemático del proyecto (`.MbsDoc`) y un archivo basado en PCB (`.MbaDoc`), y luego guárdelo. En el nivel del sistema de archivos, copie varias carpetas de proyectos de PCB individuales en el mismo nivel de directorio que `.PrjMbd`, por ejemplo:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220106152537.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220106152537.png)
 
 ## Entrada de diseño lógico
 
 La entrada de diseño lógico se realiza en función de los conectores físicos de la PCB. Antes de esto, debemos agregar parámetros a los conectores en el esquemático del proyecto (abrir las propiedades del conector, agregar `Parameters`, el nombre es `System`, el valor es `Connector`).
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220106163315.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220106163315.png)
 
 ### Crear un módulo y vincular el proyecto
 

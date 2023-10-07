@@ -35,7 +35,7 @@ El arranque desde la SRAM incorporada tiene dos usos:
 
 En la tabla anterior, "alto" y "bajo" indican una resistencia de 10K conectada a VCC / GND, no una conexión directa a VCC / GND.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200603134417.jpg)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200603134417.jpg)
 
 ## Referencia y agradecimiento
 

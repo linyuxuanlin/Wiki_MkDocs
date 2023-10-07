@@ -1,6 +1,6 @@
 # Windows Initialization and Software Recommendations (Old)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210117142759.jpg)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210117142759.jpg)
 
 > For updated information, please refer to [**Personal Onboarding Workflow (Windows)**](https://wiki-power.com/en/Personal_Onboarding_Workflow_%28Windows%29/)
 

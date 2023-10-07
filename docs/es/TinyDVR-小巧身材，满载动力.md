@@ -2,7 +2,7 @@
 
 —— Basado en TinyDVR Master V1.1 & Slave V7.2 Release
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200125191345.jpg)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200125191345.jpg)
 
 TinyDVR es un kit de accionamiento de motor que incluye una placa base (Master) y una placa secundaria (Slave). La parte de alimentación y la parte de accionamiento están separadas, lo que reduce significativamente el tamaño en comparación con su predecesor ZenDriver y mejora en gran medida la escalabilidad. Puede apilar diferentes cantidades de placas secundarias según sus necesidades para controlar n motores.
 
@@ -41,11 +41,11 @@ Vista previa en línea del proyecto:
 
 ### TinyDVR Master
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200125191439.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200125191439.png)
 
 ### TinyDVR Slave
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200125191457.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200125191457.png)
 
 Explicación detallada de los pines traseros:
 
@@ -75,11 +75,11 @@ Explicación detallada de los pines traseros:
 ## Detalles interesantes
 
 Placa secundaria temprana:
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200311182442.jpg)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200311182442.jpg)
 
 Soldadura en masa:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200311182441.jpg)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200311182441.jpg)
 
 > Dirección original del artículo: <https://wiki-power.com/>  
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.

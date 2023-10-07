@@ -2,13 +2,13 @@
 
 ## USB Versions
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211129094423.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211129094423.png)
 
 ## USB Mechanical Interface
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211129094855.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211129094855.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211129094944.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211129094944.png)
 
 Interface Definition - Standard USB:
 
@@ -31,13 +31,13 @@ Interface Definition - Mini USB:
 
 ## USB Plug and Version Compatibility
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211129094829.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211129094829.png)
 
 ---
 
 ## USB Type-C
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220520105345.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220520105345.png)
 
 ### Port Types
 
@@ -58,15 +58,15 @@ Type-C has male and female heads (plugs and sockets), and most of the pins are d
 
 Type-C Socket:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220520134239.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220520134239.png)
 
 Type-C Plug:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220520134304.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220520134304.png)
 
 Docking Diagram (Full Functionality):
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220520140019.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220520140019.png)
 
 Pin Definitions:
 
@@ -124,7 +124,7 @@ The pull-up and pull-down resistors used on the CC pin depend on whether it is a
 
 Cable direction detection: If CC1 detects a valid pull-up or pull-down, it represents the forward direction (not reversed); if CC1 detects the opposite, it represents the reverse direction (reversed):
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220520141738.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220520141738.png)
 
 ## References and Acknowledgments
 

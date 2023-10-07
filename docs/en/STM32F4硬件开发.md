@@ -51,7 +51,7 @@ The following is the design method for power pins:
 
 #### Power-On Reset (POR) / Power-Down Reset (PDR)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529143014.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210529143014.png)
 
 The STM32F4 chip integrates POR/PDR circuitry, and the specific characteristics of power-on/reset and power-down/reset are shown in the above figure. If this function needs to be disabled, it can be achieved through the PDR_ON pin.
 
@@ -65,7 +65,7 @@ The trigger conditions for a system reset are:
 - Software reset (SW reset)
 - Low-power management reset
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529143925.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210529143925.png)
 
 The reset source can be determined by checking the reset flag in the control/status register (RCC_CSR).
 
@@ -90,7 +90,7 @@ If power consumption needs to be reduced, each clock can be individually turned 
 
 There are two ways to provide the HSE clock source: external source (active) and external crystal oscillator/ceramic resonator (passive).
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529145726.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210529145726.png)
 
 #### External Source (HSE Bypass)
 
@@ -106,7 +106,7 @@ CL1 and CL2 should use ceramic capacitors of the same size (5-25 pF, typical val
 
 There are two ways to provide the LSE clock source: external source (active) and external crystal oscillator/ceramic resonator (passive).
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529152354.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210529152354.png)
 
 #### External Source (LSE Bypass)
 
@@ -124,7 +124,7 @@ For a detailed introduction to the boot mode, please refer to the article [STM32
 
 In general, we connect a 10K pull-down resistor to the BOOT0 pin and leave the BOOT1 pin unconnected. If mode switching is required, the following design can be used:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200605163537.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200605163537.png)
 
 ## Debugging Management
 
@@ -136,7 +136,7 @@ The STM32F4 has a built-in SWJ (SW/JTAG) interface. Among them, SW-DP has 2 pins
 
 In STM32F4, the pin allocation of SWJ is as follows:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529210858.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210529210858.png)
 
 ### Internal Pull-up and Pull-down of JTAG
 
@@ -151,11 +151,11 @@ After the software releases the JTAG I/O, it can be used as a normal I/O port.
 
 ### Hardware Design for Connecting Standard JTAG Sockets
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529211840.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210529211840.png)
 
 ## Reference Design
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529213723.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210529213723.png)
 
 ## Reference and Acknowledgements
 

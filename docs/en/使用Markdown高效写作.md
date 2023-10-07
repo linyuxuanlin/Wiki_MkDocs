@@ -76,7 +76,7 @@ Extract the `hugo.exe` file from the compressed package to the `D:\hugo` folder 
 
 If you need multiple lines of code, you can use three backticks <code>```</code> to surround the code block:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210215164653.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210215164653.png)
 
 ```c
 int fputc(int ch,FILE *f)
@@ -226,7 +226,7 @@ You can use the `---` symbol to generate a dividing line to separate different s
 ---
 ```
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210216123630.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210216123630.png)
 
 ## Advanced Usage
 

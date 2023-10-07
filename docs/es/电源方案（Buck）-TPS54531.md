@@ -31,11 +31,11 @@ Vista previa en línea del proyecto:
 
 ## Definición de pines
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210713153815.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210713153815.png)
 
 ## Diseño de referencia
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210713173605.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210713173605.png)
 
 ## Ajuste de parámetros
 
@@ -65,9 +65,9 @@ Cuando la temperatura del chip supera los 165℃, el chip se detiene y se reinic
 
 ## Referencia de diseño de PCB
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210713161521.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210713161521.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210713162833.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210713162833.png)
 
 ## Resumen de problemas comunes
 

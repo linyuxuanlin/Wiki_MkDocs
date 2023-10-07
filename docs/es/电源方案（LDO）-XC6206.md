@@ -20,21 +20,21 @@ Repositorio del proyecto: [**Collection_of_Power_Module_Design/LDO/XC6206**](htt
 
 ## Selección del modelo
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420102910.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220420102910.png)
 
 ## Circuito de aplicación típico
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420102323.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220420102323.png)
 
 ## Diagrama de funciones internas
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420102514.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220420102514.png)
 
 Nota: El diodo en el diagrama es un diodo ESD o un diodo parásito.
 
 ## Definición de pines
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420103005.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220420103005.png)
 
 | Nombre del pin | Descripción del pin |
 | -------- | -------- |
@@ -46,7 +46,7 @@ Nota: El diodo en el diagrama es un diodo ESD o un diodo parásito.
 
 Tabla de parámetros específicos de cada modelo:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420103738.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220420103738.png)
 
 ## Referencias y agradecimientos
 

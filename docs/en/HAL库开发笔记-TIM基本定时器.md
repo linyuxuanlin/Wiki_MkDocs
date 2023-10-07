@@ -50,13 +50,13 @@ This experiment uses the basic timer to implement a timing function that makes t
 
 First, we open the Clock Configuration page and find the value of APB1 Timer clocks on the far right:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210407152250.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210407152250.png)
 
 This is because the STM32F4 series TIM2-TIM7, TIM12-TIM14 are mounted on the low-speed APB1 bus, while TIM1, TIM8-TIM11 are mounted on the high-speed APB2 bus. We will be using the basic timer TIM6, so we need to look at the speed of APB1 (which is 90 MHz after division and multiplication).
 
 Next, we find TIM6 in the Timer sidebar, activate the timer by checking "Activated", and configure the following parameters below:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210407173136.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210407173136.png)
 
 The meanings of each parameter are:
 
@@ -69,7 +69,7 @@ Since we are using a clock source of 90 MHz, we set the prescaler to 8999 (which
 
 Then, in the NVIC tab, we enable interrupts:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210407155959.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210407155959.png)
 
 ### Configuring the Basic Timer in the Code
 

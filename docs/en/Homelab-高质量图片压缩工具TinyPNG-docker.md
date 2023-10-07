@@ -1,6 +1,6 @@
 # Homelab - High-quality image compression tool TinyPNG-docker
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230416163137.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20230416163137.png)
 
 TinyPNG-docker is a tool that uses the TinyPNG API to compress images with high quality. It can automatically compress WEBP, JPEG, and PNG images in the specified path and output them to the desired path. It can effectively reduce website bandwidth usage, traffic, and loading time. By the way, this is a Docker application I developed with the help of ChatGPT.
 

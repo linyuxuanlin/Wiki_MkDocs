@@ -8,13 +8,13 @@ In semiconductor testing, the **Test Interface Controller (TIC)** is a bus maste
 
 Since the philosophy of AMBA is to isolate testing for individual modules in the system, each module's testing relies only on the bus interface. A testing method is needed to test the input and output of peripherals not connected to the bus.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308262214877.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/202308262214877.png)
 
 This testing method can be implemented through the Test Interface. It uses a simple three-way handshake to control Vector read/write and uses the **External Bus Interface (EBI)** as the data path to import external Vectors into the internal bus.
 
 ## Test Interface Pins
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308262225257.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/202308262225257.png)
 
 As shown in the above figure, the Test Interface pins consist of three parts:
 

@@ -16,7 +16,7 @@ Repositorio del proyecto: [**linyuxuanlin/AirForceDVR**](https://github.com/liny
 
 ## AirCraft - Placa secundaria de control de motor de doble canal
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20201101231734.jpg)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20201101231734.jpg)
 
 La placa secundaria de control de motor de doble canal AirCraft está diseñada con el chip integrado de control TB6612FNG y un método de control lógico que solo requiere 4 pines (2 canales normales + 2 canales PWM) para controlar dos motores (dirección / velocidad). En comparación con las soluciones generales del mercado, se reducen dos pines de entrada/salida, lo que reduce el uso de los valiosos pines de entrada/salida del microcontrolador principal. En cuanto a los parámetros del chip de control, la corriente máxima de conducción continua de un solo canal puede alcanzar los 1,2 A, con un pico de 2 A/3,2 A (pulso continuo / pulso único), lo que es más que suficiente para controlar los motores de un robot común.
 
@@ -32,7 +32,7 @@ La placa secundaria de control de motor de doble canal AirCraft está diseñada 
 
 ### Descripción de los pines
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20201022104033.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20201022104033.png)
 
 | Grupo de interfaz | Nombre | Descripción de la función |
 | :--------------: | :----: | :----------------------: |

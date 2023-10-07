@@ -8,7 +8,7 @@ DMA (Direct Memory Access) allows hardware devices with different speeds to comm
 
 DMA provides high-speed data transfer between peripherals/memory or memory/memory without occupying CPU resources.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210404153423.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210404153423.png)
 
 As shown in the above figure, the STM32F4 series has two DMA controllers with a total of 12 channels (7 for DMA1 and 5 for DMA2). The DMA controller shares the system data bus with the Cortex-M3 core.
 
@@ -89,7 +89,7 @@ For the configuration of the UART section, please refer to the article [**HAL Li
 
 After configuring the USART pins and NVIC interrupts, switch to the `DMA Settings` tab and configure as shown in the following figure:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210404165541.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210404165541.png)
 
 - Click `Add` to add channels (USART1_RX and USART1_TX).
 - Set the priority of both channels to `Medium`.
@@ -98,7 +98,7 @@ After configuring the USART pins and NVIC interrupts, switch to the `DMA Setting
 
 Then, in the `System Core` tab, find `DMA` and add a `MEMTOMEM` section as shown in the following figure:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210404170002.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210404170002.png)
 
 ### Configuring DMA in the Code
 

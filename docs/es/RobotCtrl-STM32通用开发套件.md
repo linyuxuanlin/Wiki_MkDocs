@@ -1,6 +1,6 @@
 # RobotCtrl - Kit de desarrollo universal STM32
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220416181125.jpeg)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220416181125.jpeg)
 
 Repositorio del proyecto: [**linyuxuanlin/RobotCtrl**](https://github.com/linyuxuanlin/RobotCtrl)
 
@@ -12,7 +12,7 @@ RobotCtrl - Kit de desarrollo universal STM32 consta de tres placas:
 
 ## Requisitos de diseño
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220527111854.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220527111854.png)
 
 Nota: Lo siguiente es un resumen del diseño, para obtener información detallada, consulte los artículos relacionados.
 
@@ -52,7 +52,7 @@ El interruptor de habilitación puede controlar la apertura y el cierre de la sa
 
 ## Referencias y agradecimientos
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220416181139.jpeg)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220416181139.jpeg)
 
 Este proyecto es mi proyecto de graduación personal. En el diseño, soldadura y depuración del proyecto, encontré muchos problemas grandes y pequeños. Con la ayuda de mi tutor, colegas y amigos, finalmente pude completar el proyecto con éxito y obtener el honor de un excelente proyecto de graduación. ¡Gracias a todos!
 

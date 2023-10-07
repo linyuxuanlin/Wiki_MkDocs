@@ -28,11 +28,11 @@ En la sociedad del futuro, para trabajar sin ser reemplazado por máquinas e int
 
 La empatía es la capacidad de **pensar en el lugar de otra persona**. Muchas veces, la demanda no surge por sí sola, sino que necesitamos proyectar nuestro pensamiento en los demás para descubrir la demanda, en lugar de solo centrarnos en la implementación técnica.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200226140150.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200226140150.png)
 
 El trabajo en equipo está relacionado con el "efecto de la tabla larga". La sociedad moderna no requiere que todos completen sus debilidades, sino que se centren en desarrollar sus fortalezas y complementen sus debilidades a través del trabajo en equipo. Un equipo de tabla larga es aquel en el que se combinan las fortalezas de cada persona; de lo contrario, si cada persona se desarrolla "en todas las direcciones" pero tiene habilidades mediocres, ¿cómo puede destacar el equipo en la competencia?
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200226140223.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200226140223.png)
 
 La habilidad para contar historias se refleja en la creación de un equipo interno que necesita una comprensión de valores comunes; externamente, para que otros acepten su concepto y usen su producto, también se necesita la habilidad para contar historias.
 

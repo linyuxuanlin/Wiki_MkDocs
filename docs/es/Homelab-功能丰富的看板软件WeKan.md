@@ -1,6 +1,6 @@
 # Homelab - Software de tablero rico en funciones WeKan
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230508175842.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20230508175842.png)
 
 **WeKan** es un software de tablero de código abierto flexible, fácil de usar y eficiente que puede ayudar a los equipos a colaborar en la gestión de tareas, proyectos y flujos de trabajo. Proporciona una interfaz de usuario simple pero potente que permite a los usuarios crear fácilmente múltiples tableros, agregar listas y tarjetas a cada uno y asignar tareas a diferentes miembros para una mejor gestión del proyecto y seguimiento del progreso.
 

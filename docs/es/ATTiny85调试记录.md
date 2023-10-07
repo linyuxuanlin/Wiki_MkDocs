@@ -19,7 +19,7 @@ P:\Arduino\hardware\tools\avr/bin/avrdude -C "P:\Arduino\hardware\tools\avr/etc/
 
 Primero, cargue el programa ISP en Arduino:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200426144425.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200426144425.png)
 
 Abra las preferencias del IDE y escriba la siguiente dirección en la sección de URLs adicionales de tarjetas:
 
@@ -29,14 +29,14 @@ https://raw.githubusercontent.com/damellis/attiny/ide-1.6.x-boards-manager/packa
 
 Abra el administrador de tarjetas:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200426144642.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200426144642.png)
 
 Busque y descargue (puede necesitar un proxy):
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200426144732.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200426144732.png)
 
 Al programar, asegúrese de seleccionar el modelo de chip correcto, la velocidad de reloj (Internal 16 MHz), el puerto donde está conectado el Arduino y seleccione `Arduino as ISP` como programador:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200426144834.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200426144834.png)
 
 ## Conclusión
 

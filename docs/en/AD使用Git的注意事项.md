@@ -4,10 +4,10 @@
 
 Altium Designer supports version control using Git/SVN. To use Git, simply create a Git repository in the project directory. After restarting Altium Designer, you will see the version status appear on the file tree:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200421100348.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200421100348.png)
 
 The icons have the following meanings:
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200421101221.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200421101221.png)
 
 You can perform Git operations directly in the `Project (C) - Version Control (E)` menu, and even submit to GitHub directly.
 

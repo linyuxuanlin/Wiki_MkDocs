@@ -26,11 +26,11 @@ Repositorio del proyecto: [**Collection_of_Power_Module_Design/DC-DC(Buck)/XL200
 
 Según el circuito de aplicación típico proporcionado por el manual de datos (entrada 8-36V, salida 5V@2.1A):
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407103157.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220407103157.png)
 
 ## Definición de pines
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407065806.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220407065806.png)
 
 - FB: Pin de entrada de retroalimentación, se introduce una retroalimentación a través de una resistencia desde $V_{OUT}$ y no se puede conectar directamente a tierra. La tensión de referencia de retroalimentación es de 1.25V.
 - OCSET: Pin de configuración de corriente constante de salida.
@@ -42,7 +42,7 @@ Según el circuito de aplicación típico proporcionado por el manual de datos (
 
 ### Diagrama de funciones internas
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407070413.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220407070413.png)
 
 ### Regulación de voltaje de salida
 
@@ -70,13 +70,13 @@ El manual de datos de XL2009E1 proporciona una tabla de selección directa de di
 
 Relación entre voltaje de salida y corriente:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407100229.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220407100229.png)
 
 Relación entre eficiencia y corriente de salida:
 
 Relación entre la corriente de salida y la resistencia RCS (control de corriente constante):
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407102905.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220407102905.png)
 
 ## Referencias y agradecimientos
 

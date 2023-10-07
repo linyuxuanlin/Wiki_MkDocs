@@ -12,11 +12,11 @@ Antes de realizar el siguiente experimento, es necesario configurar varios pará
 
 ### Configuración del puerto serie en CubeMX
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210207100329.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210207100329.png)
 
 Según el esquema, el puerto serie que utilizamos para el experimento de comunicación es `USART1`, es decir, los pines `PA9` y `PA10`. Primero, debemos configurar estos dos pines como funciones de envío y recepción de `USART1` en CubeMX, y luego hacer clic en la pestaña USART1 a la izquierda para establecer el modo (Mode) como asíncrono (Asynchronous) y modificar los parámetros de velocidad de transmisión (Baud Rate) y otros parámetros a continuación:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210207100941.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210207100941.png)
 
 Los detalles de los parámetros son los siguientes:
 
@@ -29,7 +29,7 @@ Los detalles de los parámetros son los siguientes:
 
 Por último, active la interrupción del puerto serie USART1 en la pestaña NVIC, como se muestra en la siguiente imagen:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210207104641.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210207104641.png)
 
 ### Configuración del puerto serie en el código
 
@@ -99,7 +99,7 @@ Después de programar con éxito, abrimos el asistente de puerto serie y configu
 
 Después de conectar el puerto serie, se imprimirá una línea de contenido de `aTxBuffer`, y luego se devolverá e imprimirá `aRxBuffer` recibido. Como se muestra en la figura:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210403232628.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210403232628.png)
 
 ## Referencias y agradecimientos
 

@@ -18,7 +18,7 @@ Durante la etapa de prueba de Gross IDD, aún no se sabe si el preprocesamiento 
 
 La prueba de Gross IDD debe comenzar con un reinicio para establecer todos los pines de entrada en un nivel bajo / alto. Por lo general, VIL se establece en 0V y VIH se establece en VDD, y todos los pines de salida están en carga libre (para evitar la corriente de fuga flotante que aumenta IDD). El diagrama de prueba es el siguiente:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220728162655.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220728162655.png)
 
 Algunos puntos a tener en cuenta:
 
@@ -61,7 +61,7 @@ Por ejemplo, la siguiente tabla es una muestra de parámetros IDD dinámicos:
 
 Diagrama de prueba:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220728171447.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220728171447.png)
 
 El proceso de prueba es similar al método estático.
 
@@ -84,7 +84,7 @@ La prueba de VOL/IOL y VOH/IOH se realiza principalmente para verificar si VOL/V
 
 El diagrama de prueba de VOL/IOL utilizando el método estático en serie es el siguiente:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220728150542.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220728150542.png)
 
 El proceso de prueba es el siguiente:
 
@@ -92,7 +92,7 @@ El proceso de prueba es el siguiente:
 
 El diagrama de prueba para medir VOH/IOH utilizando el método estático en serie es el siguiente:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220728143124.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220728143124.png)
 
 El proceso de prueba es el siguiente:
 
@@ -124,7 +124,7 @@ Además, las pruebas de IIL/IIH generalmente solo se pueden realizar en pines de
 
 El diagrama de prueba para medir IIL en pines de entrada utilizando el método estático en serie es el siguiente:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220729100620.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220729100620.png)
 
 El proceso de prueba es el siguiente:
 
@@ -137,7 +137,7 @@ El proceso de prueba es el siguiente:
 
 El diagrama de prueba para medir IIH en pines de entrada utilizando el método estático en serie es el siguiente:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220729100739.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220729100739.png)
 
 El proceso de prueba es el siguiente:
 
@@ -198,7 +198,7 @@ La pinza de voltaje de entrada VI se refiere al voltaje medido en el pin de entr
 
 La prueba VI estática en serie se realiza de la siguiente manera:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220729145425.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220729145425.png)
 
 El proceso de prueba es el siguiente:
 
@@ -220,7 +220,7 @@ La corriente de cortocircuito de salida indica la corriente (I) generada en el p
 
 La prueba IOS estática en serie se realiza de la siguiente manera:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220729152549.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220729152549.png)
 
 El proceso de prueba es el siguiente:
 
@@ -240,13 +240,13 @@ Factores que pueden causar una prueba fallida:
 
 Algunos pines de entrada pueden tener una estructura activa de pull-up o pull-down, lo que requiere garantizar que la ruta de resistencia de pull-up/down del buffer de entrada esté funcionando correctamente. Solo se puede probar en serie, ya que la estructura de pull-up/down interna de diferentes pines puede ser diferente. Diagrama esquemático de la estructura del pin:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220729130655.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220729130655.png)
 
 ## Capacidad de ventilador de salida (Output Fanout)
 
 La capacidad de ventilador (Fanout) se refiere a la capacidad del pin de salida para conducir varios pines de entrada según sus parámetros de voltaje y corriente. Es decir, la capacidad de conducción del pin es un indicador de cuántos pines de entrada puede conducir un pin de salida.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220729132621.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220729132621.png)
 
 Como se muestra en la figura anterior, esta salida TTL puede elevar aproximadamente 17 pines de entrada o bajar 30 pines de entrada. En las especificaciones del pin, los parámetros se expresan de la siguiente manera:
 

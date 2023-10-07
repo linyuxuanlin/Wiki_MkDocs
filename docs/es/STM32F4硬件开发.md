@@ -51,7 +51,7 @@ A continuación se muestra el método de diseño de los pines de alimentación:
 
 #### Reinicio por encendido (POR) / Reinicio por caída de energía (PDR)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529143014.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210529143014.png)
 
 El chip STM32F4 integra el circuito POR/PDR, y las características específicas del reinicio por encendido / caída de energía se muestran en la figura anterior. Si se desea deshabilitar esta función, se puede hacer a través del pin PDR_ON.
 
@@ -65,7 +65,7 @@ Las condiciones de activación del reinicio del sistema son:
 - Reinicio de software (reinicio SW)
 - Reinicio de gestión de baja potencia
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529143925.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210529143925.png)
 
 Se puede determinar la fuente de reinicio mediante la visualización de la bandera de reinicio en el registro de control / estado (RCC_CSR).
 
@@ -90,7 +90,7 @@ Si se necesita reducir el consumo de energía, cada reloj se puede apagar indivi
 
 Hay dos formas de proporcionar la fuente de reloj HSE: fuente externa (activa) y cristal externo / resonador cerámico (pasivo).
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529145726.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210529145726.png)
 
 #### Fuente externa (bypass HSE)
 
@@ -106,7 +106,7 @@ CL1 y CL2 deben tener el mismo tamaño (5-25 pF, valor típico 25 pF) de capacid
 
 Hay dos formas de proporcionar la fuente de reloj LSE: fuente externa (activa) y cristal externo / resonador cerámico (pasivo).
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529152354.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210529152354.png)
 
 #### Fuente externa (bypass LSE)
 
@@ -124,7 +124,7 @@ Para obtener más información sobre el modo de arranque, consulte el artículo 
 
 En general, conectamos una resistencia de 10 K en serie con BOOT0 y BOOT1 es arbitrario. Si es necesario cambiar de modo, se puede diseñar de la siguiente manera:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200605163537.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200605163537.png)
 
 ## Gestión de depuración
 
@@ -136,7 +136,7 @@ El STM32F4 tiene una interfaz SWJ (SW/JTAG) integrada. Entre ellas, SW-DP tiene 
 
 En STM32F4, la asignación de pines SWJ es la siguiente:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529210858.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210529210858.png)
 
 ### Pull-up y pull-down internos de JTAG
 
@@ -151,11 +151,11 @@ Después de liberar el I/O de JTAG mediante software, se puede utilizar como un 
 
 ### Diseño de hardware para conectar un conector JTAG estándar
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529211840.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210529211840.png)
 
 ## Diseño de referencia
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529213723.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210529213723.png)
 
 ## Referencias y agradecimientos
 

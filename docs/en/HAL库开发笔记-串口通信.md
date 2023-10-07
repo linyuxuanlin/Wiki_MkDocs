@@ -13,11 +13,11 @@ For specific steps, please refer to the method in the article [**HAL Library Dev
 
 ### Configuring Serial Communication in CubeMX
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210207100329.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210207100329.png)
 
 According to the schematic, the serial port we use for communication experiments is `USART1`, which corresponds to the `PA9` and `PA10` pins. Therefore, we first need to configure these two pins in CubeMX as the send and receive functions of `USART1`, and then click on the USART1 tab on the left, set the mode to asynchronous, and modify the baud rate and other parameters below:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210207100941.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210207100941.png)
 
 The parameter details are as follows:
 
@@ -30,7 +30,7 @@ The parameter details are as follows:
 
 Finally, enable the USART1 serial port interrupt in the NVIC tab, as shown in the figure:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210207104641.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210207104641.png)
 
 ### Configuring the Serial Port in the Code
 
@@ -100,7 +100,7 @@ After the program is successfully burned, we open the serial assistant and confi
 
 After connecting to the serial port, the contents of `aTxBuffer` will be printed first, and then the received `aRxBuffer` will be printed back. As shown in the figure:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210403232628.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210403232628.png)
 
 ## References and Acknowledgments
 

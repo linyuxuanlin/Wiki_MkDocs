@@ -4,7 +4,7 @@
 
 En primer lugar, conecte la entrada de alimentación de 12V de la Cape, use un módulo USB a serie para conectar el puerto serie integrado (solo se puede usar el puerto J3 para la depuración):
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211027164010.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211027164010.png)
 
 Asegúrese de que el módulo USB a serie tenga controladores (utilicé el módulo FTDI, la dirección de descarga del controlador es <https://ftdichip.com/drivers/vcp-drivers/>).
 

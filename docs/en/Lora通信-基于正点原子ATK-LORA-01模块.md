@@ -114,7 +114,7 @@ The signal strength mode can view the signal strength of both communication part
 - Transmission: Same as general mode.
 - Reception: Outputs information about signal strength.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220118110058.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220118110058.png)
 
 SNR: Signal-to-Noise Ratio (the larger the more stable), RSSI: Received Signal Strength Indication (the larger the more stable)
 
@@ -134,7 +134,7 @@ Broadcast and Data Monitoring: Setting the module address to 0xFFFF allows for m
 
 ### Point-to-Point
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220118110614.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220118110614.png)
 
 - Two modules with the same address, channel, and wireless rate (non-serial baud rate), where one module sends and the other receives (must be one sender and one receiver).
 - Each module can send/receive.
@@ -155,7 +155,7 @@ The transparent transmission method is simple, just use the Lora module as a ser
 
 ### Point-to-Multipoint
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220118110709.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220118110709.png)
 
 - Modules with the same address, channel, and wireless rate (non-serial baud rate), where any module can send and other modules can receive.
 - Each module can send/receive.
@@ -175,7 +175,7 @@ Devices B to F receive: AA BB CC DD
 
 ### Broadcast Monitoring
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220118110853.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220118110853.png)
 
 - If the module address is 0xFFFF, the module is in broadcast listening mode, and the data sent can be received by all other modules with the same rate and channel (broadcast); at the same time, it can listen to the data transmission of all modules on the same rate and channel (listening).
 - Broadcast listening does not require the same address.
@@ -212,7 +212,7 @@ Device A listens: 11 22 33 44
 
 The difference from point-to-point transparent transmission is that the module address and channel can be changed, but the rate remains the same.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220118111903.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220118111903.png)
 
 For example:
 Device A has an address of 0X1234 and a channel of 0X17;
@@ -285,7 +285,7 @@ In this way, the receiving device (Device B) can receive a frame of data (exclud
 
 ### Broadcast Listening
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220118112544.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220118112544.png)
 
 - If the module address is 0xFFFF, the module is in broadcast listening mode, and the data sent can be received by all other modules with the same rate and channel (broadcast); at the same time, it can listen to the data transmission of all modules on the same rate and channel (listening);
 - Broadcast listening does not require the same address.

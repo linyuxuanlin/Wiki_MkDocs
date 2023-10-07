@@ -14,7 +14,7 @@ La prueba de continuidad de circuito abierto/cortocircuito se realiza probando l
 
 #### Prueba a través del diodo de protección de GND
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220909003924.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220909003924.png)
 
 1. Forzar 0V a todos los demás pines que no se están probando (incluido el pin de alimentación).
 2. Forzar una corriente negativa pequeña (-100uA) en el Pin bajo prueba (con pinza de voltaje).
@@ -25,7 +25,7 @@ La prueba de continuidad de circuito abierto/cortocircuito se realiza probando l
 
 #### Prueba a través del diodo de protección de VDD
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220909004139.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220909004139.png)
 
 1. Forzar 0V a todos los demás pines que no se están probando (incluido el pin de alimentación).
 2. Forzar una corriente positiva pequeña (+100uA) en el Pin bajo prueba (con pinza de voltaje).
@@ -42,7 +42,7 @@ La prueba de cortocircuito de pines de alimentación es para verificar si hay un
 
 La prueba de cortocircuito de pines de alimentación se realiza aplicando un pequeño voltaje a VDD y midiendo la corriente que entra en él para verificar si existe un cortocircuito. Por lo general, se utiliza DCVI con código VBT.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220910155805.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220910155805.png)
 
 1. Aplicar un pequeño voltaje a VDD (100 mV) (con pinza amperimétrica).
 2. Forzar todos los demás pines a 0V con PPMU.

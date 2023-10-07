@@ -31,11 +31,11 @@ Project online preview:
 
 ## Pin Definitions
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210713153815.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210713153815.png)
 
 ## Reference Design
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210713173605.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210713173605.png)
 
 ## Parameter Adjustment
 
@@ -65,9 +65,9 @@ When the chip temperature exceeds 165℃, the chip stops running; when it is bel
 
 ## PCB Layout Reference
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210713161521.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210713161521.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210713162833.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210713162833.png)
 
 ## Pitfalls Summary
 

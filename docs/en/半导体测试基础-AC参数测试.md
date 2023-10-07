@@ -6,7 +6,7 @@ AC testing ensures that the timing characteristics of the DUT meet its specifica
 
 ### Setup Time
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220809094845.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220809094845.png)
 
 Setup time refers to the minimum time that data (in the figure, `DATA IN`) must remain stable and unchanged before the reference signal (in the figure, `WE`) changes (to the middle value of 1.5V) to ensure that it can be correctly read. Before the minimum setup time, the data can change arbitrarily, but if it exceeds the minimum setup time (stays stable too late), it may not be recognized, resulting in errors. The representation in the specification is as follows:
 
@@ -16,7 +16,7 @@ Setup time refers to the minimum time that data (in the figure, `DATA IN`) must 
 
 ### Hold Time
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220809094858.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220809094858.png)
 
 Hold time refers to the minimum time that data (in the figure, `DATA IN`) must remain stable and unchanged after the reference signal (in the figure, `WE`) changes (reaches a certain voltage threshold) to ensure that it is error-free (or how long before the clock signal triggers it must maintain a stable level). If the hold time is too short, there is a chance that the data cannot be correctly recognized. The representation in the specification is as follows:
 
@@ -26,7 +26,7 @@ Hold time refers to the minimum time that data (in the figure, `DATA IN`) must r
 
 ### Propagation Delay
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220809094910.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220809094910.png)
 
 Propagation delay refers to the time interval between the transmission of one signal and the transmission of another related signal. Most of the time, it measures the time interval between the input signal (in the figure, `ADDR`) changing and the corresponding output (in the figure, `DATA OUT`) responding (the time required from the input end to the output end). It ensures that the output signal can appear within a certain time after the input signal appears. The representation in the specification is as follows:
 
@@ -36,7 +36,7 @@ Propagation delay refers to the time interval between the transmission of one si
 
 ### Minimum Pulse Widths
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220809094924.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220809094924.png)
 
 Minimum pulse width usually includes minimum low pulse width and minimum high pulse width, which are used to ensure the minimum operable value of pulse timing. The representation in the specification is as follows:
 
@@ -75,7 +75,7 @@ Output Disable Time refers to the time required for a pin to switch from an acti
 
 An example of the read cycle timing for a 256 x 4 static RAM is shown below:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220731190300.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220731190300.png)
 
 | Parameter  | Description               | Min | Max | Unit |
 | ---------- | ------------------------- | --- | --- | ---- |
@@ -95,7 +95,7 @@ An example of the read cycle timing for a 256 x 4 static RAM is shown below:
 
 An example of the write cycle of a 256 x 4 static RAM:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220731190328.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220731190328.png)
 
 | Parameter  | Description                   | Min | Max | Unit |
 | ---------- | ----------------------------- | --- | --- | ---- |

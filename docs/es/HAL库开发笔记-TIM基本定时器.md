@@ -50,13 +50,13 @@ En este experimento, utilizaremos el temporizador básico para implementar una f
 
 En primer lugar, abrimos la página de configuración del árbol de reloj de configuración de Clock Configuration y encontramos y anotamos el valor de APB1 Timer clocks en el extremo derecho:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210407152250.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210407152250.png)
 
 Esto se debe a que los temporizadores TIM2-TIM7, TIM12-TIM14 de la serie STM32F4 están montados en el bus APB1 de baja velocidad, mientras que TIM1, TIM8-TIM11 están montados en el bus APB2 de alta velocidad. Aquí utilizaremos el temporizador básico TIM6, por lo que debemos ver la velocidad de APB1 (que después de la división y multiplicación es de 90 MHz).
 
 A continuación, encontramos TIM6 en la barra lateral Timer, activamos el temporizador y configuramos los siguientes parámetros:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210407173136.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210407173136.png)
 
 Significado de los parámetros:
 

@@ -13,7 +13,7 @@ git config --global user.email "correo@example.com"
 
 ## Sentencias básicas
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200216204934.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200216204934.png)
 
 ### Proceso básico
 
@@ -58,7 +58,7 @@ Adecuado para comenzar desde cero o para desarrollar sobre el proyecto de otra p
 
 ## Gestión de ramas
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200217195056.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200217195056.png)
 
 Las ramas en Git son como universos paralelos en las películas de ciencia ficción. Mientras estás trabajando duro en aprender Git en tu computadora, en otro universo paralelo, estás trabajando duro en aprender SVN. Si estos universos paralelos no interfieren entre sí, no tendrán ningún impacto en ti. Pero en algún momento, estos universos paralelos se fusionan y resulta que has aprendido tanto Git como SVN.
 

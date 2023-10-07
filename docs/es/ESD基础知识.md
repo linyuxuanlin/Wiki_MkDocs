@@ -41,7 +41,7 @@ Especificaciones comunes de prueba HBM:
 
 Tomando como ejemplo la norma AEC-Q200-002, el circuito de prueba ESD HBM es el siguiente:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211215164751.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211215164751.png)
 
 Donde $C_x$ es la capacidad del objeto de prueba, $C_d$ es la capacidad de carga, $R_d$ es la resistencia de descarga y $R_c$ es la resistencia de protección. El método de prueba ESD es el siguiente:
 
@@ -50,13 +50,13 @@ Donde $C_x$ es la capacidad del objeto de prueba, $C_d$ es la capacidad de carga
 
 Curva de corriente de descarga:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211215165312.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211215165312.png)
 
 ## Proceso de prueba de ESD
 
 Según el estándar AEC-Q200-002, el proceso de prueba HBM se puede realizar según la siguiente figura:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211215165447.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211215165447.png)
 
 Los niveles de resistencia a la tensión probados se clasifican según la siguiente tabla:
 
@@ -92,7 +92,7 @@ Por lo tanto, en general, cuanto mayor sea la capacidad de $C_x$, mayor será la
 - Parámetros de capacidad de $C_x$: serie GCM / encapsulado 0402 / X7R / 50V
 - Condiciones de prueba: $C_d=150pF,R_d=2kΩ$
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211215172528.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211215172528.png)
 
 Según la curva del gráfico, si queremos resistir una ESD de 1 kV, podemos usar un capacitor de 1000 pF para la defensa. En el diseño de circuitos reales, es mejor conectar un gran resistor en paralelo con el capacitor para descargar la electricidad en el capacitor después de eliminar la ESD.
 

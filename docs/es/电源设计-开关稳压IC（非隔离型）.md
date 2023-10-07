@@ -34,7 +34,7 @@ Desde la perspectiva de EMI, se recomienda colocar cobre; desde la perspectiva d
 
 ## Cómo juzgar si el inductor de potencia está saturado
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210723133831.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210723133831.png)
 
 Además, también se puede juzgar a partir de la temperatura anormal, el zumbido, etc.
 

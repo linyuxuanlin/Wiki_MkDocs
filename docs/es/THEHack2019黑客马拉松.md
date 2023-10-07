@@ -8,7 +8,7 @@ El concurso de Hackathon THE Hack 2019 se llevó a cabo en la Universidad de Sha
 
 Este año, el concurso tenía diferentes temas, inicialmente elegimos la dirección de hogares inteligentes y planeamos hacer un kit de hogar inteligente relacionado con los dormitorios, pero finalmente elegimos el tema **cómo permitir que los grupos vulnerables en la tecnología también disfruten de la diversión de la tecnología**. Un pequeño equipo de chicos y chicas se encargó del producto, y este año nuestra perspectiva se amplió, no solo desde el punto de vista técnico, sino también desde la psicología y las necesidades del usuario, analizando el tema y pensando en lo que los jueces y patrocinadores valoran más.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/72fa421a32841af4c9cb339132b30fe.jpg)
+![](https://f004.backblazeb2.com/file/wiki-media/img/72fa421a32841af4c9cb339132b30fe.jpg)
 
 El nombre de nuestro proyecto este año fue AIO - Care, una plataforma inteligente de asistencia para personas mayores basada en un modelo de aprendizaje activo. Me encargué de la implementación simple de la parte de hardware, recopilando datos para el servidor a través de la interacción de algunos sensores, para analizar y servir a las personas mayores, brindándoles una experiencia de vida en el hogar más cómoda.
 

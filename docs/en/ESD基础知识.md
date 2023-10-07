@@ -41,7 +41,7 @@ Common HBM test specifications:
 
 Taking the AEC-Q200-002 standard as an example, its ESD HBM test circuit is as follows:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211215164751.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211215164751.png)
 
 Where $C_x$ is the capacitance of the test object, $C_d$ is the charging capacitance, $R_d$ is the discharge resistance, and $R_c$ is the protection resistance. The ESD test method is as follows:
 
@@ -54,7 +54,7 @@ Discharge current curve:
 
 According to the AEC-Q200-002 standard, the HBM testing process can be carried out as shown in the following figure:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211215165447.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211215165447.png)
 
 The breakdown voltage levels obtained from the test are classified according to the following table:
 
@@ -90,7 +90,7 @@ Therefore, in general, the larger the capacitance value of $C_x$, the greater th
 - $C_x$ Capacitance Parameter: GCM Series / 0402 Package / X7R / 50V
 - Test Conditions: $C_d=150pF,R_d=2kΩ$
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211215172528.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211215172528.png)
 
 According to the chart curve, if we want to withstand 1kV ESD, we can use a 1000pF capacitor for defense. In actual circuit design, it is best to parallel a large resistor with the capacitor to discharge the electricity in the capacitor after eliminating ESD.
 

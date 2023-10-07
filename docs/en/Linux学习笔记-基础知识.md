@@ -10,7 +10,7 @@ ssh user@IP
 
 ## Root Directory Structure
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211009094302.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211009094302.png)
 
 | Directory   | Contents                                                                                                                                |
 | ----------- | -------------------------------------------------------------------------------------------------------------------------------------- |

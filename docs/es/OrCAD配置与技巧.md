@@ -74,15 +74,15 @@ allegro/
 
 Configuración de DRC:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210810134720.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210810134720.png)
 
 Renombrar automáticamente los identificadores al copiar componentes:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210810134747.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210810134747.png)
 
 Mover caracteres cerca de la cuadrícula:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210810134758.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210810134758.png)
 
 Truco: Cuando se utiliza la biblioteca CIP, si aparece el mensaje "not found in the configured librarie lists", verifique la codificación de los espacios en blanco en la ruta.
 

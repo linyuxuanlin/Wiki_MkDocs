@@ -2,7 +2,7 @@
 
 - Wight: A Cloud-based Wireless Lighting System
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/wight.jpg)
+![](https://f004.backblazeb2.com/file/wiki-media/img/wight.jpg)
 
 Project Repository: [**linyuxuanlin / Wight**](https://github.com/linyuxuanlin/Wight)
 

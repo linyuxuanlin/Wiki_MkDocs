@@ -1,6 +1,6 @@
 # Homelab - Cloudreve, a Public Cloud Image Hosting System that Supports Multiple Cloud Storage Providers
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304195423.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20230304195423.png)
 
 **Cloudreve** is a public cloud file system that supports multiple cloud storage drivers. It supports local, secondary, Qiniu, Alibaba Cloud OSS, Tencent Cloud COS, Upyun, OneDrive, S3 compatible protocols as storage endpoints, and can be integrated with Aria2 offline download, multi-user, drag-and-drop upload/management, online preview/editing, WebDAV, etc. The typical use case is personal image hosting or cloud file management.
 

@@ -6,33 +6,33 @@
 
 **Complete la información requerida como se muestra en la imagen y haga clic en el botón `Submit`:**
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564402348383.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564402348383.png)
 
 **Haga clic en el botón de descarga del paquete de instalación:**
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564402469518.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564402469518.png)
 
 ## 2. Instalación
 
 **Abra el paquete de instalación descargado y siga los siguientes pasos:**
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405005991.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564405005991.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405034468.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564405034468.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405123578.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564405123578.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405166784.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564405166784.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405201092.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564405201092.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405260737.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564405260737.png)
 
 **Instale los paquetes de chips (necesitamos las series STM32 F1 y F4):**
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405574756.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564405574756.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405648731.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564405648731.png)
 
 ## 3. Crackeo
 
@@ -40,21 +40,21 @@ Haga clic en el enlace de descarga del [**crackeador**](https://github.com/linyu
 
 **Cierre MDK, haga clic derecho y abra como administrador:**
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564406135091.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564406135091.png)
 
 **Abra la barra de menú - File - License Management:**
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564406171844.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564406171844.png)
 
 **Copie esta cadena `CID`:**
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564406230209.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564406230209.png)
 
 **Pegue la cadena en el crackeador, seleccione `Arm` en el menú desplegable `Target` y haga clic en `Generate` para generar el código de activación:**
 
 **Copie el código de activación, péguelo en MDK y luego haga clic en `Add LIC`:**
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564406431978.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564406431978.png)
 
 ## Referencias y agradecimientos
 

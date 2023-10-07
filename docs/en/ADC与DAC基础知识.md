@@ -2,7 +2,7 @@
 
 In the real world, most signals are analog, such as temperature, sound, and air pressure. However, in signal processing and transmission, digital signals are often used to reduce noise interference. Therefore, we often convert analog signals from the real world into digital signals through ADC for calculation, transmission, and storage, and then convert them back into analog signals through DAC to present them.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220724210409.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220724210409.png)
 
 However, it should be noted that analog signals in the real world are continuous, which means they have infinite resolution. But after being converted into digital signals, a certain degree of precision will be lost, and both time and amplitude will become discrete values.
 
@@ -20,7 +20,7 @@ $$
 f_s≥2\cdot f_{i(max)}
 $$
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220724180529.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220724180529.png)
 
 As long as the sampling theorem is satisfied, the low-pass filter can be used to restore $v_s$ to $v_1$. The voltage transmission coefficient of the filter should remain unchanged when it is lower than $f_{i(max)}$, and rapidly decrease to 0 before $f_s-f_{i(max)}$.
 
@@ -55,7 +55,7 @@ Representing the quantized result in binary (or other base) is called encoding.
 
 Parallel comparison type ADC, also known as Flash ADC, belongs to direct ADC, which can directly convert the input analog voltage into output digital quantity without intermediate variable conversion. It consists of a series of voltage comparators, each of which compares the input signal with a unique divided reference voltage. The output of the comparator is connected to the input of the encoder circuit, generating binary output.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220723163931.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220723163931.png)
 
 Not only is it the simplest in operation theory, but it is also the most efficient ADC technology in terms of speed, only limited by the comparator and gate propagation delay. Unfortunately, for any given number of output bits, it is the most dense component.
 
@@ -65,7 +65,7 @@ The conversion speed of parallel comparison type ADC is the fastest, but the dis
 
 The Successive Approximation ADC uses a feedback comparison circuit structure, consisting of a comparator, DAC, register, clock pulse source, and control logic:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220723211839.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220723211839.png)
 
 The principle is to set a digital quantity, obtain a corresponding output analog voltage through the DAC, and sequentially compare this analog voltage with the input analog voltage signal starting from the highest bit. If they are not equal, adjust the selected digital quantity until the two analog voltages are equal, and the final selected digital quantity is the conversion result. The process is like using a balance to weigh an object's weight by adding larger weights first and then gradually adding or replacing smaller weights.
 
@@ -75,13 +75,13 @@ The Dual-Integration ADC is an indirect ADC that first converts the input analog
 
 The Dual-Integration ADC consists of an integrator, comparator, counter, control logic, and clock signal source, as shown in the figure:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220723213208.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220723213208.png)
 
 The advantages of the Dual-Integration ADC are stable performance (two integrations, excluding RC parameter differences) and strong anti-interference ability (integration is less affected by noise); the disadvantages are low conversion rate (conversion accuracy depends on integration time).
 
 The Σ-Δ Modulation ADC works differently from the parallel and successive approximation ADCs mentioned above. It does not quantize and encode the absolute value of the sampled signal, but quantizes and encodes the difference (increment) between two adjacent sampled values. Its basic structure is as follows:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220723230949.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220723230949.png)
 
 It consists of a linear voltage integrator, a 1-bit output quantizer, a 1-bit input DAC, and a summing circuit. The output digital signal V0 processed by the quantizer is converted to an analog signal VF by the DAC and fed back to the input summing circuit for negative feedback, subtracted from the input signal v1, and the difference vD is obtained. The integrator linearly integrates vD and outputs the voltage VINT to the quantizer, which quantizes it into a 1-bit digital output. Since a 1-bit output quantizer is used, the output signal V0 is a data stream composed of 0 and 1 in continuous operation.
 
@@ -91,7 +91,7 @@ The advantage of Σ-Δ modulation ADC is that high-resolution measurement can be
 
 Voltage-Frequency Conversion (V-F) ADC is an indirect ADC. It mainly consists of a V-F converter (also called a voltage-controlled oscillator, VCO), a counter and its clock signal control gate, a register, a monostable trigger, and other parts:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220723233236.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220723233236.png)
 
 Its principle is:
 
@@ -119,7 +119,7 @@ DAC (Digital-to-Analog Converter) refers to a digital/analog converter that can 
 
 Switched resistor DAC is the simplest and most direct type of DAC, consisting of a resistor divider and a tree-like switch network:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220724172844.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220724172844.png)
 
 These switches are controlled by 3-bit inputs $d_0,d_1,d_2$, and we have:
 
@@ -145,7 +145,7 @@ The weight refers to the value represented by each bit of a multi-bit binary num
 
 The principle of the weighted resistor network DAC (which belongs to the voltage output type) is shown in the following figure (4 bits), which consists of a weighted resistor network, 4 analog switches, and 1 summing amplifier:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220724003300.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220724003300.png)
 
 Here, $S_0,S_1,S_2,S_3$ are 4 electronic switches controlled by the 4 signals $d_0,d_1,d_2,d_3$. When the input is 1, the switch is connected to $V_{REF}$, and when the input is 0, the switch is grounded. Therefore, when $d_i=1$, the current $I_i$ flows to the summing amplifier, and when $d_i=0$, the current is zero. The summing amplifier is a negative feedback amplifier. When the potential of the inverting input $V_-$ is lower than that of the non-inverting input $V_+$, the output voltage $v_0$ to ground is positive, and when $V_->V_+$, $v_0$ is negative. When $V_-$ is slightly higher than $V_+$, a large negative output voltage can be generated at $v_0$. $v_0$ is fed back to $V_-$ through $R_F$, causing $V_-$ to decrease back to 0V.
 
@@ -197,7 +197,7 @@ The advantage of the weighted resistor network DAC is its simple structure, but 
 
 To improve the problem of the resistance values of the weighted resistor network DAC being too different, an inverted T-shaped resistor network DAC can be used, which only uses two types of resistors with resistance values of R and 2R (so it is also called an R2R DAC), and has great help for control accuracy:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220724165753.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220724165753.png)
 
 When the feedback resistor of the summing amplifier has a resistance value of R, the output voltage is:
 
@@ -211,7 +211,7 @@ It can be seen that the calculation formula of the inverted T-shaped resistor ne
 
 When analyzing the weighted resistor network and inverted T-shaped resistor network, the analog switch is treated as an ideal device. However, in reality, they have a certain on-resistance and voltage drop, and there are differences in consistency between switches, which can cause conversion errors and affect accuracy. The solution is to use a current-output DAC, which has a set of constant current sources, with each current source being half the size of the previous one and proportional to the weight of the corresponding input binary bit. The use of constant current sources ensures that the current in each branch is no longer affected by the on-resistance and voltage drop of the switch.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220724171436.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220724171436.png)
 
 When a certain bit of the input digital quantity is 1, the corresponding switch connects the constant current source to the input of the operational amplifier; when the input code is 0, the corresponding switch is grounded, so the output voltage is:
 

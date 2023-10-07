@@ -84,7 +84,7 @@ Salir de screen: `Ctrl + A + D`
 
 Ingrese `http://your_server_ip` directamente en su navegador para disfrutar de VS Code en la nube.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200413181001.jpg)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200413181001.jpg)
 
 Configuración de acceso de dominio: `Por explorar...`
 

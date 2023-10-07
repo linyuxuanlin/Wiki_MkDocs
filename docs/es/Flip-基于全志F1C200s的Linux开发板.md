@@ -1,8 +1,8 @@
 # Flip - Placa de desarrollo Linux basada en F1C200s de Allwinner
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220527234815.jpeg)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220527234815.jpeg)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220527234855.jpeg)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220527234855.jpeg)
 
 Repositorio del proyecto: [**linyuxuanlin/Flip**](https://github.com/linyuxuanlin/Flip)
 
@@ -42,15 +42,15 @@ Los parámetros básicos de F1C200s son los siguientes:
 
 Diagrama de arquitectura del sistema F1C200s:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220422152227.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220422152227.png)
 
 Diagrama de aplicación típica:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220513232027.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220513232027.png)
 
 Definición de pines:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220422153239.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220422153239.png)
 
 ## Referencias y agradecimientos
 

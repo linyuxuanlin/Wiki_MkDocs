@@ -2,7 +2,7 @@
 
 Create efficient productivity tools with VS Code.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323155728.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200323155728.png)
 
 Jupyter Notebook is a powerful tool that allows us to write, run, view output, visualize data, and view results in a document environment. In short, with it, writing documents containing code is much more convenient.
 
@@ -23,7 +23,7 @@ After configuring the local Python environment, we also need to install the [**P
 
 After the environment is configured, we can create a blank Jupyter notebook (`.ipynb` file) by typing **Python: Create Blank New Jupyter** in the VS Code command panel (`Ctrl + Shift + P`). Test it as shown in the figure below:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323153020.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200323153020.png)
 
 As you can see, the code runs normally.
 
@@ -31,27 +31,27 @@ As you can see, the code runs normally.
 
 Jupyter Notebook uses **code cells** to create, edit, and run code.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323153717.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200323153717.png)
 
 ### Adding Code Cells
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323153850.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200323153850.png)
 
 ### Running a Single Code Cell
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323153939.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200323153939.png)
 
 ### Running Multiple Code Cells
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154005.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200323154005.png)
 
 ### Moving Code Cells
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154059.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200323154059.png)
 
 ### Deleting Code Cells
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154148.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200323154148.png)
 
 ### Switching Between Code and Markdown
 
@@ -61,17 +61,17 @@ Jupyter Notebook uses **code cells** to create, edit, and run code.
 
 With the chart viewer, you can easily view the charts output by your code and export them in various image formats:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154555.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200323154555.png)
 
 ### Data and Variable Viewer
 
 The type, quantity, and value of variables can be viewed in real-time through the variable viewer:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154758.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200323154758.png)
 
 You can also browse more specific data through the data viewer:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154832.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200323154832.png)
 
 ## References and Acknowledgements
 

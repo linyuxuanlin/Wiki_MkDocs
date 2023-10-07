@@ -1,6 +1,6 @@
 # Homelab - Website Status Monitoring Tool Uptime Kuma
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230410160253.jpg)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20230410160253.jpg)
 
 **Uptime Kuma** is a status monitoring tool that supports multiple network protocols. It can monitor the real-time availability, response time, certificate validity period, etc. of multiple custom websites, and provides various notification methods.
 

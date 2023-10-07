@@ -13,7 +13,7 @@ Project repository: [**linyuxuanlin/ZenDriver**](https://github.com/linyuxuanlin
 
 ## Interface Definition
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200125192433.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200125192433.png)
 
 From left to right, the **motor end** is: **M-, 5V, encoder A, encoder B, GND, M+**, corresponding to the motor pins, which can be directly connected to the motor.
 
@@ -37,7 +37,7 @@ The **power input end** is common to all three interfaces, and it is generally r
 4. Connect pins **IN1, IN2** to the MCU PWM port
 5. Debug with code
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200125192734.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200125192734.png)
 
 > Original: <https://wiki-power.com/>  
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.

@@ -22,15 +22,15 @@ Repositorio del proyecto: [**Collection_of_Power_Module_Design/PMIC/EA3036C**](h
 
 ## Circuito de aplicación típico
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220417095917.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220417095917.png)
 
 ## Diagrama de funciones internas
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220417001936.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220417001936.png)
 
 ## Definición de pines
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220416234110.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220416234110.png)
 
 | Nombre del pin | Descripción del pin                                         |
 | -------------- | ----------------------------------------------------------- |
@@ -55,7 +55,7 @@ EA3036C es un IC de gestión de energía diseñado específicamente para aplicac
 
 Si es necesario establecer el tiempo de encendido de cada canal Buck, se puede programar mediante el siguiente circuito:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220417100845.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220417100845.png)
 
 ### Arquitectura de desplazamiento de fase de 180°
 
@@ -90,7 +90,7 @@ $$
 V_{OUTx}=0.6*\frac{R_1}{R_2}+0.6V
 $$
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220417230210.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220417230210.png)
 
 Si se requieren valores de voltaje comunes de salida, se pueden utilizar las siguientes configuraciones de resistencia de divisor (todas deben ser de precisión del 1%):
 

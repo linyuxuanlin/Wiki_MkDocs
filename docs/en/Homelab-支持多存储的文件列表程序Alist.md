@@ -1,6 +1,6 @@
 # Homelab - Alist, a file listing program that supports multiple storage options
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304141808001.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/202304141808001.png)
 
 **Alist** is a file listing program that supports multiple storage options such as local, Alibaba Cloud, OneDrive, GoogleDrive, Baidu Cloud, Quark Cloud, Lanzou Cloud, S3, FTP/SFTP, etc. It comes with an online video player and various file preview options (compatible with Office, PDF, Markdown, etc.), as well as offline download functionality.
 

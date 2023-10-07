@@ -49,7 +49,7 @@ En señales de alta frecuencia, el camino de retorno de la señal suele ser el c
 
 ### Mantener la integridad de la pantalla de retorno de la señal tanto como sea posible
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211215190631.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211215190631.png)
 
 Como se muestra en la figura, si se corta el plano de retorno de la señal, la corriente de la señal no podrá volver al origen a través de la ruta óptima (más corta), lo que aumentará el área del circuito de la señal al buscar una ruta alternativa de retorno de la señal, lo que aumentará el área del circuito de la señal.
 
@@ -69,15 +69,15 @@ Los componentes comunes de EMC incluyen inductores comunes, perlas magnéticas y
 
 Modelos comunes de filtros:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211219173751.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211219173751.png)
 
 ### Inductor común
 
 Modelo equivalente del inductor común:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211219173856.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211219173856.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211219174546.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211219174546.png)
 
 ### Perlas magnéticas
 
