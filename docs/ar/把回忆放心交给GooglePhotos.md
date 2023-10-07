@@ -1,71 +1,73 @@
-# Deja tus recuerdos en manos de Google Photos (descontinuado)
+# اترك ذكرياتك في يد Google Photos (متوقف)
 
-## Antecedentes
+## الخلفية
 
-En el pasado, solíamos guardar nuestras fotos llenas de recuerdos en nuestra computadora o disco duro. Con el tiempo, nos dimos cuenta de que las fotos seguían acumulándose y que el método de clasificación por carpetas perdía su significado: después de un viaje, a menudo no organizábamos las fotos debido a la procrastinación; cuando finalmente organizábamos las fotos, ya no las volvíamos a ver. Si el disco duro sufría algún daño (ya sea físico o humano), solo podíamos enviarlo a recuperación de datos, y a veces ni siquiera se podían recuperar.
+في الماضي، كنا نقوم بحفظ صورنا المليئة بالذكريات على أجهزة الكمبيوتر أو الأقراص الصلبة. مع مرور الوقت، أدركنا أن الصور لا تزال تتراكم وأن طريقة التصنيف حسب المجلدات فقدت معناها: بعد السفر، لم نقم بتنظيم الصور في كثير من الأحيان بسبب التسويف؛ وعندما نقوم أخيرًا بتنظيم الصور، لم نعد نعيدها للنظر. إذا تعرضت الأقراص الصلبة لأي ضرر (سواء كان ذلك بدنيًا أو بشريًا)، فإننا لا نستطيع سوى إرسالها لاستعادة البيانات، وفي بعض الأحيان لا يمكن استعادتها حتى.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/2af4c42e6f7a9f4ed45b6f150b164184.jpg)
 
-Seguí buscando y descubriendo nuevos medios para almacenar fotos. Utilicé herramientas de sincronización como Resilio Sync, Weiyun Sync Disk, Baidu Cloud Sync Disk para hacer múltiples copias de seguridad; también consideré construir una biblioteca de fotos NAS (RAID 1); o varios servicios en la nube como iCloud, Mi Cloud Album, Weiyun, Baidu Cloud, pero nunca encontré uno que me resultara cómodo. En primer lugar, la forma de administrar las fotos en carpetas es ordenada, pero no es conveniente para organizar y ver fotos; en segundo lugar, es común que estos proveedores de servicios en China vendan tu privacidad si necesitan dinero.
+استمريت في البحث واكتشاف وسائل جديدة لتخزين الصور. استخدمت أدوات المزامنة مثل Resilio Sync و Weiyun Sync Disk و Baidu Cloud Sync Disk لعمل نسخ احتياطية متعددة؛ كما نظرت في بناء مكتبة صور NAS (RAID 1)؛ أو استخدام خدمات سحابية متعددة مثل iCloud و Mi Cloud Album و Weiyun و Baidu Cloud، ولكنني لم أجد أي واحدة مريحة بالنسبة لي. أولاً، طريقة إدارة الصور في المجلدات مرتبة، ولكنها غير ملائمة لتنظيم وعرض الصور؛ ثانيًا، من الشائع أن يبيع مزودو الخدمة هؤلاء في الصين خصوصيتك إذا كانوا بحاجة للمال.
 
-Finalmente, descubrí Google Photos, que es relativamente seguro y fácil de usar. Después de usarlo durante más de un año, creo que es bastante bueno, así que actualicé este artículo.
+أخيرًا، اكتشفت Google Photos، وهو آمن نسبيًا وسهل الاستخدام. بعد استخدامه لأكثر من عام، أعتقد أنه جيد جدًا، لذا قمت بتحديث هذه المقالة.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/0f0ab1740e3206831f3e6ef19ef0c903.png)
 
-## Características
+## الميزات
 
-### 1. Capacidad ilimitada
+### 1. سعة غير محدودة
 
-En comparación con iCloud (5 GB de espacio gratuito) y Mi Cloud (11 GB de espacio gratuito), aunque se puede comprar capacidad de almacenamiento, todavía se debe tener cuidado al sincronizar todas las fotos. La capacidad ilimitada de Google Photos satisface completamente las necesidades de almacenamiento personal de fotos. Pero hay una condición: las fotos tienen una resolución máxima de 16 millones de píxeles y los videos de 1080p, y se comprimen si se exceden. Sin embargo, es suficiente para usuarios no profesionales.
+بالمقارنة مع iCloud (5 جيجابايت مجانًا) و Mi Cloud (11 جيجابايت مجانًا) ، على الرغم من أنه يمكن شراء مساحة تخزين إضافية ، يجب على المستخدمين أن يكونوا حذرين عند مزامنة جميع الصور. تلبي السعة غير المحدودة لـ Google Photos تمامًا احتياجات التخزين الشخصي للصور. ولكن هناك شرط: تكون الصور بدقة قصوى تبلغ 16 مليون بكسل وتكون مقاطع الفيديو بدقة 1080 بكسل ، وتضغط إذا تجاوزت هذه الدقة. ومع ذلك ، فإنه يكفي للمستخدمين غير المحترفين.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/cea385ad94811257f4b7c084d41c5d30.jpg)
 
-### 2. Inteligente
+### 2. ذكي
 
-En comparación con la gestión en forma de carpetas, incluso si no se clasifican las fotos archivadas, la función de búsqueda de Google Photos es suficiente para encontrar fotos antiguas que se han guardado durante años. Puedes etiquetar a las personas y encontrar todas las fotos relacionadas con ellas. Además, "Revive este día en años anteriores" es una función muy útil.
+بالمقارنة مع إدارة المجلدات ، حتى إذا لم يتم تصنيف الصور المؤرشفة ، فإن وظيفة البحث في Google Photos تكفي للعثور على الصور القديمة التي تم حفظها لسنوات. يمكنك وضع علامات على الأشخاص والعثور على جميع الصور المتعلقة بهم. بالإضافة إلى ذلك ، "استعيد هذا اليوم في السنوات السابقة" هو وظيفة مفيدة جدًا.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/f1ccf68a3eeae7b4a69f58122838666d.png)
 
-### 3. Relativamente seguro
+### 3. نسبيا آمن
 
-Los datos son invaluables. Si solo guardas tus álbumes en tus propios dispositivos (como discos duros), es posible que te preocupes por problemas de daños o pérdidas de datos. Sin embargo, si confías tus álbumes a un proveedor de servicios en la nube de confianza, será mucho más seguro. Después de todo, ellos son responsables de los datos del usuario; si el disco duro falla, solo tú serás responsable. En cuanto a la seguridad, la privacidad no debe ser ignorada. En mi caso, no confiaría mis fotos y privacidad a Google, que no hace nada malo, y nunca entregaría mis datos a 360 o Baidu. Google, que respeta más la privacidad del usuario bajo GDPR, es mucho más confiable que Baidu, que cree que "los chinos prefieren la conveniencia a la privacidad".
+البيانات لا تقدر بثمن. إذا كنت تقوم بحفظ ألبوماتك فقط على أجهزتك الخاصة (مثل الأقراص الصلبة)، فقد تشعر بالقلق بشأن مشاكل التلف أو فقدان البيانات. ومع ذلك، إذا كنت تثق ألبوماتك لمزود خدمة سحابية موثوق به، فسيكون أكثر أمانًا بكثير. بعد كل شيء، فهم مسؤولون عن بيانات المستخدم؛ إذا فشلت القرص الصلب، فأنت فقط ستكون مسؤولًا. وفيما يتعلق بالأمان، يجب عدم تجاهل الخصوصية. في حالتي، لن أثق بصوري وخصوصيتي لـ Google، الذي لا يفعل أي شيء سيء، ولن أسلم بياناتي لـ 360 أو Baidu. Google، الذي يحترم خصوصية المستخدم بموجب قواعد حماية البيانات العامة، هو أكثر موثوقية بكثير من Baidu، الذي يعتقد أن "الصينيين يفضلون الراحة على الخصوصية".
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/59bd6366d7c370b480def6fec44802a6.png)
 
-### 4. Otras ventajas
+### 4. مزايا أخرى
 
-- Compatible con todos los dispositivos (iCloud y algunos servicios en la nube solo son compatibles con sus propios dispositivos)
-- Viene con un editor de fotos
-- Después de sincronizar en la nube, se puede liberar el almacenamiento del teléfono
-- Fusiona automáticamente fotos duplicadas
-- Interfaz atractiva y fácil de usar
+- متوافق مع جميع الأجهزة (iCloud وبعض خدمات السحابة متوافقة فقط مع أجهزتها الخاصة)
+- يأتي مع محرر الصور
+- بعد المزامنة في السحابة، يمكن تحرير مساحة التخزين في الهاتف
+- يدمج تلقائيًا الصور المكررة
+- واجهة جذابة وسهلة الاستخدام
 
-## Desventajas
+## العيوب
 
-### 1. Problemas de seguridad
+### 1. مشاكل الأمان
 
-No se puede ser demasiado absoluto, ya que los servicios gratuitos no deben tener expectativas demasiado altas. Sin embargo, Google tiene una buena reputación en cuanto a seguridad y es mucho más seguro que los fabricantes nacionales y los discos duros y servicios en la nube nacionales. Es posible que Google use tus fotos para entrenar IA, pero es poco probable que las divulgue.
+لا يمكن أن تكون مطلقًا جدًا، حيث لا ينبغي أن تكون لديك توقعات عالية جدًا من الخدمات المجانية. ومع ذلك، يتمتع Google بسمعة جيدة فيما يتعلق بالأمان وهو أكثر أمانًا بكثير من الشركات المحلية والأقراص الصلبة والخدمات السحابية المحلية. قد يستخدم Google صورك لتدريب الذكاء الاصطناعي، ولكن من غير المرجح أن يكشف عنها.
 
-### 2. Redes nacionales
+### 2. الشبكات الوطنية
 
-Por razones conocidas, si no tienes una buena VPN, es mejor no usar Google Photos.
+لأسباب معروفة، إذا لم يكن لديك VPN جيدة، فمن الأفضل عدم استخدام Google Photos.
 
-### 3. Sincronización
+### 3. المزامنة
 
-Google Photos sincroniza fotos solo cuando se abre, lo que puede ser una ventaja. Después de la sincronización, se pueden eliminar las fotos del dispositivo para liberar espacio. Después de un tiempo de uso, la caché aumentará y se debe limpiar regularmente (para dispositivos con capacidad de almacenamiento pequeña).
+# تزامن صور Google فقط عند فتحها، وهذا يمكن أن يكون ميزة. بعد التزامن، يمكن حذف الصور من الجهاز لتوفير المساحة. بعد مرور فترة من الاستخدام، ستزداد ذاكرة التخزين المؤقت ويجب تنظيفها بانتظام (للأجهزة ذات سعة تخزين صغيرة).
 
-## Preguntas frecuentes
+## الأسئلة الشائعة
 
-P: ¿Todavía no confío en la seguridad de mis datos, hay una mejor solución?
-R: Se recomienda hacer una copia de seguridad en un disco duro móvil encriptado o empaquetar y encriptar antes de cargar en una nube en el extranjero.
+س: لا أزال لا أثق في أمان بياناتي، هل هناك حلاً أفضل؟
+ج: يُوصَى بعمل نسخ احتياطية على قرص صلب محمول مشفر أو تشفير الصور قبل تحميلها على سحابة في الخارج.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Explorando la verdad detrás de la "ilimitada y gratuita" Google Photos](http://www.ifanr.com/527180)
-- [Google Photos es una buena opción para hacer copias de seguridad de fotos, pero no necesariamente la mejor](http://www.sohu.com/a/190124959_742974)
-- [16 trucos mágicos para buscar fotos en Google Photos](https://www.playpcesor.com/2015/06/google-photos-search-tips-16.html)
-- ["¿Los chinos prefieren la conveniencia sobre la privacidad?" ¿Li Yanhong está equivocado?](https://news.newseed.cn/p/1345029)
-- [Esta vez, Google Photos quiere redefinir el "álbum en la nube"] (https://sspai.com/post/29151)
-- [Política de privacidad y términos de Google] (https://policies.google.com/privacy?hl=zh-CN)
+- [استكشاف الحقيقة وراء "صور Google غير محدودة ومجانية"](http://www.ifanr.com/527180)
+- [صور Google خيار جيد لعمل نسخ احتياطية للصور، ولكنه ليس بالضرورة الأفضل](http://www.sohu.com/a/190124959_742974)
+- [16 حيلة سحرية للبحث عن الصور في صور Google](https://www.playpcesor.com/2015/06/google-photos-search-tips-16.html)
+- ["هل الصينيون يفضلون الراحة على الخصوصية؟" هل لي يانهونغ مخطئ؟](https://news.newseed.cn/p/1345029)
+- [هذه المرة، تريد صور Google إعادة تعريف "ألبوم السحابة"](https://sspai.com/post/29151)
+- [سياسة الخصوصية وشروط Google](https://policies.google.com/privacy?hl=zh-CN)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المقالة باستخدام ChatGPT، يُرجى [تقديم الملاحظات](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كان هناك أي إغفال.
+
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
