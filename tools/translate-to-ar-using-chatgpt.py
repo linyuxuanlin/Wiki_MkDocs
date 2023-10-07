@@ -21,9 +21,9 @@ dir_translated = "/home/runner/work/Wiki_MkDocs/Wiki_MkDocs/docs/ar"
 
 # 创建一个包含多个替换规则的列表
 replace_rules = [
-    {"find": "> 原文地址：<https://wiki-power.com/>", "replace_with": "> Dirección original del artículo: <https://wiki-power.com/>"},
-    {"find": "> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。", "replace_with": "> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente."},
-    {"find": "](https://wiki-power.com/", "replace_with": "](https://wiki-power.com/es/"},
+    {"find": "> 原文地址：<https://wiki-power.com/>", "replace_with": "> عنوان النص: <https://wiki-power.com/>"},
+    {"find": "> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。", "replace_with": "> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر."},
+    {"find": "](https://wiki-power.com/", "replace_with": "](https://wiki-power.com/ar/"},
     {"find": "![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/", "replace_with": "![](https://f004.backblazeb2.com/file/wiki-media/"},
     {"find": "](/ar/", "replace_with": "](https://wiki-power.com/ar/"},
     #{"find": "", "replace_with": ""},
@@ -38,7 +38,7 @@ def translate_text(text):
         messages=[
             {
                 "role": "user",
-                "content": "Translate the following article into Español, maintain the original markdown format.\n\n{}\n\nEspañol:".format(
+                "content": "Translate the following article into Arabic, maintain the original markdown format.\n\n{}\n\nArabic:".format(
                     text
                 ),
             }
@@ -131,7 +131,7 @@ def translate_file(input_file, output_file, max_length=1800):
     output_text = "\n\n".join(output_paragraphs)
 
     # 加入由 ChatGPT 翻译的提示
-    output_text=output_text+"\n\n> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión."
+    output_text=output_text+"\n\n> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال."
 
     # 最后，将占位词替换为对应的替换文本
     for placeholder, replacement in placeholder_dict.items():
