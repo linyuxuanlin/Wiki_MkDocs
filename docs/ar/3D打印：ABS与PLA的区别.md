@@ -1,57 +1,57 @@
-# Impresión 3D: Diferencias entre ABS y PLA
+# الطباعة ثلاثية الأبعاد: الفرق بين ABS و PLA
 
-¿Cómo elegir adecuadamente los materiales ABS y PLA en la impresión 3D?
+كيفية اختيار المواد ABS و PLA بشكل مناسب في الطباعة ثلاثية الأبعاد؟
 
-## Material ABS
+## مادة ABS
 
-El ABS (copolímero de acrilonitrilo-butadieno-estireno) es un material más tradicional para la impresión 3D.
+ABS (البوليمر المشترك للأكريلونيتريل - البيوتادايين - الستايرين) هي مادة طباعة ثلاثية الأبعاد تقليدية نسبيًا.
 
-### Temperatura de impresión
+### درجة الحرارة للطباعة
 
-Cuando se utiliza ABS para imprimir, generalmente se establece la temperatura de la boquilla de la impresora entre 210 y 240℃, y la temperatura de la cama caliente por encima de 80℃. Además, la temperatura de ablandamiento del ABS es de 105℃.
+عند استخدام ABS للطباعة ، يتم تعيين درجة حرارة رأس الطابعة عادة بين 210 و 240 درجة مئوية ، ودرجة حرارة السرير الحراري تكون أعلى من 80 درجة مئوية. بالإضافة إلى ذلك ، درجة انصهار ABS هي 105 درجة مئوية.
 
-### Rendimiento de impresión
+### أداء الطباعة
 
-La impresión con ABS es muy suave, pero puede encogerse al enfriarse, lo que puede causar problemas como bordes levantados y desprendimiento.
+يتم طباعة ABS بسلاسة كبيرة ، ولكنه يتقلص عند التبريد ، مما قد يتسبب في تشوه الحواف وتساقطها.
 
-### Resistencia
+### القوة
 
-El ABS tiene una alta resistencia y una buena elasticidad, por lo que incluso bajo presión solo se doblará y generalmente no se romperá.
+يتميز ABS بقوته العالية ، ونظرًا لمرونته الجيدة ، فإنه ينحني فقط عند تحمل الضغط وعادةً لا ينكسر.
 
-### Olor
+### الرائحة
 
-El ABS produce un olor desagradable durante la impresión. Es mejor utilizar una impresora cerrada o mantener una buena ventilación en la habitación para evitar inhalar demasiados gases.
+ينتج ABS رائحة غريبة أثناء الطباعة. من الأفضل استخدام طابعة مغلقة النظام أو الحفاظ على التهوية في الغرفة لتجنب استنشاق الغاز بكميات كبيرة.
 
-### Escenarios de uso
+### استخداماته
 
-En comparación con el PLA, el ABS es adecuado para escenarios que requieren resistencia a los impactos, tenacidad y temperaturas relativamente altas.
+بشكل عام ، يناسب ABS السيناريوهات التي تتطلب التصادم المتكرر والمرونة ودرجات حرارة مرتفعة نسبيًا.
 
-La desventaja es que las impresoras sin cama caliente no pueden imprimir con ABS, ya que puede haber bordes levantados y desprendimiento durante la impresión. Además, se recomienda no utilizarlo en habitaciones con mala ventilación.
+العيب هو أن الطابعات التي لا تحتوي على سرير حراري لا يمكن استخدام ABS للطباعة ، لأنه قد يتسبب في تشوه الحواف وتساقطها. ويفضل عدم استخدامه في الغرفة التي تفتقر إلى التهوية الجيدة.
 
-## Material PLA
+## مادة PLA
 
-El PLA (ácido poliláctico) es un plástico biodegradable, algunos incluso cumplen con los estándares de grado alimenticio.
+PLA (بولي لاكتيك حمض) هو بلاستيك قابل للتحلل الحيوي ، وبعضها يمكن أن يصل إلى معايير الصف الغذائي.
 
-### Temperatura de impresión
+### درجة الحرارة للطباعة
 
-Cuando se utiliza PLA para imprimir, generalmente se establece la temperatura de la boquilla de la impresora entre 180 y 200℃, y se recomienda utilizar una cama caliente con una temperatura de 60℃. Además, la temperatura de ablandamiento del PLA es de 60℃.
+عند استخدام PLA للطباعة ، يتم تعيين درجة حرارة رأس الطابعة عادة بين 180 و 200 درجة مئوية ، ولا يلزم استخدام سرير حراري ، ويمكن تعيين درجة الحرارة عند 60 درجة مئوية. بالإضافة إلى ذلك ، درجة انصهار PLA هي 60 درجة مئوية.
 
-### Rendimiento de impresión
+### أداء الطباعة
 
-En comparación con el ABS, el PLA es más propenso a obstruir la boquilla durante la impresión (debido a que el PLA se adhiere y se extiende fácilmente después de la fusión), pero no produce bordes levantados y desprendimiento.
+بالمقارنة مع ABS ، يسدل PLA بسهولة أثناء الطباعة (نظرًا لسهولة انصهار PLA والتماسك) ، ولكنه لا يتسبب في تشوه الحواف وتساقطها.
 
-### Resistencia
+### القوة
 
-La elasticidad y la resistencia del PLA son un poco más bajas que las del ABS, pero se pueden solucionar ajustando el relleno y el grosor de las paredes durante la impresión.
+تكون مرونة وقوة PLA أقل قليلاً ، ولكن يمكن حل هذه المشكلة أثناء الطباعة من خلال ضبط الحشو وسمك الجدران.
 
-### Escenarios de uso
+### استخداماته
 
-El PLA es relativamente respetuoso con el medio ambiente (ya que es biodegradable), relativamente barato y no produce bordes levantados ni olores desagradables durante la impresión.
+يعتبر PLA نسبيًا صديقًا للبيئة (نظرًا لقابليته للتحلل) ، ورخيص نسبيًا ، ولا يسبب تشوه الحواف ، ولا ينتج رائحة أثناء الطباعة.
 
-El PLA no es adecuado para escenarios de alta temperatura y choque. Las temperaturas superiores a 60℃ y los golpes pueden hacer que las piezas impresas se deformen o se rompan.
+لا يناسب PLA السيناريوهات التي تتطلب درجات حرارة مرتفعة والتصادم. درجات الحرارة التي تزيد عن 60 درجة مئوية والصدمات قد تتسبب في تشوه أو كسر المنتج المطبوع.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Guía esencial para principiantes en impresión 3D: ¿ABS o PLA? ¿Cuál es mejor?](https://wp.huangshiyang.com/3d%e6%89%93%e5%8d%b0%e5%85%a5%e9%97%a8%e5%bf%85%e8%af%bb%ef%bc%9aabs%e4%b8%8epla%ef%bc%8c%e7%94%a8%e5%93%aa%e4%b8%aa%e5%a5%bd%ef%bc%9f)
+- [دليل المبتدئين في الطباعة ثلاثية الأبعاد: ABS و PLA ، أيهما أفضل؟](https://wp.huangshiyang.com/3d%e6%89%93%e5%8d%b0%e5%85%a5%e9%97%a8%e5%bf%85%e8%af%bb%ef%bc%9aabs%e4%b8%8epla%ef%bc%8c%e7%94%a8%e5%93%aa%e4%b8%aa%e5%a5%bd%ef%bc%9f)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
