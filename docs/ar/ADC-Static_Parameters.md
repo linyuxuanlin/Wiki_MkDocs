@@ -1,79 +1,79 @@
-# ADC - Parámetros Estáticos
+# ADC - المعلمات الثابتة
 
-> Esta publicación solo está disponible en inglés.
+> هذه المقالة متوفرة فقط باللغة الإنجليزية.
 
-El Convertidor Analógico a Digital (ADC) es un dispositivo que convierte señales analógicas en una secuencia de datos digitales.
+محول التناظري إلى رقمي (ADC) هو جهاز يحول الإشارات التناظرية إلى تسلسل من البيانات الرقمية.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221011141438.png)
 
-Aunque la función de transferencia ideal del ADC debería ser una línea recta, en realidad es una escalera uniforme, donde el número de escalones corresponde al número de códigos de salida digitales. Dado que lo analógico es continuo y lo digital es discreto, se introducirá un error de cuantificación en el procedimiento.
+على الرغم من أن وظيفة نقل ADC المثالية يجب أن تكون خط مستقيم، إلا أنها في الواقع تكون سلمًا متساويًا، حيث يتطابق عدد الخطوات مع عدد أكواد الإخراج الرقمية. نظرًا لأن الإشارة التناظرية مستمرة والإشارة الرقمية م diskreta، سيتم إدخال خطأ التكميم في الإجراء.
 
-## Parámetros Estáticos
+## المعلمات الثابتة
 
-Los parámetros estáticos del ADC principalmente contienen:
+تحتوي المعلمات الثابتة لـ ADC بشكل رئيسي على:
 
-- Tamaño del LSB
-- Rango de escala completa (FSR)
-- Error de desplazamiento
-- Error de ganancia
-- Error de no linealidad diferencial (DNE o DNL)
-- Error de no linealidad integral (INE o INL)
+- حجم LSB
+- نطاق القيمة الكاملة (FSR)
+- خطأ الإزاحة
+- خطأ الكسب
+- خطأ عدم الخطية التفاضلية (DNE أو DNL)
+- خطأ عدم الخطية التكاملية (INE أو INL)
 
-### Tamaño del LSB
+### حجم LSB
 
-El ancho de un paso se define como 1 **Bit Menos Significativo (LSB)**. La resolución de un ADC se expresa normalmente como el número de bits (código de salida digital). Un ADC con una resolución de n bits tiene $2^n$ posibles códigos digitales ($2^n$ niveles de paso).
+يتم تعريف عرض خطوة واحدة بأنها 1 **أقل بت معنوي (LSB)**. عادةً ما يتم التعبير عن دقة ADC بعدد البتات (رمز الإخراج الرقمي). يحتوي ADC بدقة n بت على $2^n$ رمز رقمي ممكن ($2^n$ مستويات خطوة).
 
 $$
 LSB=\frac{V_{FST}-V_{ZST}}{2^{bits}-2}
 $$
 
-Para un ADC ideal, el LSB representa todo el ancho de cada código.
+بالنسبة لـ ADC المثالي، يمثل LSB عرض كل رمز.
 
-### Rango de escala completa (FSR)
+### نطاق القيمة الكاملة (FSR)
 
-Por ejemplo, para un convertidor de 3 bits, hay:
+على سبيل المثال، لمحول بت 3، هناك:
 
-- 8 pasos horizontales
-- 7 transiciones
-- 6 pasos entre 7 transiciones
+- 8 خطوات أفقية
+- 7 انتقالات
+- 6 خطوات بين 7 انتقالات
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221008151344.png)
 
-- **Voltaje de Transición de Rango Cero ($V_{ZST}$)**: Voltaje de la señal de entrada analógica cuando se registra la primera transición.
-- **Voltaje de Transición de Rango Completo ($V_{FST}$)**: Voltaje de la señal de entrada analógica cuando se registra la última transición.
-- **Rango Completo (FSR)**: Extremo máximo de la señal de entrada analógica suministrada al ADC. $FSR = (V_{FST}-V_{ZST}) + 2 LSB$, $V_{FSR(refer to VZS)} = (V_{FST}-0.5LSB)-(V_{ZST}-0.5LSB) + 2 LSB$
+- **جهد انتقال نطاق الصفر ($V_{ZST}$)**: جهد إشارة الإدخال التناظرية عند تسجيل أول انتقال.
+- **جهد انتقال نطاق القيمة الكاملة ($V_{FST}$)**: جهد إشارة الإدخال التناظرية عند تسجيل آخر انتقال.
+- **نطاق القيمة الكاملة (FSR)**: الحد الأقصى للإشارة الإدخال التناظرية المزودة لـ ADC. $FSR = (V_{FST}-V_{ZST}) + 2 LSB$، $V_{FSR(يرجى الرجوع إلى VZS)} = (V_{FST}-0.5LSB)-(V_{ZST}-0.5LSB) + 2 LSB$
 
-### Error de Desplazamiento
+### خطأ الإزاحة
 
-**Error de Desplazamiento** (Error de Escala Cero) es la diferencia entre los puntos de desplazamiento ideal y real (inicial). Se mide a partir del punto medio del paso cero (ideal a real) para el ADC.
+**خطأ الإزاحة** (خطأ الصفر) هو الفرق بين النقاط المثالية والفعلية للإزاحة (النقاط الأولية). يتم قياسه من منتصف الخطوة الصفرية (من المثالي إلى الفعلي) للمحول التناظري الرقمي.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008154521.png)
+![Offset Error](img/20221008154521.png)
 
-Donde
+حيث
 
 $$
 V_{ZS}=V_{ZST}-0.5LSB
 $$
 
-### Error de Ganancia
+### خطأ الكسب
 
-**Error de Ganancia** es la diferencia entre los puntos de ganancia ideal y real en la función de transferencia (después de que el error de desplazamiento se ha corregido a cero). Se mide a partir del punto medio del paso completo para el ADC.
+**خطأ الكسب** هو الفرق بين النقاط المثالية والفعلية على دالة النقل (بعد تصحيح خطأ الإزاحة للوصول إلى الصفر). يتم قياسه من منتصف الخطوة الكاملة للمحول التناظري الرقمي.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008155259.png)
+![Gain Error](img/20221008155259.png)
 
-Donde
+حيث
 
 $$
 V_{FS}=V_{FST}-0.5LSB+2LSB
 $$
 
-### Error de No Linealidad Diferencial (DNL)
+### خطأ عدم الخطية التفاضلي (DNL)
 
-**Error de No Linealidad Diferencial (DNL)** es la diferencia entre el ancho de paso real y el ancho de paso ideal (1 LSB). Es una medida del error de linealidad "pequeña señal" y se mide a partir de la diferencia en el voltaje de entrada analógico entre 2 transiciones adyacentes y el LSB promedio del dispositivo.
+**خطأ عدم الخطية التفاضلي (DNL)** هو الفرق بين عرض الخطوة الفعلي وعرض الخطوة المثالية (1 LSB). إنها قياس لخطأ الخطية "الإشارة الصغيرة"، ويتم قياسه من الفرق في جهد الإشارة التناظرية بين انتقالين متجاورين ومتوسط LSB الجهاز.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008160020.png)
+![Differential Non-Linearity Error (DNL)](img/20221008160020.png)
 
-Ecuaciones para describir DNL:
+المعادلات التي تصف DNL:
 
 $$
 DNL[n]=CodeWidth_n-LSB_{average}
@@ -83,19 +83,21 @@ $$
 DNL=(V_{in2}-V_{in1})-LSB_{average}
 $$
 
-otra imagen para describir DNL:
+صورة أخرى لوصف DNL:
 
-Si DNL excede un valor demasiado grande, uno o más códigos faltarán y nunca recibirán una salida.
+![Differential Non-Linearity Error (DNL)](img/20221008161707.png)
 
-### Error de No Linealidad Integral (INL)
+إذا تجاوز DNL حجمه الكبير، فإن واحدة أو أكثر من الأكواد ستفقد ولن تتلقى أي إخراج.
 
-El **Error de No Linealidad Integral (INL)** es el efecto acumulativo en cualquier entrada dada de todos los valores de no linealidad diferencial. Es una medida del error de linealidad "de gran señal". INL en cualquier punto a lo largo de la curva es la desviación de la línea de linealidad ideal.
+### خطأ الخطية التكاملي (INL)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008163705.png)
+**خطأ الخطية التكاملي (INL)** هو التأثير التراكمي في أي إشارة معينة لجميع قيم عدم الخطية التفاضلية. إنها قياس لخطأ الخطية "الإشارة الكبيرة". INL في أي نقطة على الانحناءة هو انحراف الخط الخطي المثالي.
 
-Las desviaciones se miden en los puntos de transición de un paso al siguiente para el ADC. INL es la desviación de los valores de la función de paso real a la función de línea recta ideal.
+![Integral Non-Linearity Error (INL)](img/20221008163705.png)
 
-Ecuaciones para describir INL:
+يتم قياس الانحرافات عند نقاط الانتقال من خطوة واحدة إلى الأخرى للمحول التناظري الرقمي. INL هو انحراف قيمة وظيفة الخطوة الفعلية عن الخط المستقيم المثالي.
+
+المعادلات التي تصف INL:
 
 $$
 INL[n]=INL_{n-1}+{\frac{DNL_{n-1}+DNL_{n}}{2}}
@@ -107,90 +109,90 @@ $$
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221008163911.png)
 
-## Cómo probar parámetros estáticos
+## كيفية اختبار المعلمات الثابتة
 
-### Configuración del sistema de prueba
+### إعداد نظام الاختبار
 
-Configuración del sistema de prueba para pruebas de parámetros estáticos de ADC:
+إعداد نظام الاختبار لاختبار المعلمات الثابتة لمحول التناظر الرقمي إلى رقمي (ADC):
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221008184721.png)
 
-Dado que la curva de transferencia de voltaje a código del ADC es una función de mapeo de muchos a uno:
+نظرًا لأن منحنى تحويل الجهد إلى رمز ADC هو وظيفة تعيين كثير إلى واحد:
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221008185819.png)
 
-Prácticamente utilizamos el método de histograma de rampa lineal (medición de ancho de código). La rampa de entrada es lo suficientemente lenta como para dar un "número estadísticamente relevante de hits por código".
+نستخدم طريقة تصوير الرمز الخطي (قياس عرض الرمز) عمليًا. يكون المنحدر المدخل بطيئًا بما يكفي لتوفير "عدد مناسب إحصائيًا من الضربات لكل رمز".
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221008190154.png)
 
-Diagrama de bloques de la configuración de la señal:
+مخطط بلوك لإعداد الإشارة:
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221008190612.png)
 
-### Concepto de pruebas
+### مفهوم الاختبارات
 
-El procedimiento para probar los parámetros estáticos de un ADC DUT se detalla a continuación.
+يتم سرد إجراء اختبار المعلمات الثابتة لـ ADC DUT أدناه.
 
-#### 1. Crear un segmento de onda de rampa para AC SRC
+#### 1. إنشاء قطاع موجة متدرج لمصدر التيار المتردد
 
-La rampa de entrada va por encima y por debajo de ±Fs para asegurar que se cubran todos los códigos:
+تذهب المنحدرات المدخلة فوق وتحت ±Fs للتأكد من تغطية جميع الرموز:
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221008193036.png)
 
-#### 2. Tomar datos entre el inicio (min+1, por ejemplo, 0…01) y el final (max-1, por ejemplo, 1…10) de la rampa. Eso da un valor de datos de $2^n-2$ códigos
+#### 2. أخذ البيانات بين البداية (min+1 ، على سبيل المثال 0…01) والنهاية (max-1 ، على سبيل المثال 1…10) للمنحدر. يعطي ذلك قيمة بيانات تعادل $2^n – 2$ رمزًا
 
-La tensión aplicada debe ser más amplia que el rango de escala completa para cubrir todas las transiciones. Se muestran 16 pasos entre cada transición de código:
+يجب أن يكون الجهد المطبق أوسع من نطاق القيمة القصوى لتغطية جميع التحولات. يتم عرض 16 خطوة بين كل انتقال للرمز كما هو موضح أدناه:
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221008194207.png)
 
-para el ADC DUT ideal, 16 códigos de salida aparecen al mismo tiempo:
+بالنسبة لـ ADC DUT المثالي ، يظهر 16 رمز إخراج في نفس الأوقات:
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221008194450.png)
 
-Sin embargo, un dispositivo real tendrá una cuenta más de 16 veces para códigos más amplios y menos de 16 veces para códigos más estrechos (pero la suma del total de ocurrencias debe seguir siendo $2^{bits}$ veces de 16):
+ومع ذلك ، سيكون للجهاز الفعلي عدد أكبر من 16 مرة للرموز الأوسع ، وأقل من 16 مرة للأضيق (ولكن مجموع الحدوث الإجمالي يجب أن يكون لا يزال $2^{bits}$ مرة من 16):
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221008194813.png)
 
-#### 3. Calcular el DNL para cada paso
+#### 3. حساب DNL لكل خطوة
 
 $$
 DNL[i]=\frac{Hits[i]-\frac{\sum Hits[i]}{2^n-2}}{\frac{\sum Hits[i]}{2^n-2}}
 $$
 
-Donde $Hits[i]$ representa el recuento real de códigos de salida y $\frac{\sum Hits[i]}{2^n-2}$ representa el recuento ideal de códigos de salida.
+حيث يُمثل $Hits[i]$ عدد الشفرات الفعلية المخرجة، ويُمثل $\frac{\sum Hits[i]}{2^n-2}$ عدد الشفرات المثالية المخرجة.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221008234157.png)
 
-Para un ejemplo de gráfico de histograma como se muestra a continuación:
+لمثال على الرسم البياني للهيستوغرام كما هو موضح أدناه:
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221008234921.png)
 
-para DNL[1] (Código 001),
+بالنسبة لـ DNL[1](الشفرة 001)،
 
-- Recuento real de códigos de salida = 14
-- Recuento ideal de códigos de salida = (14 +18 +15 + 17+ 17 + 15) / (8 -2 ) = 16.
+- عدد الشفرات الفعلية المخرجة = 14
+- عدد الشفرات المثالية المخرجة = (14 +18 +15 + 17+ 17 + 15) / (8 -2 ) = 16.
 
-Por lo tanto, $DNL[1] (Código 001) = (14-16)/16 \ LSB => -0.125 \ LSB$.
+لذلك $DNL[1] (الشفرة 001) = (14-16)/16 \ LSB => -0.125 \ LSB$.
 
-#### 4. Obtener el DNL máximo y mínimo
+#### 4. الحصول على أقصى وأدنى DNL
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221008235342.png)
 
-#### 5. Calcular el INL para cada paso
+#### 5. حساب INL لكل خطوة
 
-INL es el valor acumulativo del primer DNL hasta el DNL[i] (excepto el DNL cero y el DNL de escala completa):
+INL هو القيمة التراكمية لأول DNL إلى DNL[i] (باستثناء DNL صفر و DNL مدى كامل):
 
 $$
 INL[i]=DNL[i]+DNL[i-1]+...+DNL[2]+DNL[1]
 $$
 
-Tenga en cuenta que $DNL[0]$ no se utiliza,
+يرجى ملاحظة أن $DNL[0]$ لا يُستخدم،
 
 $$
 INL[0]=INL[FullScale]=0
 $$
 
-Para un ejemplo de gráfico a continuación,
+لمثال على الرسم البياني أدناه،
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221009201547.png)
 
@@ -207,16 +209,16 @@ INL[3] = DNL[3] + DNL[2] + DNL[1] \\
 INL[3]= 0.0625 * LSB
 $$
 
-#### 6. Obtener el INL máximo y mínimo
+#### 6. الحصول على أقصى وأدنى INL
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221009201838.png)
 
-## Referencias y Agradecimientos
+## المراجع والشكر
 
-- _Fundamentos de Pruebas Utilizando ATE_
-- _Los Fundamentos de las Pruebas de Señal Mixta_Brian-Lowe_
+- _أساسيات الاختبار باستخدام ATE_
+- _أساسيات اختبار الإشارة المختلطة_Brian-Lowe_
 
-> Original: <https://wiki-power.com/>  
-> Esta publicación está protegida por el acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en), debe ser reproducida con atribución.
+> المصدر: <https://wiki-power.com/>  
+> يجب إعادة إنتاج هذه المقالة وفقًا لاتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) مع الإشارة إلى المصدر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

@@ -1,33 +1,33 @@
-# ADC - Parámetros Dinámicos
+# ADC - المعلمات الديناميكية
 
-> Esta publicación solo está disponible en inglés.
+> هذه المقالة متوفرة فقط باللغة الإنجليزية.
 
-## Parámetros Dinámicos
+## المعلمات الديناميكية
 
-Los parámetros dinámicos de ADC contienen principalmente:
+تحتوي المعلمات الديناميكية للمحول التناظري الرقمي (ADC) بشكل رئيسي على:
 
-- Relación señal-ruido (SNR)
-- Distorsión armónica total (THD)
-- Relación señal-ruido y distorsión (SINAD)
-- Error de intermodulación (IM)
+- نسبة الإشارة إلى الضوضاء (SNR)
+- التشويه الطبلي الكلي (THD)
+- نسبة الإشارة إلى الضوضاء والتشويه (SINAD)
+- خطأ التداخل المتعدد (IM)
 
-### Relación señal-ruido (SNR)
+### نسبة الإشارة إلى الضوضاء (SNR)
 
-La **relación señal-ruido (SNR)** de un ADC se define como la relación entre la potencia de la señal medida RMS (excluyendo la distorsión armónica) y la potencia de ruido RMS:
+**نسبة الإشارة إلى الضوضاء (SNR)** للمحول التناظري الرقمي (ADC) تعرف كنسبة للقدرة الجذرية لقدرة الإشارة المقاسة (باستثناء التشويه الطبلي) إلى قدرة الضوضاء الجذرية:
 
 $$
-SNR(dB)=20log(\frac{V_{Señal(RMS)}}{V_{Ruido(RMS)}})
+SNR(dB)=20log(\frac{V_{Signal(RMS)}}{V_{Noise(RMS)}})
 $$
 
-Dado que SNR es una relación de potencia, el $20$ en la ecuación significa el cuadrado de la relación de voltaje.
+نظرًا لأن نسبة الإشارة إلى الضوضاء (SNR) هي نسبة للقدرة، فإن الرقم 20 في المعادلة يعني مربع النسبة بين الجهد.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221009221450.png)
 
-Aunque la distorsión armónica no se incluye en la medición de SNR, se incluyen el ruido de cuantificación, térmico y otros residuales en el convertidor.
+على الرغم من أن التشويه الطبلي ليس مشمولًا في قياس نسبة الإشارة إلى الضوضاء (SNR)، إلا أن التشويه الكمي والحراري والضوضاء الباقية الأخرى في المحول مشمولة.
 
-### Distorsión armónica total (THD)
+### التشويه الطبلي الكلي (THD)
 
-La **distorsión armónica total (THD)** de un ADC se define como la relación entre el fundamental y toda la distorsión armónica:
+**التشويه الطبلي الكلي (THD)** للمحول التناظري الرقمي (ADC) يعرف كنسبة للتشويه الأساسي إلى جميع التشويهات الطبلية:
 
 $$
 THD(dB)=20log(\frac{\sqrt{V^2_{2(RMS)}+V^2_{3(RMS)}+...+V^2_{n(RMS)}}}{V_{1(RMS)}})
@@ -35,53 +35,55 @@ $$
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221009225800.png)
 
-## Cómo probar los parámetros dinámicos
+## كيفية اختبار المعلمات الديناميكية
 
-### Configuración del sistema de prueba
+### إعداد نظام الاختبار
 
-La configuración del sistema de prueba para las pruebas de parámetros dinámicos de ADC es:
+إعداد نظام الاختبار لاختبار المعلمات الديناميكية للمحول التناظري الرقمي (ADC):
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221009230212.png)
 
-La resolución de AC SRC debe ser al menos 2 a 4 bits mejor que DUT.
+يجب أن يكون دقة مصدر التيار المتردد (AC SRC) على الأقل 2 إلى 4 بت أفضل من المحول التناظري الرقمي (ADC).
 
-### Concepto de pruebas
+### مفهوم الاختبارات
 
-ADC tiene un mejor SNR teórico de:
+للمحول التناظري الرقمي (ADC) أفضل نسبة إشارة إلى ضوضاء ممكنة نظريًا:
 
 $$
 SNR = (6.02N + 1.76) dB
 $$
 
-Donde $N$ es el número de bits del ADC.
+حيث $N$ هو عدد بت المحول التناظري الرقمي (ADC).
 
-El procedimiento para probar los parámetros dinámicos de un ADC DUT se enumera a continuación.
+يتم سرد إجراء اختبار المعلمات الديناميكية للمحول التناظري الرقمي (ADC) كما يلي.
 
-#### 1. Hacer una señal de entrada continua con el probador para que el ADC convierta.
+#### 1. إنشاء إشارة مستمرة للمحول التناظري الرقمي (ADC) لتحويلها باستخدام الجهاز الاختباري
 
-Es una práctica común asegurarse de que el reloj analógico/digital esté referenciado a un reloj maestro común, de modo que la relación de la frecuencia de las fuentes de reloj sea fija y sincronizada, lo que hace que los resultados de las pruebas sean altamente repetibles.
+Arabic:
+
+من الممارسة الشائعة ضمان أن الساعة التناظرية / الرقمية مشار إليها بساعة رئيسية مشتركة ، بحيث يتم تثبيت ومزامنة تردد مصادر الساعة ، مما يجعل نتائج الاختبار قابلة للتكرار بشكل كبير.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221011122459.png)
 
-#### 2. Recopilar un conjunto de muestras con el ADC coherentemente
+#### 2. جمع مجموعة من العينات بشكل متماسك باستخدام ADC
 
-Para la fuente de CA:
+بالنسبة لمصدر التيار المتردد:
 
 $$
 \frac{Fs}{Fi}=\frac{Ns}{Ms}
 $$
 
-Donde $Fs$ es la tasa de muestreo de la fuente de CA, $Fi$ es la frecuencia de la señal, $Ns$ es el número de muestras (no tiene que ser un número 2x), $Ms$ es el número de ciclos enteros (no tiene que ser impar).
+حيث $Fs$ هو معدل العينة لمصدر التيار المتردد ، $Fi$ هو تردد الإشارة ، $Ns$ هو عدد العينات (لا يحتاج إلى أن يكون عددًا مضاعفًا للعدد 2) ، $Ms$ هو عدد الدورات الصحيحة (لا يحتاج إلى أن يكون عددًا فرديًا).
 
-Para la captura digital:
+بالنسبة للتقاط الرقمي:
 
 $$
 \frac{Fs(dut)}{Fi}=\frac{Ncap}{Mc}
 $$
 
-Donde $Fs(dut)$ es la tasa de muestreo del ADC, también la tasa de muestreo de la captura digital, $Fi$ es la frecuencia de la señal, $Ncap$ es el número de muestras capturadas (número 2x), $Mc$ es el número de ciclos enteros (impar).
+حيث $Fs(dut)$ هو معدل عينة ADC وأيضًا معدل عينة الالتقاط الرقمي ، $Fi$ هو تردد الإشارة ، $Ncap$ هو عدد العينات الملتقطة (عدد مضاعف للعدد 2) ، $Mc$ هو عدد الدورات الصحيحة (فردي).
 
-#### 3. Enviar el conjunto de muestras de tiempo recopiladas al DSP para realizar el análisis DFT/FFT
+#### 3. إرسال مجموعة العينات الزمنية المجمعة إلى DSP لأداء تحليل DFT / FFT
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221011140834.png)
 
@@ -89,16 +91,16 @@ Donde $Fs(dut)$ es la tasa de muestreo del ADC, también la tasa de muestreo de 
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221011140904.png)
 
-#### 4. Analizar los intervalos de frecuencia de interés utilizando ecuaciones o algoritmos de prueba para SNR, THD y comparar con la especificación
+#### 4. تحليل حاويات التردد المهتمة باستخدام المعادلات أو خوارزميات الاختبار لنسبة الإشارة إلى الضوضاء (SNR) والتوافق الترددي المشوه (THD) ومقارنتها بالمواصفات
 
-#### 5. Tomar una decisión de aprobado / rechazo basada en los resultados
+#### 5. اتخاذ قرار ناجح / فاشل بناءً على النتائج
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- _Fundamentos de prueba utilizando ATE_
-- _The-Fundamentals-of-Mixed-Signal-Testing_Brian-Lowe_
+- _أساسيات الاختبار باستخدام ATE_
+- _أساسيات اختبار الإشارة المختلطة_Brian-Lowe_
 
-> Original: <https://wiki-power.com/>  
-> Esta publicación está protegida por el acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en), debe ser reproducida con atribución.
+> المصدر الأصلي: <https://wiki-power.com/>  
+> يتم حماية هذا المنشور باتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) ، يجب إعادة إنتاجه مع الإشارة إلى المصدر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
