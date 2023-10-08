@@ -22,11 +22,8 @@ jobs:
           CHATGPT_API_KEY: ${{ secrets.CHATGPT_API_KEY }}
           CHATGPT_API_BASE: ${{ secrets.CHATGPT_API_BASE }}
         run: |
-          try:
-            pip install -r tools/requirements_translate.txt && python tools/translate-to-ar-using-chatgpt.py
-          except Exception as e:
-            echo "An error occurred: $e"
-          # 继续执行后续步骤，不管是否发生异常
+          pip install -r tools/requirements_translate.txt
+          python tools/translate-to-ar-using-chatgpt.py || true
       - name: Commit translated
         run: |
           git config --global user.email 824676271@qq.com
