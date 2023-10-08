@@ -1,4 +1,4 @@
-# Contacto y Suscripción
+# التواصل والاشتراك
 
 [![badge](https://img.shields.io/badge/GitHub-282c34?&style=for-the-badge)](https://github.com/linyuxuanlin)
 [![badge](https://img.shields.io/badge/Email-f48222?&style=for-the-badge)](mailto:me@wiki-power.com)
