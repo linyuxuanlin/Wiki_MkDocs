@@ -35,5 +35,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
       - run: pip install -r requirements.txt 
       - run: mkdocs gh-deploy --force
-
-      
