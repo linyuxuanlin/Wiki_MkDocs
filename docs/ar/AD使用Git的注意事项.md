@@ -1,21 +1,21 @@
-# Consideraciones al usar Git con Altium Designer
+# ملاحظات حول استخدام Git في AD
 
-## Gestión de proyectos con Git
+## إدارة المشروع باستخدام Git
 
-Altium Designer admite el uso de Git/SVN para el control de versiones. Si se utiliza Git, simplemente se debe crear un repositorio Git en la ruta del proyecto. Al reiniciar Altium Designer, se verá el estado de la versión en el borde del árbol de archivos:
+يدعم Altium Designer استخدام Git/SVN للتحكم في الإصدارات. إذا كنت تستخدم Git، يمكنك إنشاء مستودع Git مباشرة في مسار المشروع. بعد إعادة تشغيل Altium Designer، سترى حالة الإصدارات بجانب شجرة الملفات:
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20200421100348.png)
 
-El significado de los iconos es el siguiente:
+تعني الرموز التوضيحية ما يلي:
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20200421101221.png)
 
-Se pueden realizar operaciones de Git directamente en el menú `Proyecto (C) - Control de versiones (E)`, incluso se puede enviar directamente a GitHub.
+يمكنك القيام بعمليات Git مباشرة من القائمة "المشروع (C) - التحكم في الإصدارات (E)"، ويمكنك حتى إرسال التعديلات مباشرة إلى GitHub.
 
-## Archivo .gitignore
+## ملف .gitignore
 
-Al utilizar Altium Designer, el software generará algunos archivos de caché (como la carpeta `History`), que no solo ralentizan la velocidad de envío, sino que también contaminan el registro de envío. En este caso, se debe utilizar `.gitignore` para ignorar estos archivos de caché.
+عند استخدام Altium Designer، يقوم البرنامج بإنشاء بعض الملفات المؤقتة (مثل مجلد "History")، وهذه الملفات لا تؤثر فقط على سرعة الإرسال، بل تلوث أيضًا سجل الإرسال. في هذه الحالة، يجب استخدام ملف `.gitignore` لتجاهل هذه الملفات المؤقتة.
 
-El archivo `.gitignore` para Altium Designer incluye lo siguiente:
+يحتوي ملف `.gitignore` المناسب لـ Altium Designer على المحتويات التالية:
 
 ```gitignore
 # ============================= Projects =============================
@@ -96,89 +96,94 @@ El archivo `.gitignore` para Altium Designer incluye lo siguiente:
 
 *.Cam
 # Altium CAMtastic Document
+
+*.Drl
+# CAMtastic NC Drill Binary Data
 ```
 
-# Datos binarios de perforación NC CAMtastic
 
-# ============================= Gerber =============================
+# ============================= جيربر =============================
 *.G[1-30]
-# Datos de capa media 1-30 de CAMtastic Gerber
+# بيانات جيربر لطبقة CAMtastic 1-30
 
-# ============================= Salidas =============================
+# ============================= المخرجات =============================
 *.Drc
-# Informe de verificación de reglas de diseño
+# تقرير فحص القواعد التصميمية
 
 *.Drr
-# Archivo de informe de perforación NC de Altium
+# ملف تقرير الحفر NC لبرنامج Altium
 
 *.Net
-# Archivo de lista de red de Altium
+# ملف قائمة الشبكات لبرنامج Altium
 
 *.Nsx
-# Documento de lista de simulación
+# مستند قائمة الشبكات للمحاكاة
 
 *.OutJob
-# Archivo de trabajo de salida de Altium
+# ملف وظيفة الإخراج لبرنامج Altium
 
 *.Rep
-# Archivo de informe
+# ملف تقرير
 
 *.Rpt
-# Archivo de informe
+# ملف تقرير
 
-# ============================= Scripts =============================
+# ============================= النصوص البرمجية =============================
 *.Bas
-# Documento de script de Altium
+# مستند نص برمجي لبرنامج Altium
 
 *.SrcDoc
-# Documento de script de Altium
+# مستند نص برمجي لبرنامج Altium
 
 *.Tcl
-# Documento de script de Altium
+# مستند نص برمجي لبرنامج Altium
 
-# ============================= Simulación =============================
+# ============================= المحاكاة =============================
 *.Ckt
-# Subcircuito de simulación
+# دائرة فرعية للمحاكاة
 
 *.LaxAn
-# Archivo analógico del analizador lógico
+# ملف تحليل منطقي تناظري
 
 *.LaxDig
-# Archivo digital del analizador lógico
+# ملف تحليل منطقي رقمي
 
 *.Mdl
-# Modelo de simulación
+# نموذج المحاكاة
 
 *.Pld
-# Archivo PLD de CUPL
+# ملف CUPL PLD
 
 *.Pwl
-# Descripción lineal por tramos de simulación
+# وصف خطي قطعي للمحاكاة
 
 *.Sdf
-# Archivo de datos de simulación de Altium
+# ملف بيانات المحاكاة لبرنامج Altium
 
 *.Si
-# Archivo de entrada de simulación de CUPL
+# ملف إدخال المحاكاة CUPL
 
 *.So
-# Archivo de forma de onda digital
+# ملف موجات رقمية
 
-# ============================= Carpetas =============================
+# ============================= المجلدات =============================
 __Previews/
 
 History/
 
-Registros de proyecto para */
+Project Logs for */
 
-# ============================= Otros =============================
+# ============================= أخرى =============================
 *.BomDoc
-# Documento de lista de materiales
+# مستند BOM
 
 *.DBLib
-# Archivo de biblioteca de base de datos de Altium
+# ملف مكتبة قاعدة البيانات لبرنامج Altium
 
 *.DBLink
-# Archivo de enlace de base de datos de Altium
+# ملف رابط قاعدة البيانات لبرنامج Altium
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
