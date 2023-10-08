@@ -3,6 +3,7 @@
 import os
 import openai
 #import env
+import sys
 
 # 设置OpenAI API Key和API Base
 openai.api_key = os.environ.get('CHATGPT_API_KEY')
@@ -160,16 +161,20 @@ try:
             if "> This post is only available in English." in md_content:
                 md_content.replace("> This post is only available in English.","")
                 print("Translating: ", filename)
+                sys.stdout.flush()
                 translate_file(input_file, output_file)
             elif filename=="index.md" or filename=="Contact-and-Subscribe.md" or filename=="WeChat.md":
                 #os.remove(input_file)
                 print("Pass the post: ", filename)
+                sys.stdout.flush()
             else:
                 print("Translating: ", filename)
+                sys.stdout.flush()
                 translate_file(input_file, output_file)
 except Exception as e:
     # 捕获异常并输出错误信息
     print(f"发生了异常：{e}")
+    sys.stdout.flush()
     # 可选：在这里添加其他处理异常的代码
     # 最后，可以选择终止程序
     raise SystemExit(1)  # 1 表示非正常退出，可以根据需要更改退出码
