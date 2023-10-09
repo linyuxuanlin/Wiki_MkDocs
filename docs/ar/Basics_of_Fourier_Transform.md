@@ -1,76 +1,72 @@
-# Fundamentos de la Transformada de Fourier
+# أساسيات تحويل فورييه
 
-> Esta publicación solo está disponible en inglés.
+> هذه المقالة متاحة باللغة الإنجليزية فقط.
 
-Existen varios algoritmos para transformar datos del dominio del tiempo al dominio de la frecuencia, como se muestra a continuación.
+هناك عدة خوارزميات لتحويل البيانات من المجال الزمني إلى المجال الترددي كما يلي.
 
-## Serie de Fourier
+## سلسلة فورييه
 
-Una **Serie de Fourier** es un resumen de cómo crear una forma de onda compleja sumando ondas senoidales puras con diferentes amplitudes y frecuencias, y descomponer una señal compleja en una suma de sinusoides de diferentes amplitudes y frecuencias.
+تُلخص **سلسلة فورييه** في إنشاء موجة معقدة عن طريق جمع موجات جيبية نقية بأمبليتودات وترددات مختلفة، وتحليل إشارة معقدة إلى مجموعة من السينوسويدات ذات الأمبليتودات والترددات المختلفة.
 
-### Condiciones de Dirichlet
+### شروط ديريشليه
 
-Las Condiciones de Dirichlet especifican un conjunto de condiciones que deben cumplirse antes de que una señal pueda descomponerse en una Serie de Fourier:
+تحدد شروط ديريشليه مجموعة من الشروط التي يجب تلبيتها قبل أن يمكن تحليل إشارة إلى سلسلة فورييه:
 
-- La señal es una función matemática, es decir, un solo punto y solo uno de y corresponde a cada punto de x.
-- La señal es periódica.
-- El área limitada por la señal en un período es finita.
+- الإشارة هي دالة رياضية، أي أن هناك نقطة واحدة وفقط تتوافق مع كل نقطة على محور الإكس.
+- الإشارة دورية.
+- المساحة المحصورة بالإشارة على مدى دورة واحدة محدودة.
 
-### Descomposición en una Serie de Fourier
+### تحليل إشارة إلى سلسلة فورييه
 
-Una señal compleja que cumple las Condiciones de Dirichlet puede representarse como una suma de sinusoides:
+يمكن تمثيل إشارة معقدة تلبي شروط ديريشليه عن طريق مجموعة من السينوسويدات:
 
 $$
 f(t)=a_0+A\{\sum_{n=1}^\infty[a_n cos(n \omega_1 t+\phi_n)+b_n sin(n \omega_1 t+\phi_n)]\}
 $$
 
-donde:
+حيث:
 
-- $a_0$ es el componente DC.
-- $A$ es un factor de escala general para todos los componentes armónicos.
-- $\omega_1$ es la frecuencia fundamental.
-- $n$ es un multiplicador entero de la frecuencia fundamental para cada término armónico.
+- $a_0$ هو المكون المستمر.
+- $A$ هو عامل مقياس عام لجميع المكونات الهارمونية.
+- $\omega_1$ هو تردد الأساسي.
+- $n$ هو مضاعف صحيح للتردد الأساسي لكل مصطلح هارموني.
 
-Esto demuestra que no solo podemos sumar una serie de ondas senoidales para crear cualquier otra onda, sino que también que las frecuencias de las sinusoides son múltiplos enteros (armónicos) de una sola frecuencia fundamental.
+يثبت هذا أنه ليس فقط يمكننا جمع سلسلة من موجات السينوس والكوسين لإنشاء أي موجة أخرى، ولكن أيضًا أن ترددات السينوسويدات هي مضاعفات صحيحة (هارمونيات) لتردد أساسي واحد.
 
-## Transformada de Fourier Discreta (DFT)
+## تحويل فورييه الرقمي (DFT)
 
-La **Transformada de Fourier Discreta (DFT)** toma datos de amplitud versus tiempo y los traduce a datos de amplitud versus frecuencia.
+**تحويل فورييه الرقمي (DFT)**: يأخذ بيانات الأمبليتود مقابل الوقت، ثم يترجمها إلى بيانات الأمبليتود مقابل التردد.
 
-Matemáticamente, el algoritmo es una suma de la serie del producto de cada muestra por un número complejo:
+رياضيًا، الخوارزمية هي مجموعة من المجاميع لضرب كل عينة في مركبة معقدة:
 
 $$
 X(b)=\sum_{n=0}^{N-1}x[n](cos(2\pi nb/N)-jsin(2\pi nb/N))
 $$
 
-# Transformada de Fourier Discreta (DFT)
+## تحويل فورييه
 
-La **Transformada de Fourier Discreta (DFT)** es una técnica matemática utilizada para analizar señales en el dominio de la frecuencia. La DFT se utiliza para convertir una señal de tiempo discreto en su representación de frecuencia discreta. La DFT se define como:
+حيث:
 
-$$X_b = \sum_{n=0}^{N-1} x_n e^{-j2\pi bn/N}$$
+- $n$ هو واحد من $N$ العينات.
+- $N$ هو إجمالي عدد العينات.
+- $b$ هو واحد من $B$ حاويات التردد (كل حاوية تمثل نطاق تردد $F_s /N$).
+- $j$ هو المشغل الخيالي.
 
-donde:
+يستخدم خوارزمية DFT كل نقطة عينة في المجموعة من 0 إلى N-1 لكل تردد محلل. تحتوي جميع نقاط العينة N على معلومات حول جميع الترددات B ، وبالتالي يتطلب كل من الترددات B التي يرغب في الحصول على معلومات عنها مجموعة من منتجات العينات الزمنية N. بسبب الأسباب المذكورة أعلاه ، فإن معالجة DFT بطيئة ، لأنه يتطلب $N^2$ حسابات. على سبيل المثال ، يتطلب DFT بـ 2000 نقطة 4 ملايين حساب ، وغالبًا ما تكون حسابات العدد العشري أبطأ من الحسابات الصحيحة.
 
-- $n$ es uno de $N$ muestras.
-- $N$ es el número total de muestras.
-- $b$ es uno de $B$ intervalos de frecuencia (cada intervalo representa un rango de frecuencia de $F_s /N$).
-- $j$ es el operador imaginario.
+## تحويل فورييه سريع (FFT)
 
-El algoritmo DFT utiliza cada punto de muestra en la suma de 0 a N-1 para cada frecuencia analizada. Todos los puntos de muestra N contienen información sobre todas las B frecuencias, por lo que cada una de las B frecuencias para las que se desea información requiere una suma de N productos de muestra de tiempo. Debido a las razones anteriores, procesar una DFT es lento, porque se necesitan $N^2$ cálculos. Por ejemplo, una DFT de 2000 puntos requiere 4 millones de cálculos, a menudo cálculos de punto flotante, que son más lentos que los cálculos enteros.
+**تحويل فورييه سريع (FFT)** يحل مشكلة سرعة DFT عن طريق تخطي أجزاء من المجاميع التي تنتج معلومات مكررة. قواعد استخدام FFT:
 
-## Transformada Rápida de Fourier (FFT)
+- يجب أن يكون عدد نقاط العينة قوة من 2 ($2^n$).
+- عدد الإضافات والضرب هو: $\frac{N}{2}\log_2 N$.
 
-La **Transformada Rápida de Fourier (FFT)** remedia el problema de velocidad de la DFT saltando sobre porciones de las sumas que producen información redundante. Reglas para usar FFT:
+## المراجع والتقديرات
 
-- El número de puntos de muestra debe ser una potencia de 2 ($2^n$).
-- El número de sumas y multiplicaciones es: $\frac{N}{2}\log_2 N$.
-
-## Referencias y Agradecimientos
-
-- _Fundamentos de Pruebas Utilizando ATE_
+- _أساسيات الاختبار باستخدام ATE_
 - _The-Fundamentals-of-Mixed-Signal-Testing_Brian-Lowe_
 
-> Original: <https://wiki-power.com/>  
-> Esta publicación está protegida por el acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en), debe ser reproducida con atribución.
+> المصدر: <https://wiki-power.com/>  
+> يتم حماية هذا المنشور باتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) ، يجب إعادة إنتاجه بالإضافة إلى الإسناد.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

@@ -1,48 +1,48 @@
-# BookJourney - Tienda de libros de segunda mano en miniatura
+# BookJourney - تطبيق متجر الكتب المستعملة
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/书程小驿.jpg)
 
-Repositorio del proyecto: [**linyuxuanlin/BookJourney**](https://github.com/linyuxuanlin/BookJourney)
+مستودع المشروع: [**linyuxuanlin/BookJourney**](https://github.com/linyuxuanlin/BookJourney)
 
-Demo (escanea con WeChat para probar):
+Demo (تجربة المسح الضوئي للويشة):
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/1.jpg)
 
-## Antecedentes
+## الخلفية
 
-Un amigo quería hacer un trabajo secundario vendiendo libros de segunda mano en su círculo de amigos de WeChat, así que me pidió que hiciera una miniatura de WeChat. Como estaba libre durante las vacaciones de verano, decidí practicar. La demanda era crear una miniatura de una tienda en línea, con información de libros nuevos que se publican regularmente, para que los compradores puedan elegir por sí mismos.
+صديق يريد العمل على بعض الأعمال الجانبية، يريد بيع الكتب المستعملة على صفحته في الويشة، لذلك طلب مني أن أقوم بعمل تطبيق ويشة صغير. وفي هذا الصيف الحار، ولم يكن لدي شيء آخر للقيام به، قررت أن أتدرب. المطلوب هو عمل تطبيق تجاري صغير، ووضع معلومات الكتب الجديدة بشكل دوري، والسماح للمشترين بالاختيار.
 
-## Desarrollo
+## التطوير
 
-No quería reinventar la rueda, así que encontré un proyecto de código abierto bastante bueno para una miniatura de tienda en línea: [wechat-app-mall](https://github.com/EastWorld/wechat-app-mall), y lo modifiqué y agregué mi propio estilo. (La búsqueda global es muy útil). El estilo predeterminado de esta miniatura de código abierto no se ajustaba a mi estética. Lo que necesitaba era un diseño que pudiera enfocar la atención del usuario en el contenido que se muestra en una página simple. Después de muchas iteraciones, el estilo básico se ajustó a mis necesidades.
+لم أرد أن أبتكر شيئًا جديدًا، لذلك وجدت مشروعًا مفتوح المصدر لتطبيق تجاري صغير: [wechat-app-mall](https://github.com/EastWorld/wechat-app-mall)، لذلك قمت بتعديله وإضافة الأنماط التي أردتها. (البحث الشامل كان مفيدًا) الأنماط الافتراضية لهذا التطبيق المفتوح المصدر لا تتناسب مع ذوقي. ما أريده هو القدرة على تركيز المستخدم على المحتوى الذي يريد عرضه في صفحة بسيطة. فيما بعد، بعد العديد من الإصدارات، تم تحقيق الأنماط المطلوبة بشكل أساسي.
 
-En cuanto a la funcionalidad, eliminé una serie de cosas relacionadas con la negociación y el intercambio de recompensas, y solo dejé las funciones principales.
+من الناحية الوظيفية، قمت بحذف العديد من الأشياء العشوائية المتعلقة بالتخفيضات والمشاركة المكافأة، وتركت فقط الوظائف الأساسية.
 
-Como no soy responsable de agregar nuevos productos, la edición de productos en el backend debe ser una interfaz gráfica. BookJourney utiliza el backend de [api factory](https://www.it120.cc/), lo que elimina la necesidad de construir su propio servidor y facilita la adición de nuevos productos por parte de los miembros del equipo. Sin embargo, los usuarios gratuitos tienen limitaciones de almacenamiento.
+نظرًا لأنني لست مسؤولًا عن إضافة البضائع الجديدة في المرحلة اللاحقة، يجب أن يكون تحرير البضائع في الخلفية بواسطة واجهة رسومية. يستخدم BookJourney خلفية [api factory](https://www.it120.cc/)، مما يوفر عملية إعداد الخادم الخاص بك ويسهل على أعضاء الفريق إضافة بضائع جديدة. على النقيض من ذلك، يوجد حدود للتخزين للمستخدمين المجانيين.
 
-## Evitar problemas
+## تجنب المشاكل
 
-En el proceso de desarrollo de BookJourney, encontré muchos problemas. Por ejemplo, el problema del pago. El sentido común me dice que debería integrar WeChat Pay para que los usuarios puedan hacer pedidos fácilmente, pero WeChat ha eliminado la ventana de pago de WeChat Pay para los usuarios que se registran en una miniatura personal. (Aunque también considera la seguridad financiera del usuario). La única forma es registrarse en una cuenta empresarial, pero primero necesito una empresa. Después de investigar más, descubrí que no es fácil registrar una empresa. Necesitas encontrar una firma de contabilidad para representarte, tener una dirección de oficina, un contrato de libro rojo, ser revisado por un gerente de banco, el proceso de solicitud dura casi dos o tres meses, el costo es de casi mil yuanes, sin incluir varios cargos adicionales ... La solución es cambiar el botón de pedido directamente a "contactar al servicio al cliente". En este punto, los usuarios solo necesitan tomar una captura de pantalla en la página del "carrito de compras" y enviarla directamente a los miembros del equipo responsables del servicio al cliente para hacer un pedido.
+في عملية تطوير BookJourney، واجهت العديد من المشاكل. على سبيل المثال، مشكلة الدفع، يجب أن يكون من الواضح أنه يجب توفير دفع ويشة لتسهيل عملية الطلب للمستخدمين، ولكن قامت ويشة بحذف نافذة الدفع الخاصة بالتسجيل الشخصي لتطبيق ويشة. (على الرغم من الاهتمام بأمان الأموال للمستخدمين) الطريقة الوحيدة هي تسجيل حساب شركة، ولكن يجب أن يكون لدي شركة أولاً. بعد البحث الأكثر تفصيلاً، وجدت أن تسجيل شركة ليس بالأمر السهل. يجب البحث عن شركة محاسبة للتمثيل، ويجب أن يكون لديك عنوان مكتب، وعقد أحمر، ويجب أن يتم فحصك من قبل مدير البنك. يستغرق ذلك حوالي شهرين إلى ثلاثة أشهر للتقديم، ويتكلف حوالي ألف يوان، ولا يشمل العديد من الرسوم الأخرى ... الحل هو تغيير زر الطلب مباشرة إلى الاتصال بخدمة العملاء. في هذه الحالة، يحتاج المستخدمون فقط إلى التقاط صورة لصفحة "عربة التسوق" وإرسالها مباشرة إلى أعضاء الفريق المسؤولين عن خدمة العملاء، ويمكنهم الطلب بسهولة.
 
-## Preguntas frecuentes
+## الأسئلة الشائعة
 
-P: ¿Por qué se llama BookJourney?
-R: Originalmente tenía un nombre chino bonito llamado "书程小驿", pero descubrí que ya estaba ocupado cuando registré la miniatura, así que tuve que comprometerme.
+س: لماذا اسمه BookJourney؟  
+ج: كان هناك اسم صيني جميل يسمى "Shu Cheng Xiao Yi"، ولكن عند تسجيل التطبيق الصغير وجدت أنه قد تم استخدامه بالفعل، لذلك كان علي التوصل إلى حل وسط.
 
-P: ¿Ganaste dinero?
-R: Ingresos totales de ganancias: ¥16.66 ...
+س: هل كسبت المال؟  
+ج: الإجمالي الإجمالي: ¥ 16.66 ...
 
-## Conclusión
+## الخلاصة
 
-Después del tiempo, este fue un proyecto fallido.
+بعد التجربة، هذا المشروع فشل.
 
-Al principio, no investigué cuidadosamente el mercado ni aclaré las necesidades de los usuarios, solo hice un producto que pensé que era genial. En el futuro, al hacer proyectos, debe prestar atención no solo a la tecnología, sino también al mercado y saber qué tipo de productos necesita el mercado.
+لم يتم البحث بجدية في السوق في المرحلة الأولى، ولم يتم فهم احتياجات المستخدمين، وكان هدفي هو إنشاء منتج أعتقد أنه رائع. في المستقبل، يجب الانتباه إلى أنه لا يمكن التركيز فقط على التقنية، بل يجب أيضًا مراعاة السوق ومعرفة ما يحتاجه السوق من منتجات.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
 - [EastWorld / wechat-app-mall](https://github.com/EastWorld/wechat-app-mall)
 
-> Dirección original del artículo: <https://wiki-power.com/>
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

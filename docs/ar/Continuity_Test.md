@@ -1,62 +1,62 @@
-# Prueba de continuidad
+# اختبار الاستمرارية
 
-> Esta publicación solo está disponible en inglés.
+> هذه المقالة متاحة باللغة الإنجليزية فقط.
 
-La prueba de continuidad contiene la prueba de circuito abierto/cortocircuito y la prueba de cortocircuito de los pines de alimentación. La primera verifica los pines de señal, mientras que la segunda verifica el pin de alimentación.
+يتضمن اختبار الاستمرارية اختبار الفتح / القصر واختبار القصر بين دبوس الطاقة. يتحقق الأول من دبابيس الإشارة ، بينما يتحقق الثاني من دبوس الطاقة.
 
-## Prueba de continuidad de circuito abierto/cortocircuito
+## اختبار الفتح / القصر
 
-La prueba de continuidad de circuito abierto/cortocircuito es para confirmar el contacto electrónico entre el probador y el DUT, y si existe un cortocircuito a otros pines o a tierra.
+يتم اختبار الفتح / القصر للتأكد من الاتصال الإلكتروني بين الجهاز الاختباري والجهاز المختبر ، وما إذا كان هناك قصر إلى دبابيس أخرى أو إلى الأرض.
 
-### Método de prueba
+### طريقة الاختبار
 
-La prueba de continuidad de circuito abierto/cortocircuito se realiza probando los diodos de protección (diodos a VDD y a GND). Por lo general, se utiliza PPMU con el código VBT (también se puede probar con PE y patrón funcional).
+يتم إجراء اختبار الفتح / القصر عن طريق اختبار حماية الثنائيات (الثنائيات إلى VDD وإلى GND). عادة ما يتم استخدام PPMU مع رمز VBT (يمكن أيضًا اختباره باستخدام PE ونمط وظيفي).
 
-#### Prueba a través del diodo de protección de GND
+#### الاختبار من خلال حماية الثنائيات GND
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20220909003924.png)
 
-1. Forzar 0V a todos los demás pines que no se están probando (incluido el pin de alimentación).
-2. Forzar una corriente negativa pequeña (-100uA) en el Pin bajo prueba (con pinza de voltaje).
-3. Medir el voltaje en el Pin bajo prueba:
-   - **Mayor que la especificación máxima (> -0.2V)**: FALLA (Cortocircuito)
-   - **Banda media (-1.5V ~ -0.2V)**: APROBADO
-   - **Menor que la especificación mínima (<-1.5V)**: FALLA (Circuito abierto)
+1. قم بإجبار 0 فولت على جميع الدبابيس الأخرى التي لا يتم اختبارها (بما في ذلك دبوس الطاقة).
+2. قم بإجبار تيار سلبي صغير (-100uA) على دبوس التحت الاختبار (مع قيد الجهد).
+3. قم بقياس الجهد على دبوس التحت الاختبار:
+   - **أعلى من المواصفات القصوى(>-0.2V)**: رسوب (قصر)
+   - **في المنتصف(-1.5V~-0.2V**): نجاح
+   - **أقل من المواصفات الدنيا(<-1.5V)**: رسوب (فتح)
 
-#### Prueba a través del diodo de protección de VDD
+#### الاختبار من خلال حماية الثنائيات VDD
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20220909004139.png)
 
-1. Forzar 0V a todos los demás pines que no se están probando (incluido el pin de alimentación).
-2. Forzar una corriente positiva pequeña (+100uA) en el Pin bajo prueba (con pinza de voltaje).
-3. Medir el voltaje en el Pin bajo prueba:
-   - **Mayor que la especificación máxima (> 1.5V)**: FALLA (Cortocircuito)
-   - **Banda media (0.2V ~ 1.5V)**: APROBADO
-   - **Menor que la especificación mínima (<0.2V)**: FALLA (Circuito abierto)
+1. قم بإجبار 0 فولت على جميع الدبابيس الأخرى التي لا يتم اختبارها (بما في ذلك دبوس الطاقة).
+2. قم بإجبار تيار موجب صغير (+100uA) على دبوس التحت الاختبار (مع قيد الجهد).
+3. قم بقياس الجهد على دبوس التحت الاختبار:
+   - **أعلى من المواصفات القصوى(>1.5V)**: رسوب (قصر)
+   - **في المنتصف(0.2V~1.5V)**: نجاح
+   - **أقل من المواصفات الدنيا(<0.2V)**: رسوب (فتح)
 
-## Prueba de cortocircuito de los pines de alimentación
+## اختبار القصر بين دبوس الطاقة
 
-La prueba de cortocircuito de pines de alimentación es para verificar si hay un cortocircuito desde el pin VDD hasta el pin GND, lo que causará daños al DUT o al probador. La prueba de cortocircuito de pines de alimentación siempre se ejecuta inmediatamente después de la prueba de continuidad abierta/cerrada, y cuando falla, se apagará la alimentación del dispositivo y se rechazará el DUT.
+يتم اختبار القصر بين دبوس الطاقة للتحقق مما إذا كان هناك قصر بين دبوس VDD و GND ، مما سيتسبب في تلف الجهاز المختبر أو الجهاز الاختباري. يتم تشغيل اختبار القصر بين دبوس الطاقة على الفور بعد اختبار الفتح / القصر ، وعندما يفشل ، يتم إيقاف تشغيل الجهاز وسيتم رفض الجهاز المختبر.
 
-### Método de prueba
+### طريقة الاختبار
 
-La prueba de cortocircuito de pines de alimentación se realiza aplicando un pequeño voltaje a VDD y midiendo la corriente que entra en él para verificar si existe un cortocircuito. Por lo general, se utiliza DCVI con código VBT.
+يتم إجراء اختبار Power Pin Short عن طريق تطبيق جهد صغير على VDD وقياس التيار الذي يتدفق إليها للتحقق مما إذا كان هناك اختصار. عادة ما يتم استخدام DCVI مع رمز VBT.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20220910155805.png)
 
-1. Aplicar un pequeño voltaje a VDD (100 mV) (con pinza amperimétrica).
-2. Forzar todos los demás pines a 0V con PPMU.
-3. Medir la corriente que fluye hacia el pin VDD:
-   - **Mayor que la especificación máxima (>20uA)**: FALLA (Cortocircuito)
-   - **Banda media (-1uA~20uA)**: APROBADO
-   - **Menor que la especificación mínima (<-1uA)**: FALLA
+1. تطبيق جهد صغير على VDD (100 مللي فولت) (مع مشبك التيار).
+2. إجبار جميع الأرجل الأخرى على 0 فولت باستخدام PPMU.
+3. قياس التيار الذي يتدفق إلى دبوس VDD:
+   - **أعلى من المواصفات القصوى (> 20 ميكروأمبير)**: رسوب (اختصار)
+   - **في المنتصف (-1 ميكروأمبير ~ 20 ميكروأمبير)**: نجاح
+   - **أقل من المواصفات الدنيا (<-1 ميكروأمبير)**: رسوب
 
-## Referencias y Agradecimientos
+## المراجع والتقديرات
 
-- _Los fundamentos de la prueba de semiconductores digitales_
-- _Fundamentos de la prueba utilizando ATE_
+- _أساسيات اختبار الشرائح الإلكترونية الرقمية_
+- _أساسيات الاختبار باستخدام ATE_
 
-> Original: <https://wiki-power.com/>  
-> Esta publicación está protegida por el acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) y debe ser reproducida con atribución.
+> المصدر الأصلي: <https://wiki-power.com/>  
+> يتم حماية هذا المنشور باتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) ويجب إعادة إنتاجه بالإضافة إلى الإشارة إلى المصدر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

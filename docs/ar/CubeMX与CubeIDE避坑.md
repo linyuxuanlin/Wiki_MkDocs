@@ -1,48 +1,51 @@
-# CubeMX y CubeIDE: evita problemas
+# تجنب الأخطاء في CubeMX و CubeIDE
 
-## El nombre y la ruta del proyecto no pueden estar en chino
+## لا يمكن أن يكون مسار اسم المشروع باللغة الصينية
 
-Como se indica, el nombre y la ruta del proyecto deben estar en inglés, de lo contrario pueden aparecer errores extraños.
+كما هو مذكور في العنوان، يجب أن يكون اسم ومسار المشروع باللغة الإنجليزية، وإلا فقد يحدث أخطاء غريبة وغير متوقعة.
 
-## El puerto de depuración está desactivado por defecto
+## تم إغلاق منفذ التصحيح افتراضيًا
 
-Descripción del problema:
+وصف المشكلة:
 
-- Se detecta ST-Link, pero no se detecta la placa, aparece el mensaje `No target connected`.
-- La descarga funciona la primera vez, pero no la segunda ni las siguientes.
+- يتم الكشف عن ST-Link، ولكن لا يتم الكشف عن اللوحة، ويظهر رسالة "No target connected".
+- يتم التنزيل بنجاح في المرة الأولى، ولكن لا يتم التنزيل في المرات اللاحقة.
 
-Causa:
+السبب:
 
-- CubeMX desactiva el puerto de depuración.
+- يتم إغلاق منفذ التصحيح في CubeMX.
 
-Solución (temporal):
+الحل (لهذه المرة):
 
-- Utiliza la herramienta **STM32 ST-LINK Utility** para restaurar el firmware de fábrica.
-- O utiliza el método proporcionado en [**este artículo**](https://www.jianshu.com/p/cea16b641c3d) (a través de Keil).
+- استخدم أداة **STM32 ST-LINK Utility** لتحميل البرنامج الأصلي وإنقاذ الوضع.
+- أو استخدم الطريقة الموضحة في [**هذه المقالة**](https://www.jianshu.com/p/cea16b641c3d) (عبر Keil).
 
-Solución (a largo plazo):
+الحل (على المدى الطويل):
 
-- En la configuración SYS de CubeMX, cambia la opción de depuración a Serial Wire (SW).
+- في إعدادات SYS في CubeMX، قم بتغيير خيار Debug إلى Serial Wire (SW).
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20200531162352.jpg)
 
-## Los comentarios en chino aparecen como caracteres extraños en STM32CubeIDE
+## تشوش التعليقات الصينية في STM32CubeIDE
 
-Si el código se importa desde Keil, asegúrate de que la codificación original sea GB2312.
+إذا كان الكود مستوردًا من Keil، فيجب التأكد من أن الترميز الأصلي هو GB2312.
 
-Haz clic en la barra de menú - `Window` - `Preferences` - `General` - `Apperance` - `Colors and Fonts` - `C/C++` - `Editor` - `C/C++ Editor Text Font`, haz clic en `Edit` a la derecha, asegúrate de que la fuente admita caracteres chinos (como Microsoft YaHei), y confirma que el script es `中文 GB2312`.
+انقر على شريط القوائم بالترتيب - `Window` - `Preferences` - `General` - `Apperance` - `Colors and Fonts` - `C/C++` - `Editor` - `C/C++ Editor Text Font`، ثم انقر على `Edit` على اليمين، وتأكد من دعم الخطوط الصينية (مثل Microsoft YaHei)، وتأكد من أن النص البرمجي هو `Chinese GB2312`.
 
-Si aún no se soluciona, haz clic con el botón derecho en el nombre del proyecto en el árbol de archivos de la izquierda, haz clic en `Properties`, cambia la codificación de fuente en el panel `Resource` a `GBK` (si no aparece, escríbelo directamente), y guarda los cambios.
+إذا لم يتم حل المشكلة، فيمكنك النقر بزر الماوس الأيمن على اسم المشروع في شجرة الملفات على اليسار، والنقر على الخاصية الأخيرة `Properties`، وتغيير ترميز الخط في لوحة `Resource` إلى `GBK` (إذا لم يكن متاحًا، فقط اكتبه مباشرة)، وحفظ التغييرات.
 
-## Cómo cambiar el idioma de STM32CubeIDE a chino
+## تعريب STM32CubeIDE
 
-Abre el enlace **<http://mirrors.ustc.edu.cn/eclipse/technology/babel/update-site/>**, selecciona el directorio de datos más reciente (por ejemplo, `mirrors.ustc.edu.cn/eclipse/technology/babel/update-site/`), y copia el enlace.
+افتح الرابط **<http://mirrors.ustc.edu.cn/eclipse/technology/babel/update-site/>**، واختر أحدث دليل بيانات (على سبيل المثال، يمكنني اختيار `mirrors.ustc.edu.cn/eclipse/technology/babel/update-site/`)، وانسخ عنوان الرابط.
 
-En la barra de menú de STM32CubeIDE, selecciona `Help` - `Install New Software`, haz clic en `Add`, escribe `language` en el campo `Name`, pega el enlace que acabas de copiar en el campo `Location`, y haz clic en `Add`. En la ventana emergente, selecciona el paquete de idioma chino simplificado, instálalo y reinicia el software según las instrucciones.
+في شريط القوائم في STM32CubeIDE، اختر `Help` - `Install New Software`، وانقر على `Add`، وأدخل `language` في الحقل `Name`، وأدخل عنوان الرابط الذي تم نسخه في الحقل `Location`، ثم اختر حزمة اللغة الصينية المبسطة، وبعد التثبيت، أعد تشغيل البرنامج واتبع التعليمات.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [STM32 调试器配置异常导致的问题与解决方法（一）](https://www.jianshu.com/p/cea16b641c3d)
-- [STM32cubeIDE 环境配置安装-汉化-主题设置](https://blog.csdn.net/wct3344142/article/details/104142863)
+- [حل المشكلات الناجمة عن تكوين مصحح STM32 (1)](https://www.jianshu.com/p/cea16b641c3d)
+- [تثبيت وتعريب STM32cubeIDE وتعيين السمات](https://blog.csdn.net/wct3344142/article/details/104142863)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

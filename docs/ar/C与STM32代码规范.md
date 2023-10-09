@@ -1,7 +1,7 @@
-# Normas de codificación de C y STM32
+# معايير الكود للـ C و STM32
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Código de normas V3.0.pdf](https://github.com/linyuxuanlin/File-host/blob/main/docs/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83V3.0.pdf)
+- [معايير الكود V3.0.pdf](https://github.com/linyuxuanlin/File-host/blob/main/docs/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83V3.0.pdf)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

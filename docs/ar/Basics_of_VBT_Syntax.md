@@ -1,38 +1,38 @@
-# Básicos de la sintaxis de VBT
+# أساسيات بناء جمل VBT
 
-> Esta publicación solo está disponible en inglés.
+> هذه المقالة متاحة باللغة الإنجليزية فقط.
 
-## Objetos de datos
+## كائنات البيانات
 
-### TheHdw y TheExec
+### TheHdw و TheExec
 
-Hay dos manejadores globales en la interfaz VBT, para operar el hardware del probador:
+هناك مقابضان عالميتان في واجهة VBT لتشغيل عتاد الاختبار:
 
-- **TheHdw (El Hardware)**: Soporte para acceder y controlar los instrumentos, e incluye funciones más generales del hardware, como alarmas.
-- **TheExec (El Ejecutivo)**: Para controlar las funciones generales del programa de prueba, como ejecutar la prueba, manejar los resultados de la prueba y registrar el registro de datos.
+- **TheHdw (العتاد)**: يدعم الوصول والتحكم في الأدوات، ويتضمن المزيد من الوظائف العامة للعتاد، مثل التنبيهات.
+- **TheExec (التنفيذي)**: للتحكم في وظائف برنامج الاختبار العامة، مثل تنفيذ الاختبار، ومعالجة نتائج الاختبار، وتسجيل دفتر البيانات.
 
-A continuación se muestran ejemplos de su uso:
+فيما يلي أمثلة على استخدامها:
 
 ```vbscript
-' Establecer el rango actual del pin p0
+' تعيين نطاق دبوس p0 الحالي
 TheHdw.DCVI.Pins("p0").CurrentRange = 0.002
 ```
 
 ```vbscript
-' Obtener la ruta del archivo de salida STDF actual
+' الحصول على مسار ملف STDF الإخراج الحالي
 CurrStdfFile = TheExec.Datalog.Setup.STDFOutputFile
 ```
 
-### Otros objetos de datos
+### كائنات البيانات الأخرى
 
-Se incluyen más manejadores globales en la interfaz VBT, como **PinListData**, **DSPWave**, **RtaDataObj (Objeto de datos de ajuste en tiempo de ejecución)** y así sucesivamente. Continuaremos explorándolos en futuros artículos.
+تتضمن واجهة VBT مقابض عالمية أخرى، مثل **PinListData**، **DSPWave**، **RtaDataObj (كائن بيانات التعديل الزمني للتشغيل)** وغيرها. سنستكشفها في مقالات مستقبلية.
 
-## Acceso por instrumento o por pin
+## الوصول بواسطة الأداة أو الدبوس
 
-La sintaxis VBT admite el acceso al hardware del probador **por instrumento** o **por pin**, son equivalentes en el resultado. A continuación se muestran ejemplos de su uso:
+تدعم بناء جمل VBT الوصول إلى عتاد الاختبار **بواسطة الأداة** أو **بواسطة الدبوس**، وهما متكافئان في النتيجة. فيما يلي أمثلة على استخدامها:
 
 ```vbscript
-' Acceso por instrumento, aplica un solo instrumento a diferentes pines
+' الوصول بواسطة الأداة، يطبق أداة واحدة على دبابيس مختلفة
 With TheHdw.instrument
     .Pins("Vcc").CurrentLimit = 0.75
     .Pins("Vee").ForceValue = 3.2
@@ -40,34 +40,34 @@ End With
 ```
 
 ```vbscript
-' Acceso por pin, define una lista de pines y luego usa diferentes instrumentos
+' الوصول بواسطة الدبوس، يحدد قائمة دبابيس ثم يستخدم أدوات مختلفة
 With TheHdw.Pins("Vcc,Vdd,Vee")
     .instrument1.Disconnect
     .instrument2.CurrentLimit = 0.75
 End With
 ```
 
-## Estructura del código VBT
+## بنية كود VBT
 
-Un archivo de código VBT debe tener el nombre `VBT_xxx`, y el nombre debe ser único.
+يجب أن يكون اسم ملف VBT بتسمية `VBT_xxx`، ويجب أن يكون الاسم فريدًا.
 
-El **valor de retorno** de una función VBT se espera que sea 0 por defecto, o puede causar resultados inesperados.
+يتوقع أن يكون **قيمة الإرجاع** لدالة VBT هي 0 بشكل افتراضي، أو قد تتسبب في نتائج غير متوقعة.
 
-Para los parámetros de **timing** y **levels**, puedes agregarlos en el Editor de Instancias o en la hoja de Prueba Instantánea, no es necesario incluirlos en la función VBT. Y puedes controlar si habilitarlos en la función VBT siguiendo este uso:
+بالنسبة للمعلمات المتعلقة بـ **التوقيت** و **المستويات** ، يمكنك إضافتها في محرر النموذج أو ورقة الاختبار الفوري ، ولا يلزم تضمينها في وظيفة VBT. ويمكنك التحكم في تمكينها في وظيفة VBT باستخدام الاستخدام التالي:
 
 ```vbscript
 TheHdw.Digital.ApplyLevelsTiming
 ```
 
-Para los **límites de prueba**, puedes usar el siguiente código:
+بالنسبة لـ **حدود الاختبار** ، يمكنك استخدام الكود التالي:
 
 ```vbscript
 TheExec.Flow.TestLimit
 ```
 
-para comparar un valor de resultado con límites bajos/alto, y enviar el resultado de la prueba (`TL_SUCCESS`/`TL_ERROR`) y otra información al registro de datos.
+لمقارنة قيمة النتيجة مع الحدود المنخفضة / العالية ، وإرسال نتيجة الاختبار (`TL_SUCCESS` / `TL_ERROR`) وغيرها من المعلومات إلى دفتر السجلات.
 
-Para ver más claramente **la estructura básica** de una función de prueba VBT, aquí hay un ejemplo:
+لرؤية **الهيكل الأساسي** لوظيفة اختبار VBT بوضوح ، هناك عينة:
 
 ```vbscript
 Public Function VBTLeakTest(Pins As PinList, ForceVoltage As Double, PrePattern As PatternSet) As Long
@@ -75,23 +75,23 @@ Public Function VBTLeakTest(Pins As PinList, ForceVoltage As Double, PrePattern 
 
     Dim measure_results As New PinListData
 
-    ' Configurar timing y levels para el Patrón de Preacondicionamiento
+    ' Set up timing and levels for Preconditioning Pattern
     TheHdw.Digital.ApplyLevelsTiming ConnectAllPins:=True, loadLevels:=True, loadTiming:=True, relaymode:=tlPowered
 
-    ' Ejecutar el Patrón de Preacondicionamiento y probar para Pasar/Fallar
+    ' Run Preconditioning Pattern and test for Pass/Fail
     TheHdw.Patterns(PrePattern).test pfAlways, 0
 
-    ' Forzar V, Medir I
+    ' Force V, Measure I
     With TheHdw.DCVI.Pins(Pins)
         .Mode = tlDCVIModeVoltage
-            ... ' Código adicional
+            ... ' Addition code
         measure_results = .Meter.Read
     End With
 
-    ' Probar usando límites en el flujo y escribir en el registro de datos
+    ' Test using limits in flow and write datalog
     Call TheExec.Flow.TestLimit(resultval:=measure_results, unit:=unitAmp, forceval:=ForceVoltage, forceunit:=unitVolt, ForceResults:=tlForceFlow)
 
-    ' Restablecer la variable
+    ' Reset the variable
     measure_results = Nothing
 
     Exit Function
@@ -100,17 +100,17 @@ errHandler:
 End Function
 ```
 
-## Multi-sitio
+## موقع متعدد
 
 🚧
 
-## Operación de PinList
+## عمليات PinList
 
 🚧
 
-## Consejos en VBA
+## نصائح في VBA
 
-- Evite guardar código en VBA, ya que esto creará enlaces internos en el libro de trabajo. En su lugar, guarde en la interfaz de DataTool.
-- Si encuentra el error "Procedimiento demasiado grande", es posible que esté en contra de la restricción de Excel de 64K de límite por archivo vb. Pero en realidad, es posible que haya olvidado cambiar la versión de 32 bits a 64 bits del sistema Windows.
+- تجنب حفظ الشفرة في VBA ، لأن هذا سيخلق روابط داخلية صعبة في دفتر العمل. بدلاً من ذلك ، يجب حفظها في واجهة DataTool.
+- إذا واجهت خطأ "الإجراء كبير جدًا" ، فقد تكون ضد قيود Excel البالغة 64 كيلو بايت لكل ملف vb. ولكن في الواقع ، من الممكن أنك نسيت تحويل الإصدار من 32 بت إلى 64 بت من نظام Windows.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

@@ -1,16 +1,16 @@
-# Fundamentos de la Integridad de Señal y Potencia 🚧
+# أساسيات سلامة الإشارة والطاقة 🚧
 
-> Esta publicación solo está disponible en inglés.
+> هذه المقالة متاحة فقط باللغة الإنجليزية.
 
-## Referencias y Agradecimientos
+## المراجع والاعترافات
 
 - _Signal and Power Integrity - Simplified, 3rd Edition_
 
-> Original: <https://wiki-power.com/>  
-> Esta publicación está protegida por el acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en), y debe ser reproducida con atribución.
+> المصدر: <https://wiki-power.com/>  
+> هذه المقالة محمية باتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) ويجب إعادة الإنتاج مع الإشارة إلى المصدر.
 
-La **Integridad de Señal (SI)** se refiere a la calidad de la señal en la línea de señal. Una buena integridad de señal significa que el nivel en la línea de señal alcanza el valor preestablecido como se esperaba, ni más ni menos.
+**سلامة الإشارة (SI)** تشير إلى جودة الإشارة على خط الإشارة. تعني جودة سلامة الإشارة أن المستوى على خط الإشارة يصل إلى القيمة المحددة متوقعة، دون زيادة أو نقصان.
 
-A medida que aumentan las frecuencias de reloj y las tasas de datos, identificar y resolver problemas de integridad de señal se vuelve crítico.
+مع زيادة ترددات الساعة ومعدلات البيانات، يصبح تحديد وحل مشاكل سلامة الإشارة أمرًا حاسمًا.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

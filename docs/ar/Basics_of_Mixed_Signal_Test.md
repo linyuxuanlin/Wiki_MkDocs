@@ -1,125 +1,125 @@
-# Fundamentos de la Prueba de Señal Mixta
+# أساسيات اختبار الإشارة المختلطة
 
-> Esta publicación solo está disponible en inglés.
+> هذا المنشور متاح باللغة الإنجليزية فقط.
 
-La señal mixta contiene tanto señales analógicas como digitales. Los dispositivos que procesan señales mixtas típicamente incluyen ADC, DAC, interruptores y multiplexores analógicos, amplificadores de retención de muestra, entre otros.
+تحتوي الإشارة المختلطة على إشارات تماثلية ورقمية. تشمل الأجهزة التي تعالج الإشارة المختلطة عادة ADCs و DACs ومفاتيح ومضاعفات تماثلية ومكبرات عينة واحتفاظ بها ، وما إلى ذلك.
 
-Como parte de ella, las señales analógicas son señales que usamos en el mundo real, como la voz o la temperatura, son continuas tanto en el tiempo como en la amplitud. Para procesar señales analógicas en computadoras, necesitamos convertirlas en señales digitales, ya que son discretas tanto en el tiempo como en la amplitud.
+كجزء منها ، الإشارات التماثلية هي الإشارات التي نستخدمها في العالم الحقيقي مثل الصوت أو درجة الحرارة ، وهي مستمرة في الوقت والتردد. لتحويل الإشارات التماثلية إلى الحواسيب ، نحتاج إلى تحويلها إلى إشارات رقمية ، حيث تكون م diskreet في الوقت والتردد.
 
-## Teoría del muestreo
+## نظرية العينات
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220929094314.png)
+to_be_replace [4] img / 20220929094314.png)
 
-La teoría del muestreo se aplica a la señal para que sea periódica, o se introducirán errores.
+تنطبق نظرية العينات على الإشارة لتكون دورية ، أو سيتم إدخال أخطاء.
 
-### Teorema de Nyquist
+### نظرية نايكويست
 
-Usamos el **Teorema de Nyquist** para obtener la frecuencia de muestreo mínima al muestrear señales:
+نستخدم **نظرية نايكويست（奈奎斯特定理）** للحصول على أدنى تردد عينة عند عين الإشارات:
 
 $$
 F_s≥2F_i
 $$
 
-Debemos muestrear a una frecuencia mayor que el doble de la frecuencia más alta de interés, para poder recrear una señal a partir de sus muestras y evitar perder información.
+يجب علينا أن نعين عينة بمعدل أعلى من ضعف أعلى تردد مهم ، لنتمكن من إعادة إنشاء إشارة من عيناتها وتجنب فقدان المعلومات.
 
-Si muestreamos a una frecuencia menor que la tasa de Nyquist, exhibirá un fenómeno llamado **aliasing** (componentes no deseadas) cuando intentemos convertirlo de vuelta a una señal continua en el tiempo, y algunas de las frecuencias en la señal original pueden perderse.
+إذا قمنا بعينة بتردد أقل من معدل نايكويست ، فسيظهر ظاهرة تسمى **التشويش (混叠)** (مكونات غير مرغوب فيها) عند محاولة تحويلها إلى إشارة زمنية مستمرة ، وقد يتم فقدان بعض الترددات في الإشارة الأصلية.
 
-Para minimizar el problema de aliasing, necesitamos eliminar la frecuencia mayor que $\frac{F_s}{2}$ de la señal, a través del filtro antialiasing (por ejemplo, filtro pasa bajos):
+لتقليل مشكلة التشويش ، نحتاج إلى إزالة التردد الأعلى من $\frac{F_s}{2}$ من الإشارة ، عن طريق مرشح مضاد للتشويش (على سبيل المثال ، مرشح منخفض المرور):
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220930154335.png)
+to_be_replace [4] img / 20220930154335.png)
 
-### Muestreo Coherente
+### عينات متماسكة
 
-Si un conjunto de muestras de tiempo no contiene un número entero preciso de ciclos, se producirá **fugas espectrales**.
+إذا لم تحتوي مجموعة العينات الزمنية على عدد صحيح دقيق من الدورات ، فسيحدث **تسرب طيفي (频谱泄露)**.
 
-La **muestreo coherente** es para garantizar la continuidad del muestreo y evitar la fuga espectral, garantiza que un conjunto de muestras (una serie de muestras que representan la señal analógica) tenga una relación fija y bien definida entre la frecuencia de muestreo $F_s$, el número de muestras $N$, la frecuencia de la señal de prueba $F_i$ y el número de períodos de señal de prueba muestreados $M$:
+**العينة المتسقة (Coherent sampling)** هي ضمان استمرارية العينات ومنع تسرب الطيف، حيث يضمن أن يكون لدى مجموعة العينات (سلسلة من العينات التي تمثل الإشارة التناظرية) علاقة ثابتة وجيدة التعريف بين تردد العينة $F_s$، عدد العينات $N$، تردد إشارة الاختبار $F_i$، وعدد فترات إشارة الاختبار المعدة $M$:
 
 $$
 \frac{M}{N}=\frac{F_i}{F_s}
 $$
 
-El tiempo total requerido para tomar todas las muestras se llama **Período de Prueba Unitario (UTP)** y requiere $M$ ciclos de la señal de prueba, que tiene una frecuencia de $F_i$.
+الوقت الإجمالي اللازم لأخذ جميع العينات يسمى **فترة الاختبار الوحدية (UTP)** ويتطلب $M$ دورات من إشارة الاختبار، التي لديها تردد $F_i$.
 
-Por ejemplo, si queremos calcular el $F_s$ de una onda sinusoidal continua repetitiva, donde $F_i$ es 1kHz, $M=3$ y $N=16$:
+على سبيل المثال، إذا أردنا حساب $F_s$ لموجة جيب متكررة مستمرة، حيث $F_i$ هو 1 كيلو هرتز، $M=3$ و $N=16$:
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20220930164712.png)
 
-Entonces podemos concluir que $F_s=5.333kHz$.
+يمكننا الاستنتاج أن $F_s=5.333 كيلو هرتز$.
 
-Consejos importantes de muestreo coherente:
+نصائح مهمة للعينة المتسقة:
 
-- Aumentar $M$ y/o $N$ aumentará tanto la precisión como el tiempo de prueba.
-- $M$ y $N$ deben ser enteros.
-- $N$ debe ser una potencia de 2 al usar la Transformada Rápida de Fourier (FFT).
-- Se recomienda que $M$ y $N$ sean primos entre sí para que cada muestra proporcione información única. Descrito a continuación.
+- زيادة $M$ و / أو $N$ سيزيد من الدقة ووقت الاختبار.
+- يجب أن يكون $M$ و $N$ عددًا صحيحًا.
+- يجب أن يكون $N$ قوة عدد 2 عند استخدام تحويل فورييه سريع (FFT).
+- يوصى بأن يكون $M$ و $N$ متباينين بحيث تعطي كل عينة معلومات فريدة. وصفت فيما يلي.
 
-Si $M$ y $N$ no son primos entre sí ($M=3,N=12$), las muestras se toman en la misma posición en cada ciclo, por lo que no hay información nueva:
+إذا لم يكن $M$ و $N$ متباينين بحيث تعطي كل عينة معلومات فريدة ($M=3،N=12$)، يتم أخذ العينات في نفس الموضع في كل دورة، لذلك لا يوجد معلومات جديدة:
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20220930170300.png)
 
-Si $M$ y $N$ son primos entre sí ($M=3,N=16$), por lo que son primos entre sí y cada muestra es discreta, por lo que proporciona información única:
+إذا كان $M$ و $N$ متباينين بحيث تعطي كل عينة معلومات فريدة ($M=3،N=16$)، فإنها متباينة بحيث تكون كل عينة م diskreet، لذلك تعطي معلومات فريدة:
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20220930170343.png)
 
-## Algoritmos comunes de análisis de frecuencia
+## خوارزميات تحليل التردد الشائعة
 
-Para $N$ muestras de señal en el dominio del tiempo, hay $N$ valores de señal en el dominio de la frecuencia, y hay $N/2$ valores de espectro de potencia en el dominio de la frecuencia. A continuación se muestra un ejemplo típico de componentes espectrales:
+لـ $N$ عينات إشارة المجال الزمني، هناك $N$ قيم إشارة المجال الترددي، وهناك $N/2$ قيمة طيف الطاقة في المجال الترددي. يتم عرض مثال على مكونات الطيف التالية:
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221002145846.png)
 
-Existen varios parámetros para describir las componentes espectrales de la siguiente manera:
+هناك عدة معلمات لوصف المكونات الطيفية على النحو التالي:
 
-- Relación señal-ruido (SNR)（信噪比）
-- Distorsión armónica total (THD)（总谐波失真）
-- Relación señal-ruido y distorsión (SINAD)（信纳比）
-- Distorsión de intermodulación (IM)（互调失真）
-- Rango dinámico libre de espurias (SFDR)（无杂散动态范围）
+- نسبة الإشارة إلى الضوضاء (SNR) (Signal To Noise Ratio)
+- التشويه الهارموني الكلي (THD) (Total Harmonic Distortion)
+- نسبة الإشارة إلى الضوضاء والتشويه (SINAD) (Signal to Noise and Distortion)
+- التشويه بين الدمج (IM) (Intermodulation Distortion)
+- نطاق الديناميكية الحرة من الأخطاء (SFDR) (Spurious Free Dynamic Range)
 
-### Relación señal-ruido (SNR)
+### نسبة الإشارة إلى الضوضاء (SNR)
 
-La **relación señal-ruido (SNR)** se deriva almacenando primero el valor del fundamental (potencia de la señal):
+يتم استخراج نسبة الإشارة إلى الضوضاء (SNR) عن طريق تخزين قيمة الأساسية (قوة الإشارة) أولاً:
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221002151235.png)
 
-Luego se elimina la componente de corriente continua y las armónicas (generalmente hasta 5):
+ثم إزالة المكون المستمر والهارمونيات (عادة حتى 5):
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221002151402.png)
 
-A continuación, se suman todos los bins del espectro de potencia restante (la potencia del ruido) medido por el valor RMS (raíz cuadrada media, el voltaje analógico que es igual a un voltaje de corriente continua que contiene la misma cantidad de energía, para una onda sinusoidal, el valor RMS es 0,707 veces el valor pico):
+ثم يتم جمع جميع البنود في طيف الطاقة المتبقية (قوة الضوضاء) المقاسة بقيمة RMS (Root Mean Squared، وهي الجهد التناظري الذي يساوي جهد DC يحتوي على نفس كمية الطاقة، وبالنسبة لموجة الجيب، فإن قيمة RMS تساوي 0.707 مرات القيمة القصوى):
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221002151646.png)
 
-En última instancia, podemos concluir que:
+ويمكننا في النهاية الاستنتاج بأن:
 
 $$
-{SNR}(dB)=10log_{10}(\frac{{Fundamental}}{{Potencia\ de\ ruido}})
+{SNR}(dB)=10log_{10}(\frac{{Fundamental}}{{Noise\ Power}})
 $$
 
-SNR se expresa generalmente en decibelios (dB) y a menudo es un valor positivo (suponiendo que la potencia fundamental es mucho mayor que la potencia del ruido).
+وعادة ما يتم التعبير عن SNR بالديسيبل (dB) ، وغالبًا ما يكون قيمة إيجابية (بشرط أن تكون قوة الإشارة الأساسية أكبر بكثير من قوة الضوضاء).
 
-### Distorsión armónica total (THD)
+### التشويه الهارموني الكلي (THD)
 
-La **distorsión armónica total (THD)** se deriva manteniendo una suma acumulada de la potencia armónica total (generalmente solo las primeras cinco armónicas, comenzando en la segunda armónica):
+يتم استخراج التشويه الهارموني الكلي (THD) عن طريق الاحتفاظ بمجموع تشويه الهارموني الكلي (عادة فقط الهارمونيات الخمسة الأولى، تبدأ من الهارموني الثاني):
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221002155148.png)
 
-Y podemos concluir que:
+ويمكننا في النهاية الاستنتاج بأن:
 
 $$
-{THD}(dB)=10log_{10}(\frac{{Potencia \ Armónica}}{{Fundamental}})
+{THD}(dB)=10log_{10}(\frac{{Harmonic \ Power}}{{Fundamental}})
 $$
 
-THD suele ser un valor negativo (suponiendo que la Potencia Fundamental es mucho mayor que la Potencia Armónica total).
+وغالبًا ما يكون THD قيمة سلبية (بشرط أن تكون قوة الإشارة الأساسية أكبر بكثير من قوة التشويه الهارموني الكلي).
 
-### Relación Señal-Ruido y Distorsión (SINAD)
+### نسبة الإشارة إلى الضوضاء والتشويه (SINAD)
 
-**Relación Señal-Ruido y Distorsión (SINAD)** es la misma metodología que el cálculo de SNR, pero ahora se agrega la potencia de las armónicas y solo se anula el componente de CC.
+نسبة الإشارة إلى الضوضاء والتشويه (SINAD) هي نفس منهجية حساب SNR ، ولكن الآن يتم إضافة قوة التشويه الهارموني إلى الإشارة ، ويتم تصفير المكون المستمر فقط.
 
 $$
 {SINAD}=\frac{S}{N+D}
 $$
 
-Y podemos concluir que:
+ويمكننا الاستنتاج من ذلك:
 
 $$
 \because {SNR}=\frac{S}{N}, {THD}=\frac{D}{S}
@@ -133,84 +133,86 @@ $$
 \therefore {SINAD}=({SNR}^{-1}+{THD})^{-1}
 $$
 
-### Distorsión de Intermodulación (IM)
+### تشويش التداخل الداخلي (IM)
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221018162800.png)
 
-La Distorsión de Intermodulación (IM) ocurre cuando se utilizan dos o más señales en un sistema no lineal. El espectro no solo consistirá en las señales originales, sino que también contendrá la suma y la diferencia de las señales de entrada junto con sus armónicos.
+يحدث تشويش التداخل الداخلي (IM) عند استخدام إشارتين أو أكثر في نظام غير خطي. لن يتكون الطيف فقط من الإشارات الأصلية ، بل سيحتوي أيضًا على مجموع وفرق الإشارات المدخلة بالإضافة إلى مضاعفاتها.
 
-### Rango Dinámico Libre de Espurios (SFRD)
+### نطاق الديناميكية الحرة الزائفة (SFRD)
 
-**Rango Dinámico Libre de Espurios (SFRD)** se deriva encontrando el elemento más alto después del fundamental (ignorando el componente de CC):
+**نطاق الديناميكية الحرة الزائفة (SFRD)** يتم استنتاجه من خلال العثور على أعلى عنصر بعد الأساسي (تجاهل مكون DC):
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221002161334.png)
 
-Tenga en cuenta que el elemento más alto puede o no ser armónico. Por lo tanto, podemos concluir que:
+لاحظ أن العنصر الأعلى قد يكون مضاعفًا أو قد لا يكون. لذلك يمكننا الاستنتاج من ذلك:
 
 $$
-{SFDR}(dB)=10log_{10}(\frac{{Fundamental}}{{Siguiente \ Más \ Alto}})
+{SFDR}(dB)=10log_{10}(\frac{{Fundamental}}{{Next \ Highest}})
 $$
 
-El Rango Dinámico Libre de Espurios es un valor positivo (suponiendo que la Potencia Fundamental es mucho mayor que la Potencia de Espurio siguiente más alta.
+نطاق الديناميكية الحرة الزائفة هو قيمة إيجابية (بشرط أن يكون قدر الطاقة الأساسي أكبر بكثير من قدر الطاقة الزائفة الأعلى.
 
-## Arquitectura del Probador Genérico de Señal Mixta
+## بنية مختبر الإشارة المختلطة العام
 
-En el probador genérico de señal mixta, el AWG (fuente de CA) y el WD (digitalizador de CA) están conectados al DUT a través de interconexiones de relé a través de la placa de canal.
+![](https://f004.backblazeb2.com/file/wiki-media/img/20221006174550.png)
 
-### Generador de forma de onda arbitraria (AWG)
+في مختبر الإشارة المختلطة العام ، يتم توصيل مولد الإشارة الموجية المعملية (AWG) ومحول الرقم إلى تماثلي (WD) إلى الجهاز تحت الاختبار عبر اتصالات الريليه من خلال لوحة القناة.
 
-El **Generador de forma de onda arbitraria (AWG)** es un generador de señal de baja distorsión. Contiene un DAC para generar una señal analógica a partir de los datos digitales.
+### مولد الإشارة الموجية المعملية (AWG)
+
+**مولد الإشارة الموجية المعملية (AWG)** هو مولد إشارة ذات تشويش منخفض. يحتوي على محول رقمي إلى تماثلي لتوليد إشارة تماثلية من البيانات الرقمية.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221006175627.png)
 
-LPF (Filtro de paso bajo) suaviza la forma de onda y elimina los componentes de alta frecuencia. Un conjunto de puntos de datos para una forma de onda dada se almacena en la memoria de origen de forma de onda, cada vez que ocurre un reloj, un punto de datos pasará al DAC.
+يتم استخدام مرشح الانخفاض المنخفض (LPF) لتنعيم الموجة وإزالة المكونات عالية التردد. يتم تخزين مجموعة من نقاط البيانات لشكل الموجة المعطى في ذاكرة مصدر الموجة ، وفي كل مرة يحدث فيها توقيت ، سيتم تمرير نقطة البيانات إلى المحول الرقمي إلى تماثلي.
 
-Parámetros importantes del AWG:
+المعلمات الهامة لـ AWG:
 
-- Salida máxima de voltaje pico a pico
-- Resolución de forma de onda (resolución DAC)
-- Ancho de banda
-- Profundidad de memoria de origen de forma de onda
-- Impedancia de salida
-- Ruido, THD, SNR
+- الجهد الأقصى الذروي للإخراج
+- دقة الموجة (دقة DAC)
+- النطاق الترددي
+- عمق ذاكرة مصدر الموجة
+- مقاومة الإخراج
+- الضوضاء والتحليل الهارموني ونسبة الإشارة إلى الضوضاء
 
-### Digitalizador de forma de onda (WD)
+### محول الموجة الرقمي (WD)
 
-El **Digitalizador de forma de onda (WD)** muestrea señales analógicas y las convierte en valores digitales. Realiza la operación opuesta al AWG. Convierte la señal analógica en muestras digitales que representan la señal analógica original.
+يقوم محول الموجة الرقمي (WD) بعينات الإشارات الأنالوجية وتحويلها إلى قيم رقمية. يقوم بالعمل المعاكس لـ AWG. يحول الإشارة الأنالوجية إلى عينات رقمية تمثل الإشارة الأنالوجية الأصلية.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221006180242.png)
 
-El filtro de paso bajo limita el ancho de banda de la señal para eliminar componentes de frecuencia no deseados como el ruido y las espurias, también proporciona anti-aliasing atenuando las espurias que se aliasarían en la banda de paso del filtro durante la conversión ADC.
+يحدد المرشح عابر الحزم الترددية للإشارة لإزالة المكونات الترددية غير المرغوب فيها مثل الضوضاء والتشويش، كما يوفر مكافحة العينات عن طريق تخفيض التشويش الذي يمكن أن يتم تعيينه في نطاق المرشح خلال تحويل ADC.
 
-Parámetros importantes del WD:
+المعلمات الهامة لـ WD:
 
-- Rango máximo de voltaje de entrada de pico a pico
-- Resolución de forma de onda (resolución ADC)
-- Ancho de banda
-- Profundidad de memoria de captura de forma de onda
-- Impedancia de entrada
-- Ruido, THD, SNR, espurias
+- النطاق الأقصى للجهد الذروي للإدخال
+- دقة الموجة (دقة ADC)
+- النطاق الترددي
+- عمق ذاكرة التقاط الموجة
+- مقاومة الإدخال
+- الضوضاء والتحليل الهارموني ونسبة الإشارة إلى الضوضاء والتشويش
 
-### Reloj
+### الساعة
 
-Los relojes analógicos y digitales se derivan de un reloj de referencia de todo el sistema. Si no hay una señal de sincronización de reloj, el desfase de tiempo puede llevar a resultados incorrectos.
+تتم مزامنة الساعات الأنالوجية والرقمية من خلال ساعة مرجعية على مستوى النظام. إذا لم يكن هناك إشارة مزامنة الساعة، فقد يؤدي الانحراف التوقيتي إلى نتائج غير صحيحة.
 
-### Procesador de señal digital (DSP)
+### معالج الإشارة الرقمية (DSP)
 
-El **procesador de señal digital (DSP)** es un microprocesador especializado que realiza operaciones matemáticas en matrices de números digitales. Se realizan varios algoritmos como DFT y FFT en DSP para transformar la información del dominio del tiempo en el dominio de la frecuencia.
+يعد معالج الإشارة الرقمية (DSP) معالجًا ميكروية متخصصًا يقوم بالعمليات الرياضية على مجموعات من الأرقام الرقمية. يتم تنفيذ خوارزميات مختلفة مثل DFT و FFT على DSP لتحويل المعلومات في المجال الزمني إلى المجال الترددي.
 
-La arquitectura de un DSP está optimizada para permitir una multiplicación rápida, sumas, cálculos de logaritmos, cálculos de cuadrados y raíces cuadradas.
+تم تحسين بنية DSP للسماح بالضرب السريع والجمع وحسابات اللوغاريتم والتربيع وحسابات الجذر التربيعي.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221007142019.png)
 
-El probador llevará la señal capturada almacenada al procesador DSP a través de buses de datos.
+سيقوم الاختبار بحمل الإشارة الملتقطة المخزنة إلى معالج DSP من خلال حافلات البيانات.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- _Fundamentos de pruebas utilizando ATE_
-- _Los fundamentos de las pruebas de señal mixta_Brian-Lowe_
+# أساسيات الاختبار باستخدام ATE
+# أساسيات اختبار الإشارة المختلطة_Brian-Lowe
 
-> Original: <https://wiki-power.com/>  
-> Esta publicación está protegida por el acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en), debe ser reproducida con atribución.
+> المصدر: <https://wiki-power.com/>  
+> هذا المنشور محمي باتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) ويجب إعادة إنتاجه مع الإشارة إلى المصدر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

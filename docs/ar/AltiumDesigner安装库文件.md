@@ -1,9 +1,9 @@
-# Instalación de archivos de biblioteca en Altium Designer
+# تثبيت ملفات المكتبة في Altium Designer
 
-1. Copie todos los archivos de biblioteca en la carpeta correspondiente de **Shared\Library** del software;
-2. Abra Altium Designer, haga clic en la página **Components** en el panel derecho, haga clic en el icono de **tres barras** en la esquina superior derecha, seleccione la opción **File-based Library Preferences**, haga clic en la página **Installed**, haga clic en el botón **Install** e instale los archivos de biblioteca correspondientes;
-3. Algunas situaciones especiales:
-   - La ruta de la biblioteca integrada de JLC se encuentra en la carpeta **JLCSMT_LIB\Project Outputs for Miscellaneous Devices LC**;
-   - Si los archivos de biblioteca de terceros no son en formato de **biblioteca integrada (.IntLib)**, sino en forma de **biblioteca esquemática (SchLib)** o **biblioteca de encapsulamiento (PcbLib)**, es necesario **instalar ambos** archivos. En este caso, debe hacer clic en la lista desplegable a la derecha de la ventana de selección de ruta que aparece al instalar los archivos de biblioteca y cambiar el comodín a **All Files\(\*.\*\)**, de lo contrario solo se mostrarán archivos en formato **.Intlib**.
+1. قم بنسخ جميع ملفات المكتبة إلى المجلد الموافق في البرنامج وهو **Shared\Library**.
+2. افتح Altium Designer، ثم انقر فوق صفحة **Components** في اللوحة الجانبية اليمنى، ثم انقر فوق الرمز المكون من **ثلاثة خطوط** في الزاوية العلوية اليمنى، ثم انقر فوق خيار **File-based Library Preferences**، ثم انقر فوق صفحة **Installed**، ثم انقر فوق زر **Install** لتثبيت ملفات المكتبة الموافقة.
+3. بعض الحالات الخاصة:
+   - مسار مكتبة جيلايتشينغ المتكاملة يقع في مجلد **JLCSMT_LIB\Project Outputs for Miscellaneous Devices LC**.
+   - إذا كان ملف المكتبة من الطرف الثالث ليس بصيغة **مكتبة متكاملة (.IntLib)**، ولكنه بصيغة **مكتبة المخطط الأساسي (SchLib)** أو **مكتبة التعبئة والتغليف (PcbLib)**، فيجب تثبيت الملفين **معًا**. في هذه الحالة، يجب النقر فوق القائمة المنسدلة على اليمين في نافذة اختيار المسار التي تظهر عند تثبيت ملف المكتبة وتغييرها إلى الرمز العام **All Files\(\*.\*\)**، وإلا فستظهر فقط ملفات بصيغة **.Intlib**.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

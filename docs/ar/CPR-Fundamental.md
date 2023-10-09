@@ -1,9 +1,9 @@
-# CPR - Fundamental
+# إسعافات القلب والرئة - الأساسيات
 
-> Esta publicación solo está disponible en inglés.
+> هذه المقالة متاحة باللغة الإنجليزية فقط.
 
-**CPR** representa **Core Power Reduction**, una **tecnología de gestión de energía adaptativa** que determina el voltaje óptimo del producto, permite la compensación en bucle cerrado del voltaje DC, la variación de temperatura, el proceso y la degradación por envejecimiento para optimizar la energía y el rendimiento del dispositivo.
+تمثل إسعافات القلب والرئة (CPR) تقنية إدارة الطاقة القابلة للتكيف التي تحدد الجهد المنتج الأمثل، وتسمح بالتعويض المغلق لجهد التيار المستمر، وتغير درجة الحرارة، وعملية الإنتاج وتدهور الشيخوخة، لتحسين استهلاك الجهاز للطاقة والأداء.
 
-El núcleo CPR consta de un controlador y varios sensores integrados en el SoC para controlar el nivel VDD de un chip. Los sensores consisten en múltiples osciladores de anillo para estimar la velocidad de funcionamiento del chip. Luego, el controlador proporciona un resultado de comando de modificación VDD al PMIC, que se puede programar con software.
+يتكون نواة CPR من متحكم وعدد من الحساسات المضمنة في SoC، للتحكم في مستوى VDD للشريحة. تتكون الحساسات من عدة مولدات تذبذب دائرية، لتقدير سرعة تشغيل الشريحة. ثم يوفر المتحكم نتيجة أمر تعديل VDD لـ PMIC، والذي يمكن برمجته بواسطة البرامج.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

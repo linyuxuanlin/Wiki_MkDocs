@@ -1,87 +1,87 @@
-# Configuración de Oh My Zsh en CentOS
+# تكوين Oh My Zsh على CentOS
 
-## Verificar la shell actual
+## عرض الشل الحالي
 
 ```Shell
 echo $SHELL
 ```
 
-Por lo general, devolverá `bin/bash`
+عادة ما يعود الرد `bin/bash`
 
-## Instalar zsh
+## تثبيت zsh
 
 ```shell
 yum install -y zsh
 ```
 
-## Cambiar la shell predeterminada a zsh
+## تغيير الشل الافتراضي إلى zsh
 
-Debe ejecutar este comando como usuario root:
+يجب تشغيل هذا الأمر كمستخدم root:
 
 ```shell
 chsh -s /bin/zsh
 ```
 
-## Instalar git
+## تثبيت git
 
 ```shell
 yum install -y git
 ```
 
-## Instalar Oh My Zsh
+## تثبيت Oh My Zsh
 
-### Automático
+### تلقائيًا
 
 ```shell
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-o
+أو
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 ```
 
-### Manual
+### يدويًا
 
-Si no se puede instalar de la manera anterior (posiblemente debido a un bloqueo), se puede instalar manualmente de la siguiente manera:
+إذا لم يكن بإمكانك التثبيت بالطريقة السابقة (ربما بسبب الجدار الناري) ، فيمكنك التثبيت يدويًا عن طريق الطريقة التالية:
 
-Descargar el código fuente:
+تنزيل الشفرة المصدرية:
 
 ```shell
 git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 ```
 
-Copiar la configuración:
+نسخ التكوين:
 
 ```shell
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 ```
 
-## Cambiar el tema de Oh My Zsh
+## تغيير موضوع Oh My Zsh
 
-Listar todos los temas:
+عرض جميع الموضوعات:
 
 ```shell
 ls ~/.oh-my-zsh/themes
 ```
 
-Cambiar el tema:
+تغيير الموضوع:
 
 ```shell
 vim ~/.zshrc
 ```
 
-Cambiar el tema predeterminado `ZSH_THEME="robbyrussell"` por el que prefiera.
+قم بتغيير الموضوع الافتراضي `ZSH_THEME="robbyrussell"` إلى الموضوع الذي تفضله.
 
-## Reiniciar para que surta efecto
+## إعادة التشغيل للتفعيل
 
 ```shell
 reboot
 ```
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
 - [centos7 安装 zsh 配置 oh-my-zsh](https://www.jianshu.com/p/4ce7d511bc13)
 - [CentOs 安装 oh my zsh](https://www.jianshu.com/p/556ff130fc65)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

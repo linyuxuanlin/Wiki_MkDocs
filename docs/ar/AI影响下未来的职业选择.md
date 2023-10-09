@@ -1,51 +1,54 @@
-# La elección de carrera en el futuro bajo la influencia de la IA
+# تأثير الذكاء الاصطناعي على اختيار الوظائف المستقبلية
 
-## Contexto
+## الخلفية
 
-[**El futuro del empleo**](http://sep4u.gr/wp-content/uploads/The_Future_of_Employment_ox_2013.pdf) es un artículo que evalúa más de 700 carreras y concluye que la mitad de ellas desaparecerán en los próximos diez años. Entonces, ¿cómo serán las diferentes carreras y cómo deberíamos enfrentarlas? Veamos en detalle.
+قامت هذه الدراسة [مستقبل العمل](http://sep4u.gr/wp-content/uploads/The_Future_of_Employment_ox_2013.pdf) بتقييم أكثر من 700 وظيفة حالية، وخلصت إلى أن نصف الوظائف ستختفي خلال العشر سنوات القادمة. لذلك، دعونا نلقي نظرة على حالة الوظائف المختلفة وكيفية التعامل معها.
 
-## Carreras que desaparecerán
+## الوظائف التي ستختفي
 
-**Las primeras carreras que desaparecerán son**: conductores, empleados de tiendas físicas, árbitros, asistentes administrativos, entre otros. Entre ellos, los conductores de todo tipo de vehículos, incluyendo taxistas, conductores de camiones y pilotos de aviones, serán reemplazados por la conducción autónoma, que tiene menos errores.
+**أول الوظائف التي ستختفي هي**: سائقو السيارات وموظفو المتاجر والحكام والموظفون العامون وغيرهم. يشير سائقو السيارات إلى مختلف مهن القيادة للمركبات، بما في ذلك سائقو سيارات الأجرة وسائقو الشاحنات وطيارو الطائرات وما إلى ذلك، وسيتم استبدالهم بالقيادة الذاتية التي تقلل من الأخطاء.
 
-Sus carreras son en su mayoría **reguladas con reglas claras, con pocos puntos técnicos y fácilmente reemplazables**.
+تتميز وظائفهم بأنها **تتضمن قواعد واضحة ونقاط تقنية قليلة ويمكن استبدالها بسهولة**.
 
-**Carreras que no desaparecerán a corto plazo, pero que desaparecerán gradualmente en el futuro**: médicos, programadores de bajo nivel, bomberos, policías, entre otros. Entre ellos, la carrera de médico tiene un alto riesgo y un gran impacto humano debido a errores humanos; los programadores de bajo nivel serán reemplazados por la auto-programación de la inteligencia artificial; para carreras de alto riesgo como bomberos y policías, obviamente, los robots tienen una ventaja mayor, y en el manejo de casos, la inteligencia artificial puede explorar más posibilidades que los humanos.
+**الوظائف التي لن تختفي في المدى القريب ولكنها ستختفي تدريجياً في المستقبل**: الأطباء ومبرمجو البرامج الثقيلة ورجال الإطفاء ورجال الشرطة وغيرهم. يتميز الأطباء بمخاطر وظيفية عالية وتأثير كبير للأخطاء البشرية؛ سيتم استبدال مبرمجي البرامج الثقيلة بالبرمجة الذاتية للذكاء الاصطناعي؛ بالنسبة لرجال الإطفاء ورجال الشرطة وغيرهم من الوظائف العالية المخاطر، فإن الروبوتات لديها ميزة أكبر، ويمكن للذكاء الاصطناعي تجاوز المزيد من الاحتمالات من البشر في معالجة القضايا.
 
-## Carreras que no desaparecerán
+## الوظائف التي لن تختفي
 
-**Las carreras que difícilmente desaparecerán son**: jueces, maestros de primaria, clérigos, diseñadores innovadores, cantantes, entre otros. Entre ellos, debido a problemas éticos (las máquinas no pueden condenar a las personas o decidir sobre la vida y la muerte de las personas), la carrera de juez difícilmente desaparecerá; en la etapa de educación temprana, los niños necesitan ser cultivados con conciencia de aprendizaje autónomo y humanidades, y necesitan ser guiados por maestros; los clérigos (sacerdotes, monjes, líderes religiosos, etc.) definitivamente no serán reemplazados.
+**الوظائف التي ستصعب اختفاؤها هي**: القضاة ومعلمو المدارس الابتدائية والكهنة ومصممو الابتكار والمغنيون وغيرهم. يصعب اختفاء وظيفة القاضي بسبب المسائل الأخلاقية (لا يمكن للآلة إدانة الإنسان / تحديد مصيره)؛ في مرحلة التعليم الأولي، يحتاج الأطفال إلى تنمية الوعي بالتعلم الذاتي والرعاية الإنسانية، ويحتاجون إلى معلمين لتوجيههم؛ بالنسبة للكهنة (الكهنة والرهبان والقساوسة وغيرهم)، فإنهم بالتأكيد لن يتم استبدالهم.
 
-Las características comunes de estas carreras son **cuidado humanitario, ética y moral, e innovación**.
+الخصائص المشتركة لهذه الوظائف هي **الرعاية الإنسانية والأخلاق والابتكار**.
 
-## Cómo elegir una carrera
+## كيفية اختيار اتجاه الوظيفة
 
-En la sociedad del futuro, para trabajar sin ser reemplazado por máquinas e inteligencia artificial, se necesitan tres cualidades:
+في المجتمع المستقبلي، سيتطلب العمل الذي لا يمكن استبداله بالآلات والذكاء الاصطناعي هذه الصفات الثلاث:
 
-- Empatía
-- Trabajo en equipo
-- Habilidad para contar historias
+- التعاطف
+- العمل الجماعي
+- القدرة على السرد
 
-La empatía es la capacidad de **pensar en el lugar de otra persona**. Muchas veces, la demanda no surge por sí sola, sino que necesitamos proyectar nuestro pensamiento en los demás para descubrir la demanda, en lugar de solo centrarnos en la implementación técnica.
+التعاطف، أي قدرة التفكير من منظور الآخرين. في كثير من الأحيان، لا يتم إنشاء الطلبات تلقائيًا، بل يتعين علينا توجيه تفكيرنا نحو الآخرين لاستكشاف الطلبات، بدلاً من التركيز فقط على تنفيذ التقنيات.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20200226140150.png)
 
-El trabajo en equipo está relacionado con el "efecto de la tabla larga". La sociedad moderna no requiere que todos completen sus debilidades, sino que se centren en desarrollar sus fortalezas y complementen sus debilidades a través del trabajo en equipo. Un equipo de tabla larga es aquel en el que se combinan las fortalezas de cada persona; de lo contrario, si cada persona se desarrolla "en todas las direcciones" pero tiene habilidades mediocres, ¿cómo puede destacar el equipo en la competencia?
+العمل الجماعي يتعلق بـ "تأثير اللوحة الطويلة". في المجتمع الحديث، لا يتطلب من كل شخص ملء نقاط الضعف، بل يجب التركيز على بناء الخبرات الخاصة بالفرد وتعويض نقاط الضعف بالعمل الجماعي. تجمع نقاط القوة لكل شخص، وهذا هو فريق القوة الذي يجب تشكيله؛ وإلا فإذا كان كل شخص يتطور "بشكل شامل" ولكن بمهارات متوسطة، فكيف يمكن لهذا الفريق التفوق في المنافسة؟
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20200226140223.png)
 
-La habilidad para contar historias se refleja en la creación de un equipo interno que necesita una comprensión de valores comunes; externamente, para que otros acepten su concepto y usen su producto, también se necesita la habilidad para contar historias.
+القدرة على السرد، وتتجلى في الحفاظ على الفريق الداخلي، ويحتاج الأمر إلى توافق قيمي مشترك؛ وفي الخارج، يجب أن يتم قبول فكرتك واستخدام منتجاتك، ويجب أن يكون لديك القدرة على السرد.
 
-Debe aprender a contar una historia que todos los interesados puedan aceptar. El valor no solo se ve afectado por el producto en sí, sino que la promoción también es crucial.
+يجب أن تتعلم كيفية سرد قصة يمكن لجميع المعنيين بالمصلحة أن يتفقوا عليها. لا يتأثر القيمة فقط بتأثير المنتج نفسه، بل يتأثر أيضًا بالتسويق.
 
-## Conclusión
+## الخلاصة
 
-El movimiento ludita no pudo detener la ola de la Revolución Industrial. Para las personas comunes, el poder personal nunca puede detener la tendencia de la época. Prediciendo la tendencia de la época y aprovechándola, las personas pueden tener un mejor desarrollo personal.
+لا يمكن للحركة اللودر أن توقف موجة الثورة الصناعية. بالنسبة للأشخاص العاديين، لا يمكن للفرد أن يقاوم اتجاه العصر. يمكن للفرد أن يتنبأ بموجة العصر ويستفيد منها للحصول على تطور أفضل.
 
-## Enlaces de referencia
+## المراجع
 
-- [¿Qué habilidades básicas necesitas?](https://mp.weixin.qq.com/s?__biz=MzIyODI1MzYyNA==&mid=2653540387&idx=1&sn=985fbe7c3ca0a3ac90d5f56356eac31a&scene=21##wechat_redirect)
-- [Las carreras que desaparecerán en diez años. Si estás haciendo estos trabajos, es mejor que cambies de carrera lo antes posible](https://www.youtube.com/watch?v=Mshz9DxQLbE&list=PLxaBD9eBZcGTZaMZ-3HN5zXFQ06FDOjzJ&index=2&t=0s)
-- [El futuro del empleo](http://sep4u.gr/wp-content/uploads/The_Future_of_Employment_ox_2013.pdf)
+- [القدرات الأساسية التي تحتاج إليها](https://mp.weixin.qq.com/s?__biz=MzIyODI1MzYyNA==&mid=2653540387&idx=1&sn=985fbe7c3ca0a3ac90d5f56356eac31a&scene=21##wechat_redirect)
+- [الوظائف التي ستختفي خلال العشر سنوات القادمة](https://www.youtube.com/watch?v=Mshz9DxQLbE&list=PLxaBD9eBZcGTZaMZ-3HN5zXFQ06FDOjzJ&index=2&t=0s)
+- [مستقبل العمل](http://sep4u.gr/wp-content/uploads/The_Future_of_Employment_ox_2013.pdf)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

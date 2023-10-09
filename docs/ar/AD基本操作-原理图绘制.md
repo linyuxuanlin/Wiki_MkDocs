@@ -1,78 +1,78 @@
-# Operaciones básicas de AD - Dibujo de esquemas
+# AD العمليات الأساسية - رسم المخطط الأساسي
 
-- Tutorial de la serie Altium Designer
+- سلسلة تعليمات Altium Designer
 
-## Antecedentes
+## الخلفية
 
-Después del calentamiento en el capítulo anterior, comenzamos con la etapa de dibujo de esquemas.
+بعد التمهيد في الفصل السابق ، ندخل الآن في مرحلة رسم المخطط الأساسي.
 
-## Dibujo de esquemas
+## رسم المخطط الأساسي
 
-### Ajuste del papel
+### ضبط الورقة
 
-Siguiendo el proceso básico mencionado anteriormente, creamos un nuevo proyecto y agregamos el archivo de esquema al proyecto. En este punto, aparece una hoja de papel en blanco. Podemos dibujar directamente en ella. Si el esquema se vuelve complicado, también podemos **cambiar el tamaño del papel** para que los componentes no se vean demasiado apretados:
+وفقًا للعملية الأساسية المذكورة في الفصل السابق ، قمنا بإنشاء مشروع جديد وأضفنا ملف المخطط الأساسي إلى المشروع. في هذه اللحظة ، تظهر ورقة فارغة. يمكننا الرسم مباشرة على الورقة. إذا أصبح المخطط الأساسي معقدًا ، فيمكننا أيضًا **تغيير حجم الورقة** لجعل المكونات لا تبدو مزدحمة جدًا:
 
-1. **Haga doble clic** en cualquier lugar en blanco de la hoja,
-2. En el panel Propiedades, busque la sección **Opciones de página**,
-3. Haga clic en el menú desplegable Tamaño de hoja para cambiar el tamaño del papel.
+1. **انقر نقرًا مزدوجًا** في أي مكان فارغ على الورقة ،
+2. في لوحة الخصائص ، ابحث عن قسم **خيارات الصفحة** ،
+3. انقر فوق قائمة السحب لتغيير حجم الورقة.
 
-### Colocación de componentes
+### وضع المكونات
 
-A continuación, comenzamos a colocar componentes. La instalación de la biblioteca se explicó en el capítulo anterior. Abrimos el panel **Componentes**, hacemos clic en el menú desplegable que muestra el nombre de la biblioteca y podemos cambiar a la biblioteca instalada. Después de buscar el componente necesario en la barra de búsqueda (no es necesario presionar Enter después de escribir), podemos arrastrar el componente directamente al esquema con el botón izquierdo del mouse, lo que colocará el componente con éxito.
+بعد ذلك ، نبدأ في وضع المكونات. تم شرح تثبيت المكتبة في الفصل السابق ، نفتح لوحة **المكونات** ، وننقر فوق القائمة المنسدلة التي تظهر باسم المكتبة للتبديل إلى المكتبة التي تم تثبيتها بالفعل. بعد التبديل ، يمكن البحث عن المكونات المطلوبة في مربع البحث (لا يلزم الضغط على Enter) ، وبعد العثور على المكون المناسب ، يمكن استخدام الزر الأيسر للفأرة لسحب المكون مباشرةً إلى المخطط الأساسي ، وهذا يعني وضع المكون بنجاح.
 
-Si olvidamos a qué biblioteca pertenece un componente, también podemos utilizar la función de búsqueda global. Haga clic en el icono de **tres barras** a la izquierda del nombre de la biblioteca y seleccione **Búsqueda de bibliotecas basadas en archivos**, lo que nos permitirá buscar todas las bibliotecas disponibles.
+إذا نسيت المكون الذي ينتمي إلى أي مكتبة ، فيمكن استخدام وظيفة البحث الشامل. انقر فوق العلامة المائلة الثلاثة على الجانب الأيسر من اسم المكتبة ، واختر **بحث المكتبة القائمة على الملفات** ، ويمكن البحث في جميع المكتبات المتاحة.
 
-### Propiedades del componente
+### خصائص المكونات
 
-Los componentes colocados tienen varias propiedades clave:
+للمكونات التي تم وضعها ، هناك عدة خصائص رئيسية:
 
-- **Designator**: número de posición del componente. Es una identificación única del componente y no puede tener el mismo nombre. Por lo general, se utilizan R1, R2 ... para resistencias y C1, C2 ... para capacitores (consulte los puntos de conocimiento del capítulo anterior).
-- **Comment**: parámetros de tamaño del componente, como valor de resistencia, valor de capacitancia, modelo de chip, etc.
-- **Description**: descripción de la función del componente.
-- **Footprint**: enlazado a la biblioteca de encapsulados, lo que permite que el componente se corresponda con un encapsulado de PCB.
-- **Models**: incluye modelos de simulación, integridad de señal, etc.
+- **Designator** : رقم المكون. هو علامة فريدة للمكون ، ولا يمكن تكراره. عادة ما يتم استخدام R1 ، R2 ... لتمثيل المقاومة ، و C1 ، C2 ... لتمثيل السعة (يرجى الرجوع إلى نقاط المعرفة في الفصل السابق) ،
+- **Comment** : معلمات حجم المكون ، مثل قيمة المقاومة ، قيمة السعة ، نوع الرقاقة ، إلخ ،
+- **Description** : وصف وظيفة المكون ،
+- **Footprint** : يرتبط بمكتبة التغليف ، ويتم تطابق المكون مع حزمة PCB معينة ،
+- **Models** : يتضمن نماذج المحاكاة (نموذج المحاكاة) وسلامة الإشارة (سلامة الإشارة) وغيرها.
 
-### Operaciones básicas
+### العمليات الأساسية
 
-- **Clic izquierdo**: seleccionar comando
-- **Clic izquierdo prolongado**: arrastrar objeto
-- **Doble clic izquierdo**: establecer propiedades del objeto
-- **Clic derecho**: cancelar o mostrar menú de comandos
-- **Clic derecho prolongado**: arrastrar página de esquema
-- **Ctrl + rueda de desplazamiento**: acercar o alejar la página
-- **Mayús + clic izquierdo/selección de cuadro**: seleccionar varios componentes
+- **انقر فوق الزر الأيسر** : حدد الأمر
+- **انقر فوق الزر الأيسر واستمر في الضغط** : اسحب الكائن
+- **انقر فوق الزر الأيسر مرتين** : تعيين خصائص الكائن
+- **انقر فوق الزر الأيمن** : إلغاء أو عرض قائمة الأوامر
+- **انقر فوق الزر الأيمن واستمر في الضغط** : اسحب صفحة المخطط الأساسي
+- **Ctrl + عجلة التمرير** : تغيير حجم الصفحة
+- **Shift + انقر فوق الزر الأيسر / اختر مربعًا** : حدد عدة مكونات
 
-Para operaciones más avanzadas, use el comando **S** (Seleccionar) para mostrar el menú de comandos:
+للعمليات المتقدمة ، استخدم الأمر **S** (تحديد) ، والذي يعرض قائمة الأوامر:
 
-| Atajo | Comando detallado | Función |
+| اختصار | الأمر التفصيلي | وظيفة                                                                 |
 | :----- | :---------------- | :------------------------------------------------------------------- |
-| E      | Selección de lazo | Selección de componentes dentro del área del lazo; haga clic con el botón izquierdo para comenzar a dibujar el lazo y haga clic nuevamente para finalizar el dibujo del área |
-| I      | Área interior | Seleccione todos los componentes dentro del área seleccionada |
-| O      | Área exterior | Seleccione todos los componentes fuera del área seleccionada |
-| L      | Línea de contacto | Seleccione los componentes tocados por la línea |
-| C      | Conexión | Seleccione los componentes con el mismo nombre de red |
-| A      | Todos | Seleccione todos los componentes |
-| T      | Alternar selección | Selección inversa, haga clic en los componentes seleccionados para cancelar la selección y haga clic en los componentes no seleccionados para seleccionarlos |
+| E      | Lasso S**e**lect  | اختيار المكونات داخل نطاق محدد ؛ انقر فوق الزر الأيسر لبدء رسم النطاق ، وانقر فوقه مرة أخرى لإنهاء رسم النطاق |
+| I      | **I**nside Area   | اختيار جميع المكونات داخل المنطقة المحددة                           |
+| O      | **O**utside Area  | اختيار جميع المكونات خارج المنطقة المحددة                           |
+| L      | Touching **L**ine | اختيار المكونات التي تمسها الخطوط                                  |
+| C      | **C**onnection    | اختيار المكونات التي تحمل نفس اسم الشبكة                            |
+| A      | **A**ll           | اختيار جميع المكونات                                               |
+| T      | **T**oggle Select | اختيار عكسي ، يتم إلغاء تحديد العنصر الذي تم تحديده سابقًا وتحديد العنصر الذي لم يتم تحديده سابقًا |
 
-- Rotación de componentes: seleccione el componente y presione la tecla **Espacio**
-- Copiar, cortar y pegar: **Ctrl + C**, **Ctrl + X**, **Ctrl + V**
-- Copiar y pegar con relleno automático de identificadores: seleccione el componente, mantenga presionada la tecla **Shift** y arrastre para pegar componentes con identificadores incrementales. El incremento se puede configurar en **TP** (**T**ools-**P**reference-Schematic-General).
-- Dibujar cables: **Ctrl + W**
-- Dibujar etiquetas de red: **PN**
-- Colocar alimentación/tierra: seleccione directamente en la barra de herramientas con el botón **izquierdo**, o haga clic con el botón **derecho** para seleccionar diferentes estilos.
+- دوران العنصر: حدد العنصر ثم اضغط على مفتاح **Space**
+- النسخ والقص واللصق: **Ctrl + C**، **Ctrl + X**، **Ctrl + V**
+- تعبئة رقم العنصر تلقائيًا بعد النسخ: حدد العنصر، **اضغط Shift واسحب** للصق العناصر التي تزيد أرقامها تلقائيًا. يمكن تعيين الخطوة في **TP** (**T**ools-**P**reference-Schematic-General).
+- رسم الأسلاك: **Ctrl + W**
+- رسم علامات الشبكة: **PN**
+- وضع الطاقة / الأرض: حدد الأداة مباشرةً من شريط الأدوات بالنقر بالزر الأيسر، ويمكنك النقر بالزر الأيمن للاختيار من بين أنماط مختلفة.
 
-### Numeración automática global de componentes
+### الترقيم التلقائي العالمي للعناصر
 
-Cuando el proyecto del esquemático es grande y hay muchos componentes, a veces puede haber identificadores duplicados o faltantes. En este caso, se puede utilizar la gestión global de identificadores: **TAA**, en lugar de verificar manualmente.
+عندما يكون مشروع الدائرة الكهربائية كبيرًا ويحتوي على العديد من العناصر، قد يحدث تكرار في أرقام العناصر أو نقص فيها. يمكن استخدام إدارة الترقيم العالمية: **TAA**، بدلاً من التحقق يدويًا.
 
-Seleccione los componentes que necesitan numeración automática, haga clic en **Actualizar lista de cambios**, luego haga clic en **Aceptar cambios (crear ECO)** y **Ejecutar cambios** para completar la numeración automática de los componentes.
+حدد العناصر التي تحتاج إلى ترقيم تلقائي، انقر على **تحديث قائمة التغييرات**، ثم انقر على **تلقي التغييرات (إنشاء ECO)**، **تنفيذ التغييرات**، لتكتمل عملية الترقيم التلقائي للعناصر.
 
-## Conclusión
+## الاستنتاج
 
-Estas son solo las operaciones básicas para dibujar un esquemático, como proporcionar un conjunto de utensilios de cocina. Para hacer platos más sabrosos, se necesita más **imaginación** y **práctica constante**.
+ما سبق هو فقط العمليات الأساسية لرسم الدائرة الكهربائية، تمامًا كما توفر مجموعة من أدوات المطبخ. بالنسبة لكيفية إعداد الأطباق الشهية، فإن الأمر يعتمد بشكل أساسي على **الخيال** و **التدريب المستمر**.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Sección de Altium Designer de la empresa Altium](https://seujxh.wordpress.com/2018/09/30/altium%e5%85%ac%e5%8f%b8altium-designer%e4%b8%93%e6%a0%8f/)
+- [Altium Designer Column by Altium Company](https://seujxh.wordpress.com/2018/09/30/altium%e5%85%ac%e5%8f%b8altium-designer%e4%b8%93%e6%a0%8f/)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

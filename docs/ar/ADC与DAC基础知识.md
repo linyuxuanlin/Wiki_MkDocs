@@ -1,20 +1,18 @@
-# Fundamentos de ADC y DAC
+# مفاهيم أساسية حول ADC و DAC
 
-En el mundo real, la mayoría de las señales son analógicas, como la temperatura, el sonido, la presión, etc. Sin embargo, en el procesamiento y transmisión de señales, se utiliza principalmente la señal digital para reducir la interferencia del ruido. Por lo tanto, a menudo convertimos la señal analógica del mundo real en una señal digital a través de ADC para realizar operaciones, transmisión y almacenamiento, y luego convertirla en una señal analógica a través de DAC para presentarla.
+في العالم الحقيقي ، تكون الإشارات الشائعة عادةً تمثل كميات تناظرية مثل درجة الحرارة والصوت والضغط الجوي وما إلى ذلك ، ولكن في معالجة الإشارات ونقلها ، يتم استخدام كميات رقمية بشكل أكبر لتقليل التداخل الضوضائي. لذلك ، غالبًا ما نقوم بتحويل الإشارات التناظرية في العالم الحقيقي إلى إشارات رقمية باستخدام ADC للحساب والنقل والتخزين ، ثم تحويلها مرة أخرى باستخدام DAC إلى إشارة تناظرية للعرض.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220724210409.png)
+ومع ذلك ، يجب ملاحظة أن الكميات التناظرية في العالم الحقيقي مستمرة ، مما يعني أن لديها دقة لا نهائية ، ولكن بعد التحويل إلى كميات رقمية ، سيتم فقدان بعض الدقة ، وسيصبح الوقت والشدة قيمًا م diskret.
 
-Pero hay que tener en cuenta que la señal analógica en el mundo real es continua, lo que significa que tiene una resolución infinita, pero después de convertirse en una señal digital, perderá cierta precisión y se convertirá en valores discretos en tiempo y amplitud.
+## مبدأ ADC الأساسي
 
-## Principios básicos de ADC
+يشير ADC (محول التناظري إلى رقمي) إلى محول التناظري / الرقمي ، الذي يمكنه تحويل إشارات التناظرية الحقيقية في العالم ، مثل درجة الحرارة والضغط والصوت أو الصور ، إلى شكل رقمي أسهل للتخزين والمعالجة والإرسال.
 
-ADC (Convertidor analógico a digital) se refiere a un convertidor que convierte señales analógicas del mundo real, como temperatura, presión, sonido o imágenes, en una forma digital más fácil de almacenar, procesar y transmitir.
+### عينة
 
-### Muestreo
+نظرًا لأن الإشارة التناظرية المدخلة مستمرة ، وسيتم تحويل الإشارة الرقمية المراد إخراجها إلى قيم م diskret ، فلا يمكن إجراء سوى عينة لحظية ، ثم تحويل قيمة العينة إلى كمية رقمية مخرجة ، ثم يتم البدء من جديد في العينة التالية.
 
-Dado que la señal analógica de entrada es continua y la señal digital de salida es discreta, solo se puede realizar un muestreo instantáneo, y luego convertir el valor de muestreo en una cantidad digital de salida y comenzar un nuevo ciclo de muestreo.
-
-Para representar con precisión la señal de entrada analógica $v_1$ con la señal $v_s$, se debe cumplir al menos el teorema de muestreo, es decir, la frecuencia de muestreo $f_s$ debe ser al menos el doble de la frecuencia máxima de la señal de entrada analógica $f_{i(max)}$ (generalmente se toma de 3 a 5 veces, pero las frecuencias demasiado altas requieren una velocidad de trabajo más rápida y deben considerarse los costos):
+لتمثيل الإشارة التناظرية المدخلة $v_1$ بدقة ودون أخطاء ، يجب على الأقل تلبية نظرية العينة ، والتي تتطلب تردد العينة $f_s$ أكثر من ضعف مكون التردد الأعلى لإشارة الإدخال التناظرية $f_{i (max)}$ (عادة ما يتم اختيار 3-5 أضعاف ، ولكن الترددات العالية جدًا تتطلب سرعة عمل أسرع ، ويجب مراعاة التكلفة الشاملة):
 
 $$
 f_s≥2\cdot f_{i(max)}
@@ -22,111 +20,94 @@ $$
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20220724180529.png)
 
-Si se cumple el teorema de muestreo, la señal $v_s$ se puede restaurar a $v_1$ mediante un filtro paso bajo. El coeficiente de transferencia de voltaje del filtro debe mantenerse constante por debajo de $f_{i(max)}$ y caer rápidamente a cero antes de $f_s-f_{i(max)}$.
+بمجرد تلبية نظرية العينة ، يمكن استخدام مرشح تردد منخفض لاستعادة $v_1$ من $v_s$ . يجب أن يظل معامل نقل الجهد لمرشح التردد منخفضًا عند أقل من $f_{i(max)}$ ، وينخفض بسرعة إلى 0 قبل $f_s-f_{i(max)}$.
 
-### Mantenimiento
+### الحفاظ
 
-El circuito de mantenimiento permite que la señal se mantenga durante un período de tiempo después del muestreo para que el ADC tenga suficiente tiempo para realizar la conversión. Cuanto mayor sea la frecuencia de pulso de muestreo y la densidad de muestreo, más cerca estará la señal de salida del circuito de mantenimiento de la forma de onda de la señal de entrada. La forma básica del circuito de muestreo-mantenimiento es la siguiente:
+يمكن لدائرة الحفاظة السماح للإشارة بالبقاء لفترة من الوقت بعد العينة ، مما يتيح لـ ADC الوقت الكافي للتحويل. كلما زادت ترددات العينة وكثافة العينة ، زاد عدد قيم العينة ، وتقترب إشارة الإخراج من شكل الموجة للإشارة المدخلة. يتكون الشكل الأساسي لدائرة العينة والاحتفاظ على النحو التالي:
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20220723161306.png)
 
-Los pasos básicos del muestreo-mantenimiento son los siguientes:
+الخطوات الأساسية لدائرة العينة والاحتفاظ هي:
 
-1. Cuando la señal de control de muestreo $v_L$ es alta, el MOSFET $T$ se enciende, la señal $v_1$ pasa a través de la resistencia $R_1$ y el MOSFET $T$ y carga el capacitor $C_H$.
-2. Si se toma $R_1=R_F$, después de que se complete la carga, $v_0=v_c=-v_1$.
-3. Cuando la señal de control de muestreo $v_L$ cae a nivel bajo, el MOSFET $T$ se apaga y la tensión en el capacitor $C_H$ no cambia abruptamente, por lo que $v_0$ también puede mantenerse durante un período de tiempo y el resultado del muestreo se puede registrar.
+1. عندما يكون إشارة التحكم في العينة $v_L$ على مستوى عال ، يتم توصيل MOSFET $T$ ، ويتم شحن المكثف $C_H$ بواسطة $v_1$ عبر المقاومة $R_1$ و MOSFET $T$.
+2. إذا تم اختيار $R_1 = R_F$ ، فبعد الشحن ، يصبح $v_0 = v_c = -v_1$.
+3. عندما ينخفض إشارة التحكم في العينة $v_L$ إلى المستوى السابق ، يتم قطع MOSFET $T$ ، ولن يتغير الجهد على المكثف $C_H$ بشكل مفاجئ ، لذلك يمكن لـ $v_0$ البقاء لفترة من الوقت ، ويتم تسجيل نتيجة العينة.
 
-### Cuantificación
+### كمية
 
-La cantidad digital obtenida por muestreo debe ser un múltiplo entero de una unidad de cantidad mínima especificada. Este proceso de conversión se llama cuantificación, y la unidad de cantidad mínima tomada se llama unidad de cuantificación $\Delta$. El tamaño de la cantidad representada por el bit menos significativo (LSB) de la señal digital es igual a $\Delta$.
+يجب أن تكون الكمية الرقمية التي تم الحصول عليها من العينة مضاعفة لوحدة القياس الأدنى المحددة ، ويشار إلى هذه العملية باسم الكمية ، ويشار إلى وحدة الكمية الأدنى المحددة باسم وحدة الكمية $\Delta$. يساوي حجم الكمية الأدنى المحددة الذي يمثله الرقم 1 في أقل بت مؤثر LSB للإشارة الرقمية $\Delta$.
 
-Como el voltaje analógico es continuo, no necesariamente es divisible por $\Delta$, lo que resulta en un error de cuantificación.
+نظرًا لأن الجهد التناظري مستمر ، فقد لا يمكن تقسيمه على النحو الذي يمكن تقسيمه على $\Delta$ ، وبالتالي يمكن أن يحدث خطأ في الكمية.
 
-Cuanto más fina sea la unidad de cuantificación, menor será el error de cuantificación y mayor será el número de bits de código binario utilizado, lo que aumentará la complejidad del circuito.
+كلما كانت مستويات الكمية أدق ، كان الخطأ في الكمية أقل ، وكلما زاد عدد الأرقام الثنائية المستخدمة في الرمز الثنائي ، زادت تعقيدات الدائرة.
 
-### Codificación
+### الترميز
 
-La conversión cuantificada se representa en binario (u otro sistema de numeración), lo que se llama codificación.
+يتم تمثيل النتائج المكملة بواسطة الرمز الثنائي (أو أي نظام ترقيم آخر) ، ويشار إلى هذه العملية باسم الترميز.
 
-## Tipos comunes de ADC
+## أنواع ADC الشائعة
 
-### Comparador paralelo (Flash)
+### نوع المقارنة المتوازية (Flash)
 
-El ADC de comparador paralelo, también conocido como ADC Flash, es un tipo de ADC directo que puede convertir directamente el voltaje analógico de entrada en una cantidad digital de salida sin la necesidad de una conversión intermedia. Está compuesto por una serie de comparadores de voltaje, cada uno de los cuales compara la señal de entrada con un voltaje de referencia único. La salida del comparador se conecta a la entrada del circuito codificador para producir una salida binaria.
+يشار إلى ADC نوع المقارنة المتوازية (Flash) أيضًا باسم ADC المباشر ، حيث يمكنه تحويل الجهد التناظري المدخل مباشرةً إلى كمية رقمية مخرجة دون الحاجة إلى تحويل وسيط. يتكون من سلسلة من مقارنات الجهد ، حيث يقارن كل مقارن بين إشارة المدخلات والجهد المرجعي المقسم. يتم توصيل مخرجات المقارنة بدائرة الترميز لإنتاج إخراج ثنائي.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20220723163931.png)
 
-No solo es la técnica ADC más simple en teoría de operación, sino que también es la más efectiva en velocidad, solo limitada por la propagación de comparadores y retardos de puerta. Desafortunadamente, para cualquier cantidad dada de bits de salida, es el componente más denso.
-
-El ADC de comparación en paralelo tiene la velocidad de conversión más rápida, pero el inconveniente es que requiere el uso de muchos comparadores de voltaje y circuitos de conversión de código a gran escala (la mayoría de las salidas comunes de comparación en paralelo son de 8 bits o menos).
-
-### Tipo de aproximación sucesiva
-
-El ADC de aproximación sucesiva utiliza una estructura de circuito de comparación de retroalimentación. Está compuesto por comparadores, DAC, registros, fuente de pulso de reloj y lógica de control:
+لا يتم تحديد ADC نوع المقارنة المتوازية فقط في النظرية ولكنه أيضًا أكثر فعالية في السرعة كتقنية ADC ، ويتم تحديده فقط بتأخير انتشار المقارن والبوابة. للأسف ، فإنه يعتبر المكون الأكثر كثافة لأي عدد معين من البتات المخرجة (عادةً ما يكون معظم إ
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20220723211839.png)
 
-Su principio es establecer una cantidad digital, obtener una tensión de salida analógica correspondiente a través de DAC. Compare secuencialmente esta tensión analógica con la señal de tensión analógica de entrada desde el bit más alto. Si no son iguales, ajuste la cantidad digital tomada hasta que las dos tensiones analógicas sean iguales. La cantidad digital tomada finalmente es el resultado de conversión buscado. Su proceso es como pesar un objeto por su peso en una balanza, primero agregue una pesa grande, luego agregue o cambie a una pesa pequeña de forma secuencial.
+المبدأ الأساسي لـ DAC هو تعيين كمية رقمية ، ومن خلال DAC يتم الحصول على جهد إخراج تماثلي مقابله. يتم مقارنة هذا الجهد التماثلي مع إشارة الجهد التماثلي المدخلة بدءًا من البت الأعلى بترتيب متسلسل ، وإذا لم تكن متساوية ، فسيتم ضبط الكمية الرقمية المأخوذة حتى يتساوى الجهد التماثلي للإشارتين ، وسيكون الكمية الرقمية المأخوذة في النهاية هي النتيجة المطلوبة للتحويل. يشبه هذا العملية استخدام الميزان لقياس وزن الأشياء في موضع معين ، حيث يتم إضافة أو استبدال الأوزان الصغيرة بعد إضافة الأوزان الكبيرة.
 
-La ventaja del ADC de aproximación sucesiva es su alta velocidad, bajo consumo de energía y ventaja de costo-beneficio en baja resolución (12 bits); la desventaja es que la velocidad de conversión es generalmente baja y el tamaño del circuito es mediano.
+يتميز ADC من النوع التقريبي التدريجي بسرعة عالية واستهلاك طاقة منخفض ، ولديه ميزة تكلفة منخفضة في الدقة الأقل (12 بت) ؛ ولكن لديه عيب في معدل التحويل العادي وحجم الدائرة.
 
-### Tipo de doble integración (V-T)
+### نوع الاندماج المزدوج (V-T)
 
-El ADC de doble integración es un tipo de ADC indirecto que convierte la señal de voltaje analógica de entrada en una señal de ancho de tiempo proporcional a ella primero, y luego cuenta los pulsos de reloj de frecuencia fija dentro de este ancho de tiempo. El valor de conteo es la señal digital proporcional a la entrada analógica. Por lo tanto, también se llama ADC de transformación de voltaje-tiempo (V-T).
+ADC من النوع الاندماج المزدوج هو ADC غير مباشر ، حيث يتم تحويل إشارة الجهد التماثلي المدخلة أولاً إلى إشارة عرض الوقت المتناسبة معها ، ثم يتم عد النبضات للساعة ذات التردد الثابت خلال هذا العرض الزمني ، وسيكون العدد هو الإشارة الرقمية المتناسبة مع الجهد التماثلي المدخل. لذلك ، يُشار إلى هذا النوع من ADC أيضًا باسم ADC من النوع الجهد - الوقت (V-T).
 
-El ADC de doble integración está compuesto por integradores, comparadores, contadores, lógica de control y fuente de señal de reloj, como se muestra en la figura:
+يتكون ADC من النوع الاندماج المزدوج من مكبر التكامل والمقارن والعداد والمنطق التحكمي ومصدر إشارة الساعة ، كما هو موضح في الشكل:
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20220723213208.png)
 
-La ventaja del ADC de doble integración es su rendimiento de trabajo estable (dos integraciones, excluyendo las diferencias de parámetros RC), fuerte capacidad antiinterferencias (la integración no se ve muy afectada por el ruido); la desventaja es que la velocidad de conversión es baja (la precisión de conversión depende del tiempo de integración).
+يتميز ADC من النوع الاندماج المزدوج بأدائه المستقر (بعد التكامل المزدوج ، يتم استبعاد اختلافات معلمات RC) وقدرته على مقاومة التشويش (التكامل لا يتأثر بالضوضاء بشكل كبير) ؛ ولكن لديه عيب في معدل التحويل البطيء (تعتمد دقة التحويل على وقت التكامل).
 
-### Tipo Σ-Δ
+### نوع Σ-Δ
 
-El principio del ADC de modulación Σ-Δ es diferente del tipo de comparación en paralelo y de aproximación sucesiva mencionados anteriormente. No cuantifica y codifica el valor absoluto de la señal de muestreo, sino que cuantifica y codifica la diferencia (incremento) entre dos valores de muestreo adyacentes. Su estructura básica es la siguiente:
+يختلف مبدأ ADC من نوع Σ-Δ للتحويل الكمي عن نوع ADC المتوازي والتدريجي المذكور أعلاه ، حيث لا يتم ترميز قيمة العينة المأخوذة بشكل مباشر ، ولكن يتم ترميز الفرق بين قيمتي العينة المتتاليتين (الزيادة). يتكون هذا النوع من ADC من مكبر الجهد الخطي ومحول الترميز الإخراجي بت 1 و DAC المدخل بت 1 ودائرة المجموعة. يتم معالجة الإشارة الرقمية المخرجة V0 من خلال محول الترميز وتحويلها إلى إشارة تماثلية VF ، ويتم ربطها بالدائرة المجموعة عن طريق التغذية السلبية ، ويتم طرحها من إشارة المدخل V1 للحصول على الفرق VD. يتم تكامل VD بواسطة المكبر ، ويتم إخراج الجهد VINT إلى محول الترميز ، ويتم ترميزه إلى كمية رقمية بت 1. نظرًا لاستخدام محول الترميز بت 1 ، فإن إشارة الإخراج V0 هي تدفق بيانات مكون من 0 و 1 في حالة العمل المستمر.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220723230949.png)
+يتميز ADC من نوع Σ-Δ بقدرته على إجراء قياسات عالية الدقة بسهولة ؛ ولكن لديه عيب في معدل التحويل البطيء وحجم الدائرة الكبير.
 
-Está compuesto por un integrador de voltaje lineal, un cuantizador de salida de 1 bit, un DAC de entrada de 1 bit y un circuito sumador. El valor digital de salida $V_0$ procesado por el cuantizador se convierte en una señal analógica $V_F$ a través del DAC y se retroalimenta al circuito sumador de entrada. Reste la señal de entrada $v_1$ para obtener la diferencia $v_D$. El integrador realiza una integración lineal en $v_D$, la tensión de salida $v_{INT}$ se cuantifica en un bit y se convierte en una señal digital de salida. Debido al uso de un cuantizador de salida de 1 bit, en un estado de trabajo continuo, la señal de salida $V_0$ es una corriente de datos compuesta por 0 y 1.
+### نوع الجهد - التردد (V-F)
 
-La ventaja del ADC de modulación Σ-Δ es que se puede lograr fácilmente una medición de alta resolución; la desventaja es que la velocidad de conversión es baja y el tamaño del circuito es grande.
-
-### Transformación de voltaje-frecuencia (V-F)
-
-El ADC de transformación de voltaje-frecuencia (V-F) es un tipo de ADC indirecto. Está compuesto principalmente por un convertidor V-F (también llamado oscilador controlado por voltaje, VCO), un contador y su puerta de control de señal de reloj, un registro y un disparador de estado estable:
+ADC من نوع الجهد - التردد (V-F) هو ADC غير مباشر. يتكون أساسًا من محول V-F (المعروف أيضًا باسم مولد التذبذب المحكوم بالجهد VCO) وعداد ومجموعة تحكم بالبوابات لإشارة الساعة والسجلات والمؤقتات ذات الحالة الثابتة وما إلى ذلك ، كما هو موضح في الشكل:
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20220723233236.png)
 
-Su principio es:
+المبدأ هو:
 
-- Convertir la señal de voltaje analógica de entrada en una señal de frecuencia correspondiente.
-- Contar la tasa de señal de frecuencia en un tiempo fijo.
-- El resultado del conteo es proporcional al valor de amplitud de la tensión de entrada.
+- تحويل إشارة الجهد التماثلي المدخلة إلى إشارة تردد مقابلة لها.
+- عد النبضات للتردد في الوقت المحدد.
+- يكون العدد متناسبًا مع قيمة الجهد المدخل.
 
-## Parámetros principales del ADC
+## المعلمات الرئيسية لـ ADC
 
-## Principios básicos del ADC
+- **الدقة** : كمية تغيير الجهد التماثلي المدخل المطلوبة لتغيير كمية رقمية متجاورة ، ويتم تمثيلها عادة بعدد الأرقام الثنائية ، ويتم تمثيل الدقة بـ n يعني أنها 1/2^n من الحد الأقصى للمدى Fs.
+- **خطأ الترميز** : الخطأ الذي يتسبب فيه عدد الأرقام المحدودة لـ ADC عند ترميز الإشارة التماثلية. يحتاج عدد الأرقام لـ ADC ليكون كبيرًا جدًا أو حتى لا ينتهي ، لذلك يوجد خطأ في ترميز ADC. الانحراف الأقصى بين منحنى خصائص التحويل الدرجي المتدرج لـ ADC ذي الدقة المحدودة ومنحنى خصائص التحويل الدرجي المتدرج لـ ADC ذي الدقة اللامحدودة هو خطأ الترميز.
+- **معدل التحويل** : عدد مرات التحويل في الثانية.
+- **نطاق التحويل** : أقصى جهد يمكن قياسه بواسطة ADC ، وعادة ما يكون مساويًا لجهد المرجع ، ويمكن أن يتسبب تجاوز هذا الجهد في تدمير ADC. يمكن التفكير في خفض جهد المرجع لزيادة الدقة عندما يكون الإشارة صغيرة ، وبعد تغيير جهد المرجع ، سيتغير القيمة المحولة المقابلة له ، وعند حساب الجهد الفعلي ، يجب أن يتم احتساب جهد المرجع ، لذلك يجب أن يكون جهد المرجع مستقر
 
-- **Resolución**: la cantidad de cambio en la tensión analógica de entrada necesaria para producir un cambio de una unidad en la cantidad digital de salida. Por lo general, se expresa en términos de la cantidad de bits binarios utilizados para representar la señal analógica de entrada, y se define como 1/2^n de la escala completa (Fs) del ADC.
-- **Error de cuantificación**: el error que se produce al cuantificar una señal analógica debido a la limitación del número de bits utilizados en el ADC. Para representar con precisión una señal analógica, se necesitaría un número infinito de bits en el ADC, por lo que todos los ADC tienen un error de cuantificación. El error de cuantificación es la máxima desviación entre la curva de conversión de un ADC con resolución limitada y la curva de conversión de un ADC con resolución infinita.
-- **Velocidad de conversión**: la cantidad de conversiones que se realizan por segundo.
-- **Rango de conversión**: la tensión máxima que el ADC puede medir, que generalmente es igual a la tensión de referencia. Si la señal de entrada es demasiado grande, puede dañar el ADC. Si la señal es demasiado pequeña, se puede aumentar la resolución reduciendo la tensión de referencia. Sin embargo, al cambiar la tensión de referencia, también se cambia el valor de conversión correspondiente, por lo que al calcular la tensión real, se debe tener en cuenta la tensión de referencia. Por lo tanto, la tensión de referencia generalmente debe ser estable y no tener armónicos de alta frecuencia.
-- **Error de offset**: el valor de salida del ADC cuando la señal de entrada es cero.
-- **Error de escala completa**: la diferencia entre el valor de entrada ideal y el valor de entrada correspondiente a la salida máxima del ADC.
-- **Linealidad**: la máxima desviación entre la función de transferencia real del ADC y la línea ideal.
+DAC (محول الرقمي إلى التناظري) هو محول الرقمي إلى التناظري. يمكنه تحويل الكمية الرقمية إلى جهد أو تيار تناظري متناسب. على سبيل المثال ، قد ينتج الكمبيوتر إخراجًا رقميًا يتراوح من `00000000` إلى `11111111` ، ويحول DAC ذلك إلى جهد يتراوح من 0 إلى 10 فولت. يمكن تقسيم DAC بشكل أساسي إلى نوعين: نوع الجمع الحالي ونوع المقسم.
 
-## Principios básicos del DAC
+## أنواع DAC الشائعة
 
-DAC (convertidor digital-analógico) convierte una señal digital en una señal analógica proporcional. Por ejemplo, una computadora puede generar una salida digital que varía de `00000000` a `11111111`, y el DAC la convierte en una tensión de 0 a 10 V. En términos generales, los DAC se pueden dividir en dos tipos: sumador de corriente y divisor de voltaje.
+### شجرة التبديل
 
-## Tipos comunes de DAC
-
-### Árbol de conmutación
-
-El DAC de árbol de conmutación es el más simple y directo. Está compuesto por una red de resistencias y un árbol de conmutación:
+يعتبر DAC شجرة التبديل أبسط وأكثر فظاعة ، ويتكون من مقاومة مقسمة وشبكة تبديل شجرية:
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20220724172844.png)
 
-Estos interruptores están controlados por tres entradas $d_0,d_1,d_2$, y la salida se puede calcular como:
+تتحكم 3 إشارات مدخل $d_0،d_1،d_2$ في هذه الأبواب ، وبالتالي يمكن الحصول على:
 
 $$
 v_0=\frac{V_{REF}}{2^1} d_2+\frac{V_{REF}}{2^2} d_1+\frac{V_{REF}}{2^3} d_0
@@ -136,80 +117,111 @@ $$
 v_0=\frac{V_{REF}}{2^3} (d_2 2^2+d_1 2^1+d_0 2^0)
 $$
 
-Para un DAC de árbol de conmutación de n bits, la salida se puede calcular como:
+علاوة على ذلك ، يمكن الحصول على الناتج لإدخال ثنائي النظام الثنائي n بت في DAC شجرة التبديل كما يلي:
 
 $$
 v_0=\frac{V_{REF}}{2^n} (d_{n-1} 2^{n-1}+d_{n-2} 2^{n-2}+...+d_1 2^1+d_0 2^0)
 $$
 
-La ventaja del DAC de árbol de conmutación es que solo se necesita un tipo de resistencia, y los requisitos de resistencia de conmutación no son altos si la corriente de salida es baja. Sin embargo, la desventaja es que se necesitan muchos interruptores.
+يتميز DAC شجرة التبديل بأنه يتطلب مقاومة نوع واحد فقط ، وعندما لا يتم أخذ تيار في نهاية الإخراج ، فإن متطلبات توصيل الأبواب ليست عالية ؛ ولكن العيب هو أنه يتم استخدام الكثير من الأبواب.
 
-### Red de resistencias ponderadas
+### شبكة المقاومات الثقيلة
 
-El término "ponderado" se refiere al valor que representa cada bit en un número binario. Por ejemplo, en un número binario de n bits $D_n=d_{n-1}d_{n-2}...d_1 d_0$, el valor de cada bit, de MSB a LSB, es $2^{n-1},2^{n-2}...2^1,2^0$.
+تشير الوزن إلى القيمة التي يمثلها كل 1 في عدد ثنائي متعدد الأرقام. على سبيل المثال ، يتمثل الوزن في عدد ثنائي متعدد الأرقام n بت $D_n=d_{n-1}d_{n-2}...d_1 d_0$ من الرقم الأكثر أهمية (MSB) إلى الرقم الأقل أهمية (LSB) بالترتيب $2^{n-1},2^{n-2}...2^1,2^0$.
 
-El DAC de red de resistencias ponderadas (que produce una tensión de salida) se compone de una red de resistencias ponderadas, cuatro interruptores analógicos y un amplificador sumador:
+يتكون DAC شبكة المقاومات الثقيلة (المنتمي إلى نوع الجهد) من شبكة مقاومات ثقيلة و 4 أبواب تحويل تناظرية ومكبر مجموعة واحد:
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20220724003300.png)
 
-En este artículo se discute el funcionamiento de los convertidores digital-analógico (DAC, por sus siglas en inglés) de tipo red de resistencias y de tipo red de resistencias invertida, así como el DAC de corriente ponderada. 
+$S_0،S_1،S_2،S_3$ هي 4 أبواب إلكترونية ، وتتحكم فيها 4 إشارات $d_0،d_1،d_2،d_3$ ، وعندما يكون المدخل 1 ، يتم توصيل الأبواب بـ $V_{REF}$ ، وعندما يكون المدخل 0 ، يتم توصيل الأبواب بالأرض. لذلك ، عندما يكون $d_i=1$ ، يتدفق التيار $I_i$ عبر مكبر المجموعة ، وعندما يكون $d_i=0$ ، يكون التيار عبر المسار صفرًا. مكبر المجموعة هو مكبر ذو ردود فعل سلبية ، وعندما يكون الجهد على مدخل العكس $V_-$ أقل من الجهد على مدخل الموجب $V_+$ ، يكون الجهد على مخرج $v_0$ إيجابيًا ؛ عندما يكون $V_->V_+$ ، يكون $v_0$ سلبيًا. وعندما يكون $V_-$ أعلى قليلاً من $V_+$ ، يمكن الحصول على جهد إخراج سلبي كبير على $v_0$ . يتم إرجاع $v_0$ من خلال $R_F$ إلى $V_-$ ، مما يجعل $V_-$ ينخفض مرة أخرى إلى $V_+$ (0 فولت).
 
-En el DAC de red de resistencias, se utilizan cuatro interruptores electrónicos, denominados S0, S1, S2 y S3, que son controlados por cuatro señales d0, d1, d2 y d3. Cuando la entrada es 1, el interruptor se conecta a la tensión de referencia VREF, mientras que cuando la entrada es 0, el interruptor se conecta a tierra. Por lo tanto, cuando di=1, la corriente i fluye hacia el amplificador de suma, mientras que cuando di=0, la corriente i es cero. El amplificador de suma es un amplificador de retroalimentación negativa, de tal manera que cuando el potencial en la entrada inversora V- es menor que el potencial en la entrada no inversora V+, la tensión de salida v0 con respecto a tierra es positiva, mientras que cuando V- es mayor que V+, v0 es negativa. Además, cuando V- es ligeramente mayor que V+, se puede obtener una gran tensión de salida negativa en v0. La señal v0 se retroalimenta a través de RF a V-, lo que hace que V- disminuya hasta que se iguala a V+ (0V).
+في حالة كون المكبر التشغيلي جهازًا مثاليًا (تيار المدخل = 0) ، يمكن الحصول على:
 
-Suponiendo que el amplificador operacional es un dispositivo ideal (es decir, que la corriente de entrada es cero), se puede obtener:
+$$
+v_O=-R_F i_{\sum}=-R_F (I_3+I_2+I_1+I_0)
+$$
 
-vO=-RF iΣ=-RF (I3+I2+I1+I0)
+ونظرًا لأن $V_-\approx 0$ ، فإن التيار في كل مسار هو:
 
-Además, como V-≈0, las corrientes en cada rama son:
+$$
+I_3=\frac{V_{REF}}{2^0 R} d_3
+$$
 
-I3=VREF/2^0R d3
+$$
+I_2=\frac{V_{REF}}{2^1 R} d_2
+$$
 
-I2=VREF/2^1R d2
+$$
+I_1=\frac{V_{REF}}{2^2 R} d_1
+$$
 
-I1=VREF/2^2R d1
+$$
+I_0=\frac{V_{REF}}{2^3 R} d_0
+$$
 
-I0=VREF/2^3R d0
+حيث يمكن أن تكون $d_n$ 0 أو 1. عند الاستبدال في المعادلة السابقة ، وعندما يكون $R_F=\frac{R}{2}$ ، يمكن الحصول على الجهد المخرج:
 
-donde dn puede ser 0 o 1. Sustituyendo en la ecuación anterior y suponiendo que RF=R/2, se obtiene la siguiente ecuación para la tensión de salida:
+$$
+v_O=-\frac{V_{REF}}{2^4}(d_3 2^3+d_2 2^2+d_1 2^1+d_0 2^0)
+$$
 
-vO=-VREF/2^4(d3 2^3+d2 2^2+d1 2^1+d0 2^0)
+علاوة على ذلك ، يمكن الحصول على الجهد المخرج لشبكة المقاومات الثقيلة DAC n بت عندما يكون $R_F=\frac{R}{2}$ كما يلي:
 
-Además, para un DAC de red de resistencias ponderadas de n bits, cuando RF=R/2, la fórmula para la tensión de salida es:
+$$
+v_O=-\frac{V_{REF}}{2^n}(d_{n-1} 2^{n-1}+d_{n-2} 2^{n-1}+...+d_{1} 2^{1}+d_{0} 2^{0})
+$$
 
-vO=-VREF/2^n(dn-1 2^n-1+dn-2 2^n-2+...+d1 2^1+d0 2^0)
+$$
+v_O=-\frac{V_{REF}}{2^n}D_n
+$$
 
-vO=-VREF/2^nDn
+لذلك، فإن الجهد التماثلي المولد يتناسب مع كمية الأرقام المدخلة $D_n$، ونطاق تغييره هو من 0 إلى $-\frac{2^n-1}{2^n}V_{REF}$. من ناحية أخرى، إذا كنت بحاجة إلى جهد مولد إيجابي، فيجب توفير $V_{REF}$ السلبي.
 
-Por lo tanto, la tensión analógica de salida es proporcional a la cantidad digital de entrada Dn, y su rango de variación es de 0 a -2^n-1/2^n VREF. Por otro lado, si se desea obtener una tensión de salida positiva, se debe proporcionar una VREF negativa.
+يتميز شبكة المقاومة الكهربائية لـ DAC بأنها بسيطة الهيكل، ولكن عيبها هو أن قيم مقاوماتها تختلف كثيرًا، ويمكن أن يؤدي ذلك في الواقع إلى فقدان دقة كبيرة. لتحسين الأداء، يمكن استخدام شبكة مقاومة كهربائية ثنائية القطب، ولكن لا يمكن حل المشكلة بشكل جذري.
 
-La ventaja del DAC de red de resistencias es su estructura simple, pero la desventaja es que los valores de resistencia pueden diferir significativamente, lo que puede causar una gran imprecisión en la práctica. Para mejorar esto, se puede utilizar una red de resistencias invertida, que solo utiliza dos valores de resistencia, R y 2R (también conocido como DAC R2R), lo que ayuda a mejorar la precisión de control.
+### شبكة المقاومة الكهربائية بتوصيلة T العكسية
 
-En el DAC de red de resistencias invertida, cuando la resistencia de retroalimentación del amplificador operacional es R, la tensión de salida es:
+لتحسين مشكلة اختلاف قيم مقاومات شبكة المقاومة الكهربائية، يمكن استخدام شبكة المقاومة الكهربائية بتوصيلة T العكسية DAC، حيث تستخدم فقط مقاومتين بقيمة R و 2R (لذلك يُطلق عليها أيضًا R2R DAC)، وهي مفيدة للغاية في تحسين الدقة:
 
-vO=-RiΣ=-VREF/2^nDn
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220724165753.png)
 
-Por lo tanto, la fórmula de cálculo es la misma que la del DAC de red de resistencias.
+عندما تكون قيمة مقاومة الردود العكسية للمضخم المجمع R، يكون الجهد المولد:
 
-Cuando se analizan las redes de resistencias y las redes de resistencias invertidas, se consideran los interruptores analógicos como dispositivos ideales, pero en la práctica tienen una resistencia de conducción y una caída de voltaje, y la consistencia entre los interruptores puede ser diferente, lo que puede causar errores de conversión y afectar la precisión. Para solucionar esto, se puede utilizar un DAC de corriente ponderada, que tiene una serie de fuentes de corriente constante, donde la corriente de cada fuente es la mitad de la anterior y está en proporción directa con el peso binario de la entrada. El uso de fuentes de corriente constante hace que el tamaño de cada corriente de rama no esté influenciado por la resistencia de conducción y la caída de voltaje de los interruptores.
+$$
+v_O=-Ri_{\sum}=-\frac{V_{REF}}{2^n}D_n
+$$
 
-En el DAC de corriente ponderada, cuando un bit de entrada es 1, el interruptor correspondiente conecta la fuente de corriente constante al amplificador operacional de entrada, mientras que cuando el código de entrada es 0, el interruptor se conecta a tierra, por lo que la tensión de salida es:
+يمكن ملاحظة أن تعليمات حساب شبكة المقاومة الكهربائية بتوصيلة T العكسية DAC مطابقة لتلك لشبكة المقاومة الكهربائية العادية.
 
-vO=RF VREF/2^nRR Dn
+### نوعية التيار الكهربائي
 
-Los principales parámetros de un DAC son la resolución, la precisión, la velocidad de conversión y la linealidad.
+عند تحليل شبكة المقاومة الكهربائية وشبكة المقاومة الكهربائية بتوصيلة T العكسية، يتم التعامل مع المفاتيح التماثلية على أنها عناصر مثالية، ولكن في الواقع، فإنها تحتوي على مقاومة توصيل وفقدان جهد، وتختلف في التوافق، مما يؤدي إلى خطأ في التحويل وتأثير على الدقة. يمكن حل هذه المشكلة باستخدام نوعية التيار الكهربائي DAC، حيث يحتوي على مجموعة من مصادر التيار الثابتة، وحجم كل مصدر تيار ثابت هو نصف السابق، وهو متناسب مع الوزن الثنائي المقابل للمدخلات. باستخدام مصادر التيار الثابتة، يتم تحقيق حجم تيار الفرع لكل فرع بشكل مستقل من مقاومة التوصيل وفقدان الجهد في المفاتيح.
 
-- **Resolución**: la relación entre la tensión mínima de salida (es decir, la tensión cuando la entrada digital es 1) y la tensión máxima de salida (es decir, la tensión cuando la entrada digital es el valor máximo, con todos los bits en 1). Por lo general, se expresa en función del número de bits de la entrada digital.
-- **Rango de conversión**: la tensión máxima que el DAC puede producir, generalmente en relación con la tensión de referencia o sus múltiplos.
-- **Tiempo de establecimiento**: el tiempo de retardo desde la entrada digital hasta la salida analógica.
-- **Precisión de conversión**: similar a la precisión de conversión del ADC.
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220724171436.png)
 
-## Referencias y agradecimientos
+عندما يكون رقم المدخلات مساويًا لـ 1، يتم توصيل مصدر التيار الثابت بمدخل المضخم العامل؛ عندما يكون رمز المدخلات مساويًا لـ 0، يتم توصيل المفتاح بالأرض، وبالتالي يكون الجهد المولد:
 
-- [ADC/DAC Application Design Handbook](https://picture.iczhiku.com/resource/eetop/syIFpRpWgQqgOXnx.pdf)
-- [Conversión analógica a digital y digital a analógica](https://www.cnblogs.com/redlightASl/p/15542623.html)
-- [ADC y DAC (convertidores analógico a digital y digital a analógico)](https://www.youtube.com/playlist?list=PLwjK_iyK4LLCnW-df-_53d-6yYrGb9zZc)
-- [Principios de DAC](https://www.bilibili.com/read/cv4873472/)
-- [Referencia de bolsillo del ingeniero analógico](《Analog Engineer’s Pocket Reference》)
-- [Tecnología digital electrónica (6ª edición) \_ Yan Shi](《数字电子技术（第六版）\_阎石》)
+$$
+v_O=\frac{R_F V_{REF}}{2^n R_R}D_n
+$$
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+## المعلمات الرئيسية لـ DAC
+
+- **الدقة**: نسبة الجهد التماثلي الأدنى المولد (وهو الجهد المولد عندما يكون رقم المدخلات مساويًا لـ 1) إلى الجهد التماثلي الأقصى المولد (وهو الجهد المولد عندما يكون رقم المدخلات هو الأعلى، وكل رقم هو 1)، وعادة ما يتم تمثيلها بعدد الأرقام الثنائية المدخلة.
+- **نطاق التحويل**: أقصى جهد يمكن لـ DAC توليده، وعادة ما يتم الإشارة إلى الجهد المرجعي أو مضاعفاته.
+- **زمن البناء**: الوقت المستغرق من المدخلات الثنائية إلى الجهد التماثلي المولد.
+- **الدقة في التحويل**: مشابهة لدقة ADC.
+
+## المراجع والشكر
+
+- [《ADC/DAC 应用设计宝典》](https://picture.iczhiku.com/resource/eetop/syIFpRpWgQqgOXnx.pdf)
+- [数模转换与模数转换](https://www.cnblogs.com/redlightASl/p/15542623.html)
+- [ADC and DAC (Analog to Digital And Digital to Analog Converters)](https://www.youtube.com/playlist?list=PLwjK_iyK4LLCnW-df-_53d-6yYrGb9zZc)
+- [漫谈 DAC 原理](https://www.bilibili.com/read/cv4873472/)
+- 《Analog Engineer’s Pocket Reference》
+- 《数字电子技术（第六版）\_阎石》
+
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

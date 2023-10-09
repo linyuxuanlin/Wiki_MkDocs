@@ -1,84 +1,84 @@
-# Serie BeagleBone - Parámetros básicos y configuración del entorno
+# سلسلة BeagleBone - المعلومات الأساسية وإعداد البيئة
 
-## Recursos de hardware
+## الموارد الأساسية
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20211008090724.png)
 
-- USB tipo A: se utiliza como modo de host USB
-- USB Micro: alimenta la placa y actúa como esclavo
+- USB Type-A: يستخدم كوضع USB العبد (Host)
+- USB Micro: يستخدم لتزويد اللوحة بالطاقة وكوضع العبد
 - LEDs
-  - D2: parpadea como un latido al arrancar
-  - D3: se enciende al leer/escribir datos en la tarjeta SD
-  - D4: se enciende cuando la CPU está activa
-  - D5: se enciende al leer/escribir en la memoria eMMC
-- Botones de arranque/usuario: si hay una tarjeta SD, se iniciará desde ella por defecto (el mismo resultado se obtiene de cualquier manera). Después del arranque, actúa como un botón normal conectado a GPIO_72.
-- Interfaz I2C Grove: conectado a I2C2
-- Interfaz Uart Grove: conectado a UART2
-- Depuración en serie: conectado a UART0, el pin cerca del USB es el pin1, y los pines del 1 al 6 son: GND, NC, NC, RX, TX, NC.
+  - D2: يومض كضوء نبضي عند البدء
+  - D3: يضيء عند قراءة أو كتابة بيانات SD كارد
+  - D4: يضيء عندما يكون المعالج نشطًا
+  - D5: يضيء عند قراءة أو كتابة eMMC
+- Boot/User Button: بغض النظر عن الضغط أو عدم الضغط، إذا كان هناك بطاقة SD، فسيتم البدء من بطاقة SD بشكل افتراضي (نفس النتيجة)، وعند البدء، يعمل كزر عادي ويتصل بـ GPIO_72
+- واجهة I2C Grove: متصلة بـ I2C2
+- واجهة Uart Grove: متصلة بـ UART2
+- Serial Debug: متصل بـ UART0، والدبابيس القريبة من USB هي الدبابيس 1، ومن الدبابيس 1 إلى 6 هي: GND، NC، NC، RX، TX، NC
 
-## Configuración del entorno
+## إعداد البيئة
 
-### Problemas de instalación de controladores
+### مشكلة تثبيت التعريف
 
-En Windows 10 y versiones posteriores, se utiliza por defecto la firma de controladores obligatoria, lo que puede ser la causa de la falla en la instalación de controladores.
+في نظام Windows 10 والإصدارات الأحدث، يتم استخدام برنامج تشغيل التوقيع القوي افتراضيًا، وهذا قد يكون سببًا في فشل تثبيت التعريف.
 
-Solución:
+الحل:
 
-- Mantenga presionada la tecla `shift` y haga clic en reiniciar la computadora.
-- Ingrese a `Solución de problemas` - `Opciones avanzadas` - `Configuración de inicio` y haga clic en `Reiniciar`.
-- Después del reinicio, siga las instrucciones de la página y presione la tecla `7` en el teclado para deshabilitar la firma de controladores obligatoria.
-- Después del inicio, se pueden instalar los controladores de BeagleBone normalmente.
+- اضغط على `shift` وانقر فوق إعادة التشغيل
+- انتقل إلى `خيارات متقدمة` - `إعدادات الإقلاع` وانقر على `إعادة التشغيل`
+- بعد الإعادة التشغيل، اتبع التعليمات الموجودة على الصفحة واضغط على الزر `7` على لوحة المفاتيح لتعطيل برنامج تشغيل التوقيع القوي
+- بعد التشغيل، يمكنك تثبيت برنامج تشغيل BeagleBone بشكل طبيعي
 
-### Descarga e instalación de imágenes
+### تحميل الصورة وحرقها
 
-Dirección de descarga de imágenes oficiales: https://beagleboard.org/latest-images  
-Herramienta de grabación: https://sourceforge.net/projects/win32diskimager/files/latest/download
+عنوان تحميل الصورة الرسمية: https://beagleboard.org/latest-images  
+أداة الحرق: https://sourceforge.net/projects/win32diskimager/files/latest/download
 
-Grabe la imagen en la tarjeta SD, desconecte la alimentación e inserte la tarjeta SD en BeagleBone. La próxima vez que se encienda, el sistema se iniciará desde la tarjeta SD.
+قم بحرق الصورة على بطاقة SD وأدخلها في BeagleBone، وسيتم تشغيل النظام من بطاقة SD في المرة القادمة.
 
-## Acceso mediante herramientas de línea de comandos
+## الوصول إلى أدوات سطر الأوامر
 
-### Acceso mediante puerto serie
+### الوصول عبر المنفذ التسلسلي
 
-Conecte el puerto serie integrado en la placa mediante un convertidor USB a serie y abra una herramienta de serie en la computadora (como WindTerm) para conectarse. (El nombre de usuario y la contraseña predeterminados son `root`).
+قم بتوصيل المنفذ التسلسلي المدمج في اللوحة باستخدام USB إلى الكمبيوتر وافتح أداة المنفذ التسلسلي (مثل WindTerm) للاتصال. (اسم المستخدم وكلمة المرور الافتراضية هما `root`)
 
-La velocidad de transmisión es de 115200.
+معدل البت هو 115200!
 
-### Acceso mediante Ethernet
+### الوصول عبر Ethernet
 
-En la conexión serie, use el comando `ifconfig` para encontrar la dirección Ethernet y conectarse a ella mediante la dirección. El nombre de usuario es `debian` y la contraseña es `temppwd`.
+استخدم الأمر `ifconfig` داخل المنفذ التسلسلي للعثور على عنوان Ethernet والاتصال به. اسم المستخدم هو `debian` وكلمة المرور هي `temppwd`.
 
-### Acceso mediante USB
+### الوصول عبر USB
 
 usb0: 192.168.7.2  
 usb1: 192.168.6.2
 
-Conéctese mediante SSH, el nombre de usuario es `debian` y la contraseña es `temppwd`.
+استخدم الوصول عبر SSH، اسم المستخدم هو `debian` وكلمة المرور هي `temppwd`.
 
-## Habilitar la cuenta root con SSH
+## تمكين حساب root الخاص بـ ssh
 
 ```shell
 vi /etc/ssh/sshd_config
 ```
 
-Cambie `#PermitRootLogin prohibit-password` a `PermitRootLogin yes`.
+قم بتعديل `#PermitRootLogin prohibit-password` إلى `PermitRootLogin yes`.
 
-## Controlador Seeed OLED (SSD1306, I2C, 12864)
+## تعريف OLED Seeed (SSD1306، I2C، 12864)
 
-Descargue el paquete smbus2 con pip3:
+استخدم pip3 لتنزيل حزمة smbus2:
 
 ```py
 sudo apt-get install python3-pip
 pip3 install smbus2
 ```
 
-El programa se puede encontrar en [**Grove - OLED Display 0.96 inch**](https://wiki.seeedstudio.com/Grove-OLED_Display_0.96inch/#play-with-beaglebone-green).
+استخدم البرنامج المرجعي [**Grove - OLED Display 0.96 inch**](https://wiki.seeedstudio.com/Grove-OLED_Display_0.96inch/#play-with-beaglebone-green).
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Problemas en la depuración de Beaglebone black 4G](https://blog.csdn.net/qq_32543253/article/details/53536266)
-- [Proyecto](https://beagleboard.org/p)
-- [Actualiza el software de tu Beagle](https://beagleboard.org/upgrade#connect)
-- [Firmware de prueba](http://plm.seeedstudio.com.cn:9002/Windchill/app/#ptc1/tcomp/infoPage?oid=VR%3Awt.doc.WTDocument%3A30844361&u8=1)
+- [مشاكل تصحيح Beaglebone black 4G](https://blog.csdn.net/qq_32543253/article/details/53536266)
+- [المشروع](https://beagleboard.org/p)
+- [ترقية البرامج على Beagle الخاص بك](https://beagleboard.org/upgrade#connect)
+- [اختبار البرامج الثابتة](http://plm.seeedstudio.com.cn:9002/Windchill/app/#ptc1/tcomp/infoPage?oid=VR%3Awt.doc.WTDocument%3A30844361&u8=1)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
