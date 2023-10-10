@@ -1,9 +1,9 @@
-# Guía de implementación mínima de Docusaurus
+# دليل نشر Docusaurus البسيط
 
-Utilice [**esta plantilla**](https://github.com/linyuxuanlin/Docusaurus-Vercel) para generar su propio repositorio.
+استخدم [**هذا القالب**](https://github.com/linyuxuanlin/Docusaurus-Vercel) لإنشاء مستودع خاص بك.
 
-Regístrese en una cuenta de [**Vercel**](https://Vercel.com) (elija registrarse con su cuenta de GitHub) e importe el repositorio recién creado.
+سجل حسابًا في [**Vercel**](https://Vercel.com) (اختر التسجيل باستخدام حساب GitHub) واستورد المستودع الذي تم إنشاؤه للتو.
 
-¡Listo!
+وبذلك تكون قد انتهيت!
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

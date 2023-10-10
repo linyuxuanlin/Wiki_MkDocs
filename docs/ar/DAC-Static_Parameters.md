@@ -1,100 +1,100 @@
-# DAC - Parámetros Estáticos
+# DAC - المعلمات الثابتة
 
-> Esta publicación solo está disponible en inglés.
+> هذه المقالة متاحة باللغة الإنجليزية فقط.
 
-El Convertidor Digital a Analógico (DAC) es un dispositivo que convierte una secuencia de datos de entrada digital en señales analógicas.
+محول الرقمي إلى تناظري (ADC) هو جهاز يحول تسلسل من البيانات الرقمية المدخلة إلى إشارات تناظرية.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221011141644.png)
 
-## Parámetros Estáticos
+## المعلمات الثابتة
 
-Los parámetros estáticos del DAC contienen principalmente:
+تحتوي المعلمات الثابتة لـ DAC بشكل رئيسي على:
 
-- Salida de escala cero
-- Rango de escala completa (FSR)
-- Tamaño del LSB
-- Error de desplazamiento
-- Error de ganancia
-- Error de no linealidad diferencial (DNE o DNL)
-- Error de no linealidad integral (INE o INL)
+- الإخراج عند الصفر
+- نطاق الإخراج الكامل (FSR)
+- حجم LSB
+- خطأ الإزاحة
+- خطأ الزيادة
+- خطأ عدم الخطية التفاضلي (DNE أو DNL)
+- خطأ عدم الخطية التكاملي (INE أو INL)
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221011144045.png)
 
-### Salida de escala cero
+### الإخراج عند الصفر
 
-La **Salida de escala cero** es el valor de salida medido cuando se presenta el código de entrada digital de nivel cero/nulo al DUT.
+**الإخراج عند الصفر** هو قيمة الإخراج المقاسة عند تقديم رمز الإدخال الرقمي لمستوى الصفر/التعويض إلى DUT.
 
-### Rango de escala completa (FSR)
+### نطاق الإخراج الكامل (FSR)
 
-El rango de voltaje de salida del DAC entre las salidas analógicas mínima ($V_{ZS}$) y máxima ($V_{FS}$) se llama **Rango de escala completa (FSR)**:
+يُسمى نطاق الجهد الناتج عن DAC بين الحد الأدنى ($V_{ZS}$) والحد الأقصى ($V_{FS}$) من الإخراجات التناظرية بـ **نطاق الإخراج الكامل (FSR)**:
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221011142249.png)
 
-### Tamaño del LSB
+### حجم LSB
 
-El cambio promedio en voltaje cuando se encuentra entre los códigos de entrada se define como LSB:
-
-$$
-LSB=\frac{FSR_{medido}}{2^{bits}-1}
-$$
-
-### Error de desplazamiento
-
-El **Error de desplazamiento** (Error de escala cero) es la diferencia de voltaje entre los puntos de desplazamiento (inicial) ideal y real.
+يتم تعريف التغيير المتوسط في الجهد عندما يكون بين رموز الإدخال باسم LSB:
 
 $$
-ErrorDeDesplazamiento=V_{ZS(Real)}-V_{ZS(Ideal)}
+LSB=\frac{FSR_{measured}}{2^{bits}-1}
+$$
+
+### خطأ الإزاحة
+
+**خطأ الإزاحة** (خطأ مستوى الصفر) هو الفرق في الجهد بين نقطة الإزاحة (الأولية) المثالية والفعلية.
+
+$$
+OffsetError=V_{ZS(Actual)}-V_{ZS(ideal)}
 $$
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221011144415.png)
 
-### Error de ganancia
+### خطأ الزيادة
 
-El **Error de ganancia** es la diferencia de voltaje entre los puntos de ganancia ideal y real en la función de transferencia.
-
-$$
-ErrorDeGanancia=FSR_{Ideal}-FSR_{Real}
-$$
-
-Donde
+**خطأ الزيادة** هو الفرق في الجهد بين نقطتي الزيادة المثالية والفعلية على دالة النقل.
 
 $$
-FSR_{Ideal}=V_{FS(Ideal)}-V_{ZS(Ideal)}
+GainError=FSR_{Ideal}-FSR_{Actual}
+$$
+
+حيث
+
+$$
+FSR_{Ideal}=V_{FS(ideal)}-V_{ZS(ideal)}
 $$
 
 $$
-FSR_{Real}=V_{FS(Real)}-V_{ZS(Real)}
+FSR_{Actual}=V_{FS(Actual)}-V_{ZS(Actual)}
 $$
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221011144925.png)
 
-### Error de no linealidad diferencial (DNL)
+### خطأ عدم الخطية التفاضلي (DNL)
 
-**Error de no linealidad diferencial (DNL)** es la diferencia en el voltaje de salida en un punto específico, en comparación con la salida en la entrada anterior, menos un LSB del dispositivo:
+**خطأ عدم الخطية التفاضلي (DNL)** هو الفرق في الجهد الناتج في نقطة محددة، مقارنة بالإخراج في الإدخال السابق، ثم يطرح منها قيمة LSB الخاصة بالجهاز:
 
 $$
-DNL=(V_{in2}-V_{in1})-LSB_{promedio}
+DNL=(V_{in2}-V_{in1})-LSB_{average}
 $$
 
-donde $V_{in2}$ es el voltaje de la transición superior, $V_{in1}$ es el inferior.
+حيث يمثل $V_{in2}$ الجهد في الانتقال العلوي، و $V_{in1}$ الانتقال السفلي.
 
-DNL es una medida del error de linealidad de "señal pequeña". La medición de DNL se realiza de un paso al siguiente, no de cada paso al valor ideal.
+DNL هو مقياس لخطأ الخطية "الإشارة الصغيرة". يتم قياس DNL من خطوة واحدة إلى الأخرى، وليس من كل خطوة إلى القيمة المثالية.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221011153556.png)
 
-### Error de no linealidad integral (INL)
+### خطأ الخطية الغير متكامل (INL)
 
-**Error de no linealidad integral (INL)** es el efecto acumulativo de todos los valores de no linealidad diferencial. Es una medida del error de linealidad de "señal grande". INL en cualquier punto a lo largo de la curva es la desviación de la línea de linealidad ideal.
-
-$$
-SalidaEsperada[i]=FSR*CódigoDeEntrada[i]+ErrorDeDesplazamiento
-$$
+**خطأ الخطية الغير متكامل (INL)** هو التأثير التراكمي لجميع قيم الخطأ غير الخطية. إنه مقياس لخطأ الخطية "الإشارة الكبيرة". يتم حساب INL في أي نقطة على المنحنى عن طريق الانحراف عن الخط الخطي المثالي.
 
 $$
-INL[i]=\frac{SalidaReal[i]-SalidaEsperada[i]}{LSB_{promedio}}
+ExpectedOutput[i]=FSR*InputCode[i]+OffsetError
 $$
 
-Además, INL también se puede expresar como una función de DNL:
+$$
+INL[i]=\frac{ActualOutput[i]-ExpectedOutput[i]}{LSB_{average}}
+$$
+
+كما يمكن التعبير عن INL كدالة لـ DNL:
 
 $$
 INL[i]=\sum_{n=1}^{n=i}DNL[n]
@@ -102,52 +102,52 @@ $$
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221011184739.png)
 
-## Cómo probar parámetros estáticos
+## كيفية اختبار المعلمات الثابتة
 
-### Configuración del sistema de prueba
+### إعداد نظام الاختبار
 
-Configuración del sistema de prueba para pruebas de parámetros estáticos de DAC:
+إعداد نظام الاختبار لاختبار المعلمات الثابتة لـ DAC:
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221011185006.png)
 
-Diagrama de bloques de la configuración de la señal:
+مخطط تدفق إعداد الإشارة:
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221011185447.png)
 
-### Concepto de pruebas
+### مفهوم الاختبارات
 
-El procedimiento para probar los parámetros estáticos de un DAC DUT se muestra a continuación.
+يتم سرد إجراء اختبار المعلمات الثابتة لـ DAC DUT أدناه.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221011185739.png)
 
-#### 1. Medir el voltaje de salida aplicando las entradas de datos digitales desde Cero Escala hasta Escala Completa
+#### 1. قياس الجهد الناتج عن تطبيق الإدخالات الرقمية من الصفر إلى الحد الأقصى
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20221011185711.png)
 
-#### 2. Calcular DNL para cada código de entrada
+#### 2. حساب DNL لكل رمز إدخال
 
 $$
 DNL[i]=\frac{OutputMeasured[i]-OutputMeasured[i-1]-LSB_{average}}{LSB_{average}}
 $$
 
-Donde
+حيث
 
 $$
 LSB_{average}=\frac{OutputMeasured[n]-OutputMeasured[0]}{2^{bits}-1}
 $$
 
-#### 3. Obtener el DNL máximo y mínimo
+#### 3. الحصول على أقصى وأدنى DNL
 
-#### 4. Calcular INL para cada paso
+#### 4. حساب INL لكل خطوة
 
-#### 5. Obtener el INL máximo y mínimo
+#### 5. الحصول على أقصى وأدنى INL
 
-## Referencias y Agradecimientos
+## المراجع والشكر
 
-- *Fundamentos de Pruebas Usando ATE*
+- *أساسيات الاختبار باستخدام ATE*
 - *The-Fundamentals-of-Mixed-Signal-Testing_Brian-Lowe*
 
-> Original: <https://wiki-power.com/>  
-> Este post está protegido por el acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en), debe ser reproducido con atribución.
+> الأصلي: <https://wiki-power.com/>  
+> يتم حماية هذا المنشور باتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) ويجب إعادة إنتاجه مع الإشارة إلى المصدر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

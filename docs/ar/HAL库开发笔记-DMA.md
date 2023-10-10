@@ -1,111 +1,111 @@
-# Notas de desarrollo de la biblioteca HAL - DMA
+# ملاحظات تطوير مكتبة HAL - DMA
 
-DMA (Acceso directo a memoria) permite que dispositivos de hardware de diferentes velocidades se comuniquen directamente sin depender de una gran carga de interrupción de la CPU.
+يسمح DMA (Direct Memory Access) بالاتصال المباشر بين أجهزة الأجهزة ذات السرعات المختلفة دون الحاجة إلى الاعتماد على حمل الانقطاعات الكبيرة لوحدة المعالجة المركزية.
 
-## Principios básicos
+## المبادئ الأساسية
 
-### ¿Qué es DMA?
+### ما هو DMA
 
-DMA proporciona transferencia de datos de alta velocidad entre periféricos/memoria o memoria/memoria sin ocupar recursos de la CPU.
+يوفر DMA نقل البيانات السريع بين الأجهزة الخارجية / الذاكرة أو الذاكرة / الذاكرة دون الحاجة إلى استخدام موارد وحدة المعالجة المركزية.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20210404153423.png)
 
-Como se muestra en la figura anterior, la serie STM32F4 tiene dos controladores DMA con un total de 12 canales (DMA1 tiene 7 y DMA2 tiene 5). El controlador DMA comparte el bus de datos del sistema con el núcleo Cortex-M3.
+كما هو موضح في الشكل أعلاه ، يحتوي سلسلة STM32F4 على متحكمي DMA اثنين ، بمجموع 12 قناة (DMA1 به 7 قنوات ، DMA2 به 5 قنوات). يشارك متحكم DMA حافلة البيانات الكلية لنواة Cortex-M3.
 
-En resumen, cuando la CPU no quiere transferir una gran cantidad de datos a otro lugar o cuando tiene cosas más importantes que hacer, puede dejar esta tarea a DMA para que la haga y DMA informará a la CPU cuando termine o si hay algún problema.
+ببساطة ، عندما يكون المعالج المركزي كسولًا لنقل سلسلة كبيرة من البيانات إلى مكان آخر ، أو عندما يكون لديه أشياء أكثر أهمية للقيام بها ، فيمكنه إرسال هذه المهمة إلى DMA للقيام بها ، وبمجرد الانتهاء من DMA / الحصول على مشكلة ، يمكن للمعالج المركزي أن يخبر.
 
-### Escenarios de uso de DMA
+### سيناريوهات استخدام DMA
 
-- **Comunicación serie**: el caso de uso más común, cuando hay una gran cantidad de datos que se leen o escriben desde el puerto serie, se utiliza DMA para procesarlos. Esto puede liberar la CPU para que maneje cosas más importantes.
-- **ADC**: generalmente se puede utilizar DMA en el modo de escaneo de canal cuando se necesita ADC.
-- **Lectura/escritura de tarjeta SD**: generalmente se utiliza DMA para manejar grandes cantidades de datos que se leen o escriben en la tarjeta SD.
+- **الاتصال المتسلسل**: الحالة الأكثر شيوعًا ، عندما يتم قراءة أو كتابة كمية كبيرة من البيانات من المنفذ التسلسلي ، يتم ترك المعالج المركزي للتعامل مع DMA. يمكن هذا تحرير المعالج المركزي والسماح له بالتعامل مع أشياء أكثر أهمية.
+- **ADC**: عادةً ما يتم استخدام DMA في وضع المسح الضوئي للقناة عند الحاجة إلى ADC.
+- **قراءة / كتابة بطاقة SD**: عند الحاجة إلى قراءة / كتابة كمية كبيرة من البيانات في بطاقة SD ، يتم استخدام DMA عادةً.
 
-### Dirección de transferencia de DMA
+### اتجاه نقل DMA
 
-- **P2P** (de periférico a periférico).
-- **P2M** (de periférico a memoria): generalmente se utiliza cuando un sensor envía datos a la MCU a través del puerto serie.
-- **M2P** (de memoria a periférico): generalmente se utiliza cuando la MCU envía datos a un actuador a través del puerto serie.
-- **M2M** (de memoria a memoria): transferencia de datos interna de MCU, comúnmente utilizada para transferir datos entre búferes o para leer/escribir datos desde/hacia un búfer. Solo DMA2 puede realizar operaciones M2M.
+- **P2P** (من الجهاز الطرفي إلى الجهاز الطرفي).
+- **P2M** (من الجهاز الطرفي إلى الذاكرة) : يستخدم عادةً عندما يرسل المستشعر القراءة عبر المنفذ التسلسلي إلى الميكروكونترولر.
+- **M2P** (من الذاكرة إلى الجهاز الطرفي) : يستخدم عادةً عندما يرسل الميكروكونترولر البيانات عبر المنفذ التسلسلي إلى المحرك.
+- **M2M** (من الذاكرة إلى الذاكرة) : نقل البيانات داخل MCU ، وهو شائع في نقل البيانات بين المخازن المؤقتة أو قراءة / كتابة البيانات من / إلى المخزن المؤقت. يمكن لـ DMA2 فقط القيام بعمليات M2M.
 
-### Modo de transferencia de DMA
+### وضع نقل DMA
 
-- **DMA_Mode_Normal**: modo normal. El DMA se detiene después de completar la tarea y debe iniciarse manualmente si se necesita de nuevo.
-- **DMA_Mode_Circular**: modo de transferencia circular. Cuando se completa la transferencia, el hardware recarga automáticamente el registro de cantidad de datos transferidos para realizar la siguiente transferencia de datos.
+- **DMA_Mode_Normal** : الوضع العادي. يتوقف DMA بعد الانتهاء من المهمة ، وإذا كانت هناك حاجة للاستخدام مرة أخرى ، فيجب تشغيله يدويًا مرة أخرى.
+- **DMA_Mode_Circular** : وضع النقل الدائري. عندما ينتهي النقل ، يقوم الجهاز بإعادة تحميل مسجل كمية البيانات المنقولة تلقائيًا ، ويقوم بالتالي بنقل البيانات في الدورة التالية.
 
-### Referencia de funciones DMA comunes
+### مراجع وظائف DMA الشائعة
 
-#### Enviar datos por DMA a través del puerto serie
+#### إرسال بيانات DMA المتسلسلة
 
 ```c
 HAL_UART_Transmit_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size)
 ```
 
-Función: envía datos de longitud especificada a través del puerto serie mediante DMA.  
-Parámetros:
+الوظيفة: إرسال بيانات محددة عبر DMA.  
+المعلمات:
 
-- **UART_HandleTypeDef \*huart**: alias de UART (por ejemplo: UART_HandleTypeDef huart1 -> huart1)
-- **\*pData**: datos que se enviarán
-- **Size**: número de bytes que se enviarán
+- **UART_HandleTypeDef \*huart** : اسم مستعار UATR (مثل: UART_HandleTypeDef huart1 -> huart1)
+- **\*pData** : البيانات التي يجب إرسالها
+- **Size** : عدد البايتات المراد إرسالها
 
-Ejemplo:
+مثال:
 
 ```c
-HAL_UART_Transmit_DMA(&huart1, (uint8_t *)Senbuff, sizeof(Senbuff));  //envía el array Senbuff a través del puerto serie
+HAL_UART_Transmit_DMA(&huart1, (uint8_t *)Senbuff, sizeof(Senbuff));  // إرسال مصفوفة Senbuff عبر المنفذ التسلسلي
 ```
 
-#### Recibir datos por DMA a través del puerto serie
+#### استقبال بيانات DMA المتسلسلة
 
 ```c
 HAL_UART_Receive_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size)
 ```
 
-Función: recibe datos de longitud especificada a través del puerto serie mediante DMA.  
-Parámetros:
+الوظيفة: استقبال بيانات محددة عبر DMA.  
+المعلمات:
 
-- **UART_HandleTypeDef \*huart**: alias de UART (por ejemplo: UART_HandleTypeDef huart1 -> huart1)
-- **\*pData**: array donde se almacenarán los datos recibidos
-- **Size**: número de bytes que se recibirán
+- **UART_HandleTypeDef \*huart** : اسم مستعار UATR (مثل: UART_HandleTypeDef huart1 -> huart1)
+- **\*pData** : مصفوفة لتخزين البيانات المستقبلة
+- **Size** : عدد البايتات المراد استقبالها
 
-Ejemplo:
+مثال:
 
 ```c
-HAL_UART_Receive_DMA(&huart1, (uint8_t *)Recbuff, sizeof(Recbuff));  //recibe datos a través del puerto serie y los almacena en el array Recbuff
+HAL_UART_Receive_DMA(&huart1, (uint8_t *)Recbuff, sizeof(Recbuff));  // استقبال المنفذ التسلسلي وتخزينه في مصفوفة Recbuff
 ```
 
-#### Función de recuperación de DMA de puerto serie
+#### وظيفة استعادة DMA المتسلسلة
 
 ```c
 HAL_UART_DMAResume(&huart1)
 ```
 
-Función: reanuda la transferencia DMA  
-Valor de retorno: 0 (reanudando); 1 (recuperación completada)
+الوظيفة: استئناف نقل DMA
+القيمة المُرجَعة: 0 (جاري الاستئناف) ؛ 1 (اكتمل الاستئناف)
 
-## Experimento de transferencia de DMA de puerto serie
+## تجربة نقل البيانات عبر DMA للتسلسل الزمني
 
-### Configuración de DMA en CubeMX
+### تكوين DMA داخل CubeMX
 
-Para la configuración de la parte de puerto serie, consulte el artículo [**HAL 库开发笔记 - 串口通信**](https://wiki-power.com/es/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1) (en chino).
+يرجى الانتقال إلى المقالة [**HAL 库开发笔记 - 串口通信**](https://wiki-power.com/ar/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1) لتكوين المنافذ السلسلية.
 
-Después de configurar los pines USART y las interrupciones NVIC, cambie a la pestaña `DMA Settings` y configure según la siguiente imagen:
+بعد تكوين منافذ USART ومقاطع NVIC ، يرجى التبديل إلى علامة التبويب `DMA Settings` وفقًا للتكوين الموضح في الصورة التالية:
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20210404165541.png)
 
-- Haga clic en `Add` para agregar canales (USART1_RX y USART1_TX)
-- Establezca la prioridad de ambos como `Medium`
-- El modo de transferencia DMA es `Normal`
-- La dirección de memoria DMA se incrementa automáticamente, aumentando un byte cada vez.
+- انقر فوق `Add` لإضافة القناة (USART1_RX و USART1_TX)
+- ضبط أولوية كليهما على `Medium` (أولوية متوسطة)
+- وضع نقل DMA هو `Normal` (الوضع العادي)
+- عنوان الذاكرة الداخلية DMA يزيد تلقائيًا ، ويتم زيادة بايت واحد في كل مرة (بايت)
 
-Luego, en la pestaña `System Core`, agregue una sección `MEMTOMEM`, como se muestra en la siguiente imagen:
+ثم ، في علامة التبويب `System Core` ، يرجى العثور على `DMA` وإضافة عنصر `MEMTOMEM` كما هو موضح في الصورة التالية:
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20210404170002.png)
 
-### Configuración de DMA en el código
+### تكوين DMA داخل الشفرة
 
 ```c title="main.c"
 /* USER CODE BEGIN Init */
 
-uint8_t Senbuff[] = "Serial Output Message by DMA \r\n";  // Cadena personalizada para enviar
+uint8_t Senbuff[] = "Serial Output Message by DMA \r\n";  // رسالة مخصصة للإرسال
 
 /* USER CODE END Init */
 
@@ -120,11 +120,14 @@ HAL_Delay(1000);
 /* USER CODE END 3 */
 ```
 
-Grabe el programa, abra el asistente de puerto serie y verá la matriz personalizada que se envía en bucle.
+بعد حرق البرنامج ، يمكنك فتح مساعد السلسلة الزمنية لرؤية المصفوفة المخصصة التي تم إرسالها بشكل متكرر.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [进阶篇 IV [DMA]](https://alchemicronin.github.io/posts/90d72de/#4-0-%E7%BB%83%E4%B9%A0%E9%A1%B9%E7%9B%AE) (en chino)
-- [【STM32】HAL 库 STM32CubeMX 教程十一 ---DMA (串口 DMA 发送接收)](https://blog.csdn.net/as480133937/article/details/104827639) (en chino)
+- [进阶篇 IV [DMA]](https://alchemicronin.github.io/posts/90d72de/#4-0-%E7%BB%83%E4%B9%A0%E9%A1%B9%E7%9B%AE)
+- [【STM32】HAL 库 STM32CubeMX 教程十一 ---DMA (串口 DMA 发送接收)](https://blog.csdn.net/as480133937/article/details/104827639)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
