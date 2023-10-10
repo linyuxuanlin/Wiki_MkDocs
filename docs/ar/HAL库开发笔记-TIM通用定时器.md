@@ -1,91 +1,91 @@
-# Notas de desarrollo de la biblioteca HAL - Temporizador universal TIM
+# مذكرات تطوير مكتبة HAL - المؤقت العام TIM
 
-En el artículo anterior, se presentaron brevemente los tres tipos de temporizadores de STM32F4, y se explicó en detalle el temporizador básico. En este artículo, continuaremos presentando el temporizador universal.
+في المقالة السابقة، تم تقديم ثلاثة أنواع من المؤقتات في STM32F4 وشرح المؤقت الأساسي بالتفصيل. في هذه المقالة، سنواصل شرح المؤقت العام.
 
-## Principios básicos
+## المبدأ الأساسي
 
-En STM32F4, los temporizadores universales son TIM2-TIM5, TIM9-TIM14.
+في STM32F4، يوجد مؤقتات عامة TIM2-TIM5 و TIM9-TIM14.
 
-### Características del temporizador universal
+### خصائص المؤقت العام
 
-En STM32F4, las características del temporizador universal son las siguientes:
+في STM32F4، تتميز المؤقتات العامة بالخصائص التالية:
 
-- Contador de recarga automática de 16/32 bits para incremento, decremento e incremento / decremento
-- Predivisor programable de 16 bits para dividir la frecuencia del reloj del contador (factor de división de 1-65536)
-- 4 canales independientes, que se pueden utilizar para:
-  - Captura de entrada
-  - Comparación de salida
-  - Generación de PWM (modo de borde y alineación central)
-  - Salida de modo de pulso único
-- Circuito de sincronización que permite controlar el temporizador con una señal externa y sincronizar varios temporizadores
-- Generación de interrupciones / solicitudes DMA en los siguientes eventos:
-  - Actualización: desbordamiento / subdesbordamiento del contador, inicialización del contador (por software o por activación interna / externa)
-  - Evento de activación (inicio, parada, inicialización del contador o conteo por activación interna / externa)
-  - Captura de entrada
-  - Comparación de salida
-- Admite codificadores incrementales (ortogonales) y circuitos de sensor Hall
-- Entrada de disparo de reloj externo o gestión de corriente periódica
+- عداد تصاعدي / تنازلي 16/32 بت وعداد تكراري تصاعدي / تنازلي
+- مقسم قابل للبرمجة بـ 16 بت لتقسيم تردد ساعة العداد (معامل القسمة 1-65536)
+- 4 قنوات مستقلة يمكن استخدامها للتالي:
+  - الاستحواذ على الإدخال
+  - المقارنة الناتجة
+  - إنتاج PWM (وضع الحافة والتوازن المركزي)
+  - إخراج وضع النبض الفردي
+- استخدام إشارة خارجية للتحكم في المؤقت وتنفيذ دوائر مزامنة متعددة للمؤقتات
+- توليد طلبات انقطاع / DMA عند حدوث الأحداث التالية:
+  - التحديث: تجاوز / تحت العداد ، تهيئة العداد (عن طريق البرنامج أو التشغيل الداخلي / الخارجي)
+  - حدث الزناد (تشغيل العداد ، إيقافه ، تهيئته أو تشغيل العداد عن طريق التشغيل الداخلي / الخارجي)
+  - الاستحواذ على الإدخال
+  - المقارنة الناتجة
+- دعم الترميز الزيادي (المتوازي) للمحركات ودوائر الاستشعار هول
+- إدخال تشغيل الساعة الخارجية أو إدارة التيار الدوري
 
-### Referencia de funciones de temporizador comunes
+### مراجع الدوال الشائعة للمؤقت
 
-A continuación se presentan las funciones de temporizador comunes que se utilizan con el temporizador universal y que son las mismas que las del temporizador básico.
+هذه هي مراجع الدوال الشائعة للمؤقت، وهي مماثلة لدوال المؤقت الأساسي.
 
-- **HAL_TIM_Base_Init()**: Inicializa la unidad de tiempo base del temporizador
-- **HAL_TIM_Base_DeInit()**: Desactiva el temporizador, lo contrario de la inicialización
-- **HAL_TIM_Base_MspInit()**: Función de inicialización MSP, que se llama automáticamente al inicializar el temporizador
-- **HAL_TIM_Base_MspDeInit()**: Lo contrario del anterior
-- **HAL_TIM_Base_Start()**: Inicia el temporizador
-- **HAL_TIM_Base_Stop()**: Detiene el temporizador
-- **HAL_TIM_Base_Start_IT()**: Inicia el temporizador en modo de interrupción
-- **HAL_TIM_Base_Stop_IT()**: Detiene el temporizador en modo de interrupción
-- **HAL_TIM_Base_Start_DMA()**: Inicia el temporizador en modo DMA
-- **HAL_TIM_Base_Stop_DMA()**: Detiene el temporizador en modo DMA
+- **HAL_TIM_Base_Init()**: تهيئة وحدة المؤقت الأساسية
+- **HAL_TIM_Base_DeInit()**: تعطيل المؤقت، عكس التهيئة
+- **HAL_TIM_Base_MspInit()**: دالة MSP التهيئة، سيتم استدعاؤها تلقائيًا عند تهيئة المؤقت
+- **HAL_TIM_Base_MspDeInit()**: عكس السابق
+- **HAL_TIM_Base_Start()**: تشغيل المؤقت
+- **HAL_TIM_Base_Stop()**: إيقاف المؤقت
+- **HAL_TIM_Base_Start_IT()**: تشغيل المؤقت بوضع الانقطاع
+- **HAL_TIM_Base_Stop_IT()**: إيقاف المؤقت بوضع الانقطاع
+- **HAL_TIM_Base_Start_DMA()**: تشغيل المؤقت بوضع DMA
+- **HAL_TIM_Base_Stop_DMA()**: إيقاف المؤقت بوضع DMA
 
-## Generación de una señal PWM con una frecuencia de 1 kHz y un ciclo de trabajo del 50% utilizando el temporizador universal
+## إخراج إشارة PWM بتردد 1 كيلو هرتز ونسبة تشغيل 50٪ باستخدام المؤقت العام
 
-En este experimento, se utiliza el temporizador universal para generar una señal PWM con una frecuencia de 1 kHz y un ciclo de trabajo del 50%, que se puede mostrar en un osciloscopio.
+في هذه التجربة، سنستخدم المؤقت العام لإخراج إشارة PWM بتردد 1 كيلو هرتز ونسبة تشغيل 50٪، ويمكن عرض الموجة الناتجة باستخدام جهاز الاهتزاز.
 
-### Configuración del temporizador universal en CubeMX
+### تكوين المؤقت العام داخل CubeMX
 
-En primer lugar, abrimos la página de configuración del árbol de relojes de la configuración de Clock Configuration, y como el temporizador universal está montado en el bus APB2 de alta velocidad, encontramos y anotamos la frecuencia del reloj APB2 Timer clocks (180 MHz):
+أولاً، نفتح صفحة تكوين شجرة الساعة Clock Configuration، ونجد تردد ساعة APB2 Timer clocks (180 ميجا هرتز) لأن المؤقت العام مرتبط بشبكة APB2 عالية السرعة، ونحتفظ به:
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20210627133951.png)
 
-A continuación, encontramos TIM8 en la barra lateral de Timer y configuramos el canal 1 (`Channel 1`) para la generación de PWM (`PWM Generation CH1`). Para generar una señal cuadrada PWM con una frecuencia de 1 kHz, necesitamos configurar los siguientes parámetros:
+ثم، نجد المؤقت العام TIM8 في الجانب الأيسر من الشاشة، ونقوم بتعيين القناة 1 (Channel 1) كإنتاج PWM (PWM Generation CH1). لإنتاج موجة مربعة PWM بتردد 1 كيلو هرتز، نقوم بتكوين المعلمات التالية:
 
-- **Prescaler** (factor de división previo): 180-1
-- **Modo de contador**: Up (contar desde 0 hasta el factor de división previo y luego desbordar)
-- **Periodo del contador** (valor de carga / período de tiempo): 1000-1
-- **auto-reload preload** (recarga automática): Enable (se recarga automáticamente cuando se desborda)
+- **Prescaler** (معامل القسمة): 180-1
+- **Counter Mode** (وضع العداد): Up (يبدأ العداد من الصفر ويتصاعد حتى يتم الفيض)
+- **Counter Period** (فترة العداد / قيمة التحميل): 1000-1
+- **auto-reload preload** (إعادة تحميل تلقائي): Enable (سيتم إعادة تحميل القيمة الأولية عند الفيض)
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20210627153422.png)
 
-Por lo tanto, como la fuente de reloj seleccionada aquí es de 180 MHz, configuramos el factor de división previo en 180-1 = 179, lo que resulta en una frecuencia de 1 MHz después de la división. Configuramos el valor de carga en 1000-1 = 9999, lo que resulta en una frecuencia de 1 kHz.
+وبما أن المصدر المستخدم هو 180 ميجا هرتز، فإننا نقوم بتعيين معامل القسمة على 180-1 = 179، وبعد القسمة، يصبح التردد 1 ميجا هرتز، ونقوم بتعيين قيمة التحميل على 1000-1 = 9999، وبالتالي يتم الحصول على تردد 1 كيلو هرتز.
 
-### Configuración del temporizador universal en el código
+### تكوين المؤقت العام في الكود
 
-En `main.c`, iniciamos el temporizador:
+نقوم بتشغيل المؤقت في `main.c`:
 
 ```c title="main.c"
 /* USER CODE BEGIN 2 */
 
 HAL_TIM_PWM_Start(&htim8,TIM_CHANNEL_1);
 
-// Establecer el ciclo de trabajo en 500 (500 Hz/1 kHz=50%)
+// تعيين نسبة العرض إلى 500 (500 هرتز / 1 كيلو هرتز = 50٪)
 __HAL_TIM_SetCompare(&htim8,TIM_CHANNEL_1,500);
 
 /* USER CODE END 2 */
 ```
 
-Compilar y grabar, se puede ver la forma de onda con un osciloscopio:
+قم بترجمة وحرق البرنامج ، يمكنك رؤية الموجة باستخدام المحلل الطيفي:
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20210627154737.jpg)
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
 - [STM32CubeMX 实战教程（五）—— 通用定时器（PWM 输出）](https://blog.csdn.net/weixin_43892323/article/details/104776035)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
