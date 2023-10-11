@@ -1,12 +1,12 @@
-# Homelab - Agregador de RSS autohospedado FreshRSS
+# Homelab - تشغيل مجمّع RSS FreshRSS على خادم شخصي
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/202304102312005.png)
 
-**FreshRSS** es un agregador de RSS autohospedado que admite la suscripción a múltiples fuentes de RSS y se actualiza automáticamente. Proporciona lectura en línea a través de la web y una API para su uso en aplicaciones móviles.
+**FreshRSS** هو مجمّع RSS مستضاف يدعم الاشتراك في عدة مصادر RSS ويقوم بالتحديث التلقائي. يوفر قراءة عبر الويب وواجهة برمجة تطبيقات (API) للاستخدام على التطبيقات المحمولة.
 
-## Implementación (Docker Compose)
+## التثبيت (Docker Compose)
 
-Primero, cree el archivo `compose.yaml` y pegue el siguiente contenido:
+أولاً، قم بإنشاء ملف `compose.yaml` والصق المحتوى التالي:
 
 ```yaml title="compose.yaml"
 version: "2.4"
@@ -25,40 +25,40 @@ services:
       - ${STACK_DIR}/extensions:/var/www/FreshRSS/extensions
     environment:
       TZ: Asia/Shanghai
-      CRON_MIN: "*/60" # Actualizar los artículos cada 60 minutos
+      CRON_MIN: "*/60" # استدعاء تحديث المقالات كل 60 دقيقة
     restart: unless-stopped
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `freshrss`).
+(اختياري) يوصى بإنشاء ملف `.env` في نفس مستوى `compose.yaml` وتخصيص المتغيرات البيئية الخاصة بك. إذا كنت لا ترغب في استخدام المتغيرات البيئية، فيمكنك تخصيص المعلمات مباشرة في `compose.yaml` (مثل استبدال `${STACK_NAME}` بـ `freshrss`).
 
 ```dotenv title=".env"
 STACK_NAME=freshrss
-STACK_DIR=xxx # Ruta personalizada de almacenamiento del proyecto, por ejemplo, ./freshrss
+STACK_DIR=xxx # تخصيص مسار حفظ المشروع، مثل ./freshrss
 
 # freshrss
 APP_VERSION=latest
-APP_PORT=xxxx # Puerto de acceso personalizado, elija uno que no esté en uso
+APP_PORT=xxxx # تخصيص منفذ الوصول، يمكن اختيار أي منفذ غير مستخدم
 ```
 
-Por último, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores.
+أخيرًا، قم بتشغيل الأمر `docker compose up -d` في نفس مستوى `compose.yaml` لتشغيل حاويات الترتيب.
 
-## Instrucciones de configuración
+## شرح التكوين
 
-Se recomienda la lista de blogs en chino de saveweb [**rss-list**](https://github.com/saveweb/rss-list) para las fuentes de RSS.
+يمكن الاطلاع على قائمة مدونات RSS الصينية الموصى بها من saveweb [**rss-list**](https://github.com/saveweb/rss-list).
 
-Se recomienda la aplicación FeedMe (Android) y NetNewsWire (iOS) para dispositivos móviles.
+يوصى باستخدام تطبيقات FeedMe (Android) و NetNewsWire (iOS) على الأجهزة المحمولة.
 
-Para obtener más información sobre RSS, consulte el artículo [**RSS - Una forma eficiente de leer**](https://wiki-power.com/es/RSS-%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E9%98%85%E8%AF%BB%E6%96%B9%E5%BC%8F/) (en chino).
+يمكن الاطلاع على المزيد من المحتوى المتعلق بـ RSS في المقال [**RSS - طريقة قراءة فعالة**](https://wiki-power.com/ar/RSS-%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E9%98%85%E8%AF%BB%E6%96%B9%E5%BC%8F/) (باللغة الصينية).
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Sitio web oficial](https://freshrss.org)
-- [Documentación](https://github.com/FreshRSS/FreshRSS/tree/edge/Docker#docker-compose)
-- [Repositorio de GitHub](https://github.com/FreshRSS/FreshRSS)
+- [الموقع الرسمي](https://freshrss.org)
+- [الوثائق](https://github.com/FreshRSS/FreshRSS/tree/edge/Docker#docker-compose)
+- [مستودع GitHub](https://github.com/FreshRSS/FreshRSS)
 - [Docker Hub](https://hub.docker.com/r/freshrss/freshrss)
-- [Sitio de demostración](https://demo.freshrss.org/i/?rid=64342708bf322)
+- [موقع العرض التوضيحي](https://demo.freshrss.org/i/?rid=64342708bf322)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

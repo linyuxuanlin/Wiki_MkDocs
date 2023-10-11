@@ -1,12 +1,12 @@
-# Homelab - Herramienta de sincronización multi-dispositivo Syncthing
+# Homelab - أداة مزامنة الملفات Syncthing عبر الأجهزة
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/202304111529987.png)
 
-**Syncthing** es una aplicación de sincronización de archivos de código abierto y gratuita que permite sincronizar archivos y carpetas entre múltiples dispositivos, con soporte para sincronización incremental. Lo uso para hacer copias de seguridad de los datos del servidor en mi NAS y gestionarlos de manera centralizada.
+**Syncthing** هي أداة مجانية ومفتوحة المصدر لمزامنة الملفات بين الأجهزة المختلفة، وتدعم المزامنة التدريجية. استخدمتها لنسخ احتياطي لبيانات الخادم على NAS لإدارتها بشكل موحد.
 
-## Implementación (Docker Compose)
+## التنصيب (Docker Compose)
 
-Primero, cree un archivo `compose.yaml` y pegue el siguiente contenido:
+أولاً، قم بإنشاء ملف `compose.yaml` والصق المحتوى التالي:
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -15,44 +15,47 @@ services:
     container_name: ${STACK_NAME}_app
     image: syncthing/syncthing:${APP_VERSION}
     hostname: my-syncthing
-    environment: # Necesita ejecutarse con permisos de root, de lo contrario no podrá leer otros directorios de Docker o el directorio raíz del host
+    environment: # يجب تشغيلها بصلاحيات root، وإلا لن تتمكن من قراءة أي من دلائل docker الأخرى أو دليل root على المضيف
       - PUID=0
       - PGID=0
     volumes:
       - ${APP_SYNC_DIR}:/DATA
       - ${STACK_DIR}/config:/var/syncthing/config/
     ports:
-      - ${APP_PORT}:8384 # Interfaz web
-      - 22000:22000/tcp # Transferencias de archivos TCP
-      - 22000:22000/udp # Transferencias de archivos QUIC
-      - 21027:21027/udp # Recibir difusiones de descubrimiento local
+      - ${APP_PORT}:8384 # واجهة المستخدم عبر الويب
+      - 22000:22000/tcp # نقل الملفات عبر TCP
+      - 22000:22000/udp # نقل الملفات عبر QUIC
+      - 21027:21027/udp # استقبال البث المحلي للاكتشاف
     restart: unless-stopped
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `syncthing`).
+(اختياري) يوصى بإنشاء ملف `.env` في نفس مستوى `compose.yaml` وتخصيص المتغيرات البيئية الخاصة بك. إذا كنت لا ترغب في استخدام المتغيرات البيئية، يمكنك تخصيص المعلمات مباشرة في `compose.yaml` (على سبيل المثال، استبدال `${STACK_NAME}` بـ `syncthing`).
 
 ```dotenv title=".env"
 STACK_NAME=syncthing
-STACK_DIR=xxx # Ruta personalizada de almacenamiento del proyecto, por ejemplo ./syncthing
+STACK_DIR=xxx # مسار تخزين المشروع المخصص، مثل ./syncthing
 
 # syncthing
 APP_VERSION=latest
-APP_PORT=xxxx # Puerto de acceso personalizado, elija uno que no esté en uso
-APP_SYNC_DIR=xxxx # Ruta personalizada que desea sincronizar, por ejemplo /DATA
+APP_PORT=xxxx # تخصيص منفذ الوصول الخاص بك، اختر أي منفذ غير مستخدم
+APP_SYNC_DIR=xxxx # تخصيص المسار الذي تريد مزامنته، مثل /DATA
 ```
 
-Finalmente, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores.
+أخيرًا، قم بتشغيل الأمر `docker compose up -d` في نفس مستوى `compose.yaml` لتشغيل حاويات الإعداد.
 
-## Instrucciones de configuración
+## تفاصيل التكوين
 
-Si recibe un mensaje de error de permisos insuficientes, intente cambiar los valores de `PUID` y `PGID` a `0` y ejecutarlo con permisos de root.
+إذا كانت هناك رسالة خطأ بسبب الصلاحيات، يمكنك محاولة تغيير قيم `PUID` و `PGID` إلى `0` وتشغيلها بصلاحيات root.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Sitio web oficial](https://syncthing.net/)
-- [Documentación](https://github.com/syncthing/syncthing/blob/main/README-Docker.md)
-- [Foro](https://forum.syncthing.net/)
-- [Repositorio de GitHub](https://github.com/syncthing/syncthing)
-- [Docker Hub](https://hub.docker.com/r/syncthing/syncthing/)
+- [الموقع الرسمي](https://syncthing.net/)
+- [الوثائق](https://github.com/syncthing/syncthing/blob/main/README-Docker.md)
+- [المنتدى](https://forum.syncthing.net/)
+- [مستودع GitHub](https://github.com/syncthing/syncthing)
+- [Docker Hub](https://hub.docker.com/r/syncthing/syncthing/) 
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

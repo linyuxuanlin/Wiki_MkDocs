@@ -1,6 +1,6 @@
-# Notas de estudio de JavaScript
+# ملاحظات تعلم جافا سكريبت
 
-## Llamando a JS externo
+## استدعاء جافا سكريبت خارجي
 
 ```markup
 <!DOCTYPE html>
@@ -14,42 +14,42 @@
 </html>
 ```
 
-## Salida
+## الإخراج
 
-### Alerta emergente
+### عرض صندوق تنبيه
 
 ```javascript
-window.alert("Hola");
+window.alert("Hello");
 ```
 
-### Manipulación de elementos HTML
+### التحكم في عناصر HTML
 
 ```markup
 <!DOCTYPE html>
 <html>
     <body>
-        <h1> Mi primera página web </h1>
-        <p id="demo"> Mi primer párrafo </p>
+        <h1> صفحتي الويب الأولى </h1>
+        <p id="demo"> فقرة أولى </p>
         <script>
-            document.getElementById ("demo").innerHTML = "El párrafo ha sido modificado.";
+            document.getElementById ("demo").innerHTML = "تم تعديل الفقرة.";
         </script>
     </body>
 </html>
 ```
 
-## Tipos de datos
+## أنواع البيانات
 
-Creando variables:
+إنشاء متغير:
 
 ```javascript
 var carname = "Volvo";
 ```
 
-**Tipos de valores \ (tipos básicos)**: cadena (String), número (Number), booleano (Boolean), nulo (Null), indefinido (Undefined), símbolo.
+**أنواع القيم \ (الأساسية \)**: سلسلة نصية (String) ، رقم (Number) ، بوليان (Boolean) ، فارغ (Null) ، غير معرف (Undefined) ، رمز (Symbol).
 
-**Tipos de datos de referencia**: objeto (Object), matriz (Array), función (Function).
+**أنواع البيانات المرجعية**: كائن (Object) ، مصفوفة (Array) ، وظيفة (Function).
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

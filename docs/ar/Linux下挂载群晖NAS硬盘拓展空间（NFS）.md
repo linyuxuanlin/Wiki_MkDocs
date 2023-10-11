@@ -1,53 +1,51 @@
-# Montar un disco duro de NAS Synology en Linux para expandir el espacio de almacenamiento (NFS)
+# توسيع مساحة التخزين باستخدام أقراص NAS من Synology على نظام Linux باستخدام NFS
 
-Si su servidor tiene un espacio de almacenamiento limitado, puede intentar montar un disco duro de NAS Synology como espacio de almacenamiento adicional.
+إذا كان لديك مساحة تخزين محدودة على الخادم الخاص بك ، فيمكنك محاولة توصيل أقراص NAS من Synology كمساحة تخزين إضافية.
 
-## Configuración en NAS Synology
+## تكوين Synology NAS
 
-### Habilitar el servicio NFS
+### تمكين خدمة NFS
 
-Abra "Configuración" - "Servicio de archivos" - "NFS" en Synology, marque la casilla de verificación del servicio NFS y seleccione el protocolo más reciente.
+افتح "الإعدادات" - "خدمة الملفات" - "NFS" في Synology وحدد خدمة NFS واختر البروتوكول الأحدث.
 
-### Configurar los permisos NFS de la carpeta
+### تكوين أذونات NFS للمجلد
 
-En "Configuración" - "Carpeta compartida", seleccione la carpeta compartida que desea habilitar NFS, haga clic en "Editar", cambie a la pestaña "Permisos NFS" y haga clic en "Agregar" para agregar una nueva regla NFS.
+في "الإعدادات" - "مشاركة الملفات" ، حدد المجلد المشترك الذي تريد تمكين NFS له ، وانقر على "تحرير" ، وانتقل إلى علامة التبويب "أذونات NFS" ، وانقر على "إضافة" لإضافة قاعدة بيانات NFS جديدة.
 
-En "Servidor o dirección IP", escriba la dirección IP del servidor que necesita acceder a Synology (por ejemplo, si mi servidor y Synology están en la misma red local, simplemente escribo la dirección IP interna de mi servidor 192.168.1.2). Marque las casillas "Permitir conexiones desde puertos no privilegiados" y "Permitir a los usuarios acceder a las carpetas montadas", y mantenga las demás configuraciones por defecto.
+"عنوان IP أو اسم الخادم" ، اكتب عنوان IP للخادم الذي تريد الوصول إليه من Synology (على سبيل المثال ، إذا كان الخادم الخاص بي و Synology في نفس الشبكة المحلية ، فمن الممكن كتابة عنوان IP الداخلي للخادم الخاص بي 192.168.1.2). حدد "السماح بالاتصالات من المنافذ غير المحددة" و "السماح للمستخدمين بالوصول إلى المجلدات المحملة" ، واترك الإعدادات الأخرى كما هي.
 
-## Montar en el servidor
+## تنفيذ التوصيل على الخادم
 
-Primero, instale el servicio NFS:
+أولاً ، قم بتثبيت خدمة NFS:
 
 ```bash
-apt update
-apt install nfs-common
+apt update
+apt install nfs-common
 ```
 
-Luego, cree una ruta de montaje en el servidor, por ejemplo:
+ثم ، قم بإنشاء مسار التوصيل على الخادم ، على سبيل المثال:
 
 ```bash
 sudo mkdir /DATA/nfs/music
 ```
 
-Finalmente, ejecute el comando de montaje:
+أخيرًا ، قم بتنفيذ أمر التوصيل:
 
 ```bash
-mount -t nfs Dirección IP de NAS:Ruta de carpeta compartida /Ruta de cliente NFS
+mount -t nfs NAS IP address: path to shared folder /NFS client path
 ```
 
-Por ejemplo:
+على سبيل المثال:
 
 ```bash
 sudo mount -t nfs 192.168.1.3:/volume1/music /DATA/nfs/music
 ```
 
-Si no hay errores, puede usar el comando "df" para verificar el estado de montaje.
+إذا لم يتم الإبلاغ عن أي أخطاء ، فيمكنك استخدام الأمر "df" للتحقق من حالة التوصيل.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Montar NAS Synology como disco virtual en Linux (Ubuntu) a través del servicio NFS](https://cloud.tencent.com/developer/article/2104277)
+- [
+  توصيل أقراص NAS من Synology كقرص افتراضي باستخدام خدمة NFS على نظام Linux (Ubuntu)](https://cloud.tencent.com/developer/article/2104277)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

@@ -1,158 +1,161 @@
-# Notas de estudio de Linux - Conocimientos básicos
+# ملاحظات تعلم لينكس - المفاهيم الأساسية
 
-## Conexión a un host remoto
+## الاتصال بجهاز الكمبيوتر البعيد
 
-Usando ssh:
+استخدم ssh:
 
 ```shell
-ssh usuario@IP
+ssh user@IP
 ```
 
-## Estructura del directorio raíz
+## هيكل الدليل الرئيسي
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20211009094302.png)
 
-| Directorio  | Contenido del directorio                                                                                                               |
+| المسار       | محتويات المسار                                                                                                                         |
 | ----------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| bin         | Archivos binarios, donde se almacenan los comandos del sistema, como cat, cp, mkdir.                                                  |
-| boot        | Contiene los archivos necesarios para el proceso de arranque, como el gestor de arranque grub2.                                        |
-| dev         | Directorio que contiene todos los archivos de dispositivos, como tarjetas de sonido, discos duros, unidades de CD/DVD.                  |
-| etc         | Directorio que contiene los archivos de configuración principales del sistema.                                                         |
-| home        | Directorio donde se almacenan los datos de los usuarios.                                                                               |
-| lib         | Biblioteca, donde se almacenan los archivos de biblioteca necesarios para los comandos en los directorios sbin y bin, para evitar duplicados.|
-| lib32/lib64 | Directorios que contienen bibliotecas de funciones binarias, compatibles con 32/64 bits.                                               |
-| lost+found  | En sistemas EXT3/4, cuando el sistema se bloquea o se apaga inesperadamente, se generan algunos archivos fragmentados en este directorio. El comando fcsk los revisa y repara los archivos dañados. |
-| media       | Directorio utilizado para montar dispositivos como CD, DVD, disquetes, etc.                                                             |
-| mnt         | Directorio utilizado para montar dispositivos de almacenamiento temporalmente.                                                           |
-| opt         | Directorio donde se instalan aplicaciones de terceros.                                                                                  |
-| proc        | Directorio donde se almacena información del proceso y del kernel, no ocupa espacio en disco.                                           |
-| root        | Directorio de inicio del usuario root.                                                                                                  |
-| run         | Es un sistema de archivos temporal, donde se almacena información desde el inicio del sistema. Cuando se reinicia el sistema, los archivos de este directorio deben eliminarse o limpiarse. |
-| sbin        | Binarios del sistema, donde se almacenan los comandos que utiliza el usuario root, como el comando de formato mkfs.                     |
-| srv         | Directorio que contiene archivos de datos necesarios para algunos servicios de red.                                                     |
-| sys         | Al igual que el directorio proc, se utiliza para registrar información relacionada con la CPU y el hardware del sistema.                 |
-| tmp         | Directorio donde se almacenan los archivos temporales generados durante la ejecución de programas.                                       |
-| usr         | Directorio donde se almacenan los programas del sistema, similar a la carpeta programefiles en Windows.                                  |
-| var         | Directorio donde se almacenan los archivos que cambian con frecuencia, como los archivos de registro del sistema.                        |
+| bin         | ملفات النظام الثنائية، مثل الأوامر مثل cat، cp، mkdir                                                                                     |
+| boot        | محتويات الإقلاع اللازمة، مثل برنامج إدارة الإقلاع grub2                                                                                       |
+| dev         | مجلد جميع ملفات الأجهزة (مثل بطاقة الصوت، القرص الصلب، محرك الأقراص)                                                                                               |
+| etc         | مجلد لتخزين ملفات التكوين الرئيسية للنظام                                                                                                       |
+| home        | مجلد لتخزين بيانات مجلدات المستخدمين                                                                                                               |
+| lib         | مكتبة، تخزين ملفات المكتبة اللازمة للأوامر في مجلدي sbin و bin لتجنب التكرار                                                                             |
+| lib32/lib64 | تخزين مكتبات الدوال الثنائية، تدعم 32/64 بت                                                                                                        |
+| lost+found  | في نظام EXT3/4، عندما يتعطل النظام أو يتم إيقافه بشكل غير متوقع، يتم إنشاء بعض ملفات الفتات في هذا المجلد، وسيقوم أداة fcsk بفحص هذا المجلد وإصلاح الملفات التالفة. |
+| media       | لتركيب الأقراص المدمجة والمرنة وأقراص الـ DVD وغيرها من الأجهزة                                                                                                        |
+| mnt         | mount، يستخدم بنفس الطريقة كما يستخدم media، لتركيب الأجهزة التخزين المؤقتة                                                                                         |
+| opt         | مجلد لتثبيت البرامج من مصادر غير رسمية                                                                                                               |
+| proc        | مجلد لتخزين معلومات العمليات والنواة، لا يستهلك مساحة القرص الصلب                                                                                               |
+| root        | مجلد المستخدم الجذر                                                                                                                      |
+| run         | نظام ملفات مؤقت لتخزين المعلومات منذ بدء التشغيل. يجب حذف الملفات في هذا المجلد عند إعادة تشغيل النظام.                                           |
+| sbin        | system bin، يستخدمه المستخدم الجذر لتشغيل الأوامر، مثل أمر التهيئة mkfs                                                                                |
+| srv         | مجلد لتخزين بيانات بعض خدمات الشبكة                                                                                                           |
+| sys         | مجلد مماثل لمجلد proc، يستخدم لتسجيل معلومات المعالج والأجهزة الأخرى في النظام                                                                                        |
+| tmp         | مجلد لتخزين الملفات المؤقتة التي ينتجها البرنامج أثناء التشغيل                                                                                                           |
+| usr         | مجلد لتخزين برامج النظام، مثل مجلد programefiles في نظام ويندوز                                                                          |
+| var         | مجلد لتخزين الملفات التي تتغير بشكل متكرر، مثل ملفات سجل النظام                                                                                               |
 
-## Tipos de archivos
+## أنواع الملفات
 
-En Linux, todo es un archivo.
+في Linux ، كل شيء هو ملف.
 
-Las extensiones de archivo comunes son las siguientes:
+تشمل الامتدادات الشائعة للملفات ما يلي:
 
-- Los sufijos .tar, .tar.gz, .tgz, .zip, .tar.bz indican archivos comprimidos, y los comandos de creación suelen ser tar, gzip, zip, etc. El sufijo en el archivo comprimido generalmente indica el formato de compresión utilizado para empaquetarlo, lo que facilita la selección del comando a utilizar para descomprimirlo.
-- .sh indica un archivo de script de shell, un programa desarrollado en lenguaje shell.
-- .pl indica un archivo de lenguaje Perl, un programa desarrollado en lenguaje Perl.
-- .py indica un archivo de lenguaje Python, un programa desarrollado en lenguaje Python.
-- .html, .htm, .php, .jsp, .do indican archivos de lenguaje web.
-- .conf indica archivos de configuración de servicios del sistema.
-- .rpm indica archivos de paquetes de instalación RPM.
+- اللاحقة .tar و .tar.gz و .tgz و .zip و .tar.bz تشير إلى ملفات مضغوطة ، وعادة ما يتم إنشاء الأمر باستخدام أوامر مثل tar و gzip و zip. يشير اللاحقة في الملف المضغوط عادة إلى تنسيق الضغط الذي تم تعبئته به ، لتسهيل اختيار الأمر المستخدم عند فك الضغط.
+- .sh يشير إلى ملفات نصية للبرامج المطورة باستخدام لغة shell.
+- .pl يشير إلى ملفات لغة perl للبرامج المطورة باستخدام لغة perl.
+- .py يشير إلى ملفات لغة python للبرامج المطورة باستخدام لغة python.
+- .html و .htm و .php و .jsp و .do يشير إلى ملفات لغة الويب.
+- .conf يشير إلى ملفات تكوين خدمة النظام.
+- .rpm يشير إلى ملفات حزمة التثبيت rpm.
 
-Los archivos tienen principalmente los siguientes tipos:
+تحتوي الملفات بشكل رئيسي على الأنواع التالية:
 
-### Archivos normales
+### ملفات عادية
 
-Archivos de texto, binarios, etc.
+ملفات النص وملفات bin وما إلى ذلك.
 
-### Archivos ejecutables
+### ملفات قابلة للتنفيذ
 
-Incluyen scripts y aplicaciones, estos archivos pueden ser cargados y ejecutados por el sistema, similares a los archivos de script bat y los archivos de programa exe en Windows.
+تشمل البرامج النصية والتطبيقات ، ويمكن تحميل هذه الملفات وتشغيلها من قبل النظام ، مثل ملفات البرامج في Windows مثل ملفات الـ bat وملفات البرامج exe وما إلى ذلك.
 
-### Archivos de enlace
+### ملفات الارتباط
 
-Los archivos de enlace se dividen en enlaces duros y enlaces simbólicos:
+تنقسم ملفات الارتباط إلى روابط صلبة وروابط رمزية:
 
-- Los enlaces duros se refieren a diferentes nombres para el mismo archivo.
-- Los enlaces simbólicos son similares a los accesos directos de Windows. En realidad, es un archivo especial. En el enlace simbólico, el archivo es en realidad un archivo de texto que contiene información sobre la ubicación de otro archivo.
+- الارتباط الصلب هو نفس الملف بأسماء مختلفة.
+- يشبه الارتباط الرمزي اختصارًا في Windows. في الارتباط الرمزي ، يكون الملف في الواقع ملفًا خاصًا. في الارتباط الرمزي ، يكون الملف في الواقع ملفًا نصيًا يحتوي على معلومات موقع ملف آخر.
 
-### Archivos de directorio
+### ملفات الدليل
 
-En Linux, los directorios también son archivos.
+في Linux ، المجلد هو أيضًا ملف.
 
-### Archivos de dispositivo
+### ملفات الجهاز
 
-Los dispositivos de hardware también son archivos, se pueden inicializar a través de los archivos de dispositivo correspondientes, y algunos dispositivos también se pueden controlar mediante la lectura y escritura de archivos de dispositivo.
+تعتبر أجهزة الأجهزة أيضًا ملفات ، ويمكن تهيئة الأجهزة عن طريق فتح ملف الجهاز المناسب ، ويمكن التحكم في بعض الأجهزة عن طريق قراءة وكتابة ملفات الجهاز.
 
-## Usuarios y permisos de archivo
+## صلاحيات المستخدم والملف
 
-### Permisos de usuario
+### صلاحيات المستخدم
 
-Linux es un sistema operativo multiusuario, donde los usuarios que tienen acceso a todos los recursos de otros usuarios y computadoras se llaman cuentas de root. En Linux, cada usuario tiene un número de identificación único (UID) para identificar a un usuario del sistema. El UID de la cuenta root es el número 0. Podemos usar el comando `id` para ver el valor UID del usuario actual. Un usuario puede pertenecer a varios GID (grupos) para obtener diferentes permisos de archivo.
+Linux هو نظام تشغيل متعدد المستخدمين ، ويشار إلى المستخدم الذي يدير جميع موارد الأجهزة والمستخدمين الآخرين باسم حساب root. في Linux ، لكل مستخدم رقم معرف محدد - UID - لتحديد مستخدم النظام. يكون UID لحساب root هو الرقم 0. يمكننا استخدام الأمر id لعرض قيمة UID الحالية للمستخدم. يمكن للمستخدم التابع لعدة GID (مجموعات) للحصول على صلاحيات ملفات مختلفة.
 
-### Permisos de archivo
+### صلاحيات الملف
 
-Las propiedades de archivo de Linux se dividen en permisos de lectura, escritura y ejecución (archivos que se pueden cargar en la memoria y ejecutar por el sistema operativo).
+تنقسم خصائص الملفات في Linux إلى صلاحية القراءة وصلاحية الكتابة وصلاحية التنفيذ (يمكن تحميلها في الذاكرة وتنفيذها من قبل نظام التشغيل).
 
-Los permisos de archivo se pueden modificar mediante el comando `chmod`.
+يمكن استخدام الأمر chmod لتغيير صلاحيات الملف.
 
-## Línea de comandos
+## سطر الأوامر
 
-### Indicador de terminal
+### موجه الأوامر
 
-Cuando abrimos una terminal, aparece una cadena de indicadores como:
+عند فتح المحطة ، سيظهر سطر موجه الأوامر مثل:
 
 ```shell
 power@Linuxbook:~$
 ```
 
-Esto representa que el usuario actual es `power`, el nombre del host en ejecución es `Linuxbook`, `~` representa el directorio actual es el directorio de inicio (es decir, `/home/power`), y `$` es el indicador de comando, lo que indica que es un usuario normal. Si es un usuario superusuario, será `#`.
+يشير هذا إلى أن المستخدم الحالي هو "power" ، واسم المضيف الذي يعمل عليه هو "Linuxbook" ، و "~" يشير إلى أن المجلد الحالي هو المجلد الرئيسي (أي "/ home / power") ، و "$" هو موجه الأوامر ، مما يعني أن هذا هو مستخدم عادي ، إذا كان المستخدم هو مستخدم جذر ، فسيكون "#" بدلاً من "$".
 
-### Comandos
+### الأوامر
 
-El formato básico de un comando (los dos últimos elementos son opcionales) es:
+التنسيق الأساسي للأمر (حيث تشير العناصر الأخيرتان إلى عدم الضرورة) هو:
 
 ```shell
 command [-options] [argument]
 ```
 
-Puede usar la tecla `Tab` para completar automáticamente y `Ctrl` + `C` para detener la ejecución en la línea de comandos.
+يمكن استخدام مفتاح Tab للإكمال التلقائي ، ويمكن استخدام Ctrl + C لإيقاف التشغيل في سطر الأوامر.
 
-- command: nombre del comando, como `cd`, `ls`, etc.
-- -options: opciones adicionales del comando, como `ls -l`. El comando realizará diferentes operaciones según las opciones específicas.
-- argument: argumento del comando, como en `cd /home`, `/home` es el nombre del argumento.
+- الأمر: اسم الأمر ، مثل "cd" ، "ls" ، إلخ.
+- -options: خيارات إضافية للأمر ، مثل "ls -l". يتم تنفيذ الأمر بناءً على الخيارات المحددة.
+- argument: معاملات الأمر ، مثل "/ home" في "cd / home".
 
-Los comandos comunes son:
+الأوامر الشائعة هي:
 
-- `ls`: Lista los nombres de los archivos y directorios
-  - `-a`: Muestra los archivos ocultos (nombres de archivo que comienzan con `.`)
-  - `-l`: Muestra información detallada sobre el tipo de archivo, permisos, propietario, tamaño, etc.
-  - `-t`: Lista los archivos en orden cronológico de creación
-  - `-A`: Igual que `-a`, pero no muestra `.` y `..` (directorio actual y directorio padre)
-  - `-R`: Si hay archivos en el directorio, también se listarán los archivos en ese directorio, es decir, se mostrarán de forma recursiva.
-- `cd`: Cambia de directorio
-  - Rutas especiales
-    - `~`: Directorio home del usuario actual
-    - `/`: Directorio raíz
-    - `.`: Directorio actual
-    - `..`: Directorio superior
-    - `-`: Cambia al directorio anterior al último `cd`
-- `pwd`: Muestra el directorio actual
-- `mkdir`: Crea un directorio
-  - `-p`: Crea directorios en caso de que no existan
-- `rmdir`: Elimina un directorio vacío
-- `touch`: Crea un archivo
-- `cp`: Copia archivos o directorios
-- `rm`: Elimina archivos o directorios
-  - `-r`: Elimina todos los subdirectorios y archivos dentro del directorio
-  - `-f`: Elimina forzosamente
-- `mv`: Mueve archivos o directorios, o cambia el nombre de archivos o directorios
-- `cat`: Muestra el contenido de un archivo
-- `echo`: Muestra el contenido en la terminal
-- Redireccionamiento de salida a un archivo: Guarda el resultado de un comando en un archivo
-  - `comando > nombre_archivo`, si el archivo no existe, se creará, si ya existe, se sobrescribirá
-  - `comando >> nombre_archivo`, si el archivo no existe, se creará, si ya existe, se agregará al final
-- `sudo`: Switch user do, agrega `sudo` antes de un comando que requiere permisos de root para que el usuario actual obtenga permisos de root y ejecute el comando. Si el usuario normal no tiene permisos y falla la ejecución, se puede usar `sudo !!` para volver a ejecutar el último comando con permisos.
-- `clear`: Limpia la pantalla
-- `reboot`/`poweroff`: Reinicia / Apaga el sistema
+- `ls` : يعرض قائمة بأسماء الملفات والمجلدات في الدليل الحالي
+  - `-a` : يعرض الملفات المخفية (التي تبدأ بـ `.`)
+  - `-l` : يعرض معلومات مفصلة عن نوع الملف والصلاحيات والمالك وحجم الملف وغيرها
+  - `-t` : يعرض الملفات حسب ترتيب تاريخ الإنشاء
+  - `-A` : يعرض الملفات المخفية مثل `-a` ولكن لا يعرض `.` و `..` (الدليل الحالي والدليل السابق)
+  - `-R` : يعرض الملفات في الدليل الحالي وفي جميع المجلدات الفرعية (يعرض بشكل متكرر)
+- `cd` : يغير الدليل الحالي
+  - المسارات الخاصة
+    - `~` : المجلد الرئيسي للمستخدم الحالي
+    - `/` : الدليل الرئيسي
+    - `.` : الدليل الحالي
+    - `..` : الدليل السابق
+    - `-` : يعود إلى الدليل الذي تم الانتقال منه مؤخرًا باستخدام `cd`
+- `pwd` : يعرض المسار الحالي
+- `mkdir` : ينشئ مجلدًا جديدًا
+  - `-p` : ينشئ مجلدات فرعية إذا لم تكن موجودة
+- `rmdir` : يحذف مجلدًا فارغًا
+- `touch` : ينشئ ملفًا جديدًا
+- `cp` : ينسخ ملفًا أو مجلدًا
+- `rm` : يحذف ملفًا أو مجلدًا
+  - `-r` : يحذف جميع الملفات والمجلدات في المجلد المحدد
+  - `-f` : يحذف بدون تأكيد
+- `mv` : ينقل ملفًا أو مجلدًا أو يغير اسمه
+- `cat` : يعرض محتوى الملف
+- `echo` : يعرض النص المحدد في الطرفية
+- إعادة توجيه الإخراج إلى ملف : يحفظ نتيجة الأمر في ملف
+  - `الأمر > اسم الملف` : ينشئ الملف إذا لم يكن موجودًا ويستبدله إذا كان موجودًا
+  - `الأمر >> اسم الملف` : ينشئ الملف إذا لم يكن موجودًا ويضيف إلى نهايته إذا كان موجودًا
+- `sudo` : يمنح المستخدم صلاحيات المستخدم الجذر، ويستخدم قبل الأوامر التي تحتاج إلى صلاحيات المستخدم الجذر. إذا فشل تنفيذ الأمر بسبب عدم وجود الصلاحيات، يمكن استخدام `sudo !!` لتنفيذ الأمر السابق بصلاحيات المستخدم الجذر.
+- `clear` : يمسح الشاشة
+- `reboot`/`poweroff` : إعادة التشغيل / إيقاف التشغيل
 
-## Gestión de paquetes
+## إدارة الحزم
 
-La gestión de paquetes es el uso de comandos para instalar software. En el sistema operativo Linux, los dos tipos de paquetes más comunes son deb y rpm.
+إدارة الحزم هي استخدام الأوامر لتثبيت البرامج. في نظام التشغيل Linux، توجد حزمتان شائعتان وهما deb و rpm.
 
-## Referencias y agradecimientos
+## المراجع
 
-- [Tutorial de Linux](https://www.runoob.com/linux/linux-tutorial.html)
-- [[Wildfire] Guía práctica de desarrollo de Linux i.MX](https://doc.embedfire.com/linux/imx6/base/zh/latest/index.html)
+- [دليل Linux](https://www.runoob.com/linux/linux-tutorial.html)
+- [[野火]i.MX Linux تطوير دليل الممارسة](https://doc.embedfire.com/linux/imx6/base/zh/latest/index.html)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

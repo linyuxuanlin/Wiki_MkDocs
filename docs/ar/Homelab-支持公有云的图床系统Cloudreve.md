@@ -1,12 +1,12 @@
-# Homelab - Sistema de almacenamiento en la nube Cloudreve compatible con la nube pública
+# Homelab - نظام Cloudreve لدعم الخدمات السحابية العامة للصور
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20230304195423.png)
 
-**Cloudreve** es un sistema de archivos en la nube compatible con múltiples controladores de almacenamiento en la nube pública. Admite el almacenamiento local, secundario, Qiniu, Aliyun OSS, Tencent Cloud COS, Upyun, OneDrive, S3 y protocolos compatibles para la conexión con Aria2 para descargas sin conexión, múltiples usuarios, carga / gestión de arrastrar y soltar, vista / edición en línea, WebDAV, entre otros. El uso típico es como un servicio de almacenamiento de imágenes personal o gestión de archivos en la nube.
+**Cloudreve** هو نظام ملفات سحابي يدعم العديد من محركات التخزين السحابية العامة، ويدعم استخدام الأجهزة المحلية والفرعية والسحابية العامة مثل Qiniu و Alibaba Cloud OSS و Tencent Cloud COS و Upyun و OneDrive و S3 كنهاية تخزين، ويمكنه الاتصال بـ Aria2 للتنزيل الغير متصل بالإنترنت، ويدعم العديد من المستخدمين والتحميل بالسحب والإفلات والإدارة، والمعاينة والتحرير عبر الإنترنت، و WebDAV وغيرها. وهو يستخدم عادة كمخزن للصور الشخصية أو إدارة ملفات السحابة.
 
-## Implementación (Docker Compose)
+## التنصيب (Docker Compose)
 
-En primer lugar, debemos crear una estructura de directorios. Cambie al directorio donde se encuentra Cloudreve (por ejemplo, `/DATA/AppData/cloudreve`) y ejecute:
+أولاً، نحتاج إلى إنشاء هيكل المجلدات. قم بالتبديل إلى المجلد الذي يحتوي على Cloudreve (مثال: `/DATA/AppData/cloudreve`) وقم بتنفيذ الأمر التالي:
 
 ```shell
 mkdir -vp cloudreve/{uploads,avatar,data} \
@@ -18,7 +18,7 @@ mkdir -vp cloudreve/{uploads,avatar,data} \
 && mkdir data
 ```
 
-Primero, cree el archivo `compose.yaml` y pegue el siguiente contenido:
+أولاً، قم بإنشاء ملف `compose.yaml` والصق المحتوى التالي:
 
 ```yaml title="compose.yaml"
 version: "3.8"
@@ -56,40 +56,40 @@ volumes:
       o: bind
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `cloudreve`).
+(اختياري) يوصى بإنشاء ملف `.env` في نفس مجلد `compose.yaml` وتخصيص المتغيرات البيئية الخاصة بك. إذا كنت لا تريد استخدام المتغيرات البيئية، يمكنك تخصيص المعلمات مباشرة في `compose.yaml` (على سبيل المثال، استبدال `${STACK_NAME}` بـ `cloudreve`).
 
 ```dotenv title=".env"
 STACK_NAME=cloudreve
-STACK_DIR=xxx # Ruta personalizada de almacenamiento del proyecto, por ejemplo ./cloudreve
+STACK_DIR=xxx # مسار تخزين المشروع المخصص ، على سبيل المثال ./cloudreve
 
 # cloudreve
 APP_VERSION=latest
-APP_PORT=xxxx # Puerto de acceso personalizado, elige uno que no esté ocupado
+APP_PORT=xxxx # منفذ الوصول المخصص ، اختر غير المستخدمة فقط
 
 # aria2
 ARIA2_VERSION=latest
-ARIA2_RPC_SECRET=xxx # Contraseña de ARIA2
+ARIA2_RPC_SECRET=xxx # كلمة مرور ARIA2
 ARIA2_RPC_PORT=6800
 ```
 
-Finalmente, ejecuta el comando `docker compose up -d` en el directorio raíz de `compose.yaml` para iniciar los contenedores.
+أخيرًا ، يمكن تشغيل حاويات الترتيب باستخدام الأمر `docker compose up -d` في نفس دليل `compose.yaml`.
 
-## Instrucciones de configuración
+## تعليمات التكوين
 
-Al iniciar por primera vez, se creará automáticamente una cuenta de administrador inicial, que se puede encontrar en los registros. Si se pierde, elimina el archivo cloudreve.db en el directorio y reinicia el programa principal para inicializar una nueva cuenta de administrador.
+عند التشغيل لأول مرة ، سيتم إنشاء حساب المسؤول الأولي تلقائيًا ، ويمكن العثور عليه في السجل. إذا فاتتك ، فيرجى حذف cloudreve.db في الدليل وإعادة تشغيل البرنامج الرئيسي لتهيئة حساب المسؤول الجديد.
 
-Utilizo la convención de nomenclatura de imágenes: `{año}{mes}{día}{hora}{minuto}{segundo}{ext}`.
+أنا استخدمت قاعدة تسمية الصور التالية: `{year}{month}{day}{hour}{minute}{second}{ext}`.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Sitio web oficial](https://docs.cloudreve.org/)
-- [Documentación](https://docs.cloudreve.org/getting-started/install#docker-compose)
-- [Foro](https://forum.cloudreve.org/)
-- [Repositorio de GitHub](https://github.com/cloudreve/Cloudreve)
+- [الموقع الرسمي](https://docs.cloudreve.org/)
+- [الوثائق](https://docs.cloudreve.org/getting-started/install#docker-compose)
+- [المنتدى](https://forum.cloudreve.org/)
+- [مستودع GitHub](https://github.com/cloudreve/Cloudreve)
 - [Docker Hub](https://hub.docker.com/r/cloudreve/cloudreve)
-- [Sitio de demostración](https://demo.cloudreve.org/)
+- [موقع العرض التوضيحي](https://demo.cloudreve.org/)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
