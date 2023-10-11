@@ -1,6 +1,6 @@
 # Docker 基础知识
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210116153041.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20210116153041.png)
 
 众所周知，软件开发中最麻烦的事情之一，就是环境的配置。运行环境的差异，可能导致意想不到的结果，而使用 Docker 可以避免出现这样的问题。
 
@@ -39,7 +39,7 @@ sudo sh ./get-docker.sh --dry-run
 
 因为 Docker 运行在并依赖于 Linux 环境，所以它几乎没有效率损耗。但是，如果在其他系统上部署 Docker，就必须先安装一个虚拟 Linux 环境。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230708005714.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20230708005714.png)
 
 Windows 下 Docker 的安装方法，请参考官方文档 [**Install Docker Desktop on Windows**](https://docs.docker.com/desktop/install/windows-install/)。
 

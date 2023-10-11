@@ -2,7 +2,7 @@
 
 ## 硬件资源
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211008090724.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211008090724.png)
 
 - USB Type-A：作为 USB 从机（Host）模式使用
 - USB Micro：为板子供电并且作为从机

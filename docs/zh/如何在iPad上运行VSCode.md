@@ -2,7 +2,7 @@
 
 注：本教程基于 code-server v3.8.0，CentOS 8.2.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20201221140748.jpg)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20201221140748.jpg)
 
 更推荐以 Docker compose 的方式安装 code-server 服务。  
 仅需一行命令部署，且无需配置后台运行，自带 Git 等环境。  

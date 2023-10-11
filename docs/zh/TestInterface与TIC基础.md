@@ -8,13 +8,13 @@
 
 因 AMBA 的理念在于对系统中的单个模块进行隔离测试，每个模块的测试仅依赖于总线接口，需要一种测试方法来对未连接到总线的外设的输入输出进行测试。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308262214877.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/202308262214877.png)
 
 这种测试方法可通过 Test Interface 实现。它采用简单的三线握手机制，以控制 Vector 的读写；同时，它使用 **EBI（External Bus Interface，外部总线接口）** 作为数据路径，以将外部的 Vector 导入内部总线。
 
 ## Test Interface 的引脚
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308262225257.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/202308262225257.png)
 
 由上图可见，Test Interface 的引脚由三个部分组成：
 

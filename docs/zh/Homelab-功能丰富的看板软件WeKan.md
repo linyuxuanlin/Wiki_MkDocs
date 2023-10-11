@@ -1,6 +1,6 @@
 # Homelab - 功能丰富的看板软件 WeKan
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230508175842.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20230508175842.png)
 
 **WeKan** 是一款灵活、易用且高效的开源看板软件，它可以帮助团队协作管理任务、项目和工作流程。它提供了一个简单而强大的用户界面，用户可以轻松创建多个看板，为每个看板添加列表和卡片，并将任务分配给不同的成员，从而更好地管理项目并跟踪进度。
 

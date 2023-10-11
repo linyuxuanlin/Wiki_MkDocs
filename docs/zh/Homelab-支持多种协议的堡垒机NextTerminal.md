@@ -1,6 +1,6 @@
 # Homelab - 支持多种协议的堡垒机 Next Terminal
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230312001443.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20230312001443.png)
 
 **Next Terminal** 是一个简单好用的跳板机（堡垒机），集成了 Apache Guacamole 无客户端的远程桌面网关的堡垒机方案，支持 RDP、SSH、VNC、TELNET、Kubernetes 多协议，能直接通过 web 访问内网资源，跨平台兼容性佳。它支持 MFA 多因子认证登录，也有审计录像功能和其他记录。
 

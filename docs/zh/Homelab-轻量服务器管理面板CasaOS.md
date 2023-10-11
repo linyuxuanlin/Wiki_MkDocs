@@ -1,6 +1,6 @@
 # Homelab - 轻量服务器管理面板 CasaOS
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304192541.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20230304192541.png)
 
 **CasaOS** 是一个简单易用、优雅的开源个人面板，功能包含了文件管理器、服务器状态监测、终端、Docker 容器管理、内置 Docker 应用商店等。
 

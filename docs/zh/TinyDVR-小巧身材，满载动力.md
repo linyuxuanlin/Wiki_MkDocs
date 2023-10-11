@@ -2,7 +2,7 @@
 
 —— 基于 TinyDVR Master V1.1 & Slave V7.2 Release
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200125191345.jpg)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200125191345.jpg)
 
 TinyDVR 是一款电机驱动套件，包含母板（Master）与子板（Slave），供电部分与驱动部分分离，相比前身 ZenDriver 大幅度缩减了体积，极大提升了可拓展性。你可以根据自己的需求，堆叠不同数量的子板，驱动 n 个电机。
 
@@ -41,11 +41,11 @@ TinyDVR 是一款电机驱动套件，包含母板（Master）与子板（Slave�
 
 ### TinyDVR Master
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200125191439.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200125191439.png)
 
 ### TinyDVR Slave
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200125191457.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200125191457.png)
 
 背面引脚详解：
 
@@ -75,11 +75,11 @@ TinyDVR 是一款电机驱动套件，包含母板（Master）与子板（Slave�
 ## 花絮
 
 早期子板：
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200311182442.jpg)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200311182442.jpg)
 
 批量焊接：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200311182441.jpg)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200311182441.jpg)
 
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

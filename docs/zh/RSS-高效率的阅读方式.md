@@ -6,8 +6,8 @@ RSS 的全称是「简易内容聚合」（Really Simple Syndication），是一
 
 > 一个网站支持 RSS，就意味着每当它新发布一篇新文章，就会往一个位于特定网址的文件中，以特定的语法（具体而言是 XML 标记语言或 JSON）增加一条记录，列明这篇文章的标题、作者、发表时间和内容（可以是全文，也可以是摘要）等信息。这样，用户只要搜集所有他感兴趣的网站提供的这种文件的网址，并不时检查这些文件内容的更新，就能知道这些网站是否、何时发布了什么内容。RSS 阅读器的核心功能，就是存储用户订阅的 RSS 地址，以固定的频率自动检查更新，并将其内容转换为易读的格式呈现给用户。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200225145439.png)
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200225145502.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200225145439.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200225145502.png)
 
 ## 为什么用 RSS
 
@@ -33,7 +33,7 @@ RSS 的对立面是算法推荐，像微信公众号、知乎、微博、今日�
 
 判断一个网站是否有 RSS，如果打开就看到这个标识：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/rss.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/rss.png)
 
 则可以直接点击此图标，并直接订阅 RSS 链接。  
 如果没有标识呢？也可能是有 RSS 的，不过藏得比较深。

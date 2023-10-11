@@ -8,7 +8,7 @@
 
 [**MD2WeChat**](https://md2wechat.wiki-power.com/) 是我根据开源项目 [lyricat/wechat-format](https://github.com/lyricat/wechat-format) 定制的一个网页工具，可以很方便地将 Markdown 语法解析为富文本：
 
-[![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210216125752.png)](https://md2wechat.wiki-power.com/)
+[![](https://f004.backblazeb2.com/file/wiki-media/img/20210216125752.png)](https://md2wechat.wiki-power.com/)
 
 将 Markdown 语法的文章粘贴到左栏，并在右栏点击一键复制，粘贴进公众号的编辑器即可。
 

@@ -48,7 +48,7 @@ DP83848 接口为 RMII，DP83848 可支持 10M/100M 的线速，板载 50MHz 无
 
 时钟树配置：按照板载晶振（此板为 8M）配置。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220702145310.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220702145310.png)
 
 ### 添加功能代码
 

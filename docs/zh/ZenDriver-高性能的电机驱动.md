@@ -13,7 +13,7 @@
 
 ## 接口定义
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200125192433.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200125192433.png)
 
 **电机端** 从左到右依次为：**M-，5V，编码器 A，编码器 B，GND，M+** ，对应电机引脚，可以直接怼电机上去。
 
@@ -37,8 +37,7 @@
 4. 引脚 **IN1，IN2** 接单片机 PWM 端口
 5. 用代码调试
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200125192734.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20200125192734.png)
 
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-

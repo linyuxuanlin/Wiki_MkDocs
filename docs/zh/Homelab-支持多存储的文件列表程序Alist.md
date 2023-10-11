@@ -1,6 +1,6 @@
 # Homelab - 支持多存储的文件列表程序 Alist
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304141808001.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/202304141808001.png)
 
 **Alist** 是一个文件列表程序，支持多种储存方式如本地、阿里云盘、OneDrive、GoogleDrive、百度网盘、夸克网盘、蓝奏云、S3、FTP / SFTP 等等，带在线视频播放器与各类文件预览（兼容 Office、PDF、Markdown 等），还有离线下载功能。
 

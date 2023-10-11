@@ -18,7 +18,7 @@ IDD 表示的是 CMOS 电路中从漏极（D）到漏极（D）的电流（I）�
 
 Gross IDD 测试需要先通过重置，以将所有输入引脚设低 / 高电平，通常 VIL 设置为 0V、VIH 设置为 VDD，所有输出引脚空载（防止悬空产生漏电流，使 IDD 变大）。测试的示意图如下：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220728162655.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220728162655.png)
 
 需要注意的事项：
 
@@ -38,7 +38,7 @@ Gross IDD 测试需要先通过重置，以将所有输入引脚设低 / 高电�
 
 IDD 静态测试的示意图如下：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220728162341.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220728162341.png)
 
 测试流程如下：
 
@@ -63,7 +63,7 @@ IDD 动态测试的目的，是测试 DUT 在 **动态执行功能** 时（通�
 
 测试的示意图：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220728171447.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220728171447.png)
 
 测试流程与静态法相似。
 
@@ -86,7 +86,7 @@ VOH 表示高电平（H）输出（O）时的最低电压（V）限制（不会�
 
 使用串行静态法测量 VOL/IOL 的测试示意图如下：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220728150542.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220728150542.png)
 
 测试流程如下：
 
@@ -106,7 +106,7 @@ VOH 表示高电平（H）输出（O）时的最低电压（V）限制（不会�
 
 使用串行静态法测量 VOH/IOH 的测试示意图如下：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220728143124.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220728143124.png)
 
 测试流程如下：
 
@@ -138,7 +138,7 @@ IIL 衡量的是输入引脚到 VDD 的电阻值；IIH 衡量的是输入引脚�
 
 使用串行法测试输入引脚 IIL 的示意图如下：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220729100620.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220729100620.png)
 
 测试流程如下：
 
@@ -151,7 +151,7 @@ IIL 衡量的是输入引脚到 VDD 的电阻值；IIH 衡量的是输入引脚�
 
 使用串行法测试输入引脚 IIH 的示意图如下：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220729100739.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220729100739.png)
 
 测试流程如下：
 
@@ -166,7 +166,7 @@ IIL 衡量的是输入引脚到 VDD 的电阻值；IIH 衡量的是输入引脚�
 
 在一些测试系统上，能对漏电流进行并行测量（Parallel Test Method）。并行测漏电流是用多个 PMU 对多个 pin 分别进行测量，所有输入引脚都被强制拉高，并且同时并行测量每个引脚的电流，随后将测试结果与标称值做比较得出结论。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220729103317.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220729103317.png)
 
 1. 首先要供 VDDmax 的电源给 DUT。
 2. 使用多个 PMU 对每个输入引脚强制拉高到 VDDmax（测 IIH）。
@@ -179,7 +179,7 @@ IIL 衡量的是输入引脚到 VDD 的电阻值；IIH 衡量的是输入引脚�
 
 合并测试（Ganged Method）指的是将所有输入引脚合并为一个引脚，用一个 PMU 测漏电流的总和。测试示意图如下：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220729104449.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220729104449.png)
 
 组合测试方法与以上类似。其电流总限额是单个引脚的标称值，如果测试结果超限，则必须换回串行测试重测，这种测试对 CMOS 器件（高阻抗输入）测试效果比较好。
 
@@ -197,7 +197,7 @@ IIL 衡量的是输入引脚到 VDD 的电阻值；IIH 衡量的是输入引脚�
 
 串行静态测试 IOZL/IOZH 的示意图如下：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220807202447.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220807202447.png)
 
 测试流程如下：
 
@@ -226,7 +226,7 @@ IIL 衡量的是输入引脚到 VDD 的电阻值；IIH 衡量的是输入引脚�
 
 串行静态法测 VI，测试示意图如下：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220729145425.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220729145425.png)
 
 测试流程如下：
 
@@ -248,7 +248,7 @@ IIL 衡量的是输入引脚到 VDD 的电阻值；IIH 衡量的是输入引脚�
 
 测试示意图如下：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220729152549.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220729152549.png)
 
 测试流程如下：
 
@@ -270,13 +270,13 @@ IIL 衡量的是输入引脚到 VDD 的电阻值；IIH 衡量的是输入引脚�
 
 有些输入引脚可能有主动上拉、下拉结构，需要保证 **输入 Buffer 的上下拉电阻路径正常**。只能串行测试，因为不同引脚内部上下拉结构可能不一样。引脚结构的示意图：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220729130655.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220729130655.png)
 
 ## Output Fanout（输出扇出能力）
 
 扇出（Fanout）能力是指输出引脚根据其电压电流参数，驱动多个输入引脚的能力。也就是 **引脚的带驱能力，是衡量一个输出引脚可以带得动多少个输入引脚的指标**。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220729132621.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220729132621.png)
 
 如上图，这个 TTL 输出可以拉高大约 17 个输入引脚，或者拉低 30 个输入引脚。在规格书中，引脚的参数会这样表示出来：
 

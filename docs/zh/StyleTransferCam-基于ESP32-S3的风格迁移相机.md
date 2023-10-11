@@ -1,6 +1,6 @@
 # StyleTransferCam - 基于 ESP32-S3 的风格迁移相机
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308152238959.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/202308152238959.png)
 
 当艺术与技术交汇，一幅新的世界在我们面前展开，这是一场视觉上的奇妙盛宴，也是一份无限可能的探索。StyleTransferCam 是一个基于 ESP32-S3 的风格迁移相机。它使用的是一种叫「风格迁移」的机器学习技术，当你按下板载按钮时，它将拍下当前的景色，并与一张预设的风格模板照片混合（可以是梵高的「星空」），生成一张别具匠心的作品。
 
@@ -10,7 +10,7 @@ StyleTransferCam 大致由以下几个流程组成：
 2. 自动启动风格迁移的 Python 程序，对照片进行处理，并输出风格化的照片。
 3. 如果 ESP32-S3 有附带 TFT 屏幕的话，也可以回传屏幕显示出来。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308152244791.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/202308152244791.png)
 
 ## 测试板载按钮与 LED
 
@@ -332,7 +332,7 @@ if __name__ == '__main__':
 
 在 `receive-photo.py` 相同的目录下，我们使用 TensorFlow 编写一个风格迁移的 Python 程序。首先安装程序所需的依赖（国内的网络环境导致 TensorFlow 很难下载，需要多一些耐心），然后在相同目录下准备一张待风格化的照片，将其命名为 `base.png`；还有一张风格参考的图片，命名为 `style_reference.png`，这副图片可以是一副艺术画，比如梵高的「星空」:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308152239917.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/202308152239917.png)
 
 接下来，编写风格迁移的程序:
 
@@ -532,7 +532,7 @@ display(Image(result_prefix + "_at_iteration_4000.png"))
 
 如果这个程序能正常运行，你可以直接运行 `receive-photo.py`，使用自动化的方式接收来自 ESP32-S3 拍摄的照片，直接生成风格化的照片。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308152246623.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/202308152246623.png)
 
 ## 参考与致谢
 

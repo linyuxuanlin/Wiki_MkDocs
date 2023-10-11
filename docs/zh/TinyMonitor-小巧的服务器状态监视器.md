@@ -1,6 +1,6 @@
 # TinyMonitor - 小巧的服务器状态监视器
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261716469.jpg)
+![](https://f004.backblazeb2.com/file/wiki-media/img/202305261716469.jpg)
 
 TinyMonitor 是一个小巧极简的服务器状态监视终端，它仅由一个 ESP32 主控加上 OLED 显示屏，就可以将服务器的实时状态参数展示出来，方便观察调试。
 
@@ -8,15 +8,15 @@ TinyMonitor 是一个小巧极简的服务器状态监视终端，它仅由一�
 
 本项目用到的硬件物料非常简单，一个自带 Wi-Fi 蓝牙的 Beetle ESP32-C3，还有一块 128x64 的 OLED 屏。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261541993.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/202305261541993.png)
 
 Beetle ESP32-C3 的引脚定义如下。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261545236.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/202305261545236.png)
 
 因为可以使用软件 I2C 的方式（即自定义 I2C 引脚）驱动 OLED 屏，所以我将 Beetle ESP32-C3 的 `0`/`1` 引脚定义为 `SCL`/`SDA` 功能。这样一来，接线十分简单，相互贴着把 4 个引脚焊上就完成了。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261546367.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/202305261546367.png)
 
 注：给 Beetle ESP32-C3 烧录程序前，需要先添加 ESP32 的包，以正常识别板子型号。详见其 [**Wiki 页面**](https://wiki.dfrobot.com.cn/_SKU_DFR0868_Beetle_ESP32_C3)。
 
@@ -119,7 +119,7 @@ docker restart 容器ID # 重启容器生效
 
 安装软件后，点击 `Create MQTT Client` 新建连接，按照下图填写相关参数：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261456592.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/202305261456592.png)
 
 其中，`HOST` 为 MQTT 服务所在的服务器的地址（例如，我的服务器在局域网内的地址是 `192.168.1.2`)；用户名和密码需要与上文配置 Mosquitto 时设置的值对应。
 
@@ -156,7 +156,7 @@ while True:
 
 成功运行后，我们可以在 MQTTBox 顶部状态栏上点击 `Add subscriber` 添加对这三个主题的订阅，例如：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261513642.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/202305261513642.png)
 
 如果一切正常的话，应该可以在 MQTTBox 中看到不断回传的服务器的状态信息。
 
@@ -277,7 +277,7 @@ void loop() {
 
 附：Beetle ESP32-C3 与 Seeed XIAO ESP32C3 的合照。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261719170.jpg)
+![](https://f004.backblazeb2.com/file/wiki-media/img/202305261719170.jpg)
 
 ## 参考与致谢
 
