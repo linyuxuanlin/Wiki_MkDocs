@@ -1,28 +1,28 @@
-# RaptorDVR - Controlador de doble motor con regulador integrado de 30 A 🚧
+# RaptorDVR - محرك مزدوج بتيار 30 أمبير مع مثبت الجهد 🚧
 
-RaptorDVR es una placa controladora de doble motor de corriente continua con reducción de velocidad capaz de manejar corrientes de hasta 30 A. También cuenta con un regulador de voltaje de 5 V/5 A integrado para alimentar dispositivos externos como la Raspberry Pi y placas controladoras de microcontroladores.
+RaptorDVR هو لوحة تشغيل محرك مزدوج بتيار 30 أمبير لتقليل التيار المستمر، ويحتوي أيضًا على مصدر طاقة مثبت الجهد 5 فولت / 5 أمبير للاستخدام مع الأجهزة الخارجية مثل Raspberry Pi ولوحة التحكم الفردية.
 
-## Características
+## الميزات
 
-- Tipo de controlador: controlador de puente H de doble canal con MOSFET
-- Voltaje de entrada externo: 3.5-28 V (por confirmar)
-- Corriente de motor (por canal): 15 A
-- Protección de circuito: fusible de 30 A (LED indicador de estado del fusible)
+- نوع التشغيل: تشغيل MOSFET بمحركين بواسطة مجسات الجسر الكامل
+- الجهد الخارجي المدخل: 3.5-28 فولت (قيد الاختبار)
+- تيار تشغيل المحرك (لكل محرك): 15 أمبير
+- حماية الدائرة: 30 أمبير بواسطة الصمام الثنائي الباعث للضوء (LED) (يعرض حالة الصمام الثنائي الباعث للضوء)
 
-## Diseño de hardware
+## تصميم الأجهزة
 
-### Controlador de puente H
+### تشغيل المحرك بواسطة مجسات الجسر الكامل
 
-### Regulador de voltaje
+### مثبت الجهد
 
-## Programa de ejemplo
+## برنامج المثال
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Hercules Dual 15A 6-20V Motor Controller](https://wiki.seeedstudio.com/Hercules_Dual_15A_6-20V_Motor_Controller/)
+- [تحكم محرك مزدوج Hercules Dual 15A 6-20V](https://wiki.seeedstudio.com/Hercules_Dual_15A_6-20V_Motor_Controller/)
 - 105010000
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

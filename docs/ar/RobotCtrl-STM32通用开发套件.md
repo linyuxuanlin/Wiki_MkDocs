@@ -1,59 +1,64 @@
-# RobotCtrl - Kit de desarrollo universal STM32
+# RobotCtrl - STM32 通用开发套件
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220416181125.jpeg)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220416181125.jpeg)
 
-Repositorio del proyecto: [**linyuxuanlin/RobotCtrl**](https://github.com/linyuxuanlin/RobotCtrl)
+مستودع المشروع: [**linyuxuanlin/RobotCtrl**](https://github.com/linyuxuanlin/RobotCtrl)
 
-RobotCtrl - Kit de desarrollo universal STM32 consta de tres placas:
+يتضمن RobotCtrl - STM32 通用开发套件 ثلاثة لوحات:
 
-- [**RobotCtrl_Core - Placa principal**](https://wiki-power.com/es/RobotCtrl_Core-%E6%A0%B8%E5%BF%83%E6%9D%BF)
-- [**RobotCtrl_Core - Placa de expansión de periféricos**](https://wiki-power.com/es/RobotCtrl_Func-%E5%A4%96%E8%AE%BE%E6%8B%93%E5%B1%95%E6%9D%BF)
-- [**RobotCtrl_Power - Placa de suministro de energía**](https://wiki-power.com/es/RobotCtrl_Power-%E7%94%B5%E6%BA%90%E4%BE%9B%E7%94%B5%E6%9D%BF)
+- [**RobotCtrl_Core - لوحة النواة**](https://wiki-power.com/ar/RobotCtrl_Core-%E6%A0%B8%E5%BF%83%E6%9D%BF)
+- [**RobotCtrl_Core - لوحة توسيع الأجهزة الطرفية**](https://wiki-power.com/ar/RobotCtrl_Func-%E5%A4%96%E8%AE%BE%E6%8B%93%E5%B1%95%E6%9D%BF)
+- [**RobotCtrl_Power - لوحة تزويد الطاقة**](https://wiki-power.com/ar/RobotCtrl_Power-%E7%94%B5%E6%BA%90%E4%BE%9B%E7%94%B5%E6%9D%BF)
 
-## Requisitos de diseño
+## متطلبات التصميم
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220527111854.png)
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220527111854.png)
 
-Nota: Lo siguiente es un resumen del diseño, para obtener información detallada, consulte los artículos relacionados.
+ملاحظة: ما يلي ملخص التصميم ، يرجى الرجوع إلى المقالات ذات الصلة للحصول على المحتوى الكامل.
 
-### Idea de diseño de RobotCtrl_Core
+### فكرة تصميم RobotCtrl_Core
 
-El diseño del esquemático de RobotCtrl_Core incluye el circuito de suministro de energía, el sistema mínimo de microcontrolador, la comunicación USB, el conector B2B, la sección de botones y LED de usuario.
+يتضمن تصميم الدائرة الكهربائية للوحة النواة RobotCtrl_Core دائرة كهربائية للتزويد بالطاقة ونظامًا دقيقًا للميكروكنترولر واتصال USB وموصل B2B وأزرار المستخدم والمصابيح الخلفية.
 
-El circuito de suministro de energía utiliza LDO, cuyas ventajas son que el circuito es relativamente simple, la ondulación de salida es pequeña, el costo es bajo y el área de diseño es pequeña. Junto con los capacitores de desacoplamiento y la luz indicadora de alimentación correspondiente, convierte el voltaje de 5V de entrada del puerto USB o del conector B2B en un voltaje regulado de 3.3V (corriente máxima de 1A).
+تستخدم دائرة تزويد الطاقة LDO ، ويتميز بسهولة الدائرة الكهربائية وتموج الإخراج الصغير وتكلفة منخفضة ومساحة تصميم صغيرة. بالإضافة إلى السعة المناسبة للتخلص من التشويش ومؤشر الطاقة ، يتم تحويل الجهد الكهربائي 5 فولت المدخل من منفذ USB أو موصل B2B إلى 3.3 فولت (بحد أقصى 1 أمبير).
 
-En el diseño del sistema mínimo, la fuente de alimentación es una entrada de 3.3V y se agrega un capacitor de desacoplamiento correspondiente. Además, la fuente de alimentación especializada ADC VDDA se conecta a VDD a través de una perla magnética de 120Ω y se agrega un capacitor de desacoplamiento adicional. El circuito de reinicio agrega un botón externo, que activa el pin NRST a un nivel bajo para reiniciar el sistema. El circuito de reloj agrega un reloj externo de alta velocidad HSE, que se conecta a OSC_IN y OSC_OUT a través de un cristal pasivo. El modo de inicio se selecciona de forma predeterminada para arrancar desde la memoria flash integrada en el chip, es decir, BOOT0 es bajo y BOOT1 es cualquier nivel, y se utiliza una resistencia de 10k para bajar BOOT0 a tierra. El circuito de descarga y depuración USB se conecta directamente a la interfaz SW (DIO/CLK).
+في تصميم النظام الدقيق ، يتم تغذية الطاقة بجهد 3.3 فولت وتتم إزالة التشويش المناسب. بالإضافة إلى ذلك ، يتم توصيل مصدر الطاقة المخصص لـ ADC VDDA بـ VDD عن طريق محبس مغناطيسي بمقاومة 120 أوم وإضافة سعة إزالة التشويش الإضافية. يتم إضافة زر إعادة التعيين الخارجي لدائرة الإعادة التعيين ، ويتم تنشيط النظام عن طريق جعل مدخل NRST منخفضًا. يتم إضافة مخرج ساعة HSE الخارجي عن طريق توصيل مذبذب غير نشط من OSC_IN و OSC_OUT. يتم تحديد وضع التشغيل الافتراضي للتشغيل من ذاكرة التخزين الفلاش المدمجة ، أي BOOT0 منخفض و BOOT1 بأي جهد كهربائي ، ويتم سحب BOOT0 إلى الأرض باستخدام مقاومة 10 كيلو أوم. يتم توصيل دائرة التنزيل والتصحيح مباشرةً بواجهة SW (DIO / CLK).
 
-El diseño del circuito de comunicación USB, STM32F4 tiene un periférico USB integrado. Se utiliza un conector USB Micro externo, se conecta una resistencia limitadora de corriente de 10Ω en serie en la línea de datos y se agrega un diodo TVS y ESD en la línea de señal y la línea de alimentación respectivamente para cumplir con los requisitos de EMC.
+تم تصميم دائرة الاتصال USB ، ويتميز STM32F4 بجهاز USB خارجي مدمج. يتم استخدام موصل USB Micro الخارجي ، ويتم توصيل مقاومة 10 أوم للتيار المحدود في الخط ، ويتم إضافة تلفزيونات وثنائيات ESD على الخط الإشارة والخط الكهربائي لتلبية متطلبات EMC.
 
-El conector B2B se utiliza para la alimentación y la comunicación de datos entre RobotCtrl_Func. En este diseño, dos conectores B2B son suficientes para sacar todos los IO del microcontrolador STM32F407ZE, lo que mejora la capacidad de expansión posterior.
+يتم استخدام موصل B2B لتوفير إمدادات الطاقة والاتصالات بين RobotCtrl_Func. في هذا التصميم ، يكفي موصلان B2B لتوصيل جميع IO لمتحكم STM32F407ZE وتعزيز قابلية التوسع في المرحلة اللاحقة.
 
-### Idea de diseño de RobotCtrl_Func
+### فكرة تصميم RobotCtrl_Func
 
-El diseño del esquemático de RobotCtrl_Func incluye principalmente la comunicación serie (RS-232/TTL), la comunicación CAN, la comunicación Ethernet, el sensor de actitud, la interfaz de ultrasonidos, la interfaz de medición de distancia por infrarrojos (con aislamiento óptico), el zumbador, la interfaz de descarga y depuración SW, los botones y LED de usuario, la interfaz GPIO general, la fuente de alimentación y el conector B2B.
+يتضمن تصميم الدائرة الكهربائية للوحة توسيع الأجهزة الطرفية RobotCtrl_Func دائرة كهربائية للاتصال بالسلسلة (RS-232 / TTL) والاتصال بـ CAN والاتصال بالإيثرنت ومستشعر الاتجاه وواجهة الموجات فوق الصوتية وواجهة القياس عن بعد بالأشعة تحت الحمراء (مع عزل الضوء) والجرس وواجهة التنزيل والتصحيح SW وأزرار المستخدم والمصابيح الخلفية وواجهة GPIO العامة والطاقة وموصل B2B وغيرها من الوحدات.
 
-El circuito de comunicación serie proporciona interfaces de nivel TTL y RS-232. Entre ellas, TTL utiliza directamente los pines TX/RX de USART1 y UART5, mientras que el circuito de comunicación RS-232 utiliza un chip que convierte el nivel TTL del microcontrolador en el nivel RS-232. Para mejorar el rendimiento EMC, el conector DB9 se conecta a tierra a través de un diodo TVS y el chip TTL a RS-232 requiere un acoplamiento de alimentación adicional y un capacitor de arranque automático.
+توفر دائرة الاتصال بالسلسلة واجهة مستوى TTL و RS-232. يتم استخدام USART1 و UART5 مباشرةً لواجهة TTL ، بينما يتم استخدام دائرة الاتصال RS-232 لتحويل مستوى TTL للميكروكنترولر إلى مستوى RS-232. لتحسين أداء EMC ، يتم توصيل غلاف موصل DB9 بتلفزيونات ثنائية الاتجاه إلى الأرض ، ويتطلب تحويل مستوى TTL إلى RS-232 مصدر طاقة إضافي للتخلص من التشويش والسعة الذاتية.
 
-El circuito de comunicación CAN se basa en el chip de recepción y transmisión CAN y se transmite mediante un nivel de diferencial CAN. Se requiere una resistencia terminal de 120Ω en el bus CAN para adaptar la impedancia y reducir la reflexión de la señal.
+يتم بناء دائرة الاتصال بـ CAN على أساس رقاقة استقبال وإرسال CAN ، ويتم نقل الإشارة عبر مستوى الجهد المختلف لـ CAN. يجب إضافة مقاومة 120 أومًا في نهاية الخط الكلي لتوافق المصدر وتقليل انعكاس الإشارة.
 
-La comunicación Ethernet se basa en el chip PHY Ethernet, que se comunica con el microcontrolador a través de la interfaz RMII y se comunica a través del puerto RJ45 con un cable de red externo con un transformador de aislamiento incorporado. El reloj del circuito Ethernet utiliza un oscilador pasivo externo de 25M y requiere una fuente de alimentación independiente para reducir la interferencia de la fuente de alimentación. Aquí se utiliza el mismo regulador de voltaje lineal de baja caída que la placa base para suministrar energía al circuito Ethernet de forma independiente.
+يعتمد الاتصال بالإيثرنت على رقاقة PHY الخاصة بالإيثرنت ، ويتم استخدام واجهة RMII للاتصال بالميكروكنترولر ، ويتم نقل الإشارة عبر موصل RJ45 الذي يحتوي على محول عزل مدمج. يتم استخدام مذبذب غير نشط بتردد 25 ميجاهرتز للساعة في دائرة الإيثرنت ، ويتطلب توفير طاقة مستقلة لتقليل التداخل الكهربائي ، ويتم استخدام نفس حل تزويد الطاقة الخطي المنخفض الضغط لدائرة الإيثرنت لتوفير طاقة مستقلة.
 
-El circuito de interfaz de los cuatro sensores de distancia infrarrojos se alimenta con 12V y señal (tipo NPN normalmente abierto) debido a que los sensores infrarrojos utilizan 12V, por lo que se utiliza el pin RobotCtrl_Power para suministrar energía y se agregan cuatro chips de aislamiento óptico para transmitir señales de nivel alto y bajo. El diseño del circuito de aislamiento óptico requiere el cálculo de la resistencia limitadora de corriente según el tamaño de la corriente para garantizar que esté dentro del rango de voltaje de activación especificado en la hoja de datos. El módulo del sensor de actitud utiliza el módulo MPU6050 y reserva la interfaz I2C para comunicarse con el microcontrolador.
 
-La idea de diseño de RobotCtrl_Power se compone principalmente de una entrada de doble fuente de alimentación XT60, un circuito de regulación de voltaje de 24V a 12V y 24V a 5V, así como un interruptor de habilitación y luces indicadoras de energía, circuitos de protección contra polaridad inversa y sobretensión, entre otros.
 
-La entrada de energía utiliza dos conectores XT60 en paralelo, uno para la entrada de energía y el otro para una fuente de energía de respaldo externa o para suministrar energía de la batería a dispositivos externos.
+واجهة دائرة توصيل أربعة حساسات قياس المسافة بالأشعة تحت الحمراء تستخدم حساسات الأشعة تحت الحمراء بقوة 12 فولت وإشارة (NPN مفتوحة دائمًا) ، لذلك يتم توفير الطاقة من RobotCtrl_Power بقوة 12 فولت وإضافة أربعة رقائق عزل الضوء لنقل إشارة الجهد العالي والجهد المنخفض. يتطلب تصميم دائرة عزل الضوء حساب قيمة المقاومة المحددة لتدفق التيار لضمان الحفاظ على الجهد المحدد في دليل البيانات. تم تصميم وحدة حساسية الموقف باستخدام وحدة MPU6050 وترك واجهة I2C محجوزة للتواصل مع الميكروكنترولر.
 
-El circuito de protección contra polaridad inversa utiliza un diseño de MOSFET para prevenir la polaridad inversa. Cuando la fuente de alimentación está conectada normalmente, el MOSFET está en conducción; cuando hay polaridad inversa, se corta para proteger el circuito. En este diseño, se utiliza un MOSFET P chino para prevenir la polaridad inversa y se utiliza una resistencia de división y un diodo de bloqueo de voltaje para bloquear la tensión de la puerta en conducción hacia adelante. Para lograr la protección contra sobretensión y ESD, se colocan diodos TVS en paralelo en la entrada de energía.
+### تصميم RobotCtrl_Power
 
-El diseño del circuito de regulación de voltaje de 12V/5V utiliza un esquema de regulación de conmutación Buck no aislado basado en LMR14050. Según el principio de la topología Buck y la referencia del manual de datos del chip de regulación, se seleccionan los valores de resistencia de retroalimentación para mantener la salida en 12V/5V. Al seleccionar el modelo del inductor, es necesario asegurarse de que la corriente de saturación máxima sea mayor que la corriente de pulso y dejar suficiente margen; se selecciona un diodo Schottky para lograr una conmutación de alta velocidad, y su voltaje y corriente también deben cumplir con los requisitos del circuito. Además, se deben colocar capacitores de acoplamiento de tamaño adecuado en paralelo en la entrada y salida para filtrar las ondulaciones.
+تتكون مخططات تصميم RobotCtrl_Power الأساسية من مدخل طاقة XT60 مزدوج ، ودائرة تحويل 24 فولت إلى 12 فولت ودائرة تحويل 24 فولت إلى 5 فولت ، بالإضافة إلى مفتاح التمكين ومؤشر الطاقة ودوائر الحماية من الانعكاس والفولتية الزائدة.
 
-El interruptor de habilitación puede controlar la apertura y el cierre de la salida de regulación de voltaje, y se conecta al pin de habilitación del chip Buck para lograr una apertura suave y un cierre suave de la salida de regulación de voltaje. La luz indicadora de energía puede indicar el estado de salida de regulación de voltaje de 12V/5V al usuario.
+تستخدم دائرة الإنعكاس MOS للحماية من الانعكاس. في حالة الاتصال العادي بالطاقة ، يتم توصيل MOS ؛ في حالة الانعكاس ، يتم قطعه ، مما يحمي الدائرة. في هذا التصميم ، تم اختيار P-MOS المحلي للحماية من الانعكاس ، وتم استخدام مقاومة التقسيم وثنائي الانحراف الثابت لتأمين الجهد البوابي الإيجابي عند الانحراف الإيجابي. لتحقيق الحماية من الفولتية الزائدة وحماية ESD ، يتم توصيل ثنائيات الصمام الثنائي التلفزيوني الموجه على مدخل الطاقة.
 
-## Referencias y agradecimientos
+تم اختيار تصميم دائرة تحويل الجهد الثابت 12 فولت / 5 فولت بناءً على حل Buck غير معزول يعتمد على LMR14050. بناءً على مبدأ Buck ومراجعة دليل بيانات رقاقة التحويل الثابت ، تم اختيار قيمة مقاومة التغذية المرتدة وحساب النسبة للحفاظ على الإخراج عند 12 فولت / 5 فولت. عند اختيار نوع الملف الحثي ، يجب ملاحظة أن التيار المشبع الأقصى يجب أن يكون أكبر من التيار المتذبذب ، ويجب ترك مساحة فارغة ؛ يتم اختيار ثنائي الصمام الثنائي الشوتكي لتحقيق التبديل السريع ، ويجب أن تلبي الجهد والتيار أيضًا متطلبات الدائرة. بالإضافة إلى ذلك ، يجب توصيل سعة التفريغ الكبيرة والصغيرة على المدخل والمخرج لتصفية التداخل.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220416181139.jpeg)
+يمكن التحكم في مفتاح التمكين للتحكم في فتح وإغلاق الإخراج الثابت ، ويتم توصيل دبوس التمكين الخاص برقاقة Buck لتحقيق الإخراج الثابت الناعم. يمكن لمؤشر الطاقة إشعار المستخدم بحالة الإخراج الثابت 12 فولت / 5 فولت.
 
-Este proyecto es mi proyecto de graduación personal. En el diseño, soldadura y depuración del proyecto, encontré muchos problemas grandes y pequeños. Con la ayuda de mi tutor, colegas y amigos, finalmente pude completar el proyecto con éxito y obtener el honor de un excelente proyecto de graduación. ¡Gracias a todos!
+## المراجع والشكر
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220416181139.jpeg)
+
+هذا المشروع هو مشروع تخرجي الشخصي ، وواجهت العديد من المشاكل الصغيرة والكبيرة في تصميم ولحام وتصحيح المشروع. بفضل مساعدة المشرف والزملاء والأصدقاء ، تم الانتهاء من المشروع بنجاح وحصلت على شهادة تخرج ممتازة. شكرا لكم! 
+
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
