@@ -1,271 +1,263 @@
-# Comunicación Lora - Módulo ATK-LORA-01 de Atom de Punto
+# Lora الاتصال - استنادًا إلى وحدة ATK-LORA-01 من شركة ELEGOO
 
-El ATK-LORA-01 es un módulo de comunicación inalámbrica LORA de larga distancia de bajo consumo, bajo consumo de energía y alto rendimiento con un tamaño pequeño. El diseño del módulo utiliza el chip de expansión de espectro SX1278 de banda ISM eficiente, y la frecuencia de trabajo del módulo es de 410 MHz a 441 MHz, con un canal de paso de 1 MHz y un total de 32 canales. Se pueden modificar en línea varios parámetros, como la velocidad de transmisión de la interfaz serie, la potencia de transmisión, la velocidad aérea, el modo de trabajo, etc. mediante comandos AT, y también se admite la función de actualización de firmware.
+وحدة ATK-LORA-01 هي وحدة سلكية لاسلكية LORA عن بعد ذات أداء عالٍ واستهلاك طاقة منخفض وطاقة صغيرة ومدى بعيد. تم تصميم الوحدة باستخدام رقاقة SX1278 الموسعة للترددات اللاسلكية في نطاق ISM فعال ، وتعمل ترددات الوحدة في نطاق 410 ميجاهرتز إلى 441 ميجاهرتز ، بخطوة تردد 1 ميجاهرتز ، مع 32 قناة. يمكن تعديل مختلف المعلمات مثل سرعة المنفذ التسلسلي ، وقوة الإرسال ، وسرعة الهواء ، ووضع العمل ، وغيرها من المعلمات باستخدام أوامر AT عبر الإنترنت ، ويدعم أيضًا وظيفة الترقية الثابتة.
 
-## Parámetros básicos del módulo
+## المعلمات الأساسية للوحدة
 
-- Frecuencia de trabajo: 410-441 MHz, 32 canales
-- Banda industrial: banda libre de 433 MHz de fábrica
-- Velocidad inalámbrica: 6 niveles ajustables (0,3, 1,2, 2,4, 4,8, 9,6, 19,2 Kbps)
-- Modo de comunicación: TTL de serie, puerto serie UART, 8N1, 8E1, 8O1, desde 1200-115200, un total de 8 velocidades de transmisión (predeterminado 9600, 8N1)
-- Potencia de transmisión: 100 mW (20 dB), 4 niveles ajustables (0-3), cada nivel aumenta o disminuye aproximadamente 3 dBm
-- Voltaje de trabajo: 3,3-5V
-- Corriente de trabajo: 2,3uA-118mA
-  - Transmisión: 118 mA (20 dBm 100 mW voltaje 5V)
-  - Recepción: 17 mA (modo 0, modo 1), mínimo de aproximadamente 2,3 uA (modo 2+2S de activación)
-- Temperatura de trabajo: -40 ~ 85 ℃
-- Sensibilidad de recepción de hasta -136 dBm, distancia de transmisión de 3000 metros
-- Doble FIFO circular de 512
+- تردد العمل: 410-441 ميجاهرتز ، 32 قناة
+- نطاق الصناعة: نطاق 433 ميجاهرتز الافتراضي للمصنع
+- سرعة اللاسلكي: 6 مستويات قابلة للتعديل (0.3 و 1.2 و 2.4 و 4.8 و 9.6 و 19.2 كيلوبت في الثانية)
+- طريقة الاتصال: TTL سلكية ، منفذ سلسلي UART ، 8N1 و 8E1 و 8O1 ، من 1200-115200 بت في الثانية ، 8 أنواع من معدل الباود (افتراضيًا 9600 و 8N1)
+- قوة الإرسال: 100 مللي واط (20 ديسيبل) ، 4 مستويات قابلة للتعديل (0-3) ، يزيد أو ينقص كل مستوى بحوالي 3 ديسيبل
+- الجهد الكهربائي: 3.3-5 فولت
+- التيار الكهربائي: 2.3uA-118mA
+  - الإرسال: 118 مللي أمبير (20 ديسيبل ، 100 مللي واط ، 5 فولت)
+  - الاستقبال: 17 مللي أمبير (الوضع 0 والوضع 1) ، حوالي 2.3uA كحد أدنى (الوضع 2 + 2S الاستيقاظ)
+- درجة حرارة العمل: -40 ~ 85 ℃
+- حساسية الاستقبال تصل إلى -136dBm ، والمسافة النقل تصل إلى 3000 متر
+- مزدوج 512 FIFO حلقة
 
-## Definición de interfaz
+## تعريف الواجهة
 
-| Nombre | Modo IO        | Descripción                                                                 |
-| ------ | -------------- | --------------------------------------------------------------------------- |
-| MD0    | Entrada        | Configuración de parámetros de entrada; en el encendido, entra en el modo de actualización de firmware en combinación con el pin AUX |
-| AUX    | ① Salida; ② Entrada | ① Se utiliza para indicar el estado de funcionamiento del módulo y despertar el MCU externo; ② En el encendido, entra en el modo de actualización de firmware en combinación con el pin MD0 |
-| RXD    | Entrada        | Entrada de serie TTL, conectada al pin de salida TXD externo                  |
-| TXD    | Salida         | Salida de serie TTL, conectada al pin de entrada RXD externo                  |
-| GND    |                | Tierra                                                                      |
-| VCC    |                | Entrada de alimentación DC3.3~5V                                             |
+| الاسم | وضع IO | الشرح |
+| ---- | -------------- | --------------------------------------------------------------------------------- |
+| MD0  | الإدخال | تكوين إعدادات الدخول. عند التشغيل ، يتم دخول وضع ترقية البرامج الثابتة مع مدخل AUX |
+| AUX  | ① الإخراج ؛ ② الإدخال | ① يستخدم لإشارة حالة عمل الوحدة ، وإيقاظ MCU الخارجي للمستخدم ؛ ② عند التشغيل ، يتم دخول وضع ترقية البرامج الثابتة مع مدخل MD0 |
+| RXD  | الإدخال | المدخل TTL المتسلسل ، متصل بمخرج TXD الخارجي |
+| TXD  | الإخراج | المخرج TTL المتسلسل ، متصل بالمدخل RXD الخارجي |
+| GND  |                | الأرضية |
+| VCC  |                | مدخل الطاقة DC3.3 ~ 5V |
 
-Notas:
+ملاحظات:
 
-1. El nivel de voltaje de los pines del módulo es de 3,3 V, y se requiere una adaptación de nivel de voltaje para comunicarse con un MCU de 5 V.
-2. El módulo de comunicación inalámbrica es de nivel TTL, por lo que debe conectarse a un MCU de nivel TTL.
+1. مستوى الجهد لأرجل الوحدة هو 3.3 فولت ، ويتطلب توصيل محول مستوى الجهد للتواصل مع الميكروكنترولر 5 فولت.
+2. وحدة السلكية اللاسلكية هي مستوى TTL ، يرجى توصيلها بـ MCU مستوى TTL.
 
-## Configuración del modo
+## تكوين الوضع
 
-Los pines MD0 y AUX tienen dos funciones, y se ingresa a diferentes estados según la combinación de ambos. Cuando el módulo se enciende por primera vez, el pin AUX está en modo de entrada. Si los pines MD0 y AUX se conectan simultáneamente a un nivel alto de 3,3 V TTL y se mantienen durante 1 segundo (sin cambios en el nivel de los pines), el módulo entrará en modo de actualización de firmware y esperará la actualización del firmware. De lo contrario, entra en el modo de comunicación inalámbrica (el pin AUX volverá al modo de salida para indicar el estado de funcionamiento del módulo).
+MD0 و AUX لديهما وظيفتان ، وفقًا لتعاونهما ، يتم الدخول إلى حالتين مختلفتين. عند تشغيل الوحدة لأول مرة ، يكون مدخل AUX في وضع الإدخال ، إذا تم توصيل MD0 و AUX بمستوى TTL عالي 3.3 فولت في نفس الوقت (ويتم الاحتفاظ بمستوى الجهد لمدة 1 ثانية) ، فسيتم دخول الوحدة في وضع ترقية البرامج الثابتة ، ويتم الانتظار للترقية الثابتة. وإلا ، يتم الدخول في وضع الاتصال اللاسلكي (يتم تغيير مدخل AUX إلى وضع الإخراج لإشارة حالة عمل الوحدة)
 
-Los pines MD0 y AUX tienen una resistencia interna de pull-down y están en nivel bajo si no se conectan. Si se conectan, están en nivel alto de 3,3 V TTL.
+MD0 و AUX يتم سحبهما داخليًا ، ويتم تعيينهما على مستوى منخفض عند عدم الاتصال. يتم تعيينهما على مستوى TTL عالي 3.3 فولت عند الرفع.
 
-| Función       | Descripción              | Método de acceso                   |
-| ------------- | ------------------------| ---------------------------------- |
-| Configuración | Configuración de parámetros del módulo (comandos AT) | Después de encender, AUX en flotante, MD0 en alto |
-| Comunicación  | Utilizado para comunicación inalámbrica | Después de encender, AUX en flotante, MD0 en flotante |
-| Actualización de firmware | Utilizado para actualizar el firmware | Después de encender, AUX en alto, MD0 en alto, mantener por 1s |
+| الوظيفة     | الوصف                   | طريقة الدخول                       |
+| ------------ | ----------------------- | ----------------------------------- |
+| وظيفة التكوين | تكوين معلمات الوحدة (أوامر AT) | بعد التشغيل، AUX معلق، MD0 مرتفع |
+| وظيفة الاتصال | للاستخدام في الاتصال اللاسلكي | بعد التشغيل، AUX معلق، MD0 معلق |
+| وظيفة الترقية | للاستخدام في ترقية البرامج الثابتة | بعد التشغيل، AUX مرتفع، MD0 مرتفع، لمدة 1 ثانية |
 
-En el modo de comunicación inalámbrica, el pin AUX es de salida y se utiliza para indicar el estado de trabajo del módulo.
+في وضع الاتصال اللاسلكي، يعمل دبوس AUX كمخرج لإشارة حالة العمل للوحدة.
 
-## Configuración de funciones
+## تكوين الوظيفة
 
-En "Configuración de funciones", el puerto serie debe configurarse como ASDASD: velocidad de transmisión "115200", bits de parada "1", bits de datos "8", paridad "ninguna", y se deben configurar los parámetros de trabajo del módulo mediante comandos AT. Consulte la siguiente tabla de comandos AT como referencia al configurar el software:
+في "وظيفة التكوين"، يجب تعيين المنفذ التسلسلي ASDASD: معدل البت "115200"، عدد البتات "8"، عدد البتات الزوجية / الفردية "لا شيء"، وتكوين معلمات عمل الوحدة باستخدام أوامر AT. باستخدام برنامج التكوين، يرجى الرجوع إلى جدول أوامر AT التالي:
 
-| Comando      | Función                       |
-| ------------ | -----------------------------|
-| AT           | Prueba de respuesta del módulo |
-| AT+MODEL?    | Consulta del modelo del dispositivo |
-| AT+CGMR?     | Obtención del número de versión del software |
-| AT+UPDATE    | Consulta si el dispositivo está en modo de actualización de firmware |
-| ATE1         | Eco de comandos                |
-| ATE0         | Sin eco de comandos            |
-| AT+RESET     | Reinicio del módulo            |
-| AT+DEFAULT   | Restablecimiento de la configuración de fábrica |
-| AT+FLASH=    | Guardar parámetros              |
-| AT+ADDR=?    | Consulta del rango de direcciones de configuración del dispositivo |
-| AT+ADDR?     | Consulta de la dirección del dispositivo |
-| AT+ADDR=     | Configuración de la dirección del dispositivo |
-| AT+TPOWER=?  | Consulta del rango de configuración de la potencia de transmisión |
-| AT+TPOWER?   | Consulta de la potencia de transmisión |
-| AT+TPOWER=   | Configuración de la potencia de transmisión |
-| AT+CWMODE=?  | Consulta del rango de configuración del modo de trabajo |
-| AT+CWMODE?   | Consulta del modo de trabajo |
-| AT+CWMODE=   | Configuración del modo de trabajo |
-| AT+TMODE=?   | Consulta del rango de configuración del estado de envío |
-| AT+TMODE?    | Consulta del estado de envío |
-| AT+TMODE=    | Configuración del estado de envío |
-| AT+WLRATE=?  | Consulta del rango de configuración de la velocidad inalámbrica y el canal |
-| AT+WLRATE?   | Consulta de la velocidad inalámbrica y el canal |
-| AT+WLRATE=   | Configuración de la velocidad inalámbrica y el canal |
-| AT+WLTIME=?  | Consulta del rango de configuración del tiempo de inactividad |
-| AT+WLTIME?   | Consulta del tiempo de inactividad |
-| AT+WLTIME=   | Configuración del tiempo de inactividad |
-| AT+UART=?    | Consulta del rango de configuración del puerto serie |
-| AT+UART?     | Consulta de la configuración del puerto serie |
-| AT+UART=     | Configuración del puerto serie |
+| الأمر        | الوظيفة                         |
+| ----------- | ---------------------------- |
+| AT          | اختبار استجابة الوحدة             |
+| AT+MODEL?   | الاستعلام عن نوع الجهاز                 |
+| AT+CGMR?    | الحصول على رقم إصدار البرنامج الثابت               |
+| AT+UPDATE   | الاستعلام عما إذا كان الجهاز في وضع ترقية البرنامج الثابت |
+| ATE1        | تمكين عرض الأمر                     |
+| ATE0        | تعطيل عرض الأمر                   |
+| AT+RESET    | إعادة تعيين الوحدة (إعادة التشغيل)             |
+| AT+DEFAULT  | استعادة الإعدادات الافتراضية                 |
+| AT+FLASH=   | حفظ المعلمات                     |
+| AT+ADDR=?   | الاستعلام عن نطاق عناوين تكوين الجهاز         |
+| AT+ADDR?    | الاستعلام عن عنوان الجهاز                 |
+| AT+ADDR=    | تكوين عنوان الجهاز                 |
+| AT+TPOWER=? | الاستعلام عن نطاق تكوين قوة الإرسال         |
+| AT+TPOWER?  | الاستعلام عن قوة الإرسال                 |
+| AT+TPOWER=  | تكوين قوة الإرسال                 |
+| AT+CWMODE=? | الاستعلام عن نطاق وضع العمل المكون         |
+| AT+CWMODE?  | الاستعلام عن وضع العمل                 |
+| AT+CWMODE=  | تكوين وضع العمل                 |
+| AT+TMODE=?  | الاستعلام عن نطاق حالة الإرسال المكون         |
+| AT+TMODE?   | الاستعلام عن حالة الإرسال                 |
+| AT+TMODE=   | تكوين حالة الإرسال                 |
+| AT+WLRATE=? | الاستعلام عن نطاق معدل البيانات وتكوين القناة اللاسلكية   |
+| AT+WLRATE?  | الاستعلام عن معدل البيانات والقناة اللاسلكية           |
+| AT+WLRATE=  | تكوين معدل البيانات والقناة اللاسلكية           |
+| AT+WLTIME=? | الاستعلام عن نطاق وقت السكون المكون         |
+| AT+WLTIME?  | الاستعلام عن وقت السكون                 |
+| AT+WLTIME=  | تكوين وقت السكون                 |
+| AT+UART=?   | الاستعلام عن نطاق تكوين المنفذ التسلسلي             |
+| AT+UART?    | الاستعلام عن تكوين المنفذ التسلسلي                 |
+| AT+UART=    | تكوين المنفذ التسلسلي                     |
 
-Cuando se sale de la función de configuración (MD0=0), el módulo volverá a configurar los parámetros. Durante el proceso de configuración, AUX se mantendrá en alto y después de completar la configuración, se establecerá en bajo, lo que indica que el módulo ha vuelto al estado inactivo.
+عندما يتم إيقاف تشغيل وظيفة التكوين (MD0 = 0) ، سيقوم الوحدة بإعادة تكوين المعلمات. خلال عملية التكوين ، يحافظ AUX على مستوى عالٍ من الجهد ، ثم يخرج بعد الانتهاء إلى مستوى منخفض ، ويعود الوحدة إلى الحالة الخاملة.
 
-## Tiempo de suspensión
+## وقت السكون
 
-El tiempo de suspensión es el intervalo de escucha para el receptor y el tiempo de transmisión continua del código de activación para el emisor. Cuando el modo de trabajo del módulo está en "modo de activación", se agregará automáticamente un código de activación de tiempo de suspensión antes de los datos del usuario. Cuando el modo de trabajo del módulo está en "modo de ahorro de energía", el tiempo de suspensión configurado se convierte en el intervalo de escucha.
+يعد وقت السكون هو فترة الاستماع للمستقبل ؛ بالنسبة للمرسل ، فهو وقت إرسال الشفرة المستيقظة المستمرة. عندما يكون وضع الوحدة في "وضع الاستيقاظ" ، سيتم إضافة تلقائيًا شفرة استيقاظ وقت السكون إلى بيانات المستخدم قبل الإرسال ، وعندما يكون وضع الوحدة في "وضع الطاقة المنخفضة" ، فإن وقت السكون المكون هو فترة الاستماع للمستقبل.
 
-## Modo de dispositivo
+## وضع الجهاز
 
-### Modo general (modo 0)
+### الوضع العام (الوضع 0)
 
-- Emisión: El módulo recibe los datos del usuario desde el puerto serie y emite un paquete de datos inalámbrico de 58 bytes. Cuando los datos de entrada del usuario alcanzan los 58 bytes, el módulo iniciará la transmisión inalámbrica. Si el usuario necesita transmitir menos de 58 bytes, el módulo esperará un byte. Si no hay más datos de entrada del usuario, se considera que los datos han terminado y el módulo enviará todos los datos a través de la radio. Cuando el módulo comienza a enviar el primer paquete de datos del usuario, el pin AUX emitirá una señal de alto. Después de que el módulo haya transmitido todos los datos a través del chip RF y haya iniciado la transmisión, AUX emitirá una señal de bajo. Esto indica que se ha enviado el último paquete de datos inalámbricos y que el usuario puede seguir ingresando datos de hasta 512 bytes. Los paquetes de datos enviados por el modo general solo pueden ser recibidos por los módulos de recepción en modo general y de activación.
-- Recepción: El módulo siempre está activado para recibir datos inalámbricos y puede recibir paquetes de datos enviados por el modo general y el modo de activación. Después de recibir el paquete de datos, AUX emitirá una señal de alto. Después de un retraso de 2-3 ms, el módulo comenzará a enviar los datos inalámbricos a través del pin TXD del puerto serie. Después de que se hayan enviado todos los datos inalámbricos a través del puerto serie, AUX emitirá una señal de bajo.
+- الإرسال: تستقبل الوحدة بيانات المستخدم من المنفذ التسلسلي ، وترسل حزم البيانات اللاسلكية بطول 58 بايتًا. عندما يصل بيانات المستخدم إلى 58 بايتًا ، يبدأ الإرسال اللاسلكي. في هذه الحالة ، يمكن للمستخدم الاستمرار في إدخال البيانات التي يريد إرسالها ، وعندما يكون عدد البايتات التي يريد نقلها المستخدم أقل من 58 بايتًا ، ينتظر الوحدة لمدة بايت واحد ، إذا لم يتم إدخال بيانات المستخدم ، فإنه يعتبر أن البيانات قد انتهت ، وفي هذه الحالة ، ترسل الوحدة جميع البيانات عبر الإرسال اللاسلكي. عندما تبدأ الوحدة في إرسال أول حزمة من بيانات المستخدم ، يخرج مؤشر AUX على مستوى عالٍ ، وعندما تمرر الوحدة جميع البيانات من خلال رقاقة RF وتبدأ في الإرسال ، يخرج AUX على مستوى منخفض. في هذه الحالة ، يشير ذلك إلى أن آخر حزمة بيانات لاسلكية قد تم إرسالها بنجاح ، ويمكن للمستخدم الاستمرار في إدخال بيانات تصل إلى 512 بايتًا. يمكن للحزم التي تم إرسالها بواسطة الوضع العام أن تكون مستقبلة فقط من قبل وحدات الاستقبال الموجودة في الوضع العام ووضع الاستيقاظ.
+- الاستقبال: تفتح الوحدة دائمًا وظيفة الاستقبال اللاسلكية ، ويمكنها استقبال حزم البيانات التي تم إرسالها من الوضع العام ووضع الاستيقاظ. بعد استلام حزمة البيانات ، يخرج AUX على مستوى عالٍ ، ثم يبدأ في إرسال البيانات اللاسلكية عبر مؤشر TXD بعد تأخير 2-3 مللي ثانية. بعد إرسال جميع البيانات اللاسلكية ، يخرج AUX على مستوى منخفض.
 
-### Modo de activación (modo 1)
+### وضع الاستيقاظ (الوضع 1)
 
-- Emisión: Las condiciones para iniciar la transmisión de paquetes de datos son las mismas que en el modo general, con la única diferencia de que el módulo agregará automáticamente un código de activación de tiempo de suspensión antes de cada paquete de datos (el código de activación de tiempo de suspensión tiene una longitud que depende del tiempo de suspensión configurado por el usuario). El propósito del código de activación de tiempo de suspensión es activar el modo de ahorro de energía del módulo receptor. Por lo tanto, los datos enviados en el modo de activación pueden ser recibidos por el modo general y los modos 1 y 2 de recepción.
-- Recepción: Es igual que en el modo general.
+- الإرسال: يكون شرط بدء إرسال حزمة البيانات في الوضع الاستيقاظ هو مماثل للوضع العام ، باستثناء أن الوحدة ستضيف تلقائيًا شفرة استيقاظ (وقت السكون) قبل كل حزمة بيانات. يعتمد طول شفرة الاستيقاظ على وقت السكون المحدد في معلمات المستخدم. يتم استخدام شفرة الاستيقاظ لإيقاظ وحدة الاستقبال في وضع الطاقة المنخفضة. لذلك ، يمكن لحزم البيانات التي تم إرسالها في وضع الاستيقاظ أن تكون مستقبلة من قبل وضع العام ووضع الاستيقاظ 1 و 2.
+- الاستقبال: مماثل للوضع العام.
 
-### Modo de ahorro de energía (modo 2)
+### وضع الطاقة المنخفضة (الوضع 2)
 
-- Emisión: El módulo está en estado de suspensión y el puerto serie está cerrado, por lo que no puede recibir datos del MCU externo. Por lo tanto, este modo no tiene función de transmisión inalámbrica.
-- Recepción: En el modo de ahorro de energía, el emisor debe estar en modo de activación. El módulo inalámbrico escuchará el código de activación de forma periódica. Una vez que se recibe un código de activación válido, el módulo permanecerá en modo de recepción hasta que se complete la recepción de todo el paquete de datos válido. Luego, AUX emitirá una señal de alto y, después de un retraso de 2-3 ms, el módulo abrirá el puerto serie y enviará los datos inalámbricos recibidos a través del pin TXD. Después de que se hayan enviado todos los datos inalámbricos a través del puerto serie, AUX emitirá una señal de bajo. El módulo inalámbrico continuará trabajando en el modo "suspensión-escucha". Al configurar diferentes tiempos de activación, el módulo tendrá diferentes tiempos de respuesta y consumo de energía. Los usuarios deben encontrar un equilibrio entre el tiempo de retraso de comunicación y el consumo de energía promedio.
+- الإرسال: تكون الوحدة في وضع السكون ، ويتم إغلاق المنفذ التسلسلي ، ولا يمكن استقبال بيانات المنفذ التسلسلي من MCU الخارجي ، لذلك لا يتمتع هذا الوضع بوظيفة الإرسال اللاسلكي.
+- الاستقبال: في وضع الطاقة المنخفضة ، يجب على الجهة المرسلة العمل في وضع الاستيقاظ ، ويستمع الوحدة اللاسلكية إلى شفرة الاستيقاظ بانتظام. بمجرد استلام شفرة الاستيقاظ الصالحة ، ستبقى الوحدة في وضع الاستقبال وتنتظر حتى يتم استلام حزمة البيانات الكاملة ، ثم يخرج AUX على مستوى عالٍ ، وبعد تأخير 2-3 مللي ثانية ، يتم فتح المنفذ التسلسلي وإرسال البيانات اللاسلكية التي تم استلامها عبر TXD ، ثم يخرج AUX على مستوى منخفض. ستستمر الوحدة اللاسلكية في العمل في وضع "السكون - الاستماع" ، ويمكن للمستخدم تحقيق توازن بين وقت استجابة الاستقبال واستهلاك الطاقة الوسطي من خلال تعيين أوقات استيقاظ مختلفة.
 
-### Modo de intensidad de señal (modo 3)
+### وضع قوة الإشارة (الوضع 3)
 
-El modo de intensidad de señal se utiliza para ver la intensidad de la señal de ambas partes de la comunicación y evaluar la calidad de la comunicación.
+يمكن استخدام وضع قوة الإشارة لعرض قوة إشارة الاتصال بين الجهات المتصلة وتقييم جودة الاتصال.
 
-- Emisión: Es igual que en el modo general.
-- Recepción: Se muestra la información de la intensidad de la señal.
+- الإرسال: مماثل للوضع العام.
+- الاستقبال: يتم عرض معلومات قوة الإشارة.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20220118110058.png)
 
-SNR: relación señal-ruido (cuanto mayor sea, más estable), RSSI: indicador de intensidad de señal recibida (cuanto mayor sea, más estable).
+SNR: نسبة الإشارة إلى الضوضاء (كلما كانت أكبر ، كانت أكثر استقرارًا) ، RSSI: مؤشر قوة الإشارة المستقبلة (كلما كانت أكبر ، كانت أكثر استقرارًا)
 
-## Modo de comunicación
+## طريقة الاتصال
 
-- Transmisión transparente: Por ejemplo, el dispositivo A envía datos de 5 bytes AA BB CC DD EE al dispositivo B, y el dispositivo B recibirá los datos AA BB CC DD EE. (Transmisión transparente, para la comunicación entre dispositivos con la misma dirección y canal de comunicación, los datos del usuario pueden ser caracteres o datos en formato hexadecimal).
-  - Punto a punto
-  - Punto a múltiples
-  - Escucha de difusión
-- Transmisión dirigida: Por ejemplo, el dispositivo A (dirección: 0x1400, canal: 0x17 (canal 23, 433 MHz)) necesita enviar datos AA BB CC al dispositivo B (dirección: 0x1234, canal: 0x10 (canal 16, 426 MHz)). El formato de comunicación es: 12 34 10 AA BB CC, donde 1234 es la dirección del módulo B y 10 es el canal. El módulo B recibirá AA BB CC. De manera similar, si el dispositivo B necesita enviar datos AA BB CC al dispositivo A, el formato de comunicación es: 14 00 17 AA BB CC, y el dispositivo A recibirá AA BB CC. (Transmisión dirigida, para la comunicación entre dispositivos con direcciones y canales de comunicación diferentes, el formato de datos es hexadecimal, el formato de envío es: dirección de bits altos + dirección de bits bajos + canal + datos de usuario).
-  - Punto a múltiples
-  - Escucha de difusión
+- النقل الشفاف: على سبيل المثال ، يرسل جهاز A بيانات المستخدم بطول 5 بايتات AA BB CC DD EE إلى جهاز B ، ويتلقى جهاز B بيانات AA BB CC DD EE. (النقل الشفاف ، للاتصال بين عناوين الجهاز المتطابقة والقناة الاتصال المتطابقة ، يمكن أن تكون بيانات المستخدم ع
 
-Radio y monitoreo de datos: al establecer la dirección del módulo como 0xFFFF, se puede monitorear la transmisión de datos de todos los módulos en el mismo canal; los datos enviados pueden ser recibidos por cualquier módulo en la misma canal, lo que cumple la función de radiodifusión y monitoreo.
+البث ومراقبة البيانات: عند تعيين عنوان الوحدة النمطية على 0xFFFF ، يمكن الاستماع إلى نقل البيانات لجميع الوحدات النمطية على نفس القناة. يمكن للبيانات المرسلة أن تكون مستقبلة من قبل أي وحدة نمطية على نفس القناة ، مما يؤدي إلى وظيفة البث والاستماع.
 
-## Modo de transmisión transparente
+## طريقة النقل الشفاف
 
-### Punto a punto
+### نقطة لنقطة
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20220118110614.png)
 
-- Dos módulos con la misma dirección, canal y velocidad inalámbrica (no la velocidad de baudios del puerto serie) pueden enviar y recibir datos entre sí (uno envía, el otro recibe).
-- Cada módulo puede enviar / recibir.
-- Los datos son completamente transparentes, lo que se envía es lo que se recibe.
+- عندما تكون عناوين الوحدات النمطية والقنوات ومعدل البيانات اللاسلكي (غير معدل بت الطرفية) متطابقة ، يمكن لوحدة نمطية إرسال بيانات ويمكن لوحدة نمطية أخرى استقبالها (يجب أن يكون هناك إرسال واستقبال واحد).
+- يمكن لكل وحدة نمطية أن تكون مرسلة / مستقبلة.
+- البيانات شفافة تمامًا وتعني ما ترسله.
 
-|          | Módulo emisor | Módulo receptor |
-| -------- | ------------- | --------------- |
-| Cantidad | 1             | 1               |
-| Contenido de transmisión | Datos | Datos |
+|          | وحدة الإرسال | وحدة الاستقبال |
+| -------- | -------- | -------- |
+| العدد     | 1        | 1        |
+| محتوى النقل | بيانات     | بيانات     |
 
-Por ejemplo:
+على سبيل المثال:
 
-Los dispositivos A y B tienen la dirección 0x1234, el canal es 0x12 y la velocidad es la misma.  
-El dispositivo A envía: AA BB CC DD  
-El dispositivo B recibe: AA BB CC DD
+عناوين الأجهزة A و B هي 0x1234 ، والقنوات هي 0x12 ، والسرعة متطابقة.  
+يقوم جهاز A بإرسال: AA BB CC DD  
+يستقبل جهاز B: AA BB CC DD
 
-La transmisión transparente es simple, solo se usa el módulo Lora como un puerto serie, el dispositivo A envía datos a través del puerto serie y el dispositivo B puede recibirlos a través del puerto serie, y viceversa.
+طريقة النقل الشفاف بسيطة جدًا ، فقط استخدم وحدة Lora كمنفذ سلسلة ، يمكن لجهاز A إرسال البيانات من خلال المنفذ ، ويمكن لجهاز B استقبالها من خلال المنفذ.
 
-### Punto a varios
+### نقطة لعدة
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20220118110709.png)
 
-- Los módulos con la misma dirección, canal y velocidad inalámbrica (no la velocidad de baudios del puerto serie) pueden enviar y recibir datos entre sí (uno envía, varios reciben).
-- Cada módulo puede enviar / recibir.
-- Los datos son completamente transparentes, lo que se envía es lo que se recibe.
+- عندما تكون عناوين الوحدات النمطية والقنوات ومعدل البيانات اللاسلكي (غير معدل بت الطرفية) متطابقة ، يمكن لأي وحدة نمطية إرسال البيانات ويمكن لأي وحدة نمطية أخرى استقبالها.
+- يمكن لكل وحدة نمطية أن تكون مرسلة / مستقبلة.
+- البيانات شفافة تمامًا وتعني ما ترسله.
 
-|          | Módulo emisor | Módulo receptor |
-| -------- | ------------- | --------------- |
-| Cantidad | 1             | N               |
-| Contenido de transmisión | Datos | Datos |
+|          | وحدة الإرسال | وحدة الاستقبال |
+| -------- | -------- | -------- |
+| العدد     | 1        | N        |
+| محتوى النقل | بيانات     | بيانات     |
 
-La diferencia con el punto a punto es que varios módulos pueden recibir.
+الفرق بينها وبين نقطة لنقطة هو أن وحدة الاستقبال يمكن أن تكون أكثر من وحدة.
 
-Por ejemplo:
-Los dispositivos A a F tienen la dirección 0x1234 y el canal es 0x12, y la velocidad es la misma.  
-El dispositivo A envía: AA BB CC DD  
-Los dispositivos B a F reciben: AA BB CC DD
+على سبيل المثال:
+عناوين الأجهزة A ~ F هي 0x1234 ، والقنوات هي 0x12 ، والسرعة متطابقة.  
+يقوم جهاز A بإرسال: AA BB CC DD  
+يستقبل جهاز B ~ F: AA BB CC DD
 
-### Radiodifusión y monitoreo
+### البث والاستماع
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20220118110853.png)
 
-- Si la dirección del módulo es 0xFFFF, el módulo está en modo de radiodifusión y monitoreo, los datos enviados pueden ser recibidos por todos los demás módulos en el mismo canal y velocidad (radiodifusión); al mismo tiempo, se puede monitorear la transmisión de datos de todos los módulos en el mismo canal y velocidad (monitoreo).
-- La radiodifusión y el monitoreo no requieren la misma dirección.
+- عندما يكون عنوان الوحدة النمطية هو 0xFFFF ، فإن هذه الوحدة النمطية في وضع البث والاستماع ، ويمكن للبيانات المرسلة أن تكون مستقبلة من قبل جميع الوحدات النمطية الأخرى على نفس السرعة والقناة (بث) ؛ في الوقت نفسه ، يمكن الاستماع إلى نقل البيانات لجميع الوحدات النمطية على نفس السرعة والقناة (استماع).
+- لا يلزم أن يكون عنوان الوحدة متطابقًا.
 
-|          | Módulo emisor | Módulo receptor |
-| -------- | ------------- | --------------- |
-| Cantidad | 1             | N               |
-| Contenido de transmisión | Datos | Datos |
+|          | وحدة الإرسال | وحدة الاستقبال |
+| -------- | -------- | -------- |
+| العدد     | 1        | N        |
+| محتوى النقل | بيانات     | بيانات     |
 
-La diferencia con el punto a varios es que las direcciones pueden ser diferentes.
+الفرق بينها وبين نقطة لعدة هو أن العنوان يمكن أن يكون مختلفًا.
 
-Por ejemplo:
-El dispositivo A tiene la dirección 0xFFFF, las direcciones de los dispositivos B a F no son todas iguales, las direcciones de los dispositivos B y C son 0x1234, y las direcciones de los dispositivos D, E y F son 0x5678. Todos los dispositivos A a F tienen la misma velocidad.  
-Radiodifusión:  
-El dispositivo A transmite: AA BB CC DD  
-Los dispositivos B a F reciben: AA BB CC DD  
-Monitoreo:  
-El dispositivo B envía a C: AA BB CC DD  
-El dispositivo A monitorea: AA BB CC DD  
-El dispositivo D envía a E y F: 11 22 33 44  
-El dispositivo A monitorea: 11 22 33 44
+على سبيل المثال:
+عنوان جهاز A هو 0xFFFF ، وليس لدى جهاز B ~ F عناوين متطابقة بالكامل ، وعناوين جهاز B و C هي 0x1234 ، وعناوين الأجهزة D و E و F هي 0x5678. جميع الأجهزة A ~ F لديها نفس السرعة.  
+بث:  
+يقوم جهاز A بالبث: AA BB CC DD  
+يستقبل جهاز B ~ F: AA BB CC DD  
+استماع:  
+يقوم جهاز B بإرسال AA BB CC DD إلى C  
+يستمع جهاز A: AA BB CC DD  
+يقوم جهاز D بإرسال 11 22 33 44 إلى E و F  
+يستمع جهاز A: 11 22 33 44
 
-## Modo de transmisión direccionado
+## طريقة النقل الموجه
 
-### Punto a punto
+### نقطة لنقطة
 
-- Al enviar el módulo, se puede modificar la dirección y el canal, y el usuario puede especificar que los datos se envíen a cualquier dirección y canal.
-- Se pueden realizar funciones de red y de relé.
+- يمكن للوحدة النمطية تعديل العنوان والقناة عند الإرسال ، ويمكن للمستخدم تحديد إرسال البيانات إلى أي عنوان وقناة.
+- يمكن تحقيق شبكة وظيفة الوسيط.
 
-|          | Módulo emisor | Módulo receptor |
-| -------- | ------------- | --------------- |
-| Cantidad | 1             | 1               |
-| Contenido de transmisión | Dirección + canal + datos | Datos |
+|          | وحدة الإرسال       | وحدة الاستقبال |
+| -------- | -------------- | -------- |
+| العدد     | 1              | 1        |
+| محتوى النقل | عنوان + قناة + بيانات | بيانات     |
 
+الفرق بينها وبين نقطة لنقطة النقل الشفاف هو أن عنوان الوحدة يمكن تغييره ، ويمكن تغيير القناة ، ولكن السرعة لا تزال متطابقة.
 
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220118111903.png)
 
-La diferencia con la transmisión punto a punto es que la dirección del módulo y el canal son variables, pero la velocidad sigue siendo la misma.
+على سبيل المثال:  
+عنوان جهاز A هو 0X1234 ، والقناة هي 0X17 ؛  
+عنوان جهاز B هو 0xABCD ، والقناة هي 0X01 ؛  
+عنوان جهاز C هو 0X1256 ، والقناة هي 0x13.
 
-Por ejemplo:
-Dispositivo A con dirección 0X1234 y canal 0X17;
-Dispositivo B con dirección 0xABCD y canal 0X01;
-Dispositivo C con dirección 0X1256 y canal 0x13.
+يقوم الجهاز A بإرسال: AB CD 01 AA BB CC DD
+يستقبل الجهاز B: AA BB CC DD
+لا يستقبل الجهاز C
 
-Dispositivo A envía: AB CD 01 AA BB CC DD
-Dispositivo B recibe: AA BB CC DD
-Dispositivo C recibe: nada
+يقوم الجهاز A بإرسال: 12 56 13 AA BB CC DD
+لا يستقبل الجهاز B
+يستقبل الجهاز C: AA BB CC DD
 
-Dispositivo A envía: 12 56 13 AA BB CC DD
-Dispositivo B recibe: nada
-Dispositivo C recibe: AA BB CC DD
+#### اختبار بدون كود
 
-#### Prueba sin código
+استعد جهازي USB to TTL وجهازين LoRa. قم بتوصيل كل منهما بـ USB to TTL (الطاقة والأرض والاتصال TX / RX) ، وقم بتوصيل MD0 لكل منهما بـ VCC ، ثم قم بتوصيلهما بجهاز الكمبيوتر USB. افتح برنامج التكوين وقم بتكوين المعلمات التالية:
 
-Prepara 2 USB a TTL, 2 módulos LoRa. Conéctalos a los USB a TTL (alimentación, tierra común, TX/RX conectados), conecta los dos MD0 a VCC, enchufa los USB a la computadora, abre el software de configuración y configura los siguientes parámetros:
+جهاز A:
 
-Dispositivo A:
+- وضع عام
+- نقل موجه
+- **معدل البت: 115200 (يجب أن يكون 115200)**
+- التحقق: لا شيء
+- معدل البيانات اللاسلكي: 19.2k
+- وقت السكون: 1 ثانية
+- **عنوان الوحدة: 0**
+- **قناة الاتصال: 0**
+- قوة الإرسال: 20dBm
 
-- Modo normal
-- Transmisión direccionada
-- **Velocidad de transmisión: 115200 (debe ser 115200)**
-- Bit de paridad: ninguno
-- Velocidad en el aire: 19.2k
-- Tiempo de espera: 1s
-- **Dirección del módulo: 0**
-- **Canal de comunicación: 0**
-- Potencia de transmisión: 20dBm
+جهاز B:
 
-Dispositivo B:
+- وضع عام
+- نقل موجه
+- **معدل البت: 115200 (يجب أن يكون 115200)**
+- التحقق: لا شيء
+- معدل البيانات اللاسلكي: 19.2k
+- وقت السكون: 1 ثانية
+- **عنوان الوحدة: 65534**
+- **قناة الاتصال: 10**
+- قوة الإرسال: 20dBm
 
-- Modo normal
-- Transmisión direccionada
-- **Velocidad de transmisión: 115200 (debe ser 115200)**
-- Bit de paridad: ninguno
-- Velocidad en el aire: 19.2k
-- Tiempo de espera: 1s
-- **Dirección del módulo: 65534**
-- **Canal de comunicación: 10**
-- Potencia de transmisión: 20dBm
+بعد التكوين ، انقر فوق "حفظ التكوين" ، ثم **افصل MD0 وافصل الطاقة**.
 
-Después de configurar, haz clic en "Guardar configuración" y **desconecta MD0 y luego desconecta la alimentación**.
+أعد تشغيل الوحدتين ، ثم افتح برنامج التكوين مرة أخرى. **حدد "HEX" (16 مربعًا) للإرسال والاستقبال على حد سواء.**
 
-Vuelve a encender los dos módulos, abre el software de configuración y marca "HEX" (hexadecimal) tanto en enviar como en recibir.
+في منطقة الإرسال لـ A ، اكتب "FF FE 0A 11 12 13 14" ، ثم انقر فوق "إرسال" ، وسيتمكن B من استقبال "11 12 13 14" في منطقة الاستقبال. أو يمكنك كتابة "00 00 00 11 12 13" في منطقة الإرسال لـ B ، وسيتمكن A من استقبال "11 12 13" في منطقة الاستقبال. يتم إرسال بيانات الإرسال بتنسيق **عنوان الجزء العلوي + عنوان الجزء السفلي + قناة + بيانات المستخدم**.
 
-En el área de envío de A, ingresa "FF FE 0A 11 12 13 14", haz clic en enviar y podrás recibir "11 12 13 14" en el área de recepción de B; o en el área de envío de B, ingresa "00 00 00 11 12 13" y podrás recibir "11 12 13" en el área de recepción de A.
+#### اختبار باستخدام الكود
 
-Entre ellos, "FF FE" es el número hexadecimal de la dirección 65534 de B, el canal es 10 (el número hexadecimal es "0A"), y los datos enviados son "11 12 13 14". De manera similar, los datos enviados por B incluyen la dirección de A "00 00", el canal "00" y los datos "11 12 13". El formato de envío de datos es **dirección de alta orden + dirección de baja orden + canal + datos de usuario**.
-
-#### Prueba con código
-
-La transmisión punto a punto solo tiene un byte de dirección más que la transmisión punto a punto transparente. Puedes definirlo de esta manera:
+يتم تحديد نقطة إلى نقطة النقل فقط بإضافة بايتات العنوان. يمكن تعريفها على النحو التالي:
 
 ```c title="main.c"
 /* USER CODE BEGIN PV */
@@ -274,50 +266,55 @@ uint8_t B_Chan[1] = { 0x0A };
 /* USER CODE END PV */
 ```
 
-Después de configurar el código (entorno de biblioteca HAL), envía el byte de dirección antes de enviar los datos cada vez:
+بعد تكوين الشفرة (بيئة مكتبة HAL) ، يتم إرسال بايتات العنوان قبل إرسال البيانات:
 
 ```c title="main.c"
 HAL_UART_Transmit(&huart1, B_Addr, 2, 0xFFFF);
 HAL_UART_Transmit(&huart1, B_Chan, 1, 0xFFFF);
 ```
 
-De esta manera, el dispositivo receptor (dispositivo B) puede recibir un marco de datos enviado por A (sin byte de dirección).
+بهذه الطريقة ، يمكن للجهاز المستقبل (جهاز B) استقبال إطار بيانات (بدون بايتات العنوان) المرسل من A.
 
-### Escucha de difusión
+### الاستماع العام
 
-- Si la dirección del módulo es 0xFFFF, el módulo está en modo de escucha de difusión, los datos enviados pueden ser recibidos por todos los demás módulos con la misma velocidad y canal (difusión); al mismo tiempo, se pueden escuchar todas las transmisiones de datos en el mismo canal y velocidad de todos los demás módulos (escucha);
-- La escucha de difusión no requiere que las direcciones sean iguales.
-- La dirección del canal se puede configurar. Cuando la dirección es 0xFFFF, es el modo de difusión; de lo contrario, es el modo de transmisión direccionada.
+![](https://f004.backblazeb2.com/file/wiki-media/img/20220118112544.png)
 
-|          | Módulo de envío  | Módulo de recepción |
-| -------- | ---------------- | -------------------- |
-| Cantidad | 1                | N                    |
-| Contenido de transmisión | 0xFFFF + canal + datos | Datos                |
+- عنوان الوحدة هو 0xFFFF ، فإن الوحدة في وضع الاستماع العام ، ويمكن للبيانات المرسلة أن تستقبل من جميع الوحدات الأخرى التي لديها نفس معدل البيانات والقناة (البث) ؛ في الوقت نفسه ، يمكن الاستماع إلى نقل البيانات على جميع الوحدات التي لديها نفس معدل البيانات والقناة (الاستماع) ؛
+- لا يلزم أن يكون عنوان متطابقًا.
+- يمكن تعيين عنوان القناة. عندما يكون العنوان هو 0xFFFF ، فإنه في وضع البث العام. عندما يكون العنوان مختلفًا ، فإنه في وضع النقل الموجه.
 
-Por ejemplo:
+|          | جهاز الإرسال | جهاز الاستقبال |
+| -------- | ---------------- | -------- |
+| العدد     | 1                | N        |
+| محتوى النقل | 0xFFFF+قناة+بيانات | بيانات     |
 
-Dispositivo A con dirección 0xFFFF y canal 0x12;
-Dispositivos B y C con dirección 0x1234 y canal 0x13;
-Dispositivo D con dirección 0xAB00 y canal 0x01;
-Dispositivo E con dirección 0xAB01 y canal 0x12;
-Dispositivo F con dirección 0xAB02 y canal 0x12;
+على سبيل المثال:
 
-Dispositivo A transmite: FF FF 13 AA BB CC DD
-Dispositivos B y C reciben: AA BB CC DD
+جهاز A العنوان 0xFFFF القناة 0x12؛
+جهاز B و C العنوان 0x1234 ، القناة 0x13؛
+جهاز D العنوان 0xAB00 ، القناة 0x01؛
+جهاز E العنوان 0xAB01 ، القناة 0x12؛
+جهاز F العنوان 0xAB02 ، القناة 0x12؛
 
-Dispositivo A envía: AB 00 01 11 22 33 44
-Solo el dispositivo D recibe: 11 22 33 44
+جهاز A يبث: FF FF 13 AA BB CC DD
+يستقبل جهاز B و C: AA BB CC DD
 
-Dispositivo E envía: AB 02 12 66 77 88 99
-Dispositivo F recibe: 66 77 88 99
-Dispositivo A escucha: 66 77 88 99
+ترسل الجهاز A: AB 00 01 11 22 33 44
+يستقبل الجهاز D فقط: 11 22 33 44
 
-## Referencias y agradecimientos
+ترسل الجهاز E: AB 02 12 66 77 88 99
+يستقبل الجهاز F: 66 77 88 99
+يستمع الجهاز A: 66 77 88 99
 
-- [Módulo LORA ATK-LORA-01](http://www.openedv.com/docs/modules/iot/atk-lora-01.html)
-- [Tutorial de uso del módulo LORA ATK-LORA de la marca Zhengdianyuan](https://www.bilibili.com/video/BV1D44y1t7bn)
-- [Descarga de materiales y enlaces de discusión técnica del módulo LORA ATK-LORA-01 de la marca Zhengdianyuan](http://www.openedv.com/thread-309019-1-1.html)
-- [Método de prueba de transmisión de datos en modo general con dos módulos LORA (prueba con una computadora)](http://www.openedv.com/forum.php?mod=viewthread&tid=288951)
-- [Módulo inalámbrico de puerto serie ATK-LORA-01 solo recibe 00](http://www.openedv.com/forum.php?mod=viewthread&tid=328190&highlight=ATK-LORA-01)
+## المراجع والشكر
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+- [LORA موديول ATK-LORA-01](http://www.openedv.com/docs/modules/iot/atk-lora-01.html)
+- [دليل استخدام موديول LORA ATK-LORA من شركة Zhengdianyuan](https://www.bilibili.com/video/BV1D44y1t7bn)
+- [تحميل مواد وروابط مناقشات تقنية لموديول LORA ATK-LORA-01 من شركة Zhengdianyuan](http://www.openedv.com/thread-309019-1-1.html)
+- [طريقة اختبار نقل البيانات بين موديولين LORA في وضع النقل العادي (استخدام الحاسوب الشخصي للاختبار)](http://www.openedv.com/forum.php?mod=viewthread&tid=288951)
+- [مشكلة استقبال موديول ATK-LORA-01 للبيانات الفارغة 00](http://www.openedv.com/forum.php?mod=viewthread&tid=328190&highlight=ATK-LORA-01)
+
+> عنوان النص: <https://wiki-power.com/>
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

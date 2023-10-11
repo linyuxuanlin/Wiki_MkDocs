@@ -1,4 +1,4 @@
-# Laboratorio de pruebas de MkDocs
+# مختبر اختبار MkDocs
 
 `MkDocs-Lab`
 
@@ -8,39 +8,39 @@
 
 ```mermaid
 graph TD
-    a1("Recopilar datos de voltaje vs. QUOT en diferentes temperaturas y desviaciones")
-    a2("Seleccionar RO y definir QUOT objetivo (valor fijo)")
+    a1("جمع بيانات الجهد مقابل QUOT عبر التحريف ودرجة الحرارة")
+    a2("تحديد RO وتحديد هدف QUOT (قيمة ثابتة)" )
     a1-->a2
 ```
 
 ```mermaid
 graph LR
-    A[Rectángulo cuadrado] -- Texto de enlace --> B((Círculo))
-    A --> C(Rectángulo redondeado)
-    B --> D{Rombo}
+    A[مربع مستطيل] -- نص الرابط --> B((دائرة))
+    A --> C(مستطيل مستدير)
+    B --> D{معين}
     C --> D
 ```
 
 ```mermaid
 graph LR
-  A[Inicio] --> B{¿Error?};
-  B -->|Sí| C[Hmm...];
-  C --> D[Depurar];
+  A[بداية] --> B{خطأ؟};
+  B -->|نعم| C[هم...];
+  C --> D[تصحيح الأخطاء];
   D --> B;
-  B ---->|No| E[¡Hurra!];
+  B ---->|لا| E[ياي!];
 ```
-
 
 ```mermaid
 sequenceDiagram
-  Alice->>John: ¡Hola John, cómo estás?
+  Alice->>John: مرحبا جون، كيف حالك؟
   loop Healthcheck
-      John->>John: Lucha contra la hipocondría
+      John->>John: محاربة الهوس الصحي
   end
-  Note right of John: ¡Pensamientos racionales!
-  John-->>Alice: ¡Genial!
-  John->>Bob: ¿Y tú?
-  Bob-->>John: ¡Muy bien!
+  Note right of John: أفكار منطقية!
+  John-->>Alice: رائع!
+  John->>Bob: وأنت؟
+  Bob-->>John: جيد جدا!
+
 ```
 
 ```mermaid
@@ -57,13 +57,13 @@ stateDiagram-v2
     State4 --> [*]
 ```
 
-## Referencias y Agradecimientos
+## المراجع والاعترافات
 
-- [Los mejores plugins y personalizaciones de MkDocs](https://chrieke.medium.com/the-best-mkdocs-plugins-and-customizations-fc820eb19759)
-- [Plugins de MkDocs](https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins)
-- [Diagramas](https://squidfunk.github.io/mkdocs-material/reference/diagrams/)
+- [The best MkDocs plugins and customizations](https://chrieke.medium.com/the-best-mkdocs-plugins-and-customizations-fc820eb19759)
+- [MkDocs Plugins](https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins)
+- [Diagrams](https://squidfunk.github.io/mkdocs-material/reference/diagrams/)
 
-> Original: <https://wiki-power.com/>  
-> Este post está protegido por el acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en), debe ser reproducido con atribución.
+> المصدر: <https://wiki-power.com/>  
+> هذا المنشور محمي باتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) ويجب إعادة الإنتاج مع الإشارة إلى المصدر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

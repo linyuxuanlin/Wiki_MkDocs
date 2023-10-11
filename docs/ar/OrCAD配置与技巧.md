@@ -1,22 +1,22 @@
-# Configuración y consejos de OrCAD
+# تكوين ونصائح OrCAD
 
-Nota: Este artículo se basa en Cadence OrCAD Capture CIS.
+ملاحظة: يستند هذا المقال إلى Cadence OrCAD Capture CIS.
 
-## Fundamentos
+## الأساسيات
 
-Para dibujar un esquema, use OrCAD Capture CIS (Menú Inicio -> Cadence -> Capture CIS)
-Para dibujar un PCB, use Allegro PCB Designer (Menú Inicio -> Cadence -> PCB Editor)
+يتم استخدام OrCAD Capture CIS لرسم الرسم التخطيطي (القائمة البدء - Cadence - Capture CIS)  
+يتم استخدام Allegro PCB Designer لرسم PCB (القائمة البدء - Cadence - PCB Editor)
 
-En general, un archivo `.DSN` es suficiente para todo el proyecto, y al abrirlo se generan automáticamente archivos de esquema como `.opj`. Si utiliza git para el control de versiones, puede agregar lo siguiente a su archivo gitignore:
+عمومًا ، يمكن استخدام ملف `.DSN` واحد لتغطية المشروع بأكمله ، وسيتم إنشاء ملفات الرسم التخطيطي `.opj` تلقائيًا عند الفتح. إذا تم استخدام Git لإدارة الإصدارات ، فيمكن إضافة gitignore التالي:
 
 ```gitignore
-# Desde el gitignore original
+# From original gitignore 
 
 #############
 ## Allegro
 #############
 
-# Ignorar archivo de registro
+# Ignore log file
 *.log
 *.log,1
 *.log,2
@@ -25,38 +25,38 @@ En general, un archivo `.DSN` es suficiente para todo el proyecto, y al abrirlo 
 *.dml
 *.lst
 
-# Ignorar registros de eventos de allegro
+#ignore 记录操作allegro的事件
 *.jrl
 *.jrl,1
 
 *.tag
 
-# Archivos de informe
+#报告文件
 *.rpt
 
-# Archivos de configuración
+#报告文件
 *.cfg
 *.cfg,1
 
 *.lck
 
-# Archivos de informe
+#报表文件
 *.txt
 *.txt,1
 *.txt,2
 
-# Excluir datos XY
+#XY数据除外
 !place_txt.txt
 
-# Archivos de importación DXF
+#DXF导入文件
 *.cnv
 
-# Excluir archivo de parámetros Gerber
+#Gerber param file除外
 !art_param.txt
 
-# Carpeta
-# Filtrar toda la carpeta
-/signoise.run/ 
+#Folder
+#过滤整个文件夹
+/signoise.run/ 
 
 #############
 ## OrCAD
@@ -66,68 +66,68 @@ En general, un archivo `.DSN` es suficiente para todo el proyecto, y al abrirlo 
 *.DRC
 *.DSNlck
 
-# Ignorar lista de redes
-allegro/ 
+#ignore netlist
+allegro/ 
 ```
 
-## Algunas configuraciones
+## بعض الإعدادات
 
-Configuración de DRC:
+إعدادات DRC:
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20210810134720.png)
 
-Renombrar automáticamente los identificadores al copiar componentes:
+إعادة تسمية تلقائية للرقم المرجعي عند نسخ المكون:
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20210810134747.png)
 
-Mover caracteres cerca de la cuadrícula:
+تحريك النص بالقرب من الشبكة:
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20210810134758.png)
 
-Truco: Cuando se utiliza la biblioteca CIP, si aparece el mensaje "not found in the configured librarie lists", verifique la codificación de los espacios en blanco en la ruta.
+الفخ: عند استخدام مكتبة CIP ، عندما يتم عرض `not found in the configured librarie lists` ، يجب التحقق من ترميز المسافات في المسار.
 
-- **Desplazamiento del mouse para hacer zoom**: `Options` - `Preferences…` - `Pan and Zoom` - Configure los dos `Zoom Factor` a 1.1x
-- **Actualizar el esquema al seleccionar una parte**: `Options` - `Preferences…` - `Miscellaneous` - `Place Part` – Seleccione `Refresh part on selection`
-- **Establecer el tamaño de la cuadrícula**: `Options` - `Preferences…` - `Grid Display` - `Grid Spacing` - Establecer en 1/2
+- **تكبير / تصغير عجلة الماوس**:`Options` - `Preferences…` - `Pan and Zoom` - تعيين العاملين `Zoom Factor` إلى 1.1 مرة
+- **تحديث الرسم التخطيطي عند وضع المكونات**:`Options` - `Preferences…` - `Miscellaneous` - `Place Part` - تحديد `Refresh part on selection`
+- **تعيين حجم الشبكة**:`Options` - `Preferences…` - `Grid Display` - `Grid Spacing` - تعيينها على 1/2
 
-## Atajos de teclado
+## اختصارات لوحة المفاتيح
 
-- Dibujar un cable: `W`
-- Cancelar: `ESC`
-- Dibujar una línea de bus: `F4`
-- Colocar un número de red: `N`
-- Rotar / Espejo horizontal / Espejo vertical de componentes: `R` / `H` / `V`
-- Abrir el panel CIS: `Z`
-- Colocar una fuente de alimentación / tierra: `F` / `G`
-- No conectar: `X`
-- Filtro: `Ctrl` + `I`
-- Selección múltiple de elementos: Mantenga presionada la tecla `Ctrl` mientras selecciona
-- Copiar y agregar automáticamente un identificador: Mantenga presionada la tecla `Ctrl` mientras arrastra un componente
-- Mover el esquema con el mouse como centro de gravedad: Mantenga presionada la tecla `C` y arrastre el mouse
-- Colocar un bus: `E`
-- Colocar texto: `T`
+- سحب الخط: `W`
+- إلغاء: `ESC`
+- سحب الأسلاك: `F4`
+- وضع علامة شبكية: `N`
+- تدوير / انعكاس أفقي / انعكاس عمودي للمكون: `R` / `H` / `V`
+- فتح لوحة CIS: `Z`
+- وضع الطاقة / الأرض: `F` / `G`
+- عدم الاتصال: `X`
+- مرشح: `Ctrl` + `I`
+- تحديد عناصر متعددة: اضغط على `Ctrl` للتحديد
+- نسخ وزيادة تلقائية للرقم المرجعي: اضغط على `Ctrl` واسحب المكون
+- نقل الرسم التخطيطي حول نقطة التوازن: اضغط على `C` واسحب الماوس
+- وضع الحافلة: `E`
+- وضع النص: `T`
 
-## Errores y soluciones
+## الأخطاء والحلول
 
-- No se puede mover un componente: En general, reiniciar el programa resuelve el problema.
+- لا يمكن سحب المكون: عمومًا ، يمكن حل المشكلة بإعادة التشغيل.
 
-## Consejos
+## الحيل
 
-### Diferencia entre off-page y port
+### الفرق بين off-page و port
 
-Off-page se utiliza generalmente para esquemas planos, mientras que port se utiliza para esquemas jerárquicos.
+يستخدم off-page عمومًا في الرسم التخطيطي المسطح ، بينما يستخدم port عمومًا في الرسم التخطيطي الهرمي.
 
-### Verificación de DRC
+### فحص DRC
 
-1. En el árbol de archivos, haga clic para seleccionar todo el proyecto.
-2. Haga clic en la barra de herramientas `Tools` - `Design Rules Check...`
-3. Seleccione `Run Physical Rules` y `View Output`.
-4. Haga clic en Aceptar y se generará un informe que se abrirá automáticamente.
+1. انقر فوق المشروع بالكامل في شجرة الملفات
+2. انقر فوق شريط الأدوات `Tools` - `Design Rules Check...`
+3. حدد `Run Physical Rules` و `View Output`
+4. انقر فوق موافق ، وسيتم إنشاء تقرير وفتحه تلقائيًا
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [【Cadence 快速入门】一文总结版](https://blog.csdn.net/ReCclay/article/details/101225359)
-- [OrCAD Capture Tutorial](https://resources.orcad.com/orcad-capture-tutorials)
-- [cadence 软件用于高分屏笔记本时候显示字体模糊问题解决](https://blog.csdn.net/qq_34338527/article/details/108846792)
+- [【دليل سريع لـ Cadence】الإصدار الشامل للمقالة](https://blog.csdn.net/ReCclay/article/details/101225359)
+- [دليل OrCAD Capture](https://resources.orcad.com/orcad-capture-tutorials)
+- [حل مشكلة ضبابية الخط في برنامج Cadence على شاشات الحواسيب المحمولة عالية الدقة](https://blog.csdn.net/qq_34338527/article/details/108846792)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

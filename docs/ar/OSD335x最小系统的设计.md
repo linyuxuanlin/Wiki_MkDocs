@@ -1,163 +1,171 @@
-# Diseño del sistema mínimo OSD335x
+# تصميم أصغر نظام OSD335x
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20211012144907.png)
 
-El chip OSD335x-SM de TI es un módulo SIP (System-in-Package) que integra el procesador Cortex-A8 AM335x, memoria DDR3, el PMIC (chip de gestión de energía) TPS65217C, el LDO TL5209, los componentes pasivos necesarios y una EEPROM de 4KB en un encapsulado BGA.
+يتكون شريحة OSD335x-SM من TI من معالج Cortex-A8 AM335x وذاكرة DDR3 ومشغل طاقة TPS65217C PMIC ومنظم الجهد TL5209 LDO والمكونات السلبية المطلوبة وذاكرة EEPROM بسعة 4 كيلوبايت مدمجة في وحدة SIP (System-in-Package) داخل حزمة BGA.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20211012153036.png)
 
-El sistema mínimo OSD335x consta de cuatro partes: alimentación, reloj, reset y puerto de programación y depuración. Para facilitar su uso, también se pueden agregar un par de botones, algunos LED y algunos pines de periféricos.
+يتكون النظام الأصغر لـ OSD335x من 4 أجزاء: الطاقة والساعة وإعادة التعيين وواجهة التصحيح والتنزيل. ولجعلها أسهل في الاستخدام ، يمكن إضافة زوج من الأزرار وبعض الصمامات وبعض دبابيس الأجهزة الخارجية.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20211012155857.png)
 
-## Alimentación
+## الطاقة
 
-### Entrada
+### المدخلات
 
-- VIN_AC: entrada de alimentación principal (DC5V@2A), se pueden agregar fusibles, ferritas, diodos de protección y otros dispositivos según sea necesario.
-- VIN_USB: entrada de alimentación USB (DC5V@0.5A, se puede aumentar a 1.3A a través del PMIC interno), también se utiliza como voltaje y corriente de referencia para el host USB 2.0.
-- VIN_BAT: se puede utilizar como entrada de batería (con alimentación de batería de 2.75-5.5V) o salida (para cargar la batería), no se puede utilizar como entrada de eventos.
+- VIN_AC: مدخل الطاقة الرئيسي (DC5V @ 2A) ، يمكن إضافة مآخذ تأمين وحبل مغناطيسي وثنائيات صمام وحماية المدخل.
+- VIN_USB: مدخل الطاقة USB (DC5V @ 0.5A ، يمكن زيادته إلى 1.3A عن طريق PMIC الداخلي) ، كما يستخدم كجهد وتيار مرجعي لمضيف USB 2.0.
+- VIN_BAT: يمكن استخدامه كمدخل للبطارية (باستخدام مصدر طاقة البطارية ، 2.75-5.5 فولت) أو كمخرج (لشحن البطارية) ، ولا يمكن استخدامه كمدخل للأحداث.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20211012173057.png)
 
-### Salida
+### المخرجات
 
-- SYS_VOUT: igual al voltaje del PMIC de entrada, tenga en cuenta que los componentes conectados a este pin deben ser capaces de funcionar en el rango de 3-5V, ya que el PMIC cambia la entrada de alimentación cuando se carga la batería.
-- SYS_VDD1_3P3V: salida de 3.3V proporcionada por el LDO TL5209 y habilitada por el LDO4 del PMIC, como salida de alimentación principal.
-- SYS_VDD2_3P3V: salida de 3.3V proporcionada por el LDO2 del PMIC.
-- SYS_RTC_1P8V: salida de 1.8V proporcionada por el LDO1 del PMIC, también se utiliza para alimentar el RTC interno de AM335x.
-- SYS_VDD_1P8V: salida de 1.8V proporcionada por el LDO3 del PMIC.
-- SYS_ADC_1P8V: salida de 1.8V proporcionada por el LDO3 del PMIC, con filtrado para aplicaciones analógicas y también para alimentar el ADC de AM335x internamente.
+- SYS_VOUT: يساوي جهد PMIC الإدخال ، يجب ملاحظة أن المكونات الموصلة بالمدخل الموصل بهذا الدبوس يجب أن تعمل في نطاق 3-5 فولت ، لأن PMIC يقوم بتبديل مدخلات الطاقة المختلفة عند شحن البطارية.
+- SYS_VDD1_3P3V: مخرج 3.3 فولت ، يتم توفيره بواسطة TL5209 LDO ويتم تمكينه بواسطة LDO4 في PMIC ، كمخرج للطاقة الرئيسية.
+- SYS_VDD2_3P3V: مخرج 3.3 فولت ، يتم توفيره بواسطة LDO2 في PMIC.
+- SYS_RTC_1P8V: مخرج 1.8 فولت ، يتم توفيره بواسطة LDO1 في PMIC ، ويستخدم أيضًا لتشغيل RTC الداخلي في AM335x.
+- SYS_VDD_1P8V: مخرج 1.8 فولت ، يتم توفيره بواسطة LDO3 في PMIC.
+- SYS_ADC_1P8V: مخرج 1.8 فولت ، يتم توفيره بواسطة LDO3 في PMIC ، ويتم تصفية التطبيقات التناظرية ، ويتم توفير الطاقة الكهربائية لـ AM335x ADC أيضًا.
 
-Se recomienda agregar puntos de prueba para todas las salidas de alimentación para facilitar la depuración.
+يوصى بإضافة نقاط اختبار لجميع مخرجات الطاقة لتسهيل عملية التصحيح.
 
-También hay algunos pines de alimentación interna: VDDSHV_3P3V, VDDS_DDR, VDD_MPU, VDD_CORE, VDDS_PLL. Solo se utilizan para medición de puntos de prueba, no se deben utilizar para circuitos externos.
+هناك أيضًا بعض دبابيس التي توفر الطاقة الداخلية: VDDSHV_3P3V و VDDS_DDR و VDD_MPU و VDD_CORE و VDDS_PLL. إنها مخصصة فقط للقياسات الخارجية ، ولا ينبغي استخدامها للدوائر الخارجية.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20211013142917.png)
 
-### Entrada y tierra de referencia analógica
+### مدخلات المرجع الأرضية التناظرية
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20211013143532.png)
 
-El OSD335x tiene una interfaz ADC, por lo que es necesario utilizar correctamente la alimentación y la tierra analógicas si se desea utilizar el ADC. La interfaz ADC puede soportar una entrada analógica máxima de 1.8V (consulte el pin VREFP). Por lo general, VREFP se puede conectar directamente a SYS_ADC_1P8V, pero si es necesario, se puede dividir a un voltaje más bajo.
+يحتوي OSD335x على واجهة ADC ، وإذا كنت تريد استخدام ADC ، فيجب استخدام مصدر طاقة تناظري وأرضي تناظري صحيحين. يمكن لواجهة ADC تحمل إشارة تناظرية بحد أقصى 1.8 فولت (بالإشارة إلى دبوس VREFP). عادةً ما يمكن توصيل VREFP مباشرة بـ SYS_ADC_1P8V ، ولكن إذا كان هناك حاجة ، فيمكن تقسيمه إلى جهد أقل.
 
-### Gestión de energía
+### إدارة الطاقة
 
-Dentro del OSD335x, el AM335x se comunica con el PMIC TPS65217C a través de I2C0.
+في الداخل ، يتم التواصل بين AM335x و TPS65217C PMIC عبر I2C0.
 
-I2C0 tiene una resistencia de pull-up de 4.7k interna, pero es mejor agregar una resistencia de pull-up adicional en el exterior si se va a utilizar un dispositivo.
+يحتوي I2C0 على مقاومات سحب 4.7 كيلو أوم ، ولكن إذا كنت تريد استخدام الجهاز ، فمن الأفضل إضافة مقاومات سحب إضافية في الخارج.
 
-El PMIC TPS65217C se puede configurar a través de I2C para ajustar los siguientes parámetros:
+يمكن تعيين المعلمات التالية لـ TPS65217C PMIC عبر I2C:
 
-- Voltaje de carga de la batería
-- Control de tiempo de carga segura
-- Voltaje de salida Buck/Boost
-- Voltaje de salida LDO
-- Secuencia de encendido/apagado
-- Umbral de sobrecorriente y sobrecalentamiento
+- جهد شحن البطارية
+- التحكم في وقت الشحن الآمن
+- جهد الإخراج Buck / Boost
+- جهد الإخراج LDO
+- توقيت التشغيل / الإيقاف
+- عتبة التيار الزائد / الحرارة
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20211013161739.png)
 
-Además de la conexión a través de I2C, el PMIC también tiene algunos pines de función que deben conectarse al OSD335x:
+بالإضافة إلى الاتصال عبر I2C ، يتطلب PMIC بعض دبابيس الوظائف التي يجب توصيلها بـ OSD335x:
 
-- PMIC_POWER_EN: utilizado por AM335x para controlar la secuencia de encendido del PMIC
-- PMIC_IN_PWR_EN: habilita los buck y LDO del PMIC, y comienza el control de la secuencia de encendido cuando se aplica un nivel alto
-- RTC_PWRONRSTN: pin de reinicio de energía independiente del RTC de AM335x
-- PMIC_OUT_LDO_PGOOD: estado de salida de LDO1 y LDO2, un nivel alto indica una buena salida y un nivel bajo indica una salida anormal de cualquier LDO.
-- EXT_WAKEUP: pin de activación externa
-- PMIC_OUT_NWAKEUP: pin de activación externa del host (activo en nivel bajo)
-- EXTINTN: pin de entrada de interrupción externa de AM335x
-- PMIC_OUT_NINT: pin de salida terminal del PMIC (activo en nivel bajo)
+- PMIC_POWER_EN: يستخدم لتحكم AM335x في توقيت تشغيل PMIC
+- PMIC_IN_PWR_EN: يمكّن buck و LDO في PMIC، ويبدأ التحكم في توقيت التشغيل عندما يتم توفير جهد عالٍ
+- RTC_PWRONRSTN: دبوس إعادة تعيين الطاقة المستقل لـ AM335x RTC
+- PMIC_OUT_LDO_PGOOD: حالة إخراج LDO1 و LDO2، يتم توفير جهد عالٍ عندما يكون الإخراج جيدًا، ويعني الجهد المنخفض أن أي إخراج LDO غير طبيعي.
+- EXT_WAKEUP: دبوس استيقاظ الحدث الخارجي
+- PMIC_OUT_NWAKEUP: دبوس استيقاظ الحدث الخارجي لـ Host (صالح للجهد المنخفض)
+- EXTINTN: دبوس إدخال المقاطعة الخارجية لـ AM335x
+- PMIC_OUT_NINT: دبوس إخراج PMIC النهائي (صالح للجهد المنخفض)
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20211013161927.png)
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20211013163119.png)
 
-### Botón de encendido
+### زر الطاقة
 
-El PMIC TPS65217C tiene una entrada de reinicio activa en nivel bajo que se conecta al OSD335x a través del pin PMIC_IN_PB_IN, y también se puede conectar a un botón externo. Este pin de entrada tiene un tiempo de rebote de 50 ms y una resistencia de pull-up interna. Además, el botón de encendido tiene las siguientes funciones:
+يحتوي TPS65217C PMIC داخليًا على مدخل إعادة تعيين فعال منخفض الجهد، يتم توصيله بـ OSD335x عبر دبوس PMIC_IN_PB_IN، ويمكن أيضًا توصيله بزر خارجي. يتم توفير 50 مللي ثانية من وقت الارتداد لهذا المدخل الداخلي، ويحتوي على مقاومة سحب داخلية. بالإضافة إلى ذلك، يحتوي هذا الزر على الوظائف التالية:
 
-- Cuando se detecta una transición de nivel bajo en PMIC_IN_PB_IN, el PMIC se despertará del modo de apagado o suspensión.
-- Si PMIC_IN_PB_IN se mantiene en nivel bajo durante más de 8 segundos, el PMIC se reiniciará/encenderá de nuevo.
-- Si PMIC_IN_PB_IN se mantiene en nivel bajo durante mucho tiempo, el dispositivo continuará alternando entre los estados ACTIVO y RESET, con un intervalo de 8 segundos para cada reinicio.
+- عندما يتم الكشف عن انخفاض الجهد على PMIC_IN_PB_IN، سيقوم PMIC بإيقاظ النظام من وضع الإغلاق أو السكون.
+- عندما يتم الاحتفاظ بمدخل PMIC_IN_PB_IN على الجهد المنخفض لأكثر من 8 ثوانٍ، سيتم إعادة تشغيل / إعادة تعيين PMIC.
+- إذا تم الاحتفاظ بدبوس PMIC_IN_PB_IN على الجهد المنخفض لفترة طويلة، فسيستمر الجهاز في التبديل بين الحالة النشطة وحالة الإعادة التعيين كل 8 ثوانٍ.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20211013165738.png)
 
-### Indicador de alimentación
+### مؤشر الطاقة
 
-Utilizamos SYS_VDD2_3P3V (150mA) como salida del indicador de alimentación.
+نستخدم SYS_VDD2_3P3V (150mA) كإخراج لمؤشر الطاقة.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20211014092054.png)
 
-## Reinicio
+## إعادة التعيين
 
-El OSD335x tiene varios métodos de reinicio:
+يوجد لدى OSD335x عدة طرق لإعادة التعيين:
 
-- Reinicio en frío (reinicio al encender): se realiza al encender el dispositivo y el dominio de alimentación.
-- Reinicio en caliente
-  - Es un reinicio parcial que no afecta a la lógica global.
-  - Se utiliza para reducir el tiempo de recuperación del reinicio.
+- إعادة التعيين الباردة (إعادة التعيين عند التشغيل): يتم تنفيذها عند تشغيل الجهاز وتشغيل مجال الطاقة.
+- إعادة التعيين الساخنة
+  - إعادة تعيين جزئي، لا يؤثر على المنطق العام
+  - تستخدم لتقليل وقت استعادة إعادة التعيين
 
-El OSD335x tiene 3 entradas de reinicio (con el mismo nombre que las entradas de reinicio en AM335x):
+يوجد لدى OSD335x 3 مداخل إعادة تعيين (تحمل نفس الاسم مثل مداخل إعادة التعيين على AM335x):
 
-- PWRONRSTN: reinicio en frío; debe mantenerse en nivel bajo durante el encendido hasta que todas las líneas de alimentación de entrada estén estables; no se puede bloquear y afecta a todo el sistema excepto al RTC.
-- WARMRSTN: reinicio en caliente; algunos registros de módulos de control y gestión de energía, reinicio y reloj no son sensibles al reinicio en caliente.
-- RTC_PWRONRSTN: entrada de reinicio de encendido especializada para el módulo RTC que no se ve afectada por el reinicio en frío, y que no afecta a otras partes del dispositivo.
+- PWRONRSTN: إعادة تعيين باردة؛ يجب الاحتفاظ بها على الجهد المنخفض خلال فترة التشغيل وتشغيل مجال الطاقة حتى تستقر جميع خطوط إمداد الطاقة الداخلية؛ لا يمكن حجبها، باستثناء RTC، ويتأثر النظام بأكمله.
+- WARMRSTN: إعادة تعيين ساخنة؛ بعض مسجلات PRCM (إدارة الطاقة وإعادة التعيين والساعة) ووحدات التحكم لا تتأثر بإعادة التعيين الساخنة.
+- RTC_PWRONRSTN: مدخل إعادة تعيين الطاقة المستقل لوحدة RTC الخاصة، لا يتأثر بإعادة التعيين الباردة، ولا يؤثر على أجزاء الجهاز الأخرى.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20211014105556.png)
 
-## Reloj
+## الساعة
 
-### OSC0 y OSC1
+### OSC0 و OSC1
 
-El OSD335x tiene dos entradas de reloj:
+يوجد لدى OSD335x مدخلان للساعة:
 
-- OSC0: Entrada de reloj de alta velocidad (reloj principal), funciona a una frecuencia de 19.2MHz, 24MHz (recomendado), 25MHz o 26MHz. Esta fuente de reloj proporciona referencia para todas las funciones que no son RTC. La entrada de reloj OSC0 tiene pines OSC0_IN, OSC0_OUT y OSC0_GND.
-- OSC1: Entrada de reloj de baja velocidad, funciona a 32.768kHz y proporciona energía para RTC. La entrada de reloj OSC1 tiene pines OSC1_IN, OSC1_OUT y OSC1_GND. Esta fuente de reloj está desactivada de forma predeterminada y no es necesaria, pero puede recibir una señal de cristal RC interno de 32kHz si es necesario.
+- OSC0: مدخل الساعة عالي السرعة (الساعة الرئيسية)، يعمل بتردد 19.2 ميجاهرتز أو 24 ميجاهرتز (التوصية) أو 25 ميجاهرتز أو 26 ميجاهرتز. هذا المصدر الزمني يوفر مرجعًا لجميع الوظائف غير RTC. يحتوي مدخل الساعة OSC0 على دبوس OSC0_IN و OSC0_OUT و OSC0_GND.
+- OSC1: مدخل الساعة منخفض السرعة، يعمل بتردد 32.768 كيلوهرتز، ويوفر الطاقة لوحدة RTC. يحتوي مدخل الساعة OSC1 على دبوس OSC1_IN و OSC1_OUT و OSC1_GND. يتم تعطيل مصدر الساعة هذا افتراضيًا، وهو ليس ضروريًا، وإذا لزم الأمر، يمكن استقبال إشارة RC الكريستال الداخلية بتردد 32 كيلوهرتز.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20211014095242.png)
 
-En la figura anterior, Rbias y Rd son opcionales. Si no se puede proporcionar una frecuencia precisa, Rbias se puede utilizar para calibrar de forma flexible y se puede DNP (no incluir en el esquema original o dejar un espacio vacío). Pero si no se necesita Rd, debe reemplazarse con un cable para evitar un circuito abierto.
+في الشكل أعلاه، Rbias و Rd اختيارية. إذا لم يتم توفير تردد دقيق، يمكن استخدام Rbias للمعايرة المرنة، ويمكن عدم تضمينها في المخطط الأساسي أو ترك مساحة لها. ومع ذلك، إذا لم يكن هناك حاجة لـ Rd، يجب استخدام سلك بدلاً منه، وإلا فسيؤدي ذلك إلى انقطاع التيار.
 
-En el diseño de referencia, se utiliza un cristal de 24MHz 7A-24.000MAAJ-T, un condensador de 18pF y una resistencia de 1MΩ como Rbias para OSC0.
+في التصميم المرجعي، تم استخدام OSC0 مع كريستال 7A-24.000MAAJ-T بتردد 24 ميجاهرتز، ومكثف 18 بيكوفاراد ومقاومة 1 ميجا أوم كـ Rbias.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20211014101932.png)
 
-El pin RTC_KALDO_ENN tiene una resistencia externa de 10k para habilitar el LDO RTC interno de forma predeterminada.
+يتم توفير RTC_KALDO_ENN بشكل افتراضي بسحب خارجي (مقاومة 10 كيلو أوم)، ويستخدم لتمكين LDO RTC الداخلي.
 
-## Interfaz de programación y depuración
+## واجهة التصحيح والتصحيح
 
-En el diseño de referencia, se utiliza la interfaz JTAG.
+
+
+## استخدام واجهة JTAG في التصميم المرجعي
+
+في التصميم المرجعي، يتم استخدام واجهة JTAG.
 
 https://octavosystems.com/octavosystems.com/wp-content/uploads/2017/07/JTAG.jpg
 
-## Otros periféricos
+## الأجهزة الخارجية الأخرى
 
-### Configuración de inicio
+### تكوين الإقلاع
 
-La tabla de configuración de inicio se puede consultar en la sección **SYSBOOT Configuration Pins** del [**Manual de referencia técnica (TRM) de AM335x**](http://www.ti.com/lit/pdf/spruh73).
+يمكن الاطلاع على جدول تكوين الإقلاع في فصل **SYSBOOT Configuration Pins** من [**AM335x Technical Reference Manual (TRM)**](http://www.ti.com/lit/pdf/spruh73).
 
-En el diseño de referencia, se realiza la siguiente configuración:
+في التصميم المرجعي، يتم الاتصال على النحو التالي:
 
-- Se establece la frecuencia del reloj en 24Mhz.
-- Se desactiva la salida CLKOUT1 a través de XDMA_EVENT_INTR0, que solo se utiliza para la simulación JTAG.
-- Se establece el orden de inicio en SPI0 -> MMC0 -> USB0 -> UART0.
+![](https://f004.backblazeb2.com/file/wiki-media/img/20211014110132.png)
 
-### Botones y LED de usuario
+تم تكوين المعلمات التالية:
+
+- تعيين تردد الساعة على 24 ميجاهرتز
+- تعطيل إخراج CLKOUT1 عن طريق XDMA_EVENT_INTR0، حيث يتم استخدام هذا الدبوس فقط للمحاكاة باستخدام JTAG.
+- تعيين ترتيب الإقلاع على SPI0 -> MMC0 -> USB0 -> UART0
+
+### أزرار المستخدم والمصابيح الحمراء
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20211014110906.png)
 
-### Pines de periféricos
+### دبابيس الأجهزة الخارجية
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20211014110947.png)
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
 - [SO YOU WANT TO BUILD AN EMBEDDED LINUX SYSTEM?](https://jaycarlson.net/embedded-linux/#)
 - [OSD335x-SM System-in-Package Smallest AM335x Module, Quickest Design](https://octavosystems.com/octavo_products/osd335x-sm/#Technical%20Documents)
 - [OSD335x Reference Design Tutorial Series](https://octavosystems.com/app_notes/osd335x-design-tutorial/)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
