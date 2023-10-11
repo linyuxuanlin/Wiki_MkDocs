@@ -1,72 +1,64 @@
-# Prueba IDD
+# اختبار IDD
 
-> Esta publicación solo está disponible en inglés.
+> هذا المنشور متاح فقط باللغة الإنجليزية.
 
-La corriente de suministro de energía (IDD) indica la corriente que fluye desde el drenador hasta el drenador en un circuito CMOS (llamado ICC en el circuito TTL, que significa colector a colector). IDD puede ser equivalente a:
+تشير تيارات إمداد الطاقة (IDD) إلى التيار الذي يتدفق من الدرين إلى الدرين في دائرة CMOS (يسمى ICC في دائرة TTL ، ويعني المجمع إلى المجمع). يمكن أن يكون IDD مكافئًا ل:
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20220910234238.png)
 
-## Prueba IDD estática
+## اختبار IDD الثابت
 
-IDD estática es una medición de la corriente desde el pin VDD del DUT, cuando el DUT está en estado estático (el DUT no está activo durante la prueba). El valor de IDD estática indica el consumo de corriente más bajo del DUT, que es importante para dispositivos operados con batería, y también ayuda a indicar defectos marginales.
+يعد IDD الثابت قياسًا للتيار من دبوس VDD لـ DUT ، عندما يكون DUT في حالة ثابتة (لا يعمل DUT خلال الاختبار). قيمة IDD الثابتة تشير إلى أدنى استهلاك للتيار لـ DUT ، والذي يعد مهمًا للأجهزة التي تعمل بالبطارية ، كما يساعد على تحديد العيوب الهامشية.
 
-### Método de prueba
+### طريقة الاختبار
 
-La prueba IDD estática se realiza aplicando un voltaje de VDDmax y midiendo el valor de corriente, mientras el DUT está preacondicionado a su estado lógico de menor consumo de corriente.
+يتم إجراء اختبار IDD الثابت عند تطبيق جهد VDDmax وقياس قيمة التيار ، بينما يتم تهيئة DUT إلى حالته المنطقية لأدنى استهلاك للتيار.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20220911201659.png)
 
-1. Aplicar VDDmax al pin VDD (con pinza de corriente).
-2. Preacondicionar el DUT a su estado lógico de menor consumo de corriente.
-3. Medir la corriente que fluye hacia el pin VDD:
-   - **Valor superior al especificado (>10uA)**: FALLA
-   - **Valor inferior al especificado (<10uA)**: APROBADO
+1. تطبيق VDDmax على دبوس VDD (مع مشبك التيار).
+2. تهيئة DUT إلى حالته المنطقية لأدنى استهلاك للتيار.
+3. قياس التيار الذي يتدفق إلى دبوس VDD:
+   - **أعلى من قيمة المواصفات (> 10uA)**: رسوب
+   - **أقل من قيمة المواصفات (< 10uA)**: نجاح
 
-## Prueba IDD dinámica
+## اختبار IDD الديناميكي
 
-IDD dinámica es una medición de la corriente desde el pin VDD del DUT, cuando el DUT está realizando constantemente alguna función. IDD dinámica también es importante para dispositivos operados con batería.
+يعد IDD الديناميكي قياسًا للتيار من دبوس VDD لـ DUT ، عندما يقوم DUT باستمرار ببعض الوظائف. يعد IDD الديناميكي مهمًا أيضًا للأجهزة التي تعمل بالبطارية.
 
-### Método de prueba
+### طريقة الاختبار
+
+يتم إجراء اختبار IDD الديناميكي عند تطبيق جهد VDDmax وقياس قيمة التيار ، بينما يتم تهيئة DUT إلى حالة عمل مستمر.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20220911201603.png)
 
-La prueba IDD dinámica se realiza aplicando un voltaje de VDDmax y midiendo el valor de corriente, mientras el DUT está preacondicionado a un estado de trabajo continuo.
+1. تطبيق VDDmax على دبوس VDD (مع مشبك التيار).
+2. تهيئة DUT إلى حالة عمل مستمر.
+3. قياس التيار الذي يتدفق إلى دبوس VDD:
+   - **أعلى من قيمة المواصفات (> 50mA)**: رسوب
+   - **أقل من قيمة المواصفات (< 50mA)**: نجاح
 
-## Prueba de corriente de suministro máximo (IDDQ)
+## اختبار IDDQ الهادئ (IDDQ)
 
-La prueba de corriente de suministro máximo (IDDQ) es una medición de IDD en los estados de reposo (el circuito no está cambiando y las entradas se mantienen en valores estáticos). A medida que los procesadores se reducen, el defecto de corriente de fuga se vuelve mucho más alto, y la prueba IDDQ puede detectar defectos menores dentro del núcleo del circuito que de otra manera no podrían ser detectados.
+IDD الساكن هو قياس IDD في الحالات الساكنة (الدائرة لا تتحول والمدخلات تحتفظ بقيم ثابتة). مع تقلص المعالجات ، يصبح عيب التسرب الحالي أعلى بكثير ، وقد يكشف اختبار IDDQ عن عيوب طفيفة داخل نواة الدائرة التي لا يمكن اكتشافها بطريقة أخرى.
 
-### Método de prueba
-
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220911213042.png)
-
-1. Aplicar VDDmax al pin VDD (con pinza de corriente).
-2. Preacondicionar DUT a un estado de trabajo continuo.
-3. Medir la corriente que fluye hacia el pin VDD:
-   - **Mayor que el valor especificado (>50mA)**: FALLA
-   - **Menor que el valor especificado (<50mA)**: APROBADO
-
-## Prueba de corriente de reposo (IDDQ)
-
-La corriente de reposo es una medición de IDD en los estados de reposo (el circuito no está cambiando y las entradas se mantienen en valores estáticos). A medida que los procesadores se reducen, el defecto de corriente de fuga se vuelve mucho más alto, y la prueba IDDQ puede detectar defectos menores dentro del núcleo del circuito que de otra manera no podrían ser detectados.
-
-### Método de prueba
+### طريقة الاختبار
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20220911213042.png)
 
-1. Aplicar VDDmax al pin VDD (con pinza de corriente).
-2. Preacondicionar DUT a un cierto estado de trabajo (activar/desactivar cierta parte de la función como Bluetooth y Wi-Fi).
-3. Medir la corriente que fluye hacia el pin VDD:
-   - **Mayor que el valor especificado**: FALLA
-   - **Menor que el valor especificado**: APROBADO
-4. Repetir la prueba con diferentes estados de trabajo.
+1. تطبيق VDDmax على دبوس VDD (مع مشبك التيار).
+2. شرط DUT إلى حالة عمل معينة (تبديل جزء معين من الوظيفة للتشغيل / الإيقاف مثل Bluetooth و Wi-Fi).
+3. قياس التيار الجاري في دبوس VDD:
+   - **أعلى من قيمة المواصفات**: فشل
+   - **أقل من قيمة المواصفات**: نجاح
+4. كرر للاختبار مع حالات عمل مختلفة.
 
-## Referencias y agradecimientos
+## المراجع والتقديرات
 
-- _Los fundamentos de la prueba de semiconductores digitales_
-- _Fundamentos de la prueba utilizando ATE_
+- _أساسيات اختبار شرائح النصف الموصلات الرقمية_
+- _أساسيات الاختبار باستخدام ATE_
 
-> Original: <https://wiki-power.com/>  
-> Esta publicación está protegida por el acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en), debe ser reproducida con atribución.
+> المصدر الأصلي: <https://wiki-power.com/>  
+> يتم حماية هذا المنشور باتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) ، يجب إعادة إنتاجه مع الإشارة إلى المصدر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

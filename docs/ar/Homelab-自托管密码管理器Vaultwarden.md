@@ -1,12 +1,12 @@
-# Homelab - Gestor de contraseñas autohospedado Vaultwarden
+# Homelab - خادم إدارة كلمات المرور Vaultwarden المستضاف ذاتيًا
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20230304195414.jpg)
 
-**Vaultwarden** es un servidor de Bitwarden autohospedado de terceros que protege y administra las contraseñas de diferentes sitios web con una contraseña maestra, y puede generar contraseñas aleatorias para diferentes sitios web.
+**Vaultwarden** هو خادم Bitwarden المستضاف ذاتيًا من طرف ثالث ، يحمي كلمات المرور لمختلف المواقع ويديرها بواسطة كلمة مرور رئيسية ، ويمكنه إنشاء كلمات مرور عشوائية للاستخدام في مواقع مختلفة.
 
-## Implementación (Docker Compose)
+## التنصيب (Docker Compose)
 
-Primero, cree el archivo `compose.yaml` y pegue el siguiente contenido:
+أولاً ، قم بإنشاء ملف `compose.yaml` والصق المحتوى التالي:
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -21,37 +21,37 @@ services:
     restart: always
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `vaultwarden`).
+(اختياري) يوصى بإنشاء ملف `.env` في نفس مستوى `compose.yaml` وتخصيص المتغيرات البيئية الخاصة بك. إذا كنت لا ترغب في استخدام المتغيرات البيئية ، يمكنك تخصيص المعلمات الخاصة بك مباشرةً في `compose.yaml` (على سبيل المثال ، استبدال `${STACK_NAME}` بـ `vaultwarden`).
 
 ```dotenv title=".env"
 STACK_NAME=vaultwarden
-STACK_DIR=xxx # Personalice la ruta de almacenamiento del proyecto, por ejemplo, ./vaultwarden
+STACK_DIR=xxx # مسار تخزين المشروع المخصص ، على سبيل المثال ./vaultwarden
 
 # vaultwarden
 APP_VERSION=latest
-APP_PORT=xxxx # Personalice el puerto de acceso, elija uno que no esté en uso
+APP_PORT=xxxx # تخصيص منفذ الوصول الخاص بك ، اختر غير مستخدم فقط
 ```
 
-Por último, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores.
+أخيرًا ، يمكنك تشغيل الحاويات المرتبطة عن طريق تنفيذ الأمر `docker compose up -d` في نفس مستوى `compose.yaml`.
 
-## Instrucciones de configuración
+## تعليمات التكوين
 
-Vaultwarden requiere https para iniciar sesión de forma predeterminada, se recomienda utilizar un proxy inverso (consulte el artículo [**Homelab - Panel de gestión de certificados de proxy inverso Nginx Proxy Manager**](https://wiki-power.com/es/Homelab-%E5%8F%8D%E4%BB%A3%E8%AF%81%E4%B9%A6%E7%AE%A1%E7%90%86%E9%9D%A2%E6%9D%BFNginxProxyManager/) para obtener información sobre cómo configurar un servidor de proxy inverso).
+يتطلب Vaultwarden الوصول عبر HTTPS بشكل افتراضي ، ويوصى باستخدام الوكيل العكسي (يمكن الرجوع إلى مقالة **Homelab - لوحة إدارة شهادات الوكيل العكسي Nginx Proxy Manager** لمعرفة كيفية إعداد الخادم العكسي).
 
-Cuando se utiliza la extensión del navegador, la aplicación de escritorio o la aplicación móvil, es necesario hacer clic en Configuración en la página de inicio de sesión y configurar la URL del servidor para utilizar el servicio autohospedado correctamente.
+عند استخدام الامتدادات المتصفح وتطبيقات سطح المكتب والجوال ، يجب النقر على الإعدادات في صفحة تسجيل الدخول وتكوين عنوان URL للخادم لاستخدام الخدمة المستضافة ذاتيًا بشكل صحيح.
 
-Además, las versiones antiguas (inferiores a 1.27.0) de Vaultwarden no son compatibles con la extensión del navegador de Bitwarden, lo que puede impedir el inicio de sesión. Consulte el problema: [**Client fails to connect or login**](https://github.com/dani-garcia/vaultwarden/issues/3082).
+علاوة على ذلك ، لا يتوافق إضافة المتصفح القديمة (الإصدارات الأقل من 1.27.0) من Vaultwarden و Bitwarden ، مما يؤدي إلى عدم القدرة على تسجيل الدخول. انظر المسألة: [**Client fails to connect or login**](https://github.com/dani-garcia/vaultwarden/issues/3082).
 
-Debido a que es un servicio autohospedado, es importante prestar atención a la seguridad de los datos. Recuerde hacer copias de seguridad regulares de la base de datos de contraseñas.
+نظرًا لأنها خدمة مستضافة ذاتيًا ، يجب الانتباه إلى أمان البيانات. تذكر نسخ قاعدة بيانات كلمات المرور بانتظام.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Sitio web oficial](https://github.com/dani-garcia/vaultwarden/wiki)
-- [Documentación](https://github.com/dani-garcia/vaultwarden/wiki/Using-Docker-Compose)
-- [Repositorio de GitHub](https://github.com/dani-garcia/vaultwarden)
+- [الموقع الرسمي](https://github.com/dani-garcia/vaultwarden/wiki)
+- [الوثائق](https://github.com/dani-garcia/vaultwarden/wiki/Using-Docker-Compose)
+- [مستودع GitHub](https://github.com/dani-garcia/vaultwarden)
 - [Docker Hub](https://hub.docker.com/r/vaultwarden/server)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

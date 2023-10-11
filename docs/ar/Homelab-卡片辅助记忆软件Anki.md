@@ -1,14 +1,14 @@
-# Homelab - Software de memoria asistida por tarjetas Anki
+# Homelab - برنامج Anki للمساعدة في الذاكرة بواسطة البطاقات
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/202306191745527.png)
 
-**Anki** es una aplicación de tarjetas de memoria de código abierto que ayuda a los usuarios a memorizar fácil y eficientemente diversos puntos de conocimiento, generalmente utilizada para aprender vocabulario. Su característica principal es que utiliza la curva de olvido de la memoria, generando un plan de revisión adecuado según el progreso del aprendizaje, ayudando a los usuarios a aprovechar al máximo las leyes de la memoria del cerebro para lograr el mejor efecto de memoria. Anki es altamente personalizable, puedes crear tus propias tarjetas de estudio, incluyendo texto, imágenes e incluso audio y video. Anki también es compatible con múltiples plataformas.
+**Anki** هو تطبيق بطاقات ذاكرة مفتوح المصدر يساعد المستخدمين على تذكر مختلف نقاط المعرفة بسهولة وكفاءة، وعادة ما يستخدم لحفظ الكلمات الفردية. يتميز بطريقة استخدام منحنى نسيان الذاكرة، حيث يتم إنشاء خطة مراجعة مناسبة وفقًا لحالة التعلم، ويساعد المستخدمين على الاستفادة الكاملة من قواعد الذاكرة في الدماغ لتحقيق أفضل نتائج الذاكرة. يتميز Anki بمرونة عالية، حيث يمكنك إنشاء بطاقات دراسية خاصة بك، بما في ذلك النصوص والصور وحتى الصوت والفيديو. كما يدعم Anki استخدام متعدد المنصات.
 
-Debido a que el servidor de sincronización está en el extranjero, a veces puede haber problemas de sincronización. Podemos usar **anki-sync-server** para construir nuestro propio servicio de sincronización. El siguiente tutorial utiliza la imagen `johngong/anki-sync-server`, que funciona correctamente, pero no se ha probado con otras versiones.
+نظرًا لأن خادم المزامنة في الخارج، قد يتعذر في بعض الأحيان المزامنة بشكل صحيح، يمكننا استخدام **anki-sync-server** لإنشاء خدمة مزامنة خاصة بنا. يستخدم البرنامج النصي التالي `johngong/anki-sync-server`، ويمكن استخدامه بشكل طبيعي، ولم يتم اختبار الإصدارات الأخرى.
 
-## Despliegue (Docker Compose)
+## النشر (Docker Compose)
 
-Primero, crea el archivo `compose.yaml` y pega el siguiente contenido:
+أولاً، قم بإنشاء ملف `compose.yaml` والصق المحتوى التالي:
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -28,47 +28,47 @@ services:
     restart: unless-stopped
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar tus variables de entorno. Si no deseas utilizar variables de entorno, también puedes personalizar tus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `anki-sync-server`).
+(اختياري) يوصى بإنشاء ملف `.env` في نفس مستوى `compose.yaml` وتخصيص المتغيرات البيئية الخاصة بك. إذا كنت لا ترغب في استخدام المتغيرات البيئية، يمكنك تخصيص المعلمات الخاصة بك مباشرة في `compose.yaml` (على سبيل المثال، استبدال `${STACK_NAME}` بـ `anki-sync-server`).
 
 ```dotenv title=".env"
 STACK_NAME=anki-sync-server
-STACK_DIR=/DATA/AppData/anki-sync-server # Personaliza la ruta de almacenamiento del proyecto, por ejemplo, ./anki-sync-server
+STACK_DIR=/DATA/AppData/anki-sync-server # مسار تخزين المشروع المخصص، مثل ./anki-sync-server
 
 # anki-sync-server
 APP_VERSION=latest
-APP_PORT=xxxx # Personaliza el puerto de acceso, elige uno que no esté ocupado
-APP_USERNAME=xxx@xx.com  # Personaliza el nombre de usuario, debe ser un correo electrónico
-APP_PASSWORD=xxxxxx # Personaliza la contraseña
+APP_PORT=xxxx # تخصيص منفذ الوصول الخاص بك، اختر غير مستخدم فقط
+APP_USERNAME=xxx@xx.com  # تخصيص اسم المستخدم الخاص بك، يجب أن يكون بتنسيق البريد الإلكتروني
+APP_PASSWORD=xxxxxx # تخصيص كلمة المرور الخاصة بك
 ```
 
-Finalmente, ejecuta el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores.
+أخيرًا، قم بتشغيل الأمر `docker compose up -d` في نفس مستوى `compose.yaml` لتشغيل حاويات الترتيب.
 
-## Instrucciones de configuración
+## تعليمات التكوين
 
 ### Windows
 
-En Windows, utilicé [**Anki 2.1.28**](https://github.com/ankitects/anki/releases/download/2.1.28/anki-2.1.28-windows.exe) (probé la versión 2.1.65 y no se pudo sincronizar).
+في Windows، استخدمت [**Anki 2.1.28**](https://github.com/ankitects/anki/releases/download/2.1.28/anki-2.1.28-windows.exe) (تم اختبارها وتبين أن 2.1.65 لا يمكن المزامنة).
 
-Después de la instalación, haz clic en `Herramientas` - `Complementos` en la barra de herramientas, luego haz clic en `Obtener complementos`, ingresa el código del complemento `358444159` y haz clic en `OK`, luego haz clic en `Configuración` y cambia la dirección al servidor donde desplegaste `anki-sync-server` y su puerto, finalmente reinicia el software.
+بعد التثبيت، انقر على `أدوات` - `المكونات الإضافية` في الشريط العلوي، ثم انقر على `الحصول على المكونات الإضافية`، ثم أدخل رمز المكون الإضافي `358444159` وانقر على `موافق`، ثم انقر على `الإعدادات`، وقم بتغيير العنوان إلى عنوان الخادم الذي نشرته `anki-sync-server` والمنفذ، ثم أعد تشغيل البرنامج.
 
-Después de reiniciar, haz clic en `Sincronizar` en la pantalla principal, ingresa el correo electrónico y la contraseña que ingresaste al desplegar el contenedor Docker, y podrás sincronizar tus tarjetas.
+بعد إعادة التشغيل، انقر فوق المزامنة في الواجهة الرئيسية، ثم أدخل عنوان البريد الإلكتروني وكلمة المرور التي قمت بإدخالها عند نشر Docker للمزامنة.
 
-Si aún no puede sincronizar, consulte [**Configuración de Anki**](https://github.com/ankicommunity/anki-sync-server/blob/develop/README.md#setting-up-anki).
+إذا لم يتمكن من المزامنة بعد ذلك، يرجى الرجوع إلى [**Setting up Anki**](https://github.com/ankicommunity/anki-sync-server/blob/develop/README.md#setting-up-anki).
 
 ### Android
 
-En Android, se utiliza AnkiDroid, que permite personalizar la dirección del servidor sin necesidad de instalar complementos, pero se requiere iniciar sesión con https. Se recomienda utilizar un proxy inverso (se puede consultar el artículo [**Homelab - Nginx Proxy Manager para la gestión de certificados de proxy inverso**](https://wiki-power.com/es/Homelab-%E5%8F%8D%E4%BB%A3%E8%AF%81%E4%B9%A6%E7%AE%A1%E7%90%86%E9%9D%A2%E6%9D%BFNginxProxyManager/)).
+يستخدم AnkiDroid على نظام Android ، ولا يلزم تثبيت أي ملحقات لتخصيص عنوان الخادم ، ولكن يجب تسجيل الدخول باستخدام https. يوصى باستخدام الوكيل العكسي (يمكن الرجوع إلى مقالة بناء خادم الوكيل العكسي لإدارة شهادات الوكيل العكسي Nginx Proxy Manager).
 
-Después de iniciar sesión con https, en la pantalla principal, seleccione `Advanced` - `Custom sync server` para configurar el servidor personalizado. Tenga en cuenta que en el campo `Media sync url`, debe agregar `/msync` después de la dirección original para sincronizar correctamente.
+بعد تسجيل الدخول باستخدام https ، يمكن تكوين الخادم المخصص عن طريق الانتقال إلى "Advanced" - "Custom sync server" في الشاشة الرئيسية. يجب ملاحظة أنه يجب إضافة "/msync" بعد العنوان الأصلي في خانة "Media sync url" للمزامنة الصحيحة.
 
-## Referencias y agradecimientos
+المراجع والشكر:
 
-- [Sitio web oficial](https://apps.ankiweb.net/)
-- [Documentación](https://www.navidrome.org/docs/installation/docker/)
-- [Repositorio de GitHub](https://github.com/ankicommunity/anki-sync-server)
-- [Docker Hub](https://hub.docker.com/r/johngong/anki-sync-server)
+- الموقع الرسمي
+- الوثائق
+- مستودع GitHub
+- Docker Hub
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

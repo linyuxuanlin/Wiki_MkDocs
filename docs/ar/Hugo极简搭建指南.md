@@ -1,81 +1,81 @@
-# Guía de construcción mínima de Hugo
+# دليل بناء Hugo البسيط
 
-Hugo es un marco para construir sitios web con una velocidad de construcción y implementación extremadamente alta. En cuanto a la instalación y configuración en Windows, la documentación oficial no lo explica detalladamente y los tutoriales de terceros son inconsistentes, por lo que he escrito este tutorial.
+Hugo هو إطار عمل لبناء صفحات الويب ، ولديه سرعة بناء ونشر عالية للغاية. بالنسبة لتثبيت وتكوينه في Windows ، لم يوضح الوثائق الرسمية بالتفصيل ، والدروس الخارجية متباينة ، لذلك كتبت هذا الدليل.
 
-## Descarga e instalación
+## تحميل وتثبيت
 
-1. Abre la página de [**Releases**](https://github.com/gohugoio/hugo/releases) en GitHub oficial de Hugo.
-2. Descarga la última versión (elige `hugo_xxx_Windows-64/32bit.zip`).
-3. Descomprime el archivo `hugo.exe` en la carpeta `D:\hugo`.
-4. Haz clic con el botón derecho del ratón en un espacio en blanco en el `Explorador de archivos` (es decir, `Mi PC`) y abre las propiedades.
-5. Haz clic en `Configuración avanzada del sistema` - `Variables de entorno`, y haz doble clic en `Path` en las variables del sistema.
-6. Haz doble clic en una línea en blanco en la interfaz de variables de entorno, agrega `D:\hugo` y haz clic en Aceptar.
+1. افتح صفحة [**Releases**](https://github.com/gohugoio/hugo/releases) الرسمية لـ Hugo على GitHub
+2. حدد أحدث إصدار للتنزيل (حدد `hugo_xxx_Windows-64/32bit.zip`)
+3. قم بفك ضغط ملف `hugo.exe` الموجود داخل الحزمة المضغوطة إلى مجلد `D:\hugo`
+4. في `مستكشف الملفات` (أي `جهاز الكمبيوتر`) ، انقر بزر الماوس الأيمن في مكان فارغ ، ثم افتح الخصائص
+5. انقر على `إعدادات النظام المتقدمة` - `متغيرات البيئة` ، ثم انقر مرتين لفتح `Path` في متغيرات النظام
+6. في واجهة متغيرات البيئة ، انقر مرتين على السطر الفارغ ، وأضف `D:\hugo` ، ثم انقر فوق `موافق`
 
-Abre la línea de comandos e ingresa la siguiente declaración:
+افتح موجه الأوامر وأدخل الأمر:
 
 ```
 hugo version
 ```
 
-para confirmar si Hugo se ha instalado correctamente (si se ha instalado correctamente, podrás ver el número de versión).
+للتحقق مما إذا كان Hugo قد تم تثبيته بنجاح (إذا تم التثبيت بنجاح ، يمكنك رؤية رقم الإصدار)
 
-## Crear un sitio
+## إنشاء موقع
 
-Cambia al directorio correspondiente y usa la siguiente declaración:
+قم بالتبديل إلى الدليل المناسب واستخدم الأمر التالي:
 
 ```
 hugo new site quickstart
 ```
 
-Esto creará un nuevo sitio de Hugo en una carpeta llamada `quickstart`.
+سيتم إنشاء موقع Hugo جديد داخل مجلد يسمى `quickstart`.
 
-## Agregar un tema
+## إضافة موضوع
 
-Puedes elegir un tema en la página oficial de [**temas**](https://themes.gohugo.io/).
+يمكن الاختيار من بين الموضوعات المتاحة على صفحة [**Themes**](https://themes.gohugo.io/) الرسمية.
 
-Simplemente ve a GitHub para descargar la carpeta del tema y descomprimirlo en el directorio `theme` del sitio.
+انتقل مباشرةً إلى تنزيل مجلد الموضوع من GitHub وفك الضغط في مجلد `theme` الخاص بالموقع.
 
-Ejecuta el siguiente comando para agregar el tema al archivo de configuración del sitio:
+استخدم الأمر التالي لإضافة الموضوع إلى ملف تكوين الموقع:
 
 ```
-echo 'theme = "nombre de la carpeta del tema"' >> config.toml
+echo 'theme = "اسم مجلد الموضوع"' >> config.toml
 ```
 
-## Crear un artículo
+## إنشاء مقال
 
-Usa el siguiente comando para crear un artículo:
+استخدم الأمر التالي لإنشاء مقال:
 
 ```
 hugo new posts/my-first-post.md
 ```
 
-Luego abre el artículo y cambia `draft: true` en `front matter` a `draft: false` para sacarlo del borrador y mostrarlo normalmente.
+ثم افتح المقال وقم بتغيير `draft: true` في `front matter` إلى `draft: false` لإخراجه من منطقة المسودات وعرضه بشكل طبيعي.
 
-## Iniciar el servicio de Hugo
+## تشغيل خدمة Hugo
 
-Usa el siguiente comando para iniciar el servicio de vista previa local de Hugo:
+استخدم الأمر التالي لتشغيل خدمة Hugo المحلية:
 
 ```
 hugo server -D
 ```
 
-Abre [**http://localhost:1313/**](http://localhost:1313/) para ver la vista previa en tiempo real del sitio (cualquier modificación local se actualizará inmediatamente).
+افتح [**http://localhost:1313/**](http://localhost:1313/) ، وسترى معاينة الموقع في الوقت الحقيقي (سيتم تحديث أي تعديل محلي على الفور).
 
-## Implementación local
+## نشر محلي
 
-Usa el siguiente comando:
+استخدم الأمر التالي:
 
 ```
 Build static pages
 ```
 
-para implementar el sitio localmente (se mostrará en la carpeta `public`).
+لنشر الموقع محليًا (يتم إخراجه في مجلد `public`).
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
 - [Quick Start · Hugo](https://gohugo.io/getting-started/quick-start/)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

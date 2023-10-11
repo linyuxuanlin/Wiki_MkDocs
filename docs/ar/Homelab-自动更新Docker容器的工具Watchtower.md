@@ -1,12 +1,12 @@
-# Homelab - Herramienta Watchtower para actualizar automáticamente contenedores Docker
+# Homelab - أداة Watchtower لتحديث حاويات Docker تلقائيًا
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/202304092337531.png)
 
-**Watchtower** es una herramienta para actualizar automáticamente todos o algunos contenedores Docker.
+**Watchtower** هي أداة لتحديث حاويات Docker كلها أو محددة تلقائيًا.
 
-## Implementación (Docker Compose)
+## النشر (Docker Compose)
 
-Primero, cree el archivo `compose.yaml` y pegue el siguiente contenido:
+أولاً ، قم بإنشاء ملف `compose.yaml` والصق المحتوى التالي:
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -19,7 +19,7 @@ services:
     restart: always
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `watchtower`).
+(اختياري) يوصى بإنشاء ملف `.env` في نفس مستوى `compose.yaml` وتخصيص المتغيرات البيئية الخاصة بك. إذا كنت لا ترغب في استخدام المتغيرات البيئية ، فيمكنك تخصيص المعلمات الخاصة بك مباشرة في `compose.yaml` (على سبيل المثال ، استبدال `${STACK_NAME}` بـ `watchtower`).
 
 ```dotenv title=".env"
 STACK_NAME=watchtower
@@ -28,12 +28,15 @@ STACK_NAME=watchtower
 APP_VERSION=latest
 ```
 
-Finalmente, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores.
+أخيرًا ، قم بتشغيل الأمر `docker compose up -d` في نفس مستوى `compose.yaml` لتشغيل الحاويات المرتبطة.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Sitio web / Documentación oficial](https://containrrr.dev/watchtower)
-- [Repositorio de GitHub](https://github.com/containrrr/watchtower/)
+- [الموقع الرسمي / الوثائق](https://containrrr.dev/watchtower)
+- [مستودع GitHub](https://github.com/containrrr/watchtower/)
 - [Docker Hub](https://hub.docker.com/r/containrrr/watchtower)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

@@ -1,51 +1,51 @@
-# Cómo configurar la ejecución automática de scripts al iniciar Linux
+# كيفية تكوين تشغيل النظام التلقائي للبرنامج النصي في Linux
 
-## Para sistemas que utilizan SysV init
+## لأنظمة SysV init
 
-Nota: Los siguientes métodos son aplicables a distribuciones de Linux que utilizan el sistema SysV init (como Ubuntu 18.04 y versiones posteriores, o Debian). Para distribuciones que utilizan Systemd (como Ubuntu 18.04 y versiones posteriores), utilice el método `systemctl` para administrar los servicios de inicio.
+ملاحظة: تنطبق الطريقة التالية على توزيعات Linux التي تستخدم نظام SysV init (مثل Ubuntu 18.04 والإصدارات الأحدث أو Debian). بالنسبة لتوزيعات تستخدم Systemd (مثل Ubuntu 18.04 والإصدارات الأحدث) ، يرجى استخدام طريقة `systemctl` لإدارة خدمات البدء.
 
-Supongamos que el script que deseamos ejecutar automáticamente al iniciar es `xxx.sh`. Primero, cree un script de inicio en el directorio `/etc/init.d`, por ejemplo, llamado `autorun.sh`:
+إذا كان البرنامج النصي الذي نريد تشغيله تلقائيًا عند بدء التشغيل هو `xxx.sh` ، فيجب علينا أولاً إنشاء برنامج نصي للتشغيل في الدليل `/etc/init.d` ، مثل `autorun.sh`:
 
 ```shell
 sudo nano /etc/init.d/autorun.sh
 ```
 
-Agregue el script que desea ejecutar automáticamente al inicio:
+ثم يتم إضافة البرنامج النصي الذي نريد تشغيله تلقائيًا عند بدء التشغيل:
 
 ```bash title="autorun.sh"
 #!/bin/bash
-/path/to/xxx.sh  # cambiar por la ruta específica
+/path/to/xxx.sh  # تعديل المسار الفعلي
 ```
 
-Agregue el script `autorun.sh` al servicio de inicio del sistema:
+ثم يتم إضافة برنامج `autorun.sh` إلى خدمة البدء في النظام:
 
 ```shell
 sudo update-rc.d autorun.sh defaults
 ```
 
-Configure el script `autorun.sh` para que se inicie automáticamente al iniciar el sistema:
+ثم يتم تعيين برنامج `autorun.sh` للتشغيل التلقائي عند بدء التشغيل:
 
 ```shell
 sudo update-rc.d autorun.sh enable
 ```
 
-De esta manera, el script `autorun.sh` se ejecutará automáticamente después de reiniciar.
+بهذه الطريقة ، سيتم تشغيل برنامج `autorun.sh` تلقائيًا عند إعادة التشغيل.
 
-## Para sistemas que utilizan Systemd
+## لأنظمة Systemd
 
-Si su distribución de Linux utiliza Systemd como administrador de inicio (como Ubuntu 18.04 y versiones posteriores), puede utilizar el comando `systemctl` para configurar la ejecución automática.
+إذا كانت توزيعة Linux الخاصة بك تستخدم Systemd كمدير بدء التشغيل (مثل Ubuntu 18.04 والإصدارات الأحدث) ، فيمكنك استخدام أمر `systemctl` لتعيين التشغيل التلقائي.
 
-Supongamos que el script que desea ejecutar automáticamente al iniciar es `xxx.sh`. Primero, cree un archivo Unit que describa el servicio que desea iniciar automáticamente, como `autorun.service`:
+إذا كان البرنامج النصي الذي نريد تشغيله تلقائيًا عند بدء التشغيل هو `xxx.sh` ، فيجب علينا أولاً إنشاء ملف وحدة يصف الخدمة التي نريد تشغيلها تلقائيًا ، مثل `autorun.service`:
 
 ```shell
 sudo nano /etc/systemd/system/autorun.service
 ```
 
-En el archivo Unit, defina la configuración de su servicio. Aquí hay un ejemplo:
+ثم يتم تحديد تكوين الخدمة الخاصة بك في ملف الوحدة. هنا مثال:
 
 ```service title="autorun.service"
 [Unit]
-Description=Mi servicio
+Description=My Service
 After=network.target
 [Service]
 ExecStart=/path/to/xxx.sh
@@ -53,36 +53,31 @@ ExecStart=/path/to/xxx.sh
 WantedBy=default.target
 ```
 
-Los parámetros son:
+حيث:
 
-- `Description`: descripción de su servicio.
-- `After`: especifica qué otros servicios deben iniciarse antes de su servicio. Por ejemplo, `network.target` significa que su servicio se iniciará después de que se inicien los servicios de red.
-- `ExecStart`: especifica la ruta del script o comando que desea ejecutar.
-- `WantedBy`: especifica el objetivo (target) en el que su servicio debe iniciarse. `default.target` significa que su servicio se iniciará cuando se inicie el objetivo predeterminado.
+- `Description`: وصف الخدمة الخاصة بك.
+- `After`: تحديد الخدمات الأخرى التي يجب تشغيلها قبل الخدمة الخاصة بك. على سبيل المثال ، يعني `network.target` تشغيل خدمة الشبكة قبل تشغيل الخدمة الخاصة بك.
+- `ExecStart`: تحديد مسار البرنامج النصي أو الأمر الذي تريد تشغيله.
+- `WantedBy`: تحديد الهدف الذي يجب تشغيل الخدمة الخاصة بك عند بدء التشغيل. يعني `default.target` تشغيل الخدمة الخاصة بك عند بدء التشغيل الافتراضي.
 
-Guarde y cierre el archivo, luego ejecute el siguiente comando para recargar la configuración de Systemd:
+بعد حفظ وإغلاق الملف ، يتم إعادة تحميل تكوين systemd باستخدام الأمر التالي:
 
 ```shell
 sudo systemctl daemon-reload
 ```
 
-Habilite su servicio con el siguiente comando:
+ثم يتم تمكين الخدمة الخاصة بك باستخدام الأمر التالي:
 
 ```shell
 sudo systemctl enable autorun.service
 ```
 
-Finalmente, inicie el servicio con el siguiente comando:
+أخيرًا ، يتم تشغيل الخدمة الخاصة بك باستخدام الأمر التالي:
 
 ```shell
 sudo systemctl start autorun.service
 ```
 
-Ahora, su servicio está configurado para ejecutarse automáticamente al iniciar el sistema. Puede reiniciar el sistema para verificar si el servicio se inicia correctamente.
+الآن ، تم تعيين الخدمة الخاصة بك للتشغيل التلقائي عند بدء التشغيل. يمكنك إعادة تشغيل النظام للتحقق مما إذا كانت الخدمة تعمل بشكل صحيح.
 
----
-
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

@@ -1,12 +1,12 @@
-# Homelab - Caja de herramientas PDF multifuncional Stirling-PDF
+# Homelab - صندوق أدوات PDF متعدد الوظائف Stirling-PDF
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20230410172939.png)
 
-**Stirling-PDF** es un paquete de herramientas PDF autoalojado que incluye funciones como la división, fusión, rotación, extracción de páginas, conversión de imágenes, reordenamiento, agregado/extracción de imágenes, agregado/eliminación de contraseñas, configuración de permisos, agregado de marcas de agua, conversión de otros archivos a PDF, reconocimiento de texto OCR, edición de metadatos y soporte para modo oscuro.
+**Stirling-PDF** هو حزمة أدوات PDF ذاتية الاستضافة، تتضمن وظائف مثل تقسيم ودمج وتدوير واستخراج الصفحات وتحويل الصور وإعادة الترتيب وإضافة / استخراج الصور وإضافة وحذف كلمات المرور وتعيين الأذونات وإضافة العلامات المائية وتحويل الملفات الأخرى إلى PDF وتعرفة النصوص الضوئية وتحرير البيانات الوصفية، ويدعم الوضع الليلي.
 
-## Implementación (Docker Compose)
+## النشر (Docker Compose)
 
-Primero, cree el archivo `compose.yaml` y pegue el siguiente contenido:
+أولاً ، قم بإنشاء ملف `compose.yaml` والصق المحتوى التالي:
 
 ```yaml title="compose.yaml"
 version: "3.3"
@@ -19,22 +19,25 @@ services:
     restart: always
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` por `s-pdf`).
+(اختياري) يوصى بإنشاء ملف `.env` في نفس مستوى `compose.yaml` وتخصيص المتغيرات البيئية الخاصة بك. إذا كنت لا ترغب في استخدام المتغيرات البيئية ، يمكنك تخصيص المعلمات الخاصة بك مباشرةً في `compose.yaml` (على سبيل المثال ، استبدال `${STACK_NAME}` بـ `s-pdf`).
 
 ```dotenv title=".env"
 STACK_NAME=s-pdf
-STACK_DIR=xxx # Ruta personalizada para almacenar el proyecto, por ejemplo, ./s-pdf
+STACK_DIR=xxx # مسار تخزين المشروع المخصص ، على سبيل المثال ./s-pdf
 
 # s-pdf
 APP_VERSION=latest
-APP_PORT=xxxx # Puerto de acceso personalizado, elija uno que no esté en uso
+APP_PORT=xxxx # تخصيص منفذ الوصول الخاص بك ، فقط اختر غير مستخدم
 ```
 
-Finalmente, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores.
+أخيرًا ، قم بتشغيل الأمر `docker compose up -d` في نفس مستوى `compose.yaml` لتشغيل حاويات الترتيب.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Documentación / Repositorio de GitHub](https://github.com/Frooodle/Stirling-PDF)
+- [المستندات / مستودع GitHub](https://github.com/Frooodle/Stirling-PDF)
 - [Docker Hub](https://hub.docker.com/r/frooodle/s-pdf)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

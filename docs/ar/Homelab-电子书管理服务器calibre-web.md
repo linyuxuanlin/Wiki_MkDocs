@@ -1,12 +1,12 @@
-# Homelab - Servidor de gestión de libros electrónicos calibre-web
+# Homelab - خادم إدارة الكتب الإلكترونية calibre-web
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20210429125418.png)
 
-**calibre-web** es una solución integral de libros electrónicos basada en Calibre, que permite leer libros electrónicos en línea, integra el servicio calibre-server y también incluye la conversión de formatos de libros electrónicos.
+**calibre-web** هو حل شامل للكتب الإلكترونية ، يعتمد على Calibre ، ويمكن قراءة الكتب الإلكترونية على الويب ، ويتضمن خدمة calibre-server ، ويحتوي أيضًا على تحويل تنسيق الكتب الإلكترونية.
 
-## Implementación (Docker Compose)
+## النشر (Docker Compose)
 
-Primero, cree el archivo `compose.yaml` y pegue el siguiente contenido:
+أولاً ، قم بإنشاء ملف `compose.yaml` والصق المحتوى التالي:
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -24,55 +24,55 @@ services:
     restart: unless-stopped
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `audiobookshelf`).
+(اختياري) يوصى بإنشاء ملف `.env` في نفس مستوى `compose.yaml` وتخصيص المتغيرات البيئية الخاصة بك. إذا كنت لا تريد استخدام المتغيرات البيئية ، يمكنك أيضًا تخصيص المعلمات الخاصة بك مباشرةً في `compose.yaml` (على سبيل المثال ، استبدال `${STACK_NAME}` بـ `audiobookshelf`).
 
 ```dotenv title=".env"
 STACK_NAME=calibre-web
-STACK_DIR=xxx # Ruta personalizada de almacenamiento del proyecto, por ejemplo, ./calibre-web
-DATA_DIR=xxx # Ruta personalizada de almacenamiento de libros, por ejemplo, ./book
+STACK_DIR=xxx # مسار تخزين المشروع المخصص ، على سبيل المثال ./calibre-web
+DATA_DIR=xxx # مسار تخزين الكتب المخصص ، على سبيل المثال ./book
 
 # calibre-web
 APP_VERSION=latest
-APP_PORT_WEB=xxxx # Puerto de acceso personalizado de la interfaz de usuario web, simplemente elija uno que no esté ocupado
-APP_PORT_SERVER=xxxx # Puerto de acceso personalizado de calibre-server, simplemente elija uno que no esté ocupado
+APP_PORT_WEB=xxxx # تخصيص منفذ واجهة المستخدم الرسومية للويب ، فقط اختر منفذًا غير مستخدم
+APP_PORT_SERVER=xxxx # تخصيص منفذ calibre-server ، فقط اختر منفذًا غير مستخدم
 ```
 
-Si tiene un NAS, también puede montar el espacio de almacenamiento en el NAS a través del protocolo NFS, almacenar libros en el NAS para ahorrar espacio en el servidor. Para obtener más detalles, consulte **Montar discos duros NAS Synology en Linux (NFS)**.
+إذا كان لديك NAS ، يمكنك أيضًا تثبيت مساحة التخزين على NAS باستخدام بروتوكول NFS ، وتخزين الكتب على NAS لتوفير مساحة الخادم ، يرجى الرجوع إلى [**Linux 下挂载群晖 NAS 硬盘拓展空间（NFS）**](https://wiki-power.com/ar/Linux%E4%B8%8B%E6%8C%82%E8%BD%BD%E7%BE%A4%E6%99%96NAS%E7%A1%AC%E7%9B%98%E6%8B%93%E5%B1%95%E7%A9%BA%E9%97%B4%EF%BC%88NFS%EF%BC%89/) للحصول على التفاصيل.
 
-Finalmente, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores.
+أخيرًا ، قم بتشغيل الأمر `docker compose up -d` في نفس مستوى `compose.yaml` لتشغيل حاويات الترتيب.
 
-## Instrucciones de configuración
+## تعليمات التكوين
 
-La cuenta predeterminada es `admin` y la contraseña es `admin123`.
+الحساب الافتراضي هو `admin` وكلمة المرور هي `admin123`.
 
-### Función de carga de libros
+### وظيفة تحميل الكتب
 
-El sistema no tiene la función de carga de libros habilitada de forma predeterminada. Para habilitar esta función, haga clic en "Permisos de administración" - "Editar configuración básica" - "Habilitar carga".
+النظام لا يحتوي على وظيفة تحميل الكتب بشكل افتراضي ، يجب النقر على "أذونات الإدارة" - "تحرير التكوين الأساسي" - "تمكين التحميل" على التوالي لتمكين وظيفة تحميل الكتب.
 
-### Uso en dispositivos móviles
+### الاستخدام على الهواتف المحمولة
 
-En Android, puede usar Librera para conectarse a calibre-web a través del protocolo OPDS. La URL de la biblioteca de libros es la URL original seguida de `/opds`, por ejemplo, `calibre.xxx.com/opds`.
+يمكن استخدام Librera على Android ، والاتصال بـ calibre-web عبر بروتوكول OPDS. يتم إضافة عنوان url للمكتبة عن طريق إضافة `/opds` في نهاية العنوان الأصلي ، على سبيل المثال `calibre.xxx.com/opds`.
 
-### Olvidó su contraseña
+### نسيت كلمة المرور
 
-Si olvida su contraseña, puede descargar la base de datos `app.db` de `calibre-web` y usar SQLite para ver el software (o herramientas en línea como **Visor | Editor de SQLite**), y luego ejecutar las siguientes instrucciones:
+إذا نسيت كلمة المرور ، يمكن تنزيل قاعدة بيانات `app.db` من `calibre-web` واستخدام SQLite لعرض البرنامج (أو أدوات عبر الإنترنت مثل [**Sqlite Viewer | Modifier**](https://www.lzltool.com/sqlite-viewer)) وتنفيذ العبارات التالية على التوالي:
 
 ```sql
-SELECT * FROM 'user' LIMIT 0,30 -- También se puede cambiar manualmente a la tabla llamada user
+SELECT * FROM 'user' LIMIT 0,30 --يمكن أيضًا التبديل يدويًا إلى الجدول المسمى user
 ```
 
 ```sql
-UPDATE user SET password='pbkdf2:sha256:150000$ODedbYPS$4d1bd12adb1eb63f78e49873cbfc731e35af178cb9eb6b8b62c09dcf8db76670' WHERE name='xxx'; -- Reemplaza xxx con tu nombre de usuario actual
+UPDATE user SET password='pbkdf2:sha256:150000$ODedbYPS$4d1bd12adb1eb63f78e49873cbfc731e35af178cb9eb6b8b62c09dcf8db76670' WHERE name='xxx'; -- يجب تغيير xxx إلى اسم المستخدم الحالي الخاص بك
 ```
 
-Reemplaza el archivo `app.db` modificado por el original y luego inicia sesión con la nueva contraseña `hello`.
+استبدل ملف `app.db` المعدل بالأصلي، ثم قم بتسجيل الدخول باستخدام كلمة المرور الجديدة `hello`.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Repositorio de GitHub](https://github.com/janeczku/calibre-web)
-- [Docker Hub](https://registry.hub.docker.com/r/johngong/calibre-web)
+- [مستودع GitHub](https://github.com/janeczku/calibre-web)
+- [مستودع Docker Hub](https://registry.hub.docker.com/r/johngong/calibre-web)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

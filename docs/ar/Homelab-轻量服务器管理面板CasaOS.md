@@ -1,26 +1,26 @@
-# Homelab - Panel de gestión de servidor ligero CasaOS
+# Homelab - لوحة تحكم خفيفة لإدارة الخوادم CasaOS
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20230304192541.png)
 
-**CasaOS** es un panel personal de código abierto simple, elegante y fácil de usar que incluye un administrador de archivos, monitoreo del estado del servidor, terminal, administración de contenedores Docker, tienda de aplicaciones Docker integrada, entre otras funciones.
+**CasaOS** هي لوحة تحكم شخصية مفتوحة المصدر بسيطة وسهلة الاستخدام وأنيقة، وتتضمن ميزات مثل مدير الملفات ومراقبة حالة الخادم والطرفية وإدارة حاويات Docker ومتجر تطبيقات Docker المدمج.
 
-## Implementación (shell)
+## التثبيت (شل)
 
 ```shell
 curl -fsSL https://get.casaos.io | sudo bash
 ```
 
-Dirección de acceso predeterminada del panel: <http://localhost:80>
+عنوان الوصول الافتراضي للوحة: <http://localhost:80>
 
-Nota: Si se implementa en un servidor con un proxy inverso asignado, es mejor cambiar el puerto de acceso del panel en la configuración y dejar el puerto 80 para Nginx.
+ملاحظة: إذا تم تثبيتها على خادم لديه وكيل عكسي معين، فمن الأفضل تغيير منفذ الوصول إلى الوحة في الإعدادات الداخلية وترك المنفذ 80 لـ Nginx.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Sitio web oficial](https://casaos.io)
-- [Documentación](https://wiki.casaos.io/en/home)
-- [Repositorio de GitHub](https://github.com/IceWhaleTech/CasaOS)
+- [الموقع الرسمي](https://casaos.io)
+- [الوثائق](https://wiki.casaos.io/en/home)
+- [مستودع GitHub](https://github.com/IceWhaleTech/CasaOS)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

@@ -1,42 +1,42 @@
-# Notas de aprendizaje de Linux - Operaciones de usuario
+# مذكرات دراسية حول لينكس - عمليات المستخدم
 
-## Operaciones básicas
+## العمليات الأساسية
 
-### Agregar usuario
-
-```shell
-useradd -m nombre_de_usuario
-```
-
-### Establecer contraseña
+### إضافة مستخدم
 
 ```shell
-passwd nombre_de_usuario
+useradd -m اسم_المستخدم
 ```
 
-### Eliminar usuario
+### تعيين كلمة مرور
 
 ```shell
-userdel -r nombre_de_usuario
+passwd اسم_المستخدم
 ```
 
-### Eliminar directorio de usuario
+### حذف مستخدم
 
 ```shell
-rm -rf nombre_de_usuario
+userdel -r اسم_المستخدم
 ```
 
-### Cambiar al usuario actual
+### حذف مجلد المستخدم
 
 ```shell
-su nombre_de_usuario
+rm -rf اسم_المستخدم
 ```
 
-## Referencias y agradecimientos
+### تغيير المستخدم الحالي
 
-- [Linux crear usuario, establecer contraseña](https://blog.csdn.net/li_101357/article/details/69367457)
+```shell
+su اسم_المستخدم
+```
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+## المراجع والشكر
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+- [إنشاء مستخدم لينكس وتعيين كلمة مرور](https://blog.csdn.net/li_101357/article/details/69367457)
+
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
