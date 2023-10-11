@@ -6,13 +6,13 @@
 
 ### الاتصال عبر I2C
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211026174634.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026174634.png)
 
 يمكن الرجوع إلى المقال [**通信协议 - I2C**](https://wiki-power.com/ar/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-I2C) للحصول على المبادئ الأساسية للاتصال عبر I2C.
 
 ### وحدة MPU6050
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220404145145.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220404145145.png)
 
 تعريف دبابيس الوحدة:
 
@@ -28,7 +28,7 @@
 
 هنا ، نستخدم مكتبة MPU6050 مع تصفية كالمان: [**leech001/MPU6050**](https://github.com/leech001/MPU6050) ، ونقوم بنسخ `mpu6050.c` و `mpu6050.h` التي تم تنزيلها إلى مجلد المشروع ، وإضافتها إلى المشروع في STM32CubeIDE/Keil:
 
-```c title="mpu6050.h"
+````c title="mpu6050.h"
 
 #ifndef INC_GY521_H_
 #define INC_GY521_H_
@@ -242,7 +242,7 @@ uint8_t MPU6050_Init(I2C_HandleTypeDef *I2Cx)
 {
     ...
 }
-```
+````
 
 يجب تمرير مؤشرًا إلى هيكل `I2C_HandleTypeDef` إلى دالة `MPU6050_Init()`.
 

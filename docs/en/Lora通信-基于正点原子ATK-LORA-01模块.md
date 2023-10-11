@@ -19,14 +19,14 @@ The ATK-LORA-01 is a small, low-power, high-performance long-range LORA wireless
 
 ## Interface Definition
 
-| Name | IO Mode        | Description                                                                                       |
-| ---- | -------------- | ------------------------------------------------------------------------------------------------- |
-| MD0  | Input          | Used for configuring module parameters; when powered on, it enters firmware upgrade mode with AUX pin |
+| Name | IO Mode           | Description                                                                                                                     |
+| ---- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| MD0  | Input             | Used for configuring module parameters; when powered on, it enters firmware upgrade mode with AUX pin                           |
 | AUX  | ① Output; ② Input | ① Used to indicate module working status, wake up external MCU; ② When powered on, it enters firmware upgrade mode with MD0 pin |
-| RXD  | Input          | TTL serial input, connected to external TXD output pin                                           |
-| TXD  | Output         | TTL serial output, connected to external RXD input pin                                           |
-| GND  |                | Ground                                                                                            |
-| VCC  |                | DC3.3~5V power input                                                                               |
+| RXD  | Input             | TTL serial input, connected to external TXD output pin                                                                          |
+| TXD  | Output            | TTL serial output, connected to external RXD input pin                                                                          |
+| GND  |                   | Ground                                                                                                                          |
+| VCC  |                   | DC3.3~5V power input                                                                                                            |
 
 Notes:
 
@@ -39,11 +39,11 @@ The MD0 and AUX pins have two functions, entering different states depending on 
 
 The MD0 and AUX pins are internally pulled down, and floating is low level. Pulling up is 3.3V TTL high level.
 
-| Function     | Introduction             | Entry Method                        |
-| ------------ | ------------------------ | ----------------------------------- |
-| Configuration| Module parameter setting (AT command) | After power on, AUX is floating, MD0 is pulled high |
-| Communication| Used for wireless communication | After power on, AUX is floating, MD0 is floating |
-| Firmware upgrade| Used for firmware upgrade | After power on, AUX is pulled high, MD0 is pulled high, and kept for 1s |
+| Function         | Introduction                          | Entry Method                                                            |
+| ---------------- | ------------------------------------- | ----------------------------------------------------------------------- |
+| Configuration    | Module parameter setting (AT command) | After power on, AUX is floating, MD0 is pulled high                     |
+| Communication    | Used for wireless communication       | After power on, AUX is floating, MD0 is floating                        |
+| Firmware upgrade | Used for firmware upgrade             | After power on, AUX is pulled high, MD0 is pulled high, and kept for 1s |
 
 In wireless communication mode, the AUX pin is output to indicate the module's working status.
 
@@ -51,38 +51,38 @@ In wireless communication mode, the AUX pin is output to indicate the module's w
 
 Under "Configuration", the serial port needs to be set to ASDASD: baud rate "115200", stop bit "1", data bit "8", parity bit "none", and the module's working parameters are set through AT commands. Refer to the following AT command table for configuration software:
 
-| Command     | Function                     |
-| ----------- | ---------------------------- |
-| AT          | Test module response         |
-| AT+MODEL?   | Query device model           |
-| AT+CGMR?    | Get software version number  |
-| AT+UPDATE   | Check if device is in firmware upgrade mode |
-| ATE1        | Enable command echo          |
-| ATE0        | Disable command echo         |
-| AT+RESET    | Module reset (reboot)        |
-| AT+DEFAULT  | Restore factory settings     |
-| AT+FLASH=   | Save parameters              |
-| AT+ADDR=?   | Query device configuration address range |
-| AT+ADDR?    | Query device address         |
-| AT+ADDR=    | Configure device address     |
-| AT+TPOWER=? | Query transmission power configuration range |
-| AT+TPOWER?  | Query transmission power     |
-| AT+TPOWER=  | Configure transmission power |
-| AT+CWMODE=? | Query configuration mode range |
-| AT+CWMODE?  | Query mode                   |
-| AT+CWMODE=  | Configure mode               |
-| AT+TMODE=?  | Query send status configuration range |
-| AT+TMODE?   | Query send status            |
-| AT+TMODE=   | Configure send status        |
+| Command     | Function                                            |
+| ----------- | --------------------------------------------------- |
+| AT          | Test module response                                |
+| AT+MODEL?   | Query device model                                  |
+| AT+CGMR?    | Get software version number                         |
+| AT+UPDATE   | Check if device is in firmware upgrade mode         |
+| ATE1        | Enable command echo                                 |
+| ATE0        | Disable command echo                                |
+| AT+RESET    | Module reset (reboot)                               |
+| AT+DEFAULT  | Restore factory settings                            |
+| AT+FLASH=   | Save parameters                                     |
+| AT+ADDR=?   | Query device configuration address range            |
+| AT+ADDR?    | Query device address                                |
+| AT+ADDR=    | Configure device address                            |
+| AT+TPOWER=? | Query transmission power configuration range        |
+| AT+TPOWER?  | Query transmission power                            |
+| AT+TPOWER=  | Configure transmission power                        |
+| AT+CWMODE=? | Query configuration mode range                      |
+| AT+CWMODE?  | Query mode                                          |
+| AT+CWMODE=  | Configure mode                                      |
+| AT+TMODE=?  | Query send status configuration range               |
+| AT+TMODE?   | Query send status                                   |
+| AT+TMODE=   | Configure send status                               |
 | AT+WLRATE=? | Query wireless rate and channel configuration range |
-| AT+WLRATE?  | Query wireless rate and channel |
-| AT+WLRATE=  | Configure wireless rate and channel |
-| AT+WLTIME=? | Query configuration sleep time range |
-| AT+WLTIME?  | Query sleep time             |
-| AT+WLTIME=  | Configure sleep time         |
-| AT+UART=?   | Query serial port configuration range |
-| AT+UART?    | Query serial port configuration |
-| AT+UART=    | Configure serial port        |
+| AT+WLRATE?  | Query wireless rate and channel                     |
+| AT+WLRATE=  | Configure wireless rate and channel                 |
+| AT+WLTIME=? | Query configuration sleep time range                |
+| AT+WLTIME?  | Query sleep time                                    |
+| AT+WLTIME=  | Configure sleep time                                |
+| AT+UART=?   | Query serial port configuration range               |
+| AT+UART?    | Query serial port configuration                     |
+| AT+UART=    | Configure serial port                               |
 
 When exiting the configuration function (MD0=0), the module will reconfigure the parameters. During the configuration process, AUX remains high and outputs low after completion, returning the module to idle state.
 
@@ -114,7 +114,7 @@ The signal strength mode can view the signal strength of both communication part
 - Transmission: Same as general mode.
 - Reception: Outputs information about signal strength.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220118110058.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220118110058.png)
 
 SNR: Signal-to-Noise Ratio (the larger the more stable), RSSI: Received Signal Strength Indication (the larger the more stable)
 
@@ -134,7 +134,7 @@ Broadcast and Data Monitoring: Setting the module address to 0xFFFF allows for m
 
 ### Point-to-Point
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220118110614.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220118110614.png)
 
 - Two modules with the same address, channel, and wireless rate (non-serial baud rate), where one module sends and the other receives (must be one sender and one receiver).
 - Each module can send/receive.
@@ -155,7 +155,7 @@ The transparent transmission method is simple, just use the Lora module as a ser
 
 ### Point-to-Multipoint
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220118110709.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220118110709.png)
 
 - Modules with the same address, channel, and wireless rate (non-serial baud rate), where any module can send and other modules can receive.
 - Each module can send/receive.
@@ -175,7 +175,7 @@ Devices B to F receive: AA BB CC DD
 
 ### Broadcast Monitoring
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220118110853.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220118110853.png)
 
 - If the module address is 0xFFFF, the module is in broadcast listening mode, and the data sent can be received by all other modules with the same rate and channel (broadcast); at the same time, it can listen to the data transmission of all modules on the same rate and channel (listening).
 - Broadcast listening does not require the same address.
@@ -212,7 +212,7 @@ Device A listens: 11 22 33 44
 
 The difference from point-to-point transparent transmission is that the module address and channel can be changed, but the rate remains the same.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220118111903.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220118111903.png)
 
 For example:
 Device A has an address of 0X1234 and a channel of 0X17;
@@ -285,15 +285,15 @@ In this way, the receiving device (Device B) can receive a frame of data (exclud
 
 ### Broadcast Listening
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220118112544.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220118112544.png)
 
 - If the module address is 0xFFFF, the module is in broadcast listening mode, and the data sent can be received by all other modules with the same rate and channel (broadcast); at the same time, it can listen to the data transmission of all modules on the same rate and channel (listening);
 - Broadcast listening does not require the same address.
 - The channel address can be set. When the address is 0xFFFF, it is in broadcast mode; when it is other, it is in directional transmission mode.
 
-|          | Sending Module   | Receiving Module |
-| -------- | ---------------- | ---------------- |
-| Quantity | 1                | N                |
+|          | Sending Module      | Receiving Module |
+| -------- | ------------------- | ---------------- |
+| Quantity | 1                   | N                |
 | Content  | 0xFFFF+Channel+Data | Data             |
 
 For example:

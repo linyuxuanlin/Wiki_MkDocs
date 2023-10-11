@@ -22,26 +22,26 @@ Repositorio del proyecto: [**Collection_of_Power_Module_Design/PMIC/EA3036C**](h
 
 ## Circuito de aplicación típico
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220417095917.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220417095917.png)
 
 ## Diagrama de funciones internas
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220417001936.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220417001936.png)
 
 ## Definición de pines
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220416234110.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220416234110.png)
 
-| Nombre del pin | Descripción del pin                                         |
-| -------------- | ----------------------------------------------------------- |
-| VCC            | Pin de entrada de alimentación del circuito de control interno |
-| VINx           | Pin de entrada de alimentación del canal x, con un condensador MLCC de 10uF para desacoplar |
+| Nombre del pin | Descripción del pin                                                                                                                                |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| VCC            | Pin de entrada de alimentación del circuito de control interno                                                                                     |
+| VINx           | Pin de entrada de alimentación del canal x, con un condensador MLCC de 10uF para desacoplar                                                        |
 | LXx            | Salida de conmutación del MOS interno del canal x, que se puede conectar a un circuito de filtro de paso bajo para obtener una tensión más estable |
-| FBx            | Pin de retroalimentación del canal x, conectado a la salida de tensión a través de un circuito divisor de tensión |
-| ENx            | Pin de habilitación, no puede dejarse en flotación |
-| GNDx           | Tierra del canal x                                           |
-| AGND           | Tierra analógica                                             |
-| Pad inferior   | Para disipación de calor, debe conectarse a tierra            |
+| FBx            | Pin de retroalimentación del canal x, conectado a la salida de tensión a través de un circuito divisor de tensión                                  |
+| ENx            | Pin de habilitación, no puede dejarse en flotación                                                                                                 |
+| GNDx           | Tierra del canal x                                                                                                                                 |
+| AGND           | Tierra analógica                                                                                                                                   |
+| Pad inferior   | Para disipación de calor, debe conectarse a tierra                                                                                                 |
 
 ## Descripción de características
 
@@ -55,7 +55,7 @@ EA3036C es un IC de gestión de energía diseñado específicamente para aplicac
 
 Si es necesario establecer el tiempo de encendido de cada canal Buck, se puede programar mediante el siguiente circuito:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220417100845.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220417100845.png)
 
 ### Arquitectura de desplazamiento de fase de 180°
 
@@ -70,11 +70,11 @@ Los tres reguladores internos del EA3036C tienen su propio circuito de limitaci�
 La capacidad de corriente de carga pico del EA3036C depende de la limitación de corriente PMOS interna, la relación de trabajo (Vout/Vin) y el valor del inductor. En las condiciones de Vin=5V y L=1.5uH, la capacidad de corriente de carga pico de salida es la siguiente:
 
 | Voltaje de salida | Corriente de carga pico |
-| ---------------- | ---------------------- |
-| 3.3V             | 1.2A                   |
-| 1.8V             | 1.5A                   |
-| 1.5V             | 1.5A                   |
-| 1.2V             | 1.5A                   |
+| ----------------- | ----------------------- |
+| 3.3V              | 1.2A                    |
+| 1.8V              | 1.5A                    |
+| 1.5V              | 1.5A                    |
+| 1.2V              | 1.5A                    |
 
 Es importante tener en cuenta que la potencia de salida total debe ser menor a 6W para evitar daños por sobrecalentamiento del chip.
 
@@ -90,16 +90,16 @@ $$
 V_{OUTx}=0.6*\frac{R_1}{R_2}+0.6V
 $$
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220417230210.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220417230210.png)
 
 Si se requieren valores de voltaje comunes de salida, se pueden utilizar las siguientes configuraciones de resistencia de divisor (todas deben ser de precisión del 1%):
 
 | Voltaje de salida | R1    | R2    |
-| ---------------- | ----- | ----- |
-| 3.3V             | 68kΩ  | 15kΩ  |
-| 1.8V             | 200kΩ | 100kΩ |
-| 1.5V             | 150kΩ | 100kΩ |
-| 1.2V             | 100kΩ | 100kΩ |
+| ----------------- | ----- | ----- |
+| 3.3V              | 68kΩ  | 15kΩ  |
+| 1.8V              | 200kΩ | 100kΩ |
+| 1.5V              | 150kΩ | 100kΩ |
+| 1.2V              | 100kΩ | 100kΩ |
 
 ### Selección de capacitores de entrada/salida
 
@@ -108,11 +108,11 @@ El capacitor de entrada se utiliza para suprimir la amplitud del ruido del volta
 Los modelos recomendados de capacitores de entrada/salida son los siguientes:
 
 | NPM            | Valor | Voltaje nominal | Encapsulado |
-| -------------- | ----- | -------------- | ----------- |
-| C2012X5R1A106M | 10uF  | 10V            | 0805        |
-| C3216X5R1A106M | 10uF  | 10V            | 1206        |
-| C2012X5R1A226M | 22uF  | 10V            | 0805        |
-| C3216X5R1A226M | 22uF  | 10V            | 1206        |
+| -------------- | ----- | --------------- | ----------- |
+| C2012X5R1A106M | 10uF  | 10V             | 0805        |
+| C3216X5R1A106M | 10uF  | 10V             | 1206        |
+| C2012X5R1A226M | 22uF  | 10V             | 0805        |
+| C3216X5R1A226M | 22uF  | 10V             | 1206        |
 
 ### Selección de inductores de salida
 

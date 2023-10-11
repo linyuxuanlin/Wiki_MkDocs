@@ -1,6 +1,6 @@
 # Homelab - لوحة تحكم خفيفة لإدارة الخوادم CasaOS
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230304192541.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304192541.png)
 
 **CasaOS** هي لوحة تحكم شخصية مفتوحة المصدر بسيطة وسهلة الاستخدام وأنيقة، وتتضمن ميزات مثل مدير الملفات ومراقبة حالة الخادم والطرفية وإدارة حاويات Docker ومتجر تطبيقات Docker المدمج.
 

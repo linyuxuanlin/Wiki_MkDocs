@@ -1,6 +1,6 @@
 # Homelab - Servidor de medios de cine y televisión Jellyfin
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230531213856.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230531213856.png)
 
 **Jellyfin** es un servidor de medios de cine y televisión de código abierto que se puede utilizar para administrar películas, programas de televisión, etc. y verlos en diferentes dispositivos. Puede ser utilizado como alternativa a los software propietarios Emby y Plex.
 

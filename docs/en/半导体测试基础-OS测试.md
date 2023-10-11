@@ -8,7 +8,7 @@ Open-Short Test (OS), also known as continuity or contact test, is used to **ver
 
 Serial/parallel static method tests OS, which is actually injecting current to measure voltage, because this current will cause a protection diode to forward bias, so the abnormality of open and short circuits can be detected by detecting the forward voltage drop. The test schematic diagram of applying positive current to forward bias the power supply diode is as follows:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220805165031.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220805165031.png)
 
 The test process is as follows:
 
@@ -21,7 +21,7 @@ The test process is as follows:
 
 The test schematic diagram of applying negative current to forward bias the ground diode is as follows:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220728142155.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220728142155.png)
 
 The test process is as follows:
 

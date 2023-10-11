@@ -1,6 +1,6 @@
 # TinyWeatherStation - A Simple yet Sophisticated Desktop Weather Station
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202308132245962.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308132245962.png)
 
 【Article editing in progress...】
 
@@ -10,11 +10,11 @@
 
 ## Miscellaneous
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202308132244295.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308132244295.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202308132245903.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308132245903.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202308132245214.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308132245214.png)
 
 > Original: <https://wiki-power.com/>  
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.

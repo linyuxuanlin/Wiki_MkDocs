@@ -4,7 +4,7 @@
 
 محول التناظري إلى رقمي (ADC) هو جهاز يحول الإشارات التناظرية إلى تسلسل من البيانات الرقمية.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011141438.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011141438.png)
 
 على الرغم من أن وظيفة نقل ADC المثالية يجب أن تكون خط مستقيم، إلا أنها في الواقع تكون سلمًا متساويًا، حيث يتطابق عدد الخطوات مع عدد أكواد الإخراج الرقمية. نظرًا لأن الإشارة التناظرية مستمرة والإشارة الرقمية م diskreta، سيتم إدخال خطأ التكميم في الإجراء.
 
@@ -37,7 +37,7 @@ $$
 - 7 انتقالات
 - 6 خطوات بين 7 انتقالات
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008151344.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008151344.png)
 
 - **جهد انتقال نطاق الصفر ($V_{ZST}$)**: جهد إشارة الإدخال التناظرية عند تسجيل أول انتقال.
 - **جهد انتقال نطاق القيمة الكاملة ($V_{FST}$)**: جهد إشارة الإدخال التناظرية عند تسجيل آخر انتقال.
@@ -107,7 +107,7 @@ $$
 INL=[(\frac{BinaryCode}{2^{bits}-1})(V_{FS}-V_{ZS})+V_{offset}]-CodeCentor
 $$
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008163911.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008163911.png)
 
 ## كيفية اختبار المعلمات الثابتة
 
@@ -115,19 +115,19 @@ $$
 
 إعداد نظام الاختبار لاختبار المعلمات الثابتة لمحول التناظر الرقمي إلى رقمي (ADC):
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008184721.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008184721.png)
 
 نظرًا لأن منحنى تحويل الجهد إلى رمز ADC هو وظيفة تعيين كثير إلى واحد:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008185819.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008185819.png)
 
 نستخدم طريقة تصوير الرمز الخطي (قياس عرض الرمز) عمليًا. يكون المنحدر المدخل بطيئًا بما يكفي لتوفير "عدد مناسب إحصائيًا من الضربات لكل رمز".
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008190154.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008190154.png)
 
 مخطط بلوك لإعداد الإشارة:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008190612.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008190612.png)
 
 ### مفهوم الاختبارات
 
@@ -137,21 +137,21 @@ $$
 
 تذهب المنحدرات المدخلة فوق وتحت ±Fs للتأكد من تغطية جميع الرموز:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008193036.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008193036.png)
 
 #### 2. أخذ البيانات بين البداية (min+1 ، على سبيل المثال 0…01) والنهاية (max-1 ، على سبيل المثال 1…10) للمنحدر. يعطي ذلك قيمة بيانات تعادل $2^n – 2$ رمزًا
 
 يجب أن يكون الجهد المطبق أوسع من نطاق القيمة القصوى لتغطية جميع التحولات. يتم عرض 16 خطوة بين كل انتقال للرمز كما هو موضح أدناه:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008194207.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008194207.png)
 
 بالنسبة لـ ADC DUT المثالي ، يظهر 16 رمز إخراج في نفس الأوقات:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008194450.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008194450.png)
 
 ومع ذلك ، سيكون للجهاز الفعلي عدد أكبر من 16 مرة للرموز الأوسع ، وأقل من 16 مرة للأضيق (ولكن مجموع الحدوث الإجمالي يجب أن يكون لا يزال $2^{bits}$ مرة من 16):
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008194813.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008194813.png)
 
 #### 3. حساب DNL لكل خطوة
 
@@ -161,11 +161,11 @@ $$
 
 حيث يُمثل $Hits[i]$ عدد الشفرات الفعلية المخرجة، ويُمثل $\frac{\sum Hits[i]}{2^n-2}$ عدد الشفرات المثالية المخرجة.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008234157.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008234157.png)
 
 لمثال على الرسم البياني للهيستوغرام كما هو موضح أدناه:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008234921.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008234921.png)
 
 بالنسبة لـ DNL[1](الشفرة 001)،
 
@@ -176,7 +176,7 @@ $$
 
 #### 4. الحصول على أقصى وأدنى DNL
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008235342.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008235342.png)
 
 #### 5. حساب INL لكل خطوة
 
@@ -194,7 +194,7 @@ $$
 
 لمثال على الرسم البياني أدناه،
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221009201547.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221009201547.png)
 
 $$
 INL[1] = DNL[1] = -0.125 * LSB
@@ -211,7 +211,7 @@ $$
 
 #### 6. الحصول على أقصى وأدنى INL
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221009201838.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221009201838.png)
 
 ## المراجع والشكر
 

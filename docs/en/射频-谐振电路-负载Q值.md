@@ -6,11 +6,11 @@ We define the Q value of a resonant circuit as the ratio of its center frequency
 - Load resistance $R_L$
 - Q value of the components mentioned in the previous chapter
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220418111129.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220418111129.png)
 
 ## The Influence of $R_s$ and $R_L$ on Load Q
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220418111200.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220418111200.png)
 
 The influence of source impedance and load impedance on the load Q of a resonant circuit is shown in the above figure. The original curve (dashed line) is the resonance curve of a circuit composed of a 50Ω source impedance, a lossless inductor of 0.05uH, and a lossless capacitor of 25pF. Its Q value is calculated by the formula $Q=\frac{f_e}{f_2-f_1}$ mentioned above, which is about 1.1, indicating that this is not a very narrowband or high Q value design.
 
@@ -18,11 +18,11 @@ By changing the source impedance to 1000Ω and plotting a new resonance curve (s
 
 The above method cannot show the influence of load impedance on the resonance curve. If we connect an external load to the resonant circuit like this:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220419163311.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220419163311.png)
 
 It can be equivalent to:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220419163441.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220419163441.png)
 
 At this time, the load Q can be expressed as:
 
@@ -36,7 +36,7 @@ where $R_p$ is the equivalent total parallel resistance and $X_p$ represents cap
 
 It can be seen that reducing $R_p$ will reduce the Q value of the resonant circuit, and if $R_p$ remains unchanged and $X_p$ is changed, the same effect can be achieved. Therefore, for a given source impedance and load impedance, the resonant circuit can achieve the best Q value when the inductor is a small value and the capacitor is a large value. In either case, $X_p$ will decrease. For example:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220419165555.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220419165555.png)
 
 Therefore, both of these methods can be used to adjust the Q value:
 
@@ -51,15 +51,15 @@ In the previous section, we assumed that the components used in the resonant cir
 
 In a lossless resonant circuit, the impedance at the circuit terminal during resonance is infinite. However, in an actual circuit, due to component losses, there will be some equivalent parallel resistance:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220419174200.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220419174200.png)
 
-Resistance (Rp) and its related parallel reactance (Xp) can be obtained from 
+Resistance (Rp) and its related parallel reactance (Xp) can be obtained from
 
 ## References and Acknowledgments
 
-- "RF-Circuit-Design (second-edition)_Chris-Bowick" 
+- "RF-Circuit-Design (second-edition)\_Chris-Bowick"
 
-> Original: <https://wiki-power.com/> 
+> Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

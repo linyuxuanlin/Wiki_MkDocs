@@ -2,7 +2,7 @@
 
 ## الموارد الأساسية
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211008090724.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211008090724.png)
 
 - USB Type-A: يستخدم كوضع USB العبد (Host)
 - USB Micro: يستخدم لتزويد اللوحة بالطاقة وكوضع العبد

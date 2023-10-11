@@ -8,7 +8,7 @@ THE Hack 2019 Hackathon was held at Shanghai Jiao Tong University. My team and I
 
 This year's competition had different topics to choose from. Initially, we chose the direction of smart homes and planned to create a smart home kit for dormitories. However, we eventually decided to focus on the topic of **how to enable vulnerable groups to enjoy the benefits of technology**. Our team consisted of a product manager and a designer, and we approached the topic from a psychological and user needs perspective, analyzing what the judges and sponsors would value.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/72fa421a32841af4c9cb339132b30fe.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/72fa421a32841af4c9cb339132b30fe.jpg)
 
 Our project this year was called AIO - Care, a smart elderly care platform based on active learning models. I was responsible for the simple implementation of the hardware part, using sensors to collect data for the server to analyze and provide a more comfortable home care experience for the elderly.
 

@@ -8,7 +8,7 @@
 
 串行 / 并行静态法测试 OS，实际上就是灌入电流测电压，因为这个电流会让上下某个保护二极管发生正偏，所以可以通过检测正偏压降来测出开短路异常。**施加正电流使对电源二极管正偏** 的测试示意图如下：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220805165031.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220805165031.png)
 
 测试流程如下：
 
@@ -21,7 +21,7 @@
 
 **施加负电流使对地二极管正偏** 的测试示意图如下：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220728142155.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220728142155.png)
 
 测试流程如下：
 

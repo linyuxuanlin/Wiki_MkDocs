@@ -1,6 +1,6 @@
 # Homelab - 影视媒体服务器 Jellyfin
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230531213856.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230531213856.png)
 
 **Jellyfin** 是一个开源的流媒体影视服务器，可以用于管理电影、电视节目等，并在不同设备上浏览观看。它可作为闭源软件 Emby 和 Plex 的替代。
 

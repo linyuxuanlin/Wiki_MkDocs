@@ -13,7 +13,7 @@ git config --global user.email "email@example.com"
 
 ## Basic Statements
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200216204934.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200216204934.png)
 
 ### Basic Process
 
@@ -58,7 +58,7 @@ Suitable for starting from scratch or developing based on someone else's project
 
 ## Branch Management
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200217195056.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200217195056.png)
 
 A branch is like a parallel universe in a science fiction movie. While you are working hard to learn Git in front of your computer, another you is working hard to learn SVN in another parallel universe. If the two parallel universes do not interfere with each other, it doesn't affect you now. However, at some point in time, the two parallel universes merge, and as a result, you have learned both Git and SVN!
 
@@ -80,14 +80,14 @@ Now with branches, you don't have to worry. You create a branch that belongs to 
 
 ## GitHub Roaming Guide
 
-With the help of the GitHub platform, we can discover a variety of open source projects and build an open source world with developers from all over the world. 
-When we discover an excellent open source project, we can first fork it to our own GitHub account (so that we have read and write permissions), and then clone it to our local computer for development using SSH. 
+With the help of the GitHub platform, we can discover a variety of open source projects and build an open source world with developers from all over the world.
+When we discover an excellent open source project, we can first fork it to our own GitHub account (so that we have read and write permissions), and then clone it to our local computer for development using SSH.
 After development is complete, we can initiate a pull request on GitHub. If the original project owner thinks your changes are appropriate, they will be merged into the existing open source project.
 
 ### GitHub CLI
 
-GitHub CLI is a command-line tool for GitHub that brings pull requests, issues, and other features to the command line. 
-Download link: [**cli.github.com**](https://cli.github.com/) 
+GitHub CLI is a command-line tool for GitHub that brings pull requests, issues, and other features to the command line.
+Download link: [**cli.github.com**](https://cli.github.com/)
 GitHub CLI is currently in beta and worth a try.
 
 ## References and Acknowledgments

@@ -33,11 +33,11 @@ Project online preview:
 
 ## Internal Functional Block Diagram
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220111090855.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111090855.png)
 
 ## Pin Definitions
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220110170233.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220110170233.png)
 
 - BOOT: Bootstrap capacitor for the high-side MOS tube. Connect a 0.1uF capacitor between BOOT and SW.
 - VIN: Power input, connected to this pin after being decoupled by capacitor $C_{IN}$.
@@ -55,7 +55,7 @@ The output voltage of LMR14050 is adjusted by opening the high-side N-MOS and co
 
 The relationship between the SW voltage and the inductor current in continuous conduction mode (CCM) is shown below:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220111095020.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111095020.png)
 
 ### Sleep mode
 
@@ -69,7 +69,7 @@ LMR14050 integrates a bootstrap voltage converter internally. By connecting a bo
 
 LMR14050 provides an internal reference voltage of 0.75V. The output voltage is divided by a resistor divider and input to the FB pin for comparison and regulation internally. The divider resistors are recommended to have a deviation of 1% or lower and a temperature coefficient of 100 ppm or lower. The low-side resistor $R_{FBB}$ (reference value is 10-100kΩ) is selected based on the desired divider current, and the high-side resistor $R_{FBT}$ is calculated using the formula below. Choosing a larger resistor value is beneficial for improving light load efficiency, but if it is too large, the regulator will be more susceptible to noise and voltage errors from the FB input current.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220111105814.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111105814.png)
 
 $$
 R_{FBT}=\frac{V_{OUT}-0.75}{0.75}R_{FBB}
@@ -81,7 +81,7 @@ LMR14050 turns on the output when $V_{IN}$ is above the 3.7V threshold and EN is
 
 The start and stop voltage thresholds can be adjusted by adjusting the external pull-up and pull-down resistors of EN:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220111111613.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111111613.png)
 
 $R_{ENT}$ and $R_{ENB}$ are calculated using the following formulas:
 
@@ -112,13 +112,13 @@ $$
 R_T(kΩ)=32537*f_{SW}^{-1.045}(kHz)
 $$
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220111135021.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111135021.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220111135034.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111135034.png)
 
 The switching action of LMR14050 can also be synchronized with an external clock input signal (250kHz-2.3MHz):
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220111141247.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111141247.png)
 
 The internal oscillator will be synchronized with the falling edge of the external clock. The recommended high level of the external clock is not less than 1.7V, the low level is not higher than 0.5V, and the minimum pulse width is not less than 30ns. If a low impedance signal source is connected, the frequency setting resistor $R_T$ needs to be connected in parallel with the AC coupling resistor $C_{COUP}$ (which can be a 10pF ceramic capacitor) and connected to the terminal resistor $R_{TERM}$ (such as 50Ω) to better match the impedance.
 
@@ -136,7 +136,7 @@ LMR14050 has internal thermal shutdown protection. When the junction temperature
 
 ## Reference Design
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220111143510.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111143510.png)
 
 Design parameters:
 
@@ -233,7 +233,7 @@ According to the formula mentioned earlier, if the soft-start time is set to 5ms
 
 ## Layout Reference
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220110183248.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220110183248.png)
 
 Layout suggestions to reduce EMI:
 

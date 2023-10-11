@@ -1,6 +1,6 @@
 # Homelab - 智能家居服务器 Home Assistant
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202306011647498.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202306011647498.png)
 
 **Home Assistant** 是一个开源的智能家居服务器，能够监控家里的所有设备，功能类似米家，界面友好美观，部署也相对简单。
 

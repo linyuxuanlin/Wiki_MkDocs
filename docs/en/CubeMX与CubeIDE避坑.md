@@ -24,7 +24,7 @@ Long-term Solution:
 
 - In the SYS settings of CubeMX, change the Debug option to Serial Wire (SW)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200531162352.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200531162352.jpg)
 
 ## Chinese Comments in STM32CubeIDE are Garbled
 

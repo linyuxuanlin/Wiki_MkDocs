@@ -1,6 +1,6 @@
 # Homelab - 多功能 PDF 工具箱 Stirling-PDF
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230410172939.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230410172939.png)
 
 **Stirling-PDF** 是一个自托管 PDF 工具包，功能包括 PDF 的分割、合并、旋转、提取页面、图像互转、重新排序、添加 / 提取图像、添加删除密码、设置权限、添加水印、将其他文件转换为 PDF、OCR 文字识别、元数据编辑，支持暗黑模式。
 

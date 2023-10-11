@@ -21,7 +21,7 @@ $$
 
 Dado que SNR es una relación de potencia, el $20$ en la ecuación significa el cuadrado de la relación de voltaje.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221009221450.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221009221450.png)
 
 Aunque la Distorsión Armónica no se incluye en la medición de SNR, se incluyen la Cuantización, el Ruido Térmico y otros ruidos residuales en el convertidor.
 
@@ -33,7 +33,7 @@ $$
 THD(dB)=20log(\frac{\sqrt{V^2_{2(RMS)}+V^2_{3(RMS)}+...+V^2_{n(RMS)}}}{V_{1(RMS)}}
 $$
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221009225800.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221009225800.png)
 
 ## Cómo Probar los Parámetros Dinámicos
 
@@ -41,7 +41,7 @@ $$
 
 Configuración del sistema de prueba para las pruebas de parámetros dinámicos de ADC:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221009230212.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221009230212.png)
 
 La resolución del Digitalizador de CA debe ser al menos 2 a 4 bits mejor que el DUT.
 
@@ -53,7 +53,7 @@ El procedimiento para probar los parámetros dinámicos de un DAC se describe a 
 
 Es una práctica común asegurarse de que el reloj analógico/digital esté referenciado a un reloj maestro común, de modo que la relación de la frecuencia de las fuentes de reloj esté fija y sincronizada, lo que hace que los resultados de las pruebas sean altamente repetibles.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011195204.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011195204.png)
 
 #### 2. Colectar coherentemente un conjunto de muestras con el DAC
 
@@ -75,9 +75,9 @@ Donde $Fs$ es la tasa de muestreo del DAC y también la tasa de muestreo de la c
 
 #### 3. Enviar el conjunto de muestras de tiempo recopiladas al DSP para realizar análisis DFT / FFT
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011140834.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011140834.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011140904.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011140904.png)
 
 #### 4. Analizar los bins de frecuencia de interés utilizando ecuaciones o algoritmos de prueba para SNR, THD y comparar con la especificación
 

@@ -1,6 +1,6 @@
 # Homelab - بديل مجاني للاتصال بالشبكة الداخلية: Cloudflared
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230416143051.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230416143051.png)
 
 **Cloudflared** هو بديل مجاني للاتصال بالشبكة الداخلية، ويستخدم للوصول إلى الخوادم التي لا تملك عنوان IP العام.
 
@@ -58,7 +58,7 @@ APP_TUNNEL_TOKEN=xxx # استبدله برمز الوصول الخاص بك
 
 ثم انتقل إلى النفق الذي أنشأته، وفي علامة التبويب `Public Hostname Page`، أضف منفذ الوكيل. على سبيل المثال، إذا كان اسم النطاق المرتبط بـ Cloudflare هو `wiki-power.com`، وكان منفذ الخدمة المحلية هو `80` وبروتوكول `HTTP`، فما عليك سوى إدخال البيانات التالية:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230416183438.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230416183438.png)
 
 يمكنك الآن الوصول إلى منفذ محلي عن طريق <https://dashboard.wiki-power.com>، وسيتم تلقائيًا تطبيق شهادة SSL للوصول عبر HTTPS.
 

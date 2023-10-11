@@ -1,6 +1,6 @@
 # Homelab - Plataforma de gestión de aplicaciones de contenedores Portainer
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202304111545899.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304111545899.png)
 
 **Portainer** es una herramienta de gestión gráfica de aplicaciones de contenedores (incluyendo Docker / Docker compose / Swarm / Kubernetes) que permite gestionar entornos Docker a través de una interfaz web. También ofrece muchas funciones como la visualización de registros, el inicio y detención de contenedores, la gestión de imágenes, redes, volúmenes, entre otros.
 

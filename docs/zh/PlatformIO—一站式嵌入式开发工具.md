@@ -2,7 +2,7 @@
 
 —— 搭建一站式开发环境，替代 Keil / Arduino IDE
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200531112801.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200531112801.png)
 
 ## 背景
 
@@ -29,7 +29,7 @@ PlatformIO 是一个强大的一站式工具，来看看它的特点：
 
 在 `拓展` （`Ctrl + Shift + X`） 内搜索并安装 `Python` 和 `PlatformIO IDE`.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200531113916.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200531113916.png)
 
 插件安装成功后，点击 `重新加载` 启动插件，然后泡一杯咖啡，待其自动安装核心组件 `platformIO-core`（首次安装时间可能会比较长）
 

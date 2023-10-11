@@ -4,13 +4,13 @@
 
 En el pasado, solíamos guardar nuestras fotos llenas de recuerdos en nuestra computadora o disco duro. Con el tiempo, nos dimos cuenta de que las fotos seguían acumulándose y que el método de clasificación por carpetas perdía su significado: después de un viaje, a menudo no organizábamos las fotos debido a la procrastinación; cuando finalmente organizábamos las fotos, ya no las volvíamos a ver. Si el disco duro sufría algún daño (ya sea físico o humano), solo podíamos enviarlo a recuperación de datos, y a veces ni siquiera se podían recuperar.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/2af4c42e6f7a9f4ed45b6f150b164184.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/2af4c42e6f7a9f4ed45b6f150b164184.jpg)
 
 Seguí buscando y descubriendo nuevos medios para almacenar fotos. Utilicé herramientas de sincronización como Resilio Sync, Weiyun Sync Disk, Baidu Cloud Sync Disk para hacer múltiples copias de seguridad; también consideré construir una biblioteca de fotos NAS (RAID 1); o varios servicios en la nube como iCloud, Mi Cloud Album, Weiyun, Baidu Cloud, pero nunca encontré uno que me resultara cómodo. En primer lugar, la forma de administrar las fotos en carpetas es ordenada, pero no es conveniente para organizar y ver fotos; en segundo lugar, es común que estos proveedores de servicios en China vendan tu privacidad si necesitan dinero.
 
 Finalmente, descubrí Google Photos, que es relativamente seguro y fácil de usar. Después de usarlo durante más de un año, creo que es bastante bueno, así que actualicé este artículo.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/0f0ab1740e3206831f3e6ef19ef0c903.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/0f0ab1740e3206831f3e6ef19ef0c903.png)
 
 ## Características
 
@@ -18,19 +18,19 @@ Finalmente, descubrí Google Photos, que es relativamente seguro y fácil de usa
 
 En comparación con iCloud (5 GB de espacio gratuito) y Mi Cloud (11 GB de espacio gratuito), aunque se puede comprar capacidad de almacenamiento, todavía se debe tener cuidado al sincronizar todas las fotos. La capacidad ilimitada de Google Photos satisface completamente las necesidades de almacenamiento personal de fotos. Pero hay una condición: las fotos tienen una resolución máxima de 16 millones de píxeles y los videos de 1080p, y se comprimen si se exceden. Sin embargo, es suficiente para usuarios no profesionales.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/cea385ad94811257f4b7c084d41c5d30.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/cea385ad94811257f4b7c084d41c5d30.jpg)
 
 ### 2. Inteligente
 
 En comparación con la gestión en forma de carpetas, incluso si no se clasifican las fotos archivadas, la función de búsqueda de Google Photos es suficiente para encontrar fotos antiguas que se han guardado durante años. Puedes etiquetar a las personas y encontrar todas las fotos relacionadas con ellas. Además, "Revive este día en años anteriores" es una función muy útil.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/f1ccf68a3eeae7b4a69f58122838666d.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/f1ccf68a3eeae7b4a69f58122838666d.png)
 
 ### 3. Relativamente seguro
 
 Los datos son invaluables. Si solo guardas tus álbumes en tus propios dispositivos (como discos duros), es posible que te preocupes por problemas de daños o pérdidas de datos. Sin embargo, si confías tus álbumes a un proveedor de servicios en la nube de confianza, será mucho más seguro. Después de todo, ellos son responsables de los datos del usuario; si el disco duro falla, solo tú serás responsable. En cuanto a la seguridad, la privacidad no debe ser ignorada. En mi caso, no confiaría mis fotos y privacidad a Google, que no hace nada malo, y nunca entregaría mis datos a 360 o Baidu. Google, que respeta más la privacidad del usuario bajo GDPR, es mucho más confiable que Baidu, que cree que "los chinos prefieren la conveniencia a la privacidad".
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/59bd6366d7c370b480def6fec44802a6.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/59bd6366d7c370b480def6fec44802a6.png)
 
 ### 4. Otras ventajas
 

@@ -1,6 +1,6 @@
 # Homelab - محرر الكود عبر الإنترنت code-server
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202304132214418.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304132214418.png)
 
 **code-server** هو برنامج يمكن تشغيله في المتصفح ويعمل على نفس نظام VS Code. وبالمقارنة مع الإصدار السطحي ، يمكنك كتابة الشفرة عبر الإنترنت باستخدام أي جهاز ، بما في ذلك الهواتف المحمولة والأجهزة اللوحية التي لا يمكن تثبيت VS Code مباشرة عليها.
 
@@ -76,8 +76,6 @@ sudo passwd root
 ```
 
 ## المراجع والشكر
-
-
 
 - [الموقع الرسمي](https://coder.com/docs/code-server/latest)
 - [الوثائق / مستودع GitHub](https://github.com/linuxserver/docker-code-server)

@@ -49,7 +49,7 @@ In high-frequency signals, the signal return path is usually the path of minimum
 
 ### Keep the signal return screen as intact as possible
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211215190631.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211215190631.png)
 
 As shown in the figure, if the signal return plane is cut, the signal current will not be able to return to the source through the optimized (shortest) path, and when looking for alternative return paths, it will become unpredictable and increase the signal loop area.
 
@@ -69,15 +69,15 @@ Common EMC components include common mode inductors, ferrite beads, and filterin
 
 Common filter models:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211219173751.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211219173751.png)
 
 ### Common mode inductor
 
 Equivalent model of common mode inductor:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211219173856.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211219173856.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211219174546.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211219174546.png)
 
 ### Magnetic Beads
 

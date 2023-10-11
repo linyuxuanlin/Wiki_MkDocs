@@ -1,6 +1,6 @@
 # Homelab - 免费的内网穿透替代方案 Cloudflared
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230416143051.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230416143051.png)
 
 **Cloudflared** 是一个免费的内网穿透方案，用于外网访问无公网 IP 的主机。
 
@@ -58,7 +58,7 @@ APP_TUNNEL_TOKEN=xxx # 替换为你的 token
 
 随后点进你创建的隧道，在 `Public Hostname Page` 选项卡中添加代理的端口。举个例子，我绑定在 Cloudflare 的域名是 `wiki-power.com`，我需要代理的服务本地的端口是 `80`、`HTTP` 协议，那么我只需要这样填写：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230416183438.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230416183438.png)
 
 即可通过 <https://dashboard.wiki-power.com> 访问本地的端口。并且，它会帮你自动申请 SSL 证书，直接在公网通过 https 访问。
 

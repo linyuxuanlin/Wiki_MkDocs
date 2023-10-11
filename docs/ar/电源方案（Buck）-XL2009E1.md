@@ -2,7 +2,7 @@
 
 XL2009E1 es un chip Buck de 36V de entrada máxima, 3A de salida y 180kHz fijo de Longan, con protección contra sobrecorriente. Cuando hay un cortocircuito, la frecuencia se reduce a 48kHz.
 
-Repositorio del proyecto: [**Collection_of_Power_Module_Design/DC-DC(Buck)/XL2009E1**](https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/DC-DC(Buck)/XL2009E1)
+Repositorio del proyecto: [**Collection_of_Power_Module_Design/DC-DC(Buck)/XL2009E1**](<https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/DC-DC(Buck)/XL2009E1>)
 
 ## Características principales
 
@@ -26,11 +26,11 @@ Repositorio del proyecto: [**Collection_of_Power_Module_Design/DC-DC(Buck)/XL200
 
 Según el circuito de aplicación típico proporcionado por el manual de datos (entrada 8-36V, salida 5V@2.1A):
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220407103157.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407103157.png)
 
 ## Definición de pines
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220407065806.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407065806.png)
 
 - FB: Pin de entrada de retroalimentación, se introduce una retroalimentación a través de una resistencia desde $V_{OUT}$ y no se puede conectar directamente a tierra. La tensión de referencia de retroalimentación es de 1.25V.
 - OCSET: Pin de configuración de corriente constante de salida.
@@ -42,7 +42,7 @@ Según el circuito de aplicación típico proporcionado por el manual de datos (
 
 ### Diagrama de funciones internas
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220407070413.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407070413.png)
 
 ### Regulación de voltaje de salida
 
@@ -58,25 +58,25 @@ La tensión de ruptura nominal del diodo debe ser al menos un 25% mayor que el v
 
 El manual de datos de XL2009E1 proporciona una tabla de selección directa de diodos (3A):
 
-| Voltaje de entrada | Modelo |
-| ----------------- | ------ |
-| 20V               | SK32   |
-| 30V               | SK33/30WQ03 |
-| 40V               | SK34/30WQ04 |
-| 50V               | SK35/30WQ05 |
-| 60V               | SK36   |
+| Voltaje de entrada | Modelo      |
+| ------------------ | ----------- |
+| 20V                | SK32        |
+| 30V                | SK33/30WQ03 |
+| 40V                | SK34/30WQ04 |
+| 50V                | SK35/30WQ05 |
+| 60V                | SK36        |
 
 ### Curvas de parámetros
 
 Relación entre voltaje de salida y corriente:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220407100229.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407100229.png)
 
 Relación entre eficiencia y corriente de salida:
 
 Relación entre la corriente de salida y la resistencia RCS (control de corriente constante):
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220407102905.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407102905.png)
 
 ## Referencias y agradecimientos
 

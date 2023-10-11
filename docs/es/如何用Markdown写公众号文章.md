@@ -8,7 +8,7 @@ Como sabemos, WeChat utiliza un editor de texto enriquecido que no puede interpr
 
 [**MD2WeChat**](https://md2wechat.wiki-power.com/) es una herramienta web que personalicé basándome en el proyecto de código abierto [lyricat/wechat-format](https://github.com/lyricat/wechat-format), que permite convertir fácilmente la sintaxis de Markdown en texto enriquecido:
 
-[![](https://f004.backblazeb2.com/file/wiki-media/img/20210216125752.png)](https://md2wechat.wiki-power.com/)
+[![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210216125752.png)](https://md2wechat.wiki-power.com/)
 
 Simplemente pegue el artículo escrito en Markdown en la columna de la izquierda y haga clic en "Copiar" en la columna de la derecha para pegarlo en el editor de WeChat.
 

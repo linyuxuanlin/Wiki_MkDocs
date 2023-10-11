@@ -1,6 +1,6 @@
 # Homelab - Servidor de gestión de libros electrónicos calibre-web
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210429125418.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210429125418.png)
 
 **calibre-web** es una solución integral de libros electrónicos basada en Calibre, que permite leer libros electrónicos en línea, integra el servicio calibre-server y también incluye la conversión de formatos de libros electrónicos.
 

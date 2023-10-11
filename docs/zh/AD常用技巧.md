@@ -31,7 +31,7 @@
 **方法**：使用字库软件 Font Creator, 在 [GitHub](https://github.com/linyuxuanlin/Modularity_of_Functional_Circuit/tree/master/%E4%B8%93%E7%94%A8%E5%AD%97%E4%BD%93) 下载我的字库作为模板，定制自己的专属字库。字库制作完成后，安装 .ttf 文件，即可在 Altium 内用相应字符调出 Logo 。
 
 字符对应 Logo 如下图：  
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200207200606.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200207200606.png)
 
 ### 自动排布元器件至划定区域
 

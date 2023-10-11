@@ -1,6 +1,6 @@
 # RobotCtrl - STM32 通用开发套件
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220416181125.jpeg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220416181125.jpeg)
 
 项目仓库：[**linyuxuanlin/RobotCtrl**](https://github.com/linyuxuanlin/RobotCtrl)
 
@@ -12,7 +12,7 @@ RobotCtrl - STM32 通用开发套件包含三块板子：
 
 ## 设计需求
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220527111854.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220527111854.png)
 
 注：以下为设计摘要，具体内容请跳转相关文章。
 
@@ -54,7 +54,7 @@ RobotCtrl_Power 原理图设计主要由 XT60 双电源输入、24V 转 12V、24
 
 ## 参考与致谢
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220416181139.jpeg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220416181139.jpeg)
 
 本项目是我个人的毕业设计，在项目的设计焊接调试中遇到了诸多大大小小的问题，在导师、同事、朋友们的鼎力相助下，最终得以成功完坑，也拿到了优秀毕设的荣誉，谢谢你们！
 

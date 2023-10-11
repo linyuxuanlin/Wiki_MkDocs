@@ -36,17 +36,17 @@
 
 على سبيل المثال ، استنادًا إلى مخطط اللوحة:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210205205030.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210205205030.png)
 
 يمكنك تعيين خيارات `HSE` و `LSE` على التوالي على الكريستال الخارجي:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210205205140.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210205205140.png)
 
 ### تكوين شجرة الساعة
 
 يتم التكوين في واجهة `Clock Configuration`.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210205205550.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210205205550.png)
 
 وفقًا للخطوات في الصورة أعلاه:
 
@@ -57,9 +57,9 @@
 
 ### تكوين خيارات إدارة المشروع
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210130095224.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210130095224.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210130095239.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210130095239.png)
 
 ## الفرق بين مكتبة HAL والمكتبة القياسية
 

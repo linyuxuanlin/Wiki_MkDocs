@@ -2,7 +2,7 @@
 
 —— Wight · 基于云平台的去线缆化照明系统。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/wight.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/wight.jpg)
 
 项目仓库：[**linyuxuanlin / Wight**](https://github.com/linyuxuanlin/Wight)
 
@@ -40,109 +40,110 @@ int autostate = 2;
 int light_state = 2;
 void buttons_function(uint8_t *payload, uint32_t len)//الأزرار الأوتوماتيكية والري
 {
-    uint8_t SwitchKey;
-    uint8_t SwitchKey2;
-    aJsonClass aJson;
-    aJsonObject *root = aJson.parse((char *)payload);
-    if(root == NULL)
-    {
-        aJson.deleteItem(root);
-        return;
-    }
-    aJsonObject *_switch = aJson.getObjectItem(root, "mode");
-    if(_switch != NULL)
-    {
-        SwitchKey = atoi(_switch->valuestring);
-        if(SwitchKey)
-        {
-            SerialUSB.println("auto on");
-            autostate=1;
-             IntoRobot.publish(LIGHT_STATUS_address,"1");
-        }
-        else
-        {
-            SerialUSB.println("auto off");
-            autostate=0;
-             IntoRobot.publish(LIGHT_STATUS_address,"0");
-        }
-    }
-    aJsonObject *_switch2 = aJson.getObjectItem(root, "manual");
-    if(_switch2 != NULL)
-    {
-        SwitchKey2 = atoi(_switch2->valuestring);
-        if(SwitchKey2)
-        {
-            SerialUSB.println("manual on");
-            light_state=1;
-             IntoRobot.publish(LIGHT_STATUS_address,"1");
-        }
-        else
-        {
-            SerialUSB.println("manual off");
-            light_state=0;
-             IntoRobot.publish(LIGHT_STATUS_address,"0");
-        }
-    }
-    else
-    {
-    }
-    aJson.deleteItem(root);
+uint8_t SwitchKey;
+uint8_t SwitchKey2;
+aJsonClass aJson;
+aJsonObject *root = aJson.parse((char _)payload);
+if(root == NULL)
+{
+aJson.deleteItem(root);
+return;
+}
+aJsonObject _\_switch = aJson.getObjectItem(root, "mode");
+if(\_switch != NULL)
+{
+SwitchKey = atoi(\_switch->valuestring);
+if(SwitchKey)
+{
+SerialUSB.println("auto on");
+autostate=1;
+IntoRobot.publish(LIGHT_STATUS_address,"1");
+}
+else
+{
+SerialUSB.println("auto off");
+autostate=0;
+IntoRobot.publish(LIGHT_STATUS_address,"0");
+}
+}
+aJsonObject \*\_switch2 = aJson.getObjectItem(root, "manual");
+if(\_switch2 != NULL)
+{
+SwitchKey2 = atoi(\_switch2->valuestring);
+if(SwitchKey2)
+{
+SerialUSB.println("manual on");
+light_state=1;
+IntoRobot.publish(LIGHT_STATUS_address,"1");
+}
+else
+{
+SerialUSB.println("manual off");
+light_state=0;
+IntoRobot.publish(LIGHT_STATUS_address,"0");
+}
+}
+else
+{
+}
+aJson.deleteItem(root);
 }
 void lightup()
 {
-    digitalWrite(LEDPIN1, HIGH);    // تشغيل المصباح
-    digitalWrite(LEDPIN2, HIGH);    // تشغيل المصباح
-    digitalWrite(LEDPIN3, HIGH);    // تشغيل المصباح
-    digitalWrite(LEDPIN4, HIGH);    // تشغيل المصباح
+digitalWrite(LEDPIN1, HIGH); // تشغيل المصباح
+digitalWrite(LEDPIN2, HIGH); // تشغيل المصباح
+digitalWrite(LEDPIN3, HIGH); // تشغيل المصباح
+digitalWrite(LEDPIN4, HIGH); // تشغيل المصباح
 
 }
 void light_half_up()
 {
-    analogWrite(LEDPIN1, 80);    // تشغيل المصباح
-    analogWrite(LEDPIN2, 80);    // تشغيل المصباح
-    analogWrite(LEDPIN3, 80);    // تشغيل المصباح
-    analogWrite(LEDPIN4, 80);    // تشغيل المصباح
+analogWrite(LEDPIN1, 80); // تشغيل المصباح
+analogWrite(LEDPIN2, 80); // تشغيل المصباح
+analogWrite(LEDPIN3, 80); // تشغيل المصباح
+analogWrite(LEDPIN4, 80); // تشغيل المصباح
 
 }
 void lightdown()
 {
-    digitalWrite(LEDPIN1, LOW);
-    digitalWrite(LEDPIN2, LOW);
-    digitalWrite(LEDPIN3, LOW);
-    digitalWrite(LEDPIN4, LOW);
+digitalWrite(LEDPIN1, LOW);
+digitalWrite(LEDPIN2, LOW);
+digitalWrite(LEDPIN3, LOW);
+digitalWrite(LEDPIN4, LOW);
 
 }
 int getlight()
 {
-    int k  = analogRead(CHECKIN1);
+int k = analogRead(CHECKIN1);
 
     SerialUSB.println(k);
     return k;
+
 }
 int get_IR_data()
 {
-    int b = digitalRead(CHECKIN2);
-    SerialUSB.println(b);
-    return b;
+int b = digitalRead(CHECKIN2);
+SerialUSB.println(b);
+return b;
 }
 void automode()
 {
-    if(getlight()>=400)
-    {
-        IntoRobot.publish(LIGHT_STATUS_address,"1");
-        if (get_IR_data()==0)
-        lightup();
-        else
-        light_half_up();
-    }
-    else
-    {
-    IntoRobot.publish(LIGHT_STATUS_address,"0");
-    lightdown();
-    }
+if(getlight()>=400)
+{
+IntoRobot.publish(LIGHT_STATUS_address,"1");
+if (get_IR_data()==0)
+lightup();
+else
+light_half_up();
+}
+else
+{
+IntoRobot.publish(LIGHT_STATUS_address,"0");
+lightdown();
+}
 }
 
-void HUMIDITY_print_function(uint8_t *payload, uint32_t len)
+void HUMIDITY_print_function(uint8_t \*payload, uint32_t len)
 {
 
 }
@@ -151,36 +152,37 @@ void HUMIDITY_print_function(uint8_t *payload, uint32_t len)
 // IntoRobot.publish(LIGHT_STATUS_address,"0");
 void setup()
 {
-    pinMode(D4,INPUT);
-    SerialUSB.begin(115200);
-    SerialUSB.println("hello world");
-    pinMode(LEDPIN1, OUTPUT);    //initialize
-    pinMode(LEDPIN2, OUTPUT);    //initialize
-    pinMode(LEDPIN3, OUTPUT);    //initialize
-    pinMode(LEDPIN4, OUTPUT);    //initialize
-    //Device receives light switch command from cloud platform
-    IntoRobot.subscribe(BUTTONS_address,NULL,buttons_function);
-    IntoRobot.subscribe(ITENSITY_DATA_address,NULL,HUMIDITY_print_function);
+pinMode(D4,INPUT);
+SerialUSB.begin(115200);
+SerialUSB.println("hello world");
+pinMode(LEDPIN1, OUTPUT); //initialize
+pinMode(LEDPIN2, OUTPUT); //initialize
+pinMode(LEDPIN3, OUTPUT); //initialize
+pinMode(LEDPIN4, OUTPUT); //initialize
+//Device receives light switch command from cloud platform
+IntoRobot.subscribe(BUTTONS_address,NULL,buttons_function);
+IntoRobot.subscribe(ITENSITY_DATA_address,NULL,HUMIDITY_print_function);
 }
 void loop()
 {
-   int a =map(getlight() ,0,1024,100,0);
-   IntoRobot.publish(LIGHT,a);
-    SerialUSB.println(getlight());
-    if(autostate==0)
-    {
-        if(light_state ==1)
-        lightup();
-        else
-        lightdown();
-    }
-    else if (autostate==1)
-    {
-        SerialUSB.println("state=1");
-        automode();
-    }
-    delay(100);
+int a =map(getlight() ,0,1024,100,0);
+IntoRobot.publish(LIGHT,a);
+SerialUSB.println(getlight());
+if(autostate==0)
+{
+if(light_state ==1)
+lightup();
+else
+lightdown();
 }
+else if (autostate==1)
+{
+SerialUSB.println("state=1");
+automode();
+}
+delay(100);
+}
+
 ```
 
 بسبب وقت المسابقة المحدود، لم نتمكن من رسم نموذج مفصل، ولكن تم طباعته وتجميعه.
@@ -201,7 +203,8 @@ void loop()
 - فريق العمل: لين بي جي، هوانغ يوي فنغ، تشانغ زي يي
 - [منصة إنتو روبوت السحابية](https://www.intorobot.com/)
 
-> عنوان النص: <https://wiki-power.com/>  
+> عنوان النص: <https://wiki-power.com/>
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
+```

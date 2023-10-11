@@ -2,7 +2,7 @@
 
 En el mundo real, la mayoría de las señales son analógicas, como la temperatura, el sonido, la presión, etc. Sin embargo, en el procesamiento y transmisión de señales, se utiliza principalmente la señal digital para reducir la interferencia del ruido. Por lo tanto, a menudo convertimos la señal analógica del mundo real en una señal digital a través de ADC para realizar operaciones, transmisión y almacenamiento, y luego convertirla en una señal analógica a través de DAC para presentarla.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220724210409.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220724210409.png)
 
 Pero hay que tener en cuenta que la señal analógica en el mundo real es continua, lo que significa que tiene una resolución infinita, pero después de convertirse en una señal digital, perderá cierta precisión y se convertirá en valores discretos en tiempo y amplitud.
 
@@ -20,7 +20,7 @@ $$
 f_s≥2\cdot f_{i(max)}
 $$
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220724180529.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220724180529.png)
 
 Si se cumple el teorema de muestreo, la señal $v_s$ se puede restaurar a $v_1$ mediante un filtro paso bajo. El coeficiente de transferencia de voltaje del filtro debe mantenerse constante por debajo de $f_{i(max)}$ y caer rápidamente a cero antes de $f_s-f_{i(max)}$.
 
@@ -28,7 +28,7 @@ Si se cumple el teorema de muestreo, la señal $v_s$ se puede restaurar a $v_1$ 
 
 El circuito de mantenimiento permite que la señal se mantenga durante un período de tiempo después del muestreo para que el ADC tenga suficiente tiempo para realizar la conversión. Cuanto mayor sea la frecuencia de pulso de muestreo y la densidad de muestreo, más cerca estará la señal de salida del circuito de mantenimiento de la forma de onda de la señal de entrada. La forma básica del circuito de muestreo-mantenimiento es la siguiente:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220723161306.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220723161306.png)
 
 Los pasos básicos del muestreo-mantenimiento son los siguientes:
 
@@ -54,7 +54,7 @@ La conversión cuantificada se representa en binario (u otro sistema de numeraci
 
 El ADC de comparador paralelo, también conocido como ADC Flash, es un tipo de ADC directo que puede convertir directamente el voltaje analógico de entrada en una cantidad digital de salida sin la necesidad de una conversión intermedia. Está compuesto por una serie de comparadores de voltaje, cada uno de los cuales compara la señal de entrada con un voltaje de referencia único. La salida del comparador se conecta a la entrada del circuito codificador para producir una salida binaria.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220723163931.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220723163931.png)
 
 No solo es la técnica ADC más simple en teoría de operación, sino que también es la más efectiva en velocidad, solo limitada por la propagación de comparadores y retardos de puerta. Desafortunadamente, para cualquier cantidad dada de bits de salida, es el componente más denso.
 
@@ -64,7 +64,7 @@ El ADC de comparación en paralelo tiene la velocidad de conversión más rápid
 
 El ADC de aproximación sucesiva utiliza una estructura de circuito de comparación de retroalimentación. Está compuesto por comparadores, DAC, registros, fuente de pulso de reloj y lógica de control:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220723211839.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220723211839.png)
 
 Su principio es establecer una cantidad digital, obtener una tensión de salida analógica correspondiente a través de DAC. Compare secuencialmente esta tensión analógica con la señal de tensión analógica de entrada desde el bit más alto. Si no son iguales, ajuste la cantidad digital tomada hasta que las dos tensiones analógicas sean iguales. La cantidad digital tomada finalmente es el resultado de conversión buscado. Su proceso es como pesar un objeto por su peso en una balanza, primero agregue una pesa grande, luego agregue o cambie a una pesa pequeña de forma secuencial.
 
@@ -76,7 +76,7 @@ El ADC de doble integración es un tipo de ADC indirecto que convierte la señal
 
 El ADC de doble integración está compuesto por integradores, comparadores, contadores, lógica de control y fuente de señal de reloj, como se muestra en la figura:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220723213208.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220723213208.png)
 
 La ventaja del ADC de doble integración es su rendimiento de trabajo estable (dos integraciones, excluyendo las diferencias de parámetros RC), fuerte capacidad antiinterferencias (la integración no se ve muy afectada por el ruido); la desventaja es que la velocidad de conversión es baja (la precisión de conversión depende del tiempo de integración).
 
@@ -84,7 +84,7 @@ La ventaja del ADC de doble integración es su rendimiento de trabajo estable (d
 
 El principio del ADC de modulación Σ-Δ es diferente del tipo de comparación en paralelo y de aproximación sucesiva mencionados anteriormente. No cuantifica y codifica el valor absoluto de la señal de muestreo, sino que cuantifica y codifica la diferencia (incremento) entre dos valores de muestreo adyacentes. Su estructura básica es la siguiente:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220723230949.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220723230949.png)
 
 Está compuesto por un integrador de voltaje lineal, un cuantizador de salida de 1 bit, un DAC de entrada de 1 bit y un circuito sumador. El valor digital de salida $V_0$ procesado por el cuantizador se convierte en una señal analógica $V_F$ a través del DAC y se retroalimenta al circuito sumador de entrada. Reste la señal de entrada $v_1$ para obtener la diferencia $v_D$. El integrador realiza una integración lineal en $v_D$, la tensión de salida $v_{INT}$ se cuantifica en un bit y se convierte en una señal digital de salida. Debido al uso de un cuantizador de salida de 1 bit, en un estado de trabajo continuo, la señal de salida $V_0$ es una corriente de datos compuesta por 0 y 1.
 
@@ -94,7 +94,7 @@ La ventaja del ADC de modulación Σ-Δ es que se puede lograr fácilmente una m
 
 El ADC de transformación de voltaje-frecuencia (V-F) es un tipo de ADC indirecto. Está compuesto principalmente por un convertidor V-F (también llamado oscilador controlado por voltaje, VCO), un contador y su puerta de control de señal de reloj, un registro y un disparador de estado estable:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220723233236.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220723233236.png)
 
 Su principio es:
 
@@ -124,7 +124,7 @@ DAC (convertidor digital-analógico) convierte una señal digital en una señal 
 
 El DAC de árbol de conmutación es el más simple y directo. Está compuesto por una red de resistencias y un árbol de conmutación:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220724172844.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220724172844.png)
 
 Estos interruptores están controlados por tres entradas $d_0,d_1,d_2$, y la salida se puede calcular como:
 
@@ -150,9 +150,9 @@ El término "ponderado" se refiere al valor que representa cada bit en un númer
 
 El DAC de red de resistencias ponderadas (que produce una tensión de salida) se compone de una red de resistencias ponderadas, cuatro interruptores analógicos y un amplificador sumador:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220724003300.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220724003300.png)
 
-En este artículo se discute el funcionamiento de los convertidores digital-analógico (DAC, por sus siglas en inglés) de tipo red de resistencias y de tipo red de resistencias invertida, así como el DAC de corriente ponderada. 
+En este artículo se discute el funcionamiento de los convertidores digital-analógico (DAC, por sus siglas en inglés) de tipo red de resistencias y de tipo red de resistencias invertida, así como el DAC de corriente ponderada.
 
 En el DAC de red de resistencias, se utilizan cuatro interruptores electrónicos, denominados S0, S1, S2 y S3, que son controlados por cuatro señales d0, d1, d2 y d3. Cuando la entrada es 1, el interruptor se conecta a la tensión de referencia VREF, mientras que cuando la entrada es 0, el interruptor se conecta a tierra. Por lo tanto, cuando di=1, la corriente i fluye hacia el amplificador de suma, mientras que cuando di=0, la corriente i es cero. El amplificador de suma es un amplificador de retroalimentación negativa, de tal manera que cuando el potencial en la entrada inversora V- es menor que el potencial en la entrada no inversora V+, la tensión de salida v0 con respecto a tierra es positiva, mientras que cuando V- es mayor que V+, v0 es negativa. Además, cuando V- es ligeramente mayor que V+, se puede obtener una gran tensión de salida negativa en v0. La señal v0 se retroalimenta a través de RF a V-, lo que hace que V- disminuya hasta que se iguala a V+ (0V).
 
@@ -210,6 +210,6 @@ Los principales parámetros de un DAC son la resolución, la precisión, la velo
 - [ADC y DAC (convertidores analógico a digital y digital a analógico)](https://www.youtube.com/playlist?list=PLwjK_iyK4LLCnW-df-_53d-6yYrGb9zZc)
 - [Principios de DAC](https://www.bilibili.com/read/cv4873472/)
 - [Referencia de bolsillo del ingeniero analógico](《Analog Engineer’s Pocket Reference》)
-- [Tecnología digital electrónica (6ª edición) \_ Yan Shi](《数字电子技术（第六版）\_阎石》)
+- [Tecnología digital electrónica (6ª edición) \_ Yan Shi](《数字电子技术（第六版）_阎石》)
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

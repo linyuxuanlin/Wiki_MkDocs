@@ -4,7 +4,7 @@
 
 First, connect the 12V power input of the Cape and use a USB to serial module to connect to the onboard serial port (J3 port can be used for debugging):
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211027164010.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211027164010.png)
 
 Make sure the USB to serial module has a driver (I used the FTDI module, and the driver download address is <https://ftdichip.com/drivers/vcp-drivers/>).
 

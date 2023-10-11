@@ -10,30 +10,30 @@ ssh usuario@IP
 
 ## Estructura del directorio raíz
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211009094302.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211009094302.png)
 
-| Directorio  | Contenido del directorio                                                                                                               |
-| ----------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| bin         | Archivos binarios, donde se almacenan los comandos del sistema, como cat, cp, mkdir.                                                  |
-| boot        | Contiene los archivos necesarios para el proceso de arranque, como el gestor de arranque grub2.                                        |
-| dev         | Directorio que contiene todos los archivos de dispositivos, como tarjetas de sonido, discos duros, unidades de CD/DVD.                  |
-| etc         | Directorio que contiene los archivos de configuración principales del sistema.                                                         |
-| home        | Directorio donde se almacenan los datos de los usuarios.                                                                               |
-| lib         | Biblioteca, donde se almacenan los archivos de biblioteca necesarios para los comandos en los directorios sbin y bin, para evitar duplicados.|
-| lib32/lib64 | Directorios que contienen bibliotecas de funciones binarias, compatibles con 32/64 bits.                                               |
+| Directorio  | Contenido del directorio                                                                                                                                                                            |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| bin         | Archivos binarios, donde se almacenan los comandos del sistema, como cat, cp, mkdir.                                                                                                                |
+| boot        | Contiene los archivos necesarios para el proceso de arranque, como el gestor de arranque grub2.                                                                                                     |
+| dev         | Directorio que contiene todos los archivos de dispositivos, como tarjetas de sonido, discos duros, unidades de CD/DVD.                                                                              |
+| etc         | Directorio que contiene los archivos de configuración principales del sistema.                                                                                                                      |
+| home        | Directorio donde se almacenan los datos de los usuarios.                                                                                                                                            |
+| lib         | Biblioteca, donde se almacenan los archivos de biblioteca necesarios para los comandos en los directorios sbin y bin, para evitar duplicados.                                                       |
+| lib32/lib64 | Directorios que contienen bibliotecas de funciones binarias, compatibles con 32/64 bits.                                                                                                            |
 | lost+found  | En sistemas EXT3/4, cuando el sistema se bloquea o se apaga inesperadamente, se generan algunos archivos fragmentados en este directorio. El comando fcsk los revisa y repara los archivos dañados. |
-| media       | Directorio utilizado para montar dispositivos como CD, DVD, disquetes, etc.                                                             |
-| mnt         | Directorio utilizado para montar dispositivos de almacenamiento temporalmente.                                                           |
-| opt         | Directorio donde se instalan aplicaciones de terceros.                                                                                  |
-| proc        | Directorio donde se almacena información del proceso y del kernel, no ocupa espacio en disco.                                           |
-| root        | Directorio de inicio del usuario root.                                                                                                  |
-| run         | Es un sistema de archivos temporal, donde se almacena información desde el inicio del sistema. Cuando se reinicia el sistema, los archivos de este directorio deben eliminarse o limpiarse. |
-| sbin        | Binarios del sistema, donde se almacenan los comandos que utiliza el usuario root, como el comando de formato mkfs.                     |
-| srv         | Directorio que contiene archivos de datos necesarios para algunos servicios de red.                                                     |
-| sys         | Al igual que el directorio proc, se utiliza para registrar información relacionada con la CPU y el hardware del sistema.                 |
-| tmp         | Directorio donde se almacenan los archivos temporales generados durante la ejecución de programas.                                       |
-| usr         | Directorio donde se almacenan los programas del sistema, similar a la carpeta programefiles en Windows.                                  |
-| var         | Directorio donde se almacenan los archivos que cambian con frecuencia, como los archivos de registro del sistema.                        |
+| media       | Directorio utilizado para montar dispositivos como CD, DVD, disquetes, etc.                                                                                                                         |
+| mnt         | Directorio utilizado para montar dispositivos de almacenamiento temporalmente.                                                                                                                      |
+| opt         | Directorio donde se instalan aplicaciones de terceros.                                                                                                                                              |
+| proc        | Directorio donde se almacena información del proceso y del kernel, no ocupa espacio en disco.                                                                                                       |
+| root        | Directorio de inicio del usuario root.                                                                                                                                                              |
+| run         | Es un sistema de archivos temporal, donde se almacena información desde el inicio del sistema. Cuando se reinicia el sistema, los archivos de este directorio deben eliminarse o limpiarse.         |
+| sbin        | Binarios del sistema, donde se almacenan los comandos que utiliza el usuario root, como el comando de formato mkfs.                                                                                 |
+| srv         | Directorio que contiene archivos de datos necesarios para algunos servicios de red.                                                                                                                 |
+| sys         | Al igual que el directorio proc, se utiliza para registrar información relacionada con la CPU y el hardware del sistema.                                                                            |
+| tmp         | Directorio donde se almacenan los archivos temporales generados durante la ejecución de programas.                                                                                                  |
+| usr         | Directorio donde se almacenan los programas del sistema, similar a la carpeta programefiles en Windows.                                                                                             |
+| var         | Directorio donde se almacenan los archivos que cambian con frecuencia, como los archivos de registro del sistema.                                                                                   |
 
 ## Tipos de archivos
 

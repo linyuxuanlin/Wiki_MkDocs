@@ -4,7 +4,7 @@
 
 محول الرقمي إلى تناظري (ADC) هو جهاز يحول تسلسل من البيانات الرقمية المدخلة إلى إشارات تناظرية.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011141644.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011141644.png)
 
 ## المعلمات الثابتة
 
@@ -18,7 +18,7 @@
 - خطأ عدم الخطية التفاضلي (DNE أو DNL)
 - خطأ عدم الخطية التكاملي (INE أو INL)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011144045.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011144045.png)
 
 ### الإخراج عند الصفر
 
@@ -28,7 +28,7 @@
 
 يُسمى نطاق الجهد الناتج عن DAC بين الحد الأدنى ($V_{ZS}$) والحد الأقصى ($V_{FS}$) من الإخراجات التناظرية بـ **نطاق الإخراج الكامل (FSR)**:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011142249.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011142249.png)
 
 ### حجم LSB
 
@@ -46,7 +46,7 @@ $$
 OffsetError=V_{ZS(Actual)}-V_{ZS(ideal)}
 $$
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011144415.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011144415.png)
 
 ### خطأ الزيادة
 
@@ -66,7 +66,7 @@ $$
 FSR_{Actual}=V_{FS(Actual)}-V_{ZS(Actual)}
 $$
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011144925.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011144925.png)
 
 ### خطأ عدم الخطية التفاضلي (DNL)
 
@@ -80,7 +80,7 @@ $$
 
 DNL هو مقياس لخطأ الخطية "الإشارة الصغيرة". يتم قياس DNL من خطوة واحدة إلى الأخرى، وليس من كل خطوة إلى القيمة المثالية.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011153556.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011153556.png)
 
 ### خطأ الخطية الغير متكامل (INL)
 
@@ -100,7 +100,7 @@ $$
 INL[i]=\sum_{n=1}^{n=i}DNL[n]
 $$
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011184739.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011184739.png)
 
 ## كيفية اختبار المعلمات الثابتة
 
@@ -108,21 +108,21 @@ $$
 
 إعداد نظام الاختبار لاختبار المعلمات الثابتة لـ DAC:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011185006.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011185006.png)
 
 مخطط تدفق إعداد الإشارة:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011185447.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011185447.png)
 
 ### مفهوم الاختبارات
 
 يتم سرد إجراء اختبار المعلمات الثابتة لـ DAC DUT أدناه.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011185739.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011185739.png)
 
 #### 1. قياس الجهد الناتج عن تطبيق الإدخالات الرقمية من الصفر إلى الحد الأقصى
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011185711.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011185711.png)
 
 #### 2. حساب DNL لكل رمز إدخال
 
@@ -144,8 +144,8 @@ $$
 
 ## المراجع والشكر
 
-- *أساسيات الاختبار باستخدام ATE*
-- *The-Fundamentals-of-Mixed-Signal-Testing_Brian-Lowe*
+- _أساسيات الاختبار باستخدام ATE_
+- _The-Fundamentals-of-Mixed-Signal-Testing_Brian-Lowe_
 
 > الأصلي: <https://wiki-power.com/>  
 > يتم حماية هذا المنشور باتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) ويجب إعادة إنتاجه مع الإشارة إلى المصدر.

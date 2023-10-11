@@ -1,6 +1,6 @@
 # Homelab - Anki Card-based Memory Aid Software
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202306191745527.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202306191745527.png)
 
 **Anki** is an open-source flashcard application that helps users easily and efficiently memorize various knowledge points, commonly used for vocabulary memorization. Its feature is the use of a memory retention curve, generating appropriate review plans based on learning progress, helping users fully utilize the brain's memory patterns to achieve optimal memory effects. Anki has high customization, allowing users to create their own study cards, including text, images, and even audio and video. Anki also supports multi-platform use.
 

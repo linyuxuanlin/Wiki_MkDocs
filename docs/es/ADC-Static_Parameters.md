@@ -4,7 +4,7 @@
 
 El Convertidor Analógico a Digital (ADC) es un dispositivo que convierte señales analógicas en una secuencia de datos digitales.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011141438.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011141438.png)
 
 Aunque la función de transferencia ideal del ADC debería ser una línea recta, en realidad es una escalera uniforme, donde el número de escalones corresponde al número de códigos de salida digitales. Dado que lo analógico es continuo y lo digital es discreto, se introducirá un error de cuantificación en el procedimiento.
 
@@ -37,7 +37,7 @@ Por ejemplo, para un convertidor de 3 bits, hay:
 - 7 transiciones
 - 6 pasos entre 7 transiciones
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008151344.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008151344.png)
 
 - **Voltaje de Transición de Rango Cero ($V_{ZST}$)**: Voltaje de la señal de entrada analógica cuando se registra la primera transición.
 - **Voltaje de Transición de Rango Completo ($V_{FST}$)**: Voltaje de la señal de entrada analógica cuando se registra la última transición.
@@ -47,7 +47,7 @@ Por ejemplo, para un convertidor de 3 bits, hay:
 
 **Error de Desplazamiento** (Error de Escala Cero) es la diferencia entre los puntos de desplazamiento ideal y real (inicial). Se mide a partir del punto medio del paso cero (ideal a real) para el ADC.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008154521.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008154521.png)
 
 Donde
 
@@ -59,7 +59,7 @@ $$
 
 **Error de Ganancia** es la diferencia entre los puntos de ganancia ideal y real en la función de transferencia (después de que el error de desplazamiento se ha corregido a cero). Se mide a partir del punto medio del paso completo para el ADC.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008155259.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008155259.png)
 
 Donde
 
@@ -71,7 +71,7 @@ $$
 
 **Error de No Linealidad Diferencial (DNL)** es la diferencia entre el ancho de paso real y el ancho de paso ideal (1 LSB). Es una medida del error de linealidad "pequeña señal" y se mide a partir de la diferencia en el voltaje de entrada analógico entre 2 transiciones adyacentes y el LSB promedio del dispositivo.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008160020.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008160020.png)
 
 Ecuaciones para describir DNL:
 
@@ -91,7 +91,7 @@ Si DNL excede un valor demasiado grande, uno o más códigos faltarán y nunca r
 
 El **Error de No Linealidad Integral (INL)** es el efecto acumulativo en cualquier entrada dada de todos los valores de no linealidad diferencial. Es una medida del error de linealidad "de gran señal". INL en cualquier punto a lo largo de la curva es la desviación de la línea de linealidad ideal.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008163705.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008163705.png)
 
 Las desviaciones se miden en los puntos de transición de un paso al siguiente para el ADC. INL es la desviación de los valores de la función de paso real a la función de línea recta ideal.
 
@@ -105,7 +105,7 @@ $$
 INL=[(\frac{BinaryCode}{2^{bits}-1})(V_{FS}-V_{ZS})+V_{offset}]-CodeCentor
 $$
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008163911.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008163911.png)
 
 ## Cómo probar parámetros estáticos
 
@@ -113,19 +113,19 @@ $$
 
 Configuración del sistema de prueba para pruebas de parámetros estáticos de ADC:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008184721.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008184721.png)
 
 Dado que la curva de transferencia de voltaje a código del ADC es una función de mapeo de muchos a uno:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008185819.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008185819.png)
 
 Prácticamente utilizamos el método de histograma de rampa lineal (medición de ancho de código). La rampa de entrada es lo suficientemente lenta como para dar un "número estadísticamente relevante de hits por código".
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008190154.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008190154.png)
 
 Diagrama de bloques de la configuración de la señal:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008190612.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008190612.png)
 
 ### Concepto de pruebas
 
@@ -135,21 +135,21 @@ El procedimiento para probar los parámetros estáticos de un ADC DUT se detalla
 
 La rampa de entrada va por encima y por debajo de ±Fs para asegurar que se cubran todos los códigos:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008193036.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008193036.png)
 
 #### 2. Tomar datos entre el inicio (min+1, por ejemplo, 0…01) y el final (max-1, por ejemplo, 1…10) de la rampa. Eso da un valor de datos de $2^n-2$ códigos
 
 La tensión aplicada debe ser más amplia que el rango de escala completa para cubrir todas las transiciones. Se muestran 16 pasos entre cada transición de código:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008194207.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008194207.png)
 
 para el ADC DUT ideal, 16 códigos de salida aparecen al mismo tiempo:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008194450.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008194450.png)
 
 Sin embargo, un dispositivo real tendrá una cuenta más de 16 veces para códigos más amplios y menos de 16 veces para códigos más estrechos (pero la suma del total de ocurrencias debe seguir siendo $2^{bits}$ veces de 16):
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008194813.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008194813.png)
 
 #### 3. Calcular el DNL para cada paso
 
@@ -159,11 +159,11 @@ $$
 
 Donde $Hits[i]$ representa el recuento real de códigos de salida y $\frac{\sum Hits[i]}{2^n-2}$ representa el recuento ideal de códigos de salida.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008234157.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008234157.png)
 
 Para un ejemplo de gráfico de histograma como se muestra a continuación:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008234921.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008234921.png)
 
 para DNL[1] (Código 001),
 
@@ -174,7 +174,7 @@ Por lo tanto, $DNL[1] (Código 001) = (14-16)/16 \ LSB => -0.125 \ LSB$.
 
 #### 4. Obtener el DNL máximo y mínimo
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221008235342.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008235342.png)
 
 #### 5. Calcular el INL para cada paso
 
@@ -192,7 +192,7 @@ $$
 
 Para un ejemplo de gráfico a continuación,
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221009201547.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221009201547.png)
 
 $$
 INL[1] = DNL[1] = -0.125 * LSB
@@ -209,7 +209,7 @@ $$
 
 #### 6. Obtener el INL máximo y mínimo
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221009201838.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221009201838.png)
 
 ## Referencias y Agradecimientos
 

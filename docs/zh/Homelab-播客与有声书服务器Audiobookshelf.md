@@ -1,6 +1,6 @@
 # Homelab - 播客与有声书服务器 Audiobookshelf
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230531204505.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230531204505.png)
 
 **Audiobookshelf** 是一款自托管的播客与有声书服务器，可以方便地搜索播客、自动检测更新并下载播客、自动归档整理。
 

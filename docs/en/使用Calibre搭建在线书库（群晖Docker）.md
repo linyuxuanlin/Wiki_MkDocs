@@ -2,7 +2,7 @@
 
 How to build an online book library using calibre-web (Docker) on a Synology NAS.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210429125418.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210429125418.png)
 
 Compared to the traditional method of using folders, book library management methods represented by open-source Calibre can provide richer features such as online reading, downloading, format conversion, email pushing, and removing duplicate books. Calibre-web is a Docker image based on Calibre, which allows us to easily deploy the book library on servers like Synology.
 
@@ -10,7 +10,7 @@ Compared to the traditional method of using folders, book library management met
 
 First, create a book library resource folder. Here, I directly created a shared folder named `book` in the root directory of the disk:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210429214028.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210429214028.png)
 
 Correspondingly, create a folder named `calibre-web` in the `docker` folder, specifically for storing the configuration files of the Docker image.
 
@@ -20,11 +20,11 @@ Open Synology's Docker suite, search for `johngong/calibre-web` in the registry,
 
 On the `Volume` page, add mapped folders, and the mounting paths are `/library` and `/config` respectively:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210429214908.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210429214908.png)
 
 On the `Port Settings` page, add port mapping, mainly mapping the internal `8083` port of the container. Here, I chose `5004`.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210429215121.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210429215121.png)
 
 Then, create and start the container.
 
@@ -34,7 +34,7 @@ Open the Synology internal IP:5004 to open the management interface. The default
 
 It should be noted that book upload function is not enabled by default. You need to click on `Admin` - `Edit Basic Configuration` - `Enable Upload` in order to enable book upload function.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210429215628.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210429215628.png)
 
 ## Enabling HTTPS
 

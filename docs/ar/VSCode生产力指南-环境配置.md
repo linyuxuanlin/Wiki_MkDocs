@@ -2,7 +2,7 @@
 
 —— Cómo crear una herramienta de productividad eficiente con VS Code.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200319135609.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200319135609.png)
 
 ## Antecedentes
 
@@ -24,11 +24,11 @@ Por lo general, elegimos descargar la versión **Estable**. Si no temes a los er
 
 Después de descargar e instalar el software, lo abrimos y lo primero que vemos es la página de inicio:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200318224855.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200318224855.png)
 
 ## Instalación de complementos
 
-Para reducir el tamaño, VS Code solo conserva algunas funciones básicas. Pero si quieres aumentar la eficiencia, estas funciones no son suficientes. 
+Para reducir el tamaño, VS Code solo conserva algunas funciones básicas. Pero si quieres aumentar la eficiencia, estas funciones no son suficientes.
 
 Afortunadamente, VS Code tiene una variedad de complementos de terceros que pueden ser realmente útiles según tus necesidades.
 
@@ -49,6 +49,7 @@ A continuación, se recomiendan algunos complementos útiles (puedes hacer clic 
 - [**Pangu-Markdown**](https://marketplace.visualstudio.com/items?itemName=xlthu.Pangu-Markdown): formatea el Markdown de manera más estándar (agrega espacios entre caracteres chinos e ingleses, reemplaza la puntuación estándar, etc.).
   - **Configuración**: habilita la opción de formatear automáticamente al guardar.
 - [**vscode-pandoc**](https://marketplace.visualstudio.com/items?itemName=DougFinke.vscode-pandoc): agrega soporte para Pandoc, que exporta Markdown a PDF/Word/HTML, etc.
+
   - **Configuración**: asegúrate de que [Pandoc](https://pandoc.org/installing.html) esté instalado.
 
 - [**Indenticator**](https://marketplace.visualstudio.com/items?itemName=SirTori.indenticator): Destaca la profundidad de la indentación del código.
@@ -81,7 +82,7 @@ A continuación, se recomiendan algunos complementos útiles (puedes hacer clic 
 
 Puedes seleccionar el tema que más te guste en `Archivo - Preferencias - Tema de color`. Por ejemplo, yo he seleccionado el tema `Monokai Dimmed`:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200319132727.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200319132727.png)
 
 Si no te gusta ninguno de los temas proporcionados por defecto, puedes buscar y descargar temas que te gusten en la tienda de extensiones con la palabra clave `theme`.
 
@@ -101,16 +102,16 @@ Después de descargar el archivo de fuente .ttf, instálalo, reinicia VS Code y 
 
 ## Atajos de teclado comunes
 
-|     Acción     |           Atajo           |
-| :------------: | :-----------------------: |
-|   Panel de comandos   | `F1` o `Ctrl + Shift + P` |
-|     Terminal     | <code>Ctrl + &#96;</code>  |
-|  Explorador de archivos  |     `Ctrl + Shift + E`     |
-|   Búsqueda global   |     `Ctrl + Shift + F`     |
-| Control de código fuente |     `Ctrl + Shift + G`     |
-|     Ejecutar     |     `Ctrl + Shift + D`     |
-|   Administrador de extensiones   |     `Ctrl + Shift + X`     |
-| Cambiar rápidamente entre archivos |         `Ctrl + D`         |
+|               Acción               |           Atajo           |
+| :--------------------------------: | :-----------------------: |
+|         Panel de comandos          | `F1` o `Ctrl + Shift + P` |
+|              Terminal              | <code>Ctrl + &#96;</code> |
+|       Explorador de archivos       |    `Ctrl + Shift + E`     |
+|          Búsqueda global           |    `Ctrl + Shift + F`     |
+|      Control de código fuente      |    `Ctrl + Shift + G`     |
+|              Ejecutar              |    `Ctrl + Shift + D`     |
+|    Administrador de extensiones    |    `Ctrl + Shift + X`     |
+| Cambiar rápidamente entre archivos |        `Ctrl + D`         |
 
 ## Control de código fuente
 

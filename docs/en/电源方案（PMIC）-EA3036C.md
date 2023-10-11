@@ -22,26 +22,26 @@ Project repository: [**Collection_of_Power_Module_Design/PMIC/EA3036C**](https:/
 
 ## Typical Application Circuit
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220417095917.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220417095917.png)
 
 ## Internal Functional Block Diagram
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220417001936.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220417001936.png)
 
 ## Pin Definitions
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220416234110.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220416234110.png)
 
-| Pin Name | Pin Description                                             |
-| -------- | ------------------------------------------------------------ |
-| VCC      | Power input for internal control circuit                     |
-| VINx     | Power input for channel x, decoupled with 10uF MLCC capacitor |
-| LXx      | Switching output of internal MOS tube for channel x, can be connected to low-pass filter for more stable voltage output |
-| FBx      | Feedback pin for channel x, connected to voltage output through voltage divider circuit |
-| ENx      | Enable pin, cannot be left floating                          |
-| GNDx     | Ground for channel x                                        |
-| AGND     | Analog ground                                               |
-| Bottom pad | Used for heat dissipation, needs to be grounded              |
+| Pin Name   | Pin Description                                                                                                         |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------- |
+| VCC        | Power input for internal control circuit                                                                                |
+| VINx       | Power input for channel x, decoupled with 10uF MLCC capacitor                                                           |
+| LXx        | Switching output of internal MOS tube for channel x, can be connected to low-pass filter for more stable voltage output |
+| FBx        | Feedback pin for channel x, connected to voltage output through voltage divider circuit                                 |
+| ENx        | Enable pin, cannot be left floating                                                                                     |
+| GNDx       | Ground for channel x                                                                                                    |
+| AGND       | Analog ground                                                                                                           |
+| Bottom pad | Used for heat dissipation, needs to be grounded                                                                         |
 
 ## Feature Description
 

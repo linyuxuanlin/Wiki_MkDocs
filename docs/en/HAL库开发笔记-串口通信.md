@@ -8,16 +8,16 @@ For the basic principle of serial communication, please refer to the article [**
 
 ## Serial Communication Experiment
 
-Before proceeding to the next experiment, it is necessary to configure various parameters such as serial download and clock in CubeMX. 
+Before proceeding to the next experiment, it is necessary to configure various parameters such as serial download and clock in CubeMX.
 For specific steps, please refer to the method in the article [**HAL Library Development Notes - Environment Configuration**](https://wiki-power.com/en/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE).
 
 ### Configuring Serial Communication in CubeMX
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210207100329.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210207100329.png)
 
 According to the schematic, the serial port we use for communication experiments is `USART1`, which corresponds to the `PA9` and `PA10` pins. Therefore, we first need to configure these two pins in CubeMX as the send and receive functions of `USART1`, and then click on the USART1 tab on the left, set the mode to asynchronous, and modify the baud rate and other parameters below:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210207100941.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210207100941.png)
 
 The parameter details are as follows:
 
@@ -30,7 +30,7 @@ The parameter details are as follows:
 
 Finally, enable the USART1 serial port interrupt in the NVIC tab, as shown in the figure:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210207104641.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210207104641.png)
 
 ### Configuring the Serial Port in the Code
 
@@ -100,7 +100,7 @@ After the program is successfully burned, we open the serial assistant and confi
 
 After connecting to the serial port, the contents of `aTxBuffer` will be printed first, and then the received `aRxBuffer` will be printed back. As shown in the figure:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210403232628.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210403232628.png)
 
 ## References and Acknowledgments
 

@@ -2,7 +2,7 @@
 
 ## Hardware Resources
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211008090724.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211008090724.png)
 
 - USB Type-A: used as a USB host mode
 - USB Micro: used to power the board and as a slave

@@ -4,7 +4,7 @@
 
 Power supply current (IDD) indicates the current flows from Drain to Drain in a CMOS circuit (named ICC in TTL circuit, means Collector to Collector). IDD can be equivalent as:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220910234238.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220910234238.png)
 
 ## Static IDD Test
 
@@ -14,7 +14,7 @@ Static IDD is a measurement of current from DUT's VDD pin, when the DUT is in st
 
 Static IDD test is performed with applying a voltage of VDDmax and measuring the current value, while the DUT is preconditioned to its lowest current consumption logic state.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220911201659.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220911201659.png)
 
 1. Apply VDDmax to VDD pin (with current clamp).
 2. Precondition DUT to its lowest current consumption logic state.
@@ -28,7 +28,7 @@ Dynamic IDD is a measurement of current from DUT's VDD pin, when the DUT is cons
 
 ### Test Method
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220911201603.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220911201603.png)
 
 Static IDD test is performed with applying a voltage of VDDmax and measuring the current value, while the DUT is preconditioned to a continuously working state.
 
@@ -44,7 +44,7 @@ Quiescent IDD is a measurement of IDD in the quiescent states (the circuit is no
 
 ### Test Method
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220911213042.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220911213042.png)
 
 1. Apply VDDmax to VDD pin (with current clamp).
 2. Precondition DUT to a certain working state (toggle certain function part to on/off such as Bluetooth and Wi-Fi).

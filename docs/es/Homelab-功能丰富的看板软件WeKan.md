@@ -1,6 +1,6 @@
 # Homelab - Software de tablero rico en funciones WeKan
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230508175842.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230508175842.png)
 
 **WeKan** es un software de tablero de código abierto flexible, fácil de usar y eficiente que puede ayudar a los equipos a colaborar en la gestión de tareas, proyectos y flujos de trabajo. Proporciona una interfaz de usuario simple pero potente que permite a los usuarios crear fácilmente múltiples tableros, agregar listas y tarjetas a cada uno y asignar tareas a diferentes miembros para una mejor gestión del proyecto y seguimiento del progreso.
 
@@ -83,16 +83,17 @@ DB_VERSION=6
 ```
 
 # wekan
+
 APP_VERSION=latest
 APP_PORT=xxxx # Puerto de acceso personalizado, elige uno que no esté ocupado
 
-```
+````
 
 Luego, inicializamos la estructura de directorios. Cambiamos al directorio personalizado `STACK_DIR` (por ejemplo, `./wekan`) y ejecutamos el comando para crear las carpetas:
 
 ```shell
 mkdir -vp {wekan-files,wekan-db,wekan-db-dump}
-```
+````
 
 Finalmente, en el directorio al mismo nivel que `compose.yaml`, ejecutamos el comando `docker compose up -d` para iniciar los contenedores de la orquestación.
 

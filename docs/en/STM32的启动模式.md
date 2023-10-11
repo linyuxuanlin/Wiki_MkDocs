@@ -35,7 +35,7 @@ There are two uses for booting from internal SRAM:
 
 In the above table, "High" and "Low" indicate connection to a 10K resistor pull-up/pull-down, not directly to VCC/GND.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200603134417.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200603134417.jpg)
 
 ## Reference and Acknowledgement
 

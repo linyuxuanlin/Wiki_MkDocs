@@ -74,11 +74,11 @@ allegro/ 
 
 DRC settings:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210810134720.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210810134720.png)
 
 Automatically rename reference designators when copying components:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210810134747.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210810134747.png)
 
 Snap characters to grid when moving them:
 

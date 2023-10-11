@@ -1,6 +1,6 @@
 # Homelab - أداة مذكرات ملاحظات الحطام memos
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202304111548420.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304111548420.png)
 
 **memos** هي أداة مذكرات ملاحظات مفتوحة المصدر وذاتية الاستضافة. تدعم بناء الجمل Markdown والمشاركة العامة وتضمين iframe وإدارة العلامات وعرض التقويم ونقل البيانات والنسخ الاحتياطي البسيط.
 

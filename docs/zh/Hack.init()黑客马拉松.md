@@ -2,7 +2,7 @@
 
 —— Wight · 基于云平台的去线缆化照明系统。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/wight.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/wight.jpg)
 
 项目仓库：[**linyuxuanlin / Wight**](https://github.com/linyuxuanlin/Wight)
 

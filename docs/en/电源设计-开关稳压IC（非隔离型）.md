@@ -34,7 +34,7 @@ From the perspective of EMI, it is recommended to cover copper; from the perspec
 
 ## Judging Whether the Inductor is Saturated by Experiment
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210723133831.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210723133831.png)
 
 In addition, it can also be judged from abnormal temperature rise, whistling, and other situations.
 
@@ -42,7 +42,7 @@ In addition, it can also be judged from abnormal temperature rise, whistling, an
 
 - **Input/Output Capacitance**: It needs to meet the voltage resistance (1.5-2 times the input voltage) and input ripple requirements.
 - **BST Capacitance**: Bootstrap startup capacitance, used to raise the voltage to turn on the upper tube inside the chip. Generally, it is based on the recommended value in the datasheet (generally 0.1-1uF), and the voltage resistance is generally higher than the input voltage.
-- **Inductor**: The required inductance is different for different output voltages; pay attention to the temperature rise and saturation current to meet the margin requirements, generally 1.3 times the maximum current (or the inductor saturation current must be greater than the maximum output current + 0.5*inductor ripple current).
+- **Inductor**: The required inductance is different for different output voltages; pay attention to the temperature rise and saturation current to meet the margin requirements, generally 1.3 times the maximum current (or the inductor saturation current must be greater than the maximum output current + 0.5\*inductor ripple current).
 - **Feedback Capacitance**: Take the value according to the datasheet requirements. Different manufacturers' chips have different values, and different output voltages also have different requirements.
 - **Feedback Resistor and EN Divider Resistor**: The value should be taken according to the specification, and the accuracy should be selected as 1%.
 

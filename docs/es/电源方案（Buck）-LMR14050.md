@@ -33,11 +33,11 @@ Vista previa en línea del proyecto:
 
 ## Diagrama de funciones internas
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220111090855.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111090855.png)
 
 ## Definición de pines
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220110170233.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220110170233.png)
 
 - BOOT: Capacitor de arranque para el MOSFET de alta lateral. Conecte un capacitor de 0.1uF entre BOOT y SW.
 - VIN: Entrada de alimentación, conectada a través de un capacitor de desacoplamiento $C_{IN}$.
@@ -51,13 +51,11 @@ Vista previa en línea del proyecto:
 
 ### Principio de regulación
 
-
-
 La tensión de salida del LMR14050 se ajusta abriendo el N-MOS de alta lateral y controlando el tiempo de conducción. Durante el tiempo de conducción del N-MOS de alta lateral, la tensión en el pin SW oscila a aproximadamente $V_{IN}$ y la corriente de la bobina L aumenta con una pendiente lineal ($V_{IN}$ - $V_{OUT}$) / L; cuando se apaga el N-MOS de alta lateral, la corriente de la bobina L se descarga con una pendiente de $V_{OUT}$ / L a través del diodo de recuperación. Los parámetros de control del regulador están determinados por el ciclo de trabajo $D = t_{ON} / T_{SW}$, donde $t_{ON}$ es el tiempo de conducción del interruptor superior y $T_{SW}$ es el período de conmutación. El lazo de control del regulador ajusta el ciclo de trabajo D para mantener una tensión de salida constante. En un convertidor reductor ideal, las pérdidas se ignoran, D es proporcional a la tensión de salida y es inversamente proporcional a la tensión de entrada: $D = V_{OUT} / V_{IN}$.
 
 La relación entre la tensión SW y la corriente de la bobina L en el modo de conducción continua (CCM) es la siguiente:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220111095020.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111095020.png)
 
 ### Modo de suspensión
 
@@ -71,7 +69,7 @@ El LMR14050 integra un convertidor de voltaje de arranque automático. Conectand
 
 El LMR14050 proporciona una tensión de referencia interna de 0,75 V. La tensión de salida se ajusta mediante un divisor de resistencia conectado al pin FB, que se compara y ajusta internamente. Se recomienda utilizar resistencias de desviación del 1% o menos y un coeficiente de temperatura de 100 ppm o menos para el divisor de resistencia. Seleccione la resistencia inferior $R_{FBB}$ (valor de referencia de 10-100 kΩ) en función de la corriente de división de tensión deseada y calcule la resistencia superior $R_{FBT}$ mediante la fórmula. Se recomienda utilizar valores de resistencia más altos para mejorar la eficiencia en condiciones de carga ligera, pero si son demasiado altos, el regulador será más susceptible al ruido y los errores de voltaje de entrada de la corriente de entrada de FB.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220111105814.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111105814.png)
 
 $$
 R_{FBT}=\frac{V_{OUT}-0.75}{0.75}R_{FBB}
@@ -83,7 +81,7 @@ Cuando $V_{IN}$ es superior a 3,7 V y EN es superior al umbral de 1,2 V, el LMR1
 
 Puede ajustar los umbrales de voltaje de inicio y apagado ajustando las resistencias de pull-up y pull-down externas de EN:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220111111613.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111111613.png)
 
 $R_{ENT}$ y $R_{ENB}$ se calculan según las siguientes fórmulas:
 
@@ -114,13 +112,13 @@ $$
 R_T(kΩ)=32537*f_{SW}^{-1.045}(kHz)
 $$
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220111135021.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111135021.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220111135034.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111135034.png)
 
 La acción de conmutación del LMR14050 también se puede sincronizar con una señal de entrada de reloj externa (250kHz-2.3MHz):
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220111141247.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111141247.png)
 
 El oscilador interno se sincroniza con el flanco descendente del reloj externo. Se recomienda que el nivel alto del reloj externo no sea inferior a 1.7V, el nivel bajo no sea superior a 0.5V y el ancho de pulso mínimo no sea inferior a 30ns. Si se conecta una fuente de señal de baja impedancia, la resistencia de programación de frecuencia $R_T$ debe conectarse en paralelo con una resistencia de acoplamiento de CA $C_{COUP}$ (puede ser un condensador cerámico de 10pF) y una resistencia terminal $R_{TERM}$ (por ejemplo, 50Ω) para lograr una mejor coincidencia de impedancia.
 
@@ -138,7 +136,7 @@ El LMR14050 tiene una función de protección de apagado térmico interna. Cuand
 
 ## Diseño de referencia
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220111143510.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111143510.png)
 
 Parámetros de diseño:
 
@@ -217,7 +215,7 @@ En el diseño de referencia, la ondulación de salida objetivo es de 50 mV. Supo
 
 ### Selección del diodo Schottky
 
-La tensión de ruptura nominal del diodo debe ser al menos un 25% mayor que la tensión de entrada máxima. Para obtener la mejor confiabilidad, la corriente nominal del diodo debe ser igual a la corriente máxima de salida del regulador. Cuando la tensión de entrada es mucho mayor que la tensión de salida, la corriente promedio del diodo será más baja, y en este caso se puede utilizar un diodo con una corriente nominal promedio más baja, aproximadamente $(1-D) * I_{OUT}$, pero la corriente nominal de pico debe ser mayor que la corriente máxima de carga. Por lo general, se recomienda comenzar con una corriente nominal de 6-7 A. 
+La tensión de ruptura nominal del diodo debe ser al menos un 25% mayor que la tensión de entrada máxima. Para obtener la mejor confiabilidad, la corriente nominal del diodo debe ser igual a la corriente máxima de salida del regulador. Cuando la tensión de entrada es mucho mayor que la tensión de salida, la corriente promedio del diodo será más baja, y en este caso se puede utilizar un diodo con una corriente nominal promedio más baja, aproximadamente $(1-D) * I_{OUT}$, pero la corriente nominal de pico debe ser mayor que la corriente máxima de carga. Por lo general, se recomienda comenzar con una corriente nominal de 6-7 A.
 
 ### Selección del capacitor de entrada
 
@@ -235,7 +233,7 @@ Según la fórmula anterior, si se establece un tiempo de arranque suave de 5ms,
 
 ## Referencia de diseño de Layout
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220110183248.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220110183248.png)
 
 Sugerencias de diseño de Layout para reducir la EMI:
 

@@ -1,6 +1,6 @@
 # أساسيات Docker
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210116153041.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210116153041.png)
 
 من المعروف أن تكوين البيئة هو واحد من أكثر الأشياء المزعجة في تطوير البرمجيات. يمكن أن تؤدي اختلافات بيئة التشغيل إلى نتائج غير متوقعة ، ويمكن تجنب هذه المشكلة باستخدام Docker.
 
@@ -39,7 +39,7 @@ sudo sh ./get-docker.sh --dry-run
 
 نظرًا لأن Docker يعمل ويعتمد على بيئة Linux ، فإنه لا يتسبب في أي فقد في الكفاءة. ومع ذلك ، إذا كنت ترغب في نشر Docker على أنظمة أخرى ، فيجب عليك تثبيت بيئة Linux افتراضية أولاً.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230708005714.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230708005714.png)
 
 للحصول على طريقة تثبيت Docker على Windows ، يرجى الرجوع إلى الوثائق الرسمية [**Install Docker Desktop on Windows**](https://docs.docker.com/desktop/install/windows-install/).
 

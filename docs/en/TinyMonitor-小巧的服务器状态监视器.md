@@ -1,6 +1,6 @@
 # TinyMonitor - A Compact Server Status Monitor
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202305261716469.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261716469.jpg)
 
 TinyMonitor is a compact and minimalist server status monitoring terminal. It consists of only an ESP32 controller and an OLED display screen, which can display real-time status parameters of the server for easy observation and debugging.
 
@@ -8,15 +8,15 @@ TinyMonitor is a compact and minimalist server status monitoring terminal. It co
 
 The hardware materials used in this project are very simple, a Beetle ESP32-C3 with built-in Wi-Fi and Bluetooth, and a 128x64 OLED screen.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202305261541993.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261541993.png)
 
 The pin definitions of Beetle ESP32-C3 are as follows.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202305261545236.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261545236.png)
 
 Because the OLED screen can be driven by software I2C (i.e. custom I2C pins), I defined the `0`/`1` pins of Beetle ESP32-C3 as `SCL`/`SDA` functions. In this way, the wiring is very simple, just solder the 4 pins together.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202305261546367.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261546367.png)
 
 Note: Before burning the program to Beetle ESP32-C3, you need to add the ESP32 package to recognize the board model normally. See its [**Wiki page**](https://wiki.dfrobot.com.cn/_SKU_DFR0868_Beetle_ESP32_C3) for details.
 
@@ -119,7 +119,7 @@ After starting the `mosquitto` service normally, we can use [**MQTTBox**](https:
 
 After installing the software, click `Create MQTT Client` to create a new connection and fill in the relevant parameters according to the following figure:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202305261456592.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261456592.png)
 
 Among them, `HOST` is the address of the server where the MQTT service is located (for example, the address of my server in the local area network is `192.168.1.2`); the username and password need to correspond to the values set when configuring Mosquitto in the previous section.
 
@@ -156,7 +156,7 @@ while True:
 
 After running successfully, we can click `Add subscriber` on the top status bar of MQTTBox to subscribe to these three topics, for example:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202305261513642.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261513642.png)
 
 If everything is normal, you should be able to see the constantly returned server status information in MQTTBox.
 
@@ -200,66 +200,66 @@ PubSubClient mqttClient(wifiClient);
 
 // MQTT callback function
 void mqttCallback(char* topic, byte* payload, unsigned int length) {
-  if (strcmp(topic, MQTT_TOPIC_CPU) == 0) {
-    // Record CPU usage
-    for (int i = 0; i < length; i++)
-      msg_cpu_usage[i] = (char)payload[i];
-  } else if (strcmp(topic, MQTT_TOPIC_MEM) == 0) {
-    // Record memory usage
-    for (int i = 0; i < length; i++)
-      msg_mem_usage[i] = (char)payload[i];
-  } else if (strcmp(topic, MQTT_TOPIC_DISK) == 0) {
-    // Record disk usage
-    for (int i = 0; i < length; i++)
-      msg_disk_usage[i] = (char)payload[i];
-  }
+if (strcmp(topic, MQTT_TOPIC_CPU) == 0) {
+// Record CPU usage
+for (int i = 0; i < length; i++)
+msg_cpu_usage[i] = (char)payload[i];
+} else if (strcmp(topic, MQTT_TOPIC_MEM) == 0) {
+// Record memory usage
+for (int i = 0; i < length; i++)
+msg_mem_usage[i] = (char)payload[i];
+} else if (strcmp(topic, MQTT_TOPIC_DISK) == 0) {
+// Record disk usage
+for (int i = 0; i < length; i++)
+msg_disk_usage[i] = (char)payload[i];
+}
 }
 
 void setup() {
-  u8g2.begin();  // Initialize OLED screen
-  Wire.begin();  // Start I2C transmission
+u8g2.begin(); // Initialize OLED screen
+Wire.begin(); // Start I2C transmission
 
-  // Connect to WIFI
-  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(1000);
-  }
+// Connect to WIFI
+WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+while (WiFi.status() != WL_CONNECTED) {
+delay(1000);
+}
 
-  // Connect to MQTT broker server
-  mqttClient.setServer(MQTT_BROKER, MQTT_PORT);
-  mqttClient.setCallback(mqttCallback);
-  if (mqttClient.connect("ESP32", MQTT_USERNAME, MQTT_PASSWORD)) {
-    mqttClient.subscribe(MQTT_TOPIC_CPU);
-    mqttClient.subscribe(MQTT_TOPIC_MEM);
-    mqttClient.subscribe(MQTT_TOPIC_DISK);
-  }
+// Connect to MQTT broker server
+mqttClient.setServer(MQTT_BROKER, MQTT_PORT);
+mqttClient.setCallback(mqttCallback);
+if (mqttClient.connect("ESP32", MQTT_USERNAME, MQTT_PASSWORD)) {
+mqttClient.subscribe(MQTT_TOPIC_CPU);
+mqttClient.subscribe(MQTT_TOPIC_MEM);
+mqttClient.subscribe(MQTT_TOPIC_DISK);
+}
 }
 
 void loop() {
-  mqttClient.loop();  // Handle MQTT messages
-  u8g2.firstPage();
-  do {
-    u8g2.setFont(u8g2_font_9x15_tf);
+mqttClient.loop(); // Handle MQTT messages
+u8g2.firstPage();
+do {
+u8g2.setFont(u8g2_font_9x15_tf);
 
 // Display CPU usage
 u8g2.setCursor(0, 12);
 u8g2.print("CPU: ");
 for (int i = 0; i < 9; i++)
-  u8g2.print(msg_cpu_usage[i]);
+u8g2.print(msg_cpu_usage[i]);
 u8g2.print(" %");
 
 // Display memory usage
 u8g2.setCursor(0, 35);
 u8g2.print("Mem: ");
 for (int i = 0; i < 9; i++)
-  u8g2.print(msg_mem_usage[i]);
+u8g2.print(msg_mem_usage[i]);
 u8g2.print(" %");
 
 // Display disk usage
 u8g2.setCursor(0, 58);
 u8g2.print("Disk: ");
 for (int i = 0; i < 9; i++)
-  u8g2.print(msg_disk_usage[i]);
+u8g2.print(msg_disk_usage[i]);
 u8g2.print(" %");
 
 } while (u8g2.nextPage());
@@ -278,7 +278,7 @@ The following ideas are waiting to be implemented:
 
 Attachment: Photo of Beetle ESP32-C3 and Seeed XIAO ESP32C3.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202305261719170.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261719170.jpg)
 
 ## References and Acknowledgments
 

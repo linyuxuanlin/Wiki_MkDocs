@@ -8,7 +8,7 @@ Open `Control Panel` - `Login Portal` - `Advanced` - `Reverse Proxy Server`.
 
 For example, we add a reverse proxy service named `bitwarden`. Fill in the configuration according to the following figure:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210503213004.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210503213004.png)
 
 - `Source`
   - `Protocol`: Select `HTTPS`

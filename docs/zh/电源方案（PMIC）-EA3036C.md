@@ -22,15 +22,15 @@ EA3036C 是一款 3 通道 PMIC，适用于由锂电池或直流 5V 供电的应
 
 ## 典型应用电路
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220417095917.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220417095917.png)
 
 ## 内部功能框图
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220417001936.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220417001936.png)
 
 ## 引脚定义
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220416234110.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220416234110.png)
 
 | 引脚名称 | 引脚描述                                                   |
 | -------- | ---------------------------------------------------------- |
@@ -55,7 +55,7 @@ EA3036C 是一款专为 IPC 应用设计的电源管理 IC，包含三路 1A 同
 
 如果需要设定每路 Buck 的开启时间，可通过使用如下电路进行编程：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220417100845.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220417100845.png)
 
 ### 180° 相位偏移架构
 
@@ -90,7 +90,7 @@ $$
 V_{OUTx}=0.6*\frac{R_1}{R_2}+0.6V
 $$
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220417230210.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220417230210.png)
 
 如果需要输出常用的电压值，则可参考下表配置分压电阻（都需要选用 1% 精度的）：
 

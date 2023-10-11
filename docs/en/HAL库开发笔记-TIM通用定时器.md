@@ -49,7 +49,7 @@ This experiment uses a general-purpose timer to output a 1 kHz, 50% duty cycle P
 
 First, we open the Clock Configuration page and find the clock frequency of APB2 Timer clocks (180 MHz) since the general-purpose timer is mounted on the high-speed APB2 bus:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210627133951.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210627133951.png)
 
 Next, we find TIM8 in the Timer section of the sidebar and set Channel 1 to PWM Generation (PWM Generation CH1). To generate a 1 kHz frequency PWM square wave, we need to configure the following parameters:
 
@@ -58,7 +58,7 @@ Next, we find TIM8 in the Timer section of the sidebar and set Channel 1 to PWM 
 - **Counter Period**: 1000-1
 - **Auto-reload preload**: Enable (automatically reloads the initial value when overflowing)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210627153422.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210627153422.png)
 
 Since the clock source used here is 180 MHz, we set the prescaler to 180-1 = 179, resulting in a frequency of 1 MHz after division. We set the counter period to 1000-1 = 9999, resulting in a frequency of 1 kHz.
 

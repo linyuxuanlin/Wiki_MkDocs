@@ -1,6 +1,6 @@
 # Cómo escribir un currículum vitae en Markdown
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210318220041.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210318220041.png)
 
 Escriba un currículum vitae en Markdown que se pueda previsualizar en línea y exportar en formato PDF.
 

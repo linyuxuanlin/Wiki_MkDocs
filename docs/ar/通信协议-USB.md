@@ -2,42 +2,42 @@
 
 ## Versiones de USB
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211129094423.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211129094423.png)
 
 ## Interfaz mecánica de USB
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211129094855.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211129094855.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211129094944.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211129094944.png)
 
 Definición de la interfaz - USB estándar:
 
-| Pin  | Función               |
-| ---- | ---------------------|
-| 1    | VBUS (4.75-5.25 V)    |
-| 2    | D-                    |
-| 3    | D+                    |
-| 4    | GND                   |
+| Pin | Función            |
+| --- | ------------------ |
+| 1   | VBUS (4.75-5.25 V) |
+| 2   | D-                 |
+| 3   | D+                 |
+| 4   | GND                |
 
 Definición de la interfaz - Mini USB:
 
-| Pin  | Función               | Color |
-| ---- | ---------------------| ----- |
-| 1    | VBUS (4.75-5.25 V)    | Rojo  |
-| 2    | D-                    | Blanco|
-| 3    | D+                    | Verde |
-| 4    | ID                    |       |
-| 5    | GND                   | Negro |
+| Pin | Función            | Color  |
+| --- | ------------------ | ------ |
+| 1   | VBUS (4.75-5.25 V) | Rojo   |
+| 2   | D-                 | Blanco |
+| 3   | D+                 | Verde  |
+| 4   | ID                 |        |
+| 5   | GND                | Negro  |
 
 ## Compatibilidad entre conectores USB y versiones
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211129094829.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211129094829.png)
 
 ---
 
 ## USB Tipo-C
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220520105345.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220520105345.png)
 
 ### Tipos de puertos
 
@@ -58,55 +58,55 @@ El Tipo-C tiene cabezales macho y hembra, y la mayoría de los pines están dist
 
 Conector Tipo-C:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220520134239.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220520134239.png)
 
 Cabezal Tipo-C:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220520134304.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220520134304.png)
 
 Diagrama de conexión (función completa):
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220520140019.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220520140019.png)
 
 Definición de pines:
 
-| Pin  | Nombre | Función           | Detalles                                          |
-| ---- | ------ | ----------------- | ------------------------------------------------- |
-| A1   | GND    | Fuente de poder   | Soporta un mínimo de 60W (en combinación con VBUS) |
-| A2   | TX1+   | USB3.1 o modo de reserva | Forma un par diferencial de 10 Gbps con TX1- |
-| A3   | TX1-   | USB3.1 o modo de reserva | Forma un par diferencial de 10 Gbps con TX1+ |
-| A4   | VBUS   | Fuente de poder   | Soporta un mínimo de 60W (en combinación con VBUS) |
-| A5   | CC1    | CC o VCONN       | Utilizado para detección de dirección, detección de capacidad de corriente y comunicación BMC USB2.0 |
-| A6   | D+     | USB2.0           | -                                                 |
-| A7   | D-     | USB2.0           | -                                                 |
-| A8   | SBU1   | Modo de reserva  | Señal de banda lateral de baja velocidad, solo para uso en modo de reserva |
-| A9   | VBUS   | Fuente de poder   | Soporta un mínimo de 60W (en combinación con VBUS) |
-| A10  | RX2-   | USB3.1 o modo de reserva | Forma un par diferencial de 10 Gbps con RX2+ |
-| A11  | RX2+   | USB3.1 o modo de reserva | Forma un par diferencial de 10 Gbps con RX2- |
-| A12  | GND    | Fuente de poder   | Soporta un mínimo de 60W (en combinación con VBUS) |
-| B1   | GND    | Fuente de poder   | Soporta un mínimo de 60W (en combinación con VBUS) |
-| B2   | TX2+   | USB3.1 o modo de reserva | Forma un par diferencial de 10 Gbps con TX2- |
-| B3   | TX2-   | USB3.1 o modo de reserva | Forma un par diferencial de 10 Gbps con TX2+ |
-| B4   | VBUS   | Fuente de poder   | Soporta un mínimo de 60W (en combinación con VBUS) |
-| B5   | CC2    | CC o VCONN       | Utilizado para detección de dirección, detección de capacidad de corriente y comunicación BMC USB2.0 |
-| B6   | D+     | USB2.0           | -                                                 |
-| B7   | D-     | USB2.0           | -                                                 |
-| B8   | SBU2   | Modo de reserva  | Señal de banda lateral de baja velocidad, solo para uso en modo de reserva |
-| B9   | VBUS   | Fuente de poder   | Soporta un mínimo de 60W |
-| B10  | RX1-   | USB3.1 o modo de reserva | Forma un par diferencial de 10 Gbps con RX1+ |
-| B11  | RX1+   | USB3.1 o modo de reserva | Forma un par diferencial de 10 Gbps con RX1- |
-| B12  | GND    | Fuente de poder   | Soporta un mínimo de 60W |
+| Pin | Nombre | Función                  | Detalles                                                                                             |
+| --- | ------ | ------------------------ | ---------------------------------------------------------------------------------------------------- |
+| A1  | GND    | Fuente de poder          | Soporta un mínimo de 60W (en combinación con VBUS)                                                   |
+| A2  | TX1+   | USB3.1 o modo de reserva | Forma un par diferencial de 10 Gbps con TX1-                                                         |
+| A3  | TX1-   | USB3.1 o modo de reserva | Forma un par diferencial de 10 Gbps con TX1+                                                         |
+| A4  | VBUS   | Fuente de poder          | Soporta un mínimo de 60W (en combinación con VBUS)                                                   |
+| A5  | CC1    | CC o VCONN               | Utilizado para detección de dirección, detección de capacidad de corriente y comunicación BMC USB2.0 |
+| A6  | D+     | USB2.0                   | -                                                                                                    |
+| A7  | D-     | USB2.0                   | -                                                                                                    |
+| A8  | SBU1   | Modo de reserva          | Señal de banda lateral de baja velocidad, solo para uso en modo de reserva                           |
+| A9  | VBUS   | Fuente de poder          | Soporta un mínimo de 60W (en combinación con VBUS)                                                   |
+| A10 | RX2-   | USB3.1 o modo de reserva | Forma un par diferencial de 10 Gbps con RX2+                                                         |
+| A11 | RX2+   | USB3.1 o modo de reserva | Forma un par diferencial de 10 Gbps con RX2-                                                         |
+| A12 | GND    | Fuente de poder          | Soporta un mínimo de 60W (en combinación con VBUS)                                                   |
+| B1  | GND    | Fuente de poder          | Soporta un mínimo de 60W (en combinación con VBUS)                                                   |
+| B2  | TX2+   | USB3.1 o modo de reserva | Forma un par diferencial de 10 Gbps con TX2-                                                         |
+| B3  | TX2-   | USB3.1 o modo de reserva | Forma un par diferencial de 10 Gbps con TX2+                                                         |
+| B4  | VBUS   | Fuente de poder          | Soporta un mínimo de 60W (en combinación con VBUS)                                                   |
+| B5  | CC2    | CC o VCONN               | Utilizado para detección de dirección, detección de capacidad de corriente y comunicación BMC USB2.0 |
+| B6  | D+     | USB2.0                   | -                                                                                                    |
+| B7  | D-     | USB2.0                   | -                                                                                                    |
+| B8  | SBU2   | Modo de reserva          | Señal de banda lateral de baja velocidad, solo para uso en modo de reserva                           |
+| B9  | VBUS   | Fuente de poder          | Soporta un mínimo de 60W                                                                             |
+| B10 | RX1-   | USB3.1 o modo de reserva | Forma un par diferencial de 10 Gbps con RX1+                                                         |
+| B11 | RX1+   | USB3.1 o modo de reserva | Forma un par diferencial de 10 Gbps con RX1-                                                         |
+| B12 | GND    | Fuente de poder          | Soporta un mínimo de 60W                                                                             |
 
 Acuerdo de suministro de energía:
 
-| Modo                      | Voltaje nominal | Corriente máxima |
-| ------------------------- | -------- | -------- |
-| USB2.0                    | 5V       | 500 mA   |
-| USB3.0/USB3.1             | 5V       | 900 mA   |
-| USB BC1.2                 | 5V       | 1.5A     |
-| USB Type-C Corriente @ 1.5A | 5V       | 1.5A     |
-| USB Type-C Corriente @ 2.0A | 5V       | 3.0A     |
-| USB PD                    | Máximo 20V | Máximo 5A  |
+| Modo                        | Voltaje nominal | Corriente máxima |
+| --------------------------- | --------------- | ---------------- |
+| USB2.0                      | 5V              | 500 mA           |
+| USB3.0/USB3.1               | 5V              | 900 mA           |
+| USB BC1.2                   | 5V              | 1.5A             |
+| USB Type-C Corriente @ 1.5A | 5V              | 1.5A             |
+| USB Type-C Corriente @ 2.0A | 5V              | 3.0A             |
+| USB PD                      | Máximo 20V      | Máximo 5A        |
 
 ### Pin CC
 
@@ -114,17 +114,17 @@ La resistencia de pull-up o pull-down utilizada en el pin CC depende de si es un
 
 **El host / puerto descendente (DFP) utiliza una resistencia de pull-up**. La resistencia de pull-up Rp debe estar conectada a los pines CC1 y CC2, y debe ser pull-up a 3.3V/5V/fuente de corriente. El valor de la resistencia de pull-up se ajustará a la capacidad de suministro de corriente del dispositivo a través del puerto, como se muestra en la siguiente tabla:
 
-| Capacidad de suministro de corriente DFP                            | Pull-up a 4.75V~5.5V | Pull-up a 3.3V±5% | Fuente de corriente de 1.7~5.5V |
-| ------------------------------------------- | ----------------- | -------------- | ------------------ |
-| Potencia USB predeterminada (USB2.0-500mA, USB3.0-900mA) | 56kΩ±20%          | 36kΩ±20%       | 80µA±20%           |
-| 1.5A@5V                                     | 22kΩ±5%           | 12kΩ±5%        | 180µA±8%           |
-| 3A@5V                                       | 10kΩ±5%           | 4.7kΩ±5%       | 330µA±8%           |
+| Capacidad de suministro de corriente DFP                 | Pull-up a 4.75V~5.5V | Pull-up a 3.3V±5% | Fuente de corriente de 1.7~5.5V |
+| -------------------------------------------------------- | -------------------- | ----------------- | ------------------------------- |
+| Potencia USB predeterminada (USB2.0-500mA, USB3.0-900mA) | 56kΩ±20%             | 36kΩ±20%          | 80µA±20%                        |
+| 1.5A@5V                                                  | 22kΩ±5%              | 12kΩ±5%           | 180µA±8%                        |
+| 3A@5V                                                    | 10kΩ±5%              | 4.7kΩ±5%          | 330µA±8%                        |
 
 **El dispositivo / puerto ascendente (UFP) utiliza una resistencia de pull-down o una abrazadera de voltaje**. El valor de la resistencia de pull-down Rd es constante y es de 5.1kΩ±10%.
 
 La detección de la dirección del cable, si el pin CC1 detecta una resistencia de pull-up o pull-down válida, significa que está en la dirección correcta (no invertida); si CC1 no detecta nada, significa que está invertido:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220520141738.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220520141738.png)
 
 ## Referencias y agradecimientos
 

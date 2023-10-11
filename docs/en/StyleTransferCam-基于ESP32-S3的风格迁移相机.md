@@ -1,6 +1,6 @@
 # StyleTransferCam - Style Transfer Camera based on ESP32-S3
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202308152238959.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308152238959.png)
 
 When art meets technology, a new world unfolds before us. It is a wonderful visual feast and an exploration of infinite possibilities. StyleTransferCam is a style transfer camera based on ESP32-S3. It uses a machine learning technique called "style transfer". When you press the onboard button, it takes a picture of the current scene, blends it with a preset style template photo (such as Van Gogh's "Starry Night"), and generates a unique and creative work.
 
@@ -10,7 +10,7 @@ StyleTransferCam consists of the following processes:
 2. Automatically start the Python program for style transfer, process the photo, and output the stylized photo.
 3. If ESP32-S3 comes with a TFT screen, it can also be sent back to the screen for display.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202308152244791.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308152244791.png)
 
 ## Test Onboard Button and LED
 
@@ -335,7 +335,7 @@ Note that if the program encounters an exception and reports that the port is oc
 
 In the same directory as `receive-photo.py`, we use TensorFlow to write a Python program for style transfer. First, install the dependencies required by the program (due to the network environment in China, it is difficult to download TensorFlow, so you need to be patient), and then prepare a photo to be stylized in the same directory, named `base.png`; and a style reference image named `style_reference.png`. This image can be an artwork, such as Van Gogh's "Starry Night":
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202308152239917.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308152239917.png)
 
 Next, write the style transfer program:
 
@@ -486,7 +486,7 @@ Now, you can try running this Python program separately. If the program does not
 
 If this program can run normally, you can directly run `receive-photo.py` to receive photos taken by ESP32-S3 and generate stylized photos automatically.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202308152246623.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308152246623.png)
 
 ## References and Acknowledgments
 

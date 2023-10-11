@@ -1,6 +1,6 @@
 # Homelab - Powerful wiki system Wiki.js
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230304195348.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304195348.png)
 
 **Wiki.js** is a wiki documentation tool with a backend editor and management page, including multi-user permission management, Markdown, multiple synchronization and storage methods (such as git synchronization), and other functions.
 

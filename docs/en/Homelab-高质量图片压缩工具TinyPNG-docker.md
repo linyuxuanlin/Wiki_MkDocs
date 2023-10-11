@@ -1,6 +1,6 @@
 # Homelab - High-quality image compression tool TinyPNG-docker
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230416163137.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230416163137.png)
 
 TinyPNG-docker is a tool that uses the TinyPNG API to compress images with high quality. It can automatically compress WEBP, JPEG, and PNG images in the specified path and output them to the desired path. It can effectively reduce website bandwidth usage, traffic, and loading time. By the way, this is a Docker application I developed with the help of ChatGPT.
 
@@ -109,18 +109,18 @@ def compress_image(source_path, output_path):
 
 Note that the script requires the TinyPNG API key to be set as an environment variable named 'TINYPNG_API_KEY', and the output directory to be set as an environment variable named 'OUTPUT_DIR'.
 
-if __name__ == "__main__":
-    print("Watching for new images...")
-    event_handler = MyHandler()
-    observer = Observer()
-    observer.schedule(event_handler, path=os.environ['INPUT_DIR'], recursive=False)
-    observer.start()
-    try:
-        while True:
-            time.sleep(1)
-    except KeyboardInterrupt:
-        observer.stop()
-    observer.join()
+if **name** == "**main**":
+print("Watching for new images...")
+event_handler = MyHandler()
+observer = Observer()
+observer.schedule(event_handler, path=os.environ['INPUT_DIR'], recursive=False)
+observer.start()
+try:
+while True:
+time.sleep(1)
+except KeyboardInterrupt:
+observer.stop()
+observer.join()
 
 First, the necessary Python libraries are imported: tinify, os, time, sys, and watchdog. Then, a class named MyHandler is defined, which inherits from watchdog.events.FileSystemEventHandler. This class contains an on_created method, which is called when a new file is created in the specified folder. The on_created function gets the path of the source image and compresses it to the specified output path. Finally, the input folder is monitored, and once a new file is detected in the specified folder, the compression operation is automatically executed, and the compressed image is output to the specified output folder.
 

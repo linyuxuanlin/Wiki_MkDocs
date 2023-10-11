@@ -1,6 +1,6 @@
 # Homelab - خادم إدارة الكتب الإلكترونية calibre-web
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210429125418.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210429125418.png)
 
 **calibre-web** هو حل شامل للكتب الإلكترونية ، يعتمد على Calibre ، ويمكن قراءة الكتب الإلكترونية على الويب ، ويتضمن خدمة calibre-server ، ويحتوي أيضًا على تحويل تنسيق الكتب الإلكترونية.
 

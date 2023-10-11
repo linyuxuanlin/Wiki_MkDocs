@@ -7,16 +7,16 @@
 واجهة DP83848 هي RMII ، ويمكن لـ DP83848 دعم سرعة الخط 10M / 100M ، ويوجد على اللوحة مذبذب غير نشط بسرعة 50 ميجا هرتز.
 
 | STM32 المراقب الرئيسي | وحدة DP83848 PHY |
-| ----------- | ------------ |
-| ETH_REF_CLK | PA1          |
-| ETH_MDIO    | PA2          |
-| ETH_MDC     | PC1          |
-| ETH_CRS_DV  | PA7          |
-| ETH_RXD0    | PC4          |
-| ETH_RXD1    | PC5          |
-| ETH_TX_EN   | PB11         |
-| ETH_TXD0    | PB12         |
-| ETH_TXD1    | PB13         |
+| --------------------- | ---------------- |
+| ETH_REF_CLK           | PA1              |
+| ETH_MDIO              | PA2              |
+| ETH_MDC               | PC1              |
+| ETH_CRS_DV            | PA7              |
+| ETH_RXD0              | PC4              |
+| ETH_RXD1              | PC5              |
+| ETH_TX_EN             | PB11             |
+| ETH_TXD0              | PB12             |
+| ETH_TXD1              | PB13             |
 
 ## البرمجيات
 
@@ -48,7 +48,7 @@
 
 تكوين شجرة الساعة: تكوينها وفقًا للمذبذب المدمج (8 ميجا هرتز في هذا اللوحة).
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220702145310.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220702145310.png)
 
 ### إضافة رمز الوظيفة
 
@@ -101,14 +101,14 @@ if (netif_is_link_up(&gnetif) && !netif_is_up(&gnetif)) {
 
 - [STM32 HAL Ethernet initialization](https://blog.naver.com/eziya76/221852430347)
 
-| API الدالة     | الوصف                                     |
-| -------------- | ---------------------------------------- |
-| udp_new        | إنشاء PCB UDP جديد                        |
-| udp_remove     | إزالة PCB UDP وتحرير الموارد ذات الصلة        |
-| udp_bind       | PCB UDP مرتبط بعنوان IP المحلي والمنفذ         |
-| udp_connect    | إنشاء PCB UDP عن بعد عنوان IP ومنفذ          |
-| udp_disconnect | إزالة PCB UDP عن بعد عنوان IP ومنفذ              |
-| udp_send       | إرسال بيانات UDP                            |
+| API الدالة     | الوصف                                                     |
+| -------------- | --------------------------------------------------------- |
+| udp_new        | إنشاء PCB UDP جديد                                        |
+| udp_remove     | إزالة PCB UDP وتحرير الموارد ذات الصلة                    |
+| udp_bind       | PCB UDP مرتبط بعنوان IP المحلي والمنفذ                    |
+| udp_connect    | إنشاء PCB UDP عن بعد عنوان IP ومنفذ                       |
+| udp_disconnect | إزالة PCB UDP عن بعد عنوان IP ومنفذ                       |
+| udp_send       | إرسال بيانات UDP                                          |
 | udp_recv       | تسجيل دالة الاستدعاء العائدة عند استلام حزمة بيانات جديدة |
 
 ## تكوين داخل CubeMX

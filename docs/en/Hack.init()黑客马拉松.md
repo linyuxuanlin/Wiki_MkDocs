@@ -2,7 +2,7 @@
 
 - Wight: A Cloud-based Wireless Lighting System
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/wight.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/wight.jpg)
 
 Project Repository: [**linyuxuanlin / Wight**](https://github.com/linyuxuanlin/Wight)
 
@@ -41,61 +41,61 @@ int light_state = 2;
 
 void buttons_function(uint8_t *payload, uint32_t len)//Auto & Watering Buttons
 {
-    uint8_t SwitchKey;
-    uint8_t SwitchKey2;
-    aJsonClass aJson;
-    aJsonObject *root = aJson.parse((char *)payload);
-    if(root == NULL)
-    {
-        aJson.deleteItem(root);
-        return;
-    }
-    aJsonObject *_switch = aJson.getObjectItem(root, "mode");
-    if(_switch != NULL)
-    {
-        SwitchKey = atoi(_switch->valuestring);
-        if(SwitchKey)
-        {
-            SerialUSB.println("auto on");
-            autostate=1;
-            IntoRobot.publish(LIGHT_STATUS_address,"1");
-        }
-        else
-        {
-            SerialUSB.println("auto off");
-            autostate=0;
-            IntoRobot.publish(LIGHT_STATUS_address,"0");
-        }
-    }
-    aJsonObject *_switch2 = aJson.getObjectItem(root, "manual");
-    if(_switch2 != NULL)
-    {
-        SwitchKey2 = atoi(_switch2->valuestring);
-        if(SwitchKey2)
-        {
-            SerialUSB.println("manual on");
-            light_state=1;
-            IntoRobot.publish(LIGHT_STATUS_address,"1");
-        }
-        else
-        {
-            SerialUSB.println("manual off");
-            light_state=0;
-            IntoRobot.publish(LIGHT_STATUS_address,"0");
-        }
-    }
-    else
-    {
-    }
-    aJson.deleteItem(root);
+uint8_t SwitchKey;
+uint8_t SwitchKey2;
+aJsonClass aJson;
+aJsonObject *root = aJson.parse((char _)payload);
+if(root == NULL)
+{
+aJson.deleteItem(root);
+return;
+}
+aJsonObject _\_switch = aJson.getObjectItem(root, "mode");
+if(\_switch != NULL)
+{
+SwitchKey = atoi(\_switch->valuestring);
+if(SwitchKey)
+{
+SerialUSB.println("auto on");
+autostate=1;
+IntoRobot.publish(LIGHT_STATUS_address,"1");
+}
+else
+{
+SerialUSB.println("auto off");
+autostate=0;
+IntoRobot.publish(LIGHT_STATUS_address,"0");
+}
+}
+aJsonObject \*\_switch2 = aJson.getObjectItem(root, "manual");
+if(\_switch2 != NULL)
+{
+SwitchKey2 = atoi(\_switch2->valuestring);
+if(SwitchKey2)
+{
+SerialUSB.println("manual on");
+light_state=1;
+IntoRobot.publish(LIGHT_STATUS_address,"1");
+}
+else
+{
+SerialUSB.println("manual off");
+light_state=0;
+IntoRobot.publish(LIGHT_STATUS_address,"0");
+}
+}
+else
+{
+}
+aJson.deleteItem(root);
 }
 
 void lightup()
 {
-    digitalWrite(LEDPIN1, HIGH);    // Turn on LED 1
-    digitalWrite(LEDPIN2, HIGH);    // Turn on LED 2
-    digitalWrite(LEDPIN3, HIGH);    // Turn on LED 3
-    digitalWrite(LEDPIN4, HIGH);    // Turn on LED 4
+digitalWrite(LEDPIN1, HIGH); // Turn on LED 1
+digitalWrite(LEDPIN2, HIGH); // Turn on LED 2
+digitalWrite(LEDPIN3, HIGH); // Turn on LED 3
+digitalWrite(LEDPIN4, HIGH); // Turn on LED 4
 }
 
 ```
@@ -157,43 +157,44 @@ void HUMIDITY_print_function(uint8_t *payload, uint32_t len)
 // IntoRobot.publish(LIGHT_STATUS_address,"0");
 void setup()
 {
-    pinMode(D4,INPUT);
-    SerialUSB.begin(115200);
-    SerialUSB.println("hello world");
-    pinMode(LEDPIN1, OUTPUT);    //initialize
-    pinMode(LEDPIN2, OUTPUT);    //initialize
-    pinMode(LEDPIN3, OUTPUT);    //initialize
-    pinMode(LEDPIN4, OUTPUT);    //initialize
-    //device receives light switch command from cloud platform
-    IntoRobot.subscribe(BUTTONS_address,NULL,buttons_function);
-    IntoRobot.subscribe(ITENSITY_DATA_address,NULL,HUMIDITY_print_function);
+pinMode(D4,INPUT);
+SerialUSB.begin(115200);
+SerialUSB.println("hello world");
+pinMode(LEDPIN1, OUTPUT); //initialize
+pinMode(LEDPIN2, OUTPUT); //initialize
+pinMode(LEDPIN3, OUTPUT); //initialize
+pinMode(LEDPIN4, OUTPUT); //initialize
+//device receives light switch command from cloud platform
+IntoRobot.subscribe(BUTTONS_address,NULL,buttons_function);
+IntoRobot.subscribe(ITENSITY_DATA_address,NULL,HUMIDITY_print_function);
 }
 void loop()
 {
-   int a =map(getlight() ,0,1024,100,0);
-   IntoRobot.publish(LIGHT,a);
-    SerialUSB.println(getlight());
-    if(autostate==0)
-    {
-        if(light_state ==1)
-        lightup();
-        else
-        lightdown();
-    }
-    else if (autostate==1)
-    {
-        SerialUSB.println("state=1");
-        automode();
-    }
-    delay(100);
+int a =map(getlight() ,0,1024,100,0);
+IntoRobot.publish(LIGHT,a);
+SerialUSB.println(getlight());
+if(autostate==0)
+{
+if(light_state ==1)
+lightup();
+else
+lightdown();
 }
+else if (autostate==1)
+{
+SerialUSB.println("state=1");
+automode();
+}
+delay(100);
+}
+
 ```
 
 Due to time constraints of the competition, we can only roughly draw the model and assemble it by printing it out.
 
 ## FAQ
 
-Q: Will there be follow-up to the project in the future?  
+Q: Will there be follow-up to the project in the future?
 A: There are currently no plans for follow-up. The innovation is quite good, but whether it has commercial value remains to be verified.
 
 ## Conclusion
@@ -205,7 +206,8 @@ We did not win any awards in this competition. However, the competition improved
 - Team members: Lin Peijie, Huang Yuefeng, Zhang Ziyi
 - [IntoRobot Cloud Platform](https://www.intorobot.com/)
 
-> Original: <https://wiki-power.com/>  
+> Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.
+```

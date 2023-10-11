@@ -6,33 +6,33 @@
 
 **املأ المعلومات المطلوبة كما هو موضح في الصورة وانقر على زر `Submit`:**
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564402348383.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564402348383.png)
 
 **انقر على زر التنزيل:**
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564402469518.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564402469518.png)
 
 ## 2. التثبيت
 
 **افتح ملف التثبيت الذي تم تنزيله واتبع الخطوات التالية:**
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564405005991.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405005991.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564405034468.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405034468.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564405123578.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405123578.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564405166784.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405166784.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564405201092.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405201092.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564405260737.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405260737.png)
 
 **تثبيت حزمة الشرائح (نحن بحاجة إلى سلسلة STM32 F1 و F4):**
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564405574756.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405574756.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564405648731.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405648731.png)
 
 ## 3. الكسر
 
@@ -40,23 +40,23 @@
 
 **أغلق MDK وانقر بزر الماوس الأيمن وافتحه كمسؤول:**
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564406135091.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564406135091.png)
 
 **افتح شريط القوائم - File - License Management:**
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564406171844.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564406171844.png)
 
 **انسخ هذا الرمز `CID`:**
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564406230209.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564406230209.png)
 
 **الصقه في الكسر واختر `Arm` في قائمة الإسقاط لـ `Target` ، ثم انقر على `Generate` لتوليد رمز التنشيط:**
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564406292113.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564406292113.png)
 
 **انسخ رمز التنشيط والصقه في MDK ، ثم انقر على `Add LIC`:**
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564406431978.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564406431978.png)
 
 ## المراجع والشكر
 

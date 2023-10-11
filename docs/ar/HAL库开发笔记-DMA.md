@@ -8,7 +8,7 @@
 
 يوفر DMA نقل البيانات السريع بين الأجهزة الخارجية / الذاكرة أو الذاكرة / الذاكرة دون الحاجة إلى استخدام موارد وحدة المعالجة المركزية.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210404153423.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210404153423.png)
 
 كما هو موضح في الشكل أعلاه ، يحتوي سلسلة STM32F4 على متحكمي DMA اثنين ، بمجموع 12 قناة (DMA1 به 7 قنوات ، DMA2 به 5 قنوات). يشارك متحكم DMA حافلة البيانات الكلية لنواة Cortex-M3.
 
@@ -89,7 +89,7 @@ HAL_UART_DMAResume(&huart1)
 
 بعد تكوين منافذ USART ومقاطع NVIC ، يرجى التبديل إلى علامة التبويب `DMA Settings` وفقًا للتكوين الموضح في الصورة التالية:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210404165541.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210404165541.png)
 
 - انقر فوق `Add` لإضافة القناة (USART1_RX و USART1_TX)
 - ضبط أولوية كليهما على `Medium` (أولوية متوسطة)
@@ -98,7 +98,7 @@ HAL_UART_DMAResume(&huart1)
 
 ثم ، في علامة التبويب `System Core` ، يرجى العثور على `DMA` وإضافة عنصر `MEMTOMEM` كما هو موضح في الصورة التالية:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210404170002.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210404170002.png)
 
 ### تكوين DMA داخل الشفرة
 

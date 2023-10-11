@@ -5,7 +5,7 @@
 **Sublime Text** es un editor de texto muy poderoso. Debido a que el próximo semestre tengo cursos relacionados con Python y las herramientas como Pycharm tienen una interfaz de usuario un poco fea, quiero intentar convertir Sublime Text en una herramienta de desarrollo de Python.
 
 Imagen del resultado personalizado:
-![](https://f004.backblazeb2.com/file/wiki-media/img/ST3效果.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/ST3效果.png)
 
 ## [Implementación mínima](https://www.jianguoyun.com/p/Da9TMr0Q-OOjBxif86sB)
 
@@ -74,7 +74,7 @@ Los siguientes complementos están disponibles para instalar directamente a trav
 ```
 
 Modifica el contenido de la plantilla en `Preferences -> Browse Packages... -> FileHeader -> template -> header o body`. Resultado:  
- ![](https://f004.backblazeb2.com/file/wiki-media/img/ST3 模板效果。png)
+ ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/ST3 模板效果。png)
 
 ### Ejecución de Python
 

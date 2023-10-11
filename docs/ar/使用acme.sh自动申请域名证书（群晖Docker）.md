@@ -20,7 +20,7 @@ Este tutorial describe el modo de demonio de Docker, que mantiene el contenedor 
 
 Primero, cree la carpeta `/docker/acme.sh` y luego cree manualmente el archivo `account.conf`:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210430212420.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210430212420.png)
 
 Luego, edite este archivo y agregue manualmente estas líneas:
 
@@ -38,13 +38,13 @@ Abra el paquete Docker de Synology, descargue la imagen `neilpang/acme.sh`, haga
 
 En la página `Volumen`, configure la carpeta montada, haga clic en `Agregar carpeta`, seleccione la ruta local `docker/acme.sh` y complete la ruta de montaje como `/acme.sh` (predeterminado e inmutable):
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210430214221.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210430214221.png)
 
 En la página `Red`, seleccione `Usar la misma red que el host de Docker`.
 
 Luego, cambie a la página `Entorno` y escriba el comando `daemon` en el cuadro de comando:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210430215244.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210430215244.png)
 
 Luego, cree y ejecute el contenedor. Haga doble clic en el contenedor en ejecución, cambie a la página `Terminal` y haga clic en `Iniciar mediante comando`, escriba `sh` y haga clic en Aceptar.
 

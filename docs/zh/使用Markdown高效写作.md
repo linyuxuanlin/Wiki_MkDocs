@@ -77,7 +77,7 @@ Markdown 常用语法也就这么几种：**标题、文本样式、引用、代
 
 如果需要多行代码，可以使用三个反引号 <code>```</code> 前后包围代码区块：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210215164653.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210215164653.png)
 
 ```c
 int fputc(int ch,FILE *f)
@@ -227,7 +227,7 @@ int fputc(int ch,FILE *f)
 ---
 ```
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210216123630.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210216123630.png)
 
 ## 高级用法
 

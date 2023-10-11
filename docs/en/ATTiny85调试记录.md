@@ -19,7 +19,7 @@ P:\Arduino\hardware\tools\avr/bin/avrdude -C "P:\Arduino\hardware\tools\avr/etc/
 
 First, burn the ISP program to Arduino:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200426144425.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200426144425.png)
 
 Open IDE preferences and fill in the additional board manager URLs:
 
@@ -29,14 +29,14 @@ https://raw.githubusercontent.com/damellis/attiny/ide-1.6.x-boards-manager/packa
 
 Open the board manager:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200426144642.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200426144642.png)
 
 Search and install (may require a proxy):
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200426144732.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200426144732.png)
 
 Pay attention to selecting the correct chip model, clock speed (Internal 16 MHz), and the port where Arduino is located when burning. Also, select "Arduino as ISP" as the programmer:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200426144834.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200426144834.png)
 
 ## Conclusion
 

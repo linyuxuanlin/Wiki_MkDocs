@@ -1,6 +1,6 @@
 # Homelab - 功能强大的 wiki 系统 Wiki.js
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230304195348.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304195348.png)
 
 **Wiki.js** 是一个带后台编辑器和管理页面的 wiki 文档工具，包括多用户权限管理、Markdown、多种同步与储存方式（比如 git 同步）等功能。
 

@@ -6,13 +6,13 @@
 
 首先，新建多板项目类型文件（`.PrjMbd`），在项目下创建基于原理图的逻辑设计文件（`.MbsDoc`）和基于 PCB 的文件（`.MbaDoc`），然后先保存。在文件系统的层面上把多个单独的 PCB 项目文件夹拷贝到 `.PrjMbd` 同级目录下，例如：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220106152537.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220106152537.png)
 
 ## 输入逻辑设计
 
 输入逻辑设计是根据 PCB 上的物理连接器来进行的。在此之前，我们需要先给项目原理图内的连接器添加参数（点开连接器的属性，添加 `Parameters`，名字为 `System`，值为 `Connector`）。
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220106163315.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220106163315.png)
 
 ### 创建模块并链接项目
 

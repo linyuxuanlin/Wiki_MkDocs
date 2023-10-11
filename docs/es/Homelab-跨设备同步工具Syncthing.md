@@ -1,6 +1,6 @@
 # Homelab - Herramienta de sincronización multi-dispositivo Syncthing
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202304111529987.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304111529987.png)
 
 **Syncthing** es una aplicación de sincronización de archivos de código abierto y gratuita que permite sincronizar archivos y carpetas entre múltiples dispositivos, con soporte para sincronización incremental. Lo uso para hacer copias de seguridad de los datos del servidor en mi NAS y gestionarlos de manera centralizada.
 

@@ -1,8 +1,8 @@
 # Flip - لوحة تطوير لينكس مبنية على معالج F1C200s من Allwinner
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220527234815.jpeg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220527234815.jpeg)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220527234855.jpeg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220527234855.jpeg)
 
 مستودع المشروع: [**linyuxuanlin/Flip**](https://github.com/linyuxuanlin/Flip)
 
@@ -42,15 +42,15 @@
 
 مخطط بنية نظام F1C200s:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220422152227.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220422152227.png)
 
 رسم توضيحي للتطبيقات النموذجية:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220513232027.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220513232027.png)
 
 تعريفات Pin:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220422153239.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220422153239.png)
 
 ## المراجع والشكر
 
@@ -63,7 +63,5 @@
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
 ## تصميم كل وحدة
-
-
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

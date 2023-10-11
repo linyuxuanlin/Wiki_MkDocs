@@ -6,13 +6,13 @@ Homelab se refiere a un entorno de experimentación (tinkering) que se puede con
 
 Mi configuración de Homelab es un **servidor en la nube ligero** + **mini ordenador** + **NAS**, cada uno con su propia configuración y uso:
 
-|          | Servidor en la nube ligero (Alibaba Cloud 1C2G) | Mini ordenador (CPU N100) | NAS (Synology DS220+) |
-| -------- | --------------------------------------------- | ------------------------ | --------------------- |
-| IP pública | Sí | No | No |
-| Espacio de almacenamiento | Pequeño | Mediano | Grande |
-| Rendimiento | Bajo | Alto | Bajo |
+|                           | Servidor en la nube ligero (Alibaba Cloud 1C2G) | Mini ordenador (CPU N100) | NAS (Synology DS220+) |
+| ------------------------- | ----------------------------------------------- | ------------------------- | --------------------- |
+| IP pública                | Sí                                              | No                        | No                    |
+| Espacio de almacenamiento | Pequeño                                         | Mediano                   | Grande                |
+| Rendimiento               | Bajo                                            | Alto                      | Bajo                  |
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202304130031463.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304130031463.png)
 
 No es difícil ver que cada uno tiene sus propias fortalezas, pero juntos forman un equipo triangular. El **servidor en la nube ligero** se centra en el acceso a la red, el **mini ordenador** se centra en el procesamiento de rendimiento, y el **NAS** se centra en el almacenamiento de espacio.
 
@@ -26,7 +26,7 @@ Debido a que tiene una IP pública (los puertos 80/443 también están abiertos)
 
 Para el **mini ordenador**, elegí el sistema N100 CPU de Zero-Knowledge, con 16 GB de memoria DDR5 y un disco duro SSD de 250 GB, que en general cuesta alrededor de 1.000 yuanes. El consumo diario de energía no es alto, y puede ser llamado cuando se necesita rendimiento.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202304130043744.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304130043744.png)
 
 Los tipos de aplicaciones que despliego en el mini ordenador son principalmente servicios que consumen rendimiento, como el editor de código web VS Code, la biblioteca privada de notas, el lector de RSS, el servidor de podcasts, la biblioteca de películas, el navegador interno de la red local, etc.
 
@@ -34,7 +34,7 @@ Los tipos de aplicaciones que despliego en el mini ordenador son principalmente 
 
 Para el **NAS**, elegí el Synology DS220+, que tiene una arquitectura X86 que facilita la ejecución del entorno Docker. Hace un tiempo, también le añadí una memoria RAM de 16 GB para intentar mejorar su rendimiento. Pero luego descubrí que el cuello de botella seguía siendo la débil CPU J4025. El Synology blanco es como comprar software y obtener hardware gratis, pero por la seguridad de los datos, todavía vale la pena.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202304130053483.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304130053483.png)
 
 Los servicios que despliego en el NAS son principalmente para necesidades de almacenamiento, como la copia de seguridad de datos de dispositivos, la sincronización de la nube, la biblioteca de fotos, la biblioteca de libros, etc.
 

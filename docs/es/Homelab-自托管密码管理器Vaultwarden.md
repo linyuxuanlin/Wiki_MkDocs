@@ -1,6 +1,6 @@
 # Homelab - Gestor de contraseñas autohospedado Vaultwarden
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230304195414.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304195414.jpg)
 
 **Vaultwarden** es un servidor de Bitwarden autohospedado de terceros que protege y administra las contraseñas de diferentes sitios web con una contraseña maestra, y puede generar contraseñas aleatorias para diferentes sitios web.
 

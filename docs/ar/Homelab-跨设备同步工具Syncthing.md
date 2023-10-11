@@ -1,6 +1,6 @@
 # Homelab - أداة مزامنة الملفات Syncthing عبر الأجهزة
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202304111529987.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304111529987.png)
 
 **Syncthing** هي أداة مجانية ومفتوحة المصدر لمزامنة الملفات بين الأجهزة المختلفة، وتدعم المزامنة التدريجية. استخدمتها لنسخ احتياطي لبيانات الخادم على NAS لإدارتها بشكل موحد.
 
@@ -53,7 +53,7 @@ APP_SYNC_DIR=xxxx # تخصيص المسار الذي تريد مزامنته، �
 - [الوثائق](https://github.com/syncthing/syncthing/blob/main/README-Docker.md)
 - [المنتدى](https://forum.syncthing.net/)
 - [مستودع GitHub](https://github.com/syncthing/syncthing)
-- [Docker Hub](https://hub.docker.com/r/syncthing/syncthing/) 
+- [Docker Hub](https://hub.docker.com/r/syncthing/syncthing/)
 
 > عنوان النص: <https://wiki-power.com/>  
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.

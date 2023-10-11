@@ -1,6 +1,6 @@
 # Homelab - برنامج Alist لقائمة الملفات المدعومة بالتخزين المتعدد
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202304141808001.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304141808001.png)
 
 **Alist** هو برنامج لقائمة الملفات يدعم العديد من طرق التخزين مثل المحلي وسحابة Alibaba و OneDrive و GoogleDrive و Baidu و KuaiPan و LanZou و S3 و FTP / SFTP وغيرها، ويحتوي على مشغل فيديو عبر الإنترنت ومعاينة ملفات مختلفة (متوافق مع Office و PDF و Markdown وغيرها)، بالإضافة إلى وظيفة التنزيل غير المتصل بالإنترنت.
 

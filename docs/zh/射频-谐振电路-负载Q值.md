@@ -6,11 +6,11 @@
 - 负载电阻 $R_L$
 - 上一章提到的元器件的 Q 值
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220418111129.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220418111129.png)
 
 ## $R_s$ 和 $R_L$ 对负载 Q 的影响
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220418111200.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220418111200.png)
 
 源阻抗和负载阻抗对谐振电路的负载 Q 的影响如上图所示。原始曲线（虚线）是由 50Ω 源阻抗，0.05uH 的无损电感器和 25pF 无损电容器组成的电路的谐振曲线，它的 Q 值由上文的公式 $Q=\frac{f_e}{f_2-f_1}$ 计算约为 1.1，显然这不是一个非常窄带或高 Q 值的设计。
 
@@ -18,11 +18,11 @@
 
 上面的方法并不能看出负载阻抗对谐振曲线的影响。如果像这样把外部负载连接到谐振电路：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220419163311.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220419163311.png)
 
 可以等效为：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220419163441.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220419163441.png)
 
 此时负载 Q 可以表示为：
 
@@ -36,7 +36,7 @@ $$
 
 可以看出，$R_p$ 的降低会降低谐振电路的 Q 值，并且，如果 $R_p$ 不变、改变 $X_p$，可以获得相同的效果。因此，对于给定的源阻抗和负载阻抗，当电感为小值而电容器为大值时，可以获得谐振电路的最佳 Q 值。无论哪种情况，$X_p$ 都会降低。例如：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220419165555.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220419165555.png)
 
 因此，采用这两种方法都可以对 Q 值进行调整：
 
@@ -51,7 +51,7 @@ $$
 
 在无损谐振电路中，谐振时电路端子上的阻抗是无限大的。但在实际电路中，由于元件损耗，会存在一些等效并联电阻：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220419174200.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220419174200.png)
 
 电阻 (Rp) 及其相关的并联电抗 (Xp) 可以从
 

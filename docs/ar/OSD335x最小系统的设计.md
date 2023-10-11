@@ -1,14 +1,14 @@
 # تصميم أصغر نظام OSD335x
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211012144907.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211012144907.png)
 
 يتكون شريحة OSD335x-SM من TI من معالج Cortex-A8 AM335x وذاكرة DDR3 ومشغل طاقة TPS65217C PMIC ومنظم الجهد TL5209 LDO والمكونات السلبية المطلوبة وذاكرة EEPROM بسعة 4 كيلوبايت مدمجة في وحدة SIP (System-in-Package) داخل حزمة BGA.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211012153036.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211012153036.png)
 
 يتكون النظام الأصغر لـ OSD335x من 4 أجزاء: الطاقة والساعة وإعادة التعيين وواجهة التصحيح والتنزيل. ولجعلها أسهل في الاستخدام ، يمكن إضافة زوج من الأزرار وبعض الصمامات وبعض دبابيس الأجهزة الخارجية.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211012155857.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211012155857.png)
 
 ## الطاقة
 
@@ -18,7 +18,7 @@
 - VIN_USB: مدخل الطاقة USB (DC5V @ 0.5A ، يمكن زيادته إلى 1.3A عن طريق PMIC الداخلي) ، كما يستخدم كجهد وتيار مرجعي لمضيف USB 2.0.
 - VIN_BAT: يمكن استخدامه كمدخل للبطارية (باستخدام مصدر طاقة البطارية ، 2.75-5.5 فولت) أو كمخرج (لشحن البطارية) ، ولا يمكن استخدامه كمدخل للأحداث.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211012173057.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211012173057.png)
 
 ### المخرجات
 
@@ -33,11 +33,11 @@
 
 هناك أيضًا بعض دبابيس التي توفر الطاقة الداخلية: VDDSHV_3P3V و VDDS_DDR و VDD_MPU و VDD_CORE و VDDS_PLL. إنها مخصصة فقط للقياسات الخارجية ، ولا ينبغي استخدامها للدوائر الخارجية.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211013142917.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211013142917.png)
 
 ### مدخلات المرجع الأرضية التناظرية
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211013143532.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211013143532.png)
 
 يحتوي OSD335x على واجهة ADC ، وإذا كنت تريد استخدام ADC ، فيجب استخدام مصدر طاقة تناظري وأرضي تناظري صحيحين. يمكن لواجهة ADC تحمل إشارة تناظرية بحد أقصى 1.8 فولت (بالإشارة إلى دبوس VREFP). عادةً ما يمكن توصيل VREFP مباشرة بـ SYS_ADC_1P8V ، ولكن إذا كان هناك حاجة ، فيمكن تقسيمه إلى جهد أقل.
 
@@ -56,7 +56,7 @@
 - توقيت التشغيل / الإيقاف
 - عتبة التيار الزائد / الحرارة
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211013161739.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211013161739.png)
 
 بالإضافة إلى الاتصال عبر I2C ، يتطلب PMIC بعض دبابيس الوظائف التي يجب توصيلها بـ OSD335x:
 
@@ -69,9 +69,9 @@
 - EXTINTN: دبوس إدخال المقاطعة الخارجية لـ AM335x
 - PMIC_OUT_NINT: دبوس إخراج PMIC النهائي (صالح للجهد المنخفض)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211013161927.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211013161927.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211013163119.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211013163119.png)
 
 ### زر الطاقة
 
@@ -81,13 +81,13 @@
 - عندما يتم الاحتفاظ بمدخل PMIC_IN_PB_IN على الجهد المنخفض لأكثر من 8 ثوانٍ، سيتم إعادة تشغيل / إعادة تعيين PMIC.
 - إذا تم الاحتفاظ بدبوس PMIC_IN_PB_IN على الجهد المنخفض لفترة طويلة، فسيستمر الجهاز في التبديل بين الحالة النشطة وحالة الإعادة التعيين كل 8 ثوانٍ.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211013165738.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211013165738.png)
 
 ### مؤشر الطاقة
 
 نستخدم SYS_VDD2_3P3V (150mA) كإخراج لمؤشر الطاقة.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211014092054.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211014092054.png)
 
 ## إعادة التعيين
 
@@ -104,7 +104,7 @@
 - WARMRSTN: إعادة تعيين ساخنة؛ بعض مسجلات PRCM (إدارة الطاقة وإعادة التعيين والساعة) ووحدات التحكم لا تتأثر بإعادة التعيين الساخنة.
 - RTC_PWRONRSTN: مدخل إعادة تعيين الطاقة المستقل لوحدة RTC الخاصة، لا يتأثر بإعادة التعيين الباردة، ولا يؤثر على أجزاء الجهاز الأخرى.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211014105556.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211014105556.png)
 
 ## الساعة
 
@@ -115,19 +115,17 @@
 - OSC0: مدخل الساعة عالي السرعة (الساعة الرئيسية)، يعمل بتردد 19.2 ميجاهرتز أو 24 ميجاهرتز (التوصية) أو 25 ميجاهرتز أو 26 ميجاهرتز. هذا المصدر الزمني يوفر مرجعًا لجميع الوظائف غير RTC. يحتوي مدخل الساعة OSC0 على دبوس OSC0_IN و OSC0_OUT و OSC0_GND.
 - OSC1: مدخل الساعة منخفض السرعة، يعمل بتردد 32.768 كيلوهرتز، ويوفر الطاقة لوحدة RTC. يحتوي مدخل الساعة OSC1 على دبوس OSC1_IN و OSC1_OUT و OSC1_GND. يتم تعطيل مصدر الساعة هذا افتراضيًا، وهو ليس ضروريًا، وإذا لزم الأمر، يمكن استقبال إشارة RC الكريستال الداخلية بتردد 32 كيلوهرتز.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211014095242.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211014095242.png)
 
 في الشكل أعلاه، Rbias و Rd اختيارية. إذا لم يتم توفير تردد دقيق، يمكن استخدام Rbias للمعايرة المرنة، ويمكن عدم تضمينها في المخطط الأساسي أو ترك مساحة لها. ومع ذلك، إذا لم يكن هناك حاجة لـ Rd، يجب استخدام سلك بدلاً منه، وإلا فسيؤدي ذلك إلى انقطاع التيار.
 
 في التصميم المرجعي، تم استخدام OSC0 مع كريستال 7A-24.000MAAJ-T بتردد 24 ميجاهرتز، ومكثف 18 بيكوفاراد ومقاومة 1 ميجا أوم كـ Rbias.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211014101932.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211014101932.png)
 
 يتم توفير RTC_KALDO_ENN بشكل افتراضي بسحب خارجي (مقاومة 10 كيلو أوم)، ويستخدم لتمكين LDO RTC الداخلي.
 
 ## واجهة التصحيح والتصحيح
-
-
 
 ## استخدام واجهة JTAG في التصميم المرجعي
 
@@ -143,7 +141,7 @@ https://octavosystems.com/octavosystems.com/wp-content/uploads/2017/07/JTAG.jpg
 
 في التصميم المرجعي، يتم الاتصال على النحو التالي:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211014110132.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211014110132.png)
 
 تم تكوين المعلمات التالية:
 
@@ -153,11 +151,11 @@ https://octavosystems.com/octavosystems.com/wp-content/uploads/2017/07/JTAG.jpg
 
 ### أزرار المستخدم والمصابيح الحمراء
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211014110906.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211014110906.png)
 
 ### دبابيس الأجهزة الخارجية
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211014110947.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211014110947.png)
 
 ## المراجع والشكر
 

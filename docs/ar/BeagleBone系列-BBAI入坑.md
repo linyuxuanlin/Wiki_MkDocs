@@ -4,7 +4,7 @@
 
 أولاً ، قم بتوصيل مدخل طاقة Cape بقوة 12 فولت ، واستخدم وحدة تحويل USB إلى سلك تسلسلي لتوصيل السلك التسلسلي المدمج (يمكن استخدام منفذ J3 للتصحيح):
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211027164010.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211027164010.png)
 
 تأكد من تثبيت برنامج التشغيل لوحدة تحويل USB إلى سلك تسلسلي (استخدمت وحدة FTDI وكان عنوان تنزيل برنامج التشغيل هو <https://ftdichip.com/drivers/vcp-drivers/>).
 

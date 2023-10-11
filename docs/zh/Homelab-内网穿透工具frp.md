@@ -1,6 +1,6 @@
 # Homelab - 内网穿透工具 frp
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230304195137.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304195137.png)
 
 **frp** 是一种内网穿透的方法。你可以通过有公网 IP 的服务器，将内网主机端口暴露到互联网。frp 支持 TCP、UDP、HTTP、HTTPS 等多种协议多种协议。
 

@@ -6,13 +6,13 @@ Este artículo se basa en el kit de desarrollo RobotCtrl de desarrollo propio, c
 
 ### Comunicación I2C
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211026174634.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026174634.png)
 
 Para obtener información sobre los principios básicos de la comunicación I2C, consulte el artículo [**Protocolo de comunicación - I2C**](https://wiki-power.com/es/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-I2C).
 
 ### Módulo MPU6050
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220404145145.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220404145145.png)
 
 Definición de pines del módulo:
 
@@ -28,7 +28,7 @@ Definición de pines del módulo:
 
 Aquí utilizamos la biblioteca MPU6050 con filtro de Kalman: [**leech001/MPU6050**](https://github.com/leech001/MPU6050). Copie los archivos `mpu6050.c` y `mpu6050.h` descargados en la carpeta del proyecto y agréguelos al proyecto en STM32CubeIDE/Keil:
 
-```c title="mpu6050.h"
+````c title="mpu6050.h"
 
 #ifndef INC_GY521_H_
 #define INC_GY521_H_
@@ -79,7 +79,7 @@ void MPU6050_Read_Accel(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct);
 
 void MPU6050_Read_Gyro(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct);
 
-La función `MPU6050_Read_Temp` lee la temperatura del sensor MPU6050 y la almacena en la estructura `DataStruct`. La función `MPU6050_Read_All` lee los valores de aceleración, giroscopio y temperatura del sensor MPU6050 y los almacena en la estructura `DataStruct`. La función `Kalman_getAngle` utiliza el filtro de Kalman para calcular el ángulo a partir de los valores de ángulo, velocidad y tiempo. 
+La función `MPU6050_Read_Temp` lee la temperatura del sensor MPU6050 y la almacena en la estructura `DataStruct`. La función `MPU6050_Read_All` lee los valores de aceleración, giroscopio y temperatura del sensor MPU6050 y los almacena en la estructura `DataStruct`. La función `Kalman_getAngle` utiliza el filtro de Kalman para calcular el ángulo a partir de los valores de ángulo, velocidad y tiempo.
 
 El archivo `mpu6050.c` contiene las definiciones de las constantes y variables utilizadas en el código. También se define la dirección del sensor MPU6050 y se inicializan las variables del filtro de Kalman. La función `MPU6050_Init` inicializa el sensor MPU6050 y configura la tasa de datos y el registro de gestión de energía.
 
@@ -252,7 +252,7 @@ A continuación, inicializa el MPU6050 en la función `main()` de la siguiente m
 
 ```c
 while (MPU6050_Init(&hi2c1) == 1);
-```
+````
 
 Esta función inicializa el MPU6050 y devuelve `1` si hay un error.
 

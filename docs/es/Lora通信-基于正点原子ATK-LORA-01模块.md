@@ -19,14 +19,14 @@ El ATK-LORA-01 es un módulo de comunicación inalámbrica LORA de larga distanc
 
 ## Definición de interfaz
 
-| Nombre | Modo IO        | Descripción                                                                 |
-| ------ | -------------- | --------------------------------------------------------------------------- |
-| MD0    | Entrada        | Configuración de parámetros de entrada; en el encendido, entra en el modo de actualización de firmware en combinación con el pin AUX |
+| Nombre | Modo IO             | Descripción                                                                                                                                                                                 |
+| ------ | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| MD0    | Entrada             | Configuración de parámetros de entrada; en el encendido, entra en el modo de actualización de firmware en combinación con el pin AUX                                                        |
 | AUX    | ① Salida; ② Entrada | ① Se utiliza para indicar el estado de funcionamiento del módulo y despertar el MCU externo; ② En el encendido, entra en el modo de actualización de firmware en combinación con el pin MD0 |
-| RXD    | Entrada        | Entrada de serie TTL, conectada al pin de salida TXD externo                  |
-| TXD    | Salida         | Salida de serie TTL, conectada al pin de entrada RXD externo                  |
-| GND    |                | Tierra                                                                      |
-| VCC    |                | Entrada de alimentación DC3.3~5V                                             |
+| RXD    | Entrada             | Entrada de serie TTL, conectada al pin de salida TXD externo                                                                                                                                |
+| TXD    | Salida              | Salida de serie TTL, conectada al pin de entrada RXD externo                                                                                                                                |
+| GND    |                     | Tierra                                                                                                                                                                                      |
+| VCC    |                     | Entrada de alimentación DC3.3~5V                                                                                                                                                            |
 
 Notas:
 
@@ -39,11 +39,11 @@ Los pines MD0 y AUX tienen dos funciones, y se ingresa a diferentes estados seg�
 
 Los pines MD0 y AUX tienen una resistencia interna de pull-down y están en nivel bajo si no se conectan. Si se conectan, están en nivel alto de 3,3 V TTL.
 
-| Función       | Descripción              | Método de acceso                   |
-| ------------- | ------------------------| ---------------------------------- |
-| Configuración | Configuración de parámetros del módulo (comandos AT) | Después de encender, AUX en flotante, MD0 en alto |
-| Comunicación  | Utilizado para comunicación inalámbrica | Después de encender, AUX en flotante, MD0 en flotante |
-| Actualización de firmware | Utilizado para actualizar el firmware | Después de encender, AUX en alto, MD0 en alto, mantener por 1s |
+| Función                   | Descripción                                          | Método de acceso                                               |
+| ------------------------- | ---------------------------------------------------- | -------------------------------------------------------------- |
+| Configuración             | Configuración de parámetros del módulo (comandos AT) | Después de encender, AUX en flotante, MD0 en alto              |
+| Comunicación              | Utilizado para comunicación inalámbrica              | Después de encender, AUX en flotante, MD0 en flotante          |
+| Actualización de firmware | Utilizado para actualizar el firmware                | Después de encender, AUX en alto, MD0 en alto, mantener por 1s |
 
 En el modo de comunicación inalámbrica, el pin AUX es de salida y se utiliza para indicar el estado de trabajo del módulo.
 
@@ -51,38 +51,38 @@ En el modo de comunicación inalámbrica, el pin AUX es de salida y se utiliza p
 
 En "Configuración de funciones", el puerto serie debe configurarse como ASDASD: velocidad de transmisión "115200", bits de parada "1", bits de datos "8", paridad "ninguna", y se deben configurar los parámetros de trabajo del módulo mediante comandos AT. Consulte la siguiente tabla de comandos AT como referencia al configurar el software:
 
-| Comando      | Función                       |
-| ------------ | -----------------------------|
-| AT           | Prueba de respuesta del módulo |
-| AT+MODEL?    | Consulta del modelo del dispositivo |
-| AT+CGMR?     | Obtención del número de versión del software |
-| AT+UPDATE    | Consulta si el dispositivo está en modo de actualización de firmware |
-| ATE1         | Eco de comandos                |
-| ATE0         | Sin eco de comandos            |
-| AT+RESET     | Reinicio del módulo            |
-| AT+DEFAULT   | Restablecimiento de la configuración de fábrica |
-| AT+FLASH=    | Guardar parámetros              |
-| AT+ADDR=?    | Consulta del rango de direcciones de configuración del dispositivo |
-| AT+ADDR?     | Consulta de la dirección del dispositivo |
-| AT+ADDR=     | Configuración de la dirección del dispositivo |
-| AT+TPOWER=?  | Consulta del rango de configuración de la potencia de transmisión |
-| AT+TPOWER?   | Consulta de la potencia de transmisión |
-| AT+TPOWER=   | Configuración de la potencia de transmisión |
-| AT+CWMODE=?  | Consulta del rango de configuración del modo de trabajo |
-| AT+CWMODE?   | Consulta del modo de trabajo |
-| AT+CWMODE=   | Configuración del modo de trabajo |
-| AT+TMODE=?   | Consulta del rango de configuración del estado de envío |
-| AT+TMODE?    | Consulta del estado de envío |
-| AT+TMODE=    | Configuración del estado de envío |
-| AT+WLRATE=?  | Consulta del rango de configuración de la velocidad inalámbrica y el canal |
-| AT+WLRATE?   | Consulta de la velocidad inalámbrica y el canal |
-| AT+WLRATE=   | Configuración de la velocidad inalámbrica y el canal |
-| AT+WLTIME=?  | Consulta del rango de configuración del tiempo de inactividad |
-| AT+WLTIME?   | Consulta del tiempo de inactividad |
-| AT+WLTIME=   | Configuración del tiempo de inactividad |
-| AT+UART=?    | Consulta del rango de configuración del puerto serie |
-| AT+UART?     | Consulta de la configuración del puerto serie |
-| AT+UART=     | Configuración del puerto serie |
+| Comando     | Función                                                                    |
+| ----------- | -------------------------------------------------------------------------- |
+| AT          | Prueba de respuesta del módulo                                             |
+| AT+MODEL?   | Consulta del modelo del dispositivo                                        |
+| AT+CGMR?    | Obtención del número de versión del software                               |
+| AT+UPDATE   | Consulta si el dispositivo está en modo de actualización de firmware       |
+| ATE1        | Eco de comandos                                                            |
+| ATE0        | Sin eco de comandos                                                        |
+| AT+RESET    | Reinicio del módulo                                                        |
+| AT+DEFAULT  | Restablecimiento de la configuración de fábrica                            |
+| AT+FLASH=   | Guardar parámetros                                                         |
+| AT+ADDR=?   | Consulta del rango de direcciones de configuración del dispositivo         |
+| AT+ADDR?    | Consulta de la dirección del dispositivo                                   |
+| AT+ADDR=    | Configuración de la dirección del dispositivo                              |
+| AT+TPOWER=? | Consulta del rango de configuración de la potencia de transmisión          |
+| AT+TPOWER?  | Consulta de la potencia de transmisión                                     |
+| AT+TPOWER=  | Configuración de la potencia de transmisión                                |
+| AT+CWMODE=? | Consulta del rango de configuración del modo de trabajo                    |
+| AT+CWMODE?  | Consulta del modo de trabajo                                               |
+| AT+CWMODE=  | Configuración del modo de trabajo                                          |
+| AT+TMODE=?  | Consulta del rango de configuración del estado de envío                    |
+| AT+TMODE?   | Consulta del estado de envío                                               |
+| AT+TMODE=   | Configuración del estado de envío                                          |
+| AT+WLRATE=? | Consulta del rango de configuración de la velocidad inalámbrica y el canal |
+| AT+WLRATE?  | Consulta de la velocidad inalámbrica y el canal                            |
+| AT+WLRATE=  | Configuración de la velocidad inalámbrica y el canal                       |
+| AT+WLTIME=? | Consulta del rango de configuración del tiempo de inactividad              |
+| AT+WLTIME?  | Consulta del tiempo de inactividad                                         |
+| AT+WLTIME=  | Configuración del tiempo de inactividad                                    |
+| AT+UART=?   | Consulta del rango de configuración del puerto serie                       |
+| AT+UART?    | Consulta de la configuración del puerto serie                              |
+| AT+UART=    | Configuración del puerto serie                                             |
 
 Cuando se sale de la función de configuración (MD0=0), el módulo volverá a configurar los parámetros. Durante el proceso de configuración, AUX se mantendrá en alto y después de completar la configuración, se establecerá en bajo, lo que indica que el módulo ha vuelto al estado inactivo.
 
@@ -114,7 +114,7 @@ El modo de intensidad de señal se utiliza para ver la intensidad de la señal d
 - Emisión: Es igual que en el modo general.
 - Recepción: Se muestra la información de la intensidad de la señal.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220118110058.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220118110058.png)
 
 SNR: relación señal-ruido (cuanto mayor sea, más estable), RSSI: indicador de intensidad de señal recibida (cuanto mayor sea, más estable).
 
@@ -134,16 +134,16 @@ Radio y monitoreo de datos: al establecer la dirección del módulo como 0xFFFF,
 
 ### Punto a punto
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220118110614.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220118110614.png)
 
 - Dos módulos con la misma dirección, canal y velocidad inalámbrica (no la velocidad de baudios del puerto serie) pueden enviar y recibir datos entre sí (uno envía, el otro recibe).
 - Cada módulo puede enviar / recibir.
 - Los datos son completamente transparentes, lo que se envía es lo que se recibe.
 
-|          | Módulo emisor | Módulo receptor |
-| -------- | ------------- | --------------- |
-| Cantidad | 1             | 1               |
-| Contenido de transmisión | Datos | Datos |
+|                          | Módulo emisor | Módulo receptor |
+| ------------------------ | ------------- | --------------- |
+| Cantidad                 | 1             | 1               |
+| Contenido de transmisión | Datos         | Datos           |
 
 Por ejemplo:
 
@@ -155,16 +155,16 @@ La transmisión transparente es simple, solo se usa el módulo Lora como un puer
 
 ### Punto a varios
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220118110709.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220118110709.png)
 
 - Los módulos con la misma dirección, canal y velocidad inalámbrica (no la velocidad de baudios del puerto serie) pueden enviar y recibir datos entre sí (uno envía, varios reciben).
 - Cada módulo puede enviar / recibir.
 - Los datos son completamente transparentes, lo que se envía es lo que se recibe.
 
-|          | Módulo emisor | Módulo receptor |
-| -------- | ------------- | --------------- |
-| Cantidad | 1             | N               |
-| Contenido de transmisión | Datos | Datos |
+|                          | Módulo emisor | Módulo receptor |
+| ------------------------ | ------------- | --------------- |
+| Cantidad                 | 1             | N               |
+| Contenido de transmisión | Datos         | Datos           |
 
 La diferencia con el punto a punto es que varios módulos pueden recibir.
 
@@ -175,15 +175,15 @@ Los dispositivos B a F reciben: AA BB CC DD
 
 ### Radiodifusión y monitoreo
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220118110853.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220118110853.png)
 
 - Si la dirección del módulo es 0xFFFF, el módulo está en modo de radiodifusión y monitoreo, los datos enviados pueden ser recibidos por todos los demás módulos en el mismo canal y velocidad (radiodifusión); al mismo tiempo, se puede monitorear la transmisión de datos de todos los módulos en el mismo canal y velocidad (monitoreo).
 - La radiodifusión y el monitoreo no requieren la misma dirección.
 
-|          | Módulo emisor | Módulo receptor |
-| -------- | ------------- | --------------- |
-| Cantidad | 1             | N               |
-| Contenido de transmisión | Datos | Datos |
+|                          | Módulo emisor | Módulo receptor |
+| ------------------------ | ------------- | --------------- |
+| Cantidad                 | 1             | N               |
+| Contenido de transmisión | Datos         | Datos           |
 
 La diferencia con el punto a varios es que las direcciones pueden ser diferentes.
 
@@ -205,12 +205,10 @@ El dispositivo A monitorea: 11 22 33 44
 - Al enviar el módulo, se puede modificar la dirección y el canal, y el usuario puede especificar que los datos se envíen a cualquier dirección y canal.
 - Se pueden realizar funciones de red y de relé.
 
-|          | Módulo emisor | Módulo receptor |
-| -------- | ------------- | --------------- |
-| Cantidad | 1             | 1               |
-| Contenido de transmisión | Dirección + canal + datos | Datos |
-
-
+|                          | Módulo emisor             | Módulo receptor |
+| ------------------------ | ------------------------- | --------------- |
+| Cantidad                 | 1                         | 1               |
+| Contenido de transmisión | Dirección + canal + datos | Datos           |
 
 La diferencia con la transmisión punto a punto es que la dirección del módulo y el canal son variables, pero la velocidad sigue siendo la misma.
 
@@ -289,10 +287,10 @@ De esta manera, el dispositivo receptor (dispositivo B) puede recibir un marco d
 - La escucha de difusión no requiere que las direcciones sean iguales.
 - La dirección del canal se puede configurar. Cuando la dirección es 0xFFFF, es el modo de difusión; de lo contrario, es el modo de transmisión direccionada.
 
-|          | Módulo de envío  | Módulo de recepción |
-| -------- | ---------------- | -------------------- |
-| Cantidad | 1                | N                    |
-| Contenido de transmisión | 0xFFFF + canal + datos | Datos                |
+|                          | Módulo de envío        | Módulo de recepción |
+| ------------------------ | ---------------------- | ------------------- |
+| Cantidad                 | 1                      | N                   |
+| Contenido de transmisión | 0xFFFF + canal + datos | Datos               |
 
 Por ejemplo:
 

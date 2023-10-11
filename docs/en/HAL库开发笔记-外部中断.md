@@ -16,7 +16,7 @@ Interrupts can be divided into external (Interrupt) and internal (Exception). Ex
 
 NVIC stands for Nested Vectored Interrupt Controller. It has three main parameters: interrupt enable, preemption priority, and response priority. (The lower the priority value, the higher the priority.)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210206121058.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210206121058.png)
 
 **Interrupt Enable**: This refers to whether the interrupt is enabled. If the interrupt is enabled, when the interrupt trigger condition is met, the interrupt service program will be executed. Otherwise, the interrupt service program will be ignored and the main program will continue to run.
 
@@ -47,19 +47,19 @@ Before proceeding to the next experiment, various parameters such as serial port
 
 ### Configuring Interrupts in CubeMX
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210205150422.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210205150422.png)
 
 As shown in the figure, the LED is still configured as output using the method in the previous article. Since the button is triggered by a low level, that is, a falling edge is generated at the moment of pressing, the pin should be configured as an interrupt triggered by a falling edge.
 
 On my board, `PI8` is configured as `GPIO_EXTI8` mode (external interrupt, mounted on interrupt line 8), and configured as a falling edge trigger. According to the schematic diagram, select internal pull-up (Pull-up). As shown in the figure:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210403222304.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210403222304.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210206131409.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210206131409.png)
 
 Next, click the NVIC label page to enable the interrupt we configured:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210206134916.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210206134916.png)
 
 In addition, the preemption priority should be lowered by one (from 0 to 1, the reason will be explained below).
 

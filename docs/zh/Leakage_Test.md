@@ -8,7 +8,7 @@ Leakage test contains input leakage test (IIL & IIH) and output tristate leakage
 
 Input leakage occurs in a input pin's buffer circuit. IIH is the leakage path from input pin to GND when the DUT is driven to "1", and IIL is the leakage path from VDD to input pin when driven to "0":
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220911215421.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220911215421.png)
 
 Actually, the measurement of IIL is the resistance from input pin to VDD, and IIH is the resistance from input pin to GND. Input leakage test is to ensure the pin's input buffer will not source or sink more unwanted current than specified.
 
@@ -18,7 +18,7 @@ Serial input leakage test (IIL & IIH) is performed with applying a voltage of VD
 
 #### IIL Test (Serial)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220911225521.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220911225521.png)
 
 1. Apply VDDmax to VDD pin (with current clamp).
 2. Force VDDmax to all input pins except for the Pin under Test.
@@ -29,7 +29,7 @@ Serial input leakage test (IIL & IIH) is performed with applying a voltage of VD
 
 #### IIH Test (Serial)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220912113044.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220912113044.png)
 
 1. Apply VDDmax to VDD pin (with current clamp).
 2. Force 0V to all input pins except for the Pin under Test.
@@ -50,7 +50,7 @@ Tristate also named as High-Z or floating state, indicates appear to be high imp
 
 Output tristate leakage occurs in HIGH or LOW voltage level is applied on the DUT's output pin, while the pin is preconditioned to be disabled. IOZL means the current flow out when the LOW level is applied, and IOZH means the current flow into when the HIGH level is applied.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220912120527.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220912120527.png)
 
 Essentially, IOZL indicates the resistance from an output pin to VDD when disabled, and IOZH indicates the resistance to GND. The test insures the pin will not source or sink more unwanted current than specified.
 
@@ -60,7 +60,7 @@ Additionally, a control input (enable signal) is required in this test , to cont
 
 #### IOZL Test (Serial)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220912121730.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220912121730.png)
 
 1. Apply VDDmax to VDD pin (with current clamp).
 2. Precondition the specific out pin to Hi-Z (disable) state.
@@ -71,7 +71,7 @@ Additionally, a control input (enable signal) is required in this test , to cont
 
 #### IOZH Test (Serial)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220912122050.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220912122050.png)
 
 1. Apply VDDmax to VDD pin (with current clamp).
 2. Precondition the specific out pin to Hi-Z (disable) state.

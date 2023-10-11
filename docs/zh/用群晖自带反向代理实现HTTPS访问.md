@@ -9,7 +9,7 @@
 以 [**使用 Bitwarden 搭建密码管理器（群晖 Docker）**](https://wiki-power.com/%E5%9F%BA%E4%BA%8EBitwarden%E6%90%AD%E5%BB%BA%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86%E5%99%A8%EF%BC%88%E7%BE%A4%E6%99%96Docker%EF%BC%89)
 我们新增名称为 `bitwarden` 的反代服务。按照下图填写配置：
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210503213004.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210503213004.png)
 
 - `来源`
   - `协议`：选择 `HTTPS`

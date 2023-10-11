@@ -4,13 +4,13 @@
 
 GPIO stands for General Purpose Input Output.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200615205256.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200615205256.jpg)
 
 Taking the F103C8T6 chip as an example (shown above), all pins except for the colored ones (power and certain functional pins) are called GPIO. This demonstrates its versatility.
 
 The function of GPIO is to input/output electrical signals. Let's take a look at its internal structure:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200615211744.jpg)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200615211744.jpg)
 
 - The rightmost I/O pin is the physical chip pin. The upper and lower `protective diodes` can prevent abnormal external voltages from burning out the chip to a certain extent.
 - The red dashed box represents the input function (the chip reads external signals). The two switches with pull-up/pull-down resistors are used to implement pull-up/pull-down input functions. If both switches are not closed, it is called floating input (no reference level, neither high nor low). These three input modes all output digital signals (high/low level). In addition, there is an analog input function, which directly reads the analog signal on the pin. (We will mention the multiplexed input function later).
@@ -61,7 +61,7 @@ This will not be repeated here. Please refer to the method in the article [**HAL
 
 Set the corresponding GPIO port of the LED as output and set the initial level.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210205150422.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210205150422.png)
 
 For my board, I need to set the GPIOs of `PD4` and `PI3` as output (`GPIO_Output`).  
 If you want to turn on the LED when powered on, set the initial voltage to low (`Low`) according to the circuit schematic.
@@ -82,7 +82,7 @@ HAL_GPIO_TogglePin(GPIOI, GPIO_PIN_3);
 /* USER CODE END 3 */
 ```
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210205151322.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210205151322.png)
 
 The flashing effect can be achieved.
 
@@ -94,7 +94,7 @@ After learning about GPIO output, we will learn about GPIO input mode using butt
 
 After configuring the GPIO port to which the LED belongs using the above method, according to the schematic diagram of the onboard button:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210205150422.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210205150422.png)
 
 Set the GPIO (`PI8`) to which the button belongs to input (`GPIO_Input`). According to the schematic diagram, select internal pull-up (`Pull-up`). Generate code.
 

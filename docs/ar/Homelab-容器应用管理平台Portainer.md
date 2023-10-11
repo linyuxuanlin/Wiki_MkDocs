@@ -1,6 +1,6 @@
 # Homelab - منصة إدارة تطبيقات الحاويات Portainer
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202304111545899.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304111545899.png)
 
 **Portainer** هي أداة إدارة رسومية لتطبيقات الحاويات (بما في ذلك Docker / Docker compose / Swarm / Kubernetes) ، والتي يمكن استخدامها لإدارة بيئة Docker من خلال واجهة الويب. كما توفر العديد من الميزات مثل عرض السجلات وبدء وإيقاف تشغيل الحاويات وإدارة الصور والشبكات والأقراص الافتراضية وغيرها.
 

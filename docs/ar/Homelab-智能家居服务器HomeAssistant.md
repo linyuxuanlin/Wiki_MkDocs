@@ -1,6 +1,6 @@
 # Homelab - Home Assistant لخادم المنزل الذكي
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202306011647498.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202306011647498.png)
 
 **Home Assistant** هو خادم منزلي ذكي مفتوح المصدر يمكنه مراقبة جميع أجهزة المنزل ، ويشبه وظيفته تطبيق Mi Home ، ويتميز بواجهة مستخدم ودية وجميلة ونسبيًا سهلة التنصيب.
 

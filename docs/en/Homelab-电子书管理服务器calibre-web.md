@@ -1,6 +1,6 @@
 # Homelab - calibre-web, an eBook Management Server
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210429125418.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210429125418.png)
 
 **calibre-web** is an all-in-one eBook solution based on Calibre. It allows users to read eBooks on a web page, integrates calibre-server service, and also supports eBook format conversion.
 
@@ -26,7 +26,7 @@ services:
 
 (Optional) It is recommended to create a `.env` file in the same directory as `compose.yaml` and customize your environment variables. If you do not want to use environment variables, you can also customize your parameters directly in `compose.yaml` (for example, replace `${STACK_NAME}` with `audiobookshelf`).
 
-```dotenv title=".env"
+````dotenv title=".env"
 STACK_NAME=calibre-web
 STACK_DIR=xxx # Customize your project storage path, such as ./calibre-web
 DATA_DIR=xxx # Customize your book storage path, such as ./book
@@ -58,7 +58,7 @@ If you forget your password, you can download the `app.db` database in `calibre-
 
 ```sql
 SELECT * FROM 'user' LIMIT 0,30 --You can also manually switch to the table named user
-```
+````
 
 ```sql
 UPDATE user SET password='pbkdf2:sha256:150000$ODedbYPS$4d1bd12adb1eb63f78e49873cbfc731e35af178cb9eb6b8b62c09dcf8db76670' WHERE name='xxx'; -- Replace xxx with your current username

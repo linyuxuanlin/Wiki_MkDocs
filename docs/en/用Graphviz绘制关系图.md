@@ -6,7 +6,7 @@ A way to draw relationship diagrams using code.
 
 [Graphviz](http://www.graphviz.org/) is a great tool for drawing relationship diagrams. It has a fundamental difference from Visio: Graphviz generates graphs that are **automatically laid out**, without the need for manual adjustment of element positions. When a relationship network is complex, automatic layout can achieve **minimization of line crossings**.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/Graphviz.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/Graphviz.png)
 
 ## Installation
 
@@ -28,7 +28,7 @@ graph graph_name {
 }
 ```
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20190201140244.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20190201140244.png)
 
 ## Conclusion
 

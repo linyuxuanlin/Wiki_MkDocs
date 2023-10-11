@@ -2,7 +2,7 @@
 
 - Building an all-in-one development environment to replace Keil/Arduino IDE
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200531112801.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200531112801.png)
 
 ## Background
 
@@ -29,7 +29,7 @@ First, make sure you have VSCode installed (you can jump to [**this article**](h
 
 Search and install Python and PlatformIO IDE in the `Extensions` (`Ctrl + Shift + X`) section.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200531113916.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200531113916.png)
 
 After successful installation of the plugins, click on `Reload` to start the plugin and then make a cup of coffee while it automatically installs the core component `platformIO-core` (initial installation may take some time).
 

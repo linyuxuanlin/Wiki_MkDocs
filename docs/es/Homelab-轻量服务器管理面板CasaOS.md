@@ -1,6 +1,6 @@
 # Homelab - Panel de gestión de servidor ligero CasaOS
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230304192541.png)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304192541.png)
 
 **CasaOS** es un panel personal de código abierto simple, elegante y fácil de usar que incluye un administrador de archivos, monitoreo del estado del servidor, terminal, administración de contenedores Docker, tienda de aplicaciones Docker integrada, entre otras funciones.
 
