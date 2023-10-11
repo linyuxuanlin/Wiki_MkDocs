@@ -1,34 +1,34 @@
-# Hack.init() Hackathon
+# Hack.init( ) 黑客马拉松
 
-—— Wight · Sistema de iluminación sin cables basado en plataforma en la nube.
+—— Wight · 基于云平台的去线缆化照明系统。
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/wight.jpg)
 
-Repositorio del proyecto: [**linyuxuanlin / Wight**](https://github.com/linyuxuanlin/Wight)
+项目仓库：[**linyuxuanlin / Wight**](https://github.com/linyuxuanlin/Wight)
 
-## Antecedentes
+## الخلفية
 
-El proyecto se realizó en el hack.init() Hackathon de 2017. Después de más de 20 horas de codificación, modelado, depuración de todo tipo de errores, esperando la impresión, presentación y discurso, finalmente se logró algo parecido a un producto.
+تم إنشاء هذا المشروع في ماراثون Hack.init () لعام 2017. بعد أكثر من 20 ساعة من البرمجة والنمذجة وتصحيح الأخطاء المتنوعة والانتظار للطباعة والعرض والتقديم ، بدأ المشروع يظهر بشكل ما.
 
-Este proyecto se utiliza principalmente para el sistema de iluminación de farolas en áreas remotas y rurales. El modelo es un poco abstracto, en realidad representa una farola.
+يستخدم هذا المشروع بشكل رئيسي في نظام إضاءة الشوارع في المناطق النائية في الريف. النموذج قليلاً مجرد تمثيل لعمود إضاءة الشوارع.
 
-## Puntos innovadores del proyecto
+## نقاط الابتكار في المشروع
 
-- **Alimentación solar.** Autosuficiente (según la información detallada, la energía solar es suficiente para encender LED)
-- **Sin cables.** Proporciona comodidad para áreas remotas de montaña donde no es conveniente instalar cables.
-- **Algoritmo inteligente.** Detecta la noche y enciende automáticamente las luces; detecta la presencia de personas o vehículos y aumenta el brillo de los LED.
-- **Control unificado en la plataforma en la nube.** Utiliza un controlador principal GSM, que permite la depuración remota en lotes.
-- **Escalabilidad.** Proporciona diversas funciones personalizadas para usuarios especiales con necesidades de iluminación personalizadas.
+- **تزويد الطاقة بالطاقة الشمسية.** الاكتفاء الذاتي (بعد الاطلاع على المعلومات المفصلة ، يكفي طاقة الشمس لإضاءة LED)
+- **التخلص من الأسلاك.** توفير الراحة للمناطق الجبلية النائية التي لا يمكن تمديد الأسلاك فيها
+- **خوارزمية ذكية.** عند الكشف عن الليل ، يتم تشغيل الإضاءة تلقائيًا ؛ عند الكشف عن مرور الأشخاص أو المركبات ، يتم زيادة سطوع LED
+- **التحكم الموحد في المنصة السحابية.** يتم استخدام المراقب الرئيسي GSM ، ويمكن التصحيح عن بعد بالجملة
+- **قابلية التوسع.** توفير مجموعة متنوعة من الوظائف المخصصة للمستخدمين الذين لديهم متطلبات إضاءة مخصصة
 
-## Principios y realización
+## المبدأ والتنفيذ
 
-**Código:**
+**الشفرة:**
 
 ```cpp
-#define BUTTONS_address   "channel/widget4_0/cmd/control" //comando de encendido / apagado
-#define LIGHT_STATUS_address  "channel/widget4_0/data/light"//estado de encendido / apagado
+#define BUTTONS_address   "channel/widget4_0/cmd/control" //أمر التشغيل / الإيقاف
+#define LIGHT_STATUS_address  "channel/widget4_0/data/light"//حالة التشغيل / الإيقاف
 #define ITENSITY_DATA_address "channel/widget4_0/data/lightsensor"
-#define LEDPIN1    D1    //definir el pin de control de la bombilla
+#define LEDPIN1    D1    //تعريف دبوس تحكم المصباح
 #define LEDPIN2    D2
 #define LEDPIN3    D3
 #define LEDPIN4    D5
@@ -38,7 +38,7 @@ Este proyecto se utiliza principalmente para el sistema de iluminación de farol
 
 int autostate = 2;
 int light_state = 2;
-void buttons_function(uint8_t *payload, uint32_t len)//Botones de automático y riego
+void buttons_function(uint8_t *payload, uint32_t len)//الأزرار الأوتوماتيكية والري
 {
     uint8_t SwitchKey;
     uint8_t SwitchKey2;
@@ -49,19 +49,19 @@ void buttons_function(uint8_t *payload, uint32_t len)//Botones de automático y 
         aJson.deleteItem(root);
         return;
     }
-    aJsonObject *_switch = aJson.getObjectItem(root, "modo");
+    aJsonObject *_switch = aJson.getObjectItem(root, "mode");
     if(_switch != NULL)
     {
         SwitchKey = atoi(_switch->valuestring);
         if(SwitchKey)
         {
-            SerialUSB.println("automático encendido");
+            SerialUSB.println("auto on");
             autostate=1;
              IntoRobot.publish(LIGHT_STATUS_address,"1");
         }
         else
         {
-            SerialUSB.println("automático apagado");
+            SerialUSB.println("auto off");
             autostate=0;
              IntoRobot.publish(LIGHT_STATUS_address,"0");
         }
@@ -72,13 +72,13 @@ void buttons_function(uint8_t *payload, uint32_t len)//Botones de automático y 
         SwitchKey2 = atoi(_switch2->valuestring);
         if(SwitchKey2)
         {
-            SerialUSB.println("manual encendido");
+            SerialUSB.println("manual on");
             light_state=1;
              IntoRobot.publish(LIGHT_STATUS_address,"1");
         }
         else
         {
-            SerialUSB.println("manual apagado");
+            SerialUSB.println("manual off");
             light_state=0;
              IntoRobot.publish(LIGHT_STATUS_address,"0");
         }
@@ -90,19 +90,20 @@ void buttons_function(uint8_t *payload, uint32_t len)//Botones de automático y 
 }
 void lightup()
 {
-    digitalWrite(LEDPIN1, HIGH);    // Encender la bombilla
-    digitalWrite(LEDPIN2, HIGH);    // Encender la bombilla
-    digitalWrite(LEDPIN3, HIGH);    // Encender la bombilla
-    digitalWrite(LEDPIN4, HIGH);    // Encender la bombilla
+    digitalWrite(LEDPIN1, HIGH);    // تشغيل المصباح
+    digitalWrite(LEDPIN2, HIGH);    // تشغيل المصباح
+    digitalWrite(LEDPIN3, HIGH);    // تشغيل المصباح
+    digitalWrite(LEDPIN4, HIGH);    // تشغيل المصباح
 
 }
 void light_half_up()
 {
-    analogWrite(LEDPIN1, 80);    // Encender la bombilla
-    analogWrite(LEDPIN2, 80);    // Encender la bombilla
-    analogWrite(LEDPIN3, 80);    // Encender la bombilla
-    analogWrite(LEDPIN4, 80);    // Encender la bombilla
+    analogWrite(LEDPIN1, 80);    // تشغيل المصباح
+    analogWrite(LEDPIN2, 80);    // تشغيل المصباح
+    analogWrite(LEDPIN3, 80);    // تشغيل المصباح
+    analogWrite(LEDPIN4, 80);    // تشغيل المصباح
 
+}
 void lightdown()
 {
     digitalWrite(LEDPIN1, LOW);
@@ -152,12 +153,12 @@ void setup()
 {
     pinMode(D4,INPUT);
     SerialUSB.begin(115200);
-    SerialUSB.println("hola mundo");
-    pinMode(LEDPIN1, OUTPUT);    //inicialización
-    pinMode(LEDPIN2, OUTPUT);    //inicialización
-    pinMode(LEDPIN3, OUTPUT);    //inicialización
-    pinMode(LEDPIN4, OUTPUT);    //inicialización
-    //el dispositivo recibe comandos de encendido y apagado de la luz de la plataforma en la nube
+    SerialUSB.println("hello world");
+    pinMode(LEDPIN1, OUTPUT);    //initialize
+    pinMode(LEDPIN2, OUTPUT);    //initialize
+    pinMode(LEDPIN3, OUTPUT);    //initialize
+    pinMode(LEDPIN4, OUTPUT);    //initialize
+    //Device receives light switch command from cloud platform
     IntoRobot.subscribe(BUTTONS_address,NULL,buttons_function);
     IntoRobot.subscribe(ITENSITY_DATA_address,NULL,HUMIDITY_print_function);
 }
@@ -175,30 +176,32 @@ void loop()
     }
     else if (autostate==1)
     {
-        SerialUSB.println("estado=1");
+        SerialUSB.println("state=1");
         automode();
     }
     delay(100);
 }
 ```
 
-Debido al tiempo limitado del concurso, solo pudimos dibujar un modelo aproximado y ensamblarlo después de imprimirlo.
+بسبب وقت المسابقة المحدود، لم نتمكن من رسم نموذج مفصل، ولكن تم طباعته وتجميعه.
 
-## Preguntas frecuentes
+## الأسئلة الشائعة
 
-P: ¿Habrá seguimiento del proyecto en el futuro?
-R: Actualmente no tenemos planes de seguimiento. La idea es interesante, pero aún queda por ver si tiene valor comercial.
+س: هل سيتم متابعة المشروع في المستقبل؟
+ج: ليس لدينا خطط حاليًا للمتابعة. النقطة المبتكرة جيدة، ولكن ما إذا كان لها قيمة تجارية، فهذا يحتاج إلى التحقق.
 
-## Conclusión
+## الخلاصة
 
-No ganamos el concurso, pero nos permitió mejorar nuestras habilidades de programación y presentación, y experimentar la sensación de trabajar horas extras para lanzar un proyecto. También conocimos a muchas personas y recibimos muchos recuerdos.
+لم نفز في المسابقة هذه المرة. ومع ذلك، تدربنا على البرمجة والتقديم، وأتاحت لنا الفرصة لتجربة العمل الإضافي والإطلاع على الكثير من الناس والحصول على العديد من الهدايا التذكارية.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- Miembros del equipo: Lin Peijie, Huang Yuefeng, Zhang Ziyi
-- [Plataforma en la nube de IntoRobot](https://www.intorobot.com/)
 
-por_reemplazar[1]
-por_reemplazar[2]
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+- فريق العمل: لين بي جي، هوانغ يوي فنغ، تشانغ زي يي
+- [منصة إنتو روبوت السحابية](https://www.intorobot.com/)
+
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

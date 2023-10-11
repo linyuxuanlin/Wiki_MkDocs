@@ -1,6 +1,6 @@
-# Notas de aprendizaje de HTML
+# ملاحظات دراسة HTML
 
-## Estructura básica
+## الإطار الأساسي
 
 ```markup
 <!DOCTYPE html>
@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Título</title>
+    <title>العنوان</title>
 </head>
 <body>
 
@@ -17,15 +17,15 @@
 </html>
 ```
 
-Puede abrir un archivo `.html` y escribir `html:5` para llamarlo.
+يمكن فتح ملف `.html` وكتابة `html:5` مباشرة لإظهاره.
 
-## Declaraciones
+## البيانات
 
-Algunas convenciones:
+بعض المعايير:
 
-1. Las etiquetas se escriben en minúsculas y los elementos deben cerrarse.
-2. Los elementos vacíos deben cerrarse con una barra diagonal, por ejemplo `<br />`.
-3. No se utiliza la semántica, todos los estilos se almacenan en CSS, separando el contenido de los estilos.
+1. استخدام الأحرف الصغيرة للعلامات، ويجب إغلاق العناصر.
+2. يجب إضافة شرطة مائلة للعناصر الفارغة لإغلاقها، على سبيل المثال `<br />`.
+3. عدم استخدام الدلالة الدلالية، ويتم تخزين جميع الأنماط في CSS، ويجب فصل المحتوى عن الأنماط.
 
 ```markup
 <!DOCTYPE html>
@@ -35,114 +35,83 @@ Algunas convenciones:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Título</title>
+    <title>العنوان</title>
 </head>
 
 <body>
-    <h1>Título de nivel 1</h1>
-    <h2>Título de nivel 2</h2>
-    <p>Párrafo</p>
+    <h1>العنوان الأول</h1>
+    <h2>العنوان الثاني</h2>
+    <p>فقرة</p>
 
-    <!--Salto de línea-->
+    <!-- فاصل السطر -->
     <br />
-    <!--Línea divisoria-->
+    <!-- خط الفاصل -->
     <hr />
 
-    <!--Listas, pueden ser anidadas-->
-    <!--Lista ordenada-->
+    <!-- القوائم، يمكن تضمينها -->
+    <!-- القائمة المرتبة -->
     <ol>
-        <li>Primer elemento</li>
-        <li>Segundo elemento</li>
+        <li>العنصر الأول</li>
+        <li>العنصر الثاني</li>
     </ol>
-    <!--Lista desordenada-->
+    <!-- القائمة غير المرتبة -->
     <ul>
-        <li>Primer elemento</li>
-        <li>Segundo elemento</li>
+        <li>العنصر الأول</li>
+        <li>العنصر الثاني</li>
     </ul>
 
-    <!--Enlaces-->
-    <a href="https://www.google.com/">Texto del enlace</a>
-    <!--Enlace a una ubicación específica de la página, utilizando el atributo ID-->
-    <a href="#top">Volver arriba</a>
-    <p id="top">Arriba</p>
-    <!--Enlace a una ubicación específica en otra página-->
-    <a href="http://wiki-power.com/#top">Saltar a una ubicación en otra página</a>
+    <!-- الروابط -->
+    <a href="https://www.google.com/">نص الرابط</a>
+    <!-- الربط إلى موقع محدد، باستخدام معرف ID -->
+    <a href="#top">العودة إلى الأعلى</a>
+    <p id="top">الأعلى</p>
+    <!-- الربط إلى موقع آخر محدد -->
+    <a href="http://wiki-power.com/#top">الانتقال إلى موقع آخر</a>
 
-    <!--Imágenes-->
-    <img src="/xx.png" alt="Texto alternativo cuando no se puede cargar la imagen" />
+    <!-- الصور -->
+    <img src="/xx.png" alt="نص الوصف عند عدم التحميل" />
 
-    <!--Tablas-->
+    <!-- الجداول -->
     <table>
-        <!--Primera fila-->
+        <!-- الصف الأول -->
         <tr>
-            <!--Primera columna-->
+            <!-- العمود الأول -->
             <th></th>
-            <!--Segunda columna-->
-            <th scope="col">Sábado</th>
-            <!--Tercera columna-->
-            <th scope="col">Domingo</th>
+            <!-- العمود الثاني -->
+            <th scope="col">السبت</th>
+            <!-- العمود الثالث -->
+            <th scope="col">الأحد</th>
         </tr>
-        <!--Segunda fila-->
+        <!-- الصف الثاني -->
         <tr>
-            <th scope="row">Cantidad</th>
+            <th scope="row">الكمية</th>
             <td>120</td>
             <td>135</td>
         </tr>
-        <!--Tercera fila-->
+        <!-- الصف الثالث -->
         <tr>
-            <th scope="row">Ingresos</th>
-            <!--Columna que abarca varias celdas, utilizando colspan y rowspan-->
+            <th scope="row">الأرباح</th>
+            <!-- العمود العريض colspan، الصف العريض rowspan -->
             <td colspan="2">500</td>
         </tr>
     </table>
 
-# Introducción a HTML
+<!--النموذج، قيد الإكمال-->
+<!--الإطار، قيد الإكمال-->
+<!--فلاش/فيديو/صوت، قيد الإكمال-->
 
-HTML (Lenguaje de Marcado de Hipertexto) es el lenguaje de marcado estándar utilizado para crear páginas web. Con HTML, se pueden crear documentos estructurados y enriquecidos con contenido multimedia, como imágenes, videos y audio.
-
-## Estructura básica de un documento HTML
-
-Un documento HTML comienza con una etiqueta `<!DOCTYPE html>` que indica al navegador que se está utilizando la última versión de HTML. Luego, la estructura básica de un documento HTML consta de dos partes principales: la sección `head` y la sección `body`.
-
-```html
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Título de la página</title>
-</head>
-<body>
-  Contenido de la página
 </body>
+
 </html>
 ```
 
-La sección `head` contiene información sobre la página, como el título, la descripción y las palabras clave. La sección `body` contiene el contenido real de la página, como texto, imágenes y otros elementos multimedia.
+## المراجع والشكر
 
-## Etiquetas HTML comunes
+- [دليل HTML | تعلم البرمجة](http://www.runoob.com/html/html-tutorial.html)
+- [تعلم HTML في 30 دقيقة](http://deerchao.net/tutorials/html/html.htm)
+- [HTML - تحليل رأس الصفحة](https://www.tielemao.com/831.html)
 
-Las etiquetas HTML se utilizan para estructurar y dar formato al contenido de la página. Algunas etiquetas comunes incluyen:
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-- `<h1>` a `<h6>`: encabezados de diferentes tamaños
-- `<p>`: párrafos de texto
-- `<a>`: enlaces a otras páginas o recursos
-- `<img>`: imágenes
-- `<ul>` y `<ol>`: listas sin ordenar y ordenadas, respectivamente
-- `<table>`: tablas de datos
-- `<form>`: formularios para recopilar información del usuario
-
-## Añadiendo multimedia
-
-HTML también permite la inclusión de contenido multimedia en una página web. Algunos elementos comunes incluyen:
-
-- `<iframe>`: permite incrustar una página web dentro de otra página web
-- `<video>`: permite la inclusión de videos
-- `<audio>`: permite la inclusión de archivos de audio
-- `<img>`: permite la inclusión de imágenes
-
-## Referencias y agradecimientos
-
-- [Tutorial de HTML | Tutorial de novatos](http://www.runoob.com/html/html-tutorial.html)
-- [Tutorial de HTML en 30 minutos](http://deerchao.net/tutorials/html/html.htm)
-- [HTML - Análisis superficial de la sección de encabezado](https://www.tielemao.com/831.html)
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

@@ -1,78 +1,78 @@
-# Notas de desarrollo de la biblioteca HAL - Configuración del entorno
+# ملاحظات تطوير مكتبة HAL - إعداد البيئة
 
-Nota: Este tutorial se basa en la placa STM32F429IGT6 de Reverse Costumer.
+ملاحظة: يستند هذا البرنامج التعليمي إلى لوحة STM32F429IGT6 من عكس الضيف.
 
-## Instalación de software
+## تثبيت البرامج اللازمة
 
 ### Keil MDK
 
-Consulte el artículo [**Guía de configuración de Keil MDK**](https://wiki-power.com/es/KeilMDK%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97) para obtener más información.
+انظر المقال [**دليل تكوين Keil MDK**](https://wiki-power.com/ar/KeilMDK%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97) للحصول على مزيد من المعلومات.
 
-### Java Runtime Environment
+### بيئة تشغيل Java
 
-Este es el entorno Java necesario para STM32CubeMX. Descárguelo e instálelo desde el [**enlace oficial**](https://www.java.com/en/download/).
+هذه هي بيئة Java التي يحتاجها STM32CubeMX. يمكن تنزيلها وتثبيتها من [**رابط الموقع الرسمي**](https://www.java.com/en/download/).
 
 ### STM32CubeMX
 
-Descargue e instale STM32CubeMX desde el [**enlace oficial**](https://my.st.com/content/my_st_com/zh/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-configurators-and-code-generators/stm32cubemx.license=1611899126599.product=STM32CubeMX.version=6.1.1.html).
+يمكن تنزيل وتثبيت STM32CubeMX من [**رابط الموقع الرسمي**](https://my.st.com/content/my_st_com/zh/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-configurators-and-code-generators/stm32cubemx.license=1611899126599.product=STM32CubeMX.version=6.1.1.html).
 
-## Configuración del proyecto
+## تكوين المشروع
 
-### Inicialización
+### البدء
 
-Cree un nuevo proyecto y guarde después de seleccionar el chip.
+أنشئ مشروعًا واختر الشريحة ثم احفظها أولاً.
 
-### Configuración SYS
+### تكوين SYS
 
 `Pinout & Configurations` - `System Core` - `SYS`
 
-Cambie la opción `Debug` a `Serial Wire` (consulte el artículo [**Evite problemas con CubeMX y CubeIDE**](https://wiki-power.com/es/CubeMX与CubeIDE避坑) para obtener más información).
+قم بتغيير خيار `Debug` إلى `Serial Wire` (لمزيد من التفاصيل ، انظر المقال [**CubeMX و CubeIDE تجنب المشاكل**](https://wiki-power.com/ar/CubeMXوCubeIDEتجنبالمشاكل)).
 
-### Configuración RCC
+### تكوين RCC
 
 `Pinout & Configurations` - `System Core` - `RCC`
 
-Configure según la placa.
+قم بتعيينها وفقًا لحالة اللوحة.
 
-Por ejemplo, consulte el esquemático de la placa:
+على سبيل المثال ، استنادًا إلى مخطط اللوحة:
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20210205205030.png)
 
-Configure las opciones `HSE` y `LSE` como cristales externos:
+يمكنك تعيين خيارات `HSE` و `LSE` على التوالي على الكريستال الخارجي:
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20210205205140.png)
 
-### Configuración del árbol de reloj
+### تكوين شجرة الساعة
 
-Configure en la interfaz `Clock Configuration`.
+يتم التكوين في واجهة `Clock Configuration`.
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20210205205550.png)
 
-Siga los pasos de la imagen anterior:
+وفقًا للخطوات في الصورة أعلاه:
 
-1. Ingrese los valores de las dos frecuencias más a la izquierda según los parámetros del cristal externo de la placa.
-2. Seleccione `HSE`, ya que la frecuencia y precisión del cristal externo son mayores que las del interno.
-3. Seleccione `PLLCLK` para obtener una frecuencia alta mediante multiplicación de fase de bucle cerrado (PLL).
-4. Ingrese el valor de `HCKL`, generalmente según la frecuencia máxima indicada en la parte inferior, y presione Enter para calcular automáticamente la frecuencia de división y multiplicación.
+1. استنادًا إلى معلمات الكريستال الخارجي الموجود على اللوحة ، املأ قيم التردد الأوليين على اليسار.
+2. حدد `HSE` ، لأن تردد الكريستال الخارجي ودقته أعلى من الداخلية.
+3. حدد `PLLCLK` ، واستخدم تضاعف تردد PLL للحصول على تردد عالي.
+4. املأ قيمة `HCKL` ، وعادة ما يتم ملء القيمة وفقًا لأقصى تردد موضح في الأسفل ، وبعد الانتهاء من الملء ، يتم حساب مضاعف التقسيم تلقائيًا.
 
-### Configuración de opciones de gestión de proyectos
+### تكوين خيارات إدارة المشروع
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20210130095224.png)
 
 ![](https://f004.backblazeb2.com/file/wiki-media/img/20210130095239.png)
 
-## Diferencias entre la biblioteca HAL y la biblioteca estándar
+## الفرق بين مكتبة HAL والمكتبة القياسية
 
-Para aumentar la portabilidad, la biblioteca HAL tiene tres funciones adicionales en comparación con la biblioteca estándar: **manejador, funciones MSP y funciones de devolución de llamada**. Consulte el contenido en los enlaces de referencia al final del artículo para obtener más información.
+لزيادة النقلية ، تحتوي مكتبة HAL على ثلاث وظائف إضافية: **المقبض ودوال MSP ودوال Callback**. يمكن الرجوع إلى المحتوى الموجود في الروابط المرجعية في نهاية المقال.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [【STM32】Explicación detallada del RCC del reloj del sistema](https://blog.csdn.net/as480133937/article/details/98845509)
-- [Inicialización de la placa, configuración completa y detallada del árbol de reloj RCC](https://www.notion.so/2-RCC-770c0c454f954408a3956257aa0fb523)
-- [Resumen completo del conocimiento de STM32 HAL](https://mp.weixin.qq.com/s/ffcjKtl7JdRibLRNGquGXA)
-- [Resumen claro del conocimiento completo de STM32 HAL](https://mp.weixin.qq.com/s/qkj0fQS5NrCXmbppKEhaAg)
+- [تفسير RCC لنظام STM32 بالتفصيل](https://blog.csdn.net/as480133937/article/details/98845509)
+- [طريقة تكوين شجرة RCC الكاملة لتهيئة اللوحة](https://www.notion.so/2-RCC-770c0c454f954408a3956257aa0fb523)
+- [ملخص شامل لمكتبة STM32 HAL](https://mp.weixin.qq.com/s/ffcjKtl7JdRibLRNGquGXA)
+- [ملخص شامل وواضح لمكتبة STM32 HAL](https://mp.weixin.qq.com/s/qkj0fQS5NrCXmbppKEhaAg)
 
-a_reemplazar[1]  
-a_reemplazar[2]
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
