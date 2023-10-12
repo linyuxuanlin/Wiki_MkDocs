@@ -1,43 +1,43 @@
-# Ignorando archivos especiales con gitignore
+# استخدام gitignore لتجاهل الملفات الخاصة
 
-Hay algunos archivos que no queremos incluir en la gestión de versiones de Git, y tampoco queremos que aparezcan constantemente en la lista de archivos sin seguimiento, como node_modules, algunas dependencias de desarrollo, registros de compilación, entre otros.
+هناك بعض الملفات التي لا نريد تضمينها في إدارة إصدارات Git ، ولا نريدها دائمًا تظهر في قائمة غير المتابعة ، مثل node_modules وبعض الاعتماديات التطويرية وسجلات الترجمة وما إلى ذلك.
 
-En estos casos, podemos crear un archivo `.gitignore` y listar los archivos que queremos ignorar.
+في هذه الحالة ، يمكننا إنشاء ملف `.gitignore` وإدراج القائمة التي نريد تجاهلها.
 
-## Reglas
+## المعايير
 
-- Las líneas vacías o las líneas que comienzan con el símbolo de comentario `#` serán ignoradas por Git.
-- Se pueden utilizar patrones glob estándar.
-- Si el patrón de coincidencia termina con una barra diagonal invertida (/), se ignorará el directorio.
-- Para ignorar todos los archivos y directorios excepto los especificados en el patrón, se puede agregar el signo de exclamación (!) antes del patrón.
+- الأسطر الفارغة أو الأسطر التي تبدأ برمز تعليق `#` سيتم تجاهلها
+- تطابق نمط glob القياسي
+- يتبع نمط التطابق علامة الشرطة العكسية (/) في النهاية للإشارة إلى أن الدليل هو ما يجب تجاهله
+- لتجاهل الملفات والدلائل المحددة باستثناء نمط معين ، يمكن إضافة علامة التعجب (!) قبل النمط للعكس
 
-## Ejemplos
+## مثال
 
 ```gitignore
-# Esta línea es un comentario y será ignorada por Git.
+# هذا تعليق وسيتم تجاهله من قبل Git
 
-# Ignorar todos los archivos con formato .a
+# تجاهل جميع ملفات النوع .a
 *.a
 
-# No ignorar lib.a
+# لا تتجاهل lib.a
 !lib.a
 
-# Ignorar el archivo TODO en la raíz del proyecto
+# تجاهل ملف TODO في الدليل الجذري
 /TODO
 
-# Ignorar la carpeta build
+# تجاهل مجلد build
 build/
 
-# Ignorar todos los archivos txt en el directorio doc (sin incluir subdirectorios)
+# تجاهل جميع ملفات txt في مجلد doc (بدون مجلدات فرعية)
 doc/*.txt
 
-# Ignorar todos los archivos txt en el directorio doc (incluyendo subdirectorios)
+# تجاهل جميع ملفات txt في مجلد doc (بما في ذلك جميع المجلدات الفرعية)
 doc/**/*.txt
 ```
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
 - [zxhfighter/git-ignore.md](https://gist.github.com/zxhfighter/6320b9a08698bb8703ee)
 - [github/gitignore](https://github.com/github/gitignore)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
