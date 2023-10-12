@@ -1,23 +1,24 @@
-# Eliminar una carpeta de un repositorio de GitHub
+# حذف مجلد معين من مستودع GitHub
 
-## Origen del problema
+## مصدر المشكلة
 
-Al subir un repositorio local a GitHub, se olvidó de ignorar una carpeta y se hizo push directamente al repositorio remoto. ¿Cómo se puede eliminar la carpeta del repositorio de GitHub sin eliminarla del repositorio local?
+عندما تم رفع المستودع المحلي إلى GitHub ، تم نسيان تجاهل مجلد معين وتم دفعه مباشرةً إلى المستودع البعيد.  
+كيف يمكن حذف المجلد من مستودع GitHub والاحتفاظ بالمجلد المحلي؟
 
-## Solución
+## الحل
 
 ```shell
-git pull origin master        # Primero, se descarga el proyecto del repositorio remoto
-dir                           # Se verifica qué carpetas hay
-git rm -r --cached target     # Se elimina la carpeta llamada "target"
-git commit -m 'Eliminado target'  # Se agrega una descripción de la operación y se confirma
+git pull origin master        # اسحب المشروع من المستودع البعيد أولاً
+dir                           # اعرض المجلدات الموجودة
+git rm -r --cached target     # حذف المجلد الذي يحمل الاسم target
+git commit -m 'حذف target'  # أضف شرحًا للعملية وقم بالتأكيد على الإرسال
 ```
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Eliminar una carpeta de GitHub](https://blog.csdn.net/wudinaniya/article/details/77508229)
+- [حذف مجلد معين من GitHub](https://blog.csdn.net/wudinaniya/article/details/77508229)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

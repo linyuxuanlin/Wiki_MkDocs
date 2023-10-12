@@ -1,129 +1,129 @@
-# Fundamentos de prueba de semiconductores - Prueba de parámetros AC
+# أساسيات اختبار شرائح النصف الموصلات - اختبار معلمات التيار المتردد
 
-La prueba AC asegura que la secuencia de tiempo de un DUT cumpla con los requisitos de sus especificaciones.
+يضمن اختبار التيار المتردد (AC) أن تتوافق معلمات توقيت الجهاز تلبية متطلبات المواصفات.
 
-## Parámetros AC básicos
+## معلمات التيار المتردد الأساسية
 
-### Tiempo de establecimiento (Setup Time)
+### وقت الإعداد (Setup Time)
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220809094845.png)
 
-El tiempo de establecimiento se refiere al tiempo mínimo que los datos (en la imagen, `DATA IN`) deben mantenerse estables e invariables antes de que la señal de referencia (en la imagen, `WE`) cambie (tomando un valor medio de 1,5 V) para garantizar que se puedan leer correctamente. Antes del tiempo mínimo de establecimiento, los datos pueden cambiar libremente, pero si se excede el tiempo mínimo de establecimiento (manteniéndose estables demasiado tarde), es posible que no se puedan reconocer, lo que puede provocar errores. Se representa en las especificaciones de la siguiente manera:
+يشير وقت الإعداد إلى الوقت الأقصر الذي يجب أن يحافظ فيه البيانات (الموجودة في الصورة باسم "DATA IN") على استقرارها وعدم تغييرها قبل حدوث تغيير في إشارة المرجع (الموجودة في الصورة باسم "WE") (عندما تصل إلى القيمة المتوسطة 1.5 فولت) لضمان قراءة صحيحة. قبل الحد الأدنى لوقت الإعداد ، يمكن للبيانات التغير بحرية ، ولكن إذا تجاوزت الحد الأدنى لوقت الإعداد (حافظت على الاستقرار لفترة طويلة جدًا) ، فمن الممكن أن لا يتم التعرف عليها ، مما يؤدي إلى وجود أخطاء. يتم تمثيله في المواصفات على النحو التالي:
 
-| Parámetro | Descripción                                     | Mín | Máx | Unidad |
-| --------- | ----------------------------------------------- | --- | --- | ------ |
-| $t_{SD}$  | Configuración de datos al final de la escritura | 11  |     | ns     |
+| المعلمة | الوصف | الحد الأدنى | الحد الأقصى | الوحدة |
+| --------- | ------------------------ | --- | --- | ---- |
+| $t_{SD}$  | إعداد البيانات لنهاية الكتابة | 11  |     | نانو ثانية   |
 
-### Tiempo de retención (Hold Time)
+### وقت الاحتفاظ (Hold Time)
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220809094858.png)
 
-El tiempo de retención se refiere al tiempo mínimo que los datos (en la imagen, `DATA IN`) deben mantenerse estables después de que la señal de referencia (en la imagen, `WE`) cambie (alcanzando un cierto umbral de voltaje) para garantizar que no haya errores. Si el tiempo de retención es demasiado corto, existe la posibilidad de que los datos no se reconozcan correctamente. Se representa en las especificaciones de la siguiente manera:
+يشير وقت الاحتفاظ إلى الوقت الأقصر الذي يجب فيه أن تحافظ البيانات (الموجودة في الصورة باسم "DATA IN") على استقرارها وعدم تغييرها بعد حدوث تغيير في إشارة المرجع (الموجودة في الصورة باسم "WE") (عندما تصل إلى مستوى الجهد المحدد) لضمان عدم وجود أخطاء. إذا كان وقت الاحتفاظ قصيرًا جدًا ، فقد يكون هناك احتمال عدم التعرف على البيانات بشكل صحيح. يتم تمثيله في المواصفات على النحو التالي:
 
-| Parámetro | Descripción                                       | Mín | Máx | Unidad |
-| --------- | ------------------------------------------------- | --- | --- | ------ |
-| $t_{HD}$  | Retención de datos desde el final de la escritura | 1   |     | ns     |
+| المعلمة | الوصف | الحد الأدنى | الحد الأقصى | الوحدة |
+| --------- | ------------------------ | --- | --- | ---- |
+| $t_{HD}$  | الاحتفاظ بالبيانات من نهاية الكتابة | 1   |     | نانو ثانية   |
 
-### Retardo de propagación (Propagation Delay)
+### تأخير الانتشار (Propagation Delay)
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220809094910.png)
 
-El retardo de propagación se refiere al intervalo de tiempo entre la transmisión de una señal y la transmisión de otra señal relacionada. En la mayoría de los casos, se mide el intervalo de tiempo entre el cambio de la señal de entrada (en la imagen, `ADDR`) y la respuesta correspondiente de la salida (en la imagen, `DATA OUT`) (el tiempo necesario desde la entrada hasta la salida). Garantiza que la señal de salida pueda aparecer dentro de un cierto tiempo después de que aparezca la señal de entrada. Se representa en las especificaciones de la siguiente manera:
+يشير تأخير الانتشار إلى الفاصل الزمني بين نقل إشارة ونقل إشارة ذات صلة أخرى. في معظم الأحيان ، يتم قياس إشارة الإدخال (الموجودة في الصورة باسم "ADDR") والوقت اللازم لظهور الإشارة المقابلة (الموجودة في الصورة باسم "DATA OUT") (الوقت اللازم للإشارة من النقطة الدخلية إلى النقطة الخارجية). يضمن أن يتم عرض الإشارة الناتجة في غضون فترة زمنية محددة بعد ظهور الإشارة الداخلية. يتم تمثيله في المواصفات على النحو التالي:
 
-| Parámetro | Descripción               | Mín | Máx | Unidad |
-| --------- | ------------------------- | --- | --- | ------ |
-| $t_{AA}$  | Dirección a datos válidos |     | 15  | ns     |
+| المعلمة | الوصف | الحد الأدنى | الحد الأقصى | الوحدة |
+| --------- | --------------------- | --- | --- | ---- |
+| $t_{AA}$  | العنوان إلى البيانات الصالحة |     | 15  | نانو ثانية   |
 
-### Ancho de pulso mínimo (Minimum Pulse Widths)
+### أدنى عرض نبضة (Minimum Pulse Widths)
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220809094924.png)
 
-El ancho de pulso mínimo generalmente incluye el ancho de pulso mínimo bajo y el ancho de pulso mínimo alto, que se utilizan para garantizar que el tiempo de operación mínimo de temporización de pulso sea el valor mínimo. Se representa en las especificaciones de la siguiente manera:
+يتضمن أدنى عرض نبضة عادة أدنى عرض لنبضة منخفضة وأدنى عرض لنبضة عالية ، ويستخدم لضمان أدنى قيمة يمكن التحكم فيها في توقيت النبضة. يتم تمثيله في المواصفات على النحو التالي:
 
-| Parámetro | Descripción                 | Mín | Máx | Unidad |
-| --------- | --------------------------- | --- | --- | ------ |
-| $t_{WL}$  | Tiempo mínimo de reloj bajo | 20  |     | ns     |
-| $t_{WH}$  | Tiempo mínimo de reloj alto | 25  |     | ns     |
+| المعلمة | الوصف | الحد الأدنى | الحد الأقصى | الوحدة |
+| --------- | ----------------------- | --- | --- | ---- |
+| $t_{WL}$  | أدنى وقت للساعة المنخفضة | 20  |     | نانو ثانية   |
+| $t_{WH}$  | أدنى وقت للساعة العالية | 25  |     | نانو ثانية   |
 
-### Frecuencia Máxima (Maximum Frequency)
+### أقصى تردد (Maximum Frequency)
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220809094934.png)
 
-La frecuencia máxima de trabajo se refiere a la velocidad máxima a la que un dispositivo puede funcionar. Se representa en las especificaciones de la siguiente manera:
+يشير أقصى تردد العمل ببساطة إلى أقصى سرعة يمكن للجهاز العمل بها. ويتم تمثيله في ورقة المواصفات على النحو التالي:
 
-| Parámetro | Descripción                | Mín | Máx  | Unidad |
-| --------- | -------------------------- | --- | ---- | ------ |
-| $f_{MAX}$ | Frecuencia máxima de reloj |     | 22.2 | MHz    |
+| المعلمة | الوصف | الحد الأدنى | الحد الأقصى | الوحدة |
+| --------- | ----------------------- | --- | ---- | ---- |
+| $f_{MAX}$ | أقصى تردد ساعة |     | 22.2 | ميجاهرتز  |
 
-### Tiempo de Habilitación de Salida (Output Enable Time)
+### وقت تمكين الإخراج (Output Enable Time)
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220809094941.png)
 
-Se refiere al tiempo necesario para que un pin cambie de un estado de alta impedancia (deshabilitado) a un estado de nivel de conducción válido (alto o bajo), asegurando que el buffer de salida pueda cambiar el estado del pin dentro del tiempo especificado. Se mide calculando el intervalo de tiempo desde que se emite la señal de control hasta que se detecta el cambio de salida. Se representa en las especificaciones de la siguiente manera:
+يشير إلى الوقت الذي يحتاجه الدبوس للتبديل من الحالة المقاومة العالية (التعطيل) إلى الحالة الكهربائية الفعالة (المستوى العالي / المنخفض) ، لضمان أن يتمكن مخزن الإخراج من تغيير حالة الدبوس في الوقت المحدد. يتم حسابها عند القياس من إرسال إشارة التحكم إلى الكشف عن تبديل الإخراج. ويتم تمثيله في ورقة المواصفات على النحو التالي:
 
-| Parámetro | Descripción             | Mín | Máx | Unidad |
-| --------- | ----------------------- | --- | --- | ------ |
-| $t_{DOE}$ | OE bajo a datos válidos |     | 10  | ns     |
+| المعلمة | الوصف | الحد الأدنى | الحد الأقصى | الوحدة |
+| --------- | ----------------------- | --- | ---- | ---- |
+| $t_{DOE}$ | OE LOW to Data Valid |     | 10  | نانوثانية   |
 
-### Tiempo de Deshabilitación de Salida (Output Disable Time)
+### وقت تعطيل الإخراج (Output Disable Time)
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220809094948.png)
 
-Se refiere al tiempo necesario para que un pin cambie de un estado de nivel de conducción válido (alto o bajo) a un estado de alta impedancia (deshabilitado), asegurando que el buffer de salida pueda cambiar el estado del pin dentro del tiempo especificado. Se mide calculando el intervalo de tiempo desde que se emite la señal de control hasta que se detecta el cambio de salida. Se representa en las especificaciones de la siguiente manera:
+يشير إلى الوقت الذي يحتاجه الدبوس للتبديل من الحالة الكهربائية الفعالة (المستوى العالي / المنخفض) إلى الحالة المقاومة العالية (التعطيل) ، لضمان أن يتمكن مخزن الإخراج من تغيير حالة الدبوس في الوقت المحدد. يتم حسابها عند القياس من إرسال إشارة التحكم إلى الكشف عن تبديل الإخراج. ويتم تمثيله في ورقة المواصفات على النحو التالي:
 
-| Parámetro  | Descripción             | Mín | Máx | Unidad |
-| ---------- | ----------------------- | --- | --- | ------ |
-| $t_{HZOE}$ | OE alto a datos válidos |     | 8   | ns     |
+| المعلمة | الوصف | الحد الأدنى | الحد الأقصى | الوحدة |
+| ---------- | --------------------- | --- | --- | ---- |
+| $t_{HZOE}$ | OE High to Data Valid |     | 8   | نانوثانية   |
 
-## Parámetros de Temporización
+## معلمات التوقيت
 
-### Temporización del Ciclo de Lectura (Read Cycle Timing)
+### توقيت دورة القراءة (Read Cycle Timing)
 
-Un ejemplo del ciclo de lectura de una RAM estática de 256 x 4:
+مثال على دورة قراءة ذاكرة الوصول العشوائي الثابتة 256 × 4:
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220731190300.png)
 
-| Parámetro  | Descripción                         | Min | Max | Unidad |
-| ---------- | ----------------------------------- | --- | --- | ------ |
-| $t_{RC}$   | Tiempo de ciclo de lectura          | 15  |     | ns     |
-| $t_{AA}$   | Dirección a datos válidos           |     | 15  | ns     |
-| $t_{ACS}$  | Selección de chip a datos válidos   |     | 10  | ns     |
-| $t_{DOE}$  | OE bajo a datos válidos             |     | 10  | ns     |
-| $t_{HZCS}$ | Selección de chip a alta impedancia |     | 8   | ns     |
-| $t_{HZOE}$ | OE alto a alta impedancia           |     | 8   | ns     |
-| $t_{LZCS}$ | Selección de chip a baja impedancia | 2   |     | ns     |
-| $t_{LZOE}$ | OE bajo a baja impedancia           | 2   |     | ns     |
+| المعامل | الوصف | الحد الأدنى | الحد الأقصى | الوحدة |
+| ---------- | ------------------------- | --- | --- | ---- |
+| $t_{RC}$   | وقت دورة القراءة           | 15  |     | ns   |
+| $t_{AA}$   | العنوان إلى البيانات الصالحة     |     | 15  | ns   |
+| $t_{ACS}$  | تحديد رقاقة إلى البيانات الصالحة |     | 10  | ns   |
+| $t_{DOE}$  | OE منخفض إلى البيانات الصالحة      |     | 10  | ns   |
+| $t_{HZCS}$ | تحديد رقاقة إلى عالي Z     |     | 8   | ns   |
+| $t_{HZOE}$ | OE عالي إلى عالي Z         |     | 8   | ns   |
+| $t_{LZCS}$ | تحديد رقاقة إلى منخفض Z      | 2   |     | ns   |
+| $t_{LZOE}$ | OE منخفض إلى منخفض             | 2   |     | ns   |
 
-1. Primero, el parámetro $t_{RC}$ determina la duración del ciclo de lectura.
-2. Determine qué señal controla la función de lectura. En el ejemplo de la figura anterior, la salida de datos de la RAM está controlada por el flanco descendente de OE.
+1. يتم تحديد طول دورة الكتابة أولاً بواسطة معامل $t_{RC}$.
+2. تحديد الإشارة التي تحكم في وظيفة القراءة. في مثال الشكل أعلاه ، يتم التحكم في إخراج بيانات RAM من خلال انخفاض OE.
 
-### Temporización del ciclo de escritura (Write Cycle Timing)
+### توقيت دورة الكتابة (Write Cycle Timing)
 
-Un ejemplo de ciclo de escritura para una RAM estática de 256 x 4:
+مثال لدورة كتابة RAM ثابتة بحجم 256 × 4:
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220731190328.png)
 
-| Parámetro  | Descripción                                             | Min | Max | Unidad |
-| ---------- | ------------------------------------------------------- | --- | --- | ------ |
-| $t_{WC}$   | Tiempo de ciclo de escritura                            | 15  |     | ns     |
-| $t_{HZWE}$ | WE bajo a alta impedancia                               |     | 8   | ns     |
-| $t_{LZWE}$ | WE alto a baja impedancia                               | 2   |     | ns     |
-| $t_{PWE}$  | Ancho de pulso de WE                                    | 11  |     | ns     |
-| $t_{SD}$   | Configuración de datos hasta el final de escritura      | 11  |     | ns     |
-| $t_{HD}$   | Retención de datos desde el final de escritura          | 1   |     | ns     |
-| $t_{SA}$   | Configuración de dirección hasta el inicio de escritura | 2   |     | ns     |
-| $t_{HA}$   | Retención de dirección desde el final de escritura      | 2   |     | ns     |
-| $t_{SCS}$  | CS bajo hasta el final de escritura                     | 11  |     | ns     |
-| $t_{AW}$   | Configuración de dirección hasta el final de escritura  | 13  |     | ns     |
+| المعامل | الوصف | الحد الأدنى | الحد الأقصى | الوحدة |
+| ---------- | ----------------------------- | --- | --- | ---- |
+| $t_{WC}$   | وقت دورة الكتابة              | 15  |     | ns   |
+| $t_{HZWE}$ | WE منخفض إلى عالي Z              |     | 8   | ns   |
+| $t_{LZWE}$ | WE عالي إلى منخفض Z              | 2   |     | ns   |
+| $t_{PWE}$  | عرض نبضة WE                | 11  |     | ns   |
+| $t_{SD}$   | إعداد البيانات إلى نهاية الكتابة      | 11  |     | ns   |
+| $t_{HD}$   | الاحتفاظ بالبيانات من نهاية الكتابة      | 1   |     | ns   |
+| $t_{SA}$   | إعداد العنوان إلى بدء الكتابة | 2   |     | ns   |
+| $t_{HA}$   | الاحتفاظ بالعنوان من نهاية الكتابة   | 2   |     | ns   |
+| $t_{SCS}$  | CS منخفض إلى نهاية الكتابة           | 11  |     | ns   |
+| $t_{AW}$   | إعداد العنوان إلى نهاية الكتابة   | 13  |     | ns   |
 
-1. Primero, el parámetro $t_{WC}$ determina la duración del ciclo de escritura.
-2. Determine qué señal controla la función de escritura. En el ejemplo de la figura anterior, la entrada de datos de la RAM está controlada por el flanco ascendente de WE.
+1. يتم تحديد طول دورة الكتابة أولاً بواسطة معامل $t_{WC}$.
+2. تحديد الإشارة التي تحكم في وظيفة الكتابة. في مثال الشكل أعلاه ، يتم التحكم في إدخال بيانات RAM من خلال صعود حافة WE.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- "The Fundamentals Of Digital Semiconductor Testing"
+- 《The Fundamentals Of Digital Semiconductor Testing》
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
