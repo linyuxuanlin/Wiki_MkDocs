@@ -1,118 +1,118 @@
-# Construyendo una base de conocimientos personal - Basado en Docusaurus
+# بناء مكتبة المعرفة الشخصية - بناءً على إطار Docusaurus
 
-Continuando con el artículo anterior [**Por qué necesitas una base de conocimientos**](https://wiki-power.com/es/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%A0%E9%9C%80%E8%A6%81%E4%B8%80%E4%B8%AA%E7%9F%A5%E8%AF%86%E5%BA%93), este artículo detallará la construcción de una base de conocimientos basada en el marco de trabajo Docusaurus.
+في هذه المقالة، سوف نشرح بناء مكتبة المعرفة بالتفصيل باستخدام إطار Docusaurus، استكمالًا للمقالة السابقة [**لماذا تحتاج إلى مكتبة معرفية**](https://wiki-power.com/ar/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%A0%E9%9C%80%E8%A6%81%E4%B8%80%E4%B8%AA%E7%9F%A5%E8%AF%86%E5%BA%93).
 
-Antes de comenzar, asegúrese de tener lo siguiente:
+قبل البدء، يرجى التأكد من استيفاء المتطلبات التالية:
 
-- Acceso a internet sin restricciones
-- Capacidad para adaptarse a situaciones imprevistas
-- Un poco de conocimiento de inglés
+- شبكة إنترنت علمية
+- القدرة على التكيف
+- بعض الأساسيات في اللغة الإنجليزية
 
-## Configuración del entorno local
+## تكوين البيئة المحلية
 
-### Instalación de Node.js
+### تثبيت Node.js
 
-Visite el [**sitio web oficial de Node.js**](https://nodejs.org/zh-cn/) para descargar e instalar Node.js.
+قم بزيارة [**موقع Node.js الرسمي**](https://nodejs.org/zh-cn/) وقم بتنزيل وتثبيت Node.js.
 
-### Instalación y configuración de VS Code
+### تثبيت وتكوين VS Code
 
-Usaremos VS Code como editor local para modificar el marco del sitio web y escribir artículos.
+سنستخدم VS Code كمحرر محلي لتعديل إطار الموقع وكتابة المقالات.
 
-Primero, descargue e instale VS Code desde el [**sitio web oficial de VS Code**](https://code.visualstudio.com/).
+أولاً، قم بتنزيل وتثبيت VS Code من [**موقع VS Code الرسمي**](https://code.visualstudio.com/).
 
-Después de instalar el software, puede instalar los siguientes dos complementos:
+بعد تثبيت البرنامج، يمكننا تثبيت المكونات الإضافية التالية:
 
-- [**Chinese (Simplified) Language Pack**](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hans): para traducir la interfaz de usuario de VS Code al chino
-- [**Markdown All in One**](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one): para proporcionar soporte para más sintaxis de Markdown
+- [**Chinese (Simplified) Language Pack**](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hans): تحويل واجهة VS Code إلى اللغة الصينية
+- [**Markdown All in One**](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one): توفير دعم للمزيد من تنسيقات Markdown
 
-Es posible que deba reiniciar VS Code después de instalar los complementos.
+قد يتطلب تثبيت المكونات الإضافية إعادة تشغيل VS Code.
 
-Para obtener instrucciones de configuración más detalladas, consulte [**Guía de productividad de VS Code - Configuración del entorno**](https://wiki-power.com/es/VSCode%E7%94%9F%E4%BA%A7%E5%8A%9B%E6%8C%87%E5%8D%97-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE) (en chino).
+يمكنك الاطلاع على تفاصيل التكوين الأكثر تفصيلاً في [**دليل إنتاجية VS Code - تكوين البيئة**](https://wiki-power.com/ar/VSCode%E7%94%9F%E4%BA%A7%E5%8A%9B%E6%8C%87%E5%8D%97-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE) هذه المقالة.
 
-### Instalación del marco de trabajo Docusaurus
+### تثبيت إطار Docusaurus
 
-Cambie al directorio donde desea crear el proyecto del sitio web.
+قم بالتبديل إلى الدليل الذي تريد إنشاء مشروع الموقع فيه.
 
-Por ejemplo, si desea crear una carpeta llamada `wiki` en la unidad D de su computadora como proyecto de base de conocimientos, seleccione `Archivo` - `Abrir carpeta` en VS Code, haga clic en la unidad D y seleccione la carpeta `wiki`.
+على سبيل المثال: إذا كنت ترغب في إنشاء مجلد يسمى `wiki` في قرص الكمبيوتر D كمشروع لمكتبة المعرفة، فقم بتحديد `ملف` - `فتح مجلد` في VS Code ، ثم حدد القرص D وانقر فوق `اختيار المجلد`.
 
-Inicialice el sitio web usando npx:
+استخدم npx لتهيئة الموقع:
 
 ```shell
 npx @docusaurus/init@latest init [name] [template]
 ```
 
-Por ejemplo, si el nombre de la carpeta del proyecto del sitio web es `wiki`, reemplace `[name]` con `wiki`. Según la [**documentación oficial**](https://v2.docusaurus.io/docs/installation#scaffold-project-website), `[template]` se refiere al tema de la plantilla del sitio web. Aquí, reemplazaremos `[template]` con `classic`. Por lo tanto, el comando que ejecutaremos es:
+على سبيل المثال، إذا كان اسم مجلد مشروع الموقع الخاص بي هو `wiki`، فاستبدل `[name]` بـ `wiki`، ووفقًا لـ [**المستندات الرسمية**](https://v2.docusaurus.io/docs/installation#scaffold-project-website)، يشير `[template]` إلى موضوع قالب الموقع، ويمكن استبداله بـ `classic`. لذلك، يتم تنفيذ الأمر التالي:
 
 ```shell
 npx @docusaurus/init@latest init wiki classic
 ```
 
-En VS Code, use el atajo `Ctrl` + <code>`</code> para abrir la terminal, pegue el comando anterior y presione Enter. Espere a que se complete la carga.
+استخدم اختصار لوحة المفاتيح `Ctrl` + <code>`</code> لفتح الطرفية في VS Code، ثم قم بلصق السطر السابق واضغط على Enter، وانتظر حتى يتم التحميل.
 
-Una vez que se complete la carga, use el siguiente comando en la terminal para cambiar al directorio del proyecto del sitio web:
+عند الانتهاء من التحميل، استخدم الأمر التالي للتبديل إلى دليل مجلد الموقع:
 
 ```shell
 cd [name]
 ```
 
-Reemplace `[name]` con el nombre de la carpeta del proyecto del sitio web. Por ejemplo, si usó `wiki` en el paso anterior, use `wiki` aquí.
+استبدل `[name]` بـ اسم مجلد مشروع الموقع الخاص بك، على سبيل المثال، في الخطوة السابقة استخدمنا `wiki`.
 
-Luego, ejecute el siguiente comando:
+ثم، قم بتنفيذ الأمر التالي:
 
 ```shell
 npm run start
 ```
 
-Esto iniciará la implementación local del sitio web. Espere a que se complete la implementación y se abrirá automáticamente la página [**localhost:3000**](localhost:3000) en su navegador. Si todo va bien, verá que el sitio web se ha generado correctamente.
+لتشغيل الموقع محليًا. بعد الانتهاء من التثبيت، سيتم فتح صفحة [**localhost:3000**](localhost:3000) تلقائيًا في المتصفح، وإذا كان كل شيء على ما يرام، يمكنك رؤية أن الموقع تم إنشاؤه بنجاح.
 
-## Implementación del sitio web en la nube
+## نشر الموقع على السحابة
 
-En el paso anterior, hemos generado con éxito un sitio web, pero solo se ha implementado localmente y no se puede acceder a él desde Internet. Necesitamos implementar el sitio web en un servidor en la nube para que otros usuarios puedan acceder a él desde Internet.
+في الخطوة السابقة، تم إنشاء موقع ويب بنجاح، ولكنه تم نشره محليًا فقط ولا يمكن الوصول إليه من الإنترنت. نحتاج إلى نشر الموقع على خادم سحابي حتى يمكن للمستخدمين الآخرين الوصول إليه من الإنترنت.
 
-### Registrarse en GitHub
+### تسجيل حساب GitHub
 
-Regístrese en GitHub en la [**página web oficial de GitHub**](https://github.com/join).
+سجّل حسابًا على [**موقع GitHub الرسمي**](https://github.com/join).
 
-### Instalar Git
+### تثبيت Git
 
-Descargue el software Git desde el [**sitio web oficial de Git**](https://git-scm.com/downloads) y complete la instalación.
+قم بتنزيل برنامج Git من [**موقع Git الرسمي**](https://git-scm.com/downloads) وأكمل عملية التثبيت.
 
-Reinicie VS Code, abra la terminal y pegue el siguiente comando para inicializar Git:
+أعد تشغيل VS Code واستدعِ الطرفية والصق الأمر التالي لتهيئة Git:
 
 ```shell
 git config --global user.name "username"
 git config --global user.email "email@example.com"
 ```
 
-Aquí, debe reemplazar `"username"` con su nombre de usuario de Git para enviar confirmaciones, se recomienda que sea el mismo que el nombre de usuario de la cuenta que acaba de registrar en GitHub. Por ejemplo, lo reemplacé con `linyuxuanlin`. `"email@example.com"` también debe reemplazarse con el correo electrónico registrado en GitHub.
+يجب استبدال `"username"` باسم مستخدم Git الخاص بك، ويُنصح باستخدام نفس اسم الحساب الذي تم التسجيل به على GitHub، على سبيل المثال، قمت بتعويضه بـ `linyuxuanlin`. `"email@example.com"` يتم استبداله بعنوان البريد الإلكتروني الذي تم التسجيل به على GitHub.
 
-Para obtener más información sobre la configuración, consulte este artículo [**Git学习笔记**](https://wiki-power.com/es/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0).
+يمكن الاطلاع على تفاصيل أكثر حول التكوين في [**مذكرات Git**](https://wiki-power.com/ar/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0) هذه المقالة.
 
-### Configurar el repositorio del proyecto en VS Code
+### تكوين مستودع المشروع داخل VS Code
 
-Para poder enviar el proyecto al servidor de GitHub, debemos configurar el repositorio Git del proyecto en VS Code y cargarlo en GitHub.
+لكي نتمكن من الدفع إلى خادم GitHub، نحتاج إلى تكوين مستودع Git للمشروع داخل VS Code وتحميله على GitHub.
 
-En VS Code, use el atajo `Ctrl` + `Shift` + `G` para cambiar a la interfaz de gestión de código fuente, inicialice el repositorio Git del proyecto y realice la primera confirmación.
+استخدم اختصارات لوحة المفاتيح `Ctrl` + `Shift` + `G` للتبديل إلى واجهة إدارة الشفرة المصدرية داخل VS Code، وقم بتهيئة مستودع Git للمشروع وإجراء أول عملية إرسال.
 
-Luego, use el atajo `Ctrl` + `Alt` + `S` para enviar el repositorio Git local a GitHub (inicie sesión en su cuenta de GitHub según las instrucciones).
+ثم، استخدم اختصارات لوحة المفاتيح `Ctrl` + `Alt` + `S` لدفع مستودع Git المحلي إلى GitHub (تسجيل الدخول إلى حساب GitHub حسب الإرشادات).
 
-### Implementar el sitio web en la nube con Vercel
+### استخدام Vercel لنشر الموقع على السحابة
 
-La función de Vercel es similar a GitHub Action + GitHub Pages, es decir, implementación continua automática + presentación de sitios web estáticos. Elegí Vercel porque los sitios web estáticos que genera son mucho más rápidos que los de GitHub Pages cuando se accede desde China.
+تعد خدمة Vercel ما يعادل GitHub Action + GitHub Pages، أي نشر مستمر تلقائيًا + عرض موقع ويب ثابت. تم اختيار Vercel لأن المواقع الثابتة التي يتم إنشاؤها بها ستكون أسرع في الوصول من الصفحات الثابتة التي يتم إنشاؤها بواسطة GitHub Pages.
 
-Primero, vaya directamente a la [**página de inicio de sesión de GitHub de Vercel**](https://github.com/login?client_id=Iv1.9d7d662ea00b8481&return_to=%2Flogin%2Foauth%2Fauthorize%3Fclient_id%3DIv1.9d7d662ea00b8481%26scope%3Dread%253Auser%252Cuser%253Aemail%26state%3DFdx6thivZ89LeAihPfRiiYf9) y regístrese en Vercel con su cuenta de GitHub.
+أولاً، قم بزيارة [**صفحة تسجيل الدخول إلى GitHub على Vercel**](https://github.com/login?client_id=Iv1.9d7d662ea00b8481&return_to=%2Flogin%2Foauth%2Fauthorize%3Fclient_id%3DIv1.9d7d662ea00b8481%26scope%3Dread%253Auser%252Cuser%253Aemail%26state%3DFdx6thivZ89LeAihPfRiiYf9) وقم بتسجيل الدخول باستخدام حساب GitHub.
 
-Después de completar el registro, haga clic en `New Project` en la página web e importe el repositorio correspondiente de GitHub (por ejemplo, el repositorio `wiki` que creamos anteriormente). Es posible que deba iniciar sesión en GitHub nuevamente según las instrucciones. Después de la importación, haga clic en `Next` para continuar y el sitio web se implementará rápidamente.
+بعد الانتهاء، انقر فوق `New Project` واستيراد مستودع GitHub المناسب (مثل مستودع `wiki` الذي تم إنشاؤه سابقًا). قد يتطلب الأمر تسجيل الدخول إلى GitHub مرة أخرى وفقًا للإرشادات. بعد الاستيراد، انقر على `Next` واستمر في النقر على `Next` حتى يتم نشر الموقع بنجاح.
 
-## Conclusión
+## الخلاصة
 
-En este artículo, hemos implementado la implementación local y en la nube de una base de conocimientos basada en Docusaurus. Si tiene algún problema durante el proceso, puede ponerse en contacto conmigo a través de [**WeChat**](https://wiki-power.com/es/WeChat). En el próximo artículo (por actualizar), explicaré en detalle la configuración personalizada.
+في هذه المقالة، قمنا بتنفيذ نشر مكتبة المعرفة المستندة إلى Docusaurus محليًا وعلى السحابة. إذا واجهت أي مشكلة أثناء هذه العملية، يمكنك الاتصال بي عبر [**WeChat**](https://wiki-power.com/ar/WeChat). في المقالة التالية【تحت التحديث】، سأشرح التكوينات المخصصة بالتفصيل.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
 - [Docs·Docusaurus](https://v2.docusaurus.io/docs/)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

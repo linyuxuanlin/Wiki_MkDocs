@@ -1,18 +1,18 @@
-# Sincronización de datos en la nube con Rclone
+# استخدام Rclone لمزامنة بيانات السحابة
 
-Rclone es una herramienta de línea de comandos para administrar archivos en la nube, compatible con más de 40 servicios de almacenamiento en la nube (incluyendo S3). Rclone también cuenta con una interfaz gráfica de usuario llamada RcloneBrowser, que facilita su uso para los usuarios comunes. En este artículo se explica cómo sincronizar datos en la nube de Tencent Cloud Object Storage mediante Rclone.
+Rclone هي أداة سطر الأوامر المستخدمة لإدارة ملفات السحابة، وتدعم أكثر من 40 نوعًا من السحابات (بما في ذلك S3). كما يوجد برنامج RcloneBrowser الرسومي المشتق منه، والذي يسهل استخدامه للمستخدمين العاديين. يتم في هذا المقال شرح كيفية مزامنة تخزين الكائنات السحابية على Tencent Cloud باستخدام Rclone.
 
-## Instalación del software
+## تثبيت البرامج
 
-- [**Rclone**](https://rclone.org/downloads/): Después de descargarlo, descomprima el archivo `.exe` y tome nota de la ruta.
-- [**RcloneBrowser**](https://github.com/kapitainsky/RcloneBrowser/releases): Herramienta GUI. Después de instalarla, seleccione la ruta de Rclone.
-- ([**WinFsp**](http://www.secfs.net/winfsp/rel/): Biblioteca de dependencias, necesaria para montar discos virtuales)
+- [**Rclone**](https://rclone.org/downloads/) : بعد التنزيل، قم بفك الضغط عن الملف `.exe` وتدوين المسار.
+- [**RcloneBrowser**](https://github.com/kapitainsky/RcloneBrowser/releases) : أداة واجهة المستخدم الرسومية. بعد التثبيت، حدد مسار Rclone.
+- ([**WinFsp**](http://www.secfs.net/winfsp/rel/): مكتبة الاعتماد، إذا كنت تريد تثبيت القرص الظاهري)
 
-## Proceso de configuración
+## عملية التكوين
 
-Abra RcloneBrowser y haga clic en `Config...` en la esquina inferior izquierda. A continuación, siga las instrucciones para ingresar:
+افتح RcloneBrowser وانقر على `Config...` في الزاوية السفلى اليسرى، ثم اتبع التعليمات التالية:
 
-Ingrese `n` para crear una nueva conexión remota:
+أدخل `n` لإنشاء اتصال عن بعد جديد:
 
 ```shell
 Name                 Type
@@ -29,13 +29,13 @@ q) Quit config
 e/n/d/r/c/s/q> n
 ```
 
-Asigne un nombre a la conexión remota (por ejemplo, `test`):
+قم بتسمية الاتصال البعيد (مثل `test`):
 
 ```shell
 name> test
 ```
 
-Seleccione el proveedor de servicios (en este ejemplo, se utiliza Tencent Cloud Object Storage, seleccione `4`):
+حدد مزود الخدمة (في هذا المثال، سنستخدم Tencent Cloud COS ونختار `4`):
 
 ```shell
 Choose a number from below, or type in your own value
@@ -81,98 +81,112 @@ Choose a number from below, or type in your own value
 13 / Any other S3 compatible provider
    \ "Other"
 
-Español:
+Arabic:
 
 ```
 
-Seleccione el tipo de autenticación. Como es la primera vez que se configura, seleccione `1`:
+اختر نوع المصادقة. نظرًا لأننا نقوم بالتكوين للمرة الأولى ، فسنختار `1`:
 
 ```shell
-Elija un número de la siguiente lista o escriba su propio valor
- 1 / Ingrese las credenciales de AWS en el siguiente paso
+اختر رقمًا من الأسفل ، أو اكتب قيمتك الخاصة
+ 1 / أدخل بيانات اعتماد AWS في الخطوة التالية
    \ "false"
- 2 / Obtenga las credenciales de AWS del entorno (variables de entorno o IAM)
+ 2 / الحصول على بيانات اعتماد AWS من البيئة (متغيرات env أو IAM)
    \ "true"
 
 env_auth> 1
 ```
 
-Ingrese la cuenta del servicio en la nube, que es equivalente a SecretId de Tencent Cloud COS:
+أدخل حساب خدمة السحابة ، وهذا يعادل SecretId لـ Tencent Cloud COS:
 
 ```shell
-ID de clave de acceso de AWS.
+معرف مفتاح الوصول إلى AWS.
 
 access_key_id> ******
 ```
 
-Ingrese la contraseña, que es equivalente a SecretKey:
+أدخل كلمة المرور ، وهذا يعادل SecretKey:
 
 ```shell
-AWS Secret Access Key (contraseña)
+AWS Secret Access Key (password)
 
 secret_access_key> ******
 ```
 
-Seleccione la región del servicio en la nube:
+اختر منطقة خدمة السحابة:
 
 ```shell
-Endpoint para la API de Tencent COS.
- 1 / Región de Beijing.
+نقطة النهاية لواجهة برمجة تطبيقات Tencent COS.
+ 1 / منطقة بكين.
    \ "cos.ap-beijing.myqcloud.com"
- 2 / Región de Nanjing.
+ 2 / منطقة نانجينغ.
    \ "cos.ap-nanjing.myqcloud.com"
- 3 / Región de Shanghai.
+ 3 / منطقة شنغهاي.
    \ "cos.ap-shanghai.myqcloud.com"
- 4 / Región de Guangzhou.
+ 4 / منطقة قوانغتشو.
    \ "cos.ap-guangzhou.myqcloud.com"
 ...
 
 endpoint> 4
 ```
 
-Seleccione el tipo de lectura y escritura, generalmente es lectura pública y escritura privada para la plataforma de imágenes:
+اختر نوع القراءة / الكتابة ، حيث يكون القراءة عامة والكتابة خاصة في حالة الصور:
 
 ```shell
-ACL predefinido utilizado al crear buckets y almacenar o copiar objetos.
- 1 / El propietario obtiene CONTROL_TOTAL. Nadie más tiene derechos de acceso (predeterminado).
+Canned ACL used when creating buckets and storing or copying objects.
+ 1 / Owner gets Full_CONTROL. No one else has access rights (default).
    \ "default"
- 2 / El propietario obtiene CONTROL_TOTAL. El grupo AllUsers obtiene acceso de LECTURA.
+ 2 / Owner gets FULL_CONTROL. The AllUsers group gets READ access.
    \ "public-read"
-   / El propietario obtiene CONTROL_TOTAL. El grupo AllUsers obtiene acceso de LECTURA y ESCRITURA.
+   / Owner gets FULL_CONTROL. The AllUsers group gets READ and WRITE access.
 ...
 
 acl> 2
 ```
 
-Seleccione el tipo de almacenamiento (seleccione `1` por defecto):
+اختر نوع التخزين (يمكنك اختيار الافتراضي `1`):
 
 ```shell
-La clase de almacenamiento que se utilizará al almacenar objetos nuevos en Tencent COS.
- 1 / Predeterminado
+The storage class to use when storing new objects in Tencent COS.
+ 1 / Default
    \ ""
- 2 / Clase de almacenamiento estándar
+ 2 / Standard storage class
    \ "STANDARD"
- 3 / Modo de almacenamiento de archivo.
+ 3 / Archive storage mode.
    \ "ARCHIVE"
- 4 / Modo de almacenamiento de acceso poco frecuente.
+ 4 / Infrequent access storage mode.
    \ "STANDARD_IA"
 
 storage_class> 1
 ```
 
-¿Desea editar la configuración avanzada? (seleccione `n` para no):
+هل تريد تحرير الإعدادات المتقدمة (اختر `n` لا):
 
 ```shell
-¿Editar la configuración avanzada? (s/n)
-y) Sí
-n) No (predeterminado)
+Edit advanced config? (y/n)
+y) Yes
+n) No (default)
 
 y/n> n
 ```
 
-Finalmente, confirme y escriba `y` después de verificar que todo es correcto:
+أخيرًا ، تأكد من الإعدادات وأدخل `y`:
 
-Configuración remota
+```shell
+Confirm settings:
+provider: Tencent Cloud COS
+access_key_id: ******
+secret_access_key: ******
+endpoint: cos.ap-guangzhou.myqcloud.com
+acl: public-read
+storage_class: Default
+Edit advanced config? (y/n): n
+```
+
+y
+```
+
+تكوين عن بعد
 --------------------
 [Txcos]
 type = s3
@@ -183,95 +197,100 @@ secret_access_key = 我是马赛克
 endpoint = cos.ap-guangzhou.myqcloud.com
 acl = public-read
 --------------------
-y) Sí, esto está bien (predeterminado)
-e) Editar esta conexión remota
-d) Eliminar esta conexión remota
+y) نعم هذا موافق (الافتراضي)
+e) تحرير هذا النظام البعيد
+d) حذف هذا النظام البعيد
 y/e/d> y
 ```
 
-Ingrese `q` para salir:
+أدخل `q` للخروج:
 
 ```shell
-Conexiones remotas actuales:
+النظم البعيدة الحالية:
 
-Nombre                 Tipo
+Name                 Type
 ====                 ====
 Txcos                 s3
 
-e) Editar conexión remota existente
-n) Nueva conexión remota
-d) Eliminar conexión remota
-r) Renombrar conexión remota
-c) Copiar conexión remota
-s) Establecer contraseña de configuración
-q) Salir de la configuración
+e) تحرير النظام البعيد الحالي
+n) نظام بعيد جديد
+d) حذف النظام البعيد
+r) إعادة تسمية النظام البعيد
+c) نسخ النظام البعيد
+s) تعيين كلمة مرور التكوين
+q) الخروج من التكوين
 e/n/d/r/c/s/q> q
 ```
 
-A continuación, abra la conexión remota configurada haciendo doble clic, seleccione la carpeta y haga clic en `Descargar` para descargarla en su dispositivo local. En la ventana emergente, seleccione la siguiente configuración:
+بعد ذلك ، انقر نقرًا مزدوجًا لفتح الاتصال البعيد المكون ، حدد المجلد وانقر فوق `تنزيل` لتنزيله على الجهاز المحلي ، ثم حدد التكوين التالي في النافذة المنبثقة:
 
-- Seleccione el modo `Copiar` (sincronización unidireccional desde la nube al dispositivo local), solo copie los archivos nuevos y modificados para hacer una copia de seguridad.
-- Marque la casilla `Omitir todos los archivos que existen` en la zona de omisión de archivos para evitar la descarga repetida y el consumo de datos.
-- En la zona de descripción de tareas, escriba el nombre de la tarea para facilitar la sincronización la próxima vez.
+- حدد الوضع `نسخ` (مزامنة من السحابة إلى الجهاز المحلي في اتجاه واحد) ، وقم بنسخ الملفات الجديدة والمتغيرة فقط ، واستخدمها للنسخ الاحتياطي.
+- حدد `تخطي جميع الملفات الموجودة` في منطقة تخطي الملفات لتجنب تكرار التنزيل واستنفاد البيانات.
+- أدخل اسم المهمة في منطقة وصف المهمة لسهولة الاستخدام في المرة القادمة.
 
-Una vez que haya terminado de configurar, cambie a la pestaña `Tareas`, seleccione la tarea correspondiente y haga clic en `Ejecutar` para comenzar la descarga.
+بعد الانتهاء من التكوين ، انتقل إلى علامة التبويب المهام ، حدد المهمة المناسبة ، وانقر فوق `تشغيل` لبدء التنزيل.
 
-## Configuración en un NAS Synology
+## تكوين على NAS Synology
 
-Nota: se recomienda utilizar CloudSync en Synology y no modificar el código subyacente.
+ملاحظة: يوصى باستخدام CloudSync على Synology ، وعدم تعديل الشفرة الأساسية.
 
-Preparación:
+الإعدادات اللازمة:
 
-- Habilitar SSH
-- Habilitar la carpeta de inicio del usuario (`homes`)
-- Crear una carpeta para la sincronización (por ejemplo, `/volume1/wiki-media`)
+- تمكين ssh
+- تمكين مجلد المستخدم (homes)
+- إنشاء مجلد للمزامنة (مثل /volume1/wiki-media)
 
-Instale Rclone:
+تثبيت Rclone:
 
 ```shell
 curl https://rclone.org/install.sh | sudo bash
 ```
 
-Configure el servicio:
+تكوين الخدمة:
 
 ```shell
 rclone config
 ```
 
-Siga los pasos anteriores.
+اتبع الخطوات المذكورة أعلاه.
 
-Comando de sincronización:
+أمر المزامنة:
 
 ```shell
-# De local a la nube
-rclone [opciones de función] <ruta local> <nombre de la conexión remota:ruta> [parámetros] [parámetros] ...
+# من الجهاز المحلي إلى السحابة
+rclone [خيارات الوظيفة] <المسار المحلي> <اسم السحابة: المسار> [معلمات] [معلمات] ...
 
-# De la nube a local
-rclone [opciones de función] <nombre de la conexión remota:ruta> <ruta local> [parámetros] [parámetros] ...
+# من السحابة إلى الجهاز المحلي
+rclone [خيارات الوظيفة] <اسم السحابة: المسار> <المسار المحلي> [معلمات] [معلمات] ...
 
-# De la nube a la nube
-rclone [opciones de función] <nombre de la conexión remota:ruta> <nombre de la conexión remota:ruta> [parámetros] [parámetros] ...
+# من السحابة إلى السحابة
+rclone [خيارات الوظيفة] <اسم السحابة: المسار> <اسم السحابة: المسار> [معلمات] [معلمات] ...
 ```
 
-Por ejemplo, en mi caso:
+على سبيل المثال ، أنا:
 
 ```shell
 rclone sync COS_backup:/wiki-media-1253965369 /volume1/wiki-media -P
 ```
 
-Cree un script de automatización en la ruta seleccionada (por ejemplo, `rclone-sync.sh`) y agregue el comando anterior al archivo del script.
+أنشئ ملف نصي تلقائيًا في المسار المحدد (مثل `rclone-sync.sh`) وضع الأمر أعلاه في ملف النص.
 
-En Synology, vaya a `Panel de control` - `Programador de tareas` - `Nueva` - `Tarea programada` - `Script definido por el usuario` y configure la hora de ejecución periódica y la ruta del script.
+في `لوحة التحكم` - `مهام المجدولة` - `إضافة` - `مهمة مجدولة` - `نص محدد من قبل المستخدم` ، قم بتكوين وقت التشغيل الدوري ومسار البرنامج النصي.
 
-1. En la pestaña `Tarea programada` y `Configuración de la tarea`, configure la hora de ejecución periódica y el comando para ejecutar el script (por ejemplo, `bash /volume1/stash/permanent/rclone-sync.sh`).
-2. En la pestaña `Configuración`, configure la salida de resultados y seleccione la tarea. Haga clic en `Ejecutar` para probar la ejecución y abra la ruta de salida configurada para ver los resultados.
+1. في `لوحة التحكم` - `مهام المجدولة` - `إضافة` - `مهمة مجدولة` - `نص محدد من قبل المستخدم` ، قم بتكوين وقت التشغيل الدوري وأمر تشغيل البرنامج النصي (مثل `bash /volume1/stash/permanent/rclone-sync.sh`).
+2. يمكن تكوين نتائج الإخراج في `الإعدادات` ، ثم حدد المهمة وانقر فوق `تشغيل` لاختبار التشغيل ، ويمكن فتح مسار الإخراج المكون للاطلاع على نتائج التشغيل. 
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Tutorial de instalación, configuración y uso de Rclone, con explicación detallada de los parámetros más utilizados](https://www.wazhuji.com/jiaocheng/17.html)
-- [Creación de una nube privada de bajo costo y con todas las funciones basada en almacenamiento de objetos](https://zhuanlan.zhihu.com/p/104628740)
-- [Montar Alibaba Cloud OSS / Tencent Cloud COS como disco de Windows utilizando Rclone y WinFsp](https://www.boxmoe.com/486.html)
-- [Montar Google Drive personal / de equipo en Windows utilizando Rclone](https://blog.rhilip.info/archives/874/)
-- [Realizar copias de seguridad diarias programadas del contenido del sitio web y la base de datos de Typecho en Google Drive / Onedrive y otros servicios de almacenamiento en la nube utilizando Rclone](https://omo.moe/archives/616/)
+المصدر:
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+- [دليل تثبيت وتكوين واستخدام Rclone، مع شرح مفصل للمعلمات الشائعة في Rclone](https://www.wazhuji.com/jiaocheng/17.html)
+- [إنشاء سحابة خاصة كاملة الميزات بتكلفة منخفضة باستخدام [تخزين الكائنات]](https://zhuanlan.zhihu.com/p/104628740)
+- [تثبيت محرك أقراص Aliyun OSS / Tencent Cloud COS على نظام Windows باستخدام Rclone و WinFsp](https://www.boxmoe.com/486.html)
+- [تثبيت محرك أقراص Google الشخصي / الفريقي باستخدام Rclone على نظام Windows](https://blog.rhilip.info/archives/874/)
+- [نسخ احتياطي يومي بتوقيت محدد لمحتوى موقع Typecho وقاعدة بيانات MySQL إلى Google Drive / Onedrive وغيرها من خدمات التخزين السحابي باستخدام Rclone](https://omo.moe/archives/616/)'
+
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

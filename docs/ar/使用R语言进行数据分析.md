@@ -1,186 +1,186 @@
-# Análisis de datos con R
+# استخدام لغة R لتحليل البيانات
 
-## Instalación de software
+## تثبيت البرامج
 
 - [**R-software**](https://cran.r-project.org/)
-  - Si se utiliza en Windows, haga clic en `Download R for Windows` en la página principal del sitio web, luego haga clic en `install R for the first time` y finalmente haga clic en `Download R 4.0.4 for Windows`. Después de descargar el software, complete la instalación por su cuenta.
-  - El software de soporte de R solo se ejecuta en segundo plano y no tiene una interfaz gráfica.
+  - إذا كنت تستخدم نظام Windows ، فيرجى النقر على "تنزيل R لنظام Windows" على الصفحة الرئيسية للموقع ، ثم النقر على "تثبيت R للمرة الأولى" ، ثم النقر على "تنزيل R 4.0.4 لنظام Windows" ، بعد تنزيل البرنامج ، يرجى إكمال التثبيت بنفسك.
+  - لا يوجد واجهة رسومية لبرنامج R فهو يعمل فقط في الخلفية.
 - [**RStudio**](https://rstudio.com/products/rstudio/download/#download)
-  - Simplemente haga clic en el botón azul `Download` o seleccione otra versión del sistema en la parte inferior de la página para descargar el software. Después de descargar el software, complete la instalación por su cuenta.
+  - الرجاء النقر على الزر الأزرق "تنزيل" مباشرةً ، أو تحميل إصدارات أخرى من الصفحة الرئيسية. بعد تنزيل البرنامج ، يرجى إكمال التثبيت بنفسك.
 
-## Recursos de enseñanza
+## مصادر التعليم
 
-### Recursos en línea (recomendados)
+### مصادر عبر الإنترنت (موصى بها)
 
 - [R-tutorial](http://www.r-tutor.com/r-introduction)
-- [Aprende R desde cero](https://bookdown.org/qiyuandong/intro_r/)
+- [تعلم لغة R من الصفر](https://bookdown.org/qiyuandong/intro_r/)
 
-### Libros
+### الكتب
 
 - [The R-book](https://www.cs.upc.edu/~robert/teaching/estadistica/TheRBook.pdf)
-- [R para Ciencia de Datos](https://r4ds.had.co.nz/index.html)
+- [R for Data Science](https://r4ds.had.co.nz/index.html)
 
-## Tipos de datos básicos
+## أنواع البيانات الأساسية
 
-Los tipos de datos en R se dividen principalmente en los siguientes:
+تتضمن أنواع البيانات في لغة R الأساسية ما يلي:
 
-- **Numérico (numerics)**
-- **Entero (integer)**
-- **Complejo (complex)**
-- **Lógico (logical)**
-- **Carácter (characters)**
+- **أرقام (numerics)**
+- **أعداد صحيحة (integer)**
+- **أعداد مركبة (complex)**
+- **منطقي (logical)**
+- **نص (characters)**
 
-### Numérico (numerics)
+### أرقام (numerics)
 
-El tipo numérico es el tipo de datos más básico en R. Cuando asignamos un valor numérico a una variable, el tipo de la variable es numérico:
+تعتبر الأرقام هي النوع الأساسي للبيانات في لغة R. عندما نقوم بتعيين قيمة رقمية لمتغير ، فإن نوع المتغير هو الأرقام:
 
 ```r
-> x = 11.15       # Asignar el valor numérico 11.15 a la variable x
-> x              # Imprimir el valor de x
+> x = 11.15       # تعيين الرقم 11.15 للمتغير x
+> x              # طباعة قيمة x
 [1] 11.15
-> class(x)       # Imprimir el tipo de x
+> class(x)       # طباعة نوع x
 [1] "numeric"
 ```
 
-Tanto los enteros como los decimales pueden ser variables numéricas. Pero si se crea de esta manera, las variables enteras también se considerarán variables decimales.
+يمكن أن يكون العدد صحيحًا أو عشريًا. ومع ذلك ، إذا تم إنشاء المتغير بهذه الطريقة ، فسيتم اعتبار المتغير الصحيح أيضًا متغيرًا عشريًا.
 
-### Entero (integer)
+### أعداد صحيحة (integer)
 
-Si desea crear una variable entera, debe usar la función `is.integer`:
+إذا كنت تريد إنشاء متغير صحيح ، فيجب استخدام الدالة `is.integer`:
 
 ```r
 > y = as.integer(3)
-> y              # Imprimir el valor de y
+> y              # طباعة قيمة y
 [1] 3
-> class(y)       # Imprimir el tipo de y
+> class(y)       # طباعة نوع y
 [1] "integer"
-> is.integer(y)  # ¿Es y un número entero?
+> is.integer(y)  # هل y عدد صحيح؟
 [1] TRUE
 ```
 
-Además de usar la función `is.integer`, también puede agregar el sufijo `L` para lograrlo:
+يمكنك أيضًا إضافة حرف `L` في النهاية لإنشاء متغير صحيح:
 
 ```r
 > y = 3L
-> is.integer(y)  # ¿Es y un número entero?
+> is.integer(y)  # هل y عدد صحيح؟
 [1] TRUE
 ```
 
-Si desea redondear un decimal, puede usar la función `as.integer`:
+إذا كنت تريد تقريب العدد العشري ، فيمكنك استخدام الدالة `as.integer`:
 
 ```r
-> as.integer(3.14)    # Convertir la variable en un número entero
+> as.integer(3.14)    # تحويل العدد العشري إلى عدد صحيح
 [1] 3
 ```
 
-También puede analizar y redondear variables de tipo cadena:
+يمكن أيضًا تحويل النص إلى عدد صحيح:
 
 ```r
-> as.integer("5.27")  # Convertir la variable en un número entero
+> as.integer("5.27")  # تحويل النص إلى عدد صحيح
 [1] 5
 ```
 
-Pero si la cadena analizada no es un número, se producirá un error:
+ومع ذلك ، إذا كان النص الذي يتم تحليله ليس رقمًا ، فسيتم إصدار خطأ:
 
 ```r
-> as.integer("Joe")   # Analizar una cadena que no es numérica
+> as.integer("Joe")   # تحليل النص الذي ليس رقمًا
 [1] NA
 Warning message:
 NAs introduced by coercion
 ```
 
-Al igual que en C, en R, los enteros `1` `0` y los lógicos `TRUE` `FALSE` se corresponden:
+مثل لغة C ، يتم تعيين القيمة 1 لـ `TRUE` والقيمة 0 لـ `FALSE` في لغة R:
 
 ```r
-> as.integer(TRUE)    # Variable numérica de TRUE
+> as.integer(TRUE)    # المتغير الرقمي لـ TRUE
 [1] 1
-> as.integer(FALSE)   # Variable numérica de FALSE
+> as.integer(FALSE)   # المتغير الرقمي لـ FALSE
 [1] 0
 ```
 
-### Complejo (complex)
+### أعداد مركبة (complex)
 
-En R, las variables complejas se definen mediante `i`:
+في لغة R ، يتم تعريف المتغيرات المركبة باستخدام `i`:
 
 ```r
-> z = 2 + 3i       # Asignar el valor complejo 2 + 3i a la variable z
-> z              # Imprimir el valor de z
-[1] 2+3i
-> class(z)       # Imprimir el tipo de z
+> z = 3 + 2i       # تعيين المتغير المركب z
+> z              # طباعة قيمة z
+[1] 3+2i
+> class(z)       # طباعة نوع z
 [1] "complex"
 ```
 
-Español:
+
 
 ```r
-> z = 1 + 2i     # Crear una variable compleja z
-> z              # Imprimir el valor de z
+> z = 1 + 2i     # إنشاء متغير عدد مركب z
+> z              # إظهار قيمة z
 [1] 1+2i
-> class(z)       # Imprimir el tipo de z
+> class(z)       # إظهار نوع z
 [1] "complex"
 ```
 
-Si intentamos calcular la raíz cuadrada de `-1`, obtendremos un error:
+إذا قمنا بأخذ جذر تربيعي لـ `-1` فسيحدث خطأ:
 
 ```r
-> sqrt(−1)       # Calcular la raíz cuadrada de -1
+> sqrt(−1)       # أخذ جذر تربيعي لـ -1
 [1] NaN
 Warning message:
 In sqrt(−1) : NaNs produced
 ```
 
-Pero si calculamos la raíz cuadrada de `-1+0i`, no habrá problema:
+ولكن إذا قمنا بأخذ جذر تربيعي للعدد المركب `−1+0i` فلن يحدث خطأ:
 
 ```r
-> sqrt(−1+0i)    # Calcular la raíz cuadrada de −1+0i
+> sqrt(−1+0i)    # أخذ جذر تربيعي لـ −1+0i
 [1] 0+1i
 ```
 
-También podemos realizar operaciones con conversión de tipo forzado:
+يمكن أيضًا استخدام التحويل القسري للأنواع للقيام بالعمليات:
 
 ```r
 > sqrt(as.complex(−1))
 [1] 0+1i
 ```
 
-### Tipo lógico (logical)
+### النوع المنطقي (logical)
 
-El tipo lógico se genera generalmente al comparar variables:
+يتم إنشاء النوع المنطقي عادةً عن طريق مقارنة المتغيرات:
 
 ```r
-> x = 1; y = 2   # Variables de muestra
-> z = x > y      # ¿Es x mayor que y?
-> z              # Imprimir la variable lógica
+> x = 1; y = 2   # متغيرات العينة
+> z = x > y      # هل x أكبر من y؟
+> z              # إظهار المتغير المنطقي
 [1] FALSE
-> class(z)       # Imprimir el tipo de z
+> class(z)       # إظهار نوع z
 [1] "logical"
 ```
 
-Las operaciones lógicas básicas son `&` (y), `|` (o), `!` (no):
+العمليات المنطقية الأساسية هي `&` (و)، `|` (أو)، `!` (لا):
 
 ```r
 > u = TRUE; v = FALSE
-> u & v          # Operación "y" entre u y v
+> u & v          # عملية "و" بين u و v
 [1] FALSE
-> u | v          # Operación "o" entre u y v
+> u | v          # عملية "أو" بين u و v
 [1] TRUE
-> !u             # Operación "no" en u
+> !u             # عملية "لا" على u
 [1] FALSE
 ```
 
-### Tipo caracter (character)
+### النوع النصي (character)
 
-El tipo caracter se puede obtener mediante la conversión forzada con la función `as.character`:
+يمكن الحصول على النوع النصي باستخدام التحويل القسري `as.character`:
 
 ```r
 > x = as.character(3.14)
-> x              # Imprimir la cadena
+> x              # إظهار السلسلة النصية
 [1] "3.14"
-> class(x)       # Imprimir el tipo de x
+> class(x)       # إظهار نوع x
 [1] "character"
 ```
 
-Para combinar dos variables de tipo caracter, se puede utilizar la función `paste`:
+يمكن استخدام الدالة `paste` لدمج متغيرين نصيين:
 
 ```r
 > fname = "Joe"; lname ="Smith"
@@ -188,64 +188,64 @@ Para combinar dos variables de tipo caracter, se puede utilizar la función `pas
 [1] "Joe Smith"
 ```
 
-Al igual que en la sintaxis de C, se puede utilizar la función `sprintf` para imprimir con formato y mejorar la legibilidad:
+يمكن استخدام الدالة `sprintf` لإخراج النص بتنسيق معين لزيادة القراءة (في المثال، تم استبدال `%s` بـ `Sam` و `%d` بـ `100`):
 
 ```r
 > sprintf("%s has %d dollars", "Sam", 100)
 [1] "Sam has 100 dollars"
 ```
 
-Si se desea extraer una subcadena de una cadena, se puede utilizar la función `substr` (en el ejemplo se extraen los caracteres entre el tercero y el duodécimo):
+إذا كنت تريد استخراج جزء من السلسلة النصية، يمكن استخدام الدالة `substr` (في المثال، تم قص الأحرف بين الحرف الثالث والحرف الثاني عشر):
 
 ```r
 > substr("Mary has a little lamb.", start=3, stop=12)
 [1] "ry has a l"
 ```
 
-Si se desea reemplazar el primer carácter encontrado por otro, se puede utilizar la función `sub` (en el ejemplo se reemplaza `little` por `big`):
+إذا كنت تريد استبدال أول حرف تقابله بحرف آخر، يمكن استخدام الدالة `sub` (في المثال، تم استبدال `little` بـ `big`):
 
 ```r
 > sub("little", "big", "Mary has a little lamb.")
 [1] "Mary has a big lamb."
 ```
 
-## Vectores
+## الفيكتور (المتجه)
 
-### Vectores en R
+### الفيكتور في لغة R
 
-Un vector es un arreglo que contiene elementos del mismo tipo, y los elementos de un vector se llaman componentes.
+الفيكتور هو مصفوفة تحتوي على عناصر من نفس النوع، ويطلق على أعضائها اسم components.
 
-A continuación se muestra un ejemplo de vector (que contiene tres variables numéricas `2`, `3` y `5`):
+فيما يلي مثال على فيكتور (يحتوي على ثلاثة متغيرات عددية `2` `3` `5`):
 
 ```r
 > c(2, 3, 5)
 [1] 2 3 5
 ```
 
-También puede estar compuesto completamente de valores lógicos:
+يمكن أيضًا أن يتكون بالكامل من النوع المنطقي:
 
 ```r
 > c(TRUE, FALSE, TRUE, FALSE, FALSE)
 [1] TRUE FALSE TRUE FALSE FALSE
 ```
 
-O puede estar compuesto de valores de tipo caracter:
+أو يمكن أن يتكون بالكامل من النوع النصي:
 
 ```r
 > c("aa", "bb", "cc", "dd", "ee")
 [1] "aa" "bb" "cc" "dd" "ee"
 ```
 
-Para conocer la cantidad de componentes de un vector, se puede utilizar la función `length`:
+إذا كنت تريد معرفة عدد الأعضاء في الفيكتور، يمكن استخدام الدالة `length`:
 
 ```r
 > length(c("aa", "bb", "cc", "dd", "ee"))
 [1] 5
 ```
 
-### Combinando vectores
+### دمج الأسهم
 
-Si desea combinar dos vectores, puede usar la función `c`:
+إذا كنت تريد دمج اثنين من الأسهم، يمكنك استخدام الدالة `c`:
 
 ```r
 > n = c(2, 3, 5)
@@ -254,18 +254,18 @@ Si desea combinar dos vectores, puede usar la función `c`:
 [1] "2"  "3"  "5"  "aa" "bb" "cc" "dd" "ee"
 ```
 
-Tenga en cuenta que en el ejemplo anterior, si combina dos vectores de diferentes tipos de datos, el tipo combinado será compatible hacia abajo (es decir, el tipo más estricto se convertirá en el tipo más relajado, como convertir un tipo numérico en un tipo de carácter).
+يرجى ملاحظة في المثال أعلاه، إذا تم دمج اثنين من الأسهم بأنواع بيانات مختلفة، فسيتم توافق النوع بعد الدمج (أي يتم تحويل النوع الأكثر صرامة إلى النوع الأكثر ارتياحًا، مثل تحويل الأرقام إلى الأحرف).
 
-### Operaciones básicas de vectores
+### العمليات الأساسية على الأسهم
 
-Supongamos que tenemos dos vectores `a` y `b`:
+لنفترض أولاً أن لدينا اثنين من الأسهم `a` `b`:
 
 ```r
 > a = c(1, 3, 5, 7)
 > b = c(1, 2, 4, 8)
 ```
 
-A continuación se muestran las operaciones básicas de vectores:
+وهذه هي العمليات الأساسية على الأسهم:
 
 ```r
 > a + b
@@ -284,7 +284,7 @@ A continuación se muestran las operaciones básicas de vectores:
 [1] 1.000 1.500 1.250 0.875
 ```
 
-Si la cantidad de miembros de los dos vectores que se suman no es la misma, el resultado será compatible hacia abajo, es decir, la longitud de la variable de salida dependerá del más largo:
+إذا كان عدد أعضاء الأسهم المضافة غير متساوٍ، فسيتم توافق النتيجة بأسفل (أي يتم اختيار طول النتيجة بناءً على الأطول):
 
 ```r
 > u = c(10, 20, 30)
@@ -293,30 +293,30 @@ Si la cantidad de miembros de los dos vectores que se suman no es la misma, el r
 [1] 11 22 33 14 25 36 17 28 39
 ```
 
-### Recuperando vectores
+### البحث في الأسهم
 
-Si desea recuperar un miembro del vector, puede usar el método de índice declarando el índice en `[ ]`, es decir, `[número de miembro]`:
+إذا كنت تريد استخراج عضو من الأسهم، يمكنك استخدام الفهرس المعلن في `[ ]`، أي `[عضو رقم]`:
 
 ```r
 > s = c("aa", "bb", "cc", "dd", "ee")
-> s[3]  # recupera el valor del tercer miembro y lo muestra
+> s[3]  # استخراج قيمة العضو الثالث وطباعتها
 [1] "cc"
 ```
 
-Si agrega un signo menos antes del índice, como `[-3]`, significa que recupera todos los miembros excepto el tercer miembro:
+إذا أضفت علامة ناقص قبل الفهرس، مثل `[-3]`، فهذا يعني استخراج جميع الأعضاء باستثناء العضو الثالث:
 
 ```r
 > s[-3]
 [1] "aa" "bb" "dd" "ee"
 ```
 
-Si el índice está fuera de la longitud del vector, se producirá un error:
+إذا تجاوز الفهرس طول الأسهم، فسيتم إصدار خطأ:
 
 ```r
 > s[10]
 [1] NA
 ```
 
-【En proceso de actualización】
+【تحديث جارٍ】
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

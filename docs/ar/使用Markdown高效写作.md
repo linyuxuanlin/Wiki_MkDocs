@@ -1,80 +1,81 @@
-# Escribir eficientemente con Markdown
+# استخدام Markdown للكتابة بكفاءة
 
-Si estás acostumbrado a escribir con herramientas como Word, es posible que te encuentres con situaciones como estas con frecuencia:
+إذا كنت تعتاد على استخدام أدوات مثل Word للكتابة ، فمن المحتمل أن تواجه المواقف التالية بشكل متكرر:
 
-- ¿Dónde está el botón para poner en negrita? ¿Y el de las listas? ¿Cómo puedo insertar imágenes correctamente?
-- ¿Qué tamaño de fuente debo usar para los diferentes títulos? ¿Y para el cuerpo del texto?
-- Cuando abro el documento con otra versión de Word, los estilos no son los que quiero.
+- أين زر التصعيد؟ أين زر القوائم؟ كيف يمكنني إدراج الصور بشكل صحيح؟
+- كم حجم الخط الذي يجب استخدامه للعناوين المختلفة؟ ما هو الحجم المناسب للنص العادي؟
+- عند فتح الوثيقة باستخدام إصدار آخر من Word ، لا يتم عرض الأنماط التي أريدها.
 
-Cuando el tiempo dedicado a la maquetación supera al de la escritura en sí misma, queda claro que este método de escritura no es eficiente. En cambio, el uso de Markdown permite centrarse en la escritura en sí misma, sin que el formato interrumpa el flujo de pensamiento.
+عندما يتجاوز وقت التنسيق وقت الكتابة ، فهذا يثبت أن هذه الطريقة من الكتابة ليست فعالة.  
+ومع ذلك ، يمكن لطريقة الكتابة هذه باستخدام Markdown التركيز على الكتابة نفسها بدلاً من أن يتم تقطيع التفكير بشكل مستمر بسبب التنسيق.
 
-## Herramientas
+## الأدوات
 
-En primer lugar, necesitarás un editor que admita Markdown. Recomiendo usar VS Code o Typora.
-Para la instalación y configuración del software, puedes consultar el tutorial que he escrito: [**Guía de productividad de VS Code - Configuración del entorno**](https://wiki-power.com/es/VSCode生产力指南-环境配置)
+أولاً ، تحتاج إلى محرر يدعم Markdown ، وأنا أوصي باستخدام VS Code أو Typora.  
+يمكن الرجوع إلى دليل التثبيت والتكوين للبرنامج الذي كتبته سابقًا: [**دليل إنتاجية VS Code - تكوين البيئة**](https://wiki-power.com/ar/دليل إنتاجية VS Code - تكوين البيئة)
 
-## Sintaxis común
+## الصيغ الشائعة
 
-La sintaxis común de Markdown se compone de: **títulos, estilo de texto, citas, código, enlaces, imágenes, listas, tablas, líneas divisorias**, y una vez que las domines, podrás moverte con facilidad.
+تتمثل الصيغ الشائعة لـ Markdown في: **العناوين ونمط النص والاقتباس والشفرة والروابط والصور والقوائم والجداول والخط الفاصل** ، ويمكن التحكم بها بسهولة بمجرد التعرف عليها.
 
-### Títulos
+### العناوين
 
-Para crear títulos, agrega de 1 a 6 símbolos `#` antes del texto del título. El número de niveles de título depende de la cantidad de `#`. En general, la estructura del artículo no debe tener más de 4 niveles.
+لإنشاء عنوان ، يرجى إضافة 1-6 علامات `#` قبل النص. يتم تحديد عدد مستويات العنوان بواسطة عدد علامات `#`. عمومًا ، لا يجب أن تتجاوز هيكل المقالة 4 مستويات.
 
 ```markdown
-# Título principal
+# العنوان الرئيسي
 
-## Título de segundo nivel
+## العنوان الفرعي
 
-### Título de tercer nivel
+### العنوان الفرعي الثالث
 
-#### Título de cuarto nivel
+#### العنوان الفرعي الرابع
 
 ……
 ```
 
-### Estilo de texto
+### نمط النص
 
-Agrega símbolos alrededor del texto para darle estilo:
+يمكن تنسيق النص بإضافة رموز على جانبي النص:
 
-|      Estilo       | Atajo de teclado | Sintaxis                           | Apariencia                       |
-| :---------------: | :--------------: | ---------------------------------- | -------------------------------- |
-|      Negrita      | `Ctrl`/`⌘` + `B` | `**Texto en negrita**`             | **Texto en negrita**             |
-|      Cursiva      | `Ctrl`/`⌘` + `I` | `*Texto en cursiva*`               | _Texto en cursiva_               |
-| Negrita y cursiva |                  | `***Texto en negrita y cursiva***` | **_Texto en negrita y cursiva_** |
-|      Tachado      |                  | `~~Texto tachado~~`                | ~~Texto tachado~~                |
+|   النمط   |    اختصار لوحة المفاتيح    | الصيغة                   | العرض             |
+| :------: | :--------------: | ---------------------- | -------------------- |
+|   عريض   | `Ctrl`/`⌘` + `B` | `**نص عريض**`         | **نص عريض**         |
+|   مائل   | `Ctrl`/`⌘` + `I` | `*نص مائل*`           | _نص مائل_           |
+| عريض ومائل |                  | `***نص عريض ومائل***` | **_نص عريض ومائل_** |
+|  خط متوسط  |                  | `~~نص خاطئ~~`         | ~~نص خاطئ~~         |
 
-Nota: El texto en cursiva está diseñado específicamente para el inglés. Para mayor legibilidad y coherencia, no uses cursiva en el texto en español.
+ملاحظة: تم تصميم النص المائل خصيصًا للغة الإنجليزية ، لذلك يرجى عدم استخدام النص المائل للنص العربي لأسباب القراءة والتنظيم.
 
-### Citas
+### الاقتباس
 
-Puedes usar el símbolo `>` para citar un párrafo:
-
-```markdown
-Como dice el mensaje navideño de "The Pirate Bay":
-
-> Creemos que hemos cambiado algo. No solo nosotros, sino todos. Ya no queremos simplemente ejecutar un sitio web, sino buscar un significado. No podemos hacerlo sin tu ayuda. Nuestra historia aún se está escribiendo, así que no saques conclusiones precipitadas.
-```
-
-Como dice el mensaje navideño de "The Pirate Bay":
-
-> Creemos que hemos cambiado algo. No solo nosotros, sino todos. Ya no queremos simplemente ejecutar un sitio web, sino buscar un significado. No podemos hacerlo sin tu ayuda. Nuestra historia aún se está escribiendo, así que no saques conclusiones precipitadas.
-
-### Código
-
-#### Código en línea
-
-Puedes usar las comillas invertidas <code>`</code> (en la esquina superior izquierda del teclado) para citar código en línea. Por ejemplo:
+يمكنك استخدام علامة `>` للاقتباس الفقرات:
 
 ```markdown
-Descomprime el archivo `hugo.exe` en la carpeta `D:\hugo`.
+كما قال "خليج القراصنة" في رسالة عيد الميلاد:
+
+> نحن نعتقد أننا قمنا بتغيير بعض الأشياء. ليس فقط نحن ، بل جميعنا. لم نعد نريد تشغيل موقع ويب فقط ، بل نريد البحث عن بعض المعاني. لا يمكن القيام بذلك دون مساعدتك. تاريخنا لا يزال يكتب ، لذلك لا تستعجل الاستنتاج.
 ```
 
-Descomprime el archivo `hugo.exe` en la carpeta `D:\hugo`.
+كما قال "خليج القراصنة" في رسالة عيد الميلاد:
 
-#### Código de varias líneas
+> نحن نعتقد أننا قمنا بتغيير بعض الأشياء. ليس فقط نحن ، بل جميعنا. لم نعد نريد تشغيل موقع ويب فقط ، بل نريد البحث عن بعض المعاني. لا يمكن القيام بذلك دون مساعدتك. تاريخنا لا يزال يكتب ، لذلك لا تستعجل الاستنتاج.
 
-Si necesitas varias líneas de código, puedes usar tres comillas invertidas <code>```</code> para encerrar el bloque de código:
+### الشفرة المستخدمة
+
+#### الاستشهاد الفرعي
+
+يمكنك استخدام علامة الاقتباس العكسي <code>`</code> (في الزاوية اليسرى العليا من لوحة المفاتيح) للاستشهاد بالشفرة في السطر. على سبيل المثال:
+
+```markdown
+قم بفك ضغط ملف `hugo.exe` الموجود في مجلد الضغط إلى مجلد `D: \ hugo`.
+```
+
+قم بفك ضغط ملف `hugo.exe` الموجود في مجلد الضغط إلى مجلد `D: \ hugo`.
+
+#### الشفرة المتعددة الأسطر
+
+إذا كنت بحاجة إلى شفرة متعددة الأسطر ، فيمكنك استخدام ثلاث علامات الاقتباس العكسي <code>```</code> لتحيط بكتلة الشفرة:
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210215164653.png)
 
@@ -86,9 +87,9 @@ int fputc(int ch,FILE *f)
 }
 ```
 
-Donde <code>```c</code> indica que este fragmento de código es en lenguaje C, y se resaltará según la sintaxis de C.
+حيث <code>```c</code> يشير إلى أن هذا الشفرة هو لغة C ، وسيتم تقديمها بناءً على بناء C.
 
-Si desea mostrar el archivo en el que se encuentra el código, puede agregar <code>```c title="stm32f4xx_it.c"</code>, el efecto es el siguiente:
+إذا كنت ترغب في عرض ملف الكود الذي يتم فيه عرض الكود ، فيمكنك إضافة <code>```c title="stm32f4xx_it.c"</code> ، كما يلي:
 
 ```c title="stm32f4xx_it.c"
 int fputc(int ch,FILE *f)
@@ -98,19 +99,19 @@ int fputc(int ch,FILE *f)
 }
 ```
 
-### Enlaces
+### روابط
 
-Puede crear enlaces incluyendo el texto del enlace entre corchetes `[ ]` y la URL entre paréntesis `( )`. Por ejemplo:
+يمكن إنشاء رابط عن طريق وضع نص الرابط داخل الأقواس [ ] ، ثم وضع عنوان URL داخل الأقواس ( ) . على سبيل المثال:
 
 ```markdown
-Este sitio web está construido con [Docusaurus](https://v2.docusaurus.io/).
+تم إنشاء هذا الموقع باستخدام [Docusaurus](https://v2.docusaurus.io/) .
 ```
 
-Este sitio web está construido con [Docusaurus](https://v2.docusaurus.io/).
+تم إنشاء هذا الموقع باستخدام [Docusaurus](https://v2.docusaurus.io/) .
 
-### Imágenes
+### الصور
 
-El formato de las imágenes es simplemente agregar un signo `!` más que los enlaces. Por ejemplo:
+تختلف صيغة الصور قليلاً عن الروابط فقط بوجود علامة التعجب `!` . على سبيل المثال:
 
 ```markdown
 ![](https://cdn.jsdelivr.net/gh/linyuxuanlin/Wiki-WildWolf/static/uploads/b944219198103ea09f0f02bcb830e9b.png)
@@ -118,109 +119,115 @@ El formato de las imágenes es simplemente agregar un signo `!` más que los enl
 
 ![](https://cdn.jsdelivr.net/gh/linyuxuanlin/Wiki-WildWolf/static/uploads/b944219198103ea09f0f02bcb830e9b.png)
 
-Nota: las imágenes pueden no tener texto de visualización, es decir, `[ ]` puede dejarse en blanco.
+ملاحظة: يمكن عدم إضافة نص العرض للصور ، أي يمكن ترك الأقواس فارغة.
 
-### Listas
+### القوائم
 
-#### Lista sin orden
+#### القوائم غير المرتبة
 
-Agregar `- ` o `* ` antes del texto crea una lista sin orden (nota: el símbolo debe ir seguido de un espacio, de lo contrario, la representación puede fallar). Por ejemplo:
-
-```markdown
-- Elemento de lista
-- Elemento de lista
-- Elemento de lista
-```
-
-- Elemento de lista
-- Elemento de lista
-- Elemento de lista
-
-#### Lista ordenada
-
-Para crear una lista ordenada, agregue un número a cada línea:
+يمكن إنشاء قائمة غير مرتبة عن طريق إضافة `-` أو `*` قبل النص (لاحظ: يجب وضع مسافة بعد الرمز ، وإلا قد يتعذر التقديم). على سبيل المثال:
 
 ```markdown
-1. Elemento de lista uno
-2. Elemento de lista dos
-3. Elemento de lista tres
+- عنصر القائمة
+- عنصر القائمة
+- عنصر القائمة
 ```
 
-1. Elemento de lista uno
-2. Elemento de lista dos
-3. Elemento de lista tres
+- عنصر القائمة
+- عنصر القائمة
+- عنصر القائمة
 
-#### Lista TODO
+#### القوائم المرتبة
 
-Para crear una lista TODO, siga el siguiente formato:
+إذا كنت ترغب في إنشاء قائمة مرتبة ، فيرجى إضافة رقم الترتيب في البداية:
 
 ```markdown
-- [x] Completar cambios
-- [ ] Empujar confirmación a GitHub
-- [ ] Abrir solicitud de extracción
+1. عنصر القائمة الأول
+2. عنصر القائمة الثاني
+3. عنصر القائمة الثالث
 ```
 
-- [x] Completar cambios
-- [ ] Empujar confirmación a GitHub
-- [ ] Abrir solicitud de extracción
+1. عنصر القائمة الأول
+2. عنصر القائمة الثاني
+3. عنصر القائمة الثالث
 
-#### Lista anidada
+#### قائمة TODO
 
-Para anidar listas, simplemente use la tecla Tab para indentar y Shift + Tab para cancelar la indentación:
+إذا كنت ترغب في إنشاء قائمة TODO ، فيرجى اتباع التنسيق التالي:
 
 ```markdown
-1. Elemento de lista uno
-   1. Subelemento de lista uno
-   2. Subelemento de lista dos
-      - Subsubelemento
-      - Subsubelemento
-2. Elemento de lista dos
+- [x] إكمال التغييرات
+- [ ] دفع التعديلات إلى GitHub
+- [ ] فتح طلب سحب
 ```
 
-1. Elemento de lista uno
-   1. Subelemento de lista uno
-   2. Subelemento de lista dos
-      - Subsubelemento
-      - Subsubelemento
-2. Elemento de lista dos
+- [x] إكمال التغييرات
+- [ ] دفع التعديلات إلى GitHub
+- [ ] فتح طلب سحب
 
-### Tablas
+#### تداخل القوائم
 
-Use el símbolo `|` para separar las celdas y el símbolo `-` para separar las filas de la tabla:
+إذا كنت ترغب في تداخل القوائم ، فيمكنك استخدام مفتاح التبويب للتحريك ، و Shift + Tab لإلغاء التحريك:
 
 ```markdown
-| nombre     | edad |
-| ---------- | ---- |
-| LearnShare | 12   |
-| Mike       | 32   |
+1. عنصر القائمة الأول
+   1. عنصر القائمة الفرعي الأول
+   2. عنصر القائمة الفرعي الثاني
+      - عنصر فرعي فرعي
+      - عنصر فرعي فرعي
+2. عنصر القائمة الثاني
 ```
 
-| nombre     | edad |
-| ---------- | ---- |
-| LearnShare | 12   |
-| Mike       | 32   |
+1. عنصر القائمة الأول
+   1. عنصر القائمة الفرعي الأول
+   2. عنصر القائمة الفرعي الثاني
+      - عنصر فرعي فرعي
+      - عنصر فرعي فرعي
+2. عنصر القائمة الثاني
 
-Si desea alinear las columnas de la tabla, puede usar el símbolo `:`:
+### الجداول
 
-- `:---` o `---` representa alineación a la izquierda
-- `:--:` representa alineación centrada
-- `---:` representa alineación a la derecha
+استخدم علامة الأنبوب | لفصل الخلايا المختلفة ، واستخدم علامة الشرطة - لفصل رأس الجدول والصفوف الأخرى:
 
 ```markdown
-|   nombre   | edad |
-| :--------: | ---: |
-| LearnShare |   12 |
-|    Mike    |   32 |
+| الاسم | العمر |
+| ---------- | --- |
+| LearnShare | 12 |
+| Mike | 32 |
 ```
 
-|   nombre   | edad |
-| :--------: | ---: |
-| LearnShare |   12 |
-|    Mike    |   32 |
+| الاسم | العمر |
+| ---------- | --- |
+| LearnShare | 12 |
+| Mike | 32 |
 
-### Línea divisoria
+إذا كنت ترغب في محاذاة الأعمدة في الجدول ، فيمكنك استخدام علامة النقطتين: 
 
-Puedes usar el símbolo `---` para generar una línea divisoria y separar diferentes secciones de texto:
+- `: ---` أو `---` تمثل المحاذاة إلى اليسار
+- `:--:` يمثل المحاذاة المركزة
+- `---:` يمثل المحاذاة إلى اليمين
+
+```markdown
+| الاسم | العمر |
+| :--------: | --: |
+| LearnShare | 12 |
+| Mike | 32 |
+```
+
+| الاسم | العمر |
+| :--------: | --: |
+| LearnShare | 12 |
+| Mike | 32 |
+
+### خط الفاصل
+
+```markdown
+---
+```
+
+---
+
+يمكنك استخدام علامة `---` لإنشاء خط فاصل لفصل فقرات مختلفة:
 
 ```markdown
 ---
@@ -228,33 +235,33 @@ Puedes usar el símbolo `---` para generar una línea divisoria y separar difere
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210216123630.png)
 
-## Funciones avanzadas
+## استخدامات متقدمة
 
-### Párrafos y saltos de línea
+### الفقرات والأسطر
 
-En Markdown, utiliza una línea en blanco antes y después de cada párrafo para separarlos.  
-Para hacer un salto de línea dentro del mismo párrafo, simplemente agrega dos espacios al final de la línea.
+في Markdown، يرجى ترك فراغًا قبل وبعد كل فقرة لتمييزها عن الفقرات الأخرى.  
+يمكن إدخال سطر جديد في نفس الفقرة عن طريق إضافة مسافتين في نهاية الجملة.
 
-### Exportar a otros formatos
+### التصدير إلى صيغ أخرى
 
-Si necesitas exportar a PDF, Word, imágenes u otros formatos, puedes usar Pandoc.  
-Si estás usando VS Code, puedes usar [**Markdown PDF**](https://marketplace.visualstudio.com/items?itemName=yzane.markdown-pdf) para exportar a PDF directamente.
+إذا كنت ترغب في تصدير إلى صيغة PDF أو Word أو صورة، يمكن استخدام Pandoc لتحقيق ذلك.  
+إذا كنت تستخدم VS Code، يمكنك استخدام [**Markdown PDF**](https://marketplace.visualstudio.com/items?itemName=yzane.markdown-pdf) مباشرة لتصدير مستند PDF.
 
-### Escribir artículos de WeChat con Markdown
+### كتابة مقالات في الحساب الرسمي على WeChat باستخدام Markdown
 
-WeChat utiliza un editor de texto enriquecido, pero puedes usar la herramienta web [**MD2WeChat**](https://md2wechat.wiki-power.com/) para convertir y renderizar tu Markdown y luego pegarlo en el editor de WeChat.
+يستخدم حساب WeChat الرسمي محرر نصوص غني، ويمكننا استخدام أداة الويب [**MD2WeChat**](https://md2wechat.wiki-power.com/) لتحليل وعرض Markdown ولصقها في محرر WeChat.
 
-Para más detalles, consulta el artículo [**Cómo escribir de manera eficiente con Markdown**](https://wiki-power.com/es/%E5%A6%82%E4%BD%95%E7%94%A8Markdown%E5%86%99%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0) (en chino).
+لمزيد من المعلومات، يرجى الرجوع إلى هذه المقالة [**كيفية الكتابة بفعالية باستخدام Markdown**](https://wiki-power.com/ar/%E5%A6%82%E4%BD%95%E7%94%A8Markdown%E5%86%99%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0).
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Métodos personales de edición de Markdown](https://sinnammanyo.cn/About-Markdown/) (en chino)
-- [Escribir de manera eficiente con Markdown, para liberarte de los problemas de formato](https://zhuanlan.zhihu.com/p/41893875) (en chino)
-- [younghz/Markdown](https://github.com/younghz/Markdown) (en inglés)
-- [Learning-Markdown (Introducción a Markdown)](https://xianbai.me/learn-md/index.html) (en inglés)
-- [Sintaxis básica de escritura y formato](https://docs.github.com/cn/github/writing-on-github/basic-writing-and-formatting-syntax) (en inglés)
+- [طريقة التحرير الشخصية لـ Markdown](https://sinnammanyo.cn/About-Markdown/)
+- [طريقة الكتابة الفعالة باستخدام Markdown، لتتخلص نهائيًا من مشاكل التنسيق](https://zhuanlan.zhihu.com/p/41893875)
+- [younghz/Markdown](https://github.com/younghz/Markdown)
+- [Learning-Markdown (مرجع للمبتدئين في Markdown)](https://xianbai.me/learn-md/index.html)
+- [الكتابة الأساسية وصيغ التنسيق](https://docs.github.com/cn/github/writing-on-github/basic-writing-and-formatting-syntax)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

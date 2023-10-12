@@ -1,48 +1,48 @@
-# npm y Yarn: acelerando el acceso en China a través del cambio de origen
+# تسريع الوصول لـ npm و Yarn في الصين عن طريق تغيير المصدر
 
-## Contexto
+## الخلفية
 
-Las fuentes predeterminadas de npm y Yarn se encuentran en el extranjero, lo que ralentiza el acceso en China.  
-El siguiente comando muestra el origen del espejo actualmente en uso:
+توجد مصادر npm و Yarn الافتراضية في الخارج، مما يؤدي إلى بطء الوصول لها في الصين.  
+يمكنك استخدام الأمر التالي لمعرفة المصدر الحالي:
 
 ```shell
 yarn config get registry
 ```
 
-## Solución
+## الحل
 
-Utilice el software cgr para cambiar rápidamente el origen del espejo de npm y Yarn.
+استخدم برنامج cgr لتغيير مصدر npm و Yarn بسرعة.
 
-### Instalar cgr
+### تثبيت cgr
 
 ```shell
 npm install -g cgr
 ```
 
-### Enumerar los orígenes del espejo disponibles actualmente
+### عرض المصادر المتاحة حاليًا
 
 ```
 cgr ls
 ```
 
-### Seleccione un origen del espejo para cambiar (taobao)
+### اختيار مصدر واحد للتغيير (Taobao)
 
 ```
 cgr use taobao
 ```
 
-### Prueba de velocidad de acceso
+### اختبار سرعة الوصول
 
 ```
 cgr test taobao
 ```
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
 - [yarn 国内加速，修改镜像源](https://learnku.com/articles/15976/yarn-accelerate-and-modify-mirror-source-in-china)
 - [cgr -- change registry | yarn & npm registry manager](https://www.npmjs.com/package/cgr)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

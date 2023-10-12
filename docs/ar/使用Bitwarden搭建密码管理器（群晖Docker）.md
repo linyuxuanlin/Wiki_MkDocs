@@ -1,67 +1,70 @@
-# Cómo configurar un gestor de contraseñas con Bitwarden (Docker en Synology)
+# استخدام برنامج Bitwarden لإنشاء مدير كلمات مرور (Docker Synology)
 
-Nota: Debido a que la imagen de Bitwarden_rs ha cambiado de nombre y la extensión de navegador oficial de Bitwarden no es compatible con versiones antiguas, es necesario reemplazar `bitwardenrs/server` por `vaultwardenrs/server` en el siguiente texto y asegurarse de que la versión sea igual o superior a 1.27.0.
+ملاحظة: بسبب تغيير اسم صورة bitwarden_rs وعدم توافق الإضافة الرسمية لمتصفح Bitwarden مع الإصدارات القديمة وعدم القدرة على تسجيل الدخول ، يرجى استبدال `bitwardenrs / server` الموجود في النص أدناه بـ `vaultwardenrs / server` والتأكد من أن الإصدار لا يقل عن 1.27.0!
 
-En este artículo se explica cómo realizar una implementación privada del servidor de gestión de contraseñas Bitwarden en Synology mediante Docker, para su uso en múltiples plataformas.
+يشرح هذا المقال كيفية نشر خادم إدارة كلمات المرور Bitwarden عبر Docker على Synology الخاص بك.
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210503221838.png)
 
-Actualmente, existen varias soluciones de gestión de contraseñas, como 1Password, Lastpass, KeePass y Bitwarden, cada una con sus propias ventajas e inconvenientes. En mi caso, necesitaba una solución que permitiera la sincronización en múltiples dispositivos, fuera de código abierto y pudiera ser implementada de forma privada, además de contar con una función de relleno automático y una interfaz atractiva. Por ello, elegí implementar el servicio Bitwarden en mi Synology.
+توجد حاليًا عدة حلول لإدارة كلمات المرور مثل 1Password و Lastpass و KeePass و Bitwarden ، ولكل من هذه الحلول مزايا وعيوب. في هذه الحالة ، كانت احتياجاتي هي القدرة على المزامنة عبر عدة منصات والقدرة على النشر الذاتي ووجود وظيفة التعبئة التلقائية وفي نفس الوقت الاهتمام بالتصميم الجمالي ، لذلك اخترت نشر خادم Bitwarden على Synology الخاص بي.
 
-## Implementación en Docker en Synology
+## نشر على Synology Docker
 
-### Creación de una carpeta para almacenar los datos
+### إنشاء مجلد لتخزين البيانات
 
-Se debe crear una carpeta para almacenar los datos de Bitwarden en el directorio `docker` (por ejemplo, `docker/bitwarden`).
+ننشئ مجلدًا لتخزين بيانات Bitwarden (مثل `docker / bitwarden`) في دليل `docker`.
 
-### Descarga de la imagen y configuración del contenedor
+### تنزيل الصورة وتكوين الحاوية
 
-Abrir el paquete Docker de Synology, descargar la imagen `bitwardenrs/server`, iniciarla haciendo doble clic y seleccionar "Habilitar reinicio automático". Luego, acceder a "Configuración avanzada".
+افتح حزمة Docker على Synology الخاص بك ، وقم بتنزيل صورة `bitwardenrs / server` ، ثم قم بتشغيلها مرتين وحدد "تمكين إعادة التشغيل التلقائي" ، ثم انتقل إلى "الإعدادات المتقدمة".
 
-En la página "Volúmenes", configurar la carpeta montada haciendo clic en "Agregar carpeta", seleccionar la ruta local `docker/bitwarden` y establecer la ruta de montaje en `/data` (que no se puede cambiar por defecto):
+في صفحة "الحجم" ، قم بتكوين المجلد المرفق عن طريق النقر فوق "إضافة مجلد" وتحديد مسار `docker / bitwarden` المحلي وتحميل المسار `/ data` (الافتراضي غير قابل للتغيير):
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210503211711.png)
 
-En la página "Configuración de puertos", establecer manualmente el puerto local correspondiente al puerto 80 del contenedor (por ejemplo, establecerlo en `8003`):
+في صفحة "إعدادات المنفذ" ، قم بتعيين منفذ الحاوية الذي يتوافق مع المنفذ المحلي 80 يدويًا (على سبيل المثال ، قمت بتعيينه على `8003`):
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210503211759.png)
 
-Finalmente, iniciar el contenedor. Al acceder a la dirección IP local de Synology seguida del puerto `8003`, se mostrará la página de inicio de sesión de Bitwarden. Sin embargo, al crear una cuenta e intentar iniciar sesión, se mostrará el siguiente mensaje:
+ثم اكمل الإعدادات وشغل الحاوية. بعد إدخال عنوان IP المحلي لـ Synology مع المنفذ 8003 ، يمكننا رؤية صفحة تسجيل الدخول لـ Bitwarden. ومع ذلك ، عند إنشاء حساب وتسجيل الدخول ، ستظهر رسالة تحذيرية مثل هذه:
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210503212146.png)
 
-Esto se debe a que el contenedor Docker no proporciona una configuración de puerto HTTPS y Bitwarden solo permite el inicio de sesión a través de HTTPS (para evitar ataques de intermediarios mediante cifrado SSL). Por lo tanto, es necesario utilizar el servicio de proxy inverso integrado en Synology para acceder al puerto HTTP interno a través de HTTPS. Para obtener más información, consulte el artículo [**Cómo implementar HTTPS mediante proxy inverso en Synology**](https://wiki-power.com/es/%E7%94%A8%E7%BE%A4%E6%99%96%E8%87%AA%E5%B8%A6%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0HTTPS%E8%AE%BF%E9%97%AE).
+يحدث هذا لأن حاوية Docker نفسها لا توفر تكوينًا لمنفذ https ، ويمكن لـ Bitwarden فقط الوصول إليه عبر https (تشفير SSL لمنع هجمات الوسيط). لذلك ، يجب علينا استخدام خدمة الوكيل العكسي المدمجة في Synology للوصول إلى منفذ http الداخلي عبر https. يمكن الرجوع إلى دليل المقال [**استخدام خدمة الوكيل العكسي المدمجة في Synology للوصول إلى HTTPS**](https://wiki-power.com/ar/%E7%94%A8%E7%BE%A4%E6%99%96%E8%87%AA%E5%B8%A6%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0HTTPS%E8%AE%BF%E9%97%AE) للحصول على تفاصيل أكثر حول ذلك.
 
-## Uso en múltiples dispositivos
+## الاستخدام على أجهزة متعددة
 
-Se pueden descargar las diferentes versiones de clientes de Bitwarden desde la [**página de descarga oficial**](https://bitwarden.com/download/).
+يمكن تنزيل عملاء Bitwarden الرسميين للعديد من الأنظمة من [**صفحة التنزيل**](https://bitwarden.com/download/).
 
-### Cliente de escritorio
+### سطح المكتب
 
-Se recomienda utilizar la extensión de navegador [**Bitwarden - Free Password Manager**](https://chrome.google.com/webstore/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb).
+يوصى باستخدام إضافة المتصفح [**Bitwarden - مدير كلمات المرور المجاني**](https://chrome.google.com/webstore/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb) مباشرةً.
 
-Al iniciar sesión, hacer clic en el engranaje en la esquina superior izquierda para acceder a la configuración:
+عند تسجيل الدخول ، انقر أولاً على العتاد في الزاوية اليسرى العليا للدخول إلى الإعدادات:
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210503215149.png)
 
-En el entorno de `autohospedaje`, ingrese la dirección IP:puerto externo del NAS de Synology en la `URL del servidor` para iniciar sesión correctamente.
+في "البيئة المستضافة ذاتيًا" ، قم بإدخال عنوان IP لـ Synology NAS والمنفذ الخارجي في "عنوان الخادم" لتسجيل الدخول بشكل صحيح.
 
-Si lo desea, también puede descargar el cliente de escritorio.
+إذا لزم الأمر ، يمكن تنزيل تطبيق سطح المكتب للاستخدام.
 
-### Móvil
+### الجوال
 
-Simplemente descargue la aplicación Bitwarden en AppStore o en cualquier tienda de aplicaciones, y configure el entorno de autohospedaje en la página de inicio de sesión, siguiendo los mismos pasos que en la versión de escritorio.
+قم بتنزيل تطبيق Bitwarden مباشرةً من AppStore أو أي متجر تطبيقات آخر ، وستحتاج أيضًا إلى تكوين بيئة الاستضافة الذاتية على صفحة تسجيل الدخول ، وهي نفس الخطوات الموجودة على سطح المكتب.
 
-## Copia de seguridad de la base de datos de contraseñas
+## نسخ احتياطي لقاعدة بيانات كلمات المرور
 
-Hay dos formas de hacer una copia de seguridad de la base de datos de Bitwarden:
+هناك طريقتان لعمل نسخ احتياطي لقاعدة بيانات Bitwarden:
 
-1. Seleccione `Exportar base de datos de contraseñas` en la versión web o en el cliente.
-2. Haga una copia de seguridad directa de la carpeta `data`.
+1. اختيار "تصدير قاعدة بيانات كلمات المرور" في الويب أو في التطبيق الخاص بالعميل.
+2. عمل نسخ احتياطي مباشرةً لمجلد "data".
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Servicios avanzados de Synology NAS - Implementación de Bitwarden, un administrador de contraseñas multiplataforma](https://www.ioiox.com/archives/70.html)
-- [Construyendo un servidor de contraseñas de Bitwarden de terceros con Synology](https://ppgg.in/blog/10271.html#comment-8463)
+- [خدمات NAS المتقدمة لـ Synology - تثبيت برنامج Bitwarden لإدارة كلمات المرور عبر جميع المنصات](https://www.ioiox.com/archives/70.html)
+- [بناء خادم كلمات مرور Bitwarden من الطرف الثالث باستخدام Synology](https://ppgg.in/blog/10271.html#comment-8463)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
