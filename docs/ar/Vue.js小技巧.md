@@ -1,19 +1,19 @@
-# Consejos pequeños de Vue.js
+# نصائح Vue.js الصغيرة
 
-## Eliminar el `#` de la URL
+## إزالة `#` من عنوان URL
 
-**Problema**: Al construir un proyecto con Vue.js, la URL contendrá un `#`, lo que afectará la apariencia.
+**المشكلة**: يتضمن عنوان URL لمشروع Vue.js علامة `#`، مما يؤثر على المظهر العام.
 
-**Solución**:
+**الحل**: 
 
-1. Busque globalmente la función `const router = new VueRouter({})` en el proyecto.
-2. Agregue la declaración `mode: 'history'` dentro de la función.
+1. ابحث عن الدالة `const router = new VueRouter({})` في المشروع بأكمله.
+2. أضف العبارة `mode: 'history'` داخل الدالة.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Cómo eliminar el `#` en un proyecto de Vue - Modo Historia](https://www.cnblogs.com/zhuzhenwei918/p/6892066.html)
+- [كيفية إزالة علامة # من مشروع Vue - وضع التاريخ](https://www.cnblogs.com/zhuzhenwei918/p/6892066.html)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

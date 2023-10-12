@@ -1,28 +1,28 @@
-# TinyMonitor - Monitor de estado del servidor compacto
+# TinyMonitor - مراقب حالة الخادم الصغير
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261716469.jpg)
 
-TinyMonitor es un monitor de estado del servidor extremadamente compacto y minimalista que consta solo de un controlador principal ESP32 y una pantalla OLED, que muestra los parámetros de estado en tiempo real del servidor para facilitar la observación y la depuración.
+TinyMonitor هو مراقب حالة الخادم الصغير والبسيط للغاية ، وهو يتكون فقط من ESP32 الرئيسي وشاشة OLED ، ويمكنه عرض معلمات حالة الخادم الحية لتسهيل المراقبة والتصحيح.
 
-## Preparación previa
+## التحضيرات الأولية
 
-Los materiales de hardware utilizados en este proyecto son muy simples: un Beetle ESP32-C3 con Wi-Fi y Bluetooth incorporados, y una pantalla OLED de 128x64.
+المواد الأولية المستخدمة في هذا المشروع بسيطة للغاية ، وهي Beetle ESP32-C3 الذي يحتوي على Wi-Fi و Bluetooth مدمجين ، بالإضافة إلى شاشة OLED بحجم 128x64.
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261541993.png)
 
-La definición de pines de Beetle ESP32-C3 es la siguiente.
+تعريف دبوس Beetle ESP32-C3 كما يلي.
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261545236.png)
 
-Como se puede utilizar el modo I2C de software (es decir, pines I2C personalizados) para controlar la pantalla OLED, he definido los pines `0`/`1` de Beetle ESP32-C3 como funciones `SCL`/`SDA`. De esta manera, el cableado es muy sencillo, solo hay que soldar los 4 pines juntos.
+نظرًا لأنه يمكن استخدام طريقة I2C البرمجية (أي تعريف دبوس I2C المخصص) لتشغيل شاشة OLED ، فقد قمت بتعريف دبوس `0` / `1` لـ Beetle ESP32-C3 كـ `SCL` / `SDA`. بالتالي ، يكون التوصيل بسيطًا للغاية ، حيث يتم لصق 4 دبابيس معًا.
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261546367.png)
 
-Nota: antes de cargar el programa en Beetle ESP32-C3, es necesario agregar el paquete ESP32 para reconocer correctamente el modelo de la placa. Consulte su [**página Wiki**](https://wiki.dfrobot.com.cn/_SKU_DFR0868_Beetle_ESP32_C3) para obtener más detalles.
+ملاحظة: قبل تفريغ برنامج على Beetle ESP32-C3 ، يجب إضافة حزمة ESP32 للتعرف على نموذج اللوحة بشكل صحيح. انظر صفحة [**Wiki**](https://wiki.dfrobot.com.cn/_SKU_DFR0868_Beetle_ESP32_C3) للحصول على التفاصيل.
 
-### Encender la pantalla
+### تشغيل الشاشة
 
-Se puede utilizar este programa sencillo para comprobar si se puede mostrar información correctamente en la pantalla OLED:
+يمكن استخدام هذا البرنامج البسيط لاختبار ما إذا كان بإمكانك عرض المعلومات بشكل صحيح على OLED:
 
 ```cpp title="OLED_SoftwareI2C_HelloWorld.ino"
 #include <U8g2lib.h>
@@ -45,15 +45,15 @@ void loop(void) {
 }
 ```
 
-## Servicio de agente MQTT
+## خدمة وكيل MQTT
 
-MQTT es un protocolo de transmisión de mensajes basado en cliente-servidor y publicación/suscripción. En este proyecto, MQTT es el puente de comunicación entre el servidor y ESP32. Para mayor comodidad, he desplegado el servicio MQTT en el servidor que se va a supervisar; si es necesario, también se puede desplegar en otras máquinas.
+MQTT هو بروتوكول نقل الرسائل الذي يعتمد على عميل - خادم. في هذا المشروع ، يعد MQTT جسرًا للاتصال بين الخادم و ESP32. للراحة ، قمت بنشر خدمة MQTT على الخادم الذي يجب مراقبته. إذا لزم الأمر ، يمكنك أيضًا نشره على أجهزة أخرى.
 
-### Despliegue del servicio Mosquitto
+### نشر خدمة Mosquitto
 
-Mosquitto es un software de agente de mensajes de código abierto que implementa el protocolo de envío de mensajes MQTT v3.1. En este caso, he utilizado la implementación de Docker [**eclipse-mosquitto**](https://hub.docker.com/_/eclipse-mosquitto) como servidor de agente MQTT. Si no está familiarizado con la implementación de Docker, puede consultar los artículos [**Guía sencilla de Docker**](https://wiki-power.com/es/Docker%E7%AE%80%E6%98%93%E6%8C%87%E5%8D%97/) y [**Docker Compose - Una forma más elegante de abrir**](https://wiki-power.com/es/DockerCompose-%E6%9B%B4%E4%BC%98%E9%9B%85%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/).
+Mosquitto هو برنامج وكيل رسائل مفتوح المصدر يدعم بروتوكول نشر الرسائل MQTT v3.1. في هذا المثال ، استخدمت [**eclipse-mosquitto**](https://hub.docker.com/_/eclipse-mosquitto) المنشورة باستخدام Docker كخادم وكيل MQTT. إذا لم تكن ملمًا بطريقة نشر Docker ، فيمكنك الرجوع إلى المقالات [**Docker الدليل البسيط**](https://wiki-power.com/ar/Docker%E7%AE%80%E6%98%93%E6%8C%87%E5%8D%97/) و [**Docker Compose - طريقة أكثر أناقة للفتح**](https://wiki-power.com/ar/DockerCompose-%E6%9B%B4%E4%BC%98%E9%9B%85%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/) للمزيد من المعلومات.
 
-Según las instrucciones oficiales, primero debe crear los siguientes directorios y archivos para que Mosquitto los use y otorgarles permisos suficientes: (por favor, cambie `${STACK_DIR}` a la ruta local donde se almacenan los datos, por ejemplo, `/DATA/AppData/mosquitto`, lo mismo a continuación)
+وفقًا للشرح الرسمي ، يجب أولاً إنشاء المجلدات والملفات التالية للاستخدام بواسطة Mosquitto وتخصيص الأذونات الكافية: (يرجى تعديل `${STACK_DIR}` إلى مسار تخزين البيانات المحلي ، مثل `/ DATA / AppData / mosquitto` ، كما هو موضح في النص التالي)
 
 ```bash
 mkdir -vp ${STACK_DIR}/{config,data,log} \
@@ -62,27 +62,27 @@ mkdir -vp ${STACK_DIR}/{config,data,log} \
 && chmod -R 777 ${STACK_DIR}/log \
 ```
 
-Luego, escriba el siguiente contenido en el archivo `mosquitto.conf`:
+ثم ، اكتب المحتوى التالي في ملف `mosquitto.conf`:
 
 ```conf title="mosquitto.conf"
 persistence true
 persistence_location /mosquitto/data
 log_dest file /mosquitto/log/mosquitto.log
 
-# Desactivar el modo anónimo
+# إيقاف تشغيل الوضع المجهول
 allow_anonymous false
-# Especificar el archivo de contraseña
+# تحديد ملف كلمة المرور
 password_file /mosquitto/config/pwfile.conf
 ```
 
-Implemente el contenedor utilizando `docker-compose`:
+استخدم طريقة `docker-compose` لنشر الحاويات:
 
 ```yaml title="compose.yaml"
 version: "3"
 services:
   mosquitto:
     container_name: mosquitto_app
-    image: eclipse-mosquitto:1.6.14 # La versión 2.x puede tener problemas de compatibilidad
+    image: eclipse-mosquitto:1.6.14 # 2.x قد لا يكون لها توافق جيد
     ports:
       - "1883:1883"
       - "9001:9001"
@@ -94,75 +94,75 @@ services:
     restart: always
 ```
 
-Ingrese al contenedor y cambie la contraseña:
+ادخل الحاوية وقم بتغيير كلمة المرور:
 
 ```bash
-cd ruta donde se encuentra compose.yaml
+cd مسار حفظ compose.yaml
 docker compose up
 
-docker compose ps # Encuentre el ID del contenedor en ejecución
-docker exec -it ID_del_contenedor sh # Ingrese al shell del contenedor
+docker compose ps # العثور على معرف الحاوية التي تعمل
+docker exec -it معرف الحاوية sh # الدخول إلى shell الحاوية
 
 touch /mosquitto/config/pwfile.conf
 chmod -R 755 /mosquitto/config/pwfile.conf
 
-# Cree un usuario y una contraseña, nombre de usuario: test, contraseña: 123
+# إنشاء اسم المستخدم وكلمة المرور ، اسم المستخدم: test ، كلمة المرور: 123
 mosquitto_passwd -b /mosquitto/config/pwfile.conf test 123
 
-exit # Salga del shell del contenedor
-docker restart ID_del_contenedor # Reinicie el contenedor para que surtan efecto los cambios
+exit # الخروج من shell الحاوية
+docker restart معرف الحاوية # إعادة تشغيل الحاوية للتطبيق
 ```
 
-### Prueba de la disponibilidad del servidor MQTT
+### اختبار توافر خادم MQTT
 
-Después de iniciar normalmente el servicio `mosquitto`, podemos usar [**MQTTBox**](https://apps.microsoft.com/store/detail/mqttbox/9NBLGGH55JZG) para probar la disponibilidad del servidor proxy MQTT.
+بعد تشغيل خدمة `mosquitto` بشكل طبيعي ، يمكننا استخدام [**MQTTBox**](https://apps.microsoft.com/store/detail/mqttbox/9NBLGGH55JZG) لاختبار توافر خادم وكيل MQTT.
 
-Después de instalar el software, haga clic en `Create MQTT Client` para crear una nueva conexión y complete los parámetros relevantes según la siguiente imagen:
+بعد تثبيت البرنامج ، انقر فوق `Create MQTT Client` لإنشاء اتصال جديد ، وفقًا للمعلمات ذات الصلة الموضحة في الشكل التالي:
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261456592.png)
 
-Donde `HOST` es la dirección del servidor donde se encuentra el servicio MQTT (por ejemplo, la dirección de mi servidor en la red local es `192.168.1.2`); el nombre de usuario y la contraseña deben coincidir con los valores configurados al configurar Mosquitto anteriormente.
+حيث `HOST` هو عنوان خادم MQTT (على سبيل المثال ، يكون عنوان خادمي في الشبكة المحلية `192.168.1.2`) ؛ يجب أن تتطابق اسم المستخدم وكلمة المرور مع القيم التي تم تعيينها عند تكوين Mosquitto.
 
-Después de hacer clic en `Save`, si ve `Connected` en la barra de estado superior en verde, significa que ya se ha conectado al servidor.
+بعد النقر فوق `Save` ، إذا رأينا `Connected` الأخضر في شريط الحالة العلوي ، فهذا يعني أننا قد اتصلنا بالخادم بنجاح.
 
-## Script de monitoreo del servidor
+## نصيحة لمراقبة الخادم
 
-Podemos capturar información en tiempo real del dispositivo y enviarla al tema correspondiente en el servidor MQTT mediante el siguiente programa Python que se ejecuta en el servidor. Primero, debe instalar los siguientes paquetes de dependencia:
+يمكننا تنفيذ جمع المعلومات في الوقت الحقيقي عن الجهاز وإرسالها إلى موضوع MQTT المناسب عن طريق تشغيل البرنامج النصي Python التالي على الخادم. يتطلب ذلك تثبيت الحزم التالية أولاً:
 
 ```bash
 pip install paho-mqtt psutil
 ```
 
-Cree y ejecute el programa Python:
+أنشئ وشغل برنامج Python التالي:
 
 ```python title="status-collector.py"
 import paho.mqtt.client as mqtt
 import psutil
 import time
 
-# Conéctese al servidor proxy MQTT
+# اتصل بخادم وكيل MQTT
 client = mqtt.Client()
-client.username_pw_set("MQTT用户名", "MQTT密码")
-client.connect("MQTT服务器地址", 端口号)
-# Ejemplo: client.connect("192.168.1.2", 1883)
+client.username_pw_set("MQTTاسم المستخدم", "MQTTكلمة المرور")
+client.connect("عنوان خادم MQTT", رقم المنفذ)
+# مثال: client.connect("192.168.1.2", 1883)
 
-# Recopile el estado del servidor y envíelo al tema MQTT
+# جمع حالة الخادم وإرسالها إلى موضوع MQTT
 while True:
     client.publish("USAGE_CPU", psutil.cpu_percent())
     client.publish("USAGE_MEM", psutil.virtual_memory().percent)
     client.publish("USAGE_DISK", psutil.disk_usage('/').percent)
-    time.sleep(1) # Publicar cada segundo
+    time.sleep(1) # نشر كل ثانية واحدة
 ```
 
-Después de ejecutar con éxito, podemos hacer clic en `Add subscriber` en la barra de estado superior de MQTTBox para suscribirse a estos tres temas, por ejemplo:
+بعد تشغيل البرنامج بنجاح ، يمكننا النقر فوق `Add subscriber` في شريط الحالة العلوي لـ MQTTBox لإضافة اشتراك لهذه الثلاثة موضوعات ، على سبيل المثال:
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261513642.png)
 
-Si todo va bien, debería poder ver la información de estado del servidor que se devuelve constantemente en MQTTBox.
+إذا كان كل شيء على ما يرام ، يجب أن تتمكن من رؤية معلومات حالة الخادم المستمرة في MQTTBox.
 
-## Pantalla Arduino ESP32
+## جهاز Arduino ESP32 عرض النهاية
 
-Cree el siguiente código de Arduino, modifique los parámetros y grabe en ESP32. Si todo va bien, debería poder ver la información de estado actualizada constantemente.
+أنشئ الكود Arduino التالي ، وقم بتعديل المعلمات وحرقها على ESP32. إذا كان كل شيء على ما يرام ، يجب أن تتمكن من رؤية معلومات الحالة المستمرة.
 
 ```cpp title="Received-from-MQTT-and-Display.ino"
 #include <Wire.h>
@@ -170,129 +170,126 @@ Cree el siguiente código de Arduino, modifique los parámetros y grabe en ESP32
 #include <WiFi.h>
 #include <PubSubClient.h>
 
-// Conexión OLED mediante I2C de software, redefinir los pines
+// استخدام I2C البرمجي لتوصيل OLED ، إعادة تعريف دبوس
 #define OLED_SDA 1
 #define OLED_SCL 0
 
-```
-
-// Definición de MQTT
-#define WIFI_SSID "Nombre de Wi-Fi"
-#define WIFI_PASSWORD "Contraseña de Wi-Fi"
-#define MQTT_BROKER "Dirección del servidor MQTT" // por ejemplo 192.168.31.2
-#define MQTT_PORT Puerto MQTT // por ejemplo 1883
-#define MQTT_USERNAME "Nombre de usuario MQTT" //test, debe coincidir con la configuración anterior
-#define MQTT_PASSWORD "Contraseña MQTT" //123, debe coincidir con la configuración anterior
-#define MQTT_TOPIC_CPU "USO_CPU" // tema suscrito
-#define MQTT_TOPIC_MEM "USO_MEM"
-#define MQTT_TOPIC_DISK "USO_DISK"
+// MQTT تعريف
+#define WIFI_SSID "اسم شبكة الواي فاي"
+#define WIFI_PASSWORD "كلمة مرور شبكة الواي فاي"
+#define MQTT_BROKER "عنوان خادم MQTT" // مثال: 192.168.31.2
+#define MQTT_PORT رقم المنفذ MQTT // مثال: 1883
+#define MQTT_USERNAME "MQTTاسم المستخدم" //test ، يجب أن يتطابق مع التكوين المذكور أعلاه
+#define MQTT_PASSWORD "MQTTكلمة المرور" //123 ، يجب أن يتطابق مع التكوين المذكور أعلاه
+#define MQTT_TOPIC_CPU "USAGE_CPU" // الموضوع المشترك
+#define MQTT_TOPIC_MEM "USAGE_MEM"
+#define MQTT_TOPIC_DISK "USAGE_DISK"
 
 char msg_cpu_usage[10];
 char msg_mem_usage[10];
 char msg_disk_usage[10];
 
-// Definición del objeto de pantalla OLED
+// تعريف كائن الشاشة OLED
 U8G2_SSD1306_128X64_NONAME_F_SW_I2C u8g2(U8G2_R2, OLED_SCL, OLED_SDA, U8X8_PIN_NONE);
 
-// Objeto cliente WIFI
+// كائن عميل WIFI
 WiFiClient wifiClient;
 PubSubClient mqttClient(wifiClient);
+```
 
-// Función de devolución de llamada MQTT
+// دالة استدعاء MQTT
 void mqttCallback(char* topic, byte* payload, unsigned int length) {
-if (strcmp(topic, MQTT_TOPIC_CPU) == 0) {
-// Registrar el uso de CPU
-for (int i = 0; i < length; i++)
-msg_cpu_usage[i] = (char)payload[i];
-} else if (strcmp(topic, MQTT_TOPIC_MEM) == 0) {
-// Registrar el uso de memoria
-for (int i = 0; i < length; i++)
-msg_mem_usage[i] = (char)payload[i];
-} else if (strcmp(topic, MQTT_TOPIC_DISK) == 0) {
-// Registrar el uso de disco
-for (int i = 0; i < length; i++)
-msg_disk_usage[i] = (char)payload[i];
-}
+  if (strcmp(topic, MQTT_TOPIC_CPU) == 0) {
+    // تسجيل استخدام وحدة المعالجة المركزية
+    for (int i = 0; i < length; i++)
+      msg_cpu_usage[i] = (char)payload[i];
+  } else if (strcmp(topic, MQTT_TOPIC_MEM) == 0) {
+    // تسجيل استخدام الذاكرة
+    for (int i = 0; i < length; i++)
+      msg_mem_usage[i] = (char)payload[i];
+  } else if (strcmp(topic, MQTT_TOPIC_DISK) == 0) {
+    // تسجيل استخدام القرص الصلب
+    for (int i = 0; i < length; i++)
+      msg_disk_usage[i] = (char)payload[i];
+  }
 }
 
 void setup() {
-u8g2.begin(); // Inicializar la pantalla OLED
-Wire.begin(); // Iniciar la transmisión I2C
+  u8g2.begin();  // تهيئة شاشة OLED
+  Wire.begin();  // بدء نقل I2C
 
-// Conectar a WIFI
-WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
-while (WiFi.status() != WL_CONNECTED) {
-delay(1000);
-}
+  // الاتصال بشبكة الواي فاي
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+  }
 
-// Conectar al servidor proxy MQTT
-mqttClient.setServer(MQTT_BROKER, MQTT_PORT);
-mqttClient.setCallback(mqttCallback);
-if (mqttClient.connect("ESP32", MQTT_USERNAME, MQTT_PASSWORD)) {
-mqttClient.subscribe(MQTT_TOPIC_CPU);
-mqttClient.subscribe(MQTT_TOPIC_MEM);
-mqttClient.subscribe(MQTT_TOPIC_DISK);
-}
+  // الاتصال بخادم وسيط MQTT
+  mqttClient.setServer(MQTT_BROKER, MQTT_PORT);
+  mqttClient.setCallback(mqttCallback);
+  if (mqttClient.connect("ESP32", MQTT_USERNAME, MQTT_PASSWORD)) {
+    mqttClient.subscribe(MQTT_TOPIC_CPU);
+    mqttClient.subscribe(MQTT_TOPIC_MEM);
+    mqttClient.subscribe(MQTT_TOPIC_DISK);
+  }
 }
 
 void loop() {
-mqttClient.loop(); // Procesar mensajes MQTT
-u8g2.firstPage();
-do {
-u8g2.setFont(u8g2_font_9x15_tf);
+  mqttClient.loop();  // معالجة رسائل MQTT
+  u8g2.firstPage();
+  do {
+    u8g2.setFont(u8g2_font_9x15_tf);
 
-// Mostrar el uso de la CPU
-u8g2.setCursor(0, 12);
-u8g2.print("CPU: ");
-for (int i = 0; i < 9; i++)
-u8g2.print(msg_cpu_usage[i]);
-u8g2.print(" %");
+    // عرض استخدام وحدة المعالجة المركزية
+    u8g2.setCursor(0, 12);
+    u8g2.print("CPU: ");
+    for (int i = 0; i < 9; i++)
+      u8g2.print(msg_cpu_usage[i]);
+    u8g2.print(" %");
 
-// Mostrar el uso de la memoria
-u8g2.setCursor(0, 35);
-u8g2.print("Mem: ");
-for (int i = 0; i < 9; i++)
-u8g2.print(msg_mem_usage[i]);
-u8g2.print(" %");
+    // عرض استخدام الذاكرة
+    u8g2.setCursor(0, 35);
+    u8g2.print("Mem: ");
+    for (int i = 0; i < 9; i++)
+      u8g2.print(msg_mem_usage[i]);
+    u8g2.print(" %");
 
-// Mostrar el uso del disco
-u8g2.setCursor(0, 58);
-u8g2.print("Disk: ");
-for (int i = 0; i < 9; i++)
-u8g2.print(msg_disk_usage[i]);
-u8g2.print(" %");
+    // عرض استخدام القرص الصلب
+    u8g2.setCursor(0, 58);
+    u8g2.print("Disk: ");
+    for (int i = 0; i < 9; i++)
+      u8g2.print(msg_disk_usage[i]);
+    u8g2.print(" %");
 
-} while (u8g2.nextPage());
+  } while (u8g2.nextPage());
 }
-
 ```
 
-## Más ideas de expansión
+## مزيد من الأفكار للتوسع
 
-Las siguientes ideas están pendientes de implementación:
+الأفكار التالية تحتاج إلى التنفيذ:
 
-- Agregar batería y una carcasa de impresión 3D para crear un adorno de escritorio más refinado.
-- Agregar un túnel de red interna para crear un adorno de pared que permita observar el estado del servidor incluso cuando no esté en casa.
-- Empaquetar el programa de monitoreo de Python para su implementación en Docker.
-- Optimizar el diseño de la interfaz de usuario para monitorear más parámetros.
-- Agregar la capacidad de monitorear el estado de múltiples servidores.
-- Agregar la capacidad de alertar cuando ciertos parámetros superen los umbrales.
+- زيادة البطارية والغلاف المطبوع ثلاثي الأبعاد لصنع أدوات مكتبية صغيرة أكثر دقة
+- إضافة الاتصال الداخلي لجعلها معلقة صغيرة يمكن مراقبة حالة الخادم حتى عندما لا تكون في المنزل
+- تغليف برنامج المراقبة باستخدام Python كطريقة لنشر Docker
+- تحسين تخطيط واجهة المستخدم لمراقبة المزيد من المعلمات
+- إضافة ميزة مراقبة حالة الخادم لعدة خوادم
+- إضافة ميزة تنبيه عند تجاوز بعض المعلمات الحد الأقصى
 
-Adjunto: Una foto de Beetle ESP32-C3 y Seeed XIAO ESP32C3 juntos.
+ملاحظة: صورة Beetle ESP32-C3 و Seeed XIAO ESP32C3.
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261719170.jpg)
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
 - [DFRobot Wiki · Beetle ESP32 C3](https://wiki.dfrobot.com.cn/_SKU_DFR0868_Beetle_ESP32_C3)
-- [Creación de un sistema de monitoreo de rendimiento de Raspberry Pi con Arduino y MQTT](https://www.zhihu.com/tardis/zm/art/463880669?source_id=1003)
+- [إنشاء نظام مراقبة أداء Raspberry Pi باستخدام Arduino و MQTT](https://www.zhihu.com/tardis/zm/art/463880669?source_id=1003)
 - [eclipse-mosquitto](https://hub.docker.com/_/eclipse-mosquitto)
-- [Docker - Tutorial de instalación y implementación del servicio Mosquitto a través de contenedores (servidor MQTT)](https://www.hangge.com/blog/cache/detail_2896.html)
-- [Serie de tutoriales MQTT 3 (Instalación y uso de la herramienta de cliente MQTTBox)](https://www.hangge.com/blog/cache/detail_2350.html)
+- [Docker - تثبيت ونشر خدمة Mosquitto عبر الحاويات (خادم MQTT)](https://www.hangge.com/blog/cache/detail_2896.html)
+- [MQTT سلسلة دروس 3 (تثبيت واستخدام أداة MQTTBox للعميل)](https://www.hangge.com/blog/cache/detail_2350.html)
 - [linyuxuanlin/TinyMonitor](https://github.com/linyuxuanlin/TinyMonitor)
 
-> Dirección original del artículo: <https://wiki-power.com/>
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
-```
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

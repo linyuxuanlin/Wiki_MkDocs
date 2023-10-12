@@ -1,82 +1,84 @@
-# Guía de productividad de VS Code - Jupyter Notebook
+# دليل إنتاجية VS Code - Jupyter Notebook
 
-Crea herramientas de productividad eficientes con VS Code.
+استخدم VS Code لإنشاء أدوات إنتاجية فعالة.
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323155728.png)
 
-Jupyter Notebook es una herramienta muy poderosa que nos permite escribir, ejecutar y visualizar código, datos y resultados en un solo documento. En resumen, nos facilita mucho la tarea de escribir documentos que contienen código.
+يعد Jupyter Notebook أداة قوية للغاية، حيث يتيح لنا كتابة الشفرة وتشغيلها وعرض النتائج وتصور البيانات وعرض النتائج في بيئة واحدة ... بشكل عام، يجعل كتابة المستندات التي تحتوي على الشفرة أسهل بكثير.
 
-En el artículo anterior, completamos la configuración básica de VS Code. En este artículo, explicaré cómo usar Jupyter con VS Code.
+في المقالة السابقة، قمنا بإعداد بيئة VS Code الأساسية. في هذه المقالة، سأشرح Jupyter with VS Code بالتفصيل.
 
-## Configuración del entorno
+## إعداد البيئة
 
-Como se sabe, Jupyter Notebooks depende del entorno de Python.  
-Para confirmar si tienes un entorno de Python, en el panel de comandos de VS Code (`Ctrl + Shift + P`), escribe **Python: Select Interpreter**. Si ves que hay una versión de Python disponible para seleccionar, entonces no hay problema.
+كما هو معروف، يعتمد Jupyter Notebooks على بيئة Python.  
+للتحقق مما إذا كان لديك بيئة Python، اكتب **Python: Select Interpreter** في لوحة الأوامر في VS Code (`Ctrl + Shift + P`)، إذا رأيت إصدارات Python التي يمكنك اختيارها، فلا يوجد مشكلة.
 
-Si no tienes un entorno de Python, puedes instalarlo de la siguiente manera:
+إذا لم يكن لديك بيئة Python، يمكنك تثبيتها باستخدام الطريقة التالية:
 
-1. Descarga el paquete de instalación de la última versión en la [**página web oficial de Python**](https://www.python.org/) (preferiblemente la versión "web-based installer").
+1. قم بتنزيل حزمة التثبيت الأحدث من [**موقع Python الرسمي**](https://www.python.org/) (حاول اختيار إصدار `web-based installer` إذا أمكن)
 
-Después de configurar el entorno de Python local, también necesitamos instalar el complemento [**Python**](https://marketplace.visualstudio.com/items?itemName=ms-python.python) en VS Code. En una actualización reciente, Jupyter Notebooks ya está incluido en este complemento, así que no es necesario instalarlo por separado.
+بعد إعداد بيئة Python المحلية، ستحتاج أيضًا إلى تثبيت إضافة [**Python**](https://marketplace.visualstudio.com/items?itemName=ms-python.python) داخل VS Code. في تحديث مؤخر، تم تضمين Jupyter Notebooks في هذه الإضافة، لذلك لا يلزم تثبيتها بشكل منفصل.
 
-## Creación de un cuaderno
+## إنشاء دفتر
 
-Después de configurar el entorno, puedes crear un cuaderno Jupyter en blanco (archivo `.ipynb`) en el panel de comandos de VS Code (`Ctrl + Shift + P`) escribiendo **Python: Create Blank New Jupyter**. A continuación, se muestra una prueba simple:
+بعد إعداد البيئة، يمكننا إنشاء دفتر Jupyter فارغ (ملف `.ipynb`) باستخدام لوحة الأوامر في VS Code (`Ctrl + Shift + P`) وكتابة **Python: Create Blank New Jupyter**. كما هو موضح في الصورة التالية:
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323153020.png)
 
-Como se puede ver, el código se ejecuta correctamente.
+يمكن رؤية أن الشفرة تعمل بشكل صحيح.
 
-## Operaciones básicas
+## العمليات الأساسية
 
-Jupyter Notebook utiliza **celdas de código (code cells)** para crear, editar y ejecutar código.
+يستخدم Jupyter Notebook شفرات الأكواد الفردية (code cells) لإنشاء وتحرير وتشغيل الشفرة.
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323153717.png)
 
-### Agregar celdas de código
+### إضافة شفرات الأكواد
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323153850.png)
 
-### Ejecutar una sola celda de código
+### تشغيل شفرة واحدة
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323153939.png)
 
-### Ejecutar varias celdas de código
+### تشغيل شفرات متعددة
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154005.png)
 
-### Mover celdas de código
+### نقل شفرة
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154059.png)
 
-### Eliminar celdas de código
+### حذف شفرة
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154148.png)
 
-### Cambiar entre código y Markdown
+### التبديل بين الشفرة و Markdown
 
-### Visor de gráficos
 
-Con el visor de gráficos, puede ver fácilmente los gráficos generados por el código y exportarlos en varios formatos de imagen:
+
+### مشاهد الرسم البياني
+
+من خلال مشاهد الرسم البياني ، يمكنك بسهولة عرض الرسوم البيانية التي تم إخراجها من الكود ، كما يمكنك تصدير الرسوم البيانية إلى صور بتنسيقات مختلفة:
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154555.png)
 
-### Visor de datos y variables
+### مشاهد البيانات والمتغيرات
 
-Puede ver el tipo, la cantidad y el valor de las variables en tiempo real a través del visor de variables:
+يمكنك عرض نوع وكمية وقيمة المتغيرات في الوقت الحقيقي من خلال مشاهد المتغيرات:
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154758.png)
 
-También puede explorar datos más específicos a través del visor de datos:
+كما يمكنك تصفح البيانات الأكثر تفصيلاً من خلال مشاهد البيانات:
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154832.png)
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Trabajando con cuadernos Jupyter en Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support)
-- [¡Nuevo lanzamiento de VS Code Python! ¡Finalmente llegó el soporte nativo para Jupyter Notebook!](https://zhuanlan.zhihu.com/p/85445777)
+- [العمل مع دفاتر Jupyter في Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support)
+- [VS Code Python الإصدار الجديد! دعم Jupyter Notebook الأصلي أخيرًا هنا!](https://zhuanlan.zhihu.com/p/85445777)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

@@ -1,10 +1,10 @@
-# TheExec (El Ejecutivo) 🚧
+# TheExec (The Executive) 🚧
 
-> Esta publicación solo está disponible en inglés.
+> هذه المقالة متاحة فقط باللغة الإنجليزية.
 
-**TheExec (El Ejecutivo)** es uno de los objetos de mayor nivel, que da acceso a las propiedades relacionadas con la ejecución de pruebas.
+**TheExec (The Executive)** هو أحد أعلى المستويات الكائنات، والذي يمنح الوصول إلى الخصائص المتعلقة بالتنفيذ الاختباري.
 
-## Flujo
+## التدفق
 
 ```vbscript
 TheExec.Flow
@@ -18,18 +18,18 @@ highCompareSign, scaletype, unit, formatStr, TName, compareMode, pinName,
 forceVal, forceunit, customUnit, customForceunit, ForceResults, TNum)
 ```
 
-Parámetros más utilizados:
+المعلمات الأكثر استخدامًا:
 
-- **resultVal** (obligatorio): El valor del resultado que se escribirá.
-- **lowVal**, **hiVal**: Los límites inferior y superior. El valor predeterminado es lowVal <= resultVal <= hiVal.
-- **unit**: La unidad de medida
-  - `unitAmp` `unitVolt` `unitDb` `unitHz` `unitTime`.
-- **TName**: Un nombre de prueba para registrar en el registro de datos. Si se deja en blanco, se utilizará el nombre de la instancia de prueba.
-- **pinName**: El nombre del pin para registrar en el registro de datos.
-- **forceVal**, **forceunit**: El valor y la unidad de la condición de prueba.
-- **ForceResults**: Si se debe forzar un resultado de aprobado o reprobado o si se deben utilizar los límites especificados en una tabla de flujo.
+- **resultVal** (مطلوب): القيمة التي سيتم كتابتها كنتيجة.
+- **lowVal**، **hiVal**: الحدود الدنيا والعليا. الافتراضي هو lowVal <= resultVal <= hiVal.
+- **unit**: وحدة القياس
+  - `unitAmp` `unitVolt` `unitDb` `unitHz` `unitTime` .
+- **TName**: اسم الاختبار الذي سيتم تسجيله في الداتالوج. إذا ترك فارغًا، سيتم استخدام اسم مثيل الاختبار.
+- **pinName**: اسم الدبوس الذي سيتم تسجيله في الداتالوج.
+- **forceVal**، **forceunit**: قيمة وحدة شرط الاختبار.
+- **ForceResults**: ما إذا كان يجب إجبار النتيجة على النجاح أو الفشل أو استخدام الحدود المحددة في جدول التدفق.
 
-Por ejemplo:
+على سبيل المثال:
 
 ```vbscript
 TheExec.Flow.TestLimit  resultVal:=Vout_Measure, _
@@ -43,4 +43,4 @@ TheExec.Flow.TestLimit  resultVal:=Vout_Measure, _
                          hival:=VOT_HiLimit
 ```
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

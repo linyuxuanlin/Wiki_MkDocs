@@ -1,26 +1,26 @@
-# THE Hack 2019 Hackathon
+# THE Hack 2019 ماراثون القرصنة
 
-## Introducción
+## مقدمة
 
-El concurso de Hackathon THE Hack 2019 se llevó a cabo en la Universidad de Shanghai Jiao Tong, donde mi equipo y yo participamos y después de 36 horas de arduo trabajo, logramos obtener el octavo lugar en general y el premio individual Ruff.
+أقيمت مسابقة THE Hack 2019 للماراثون الإبداعي في جامعة شنغهاي جياو تونغ، شاركت مع زملائي في هذه المسابقة وبعد 36 ساعة من العمل الشاق، حققنا المركز الثامن في المسابقة وجائزة Ruff الفردية.
 
-## Proceso del proyecto
+## مسار المشروع
 
-Este año, el concurso tenía diferentes temas, inicialmente elegimos la dirección de hogares inteligentes y planeamos hacer un kit de hogar inteligente relacionado con los dormitorios, pero finalmente elegimos el tema **cómo permitir que los grupos vulnerables en la tecnología también disfruten de la diversión de la tecnología**. Un pequeño equipo de chicos y chicas se encargó del producto, y este año nuestra perspectiva se amplió, no solo desde el punto de vista técnico, sino también desde la psicología y las necesidades del usuario, analizando el tema y pensando en lo que los jueces y patrocinadores valoran más.
+تضمنت المسابقة هذا العام مواضيع مختلفة، اخترنا في البداية الاتجاه نحو البيوت الذكية وكنا نخطط لتصميم حزمة منتجات البيوت الذكية المتعلقة بالمساكن، ولكن في النهاية اخترنا موضوع "كيف يمكن للفئات الضعيفة في التكنولوجيا الاستمتاع بمتعة التكنولوجيا"، وتم تشكيل فريق يتألف من شخصين مسؤولين عن المنتجات. تغيرت نظرتنا هذا العام، ولم ننظر فقط من منظور التقنية، بل من منظور علم النفس واحتياجات المستخدمين، وقمنا بتحليل الموضوع والتفكير في ما يهم الحكام والرعاة أكثر.
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/72fa421a32841af4c9cb339132b30fe.jpg)
 
-El nombre de nuestro proyecto este año fue AIO - Care, una plataforma inteligente de asistencia para personas mayores basada en un modelo de aprendizaje activo. Me encargué de la implementación simple de la parte de hardware, recopilando datos para el servidor a través de la interacción de algunos sensores, para analizar y servir a las personas mayores, brindándoles una experiencia de vida en el hogar más cómoda.
+كان اسم مشروعنا هذا العام AIO - Care، وهو منصة ذكية للمساعدة على الرعاية الشاملة لكبار السن، والتي تعتمد على نموذج التعلم النشط. كنت مسؤولاً عن تنفيذ الجزء الأجهزة البسيطة، والتي تقوم بجمع البيانات من خلال بعض الحساسات وإرسالها إلى الخادم لتحليلها وتقديم الخدمات لكبار السن وتوفير تجربة حياة أكثر راحة في المنزل.
 
-La idea y dirección del producto fueron responsabilidad de Amihua Lau y Ada, quienes fueron excelentes en este aspecto. Además, Amihua Lau también se encargó del algoritmo de aprendizaje automático y la producción de la presentación en PowerPoint; mientras que Ada, como Recursos Humanos, nos brindó mucha ayuda y consejos (lo que directamente determinó la dirección de nuestro producto), así como también nos proporcionó innumerables bocadillos y bebidas, brindándonos un sólido apoyo logístico. Su responsabilidad en el proyecto es algo que admiro como líder del equipo. Además, agradezco a Yi Lin Weng del equipo vecino por crear el modelo 3D de nuestro producto.
+تم توليد فكرة المنتج وتوجيهها من قبل Amihua Lau و Ada اللذين يعملان كمديري المنتجات، وقاموا بعمل رائع في هذا المجال. بالإضافة إلى ذلك، قام Amihua Lau بتطوير خوارزميات التعلم الآلي وإنتاج العروض التقديمية، في حين قامت Ada بدور الموارد البشرية، وقدمت الكثير من المساعدة والنصائح لفريقنا (والتي حددت مباشرة اتجاه منتجنا)، كما قدمت لنا الكثير من الوجبات الخفيفة والمشروبات، وتوفر لنا الدعم اللوجستي القوي. إنهما يتوليان مسؤولية تفوق قدراتي كزعيم للفريق. بالإضافة إلى ذلك، نشكر أيضًا Yilin Weng في الفريق المجاور، الذي قام بإنشاء نموذج ثلاثي الأبعاد لمنتجنا.
 
-Me encargué de la implementación simple del hardware del producto, el código ya está disponible en [GtiHub](https://github.com/linyuxuanlin/Project-of-THE-Hack), basado en Arduino, es un demo muy simple, así que no profundizaré en ello.
+كنت مسؤولًا عن تنفيذ الأجهزة البسيطة للمنتج، وتم نشر الشفرة المصدرية على [GtiHub](https://github.com/linyuxuanlin/Project-of-THE-Hack)، وهي مبنية على Arduino، وهي عبارة عن عرض توضيحي بسيط، لذلك لن أتحدث عنها بالتفصيل.
 
-En comparación con el concurso de hace dos años, esta vez no solo partimos desde el punto de vista técnico, sino que también creamos un modelo comercial completo y un modelo de beneficios. Comenzamos a comprender las reglas de este tipo de competencias y aprendimos mucho de los excelentes proyectos de otros equipos. Esto es solo el comienzo, creo que el próximo año en el Hackathon podremos obtener mejores resultados.
+بالمقارنة مع المسابقة في العام الماضي، حيث انطلقنا من منظور التقنية فقط، قمنا هذه المرة بتطوير نموذج تجاري كامل ونموذج ربحي. بدأنا في فهم أساليب هذا النوع من المسابقات، واستفدنا من الكثير من الخبرات من خلال الفرق الممتازة. هذا ليس سوى بداية، ونحن نعتقد أننا سنحقق نتائج أفضل في مسابقة Hackathon العام المقبل.
 
-En este tipo de competencias, siempre es importante tener en cuenta el cuidado humano; desde la perspectiva de los patrocinadores, siempre es más importante que el nivel técnico. Durante las 36 horas de la competencia, solo se puede crear un demo simple de desarrollo técnico; pero la presentación y el empaque del producto son lo que lo hacen destacar. Con una presentación creativa y una idea única, se puede mostrar el concepto y la filosofía del producto a los patrocinadores, lo que es la clave para ganar en este tipo de competencias.
+في هذا النوع من المسابقات، يتم تقدير الرعاية الإنسانية دائمًا، ومن وجهة نظر الرعاة، فإنها أكثر أهمية من مستوى التقنية. خلال 36 ساعة من المسابقة، يمكن فقط تطوير عرض توضيحي بسيط للتقنية، ولكن يمكن تمييز المنتج من خلال التصميم والتغليف. يجب علينا تقديم الإبداع والفكرة الأساسية للمنتج أمام الرعاة، وهذا هو الطريقة الفعالة للفوز في هذا النوع من المسابقات.
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

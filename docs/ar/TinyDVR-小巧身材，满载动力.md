@@ -1,16 +1,16 @@
-# TinyDVR - Pequeño pero poderoso
+# TinyDVR - صغير الحجم ومحمل بالقوة
 
-—— Basado en TinyDVR Master V1.1 & Slave V7.2 Release
+- استنادًا إلى TinyDVR Master V1.1 & Slave V7.2 Release
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200125191345.jpg)
 
-TinyDVR es un kit de accionamiento de motor que incluye una placa base (Master) y una placa secundaria (Slave). La parte de alimentación y la parte de accionamiento están separadas, lo que reduce significativamente el tamaño en comparación con su predecesor ZenDriver y mejora en gran medida la escalabilidad. Puede apilar diferentes cantidades de placas secundarias según sus necesidades para controlar n motores.
+TinyDVR هو مجموعة تشغيل محركات كهربائية تحتوي على لوحة أم (Master) ولوحة فرعية (Slave) ، حيث يتم فصل جزء التشغيل عن جزء الطاقة ، ويتم تقليل الحجم بشكل كبير مقارنةً بالسابق ZenDriver ، مما يزيد من قابلية التوسع. يمكنك تراكم عدد مختلف من اللوحات الفرعية وتشغيل n محركات وفقًا لاحتياجاتك.
 
-Repositorio del proyecto: [**linyuxuanlin/TinyDVR**](https://github.com/linyuxuanlin/TinyDVR)
+مستودع المشروع: [**linyuxuanlin/TinyDVR**](https://github.com/linyuxuanlin/TinyDVR)
 
-Vista previa en línea del proyecto:
+معاينة المشروع عبر الإنترنت:
 
-**TinyDVR_Master**：
+**TinyDVR_Master**:
 
 <div class="altium-iframe-viewer">
   <div
@@ -19,7 +19,7 @@ Vista previa en línea del proyecto:
   ></div>
 </div>
 
-**TinyDVR_Slave**：
+**TinyDVR_Slave**:
 
 <div class="altium-iframe-viewer">
   <div
@@ -28,16 +28,16 @@ Vista previa en línea del proyecto:
   ></div>
 </div>
 
-## Parámetros básicos
+## المعلمات الأساسية
 
-1. Voltaje de entrada: **7.2 ~ 20 V**
-2. Corriente de salida: **0 ~ 68 A**
-3. Proporciona una salida de alimentación de **5V / 3A** para el controlador y otros módulos.
-4. Dispositivos de protección: circuito integrado de protección contra polaridad inversa y aislamiento óptico.
-5. Conexión sencilla del motor: para motores reductores de corriente continua comunes en el mercado (con codificador), se pueden conectar directamente con un cable plano de 6 pines (sin necesidad de cruzar cables).
-6. Escalable: una placa base puede apilar n placas secundarias para controlar n motores.
+1. الجهد المدخل: **7.2 ~ 20 V**
+2. تيار الإخراج: **0 ~ 68 A**
+3. يوفر مخرج طاقة **5V / 3A** لتشغيل المتحكمات والوحدات الأخرى
+4. جهاز حماية: دوائر حماية مدمجة للحماية من الانعكاس والعزل الضوئي
+5. توصيل محركات كهربائية بسيط: يمكن توصيل محركات التروس المباشرة الشائعة في السوق (مع محرك الترميز) مباشرةً باستخدام كابلات الربط ذات 6 دبابيس (دون الحاجة إلى توصيل الأسلاك)
+6. قابل للتوسع: يمكن تراكم لوحة أم واحدة مع n لوحات فرعية لتشغيل n محركات كهربائية
 
-## Definición de interfaces
+## تعريف الواجهة
 
 ### TinyDVR Master
 
@@ -47,41 +47,42 @@ Vista previa en línea del proyecto:
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200125191457.png)
 
-Explicación detallada de los pines traseros:
+تفسير دبوس الخلفية:
 
-- \+ : Proporciona una salida de alimentación de 5V / 3A
-- 1 : Puerto IN1, entrada de señal PWM 1
-- 2 : Puerto IN2, entrada de señal PWM 2
-- A : Puerto de señal de fase A del codificador
-- B : Puerto de señal de fase B del codificador
+- \+ : يوفر مخرج طاقة 5V / 3A
+- 1: منفذ IN1 ، يدخل إشارة PWM 1
+- 2: منفذ IN2 ، يدخل إشارة PWM 2
+- A: منفذ إشارة المرحلة A لمحرك الترميز
+- B: منفذ إشارة المرحلة B لمحرك الترميز
 - \- : GND
 
-## Guía de uso
+## دليل الاستخدام
 
-### Método de prueba
+### طريقة الاختبار
 
-1. Conecte la alimentación de la batería de **7.2 ~ 20 V**
-2. Conecte el motor correspondiente en la placa secundaria correspondiente
-3. Conecte la salida de alimentación de **5V** a los puertos **IN1/ IN2** respectivamente. En este momento, el motor girará en **dirección positiva / negativa**.
+1. توصيل الطاقة من البطارية **7.2 ~ 20 V**
+2. توصيل المحرك في اللوحة الفرعية المناسبة
+3. توصيل مخرج الطاقة **5V** بمنافذ **IN1 / IN2** على التوالي ، وسيتم تشغيل المحرك بالترتيب **إيجابي / عكسي**
 
-### Conexión con microcontrolador
+### توصيل الميكروكنترولر
 
-4. Conecte la alimentación de la batería de **7.2 ~ 20 V**
-5. Conecte el motor correspondiente en la placa secundaria correspondiente
-6. Conexión a tierra común (conectar GND de la placa de accionamiento con GND del microcontrolador)
-7. Los puertos IN1 e IN2 se conectan a los puertos PWM correspondientes del microcontrolador (configuración en el código)
-8. Método de prueba: consulte el programa de prueba en el repositorio del proyecto.
+4. توصيل الطاقة من البطارية **7.2 ~ 20 V**
+5. توصيل المحرك في اللوحة الفرعية المناسبة
+6. توصيل الأرضي المشترك (توصيل GND لوحة التشغيل بـ GND الميكروكنترولر)
+7. توصيل منافذ IN1 و IN2 بمنافذ PWM المناسبة في الميكروكنترولر (تعيين الكود)
+8. طريقة الاختبار: يرجى الرجوع إلى مثال الاختبار في مستودع المشروع
 
-## Detalles interesantes
+## خلف الكواليس
 
-Placa secundaria temprana:
+لوحة فرعية في وقت سابق:
+
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200311182442.jpg)
 
-Soldadura en masa:
+لحام الكميات الكبيرة:
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200311182441.jpg)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

@@ -1,40 +1,40 @@
-# Solución de problemas de ADC y DAC
+# إصلاح مشاكل ADC و DAC
 
-> Esta publicación solo está disponible en inglés.
+> هذه المقالة متاحة فقط باللغة الإنجليزية.
 
-## ¿Por qué la fuente de CA debe tener una resolución de 2-4 bits más que el ADC en prueba?
+## لماذا يجب أن يكون مصدر AC بدقة 2-4 بت أكثر من ADC المختبر؟
 
-Como una definición a menudo utilizada de ENOB:
+كتعريف شائع لـ ENOB:
 
 $$
 ENOB=\frac{SINAD-1.76}{6.02}
 $$
 
-Entonces, si el ENOB del DAC (en la fuente de CA) disminuye, el SINAD también disminuirá, lo que significa que el ruido y las distorsiones aumentarán relativamente, lo que afectará la precisión de la medición.
+لذلك، إذا انخفض ENOB لـ DAC (في مصدر AC)، فسينخفض SINAD أيضًا، وهذا يعني أن الضوضاء والتشويهات ستزيد نسبيًا، مما سيؤثر على دقة القياس.
 
-Otro punto es que la resolución de la fuente de CA menor que 2-4 bits inducirá distorsiones armónicas más altas, la señal digital en la salida del ADC se deteriorará tanto por las distorsiones armónicas del DAC como del ADC, y la amplitud del segundo armónico (por ejemplo) podría ser sumada. Debido a que la fuente de CA con una resolución más alta traerá distorsiones armónicas más bajas, los resultados de salida de prueba serán más precisos.
+نقطة أخرى هي أن دقة مصدر AC أقل من 2-4 بت ستؤدي إلى زيادة التشويهات الهارمونية، حيث يتدهور الإشارة الرقمية عند مخرج ADC بسبب التشويهات الهارمونية في كل من DAC و ADC، ويمكن جمع قيمة الهارمونيك الثاني (على سبيل المثال). وبما أن مصدر AC بدقة أعلى سيؤدي إلى تقليل التشويهات الهارمونية، فإن نتائج الاختبار ستصبح أكثر دقة.
 
-Consulte este artículo: [ADC Production Test Technique Using Low-Resolution Arbitrary Waveform Generator](https://www.hindawi.com/journals/vlsi/2008/482159/)
+يرجى الرجوع إلى هذه المقالة: [ADC Production Test Technique Using Low-Resolution Arbitrary Waveform Generator](https://www.hindawi.com/journals/vlsi/2008/482159/)
 
-## ¿Existen otras formas de mejorar la precisión de la medición con la entrada de CA en la prueba de ADC?
+## هل هناك طرق أخرى لتحسين دقة القياس باستخدام المدخل AC في اختبار ADC؟
 
-Reducir la pendiente de la onda de rampa de entrada puede mejorar la precisión de la medición.
+يمكن تحسين دقة القياس عن طريق تقليل ميل موجة الإدخال الخطي.
 
-## ¿Qué hacer con el ruido de base alto en la prueba de ADC?
+## ماذا يجب فعله في حالة ارتفاع الضوضاء الأساسية في اختبار ADC؟
 
-1. Aumente el número de muestras (N) y el número de períodos de señal de prueba muestreados (M), ambos también resultarán en más tiempo de prueba.
-2. Aumente la frecuencia de muestreo (Fs).
+1. زيادة عدد العينات (N) وعدد فترات إشارة الاختبار المأخوذة عينات منها (M)، وكلاهما سيؤدي إلى زيادة وقت الاختبار.
+2. زيادة تردد العينات (Fs).
 
-No es posible distinguir entre ruido y armónicos si solo se muestrea 1 período de señal.
+لا يمكن التمييز بين الضوضاء والتشويهات الهارمونية إذا تم أخذ عينة واحدة فقط من الإشارة.
 
-> ¿Existe esta fórmula? Precisión de ruido = frecuencia de muestreo / M
+> هل هناك هذه الصيغة؟ دقة الضوضاء = تردد العينات / M
 
-## ¿Cómo medir el error de ganancia del ADC en la práctica?
+## كيف يمكن قياس خطأ الزيادة لـ ADC عمليًا؟
 
-El método del histograma se utiliza en la práctica para medir el error de ganancia, porque el borde de transición teórico es difícil de detectar.
+يتم استخدام طريقة الهيستوجرام عمليًا لقياس خطأ الزيادة، لأن حافة الانتقال النظرية صعبة الكشف عنها.
 
-## ¿Necesitamos un digitalizador de CA con 2-4 bits más de resolución en la prueba del DAC?
+## هل نحتاج إلى AC Digitizer بدقة 2-4 بت أكثر في اختبار DAC؟
 
-No, no es necesario tener un digitalizador de CA de muy alta resolución. Un digitalizador de CA que cumpla con la resolución de Nyquist cumplirá con el estándar de prueba.
+لا ، ليس من الضروري الحصول على محول تناظري رقمي للتيار المتردد بدقة عالية جدًا. سيكون محول تناظري رقمي للتيار المتردد الذي يلبي دقة نايكويست متطلبات الاختبار.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
