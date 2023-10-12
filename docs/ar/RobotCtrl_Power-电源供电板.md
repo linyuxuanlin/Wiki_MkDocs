@@ -1,10 +1,10 @@
-# RobotCtrl_Power - Placa de alimentación
+# RobotCtrl_Power - لوحة تزويد الطاقة
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220527113517.png)
 
-Repositorio del proyecto: [**linyuxuanlin/RobotCtrl/RobotCtrl_Power**](https://github.com/linyuxuanlin/RobotCtrl/tree/main/RobotCtrl_MultiBoard_Project/RobotCtrl_Power)
+مستودع المشروع: [**linyuxuanlin/RobotCtrl/RobotCtrl_Power**](https://github.com/linyuxuanlin/RobotCtrl/tree/main/RobotCtrl_MultiBoard_Project/RobotCtrl_Power)
 
-Vista previa en línea del proyecto:
+معاينة المشروع عبر الإنترنت:
 
 <div class="altium-iframe-viewer">
   <div
@@ -13,47 +13,50 @@ Vista previa en línea del proyecto:
   ></div>
 </div>
 
-Nota: el proyecto está incluido en [**RobotCtrl - Kit de desarrollo universal STM32**](https://wiki-power.com/es/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
+ملاحظة: يتم تضمين المشروع في [**RobotCtrl - STM32 通用开发套件**](https://wiki-power.com/ar/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
 
-## Diseño del esquemático
+## تصميم المخطط الأساسي
 
-Las principales funciones de RobotCtrl_Power son las siguientes:
+تتمثل الوظائف الرئيسية لـ RobotCtrl_Power في ما يلي:
 
-- Entrada de alimentación de 24V (teóricamente puede ser de 15-40V)
-- Regulador de voltaje de batería a 12V/5A (con interruptor de habilitación y luz indicadora)
-- Regulador de voltaje de batería a 5V/5A (con interruptor de habilitación y luz indicadora)
-- Protección contra polaridad inversa (P-MOS)
-- Protección contra sobretensión (comienza a proteger por encima de 30V)
-- Interfaces de salida de alimentación de batería, alimentación de 12V y alimentación de 5V
+- مدخل الطاقة 24 فولت (يمكن في النظرية استخدام 15-40 فولت)
+- محول الطاقة من البطارية إلى مثبت الجهد 12 فولت / 5 أمبير (مع مفتاح التمكين ومؤشر الضوء)
+- محول الطاقة من البطارية إلى مثبت الجهد 5 فولت / 5 أمبير (مع مفتاح التمكين ومؤشر الضوء)
+- حماية ضد الانعكاس (P-MOS)
+- حماية ضد الجهد الزائد (يبدأ الحماية عندما يتجاوز الجهد 30 فولت)
+- منافذ إخراج الطاقة من البطارية ومنافذ إخراج الطاقة 12 فولت ومنافذ إخراج الطاقة 5 فولت
 
-### Entrada de alimentación
+### مدخل الطاقة
 
-Se utilizan dos conectores XT60PW-M para la entrada de alimentación, como entrada de alimentación de respaldo doble (también se puede utilizar como una entrada y una salida), y se proporcionan dos filas de pines para pruebas de salida.
+تم استخدام مقبسين XT60PW-M للمدخل الكهربائي للطاقة ، كمدخلين للطاقة الاحتياطية المزدوجة (يمكن استخدامها أيضًا كمدخل ومخرج واحد) ، وتوفير دبابيس متعددة للاختبارات الخارجية.
 
-La función de protección contra polaridad inversa se implementa mediante P-MOS. Aunque XT60 tiene un diseño a prueba de errores, aún es necesario evitar la soldadura inversa de los cables de alimentación positivo y negativo. Cuando se invierte la polaridad, el P-MOS no se encenderá y la alimentación no se suministrará al sistema. El diseño de la función de protección contra polaridad inversa se puede consultar en el artículo [**Diseño de circuitos de protección contra polaridad inversa**](https://wiki-power.com/es/%E9%98%B2%E5%8F%8D%E6%8E%A5%E7%94%B5%E8%B7%AF%E7%9A%84%E8%AE%BE%E8%AE%A1).
+تم تنفيذ وظيفة الحماية ضد الانعكاس باستخدام P-MOS. على الرغم من أن XT60 تم تصميمها لتكون مقاومة للخطأ ، إلا أنه من المهم الحماية من حالات توصيل الأسلاك الكهربائية بشكل عكسي. عند الانعكاس ، لن يتم توصيل P-MOS ، ولن يتم تزويد النظام بالطاقة. يمكن الاطلاع على تصميم وظيفة الحماية ضد الانعكاس في المقالة [**防反接电路的设计**](https://wiki-power.com/ar/%E9%98%B2%E5%8F%8D%E6%8E%A5%E7%94%B5%E8%B7%AF%E7%9A%84%E8%AE%BE%E8%AE%A1).
 
-La protección contra sobretensión transitoria y la protección contra ESD se realizan mediante un diodo TVS. Cuando se conecta una tensión superior a 30V, el diodo TVS desvía el exceso de voltaje para proteger el sistema.
+تم استخدام أنبوب TVS للحماية الفورية من الجهد الزائد وحماية ESD. عند الاتصال بأكثر من 30 فولت ، سيقوم بتوزيع الجهد الزائد لحماية النظام.
 
-### Circuitos reguladores de voltaje de 12V y 5V
+### دوائر مثبت الجهد 12 فولت و 5 فولت
 
-Los circuitos reguladores de voltaje de 12V y 5V utilizan el esquema Buck DC-DC LMR14050 de TI para dos rutas, cada una de las cuales puede soportar una corriente máxima de 5A. El diseño específico se puede consultar en el artículo [**Esquema de alimentación (Buck) - LMR14050**](https://wiki-power.com/es/%E7%94%B5%E6%BA%90%E6%96%B9%E6%A1%88%EF%BC%88Buck%EF%BC%89-LMR14050).
+تم استخدام حلين لـ LMR14050 DC-DC Buck من TI لدوائر مثبت الجهد 12 فولت و 5 فولت ، ويمكن لكل منهما تحمل تيار يصل إلى 5 أمبير. يمكن الاطلاع على التصميم المحدد في المقالة [**电源方案（Buck）- LMR14050**](https://wiki-power.com/ar/%E7%94%B5%E6%BA%90%E6%96%B9%E6%A1%88%EF%BC%88Buck%EF%BC%89-LMR14050).
 
-Además, cada ruta tiene un interruptor de habilitación y una luz indicadora de alimentación.
+بالإضافة إلى ذلك ، تم إضافة مفتاح التمكين ومؤشر الضوء لكل منهما.
 
-### Puertos de salida de alimentación
+### منافذ إخراج الطاقة
 
-VBAT, 12V y 5V de salida utilizan un par de pines de 4 pines cada uno, y la salida de 12V también utiliza un conector KF2EDGR-3.81 para suministrar energía a sensores especiales.
+تم استخدام زوج من دبابيس 4pin لكل من VBAT و 12V و 5V ، وتمت إضافة مقبس KF2EDGR-3.81 إضافي لمنفذ إخراج الطاقة 12 فولت لتوفير الطاقة للمستشعرات الخاصة.
 
-## Diseño de PCB
+## تصميم الدوائر المطبوعة
 
-El diseño de PCB de RobotCtrl_Power requiere que las resistencias de división de voltaje de retroalimentación estén lo más cerca posible del pin FB del chip, y que la ruta de muestreo de Vout se genere lo más cerca posible del camino de generación de ruido de la teoría de la inductancia y el diodo, preferiblemente a través de un orificio pasante en la capa de blindaje. El inductor debe colocarse cerca del pin SW para reducir el ruido magnético y el ruido electrostático; los nodos de conexión a tierra de los diodos, los capacitores de entrada y salida deben ser lo más pequeños posible, y preferiblemente conectarse a la tierra del sistema en un solo punto para minimizar el ruido de conducción en la capa de tierra del sistema; los capacitores de salida deben colocarse lo más cerca posible de los nodos del inductor y el diodo, y las líneas deben ser cortas y gruesas para reducir el ruido de conducción y radiación y mejorar la eficiencia.
+يجب أن يتم وضع مقاومات التوزيع العلوية والسفلية لشبكة التغذية بالقرب من دبوس FB للرقاقة قدر الإمكان ، ويجب أن يتم توجيه مسار أخذ العينات Vout عبر مسار إنتاج الضوضاء الأصلي (حلقة الملف اللولبي الثنائي) ، ويفضل عبر طبقة الحماية بعد الثقب. يجب وضع الملف اللولبي الثنائي بالقرب من دبوس SW لتقليل الضوضاء المغناطيسية والضوضاء الساكنة. يجب توصيل نقاط توصيل الدوائر التكاملية والمكثفات الإدخالية والإخراجية بأرضية النظام بأقل قدر ممكن ، ويفضل توصيلها بنقطة واحدة فقط على أرضية النظام لتقليل الضوضاء التوصيلية في طبقة الأرضية. يجب وضع المكثفات الإخراجية بالقرب من نقاط توصيل الملف اللولبي الثنائي والثنائي ، ويجب أن تكون الأسلاك قصيرة وسميكة قدر الإمكان لتقليل الضوضاء التوصيلية والإشعاعية وزيادة الكفاءة.
 
-El diseño de PCB de RobotCtrl_Power utiliza señales y alimentación en la capa superior e inferior, e inserta dos capas de plano de tierra en el medio para mejorar la integridad de la señal y la alimentación.
+تحتوي PCB لـ RobotCtrl_Power على إشارات وطاقة ، ويتم إدخال طبقتين من الأرضية في الوسط لتعزيز سلامة الإشارة والطاقة.
 
-## Pruebas de hardware
+## اختبار الأجهزة
 
-- Prueba de protección contra inversión de polaridad: ¿el sistema puede funcionar sin encenderse cuando se invierte la polaridad de entrada de voltaje?
-- Interruptor de habilitación y luz indicadora de alimentación: prueba si pueden funcionar correctamente.
-- Salida: prueba si las salidas de 12V/5V cumplen con los estándares y el tamaño de la ondulación.
+- اختبار الحماية من الاتصال العكسي: هل يمكن تشغيل النظام دون فتحه عند عكس الجهد المدخل؟
+- مفتاح التمكين ومؤشر الطاقة: اختبار القدرة على العمل بشكل طبيعي.
+- الإخراج: اختبار إخراج 12 فولت / 5 فولت وحجم التداخل. 
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

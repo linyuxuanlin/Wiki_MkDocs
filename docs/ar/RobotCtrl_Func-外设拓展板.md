@@ -1,10 +1,10 @@
-# RobotCtrl_Func - Placa de expansión de periféricos
+# RobotCtrl_Func - لوحة توسيع الأجهزة الخارجية
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220527113505.png)
 
-Repositorio del proyecto: [**linyuxuanlin/RobotCtrl/RobotCtrl_Func**](https://github.com/linyuxuanlin/RobotCtrl/tree/main/RobotCtrl_MultiBoard_Project/RobotCtrl_Func)
+مستودع المشروع: [**linyuxuanlin/RobotCtrl/RobotCtrl_Func**](https://github.com/linyuxuanlin/RobotCtrl/tree/main/RobotCtrl_MultiBoard_Project/RobotCtrl_Func)
 
-Vista previa en línea del proyecto:
+معاينة المشروع عبر الإنترنت:
 
 <div class="altium-iframe-viewer">
   <div
@@ -13,141 +13,152 @@ Vista previa en línea del proyecto:
   ></div>
 </div>
 
-Nota: el proyecto está incluido en [**RobotCtrl - Kit de desarrollo universal STM32**](https://wiki-power.com/es/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
+ملاحظة: يتم تضمين المشروع في [**RobotCtrl - STM32 通用开发套件**](https://wiki-power.com/ar/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
 
-## Diseño del esquemático
+## تصميم المخطط الأساسي
 
-Las principales funciones de RobotCtrl_Func son las siguientes:
+تتضمن وظائف RobotCtrl_Func الرئيسية ما يلي:
 
-- Entrada de alimentación de 12V, entrada / salida de alimentación de 5V, salida de alimentación de 3.3V (con puntos de prueba)
-- 2 circuitos de regulación de voltaje de 5V a 3.3V (para sensores / Ethernet, con puntos de prueba)
-- Circuito de comunicación Ethernet
-- 2 circuitos de comunicación CAN
-- Circuito de comunicación en serie (RS-232 y nivel TTL)
-- Circuito de zumbador
-- 2 botones de usuario
-- 3 LED de usuario
-- Módulo de sensor de actitud MPU6050
-- Interfaz de sensor de distancia infrarrojo (4)
-- Interfaz de ultrasonido (5)
-- Interfaz GPIO de usuario (6)
-- Conector B2B (con todos los IO)
-- Interfaz de descarga SW
+- مدخل طاقة 12 فولت، مدخل / مخرج طاقة 5 فولت، مخرج طاقة 3.3 فولت (مخرج نقطة الاختبار)
+- دائرة تحويل الطاقة الثابتة 5 فولت إلى 3.3 فولت \* 2 (لتزويد الحساسات / Ethernet، مخرج نقطة الاختبار)
+- دائرة اتصال Ethernet
+- دائرة اتصال CAN \* 2
+- دائرة اتصال سلسلة (RS-232 ومستوى TTL)
+- دائرة الجرس
+- زر المستخدم \* 2
+- مؤشر LED للمستخدم \* 3
+- وحدة استشعار الاتجاه MPU6050
+- واجهة مستشعر القياس عن بعد بالأشعة تحت الحمراء \* 4
+- واجهة الموجات فوق الصوتية \* 5
+- واجهة GPIO للمستخدم \* 6
+- موصل B2B (يوفر جميع المداخل / المخارج)
+- واجهة تنزيل SW
 
-### Alimentación
+### الطاقة
 
-RobotCtrl_Func tiene 2 LDO, similar al RobotCtrl_Core, donde uno se utiliza para sensores periféricos y el otro se utiliza para el circuito Ethernet.
+يحتوي RobotCtrl_Func على 2 مسارات LDO ، وهي مماثلة لتلك الموجودة في RobotCtrl_Core ، حيث يتم توفير مسار للحساسات الخارجية ومسار آخر لدائرة Ethernet.
 
-### Circuito de comunicación Ethernet
+### دائرة اتصال Ethernet
 
-La comunicación Ethernet se basa en el chip PHY Ethernet, que se comunica con el microcontrolador a través de la interfaz RMII y se comunica a través del puerto RJ45 con aislamiento incorporado. El reloj del circuito Ethernet utiliza un oscilador pasivo externo de 25M y requiere una fuente de alimentación independiente para reducir la interferencia de la fuente de alimentación. Aquí se utiliza el mismo esquema de alimentación lineal de baja caída que en la placa principal para proporcionar energía al circuito Ethernet de forma independiente. Se puede consultar el artículo [**HAL 库开发笔记 - 以太网通信（LwIP）**](https://wiki-power.com/es/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E4%BB%A5%E5%A4%AA%E7%BD%91%E9%80%9A%E4%BF%A1%EF%BC%88LwIP%EF%BC%89) para obtener más información sobre el principio de la comunicación Ethernet.
+يعتمد اتصال Ethernet على رقاقة PHY Ethernet ، ويتم التواصل مع الميكروكنترولر عبر واجهة RMII ، ويتم التواصل مع الشبكة الخارجية عبر كابل RJ45 الذي يحتوي على محول عزل مدمج. يتم استخدام مولد تردد خارجي 25 ميجاهرتز لساعة Ethernet ، ويجب توفير طاقة مستقلة لتقليل التداخل الكهربائي. يتم استخدام نفس حل توفير الطاقة المستقل لدائرة Ethernet الموجودة في اللوحة الأساسية. يمكن الرجوع إلى مبدأ عمل اتصال Ethernet في المقال [**HAL 库开发笔记 - 以太网通信（LwIP）**](https://wiki-power.com/ar/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E4%BB%A5%E5%A4%AA%E7%BD%91%E9%80%9A%E4%BF%A1%EF%BC%88LwIP%EF%BC%89).
 
-### Circuito de comunicación CAN
+### دائرة اتصال CAN
 
-El circuito de comunicación CAN se basa en el chip transceptor CAN y se transmite a través del nivel de voltaje diferencial CAN. El controlador de protocolo CAN (como el microcontrolador) se conecta al transceptor a través de un cable serie (RX / TX), que se convierte en una señal CAN (CANH / CANL) en el transceptor y se selecciona el modo de alta velocidad / silencioso a través del pin RS. Es necesario agregar una resistencia terminal de 120Ω en el bus CAN para adaptar la impedancia y reducir la reflexión de la señal. Se puede consultar el artículo [**通信协议 - CAN**](https://wiki-power.com/es/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-CAN) y [**HAL 库开发笔记 - 串口通信**](https://wiki-power.com/es/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-CAN%E9%80%9A%E4%BF%A1) para obtener más información sobre el principio de la comunicación CAN.
+يتم بناء دائرة اتصال CAN على رقاقة استقبال / إرسال CAN ، ويتم نقل الإشارات عبر مستوى الجهد المختلف CAN. يتم توصيل متحكم بروتوكول CAN (مثل الميكروكنترولر) بمحول الإرسال / الاستقبال عبر خطوط الاتصال السلسلية (RX / TX) ، ويتم تحويلها إلى إشارات CAN (CANH / CANL) على محول الإرسال / الاستقبال ، ويتم تحديد وضع السرعة العالية / الصامت عبر دبوس RS. يجب إضافة مقاومة 120 أومًا في نهاية الحافلة CAN لتوفير مطابقة الانتهاء وتقليل الانعكاس الإشارة. يمكن الرجوع إلى مبدأ عمل اتصال CAN في المقال [**通信协议 - CAN**](https://wiki-power.com/ar/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-CAN) و [**HAL 库开发笔记 - 串口通信**](https://wiki-power.com/ar/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-CAN%E9%80%9A%E4%BF%A1).
 
-### Circuito de comunicación en serie
+### دائرة اتصال سلسلة
 
-La placa RobotCtrl_Func tiene un circuito de comunicación en serie con niveles RS-232 integrado y también tiene un USART1/UART5 con niveles TTL adicionales. El principio de la comunicación en serie se puede encontrar en los artículos [**Protocolo de comunicación - Comunicación en serie**](https://wiki-power.com/es/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1) y [**Nota de desarrollo de la biblioteca HAL - Comunicación en serie**](https://wiki-power.com/es/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1).
+### دائرة الجرس
 
-El circuito de comunicación RS-232 utiliza un chip que convierte los niveles TTL en niveles RS-232. Para mejorar el rendimiento de EMC, el conector DB9 tiene un pin de conexión a tierra que se puede conectar a un diodo TVS y el chip TTL a RS-232 requiere una fuente de alimentación externa y capacitores de arranque.
+### زر المستخدم
 
-### Circuito del zumbador
+### مؤشر LED للمستخدم
 
-Se utiliza un zumbador de 12V que se puede controlar con un transistor.
+### وحدة استشعار الاتجاه MPU6050
 
-### Botones y LED del usuario
+### واجهة مستشعر القياس عن بعد بالأشعة تحت الحمراء
 
-El principio de los botones y LED del usuario se puede encontrar en RobotCtrl_Core, por lo que no se explicará aquí.
+### واجهة الموجات فوق الصوتية
 
-### Módulo de sensor de actitud
+### واجهة GPIO للمستخدم
 
-Se utiliza directamente el módulo MPU6050, con una interfaz I2C reservada para la comunicación con el microcontrolador. El principio de la comunicación I2C se puede encontrar en los artículos [**Protocolo de comunicación - I2C**](https://wiki-power.com/es/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-I2C) y [**Nota de desarrollo de la biblioteca HAL - Comunicación I2C (MPU6050)**](https://wiki-power.com/es/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-I2C%E9%80%9A%E4%BF%A1%EF%BC%88MPU6050%EF%BC%89).
+### موصل B2B
 
-### Interfaz del sensor de distancia por infrarrojos
+### واجهة تنزيل SW
 
-El circuito de la interfaz del sensor de distancia por infrarrojos consta de cuatro chips de aislamiento óptico y se alimenta con 12V y señales (tipo NPN normalmente abierto) del sensor de infrarrojos desde RobotCtrl_Power. El diseño del circuito de aislamiento óptico requiere calcular el valor de la resistencia limitadora de corriente según la corriente para garantizar que esté dentro del rango de voltaje de activación especificado en la hoja de datos. El principio del acoplador óptico se puede encontrar en el artículo [**Componentes básicos - Acoplador óptico**](https://wiki-power.com/es/%E5%9F%BA%E6%9C%AC%E5%85%83%E5%99%A8%E4%BB%B6-%E5%85%89%E7%94%B5%E8%80%A6%E5%90%88%E5%99%A8).
+يحتوي RobotCtrl_Func على دائرة اتصال سلكي RS-232 المدمجة، ويتم توفير مخرج USART1/UART5 بمستوى TTL. يمكن الرجوع إلى مبدأ الاتصال السلكي في المقالات [**البروتوكولات الاتصالية - الاتصال السلكي**](https://wiki-power.com/ar/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1) و [**ملاحظات تطوير مكتبة HAL - الاتصال السلكي**](https://wiki-power.com/ar/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1).
 
-### Interfaz de entrada de alimentación y conector B2B
+تستخدم دائرة اتصال RS-232 رقاقة تحويل TTL إلى مستوى 232، وتحول TTL الميكروكنترولر إلى مستوى RS-232. ولتحسين أداء EMC، يمكن توصيل دبوس الإسكان الخارجي لمقبس DB9 بتلفزيون ثنائي الاتجاه (TVS) إلى الأرض، ويتطلب تحويل TTL إلى RS-232 إضافة تفريغ الطاقة الخارجية والسعة الذاتية.
 
-La interfaz de entrada de alimentación de la placa de expansión de periféricos consta de 4 pines de fila, que se conectan a la placa de alimentación inferior. El conector B2B se utiliza para suministrar energía y comunicación de datos a la placa de control principal.
+### دائرة الجرس
 
-## Pruebas de hardware
+تستخدم دائرة الجرس جرس 12 فولت ويمكن التحكم فيه بواسطة مكبر للإشارة الثلاثي.
 
-### Pruebas de alimentación
+### أزرار المستخدم والمؤشرات الضوئية
 
-Entrada de alimentación (todas las pruebas deben seguir esta operación):
+يمكن الرجوع إلى مبدأ أزرار المستخدم والمؤشرات الضوئية في RobotCtrl_Core، ولا يتم ذكرها هنا.
 
-- VCC_12V: a través de P1.
-- VCC_5V: a través de P2 o J1_1/2.
-- GND: a través de P3, P4, J1_31/32 o J2_30/31 conectados a tierra externa.
+### وحدة استشعار الاتجاه
 
-Regulador de voltaje de 5V a 3.3V (para sensores):
+يتم استخدام وحدة MPU6050 مباشرةً، ويتم تخصيص واجهة I2C للتواصل مع الميكروكنترولر. يمكن الرجوع إلى مبدأ الاتصال I2C في المقالات [**البروتوكولات الاتصالية - I2C**](https://wiki-power.com/ar/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-I2C) و [**ملاحظات تطوير مكتبة HAL - الاتصال السلكي (MPU6050)**](https://wiki-power.com/ar/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-I2C%E9%80%9A%E4%BF%A1%EF%BC%88MPU6050%EF%BC%89).
 
-- VCC_3V3S: mida si el voltaje en ambos extremos de C30 es de 3.3V.
+### واجهة استشعار القياس بالأشعة تحت الحمراء
 
-Regulador de voltaje de 5V a 3.3V (para Ethernet):
+تستخدم دائرة واجهة استشعار القياس بالأشعة تحت الحمراء أربعة مداخل لاستشعار الأشعة تحت الحمراء بتيار 12 فولت وإشارة (نوع NPN المفتوح دائمًا)، لذلك يتم توفير 12 فولت من RobotCtrl_Power وإضافة أربعة رقائق عزل الضوء لنقل إشارات الجهد العالي والمنخفض. يجب حساب مقاومة التيار المحدود وفقًا لحجم التيار الكهربائي والتأكد من أنها ضمن نطاق الجهد المحدد في دليل البيانات. يمكن الرجوع إلى مبدأ عزل الضوء في المقالات [**العناصر الأساسية - عزل الضوء الكهروضوئي**](https://wiki-power.com/ar/%E5%9F%BA%E6%9C%AC%E5%85%83%E5%99%A8%E4%BB%B6-%E5%85%89%E7%94%B5%E8%80%A6%E5%90%88%E5%99%A8).
 
-- VCC_3V3E: mida si el voltaje en ambos extremos de C26 es de 3.3V.
+### واجهة إدخال الطاقة وموصل B2B
 
-### Pruebas de sensores integrados
+يتم توفير واجهة إدخال الطاقة لوحة التوسع الخارجية بأربعة دبابيس للاتصال بلوحة إمداد الطاقة في الأسفل. يتم استخدام موصل B2B لتوفير الطاقة والاتصالات البيانية للوحة التحكم الرئيسية.
 
-Botones del usuario:
+## اختبار الأجهزة
 
-- Configure PE2/PE3 como modo de entrada de pull-up GPIO, lea un nivel bajo al presionar el botón y un nivel alto al soltarlo.
+### اختبار الطاقة
 
-LED del usuario:
+إدخال الطاقة (يجب اتباع هذه الخطوات لجميع مشاريع الاختبار):
 
-- Configure PC6/PC7/PC8 como modo de salida GPIO, emita un nivel alto y los LED se encenderán secuencialmente; emita un nivel bajo y se apagarán.
+- VCC_12V: عبر P1.
+- VCC_5V: عبر P2 أو J1_1/2.
+- GND: عبر P3 و P4 و J1_31/32 أو J2_30/31 مع الأرض الخارجية.
 
-Módulo de sensor de actitud MPU6050:
+ثابت الجهد 5 فولت إلى 3.3 فولت (للحساسات):
 
-- Mida si el pin 1 del módulo M1 está conectado a tierra con el voltaje VCC_3V3S.
-- Pruebe la conectividad del pin IO.
+- VCC_3V3S: قياس جهد C30 عبر نهايتيه.
 
-Zumbador:
+ثابت الجهد 5 فولت إلى 3.3 فولت (لشبكة الإيثرنت):
 
-- Mida si el polo positivo de BUZZER1 está conectado a tierra con el voltaje VCC_12V.
-- Configure PC9 como modo de salida GPIO, emita un nivel alto y el zumbador emitirá un sonido; emita un nivel bajo y no emitirá sonido.
+- VCC_3V3E: قياس جهد C26 عبر نهايتيه.
 
-Convertidor de serie a RS232:
+### اختبار الحساسات المدمجة في اللوحة
 
-Pruebas de interfaz
+أزرار المستخدم:
 
-Medición de voltaje:
+- تكوين PE2/PE3 كنمط إدخال GPIO مع مقاومة السحب العالية، وقراءة الإشارة الكهربائية المنخفضة عند الضغط على الزر، والإشارة الكهربائية العالية عند الإفراج عنه.
 
-- Medir si los extremos de C3 tienen voltaje VCC_3V3S.
-- Ejecutar el programa de prueba y realizar la prueba a través de los pines PB10/PB11.
+المؤشرات الضوئية للمستخدم:
 
-Comunicación del bus CAN:
+- تكوين PC6/PC7/PC8 كنمط إخراج GPIO، وإخراج إشارة كهربائية عالية، وتشغيل المؤشرات الضوئية بالترتيب؛ وإخراج إشارة كهربائية منخفضة لإطفاء المؤشرات الضوئية.
 
-- Medir si los extremos de C10/C13 tienen voltaje VCC_5V.
-- Ejecutar el programa de prueba (prueba de bucle de retroalimentación) y realizar la prueba a través de los pines PD0/PD1, PB12/PB13.
+وحدة استشعار الاتجاه MPU6050:
 
-Comunicación Ethernet:
+- قياس ما إذا كانت نهاية M1 للوحدة 1 متصلة بالأرض بجهد VCC_3V3S.
+- اختبار توصيل الدبوس.
 
-- Medir si IC2_9 a tierra tiene voltaje VCC_3V3S.
-- Medir si VDD1A/VDD2A a tierra tienen voltaje VCC_3V3E.
-- Ejecutar el programa de prueba y realizar la prueba de comunicación Ethernet a través de la interfaz RMII.
+الجرس:
 
-Pruebas de interfaz
+- قياس ما إذا كانت القطبية الإيجابية لـ BUZZER1 متصلة بالأرض بجهد VCC_12V.
+- تكوين PC9 كنمط إخراج GPIO، وإخراج إشارة كهربائية عالية، وإصدار صوت من الجرس؛ وإخراج إشارة كهربائية منخفضة لإيقاف إصدار الصوت.
 
-Interfaz de sensor de distancia infrarrojo:
+تحويل السلكي إلى RS232:
 
-- Medir si el pin 1 de los conectores J16/J17/J18/J19 a tierra tiene voltaje VCC_12V.
-- Configurar PF2/PF3/PF4/PF5 como entrada de pull-down GPIO, y hacer que IR1/IR2/IR3/IR4 sean altos (VCC_12V) externamente, entonces PF2/PF3/PF4/PF5 leerán un nivel alto; de lo contrario, leerán un nivel bajo.
+- قياس جهد C3 عبر نهايتيه.
+- تشغيل برنامج الاختبار والاختبار عبر دبوس PB10/PB11.
 
-Interfaz de ultrasonido:
+# CAN Bus Communication:
 
-- Medir si el pin 4 de los conectores J3/J4/J5/J6/J7 a tierra tiene voltaje VCC_3V3S.
-- Probar la conectividad de los pines de entrada/salida.
+- قياس ما إذا كانت نهايتا C10 / C13 هما جهد VCC_5V.
+- تشغيل برنامج الاختبار (اختبار الحلقة الراجعة) ، واختباره من خلال دبوس PD0 / PD1 و PB12 / PB13.
 
-Interfaz GPIO del usuario:
+# Ethernet Communication:
 
-- Medir si el pin 4 de los conectores J9/J10/J11 a tierra tiene voltaje VCC_3V3S.
-- Probar la conectividad de los pines de entrada/salida.
+- قياس ما إذا كان IC2_9 إلى الأرض هو جهد VCC_3V3S.
+- قياس ما إذا كانت VDD1A / VDD2A إلى الأرض هي جهد VCC_3V3E.
+- تشغيل برنامج الاختبار واختبار اتصال Ethernet عبر واجهة RMII.
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+# اختبار الواجهة
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+واجهة مستشعر القياس عن بعد بالأشعة تحت الحمراء:
+
+- قياس ما إذا كان الدبوس الأول لمقبس J16 / J17 / J18 / J19 إلى الأرض هو جهد VCC_12V.
+- تكوين PF2 / PF3 / PF4 / PF5 كإدخال GPIO مسحوب لأسفل ، وجعل IR1 / IR2 / IR3 / IR4 عالية بشكل خارجي (VCC_12V) على التوالي ، ثم يقرأ PF2 / PF3 / PF4 / PF5 إشارة عالية ؛ والعكس صحيح.
+
+واجهة الموجات فوق الصوتية:
+
+- قياس ما إذا كان الدبوس الرابع لمقبس J3 / J4 / J5 / J6 / J7 إلى الأرض هو جهد VCC_3V3S.
+- اختبار توصيل دبوس IO.
+
+واجهة GPIO للمستخدم:
+
+- قياس ما إذا كان الدبوس الرابع لمقبس J9 / J10 / J11 إلى الأرض هو جهد VCC_3V3S.
+- اختبار توصيل دبوس IO.
+
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
