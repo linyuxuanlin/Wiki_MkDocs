@@ -18,5 +18,3 @@ RSS of created post: <https://wiki-power.com/feed_rss_created.xml>
 RSS of updated post: <https://wiki-power.com/feed_rss_updated.xml>
 
 [![Star History Chart](https://api.star-history.com/svg?repos=linyuxuanlin/Wiki_MkDocs&type=Timeline)](https://star-history.com/#linyuxuanlin/Wiki_MkDocs&Timeline)
-
-a
