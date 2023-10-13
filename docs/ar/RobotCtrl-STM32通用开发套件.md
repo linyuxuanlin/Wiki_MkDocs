@@ -1,4 +1,4 @@
-# RobotCtrl - STM32 通用开发套件
+# RobotCtrl - مجموعة تطوير عامة لـ STM32
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220416181125.jpeg)
 
