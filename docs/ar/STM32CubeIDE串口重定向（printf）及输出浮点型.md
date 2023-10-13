@@ -28,13 +28,13 @@ __attribute__((weak)) int _write(int file, char *ptr, int len)
 
 ## STM32CubeIDE 串口输出浮点型
 
-1. في شريط جانبي STM32CubeIDE، انقر بزر الماوس الأيمن على المشروع واختر `Properties` - `C/C++ Build` - `Settings` - `MCU GCC Linker` - `Miscellaneous`.
-2. في خانة `Other flags`، أضف مشروعًا واحدًا واملأه بـ `-u_printf_float`.
+1. في الشريط الجانبي لـ STM32CubeIDE ، حدد المشروع ، انقر بزر الماوس الأيمن واختر `Properties` - `C/C++ Build` - `Settings` - `MCU GCC Linker` - `Miscellaneous`.
+2. في خانة `Other flags` ، أضف مشروعًا واحدًا ، واملأ `-u_printf_float`.
 3. أعد الترميز.
 
-## HAL_UART_Receive_IT مشكلة الرموز العشوائية
+## HAL_UART_Receive_IT مشكلة الأحرف العشوائية
 
-قم بتغيير طول الكلمة (`10`) في `HAL_UART_Transmit(&huart1, (uint8_t *)aRxBuffer, 10,0xFFFF);` إلى `1`.
+قم بتغيير طول الكلمة (`10`) في `HAL_UART_Transmit(&huart1, (uint8_t *)aRxBuffer, 10,0xFFFF);` إلى `1` وستحل المشكلة.
 
 ## المراجع والشكر
 
