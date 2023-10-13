@@ -1,67 +1,69 @@
-# Personalización de SublimeText3
+# تخصيص SublimeText3
 
-## Antecedentes
+## الخلفية
 
-**Sublime Text** es un editor de texto muy poderoso. Debido a que el próximo semestre tengo cursos relacionados con Python y las herramientas como Pycharm tienen una interfaz de usuario un poco fea, quiero intentar convertir Sublime Text en una herramienta de desarrollo de Python.
+**Sublime Text** هو محرر نصوص قوي للغاية. بسبب وجود دورة دراسية ذات صلة بـ Python في الفصل الدراسي القادم ، ولأن واجهة المستخدم لأدوات مثل Pycharm قبيحة إلى حد ما ، أردت تجربة تحويل Sublime Text إلى أداة تطوير Python.
 
-Imagen del resultado personalizado:
+صورة للتخصيص بعد التطبيق:
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/ST3效果.png)
 
-## [Implementación mínima](https://www.jianguoyun.com/p/Da9TMr0Q-OOjBxif86sB)
+## [نشر بسيط](https://www.jianguoyun.com/p/Da9TMr0Q-OOjBxif86sB)
 
-1. Descarga la fuente `Consolas-with-Yahei`, descomprímela e instálala.
-2. Descarga **mi versión personalizada** de [**Sublime Text 3**](https://www.jianguoyun.com/p/Da9TMr0Q-OOjBxif86sB) (sin garantía de actualización).
-3. Ejecuta directamente el archivo `.exe`, para obtener una configuración detallada, consulta el siguiente texto.
+1. قم بتنزيل خط `Consolas-with-Yahei` وقم بتثبيته بعد فك الضغط.
+2. قم بتنزيل [**Sublime Text 3**](https://www.jianguoyun.com/p/Da9TMr0Q-OOjBxif86sB) المخصص من قبلي (لا يتم ضمان التحديثات).
+3. قم بتشغيل ملف `.exe` مباشرةً ، لمزيد من التفاصيل حول تكوين المعلمات ، يرجى الرجوع إلى النص أدناه.
 
-## Configuración detallada
+## تكوين مفصل
 
-### Descarga e instalación de software
+### تنزيل وتثبيت البرنامج
 
-Sublime Text 3 se puede descargar desde el [sitio web oficial](http://www.sublimetext.com/) (se recomienda descargar la [**versión portátil**](https://download.sublimetext.com/Sublime%20Text%20Build%203176%20x64.zip)). El software se puede utilizar de forma gratuita, pero a veces aparece una ventana emergente de pago. Después de recibir la advertencia, he eliminado el número de serie del artículo. Si lo necesitas, contáctame.
+يمكن تنزيل Sublime Text 3 من [الموقع الرسمي](http://www.sublimetext.com/) (يوصى بتنزيل [**الإصدار القابل للتثبيت**](https://download.sublimetext.com/Sublime%20Text%20Build%203176%20x64.zip)). يمكن استخدام البرنامج مجانًا ، ولكن في بعض الأحيان يمكن أن تظهر رسائل تذكيرية بالدفع. بعد التذكير ، تم حذف الرقم التسلسلي من المقالة. يرجى الاتصال بي إذا كنت بحاجة إليه.
 
-### Instalación de administrador de paquetes y complementos
+### تثبيت مدير الحزم والإضافات
 
-Instala el administrador de paquetes: `Preferences -> Install Package Control`, luego puedes usar la tecla de acceso rápido `Ctrl + Shift + P` para abrir rápidamente la interfaz del administrador de paquetes.
+تثبيت مدير الحزم: `Preferences -> Install Package Control` ، بعد ذلك يمكن استخدام اختصار لوحة المفاتيح `Ctrl + Shift + P` لسرعة استدعاء واجهة مدير الحزم.
 
-Instala complementos: abre la interfaz de `Package Control`, escribe `Install Package`, presiona Enter, espera pacientemente y busca el complemento necesario en la ventana emergente y haz clic en instalar. Para los complementos no publicados, simplemente selecciona `Preference -> Browser packages`, abre la carpeta donde se almacenan los complementos y coloca el complemento directamente allí.
+تثبيت الإضافات: استدعاء واجهة `Package Control` ، ثم اكتب `Install Package` ، ثم اضغط على Enter ، وانتظر بصبر ، ثم ابحث في الواجهة التي ستظهر لاحقًا عن الإضافة المطلوبة وانقر فوق تثبيت. بالنسبة للإضافات غير المنشورة ، يمكنك ببساطة اختيار `Preference -> Browser packages` ، وفتح مجلد الإضافات ، ووضع الإضافة مباشرةً فيه.
 
-Desinstala complementos: abre la interfaz de `Package Control`, escribe `remove package`.
+إلغاء تثبيت الإضافات: استدعاء واجهة `Package Control` ، ثم اكتب `remove package`.
 
-### Adaptación al chino
+### التكيف مع اللغة الصينية
 
-1. Localización en chino: busca `ChineseLocalizations` en `Package Control` y haz clic en instalar.
-2. Problemas de entrada en chino: descarga [IMESupport](https://github.com/zcodes/IMESupport/archive/master.zip), descomprímelo en el directorio de instalación de complementos, reinicia Sublime y resuelve el problema de que el cuadro de entrada no sigue la entrada en chino.
-3. Fuente china: descarga `Consolas-with-Yahei`, descomprímela e instálala, y reemplázala en la configuración del usuario con `"font_face": "Consolas-with-Yahei",`.
+1. التعريب: ابحث عن `ChineseLocalizations` باستخدام `Package Control` وانقر على تثبيت.
+2. مشكلة الإدخال الصيني: قم بتنزيل [IMESupport](https://github.com/zcodes/IMESupport/archive/master.zip) ، وفك الضغط في مجلد التثبيت الإضافي ، وأعد تشغيل Sublime ، لحل مشكلة عدم متابعة مربع الإدخال عند إدخال النص الصيني.
+3. الخط الصيني: قم بتنزيل `Consolas-with-Yahei` ، وفك الضغط وقم بتثبيته ، ثم استبدل `"font_face": "Consolas-with-Yahei",` في إعدادات المستخدم.
 
-   **Tema**
+   **الموضوع**
 
-El tema oscuro que uso: busca `Spacegray` y `Afterglow` en `Package Control`, y reemplázalo en la configuración del usuario con:
+الموضوع الداكن الذي استخدمته: ابحث عن `Spacegray` و `Afterglow` باستخدام `Package Control` ، واستبدله في إعدادات المستخدم بـ:
 
 ```
 "color_scheme": "Packages/Theme - Spacegray/base16-ocean.dark.tmTheme",
 "theme": "Afterglow-green.sublime-theme"
 ```
 
-### Ajustes de detalle
+### تعديلات الأدق
 
-En la configuración del usuario, puedes agregar el siguiente código:
+يمكن إضافة الكود التالي في إعدادات المستخدم:
 
 ```
-"word_wrap": "true", // Envolver automáticamente cuando se oculta
-"fold_buttons": true, // Habilitar el plegado de código
-"fade_fold_buttons": true, // Los botones de plegado se ocultan automáticamente
-"tab_size": 4, // Tamaño de indentación de tabulación
-"margin": 4, // Indentación
-"tabs_small": true, // Hacer que la barra de pestañas sea más pequeña
-"trim_trailing_white_space_on_save": true, // Eliminar automáticamente los espacios en blanco al final de la línea
-"ensure_newline_at_eof_on_save": true, // Mantener automáticamente una línea vacía al final del archivo, para C
+"word_wrap": "true", // السطور الطويلة تلتف تلقائيًا
+"fold_buttons": true, // تمكين طي الكود
+"fade_fold_buttons": true, // إخفاء أزرار الطي تلقائيًا
+"tab_size": 4, // عدد المسافات المستخدمة للتباعد
+"margin": 4, // المسافة بين النص والحافة
+"tabs_small": true, // تصغير شريط التبويب
+"trim_trailing_white_space_on_save": true, // إزالة المسافات الزائدة في نهاية السطر تلقائيًا
+"ensure_newline_at_eof_on_save": true, // حفظ سطر فارغ في نهاية الملف ، يمكن استخدامه في لغة C
 ```
 
-### Complementos recomendados
+### الإضافات الموصى بها
 
-Los siguientes complementos están disponibles para instalar directamente a través de `Package Control`.
 
-**StyleToken**: muestra el color (RGB) que representa el código. **FileHeader**: plantilla de archivo personalizada. Abre `Preferences -> Package Settings -> FileHeader -> Settings - User`, copia el contenido de `Default` en `User` y modifica la información personal, por ejemplo:
+
+يمكن تثبيت الإضافات التالية مباشرةً باستخدام `Package Control`.
+
+**StyleToken**: يعرض اللون (RGB) الذي يمثله الكود. **FileHeader**: يخصص قالب الملف. افتح `Preferences -> Package Settings -> FileHeader -> Settings - User` ، انسخ محتويات `Default` إلى `User` وقم بتعديل المعلومات الشخصية مثل:
 
 ```
 {
@@ -73,12 +75,12 @@ Los siguientes complementos están disponibles para instalar directamente a trav
 }
 ```
 
-Modifica el contenido de la plantilla en `Preferences -> Browse Packages... -> FileHeader -> template -> header o body`. Resultado:  
+قم بتعديل محتويات القالب في `Preferences -> Browse Packages... -> FileHeader -> template -> header أو body`. النتيجة:  
  ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/ST3 模板效果。png)
 
-### Ejecución de Python
+### تشغيل Python
 
-Debido a que el compilador incorporado no tiene entrada de usuario, se necesita un complemento: `SublimeREPL`. Instálalo directamente a través de `Package Control` y agrega un atajo en `Preferences —> Key Buildings -> User`:
+نظرًا لعدم وجود مدخلات المستخدم في المترجم المضمَّن، يلزم استخدام الإضافة التالية: `SublimeREPL`. يمكن تثبيتها مباشرةً باستخدام `Package Control` وإضافة اختصار لوحة المفاتيح في `Preferences —> Key Buildings -> User`:
 
 ```
 [
@@ -92,28 +94,28 @@ Debido a que el compilador incorporado no tiene entrada de usuario, se necesita 
 ]
 ```
 
-Luego, en el código de Python, puedes presionar `F5` para ejecutarlo.
+بعد ذلك، يمكن تشغيل الكود Python مباشرةً باستخدام `F5`.
 
-### Formateo automático de código
+### تنسيق الكود تلقائيًا
 
-Instala el complemento `Python PEP8 Autoformat` y agrega el siguiente atajo en `Key Buildings`:
+يمكن تثبيت الإضافة `Python PEP8 Autoformat` وإضافة اختصار لوحة المفاتيح في `Key Buildings`:
 
 ```
 { "keys": ["alt+r"], "command": "pep8_autoformat" },
 ```
 
-Ahora puedes formatear el código de Python con `Alt + R`.
+يمكن استخدام `Alt + R` لتنسيق كود Python.
 
-## Conclusión
+## الخلاصة
 
-La apariencia es importante para la productividad. Sublime Text no solo es compatible con Python, sino que también puede abrir y editar casi todos los formatos de archivo. Si lo configuras correctamente, escribir código en una interfaz minimalista y poderosa puede ser bastante romántico.
+الجمال يعني الإنتاجية. لا يدعم Sublime Text فقط Python، بل يمكن استخدامه لتحرير معظم صيغ الملفات. إذا تم ضبطه بشكل صحيح، يمكن البرمجة في واجهة بسيطة وقوية، وهذا يعد شيئًا رومانسيًا.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
 - [Sublime Text 3 调教你的私人利器（上）](https://www.sheyilin.com/2015/05/sublime_text_3_tiao_jiao_ni_de_si_ren_li_qi_1/)
 - [Sublime Text 自动生成文件头部注释（版权信息）：FileHeader 插件的使用](https://blog.csdn.net/afei__/article/details/82890493)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

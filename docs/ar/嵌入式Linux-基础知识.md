@@ -1,27 +1,27 @@
-# Linux Embebido - Conocimientos Básicos
+# لينكس المضمن - المفاهيم الأساسية
 
-## Comandos Comunes
+## الأوامر الشائعة
 
-- Ver información de la CPU: `cat /proc/cpuinfo`
-- Ver la versión del kernel: `cat /proc/version`
-- Ver el uso de memoria: `cat /proc/meminfo`
-  - También se puede usar el comando `free` para tener una idea simple del uso de memoria
-- Ver el uso de la memoria FLASH: `cat /proc/partitions`
-- Ver los procesos en ejecución: `top`
-- Ver los sistemas de archivos soportados: `cat /proc/filesystems` (nodev indica que no se necesita montar un dispositivo de bloque)
-- Ver la frecuencia principal de la CPU: `cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_cur_freq`
+- عرض معلومات المعالج: `cat /proc/cpuinfo`
+- عرض إصدار النواة: `cat /proc/version`
+- عرض استخدام الذاكرة: `cat /proc/meminfo`
+  - يمكن أيضًا استخدام الأمر `free` لفهم بسيط لاستخدام الذاكرة
+- عرض استخدام ذاكرة التخزين الفلاش: `cat /proc/partitions`
+- عرض عمليات المهام: `top`
+- عرض أنظمة الملفات المدعومة: `cat /proc/filesystems` (nodev يشير إلى عدم الحاجة إلى تركيب جهاز تخزين كتلي)
+- عرض تردد المعالج: `cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_cur_freq`
 
-## Controladores en Linux
+## تشغيل الأجهزة في لينكس
 
-En Linux, los controladores tienen la función de establecer una relación de mapeo entre los dispositivos de hardware y los archivos de Linux.
+يتم استخدام تشغيل الأجهزة في لينكس لإنشاء علاقة تعيين بين الأجهزة الخاصة بك وملفات لينكس.
 
-Por ejemplo, al controlar los LED y los botones, no es necesario conocer la conexión de hardware específica, solo se necesita saber qué archivo representa qué dispositivo, y luego se puede controlar el dispositivo de la misma manera a través del archivo.
+على سبيل المثال، عند التحكم في مصابيح LED والأزرار، لا يلزمنا معرفة تفاصيل الاتصال الأجهزة الخاصة بهم، فقط يجب أن نعرف أي ملف يمثل الجهاز، ثم يمكننا التحكم في الأجهزة من نوع واحد بنفس الطريقة باستخدام الملف.
 
-## Referencias y Agradecimientos
+## المراجع والشكر
 
 - [[野火]i.MX Linux 开发实战指南](https://doc.embedfire.com/linux/imx6/base/zh/latest/index.html)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

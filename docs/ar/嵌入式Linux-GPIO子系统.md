@@ -1,20 +1,20 @@
-# Linux embebido - Subsistema GPIO
+# نظام Linux المضمن - نظام GPIO الفرعي
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [8. Control de zumbador (Subsistema GPIO)](https://doc.embedfire.com/linux/stm32mp1/linux_base/zh/latest/linux_app/gpio_subsystem/gpio_subsystem.html)
+- [8. تحكم في جرس (نظام GPIO الفرعي)](https://doc.embedfire.com/linux/stm32mp1/linux_base/zh/latest/linux_app/gpio_subsystem/gpio_subsystem.html)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-## Introducción al subsistema GPIO
+## مقدمة في نظام GPIO الفرعي
 
-GPIO (General Purpose I/O) se refiere a los puertos de entrada/salida generales. Estos pines suelen tener múltiples funciones, siendo la más básica la detección de entrada de nivel alto o bajo y la salida. Algunos pines también se pueden vincular a los periféricos integrados del controlador principal, y se pueden utilizar como pines de comunicación para UART, I2C, red, detección de voltaje, entre otros.
+GPIO (General Purpose I/O) أي مدخل / مخرج عام. هذه الأرجل عادة ما تكون لها وظائف متعددة ، وأساسيًا هي الكشف عن المدخلات والمخرجات عالية ومنخفضة المستوى ، وبعض الأرجل مرتبطة بأجهزة الكمبيوتر الرئيسية على رقاقة ، ويمكن استخدامها كمداخل / مخارج اتصالات للمسلسلات و I2C والشبكات وكشف الجهد وما إلى ذلك.
 
-Al igual que con el subsistema LED, Linux proporciona un marco de controlador para el subsistema GPIO. Este marco de controlador exporta los pines GPIO de la CPU al espacio de usuario, y podemos controlarlos accediendo al sistema de archivos `/sys`. El subsistema GPIO admite el uso de pines para funciones básicas de entrada/salida, y la función de entrada admite la detección de interrupciones. (En el directorio `Documentation/gpio` del código fuente del kernel de Linux se puede encontrar una explicación más detallada sobre el subsistema GPIO).
+مثل نظام LED الفرعي ، يوفر Linux إطار عمل لتشغيل نظام GPIO الفرعي ، ويتم تصدير أرجل GPIO لمساحة المستخدم باستخدام هذا الإطار ، ونتحكم فيها من خلال الوصول إلى نظام الملفات `/sys`. يدعم نظام GPIO الفرعي استخدام الأرجل للوظائف الأساسية للمدخلات / المخرجات ، ويدعم وظيفة الكشف عن المقاطعات للمدخلات. (يمكن العثور على شرح أكثر تفصيلاً حول نظام GPIO الفرعي في دليل Linux Kernel Source `Documentation / gpio`)
 
-## Directorio de dispositivos GPIO
+## دليل أجهزة GPIO
 
-El directorio exportado por el subsistema GPIO al espacio de usuario es `/sys/class/gpio`, que se puede ver con el siguiente comando:
+يتم تصدير نظام تشغيل GPIO الفرعي إلى مساحة المستخدم في الدليل `/sys/class/gpio` ، ويمكن الاطلاع عليه باستخدام الأمر التالي:
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

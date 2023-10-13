@@ -1,46 +1,46 @@
-# Cómo dibujar gráficos de relaciones con Graphviz
+# استخدام Graphviz لرسم الرسوم البيانية
 
-Una forma de dibujar gráficos de relaciones mediante código.
+طريقة لرسم الرسوم البيانية باستخدام الشفرة.
 
-## Contexto
+## الخلفية
 
-[Graphviz](http://www.graphviz.org/) es una herramienta útil para dibujar gráficos de relaciones. A diferencia de Visio, Graphviz genera gráficos con **distribución automática**, lo que significa que no es necesario ajustar manualmente la posición de los elementos. Cuando una red de relaciones es compleja, la distribución automática puede minimizar **la intersección de líneas**.
+[Graphviz](http://www.graphviz.org/) شيء جيد ، يمكن استخدامه لرسم الرسوم البيانية. يوجد فرق أساسي بينه وبين Visio: يتم إنشاء الرسم البياني في Graphviz بطريقة **تخطيط تلقائي** ، ولا يلزم تعديل مواقع العناصر يدويًا. عندما يكون الشبكة العلاقية معقدة ، يمكن تحقيق **تقليل أدنى لتداخل الخطوط** باستخدام التخطيط التلقائي.
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/Graphviz.png)
 
-## Instalación
+## التثبيت
 
-Se ha descubierto un editor en línea muy útil: \[GraphvizOnline\]\([http://dreampuf.github.io/GraphvizOnline/\#digraph graph_name { ](http://dreampuf.github.io/GraphvizOnline/#digraph%20graph_name%20{%20) %20%20A-&gt;B\[label%3D"关系"\]%20 }\) que admite la representación en tiempo real y la exportación en formatos como `.png` y `.svg`.
+اكتشفت محررًا عبر الإنترنت جيدًا: \[GraphvizOnline\]\([http://dreampuf.github.io/GraphvizOnline/\#digraph graph_name { ](http://dreampuf.github.io/GraphvizOnline/#digraph%20graph_name%20{%20) %20%20A-&gt;B[label%3D"العلاقة"\]%20 }\) يدعم العرض الفوري ، وتصدير `.png` و `.svg` وغيرها من الأشكال.
 
-Para macOS, la instalación es: `brew install graphviz`
+تثبيت على macOS: `brew install graphviz`
 
-## Proceso de dibujo
+## عملية الرسم
 
-1. Crear `xxx.dot`
-2. Editar el documento `.dot`
-3. Cambiar al directorio correspondiente y exportar: `dot xxx.dot -T png -o xxx.png`
+1. إنشاء `xxx.dot`
+2. تحرير مستند `.dot`
+3. التبديل إلى الدليل الذي يحتوي على الملف ، ثم التصدير: `dot xxx.dot -T png -o xxx.png`
 
-## Sintaxis sencilla
+## بناء الجملة البسيطة
 
 ```
 graph graph_name {
-  A--B[label="relación de conexión"]
+  A--B[label="العلاقة"]
 }
 ```
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20190201140244.png)
 
-## Conclusión
+## استنتاج
 
-La distribución automática es la esencia de Graphviz. Al igual que cuando usamos la sintaxis de Markdown para generar presentaciones, estas herramientas estandarizan el contenido, lo que permite que las personas se centren en el **contenido en lugar de la forma y la distribución**.
+التخطيط التلقائي هو جوهر Graphviz. بالمقارنة مع الطريقة التي استخدمتها سابقًا لإنشاء الشرائح باستخدام Markdown ، تقوم هذه الأدوات بتوحيد المحتوى ، مما يتيح للأشخاص التركيز **أكثر على المحتوى بدلاً من الشكل والتخطيط**.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Tutorial sencillo de Graphviz](https://blog.zengrong.net/post/2294.html)
-- [Dibujar gráficos con dot](http://www.graphviz.org/pdf/dotguide.pdf)
-- [Instalación y tutorial básico de Graphviz en Windows](https://blog.csdn.net/lanchunhui/article/details/49472949)
+- [دليل Graphviz البسيط](https://blog.zengrong.net/post/2294.html)
+- [رسم الرسوم البيانية باستخدام dot](http://www.graphviz.org/pdf/dotguide.pdf)
+- [تثبيت ودليل المبتدئين لـ Graphviz على Windows](https://blog.csdn.net/lanchunhui/article/details/49472949)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

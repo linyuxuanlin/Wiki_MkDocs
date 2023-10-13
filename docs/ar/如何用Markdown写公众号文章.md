@@ -1,24 +1,24 @@
-# Cómo escribir artículos de WeChat utilizando Markdown
+# كيفية كتابة مقالات الحساب العام باستخدام Markdown
 
-En el artículo de introducción a Markdown "Writing Efficiently with Markdown" (en inglés) pudimos ver la conveniencia de utilizar Markdown para la maquetación. Pero, ¿cómo podemos utilizarlo para escribir artículos en WeChat?
+في مقالة [**استخدام Markdown للكتابة الفعالة**](https://wiki-power.com/ar/%E4%BD%BF%E7%94%A8Markdown%E8%BF%9B%E8%A1%8C%E9%AB%98%E6%95%88%E5%86%99%E4%BD%9C) ، تعرفنا على سهولة استخدام Markdown في التنسيق. إذا كنت ترغب في استخدامه لكتابة مقالات الحساب العام في WeChat ، فما هي الخطوات التي يجب اتباعها؟
 
-Como sabemos, WeChat utiliza un editor de texto enriquecido que no puede interpretar directamente la sintaxis de Markdown. Sin embargo, podemos convertir el Markdown en texto enriquecido y luego pegarlo en el editor de WeChat.
+نعلم جميعًا أن WeChat يستخدم محرر نصوص غني ، ولا يمكنه فهم بنية Markdown مباشرة. ولكن يمكننا تحويل Markdown إلى نصوص غنية ، ثم لصقها في محرر مقالات الحساب العام.
 
 ## MD2WeChat
 
-[**MD2WeChat**](https://md2wechat.wiki-power.com/) es una herramienta web que personalicé basándome en el proyecto de código abierto [lyricat/wechat-format](https://github.com/lyricat/wechat-format), que permite convertir fácilmente la sintaxis de Markdown en texto enriquecido:
+[**MD2WeChat**](https://md2wechat.wiki-power.com/) هي أداة ويب مخصصة قمت بتخصيصها بناءً على مشروع مفتوح المصدر [lyricat/wechat-format](https://github.com/lyricat/wechat-format) ، والتي يمكن استخدامها بسهولة لتحويل بنية Markdown إلى نصوص غنية:
 
 [![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210216125752.png)](https://md2wechat.wiki-power.com/)
 
-Simplemente pegue el artículo escrito en Markdown en la columna de la izquierda y haga clic en "Copiar" en la columna de la derecha para pegarlo en el editor de WeChat.
+قم بلصق مقالة بنية Markdown في العمود الأيسر ، ثم انقر فوق الزر لنسخها ولصقها في محرر مقالات الحساب العام.
 
-Nota: Debido a que los artículos de WeChat no permiten enlaces externos, los enlaces se convertirán en notas al pie y se agregarán al final del artículo.
+ملاحظة: نظرًا لعدم السماح بوجود روابط خارجية في مقالات الحساب العام ، سيتم إضافة حاشية توضيحية للروابط الخارجية وسيتم وضعها في الجزء السفلي من المقالة.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
 - [lyricat/wechat-format](https://github.com/lyricat/wechat-format)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

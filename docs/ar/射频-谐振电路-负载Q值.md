@@ -1,65 +1,65 @@
-# Radiofrecuencia - Circuito resonante - Factor Q de carga 🚧
+# الراديو الترددي - دوائر الاهتزاز - قيمة Q للحمل 🚧
 
-Definimos el factor Q de un circuito resonante como la relación entre la frecuencia central y la banda de atenuación de 3dB, también conocido como factor Q de carga, ya que describe las características de paso del circuito resonante en condiciones de carga o dentro del circuito real. El factor Q de carga de un circuito resonante depende de tres factores principales:
+نحدد قيمة Q لدائرة الاهتزاز بتقسيم ترددها المركزي إلى عرض النطاق الترددي المخفض بمقدار 3 ديسيبل، وهي تسمى أيضًا قيمة Q للحمل، لأنها تصف خصائص النطاق الترددي لدائرة الاهتزاز في الدائرة الكهربائية الفعلية أو في ظروف الحمل. تعتمد قيمة Q للحمل في دائرة الاهتزاز على ثلاثة عوامل رئيسية:
 
-- Impedancia de fuente $R_s$
-- Resistencia de carga $R_L$
-- Factor Q de los componentes mencionados en el capítulo anterior
+- مقاومة المصدر $R_s$
+- مقاومة الحمل $R_L$
+- قيمة Q للعناصر المذكورة في الفصل السابق
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220418111129.png)
 
-## Influencia de $R_s$ y $R_L$ en el factor Q de carga
+## تأثير $R_s$ و $R_L$ على قيمة Q للحمل
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220418111200.png)
 
-La influencia de la impedancia de fuente y la resistencia de carga en el factor Q de carga del circuito resonante se muestra en la figura anterior. La curva original (línea punteada) es la curva de resonancia del circuito compuesto por una impedancia de fuente de 50Ω, un inductor sin pérdidas de 0.05uH y un capacitor sin pérdidas de 25pF, cuyo factor Q se calcula con la fórmula mencionada anteriormente, siendo aproximadamente 1.1, lo que no es un diseño de banda estrecha o alto factor Q.
+يوضح الشكل أعلاه تأثير مقاومة المصدر ومقاومة الحمل على قيمة Q لدائرة الاهتزاز. الخط الأصلي (الخط ال虚ي) هو منحنى الاهتزاز لدائرة مكونة من مقاومة المصدر 50 أوم وملف لا يفقد 0.05 ميكروهنري ومكثف لا يفقد 25 بيكوفاراد، وقيمة Q لها تقريبًا 1.1 وهو تصميم غير ضيق النطاق أو عالي القيمة Q.
 
-Al cambiar la impedancia de fuente a 1000Ω, se traza una nueva curva de resonancia (línea sólida) y el factor Q del circuito resonante aumenta significativamente a 22.4. Al aumentar la impedancia de fuente, aumentamos el factor Q del circuito resonante.
+عندما نغير مقاومة المصدر إلى 1000 أوم ونرسم منحنى اهتزاز جديد (الخط الصلب)، يزداد قيمة Q لدائرة الاهتزاز بشكل واضح إلى 22.4. من خلال زيادة مقاومة المصدر، نرفع قيمة Q لدائرة الاهتزاز.
 
-El método anterior no muestra la influencia de la resistencia de carga en la curva de resonancia. Si conectamos una carga externa al circuito resonante de esta manera:
+لا يمكن أن نرى تأثير مقاومة الحمل على منحنى الاهتزاز بهذه الطريقة. إذا قمنا بتوصيل حمل خارجي بدائرة الاهتزاز على هذا النحو:
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220419163311.png)
 
-Puede ser equivalente a:
+يمكن تعادلها على النحو التالي:
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220419163441.png)
 
-En este caso, el factor Q de carga se puede expresar como:
+يمكن تعبير قيمة Q للحمل في هذه الحالة على النحو التالي:
 
 $$
 Q=\frac{R_p}{X_p}
 $$
 
-Donde $R_p$ es la resistencia total equivalente en paralelo y $X_p$ representa la reactancia capacitiva / inductiva (son iguales en resonancia).
+حيث $R_p$ هي المقاومة الموازية الإجمالية المكافئة و $X_p$ تمثل السعة / الاستجابة المغناطيسية (حيث تكون متساوية عند الاهتزاز).
 
-> Por ejemplo, si queremos diseñar un circuito resonante para que funcione con una impedancia de fuente de 150Ω y una resistencia de carga de 1000Ω. A una frecuencia de resonancia de 50 MHz, el factor Q de carga debe ser de 20. Suponiendo que los componentes son sin pérdidas y no hay coincidencia de impedancia, podemos obtener $R_p=130Ω$. Según la fórmula anterior, $X_p=\frac{R_p}{Q}=\frac{130}{20} =6.5Ω$, y como $X_p=\omega L=\frac{1}{\omega C}$, podemos elegir un inductor de 20.7nH y un capacitor de 489.7pF.
+> مثال: إذا أردنا تصميم دائرة اهتزاز لتعمل في ظروف مقاومة المصدر 150 أوم ومقاومة الحمل 1000 أوم. يجب أن تكون قيمة Q للحمل 20 عند تردد الاهتزاز 50 ميجاهرتز. نفترض أن العناصر لا تفقد ولا يوجد توافق مقاومة. يمكننا الحصول على $R_p=130$ أوم، وفقًا للصيغة المذكورة أعلاه، $X_p=\frac{R_p}{Q}=\frac{130}{20}=6.5$ أوم، ونظرًا لأن $X_p=\omega L=\frac{1}{\omega C}$، يمكن اختيار ملف بحجم 20.7 نانوهنري ومكثف بحجم 489.7 بيكوفاراد.
 
-Se puede ver que la disminución de $R_p$ disminuirá el factor Q del circuito resonante y, si $R_p$ permanece constante y se cambia $X_p$, se puede lograr el mismo efecto. Por lo tanto, para una impedancia de fuente y una resistencia de carga dadas, se puede obtener el mejor factor Q del circuito resonante cuando el inductor es de valor pequeño y el capacitor es de valor grande. En cualquier caso, $X_p$ disminuirá. Por ejemplo:
+يمكن ملاحظة أن تخفيض $R_p$ سيؤدي إلى تخفيض قيمة Q لدائرة الاهتزاز، وإذا لم يتغير $R_p$ وتم تغيير $X_p$، يمكن الحصول على نفس النتيجة. لذلك، يمكن الحصول على أفضل قيمة Q لدائرة الاهتزاز عندما يكون الملف قيمة صغيرة والمكثف قيمة كبيرة لمجموعة معينة من مقاومة المصدر ومقاومة الحمل. في كلتا الحالتين، سيتم تخفيض $X_p$. على سبيل المثال:
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220419165555.png)
 
-Por lo tanto, se pueden utilizar ambos métodos para ajustar el factor Q:
+بالتالي، يمكن تعديل قيمة Q بواسطة هاتين الطريقتين:
 
-1. Seleccione los valores óptimos de impedancia de fuente y resistencia de carga.
-2. Seleccione los valores óptimos de los componentes L y C para optimizar el factor Q.
+1. اختيار أفضل قيمة لمقاومة المصدر ومقاومة الحمل.
+2. اختيار قيم مكونات L و C المثلى لتحسين قيمة Q.
 
-Pero generalmente solo podemos usar el segundo método, ya que en muchos casos, la fuente y la carga están fijas y no se pueden cambiar. En este caso, $X_p$ está definido por un valor Q dado, pero el valor calculado generalmente no tiene un valor físico adecuado para emparejarlo, se dará una solución en el siguiente texto.
+ولكن عادةً ما نستخدم الطريقة الثانية فقط، لأن في العديد من الحالات، يتم تحديد المصدر والحمل مسبقًا ولا يمكن تغييرهما. في هذه الحالة، يتم تحديد $X_p$ بقيمة Q محددة، ولكن القيمة التي يتم حسابها عادةً لا تتطابق مع القيم الفعلية المناسبة، وسيتم توضيح الحل في النص التالي.
 
-## Influencia del factor Q de los componentes en el factor Q de carga
+## تأثير قيمة Q للعناصر على قيمة Q للحمل
 
-En el texto anterior, supusimos que los componentes utilizados en el circuito resonante eran componentes sin pérdidas y que el factor Q de los componentes no afectaría el factor Q de carga. Pero en situaciones no ideales, debemos considerar el factor Q de cada componente.
+في النص السابق، افترضنا أن العناصر المستخدمة في دائرة الاهتزاز هي عناصر لا تفقد، وأن قيمة Q للعناصر لن تؤثر على قيمة Q للحمل. ومع ذلك، في الواقع، يجب علينا أن نأخذ في الاعتبار قيمة Q لكل عنصر.
 
-En un circuito resonante sin pérdidas, la impedancia en los terminales del circuito es infinita en resonancia. Pero en un circuito real, debido a las pérdidas de los componentes, habrá alguna resistencia en paralelo equivalente:
+في دائرة الاهتزاز اللا تفقد، يكون مقاومة الانتهاء على المحطات الكهربائية للدائرة لا نهائية. ولكن في الدائرة الكهربائية الفعلية، بسبب خسارة العناصر، سيكون هناك بعض المقاومة الموازية المكافئة:
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220419174200.png)
 
-La resistencia (Rp) y la reactancia en paralelo relacionada (Xp) se pueden obtener de
+يمكن الحصول على المقاومة (Rp) والمتعامد الكهرومغناطيسي المتوازي المتعلق به (Xp) من 
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- "RF-Circuit-Design (segunda edición) \_Chris-Bowick"
+- 《RF-Circuit-Design(second-edition)\_Chris-Bowick》
 
-> Dirección original del artículo: <https://wiki-power.com/>
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
