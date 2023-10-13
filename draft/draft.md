@@ -24,5 +24,3 @@ todo:
 - post time
 - index page of groups
 - speed up page loading
-
-a
