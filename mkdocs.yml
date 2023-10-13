@@ -182,7 +182,8 @@ plugins:
             自托管应用收藏（Docker）: مجموعة تطبيقات الاستضافة الذاتية (دوكر)
             群晖 NAS: محرك التخزين الشبكي من شركة Synology
             技术流: تدفق التقنية
-            一些小技巧: بعض النصائح والحيل  - search
+            一些小技巧: بعض النصائح والحيل  
+  - search
   - rss:
       abstract_chars_count: -1 # -1 for full content
       #categories:
