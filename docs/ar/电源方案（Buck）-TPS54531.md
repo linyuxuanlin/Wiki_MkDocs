@@ -31,11 +31,11 @@ TPS54531 هي محول تيار مستمر / تيار مستمر (Buck) بترد
 
 ## تعريف الأقطاب
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210713153815.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210713153815.png)
 
 ## التصميم المرجعي
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210713173605.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210713173605.png)
 
 ## ضبط المعلمات
 
@@ -65,9 +65,9 @@ $$
 
 ## مرجع تخطيط الدوائر الإلكترونية
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210713161521.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210713161521.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210713162833.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210713162833.png)
 
 ## ملخص الأخطاء الشائعة
 

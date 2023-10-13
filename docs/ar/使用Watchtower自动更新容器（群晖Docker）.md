@@ -10,9 +10,9 @@
 
 افتح "لوحة التحكم" في Synology - "المهام المجدولة" - "جديد" - "مهمة مجدولة" - "نص مخصص للمستخدم" ، ثم قم بملء التكوين كما هو موضح في الصور التالية:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202301092319956.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202301092319956.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202301092321592.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202301092321592.png)
 
 البرنامج النصي هو:
 

@@ -2,7 +2,7 @@
 
 —— Cómo crear una herramienta de productividad eficiente con VS Code.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200319135609.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200319135609.png)
 
 ## Antecedentes
 
@@ -24,7 +24,7 @@ Por lo general, elegimos descargar la versión **Estable**. Si no temes a los er
 
 Después de descargar e instalar el software, lo abrimos y lo primero que vemos es la página de inicio:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200318224855.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200318224855.png)
 
 ## Instalación de complementos
 
@@ -82,7 +82,7 @@ A continuación, se recomiendan algunos complementos útiles (puedes hacer clic 
 
 Puedes seleccionar el tema que más te guste en `Archivo - Preferencias - Tema de color`. Por ejemplo, yo he seleccionado el tema `Monokai Dimmed`:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200319132727.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200319132727.png)
 
 Si no te gusta ninguno de los temas proporcionados por defecto, puedes buscar y descargar temas que te gusten en la tienda de extensiones con la palabra clave `theme`.
 

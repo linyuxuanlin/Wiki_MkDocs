@@ -1,6 +1,6 @@
 # Homelab - خادم الموسيقى على السحابة Navidrome
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230531212854.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20230531212854.png)
 
 **Navidrome** هو خادم موسيقى ووسائط تدفقية مفتوح المصدر يعتمد على الويب، يمكنك تخزين موسيقاك الخاصة والاستماع إليها على عدة عملاء.
 

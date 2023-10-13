@@ -4,13 +4,13 @@
 
 GPIO 是 **通用输入输出端口**（General Purpose Input Output）。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200615205256.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20200615205256.jpg)
 
 拿 F103C8T6 芯片举个例子（上图），除了有颜色的引脚（电源和某些功能引脚）之外的，都叫 GPIO. 可见其通用程度。
 
 GPIO 的功能是输入 / 输出电信号。我们来看看它的内部结构：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200615211744.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20200615211744.jpg)
 
 - 最右边的 I/O 引脚 ，就是实物芯片的引脚。上下的 `保护二极管` 在一定程度上可防止外部不正常电压经引脚烧毁芯片。
 - 红色虚线框内是输入功能（芯片读取外部信号）。两个带开关的上拉 / 下拉电阻，是用来实现上下拉输入功能的。如果两个开关都不闭合，我们则称其为浮空输入（上不顶天下不着地，没有参考电平）。这三种输入模式读出来的都是数字量（高 / 低电平）。此外，还有模拟输入功能，顾名思义就是直接读取引脚上的模拟量。（复用功能输入我们后面再提及）。
@@ -61,7 +61,7 @@ HAL_GPIO_TogglePin(GPIOx, GPIO_Pin);
 
 将 LED 相应的 GPIO 口设置为输出，并设置初始电平。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210205150422.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210205150422.png)
 
 对应到我的板子上，就需要把 `PD4` 和 `PI3` 这两个 GPIO 设置为输出（`GPIO_Output`）。  
 如果想要上电就点亮，那么根据电路原理图，将初始电位设置为低（`Low`）。
@@ -82,7 +82,7 @@ HAL_GPIO_TogglePin(GPIOI, GPIO_PIN_3);
 /* USER CODE END 3 */
 ```
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210205151322.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210205151322.png)
 
 即可实现闪灯效果。
 
@@ -94,7 +94,7 @@ HAL_GPIO_TogglePin(GPIOI, GPIO_PIN_3);
 
 按照上面的方法配置 LED 所属的 GPIO 端口后，根据板载按键的原理图：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210205150422.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210205150422.png)
 
 将按键所属的 GPIO（`PI8`）设置为输入（`GPIO_Input`）。根据原理图，选择内部上拉（`Pull-up`）。生成代码。
 

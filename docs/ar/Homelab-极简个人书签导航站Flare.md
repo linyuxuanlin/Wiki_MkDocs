@@ -1,6 +1,6 @@
 # Homelab - موقع إشارات مرجعية شخصي بسيط Flare
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230410170939.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20230410170939.png)
 
 **Flare** هو موقع إشارات مرجعية شخصي خفيف وسريع وجميل، ولا يعتمد على أي قاعدة بيانات، ويتم فتح بيانات التطبيق بشكل كامل وشفاف، ويدعم التحرير عبر الإنترنت، ويحتوي على أكثر من 6,000 رمز Material Design Icons.
 

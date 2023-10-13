@@ -4,7 +4,7 @@
 
 محول التناظري الرقمي (ADC) هو جهاز يحول الإشارات التناظرية إلى تسلسل من البيانات الرقمية.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011141438.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221011141438.png)
 
 على الرغم من أن الدالة النقلية المثالية لـ ADC يجب أن تكون خطًا مستقيمًا ، إلا أنها في الواقع تشكل سلمًا متساويًا ، حيث يتوافق عدد الخطوات مع عدد أكواد الإخراج الرقمية. نظرًا لأن التناظري مستمر والرقمي م diskret ، سيتم إدخال خطأ الكمة في الإجراء.
 
@@ -37,7 +37,7 @@ $$
 - 7 انتقالات
 - 6 خطوات بين 7 انتقالات
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008151344.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221008151344.png)
 
 - **جهد تحويل نطاق الصفر ($V_{ZST}$)**: جهد إشارة المدخل التناظري عند تسجيل أول انتقال.
 - **جهد تحويل نطاق القيمة الكاملة ($V_{FST}$)**: جهد إشارة المدخل التناظري عند تسجيل آخر انتقال.
@@ -47,7 +47,7 @@ $$
 
 **خطأ الإزاحة** (خطأ الصفر) هو الفرق بين نقطة الصفر المثالية والفعلية (الأولية). يتم قياسه من منتصف الخطوة الصفرية (المثالية إلى الفعلية) للمحول التناظري الرقمي.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008154521.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221008154521.png)
 
 حيث
 
@@ -59,7 +59,7 @@ $$
 
 **خطأ الكسب** هو الفرق بين نقاط الكسب المثالية والفعلية على الدالة النقل (بعد تصحيح خطأ الإزاحة إلى الصفر). يتم قياسه من منتصف الخطوة الكاملة للمحول التناظري الرقمي.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008155259.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221008155259.png)
 
 حيث
 
@@ -71,7 +71,7 @@ $$
 
 **خطأ عدم الخطية التفاضلي (DNL)** هو الفرق بين عرض الخطوة الفعلي وعرض الخطوة المثالي (1 LSB). إنها مقياس لخطأ الخطية "الإشارة الصغيرة" ، ويتم قياسه من الفرق في جهد المدخل التناظري بين انتقالين مجاورين ومتوسط LSB للجهاز.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008160020.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221008160020.png)
 
 المعادلات التي تصف DNL:
 
@@ -91,7 +91,7 @@ $$
 
 **خطأ الخطية غير الخطية (INL)** هو التأثير التراكمي في أي إدخال من جميع قيم عدم الخطية التفاضلية. إنها مقياس لخطأ الخطية "الإشارة الكبيرة". INL في أي نقطة على المنحنى هو انحراف الخط الخطي المثالي.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008163705.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221008163705.png)
 
 يتم قياس الانحرافات عند نقاط الانتقال من خطوة واحدة إلى الأخرى للمحول الرقمي إلى تناظري. INL هو انحراف قيم الدالة الفعلية للخطوة عن الدالة الخطية المثالية.
 
@@ -105,7 +105,7 @@ $$
 INL=[(\frac{BinaryCode}{2^{bits}-1})(V_{FS}-V_{ZS})+V_{offset}]-CodeCentor
 $$
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008163911.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221008163911.png)
 
 ## كيفية اختبار المعلمات الثابتة
 
@@ -113,19 +113,19 @@ $$
 
 إعداد نظام الاختبار لاختبار المعلمات الثابتة لمحول التناظري الرقمي:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008184721.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221008184721.png)
 
 نظرًا لأن منحنى تحويل الجهد إلى الرمز في محول التناظري الرقمي هو وظيفة تعددية إلى واحدة:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008185819.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221008185819.png)
 
 نستخدم طريقة تحليل الرمز الخطي العتادي (قياس عرض الرمز) عمليًا. يكون المدخل التدريجي بطيئًا بما فيه الكفاية لإعطاء "عدد مناسب إحصائيًا من الضربات لكل رمز".
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008190154.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221008190154.png)
 
 مخطط كتلة إعداد الإشارة:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008190612.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221008190612.png)
 
 ### مفهوم الاختبارات
 
@@ -135,21 +135,21 @@ $$
 
 تتجاوز المدخلات القيم الحدودية الإيجابية والسلبية ±Fs لضمان تغطية جميع الرموز:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008193036.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221008193036.png)
 
 #### 2. احصل على البيانات بين البداية (min + 1 ، على سبيل المثال 0…01) والنهاية (max-1 ، على سبيل المثال 1…10) من الـ ramp. وهذا يعطي قيمة بيانات تعادل $2^n - 2$ رمزًا
 
 يجب أن يكون الجهد المطبق أوسع من نطاق الحجم الكامل لتغطية جميع الانتقالات. يتم عرض 16 خطوة بين كل انتقال رمز كما هو موضح أدناه:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008194207.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221008194207.png)
 
 بالنسبة لـ ADC DUT المثالي ، تظهر 16 رمز إخراج في نفس الأوقات:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008194450.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221008194450.png)
 
 ومع ذلك ، سيكون للجهاز الحقيقي عدد أكبر من 16 مرة للرموز الأوسع ، وأقل من 16 مرة للرموز الأضيق (ولكن يجب أن يكون مجموع الحدوث الإجمالي لا يزال يعادل $2^{bits}$ مرة من 16):
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008194813.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221008194813.png)
 
 #### 3. حساب DNL لكل خطوة
 
@@ -159,11 +159,11 @@ $$
 
 حيث يمثل $Hits[i]$ عدد رموز الإخراج الفعلي ، ويمثل $\frac{\sum Hits[i]}{2^n-2}$ عدد رموز الإخراج المثالي.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008234157.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221008234157.png)
 
 لرسم بياني للتاريخ كما هو موضح أدناه:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008234921.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221008234921.png)
 
 بالنسبة إلى DNL [1] (Code 001) ،
 
@@ -174,7 +174,7 @@ $$
 
 #### 4. الحصول على أقصى وأدنى DNL
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221008235342.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221008235342.png)
 
 #### 5. حساب INL لكل خطوة
 
@@ -192,7 +192,7 @@ $$
 
 للحصول على مثال الرسم البياني أدناه،
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221009201547.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221009201547.png)
 
 $$
 INL[1] = DNL[1] = -0.125 * LSB
@@ -209,7 +209,7 @@ $$
 
 #### 6. الحصول على أقصى وأدنى INL
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221009201838.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221009201838.png)
 
 ## المراجع والتقديرات
 

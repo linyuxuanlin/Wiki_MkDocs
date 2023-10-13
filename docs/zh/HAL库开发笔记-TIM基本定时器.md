@@ -50,13 +50,13 @@
 
 首先，我们打开 Clock Configuratgion 时钟树配置页面，找到并记下最右侧 APB1 Timer clocks 的数值：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210407152250.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210407152250.png)
 
 这是因为，STM32F4 系列的 TIM2-TIM7，TIM12-TIM14 是挂载在低速 APB1 总线上，而 TIM1，TIM8-TIM11 是挂载在高速 APB2 总线上，我们这里用到基本定时器 TIM6，所以要看 APB1 的速率（这里经过分频倍频后是 90 MHz）。
 
 接着，我们找到侧边栏 Timer 中找到 TIM6，先勾选 `Activated` 激活定时器，并在下方配置以下的参数：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210407173136.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210407173136.png)
 
 各参数的含义：
 
@@ -69,7 +69,7 @@
 
 接着我们在其 NVIC 标签页，对中断进行使能：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210407155959.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210407155959.png)
 
 ### 在代码内配置基本定时器
 

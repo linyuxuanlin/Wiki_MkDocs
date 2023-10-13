@@ -14,7 +14,7 @@ JTAG هو اختصار لـ Joint Test Action Group (مجموعة عمليات �
 
 إن توبولوجيا JTAG (سلسلة الزهور) هي كما يلي:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210209191921.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210209191921.png)
 
 يستخدم JTAG عادة 5 دبابيس:
 
@@ -48,9 +48,9 @@ JTAG هو اختصار لـ Joint Test Action Group (مجموعة عمليات �
 
 عمومًا ، يحتوي لوحة الميكروكنترولر على مقابس الحرق التالية ، والتي يمكن أن تدعم JTAG و SWD في نفس الوقت:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210210122923.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20210210122923.jpg)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210210123714.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210210123714.png)
 
 - TCK متوافق مع SWCLK
 - TMS متوافق مع SWDIO

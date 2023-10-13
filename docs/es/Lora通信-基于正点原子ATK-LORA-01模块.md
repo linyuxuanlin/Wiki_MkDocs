@@ -114,7 +114,7 @@ El modo de intensidad de señal se utiliza para ver la intensidad de la señal d
 - Emisión: Es igual que en el modo general.
 - Recepción: Se muestra la información de la intensidad de la señal.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220118110058.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220118110058.png)
 
 SNR: relación señal-ruido (cuanto mayor sea, más estable), RSSI: indicador de intensidad de señal recibida (cuanto mayor sea, más estable).
 
@@ -134,7 +134,7 @@ Radio y monitoreo de datos: al establecer la dirección del módulo como 0xFFFF,
 
 ### Punto a punto
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220118110614.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220118110614.png)
 
 - Dos módulos con la misma dirección, canal y velocidad inalámbrica (no la velocidad de baudios del puerto serie) pueden enviar y recibir datos entre sí (uno envía, el otro recibe).
 - Cada módulo puede enviar / recibir.
@@ -155,7 +155,7 @@ La transmisión transparente es simple, solo se usa el módulo Lora como un puer
 
 ### Punto a varios
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220118110709.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220118110709.png)
 
 - Los módulos con la misma dirección, canal y velocidad inalámbrica (no la velocidad de baudios del puerto serie) pueden enviar y recibir datos entre sí (uno envía, varios reciben).
 - Cada módulo puede enviar / recibir.
@@ -175,7 +175,7 @@ Los dispositivos B a F reciben: AA BB CC DD
 
 ### Radiodifusión y monitoreo
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220118110853.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220118110853.png)
 
 - Si la dirección del módulo es 0xFFFF, el módulo está en modo de radiodifusión y monitoreo, los datos enviados pueden ser recibidos por todos los demás módulos en el mismo canal y velocidad (radiodifusión); al mismo tiempo, se puede monitorear la transmisión de datos de todos los módulos en el mismo canal y velocidad (monitoreo).
 - La radiodifusión y el monitoreo no requieren la misma dirección.

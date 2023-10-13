@@ -2,7 +2,7 @@
 
 كيفية إنشاء مكتبة على الإنترنت باستخدام calibre-web (Docker) على Synology NAS.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210429125418.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210429125418.png)
 
 بالمقارنة مع الطريقة التقليدية باستخدام المجلدات ، فإن طريقة إدارة المكتبة التي تمثلها Calibre مفتوحة المصدر توفر ميزات أكثر ثراءً مثل القراءة عبر الإنترنت والتنزيل وتحويل التنسيق والإرسال إلى البريد الإلكتروني وإزالة الكتب المكررة. calibre-web هو صورة Docker مبنية على Calibre ، ويمكننا بسهولة نشر مكتبتنا على خوادم مثل Synology.
 
@@ -10,7 +10,7 @@
 
 أولاً ، قم بإنشاء مجلد موارد المكتبة ، حيث قمت بإنشاء مجلد مشترك باسم `book` مباشرةً في جذر القرص:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210429214028.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210429214028.png)
 
 على النحو المناسب ، قم بإنشاء مجلد باسم `calibre-web` داخل مجلد `docker` ، وهو مخصص لتخزين ملفات تكوين صور Docker.
 
@@ -20,11 +20,11 @@
 
 في صفحة `الحجم` ، أضف مجلدات الربط ، وهي `/library` و `/config` على التوالي:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210429214908.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210429214908.png)
 
 في صفحة `إعدادات المنفذ` ، أضف ربط المنفذ ، حيث يتم ربط المنفذ الداخلي `8083` في الحاوية بالخارج ، وهنا اخترت `5004`.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210429215121.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210429215121.png)
 
 ثم قم بإنشاء وتشغيل الحاوية.
 
@@ -34,7 +34,7 @@
 
 يجب ملاحظة أنه لا يوجد وظيفة تحميل الكتب افتراضيًا ، ويجب النقر على `أذونات الإدارة` - `تحرير التكوين الأساسي` - `تمكين التحميل` بالترتيب لتمكين وظيفة تحميل الكتب.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210429215628.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210429215628.png)
 
 ## تمكين HTTPS
 

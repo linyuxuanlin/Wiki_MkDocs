@@ -26,11 +26,11 @@ XL2009E1 هو رقاقة Buck من شركة شين لونج (Xinlong) ، وهي 
 
 وفقًا لدليل البيانات ، يتم توفير دائرة تطبيق نموذجية (8-36 فولت الإدخال ، 5 فولت @ 2.1 أمبير الإخراج):
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407103157.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220407103157.png)
 
 ## تعريف الأقدام
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407065806.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220407065806.png)
 
 - FB: دخل ردود الفعل ، يتم إدخاله من تقسيم الجهد من $V_{OUT}$ بواسطة مقاومة ، ولا يمكن توصيله مباشرة بالأرض. الجهد المرجعي للردود الفعل هو 1.25 فولت.
 - OCSET: دخل تعيين تيار الإخراج الثابت.
@@ -42,7 +42,7 @@ XL2009E1 هو رقاقة Buck من شركة شين لونج (Xinlong) ، وهي 
 
 ### مخطط الوظائف الداخلية
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407070413.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220407070413.png)
 
 ### تعديل الجهد الكهربائي الإخراجي
 
@@ -70,7 +70,7 @@ $$
 
 علاقة الجهد الكهربائي الإخراجي والتيار:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407100229.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220407100229.png)
 
 علاقة الكفاءة والتيار الكهربائي الإخراجي:
 
@@ -78,7 +78,7 @@ $$
 
 # العلاقة بين تيار الإخراج ومقاومة RCS (التحكم بالتيار الثابت):
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407103033.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220407103033.png)
 
 ## المراجع والشكر
 

@@ -1,6 +1,6 @@
 # 如何用 Markdown 写一份简历
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210318220041.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210318220041.png)
 
 用 Markdown 写一份可在线预览，也可导出 PDF 的简历。
 

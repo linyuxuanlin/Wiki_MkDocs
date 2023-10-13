@@ -10,7 +10,7 @@ ssh usuario@IP
 
 ## Estructura del directorio raíz
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211009094302.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211009094302.png)
 
 | Directorio  | Contenido del directorio                                                                                                                                                                            |
 | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

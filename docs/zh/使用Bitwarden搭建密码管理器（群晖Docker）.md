@@ -4,7 +4,7 @@
 
 本文介绍如何在自己的群晖上使用 Docker 对全平台密码管理服务器 Bitwarden 进行私有部署。
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210503221838.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210503221838.png)
 
 目前的密码管理器方案有 1Password，Lastpass，KeePass，Bitwarden 等，这几种方案各有优劣。在这里我的需求是可多端同步使用，开源可自部署，且有自动填充的功能，同时兼顾界面美观，所以我选择了在自己的群晖上部署 Bitwarden 服务。
 
@@ -20,15 +20,15 @@
 
 在 `卷` 页面配置挂载的文件夹，点击 `添加文件夹`，选择本地的 `docker/bitwarden` 路径，装载路径填 `/data`（默认不可变）：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210503211711.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210503211711.png)
 
 在 `端口设置` 页面，手动设置容器端口 80 所对应的本地端口（比如我设置为 `8003`）：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210503211759.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210503211759.png)
 
 随后完成配置，启动容器。输入群晖本地 IP:8003，我们就能看到 Bitwarden 的登陆页面了。但是当我们创建账户后登录时，会看到这样一条提示：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210503212146.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210503212146.png)
 
 这是因为，Docker 容器本身没有提供 https 端口配置，而 Bitwarden 又只能够通过 https 来进行登录（SSL 加密防止中间人攻击）。所以，在这里我们必须使用群晖自带的反向代理服务，通过 https 来访问内部 http 端口了。具体教程可以跳转文章 [**用群晖自带反向代理实现 HTTPS 访问**](https://wiki-power.com/%E7%94%A8%E7%BE%A4%E6%99%96%E8%87%AA%E5%B8%A6%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0HTTPS%E8%AE%BF%E9%97%AE)
 
@@ -42,7 +42,7 @@
 
 在登录的时候，先点击左上角的小齿轮，进入设置：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210503215149.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210503215149.png)
 
 在 `自托管环境` 中的 `服务器 URL` 填入群晖 NAS 的 IP:外部端口，即可正常登录。
 

@@ -51,7 +51,7 @@
 
 #### إعادة التعيين عند الطاقة على / إيقاف التشغيل
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529143014.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210529143014.png)
 
 يتم دمج دائرة POR / PDR في رقاقة STM32F4 ، وتتميز بميزات إعادة التعيين عند الطاقة على / إيقاف التشغيل كما هو موضح في الشكل أعلاه. إذا كنت ترغب في تعطيل هذه الميزة ، فيمكن تحقيق ذلك عن طريق دبوس PDR_ON.
 
@@ -65,7 +65,7 @@
 - إعادة تعيين البرامج الثابتة (إعادة تعيين SW)
 - إعادة تعيين إدارة الطاقة المنخفضة
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529143925.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210529143925.png)
 
 يمكن تحديد مصدر إعادة التعيين من خلال عرض العلامات في سجل التحكم / الحالة (RCC_CSR).
 
@@ -95,7 +95,7 @@
 
 يمكن توفير مصدر ساعة HSE بطريقتين: مصدر خارجي (نشط) ومنبع خارجي للكريستال / الموجات الصوتية السيراميكية (غير نشط).
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529145726.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210529145726.png)
 
 #### مصدر خارجي (تجاوز HSE)
 
@@ -111,7 +111,7 @@
 
 يمكن توفير مصدر ساعة LSE بطريقتين: مصدر خارجي (نشط) ومنبع خارجي للكريستال / الموجات الصوتية السيراميكية (غير نشط).
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529152354.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210529152354.png)
 
 #### مصدر خارجي (تجاوز LSE)
 
@@ -129,7 +129,7 @@
 
 عادةً ما نستخدم مقاومة سحب 10 كيلو أوم على BOOT0 ، ويمكن ترك BOOT1 بأي شكل من الأشكال. إذا كنت بحاجة إلى تغيير وضع البدء ، فيمكنك الاستشارة التصميم التالي:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200605163537.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200605163537.png)
 
 ## إدارة التصحيح
 
@@ -141,7 +141,7 @@
 
 في STM32F4 ، يتم تخصيص دبابيس SWJ على النحو التالي:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529210858.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210529210858.png)
 
 ### السحب الداخلي والخارجي لـ JTAG
 
@@ -156,11 +156,11 @@
 
 ### تصميم الأجهزة المتصلة بمقعد JTAG القياسي
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529211840.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210529211840.png)
 
 ## التصميم المرجعي
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210529213723.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210529213723.png)
 
 ## المراجع والشكر
 

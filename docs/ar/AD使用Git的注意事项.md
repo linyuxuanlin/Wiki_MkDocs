@@ -4,10 +4,10 @@
 
 يدعم Altium Designer استخدام Git/SVN للتحكم في الإصدارات. إذا كنت تستخدم Git، يمكنك إنشاء مستودع Git مباشرة في مسار المشروع. بعد إعادة تشغيل Altium Designer، سترى حالة الإصدارات بجانب شجرة الملفات:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200421100348.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200421100348.png)
 
 تعني الرموز التوضيحية ما يلي:
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200421101221.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200421101221.png)
 
 يمكنك القيام بعمليات Git مباشرة من القائمة "المشروع (C) - التحكم في الإصدارات (E)"، ويمكنك حتى إرسال التعديلات مباشرة إلى GitHub.
 

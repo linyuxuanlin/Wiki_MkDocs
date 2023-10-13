@@ -20,11 +20,11 @@
 
 ## تعريف الأقطاب
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210713154103.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210713154103.png)
 
 ## التصميم المرجعي
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210715141625.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210715141625.png)
 
 ## ضبط المعلمات
 

@@ -14,7 +14,7 @@ Open/short continuity test is performed with testing the protection diodes (diod
 
 #### Test through GND protection diode
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220909003924.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220909003924.png)
 
 1. Force 0V to all other pins that are not tested (include power pin).
 2. Force a small negative current (-100uA) on the Pin Under Test (with voltage clamp).
@@ -25,7 +25,7 @@ Open/short continuity test is performed with testing the protection diodes (diod
 
 #### Test through VDD protection diode
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220909004139.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220909004139.png)
 
 1. Force 0V to all other pins that are not tested (include power pin).
 2. Force a small positive current (+100uA) on the Pin Under Test (with voltage clamp).
@@ -42,7 +42,7 @@ Power pin short test is to check if there is a short-circuit from VDD to GND pin
 
 Power Pin Short Test is performed by applying a small voltage to VDD, and measure the current into it, to check if a short-circuit existed. Usually use DCVI with VBT code.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220910155805.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220910155805.png)
 
 1. Apply a small voltage to VDD (100mV) (with current clamp).
 2. Force all other pins to 0V with PPMU.

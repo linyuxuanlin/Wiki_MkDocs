@@ -2,7 +2,7 @@
 
 Construye un servicio RSSHub en Docker en Synology para generar fuentes de suscripción RSS para todo tipo de contenido extraño.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210504105215.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210504105215.png)
 
 ## Despliegue en Docker en Synology
 
@@ -10,7 +10,7 @@ Abre el paquete Docker en Synology, descarga la imagen `diygod/rsshub`, haz dobl
 
 En la página "Configuración de puertos", configura manualmente el puerto local correspondiente al puerto del contenedor 1200 (por ejemplo, lo he configurado como "8004"):
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210504085806.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210504085806.png)
 
 Luego, completa la configuración y arranca el contenedor. Si puedes ver la página de RSSHub al ingresar la IP local de Synology:8004, significa que la instalación se ha realizado correctamente.
 
@@ -20,7 +20,7 @@ Para obtener información detallada sobre cómo utilizarlo, consulta la [**docum
 
 Tomemos un ejemplo simple. En la documentación oficial, se puede encontrar el método de generación de "Películas en cartelera" de Douban como sigue:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210504104630.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210504104630.png)
 
 Entonces, puedes utilizar "tu dominio/douban/movie/playing" para generar tu propia fuente RSS utilizando tu propio servidor.
 

@@ -8,7 +8,7 @@ As we all know, WeChat uses a rich text editor that cannot directly parse Markdo
 
 [**MD2WeChat**](https://md2wechat.wiki-power.com/) is a web tool that I customized based on the open-source project [lyricat/wechat-format](https://github.com/lyricat/wechat-format). It can easily parse Markdown syntax into rich text:
 
-[![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210216125752.png)](https://md2wechat.wiki-power.com/)
+[![](https://img.wiki-power.com/d/wiki-media/img/20210216125752.png)](https://md2wechat.wiki-power.com/)
 
 Simply paste your Markdown article into the left column, and then click "Copy" in the right column to paste it into the editor of your WeChat article.
 

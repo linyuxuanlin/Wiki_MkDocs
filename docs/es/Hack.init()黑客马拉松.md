@@ -2,7 +2,7 @@
 
 —— Wight · Sistema de iluminación sin cables basado en plataforma en la nube.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/wight.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/wight.jpg)
 
 Repositorio del proyecto: [**linyuxuanlin / Wight**](https://github.com/linyuxuanlin/Wight)
 

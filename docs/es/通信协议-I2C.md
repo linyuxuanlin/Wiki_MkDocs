@@ -4,7 +4,7 @@ I2C (Inter-Integrated Circuit) es un bus de comunicación serial que permite la 
 
 En el bus I2C, el esclavo se selecciona mediante su dirección I2C. Esto permite que un maestro controle varios esclavos a través de dos líneas.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026174634.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211026174634.png)
 
 ## Pines de I2C
 
@@ -16,7 +16,7 @@ En el bus I2C, el esclavo se selecciona mediante su dirección I2C. Esto permite
 - La dirección de I2C se divide en una dirección de 7 bits y una indicación de lectura/escritura de 1 bit.
 - Cada dispositivo en el bus I2C debe tener una dirección única, y si hay una dirección duplicada, se producirán problemas. Algunos dispositivos permiten la programación de la dirección de I2C.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211027112717.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211027112717.png)
 
 ## Comunicación de I2C
 
@@ -28,7 +28,7 @@ En el bus I2C, el esclavo se selecciona mediante su dirección I2C. Esto permite
 
 Este segmento de transmisión es `11001101`:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211104172952.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211104172952.png)
 
 1. El maestro baja SDA para iniciar la señal START.
 2. El primer bit se establece, el maestro baja SCL y envía la señal de reloj a través del DAC.
@@ -40,18 +40,18 @@ Este segmento de transmisión es `11001101`:
 2. Solo se permite que SDA cambie de valor durante los pulsos bajos de SCL.
 3. Cuando SDA cambia mientras SCL está en alto, se interpreta como un evento de START, RESTART o STOP.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211105172139.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211105172139.png)
 
 ### Temporización de subida/bajada en el circuito de interfaz
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211108093819.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211108093819.png)
 
 En la figura, el transistor se enciende cuando la señal está en bajo, descargando el capacitor $C_b$ a bajo. Por otro lado, el transistor se apaga cuando la señal está en alto, y la resistencia pull-up carga $C_b$ a alto.
 
 - $t_r$ (tiempo de subida): el tiempo máximo que tarda la señal en pasar de bajo a alto. Debido a que I2C es una señal de drenador abierto, el tiempo de subida depende de la resistencia pull-up y la constante de tiempo RC del bus.
 - $t_f$ (tiempo de bajada): el tiempo máximo que tarda la señal en pasar de alto a bajo.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211108095142.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211108095142.png)
 
 ### Cálculo de la resistencia pull-up de I2C
 
@@ -66,7 +66,7 @@ $V_{DD}$ representa el voltaje de alimentación; $V_{OLMAX}$ representa el nivel
 
 Ejemplo de cálculo:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211108103406.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211108103406.png)
 
 ## Referencias y agradecimientos
 

@@ -1,6 +1,6 @@
 # RobotCtrl - مجموعة تطوير عامة لـ STM32
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220416181125.jpeg)
+![](https://img.wiki-power.com/d/wiki-media/img/20220416181125.jpeg)
 
 مستودع المشروع: [**linyuxuanlin/RobotCtrl**](https://github.com/linyuxuanlin/RobotCtrl)
 
@@ -12,7 +12,7 @@
 
 ## متطلبات التصميم
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220527111854.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220527111854.png)
 
 ملاحظة: ما يلي هو ملخص التصميم ، يرجى الرجوع إلى المقالات ذات الصلة للحصول على المحتوى الكامل.
 
@@ -54,7 +54,7 @@
 
 ## المراجع والشكر
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220416181139.jpeg)
+![](https://img.wiki-power.com/d/wiki-media/img/20220416181139.jpeg)
 
 هذا المشروع هو مشروع تخرجي الشخصي، وواجهت العديد من المشاكل الصغيرة والكبيرة خلال تصميم المشروع ولحامه وتصحيحه. بفضل مساعدة المشرف والزملاء والأصدقاء، تم الانتهاء من المشروع بنجاح وحصلت على شهادة تخرج ممتازة. شكرا لكم!
 

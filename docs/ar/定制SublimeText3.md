@@ -5,7 +5,7 @@
 **Sublime Text** هو محرر نصوص قوي للغاية. بسبب وجود دورة دراسية ذات صلة بـ Python في الفصل الدراسي القادم ، ولأن واجهة المستخدم لأدوات مثل Pycharm قبيحة إلى حد ما ، أردت تجربة تحويل Sublime Text إلى أداة تطوير Python.
 
 صورة للتخصيص بعد التطبيق:
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/ST3效果.png)
+![](https://img.wiki-power.com/d/wiki-media/img/ST3效果.png)
 
 ## [نشر بسيط](https://www.jianguoyun.com/p/Da9TMr0Q-OOjBxif86sB)
 
@@ -76,7 +76,7 @@
 ```
 
 قم بتعديل محتويات القالب في `Preferences -> Browse Packages... -> FileHeader -> template -> header أو body`. النتيجة:  
- ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/ST3 模板效果。png)
+ ![](https://img.wiki-power.com/d/wiki-media/img/ST3 模板效果。png)
 
 ### تشغيل Python
 

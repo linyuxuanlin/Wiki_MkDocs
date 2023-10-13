@@ -88,7 +88,7 @@ screen -X -S id quit # استبدال id
 
 أدخل `http://عنوان IP لخادمك` في المتصفح للاستمتاع بـ VS Code على السحابة.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200413181001.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20200413181001.jpg)
 
 تكوين الوصول إلى النطاق: `قيد الاستكشاف...`
 

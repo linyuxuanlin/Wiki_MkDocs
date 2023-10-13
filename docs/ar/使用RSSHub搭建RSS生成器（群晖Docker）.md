@@ -2,7 +2,7 @@
 
 تثبيت خدمة RSSHub على Docker Synology لإنشاء مصادر اشتراك RSS لجميع أنواع المحتويات الغريبة والعجيبة.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210504105215.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210504105215.png)
 
 ## تثبيت على Docker Synology
 
@@ -10,7 +10,7 @@
 
 في صفحة "إعدادات المنفذ" ، قم بتعيين المنفذ المحلي الذي يتوافق مع منفذ الحاوية 1200 يدويًا (على سبيل المثال ، قمت بتعيينه على "8004"):
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210504085806.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210504085806.png)
 
 ثم اكمل الإعدادات وابدأ تشغيل الحاوية. إذا كنت تستطيع رؤية صفحة RSSHub على عنوان IP المحلي لـ Synology والمنفذ 8004 ، فقد نجحت في التثبيت.
 
@@ -20,7 +20,7 @@
 
 على سبيل المثال ، يمكن العثور على طريقة إنشاء مصدر RSS لـ "الأفلام الجارية" على موقع Douban في المستندات الرسمية كما هو موضح أدناه:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210504104630.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210504104630.png)
 
 بالتالي ، يمكن استخدام `yourdomain/douban/movie/playing` لإنشاء مصدر RSS الخاص بك باستخدام خادمك الخاص.
 

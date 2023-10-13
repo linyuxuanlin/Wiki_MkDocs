@@ -1,6 +1,6 @@
 # Docker Compose - Herramienta de orquestación de imágenes
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210117130925.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20210117130925.jpg)
 
 Docker Compose es una herramienta de orquestación de imágenes de Docker. Se recomienda utilizar Docker Compose como la forma predeterminada de abrir Docker, ya que no solo permite configurar y desplegar imágenes de manera conveniente, sino que también permite configurar servicios de múltiples imágenes de manera más conveniente e incluso distinguir su orden de inicio, lo que no es posible con la forma de abrir mediante comandos.
 

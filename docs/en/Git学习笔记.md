@@ -13,7 +13,7 @@ git config --global user.email "email@example.com"
 
 ## Basic Statements
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200216204934.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200216204934.png)
 
 ### Basic Process
 
@@ -58,7 +58,7 @@ Suitable for starting from scratch or developing based on someone else's project
 
 ## Branch Management
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200217195056.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200217195056.png)
 
 A branch is like a parallel universe in a science fiction movie. While you are working hard to learn Git in front of your computer, another you is working hard to learn SVN in another parallel universe. If the two parallel universes do not interfere with each other, it doesn't affect you now. However, at some point in time, the two parallel universes merge, and as a result, you have learned both Git and SVN!
 

@@ -1,6 +1,6 @@
 # Homelab - Agregador de RSS autohospedado FreshRSS
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304102312005.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202304102312005.png)
 
 **FreshRSS** es un agregador de RSS autohospedado que admite la suscripción a múltiples fuentes de RSS y se actualiza automáticamente. Proporciona lectura en línea a través de la web y una API para su uso en aplicaciones móviles.
 

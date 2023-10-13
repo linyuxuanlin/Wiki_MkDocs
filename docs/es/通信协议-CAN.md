@@ -38,11 +38,11 @@ En el modo silencioso, los nodos se pueden configurar en un estado absolutamente
 
 #### Pines del chip
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210607102222.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210607102222.png)
 
 #### Circuito de referencia
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210607115611.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210607115611.png)
 
 Como se muestra en la figura, el controlador de protocolo CAN (por ejemplo, un microcontrolador) se conecta al transceptor a través de la línea serie (RX/TX), que se convierte en una señal CAN (CANH/CANL) en el transceptor y se selecciona el modo de alta velocidad / silencioso mediante el pin S.
 
@@ -75,17 +75,17 @@ Elevar Rs a 3.3V
 
 #### Pines del chip
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210607155539.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210607155539.png)
 
 #### Circuito de referencia
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210607171051.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210607171051.png)
 
 PESD2CAN es un diodo de protección ESD especializado para CAN, que protege al chip de daños por descargas electrostáticas y otros transitorios.
 
 El diseño de PCB de referencia es el siguiente:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210607171427.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210607171427.png)
 
 ### Diferencias entre TJA1050 y SN65HVD230
 
@@ -103,7 +103,7 @@ En la comunicación CAN, el cable es propenso a acoplar interferencias externas,
 
 Los dispositivos de protección de la interfaz CAN incluyen principalmente: capacitores de filtrado, inductores comunes, capacitores de derivación y tubos TVS.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211220134905.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211220134905.png)
 
 - Capacitores de filtrado $C_1, C_2$: se utilizan para proporcionar una ruta de retorno de baja impedancia para las interferencias, el rango de selección es de 22pF a 1000pF, y el valor típico es de 100pF.
 - Inductor común $L_1$: se utiliza para filtrar las interferencias comunes en la línea diferencial, el rango de impedancia seleccionado es de 120Ω/100MHz a 2200Ω/100MHz, y el valor típico es de 600Ω/100MHz.

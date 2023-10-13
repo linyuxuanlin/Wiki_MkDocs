@@ -6,7 +6,7 @@
 
 [Graphviz](http://www.graphviz.org/) شيء جيد ، يمكن استخدامه لرسم الرسوم البيانية. يوجد فرق أساسي بينه وبين Visio: يتم إنشاء الرسم البياني في Graphviz بطريقة **تخطيط تلقائي** ، ولا يلزم تعديل مواقع العناصر يدويًا. عندما يكون الشبكة العلاقية معقدة ، يمكن تحقيق **تقليل أدنى لتداخل الخطوط** باستخدام التخطيط التلقائي.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/Graphviz.png)
+![](https://img.wiki-power.com/d/wiki-media/img/Graphviz.png)
 
 ## التثبيت
 
@@ -28,7 +28,7 @@ graph graph_name {
 }
 ```
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20190201140244.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20190201140244.png)
 
 ## استنتاج
 

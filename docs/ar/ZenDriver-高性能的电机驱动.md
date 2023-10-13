@@ -13,7 +13,7 @@
 
 ## تعريف الواجهة
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200125192433.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200125192433.png)
 
 **الجانب الكهربائي للمحرك** من اليسار إلى اليمين: **M-، 5V، مُشفر A، مُشفر B، GND، M+**، وهي تتوافق مع دبابيس المحرك ويمكن توصيلها مباشرة بالمحرك.
 
@@ -37,7 +37,7 @@
 4. توصيل دبوس **IN1، IN2** بمنفذ PWM الميكروكنترولر
 5. تصحيح الأخطاء في الكود
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200125192734.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200125192734.png)
 
 > عنوان النص: <https://wiki-power.com/>  
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.

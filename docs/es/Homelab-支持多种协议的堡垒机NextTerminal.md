@@ -1,6 +1,6 @@
 # Homelab - Next Terminal, un bastión de múltiples protocolos
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230312001443.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20230312001443.png)
 
 **Next Terminal** es un bastión (jump server) fácil de usar e integrado con Apache Guacamole, un gateway de escritorio remoto sin cliente, que admite múltiples protocolos como RDP, SSH, VNC, TELNET, Kubernetes, y puede acceder a recursos de la red interna directamente a través de la web, con una excelente compatibilidad multiplataforma. Admite autenticación multifactor (MFA), grabación de auditoría y otras funciones de registro.
 

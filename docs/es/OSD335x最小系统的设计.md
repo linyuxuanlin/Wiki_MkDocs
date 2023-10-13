@@ -1,14 +1,14 @@
 # Diseño del sistema mínimo OSD335x
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211012144907.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211012144907.png)
 
 El chip OSD335x-SM de TI es un módulo SIP (System-in-Package) que integra el procesador Cortex-A8 AM335x, memoria DDR3, el PMIC (chip de gestión de energía) TPS65217C, el LDO TL5209, los componentes pasivos necesarios y una EEPROM de 4KB en un encapsulado BGA.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211012153036.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211012153036.png)
 
 El sistema mínimo OSD335x consta de cuatro partes: alimentación, reloj, reset y puerto de programación y depuración. Para facilitar su uso, también se pueden agregar un par de botones, algunos LED y algunos pines de periféricos.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211012155857.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211012155857.png)
 
 ## Alimentación
 
@@ -18,7 +18,7 @@ El sistema mínimo OSD335x consta de cuatro partes: alimentación, reloj, reset 
 - VIN_USB: entrada de alimentación USB (DC5V@0.5A, se puede aumentar a 1.3A a través del PMIC interno), también se utiliza como voltaje y corriente de referencia para el host USB 2.0.
 - VIN_BAT: se puede utilizar como entrada de batería (con alimentación de batería de 2.75-5.5V) o salida (para cargar la batería), no se puede utilizar como entrada de eventos.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211012173057.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211012173057.png)
 
 ### Salida
 
@@ -33,11 +33,11 @@ Se recomienda agregar puntos de prueba para todas las salidas de alimentación p
 
 También hay algunos pines de alimentación interna: VDDSHV_3P3V, VDDS_DDR, VDD_MPU, VDD_CORE, VDDS_PLL. Solo se utilizan para medición de puntos de prueba, no se deben utilizar para circuitos externos.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211013142917.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211013142917.png)
 
 ### Entrada y tierra de referencia analógica
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211013143532.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211013143532.png)
 
 El OSD335x tiene una interfaz ADC, por lo que es necesario utilizar correctamente la alimentación y la tierra analógicas si se desea utilizar el ADC. La interfaz ADC puede soportar una entrada analógica máxima de 1.8V (consulte el pin VREFP). Por lo general, VREFP se puede conectar directamente a SYS_ADC_1P8V, pero si es necesario, se puede dividir a un voltaje más bajo.
 
@@ -56,7 +56,7 @@ El PMIC TPS65217C se puede configurar a través de I2C para ajustar los siguient
 - Secuencia de encendido/apagado
 - Umbral de sobrecorriente y sobrecalentamiento
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211013161739.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211013161739.png)
 
 Además de la conexión a través de I2C, el PMIC también tiene algunos pines de función que deben conectarse al OSD335x:
 
@@ -69,9 +69,9 @@ Además de la conexión a través de I2C, el PMIC también tiene algunos pines d
 - EXTINTN: pin de entrada de interrupción externa de AM335x
 - PMIC_OUT_NINT: pin de salida terminal del PMIC (activo en nivel bajo)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211013161927.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211013161927.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211013163119.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211013163119.png)
 
 ### Botón de encendido
 
@@ -81,13 +81,13 @@ El PMIC TPS65217C tiene una entrada de reinicio activa en nivel bajo que se cone
 - Si PMIC_IN_PB_IN se mantiene en nivel bajo durante más de 8 segundos, el PMIC se reiniciará/encenderá de nuevo.
 - Si PMIC_IN_PB_IN se mantiene en nivel bajo durante mucho tiempo, el dispositivo continuará alternando entre los estados ACTIVO y RESET, con un intervalo de 8 segundos para cada reinicio.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211013165738.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211013165738.png)
 
 ### Indicador de alimentación
 
 Utilizamos SYS_VDD2_3P3V (150mA) como salida del indicador de alimentación.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211014092054.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211014092054.png)
 
 ## Reinicio
 
@@ -104,7 +104,7 @@ El OSD335x tiene 3 entradas de reinicio (con el mismo nombre que las entradas de
 - WARMRSTN: reinicio en caliente; algunos registros de módulos de control y gestión de energía, reinicio y reloj no son sensibles al reinicio en caliente.
 - RTC_PWRONRSTN: entrada de reinicio de encendido especializada para el módulo RTC que no se ve afectada por el reinicio en frío, y que no afecta a otras partes del dispositivo.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211014105556.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211014105556.png)
 
 ## Reloj
 
@@ -115,13 +115,13 @@ El OSD335x tiene dos entradas de reloj:
 - OSC0: Entrada de reloj de alta velocidad (reloj principal), funciona a una frecuencia de 19.2MHz, 24MHz (recomendado), 25MHz o 26MHz. Esta fuente de reloj proporciona referencia para todas las funciones que no son RTC. La entrada de reloj OSC0 tiene pines OSC0_IN, OSC0_OUT y OSC0_GND.
 - OSC1: Entrada de reloj de baja velocidad, funciona a 32.768kHz y proporciona energía para RTC. La entrada de reloj OSC1 tiene pines OSC1_IN, OSC1_OUT y OSC1_GND. Esta fuente de reloj está desactivada de forma predeterminada y no es necesaria, pero puede recibir una señal de cristal RC interno de 32kHz si es necesario.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211014095242.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211014095242.png)
 
 En la figura anterior, Rbias y Rd son opcionales. Si no se puede proporcionar una frecuencia precisa, Rbias se puede utilizar para calibrar de forma flexible y se puede DNP (no incluir en el esquema original o dejar un espacio vacío). Pero si no se necesita Rd, debe reemplazarse con un cable para evitar un circuito abierto.
 
 En el diseño de referencia, se utiliza un cristal de 24MHz 7A-24.000MAAJ-T, un condensador de 18pF y una resistencia de 1MΩ como Rbias para OSC0.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211014101932.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211014101932.png)
 
 El pin RTC_KALDO_ENN tiene una resistencia externa de 10k para habilitar el LDO RTC interno de forma predeterminada.
 
@@ -145,11 +145,11 @@ En el diseño de referencia, se realiza la siguiente configuración:
 
 ### Botones y LED de usuario
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211014110906.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211014110906.png)
 
 ### Pines de periféricos
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211014110947.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211014110947.png)
 
 ## Referencias y agradecimientos
 

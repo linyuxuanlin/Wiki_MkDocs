@@ -74,15 +74,15 @@ allegro/ 
 
 إعدادات DRC:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210810134720.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210810134720.png)
 
 إعادة تسمية تلقائية للرقم المرجعي عند نسخ المكون:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210810134747.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210810134747.png)
 
 تحريك النص بالقرب من الشبكة:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210810134758.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210810134758.png)
 
 الفخ: عند استخدام مكتبة CIP ، عندما يتم عرض `not found in the configured librarie lists` ، يجب التحقق من ترميز المسافات في المسار.
 

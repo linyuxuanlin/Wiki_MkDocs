@@ -1,6 +1,6 @@
 # Fundamentos de Docker
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210116153041.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210116153041.png)
 
 Es bien sabido que una de las cosas más molestas en el desarrollo de software es la configuración del entorno. Las diferencias en los entornos de ejecución pueden causar resultados inesperados, pero el uso de Docker puede evitar este tipo de problemas.
 
@@ -39,7 +39,7 @@ sudo sh ./get-docker.sh --dry-run
 
 Dado que Docker se ejecuta y depende del entorno de Linux, prácticamente no tiene pérdida de eficiencia. Sin embargo, si desea implementar Docker en otros sistemas, primero debe instalar un entorno de Linux virtual.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230708005714.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20230708005714.png)
 
 Para obtener información sobre cómo instalar Docker en Windows, consulte la documentación oficial [**Instalar Docker Desktop en Windows**](https://docs.docker.com/desktop/install/windows-install/).
 

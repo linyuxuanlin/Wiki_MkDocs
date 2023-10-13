@@ -12,11 +12,11 @@
 
 ### تكوين الاتصال السلكي داخل CubeMX
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210207100329.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210207100329.png)
 
 وفقًا للمخطط الأساسي ، فإن منفذ الاتصال الذي سنستخدمه للتجربة هو `USART1` ، أيًا كانت دبابيس `PA9` `PA10`. لذلك ، يجب أولاً تكوين هاتين الدبوسين كوظيفة إرسال واستقبال `USART1` داخل CubeMX ، ثم انقر فوق علامة التبويب USART1 على الجانب الأيسر وقم بتعيين الوضع (Mode) إلى غير متزامن (Asynchronous) وتعديل معلمات مثل معدل البود (Baud Rate) في الأسفل:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210207100941.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210207100941.png)
 
 تفاصيل المعلمات على النحو التالي:
 
@@ -29,7 +29,7 @@
 
 أخيرًا ، يجب تمكين انقطاع الاتصال السلكي لـ USART1 في علامة التبويب NVIC ، كما هو موضح في الشكل:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210207104641.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210207104641.png)
 
 ### تكوين الاتصال السلكي داخل الشفرة
 
@@ -99,7 +99,7 @@ HAL_UART_Transmit(&huart1, (uint8_t*) aTxBuffer, sizeof(aTxBuffer) - 1, 0xFFFF);
 
 بعد الاتصال بالمنفذ التسلسلي ، سيتم طباعة محتوى `aTxBuffer` أولاً ، ثم سيتم إعادة طباعة `aRxBuffer` الذي تم استقباله. كما هو موضح في الصورة:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210403232628.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210403232628.png)
 
 ## المراجع والشكر
 

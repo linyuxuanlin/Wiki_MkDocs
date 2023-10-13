@@ -76,7 +76,7 @@ Descomprime el archivo `hugo.exe` en la carpeta `D:\hugo`.
 
 Si necesitas varias líneas de código, puedes usar tres comillas invertidas <code>```</code> para encerrar el bloque de código:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210215164653.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210215164653.png)
 
 ```c
 int fputc(int ch,FILE *f)
@@ -226,7 +226,7 @@ Puedes usar el símbolo `---` para generar una línea divisoria y separar difere
 ---
 ```
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210216123630.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210216123630.png)
 
 ## Funciones avanzadas
 

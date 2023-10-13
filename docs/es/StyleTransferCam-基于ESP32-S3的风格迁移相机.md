@@ -1,6 +1,6 @@
 # StyleTransferCam - Cámara de transferencia de estilo basada en ESP32-S3
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308152238959.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202308152238959.png)
 
 Cuando el arte y la tecnología se unen, un nuevo mundo se despliega ante nosotros, es un maravilloso banquete visual y una exploración de infinitas posibilidades. StyleTransferCam es una cámara de transferencia de estilo basada en ESP32-S3. Utiliza una técnica de aprendizaje automático llamada "transferencia de estilo". Cuando presionas el botón de la placa, toma una foto de la escena actual y la mezcla con una foto de plantilla de estilo preestablecida (como "Starry Night" de Van Gogh) para generar una obra única y creativa.
 
@@ -10,7 +10,7 @@ StyleTransferCam consta de los siguientes procesos:
 2. Iniciar automáticamente el programa Python de transferencia de estilo para procesar la foto y generar una foto estilizada.
 3. Si el ESP32-S3 tiene una pantalla TFT adjunta, también puede devolver la foto para mostrarla en la pantalla.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308152244791.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202308152244791.png)
 
 ## Probar el botón de la placa y el LED
 
@@ -332,7 +332,7 @@ Tenga en cuenta que si hay una excepción en el programa y se muestra un mensaje
 
 En el mismo directorio que `receive-photo.py`, utilizaremos TensorFlow para escribir un programa de transferencia de estilo en Python. Primero, instale las dependencias necesarias para el programa (debido a la red en China, es difícil descargar TensorFlow, así que tenga paciencia) y luego prepare una foto para ser estilizada en el mismo directorio, nómbrela como `base.png`. También necesitará una imagen de referencia de estilo, nómbrela como `style_reference.png`. Esta imagen puede ser una pintura artística, como "La noche estrellada" de Van Gogh:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308152239917.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202308152239917.png)
 
 A continuación, escriba el programa de transferencia de estilo:
 
@@ -528,7 +528,7 @@ Ahora puedes probar a ejecutar este programa de Python por separado. Si no hay e
 
 Si este programa funciona correctamente, puedes ejecutar `receive-photo.py` directamente para recibir automáticamente las fotos tomadas por ESP32-S3 y generar fotos con estilo transferido.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308152246623.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202308152246623.png)
 
 ## Referencias y agradecimientos
 

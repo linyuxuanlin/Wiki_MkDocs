@@ -16,7 +16,7 @@ Las interrupciones se dividen en externas (Interrupt) e internas (Exception). La
 
 NVIC significa Nested Vectored Interrupt Controller, que se traduce como **Controlador de interrupción vectorial anidado**. Tiene tres parámetros principales: habilitación de interrupción, prioridad de preempción y prioridad de respuesta. (Cuanto menor sea el valor de prioridad, mayor será la prioridad).
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210206121058.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210206121058.png)
 
 **Habilitación de interrupción**: se refiere a si se habilita la interrupción. Si se habilita la interrupción, cuando se cumple la condición de activación de la interrupción, se saltará al programa de servicio de interrupción para ejecutar; de lo contrario, el programa de servicio de interrupción no se tendrá en cuenta y el programa principal seguirá ejecutándose.
 
@@ -48,13 +48,13 @@ Para obtener información detallada, consulte el método en el artículo [**Nota
 
 ### Configuración de interrupción en CubeMX
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210205150422.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210205150422.png)
 
 Como se muestra en la figura, el LED todavía se configura como salida utilizando el método del artículo anterior; debido a que la tecla es activada por nivel bajo, es decir, se genera un flanco descendente en el momento de la presión, el pin debe configurarse como una interrupción activada por flanco descendente.
 
 En mi placa, se configura `PI8` como modo `GPIO_EXTI8` (interrupción externa, montada en la línea de interrupción 8) y se configura como activada por flanco descendente. Según el esquemático, se selecciona la resistencia pull-up interna. Como se muestra en la figura:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210403222304.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210403222304.png)
 
 Configuración de interrupciones externas en STM32CubeMX
 

@@ -49,7 +49,7 @@ En este experimento, se utiliza el temporizador universal para generar una seña
 
 En primer lugar, abrimos la página de configuración del árbol de relojes de la configuración de Clock Configuration, y como el temporizador universal está montado en el bus APB2 de alta velocidad, encontramos y anotamos la frecuencia del reloj APB2 Timer clocks (180 MHz):
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210627133951.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210627133951.png)
 
 A continuación, encontramos TIM8 en la barra lateral de Timer y configuramos el canal 1 (`Channel 1`) para la generación de PWM (`PWM Generation CH1`). Para generar una señal cuadrada PWM con una frecuencia de 1 kHz, necesitamos configurar los siguientes parámetros:
 
@@ -58,7 +58,7 @@ A continuación, encontramos TIM8 en la barra lateral de Timer y configuramos el
 - **Periodo del contador** (valor de carga / período de tiempo): 1000-1
 - **auto-reload preload** (recarga automática): Enable (se recarga automáticamente cuando se desborda)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210627153422.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210627153422.png)
 
 Por lo tanto, como la fuente de reloj seleccionada aquí es de 180 MHz, configuramos el factor de división previo en 180-1 = 179, lo que resulta en una frecuencia de 1 MHz después de la división. Configuramos el valor de carga en 1000-1 = 9999, lo que resulta en una frecuencia de 1 kHz.
 
@@ -79,7 +79,7 @@ __HAL_TIM_SetCompare(&htim8,TIM_CHANNEL_1,500);
 
 Compilar y grabar, se puede ver la forma de onda con un osciloscopio:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210627154737.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20210627154737.jpg)
 
 ## Referencias y agradecimientos
 

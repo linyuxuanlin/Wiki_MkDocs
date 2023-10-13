@@ -20,11 +20,11 @@
 
 ## 引脚定义
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210713154103.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210713154103.png)
 
 ## 参考设计
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210715141625.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210715141625.png)
 
 ## 参数调节
 

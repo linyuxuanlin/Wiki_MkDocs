@@ -8,7 +8,7 @@ El proceso de prueba OS utiliza diodos de protección para VDD y tierra. En gene
 
 Las pruebas OS estáticas en serie / paralelo son esencialmente la inyección de corriente y la medición de voltaje, ya que esta corriente hace que un diodo de protección superior o inferior se polarice positivamente, lo que permite detectar anomalías de circuito abierto o cortocircuito midiendo la caída de voltaje polarizado positivamente. El diagrama de prueba para polarizar positivamente el diodo de la fuente de alimentación se muestra a continuación:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220805165031.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220805165031.png)
 
 El proceso de prueba es el siguiente:
 
@@ -21,7 +21,7 @@ El proceso de prueba es el siguiente:
 
 El diagrama de prueba para polarizar positivamente el diodo a tierra se muestra a continuación:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220728142155.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220728142155.png)
 
 El proceso de prueba es el siguiente:
 

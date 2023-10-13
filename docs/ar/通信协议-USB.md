@@ -2,13 +2,13 @@
 
 ## إصدارات USB
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211129094423.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211129094423.png)
 
 ## واجهة USB الميكانيكية
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211129094855.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211129094855.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211129094944.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211129094944.png)
 
 تعريف الواجهة - USB القياسي:
 
@@ -31,13 +31,13 @@
 
 ## التوافق بين موصل USB والإصدارات
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211129094829.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211129094829.png)
 
 ---
 
 ## USB Type-C
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220520105345.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220520105345.png)
 
 ### أنواع المنافذ
 
@@ -58,15 +58,15 @@
 
 مقبس Type-C:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220520134239.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220520134239.png)
 
 رأس Type-C:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220520134304.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220520134304.png)
 
 رسم توضيحي للتوصيل (كامل الوظائف):
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220520140019.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220520140019.png)
 
 تعريف الأرجل:
 
@@ -124,7 +124,7 @@
 
 كشف اتجاه الكابل ، إذا كان دبوس CC1 يكتشف سحبًا وإسقاطًا صالحين ، فهذا يعني الاتجاه الصحيح (غير مقلوب) ؛ إذا كان CC1 يكتشف ، فهذا يعني الاتجاه العكسي (مقلوب):
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220520141738.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220520141738.png)
 
 ## المراجع والشكر
 

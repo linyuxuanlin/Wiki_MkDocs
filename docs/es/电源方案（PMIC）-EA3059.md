@@ -32,15 +32,15 @@ Vista previa en línea del proyecto:
 
 ## Circuito de aplicación típico
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420171841.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420171841.png)
 
 ## Diagrama de funciones internas
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420171859.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420171859.png)
 
 ## Definición de pines
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420171920.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420171920.png)
 
 | Nombre del pin | Descripción del pin                                                                                                                             |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -66,7 +66,7 @@ EA3059 es un IC de gestión de energía diseñado específicamente para aplicaci
 
 Si se necesita establecer el tiempo de encendido de cada canal Buck, se puede programar mediante el siguiente circuito:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420172125.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420172125.png)
 
 ### Arquitectura de desplazamiento de fase de 180°
 
@@ -88,7 +88,7 @@ $$
 V_{OUTx}=0.6*\frac{R_1}{R_2}+0.6V
 $$
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420172602.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420172602.png)
 
 Si se necesitan valores de voltaje de salida comunes, se puede consultar la siguiente tabla para configurar la resistencia de división (se debe utilizar una precisión del 1%):
 
@@ -147,19 +147,19 @@ Referencia de diseño:
 
 Capa superior:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420175756.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420175756.png)
 
 Capa de alimentación intermedia:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420175833.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420175833.png)
 
 Capa de tierra intermedia:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420175851.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420175851.png)
 
 Capa inferior:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420175906.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420175906.png)
 
 ## Referencias y agradecimientos
 

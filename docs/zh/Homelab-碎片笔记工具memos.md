@@ -1,6 +1,6 @@
 # Homelab - 碎片笔记工具 memos
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304111548420.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202304111548420.png)
 
 **memos** 是一个开源的自托管 memos 工具。支持 Markdown 语法、公开分享、iframe 嵌入、标签管理、日历视图、简单的数据迁移与备份功能。
 

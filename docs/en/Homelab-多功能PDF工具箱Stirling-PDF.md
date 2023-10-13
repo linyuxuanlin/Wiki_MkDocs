@@ -1,6 +1,6 @@
 # Homelab - Multi-functional PDF Toolbox Stirling-PDF
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230410172939.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20230410172939.png)
 
 **Stirling-PDF** is a self-hosted PDF toolkit that includes functions such as PDF splitting, merging, rotating, page extraction, image conversion, reordering, adding/extracting images, adding/removing passwords, setting permissions, adding watermarks, converting other files to PDF, OCR text recognition, metadata editing, and supports dark mode.
 

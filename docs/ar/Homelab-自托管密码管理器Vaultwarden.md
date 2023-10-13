@@ -1,6 +1,6 @@
 # Homelab - خادم إدارة كلمات المرور Vaultwarden المستضاف ذاتيًا
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304195414.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20230304195414.jpg)
 
 **Vaultwarden** هو خادم Bitwarden المستضاف ذاتيًا من طرف ثالث ، يحمي كلمات المرور لمختلف المواقع ويديرها بواسطة كلمة مرور رئيسية ، ويمكنه إنشاء كلمات مرور عشوائية للاستخدام في مواقع مختلفة.
 

@@ -49,7 +49,7 @@
 
 ### الحفاظ على شاشة تدفق الإشارة بأكملها
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211215190631.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211215190631.png)
 
 كما هو موضح في الشكل ، إذا تم قطع شاشة تدفق الإشارة ، فلن يتمكن تدفق التيار الكهربائي من العودة إلى المصدر عبر المسار الأمثل (الأقصر) ، وسيتعين البحث عن مسار بديل لتدفق الإشارة ، مما يزيد من مساحة حلقة الإشارة.
 
@@ -69,15 +69,15 @@
 
 نماذج المرشحات الشائعة:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211219173751.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211219173751.png)
 
 ### الملف الشائع
 
 النموذج المكافئ للملف الشائع:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211219173856.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211219173856.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211219174546.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211219174546.png)
 
 ### الخرز المغناطيسي
 

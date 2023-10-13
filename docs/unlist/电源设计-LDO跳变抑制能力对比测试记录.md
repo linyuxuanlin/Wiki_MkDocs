@@ -21,11 +21,11 @@ title: 电源设计 - LDO 跳变抑制能力对比测试记录
   - 带宽：20MHz
   - 数字滤波器：开启 1Mhz 捕获与触发
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220516141413.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20220516141413.jpg)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220516141418.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20220516141418.jpg)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220516141424.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20220516141424.jpg)
 
 ## 测试结果
 
@@ -44,55 +44,55 @@ title: 电源设计 - LDO 跳变抑制能力对比测试记录
 
 30mA 稳定负载时的纹波曲线：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220516140355.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220516140355.png)
 
 0-30mA 跳变负载时的纹波曲线：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220516140747.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220516140747.png)
 
 30-100mA 跳变负载时的纹波曲线：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220516140848.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220516140848.png)
 
 静态电流（空载）：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220516154859.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20220516154859.jpg)
 
 ### BCT2036EUR33-TR
 
 30mA 稳定负载时的纹波曲线：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220516141008.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220516141008.png)
 
 0-30mA 跳变负载时的纹波曲线：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220516141016.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220516141016.png)
 
 30-100mA 跳变负载时的纹波曲线：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220516141019.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220516141019.png)
 
 静态电流（空载）：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220516154913.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20220516154913.jpg)
 
 ### CL9195A33L3M
 
 30mA 稳定负载时的纹波曲线：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220516141024.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220516141024.png)
 
 0-30mA 跳变负载时的纹波曲线：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220516141028.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220516141028.png)
 
 30-100mA 跳变负载时的纹波曲线：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220516141032.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220516141032.png)
 
 静态电流（空载）：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220516154925.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20220516154925.jpg)
 
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

@@ -20,11 +20,11 @@ Project link: **<https://github.com/linyuxuanlin/Modularity_of_Functional_Circui
 
 ## Pin Definitions
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210713154103.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210713154103.png)
 
 ## Reference Design
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210715141625.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210715141625.png)
 
 ## Parameter Adjustment
 

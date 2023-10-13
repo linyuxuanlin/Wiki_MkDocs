@@ -2,7 +2,7 @@
 
 —— How to use VS Code to create an efficient productivity tool.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200319135609.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200319135609.png)
 
 ## Background
 
@@ -24,7 +24,7 @@ Generally, we choose to download the **Stable** version. If you are not afraid o
 
 After downloading and installing the software, we open it and the first thing we see is the startup page:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200318224855.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200318224855.png)
 
 ## Plug-in Installation
 
@@ -82,7 +82,7 @@ Here are some useful plug-ins (click the link to install directly):
 
 You can choose your favorite theme through `File - Preferences - Color Theme`, for example, I chose the `Monokai Dimmed` theme:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200319132727.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200319132727.png)
 
 If you feel that the default themes are not enough, you can also search and download your favorite themes in the plugin store using the keyword `theme`.
 

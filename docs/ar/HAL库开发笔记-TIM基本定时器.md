@@ -50,13 +50,13 @@
 
 أولاً ، نفتح صفحة تكوين شجرة الساعة Clock Configuratgion ، ونجد ونحفظ قيمة APB1 Timer clocks الموجودة في الجانب الأيمن الأقصى:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210407152250.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210407152250.png)
 
 ذلك لأن مؤقتات STM32F4 الموجودة في TIM2-TIM7 و TIM12-TIM14 معلقة على حافلة APB1 ذات السرعة المنخفضة ، بينما TIM1 و TIM8-TIM11 معلقة على حافلة APB2 ذات السرعة العالية ، ونحن نستخدم هنا مؤقتًا أساسيًا TIM6 ، لذلك يجب النظر في سرعة APB1 (هنا بعد التقسيم والضرب هي 90 ميجا هرتز).
 
 ثم ، نجد TIM6 في الشريط الجانبي Timer ، ونختار `Activated` لتنشيط المؤقت ، ونقوم بتكوين المعلمات التالية:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210407173136.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210407173136.png)
 
 معاني المعلمات:
 
@@ -69,7 +69,7 @@
 
 ثم نقوم بتمكين الانقطاع في علامة التبويب NVIC الخاصة به:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210407155959.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210407155959.png)
 
 ### تكوين المؤقت الأساسي داخل الكود
 

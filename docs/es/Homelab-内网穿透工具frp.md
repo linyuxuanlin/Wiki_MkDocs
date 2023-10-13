@@ -1,6 +1,6 @@
 # Homelab - Herramienta de penetración de red interna frp
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304195137.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20230304195137.png)
 
 **frp** es un método de penetración de red interna. Puede exponer los puertos del host de la red interna a Internet a través de un servidor con una dirección IP pública. frp admite varios protocolos como TCP, UDP, HTTP, HTTPS, etc.
 

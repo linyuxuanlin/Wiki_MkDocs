@@ -1,8 +1,8 @@
 # Flip - لوحة تطوير لينكس مبنية على معالج F1C200s من Allwinner
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220527234815.jpeg)
+![](https://img.wiki-power.com/d/wiki-media/img/20220527234815.jpeg)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220527234855.jpeg)
+![](https://img.wiki-power.com/d/wiki-media/img/20220527234855.jpeg)
 
 مستودع المشروع: [**linyuxuanlin/Flip**](https://github.com/linyuxuanlin/Flip)
 
@@ -42,15 +42,15 @@
 
 مخطط بنية نظام F1C200s:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220422152227.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220422152227.png)
 
 رسم توضيحي للتطبيقات النموذجية:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220513232027.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220513232027.png)
 
 تعريفات Pin:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220422153239.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220422153239.png)
 
 ## المراجع والشكر
 

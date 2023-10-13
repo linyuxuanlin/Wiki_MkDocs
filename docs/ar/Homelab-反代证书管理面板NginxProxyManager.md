@@ -1,6 +1,6 @@
 # Homelab - لوحة إدارة شهادات الوكيل العكسي Nginx Proxy Manager
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230408182138.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20230408182138.png)
 
 **Nginx Proxy Manager** هو لوحة تحكم رسومية لـ Nginx ، والتي تتيح للمستخدمين تكوين الوكيل العكسي وطلب شهادة SSL للمواقع على واجهة الويب بسهولة ، دون الحاجة إلى معرفة الكثير من تفاصيل Nginx / Letsencrypt.
 

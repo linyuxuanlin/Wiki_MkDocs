@@ -84,7 +84,7 @@ Exit screen: `Ctrl + A + D`
 
 Simply enter `http://your server IP` in your browser to enjoy cloud-based VS Code.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200413181001.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20200413181001.jpg)
 
 Configuring domain name access: `To be explored...`
 

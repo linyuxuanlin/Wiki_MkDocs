@@ -48,7 +48,7 @@ The DP83848 interface is RMII, and it supports 10M/100M line speed. The board ha
 
 Clock tree configuration: configured according to the onboard crystal oscillator (8M for this board).
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220702145310.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220702145310.png)
 
 ### Adding functional code
 

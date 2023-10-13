@@ -1,6 +1,6 @@
 # Docker Compose - أداة ترتيب الصور الخاصة بـ Docker
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210117130925.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20210117130925.jpg)
 
 Docker Compose هي أداة ترتيب الصور الخاصة بـ Docker. يوصى باستخدام Docker Compose كطريقة افتراضية لفتح Docker ، لأنها لا تسمح فقط بتكوين ونشر الصور بسهولة ، بل تسمح أيضًا بتكوين خدمات الصور المتعددة بسهولة ، وحتى تمييز ترتيب تشغيلها ، وهو ما لا يتوفر في طريقة الفتح باستخدام الأوامر.
 

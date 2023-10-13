@@ -1,12 +1,12 @@
 # BookJourney - تطبيق متجر الكتب المستعملة
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/书程小驿.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/书程小驿.jpg)
 
 مستودع المشروع: [**linyuxuanlin/BookJourney**](https://github.com/linyuxuanlin/BookJourney)
 
 Demo (تجربة المسح الضوئي للويشة):
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/1.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/1.jpg)
 
 ## الخلفية
 

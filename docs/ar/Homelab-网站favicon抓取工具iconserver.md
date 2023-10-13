@@ -1,6 +1,6 @@
 # Homelab - أداة جلب رمز موقع favicon iconserver
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304195157.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20230304195157.png)
 
 **iconserver** هي أداة جلب رمز موقع favicon. تدعم جلب `favicon.ico` و `apple-touch-icon.png` ، وتحتوي على واجهة برمجة تطبيقات URL وصفحة عمليات ويب بسيطة. إذا فشل جلب الرمز ، فسيتم إنشاء رمز بحرف أول.
 

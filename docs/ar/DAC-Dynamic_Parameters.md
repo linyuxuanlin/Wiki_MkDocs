@@ -21,7 +21,7 @@ $$
 
 نظرًا لأن SNR هو نسبة للطاقة ، فإن الرقم 20 في المعادلة يعني مربع نسبة الجهد.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221009221450.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221009221450.png)
 
 على الرغم من أن التحريف الهارموني لا يتم تضمينه في قياس SNR ، إلا أن التحويل والضوضاء الحرارية والباقية الأخرى في المحول مضمنة.
 
@@ -33,7 +33,7 @@ $$
 THD(dB)=20log(\frac{\sqrt{V^2_{2(RMS)}+V^2_{3(RMS)}+...+V^2_{n(RMS)}}}{V_{1(RMS)}}
 $$
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221009225800.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221009225800.png)
 
 ## كيفية اختبار المعلمات الديناميكية
 
@@ -41,7 +41,7 @@ $$
 
 إعداد نظام الاختبار لاختبار المعلمات الديناميكية لـ ADC:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221009230212.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221009230212.png)
 
 يجب أن يكون دقة محول الرقم الإجمالي للتيار المتردد على الأقل 2 إلى 4 بت أفضل من DUT.
 
@@ -73,9 +73,9 @@ $$
 
 #### 3. إرسال مجموعة العينات الزمنية المجمعة إلى DSP لأداء تحليل DFT / FFT
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011140834.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221011140834.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221011140904.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221011140904.png)
 
 #### 4. تحليل حاويات التردد المهمة باستخدام المعادلات أو خوارزميات الاختبار لـ SNR و THD والمقارنة بالمواصفات
 

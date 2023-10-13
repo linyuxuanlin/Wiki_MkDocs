@@ -4,13 +4,13 @@
 
 GPIO significa **puerto de entrada/salida general** (General Purpose Input Output).
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200615205256.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20200615205256.jpg)
 
 Tomemos como ejemplo el chip F103C8T6 (en la imagen de arriba), todo lo que no sean los pines de color (pines de alimentación y algunos pines de función) se llaman GPIO. Se puede ver su grado de generalidad.
 
 La función de GPIO es la entrada/salida de señales eléctricas. Echemos un vistazo a su estructura interna:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200615211744.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20200615211744.jpg)
 
 - El pin I/O más a la derecha es el pin del chip físico. Las dos diodos de protección arriba y abajo pueden prevenir en cierta medida que el voltaje anormal externo queme el chip a través del pin.
 - El cuadro de línea roja es la función de entrada (el chip lee la señal externa). Las dos resistencias de pull-up/pull-down con interruptores son para implementar la función de entrada de pull-up/pull-down. Si ambos interruptores no están cerrados, lo llamamos entrada flotante (no hay nivel de referencia). Los tres modos de entrada leen una cantidad digital (nivel alto/bajo). Además, también hay una función de entrada analógica, que se entiende como la lectura directa de la señal analógica en el pin. (Hablaremos de la función de entrada de función múltiple más adelante).
@@ -60,7 +60,7 @@ Antes de continuar con el siguiente experimento, es necesario configurar varios 
 
 Configure el puerto GPIO correspondiente al LED como salida y establezca el nivel inicial.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210205150422.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210205150422.png)
 
 En mi placa, necesito configurar los GPIO `PD4` y `PI3` como salida (`GPIO_Output`). Si quiero que se enciendan al encender, según el esquema del circuito, debo establecer el potencial inicial como bajo (`Low`).
 
@@ -89,7 +89,7 @@ Después de aprender sobre la salida GPIO, usaremos un botón para aprender sobr
 
 Después de configurar el puerto GPIO al que pertenece el LED según el método anterior, según el esquema del botón de la placa:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210205150422.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210205150422.png)
 
 Configure el GPIO al que pertenece el botón (`PI8`) como entrada (`GPIO_Input`). Según el esquema, seleccione la resistencia pull-up interna (`Pull-up`). Genere el código.
 

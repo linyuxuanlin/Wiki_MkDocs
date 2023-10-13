@@ -1,6 +1,6 @@
 # إعداد Windows وتوصيات البرامج (القديمة)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210117142759.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20210117142759.jpg)
 
 > للحصول على المقال المحدث ، يرجى الرجوع إلى [**Personal Onboarding Workflow (Windows)**](https://wiki-power.com/ar/Personal_Onboarding_Workflow_%28Windows%29/)
 

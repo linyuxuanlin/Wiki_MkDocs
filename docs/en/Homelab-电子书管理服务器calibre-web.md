@@ -1,6 +1,6 @@
 # Homelab - calibre-web, an eBook Management Server
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210429125418.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210429125418.png)
 
 **calibre-web** is an all-in-one eBook solution based on Calibre. It allows users to read eBooks on a web page, integrates calibre-server service, and also supports eBook format conversion.
 

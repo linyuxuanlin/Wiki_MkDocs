@@ -8,7 +8,7 @@
 
 يحدث تسرب المدخل في دائرة مخزن المدخل. IIH هو مسار التسرب من دبوس المدخل إلى GND عندما يتم تشغيل DUT إلى "1" ، و IIL هو مسار التسرب من VDD إلى دبوس المدخل عندما يتم تشغيله إلى "0":
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220911215421.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220911215421.png)
 
 في الواقع ، يتم قياس IIL عن طريق المقاومة من دبوس المدخل إلى VDD ، و IIH هو المقاومة من دبوس المدخل إلى GND. يتم إجراء اختبار تسرب المدخل لضمان عدم تدفق المخزن المدخل للدبابيس أو الاستنزاف أكثر من التي تم تحديدها.
 
@@ -18,7 +18,7 @@
 
 #### اختبار IIL (تسلسلي)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220911225521.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220911225521.png)
 
 1. تطبيق VDDmax على دبوس VDD (مع مشبك التيار).
 2. إجبار VDDmax على جميع دبابيس المدخل باستثناء دبوس التحت الاختبار.
@@ -29,7 +29,7 @@
 
 #### اختبار IIH (تسلسلي)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220912113044.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220912113044.png)
 
 1. تطبيق VDDmax على دبوس VDD (مع مشبك التيار).
 2. إجبار 0V على جميع دبابيس المدخل باستثناء دبوس التحت الاختبار.
@@ -58,7 +58,7 @@
 
 #### اختبار IOZL (التسلسلي)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220912121730.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220912121730.png)
 
 1. تطبيق VDDmax على دبوس VDD (مع مشبك التيار).
 2. تهيئة دبوس الإخراج المحدد لحالة Hi-Z (تعطيل).
@@ -69,7 +69,7 @@
 
 #### اختبار IOZH (التسلسلي)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220912122050.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220912122050.png)
 
 ## الاختبار الكهربائي للدوائر المتكاملة
 

@@ -2,7 +2,7 @@
 
 - إنشاء بيئة تطوير مدمجة لاستبدال Keil / Arduino IDE
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200531112801.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200531112801.png)
 
 ## الخلفية
 
@@ -29,7 +29,7 @@ PlatformIO هي أداة مدمجة قوية ، وهناك بعض الميزات
 
 ابحث وقم بتثبيت `Python` و `PlatformIO IDE` داخل `الملحقات` (`Ctrl + Shift + X`).
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200531113916.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200531113916.png)
 
 بعد تثبيت الإضافة بنجاح ، انقر فوق `إعادة تحميل` لتشغيل الإضافة ، ثم اصنع فنجانًا من القهوة وانتظر حتى يتم تثبيت مكونات النواة الأساسية `platformIO-core` تلقائيًا (قد يستغرق الأمر وقتًا طويلاً في المرة الأولى).
 

@@ -6,13 +6,13 @@ This article is based on the self-developed RobotCtrl development kit, with the 
 
 ### I2C Communication
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026174634.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211026174634.png)
 
 The basic principle of I2C communication can be found in the article [**Communication Protocol - I2C**](https://wiki-power.com/en/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-I2C).
 
 ### MPU6050 Module
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220404145145.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220404145145.png)
 
 Pin definitions for the module:
 
@@ -327,7 +327,7 @@ Overall, this function is used to filter noisy sensor data and provide a more ac
 
 In the CubeMX left-hand functional category bar, select `Communication` - `I2Cx`, change the I2C option from `disable` to `I2C`, and configure the parameters in the pop-up configuration interface (default is fine):
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220403190116.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220403190116.png)
 
 ### Configuring I2C to Read Information Returned by MPU6050 in Code
 

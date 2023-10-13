@@ -22,15 +22,15 @@ Project repository: [**Collection_of_Power_Module_Design/PMIC/EA3036C**](https:/
 
 ## Typical Application Circuit
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220417095917.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220417095917.png)
 
 ## Internal Functional Block Diagram
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220417001936.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220417001936.png)
 
 ## Pin Definitions
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220416234110.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220416234110.png)
 
 | Pin Name   | Pin Description                                                                                                         |
 | ---------- | ----------------------------------------------------------------------------------------------------------------------- |

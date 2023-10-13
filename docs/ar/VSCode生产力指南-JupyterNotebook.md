@@ -2,7 +2,7 @@
 
 استخدم VS Code لإنشاء أدوات إنتاجية فعالة.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323155728.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200323155728.png)
 
 يعد Jupyter Notebook أداة قوية للغاية، حيث يتيح لنا كتابة الشفرة وتشغيلها وعرض النتائج وتصور البيانات وعرض النتائج في بيئة واحدة ... بشكل عام، يجعل كتابة المستندات التي تحتوي على الشفرة أسهل بكثير.
 
@@ -23,7 +23,7 @@
 
 بعد إعداد البيئة، يمكننا إنشاء دفتر Jupyter فارغ (ملف `.ipynb`) باستخدام لوحة الأوامر في VS Code (`Ctrl + Shift + P`) وكتابة **Python: Create Blank New Jupyter**. كما هو موضح في الصورة التالية:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323153020.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200323153020.png)
 
 يمكن رؤية أن الشفرة تعمل بشكل صحيح.
 
@@ -31,27 +31,27 @@
 
 يستخدم Jupyter Notebook شفرات الأكواد الفردية (code cells) لإنشاء وتحرير وتشغيل الشفرة.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323153717.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200323153717.png)
 
 ### إضافة شفرات الأكواد
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323153850.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200323153850.png)
 
 ### تشغيل شفرة واحدة
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323153939.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200323153939.png)
 
 ### تشغيل شفرات متعددة
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154005.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200323154005.png)
 
 ### نقل شفرة
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154059.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200323154059.png)
 
 ### حذف شفرة
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154148.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200323154148.png)
 
 ### التبديل بين الشفرة و Markdown
 
@@ -61,17 +61,17 @@
 
 من خلال مشاهد الرسم البياني ، يمكنك بسهولة عرض الرسوم البيانية التي تم إخراجها من الكود ، كما يمكنك تصدير الرسوم البيانية إلى صور بتنسيقات مختلفة:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154555.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200323154555.png)
 
 ### مشاهد البيانات والمتغيرات
 
 يمكنك عرض نوع وكمية وقيمة المتغيرات في الوقت الحقيقي من خلال مشاهد المتغيرات:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154758.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200323154758.png)
 
 كما يمكنك تصفح البيانات الأكثر تفصيلاً من خلال مشاهد البيانات:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200323154832.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200323154832.png)
 
 ## المراجع والشكر
 

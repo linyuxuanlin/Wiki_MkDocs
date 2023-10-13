@@ -34,7 +34,7 @@ From the perspective of EMI, it is recommended to cover copper; from the perspec
 
 ## Judging Whether the Inductor is Saturated by Experiment
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210723133831.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210723133831.png)
 
 In addition, it can also be judged from abnormal temperature rise, whistling, and other situations.
 

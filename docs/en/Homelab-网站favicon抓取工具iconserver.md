@@ -1,6 +1,6 @@
 # Homelab - Website Favicon Retrieval Tool iconserver
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230304195157.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20230304195157.png)
 
 **iconserver** is a website favicon icon retrieval tool. It supports retrieving `favicon.ico` and `apple-touch-icon.png`, and has a simple URL API and web operation page. If the retrieval fails, it will generate a favicon starting with the first letter.
 

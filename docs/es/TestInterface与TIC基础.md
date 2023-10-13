@@ -8,13 +8,13 @@ En las pruebas de semiconductores, **TIC (Test Interface Controller, Controlador
 
 Dado que la filosofía de AMBA es aislar las pruebas de cada módulo individual en el sistema, cada prueba de módulo depende solo de la interfaz del bus, por lo que se necesita un método de prueba para probar las entradas y salidas de los periféricos no conectados al bus.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308262214877.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202308262214877.png)
 
 Este método de prueba se puede implementar a través de la Interfaz de Prueba. Utiliza un simple protocolo de tres vías para controlar la lectura y escritura de vectores; al mismo tiempo, utiliza la **EBI (External Bus Interface, Interfaz de Bus Externo)** como ruta de datos para importar vectores externos a los buses internos.
 
 ## Pines de la Interfaz de Prueba
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202308262225257.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202308262225257.png)
 
 Como se puede ver en la figura anterior, los pines de la Interfaz de Prueba constan de tres partes:
 

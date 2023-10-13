@@ -2,7 +2,7 @@
 
 SwiftCtrl هو يد تحكم عن بعد بلوتوث (HC-06) مستندة إلى Arduino ، ويوفر تحكمًا بزرين ومزدوج للرافعة وعرض OLED.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200221145040.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200221145040.png)
 
 مستودع المشروع: [**linyuxuanlin/SwiftCtrl**](https://github.com/linyuxuanlin/SwiftCtrl)
 
@@ -20,7 +20,7 @@ SwiftCtrl هو يد تحكم عن بعد بلوتوث (HC-06) مستندة إل�
 - المتحكم الرئيسي: مستند إلى Arduino Nano (ATmega328)
 - جهد المستشعر: 3.3 فولت
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200311182440.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200311182440.png)
 
 > عنوان النص: <https://wiki-power.com/>  
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.

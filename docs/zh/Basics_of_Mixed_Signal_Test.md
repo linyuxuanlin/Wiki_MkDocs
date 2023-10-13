@@ -8,7 +8,7 @@ As a part of it, analog signals is signals we use in the real world such as voic
 
 ## Sampling Theory
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220929094314.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220929094314.png)
 
 Sampling theory applies to the signal to be periodic, or errors will be introduced.
 
@@ -26,7 +26,7 @@ If we sample at a frequency that lower that the Nyquist rate, it will exhibit a 
 
 To minimize aliasing problem, we need to remove the frequency greater than $\frac{F_s}{2}$ of the signal, via the anti-aliasing filter (e.g. low-pass-filter):
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220930154335.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220930154335.png)
 
 ### Coherent Sampling
 
@@ -42,7 +42,7 @@ The total time required to take all samples is called the **Unit Test Period (UT
 
 For an example, if we want to calculate the $F_s$ of continuous repeating sinewave, where $F_i$ is 1kHz, $M=3$ and $N=16$:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220930164712.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220930164712.png)
 
 So we can conclude that $F_s=5.333kHz$.
 
@@ -55,17 +55,17 @@ Important tips of coherent sampling:
 
 If $M$ and $N$ are not mutually prime ($M=3,N=12$), samples are taken at the same position in every cycle, so there is no new information:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220930170300.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220930170300.png)
 
 If $M$ and $N$ aremutually prime ($M=3,N=16$), so they are mutually prime and every sample is discrete, so it gives unique information:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220930170343.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220930170343.png)
 
 ## Common Frequency Analysis Algorithms
 
 For $N$ time-domain signal samples, there are $N$ frequency-domain signal values, and there are $N/2$ frequency-domain power spectrum values. A typical spectral components example is shown below:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221002145846.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221002145846.png)
 
 There are several parameters for describing spectral components as follows:
 
@@ -79,15 +79,15 @@ There are several parameters for describing spectral components as follows:
 
 **Signal To Noise Ratio (SNR)** is derived by storing the value of the fundamental (signal power) first:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221002151235.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221002151235.png)
 
 Then remove the DC component and harmonics (usually up to 5):
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221002151402.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221002151402.png)
 
 Next sum all bins of the remaining power spectrum (the noise power) measured by the RMS value (Root Mean Squared, The analog voltage that is equal to a DC voltage containing the same amount of energy, for a sine wave, the RMS value is 0.707 times the peak value):
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221002151646.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221002151646.png)
 
 Ultimately we can conclude that:
 
@@ -101,7 +101,7 @@ SNR is usually expressed in decibels (dB), and is often a positive value (assumi
 
 **Total Harmonic Distortion (THD)** is derived by keeping a running sum of the total harmonic power (usually only the first five harmonics, start at the second harmonic):
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221002155148.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221002155148.png)
 
 And we can conclude that:
 
@@ -135,7 +135,7 @@ $$
 
 ### Intermodulation Distortion (IM)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221018162800.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221018162800.png)
 
 Intermodulation Distortion (IM) occurs when two or more signals are used in a non-linear system. The spectrum will not only consist of the original signals, but will also contain the sum and difference of the input signals along with their harmonics.
 
@@ -143,7 +143,7 @@ Intermodulation Distortion (IM) occurs when two or more signals are used in a no
 
 **Spurious Free Dynamic Range (SFRD)** is derived by finding the highest element after the fundamental (ignoring the DC component):
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221002161334.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221002161334.png)
 
 Note that the highest element may or may not be a harmonic. So we can conclude that:
 
@@ -155,7 +155,7 @@ The Spurious Free Dynamic Range is a positive value (assuming the Fundamental Po
 
 ## Architecture of Generic Mixed Signal Tester
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221006174550.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221006174550.png)
 
 In the generic mixed signal tester, the AWG (AC src) and WD (AC dig) are both connected to the DUT via relay interconnects through the channel board.
 
@@ -163,7 +163,7 @@ In the generic mixed signal tester, the AWG (AC src) and WD (AC dig) are both co
 
 **Arbitrary Waveform Generator (AWG)** is a low distortion signal generator. It contains a DAC to generate an analog signal from the digital data.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221006175627.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221006175627.png)
 
 LPF (Low Pass Filter) is to smooth the waveform and remove high frequency components. A set of data points for a given waveshape is stored in the waveform source memory, each time a clock occurs, a data point will pass to the DAC.
 
@@ -180,7 +180,7 @@ Important parameters of AWG:
 
 **Waveform Digitizer (WD)** samples analog signals, and converts them into digital values. It performs the opposite operation to the AWG. It converts analog signal into digital samples that represent the original analog signal.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221006180242.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221006180242.png)
 
 The low-pass filter limits the bandwidth of the signal in order to remove unwanted frequency components like noise and spurs, also provides anti-aliasing by attenuating spurs that would be aliased into the pass band of the filter during the ADC conversion.
 
@@ -203,7 +203,7 @@ The analog and digital clocks are derived from a system wide reference clock. If
 
 The architecture of a DSP is optimized to allow fast multiplication, summing, logarithm calculations, squaring, and square root calculations.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20221007142019.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221007142019.png)
 
 The tester will carry the stored captured signal to the DSP processor through data buses.
 

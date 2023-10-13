@@ -1,6 +1,6 @@
 # Homelab - أداة Watchtower لتحديث حاويات Docker تلقائيًا
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304092337531.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202304092337531.png)
 
 **Watchtower** هي أداة لتحديث حاويات Docker كلها أو محددة تلقائيًا.
 

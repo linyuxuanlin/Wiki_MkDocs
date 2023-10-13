@@ -23,7 +23,7 @@ Repositorio de GitHub: [**linyuxuanlin/DashDAP**](https://github.com/linyuxuanli
 
 `Versión 2.0 en edición`
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200613154907.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20200613154907.jpg)
 
 Vista previa del proyecto en línea:
 
@@ -51,7 +51,7 @@ CMSIS-DAP / DAP-Link tiene las siguientes ventajas en comparación con J-Link / 
 
 Se selecciona un cristal pasivo de Murata de 8 MHz, modelo CSTCE8M00G53-R0, encapsulado en 3213, con una capacidad de 15 pF. ¿Por qué se selecciona este? Es porque su tamaño es relativamente pequeño y integra dos capacitores de oscilación, lo que ahorra mucho trabajo en el diseño de hardware. En cuanto al método de nomenclatura del modelo de cristal de Murata, se puede consultar la siguiente tabla:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200612143451.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20200612143451.jpg)
 
 ### Fuente de alimentación
 

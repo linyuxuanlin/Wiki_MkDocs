@@ -1,6 +1,6 @@
 # RobotCtrl - STM32 Universal Development Kit
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220416181125.jpeg)
+![](https://img.wiki-power.com/d/wiki-media/img/20220416181125.jpeg)
 
 Project Repository: [**linyuxuanlin/RobotCtrl**](https://github.com/linyuxuanlin/RobotCtrl)
 
@@ -12,7 +12,7 @@ RobotCtrl - STM32 Universal Development Kit includes three boards:
 
 ## Design Requirements
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220527111854.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220527111854.png)
 
 Note: The following is a design summary, please refer to the relevant articles for specific content.
 

@@ -2,7 +2,7 @@
 
 ## Recursos de hardware
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211008090724.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211008090724.png)
 
 - USB tipo A: se utiliza como modo de host USB
 - USB Micro: alimenta la placa y actúa como esclavo

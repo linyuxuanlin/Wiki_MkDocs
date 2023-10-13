@@ -77,7 +77,7 @@
 
 إذا كنت بحاجة إلى شفرة متعددة الأسطر ، فيمكنك استخدام ثلاث علامات الاقتباس العكسي <code>```</code> لتحيط بكتلة الشفرة:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210215164653.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210215164653.png)
 
 ```c
 int fputc(int ch,FILE *f)
@@ -233,7 +233,7 @@ int fputc(int ch,FILE *f)
 ---
 ```
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210216123630.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210216123630.png)
 
 ## استخدامات متقدمة
 

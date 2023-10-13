@@ -48,7 +48,7 @@ La interfaz DP83848 es RMII, y DP83848 admite una velocidad de línea de 10M/100
 
 Configuración del árbol de reloj: configure según el oscilador integrado en la placa (8M en este caso).
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220702145310.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220702145310.png)
 
 ### Agregar código de funcionalidad
 

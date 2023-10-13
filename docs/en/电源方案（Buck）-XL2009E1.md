@@ -26,11 +26,11 @@ Project repository: [**Collection_of_Power_Module_Design/DC-DC(Buck)/XL2009E1**]
 
 According to the datasheet's typical application circuit (input 8-36V, output 5V@2.1A):
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407103157.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220407103157.png)
 
 ## Pin Definitions
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407065806.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220407065806.png)
 
 - FB: Feedback input pin, feedback is input through a resistor divider from $V_{OUT}$, cannot be directly grounded. The feedback reference voltage is 1.25V.
 - OCSET: Output constant current setting pin.
@@ -42,7 +42,7 @@ According to the datasheet's typical application circuit (input 8-36V, output 5V
 
 ### Internal Functional Block Diagram
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407070413.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220407070413.png)
 
 ### Output Voltage Regulation
 
@@ -70,13 +70,13 @@ The datasheet for XL2009E1 provides a direct selection table (3A):
 
 Relationship between output voltage and current:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407100229.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220407100229.png)
 
 Relationship between efficiency and output current:
 
 Relationship between Output Current and RCS Resistance (Constant Current Control):
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407103033.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220407103033.png)
 
 Reference and Acknowledgements:
 

@@ -2,7 +2,7 @@
 
 SPI (Serial Peripheral Interface) هو بروتوكول اتصال **ثنائي الاتجاه، متزامن، متسلسل، رئيسي / فرعي، حافلة** ، وسرعة نقل البيانات الخاصة به تبلغ 8 ميجابت. يمكن أن يكون لدى SPI مضيف واحد فقط ، ويمكن توصيل جهاز أو أكثر. عند توصيل العديد من الأجهزة ، يتعين استخدام دبابيس تحديد الشريحة (chip select ، CS).
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210911095950.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210911095950.png)
 
 ## دبابيس SPI
 
@@ -16,7 +16,7 @@ SPI (Serial Peripheral Interface) هو بروتوكول اتصال **ثنائي 
 - يُشار إلى الحافة التي تم تخزين البيانات عليها باسم الحافة الحرجة.
 - على سبيل المثال ، يُمثل الشكل الأيسر أدناه تخزين SDO عند الحافة الصعودية للمنطق `1` ، بينما يُمثل الشكل الأيمن تخزين SDO عند الحافة الهابطة للمنطق `0`.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026151750.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211026151750.png)
 
 ## مثال على قراءة SPI
 
@@ -26,7 +26,7 @@ SPI (Serial Peripheral Interface) هو بروتوكول اتصال **ثنائي 
 4. يتم نقل البيانات بالترتيب من البت الأعلى (MSB) إلى البت الأدنى (LSB) عند حافة صعودية لـ SCLK.
 5. تم نقل البيانات بنجاح: `1011001`
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026152228.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211026152228.png)
 
 ## الحافة الحرجة لـ SPI
 
@@ -34,7 +34,7 @@ SPI (Serial Peripheral Interface) هو بروتوكول اتصال **ثنائي 
 - $t_{HO}$ (hold time) : يحدد مدة يجب فيها الاحتفاظ بالبيانات على SDI بعد حدوث الحافة الحرجة.
 - $t_{DO}$ (delay time) : يحدد مدة تأخير البيانات الصالحة على SDO بعد حدوث الحافة الحرجة.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026160940.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211026160940.png)
 
 ## وضع النقل لـ SPI (4 أنواع)
 
@@ -48,11 +48,11 @@ SPI (Serial Peripheral Interface) هو بروتوكول اتصال **ثنائي 
 | 2        | 1 (مستوى عالي)      | 0 (الاحتفاظ في الحافة الأولى) | حافة هبوطية   |
 | 3        | 1 (مستوى عالي)      | 1 (الاحتفاظ في الحافة الثانية) | حافة صعودية   |
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026162028.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211026162028.png)
 
 ## سلسلة الزهور (Daisy Chain)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026164011.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211026164011.png)
 
 في الوضع العادي ، يحتاج كل جهاز فرعي في SPI إلى خط CS. عندما يكون هناك العديد من الأجهزة الفرعية ، يستخدم المضيف الكثير من مخارج الإدخال / الإخراج. باستخدام توبولوجيا سلسلة الزهور ، يمكن استخدام خط CS واحد فقط لتشغيل جميع الأجهزة الفرعية.
 

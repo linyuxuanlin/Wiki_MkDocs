@@ -1,6 +1,6 @@
 # RobotCtrl_Power - Placa de alimentación
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220527113517.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220527113517.png)
 
 Repositorio del proyecto: [**linyuxuanlin/RobotCtrl/RobotCtrl_Power**](https://github.com/linyuxuanlin/RobotCtrl/tree/main/RobotCtrl_MultiBoard_Project/RobotCtrl_Power)
 

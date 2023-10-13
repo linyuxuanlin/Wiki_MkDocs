@@ -33,11 +33,11 @@ Vista previa en línea del proyecto:
 
 ## Diagrama de funciones internas
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111090855.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220111090855.png)
 
 ## Definición de pines
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220110170233.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220110170233.png)
 
 - BOOT: Capacitor de arranque para el MOSFET de alta lateral. Conecte un capacitor de 0.1uF entre BOOT y SW.
 - VIN: Entrada de alimentación, conectada a través de un capacitor de desacoplamiento $C_{IN}$.
@@ -55,7 +55,7 @@ La tensión de salida del LMR14050 se ajusta abriendo el N-MOS de alta lateral y
 
 La relación entre la tensión SW y la corriente de la bobina L en el modo de conducción continua (CCM) es la siguiente:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111095020.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220111095020.png)
 
 ### Modo de suspensión
 
@@ -69,7 +69,7 @@ El LMR14050 integra un convertidor de voltaje de arranque automático. Conectand
 
 El LMR14050 proporciona una tensión de referencia interna de 0,75 V. La tensión de salida se ajusta mediante un divisor de resistencia conectado al pin FB, que se compara y ajusta internamente. Se recomienda utilizar resistencias de desviación del 1% o menos y un coeficiente de temperatura de 100 ppm o menos para el divisor de resistencia. Seleccione la resistencia inferior $R_{FBB}$ (valor de referencia de 10-100 kΩ) en función de la corriente de división de tensión deseada y calcule la resistencia superior $R_{FBT}$ mediante la fórmula. Se recomienda utilizar valores de resistencia más altos para mejorar la eficiencia en condiciones de carga ligera, pero si son demasiado altos, el regulador será más susceptible al ruido y los errores de voltaje de entrada de la corriente de entrada de FB.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111105814.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220111105814.png)
 
 $$
 R_{FBT}=\frac{V_{OUT}-0.75}{0.75}R_{FBB}
@@ -81,7 +81,7 @@ Cuando $V_{IN}$ es superior a 3,7 V y EN es superior al umbral de 1,2 V, el LMR1
 
 Puede ajustar los umbrales de voltaje de inicio y apagado ajustando las resistencias de pull-up y pull-down externas de EN:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111111613.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220111111613.png)
 
 $R_{ENT}$ y $R_{ENB}$ se calculan según las siguientes fórmulas:
 
@@ -112,13 +112,13 @@ $$
 R_T(kΩ)=32537*f_{SW}^{-1.045}(kHz)
 $$
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111135021.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220111135021.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111135034.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220111135034.png)
 
 La acción de conmutación del LMR14050 también se puede sincronizar con una señal de entrada de reloj externa (250kHz-2.3MHz):
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111141247.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220111141247.png)
 
 El oscilador interno se sincroniza con el flanco descendente del reloj externo. Se recomienda que el nivel alto del reloj externo no sea inferior a 1.7V, el nivel bajo no sea superior a 0.5V y el ancho de pulso mínimo no sea inferior a 30ns. Si se conecta una fuente de señal de baja impedancia, la resistencia de programación de frecuencia $R_T$ debe conectarse en paralelo con una resistencia de acoplamiento de CA $C_{COUP}$ (puede ser un condensador cerámico de 10pF) y una resistencia terminal $R_{TERM}$ (por ejemplo, 50Ω) para lograr una mejor coincidencia de impedancia.
 
@@ -136,7 +136,7 @@ El LMR14050 tiene una función de protección de apagado térmico interna. Cuand
 
 ## Diseño de referencia
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220111143510.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220111143510.png)
 
 Parámetros de diseño:
 
@@ -233,7 +233,7 @@ Según la fórmula anterior, si se establece un tiempo de arranque suave de 5ms,
 
 ## Referencia de diseño de Layout
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220110183248.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220110183248.png)
 
 Sugerencias de diseño de Layout para reducir la EMI:
 

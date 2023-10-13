@@ -1,6 +1,6 @@
 # Homelab - خادم البودكاست والكتب الصوتية Audiobookshelf
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230531204505.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20230531204505.png)
 
 **Audiobookshelf** هو خادم بودكاست وكتب صوتية يتم استضافته ذاتيًا، ويمكن البحث عن البودكاست بسهولة والكشف التلقائي عن التحديثات وتنزيلها وتنظيمها تلقائيًا.
 

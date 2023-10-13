@@ -1,6 +1,6 @@
 # Homelab - تشغيل مجمّع RSS FreshRSS على خادم شخصي
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304102312005.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202304102312005.png)
 
 **FreshRSS** هو مجمّع RSS مستضاف يدعم الاشتراك في عدة مصادر RSS ويقوم بالتحديث التلقائي. يوفر قراءة عبر الويب وواجهة برمجة تطبيقات (API) للاستخدام على التطبيقات المحمولة.
 

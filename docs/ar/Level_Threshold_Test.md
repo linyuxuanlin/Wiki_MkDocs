@@ -2,7 +2,7 @@
 
 > هذا المنشور متاح فقط باللغة الإنجليزية.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220912163403.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220912163403.png)
 
 يتضمن اختبار عتبة المستوى عتبة مستوى الإخراج (VOL وVOH) وعتبة مستوى الإدخال (VIL وVIH). وهي تنبع من عتبة المستوى النموذجية TTL و CMOS:
 
@@ -25,7 +25,7 @@ VOH تمثل الجهد الأدنى للإخراج عند مستوى جهد HIG
 
 #### اختبار VOL / IOL (تسلسلي)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220912172403.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220912172403.png)
 
 1. تطبيق VDDmin على دبوس VDD (مع مشبك التيار).
 2. شرط معين دبوس الإخراج إلى المنطق "0".
@@ -36,7 +36,7 @@ VOH تمثل الجهد الأدنى للإخراج عند مستوى جهد HIG
 
 #### اختبار VOH / IOH (تسلسلي)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220912172445.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220912172445.png)
 
 1. تطبيق VDDmin على دبوس VDD (مع مشبك التيار).
 2. شرط معين دبوس الإخراج إلى المنطق "1".

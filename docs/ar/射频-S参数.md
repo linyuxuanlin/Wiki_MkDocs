@@ -6,31 +6,31 @@
 
 تتبع معاملات S تسمية محددة ، حيث يمثل الرقم الأول المنفذ المقاس ، والرقم الثاني يمثل المنفذ المرجعي ، على سبيل المثال ، يمثل S21 الإشارة المقاسة من المنفذ 1 بالنسبة لمصدر الإشارة والإشارة المنقولة من المنفذ 2. يمكن أن تكون موجة معاملات S في شكل قدرة أو جهد أو تيار.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220627100338.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220627100338.png)
 
 كما هو موضح في الشكل أعلاه ، تمثل S11 و S22 معاملات الانعكاس (الانعكاس / الإدخال) ، وتمثل S21 و S12 معاملات النقل (النقل / الإدخال).
 
 ### S11
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220621000000.gif)
+![](https://img.wiki-power.com/d/wiki-media/img/20220621000000.gif)
 
 يشير S11 إلى الإشارة العائدة من المنفذ 1 بالنسبة للإشارة الواردة ، وهي إشارة الانعكاس من المنفذ 1 ، $S11 = \frac{S_{Reflection}}{S_{Incident}}$.
 
 ### S21
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220621000001.gif)
+![](https://img.wiki-power.com/d/wiki-media/img/20220621000001.gif)
 
 يشير S21 إلى الإشارة المنقولة من المنفذ 2 بالنسبة للإشارة الواردة من المنفذ 1 ، وهي $S21 = \frac{S_{Transmission}}{S_{Incident}}$.
 
 ### S12
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220621000002.gif)
+![](https://img.wiki-power.com/d/wiki-media/img/20220621000002.gif)
 
 يشير S12 إلى الإشارة المنقولة من المنفذ 1 بالنسبة للإشارة الواردة من المنفذ 2 ، وهي $S12 = \frac{S_{Transmission}}{S_{Incident}}$.
 
 ### S22
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220621000003.gif)
+![](https://img.wiki-power.com/d/wiki-media/img/20220621000003.gif)
 
 يشير S22 إلى الإشارة العائدة من المنفذ 2 بالنسبة للإشارة الواردة ، وهي إشارة الانعكاس من المنفذ 2 ، $S22 = \frac{S_{Reflection}}{S_{Incident}}$.
 

@@ -49,7 +49,7 @@
 
 أولاً، نفتح صفحة تكوين شجرة الساعة Clock Configuration، ونجد تردد ساعة APB2 Timer clocks (180 ميجا هرتز) لأن المؤقت العام مرتبط بشبكة APB2 عالية السرعة، ونحتفظ به:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210627133951.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210627133951.png)
 
 ثم، نجد المؤقت العام TIM8 في الجانب الأيسر من الشاشة، ونقوم بتعيين القناة 1 (Channel 1) كإنتاج PWM (PWM Generation CH1). لإنتاج موجة مربعة PWM بتردد 1 كيلو هرتز، نقوم بتكوين المعلمات التالية:
 
@@ -58,7 +58,7 @@
 - **Counter Period** (فترة العداد / قيمة التحميل): 1000-1
 - **auto-reload preload** (إعادة تحميل تلقائي): Enable (سيتم إعادة تحميل القيمة الأولية عند الفيض)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210627153422.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210627153422.png)
 
 وبما أن المصدر المستخدم هو 180 ميجا هرتز، فإننا نقوم بتعيين معامل القسمة على 180-1 = 179، وبعد القسمة، يصبح التردد 1 ميجا هرتز، ونقوم بتعيين قيمة التحميل على 1000-1 = 9999، وبالتالي يتم الحصول على تردد 1 كيلو هرتز.
 
@@ -79,7 +79,7 @@ __HAL_TIM_SetCompare(&htim8,TIM_CHANNEL_1,500);
 
 قم بترجمة وحرق البرنامج ، يمكنك رؤية الموجة باستخدام المحلل الطيفي:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210627154737.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20210627154737.jpg)
 
 ## المراجع والشكر
 

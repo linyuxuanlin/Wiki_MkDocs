@@ -1,6 +1,6 @@
 # Homelab - 电子书管理服务器 calibre-web
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210429125418.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210429125418.png)
 
 **calibre-web** 是一个一站式电子书解决方案，它基于 Calibre，可在网页上阅读电子书，集成了 calibre-server 服务，也带电子书格式转换。
 

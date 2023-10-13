@@ -2,7 +2,7 @@
 
 SPI (Serial Peripheral Interface) es un protocolo de comunicación **full-duplex, sincrónico, serial, maestro-esclavo, de bus** con una velocidad de transferencia de datos de 8 Mbit. SPI solo puede tener un host y puede conectarse a uno o varios esclavos. Cuando se conectan múltiples dispositivos, se requiere el uso de pines de selección de chip (chip select, CS).
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210911095950.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210911095950.png)
 
 ## Pines de SPI
 
@@ -16,7 +16,7 @@ SPI (Serial Peripheral Interface) es un protocolo de comunicación **full-duplex
 - El borde que bloquea los datos se llama borde crítico.
 - Por ejemplo, la imagen izquierda a continuación representa el bloqueo de la lógica `1` en el flanco ascendente de SDO, y la imagen derecha representa el bloqueo de la lógica `0` en el flanco descendente.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026151750.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211026151750.png)
 
 ## Ejemplo de segmento de lectura SPI
 
@@ -26,7 +26,7 @@ SPI (Serial Peripheral Interface) es un protocolo de comunicación **full-duplex
 4. Los datos se transmiten en orden de bits de MSB a LSB en el flanco ascendente de SCLK.
 5. Se completa la transmisión de datos: `1011001`
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026152228.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211026152228.png)
 
 ## Bordes críticos de SPI
 
@@ -34,7 +34,7 @@ SPI (Serial Peripheral Interface) es un protocolo de comunicación **full-duplex
 - $t_{HO}$ (tiempo de retención): define cuánto tiempo los datos en SDI deben mantenerse después del evento del borde crítico.
 - $t_{DO}$ (tiempo de retardo): define el tiempo de retardo de los datos efectivos en SDO después del evento del borde crítico.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026160940.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211026160940.png)
 
 ## Modos de transferencia SPI (4)
 
@@ -48,11 +48,11 @@ SPI (Serial Peripheral Interface) es un protocolo de comunicación **full-duplex
 | 2    | 1 (Alto)                   | 0 (Captura en primer flanco)  | Flanco descendente |
 | 3    | 1 (Alto)                   | 1 (Captura en segundo flanco) | Flanco ascendente  |
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026162028.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211026162028.png)
 
 ## Cadena Daisy (Daisy Chain)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026164011.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211026164011.png)
 
 En el modo normal, cada esclavo SPI necesita una línea CS. Cuando hay muchos esclavos, esto ocupa demasiados pines de entrada/salida del maestro. Con la topología de cadena Daisy, solo se necesita una línea CS para controlar todos los esclavos.
 

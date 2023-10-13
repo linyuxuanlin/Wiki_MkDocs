@@ -1,6 +1,6 @@
 # Homelab - 网站状态监控工具 Uptime Kuma
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20230410160253.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20230410160253.jpg)
 
 **Uptime Kuma** 是一个支持多种网络协议的状态监控工具，可监控多个自定义网站的实时可用状态、响应时长、证书有效期等，并提供了多种通知推送方式。
 

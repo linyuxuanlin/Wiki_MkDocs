@@ -32,15 +32,15 @@ Project preview:
 
 ## Typical Application Circuit
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420171841.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420171841.png)
 
 ## Internal Functional Block Diagram
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420171859.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420171859.png)
 
 ## Pin Definitions
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420171920.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420171920.png)
 
 | Pin Name   | Pin Description                                                                                                         |
 | ---------- | ----------------------------------------------------------------------------------------------------------------------- |
@@ -66,7 +66,7 @@ EA3059 is a power management IC designed specifically for OTT applications, whic
 
 If you need to set the turn-on time for each Buck, you can program it using the following circuit:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420172125.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420172125.png)
 
 ### 180° Phase-Shift Architecture
 
@@ -88,7 +88,7 @@ $$
 V_{OUTx}=0.6*\frac{R_1}{R_2}+0.6V
 $$
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420172602.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420172602.png)
 
 If you need to output common voltage values, you can refer to the following table to configure the divider resistors (all need to use 1% accuracy):
 
@@ -147,19 +147,19 @@ Layout reference:
 
 Top layer:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420175756.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420175756.png)
 
 Middle power layer:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420175833.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420175833.png)
 
 Middle ground layer:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420175851.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420175851.png)
 
 Bottom layer:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420175906.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420175906.png)
 
 ## Reference and Acknowledgement
 

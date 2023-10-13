@@ -31,7 +31,7 @@
 **Método**: Utilice el software de fuentes Font Creator, descargue mi fuente en [GitHub](https://github.com/linyuxuanlin/Modularity_of_Functional_Circuit/tree/master/%E4%B8%93%E7%94%A8%E5%AD%97%E4%BD%93) como plantilla y personalice su propia fuente exclusiva. Después de crear la fuente, instale el archivo .ttf y podrá llamar al logotipo correspondiente con los caracteres apropiados en Altium.
 
 El logotipo correspondiente a cada carácter se muestra en la siguiente imagen:  
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200207200606.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200207200606.png)
 
 ### Distribución automática de componentes en un área designada
 

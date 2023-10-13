@@ -8,7 +8,7 @@
 
 في هذا المثال ، سنضيف خدمة عكسية جديدة باسم "bitwarden". يرجى ملء التكوين وفقًا للصورة التالية:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210503213004.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210503213004.png)
 
 - "المصدر"
   - "بروتوكول": حدد "HTTPS"

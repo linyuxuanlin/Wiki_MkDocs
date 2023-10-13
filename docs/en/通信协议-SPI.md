@@ -2,7 +2,7 @@
 
 SPI (Serial Peripheral Interface) is a **full-duplex, synchronous, serial, master/slave, bus** communication protocol with a data transfer rate of 8 Mbit. SPI can only have one master and can connect to one or more slaves. When connecting multiple devices, chip select (CS) pins are required.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210911095950.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210911095950.png)
 
 ## SPI Pins
 
@@ -16,7 +16,7 @@ SPI (Serial Peripheral Interface) is a **full-duplex, synchronous, serial, maste
 - The edge that latches the data is called the critical edge.
 - For example, the left image below represents latching logic `1` on the rising edge of SDO, and the right image represents latching logic `0` on the falling edge.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026151750.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211026151750.png)
 
 ## SPI Read Segment Example
 
@@ -26,7 +26,7 @@ SPI (Serial Peripheral Interface) is a **full-duplex, synchronous, serial, maste
 4. Data is transmitted in order from the most significant bit (MSB) to the least significant bit (LSB) on the rising edge of SCLK.
 5. Data transmission is complete: `1011001`
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026152228.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211026152228.png)
 
 ## SPI Critical Edge
 
@@ -34,7 +34,7 @@ SPI (Serial Peripheral Interface) is a **full-duplex, synchronous, serial, maste
 - $t_{HO}$ (hold time): defines how long the data on SDI must be retained after the critical edge event.
 - $t_{DO}$ (delay time): defines the delay time of the valid data on SDO after the critical edge event.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026160940.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211026160940.png)
 
 ## SPI Transfer Modes (4 types)
 
@@ -48,11 +48,11 @@ SPI (Serial Peripheral Interface) is a **full-duplex, synchronous, serial, maste
 | 2           | 1 (High Level)        | 0 (Latch on First Edge)  | Falling    |
 | 3           | 1 (High Level)        | 1 (Latch on Second Edge) | Rising     |
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026162028.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211026162028.png)
 
 ## Daisy Chain
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026164011.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211026164011.png)
 
 In normal mode, each slave in SPI requires a CS line. When there are many slaves, it will occupy too many IO ports of the host. By using the topology connection of the daisy chain, only one CS line can be used to drive all slaves.
 

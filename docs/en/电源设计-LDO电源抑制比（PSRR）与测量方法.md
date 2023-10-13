@@ -6,7 +6,7 @@ One of the advantages of low dropout linear regulators (LDOs) compared to DC-DC 
 
 The power supply rejection ratio (PSRR), also known as ripple rejection ratio, can usually be found in the data sheet of an LDO. It represents the attenuation from input to output at a certain frequency and represents the ripple suppression ability at different frequencies. In some high-speed communication circuits such as Wi-Fi and Bluetooth, high-speed LDOs with high PSRR are needed to respond quickly when the chip needs to instantly increase the current, so as not to drop below the rated voltage and cause the load to restart. In some scenarios, DC-DC converters are used as the first-level voltage reduction, and LDOs are used as the second-level voltage reduction/filtering. Because the DC-DC switching frequency is in the kHz-MHz range, that is, the LDO is above 100kHz, PSRR needs to be strictly considered.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220516174303.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220516174303.png)
 
 The power supply rejection ratio (PSRR) is expressed by the following formula:
 
@@ -18,19 +18,19 @@ where $V_{rp(in)}$ represents input ripple and $V_{rp(out)}$ represents output r
 
 Let's first look at the ripple suppression curve of a regular LDO (XC6206 series):
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220421142140.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220421142140.png)
 
 It can be seen that the ripple suppression ratio of XC6206P302 is about 23dB at a frequency of 1kHz.
 
 Now let's look at the ripple suppression curve of a high-speed LDO (XC6217x302):
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220421141923.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220421141923.png)
 
 At a frequency of 1kHz, the ripple suppression ratio of XC6217x302 is about 68dB.
 
 ## Measurement Methods for Power Supply Rejection Ratio (PSRR)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220424104353.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220424104353.png)
 
 The measurement of power supply rejection ratio (PSRR) involves two parts: input injection and output measurement. PSRR can be calculated based on the following methods by testing and recording the voltage ripple of the input and output.
 
@@ -52,11 +52,11 @@ The selection of the operational amplifier needs to meet several basic condition
 
 An adder can be designed according to the following schematic:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220424101211.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220424101211.png)
 
 Where R1 is equal to R2, and the lowest cutoff frequency is determined by C1 and R1, while the highest cutoff frequency is determined by the bandwidth of the operational amplifier.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220424104709.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220424104709.png)
 
 #### Signal Generator + Operational Amplifier
 
@@ -66,7 +66,7 @@ Using an operational amplifier as a voltage follower for a signal generator can 
 
 Using inductors and capacitors to superimpose DC and AC voltages as the input to the LDO:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220424102617.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220424102617.png)
 
 Where capacitor C1 is used to prevent high pulse interference from VAC on VDC, and inductor L1 prevents VDC from shorting VAC, isolating the two power sources with an LC circuit.
 
@@ -76,15 +76,15 @@ The highest frequency of this circuit is determined by the inductor L1 and capac
 
 The audio analyzer itself does not have the ability to generate DC voltage and has weak driving capability, so it needs a high-bandwidth, high-current operational amplifier to superimpose the AC ripple it generates onto the DC voltage of the power supply and then connect it to the input of the LDO. However, due to the bandwidth limitation of the audio analyzer, PSRR above 100kHz cannot be measured.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220424095319.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220424095319.png)
 
 #### Dedicated Injector
 
 This method requires a dedicated input injector (such as J2120A, bandwidth 10Hz-10MHz, maximum DC voltage of 50V, maximum output current of 5A), which can directly superimpose AC ripple and DC voltage of the power supply, but the input voltage after the injector will be attenuated. Use a network analyzer to measure the input and output voltage ripple values separately:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220421145125.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220421145125.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220424095347.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220424095347.png)
 
 ### Output Measurement
 
@@ -105,7 +105,7 @@ When the PSRR of the LDO is greater than 50dB, since the amplitude of the output
 
 Design of the amplification circuit:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220424103037.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220424103037.png)
 
 The lowest cutoff frequency of this circuit is determined by C1 and R1, and the highest cutoff frequency is determined by the bandwidth of the operational amplifier.
 
@@ -113,7 +113,7 @@ The lowest cutoff frequency of this circuit is determined by C1 and R1, and the 
 
 The spectrum analyzer can measure microvolt-level voltage signals and can be used with a high-impedance input probe to measure the AC voltage of the LDO output. If there is no high-impedance probe, an operational amplifier can be used to build one:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220424103409.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220424103409.png)
 
 ## Measurement Precautions
 

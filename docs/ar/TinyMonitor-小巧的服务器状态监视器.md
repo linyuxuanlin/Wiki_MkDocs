@@ -1,6 +1,6 @@
 # TinyMonitor - مراقب حالة الخادم الصغير
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261716469.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/202305261716469.jpg)
 
 TinyMonitor هو مراقب حالة الخادم الصغير والبسيط للغاية ، وهو يتكون فقط من ESP32 الرئيسي وشاشة OLED ، ويمكنه عرض معلمات حالة الخادم الحية لتسهيل المراقبة والتصحيح.
 
@@ -8,15 +8,15 @@ TinyMonitor هو مراقب حالة الخادم الصغير والبسيط ل
 
 المواد الأولية المستخدمة في هذا المشروع بسيطة للغاية ، وهي Beetle ESP32-C3 الذي يحتوي على Wi-Fi و Bluetooth مدمجين ، بالإضافة إلى شاشة OLED بحجم 128x64.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261541993.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202305261541993.png)
 
 تعريف دبوس Beetle ESP32-C3 كما يلي.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261545236.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202305261545236.png)
 
 نظرًا لأنه يمكن استخدام طريقة I2C البرمجية (أي تعريف دبوس I2C المخصص) لتشغيل شاشة OLED ، فقد قمت بتعريف دبوس `0` / `1` لـ Beetle ESP32-C3 كـ `SCL` / `SDA`. بالتالي ، يكون التوصيل بسيطًا للغاية ، حيث يتم لصق 4 دبابيس معًا.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261546367.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202305261546367.png)
 
 ملاحظة: قبل تفريغ برنامج على Beetle ESP32-C3 ، يجب إضافة حزمة ESP32 للتعرف على نموذج اللوحة بشكل صحيح. انظر صفحة [**Wiki**](https://wiki.dfrobot.com.cn/_SKU_DFR0868_Beetle_ESP32_C3) للحصول على التفاصيل.
 
@@ -119,7 +119,7 @@ docker restart معرف الحاوية # إعادة تشغيل الحاوية ل
 
 بعد تثبيت البرنامج ، انقر فوق `Create MQTT Client` لإنشاء اتصال جديد ، وفقًا للمعلمات ذات الصلة الموضحة في الشكل التالي:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261456592.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202305261456592.png)
 
 حيث `HOST` هو عنوان خادم MQTT (على سبيل المثال ، يكون عنوان خادمي في الشبكة المحلية `192.168.1.2`) ؛ يجب أن تتطابق اسم المستخدم وكلمة المرور مع القيم التي تم تعيينها عند تكوين Mosquitto.
 
@@ -156,7 +156,7 @@ while True:
 
 بعد تشغيل البرنامج بنجاح ، يمكننا النقر فوق `Add subscriber` في شريط الحالة العلوي لـ MQTTBox لإضافة اشتراك لهذه الثلاثة موضوعات ، على سبيل المثال:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261513642.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202305261513642.png)
 
 إذا كان كل شيء على ما يرام ، يجب أن تتمكن من رؤية معلومات حالة الخادم المستمرة في MQTTBox.
 
@@ -278,7 +278,7 @@ void loop() {
 
 ملاحظة: صورة Beetle ESP32-C3 و Seeed XIAO ESP32C3.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202305261719170.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/202305261719170.jpg)
 
 ## المراجع والشكر
 

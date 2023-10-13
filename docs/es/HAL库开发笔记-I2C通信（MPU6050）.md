@@ -6,13 +6,13 @@ Este artículo se basa en el kit de desarrollo RobotCtrl de desarrollo propio, c
 
 ### Comunicación I2C
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026174634.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211026174634.png)
 
 Para obtener información sobre los principios básicos de la comunicación I2C, consulte el artículo [**Protocolo de comunicación - I2C**](https://wiki-power.com/es/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-I2C).
 
 ### Módulo MPU6050
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220404145145.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220404145145.png)
 
 Definición de pines del módulo:
 

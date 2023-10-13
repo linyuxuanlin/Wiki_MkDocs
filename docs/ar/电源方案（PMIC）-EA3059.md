@@ -32,15 +32,15 @@ EA3059 هو PMIC بـ 4 مسارات ، ينطبق على التطبيقات ا�
 
 ## دائرة تطبيقية نموذجية
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420171841.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420171841.png)
 
 ## مخطط الوظائف الداخلية
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420171859.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420171859.png)
 
 ## تعريف الدبابيس
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420171920.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420171920.png)
 
 | اسم الدبوس | وصف الدبوس                                               |
 | ----------- | ---------------------------------------------------------- |
@@ -66,7 +66,7 @@ EA3059 هو IC لإدارة الطاقة مصمم خصيصًا لتطبيقات 
 
 إذا كنت بحاجة إلى تعيين وقت التشغيل لكل Buck ، فيمكن برمجتها باستخدام الدائرة التالية:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420172125.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420172125.png)
 
 ### تأخير الفاصل الزمني 180 درجة
 
@@ -88,7 +88,7 @@ $$
 V_{OUTx}=0.6*\frac{R_1}{R_2}+0.6V
 $$
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420172602.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420172602.png)
 
 إذا كنت بحاجة إلى قيم الجهد الناتج الشائعة ، فيمكن الرجوع إلى الجدول التالي لتكوين مقسم المقاومة (يجب استخدام دقة 1٪):
 
@@ -147,19 +147,19 @@ $$
 
 الطبقة العلوية:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420175756.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420175756.png)
 
 طبقة الطاقة الوسطى:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420175833.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420175833.png)
 
 طبقة الأرض الوسطى:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420175851.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420175851.png)
 
 الطبقة السفلية:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420175906.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420175906.png)
 
 ## المراجع والشكر
 

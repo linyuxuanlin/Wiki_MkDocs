@@ -6,13 +6,13 @@
 
 ### الاتصال عبر I2C
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026174634.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211026174634.png)
 
 يمكن الرجوع إلى المقال [**通信协议 - I2C**](https://wiki-power.com/ar/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-I2C) للحصول على المبادئ الأساسية للاتصال عبر I2C.
 
 ### وحدة MPU6050
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220404145145.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220404145145.png)
 
 تعريف دبابيس الوحدة:
 

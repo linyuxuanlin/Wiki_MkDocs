@@ -38,11 +38,11 @@ In silent mode, nodes can be set to an absolutely passive state on the bus, and 
 
 #### Chip Pins
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210607102222.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210607102222.png)
 
 #### Reference Circuit
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210607115611.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210607115611.png)
 
 As shown in the figure, the CAN protocol controller (such as a microcontroller) is connected to the transceiver through a serial line (RX/TX), which is converted to a CAN signal (CANH/CANL) on the transceiver and selects high-speed/silent mode through pin S.
 
@@ -75,17 +75,17 @@ Force Rs to pull up to 3.3V
 
 #### Chip Pinout
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210607155539.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210607155539.png)
 
 #### Reference Circuit
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210607171051.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210607171051.png)
 
 PESD2CAN is a CAN-specific ESD protection diode that protects the chip from static electricity and other transient factors.
 
 The reference PCB layout is as follows:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210607171427.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210607171427.png)
 
 ### Differences between TJA1050 and SN65HVD230
 
@@ -103,7 +103,7 @@ In CAN communication, cables are easily coupled with external interference, whic
 
 CAN interface protection devices mainly include: filtering capacitors, common mode inductors, bridging capacitors, and TVS tubes.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211220134905.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211220134905.png)
 
 - Filtering capacitors $C_1, C_2$: used to provide a low-impedance return path for interference, the selection range is 22pF~1000pF, and the typical value is 100pF.
 - Common mode inductor $L_1$: used to filter out common mode interference on the differential line, the impedance selection range is 120Ω/100MHz~2200Ω/100MHz, and the typical value is 600Ω/100MHz.

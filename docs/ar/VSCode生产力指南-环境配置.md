@@ -2,7 +2,7 @@
 
 - كيفية استخدام VS Code لإنشاء أدوات إنتاجية فعالة.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200319135609.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200319135609.png)
 
 ## الخلفية
 
@@ -24,7 +24,7 @@
 
 بعد تنزيل وتثبيت البرنامج ، نفتحه ، وأول شيء نراه هو صفحة البدء:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200318224855.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200318224855.png)
 
 ## تثبيت المكونات الإضافية
 
@@ -84,7 +84,7 @@
 
 يمكنك اختيار سمة تناسبك من خلال `ملف - التفضيلات - السمات اللونية`، على سبيل المثال، اخترت سمة `Monokai Dimmed`:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20200319132727.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200319132727.png)
 
 إذا كنت ترى أن السمات الافتراضية غير كافية، يمكنك البحث عن سمات أخرى في متجر الإضافات باستخدام الكلمات الرئيسية `theme`.
 

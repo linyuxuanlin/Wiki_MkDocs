@@ -22,15 +22,15 @@ EA3036C هو PMIC ثلاثي القنوات يعمل مع تطبيقات تعم�
 
 ## دائرة تطبيقية نموذجية
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220417095917.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220417095917.png)
 
 ## مخطط الوظائف الداخلية
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220417001936.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220417001936.png)
 
 ## تعريف الدبابيس
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220416234110.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220416234110.png)
 
 | اسم الدبوس | وصف الدبوس                                               |
 | ----------- | ---------------------------------------------------------- |

@@ -6,33 +6,33 @@
 
 **املأ المعلومات المطلوبة كما هو موضح في الصورة وانقر على زر `Submit`:**
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564402348383.png)
+![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564402348383.png)
 
 **انقر على زر التنزيل:**
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564402469518.png)
+![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564402469518.png)
 
 ## 2. التثبيت
 
 **افتح ملف التثبيت الذي تم تنزيله واتبع الخطوات التالية:**
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405005991.png)
+![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405005991.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405034468.png)
+![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405034468.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405123578.png)
+![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405123578.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405166784.png)
+![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405166784.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405201092.png)
+![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405201092.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405260737.png)
+![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405260737.png)
 
 **تثبيت حزمة الشرائح (نحن بحاجة إلى سلسلة STM32 F1 و F4):**
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405574756.png)
+![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405574756.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564405648731.png)
+![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405648731.png)
 
 ## 3. الكسر
 
@@ -40,23 +40,23 @@
 
 **أغلق MDK وانقر بزر الماوس الأيمن وافتحه كمسؤول:**
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564406135091.png)
+![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406135091.png)
 
 **افتح شريط القوائم - File - License Management:**
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564406171844.png)
+![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406171844.png)
 
 **انسخ هذا الرمز `CID`:**
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564406230209.png)
+![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406230209.png)
 
 **الصقه في الكسر واختر `Arm` في قائمة الإسقاط لـ `Target` ، ثم انقر على `Generate` لتوليد رمز التنشيط:**
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564406292113.png)
+![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406292113.png)
 
 **انسخ رمز التنشيط والصقه في MDK ، ثم انقر على `Add LIC`:**
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/UTOOLS1564406431978.png)
+![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406431978.png)
 
 ## المراجع والشكر
 

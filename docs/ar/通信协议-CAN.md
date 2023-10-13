@@ -38,11 +38,11 @@ CAN（Controller Area Network）هو نظام حافلة اتصالات متسل
 
 #### دبابيس الشريحة
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210607102222.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210607102222.png)
 
 #### دائرة الرجوع
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210607115611.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210607115611.png)
 
 كما هو موضح في الشكل ، يتصل متحكم بروتوكول CAN (مثل الميكروكنترولر) بمرسل / مستقبل عبر خط متسلسل (RX / TX) ، ويتم تحويله إلى إشارة CAN (CANH / CANL) على المرسل / المستقبل ، ويتم التحكم في وضع عالي السرعة / الصمت عن طريق دبوس S.
 
@@ -77,17 +77,17 @@ CAN（Controller Area Network）هو نظام حافلة اتصالات متسل
 
 #### دبابيس الشريحة
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210607155539.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210607155539.png)
 
 #### دائرة المرجع
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210607171051.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210607171051.png)
 
 PESD2CAN هو ديود حماية ESD مخصص لـ CAN ، ويحمي الشريحة من التلف الناتج عن الكهرباء الساكنة والانتقالات الأخرى.
 
 تصميم PCB المرجعي كما يلي:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210607171427.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210607171427.png)
 
 ### الاختلافات والتشابه بين TJA1050 و SN65HVD230
 
@@ -105,7 +105,7 @@ PESD2CAN هو ديود حماية ESD مخصص لـ CAN ، ويحمي الشري
 
 تشمل أجهزة حماية واجهة CAN الكابلات: الكابلات المرشحة ، والملف الحثي المشترك ، والكابلات المتقاطعة ، وأنابيب TVS.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211220134905.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211220134905.png)
 
 - الكابلات المرشحة $C_1،C_2$ : تستخدم لتوفير مسار عودة منخفض المقاومة للتداخل ، وتتراوح القيمة المختارة بين 22pF ~ 1000pF ، والقيمة النموذجية هي 100pF.
 - الملف الحثي المشترك $L_1$ : يستخدم لتصفية التشويش المشترك على خطوط التفاضل ، ويتراوح مدى المقاومة بين 120Ω / 100MHz ~ 2200Ω / 100MHz ، والقيمة النموذجية هي 600Ω / 100MHz.

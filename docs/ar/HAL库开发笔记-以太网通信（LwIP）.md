@@ -48,7 +48,7 @@
 
 تكوين شجرة الساعة: تكوينها وفقًا للمذبذب المدمج (8 ميجا هرتز في هذا اللوحة).
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220702145310.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220702145310.png)
 
 ### إضافة رمز الوظيفة
 

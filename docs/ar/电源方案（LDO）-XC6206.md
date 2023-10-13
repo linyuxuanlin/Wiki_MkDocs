@@ -20,21 +20,21 @@
 
 ## شرح الاختيار
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420102910.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420102910.png)
 
 ## مخطط التطبيق النموذجي
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420102323.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420102323.png)
 
 ## مخطط الوظائف الداخلية
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420102514.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420102514.png)
 
 ملاحظة: يتمثل الثنائي في المخطط الدائري في ESD أو الثنائي الطفري.
 
 ## تعريف الأقدام
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420103005.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420103005.png)
 
 | اسم القدم | وصف القدم |
 | -------- | -------- |
@@ -46,7 +46,7 @@
 
 جدول المعلمات الدقيقة لكل نموذج:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420103738.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420103738.png)
 
 ## المراجع والشكر
 
