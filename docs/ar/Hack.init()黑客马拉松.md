@@ -1,10 +1,10 @@
-# Hack.init( ) 黑客马拉松
+# هاك.اينيت( ) هاكاثون
 
-—— Wight · 基于云平台的去线缆化照明系统。
+- Wight: نظام إضاءة لاسلكي قائم على منصة سحابية.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/wight.jpg)
 
-项目仓库：[**linyuxuanlin / Wight**](https://github.com/linyuxuanlin/Wight)
+Repository المستودع : [**linyuxuanlin / Wight**](https://github.com/linyuxuanlin/Wight)
 
 ## الخلفية
 
