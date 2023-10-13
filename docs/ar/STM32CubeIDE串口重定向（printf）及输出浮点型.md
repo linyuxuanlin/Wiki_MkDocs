@@ -32,9 +32,9 @@ __attribute__((weak)) int _write(int file, char *ptr, int len)
 2. في خانة `Other flags` ، أضف مشروعًا واحدًا ، واملأ `-u_printf_float`.
 3. أعد الترميز.
 
-## HAL_UART_Receive_IT مشكلة الأحرف العشوائية
+## HAL_UART_Receive_IT مشكلة الرموز العشوائية
 
-قم بتغيير طول الكلمة (`10`) في `HAL_UART_Transmit(&huart1, (uint8_t *)aRxBuffer, 10,0xFFFF);` إلى `1` وستحل المشكلة.
+قم بتغيير طول الكلمة (`10`) في `HAL_UART_Transmit(&huart1, (uint8_t *)aRxBuffer, 10,0xFFFF);` إلى `1`.
 
 ## المراجع والشكر
 
