@@ -1,19 +1,19 @@
-# Activar descarga en paralelo en Chrome (Edge)
+# فتح تنزيلات متعددة في Chrome (Edge)
 
-## Cómo activar
+## كيفية الفتح
 
-Ingrese el siguiente enlace en la barra de direcciones y presione enter:
+أدخل الرابط التالي في شريط العنوان واضغط على Enter:
 
 - Chrome: `chrome://flags/#enable-parallel-downloading`
 - Edge: `edge://flags/#enable-parallel-downloading`
 
-Luego, cambie la opción `Default` de `Parallel downloading` a `Enabled`.
+قم بتغيير الخيار "Parallel downloading" من "Default" إلى "Enabled".
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Una forma de acelerar la descarga del navegador hasta 20 veces: activar la función de descarga en paralelo oculta en Chrome / Edge de forma gratuita](https://www.iplaysoft.com/chrome-parallel-download.html)
+- [طريقة لتسريع تنزيل المتصفح بمقدار 20 مرة! فتح ميزة التنزيلات المتعددة المخفية في Chrome / Edge مجانًا](https://www.iplaysoft.com/chrome-parallel-download.html)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

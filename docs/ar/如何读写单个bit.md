@@ -1,18 +1,18 @@
-# Cómo leer/escribir un solo bit
+# كيفية قراءة وكتابة بت واحد
 
 ```c
-#define BitVal(data,y) ( (data>>y) & 1)             // Devuelve el valor de Data.Y
-#define SetBit(data,y)    data |= (1 << y)          // Establece Data.Y en 1
-#define ClearBit(data,y)  data &= ~(1 << y)         // Borra Data.Y a 0
-#define TogleBit(data,y)     (data ^=BitVal(y))     // Alterna el valor de Data.Y
-#define Togle(data)   (data =~data )                // Alterna el valor de Data
+#define BitVal(data,y) ( (data>>y) & 1)             // إرجاع قيمة Data.Y
+#define SetBit(data,y)    data |= (1 << y)          // تعيين Data.Y إلى 1
+#define ClearBit(data,y)  data &= ~(1 << y)         // مسح Data.Y إلى 0
+#define TogleBit(data,y)     (data ^=BitVal(y))     // تبديل قيمة Data.Y
+#define Togle(data)   (data =~data )                // تبديل قيمة Data
 ```
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Cómo leer/escribir bits arbitrarios en C/C++](https://stackoverflow.com/questions/11815894/how-to-read-write-arbitrary-bits-in-c-c)
+- [كيفية قراءة وكتابة بتات عشوائية في C / C ++](https://stackoverflow.com/questions/11815894/how-to-read-write-arbitrary-bits-in-c-c)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

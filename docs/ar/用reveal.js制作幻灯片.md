@@ -1,20 +1,20 @@
-# Creando presentaciones con reveal.js
+# استخدام reveal.js لإنشاء العروض التقديمية
 
-## Atajos de teclado
+## اختصارات لوحة المفاتيح
 
-- Siguiente diapositiva: **Barra espaciadora**
-- Seleccionar diapositiva: **Teclas de dirección**
-- Vista general: **Esc**
-- Vista del presentador: **S**
-- Pausar presentación / pantalla negra: **V/B/.**
+- الشريحة التالية: **مسافة**
+- اختيار الاتجاه للشريحة: **مفاتيح الاتجاه**
+- عرض عام: **Esc**
+- عرض المتحدث: **S**
+- إيقاف العرض / الشاشة السوداء: **V/B/.**
 
-## Exportación a PDF
+## تصدير إلى PDF
 
-Agrega `?print-pdf` al final de la dirección, por ejemplo `http://localhost:8000/?print-pdf`
+أضف `?print-pdf` إلى العنوان، مثل `http://localhost:8000/?print-pdf`
 
-## Sintaxis de referencia
+## بناء الجمل
 
-### Imágenes
+### الصور
 
 ```html
 <img
@@ -31,13 +31,13 @@ Agrega `?print-pdf` al final de la dirección, por ejemplo `http://localhost:800
 align="left"
 ```
 
-### Texto
+### النص
 
 ```html
 <p style="white-space: pre-line;"><small> </small></p>
 ```
 
-### Video
+### الفيديو
 
 ```html
 <section
@@ -49,11 +49,11 @@ align="left"
 </section>
 ```
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
 - [reveal.js](https://revealjs.com/)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
