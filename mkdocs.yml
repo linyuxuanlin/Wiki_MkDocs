@@ -147,43 +147,42 @@ plugins:
           site_description: اطلع على كل شيء واندمج بكل شيء.
           copyright: حقوق النشر © 2015 - 2023 بواسطة باور | <a href="https://beian.miit.gov.cn\"> رقم ترخيص ICP 20014898 في قوانغدونغ </a>
           nav_translations:
-            Home: Home
-            硬件 & 半导体: Hardware & Semiconductor
-            硬件设计: Hardware Design
-            基础知识: Basics
-            嵌入式硬件: Embedded Hardware
-            电机驱动: Motor Drive
-            通信协议: Communication Protocols
-            电源设计: Power Design
-            信号与电源完整性: Signal and Power Integrity
-            射频设计: RF Design
-            软件与仪器: Software and Tools
-            半导体测试: Semiconductor Testing
-            测试协议: Testing Protocols
-            ATE 基础知识: ATE Basics
-            ATE Test Fundamental: ATE Test Fundamentals
-            ATE Mixed Signal Test: ATE Mixed Signal Test
-            ATE Coding Syntax: ATE Coding Syntax
-            VBT Syntax: VBT Syntax
-            嵌入式 & 软件开发: Embedded & Software Development
-            嵌入式开发: Embedded Development
+            Home: الرئيسية
+            硬件 & 半导体: أجهزة الكمبيوتر والشرائح الإلكترونية
+            硬件设计: تصميم الأجهزة
+            基础知识: الأساسيات
+            嵌入式硬件: الأجهزة المضمنة
+            电机驱动: تشغيل المحرك
+            通信协议: بروتوكولات الاتصال
+            电源设计: تصميم الطاقة
+            信号与电源完整性: استقرار الإشارة والطاقة
+            射频设计: تصميم الراديو الجرفي
+            软件与仪器: البرمجيات والأدوات
+            半导体测试: اختبار الشرائح الإلكترونية
+            测试协议: بروتوكولات الاختبار
+            ATE 基础知识: أساسيات اختبار ATE
+            ATE Test Fundamental: مبادئ اختبار ATE
+            ATE Mixed Signal Test: اختبار الإشارة المختلطة ATE
+            ATE Coding Syntax: صيغة كتابة تعليمات ATE
+            VBT Syntax: صيغة VBT
+            嵌入式 & 软件开发: تطوير الأجهزة المضمنة والبرمجيات
+            嵌入式开发: تطوير الأجهزة المضمنة
             STM32: STM32
-            Arduino & 杂项: Arduino & Miscellaneous
-            软件开发: Software Development
-            DOCKER: Docker
-            LINUX: Linux
-            杂七杂八: Miscellaneous
-            生活 & 折腾: Life & Exploration
-            生活琐记: Life Musings
-            LIFEHACK: Life Hack
-            BLOG: Blog
-            折腾不止: Continuous Exploration
-            自托管 Self-Host: Self-Hosting
-            自托管应用收藏（Docker）: Self-Hosted App Collection (Docker)
-            群晖 NAS: Synology NAS
-            技术流: Tech Flow
-            一些小技巧: Some Tips and Tricks
-  - search
+            Arduino & 杂项: أردوينو ونوادر أخرى
+            软件开发: تطوير البرمجيات
+            DOCKER: دوكر
+            LINUX: لينوكس
+            杂七杂八: متفرقات
+            生活 & 折腾: الحياة والاستكشاف
+            生活琐记: يوميات الحياة
+            LIFEHACK: الحيل التقنية
+            BLOG: المدونة
+            折腾不止: الاستكشاف المتواصل
+            自托管 Self-Host: الاستضافة الذاتية
+            自托管应用收藏（Docker）: مجموعة تطبيقات الاستضافة الذاتية (دوكر)
+            群晖 NAS: محرك التخزين الشبكي من شركة Synology
+            技术流: تدفق التقنية
+            一些小技巧: بعض النصائح والحيل  - search
   - rss:
       abstract_chars_count: -1 # -1 for full content
       #categories:
