@@ -4,7 +4,7 @@ import os
 import openai
 import env
 
-# 设置OpenAI API Key和API Base
+# 设置OpenAI API Key和API Base，这两个密钥存放在当前路径的 env.py 中
 openai.api_key = os.environ.get('CHATGPT_API_KEY')
 openai.api_base = os.environ.get('CHATGPT_API_BASE')
 
