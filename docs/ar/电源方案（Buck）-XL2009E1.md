@@ -1,88 +1,90 @@
-# Esquema de alimentación (Buck) - XL2009E1
+# مخطط الطاقة (Buck) - XL2009E1
 
-XL2009E1 es un chip Buck de 36V de entrada máxima, 3A de salida y 180kHz fijo de Longan, con protección contra sobrecorriente. Cuando hay un cortocircuito, la frecuencia se reduce a 48kHz.
+XL2009E1 هو رقاقة Buck من شركة شين لونج (Xinlong) ، وهي رقاقة تعمل بأقصى جهد إدخال 36 فولت وتيار إخراجي 3 أمبير وتردد ثابت 180 كيلو هرتز. يتميز بوظيفة حماية التيار الزائد ، حيث يتم تخفيض التردد إلى 48 كيلو هرتز عند القصر.
 
-Repositorio del proyecto: [**Collection_of_Power_Module_Design/DC-DC(Buck)/XL2009E1**](<https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/DC-DC(Buck)/XL2009E1>)
+مستودع المشروع: [**Collection_of_Power_Module_Design/DC-DC(Buck)/XL2009E1**](https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/DC-DC(Buck)/XL2009E1)
 
-## Características principales
+## الميزات الرئيسية
 
-- Topología: DC/DC (Buck)
-- Modelo del dispositivo: XL2009E1
-- Encapsulado: SOP8L
-- Voltaje de entrada: 8-36 V
-- Voltaje de salida: 1.25-32V
-- Diferencia mínima de entrada/salida: 0.3V
-- Ciclo de trabajo máximo: 100%
-- Frecuencia de trabajo: 180kHz fijo
-- Corriente de salida máxima: 3A
-- Eficiencia (entrada 12V, salida 5V@2.1A): 89%
-- Precio de referencia: ¥2.1
-- Otras características
-  - Con anillo de corriente constante de salida
-  - Protección contra cortocircuitos incorporada
-  - Protección contra sobrecorriente incorporada
+- النمط: DC / DC (Buck)
+- رقم الجهاز: XL2009E1
+- التعبئة: SOP8L
+- الجهد الكهربائي الإدخال: 8-36 فولت
+- الجهد الكهربائي الإخراجي: 1.25-32 فولت
+- الفرق الدنيا بين الإدخال والإخراج: 0.3 فولت
+- أقصى نسبة تشغيل: 100٪
+- التردد العامل: 180 كيلو هرتز ثابت
+- أقصى تيار إخراجي: 3 أمبير
+- الكفاءة (الإدخال 12 فولت ، الإخراج 5 فولت @ 2.1 أمبير): 89٪
+- السعر المرجعي: 2.1 يوان صيني
+- ميزات أخرى
+  - يحتوي على دائرة تيار ثابت للإخراج
+  - يحتوي على حماية القصر الداخلية
+  - يحتوي على حماية التيار الزائد الداخلية
 
-## Circuito de aplicación típico
+## دائرة تطبيق نموذجية
 
-Según el circuito de aplicación típico proporcionado por el manual de datos (entrada 8-36V, salida 5V@2.1A):
+وفقًا لدليل البيانات ، يتم توفير دائرة تطبيق نموذجية (8-36 فولت الإدخال ، 5 فولت @ 2.1 أمبير الإخراج):
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407103157.png)
 
-## Definición de pines
+## تعريف الأقدام
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407065806.png)
 
-- FB: Pin de entrada de retroalimentación, se introduce una retroalimentación a través de una resistencia desde $V_{OUT}$ y no se puede conectar directamente a tierra. La tensión de referencia de retroalimentación es de 1.25V.
-- OCSET: Pin de configuración de corriente constante de salida.
-- VC: Capacitor de derivación del regulador interno. Por lo general, se conecta de 1uF a VIN.
-- VIN: Pin de entrada de alimentación. El voltaje de entrada es de 8-36V. Se requiere un gran capacitor de acoplamiento.
-- SW: Salida de conmutación Buck.
+- FB: دخل ردود الفعل ، يتم إدخاله من تقسيم الجهد من $V_{OUT}$ بواسطة مقاومة ، ولا يمكن توصيله مباشرة بالأرض. الجهد المرجعي للردود الفعل هو 1.25 فولت.
+- OCSET: دخل تعيين تيار الإخراج الثابت.
+- VC: مكثف تجاوز المنظم الداخلي. عادة ما يتم توصيله بين 1 ميكروفاراد إلى VIN.
+- VIN: دخل الطاقة. الجهد الكهربائي الإدخال هو 8-36 فولت. يجب أن يكون هناك سعة كبيرة للتحليل.
+- SW: إخراج التبديل Buck.
 
-## Descripción de características
+## وصف الميزات
 
-### Diagrama de funciones internas
+### مخطط الوظائف الداخلية
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407070413.png)
 
-### Regulación de voltaje de salida
+### تعديل الجهد الكهربائي الإخراجي
 
-XL2009E1 proporciona una tensión de referencia interna de 1.25V. La tensión de salida se divide mediante un divisor de resistencia y se introduce en el pin FB desde $V_{OUT}$ para su comparación y regulación interna. Se recomienda utilizar resistencias de desviación con una desviación del 1% o inferior y un coeficiente de temperatura de 100 ppm o inferior. El uso de valores de resistencia más grandes para el divisor de resistencia es beneficioso para mejorar la eficiencia de carga ligera, pero si son demasiado grandes, el regulador será más susceptible al ruido y al error de voltaje de entrada de la corriente de entrada de FB. Se recomienda que el valor de la resistencia de bajo lado $R_1$ sea de 4.7k, y el valor de la resistencia de alto lado $R_2$ se calcule mediante la fórmula:
+يوفر XL2009E1 جهد مرجعي داخليًا بقيمة 1.25 فولت. يتم تقسيم الجهد الكهربائي الإخراجي بواسطة مقاومة تقسيم الجهد ، ويتم إدخاله إلى دخل FB ، ويتم تعديله داخليًا. يوصى باستخدام مقاومة تقسيم الجهد بقيمة انحراف 1٪ أو أقل ومعامل درجة الحرارة 100 جزء في المليون أو أقل. يفضل اختيار قيمة مقاومة تقسيم الجهد الكبيرة لتحسين الكفاءة في الحمولة الخفيفة ، ولكن إذا كانت كبيرة جدًا ، فسيكون المنظم أكثر عرضة للتأثر بضوضاء التيار الداخلي وأخطاء الجهد. يوصى باختيار قيمة منخفضة للمقاومة الجانبية $R_1$ بقيمة 4.7 كيلو أوم ، وحساب قيمة المقاومة الجانبية $R_2$ باستخدام الصيغة التالية:
 
 $$
 V_{OUT}=1.25*(1+\frac{R_2}{R_1})
 $$
 
-### Selección de diodo Schottky
+### اختيار الثنائي الثنائي السيليكوني
 
-La tensión de ruptura nominal del diodo debe ser al menos un 25% mayor que el voltaje de entrada máximo. Para obtener la mejor confiabilidad, la corriente nominal del diodo debe ser igual a la corriente de salida máxima del regulador. Cuando el voltaje de entrada es mucho mayor que el voltaje de salida, la corriente media del diodo será más baja. En este caso, se puede utilizar un diodo con una corriente nominal media más baja, aproximadamente $(1-D) * I_{OUT}$, pero la corriente nominal de pico debe ser mayor que la corriente de carga máxima.
+يجب أن يكون الجهد الكهربائي الأقصى للثنائي الثنائي السيليكوني أعلى بنسبة 25٪ من الجهد الكهربائي الأقصى للإدخال. للحصول على أفضل موثوقية ، يجب أن يكون التيار الكهربائي الأقصى للثنائي الثنائي السيليكوني مساويًا لأقصى تيار إخراجي للمنظم. في حالة توفر جهد الإدخال بشكل كبير على الجهد الكهربائي الإخراجي ، فإن التيار المتوسط للثنائي الثنائي السيليكوني سيكون أقل ، ويمكن استخدام ثنائي السيليكوني الذي يتم تصنيفه بتيار متوسط أقل بحوالي $(1-D) * I_{OUT}$ ، ولكن يجب أن يكون تصنيف التيار الذروي أعلى من أقصى تيار للحمل.
 
-El manual de datos de XL2009E1 proporciona una tabla de selección directa de diodos (3A):
+يوفر دليل البيانات لـ XL2009E1 جدول اختيار مباشر للثنائي الثنائي السيليكوني (3 أمبير):
 
-| Voltaje de entrada | Modelo      |
-| ------------------ | ----------- |
-| 20V                | SK32        |
-| 30V                | SK33/30WQ03 |
-| 40V                | SK34/30WQ04 |
-| 50V                | SK35/30WQ05 |
-| 60V                | SK36        |
+| الجهد الكهربائي الإدخال | النوع |
+| ---------------- | ----------- |
+| 20 فولت | SK32 |
+| 30 فولت | SK33/30WQ03 |
+| 40 فولت | SK34/30WQ04 |
+| 50 فولت | SK35/30WQ05 |
+| 60 فولت | SK36 |
 
-### Curvas de parámetros
+### منحنيات المعلمات
 
-Relación entre voltaje de salida y corriente:
+علاقة الجهد الكهربائي الإخراجي والتيار:
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407100229.png)
 
-Relación entre eficiencia y corriente de salida:
+علاقة الكفاءة والتيار الكهربائي الإخراجي:
 
-Relación entre la corriente de salida y la resistencia RCS (control de corriente constante):
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407102905.png)
 
-## Referencias y agradecimientos
+# العلاقة بين تيار الإخراج ومقاومة RCS (التحكم بالتيار الثابت):
 
-- [Hoja de datos XL2009](https://datasheet.lcsc.com/lcsc/1806111754_XLSEMI-XL2009E1_C73335.pdf)
+![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407103033.png)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+## المراجع والشكر
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+- [XL2009_Datasheet](https://datasheet.lcsc.com/lcsc/1806111754_XLSEMI-XL2009E1_C73335.pdf)
+
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

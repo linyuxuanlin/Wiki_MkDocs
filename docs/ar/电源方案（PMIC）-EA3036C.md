@@ -1,151 +1,150 @@
-# Esquema de alimentación (PMIC) - EA3036C
+# مخطط الطاقة (PMIC) - EA3036C
 
-EA3036C es un PMIC de 3 canales adecuado para aplicaciones alimentadas por baterías de litio o DC de 5V. Incorpora tres convertidores reductores sincrónicos que proporcionan una salida de alta eficiencia en condiciones de carga ligera y pesada. La arquitectura de compensación interna simplifica el diseño del circuito de aplicación. Además, el control de habilitación independiente facilita el control del orden de encendido. EA3036C utiliza un paquete QFN de 20 pines de 3x3.
+EA3036C هو PMIC ثلاثي القنوات يعمل مع تطبيقات تعمل بالطاقة من بطارية ليثيوم أو تيار مستمر 5 فولت. يحتوي على ثلاث محولات DC-DC متزامنة داخلية يمكنها توفير إخراج عالي الكفاءة في حالة التشغيل الخفيف والثقيل. تجعل هيكلة التعويض الداخلية تصميم الدائرة التطبيقية بسيطًا. بالإضافة إلى ذلك ، يتيح التحكم المستقل في التمكين التحكم السهل في ترتيب التشغيل. يستخدم EA3036C حزمة QFN 3x3 ذات 20 دبوسًا.
 
-Repositorio del proyecto: [**Collection_of_Power_Module_Design/PMIC/EA3036C**](https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/PMIC/EA3036C)
+مستودع المشروع: [**Collection_of_Power_Module_Design/PMIC/EA3036C**](https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/PMIC/EA3036C)
 
-## Características principales
+## الميزات الرئيسية
 
-- Voltaje de entrada y voltaje de circuito de control: 2.7-5.5V
-- Voltaje de salida (3 convertidores reductores): 0.6V-Vin
-- Corriente de carga continua de un solo canal: 1A (la salida total de 3 canales debe ser inferior a 6W)
-- Frecuencia de conmutación fija de 1.5MHz
-- Salida de ciclo de trabajo del 100%
-- Corriente de espera: <1uA
-- Control de habilitación independiente para cada canal
-- Compensación interna
-- Limitación de corriente por ciclo
-- Protección contra cortocircuitos
-- Protección contra sobrecalentamiento (OTP) con recuperación automática
-- Protección contra sobretensión de entrada (OVP)
-- Paquete QFN de 20 pines de 3 mm x 3 mm
+- جهد الإدخال وجهد الدائرة التحكم: 2.7-5.5 فولت
+- جهد الإخراج (3 محولات Buck): 0.6 فولت - Vin
+- تيار الحمل المستمر الفردي: 1 أمبير (يجب أن يكون إجمالي إخراج 3 قنوات أقل من 6 واط)
+- تردد تبديل ثابت 1.5 ميجاهرتز
+- إخراج نسبة العمل 100٪
+- تيار الاستنزاف الخامل: <1uA
+- التحكم في التمكين المستقل لكل قناة
+- تعويض داخلي
+- حد التيار الدوري
+- حماية الدائرة القصيرة
+- حماية الحرارة الزائدة (OTP) التي تستعيد بشكل ذاتي
+- حماية الجهد الزائد للإدخال (OVP)
+- يستخدم حزمة QFN بـ 20 دبوسًا بحجم 3 مم × 3 مم
 
-## Circuito de aplicación típico
+## دائرة تطبيقية نموذجية
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220417095917.png)
 
-## Diagrama de funciones internas
+## مخطط الوظائف الداخلية
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220417001936.png)
 
-## Definición de pines
+## تعريف الدبابيس
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220416234110.png)
 
-| Nombre del pin | Descripción del pin                                                                                                                                |
-| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| VCC            | Pin de entrada de alimentación del circuito de control interno                                                                                     |
-| VINx           | Pin de entrada de alimentación del canal x, con un condensador MLCC de 10uF para desacoplar                                                        |
-| LXx            | Salida de conmutación del MOS interno del canal x, que se puede conectar a un circuito de filtro de paso bajo para obtener una tensión más estable |
-| FBx            | Pin de retroalimentación del canal x, conectado a la salida de tensión a través de un circuito divisor de tensión                                  |
-| ENx            | Pin de habilitación, no puede dejarse en flotación                                                                                                 |
-| GNDx           | Tierra del canal x                                                                                                                                 |
-| AGND           | Tierra analógica                                                                                                                                   |
-| Pad inferior   | Para disipación de calor, debe conectarse a tierra                                                                                                 |
+| اسم الدبوس | وصف الدبوس                                               |
+| ----------- | ---------------------------------------------------------- |
+| VCC         | مدخل طاقة دائرة التحكم الداخلية                           |
+| VINx        | مدخل طاقة القناة x ، مع تجاهل 10uF MLCC للتحويل         |
+| LXx         | مخرج تبديل المفتاح الداخلي للقناة x ، يمكن توصيل دائرة تصفية منخفضة التمرير لتحقيق جهد أكثر استقرارًا |
+| FBx         | دبوس ردود الفعل للقناة x ، متصل بالجهد المنخفض عن طريق دائرة تقسيم الجهد |
+| ENx         | دبوس التمكين ، لا يمكن أن يكون مطفيًا                       |
+| GNDx        | الأرض للقناة x                                            |
+| AGND        | الأرض التناظرية                                           |
+| قاعدة اللحام | للاستخدام في التبريد ، يجب توصيلها بالأرض               |
 
-## Descripción de características
+## وصف الميزات
 
-### Modo PFM/PWM
+### وضع PFM / PWM
 
-Cada canal Buck puede funcionar en modo PFM/PWM. Si la corriente de salida es inferior a 260 mA (valor típico), el regulador entrará automáticamente en modo PFM. La tensión de salida y la ondulación de salida en modo PFM son mayores que en modo PWM. Sin embargo, en condiciones de carga ligera, PFM es más eficiente que PWM.
+يمكن لكل محول Buck أن يعمل في وضع PFM / PWM. إذا كان التيار الناتج أقل من 260 مللي أمبير (القيمة النموذجية) ، فسيدخل المنظم في وضع PFM تلقائيًا. يكون الجهد الناتج وتموج الإخراج أعلى في وضع PFM من الجهد الناتج وتموج الإخراج في وضع PWM. ومع ذلك ، في حالة التحميل الخفيف ، يكون PFM أكثر كفاءة من PWM.
 
-### Interruptor de habilitación
+### مفتاح التمكين
 
-EA3036C es un IC de gestión de energía diseñado específicamente para aplicaciones IPC, que incluye tres canales Buck sincrónicos de 1A que se pueden controlar mediante un solo pin de habilitación.
+EA3036C هو IC إدارة طاقة مصمم خصيصًا لتطبيقات IPC ، يحتوي على ثلاثة محولات Buck متزامنة بقدرة 1 أمبير يمكن التحكم فيها بواسطة دبوس EN المستقل.
 
-Si es necesario establecer el tiempo de encendido de cada canal Buck, se puede programar mediante el siguiente circuito:
+إذا كنت بحاجة إلى تعيين وقت التشغيل لكل Buck ، فيمكن برمجته باستخدام الدائرة التالية:
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220417100845.png)
+### تصميم الزاوية المنحرفة 180 درجة
 
-### Arquitectura de desplazamiento de fase de 180°
+لتقليل تدفق التيار المتموج الناتج عن الإدخال، يستخدم EA3036C تصميم الزاوية المنحرفة 180 درجة. تتمتع Buck1 و Buck3 بنفس الزاوية، في حين يختلف Buck2 بزاوية 180 درجة. يمكن بذلك تقليل تدفق التيار المتموج وبالتالي تقليل التشويش الكهرومغناطيسي.
 
-Para reducir la corriente de ondulación de entrada, el EA3036C utiliza una arquitectura de desplazamiento de fase de 180°. Buck1 y Buck3 tienen la misma fase, mientras que la fase de Buck2 está desplazada 180°. De esta manera, se puede reducir la corriente de ondulación y, por lo tanto, reducir la EMI.
+### حماية التيار الزائد
 
-### Protección contra sobrecorriente
+تحتوي الثلاثة مثبتات الجهد الثابت داخل EA3036C على دوائر تحكم في التيار الزائد لكل دورة. عندما يتجاوز تيار الذروة في الملف الحثي عتبة الحد الأقصى للتيار، يبدأ الجهد الناتج في الانخفاض حتى يصل الجهد على مدخل FB إلى مستوى العتبة، والذي يكون عادة أقل بنسبة 30٪ من القيمة المرجعية. بمجرد تحقيق العتبة، يتم تخفيض تردد التبديل إلى 400 كيلو هرتز (القيمة النموذجية).
 
-Los tres reguladores internos del EA3036C tienen su propio circuito de limitación de corriente por ciclo. Cuando la corriente de pico del inductor supera el umbral de límite de corriente, el voltaje de salida comienza a disminuir hasta que el voltaje en el pin FB cae por debajo del umbral, generalmente un 30% más bajo que el valor de referencia. Una vez que se activa el umbral, la frecuencia de conmutación se reduce a 400 kHz (valor típico).
+### تيار الحمل الذروة
 
-### Corriente de carga pico
+تعتمد قدرة تيار الحمل الذروة في EA3036C على الحدود الحالية لـ PMOS الداخلية ونسبة العمل (Vout / Vin) وقيمة الملف الحثي. في ظل ظروف Vin = 5V و L = 1.5uH ، يتم عرض قدرة تيار الحمل الذروة على الإخراج في الجدول التالي:
 
-La capacidad de corriente de carga pico del EA3036C depende de la limitación de corriente PMOS interna, la relación de trabajo (Vout/Vin) y el valor del inductor. En las condiciones de Vin=5V y L=1.5uH, la capacidad de corriente de carga pico de salida es la siguiente:
+| الجهد الناتج | تيار الحمل الذروة |
+| -------- | ------------ |
+| 3.3V     | 1.2A         |
+| 1.8V     | 1.5A         |
+| 1.5V     | 1.5A         |
+| 1.2V     | 1.5A         |
 
-| Voltaje de salida | Corriente de carga pico |
-| ----------------- | ----------------------- |
-| 3.3V              | 1.2A                    |
-| 1.8V              | 1.5A                    |
-| 1.5V              | 1.5A                    |
-| 1.2V              | 1.5A                    |
+يجب ملاحظة أن الطاقة الإجمالية للإخراج يجب أن تكون أقل من 6 واط لتجنب تلف الشريحة بسبب الحرارة الزائدة.
 
-Es importante tener en cuenta que la potencia de salida total debe ser menor a 6W para evitar daños por sobrecalentamiento del chip.
+### إيقاف التشغيل الحراري
 
-### Protección de apagado térmico
+إذا ارتفعت درجة حرارة الشريحة فوق نقطة إيقاف التشغيل الحراري، فسيتم إيقاف تشغيل EA3036C تلقائيًا. من أجل تجنب عدم الاستقرار في العمل، يتأخر إيقاف التشغيل الحراري بحوالي 30 درجة مئوية.
 
-Si la temperatura del chip supera el punto de umbral de apagado térmico, el EA3036C se apagará automáticamente. Para evitar una operación inestable, el retardo de apagado térmico es de aproximadamente 30°C.
+### تعديل الجهد الناتج
 
-### Regulación de voltaje de salida
-
-El voltaje de salida de cada regulador se puede ajustar mediante un divisor de resistencia (R1, R2). El voltaje de salida se calcula mediante la siguiente fórmula:
+يمكن تعديل الجهد الناتج لكل مثبت جهد باستخدام مقاومات التقسيم (R1 و R2). يتم حساب الجهد الناتج باستخدام المعادلة التالية:
 
 $$
 V_{OUTx}=0.6*\frac{R_1}{R_2}+0.6V
 $$
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220417230210.png)
+إذا كنت بحاجة إلى الحصول على قيم الجهد الشائعة على الإخراج، فيمكنك الاستشارة الجدول التالي لتكوين مقاومات التقسيم (يجب استخدام دقة 1٪):
 
-Si se requieren valores de voltaje comunes de salida, se pueden utilizar las siguientes configuraciones de resistencia de divisor (todas deben ser de precisión del 1%):
+| الجهد الناتج | R1    | R2    |
+| -------- | ----- | ----- |
+| 3.3V     | 68kΩ  | 15kΩ  |
+| 1.8V     | 200kΩ | 100kΩ |
+| 1.5V     | 150kΩ | 100kΩ |
+| 1.2V     | 100kΩ | 100kΩ |
 
-| Voltaje de salida | R1    | R2    |
-| ----------------- | ----- | ----- |
-| 3.3V              | 68kΩ  | 15kΩ  |
-| 1.8V              | 200kΩ | 100kΩ |
-| 1.5V              | 150kΩ | 100kΩ |
-| 1.2V              | 100kΩ | 100kΩ |
+### اختيار السعة الإدخال / الإخراج
 
-### Selección de capacitores de entrada/salida
+تستخدم السعة الإدخالية لتثبيط تداخل الجهد المتموج على المدخل وتوفير إدخال مستقر ونظيف للتيار المستمر، ويمكن استخدام السعة الإخراجية لتثبيط الجهد المتموج على المخرج. يمكن استخدام السعة السيراميكية متعددة الطبقات (MLCC) للإدخال / الإخراج (ESR منخفض).
 
-El capacitor de entrada se utiliza para suprimir la amplitud del ruido del voltaje de entrada y proporcionar una entrada de CC estable y limpia al dispositivo, mientras que el capacitor de salida puede suprimir la ondulación del voltaje de salida. Se pueden utilizar capacitores MLCC (baja ESR) tanto para la entrada como para la salida.
+يتم عرض النماذج المقترحة للسعة الإدخال / الإخراج في الجدول التالي:
 
-Los modelos recomendados de capacitores de entrada/salida son los siguientes:
+| NPM            | السعة | الجهد | التعبئة |
+| -------------- | ---- | ---- | ---- |
+| C2012X5R1A106M | 10uF | 10V  | 0805 |
+| C3216X5R1A106M | 10uF | 10V  | 1206 |
+| C2012X5R1A226M | 22uF | 10V  | 0805 |
+| C3216X5R1A226M | 22uF | 10V  | 1206 |
 
-| NPM            | Valor | Voltaje nominal | Encapsulado |
-| -------------- | ----- | --------------- | ----------- |
-| C2012X5R1A106M | 10uF  | 10V             | 0805        |
-| C3216X5R1A106M | 10uF  | 10V             | 1206        |
-| C2012X5R1A226M | 22uF  | 10V             | 0805        |
-| C3216X5R1A226M | 22uF  | 10V             | 1206        |
+### اختيار الملف الحثي الإخراجي
 
-### Selección de inductores de salida
-
-La selección del inductor de salida depende principalmente de la cantidad de corriente de ondulación $\Delta I_L$ que pasa a través del inductor. Cuanto mayor sea $\Delta I_L$, mayor será la ondulación del voltaje de salida y las pérdidas. Aunque los inductores pequeños pueden ahorrar costos y espacio, los valores de inductancia más grandes pueden obtener $\Delta I_L$ más pequeños, lo que resulta en una ondulación de voltaje de salida y pérdidas más pequeñas. La fórmula para calcular el valor del inductor es la siguiente:
+يعتمد اختيار الملف الحثي الإخراجي بشكل رئيسي على كمية التيار المتموج الذي يمر عبر الملف $\Delta I_L$. كلما زادت $\Delta I_L$، زادت جهد الإخراج المتموج والخسارة. على الرغم من أن الملف الحثي الصغير يمكن أن يوفر التكلفة والمساحة، إلا أن قيم الملف الحثي الأكبر يمكن أن توفر $\Delta I_L$ أقل، مما يؤدي إلى جهد إخراج أقل متموج وخسارة أقل. يتم حساب قيمة الملف الحثي باستخدام المعادلة التالية:
 
 $$
 L=\frac{V_{PWR}-V_{OUT}}{\Delta I_L*F_{SW}}*\frac{V_{OUT}}{V_{PWR}}
 $$
 
-Para la mayoría de las aplicaciones, se pueden utilizar inductores de 1.0~2.2uH con el EA3036C.
+يمكن استخدام ملفات حثي بقيمة 1.0-2.2uH لمعظم حالات الاستخدام.
 
-### Consumo de energía
+### الطاقة
 
-El consumo total de energía del EA3036C no debe superar los 6W, y la fórmula de cálculo es la siguiente:
+يجب ألا يتجاوز الطاقة الإجمالية لـ EA3036C 6 واط، ويتم حسابها باستخدام المعادلة التالية:
 
 $$
 P_{D(total)}=\Sigma (V_{OUTx}*I_{OUTx})
 $$
 
-## Referencia de diseño de PCB
+## مرجع التخطيط الخاص بالدائرة
 
-El diseño de Layout de PMIC requiere atención. Se pueden seguir las siguientes recomendaciones para obtener el mejor rendimiento:
+يجب الانتباه إلى تخطيط PMIC. يمكن الاستشارة على النصائح التالية للحصول على أفضل أداء:
 
-- Se recomienda utilizar un diseño de PCB de 4 capas, colocando el plano LX y el plano de salida en la capa superior, y el plano VIN en la capa interna.
-- Los pines de tierra de los capacitores de montaje superficial de entrada/salida en la capa superior deben estar conectados a través de agujeros a la capa interna y la capa inferior.
-- AGND debe estar conectado directamente a la capa interna a través de agujeros.
-- Ampliar las vías de corriente alta tanto como sea posible.
-- Colocar los capacitores de entrada lo más cerca posible de los pines VINx para reducir la interferencia de ruido.
-- Mantener la ruta de retroalimentación (de VOUTx a FBx) alejada de los nodos de ruido (como LXx). LXx es un nodo de ruido de alta corriente. Utilizar rutas cortas y anchas para el diseño.
-- Los pads de soldadura en la parte inferior del chip deben tener varios agujeros conectados a la capa interna y la capa inferior para la disipación de calor.
+- يُنصح باستخدام تخطيط PCB من 4 طبقات، ووضع مستوى LX ومستوى الإخراج على الطبقة العلوية، ووضع مستوى VIN على الطبقة الداخلية.
+- يجب ربط أرضيات أطراف التركيب السطحي للمدخلات / المخرجات على الطبقة العلوية بالطريقة المثلى إلى الأرضيات الداخلية والأرضيات السفلية.
+- يجب ربط AGND مباشرة عبر الفتحات إلى الطبقة الداخلية.
+- يجب توسيع مسارات التيار الكبير قدر الإمكان.
+- يجب وضع السعة الكهربائية الداخلية بأقرب ما يمكن من أطراف VINx لتقليل التداخل الكهرومغناطيسي.
+- يجب تجنب وضع مسار الردود العكسية (من VOUTx إلى FBx) بالقرب من نقاط التداخل الكهرومغناطيسي (مثل LXx). LXx هو نقطة تداخل كهربائي عالية التيار. يجب استخدام مسارات قصيرة وعريضة للتخطيط.
+- يجب وضع ثقوب متعددة في أسفل رقاقة اللحام إلى الطبقة الداخلية والأرضية السفلية للتبريد.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
 - [EA3036C](http://www.everanalog.com/Product/ProductEA3036CDetailInfo.aspx)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

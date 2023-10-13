@@ -1,77 +1,79 @@
-# Protocolo de comunicación - I2C
+# البروتوكولات الاتصالية - I2C
 
-I2C (Inter-Integrated Circuit) es un bus de comunicación serial que permite la presencia de múltiples maestros, pero solo puede haber un maestro en línea en un momento dado. I2C consta de dos líneas de señal de drenador abierto, con una conexión simple utilizando resistencias pull-up, con niveles típicos de lógica positiva de 3.3V o 5V. La velocidad de transmisión se divide en modo rápido (400Kb/s), modo estándar (100Kb/s) y modo lento (10Kb/s).
+I2C (Inter-Integrated Circuit) هو حافلة اتصال متسلسلة تسمح بوجود عدة مضيفين، ولكن يمكن أن يكون هناك مضيف واحد فقط متصل في نفس الوقت. يتكون I2C من خطي إشارة مفتوحة، ويتم توصيله بسهولة باستخدام مقاومات السحب العلوية، والجهد النموذجي هو 3.3 فولت أو 5 فولت بالمنطق الإيجابي. تنقسم سرعة النقل إلى وضع السرعة العالية (400 كيلوبت في الثانية) ووضع السرعة القياسية (100 كيلوبت في الثانية) ووضع السرعة المنخفضة (10 كيلوبت في الثانية).
 
-En el bus I2C, el esclavo se selecciona mediante su dirección I2C. Esto permite que un maestro controle varios esclavos a través de dos líneas.
+على حافلة I2C ، يتم اختيار العبد بعنوان I2C الخاص به. يمكن استخدام هذا النظام في مضيف واحد للتحكم في عدة عبيد عبر خطين.
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026174634.png)
 
-## Pines de I2C
+## دبابيس I2C
 
-- **SCL** (reloj serial): una señal de onda producida por el maestro que controla la velocidad de transmisión y el bloqueo de datos.
-- **SDA** (datos seriales): una señal de línea sincrónica y semidúplex que transmite datos, incluyendo señales de dirección, control y comunicación.
+- **SCL** (ساعة متسلسلة): موجة مربعة تنتجها المضيف ، وتستخدم للتحكم في سرعة النقل وتخزين البيانات.
+- **SDA** (بيانات متسلسلة): هذا هو خط إشارة **نصف ثنائي الاتجاه ومتزامن** ، والبيانات المنقولة تشمل العنوان وإشارة التحكم والبيانات المتصلة.
 
-## Direcciones de I2C
+## عنوان I2C
 
-- La dirección de I2C se divide en una dirección de 7 bits y una indicación de lectura/escritura de 1 bit.
-- Cada dispositivo en el bus I2C debe tener una dirección única, y si hay una dirección duplicada, se producirán problemas. Algunos dispositivos permiten la programación de la dirección de I2C.
+- تقسيم عنوان I2C هو عنوان بت 7 بالإضافة إلى إشارة القراءة / الكتابة بت 1.
+- يجب أن يكون لكل جهاز على حافلة I2C عنوان فريد ، وإذا تكرر العنوان ، فسيحدث خطأ. يمكن برمجة عناوين بعض الأجهزة I2C.
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211027112717.png)
 
-## Comunicación de I2C
+## اتصال I2C
 
-- **START**: el maestro inicia la transmisión al bajar SDA mientras SCL está en alto.
-- **STOP**: el maestro finaliza la transmisión al liberar SDA (volviendo a alto) mientras SCL está en alto.
-- **ACK** (reconocimiento): cada transmisión de I2C implica la transmisión de 1 byte (8 bits) con cada pulso de SCL. El noveno pulso se reserva para la señal de confirmación del esclavo, y la señal ACK indica que la transmisión anterior fue exitosa.
+- **START**: يقوم المضيف بإطلاقه عندما يكون SCL عاليًا ويخفض SDA.
+- **STOP**: يقوم المضيف بإطلاقه عندما يكون SCL عاليًا ويفرج عن SDA (يصبح عاليًا).
+- **ACK** (اعتراف): يتم نقل I2C مع كل نبضة SCL ، ويتم نقل 1 بايت (8 بت) في كل مرة. يتم الاحتفاظ بالنبضة التاسعة من كل نقل كإشارة تأكيد من العبد ، وتشير إشارة ACK في كل مرة إلى نجاح النقل السابق.
 
-### Ejemplo de segmento de transmisión de I2C
+### مثال على نقل I2C
 
-Este segmento de transmisión es `11001101`:
+قيمة هذا النقل هي `11001101`:
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211104172952.png)
 
-1. El maestro baja SDA para iniciar la señal START.
-2. El primer bit se establece, el maestro baja SCL y envía la señal de reloj a través del DAC.
-3. Cuando se transmite el noveno bit, el maestro no baja SDA. Si el esclavo confirma la transmisión completa, baja SDA para que el maestro lo sepa.
+1. يخفض المضيف مستوى SDA لإنشاء إشارة START.
+2. يتم تعيين البت الأول ، يخفض المضيف SCL ويخرج إشارة الساعة عبر DAC.
+3. عند الوصول إلى البت التاسع ، لا يخفض المضيف SDA ، وإذا قام العبد بتأكيد النقل الكامل ، فسيخفض SDA لإعلام المضيف.
 
-### Transmisión de datos efectiva
+### نقل البيانات الفعال
 
-1. Durante el tiempo en que SCL se mantiene en alto (transmisión de datos), SDA debe mantenerse estable para que sea efectivo.
-2. Solo se permite que SDA cambie de valor durante los pulsos bajos de SCL.
-3. Cuando SDA cambia mientras SCL está en alto, se interpreta como un evento de START, RESTART o STOP.
+1. يجب أن يظل SDA ثابتًا خلال هذه الفترة عندما يكون SCL عاليًا (نقل البيانات) حتى يكون فعالًا.
+2. يسمح فقط بتغيير قيمة SDA بين نبضات SCL عندما يكون SCL منخفضًا.
+3. عندما يكون SCL عاليًا ويحدث تغيير في SDA ، يتم تفسيره على أنه حدث START أو RESTART أو STOP.
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211105172139.png)
 
-### Temporización de subida/bajada en el circuito de interfaz
+### توقيت الارتفاع / الانخفاض في دائرة الواجهة
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211108093819.png)
 
-En la figura, el transistor se enciende cuando la señal está en bajo, descargando el capacitor $C_b$ a bajo. Por otro lado, el transistor se apaga cuando la señal está en alto, y la resistencia pull-up carga $C_b$ a alto.
+كما هو موضح في الشكل ، يتم توصيل الترانزستور عندما يكون المستوى منخفضًا ، ويتم تفريغ السعة $C_b$ إلى المستوى المنخفض. على العكس ، يتم قطع الترانزستور عندما يكون المستوى عاليًا ، وسيقوم المقاوم العلوي بشحن $C_b$ إلى المستوى العالي.
 
-- $t_r$ (tiempo de subida): el tiempo máximo que tarda la señal en pasar de bajo a alto. Debido a que I2C es una señal de drenador abierto, el tiempo de subida depende de la resistencia pull-up y la constante de tiempo RC del bus.
-- $t_f$ (tiempo de bajada): el tiempo máximo que tarda la señal en pasar de alto a bajo.
+- $t_r$ (زمن الارتفاع): الوقت الأقصى الذي يستغرقه الإشارة للانتقال من المستوى المنخفض إلى المستوى العالي. نظرًا لأن I2C هو إشارة مفتوحة ، فإن زمن الارتفاع يتم تحديده بواسطة ثوابت RC للمقاومة العلوية وسعة الحافلة.
+- $t_f$ (زمن الانخفاض): الوقت الأقصى الذي يستغرقه الإشارة للانتقال من المستوى العالي إلى المستوى المنخفض.
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211108095142.png)
 
-### Cálculo de la resistencia pull-up de I2C
+### حساب مقاومة السحب العلوي لـ I2C
 
-- Valor mínimo de la resistencia pull-up: $R_{Pull(Min)}=\frac{V_{DD}-V_{OLMAX}}{I_{SinkMax}}$
-- Valor máximo de la resistencia pull-up: $R_{Pull(Max)}=\frac{t_r}{0.8473*C_b}$
 
-El valor mínimo de la resistencia pull-up proporcionará el tiempo de subida más corto. Si se utiliza un valor de resistencia menor que este, se consumirá demasiada corriente cuando el transistor de salida esté activado (nivel lógico bajo), lo que violará la especificación de salida lógica baja máxima.
 
-El valor máximo de la resistencia pull-up proporcionará el tiempo de subida más largo. Si se utiliza una resistencia pull-up mayor que este valor, se violarán los requisitos de sincronización.
+- الحد الأدنى لمقاومة السحب العلوي: $R_{Pull(Min)}=\frac{V_{DD}-V_{OLMAX}}{I_{SinkMax}}$
+- الحد الأقصى لمقاومة السحب العلوي: $R_{Pull(Max)}=\frac{t_r}{0.8473*C_b}$
 
-$V_{DD}$ representa el voltaje de alimentación; $V_{OLMAX}$ representa el nivel lógico bajo máximo (valor típico de 0.4V); $I_{SinkMax}$ representa la corriente máxima de drenaje (valor típico de 3mA); $C_b$ representa la capacitancia total del bus, que depende de la longitud y el ancho de las pistas de PCB y de la capacitancia de los dispositivos conectados al bus.
+يؤدي الحد الأدنى لمقاومة السحب العلوي إلى أقصر وقت صعود. إذا استخدمت قيمة مقاومة أقل من هذه القيمة، فسيؤدي ذلك إلى استهلاك كمية كبيرة من التيار عندما يتم فتح المفتاح الناتج (مستوى منخفض منطقي)، وهذا يخالف المواصفات القصوى للمستوى الناتج المنخفض المنطقي.
 
-Ejemplo de cálculo:
+يؤدي الحد الأقصى لمقاومة السحب العلوي إلى أطول وقت صعود. إذا استخدمت مقاومة سحب أعلى من هذه القيمة، فسيؤدي ذلك إلى خرق متطلبات التوقيت.
+
+$V_{DD}$ يمثل جهد التغذية؛ $V_{OLMAX}$ يمثل أقصى مستوى منخفض منطقي (القيمة النموذجية هي 0.4 فولت)؛ $I_{SinkMax}$ يمثل أقصى تيار تصريف (القيمة النموذجية هي 3 مللي أمبير)؛ $C_b$ يمثل سعة الخط الكلية، ويعتمد على طول وعرض مسارات الدائرة المطبوعة وسعة الأجهزة المتصلة بالخط.
+
+مثال حسابي:
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211108103406.png)
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- "Analog Engineer's Pocket Reference"
-- [¿Cómo utilizar el bus I2C? Después de leer esto, lo sabrás](https://mp.weixin.qq.com/s/IeL77NTyVdTdkcNtqjjFPA)
-- [[Circuito] Protocolo del bus I2C 🚧](https://zhenhuizhang.tk/post/dian-lu-i2c-zong-xian-xie-yi/)
+- 《Analog Engineer’s Pocket Reference》
+- [I2C 总线该怎么用？看完你就会了](https://mp.weixin.qq.com/s/IeL77NTyVdTdkcNtqjjFPA)
+- [[电路]I2C 总线协议 🚧](https://zhenhuizhang.tk/post/dian-lu-i2c-zong-xian-xie-yi/)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

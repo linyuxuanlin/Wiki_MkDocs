@@ -1,90 +1,90 @@
-# Protocolo de comunicación - SPI
+# البروتوكولات الاتصالية - SPI
 
-SPI (Serial Peripheral Interface) es un protocolo de comunicación **full-duplex, sincrónico, serial, maestro-esclavo, de bus** con una velocidad de transferencia de datos de 8 Mbit. SPI solo puede tener un host y puede conectarse a uno o varios esclavos. Cuando se conectan múltiples dispositivos, se requiere el uso de pines de selección de chip (chip select, CS).
+SPI (Serial Peripheral Interface) هو بروتوكول اتصال **ثنائي الاتجاه، متزامن، متسلسل، رئيسي / فرعي، حافلة** ، وسرعة نقل البيانات الخاصة به تبلغ 8 ميجابت. يمكن أن يكون لدى SPI مضيف واحد فقط ، ويمكن توصيل جهاز أو أكثر. عند توصيل العديد من الأجهزة ، يتعين استخدام دبابيس تحديد الشريحة (chip select ، CS).
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20210911095950.png)
 
-## Pines de SPI
+## دبابيس SPI
 
-- **SCLK** (reloj serial): señal de reloj de onda cuadrada impulsada por el host, muestreada como entrada desde el extremo. Las señales en SDO y SDI se bloquean según la señal de reloj en SCLK. Un ciclo de reloj transmite 1 bit de datos, por lo que la velocidad de transmisión es igual a la frecuencia de reloj generada por el host.
-- **SDI/SDO** (entrada de datos serial / salida de datos serial): describe la dirección del flujo de datos en relación con el host, pero en la placa, aparecen más MOSI (Master Out Slave In) y MISO (Master In Slave Out). Correspondientemente, SDO es MOSI en el host y MISO en el esclavo; mientras que SDI es MISO en el host y MOSI en el esclavo; en una topología de cadena, el dispositivo A MISO se conecta al dispositivo B MISO.
-- **CS/SS** (selección de chip / selección de esclavo): impulsado por el host, se utiliza para arbitrar la prioridad de comunicación en el bus SPI. Cuando la línea CS es de bajo nivel, activa la comunicación SPI. CS es efectivo en bajo nivel.
+- **SCLK** (serial clock) : إشارة توقيت موجهة من المضيف ، وهي إشارة مدخل للعينة في الجهة الفرعية. يتم تخزين إشارات SDO و SDI بناءً على إشارة التوقيت على SCLK. يتم نقل بيت واحد خلال فترة توقيت واحدة ، لذلك يتم تحديد سرعة النقل بتردد التوقيت الذي ينتجه المضيف.
+- **SDI / SDO** (serial data in / serial data out) : يصف اتجاه تدفق البيانات بالنسبة للمضيف ، ولكن في معظم الأحيان يظهر MOSI (Master Out Slave In) و MISO (Master In Slave Out) على اللوحة. على سبيل المثال ، يكون SDO هو MOSI على المضيف و MISO على الجهاز الفرعي ، بينما يكون SDI هو MISO على المضيف و MOSI على الجهاز الفرعي. في توبولوجيا سلسلة الزهور ، يتصل جهاز A MISO بجهاز B MISO.
+- **CS / SS** (chip select / slave select) : يتم توجيهها من المضيف ، وتستخدم لتحديد أولوية الاتصال على حافلة SPI. عندما يكون مستوى CS منخفضًا ، يتم تنشيط الاتصال SPI. يكون CS فعالًا عندما يكون مستوى الجهد منخفضًا.
 
-## Operación de bloqueo de datos SPI
+## عملية تخزين بيانات SPI
 
-- Los datos SPI se bloquean en el flanco ascendente o descendente de SCLK.
-- El borde que bloquea los datos se llama borde crítico.
-- Por ejemplo, la imagen izquierda a continuación representa el bloqueo de la lógica `1` en el flanco ascendente de SDO, y la imagen derecha representa el bloqueo de la lógica `0` en el flanco descendente.
+- يتم تخزين بيانات SPI عند حافة صعودية أو هبوطية لـ SCLK.
+- يُشار إلى الحافة التي تم تخزين البيانات عليها باسم الحافة الحرجة.
+- على سبيل المثال ، يُمثل الشكل الأيسر أدناه تخزين SDO عند الحافة الصعودية للمنطق `1` ، بينما يُمثل الشكل الأيمن تخزين SDO عند الحافة الهابطة للمنطق `0`.
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026151750.png)
 
-## Ejemplo de segmento de lectura SPI
+## مثال على قراءة SPI
 
-1. El borde crítico es el flanco ascendente.
-2. El host envía datos al esclavo (SDI en el esclavo).
-3. El pin CS se baja a 0V para activar SPI.
-4. Los datos se transmiten en orden de bits de MSB a LSB en el flanco ascendente de SCLK.
-5. Se completa la transmisión de datos: `1011001`
+1. الحافة الحرجة هي الحافة الصعودية.
+2. يتم إخراج المضيف إلى الجهاز الفرعي (SDI على الجهاز الفرعي).
+3. يتم سحب دبوس CS إلى 0 فولت لتنشيط SPI.
+4. يتم نقل البيانات بالترتيب من البت الأعلى (MSB) إلى البت الأدنى (LSB) عند حافة صعودية لـ SCLK.
+5. تم نقل البيانات بنجاح: `1011001`
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026152228.png)
 
-## Bordes críticos de SPI
+## الحافة الحرجة لـ SPI
 
-- $t_{SU}$ (tiempo de configuración): define cuánto tiempo antes de que ocurra el evento del borde crítico, los datos en SDI deben ser determinados y estabilizados.
-- $t_{HO}$ (tiempo de retención): define cuánto tiempo los datos en SDI deben mantenerse después del evento del borde crítico.
-- $t_{DO}$ (tiempo de retardo): define el tiempo de retardo de los datos efectivos en SDO después del evento del borde crítico.
+- $t_{SU}$ (setup time) : يحدد بعد مدة قبل حدوث الحافة الحرجة يجب أن يتم تحديد بيانات SDI وتثبيتها.
+- $t_{HO}$ (hold time) : يحدد مدة يجب فيها الاحتفاظ بالبيانات على SDI بعد حدوث الحافة الحرجة.
+- $t_{DO}$ (delay time) : يحدد مدة تأخير البيانات الصالحة على SDO بعد حدوث الحافة الحرجة.
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026160940.png)
 
-## Modos de transferencia SPI (4)
+## وضع النقل لـ SPI (4 أنواع)
 
-- **CPOL** (polaridad del reloj): la polaridad del reloj en estado inactivo (sin transferencia de datos), `0` representa nivel bajo, `1` representa nivel alto.
-- **CPHA** (fase del reloj): define si el bloqueo se realiza en el flanco ascendente o descendente. `0` representa el bloqueo en el primer borde de cambio; `1` representa el bloqueo en el segundo borde de cambio.
+- **CPOL** (clock polarity) : يحدد قطبية التوقيت في حالة الخمول (عدم نقل البيانات) ، حيث يمثل الصفر مستوى الجهد المنخفض ، ويمثل الواحد مستوى الجهد العالي.
+- **CPHA** (clock phase) : يحدد متى يتم تخزين البيانات عند الحافة الصعودية أو الهابطة. يمثل الصفر تخزين البيانات عند الحافة الأولى التي تتغير فيها الإشارة ، بينما يمثل الواحد تخزين البيانات عند الحافة الثانية التي تتغير فيها الإشارة.
 
-| Modo | CPOL (Polaridad del reloj) | CPHA (Fase del reloj)         | Flanco de captura  |
-| ---- | -------------------------- | ----------------------------- | ------------------ |
-| 0    | 0 (Bajo)                   | 0 (Captura en primer flanco)  | Flanco ascendente  |
-| 1    | 0 (Bajo)                   | 1 (Captura en segundo flanco) | Flanco descendente |
-| 2    | 1 (Alto)                   | 0 (Captura en primer flanco)  | Flanco descendente |
-| 3    | 1 (Alto)                   | 1 (Captura en segundo flanco) | Flanco ascendente  |
+| رقم الوضع | CPOL (القطبية الساعة) | CPHA (مرحلة الساعة) | حافة الاحتفاظ |
+| -------- | ---------------- | ------------------------- | -------- |
+| 0        | 0 (مستوى منخفض)      | 0 (الاحتفاظ في الحافة الأولى) | حافة صعودية   |
+| 1        | 0 (مستوى منخفض)      | 1 (الاحتفاظ في الحافة الثانية) | حافة هبوطية   |
+| 2        | 1 (مستوى عالي)      | 0 (الاحتفاظ في الحافة الأولى) | حافة هبوطية   |
+| 3        | 1 (مستوى عالي)      | 1 (الاحتفاظ في الحافة الثانية) | حافة صعودية   |
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026162028.png)
 
-## Cadena Daisy (Daisy Chain)
+## سلسلة الزهور (Daisy Chain)
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026164011.png)
 
-En el modo normal, cada esclavo SPI necesita una línea CS. Cuando hay muchos esclavos, esto ocupa demasiados pines de entrada/salida del maestro. Con la topología de cadena Daisy, solo se necesita una línea CS para controlar todos los esclavos.
+في الوضع العادي ، يحتاج كل جهاز فرعي في SPI إلى خط CS. عندما يكون هناك العديد من الأجهزة الفرعية ، يستخدم المضيف الكثير من مخارج الإدخال / الإخراج. باستخدام توبولوجيا سلسلة الزهور ، يمكن استخدام خط CS واحد فقط لتشغيل جميع الأجهزة الفرعية.
 
-El principio de la cadena Daisy es que los datos se transmiten desde el maestro al primer esclavo, luego del primer esclavo al segundo esclavo, y así sucesivamente, los datos se encadenan en serie a lo largo de la línea hasta el último esclavo, y el último esclavo transmite los datos al maestro a través de SDO.
+يتم توصيل البيانات في سلسلة الزهور من المضيف إلى الجهاز الفرعي الأول ، ثم من الجهاز الفرعي الأول إلى الجهاز الفرعي الثاني ، وهكذا ، حيث تتدفق البيانات عبر الخطوط المتسلسلة حتى الجهاز الفرعي الأخير ، الذي يرسل البيانات إلى المضيف عبر SDO.
 
-## Ventajas y desventajas de SPI
+## مزايا وعيوب SPI
 
-Ventajas:
+المزايا:
 
-- Comunicación full-duplex
-- Conducido por push-pull, puede proporcionar una buena integridad de señal y una velocidad relativamente alta
-- Protocolo flexible, no se limita a 8 bits por byte
-- Diseño de hardware simple
-  - No se necesitan resistencias pull-up, por lo que el consumo de energía es menor
-  - No hay mecanismo de arbitraje o modos de falla relacionados
-  - Los esclavos no necesitan un reloj (proporcionado por el maestro)
-  - Los dispositivos esclavos no necesitan una dirección separada
-  - No se necesitan transceptores
-  - Las señales son unidireccionales, lo que facilita el aislamiento de corriente
-- La velocidad del reloj no tiene límite superior
+- اتصال ثنائي الاتجاه كامل
+- تشغيل بواسطة تحريك الإشارة ، مما يوفر تكامل إشارة جيد وسرعة عالية
+- بروتوكول مرن ، ليس مقتصرًا على بايت واحد بطول 8 بت
+- تصميم الأجهزة بسيط
+  - لا يلزم مقاومات سحب عالية ، مما يؤدي إلى استهلاك طاقة أقل
+  - لا يوجد آلية تحكيم أو وضع فاشل ذي صلة
+  - لا يحتاج الجهاز الفرعي إلى ساعة (توفرها المضيف)
+  - لا يحتاج الجهاز الفرعي إلى عنوان منفصل
+  - لا يلزم مرسل / مستقبل
+  - الإشارات ذات اتجاه واحد ، مما يسهل العزل الكهربائي للتيار
+- لا يوجد حد أقصى لسرعة الساعة
 
-Desventajas:
+العيوب:
 
-- Utiliza más pines que I2C
-- Los esclavos no pueden responder con hardware
-- No hay mecanismo de detección de errores, como el bit de paridad en UART
-- Solo puede haber un maestro
-- La especificación no es uniforme, por lo que no se puede verificar la consistencia
-- La distancia de transmisión es relativamente corta (en comparación con CAN, RS232, RS485, etc.)
+- يستخدم مزيد من الأرجل من I2C
+- لا يمكن للجهاز الفرعي إجراء استجابة الأجهزة الفرعية بالأجهزة الفرعية
+- لا يوجد آلية فحص الأخطاء ، مثل بت التحقق من الزوجية في UART
+- يمكن أن يكون هناك مضيف واحد فقط
+- المواصفات غير موحدة ، ولا يمكن التحقق من التوافق
+- المسافة النسبية للنقل قريبة نسبيًا (بالمقارنة مع CAN و RS232 و RS485 وما إلى ذلك)
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
 - "Analog Engineer's Pocket Reference"
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

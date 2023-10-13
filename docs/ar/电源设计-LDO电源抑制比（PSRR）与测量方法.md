@@ -1,141 +1,139 @@
-# Diseño de fuentes de alimentación - Relación de rechazo de fuente de alimentación (PSRR) y métodos de medición de LDO
+# تصميم الطاقة - نسبة تثبيط الطاقة (PSRR) في LDO وطرق قياسها
 
-Una de las ventajas de los reguladores lineales de baja caída de voltaje (LDO) en comparación con los convertidores DC-DC es que tienen una pequeña ondulación de voltaje de salida. Sin embargo, en circuitos de alta velocidad, la relación de rechazo de fuente de alimentación (PSRR) de LDO también es un factor importante que no se puede ignorar. A menudo se confunde con un valor estático único, este artículo explicará en detalle la relación de rechazo de fuente de alimentación (PSRR) y cómo medirla.
+أحد مزايا المنظم الخطي ذو الفرق الجهد المنخفض (LDO) مقارنة بـ DC-DC هو تمتعه بتموج الجهد الصغير على الإخراج. ومع ذلك، في الدوائر العالية السرعة، نسبة تثبيط الطاقة (PSRR) في LDO هي عامل لا يمكن تجاهله، وغالبًا ما يتم اعتباره كقيمة ثابتة واحدة، وسيتم شرح PSRR بالتفصيل في هذه المقالة بالإضافة إلى كيفية قياسه.
 
-## Definición de la relación de rechazo de fuente de alimentación (PSRR)
+## تعريف نسبة تثبيط الطاقة (PSRR)
 
-La relación de rechazo de fuente de alimentación (Power Supply Rejection Ratio, PSRR), también conocida como relación de rechazo de ondulación, se puede encontrar en el manual de datos de LDO. Representa la atenuación de LDO desde la entrada hasta la salida a una determinada frecuencia y representa la capacidad de supresión de ondulación a diferentes frecuencias. En algunos circuitos de comunicación de alta velocidad, como Wi-Fi, Bluetooth, etc., se requieren LDO de alta velocidad con una gran relación de rechazo de fuente de alimentación para responder rápidamente cuando el chip necesita aumentar la corriente instantáneamente, evitando que la carga se reinicie debido a una caída de voltaje por debajo del voltaje nominal. En algunos casos, se utiliza un convertidor DC-DC como reductor de voltaje de primer nivel y LDO como reductor de voltaje / filtro de segundo nivel, ya que la frecuencia de conmutación del convertidor DC-DC está en el rango de kHz-MHz, es decir, por encima de 100 kHz para LDO, por lo que es necesario considerar estrictamente la PSRR.
+تُعرف نسبة تثبيط الطاقة (Power Supply Rejection Ratio, PSRR) أيضًا باسم نسبة تثبيط التموج، ويمكن العثور عليها عادةً في دليل LDO. تُمثل PSRR درجة تضاؤل LDO من المدخل إلى الإخراج في تردد معين، وتُمثل قدرة تثبيط التموج في ترددات مختلفة. في بعض الدوائر الاتصالات العالية السرعة مثل Wi-Fi و Bluetooth، يتعين استخدام LDO عالية السرعة ذات PSRR كبير لتتمكن من الاستجابة بسرعة عندما يحتاج الشريحة إلى زيادة التيار على الفور، وذلك لتجنب الوصول إلى جهد أقل من الجهد المقدر والذي يؤدي إلى إعادة تشغيل الحمل. كما يتم استخدام DC-DC كتخفيض الجهد من المرحلة الأولى و LDO كتخفيض الجهد / التصفية من المرحلة الثانية في بعض السيناريوهات، لأن تردد تبديل DC-DC يتراوح بين kHz-MHz، أي أنه يتعين النظر بعناية في PSRR عندما يتجاوز LDO 100kHz.
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220516174303.png)
 
-La relación de rechazo de fuente de alimentación (PSRR) se expresa mediante la fórmula:
+يتم تمثيل نسبة تثبيط الطاقة (PSRR) بالمعادلة التالية:
 
 $$
 PSRR(dB)=20\log\frac{V_{rp(in)}}{V_{rp(out)}}
 $$
 
-Donde $V_{rp(in)}$ representa la ondulación de entrada y $V_{rp(out)}$ representa la ondulación de salida. La PSRR de LDO de alta velocidad generalmente es superior a 60 dB, mientras que la PSRR de LDO común es de alrededor de 20 dB. Una PSRR de 60 dB significa que cuando la ondulación de entrada es de 1 V, la ondulación de salida será de 1 mV.
+حيث يمثل $V_{rp(in)}$ التموج الإدخالي، ويمثل $V_{rp(out)}$ التموج الإخراجي. يتراوح PSRR في LDO عالية السرعة عادةً بين 60dB و PSRR في LDO عادية عادةً حوالي 20dB. يمثل PSRR 60dB أنه عندما يكون التموج الإدخالي 1V، فإن التموج الإخراجي سيكون 1mV.
 
-Primero, veamos la curva de supresión de ondulación del LDO común (serie XC6206):
+لنلقي نظرة على منحنى تثبيط التموج في LDO العادية (سلسلة XC6206):
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220421142140.png)
 
-Se puede ver que a una frecuencia de 1 kHz, la relación de rechazo de ondulación de XC6206P302 es de aproximadamente 23 dB.
+يمكن ملاحظة أن نسبة تثبيط التموج في XC6206P302 تبلغ حوالي 23dB عند تردد 1kHz.
 
-Ahora, veamos la curva de supresión de ondulación del LDO de alta velocidad (XC6217x302):
+ونلقي نظرة على منحنى تثبيط التموج في LDO عالية السرعة (XC6217x302):
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220421141923.png)
 
-A una frecuencia de 1 kHz, la relación de rechazo de ondulación de XC6217x302 es de aproximadamente 68 dB.
+يبلغ نسبة تثبيط التموج في XC6217x302 حوالي 68dB عند تردد 1kHz.
 
-## Métodos de medición de la relación de rechazo de fuente de alimentación (PSRR)
+## طرق قياس نسبة تثبيط الطاقة (PSRR)
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220424104353.png)
 
-La medición de la relación de rechazo de fuente de alimentación (PSRR) se divide en dos partes: la inyección de entrada y la medición de salida. Se puede calcular el valor de PSRR mediante la siguiente prueba y registrando la ondulación de voltaje de entrada y salida según la fórmula.
+يتم قياس نسبة تثبيط الطاقة (PSRR) بالتقسيم إلى جزئين: حقن الإدخال وقياس الإخراج. يمكن حساب قيمة PSRR بناءً على المعادلة باستخدام الطرق التالية.
 
-### Inyección de entrada
+### حقن الإدخال
 
-#### Generador de señales
+#### مولد الإشارة
 
-Se utiliza un generador de señales para generar directamente una onda sinusoidal y se conecta al terminal de entrada de LDO. Este método está limitado por la corriente de salida del generador de señales (como el pico de corriente de salida de DG4062 a una onda sinusoidal de 100 kHz es de 1,65 A).
+يتم استخدام مولد الإشارة مباشرة لإنتاج موجة جيبية، ويتم توصيلها بنقطة الإدخال في LDO. يتم تقييد هذه الطريقة بتيار الإخراج من مولد الإشارة (مثل قيمة ذروة تيار الإخراج في DG4062 تحت موجة جيبية بتردد 100kHz هي 1.65A).
 
-#### Amplificador operacional
+#### المكبر العملي
 
-La función del amplificador operacional es superponer la ondulación de CA en el voltaje de CC de la fuente de alimentación.
+يتم استخدام المكبر العملي لتراكم تموج التيار المتراكم على الجهد المستمر للمصدر.
 
-La elección del amplificador operacional debe cumplir con varios requisitos básicos:
+يجب تلبية عدة شروط أساسية لاختيار المكبر العملي:
 
-1. La banda de paso del amplificador operacional cumple con el rango de prueba de LDO.
-2. La corriente de salida máxima del amplificador operacional no es menor que la corriente de salida máxima de LDO.
-3. El rango de voltaje de salida del amplificador operacional cubre el rango de voltaje de entrada de LDO.
+1. يجب أن يكون عرض النطاق الترددي للمكبر العملي متوافقًا مع نطاق الاختبار في LDO.
+2. يجب أن يكون التيار الأقصى للإخراج من المكبر العملي لا يقل عن الحد الأقصى للتيار الإخراج في LDO.
+3. يجب أن يغطي نطاق الجهد الإخراجي للمكبر العملي نطاق الجهد الإدخالي في LDO.
 
-Se puede diseñar un sumador según el siguiente diagrama:
+يمكن تصميم جهاز الجمع على النحو التالي:
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220424101211.png)
 
-Donde R1 y R2 son iguales, la frecuencia de corte inferior más baja está determinada por C1 y R1, y la frecuencia de corte superior más alta está determinada por la banda de paso del amplificador operacional.
+حيث يتساوى R1 مع R2، ويتم تحديد أدنى تردد قطع بواسطة C1 و R1 معًا، ويتم تحديد أعلى تردد قطع بواسطة عرض النطاق الترددي للمكبر العملي.
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220424104709.png)
 
-#### Generador de señales + amplificador operacional
+#### مولد الإشارة + المكبر العملي
 
-El uso de un seguidor de voltaje con amplificador operacional como generador de señal puede eliminar las limitaciones de corriente de conducción del generador de señal.
+استخدام متابع الجهد باستخدام المشغل العملي كمولد إشارة يمكن أن يحل مشكلة قيود تيار الدفع الذي يعاني منه مولد الإشارة.
 
-#### Método de nodo LC
+#### طريقة LC النقطية
 
-Utilizando inductores y capacitores para superponer voltajes de CC y CA, se utilizan juntos como entrada de LDO:
+يتم تراكب الجهد المستمر والجهد المتردد باستخدام الملف اللولبي والمكثف كمدخل لـ LDO:
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220424102617.png)
 
-Donde el capacitor C1 se utiliza para evitar que VAC tenga un alto impacto de pulso en VDC, el inductor L1 evita que VDC cause un cortocircuito en VAC, y se utiliza LC para aislar las dos fuentes de alimentación.
+يتم استخدام المكثف C1 لمنع تأثير نبضات عالية من VAC على VDC ، ويتم استخدام الملف اللولبي L1 لمنع VDC من تسبب اختصار في VAC ، ويتم فصل المصدرين باستخدام LC.
 
-La frecuencia máxima de este circuito está determinada por el inductor L1 y el capacitor C1, y la frecuencia mínima está determinada por C1.
+يتم تحديد أعلى تردد لهذه الدائرة بواسطة الملف اللولبي L1 والمكثف C1 معًا ، ويتم تحديد أدنى تردد بواسطة C1.
 
-#### Analizador de audio (Audio Precision)
+#### محلل الصوت (Audio Precision)
 
-El analizador de audio en sí no tiene la capacidad de generar voltajes de CC y tiene una capacidad de conducción débil, por lo que se necesita un amplificador operacional de alta banda ancha y alta corriente para superponer la ondulación de CA que produce en el voltaje de CC de la fuente de alimentación y luego conectarlo a la entrada de LDO. Pero debido a las limitaciones de ancho de banda del analizador de audio, no se pueden medir PSRR por encima de 100 kHz.
+لا يمكن لمحلل الصوت توليد جهد مستمر DC بذاته ، وليس لديه القدرة على الدفع القوي ، لذلك يتطلب استخدام مشغل عملي عالي النطاق والتيار الكهربائي الكبير لتراكب التدرج الموجه منه على الجهد المستمر DC للمصدر ، ثم يتم توصيله بمدخل LDO. ولكن بسبب قيود نطاق عرض محلل الصوت ، لا يمكن قياس PSRR بتردد يزيد عن 100 كيلو هرتز.
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220424095319.png)
 
-#### Inyector especial
+#### المحقن المخصص
 
-Este método requiere un inyector de entrada especial (como J2120A, con un ancho de banda de 10 Hz a 10 MHz, un voltaje máximo de CC de 50 V y una corriente de salida máxima de 5 A), que puede superponer directamente la ondulación de CA y el voltaje de CC de la fuente de alimentación, pero la tensión de entrada después del inyector se atenuará. Use un analizador de red para medir los valores de ondulación de voltaje de entrada y salida:
+تتطلب هذه الطريقة استخدام محقن مدخل مخصص (مثل J2120A ، نطاق 10 هرتز - 10 ميجا هرتز ، الحد الأقصى للجهد المستمر 50 فولت ، الحد الأقصى للتيار الكهربائي 5 أمبير) ، حيث يمكن تراكب التدرج الموجه والجهد المستمر DC مباشرة ، ولكن سيتم تخفيض الجهد بعد المحقن. يتم قياس قيم التدرج الموجه للمدخل والمخرج باستخدام جهاز قياس الشبكة:
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220421145125.png)
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220424095347.png)
 
-### Medición de salida
+### قياس الإخراج
 
-#### Osciloscopio
+#### المحلل الطيفي
 
-Un osciloscopio común puede medir voltajes en milivoltios. Cuando el PSRR de LDO no es superior a 40-50 dB, si el voltaje de CA de entrada tiene una amplitud de 1 V, la amplitud de voltaje de CA de la misma frecuencia en la salida de LDO es de 3 mV a 10 mV, lo que se puede medir directamente con un osciloscopio.
+يمكن للمحلل الطيفي قياس إشارات الجهد بالمللي فولت ، وعندما يكون PSRR لـ LDO أقل من 40-50 ديسيبلًا ، فإن قيمة التدرج الموجه للجهد المتردد في الإخراج من LDO عندما يكون الجهد المتردد المدخل 1 فولت هو 3 مللي فولت إلى 10 مللي فولت ، ويمكن قياسها مباشرة باستخدام المحلل الطيفي.
 
-El osciloscopio no es adecuado para medir LDO de alta PSRR. Si la ondulación de salida es demasiado pequeña, el osciloscopio no puede medir con precisión.
+لا ينطبق المحلل الطيفي على قياس LDO عالي PSRR ، وإذا كانت قيمة التدرج الموجه صغيرة جدًا ، فلن يتمكن المحلل الطيفي من القياس بدقة.
 
-#### Amplificador operacional + osciloscopio
+#### المشغل العملي + المحلل الطيفي
 
-Cuando el PSRR de LDO es superior a 50 dB, debido a que la amplitud de ondulación de salida generalmente es inferior a 1 mV, no se puede medir directamente con un osciloscopio. En este caso, se puede considerar utilizar un amplificador operacional para amplificar el voltaje de CA de salida de LDO en 100 veces o más. Al diseñar el circuito del amplificador operacional, se deben considerar los siguientes aspectos:
+عندما يكون PSRR لـ LDO أكبر من 50 ديسيبلًا ، يصبح من الصعب قياس قيمة التدرج الموجه للإخراج لأن قيمة التدرج الموجه عادةً ما تكون أقل من 1 مللي فولت ، ويمكن التفكير في استخدام مكبر العملي لتضخيم الجهد المتردد الناتج من LDO بمقدار 100 مرة أو أكثر ، ويجب مراعاة النقاط التالية عند تصميم دائرة مكبر العملي:
 
-- La salida de LDO tiene un voltaje de CC, por lo que el circuito debe eliminar el voltaje de CC.
-- El ruido generado por el circuito de amplificación debe ser mucho menor que el voltaje de CA amplificado.
-- El voltaje de desviación de entrada del amplificador operacional no debe ser demasiado grande, de lo contrario, el circuito amplificado producirá un voltaje de CC muy grande.
-- La banda ancha del circuito de amplificación debe cumplir con el rango de frecuencia de medición de PSRR de LDO.
+- يوجد جهد مستمر في إخراج LDO ، ويجب إزالته من الدائرة.
+- يجب أن يكون الضوضاء التي ينتجها دائرة التضخيم أقل بكثير من الجهد المتردد المضخم.
+- لا يجب أن يكون جهد الانحراف في مدخل المشغل العملي كبيرًا ، وإلا فسيتم إخراج جهد مستمر كبير بعد تضخيم الدائرة.
+- يجب أن يكون عرض النطاق الترددي لدائرة التضخيم متوافقًا مع نطاق PSRR لـ LDO.
 
-Diseño del circuito de amplificación:
+تصميم دائرة التضخيم:
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220424103037.png)
 
-La frecuencia de corte más baja de este circuito está determinada por C1 y R1, y la frecuencia de corte más alta está determinada por la banda ancha del amplificador operacional.
+يتم تحديد أدنى تردد لهذه الدائرة بواسطة C1 و R1 ، ويتم تحديد أعلى تردد بواسطة عرض النطاق الترددي للمشغل العملي.
 
-#### Analizador de espectro / analizador de red
+#### محلل التردد / محلل الشبكة
 
-El analizador de espectro puede medir señales de voltaje en microvoltios y se puede utilizar con una sonda de entrada de alta impedancia para medir el voltaje de CA de salida de LDO. Si no hay una sonda de alta impedancia, se puede utilizar un amplificador operacional:
+يمكن لمحلل التردد قياس إشارات الجهد بالميكروفولت ، ويمكن استخدام مجس الإدخال عالي المقاومة لقياس التدرج الموجه للجهد المخرج من LDO. إذا لم يكن هناك مجس إدخال عالي المقاومة ، يمكن استخدام المشغل العملي:
 
 ![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220424103409.png)
 
-## Precauciones de medición
+## احتياطات القياس
 
-1. Al realizar pruebas, primero use un osciloscopio para observar si la forma de onda de voltaje de CA en la entrada de LDO es normal.
-2. Es mejor agregar capacitores de acoplamiento correspondientes al circuito LDO según el manual de datos, pero al realizar pruebas con amplificadores operacionales, se debe eliminar el capacitor de entrada de LDO para evitar la inestabilidad del amplificador operacional.
-3. Si se utiliza un inyector y la tensión de salida se atenúa, la tensión debe aumentarse adecuadamente.
-4. No use una carga electrónica para la carga de salida de LDO, se recomienda usar una resistencia de potencia.
-5. Use una sonda de tierra para reducir el ruido en la salida, como se muestra en la siguiente figura.
+1. يجب استخدام المحلل الطيفي أولاً لمراقبة موجة الجهد المتردد على مدخل LDO.
+2. من الأفضل تجهيز دائرة LDO بالمكثفات المناسبة وفقًا لدليل البيانات ، ولكن عند استخدام طريقة المشغل العملي للقياس ، يجب إزالة المكثف المدخل لـ LDO لتجنب عدم الاستقرار في المشغل العملي.
+3. إذا كان هناك تخفيض في الجهد المخرج من المحقن ، فيجب زيادة الجهد بشكل مناسب.
+4. لا يجب استخدام محمل إخراج LDO الإلكتروني ، ويفضل استخدام مقاومة الطاقة.
+5. يجب استخدام مجس الأرض للإخراج لتقليل الضوضاء ، كما هو موضح في الصورة التالية.
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220424104154.png)
+## المراجع والشكر
 
-## Referencias y Agradecimientos
+- [Reducing high-speed signal chain power supply issues](https://e2e.ti.com/blogs_/b/powerhouse/posts/reducing-high-speed-signal-chain-power-supply-issues)
+- [LDO 基础知识：电源抑制比](https://e2echina.ti.com/blogs_/b/analogwire/posts/ldo)
+- [LDO PSRR Measurement Simplified](https://www.ti.com/lit/an/slaa414a/slaa414a.pdf?ts=1650484764171&ref_url=https%253A%252F%252Fwww.google.com%252F)
+- [LDO 的 PSRR 测量](http://www.3peakic.com.cn/Public/Uploads/files/LDO%E7%9A%84PSRR%E6%B5%8B%E9%87%8F.pdf)
+- [LDO 的 PSRR 测量 · 电子研习社](https://zhuanlan.zhihu.com/p/35112931)
+- [قياس نسبة تثبيط الطاقة في مصدر الطاقة (PSRR)](https://www.rohde-schwarz.com.cn/applications/-psrr-application-card_56279-601516.html)
+- [بعض الأشياء حول اختبار التحول السريع DC-DC 🚧](http://www.oliverkung.top/%e5%85%b3%e4%ba%8edc-dc%e7%9e%ac%e6%80%a5%e6%b5%8b%e8%af%95%e7%9a%84%e4%b8%80%e4%ba%9b%e4%b8%9c%e8%a5%bf/)
 
-- [Reduciendo problemas de suministro de energía de cadena de señal de alta velocidad](https://e2e.ti.com/blogs_/b/powerhouse/posts/reducing-high-speed-signal-chain-power-supply-issues)
-- [Conocimientos básicos de LDO: Relación de supresión de fuente de alimentación](https://e2echina.ti.com/blogs_/b/analogwire/posts/ldo)
-- [Simplificación de la medición de PSRR de LDO](https://www.ti.com/lit/an/slaa414a/slaa414a.pdf?ts=1650484764171&ref_url=https%253A%252F%252Fwww.google.com%252F)
-- [Medición de PSRR de LDO](http://www.3peakic.com.cn/Public/Uploads/files/LDO%E7%9A%84PSRR%E6%B5%8B%E9%87%8F.pdf)
-- [Medición de PSRR de LDO · Comunidad de Investigación Electrónica](https://zhuanlan.zhihu.com/p/35112931)
-- [Medición de la relación de supresión de fuente de alimentación (PSRR)](https://www.rohde-schwarz.com.cn/applications/-psrr-application-card_56279-601516.html)
-- [Algo sobre las pruebas transitorias de DC-DC 🚧](http://www.oliverkung.top/%e5%85%b3%e4%ba%8edc-dc%e7%9e%ac%e6%80%81%e6%b5%8b%e8%af%95%e7%9a%84%e4%b8%80%e4%ba%9b%e4%b8%9c%e8%a5%bf/)
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
