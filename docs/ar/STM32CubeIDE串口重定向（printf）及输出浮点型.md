@@ -1,6 +1,6 @@
-# STM32CubeIDE Redirección de puerto serie (printf) y salida de punto flotante
+# إعادة توجيه المنافذ التسلسلية (printf) وإخراج أرقام عشرية في STM32CubeIDE
 
-## Redirigir printf al puerto serie
+## إعادة توجيه printf إلى المنفذ التسلسلي (Serial Port)
 
 ```c title="usart.c"
 /* USER CODE BEGIN 0 */
@@ -11,13 +11,13 @@
 
 /* USER CODE BEGIN 1 */
 
-// La función _write se encuentra en syscalls.c y se define con __weak, por lo que se puede definir directamente en otros archivos
+// The _write function is defined in syscalls.c using __weak, so it can be redefined in other files directly
 __attribute__((weak)) int _write(int file, char *ptr, int len)
 {
 	int DataIdx;
 	for (DataIdx = 0; DataIdx < len; DataIdx++)
 	{
-		  while ((USART1->SR & 0X40) == 0); // Esperar a que se envíe
+		  while ((USART1->SR & 0X40) == 0); //wait until transmit data register is empty
 		  USART1->DR = (uint8_t) *ptr++;
 	}
 	return len;
@@ -26,23 +26,23 @@ __attribute__((weak)) int _write(int file, char *ptr, int len)
 /* USER CODE END 1 */
 ```
 
-## Salida de punto flotante por puerto serie en STM32CubeIDE
+## إخراج أرقام عشرية على المنفذ التسلسلي في STM32CubeIDE
 
-1. En la barra lateral de STM32CubeIDE, seleccione el proyecto, haga clic derecho y seleccione `Properties` - `C/C++ Build` - `Settings` - `MCU GCC Linker` - `Miscellaneous`.
-2. Agregue un elemento en la sección `Other flags` y escriba `-u_printf_float`.
-3. Vuelva a compilar.
+1. في الشريط الجانبي لـ STM32CubeIDE ، حدد المشروع ، انقر بزر الماوس الأيمن واختر `Properties` - `C/C++ Build` - `Settings` - `MCU GCC Linker` - `Miscellaneous`.
+2. في خانة `Other flags` ، أضف مشروعًا واحدًا ، واملأ `-u_printf_float`.
+3. أعد الترميز.
 
-## Problema de caracteres ilegibles en HAL_UART_Receive_IT
+## HAL_UART_Receive_IT مشكلة الرموز العشوائية
 
-Cambie la longitud de la palabra (`10`) en `HAL_UART_Transmit(&huart1, (uint8_t *)aRxBuffer, 10,0xFFFF);` a `1`.
+قم بتغيير طول الكلمة (`10`) في `HAL_UART_Transmit(&huart1, (uint8_t *)aRxBuffer, 10,0xFFFF);` إلى `1`.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Redirigir printf al puerto serie en STM32CubeIDE](https://blog.51cto.com/u_15353042/3751177)
-- [Modificar la salida de punto flotante y redirigir printf al puerto serie en STM32CubeIDE](https://blog.csdn.net/qq_42980638/article/details/98359026)
-- [Cuestionando de nuevo la función HAL_UART_Receive_IT](https://shequ.stmicroelectronics.cn/forum.php?mod=viewthread&tid=615546)
+- [توجيه إخراج printf إلى المنفذ التسلسلي في STM32CubeIDE](https://blog.51cto.com/u_15353042/3751177)
+- [تعديل إخراج أرقام عشرية في STM32CubeIDE printf إعادة التوجيه وإخراج عبر المنفذ التسلسلي (UART)](https://blog.csdn.net/qq_42980638/article/details/98359026)
+- [الشكوك المستمرة بخصوص دالة HAL_UART_Receive_IT](https://shequ.stmicroelectronics.cn/forum.php?mod=viewthread&tid=615546)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

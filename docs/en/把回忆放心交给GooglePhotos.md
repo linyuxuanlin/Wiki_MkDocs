@@ -4,13 +4,13 @@
 
 In the past, we used to store photos that held memories on our computers or hard drives. We gradually realized that photos kept piling up, and the folder-based classification method gradually lost its meaning: after a trip, we often procrastinated and didn't organize the photos; once the photos were organized, we never looked at them again; if the hard drive was damaged (due to physical or human factors), we could only send it for data recovery, and sometimes we couldn't even save it.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/2af4c42e6f7a9f4ed45b6f150b164184.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/2af4c42e6f7a9f4ed45b6f150b164184.jpg)
 
 I kept looking for and discovering new media to store photos. I used Resilio Sync, Weiyun Sync Disk, Baidu Cloud Sync Disk, and other synchronization tools for multiple backups; I also considered building a NAS photo library (RAID 1); or various cloud services such as iCloud, Xiaomi Cloud Album, Weiyun, Baidu Cloud, etc., but I never found one that was convenient to use. Firstly, managing photos in the form of folders is indeed neat, but it is not convenient for organizing and viewing; secondly, it is common for these domestic service providers to sell your privacy when they run out of money.
 
 I finally discovered Google Photos, which is relatively safe and has a more user-friendly interface. After experiencing it for more than a year, I think it's pretty good, so I updated this article.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/0f0ab1740e3206831f3e6ef19ef0c903.png)
+![](https://img.wiki-power.com/d/wiki-media/img/0f0ab1740e3206831f3e6ef19ef0c903.png)
 
 ## Features
 
@@ -18,19 +18,19 @@ I finally discovered Google Photos, which is relatively safe and has a more user
 
 Compared to iCloud (5GB of free space) and Xiaomi Cloud (11GB of free space), although you can purchase storage capacity, you still need to be cautious when syncing all photos. Google Photos' unlimited capacity completely meets the needs of personal photo storage. However, there are conditions: photos with a maximum of 16 million pixels and videos with 1080p will be compressed if they exceed the limit. But for non-professional users, it is enough.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/cea385ad94811257f4b7c084d41c5d30.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/cea385ad94811257f4b7c084d41c5d30.jpg)
 
 ### 2. Intelligent
 
 Compared to managing photos in folder form, even if you don't archive and classify photos, Google Photos' search function is enough to help you dig out old photos that have been stored for many years; you can tag people and search for all photos about them. In addition, "Rediscover this day" is also a good feature.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/f1ccf68a3eeae7b4a69f58122838666d.png)
+![](https://img.wiki-power.com/d/wiki-media/img/f1ccf68a3eeae7b4a69f58122838666d.png)
 
 ### 3. Relatively Safe
 
 Data is priceless. If you only store albums on your own devices (hard drives, etc.), you may worry about data damage or loss. Entrusting albums to a trusted cloud service provider is much safer. After all, they are responsible for user data, and if the hard drive fails, you can only bear it yourself. When it comes to security, privacy issues cannot be ignored. For me, I would entrust photos and other privacy to Google, which does not do evil, and would never give data to 360, Baidu. Under GDPR, Google, which respects user privacy more than "Chinese people who are more willing to exchange privacy for convenience" like Baidu, is even higher.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/59bd6366d7c370b480def6fec44802a6.png)
+![](https://img.wiki-power.com/d/wiki-media/img/59bd6366d7c370b480def6fec44802a6.png)
 
 ### 4. Other Advantages
 

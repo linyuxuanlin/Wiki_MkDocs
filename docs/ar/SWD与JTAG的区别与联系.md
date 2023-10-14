@@ -1,72 +1,72 @@
-# Diferencias y similitudes entre SWD y JTAG
+# الفرق والتشابه بين SWD و JTAG
 
-Es bien sabido que SWD y JTAG son interfaces comunes para la descarga de programas y la depuración de microcontroladores. Sus similitudes son:
+كما هو معروف ، فإن SWD و JTAG هما واجهتان شائعتان لتنزيل البرامج وتصحيح الأخطاء في الميكروكنترولر. ومن بين ما يشتركان فيه:
 
-- **Rango de voltaje de alimentación**: 1.2 V - 5.5 V
-- **Velocidad de reloj**: configurable hasta 10 MHz
-- **Captura de seguimiento SWO**: velocidad de datos de hasta 50 Mbit/s (modo UART/NRZ)
-- **Voltaje de aislamiento**: 1 kV
-- **Conexión en caliente**: compatible
+- **نطاق الجهد المتوفر**: 1.2 فولت - 5.5 فولت
+- **معدل الساعة**: يمكن تكوينه حتى 10 ميجاهرتز
+- **تتبع SWO**: معدل بيانات يصل إلى 50 ميجابت / ثانية (وضع UART / NRZ)
+- **الجهد العازل**: 1 كيلوفولت
+- **التوصيل الساخن**: مدعوم
 
 ## JTAG
 
-JTAG, cuyo nombre completo es Joint Test Action Group (Grupo de Acción Conjunta de Pruebas). El estándar más reciente hasta la fecha de este artículo es el IEEE Standard 1149.1-1990.
+JTAG هو اختصار لـ Joint Test Action Group (مجموعة عمليات الاختبار المشتركة). ويتوافق مع أحدث المعايير IEEE Standard 1149.1-1990.
 
-Su diagrama de topología (cadena de margaritas) es el siguiente:
+إن توبولوجيا JTAG (سلسلة الزهور) هي كما يلي:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210209191921.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210209191921.png)
 
-JTAG generalmente utiliza 5 pines:
+يستخدم JTAG عادة 5 دبابيس:
 
-- **TDI** (Test Data In): pin de entrada serial
-- **TDO** (Test Data Out): pin de salida serial
-- **TCK** (Test Clock): pin de reloj, generalmente con una resistencia de pull-down de 100k
-- **TMS** (Test Mode Select): pin de selección de modo (señal de control)
-- **TRST** (Test Reset): pin de reinicio
+- **TDI** (Test Data In): دبوس الإدخال التسلسلي
+- **TDO** (Test Data Out): دبوس الإخراج التسلسلي
+- **TCK** (Test Clock): دبوس الساعة ، ويتم تضمين مقاومة سحب 100 كيلو أوم عادةً
+- **TMS** (Test Mode Select): دبوس اختيار الوضع (إشارة التحكم)
+- **TRST** (Test Reset): دبوس الإعادة
 
-Las ventajas de JTAG son:
+مزايا JTAG:
 
-- No se limita a chips de la serie ARM
-- Tiene más usos para programación, depuración y pruebas de producción
+- لا يقتصر على مجموعة ARM من الشرائح
+- لديها المزيد من الاستخدامات للبرمجة والتصحيح واختبار الإنتاج
 
 ## SWD
 
-El nombre completo es Serial Wire Debug (Depuración de Cable Serie), es un protocolo diseñado específicamente por ARM y solo es compatible con ARM (por lo que tiene un mejor rendimiento en microcontroladores de la serie ARM).
+يعني Serial Wire Debug (تصحيح الأسلاك التسلسلية) ، وهو بروتوكول تم تصميمه خصيصًا لـ ARM ويدعم فقط ARM (لذلك يتم تمثيل أدائه بشكل أفضل في ميكروكنترولر سلسلة ARM).
 
-SWD generalmente utiliza 2 pines:
+يستخدم SWD عادة 2 دبوس:
 
-- **SWDIO** (Serial Wire Data Input Output): pin de entrada/salida de datos serial
-- **SWCLK** (Serial Wire Clock): pin de reloj de cable serie
+- **SWDIO** (Serial Wire Data Input Output): دبوس إدخال / إخراج البيانات التسلسلية
+- **SWCLK** (Serial Wire Clock): دبوس ساعة الأسلاك التسلسلية
 
-Las ventajas de SWD son:
+مزايا SWD:
 
-- Utiliza menos pines, solo necesita 2 pines: SWDIO y SWCLK
-- SWD tiene funciones especiales, como la impresión de información de depuración
-- En comparación con JTAG, SWD tiene un mejor rendimiento general en velocidad
+- يستخدم أقل عدد من الدبابيس ، مع الحاجة فقط إلى دبوسي SWDIO و SWCLK
+- يحتوي SWD على وظائف خاصة مثل طباعة معلومات التصحيح
+- بالمقارنة مع JTAG ، يتمتع SWD بأداء أفضل في السرعة
 
-## Compatibilidad entre JTAG y SWD
+## التوافق بين JTAG و SWD
 
-Por lo general, las placas de microcontroladores tienen estos zócalos de grabación que son compatibles con JTAG y SWD al mismo tiempo:
+عمومًا ، يحتوي لوحة الميكروكنترولر على مقابس الحرق التالية ، والتي يمكن أن تدعم JTAG و SWD في نفس الوقت:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210210122923.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20210210122923.jpg)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210210123714.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210210123714.png)
 
-- TCK es compatible con SWCLK
-- TMS es compatible con SWDIO
-- (TDO es compatible con SWO)
+- TCK متوافق مع SWCLK
+- TMS متوافق مع SWDIO
+- (TDO متوافق مع SWO)
 
-Razones para elegir SWD en lugar de JTAG:
+أسباب استخدام SWD بدلاً من JTAG:
 
-- El diseño del esquemático del circuito debe ser lo suficientemente simple y se puede probar sin la función JTAG
-- El PCB tiene limitaciones de tamaño y SWD puede ahorrar espacio
-- El MCU ya no tiene pines adicionales para JTAG
+- يجب أن يكون تصميم مخطط الدائرة بسيطًا بما فيه الكفاية ويمكن اختباره بدون وظيفة JTAG
+- يوجد قيود في حجم اللوحة الدائرية ، ويمكن لـ SWD توفير المساحة
+- لم يعد لدى MCU دبابيس إضافية للاستخدام في JTAG
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Diferencias entre la interfaz de descarga y depuración SWD y JTAG](https://mp.weixin.qq.com/s/MW57t266yvv6TOweeFEUVA)
-- [Compartir el puerto de depuración Cortex JTAG, SWD](https://southlife.tistory.com/107)
-- [Interfaz JTAG/SWD](https://www.keil.com/support/man/docs/ulinkplus/ulinkplus_jtagswd_interface.htm)
+- [下载调试接口 SWD 和 JTAG 的区别](https://mp.weixin.qq.com/s/MW57t266yvv6TOweeFEUVA)
+- [Cortex JTAG，SWD Debug Port Sharing](https://southlife.tistory.com/107)
+- [JTAG/SWD Interface](https://www.keil.com/support/man/docs/ulinkplus/ulinkplus_jtagswd_interface.htm)
 - [JTAG](https://en.wikipedia.org/wiki/JTAG)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

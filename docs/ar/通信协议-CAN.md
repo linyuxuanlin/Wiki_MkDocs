@@ -1,122 +1,122 @@
-# Protocolo de comunicación - CAN 🚧
+# بروتوكول الاتصال - كان (CAN) 🚧
 
-CAN (Controller Area Network) es un bus de comunicación serie de múltiples maestros. El diseño básico requiere una alta velocidad de bits, alta resistencia a interferencias electromagnéticas y la capacidad de detectar cualquier error que se produzca. Cuando la distancia de transmisión de la señal alcanza los 10 km, el bus CAN aún puede proporcionar una velocidad de transmisión de datos de hasta 5 Kbps.
+CAN（Controller Area Network）هو نظام حافلة اتصالات متسلسلة متعددة المضيفين. تتطلب المواصفات التصميمية الأساسية سرعة بت عالية ومقاومة عالية للتداخل الكهرومغناطيسي ، ويمكنها كشف أي أخطاء تحدث ، وعندما يصل مسافة نقل الإشارة إلى 10 كم ، يمكن لـ CAN-bus توفير سرعة نقل بيانات تصل إلى 5 كيلوبت في الثانية.
 
-## Diseño del circuito CAN
+## تصميم دائرة CAN
 
-El diseño del módulo CAN se basa en el chip CAN, que convierte la señal serie (RX/TX) en la señal diferencial CAN (CANH/CANL). A continuación se presentan dos transceptores CAN comúnmente utilizados.
+تم تصميم وحدة CAN بناءً على شريحة CAN ، وتحويل الإشارة المتسلسلة (RX / TX) إلى إشارة CAN التفاضلية (CANH / CANL) بشكل متبادل. هناك نوعان من مرسل / مستقبل CAN الأكثر استخدامًا كما يلي.
 
-### Basado en TJA1050
+### على أساس TJA1050
 
-Para obtener información completa, consulte [**Modularity_of_Functional_Circuit/ Modulación de diseño - Comunicación CAN / Basado en TJA1050**](https://github.com/linyuxuanlin/Modularity_of_Functional_Circuit/tree/master/%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1-CAN%E9%80%9A%E4%BF%A1/%E5%9F%BA%E4%BA%8ETJA1050)
+يرجى الرجوع إلى [**Modularity_of_Functional_Circuit / تصميم الوحدة - CAN الاتصال / على أساس TJA1050**](https://github.com/linyuxuanlin/Modularity_of_Functional_Circuit/tree/master/%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1-CAN%E9%80%9A%E4%BF%A1/%E5%9F%BA%E4%BA%8ETJA1050) للحصول على المعلومات الكاملة.
 
-#### Características
+#### ميزات
 
-- Alimentación: **5 V** (4.75-5.25 V)
-- Velocidad alta: 60 Kbps-1 Mbps
-- Cumple completamente con la norma ISO 11898
-- Baja radiación electromagnética (EME)
-- Receptor diferencial con rango de entrada de préstamo, resistente a interferencias electromagnéticas (EMI)
-- Se pueden conectar al menos 110 nodos
-- Los nodos sin alimentación no interferirán con el bus
+- الطاقة: **5 فولت** (4.75-5.25 فولت)
+- سرعة عالية: 60 كيلوبت في الثانية - 1 ميجابت في الثانية
+- يتوافق تمامًا مع المعيار ISO 11898
+- انبعاثات كهرومغناطيسية منخفضة (EME)
+- مستقبل تفاضلي يحتوي على نطاق إدخال مقروض ، ويمكنه مقاومة التداخل الكهرومغناطيسي (EMI)
+- يمكن توصيله بـ 110 عقدة على الأقل
+- لا يتسبب العقد الذي لم يتم تشغيله في تداخل الحافلة
 
-#### Modo de trabajo
+#### وضع العمل
 
-TJA1050 tiene dos modos de trabajo (alta velocidad / silencioso), controlados por el pin S (RS).
+يحتوي TJA1050 على وضعين عمل (عالي السرعة / صامت) ، يتم التحكم فيهما بواسطة دبوس S (RS).
 
-**Modo de alta velocidad**:
+**وضع عالي السرعة**:
 
-El modo de alta velocidad es el modo de trabajo normal, y se puede ingresar a este modo conectando el pin S a tierra. Debido a que el pin S tiene una resistencia de pull-down incorporada, incluso si no está conectado externamente, el modo de alta velocidad es el modo predeterminado.
+يعد وضع عالي السرعة وضع العمل العادي ، ويمكن الدخول في هذا الوضع عن طريق توصيل دبوس S بالأرض. نظرًا لأن دبوس S يحتوي على سحب داخلي ، فإنه حتى إذا لم يتم توصيله خارجيًا ، فإن الوضع الافتراضي هو وضع عالي السرعة.
 
-En este modo, la señal de salida del bus tiene una pendiente fija y cambia a la velocidad más rápida, lo que es adecuado para la velocidad de bits máxima o la longitud máxima del bus, y su retardo de transmisión es mínimo.
+في هذا الوضع ، يكون إشارة الإخراج على الحافلة لها ميل ثابت وتتبدل بأسرع سرعة ، وهي مناسبة لأقصى سرعة بت و / أو أقصى طول للحافلة ، وفي هذا الوقت يكون تأخير مرسل / مستقبلها دائريًا الحد الأدنى.
 
-**Modo silencioso**:
+**وضع الصمت**:
 
-En el modo silencioso, el transmisor está deshabilitado y no importa la señal de entrada de TXD, por lo que el consumo de energía en el estado de no transmisión es el mismo que en el estado de silencio. Se puede ingresar al modo silencioso conectando el pin S a un nivel alto.
+في وضع الصمت ، يتم تعطيل المرسل ، بغض النظر عن إشارة TXD الداخلية ، لذلك يتم استهلاك تيار الطاقة في حالة عدم الإرسال بنفس الطريقة التي يتم فيها الاستهلاك في الوضع الخفي. يمكن الدخول في وضع الصمت عن طريق توصيل دبوس S بجهد عالٍ.
 
-En el modo silencioso, los nodos se pueden configurar en un estado absolutamente pasivo con respecto al bus, y el microcontrolador ya no accede directamente al controlador CAN. TJA1050 liberará el bus.
+في وضع الصمت ، يمكن تعيين العقدة على أن تكون في حالة غير نشطة تمامًا على الحافلة ، وفي هذه الحالة ، لن يتم الوصول إلى متحكم CAN مباشرةً ، وسيتم إطلاق TJA1050 الحافلة.
 
-#### Pines del chip
+#### دبابيس الشريحة
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210607102222.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210607102222.png)
 
-#### Circuito de referencia
+#### دائرة الرجوع
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210607115611.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210607115611.png)
 
-Como se muestra en la figura, el controlador de protocolo CAN (por ejemplo, un microcontrolador) se conecta al transceptor a través de la línea serie (RX/TX), que se convierte en una señal CAN (CANH/CANL) en el transceptor y se selecciona el modo de alta velocidad / silencioso mediante el pin S.
+كما هو موضح في الشكل ، يتصل متحكم بروتوكول CAN (مثل الميكروكنترولر) بمرسل / مستقبل عبر خط متسلسل (RX / TX) ، ويتم تحويله إلى إشارة CAN (CANH / CANL) على المرسل / المستقبل ، ويتم التحكم في وضع عالي السرعة / الصمت عن طريق دبوس S.
 
-### Basado en SN65HVD230
+### على أساس SN65HVD230
 
-Para obtener información completa, consulte [**Modularity_of_Functional_Circuit/ Modulación de diseño - Comunicación CAN / Basado en SN65HVD230**](https://github.com/linyuxuanlin/Modularity_of_Functional_Circuit/tree/master/%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1-CAN%E9%80%9A%E4%BF%A1/%E5%9F%BA%E4%BA%8ESN65HVD230)
+يرجى الرجوع إلى [**Modularity_of_Functional_Circuit / تصميم الوحدة - CAN الاتصال / على أساس SN65HVD230**](https://github.com/linyuxuanlin/Modularity_of_Functional_Circuit/tree/master/%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1-CAN%E9%80%9A%E4%BF%A1/%E5%9F%BA%E4%BA%8ESN65HVD230) للحصول على المعلومات الكاملة.
 
-#### Características
+#### ميزات
 
-- Alimentado por una sola fuente de **3.3 V**
-- Se pueden conectar al menos 120 nodos
-- Modo de espera de baja corriente
-- Velocidad: hasta 1 Mbps
+- يتم تشغيله بواسطة مصدر طاقة واحد بجهد **3.3 فولت**
+- يمكن توصيله بـ 120 عقدة على الأقل
+- وضع الاستعداد منخفض التيار
+- السرعة: تصل إلى 1 ميجابت في الثانية
 
-#### Modo de trabajo
+#### وضع العمل
 
-SN65HVD230 tiene tres modos de trabajo (alta velocidad / pendiente / silencioso), controlados por el pin S (RS). Generalmente usamos el modo de alta velocidad.
+يحتوي SN65HVD230 على ثلاثة أوضاع عمل (عالي السرعة / الميل / الصمت) ، يتم التحكم فيها بواسطة دبوس S (RS). عادةً ما نستخدم وضع عالي السرعة.
 
-**Modo de alta velocidad**:
+**وضع عالي السرعة**:
 
-Conecte Rs a tierra para habilitar el modo de alta velocidad.
+اسحب Rs بشدة إلى GND لتمكين وضع عالي السرعة.
 
-**Modo de pendiente**:
+**وضع الميل**:
 
-Use una resistencia entre 10k y 100k para bajar Rs a tierra. Consulte el manual de datos para obtener la relación específica entre la resistencia y la velocidad.
+استخدم مقاومة بين 10 كيلو أوم و 100 كيلو أوم لسحب Rs إلى GND. يرجى الرجوع إلى دليل البيانات للحصول على العلاقة بين قيمة المقاومة والسرعة بالتفصيل.
 
 
 
-**Modo de baja potencia**:
+**الوضع الاستهلاكي المنخفض:**
 
-Elevar Rs a 3.3V
+قم بتوصيل Rs بشدة إلى 3.3 فولت
 
-#### Pines del chip
+#### دبابيس الشريحة
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210607155539.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210607155539.png)
 
-#### Circuito de referencia
+#### دائرة المرجع
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210607171051.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210607171051.png)
 
-PESD2CAN es un diodo de protección ESD especializado para CAN, que protege al chip de daños por descargas electrostáticas y otros transitorios.
+PESD2CAN هو ديود حماية ESD مخصص لـ CAN ، ويحمي الشريحة من التلف الناتج عن الكهرباء الساكنة والانتقالات الأخرى.
 
-El diseño de PCB de referencia es el siguiente:
+تصميم PCB المرجعي كما يلي:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210607171427.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210607171427.png)
 
-### Diferencias entre TJA1050 y SN65HVD230
+### الاختلافات والتشابه بين TJA1050 و SN65HVD230
 
-La principal diferencia entre TJA1050 y SN65HVD230 es el voltaje de trabajo, TJA1050 trabaja en un entorno de 5V, mientras que SN65HVD230 trabaja en un entorno de 3.3V.
+الاختلاف الرئيسي بين TJA1050 و SN65HVD230 هو الجهد الكهربائي المختلف الذي يعملان فيه ، حيث يعمل TJA1050 في بيئة 5 فولت ، بينما يعمل SN65HVD230 في بيئة 3.3 فولت.
 
-Consideraciones comunes:
+الأشياء المشتركة التي يجب مراعاتها:
 
-- Las líneas de señal CAN deben ser diferencialmente enrutadas en el diseño de PCB.
-- Las resistencias terminales generalmente solo se necesitan en el extremo inicial y final de la línea CAN, no en el medio.
-- Si se requiere filtrado y estabilización del voltaje común del bus, también se pueden utilizar resistencias terminales separadas (como se muestra arriba, divididas en dos resistencias de 60 Ω con un capacitor conectado a tierra en el medio).
+- يجب أن تكون خطوط إشارة CAN في تصميم PCB متفرعة.
+- يتم استخدام مقاومة النهاية في الغالب في نهاية خط CAN ونهاية البداية فقط ، ولا يلزم استخدامها في الوسط.
+- إذا كنت بحاجة إلى تصفية وتثبيت الجهد المشترك للحافلة ، فيمكنك أيضًا استخدام مقاومة النهاية المنفصلة (كما هو موضح أعلاه ، يتم تقسيمها إلى مقاومتين بقيمة 60 أومًا ، ويتم توصيلها بالتوصيل المركزي إلى الأرض).
 
-## Diseño EMC de la interfaz CAN
+## تصميم EMC لواجهة CAN
 
-En la comunicación CAN, el cable es propenso a acoplar interferencias externas, lo que afecta la transmisión de señales e incluso puede afectar los circuitos internos sensibles del núcleo a través del circuito de interfaz.
+في الاتصال بـ CAN ، يتم تشويش الكابل بسهولة بالتداخل الخارجي ، مما يؤثر على نقل الإشارة ، وقد يؤثر حتى على الدوائر الحساسة الأساسية الداخلية من خلال دائرة الواجهة.
 
-Los dispositivos de protección de la interfaz CAN incluyen principalmente: capacitores de filtrado, inductores comunes, capacitores de derivación y tubos TVS.
+تشمل أجهزة حماية واجهة CAN الكابلات: الكابلات المرشحة ، والملف الحثي المشترك ، والكابلات المتقاطعة ، وأنابيب TVS.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211220134905.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211220134905.png)
 
-- Capacitores de filtrado $C_1, C_2$: se utilizan para proporcionar una ruta de retorno de baja impedancia para las interferencias, el rango de selección es de 22pF a 1000pF, y el valor típico es de 100pF.
-- Inductor común $L_1$: se utiliza para filtrar las interferencias comunes en la línea diferencial, el rango de impedancia seleccionado es de 120Ω/100MHz a 2200Ω/100MHz, y el valor típico es de 600Ω/100MHz.
-- Capacitores de derivación $C_3, C_4$: se utilizan para el aislamiento entre la tierra de la interfaz y la tierra digital, el valor típico es de 1000pF/2kV.
-- Tubos TVS $D_1, D_2$: se utilizan para proteger contra ESD o impactos de alta energía momentánea, limitando el voltaje del circuito a un valor predeterminado para garantizar que los dispositivos de circuito posteriores no se dañen por impactos de alta energía momentánea.
+- الكابلات المرشحة $C_1،C_2$ : تستخدم لتوفير مسار عودة منخفض المقاومة للتداخل ، وتتراوح القيمة المختارة بين 22pF ~ 1000pF ، والقيمة النموذجية هي 100pF.
+- الملف الحثي المشترك $L_1$ : يستخدم لتصفية التشويش المشترك على خطوط التفاضل ، ويتراوح مدى المقاومة بين 120Ω / 100MHz ~ 2200Ω / 100MHz ، والقيمة النموذجية هي 600Ω / 100MHz.
+- الكابلات المتقاطعة $C_3،C_4$ : تستخدم للعزل بين الأرض الواجهة والأرض الرقمية ، والقيمة النموذجية هي 1000pF / 2kV.
+- أنابيب TVS $D_1،D_2$ : تستخدم لحماية من ESD أو الصدمات العالية الطاقة المؤقتة ، وتجعل الجهد الكهربائي للخط في قيمة محددة مسبقًا ، مما يضمن عدم تلف الأجهزة الدائرية اللاحقة بسبب الصدمات العالية الطاقة المؤقتة.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Diseño de protección de circuito de interfaz](https://blog.csdn.net/weixin_40877615/article/details/94381422)
+- [تصميم حماية دائرة الواجهة](https://blog.csdn.net/weixin_40877615/article/details/94381422)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

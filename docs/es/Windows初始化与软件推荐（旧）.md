@@ -1,6 +1,6 @@
 # Inicialización de Windows y recomendaciones de software (antiguo)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210117142759.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20210117142759.jpg)
 
 > Para la versión actualizada, consulte [**Personal Onboarding Workflow (Windows)**](https://wiki-power.com/es/Personal_Onboarding_Workflow_%28Windows%29/)
 
@@ -74,7 +74,7 @@
 - [**Wise Driver Care**](https://github.com/linyuxuanlin/File-host/blob/main/software/Wise%20Driver%20Care.zip): herramienta de gestión e instalación de controladores
 - [**NDM**](https://www.neatdownloadmanager.com/index.php/en/): descargador
 - [**AltDrag**](https://github.com/linyuxuanlin/File-host/tree/main/software/AltDrag.exe): herramienta pequeña para arrastrar, cambiar el tamaño y ajustar la opacidad de las ventanas
-- [**Raidrive**](https://github.com/linyuxuanlin/File-host/blob/main/software/raidrive-2020-6-80.exe): herramienta para montar discos remotos (versión sin publicidad). Yo monto mi NAS como disco local a través de WebDAV. 
+- [**Raidrive**](https://github.com/linyuxuanlin/File-host/blob/main/software/raidrive-2020-6-80.exe): herramienta para montar discos remotos (versión sin publicidad). Yo monto mi NAS como disco local a través de WebDAV.
 
 ## Software opcional
 

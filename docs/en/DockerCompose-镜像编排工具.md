@@ -1,6 +1,6 @@
 # Docker Compose - Image Orchestration Tool
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210117130925.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20210117130925.jpg)
 
 Docker Compose is an image orchestration tool for Docker. It is recommended to use Docker Compose as the default way to open Docker because it not only allows for easy configuration and deployment of images, but also makes it more convenient to configure multiple image services and even distinguish their startup order, which is not possible with command line opening.
 

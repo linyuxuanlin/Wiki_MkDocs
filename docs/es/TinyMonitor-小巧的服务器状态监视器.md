@@ -1,6 +1,6 @@
 # TinyMonitor - Monitor de estado del servidor compacto
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202305261716469.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/202305261716469.jpg)
 
 TinyMonitor es un monitor de estado del servidor extremadamente compacto y minimalista que consta solo de un controlador principal ESP32 y una pantalla OLED, que muestra los parámetros de estado en tiempo real del servidor para facilitar la observación y la depuración.
 
@@ -8,15 +8,15 @@ TinyMonitor es un monitor de estado del servidor extremadamente compacto y minim
 
 Los materiales de hardware utilizados en este proyecto son muy simples: un Beetle ESP32-C3 con Wi-Fi y Bluetooth incorporados, y una pantalla OLED de 128x64.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202305261541993.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202305261541993.png)
 
 La definición de pines de Beetle ESP32-C3 es la siguiente.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202305261545236.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202305261545236.png)
 
 Como se puede utilizar el modo I2C de software (es decir, pines I2C personalizados) para controlar la pantalla OLED, he definido los pines `0`/`1` de Beetle ESP32-C3 como funciones `SCL`/`SDA`. De esta manera, el cableado es muy sencillo, solo hay que soldar los 4 pines juntos.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202305261546367.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202305261546367.png)
 
 Nota: antes de cargar el programa en Beetle ESP32-C3, es necesario agregar el paquete ESP32 para reconocer correctamente el modelo de la placa. Consulte su [**página Wiki**](https://wiki.dfrobot.com.cn/_SKU_DFR0868_Beetle_ESP32_C3) para obtener más detalles.
 
@@ -119,7 +119,7 @@ Después de iniciar normalmente el servicio `mosquitto`, podemos usar [**MQTTBox
 
 Después de instalar el software, haga clic en `Create MQTT Client` para crear una nueva conexión y complete los parámetros relevantes según la siguiente imagen:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202305261456592.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202305261456592.png)
 
 Donde `HOST` es la dirección del servidor donde se encuentra el servicio MQTT (por ejemplo, la dirección de mi servidor en la red local es `192.168.1.2`); el nombre de usuario y la contraseña deben coincidir con los valores configurados al configurar Mosquitto anteriormente.
 
@@ -156,7 +156,7 @@ while True:
 
 Después de ejecutar con éxito, podemos hacer clic en `Add subscriber` en la barra de estado superior de MQTTBox para suscribirse a estos tres temas, por ejemplo:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202305261513642.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202305261513642.png)
 
 Si todo va bien, debería poder ver la información de estado del servidor que se devuelve constantemente en MQTTBox.
 
@@ -200,70 +200,71 @@ PubSubClient mqttClient(wifiClient);
 
 // Función de devolución de llamada MQTT
 void mqttCallback(char* topic, byte* payload, unsigned int length) {
-  if (strcmp(topic, MQTT_TOPIC_CPU) == 0) {
-    // Registrar el uso de CPU
-    for (int i = 0; i < length; i++)
-      msg_cpu_usage[i] = (char)payload[i];
-  } else if (strcmp(topic, MQTT_TOPIC_MEM) == 0) {
-    // Registrar el uso de memoria
-    for (int i = 0; i < length; i++)
-      msg_mem_usage[i] = (char)payload[i];
-  } else if (strcmp(topic, MQTT_TOPIC_DISK) == 0) {
-    // Registrar el uso de disco
-    for (int i = 0; i < length; i++)
-      msg_disk_usage[i] = (char)payload[i];
-  }
+if (strcmp(topic, MQTT_TOPIC_CPU) == 0) {
+// Registrar el uso de CPU
+for (int i = 0; i < length; i++)
+msg_cpu_usage[i] = (char)payload[i];
+} else if (strcmp(topic, MQTT_TOPIC_MEM) == 0) {
+// Registrar el uso de memoria
+for (int i = 0; i < length; i++)
+msg_mem_usage[i] = (char)payload[i];
+} else if (strcmp(topic, MQTT_TOPIC_DISK) == 0) {
+// Registrar el uso de disco
+for (int i = 0; i < length; i++)
+msg_disk_usage[i] = (char)payload[i];
+}
 }
 
 void setup() {
-  u8g2.begin();  // Inicializar la pantalla OLED
-  Wire.begin();  // Iniciar la transmisión I2C
+u8g2.begin(); // Inicializar la pantalla OLED
+Wire.begin(); // Iniciar la transmisión I2C
 
-  // Conectar a WIFI
-  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(1000);
-  }
+// Conectar a WIFI
+WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+while (WiFi.status() != WL_CONNECTED) {
+delay(1000);
+}
 
-  // Conectar al servidor proxy MQTT
-  mqttClient.setServer(MQTT_BROKER, MQTT_PORT);
-  mqttClient.setCallback(mqttCallback);
-  if (mqttClient.connect("ESP32", MQTT_USERNAME, MQTT_PASSWORD)) {
-    mqttClient.subscribe(MQTT_TOPIC_CPU);
-    mqttClient.subscribe(MQTT_TOPIC_MEM);
-    mqttClient.subscribe(MQTT_TOPIC_DISK);
-  }
+// Conectar al servidor proxy MQTT
+mqttClient.setServer(MQTT_BROKER, MQTT_PORT);
+mqttClient.setCallback(mqttCallback);
+if (mqttClient.connect("ESP32", MQTT_USERNAME, MQTT_PASSWORD)) {
+mqttClient.subscribe(MQTT_TOPIC_CPU);
+mqttClient.subscribe(MQTT_TOPIC_MEM);
+mqttClient.subscribe(MQTT_TOPIC_DISK);
+}
 }
 
 void loop() {
-  mqttClient.loop();  // Procesar mensajes MQTT
-  u8g2.firstPage();
-  do {
-    u8g2.setFont(u8g2_font_9x15_tf);
+mqttClient.loop(); // Procesar mensajes MQTT
+u8g2.firstPage();
+do {
+u8g2.setFont(u8g2_font_9x15_tf);
 
 // Mostrar el uso de la CPU
 u8g2.setCursor(0, 12);
 u8g2.print("CPU: ");
 for (int i = 0; i < 9; i++)
-  u8g2.print(msg_cpu_usage[i]);
+u8g2.print(msg_cpu_usage[i]);
 u8g2.print(" %");
 
 // Mostrar el uso de la memoria
 u8g2.setCursor(0, 35);
 u8g2.print("Mem: ");
 for (int i = 0; i < 9; i++)
-  u8g2.print(msg_mem_usage[i]);
+u8g2.print(msg_mem_usage[i]);
 u8g2.print(" %");
 
 // Mostrar el uso del disco
 u8g2.setCursor(0, 58);
 u8g2.print("Disk: ");
 for (int i = 0; i < 9; i++)
-  u8g2.print(msg_disk_usage[i]);
+u8g2.print(msg_disk_usage[i]);
 u8g2.print(" %");
 
 } while (u8g2.nextPage());
 }
+
 ```
 
 ## Más ideas de expansión
@@ -279,7 +280,7 @@ Las siguientes ideas están pendientes de implementación:
 
 Adjunto: Una foto de Beetle ESP32-C3 y Seeed XIAO ESP32C3 juntos.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202305261719170.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/202305261719170.jpg)
 
 ## Referencias y agradecimientos
 
@@ -290,7 +291,8 @@ Adjunto: Una foto de Beetle ESP32-C3 y Seeed XIAO ESP32C3 juntos.
 - [Serie de tutoriales MQTT 3 (Instalación y uso de la herramienta de cliente MQTTBox)](https://www.hangge.com/blog/cache/detail_2350.html)
 - [linyuxuanlin/TinyMonitor](https://github.com/linyuxuanlin/TinyMonitor)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
+> Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+```

@@ -8,13 +8,13 @@ In semiconductor testing, the **Test Interface Controller (TIC)** is a bus maste
 
 Since the philosophy of AMBA is to isolate testing for individual modules in the system, each module's testing relies only on the bus interface. A testing method is needed to test the input and output of peripherals not connected to the bus.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202308262214877.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202308262214877.png)
 
 This testing method can be implemented through the Test Interface. It uses a simple three-way handshake to control Vector read/write and uses the **External Bus Interface (EBI)** as the data path to import external Vectors into the internal bus.
 
 ## Test Interface Pins
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202308262225257.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202308262225257.png)
 
 As shown in the above figure, the Test Interface pins consist of three parts:
 
@@ -34,12 +34,12 @@ In the minimum configuration, the Test Interface only needs TREQA and TACK as **
 
 When the system is operating normally, the truth table for the Test Interface controlled by three lines is as follows:
 
-| TREQA | TREQB | TACK | Status                    |
-| ----- | ----- | ---- | ------------------------- |
-| 0     | 0     | 0    | Normal operation, not in test mode |
-| 1     | 0     | 0    | Request to enter test mode |
+| TREQA | TREQB | TACK | Status                              |
+| ----- | ----- | ---- | ----------------------------------- |
+| 0     | 0     | 0    | Normal operation, not in test mode  |
+| 1     | 0     | 0    | Request to enter test mode          |
 | 0     | 1     | 0    | Reserved for external host requests |
-| -     | -     | 1    | Entered test mode |
+| -     | -     | 1    | Entered test mode                   |
 
 Initially, TREQA is low, indicating that the system has not entered test mode. When TREQA is set to high, a request to enter test mode is made. Then, when TACK outputs high, it indicates that TIC allows entry into test mode. At this point, TCLK becomes the internal clock source. Once in test mode, the values on the three lines and their corresponding system states are as follows:
 
@@ -49,7 +49,7 @@ Initially, TREQA is low, indicating that the system has not entered test mode. W
 | 1     | 1     | 1    | Address/Control/TurnAround Vector   |
 | 1     | 0     | 1    | Write Test Vector                   |
 | 0     | 1     | 1    | Read Test Vector                    |
-| 0     | 0     | 1    | Exit test mode                       |
+| 0     | 0     | 1    | Exit test mode                      |
 
 Next, TREQB can be set to high to load the Address Vector. Read and write operations can then be performed. When exiting test mode, an Address Vector should be passed first to ensure that all internal transfers have been completed. Then, both TREQA and TREQB should be set to low to indicate that test mode is being exited. Finally, TACK will output low, indicating that test mode has been exited.
 

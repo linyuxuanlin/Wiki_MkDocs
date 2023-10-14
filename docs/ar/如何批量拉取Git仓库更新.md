@@ -1,10 +1,10 @@
-# Cómo actualizar múltiples repositorios de Git en masa
+# كيفية جلب تحديثات مستودعات Git بشكل جماعي
 
-Cuando tienes muchos repositorios, actualizarlos manualmente uno por uno puede ser tedioso. Con el método descrito en este artículo, puedes actualizar múltiples repositorios de Git en masa.
+عندما يكون لديك العديد من المستودعات ، يصبح الجلب يدويًا لكل منها مزعجًا. باستخدام الطريقة الموضحة في هذه المقالة ، يمكنك جلب المستودعات بشكل جماعي.
 
-## Pasos
+## الخطوات
 
-1. Crea un archivo de script llamado `pull-master.sh` y pega el siguiente código:
+1. قم بإنشاء ملف نصي جديد باسم `pull-master.sh` والصق الكود التالي فيه:
 
 ```shell title="pull-master.sh"
 #!/bin/bash
@@ -28,49 +28,50 @@ function getdir(){
         fi
     done
 }
-root_dir="【ruta que contiene múltiples repositorios】"
+root_dir="【مسار يحتوي على العديد من المستودعات】"
 getdir $root_dir
 ```
 
-2. Reemplaza `【ruta que contiene múltiples repositorios】` con tu propia ruta, por ejemplo `C:\repos`.
-3. Ejecuta el comando:
+2. استبدل `【مسار يحتوي على العديد من المستودعات】` بالمسار الخاص بك ، على سبيل المثال `C:\repos`.
+3. قم بتشغيل الأمر:
 
 ```shell
 sh pull-master.sh
-o
+أو
 ./pull-master.sh
 ```
 
-O simplemente haz doble clic en `pull-master.sh` para ejecutarlo.
+أو قم بالنقر المزدوج على `pull-master.sh` لتشغيله.
 
-## Ejecución programada
+## التنفيذ الدوري
 
-1. Busca y abre `Programador de tareas`.
-2. Haz clic en `Crear tarea`.
-   1. En la pestaña `General`, escribe un nombre para la tarea.
-   2. En la pestaña `Desencadenadores`, establece la frecuencia de ejecución.
-   3. En la pestaña `Acciones`, crea una nueva acción, escribe el `Programa o script` (por ejemplo, `F:\pull-master.sh`), agrega los argumentos (por ejemplo, `pull-master.sh`), y establece el `Comenzar en` (por ejemplo, `F:\`).
-3. Prueba la ejecución. Si no hay problemas, la tarea se ejecutará automáticamente según la frecuencia establecida. (Si no funciona, consulta [**Pull-Git-Repo.xml**](https://github.com/linyuxuanlin/File-host/blob/main/software-development/Pull-Git-Repo.xml)).
+1. ابحث وافتح `مجدول المهام`.
+2. انقر فوق `إنشاء مهمة`.
+   1. قم بإدخال الاسم في علامة التبويب `العامة`.
+   2. قم بتعيين الفترة الزمنية في علامة التبويب `المشغل`.
+   3. قم بإنشاء عملية جديدة في علامة التبويب `العمليات` ، وأدخل `البرنامج أو النص` (على سبيل المثال `F:\pull-master.sh`) ، وأضف المعلمات (على سبيل المثال `pull-master.sh`) ، وابدأ من (على سبيل المثال `F:\`).
+3. قم بتشغيل الاختبار ، إذا لم يكن هناك مشكلة ، فقم بتشغيله. (إذا لم ينجح ، يمكن الرجوع إلى [**Pull-Git-Repo.xml**](https://github.com/linyuxuanlin/File-host/blob/main/software-development/Pull-Git-Repo.xml))
 
-## Implementación en un NAS de Synology
+## النشر على NAS Synology
 
-1. Coloca el script (por ejemplo, `github-pull.sh`) en cualquier ruta en el NAS.
-2. Modifica la ruta `root_dir` en `github-pull.sh` a la ruta donde colocaste tus repositorios de Git (por ejemplo, `"/volume1/projects"`).
-3. En `Panel de control` - `Programador de tareas` - `Nueva tarea` - `Tarea definida por el usuario`, configura la frecuencia de ejecución y el comando para ejecutar el script (por ejemplo, `bash /volume1/stash/permanent/github-pull.sh`).
-4. En `Configuración`, configura la salida y luego selecciona la tarea y haz clic en `Ejecutar` para probar la ejecución. Puedes abrir la ruta de salida configurada para ver los resultados.
+1. ضع البرنامج النصي (مثل `github-pull.sh`) في أي مسار على NAS.
+2. قم بتعديل المسار الخاص بـ `root_dir` في `github-pull.sh` ، على سبيل المثال ، غيره إلى `"/volume1/projects"` ، وهو المكان الذي تضع فيه مستودعات Git.
+3. `لوحة التحكم` - `مجدول المهام` - `جدولة مهمة` - `نص محدد من قبل المستخدم` ، في علامة التبويب `الجدولة` و `إعدادات المهمة` ، قم بتكوين وقت التشغيل الدوري وأمر تشغيل البرنامج النصي (على سبيل المثال `bash /volume1/stash/permanent/github-pull.sh`).
+4. يمكن تكوين نتائج الإخراج في `الإعدادات` ، ثم اختيار المهمة والنقر فوق `تشغيل` للاختبار ويمكن فتح مسار الإخراج المكون لعرض نتائج التشغيل.
 
-Si necesitas ingresar la contraseña cada vez, puedes ejecutar el siguiente comando (debes habilitar el directorio de inicio del usuario de antemano):
+إذا كان من الضروري إدخال كلمة المرور في كل مرة ، يمكنك إدخال الأمر التالي (يجب تمكين دليل المستخدم مسبقًا):
 
 ```shell
 git config –global credential.helper store
 ```
 
-Esto creará un archivo de texto local que almacena tu nombre de usuario y contraseña. La próxima vez que necesites ingresar la contraseña, solo necesitas hacerlo una vez y no tendrás que ingresarla de nuevo.
+سيتم إنشاء ملف نصي محلي به معلومات الحساب وكلمة المرور.  
+عندما يتم طلب كلمة المرور مرة أخرى ، يتم إدخالها مرة واحدة فقط ، ولن يتم طلبها مرة أخرى في المستقبل.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
 - [批量 git pull 小脚本](https://www.jianshu.com/p/42e8da5eb0af)
 - [git 批量 pull_shell 脚本 -- 多个代码库批量 pull 最新 master 代码](https://blog.csdn.net/weixin_39618730/article/details/113024998)
 - [Windows 定时执行 shell 脚本](https://blog.csdn.net/qq_40463753/article/details/84976977)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

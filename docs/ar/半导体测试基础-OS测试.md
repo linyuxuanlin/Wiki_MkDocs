@@ -1,50 +1,50 @@
-# Fundamentos de pruebas de semiconductores - Pruebas OS
+# أساسيات اختبار الشرائح النصفية - اختبار OS
 
-Las pruebas de circuito abierto y cortocircuito (OS, Open-Short Test, también conocidas como pruebas de continuidad o contacto) se utilizan para **verificar la continuidad eléctrica de todos los pines del dispositivo y del sistema de prueba, y para asegurarse de que no haya cortocircuitos con otros pines o con la fuente de alimentación (tierra)**. Las pruebas OS pueden detectar rápidamente defectos físicos eléctricos en el DUT, como cortocircuitos de pines, falta de alambres de conexión, daño electrostático de pines y defectos de fabricación, así como problemas relacionados con los accesorios de prueba, como problemas de contacto en la ProbeCard o el socket del dispositivo.
+يستخدم اختبار الفتحة والقصر (OS ، Open-Short Test ، المعروف أيضًا باسم اختبار الاتصالية أو الاتصال) للتحقق من اتصال الأسلاك الكهربائية لجميع دبابيس الجهاز والنظام الاختباري وعدم حدوث قصر دائري مع دبابيس أخرى أو مع مصدر الطاقة (الأرض). يمكن لاختبار OS الكشف السريع عن العيوب الفيزيائية الكهربائية في DUT ، مثل قصر دبوس ، وفقدان bond wire ، وتلف دبوس الكهربائي ، وعيوب التصنيع ؛ كما يمكنه الكشف عن مشاكل تتعلق بملحقات الاختبار ، مثل ProbeCard أو Socket الجهاز.
 
-El proceso de prueba OS utiliza diodos de protección para VDD y tierra. En general, hay dos métodos de prueba: uno utiliza PMU para inyectar corriente y medir voltaje, y el otro utiliza un método de prueba funcional para proporcionar VREF y medir voltaje con carga dinámica.
+يتم استخدام حماية الثنائي VDD والأرض لاختبار OS. عادة ما يكون هناك نوعان من طرق الاختبار ، الأول هو تزويد PMU بتيار وقياس الجهد ؛ والثاني هو استخدام طريقة الاختبار الوظيفي لتوفير VREF وتشكيل تيار الحمل الديناميكي ثم قياس الجهد.
 
-### Pruebas OS - Método estático
+### اختبار OS - الطريقة الثابتة
 
-Las pruebas OS estáticas en serie / paralelo son esencialmente la inyección de corriente y la medición de voltaje, ya que esta corriente hace que un diodo de protección superior o inferior se polarice positivamente, lo que permite detectar anomalías de circuito abierto o cortocircuito midiendo la caída de voltaje polarizado positivamente. El diagrama de prueba para polarizar positivamente el diodo de la fuente de alimentación se muestra a continuación:
+يتم اختبار OS بالطريقة الثابتة التسلسلية / الموازية ، في الواقع ، عن طريق تزويد التيار وقياس الجهد ، لأن هذا التيار سيجعل حماية الثنائي العلوي أو السفلي تصبح موجبة ، لذلك يمكن قياس الانحراف الجهد الإيجابي للكشف عن الأخطاء في الفتحة والقصر. يتمثل الرسم التوضيحي للاختبار الذي يجعل حماية الثنائي العلوي موجبًا في تطبيق التيار الإيجابي على مصدر الطاقة ، كما هو موضح في الشكل التالي:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220805165031.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220805165031.png)
 
-El proceso de prueba es el siguiente:
+يتم تنفيذ الاختبار على النحو التالي:
 
-1. Conecte todos los pines del DUT (incluyendo la fuente de alimentación y la tierra) a tierra.
-2. PMU aplica corriente a los pines (aproximadamente 100µA).
-3. Mida el voltaje del pin
-   - Mayor que VOH (+1,5V): Falla (abierto)
-   - Menor que VOL (+0,2V): Falla (cortocircuito)
-   - Otro intervalo (voltaje polarizado positivamente, como 0,65V): Aprobado
+1. توصيل جميع دبابيس DUT (بما في ذلك مصدر الطاقة والأرض) بالأرض.
+2. يزود PMU دبوسًا بالتيار (حوالي 100 ميكرو أمبير).
+3. يتم قياس الجهد على دبوس
+   - أعلى من VOH (+1.5 فولت): فشل (فتح)
+   - أقل من VOL (+0.2 فولت): فشل (قصير)
+   - مدى آخر (الجهد الإيجابي ، مثل 0.65 فولت): نجاح
 
-El diagrama de prueba para polarizar positivamente el diodo a tierra se muestra a continuación:
+يتمثل الرسم التوضيحي للاختبار الذي يجعل حماية الثنائي السفلي موجبًا في تطبيق التيار السالب على الأرض ، كما هو موضح في الشكل التالي:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220728142155.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220728142155.png)
 
-El proceso de prueba es el siguiente:
+يتم تنفيذ الاختبار على النحو التالي:
 
-1. Conecte todos los pines del DUT (incluyendo la fuente de alimentación y la tierra) a tierra.
-2. PMU aplica corriente a los pines (aproximadamente -100µA).
-3. Mida el voltaje del pin
-   - Mayor que VOH (-0,2V): Falla (cortocircuito)
-   - Menor que VOL (-1,5V): Falla (abierto)
-   - Otro intervalo (caída de voltaje polarizada positivamente de aproximadamente -0,65V): Aprobado
+1. توصيل جميع دبابيس DUT (بما في ذلك مصدر الطاقة والأرض) بالأرض.
+2. يزود PMU دبوسًا بالتيار (حوالي -100 ميكرو أمبير).
+3. يتم قياس الجهد على دبوس
+   - أعلى من VOH (-0.2 فولت): فشل (قصير)
+   - أقل من VOL (-1.5 فولت): فشل (فتح)
+   - مدى آخر (الانحراف الجهد الإيجابي بعد حوالي -0.65 فولت): نجاح
 
-Debido a que PMU proporciona corriente constante, se requiere un clamp de voltaje para limitar el voltaje generado durante la prueba de circuito abierto, de lo contrario, el voltaje será infinito. Si el voltaje de clamp se establece en 3V, entonces cuando un pin está abierto, el resultado de la prueba es 3V.
+نظرًا لأن PMU يوفر تيارًا ثابتًا ، فإنه يتطلب وجود مشبك الجهد لتقييد الجهد الذي يتم إنتاجه عند اختبار دبوس الفتحة ، وإلا فإن الجهد سيكون لا نهائيًا. إذا تم تعيين مشبك الجهد على 3 فولت ، فإن نتيجة اختبار دبوس الفتحة عندما يكون مفتوحًا هي 3 فولت.
 
-Este método solo se aplica a la prueba de pines de señal IO y no se puede utilizar para la prueba de pines de alimentación. Aunque los pines de alimentación también se pueden probar en condiciones de circuito abierto, debido a su estructura interna diferente, se requieren límites de prueba diferentes.
+تقتصر هذه الطريقة على اختبار دبابيس إشارة IO ، ولا يمكن استخدامها لاختبار دبابيس مصدر الطاقة. على الرغم من أن دبابيس مصدر الطاقة يمكن اختبارها في ظل ظروف فتح الدائرة ، إلا أنها تتطلب حدود اختبار مختلفة بسبب هيكلها الداخلي.
 
-En resumen, las características de las pruebas OS estáticas son:
+بشكل عام ، تتميز اختبارات OS الثابتة بالميزات التالية:
 
-- El método en serie prueba un solo pin a la vez, es simple pero ineficiente, y es adecuado para DUT con pocos pines.
-- El método en paralelo requiere que el sistema de prueba tenga PPMU, la desventaja es que no puede detectar cortocircuitos entre pines adyacentes, la solución es realizar dos pruebas separadas (por ejemplo, la primera prueba de los pines 1357, la segunda prueba de los pines 2468).
-- Se aplica corriente y se mide el voltaje.
+- يتم اختبار دبوس واحد في الوقت الحالي في الطريقة التسلسلية ، وهي بسيطة ولكنها غير كفء ، وتناسب DUT الذي يحتوي على عدد قليل من الدبابيس.
+- تتطلب الطريقة الموازية وجود PPMU في نظام الاختبار ، ويتميز بعدم الكشف عن قصر الدبابيس المجاورة ، والحل هو الاختبار في مرحلتين (على سبيل المثال ، يتم اختبار دبابيس 1357 في المرحلة الأولى ، ويتم اختبار دبابيس 2468 في المرحلة الثانية).
+- تطبيق التيار وقياس الجهد.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- "The Fundamentals Of Digital Semiconductor Testing"
-- "DC Test Theory"
+- "أساسيات اختبار الشرائح النصفية الرقمية"
+- "نظرية اختبار DC"
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

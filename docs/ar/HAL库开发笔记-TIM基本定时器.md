@@ -1,87 +1,92 @@
-# Notas de desarrollo de la biblioteca HAL - Temporizador básico TIM
+# ملاحظات تطوير مكتبة HAL - المؤقت الأساسي TIM
 
-En STM32, hay tres tipos de temporizadores: temporizador básico, temporizador general y temporizador avanzado, utilizados para procesar diversas tareas periódicas. En este artículo, detallaré el temporizador básico.
+في STM32 ، هناك ثلاثة أنواع من المؤقتات: المؤقت الأساسي والمؤقت العام والمؤقت المتقدم ، والتي تستخدم لمعالجة مهام الدورة المتكررة المختلفة. في هذه المقالة ، سأقدم شرحًا مفصلاً للمؤقت الأساسي.
 
-## Principios básicos
+## المبدأ الأساسي
 
-Los temporizadores que utilizamos comúnmente se dividen en tres categorías: temporizador básico, temporizador general y temporizador avanzado. En la serie STM32F4, se corresponden de la siguiente manera:
+تنقسم المؤقتات التي نستخدمها بشكل شائع إلى ثلاث فئات: المؤقت الأساسي والمؤقت العام والمؤقت المتقدم. في متحكمات STM32F4 ، يتم تعيين هذه الفئات على النحو التالي:
 
-- Temporizador básico
+- المؤقت الأساسي
   - TIM6
   - TIM7
-- Temporizador general
+- المؤقت العام
   - TIM2-TIM5
   - TIM9-TIM14
-- Temporizador avanzado
+- المؤقت المتقدم
   - TIM1
   - TIM8
-- (Temporizador SysTick)
+- (مؤقت SysTick)
 
-Por lo general, utilizamos el temporizador básico como temporizador y el temporizador general para generar señales PWM.
+عادةً ما نستخدم المؤقت الأساسي كمؤقت ، ونستخدم المؤقت العام لإخراج إشارة PWM.
 
-### Características del temporizador básico
+### خصائص المؤقت الأساسي
 
-En la serie STM32F4, las características de los temporizadores básicos TIM6 y TIM7 son las siguientes:
+في متحكمات STM32F4 ، تتميز TIM6 و TIM7 هذان المؤقتان الأساسيان بالخصائص التالية:
 
-- Montado en el bus APB1
-- Contador de incremento automático de 16 bits
-- Predivisor programable de 16 bits para dividir la frecuencia del reloj del contador en tiempo de ejecución, con un coeficiente de división entre 1 y 65536
-- Circuito de sincronización utilizado para activar el DAC
-- Genera una interrupción/solicitud de DMA cuando se produce un evento de desbordamiento del contador
+- معلقة على حافلة APB1
+- عداد تزايدي تلقائيًا بـ 16 بت
+- مقسم قابل للبرمجة بـ 16 بت ، يستخدم لتقسيم تردد ساعة العداد (أي تعديل أثناء التشغيل) ، وتتراوح نسبة التقسيم بين 1 و 65536
+- يستخدم لتشغيل مزامنة دائرة DAC
+- يتم إنشاء طلب انقطاع / DMA عند حدوث حدث تحديث تجاوز العداد
 
-### Referencia de funciones de temporizador comunes
+### مرجع الدوال الزمنية الشائعة
 
-- **HAL_TIM_Base_Init()**: Inicializa la unidad de tiempo base del temporizador.
-- **HAL_TIM_Base_DeInit()**: Desactiva el temporizador, lo contrario a la inicialización.
-- **HAL_TIM_Base_MspInit()**: Función de inicialización MSP, se llama automáticamente al inicializar el temporizador.
-- **HAL_TIM_Base_MspDeInit()**: Lo contrario al anterior.
-- **HAL_TIM_Base_Start()**: Inicia el temporizador.
-- **HAL_TIM_Base_Stop()**: Detiene el temporizador.
-- **HAL_TIM_Base_Start_IT()**: Inicia el temporizador en modo de interrupción.
-- **HAL_TIM_Base_Stop_IT()**: Detiene el temporizador en modo de interrupción.
-- **HAL_TIM_Base_Start_DMA()**: Inicia el temporizador en modo DMA.
-- **HAL_TIM_Base_Stop_DMA()**: Detiene el temporizador en modo DMA.
+- **HAL_TIM_Base_Init()** : تهيئة وحدة المؤقت الأساسية
+- **HAL_TIM_Base_DeInit()** : تعطيل المؤقت ، عكس التهيئة
+- **HAL_TIM_Base_MspInit()** : دالة MSP للتهيئة ، يتم استدعاؤها تلقائيًا عند تهيئة المؤقت
+- **HAL_TIM_Base_MspDeInit()** : العكس من السابق
+- **HAL_TIM_Base_Start()** : تشغيل المؤقت
+- **HAL_TIM_Base_Stop()** : إيقاف المؤقت
+- **HAL_TIM_Base_Start_IT()** : تشغيل المؤقت بوضع الانقطاع
+- **HAL_TIM_Base_Stop_IT()** : إيقاف المؤقت بوضع الانقطاع
+- **HAL_TIM_Base_Start_DMA()** : تشغيل المؤقت بوضع DMA
+- **HAL_TIM_Base_Stop_DMA()** : إيقاف المؤقت بوضع DMA
 
-## Hacer que el LED parpadee con temporizador básico
+## استخدام المؤقت الأساسي لجعل LED يومض بشكل متقطع
 
-En este experimento, utilizaremos el temporizador básico para implementar una función de temporización que haga que el LED cambie de estado de encendido a apagado cada 0,5 segundos.
+يتم استخدام المؤقت الأساسي في هذه التجربة لتنفيذ وظيفة العد الزمني ، وجعل LED يتغير حالة التبديل كل 0.5 ثانية.
 
-### Configuración del temporizador básico en CubeMX
+### تكوين المؤقت الأساسي داخل CubeMX
 
-En primer lugar, abrimos la página de configuración del árbol de reloj de configuración de Clock Configuration y encontramos y anotamos el valor de APB1 Timer clocks en el extremo derecho:
+أولاً ، نفتح صفحة تكوين شجرة الساعة Clock Configuratgion ، ونجد ونحفظ قيمة APB1 Timer clocks الموجودة في الجانب الأيمن الأقصى:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210407152250.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210407152250.png)
 
-Esto se debe a que los temporizadores TIM2-TIM7, TIM12-TIM14 de la serie STM32F4 están montados en el bus APB1 de baja velocidad, mientras que TIM1, TIM8-TIM11 están montados en el bus APB2 de alta velocidad. Aquí utilizaremos el temporizador básico TIM6, por lo que debemos ver la velocidad de APB1 (que después de la división y multiplicación es de 90 MHz).
+ذلك لأن مؤقتات STM32F4 الموجودة في TIM2-TIM7 و TIM12-TIM14 معلقة على حافلة APB1 ذات السرعة المنخفضة ، بينما TIM1 و TIM8-TIM11 معلقة على حافلة APB2 ذات السرعة العالية ، ونحن نستخدم هنا مؤقتًا أساسيًا TIM6 ، لذلك يجب النظر في سرعة APB1 (هنا بعد التقسيم والضرب هي 90 ميجا هرتز).
 
-A continuación, encontramos TIM6 en la barra lateral Timer, activamos el temporizador y configuramos los siguientes parámetros:
+ثم ، نجد TIM6 في الشريط الجانبي Timer ، ونختار `Activated` لتنشيط المؤقت ، ونقوم بتكوين المعلمات التالية:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210407173136.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210407173136.png)
 
-Significado de los parámetros:
+معاني المعلمات:
 
-- **Prescaler**: 8999
-- **Counter Mode**: Up (cuenta desde cero hasta el valor de predivisión y luego desborda)
-- **Counter Period**: 4999
-- **auto-reload preload**: Enable (se recarga automáticamente cuando se produce un desbordamiento)
+- **Prescaler** (نسبة التقسيم المسبق): 8999
+- **Counter Mode** (وضع العد): Up (يبدأ العد من 0 ويتجه للأعلى حتى يتم التجاوز بعد النسبة المسبقة)
+- **Counter Period** (فترة العد / القيمة المحملة): 4999
+- **auto-reload preload** (إعادة التحميل التلقائي): Enable (سيتم إعادة تحميل القيمة الأولية تلقائيًا عند التجاوز)
 
-Como estoy utilizando una fuente de reloj de 90 MHz, establezco el predivisor en 8999 (es decir, una división de 9000), lo que resulta en una frecuencia de 10 kHz (90 MHz/9000). El valor de recarga se establece en 4999 (cuenta 5000 veces por ciclo), lo que da como resultado un ciclo de 500 ms.
+لأني استخدم مصدر الساعة هنا بتردد 90 ميجا هرتز ، فقد قمت بتعيين نسبة التقسيم المسبق إلى 8999 (أي 9000 تقسيم) ، وبعد التقسيم يصبح التردد 10 كيلو هرتز (90 ميجا هرتز / 9000). تم تعيين القيمة المحملة على 4999 (يتم عد 5000 مرة في الفترة الواحدة) ، لذلك يتم الحصول على دورة واحدة كل 500 مللي ثانية.
 
-Luego, en la pestaña NVIC, habilitamos la interrupción:
+ثم نقوم بتمكين الانقطاع في علامة التبويب NVIC الخاصة به:
 
-### Configuración del temporizador básico en el código
+![](https://img.wiki-power.com/d/wiki-media/img/20210407155959.png)
 
-En `main.c`, inicie el temporizador:
+### تكوين المؤقت الأساسي داخل الكود
+
+نقوم بتشغيل المؤقت في `main.c`:
 
 ```c title="main.c"
 /* USER CODE BEGIN 2 */
 
-HAL_TIM_Base_Start_IT(&htim6);
-
-/* USER CODE END 2 */
 ```
 
-Agregue una función de devolución de llamada en `stm32f4xx_it.c`:
+HAL_TIM_Base_Start_IT(&htim6);
+
+/_ USER CODE END 2 _/
+
+````
+
+أضف دالة الاستدعاء العائدة في `stm32f4xx_it.c`:
 
 ```c title="stm32f4xx_it.c"
 /* USER CODE BEGIN 1 */
@@ -96,18 +101,18 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 }
 
 /* USER CODE END 1 */
-```
+````
 
-Para la configuración del LED, consulte el artículo anterior [**HAL 库开发笔记-GPIO**](https://wiki-power.com/es/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89-GPIO).
+يمكن الرجوع إلى المقال السابق [**HAL 库开发笔记-GPIO**](https://wiki-power.com/ar/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89-GPIO) لمعرفة كيفية تكوين LED.
 
-Después de descargar y grabar, el LED cambiará de estado según el período de 500 ms que hemos establecido (es decir, cuando ocurre un desbordamiento y se produce un evento de desbordamiento en cada 500 ms, realizamos una operación de volteo en el LED en la función de devolución de llamada).
+عند التنزيل والحرق ، يمكننا رؤية أن LED تبديل حالتها بفترة 500 مللي ثانية كما هو محدد مسبقًا (أي يحدث تجاوز كل 500 مللي ثانية ويتم تبديل حالة LED في دالة الاستدعاء العائدة).
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
 - [STM32CubeMX 实战教程（四）—— 基本定时器（还是点灯）](https://blog.csdn.net/weixin_43892323/article/details/104534920)
 - [进阶篇 VI [Timer & PWM]](https://alchemicronin.github.io/posts/fd31d369/)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

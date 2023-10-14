@@ -1,106 +1,86 @@
-# Guía de diseño EMC
+# دليل تصميم EMC
 
-La compatibilidad electromagnética (EMC, por sus siglas en inglés) se refiere a la capacidad de un dispositivo para funcionar correctamente en su entorno electromagnético sin causar interferencias electromagnéticas inaceptables en otros dispositivos del entorno. En términos simples, significa que su placa no debe ser susceptible a interferencias y debe evitar interferir con otros dispositivos para lograr un estado de "compatibilidad".
+تشير التوافقية الكهرومغناطيسية (EMC) إلى قدرة الجهاز على العمل بشكل طبيعي في بيئته الكهرومغناطيسية وعدم تسبب أي إزعاج كهرومغناطيسي غير مقبول لأي شيء في البيئة. ببساطة، فإن الهدف هو جعل لوحتك غير عرضة للتدخل وتجنب التدخل في الآخرين لتحقيق حالة "التوافق".
 
-La EMC incluye la interferencia electromagnética (EMI) y la susceptibilidad electromagnética (EMS).
+تشمل EMC الاضطرابات الكهرومغناطيسية (EMI) والحساسية الكهرومغناطيسية (EMS).
 
-Los elementos de EMI son:
+تتضمن EMI العناصر التالية:
 
-- Emisión radiada (RE): se refiere a la interferencia de una fuente que acopla su señal a otra red eléctrica a través del espacio.
-- Emisión conducida (CE): se refiere a la interferencia de una señal en una red eléctrica que se acopla a otra red eléctrica a través de un medio conductor.
-- Armónicos: prueba de interferencia de corriente armónica.
-- Parpadeo: prueba de cambio y parpadeo de voltaje.
+- الانبعاث الإشعاعي (RE): يشير إلى كيفية تداخل المصدر في الشبكة الكهربائية الأخرى من خلال الفضاء.
+- الانبعاث الناقل (CE): يشير إلى كيفية تداخل المصدر في الشبكة الكهربائية الأخرى من خلال وسط النقل.
+- الهارمونيك (Harmonic): اختبار الاضطرابات الكهربائية الهارمونية.
+- الوميض (Flicker): اختبار التغيرات والوميض في الجهد.
 
-Los elementos de EMS son:
+تتضمن EMS العناصر التالية:
 
-- Resistencia a la radiación (RS): prueba de resistencia a la radiación de campo electromagnético de radiofrecuencia.
-- Resistencia a la conducción (CS): prueba de resistencia a la interferencia de conducción inducida por campo de radiofrecuencia (inyección de corriente alta).
-- Protección contra descargas electrostáticas (ESD): prueba de resistencia a la descarga electrostática (prueba de descarga electrostática).
-- Interferencia de pulso transitorio (EFT): prueba de resistencia a grupos de pulsos de transición rápida.
-- Caída de voltaje (DIP): prueba de resistencia a interrupciones y cambios de voltaje a corto plazo.
-- Sobretensión, rayo (SURGE): prueba de resistencia a sobretensión (rayo).
-- Resistencia al campo magnético de frecuencia de potencia (PFMF): prueba de resistencia al campo magnético de frecuencia de potencia.
+- مقاومة الإشعاع (RS): اختبار مقاومة الإشعاع الكهرومغناطيسي للحقل الكهرومغناطيسي عالي التردد.
+- مقاومة الناقل (CS): اختبار مقاومة الاضطراب الناجم عن حقل RF المنبعث من التوصيل الموصول (حقن تيار عالي).
+- مقاومة الكهرباء الساكنة (ESD): اختبار مقاومة الكهرباء الساكنة (تجربة تفريغ الكهرباء الساكنة).
+- مقاومة النبض العابر (EFT): اختبار مقاومة مجموعة النبضات السريعة للتغيير الكهربائي.
+- انخفاض الجهد (DIP): اختبار مقاومة الانقطاع الكهربائي القصير والتغييرات في الجهد.
+- الاندفاع والصاعقة (SURGE): اختبار مقاومة الاندفاع والصاعقة.
+- مقاومة المجال المغناطيسي للتردد الكهربائي (PFMF): اختبار مقاومة المجال المغناطيسي للتردد الكهربائي.
 
-## Métodos básicos de optimización de EMC
+## أساليب تحسين EMC الأساسية
 
-Los elementos que causan problemas de EMC son: fuentes de interferencia electromagnética, vías de acoplamiento y dispositivos sensibles.
+العناصر التي تؤدي إلى مشكلات EMC هي: مصدر التدخل الكهرومغناطيسي وطريقة الاقتران والأجهزة الحساسة.
 
-Reglas:
+القواعد:
 
-1. Cuanto mayor sea el área del circuito de corriente de alta frecuencia S, mayor será la emisión radiada de EMI.
-2. Cuanto mayor sea la frecuencia de la corriente del circuito f, mayor será la emisión radiada de EMI, y la intensidad del campo electromagnético radiado aumentará proporcionalmente al cuadrado de la frecuencia de la corriente f.
+1. كلما زادت مساحة حلقة التيار عالي التردد S ، زاد الانبعاث الإشعاعي EMI.
+2. كلما زاد تردد تيار الحلقة f ، زاد الانبعاث الإشعاعي EMI ، وزادت قوة الحقل الكهرومغناطيسي المنبعث بشكل متناسب مع تردد تيار الحلقة f.
 
-Métodos básicos de respuesta:
+الطرق الأساسية للتعامل معها:
 
-- Supresión del canal de transmisión: los métodos específicos incluyen filtrado, blindaje, conexión a tierra, superposición y enrutamiento razonable.
-- Separación espacial: es un método efectivo para suprimir la interferencia de radiación espacial y la interferencia de acoplamiento de inducción al aumentar la distancia entre la fuente de interferencia y el circuito sensible.
-- Separación temporal: la señal útil se cierra temporalmente cuando se emite una señal de interferencia y se transmite durante el tiempo en que la señal de interferencia se detiene.
-- Procesamiento de espectro: cambio de espectro, tecnología de expansión de espectro.
-- Aislamiento eléctrico: aislamiento fotoeléctrico, aislamiento de relé, aislamiento de transformador, conversión DC/DC.
+- قم بتقليل قناة النقل: يتضمن ذلك تصفية الإشارة والحجب والتأريض والتداخل والتمديد العقلاني.
+- الفصل الفضائي: أي زيادة المسافة بين مصدر التدخل والدائرة الحساسة للحد من التدخل الإشعاعي في الفضاء والتداخل الحثي الفعال.
+- الفصل الزمني: يتم إغلاق الإشارة المفيدة بشكل مؤقت عند إرسال إشارة التدخل ، ويتم نقل الإشارة المفيدة خلال فترة توقف إشارة التدخل.
+- معالجة الطيف: تغيير الطيف وتقنية التحليل الطيفي.
+- العزل الكهربائي: العزل الضوئي والعزل الكهروميكانيكي والعزل المحولي وتحويل DC / DC.
 
-### Minimizar el área del circuito de alta frecuencia y del circuito de alimentación
+### تصغير مساحة خطوط التيار العالي التردد وحلقات الطاقة
 
-Principios básicos:
+المبادئ الأساسية:
 
-1. La señal siempre regresa al extremo fuente.
-2. El flujo de retorno de la señal siempre sigue el camino de menor impedancia.
+1. يعود الإشارة دائمًا إلى نقطة البداية.
+2. يسلك تدفق الإشارة دائمًا المسار ذو الحث الأقل.
 
-En señales de alta frecuencia, el camino de retorno de la señal suele ser el camino de menor inductancia, que suele ser el camino de menor área de circuito. En frecuencias bajas (generalmente por debajo de la frecuencia de kHz), el flujo de retorno de la señal suele seguir el camino de menor resistencia.
+في الإشارات عالية التردد ، يكون مسار تدفق الإشارة عادةً هو المسار الذي يحتوي على أقل حث ، وهو عادةً أيضًا المسار الذي يحتوي على أصغر مساحة لحلقة الطاقة. في الإشارات منخفضة التردد (عادةً أقل من تردد KHz) ، يسلك تدفق الإشارة عادةً المسار الذي يحتوي على أقل مقاومة.
 
-### Mantener la integridad de la pantalla de retorno de la señal tanto como sea posible
+### الحفاظ على شاشة تدفق الإشارة بأكملها
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211215190631.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211215190631.png)
 
-Como se muestra en la figura, si se corta el plano de retorno de la señal, la corriente de la señal no podrá volver al origen a través de la ruta óptima (más corta), lo que aumentará el área del circuito de la señal al buscar una ruta alternativa de retorno de la señal, lo que aumentará el área del circuito de la señal.
+كما هو موضح في الشكل ، إذا تم قطع شاشة تدفق الإشارة ، فلن يتمكن تدفق التيار الكهربائي من العودة إلى المصدر عبر المسار الأمثل (الأقصر) ، وسيتعين البحث عن مسار بديل لتدفق الإشارة ، مما يزيد من مساحة حلقة الإشارة.
 
-En casos especiales, la tierra digital y la tierra analógica deben estar aisladas para evitar interferencias cruzadas.
+في حالات خاصة ، يجب فصل الأرض الرقمية والأرض التناظرية لتجنب التشويش.
 
-### Alejar las señales de alta velocidad de los conectores
+### تبعد الإشارات السريعة عن الموصلات
 
-Los cables conectados a la PCB a través de conectores son antenas eficientes, y las señales de alta velocidad son propensas a generar diferencias de potencial que impulsan la corriente hacia los cables conectados, lo que provoca una radiación excesiva.
+تعتبر الكابلات التي توصل باللوحة الدائرية هي الهوائيات الفعالة ، وتنتج الإشارات السريعة فروقات الجهد التي تدفع التيار إلى الكابلات الموصلة ، مما يؤدي إلى تجاوز الإشعاع المسموح به.
 
-### Suprimir el tiempo de subida y bajada de la señal de alta velocidad
+### تقليل وقت صعود وانخفاض الإشارات السريعة
 
-Al ralentizar el tiempo de subida y bajada de la señal digital, se puede controlar eficazmente la frecuencia armónica de alta orden. Un tiempo de transición demasiado largo puede provocar problemas de integridad de la señal y sobrecalentamiento.
+يمكن التحكم بترددات الهارمونيك العالية بشكل جيد عن طريق تبطئ وقت صعود وانخفاض الإشارات الرقمية. يؤدي الوقت الطويل للتحويل إلى مشكلات في سلامة الإشارة والتسخين الزائد.
 
-## Componentes EMC
+## عناصر EMC
 
-Los componentes comunes de EMC incluyen inductores comunes, perlas magnéticas y capacitores de filtrado.
+تشمل العناصر الشائعة لـ EMC الملف الشائع ، والخرز المغناطيسي ، ومكثفات التصفية.
 
-Modelos comunes de filtros:
+نماذج المرشحات الشائعة:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211219173751.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211219173751.png)
 
-### Inductor común
+### الملف الشائع
 
-Modelo equivalente del inductor común:
+النموذج المكافئ للملف الشائع:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211219173856.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211219173856.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211219174546.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211219174546.png)
 
-### Perlas magnéticas
+### الخرز المغناطيسي
 
-Para obtener información sobre la introducción y selección de perlas magnéticas, consulte la sección [**Componentes básicos - Inductores y perlas magnéticas · Perlas magnéticas**](https://wiki-power.com/es/%E5%9F%BA%E6%9C%AC%E5%85%83%E5%99%A8%E4%BB%B6-%E7%94%B5%E6%84%9F%E4%B8%8E%E7%A3%81%E7%8F%A0#%E7%A3%81%E7%8F%A0).
+لا يوجد ترجمة لهذه المقالة حاليًا.
 
-### Capacitores de filtro
-
-Para obtener información sobre la introducción y selección de capacitores, consulte la sección [**Componentes básicos - Capacitores**](https://wiki-power.com/es/%E5%9F%BA%E6%9C%AC%E5%85%83%E5%99%A8%E4%BB%B6-%E7%94%B5%E5%AE%B9).
-
-## Diseño de EMC en PCB 🚧
-
-### Principios 3W y 20H
-
-El principio 3W establece que si la distancia entre los centros de las líneas es al menos 3 veces el ancho de la línea, se puede mantener un 70% de campo eléctrico entre las líneas sin interferencias mutuas. Para lograr un 98% de campo eléctrico sin interferencias mutuas, se utiliza la regla de 10W.
-
-El principio 20H establece que el borde del plano de alimentación debe estar al menos a una distancia de 20 veces la separación entre los planos de tierra para suprimir los efectos de radiación en el borde. Esto puede limitar el 70% del campo eléctrico dentro del borde de tierra; si se reduce en 100H, se puede limitar el 98% del campo eléctrico dentro.
-
-## Referencias y agradecimientos
-
-- [Introducción a la compatibilidad electromagnética](https://blog.infonet.io/2021/04/04/%E7%94%B5%E7%A3%81%E5%85%BC%E5%AE%B9%E4%BB%8B%E7%BB%8D/)
-- [Compatibilidad electromagnética (EMC): Guía de diseño de EMC simple y efectiva](https://zhuanlan.zhihu.com/p/142866381)
-- [Secretos de diseño EMI/EMC - Manual esencial para ingenieros de diseño de productos electrónicos](https://www.mr-wu.cn/emc-emi-she-ji-mi-ji/)
-- [Supresión de interferencias electromagnéticas conducidas mediante inductores comunes híbridos](https://www.richtek.com/Design%20Support/Technical%20Document/AN008?sc_lang=zh-CN)
-- [[Circuito] Conceptos básicos de EMC\_Interferencia común y diferencial](https://zhenhuizhang.tk/post/dian-lu-emc-ji-chu-gai-nian-_-gong-mo-chai-mo-gan-rao/)
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

@@ -8,13 +8,13 @@ La clave para la protección contra ESD es proporcionar un canal de descarga sep
 
 ## Modelo de prueba ESD
 
-|                                 | HBM      | MM      | CDM      | Modelo IEC 61000-4-2 |
-| ------------------------------- | -------- | ------- | -------- | ------------------- |
-| Voltaje de prueba (V)            | 500-2000 | 100-200 | 500-2000 | 2000-15000          |
-| Tiempo de pulso (ns)             | ~150     | ~80     | ~1       | ~150                |
-| Corriente de pico a 2kV ($A_pk$) | 1.33     | -       | ~5       | 7.5                 |
-| Tiempo de subida                 | 25ns     | -       | <400ps   | <1ns                |
-| Número de impulsos de voltaje    | 2        | 2       | 2        | 20                  |
+|                                  | HBM      | MM      | CDM      | Modelo IEC 61000-4-2 |
+| -------------------------------- | -------- | ------- | -------- | -------------------- |
+| Voltaje de prueba (V)            | 500-2000 | 100-200 | 500-2000 | 2000-15000           |
+| Tiempo de pulso (ns)             | ~150     | ~80     | ~1       | ~150                 |
+| Corriente de pico a 2kV ($A_pk$) | 1.33     | -       | ~5       | 7.5                  |
+| Tiempo de subida                 | 25ns     | -       | <400ps   | <1ns                 |
+| Número de impulsos de voltaje    | 2        | 2       | 2        | 20                   |
 
 ### Modelo de cuerpo humano (HBM, Human Body Model)
 
@@ -34,14 +34,14 @@ Los dos modelos anteriores simulan la situación en la que un objeto cargado des
 
 Especificaciones comunes de prueba HBM:
 
-| Estándar      | Capacidad de carga $C_d (pF)$ | Resistencia de descarga $R_d (Ω)$ |
-| ------------- | --------------------------- | -------------------------------- |
-| AEC-Q200-002  | 150                         | 2000                             |
-| IEC61000-4-2  | 150                         | 330                              |
+| Estándar     | Capacidad de carga $C_d (pF)$ | Resistencia de descarga $R_d (Ω)$ |
+| ------------ | ----------------------------- | --------------------------------- |
+| AEC-Q200-002 | 150                           | 2000                              |
+| IEC61000-4-2 | 150                           | 330                               |
 
 Tomando como ejemplo la norma AEC-Q200-002, el circuito de prueba ESD HBM es el siguiente:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211215164751.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211215164751.png)
 
 Donde $C_x$ es la capacidad del objeto de prueba, $C_d$ es la capacidad de carga, $R_d$ es la resistencia de descarga y $R_c$ es la resistencia de protección. El método de prueba ESD es el siguiente:
 
@@ -50,28 +50,28 @@ Donde $C_x$ es la capacidad del objeto de prueba, $C_d$ es la capacidad de carga
 
 Curva de corriente de descarga:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211215165312.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211215165312.png)
 
 ## Proceso de prueba de ESD
 
 Según el estándar AEC-Q200-002, el proceso de prueba HBM se puede realizar según la siguiente figura:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211215165447.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211215165447.png)
 
 Los niveles de resistencia a la tensión probados se clasifican según la siguiente tabla:
 
-| Nivel de clasificación | Tensión máxima |
-| ---------------------- | -------------- |
-| 1A                     | Menos de 500V (DC) |
+| Nivel de clasificación | Tensión máxima                         |
+| ---------------------- | -------------------------------------- |
+| 1A                     | Menos de 500V (DC)                     |
 | 1B                     | Más de 0,5 kV (DC), menos de 1 kV (DC) |
-| 1C                     | Más de 1 kV (DC), menos de 2 kV (DC) |
-| 2                      | Más de 2 kV (DC), menos de 4 kV (DC) |
-| 3                      | Más de 4 kV (DC), menos de 6 kV (DC) |
-| 4                      | Más de 6 kV (DC), menos de 8 kV (DC) |
-| 5A                     | Más de 8 kV (DC), menos de 12 kV (AD) |
+| 1C                     | Más de 1 kV (DC), menos de 2 kV (DC)   |
+| 2                      | Más de 2 kV (DC), menos de 4 kV (DC)   |
+| 3                      | Más de 4 kV (DC), menos de 6 kV (DC)   |
+| 4                      | Más de 6 kV (DC), menos de 8 kV (DC)   |
+| 5A                     | Más de 8 kV (DC), menos de 12 kV (AD)  |
 | 5B                     | Más de 12 kV (AD), menos de 16 kV (AD) |
 | 5C                     | Más de 16 kV (AD), menos de 25 kV (AD) |
-| 6                      | Más de 25 kV (AD) |
+| 6                      | Más de 25 kV (AD)                      |
 
 DC (descarga de contacto directo) es una descarga directa de contacto; AD (descarga de aire) es una descarga de aire.
 
@@ -92,7 +92,7 @@ Por lo tanto, en general, cuanto mayor sea la capacidad de $C_x$, mayor será la
 - Parámetros de capacidad de $C_x$: serie GCM / encapsulado 0402 / X7R / 50V
 - Condiciones de prueba: $C_d=150pF,R_d=2kΩ$
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211215172528.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211215172528.png)
 
 Según la curva del gráfico, si queremos resistir una ESD de 1 kV, podemos usar un capacitor de 1000 pF para la defensa. En el diseño de circuitos reales, es mejor conectar un gran resistor en paralelo con el capacitor para descargar la electricidad en el capacitor después de eliminar la ESD.
 

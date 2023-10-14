@@ -7,16 +7,16 @@ Este es un tutorial basado en la [**placa principal STM32F407 de Reka**](https:/
 La interfaz DP83848 es RMII, y DP83848 admite una velocidad de línea de 10M/100M, con un oscilador pasivo de 50MHz integrado en la placa.
 
 | Controlador principal STM32 | Módulo DP83848 |
-| ----------- | ------------ |
-| ETH_REF_CLK | PA1          |
-| ETH_MDIO    | PA2          |
-| ETH_MDC     | PC1          |
-| ETH_CRS_DV  | PA7          |
-| ETH_RXD0    | PC4          |
-| ETH_RXD1    | PC5          |
-| ETH_TX_EN   | PB11         |
-| ETH_TXD0    | PB12         |
-| ETH_TXD1    | PB13         |
+| --------------------------- | -------------- |
+| ETH_REF_CLK                 | PA1            |
+| ETH_MDIO                    | PA2            |
+| ETH_MDC                     | PC1            |
+| ETH_CRS_DV                  | PA7            |
+| ETH_RXD0                    | PC4            |
+| ETH_RXD1                    | PC5            |
+| ETH_TX_EN                   | PB11           |
+| ETH_TXD0                    | PB12           |
+| ETH_TXD1                    | PB13           |
 
 ## Software
 
@@ -48,7 +48,7 @@ La interfaz DP83848 es RMII, y DP83848 admite una velocidad de línea de 10M/100
 
 Configuración del árbol de reloj: configure según el oscilador integrado en la placa (8M en este caso).
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220702145310.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220702145310.png)
 
 ### Agregar código de funcionalidad
 
@@ -119,14 +119,14 @@ if (netif_is_link_up(&gnetif) && !netif_is_up(&gnetif)) {
 
 - [STM32 HAL Ethernet initialization](https://blog.naver.com/eziya76/221852430347)
 
-| Función de API | Descripción                                |
-| -------------- | ------------------------------------------ |
-| udp_new        | Crea un nuevo PCB UDP                      |
-| udp_remove     | Elimina el PCB UDP y libera los recursos relacionados |
-| udp_bind       | Asocia el PCB UDP con la dirección IP y el puerto local |
-| udp_connect    | Establece la dirección IP y el puerto remoto del PCB UDP |
-| udp_disconnect | Elimina la dirección IP y el puerto remoto del PCB UDP |
-| udp_send       | Envía datos UDP                             |
+| Función de API | Descripción                                                                                    |
+| -------------- | ---------------------------------------------------------------------------------------------- |
+| udp_new        | Crea un nuevo PCB UDP                                                                          |
+| udp_remove     | Elimina el PCB UDP y libera los recursos relacionados                                          |
+| udp_bind       | Asocia el PCB UDP con la dirección IP y el puerto local                                        |
+| udp_connect    | Establece la dirección IP y el puerto remoto del PCB UDP                                       |
+| udp_disconnect | Elimina la dirección IP y el puerto remoto del PCB UDP                                         |
+| udp_send       | Envía datos UDP                                                                                |
 | udp_recv       | Registra una función de devolución de llamada que se llama cuando se recibe un nuevo datagrama |
 
 ## Configuración interna de CubeMX

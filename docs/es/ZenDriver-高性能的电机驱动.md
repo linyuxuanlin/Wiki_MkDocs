@@ -13,7 +13,7 @@ Repositorio del proyecto: [**linyuxuanlin/ZenDriver**](https://github.com/linyux
 
 ## Definición de interfaces
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200125192433.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200125192433.png)
 
 En el **lado del motor**, de izquierda a derecha, se encuentran: **M-, 5V, codificador A, codificador B, GND, M+**, correspondientes a los pines del motor, que se pueden conectar directamente al motor.
 
@@ -37,7 +37,7 @@ En la **entrada de alimentación**, los tres puertos son universales, y se recom
 4. Conecte los pines **IN1, IN2** al puerto PWM del microcontrolador.
 5. Depure el código.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200125192734.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200125192734.png)
 
 > Dirección original del artículo: <https://wiki-power.com/>  
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.

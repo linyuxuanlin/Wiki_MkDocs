@@ -1,12 +1,12 @@
-# Homelab - Software de tablero rico en funciones WeKan
+# Homelab - برنامج WeKan لوحة المهام الغنية بالميزات
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230508175842.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20230508175842.png)
 
-**WeKan** es un software de tablero de código abierto flexible, fácil de usar y eficiente que puede ayudar a los equipos a colaborar en la gestión de tareas, proyectos y flujos de trabajo. Proporciona una interfaz de usuario simple pero potente que permite a los usuarios crear fácilmente múltiples tableros, agregar listas y tarjetas a cada uno y asignar tareas a diferentes miembros para una mejor gestión del proyecto y seguimiento del progreso.
+**WeKan** هو برنامج مفتوح المصدر لوحة المهام المرنة والسهلة الاستخدام والفعالة، ويمكن استخدامه لإدارة المهام والمشاريع وسير العمل في الفريق. يوفر واجهة مستخدم بسيطة وقوية يمكن للمستخدمين من خلالها إنشاء العديد من اللوحات وإضافة القوائم والبطاقات لكل لوحة، وتعيين المهام لأعضاء مختلفين لإدارة المشروع وتتبع التقدم.
 
-## Implementación (Docker Compose)
+## التنصيب (Docker Compose)
 
-Primero, cree un archivo `compose.yaml` y pegue el siguiente contenido:
+أولاً، قم بإنشاء ملف `compose.yaml` ولصق المحتوى التالي:
 
 ```yaml title="compose.yaml"
 version: "2"
@@ -72,45 +72,43 @@ networks:
     driver: bridge
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar directamente sus parámetros en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` por `wekan`).
+(اختياري) يوصى بإنشاء ملف `.env` في نفس مستوى `compose.yaml` وتخصيص متغيرات البيئة الخاصة بك. إذا كنت لا ترغب في استخدام المتغيرات البيئية، يمكنك تخصيص المعلمات مباشرةً داخل `compose.yaml` (مثل استبدال `${STACK_NAME}` بـ `wekan`).
 
 ```dotenv title=".env"
 STACK_NAME=wekan
-STACK_DIR=xxx # Ruta personalizada de almacenamiento del proyecto, por ejemplo ./wekan
+STACK_DIR=xxx # مسار تخزين المشروع المخصص، مثل ./wekan
 
 # wekandb
 DB_VERSION=6
-```
 
 # wekan
 APP_VERSION=latest
-APP_PORT=xxxx # Puerto de acceso personalizado, elige uno que no esté ocupado
-
+APP_PORT=xxxx # منفذ الوصول المخصص، اختر غير المستخدم لتجنب التعارض
 ```
 
-Luego, inicializamos la estructura de directorios. Cambiamos al directorio personalizado `STACK_DIR` (por ejemplo, `./wekan`) y ejecutamos el comando para crear las carpetas:
+ثم نقوم بتهيئة هيكل المجلدات. انتقل إلى `STACK_DIR` المخصص (مثل `./wekan`) وقم بتنفيذ الأمر لإنشاء المجلدات:
 
 ```shell
 mkdir -vp {wekan-files,wekan-db,wekan-db-dump}
 ```
 
-Finalmente, en el directorio al mismo nivel que `compose.yaml`, ejecutamos el comando `docker compose up -d` para iniciar los contenedores de la orquestación.
+أخيرًا، يمكنك تشغيل حاويات الترتيب ببساطة باستخدام الأمر `docker compose up -d` في نفس مستوى `compose.yaml`.
 
-## Instrucciones de configuración
+## تفاصيل التكوين
 
-El archivo `compose.yaml` anterior ha sido simplificado y modificado. Si desea ver la versión completa, consulte [**wekan/compose.yaml**](https://github.com/wekan/wekan/blob/master/compose.yaml).
+تم تبسيط وتعديل `compose.yaml` المذكور أعلاه. إذا كنت ترغب في الإطلاع على النسخة الكاملة، يرجى الرجوع إلى [**wekan/compose.yaml**](https://github.com/wekan/wekan/blob/master/compose.yaml).
 
-Después de la implementación, la primera cuenta registrada será la cuenta de administrador. Si lo está utilizando para usted mismo, se recomienda desactivar la función de registro de usuarios en el panel de configuración.
+بعد الانتهاء من التثبيت، يتم تسجيل الحساب الأول كحساب مدير. إذا كنت تستخدمها لنفسك، فمن المستحسن إيقاف تشغيل وظيفة تسجيل المستخدمين في لوحة الإعدادات.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Sitio web oficial](https://wekan.github.io/)
-- [Documentación](https://github.com/wekan/wekan/wiki/Docker#note-docker-composeyml-works)
-- [Repositorio de GitHub](https://github.com/wekan/wekan)
+- [الموقع الرسمي](https://wekan.github.io/)
+- [الوثائق](https://github.com/wekan/wekan/wiki/Docker#note-docker-composeyml-works)
+- [مستودع GitHub](https://github.com/wekan/wekan)
 - [Docker Hub](https://hub.docker.com/r/wekanteam/wekan)
-- [Sitio de demostración](https://boards.wekan.team/b/D2SzJKZDS4Z48yeQH/wekan-open-source-kanban-board-with-mit-license)
+- [موقع العرض التوضيحي](https://boards.wekan.team/b/D2SzJKZDS4Z48yeQH/wekan-open-source-kanban-board-with-mit-license)
 
-> Dirección original del artículo: <https://wiki-power.com/>
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

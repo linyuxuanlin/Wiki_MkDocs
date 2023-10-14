@@ -1,69 +1,69 @@
-# Esquema de alimentación (Boost) - SX1308
+# مشروع مصدر الطاقة (Boost) - SX1308
 
-Nota: Este IC de esquema no es estable, no se recomienda su uso.
+ملاحظة: هذا الدائرة المتكاملة غير مستقرة ولا يوصى باستخدامها.
 
-Dirección del proyecto: **<https://github.com/linyuxuanlin/Modularity_of_Functional_Circuit/tree/master/Power/SX1308>**
+عنوان المشروع: **<https://github.com/linyuxuanlin/Modularity_of_Functional_Circuit/tree/master/Power/SX1308>**
 
-- **Principio**: DC/DC (Boost)
-- **Voltaje de entrada**: 2-24 V
-- **Voltaje de salida**: hasta 28 V
-- **Corriente de salida**: 2 A
-- **Frecuencia de trabajo**: 1.2 MHz
-- **Eficiencia**: hasta el 97%
-- **Precio**: ¥ 0.57
-- **Características**
-  - Arranque suave incorporado
-  - Bloqueo de subvoltaje de entrada
-  - Cambio automático al modo PFM en carga ligera
-  - Limitación de corriente
-  - Protección contra sobrecalentamiento
+- **المبدأ**: DC/DC (Boost)
+- **الجهد الكهربائي المدخل**: 2-24 فولت
+- **الجهد الكهربائي الناتج**: حتى 28 فولت
+- **التيار الكهربائي الناتج**: 2 أمبير
+- **التردد العامل**: 1.2 ميجاهرتز
+- **الكفاءة**: حتى 97%
+- **السعر**: 0.57 يوان صيني
+- **الميزات**
+  - تشغيل ناعم داخلي
+  - قفل الجهد الكهربائي المدخل
+  - التبديل التلقائي إلى وضع PFM عند الحمل الخفيف
+  - حماية التيار الكهربائي
+  - حماية الحرارة
 
-## Definición de pines
+## تعريف الأقطاب
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210713154103.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210713154103.png)
 
-## Diseño de referencia
+## التصميم المرجعي
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210715141625.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210715141625.png)
 
-## Ajuste de parámetros
+## ضبط المعلمات
 
-(Para obtener parámetros más detallados, consulte el manual de datos)
+(يرجى الرجوع إلى دليل البيانات للمزيد من التفاصيل)
 
-### Ajuste del voltaje de salida
+### ضبط الجهد الكهربائي الناتج
 
-Ajuste el voltaje de salida (voltaje de retroalimentación $V_{REF}=0.6 V$) ajustando las resistencias de división de retroalimentación $R_1$ y $R_2$:
+يمكن ضبط الجهد الكهربائي الناتج عن طريق تعديل مقاومة التقسيم الراجع $R_1$ و $R_2$ (الجهد الكهربائي المرجعي $V_{REF}=0.6 فولت$):
 
 $V_{OUT}=V_{REF}\times(1+\frac{R_1}{R_2})$
 
-Por lo general, si se selecciona $R_2$ como 10 kΩ, la relación entre $V_{OUT}$ y $R_1$ es la siguiente:
+عمومًا، إذا اخترنا $R_2$ بقيمة 10 كيلوأوم، فإن الجدول التالي يوضح العلاقة بين $V_{OUT}$ و $R_1$:
 
 | $V_{OUT}$ |  $R_1$  |
 | :-------: | :-----: |
-|    5 V    | 73.2 kΩ |
-|   10 V    | 158 kΩ  |
-|   12 V    | 191 kΩ  |
-|   15 V    | 240 kΩ  |
-|   20 V    | 324 kΩ  |
+|    5 فولت    | 73.2 كيلوأوم |
+|   10 فولت    | 158 كيلوأوم  |
+|   12 فولت    | 191 كيلوأوم  |
+|   15 فولت    | 240 كيلوأوم  |
+|   20 فولت    | 324 كيلوأوم  |
 
-### Pin de habilitación
+### دبوس التمكين
 
-EN es el pin de habilitación, se inicia cuando es mayor de 1.5 V y se apaga cuando es menor de 0.4 V. No deje este pin sin conexión.
+يعد دبوس التمكين (EN) هو دبوس التمكين، ويتم تشغيله عندما يكون أكبر من 1.5 فولت ويتم إيقافه عندما يكون أقل من 0.4 فولت. يرجى عدم تعليق هذا الدبوس.
 
-## Referencia de diseño de PCB
+## مرجع تخطيط الدوائر المطبوعة
 
-- Coloque el capacitor de entrada de alimentación cerca de los pines de alimentación del IC.
-- Coloque los capacitores de entrada y salida cerca de la GND del IC para reducir el área del circuito de corriente.
-- Amplíe y acorte las líneas de alimentación VIN, SW y VOUT para permitir un mayor flujo de corriente alterna.
-- Reduzca el cobre en el pie de SW del chip para prevenir EMI causado por voltaje alterno.
-- Acorte las líneas de retroalimentación para evitar interferencias de ruido, coloque la resistencia de retroalimentación cerca del chip, la GND de R2 debe colocarse lo más cerca posible del pin GND del IC, y la línea de distribución de VOUT a R1 debe estar lejos del inductor y los nodos de conmutación.
+- يتم وضع سعة الإدخال الكهربائي القريبة من أقطاب الطاقة IC.
+- يتم وضع سعة الإدخال والإخراج الكهربائي القريبة من GND IC لتقليل مساحة حلقة التيار الكهربائي.
+- يتم توسيع وتقصير خطوط VIN و SW و VOUT لتمرير التيار المتردد الكبير.
+- يتم تقليل النحاس في قدم SW الخاصة بالرقاقة لتجنب EMI الناجم عن الجهد المتردد.
+- يتم تقصير خطوط FB لتجنب التداخل الكهرومغناطيسي، ويتم وضع مقاومة التغذية الراجعة بالقرب من الرقاقة، ويجب وضع GND R2 بقرب أقطاب GND IC، ويجب أن يكون توصيل VOUT إلى R1 بعيدًا عن الملف الحثي ونقاط التبديل.
 
-## Resumen de problemas comunes
+## ملخص الأخطاء
 
-- El diagrama de referencia en el manual de datos en chino probablemente dibujó mal el capacitor NP0 de 15 pF, que debería ser un capacitor de filtro conectado a tierra (también se puede omitir). Si no se elimina, no podrá manejar grandes cargas.
-  - Consulte el hilo técnico <http://www.crystalradio.cn/thread-1497661-1-1.html>
-- Este circuito es muy sensible a la disposición de PCB. El cobre en el pie de SW no debe ser demasiado grande, de lo contrario habrá capacitancia parásita. Otros aspectos deben seguir estrictamente la referencia de diseño anterior.
-- La corriente máxima de salida medida es de alrededor de 800 mA, y el voltaje de salida se mantiene estable (11.6 V de salida).
-- El pin EN no debe dejarse sin conexión, debe ser pull-up (para habilitar Boost) o pull-down (para deshabilitar), de lo contrario el voltaje original se mantendrá como salida.
+- يبدو أن الرسم التخطيطي المرجعي في دليل البيانات الصيني يحتوي على خطأ في السعة الكهربائية NP0 15 فائقة الصغر، ويجب أن تكون سعة تصفية متصلة بالأرض (يمكن عدم وضعها). إذا لم تتم إزالتها، فلن تتمكن من تحمل الأحمال الكبيرة.
+  - راجع المنشور التقني <http://www.crystalradio.cn/thread-1497661-1-1.html>
+- يتأثر هذا الدائرة المتكاملة بشكل كبير بتخطيط الدوائر المطبوعة، ولا يجب أن يكون هناك الكثير من النحاس في قدم SW، وإلا فسيكون هناك سعة فرعية. يجب اتباع المرجع التخطيطي المذكور أعلاه بدقة.
+- تم اختبار أقصى تيار كهربائي للحمل بحوالي 800 مللي أمبير، ويمكن أن يحافظ على الجهد الكهربائي الناتج بشكل مستقر (11.6 فولت).
+- يجب ألا يتم تعليق دبوس التمكين (EN)، ويجب أن يتم سحبه (لتشغيل Boost) أو سحبه (لإيقاف التشغيل)، وإلا فسيتم إخراج الجهد الكهربائي الأصلي.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

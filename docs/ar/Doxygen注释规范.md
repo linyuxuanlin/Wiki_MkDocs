@@ -1,104 +1,114 @@
-# Normas de comentarios Doxygen
+# Doxygen تعليقات التوثيق
 
-## Encabezado de archivo con índice desplegable
+## توسيع علامة رأس الملف
 
 ```c
 /****************************************************************************
- *   Copyright (C) 2018 by Doxygen C Comment                                *
+ *   حقوق النشر (C) 2018 بواسطة Doxygen C Comment                           *
  *                                                                          *
- *   This file is part of Box.                                              *
+ *   هذا الملف هو جزء من Box.                                             *
  *                                                                          *
- *   Box is free software: you can redistribute it and/or modify it         *
- *   under the terms of the GNU Lesser General Public License as published  *
- *   by the Free Software Foundation, either version 3 of the License, or   *
- *   (at your option) any later version.                                    *
+ *   Box هو برنامج حر: يمكنك إعادة توزيعه و/أو تعديله                   *
+ *   تحت شروط الرخصة العامة الصغرى لـ GNU كما نشرت                      *
+ *   من قبل مؤسسة البرمجيات الحرة ، إما الإصدار 3 من الرخصة ، أو         *
+ *   (باختيارك) أي إصدار لاحق.                                           *
  *                                                                          *
- *   Box is distributed in the hope that it will be useful,                 *
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of         *
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the          *
- *   GNU Lesser General Public License for more details.                    *
+ *   يتم توزيع Box على أمل أن يكون مفيدًا ،                              *
+ *   ولكن بدون أي ضمان ؛ بدون حتى الضمان الضمني لـ                      *
+ *   التسويقية أو اللياقة لغرض معين. انظر الرخصة العامة الصغرى لـ GNU للحصول على مزيد من التفاصيل. *
  *                                                                          *
- *   You should have received a copy of the GNU Lesser General Public       *
- *   License along with Box.  If not, see <http://www.gnu.org/licenses/>.   *
+ *   يجب أن تتلقى نسخة من الرخصة العامة الصغرى لـ GNU مع Box. إذا لم يكن الأمر كذلك ، فانظر <http://www.gnu.org/licenses/>.   *
  ****************************************************************************/
 
 /**
  * @file doxygen_c.h
- * @author alguien
+ * @author someone
  * @date 2018.1.4
- * @brief Normas de comentarios de archivos C con Doxygen, pueden haber saltos de línea,
- * todos los resúmenes son iguales.
+ * @brief توثيق ملف C معياري وفقًا لقواعد doxygen ، يمكن الانتقال إلى السطر الجديد ،
+ * جميع الإجماليات متساوية
  *
- * @details Descripción detallada y explicación de este documento, pueden haber saltos de línea,
- * todas las descripciones detalladas son iguales.
+ * @details شرح وتفسير هذا المستند بالتفصيل ، يمكن الانتقال إلى السطر الجديد ،
+ * جميع التفاصيل متساوية
  */
 
-#include "header.h"
+#include "hearder.h"
 ```
 
-## Encabezado de estructuras y tipos de enumeración con índice desplegable
+## توسيع هيكل البيانات ونوع التعداد
 
 ```c
 /**
- * @brief Breve descripción
+ * @brief 结构体/枚举类型的简要说明
  *
- * @details Descripción detallada
+ * 结构体/枚举类型的详细说明
+ */
+typedef struct/enum {
+    int a; /**< 成员变量a的简要说明 */
+    int b; /**< 成员变量b的简要说明 */
+} Struct/Enum;
+```
+
+```c
+/**
+ * @brief شرح مختصر
+ *
+ * @details شرح مفصل
  */
 typedef enum BoxEnum_enum {
-  BOXENUM_FIRST,  /**< Alguna documentación para el primero. */
-  BOXENUM_SECOND, /**< Alguna documentación para el segundo. */
-  BOXENUM_ETC     /**< Etc. */
+  BOXENUM_FIRST,  /**< بعض التوثيق للأولى. */
+  BOXENUM_SECOND, /**< بعض التوثيق للثانية. */
+  BOXENUM_ETC     /**< وما إلى ذلك. */
 } BoxEnum;
 ```
 
-## Desglose de comentarios de encabezado de función
+## توسيع قائمة تعليقات رأس الدالة
 
 ```c
 /**
- * @brief Descripción breve de la función, puede ser en varias líneas
+ * @brief شرح مختصر للدالة، يمكن الانتقال إلى السطر التالي
  *
- * @details Descripción detallada y explicación de la función, puede ser en varias líneas
+ * @details شرح مفصل وتفسير للدالة، يمكن الانتقال إلى السطر التالي
  *
- * @note Contenido de notas importantes
+ * @note محتوى الانتباه
  *
- * @param index Texto explicativo
- * @param cent Texto explicativo
+ * @param index نص الشرح
+ * @param cent نص الشرح
  *
- * @return Descripción del contenido devuelto por la función
- * @retval 1 Prueba exitosa
- * @retval -1 Prueba fallida
+ * @return وصف محتوى إرجاع الدالة
+ * @retval 1 نجاح الاختبار
+ * @retval -1 فشل الاختبار
  */
 bool Test(int index, char *cent);
 ```
 
-## Desglose de comentarios de variables
+## توسيع قائمة تعليقات المتغيرات
 
 ```c
-int element = 0; /**< Breve descripción de la variable */
+int element = 0; /**< شرح بسيط للمتغير */
 ```
 
 ```
 /**
- * @brief Descripción breve de la variable
+ * @brief شرح مختصر للمتغير
  *
- * @details Descripción detallada de la variable
+ * @details شرح مفصل للمتغير
  */
 unsigned int variable = 0;
 ```
 
-## Desglose de comentarios de macros
+## توسيع قائمة تعليقات الماكرو
 
 ```c
 /**
- * @brief Breve descripción de la macro
+ * @brief شرح مختصر للماكرو
  *
- * @details Descripción detallada de la macro
+ * @details شرح مفصل للماكرو
  */
 #define variable 10
 ```
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Especificación de comentarios breves de C con Doxygen](https://www.liuguogy.com/archives/doxygen-c-brief-annotation.html)
+- [معيار تعليقات C البسيط بناءً على Doxygen](https://www.liuguogy.com/archives/doxygen-c-brief-annotation.html)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

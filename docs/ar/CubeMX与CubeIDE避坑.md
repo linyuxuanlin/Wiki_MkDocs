@@ -24,7 +24,7 @@
 
 - في إعدادات SYS في CubeMX، قم بتغيير خيار Debug إلى Serial Wire (SW).
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200531162352.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20200531162352.jpg)
 
 ## تشوش التعليقات الصينية في STM32CubeIDE
 

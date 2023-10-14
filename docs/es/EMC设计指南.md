@@ -49,7 +49,7 @@ En señales de alta frecuencia, el camino de retorno de la señal suele ser el c
 
 ### Mantener la integridad de la pantalla de retorno de la señal tanto como sea posible
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211215190631.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211215190631.png)
 
 Como se muestra en la figura, si se corta el plano de retorno de la señal, la corriente de la señal no podrá volver al origen a través de la ruta óptima (más corta), lo que aumentará el área del circuito de la señal al buscar una ruta alternativa de retorno de la señal, lo que aumentará el área del circuito de la señal.
 
@@ -69,15 +69,15 @@ Los componentes comunes de EMC incluyen inductores comunes, perlas magnéticas y
 
 Modelos comunes de filtros:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211219173751.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211219173751.png)
 
 ### Inductor común
 
 Modelo equivalente del inductor común:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211219173856.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211219173856.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211219174546.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211219174546.png)
 
 ### Perlas magnéticas
 
@@ -101,6 +101,6 @@ El principio 20H establece que el borde del plano de alimentación debe estar al
 - [Compatibilidad electromagnética (EMC): Guía de diseño de EMC simple y efectiva](https://zhuanlan.zhihu.com/p/142866381)
 - [Secretos de diseño EMI/EMC - Manual esencial para ingenieros de diseño de productos electrónicos](https://www.mr-wu.cn/emc-emi-she-ji-mi-ji/)
 - [Supresión de interferencias electromagnéticas conducidas mediante inductores comunes híbridos](https://www.richtek.com/Design%20Support/Technical%20Document/AN008?sc_lang=zh-CN)
-- [[Circuito] Conceptos básicos de EMC\_Interferencia común y diferencial](https://zhenhuizhang.tk/post/dian-lu-emc-ji-chu-gai-nian-_-gong-mo-chai-mo-gan-rao/)
+- [[Circuito] Conceptos básicos de EMC_Interferencia común y diferencial](https://zhenhuizhang.tk/post/dian-lu-emc-ji-chu-gai-nian-_-gong-mo-chai-mo-gan-rao/)
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

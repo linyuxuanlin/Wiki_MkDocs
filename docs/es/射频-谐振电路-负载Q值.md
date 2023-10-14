@@ -6,11 +6,11 @@ Definimos el factor Q de un circuito resonante como la relación entre la frecue
 - Resistencia de carga $R_L$
 - Factor Q de los componentes mencionados en el capítulo anterior
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220418111129.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220418111129.png)
 
 ## Influencia de $R_s$ y $R_L$ en el factor Q de carga
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220418111200.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220418111200.png)
 
 La influencia de la impedancia de fuente y la resistencia de carga en el factor Q de carga del circuito resonante se muestra en la figura anterior. La curva original (línea punteada) es la curva de resonancia del circuito compuesto por una impedancia de fuente de 50Ω, un inductor sin pérdidas de 0.05uH y un capacitor sin pérdidas de 25pF, cuyo factor Q se calcula con la fórmula mencionada anteriormente, siendo aproximadamente 1.1, lo que no es un diseño de banda estrecha o alto factor Q.
 
@@ -18,11 +18,11 @@ Al cambiar la impedancia de fuente a 1000Ω, se traza una nueva curva de resonan
 
 El método anterior no muestra la influencia de la resistencia de carga en la curva de resonancia. Si conectamos una carga externa al circuito resonante de esta manera:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220419163311.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220419163311.png)
 
 Puede ser equivalente a:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220419163441.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220419163441.png)
 
 En este caso, el factor Q de carga se puede expresar como:
 
@@ -36,7 +36,7 @@ Donde $R_p$ es la resistencia total equivalente en paralelo y $X_p$ representa l
 
 Se puede ver que la disminución de $R_p$ disminuirá el factor Q del circuito resonante y, si $R_p$ permanece constante y se cambia $X_p$, se puede lograr el mismo efecto. Por lo tanto, para una impedancia de fuente y una resistencia de carga dadas, se puede obtener el mejor factor Q del circuito resonante cuando el inductor es de valor pequeño y el capacitor es de valor grande. En cualquier caso, $X_p$ disminuirá. Por ejemplo:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220419165555.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220419165555.png)
 
 Por lo tanto, se pueden utilizar ambos métodos para ajustar el factor Q:
 
@@ -51,15 +51,15 @@ En el texto anterior, supusimos que los componentes utilizados en el circuito re
 
 En un circuito resonante sin pérdidas, la impedancia en los terminales del circuito es infinita en resonancia. Pero en un circuito real, debido a las pérdidas de los componentes, habrá alguna resistencia en paralelo equivalente:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220419174200.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220419174200.png)
 
-La resistencia (Rp) y la reactancia en paralelo relacionada (Xp) se pueden obtener de 
+La resistencia (Rp) y la reactancia en paralelo relacionada (Xp) se pueden obtener de
 
 ## Referencias y agradecimientos
 
-- "RF-Circuit-Design (segunda edición) _Chris-Bowick" 
+- "RF-Circuit-Design (segunda edición) \_Chris-Bowick"
 
-> Dirección original del artículo: <https://wiki-power.com/> 
+> Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

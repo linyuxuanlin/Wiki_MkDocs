@@ -1,6 +1,6 @@
 # RobotCtrl_Func - Placa de expansión de periféricos
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220527113505.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220527113505.png)
 
 Repositorio del proyecto: [**linyuxuanlin/RobotCtrl/RobotCtrl_Func**](https://github.com/linyuxuanlin/RobotCtrl/tree/main/RobotCtrl_MultiBoard_Project/RobotCtrl_Func)
 
@@ -36,7 +36,7 @@ Las principales funciones de RobotCtrl_Func son las siguientes:
 
 ### Alimentación
 
-RobotCtrl_Func tiene 2 LDO, similar al RobotCtrl_Core, donde uno se utiliza para sensores periféricos y el otro se utiliza para el circuito Ethernet. 
+RobotCtrl_Func tiene 2 LDO, similar al RobotCtrl_Core, donde uno se utiliza para sensores periféricos y el otro se utiliza para el circuito Ethernet.
 
 ### Circuito de comunicación Ethernet
 

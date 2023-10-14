@@ -1,94 +1,92 @@
-# DAC - Parámetros Dinámicos
+# DAC - المعلمات الديناميكية
 
-> Esta publicación solo está disponible en inglés.
+> هذه المقالة متاحة باللغة الإنجليزية فقط.
 
-## Parámetros Dinámicos
+## المعلمات الديناميكية
 
-Los parámetros dinámicos de DAC contienen principalmente:
+تحتوي المعلمات الديناميكية لـ DAC بشكل رئيسي على:
 
-- Relación Señal-Ruido (SNR)
-- Distorsión Armónica Total (THD)
-- Relación Señal-Ruido y Distorsión (SINAD)
-- Error de Intermodulación (IM)
+- نسبة الإشارة إلى الضوضاء (SNR)
+- التحريف الهارموني الكلي (THD)
+- نسبة الإشارة إلى الضوضاء والتحريف (SINAD)
+- خطأ التداخل الداخلي (IM)
 
-### Relación Señal-Ruido (SNR)
+### نسبة الإشارة إلى الضوضاء (SNR)
 
-La **Relación Señal-Ruido (SNR)** de un DAC se define como la relación de la Potencia de Señal Medida RMS (excluyendo la Distorsión Armónica) a la Potencia de Ruido RMS:
+يتم تعريف **نسبة الإشارة إلى الضوضاء (SNR)** لـ DAC على أنها نسبة جذر المتوسط ​​المربع لقدرة الإشارة المقاسة (باستثناء التحريف الهارموني) إلى جذر المتوسط ​​المربع لقدرة الضوضاء:
 
 $$
-SNR(dB)=20log(\frac{V_{Señal(RMS)}}{V_{Ruido(RMS)}})
+SNR(dB)=20log(\frac{V_{Signal(RMS)}}{V_{Noise(RMS)}})
 $$
 
-Dado que SNR es una relación de potencia, el $20$ en la ecuación significa el cuadrado de la relación de voltaje.
+نظرًا لأن SNR هو نسبة للطاقة ، فإن الرقم 20 في المعادلة يعني مربع نسبة الجهد.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221009221450.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221009221450.png)
 
-Aunque la Distorsión Armónica no se incluye en la medición de SNR, se incluyen la Cuantización, el Ruido Térmico y otros ruidos residuales en el convertidor.
+على الرغم من أن التحريف الهارموني لا يتم تضمينه في قياس SNR ، إلا أن التحويل والضوضاء الحرارية والباقية الأخرى في المحول مضمنة.
 
-### Distorsión Armónica Total (THD)
+### التحريف الهارموني الكلي (THD)
 
-La **Distorsión Armónica Total (THD)** de un DAC se define como la relación del fundamental a toda la distorsión armónica:
+يتم تعريف **التحريف الهارموني الكلي (THD)** لـ DAC على أنه نسبة الأساسي إلى جميع التحريف الهارموني:
 
 $$
 THD(dB)=20log(\frac{\sqrt{V^2_{2(RMS)}+V^2_{3(RMS)}+...+V^2_{n(RMS)}}}{V_{1(RMS)}}
 $$
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221009225800.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221009225800.png)
 
-## Cómo Probar los Parámetros Dinámicos
+## كيفية اختبار المعلمات الديناميكية
 
-### Configuración del Sistema de Prueba
+### إعداد نظام الاختبار
 
-Configuración del sistema de prueba para las pruebas de parámetros dinámicos de ADC:
+إعداد نظام الاختبار لاختبار المعلمات الديناميكية لـ ADC:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221009230212.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221009230212.png)
 
-La resolución del Digitalizador de CA debe ser al menos 2 a 4 bits mejor que el DUT.
+يجب أن يكون دقة محول الرقم الإجمالي للتيار المتردد على الأقل 2 إلى 4 بت أفضل من DUT.
 
-### Concepto de Pruebas
+### مفهوم الاختبارات
 
-El procedimiento para probar los parámetros dinámicos de un DAC se describe a continuación.
+يتم سرد إجراء اختبار المعلمات الديناميكية لـ DAC أدناه.
 
-#### 1.Crear una señal de datos digitales de entrada continua (de una onda sinusoidal) con el probador para que el DAC la convierta.
+#### 1. إنشاء إشارة رقمية مستمرة للإدخال (موجة جيبية) باستخدام الاختبار لـ DAC للتحويل
 
-Es una práctica común asegurarse de que el reloj analógico/digital esté referenciado a un reloj maestro común, de modo que la relación de la frecuencia de las fuentes de reloj esté fija y sincronizada, lo que hace que los resultados de las pruebas sean altamente repetibles.
+من الممارسة الشائعة ضمان أن ساعة الأنالوج / الرقمي مرجعها إلى ساعة رئيسية مشتركة ، بحيث يتم تثبيت ومزامنة تردد مصادر الساعة ، مما يجعل نتائج الاختبار قابلة للتكرار بشكل كبير.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011195204.png)
+#### 2. جمع مجموعة من العينات بشكل متسق باستخدام DAC
 
-#### 2. Colectar coherentemente un conjunto de muestras con el DAC
-
-Para la fuente digital:
+للمصدر الرقمي:
 
 $$
 \frac{Fs(dut)}{Fi}=\frac{N}{M}
 $$
 
-Donde $Fs(dut)$ es la tasa de muestreo de la fuente digital, $Fi$ es la frecuencia de la señal, $N$ es el número de muestras, $M$ es el número de ciclos enteros.
+حيث $Fs(dut)$ هو معدل العينات للمصدر الرقمي، $Fi$ هو تردد الإشارة، $N$ هو عدد العينات، $M$ هو عدد الدورات الصحيحة.
 
-Para la captura digital de CA:
+للتقاط الإشارة الرقمية المتناوبة:
 
 $$
 \frac{Fs}{Fi}=\frac{Ncap}{Mc}
 $$
 
-Donde $Fs$ es la tasa de muestreo del DAC y también la tasa de muestreo de la captura digital, $Fi$ es la frecuencia de la señal, $Ncap$ es el número de muestras capturadas (2x número), $Mc$ es el número de ciclos enteros (impar).
+حيث $Fs$ هو معدل العينات لـ DAC وكذلك معدل عينات التقاط الإشارة الرقمية، $Fi$ هو تردد الإشارة، $Ncap$ هو عدد العينات الملتقطة (ضعف العدد)، $Mc$ هو عدد الدورات الصحيحة (فردي).
 
-#### 3. Enviar el conjunto de muestras de tiempo recopiladas al DSP para realizar análisis DFT / FFT
+#### 3. إرسال مجموعة العينات الزمنية المجمعة إلى DSP لأداء تحليل DFT / FFT
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011140834.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221011140834.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011140904.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221011140904.png)
 
-#### 4. Analizar los bins de frecuencia de interés utilizando ecuaciones o algoritmos de prueba para SNR, THD y comparar con la especificación
+#### 4. تحليل حاويات التردد المهمة باستخدام المعادلات أو خوارزميات الاختبار لـ SNR و THD والمقارنة بالمواصفات
 
-#### 5. Tomar una decisión de aprobación / rechazo basada en los resultados
+#### 5. اتخاذ قرار النجاح / الفشل بناءً على النتائج
 
-## Referencias y agradecimientos
+## المراجع والتقديرات
 
-- _Fundamentos de pruebas utilizando ATE_
-- _Los fundamentos de las pruebas de señal mixta_Brian-Lowe_
+- _أساسيات الاختبار باستخدام ATE_
+- _The-Fundamentals-of-Mixed-Signal-Testing_Brian-Lowe_
 
-> Original: <https://wiki-power.com/>  
-> Esta publicación está protegida por el acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en), debe ser reproducida con atribución.
+> المصدر الأصلي: <https://wiki-power.com/>  
+> يتم حماية هذا المنشور باتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) ، يجب إعادة إنتاجه بالإضافة إلى الإشارة إلى المصدر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

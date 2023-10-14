@@ -1,6 +1,8 @@
-# TheHdw (El Hardware) 🚧
+# TheHdw (العتاد) 🚧
 
-**TheHdw** es un objeto para acceder a propiedades y métodos relacionados con el hardware del sistema de prueba.
+> هذه المقالة متاحة باللغة الإنجليزية فقط.
+
+**TheHdw** هو كائن للوصول إلى الخصائص والأساليب المتعلقة بعتاد نظام الاختبار.
 
 ## DCVI
 
@@ -8,7 +10,7 @@
 TheHdw.DCVI
 ```
 
-### Pines
+### Pins
 
 ```vbscript
 TheHdw.DCVI.Pins(PinList)
@@ -24,37 +26,37 @@ TheHdw.DCVI.Pins(PinList)
 
 ### ApplyLevelsTiming
 
-Para cargar los datos de nivel y tiempo.
+لتحميل بيانات المستوى والتوقيت.
 
-#### Uso
+#### الاستخدام
 
 ```vbscript
 TheHdw.Digital.ApplyLevelsTiming(ConnectAllPins, LoadLevels, LoadTiming, RelayMode, InitPinsHi, InitPinsLo, InitPinsHiZ, PinLevelsSheet, DCCategory, DCSelector, TimeSetSheet, ACCategory, ACSelector, EdgeSetSheet)
 ```
 
-#### Parámetros
+#### المعلمات
 
-- **ConnectAllPins**: Booleano opcional, valor predeterminado como `False`.
-  - `True`: Conectar todos los pines del dispositivo.
-  - `False`: No conectar.
-- **LoadLevels**: Booleano opcional, valor predeterminado como `False`.
-  - `True`: Cargar valores de nivel.
-  - `False`: No cargar.
-- **LoadTiming**: Booleano opcional, valor predeterminado como `False`.
-  - `True`: Cargar valores de tiempo.
-  - `False`: No cargar.
-- **RelayMode**: `tlRelayMode` opcional, valor predeterminado como `tlUnpowered`. Controla el cambio en caliente de los relés.
-  - `tlPowered`: Cambio en caliente. No apaga el DUT antes de establecer los niveles y conectar.
-  - `tlUnpowered`: Evita el cambio en caliente. Apaga el DUT antes de establecer los niveles y conectar.
-- **InitPinsHi**: Cadena opcional. Establece los pines con estado de conductor alto.
-- **InitPinsLo**: Cadena opcional. Establece los pines con estado de conductor bajo.
-- **InitPinsHiZ**: Cadena opcional. Establece los pines con estado de conductor de impedancia.
-- **PinLevelsSheet**: Cadena opcional. Una hoja de niveles de pin.
-- **DCCategory**: Cadena opcional.
-- **DCSelector**: Cadena opcional.
-- **TimeSetSheet**: Cadena opcional.
-- **ACCategory**: Cadena opcional.
-- **ACSelector**: Cadena opcional.
-- **EdgeSetSheet**: Cadena opcional.
+- **ConnectAllPins**: اختياري بوليان، الافتراضي هو `False`.
+  - `True`: توصيل جميع دبابيس الجهاز.
+  - `False`: عدم التوصيل.
+- **LoadLevels**: اختياري بوليان، الافتراضي هو `False`.
+  - `True`: تحميل قيم المستوى.
+  - `False`: عدم التحميل.
+- **LoadTiming**: اختياري بوليان، الافتراضي هو `False`.
+  - `True`: تحميل قيم التوقيت.
+  - `False`: عدم التحميل.
+- **RelayMode**: اختياري `tlRelayMode`، الافتراضي هو `tlUnpowered`. يتحكم في التحويل الساخن للريليهات.
+  - `tlPowered`: التحويل الساخن. عدم إيقاف تشغيل الجهاز قبل تعيين المستويات والتوصيل.
+  - `tlUnpowered`: تجنب التحويل الساخن. إيقاف تشغيل الجهاز قبل تعيين المستويات والتوصيل.
+- **InitPinsHi**: اختياري سلسلة. تعيين دبابيس البدء بحالة المشغل العالية.
+- **InitPinsLo**: اختياري سلسلة. تعيين دبابيس البدء بحالة المشغل المنخفضة.
+- **InitPinsHiZ**: اختياري سلسلة. تعيين دبابيس البدء بحالة مشغل المقاومة.
+- **PinLevelsSheet**: اختياري سلسلة. ورقة مستويات دبوس.
+- **DCCategory**: اختياري سلسلة.
+- **DCSelector**: اختياري سلسلة.
+- **TimeSetSheet**: اختياري سلسلة.
+- **ACCategory**: اختياري سلسلة.
+- **ACSelector**: اختياري سلسلة.
+- **EdgeSetSheet**: اختياري سلسلة.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

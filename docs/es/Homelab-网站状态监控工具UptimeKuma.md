@@ -1,6 +1,6 @@
 # Homelab - Herramienta de monitoreo de estado del sitio web Uptime Kuma
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230410160253.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20230410160253.jpg)
 
 **Uptime Kuma** es una herramienta de monitoreo de estado que admite varios protocolos de red. Puede monitorear el estado en tiempo real, la duración de la respuesta, la validez del certificado, etc. de varios sitios web personalizados y proporciona varios métodos de notificación.
 

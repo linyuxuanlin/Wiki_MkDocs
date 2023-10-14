@@ -20,21 +20,21 @@ XC6206 系列是高精度、低功耗的三端正电压调节器，提供大电�
 
 ## 选型说明
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420102910.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420102910.png)
 
 ## 典型应用电路
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420102323.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420102323.png)
 
 ## 内部功能框图
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420102514.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420102514.png)
 
 注：框图内的二极管为 ESD 或寄生二极管。
 
 ## 引脚定义
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420103005.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420103005.png)
 
 | 引脚名称 | 引脚描述 |
 | -------- | -------- |
@@ -46,7 +46,7 @@ XC6206 系列是高精度、低功耗的三端正电压调节器，提供大电�
 
 各型号的具体参数表：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220420103738.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420103738.png)
 
 ## 参考与致谢
 

@@ -1,11 +1,11 @@
-# Notas de sintaxis de patrones 🚧
+# ملاحظات بناء الأنماط 🚧
 
-> Esta publicación solo está disponible en inglés.
+> هذه المقالة متاحة باللغة الإنجليزية فقط.
 
-Un archivo de patrón digital contiene principalmente 3 partes:
-**Declaración de encabezado**, **Declaración de configuración** y **Módulo de patrón**. (**Las declaraciones de preprocesamiento** y **comentarios** son opcionales).
+يحتوي ملف نمط رقمي على ثلاثة أجزاء رئيسية:
+**بيان الرأس**، **بيان الإعداد**، و **وحدة النمط**. (البيانات الأولية والتعليقات اختيارية).
 
-A continuación se muestra un archivo de patrón de ejemplo en formato `.atp` que se utiliza principalmente:
+فيما يلي مثال على ملف نمط يستخدم بشكل أساسي بتنسيق `.atp`:
 
 ```atp
 // example.atp
@@ -30,74 +30,74 @@ HALT
 }
 ```
 
-## Declaración de encabezado
+## بيان الرأس
 
-La **Declaración de encabezado** contiene estas declaraciones: instrumento digital, asignación de pines, control de compilador, importación de tset o etiqueta. Aquí hay un ejemplo:
+**بيان الرأس** يحتوي على البيانات التالية: الأداة الرقمية، خريطة الأسلاك، التحكم في المترجم، استيراد tset أو label. وفيما يلي مثال:
 
 ```
-digital_inst = HSDMQ;           // Declaración de instrumento digital
-opcode_mode = single;           // Declaración de compilación
-import tset tset1, tset1;       // importar conjuntos de tiempo
-import subr xxx;                // importar subrutinas
+digital_inst = HSDMQ;           // بيان الأداة الرقمية
+opcode_mode = single;           // بيان الترجمة
+import tset tset1, tset1;       // استيراد مجموعات الوقت
+import subr xxx;                // استيراد الدوال الفرعية
 ```
 
-Parámetros frecuentemente utilizados:
+المعلمات المستخدمة بشكل متكرر:
 
-- Declaraciones de instrumentos digitales
-  - **digital_inst**: `hsdm`(HSD1000, UltraPin800), `hsdmq`(UltraPin1600), `hsdp`(UltraPin2200) ...
-- Especificaciones del mapa de pines:
-  - **pinmap_workbook**: nombre del libro de trabajo IG‑XL, como `"xxx.igxl"`
-  - **sheetname**: nombre de la hoja del mapa de pines, como `"pinmap"`
-- Declaraciones de control de compilador
-  - **compressed**: `sí` o `no`
-  - **opcode_mode**: `single` o `dual` o `quad`(UltraPin1600), cada 1/2/4 vectores pueden incluir un opcode.
-  - **save_comments**: `sí` o `no`
-  - **version**: como `V1.0`
-- Tset y etiqueta
-  - **Tset**: `import tset tset1, tset2, ... ;`
-  - **Etiqueta**: `import label label1, label2, ... ;`
+- بيانات الأداة الرقمية
+  - **digital_inst**: `hsdm`(HSD1000، UltraPin800)، `hsdmq`(UltraPin1600)، `hsdp`(UltraPin2200) ...
+- مواصفات خريطة الأرجل:
+  - **pinmap_workbook**: اسم دفتر IG-XL، مثل `"xxx.igxl"`
+  - **sheetname**: اسم ورقة خريطة الأرجل، مثل `"pinmap"`
+- بيانات التحكم في المترجم
+  - **compressed**: `yes` أو `no`
+  - **opcode_mode**: `single` أو `dual` أو `quad`(UltraPin1600)، يمكن أن تتضمن كل 1/2/4 متجهات أوبكود.
+  - **save_comments**: `yes` أو `no`
+  - **version**: مثل `V1.0`
+- Tset و Label
+  - **Tset**: `import tset tset1، tset2، ...؛`
+  - **Label**: `import label label1، label2، ...؛`
 
-## Declaración de configuración
+## بيان الإعداد
 
-La **Declaración de configuración** contiene la configuración de pines, instrumentos y pines de escaneo.
+يحتوي **بيان الإعداد** على إعداد الأرجل والأدوات والمسح الضوئي للأرجل.
 
 ```
 pin_setup = {
-    gpio_1    2x;                                           //Configuración de pines: gpio_1 configurado en modo 2X
+    gpio_1    2x;                                           //إعداد الأرجل: gpio_1 تم تعيينها إلى وضع 2X
 }
 instruments = {
-vcc:DCVS 1;                                                 // Instrumento DCVS
-    tdo:DigCap 32:format=twos_complement:auto_trig_enable;  // Instrumento DigCap
+vcc:DCVS 1;                                                 // أداة DCVS
+    tdo:DigCap 32:format=twos_complement:auto_trig_enable;  // أداة DigCap
 }
 scan_pins = {
-    tdi, tdo;                                               // tdi - escaneo de entrada, tdo - escaneo de salida
+    tdi، tdo؛                                               // tdi - المسح الضوئي في، tdo - المسح الضوئي خارج
 }
 ```
 
-Parámetros frecuentemente utilizados:
+المعلمات المستخدمة بشكل متكرر:
 
-- Caracteres de Estado de Pin y Microcódigos
-  - **Caracteres de Estado de Pin**: `0`(Conducir Bajo), `1`(Conducir Alto), `2`(Conducir Voltaje Alto solo para UP800), `L`(Esperar Bajo), `H`(Esperar Alto), `M`(Esperar Banda Media), `V`(Esperar Válido), `X`(Máscara), `W`(Strobe de Ventana), `D`(Conducir ADS (DigSrc/MTO)), `I`(Conducir ADS inverso (DigSrc/MTO)), `E`(Esperar ADS (DigSrc/MTO)), `C`(Esperar ADS inverso (DigSrc/MTO)), `-`(Repetir estado anterior).
-  - **Microcódigos de DigCap**: `Trig`(Iniciar una captura), `Store`(Almacenar una muestra de datos), `Trig, Store`(Combinación de Trig y Store), `Store, Inst_Cond_Strobe`(Almacenar y activar la señal interna de `condición` para actuar sobre ella).
+- أحرف حالة الدبابيس والأكواد الصغيرة
+  - **أحرف حالة الدبابيس**: `0` (تنخفض الإشارة)، `1` (ترتفع الإشارة)، `2` (ترتفع الإشارة بجهد عالٍ فقط لـ UP800)، `L` (توقع إشارة منخفضة)، `H` (توقع إشارة مرتفعة)، `M` (توقع إشارة في منتصف النطاق)، `V` (توقع إشارة صالحة)، `X` (قناع)، `W` (نبضة نافذة)، `D` (تشغيل ADS (DigSrc/MTO))، `I` (تشغيل ADS العكسي (DigSrc/MTO))، `E` (توقع ADS (DigSrc/MTO))، `C` (توقع ADS العكسي (DigSrc/MTO))، `-` (تكرار الحالة السابقة).
+  - **أكواد الأرقام الصغيرة**: `Trig` (بدء الالتقاط)، `Store` (تخزين عينة البيانات)، `Trig، Store` (مزيج من Trig و Store)، `Store، Inst_Cond_Strobe` (تخزين وبوابة إشارة `condition` المولدة داخليًا للعمل عليها).
 
-## Módulo de Patrón
+## وحدة النمط
 
-Un **módulo de patrón** contiene una lista de pines y un conjunto de vectores. Hay 2 tipos de módulos: memoria de vector (VM) y memoria (SRM):
+تحتوي **وحدة النمط** على قائمة دبابيس ومجموعة من النوافذ. هناك نوعان منها: ذاكرة النوافذ (VM) والذاكرة (SRM):
 
 ```
-vm_vector [nombre-de-módulo] (lista-de-pines)
-{ vectores }
+vm_vector [module-name] (pin-list)
+{ vectors }
 
-srm_vector [nombre-de-módulo] (lista-de-pines)
-{ vectores }
+srm_vector [module-name] (pin-list)
+{ vectors }
 ```
 
-Se requiere al menos 1 módulo de patrón en un archivo de patrón. Si hay más de 1, sus columnas y listas de pines deben ser iguales.
+يتطلب ملف النمط وجود وحدة نمط واحدة على الأقل. إذا كان هناك أكثر من وحدة، فإن أعمدتها وقوائم دبابيسها يجب أن تكون متطابقة.
 
-Parámetros frecuentemente utilizados:
+المعلمات المستخدمة بشكل متكرر:
 
-- lista-de-pines
-  - **Elementos de Pin**: `pin-o-grupo[.modificador][:radix]`, el radix podría ser `:S`(Simbólico, por defecto), `:B`(Bin), `:D`(Dec), `:O`(Oct), `:H`(Hex)
-- Etiqueta: por determinar
+- قائمة الدبابيس
+  - **عناصر الدبابيس**: `pin-or-group[.modifier][:radix]`، يمكن أن يكون النظام العشري `:S` (رمزي، الافتراضي)، `:B` (ثنائي)، `:D` (عشري)، `:O` (ثماني)، `:H` (ست عشرية)
+- التسمية: قيد الإعداد
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

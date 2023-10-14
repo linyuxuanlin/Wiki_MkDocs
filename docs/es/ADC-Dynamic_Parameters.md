@@ -21,7 +21,7 @@ $$
 
 Dado que SNR es una relación de potencia, el $20$ en la ecuación significa el cuadrado de la relación de voltaje.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221009221450.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221009221450.png)
 
 Aunque la distorsión armónica no se incluye en la medición de SNR, se incluyen el ruido de cuantificación, térmico y otros residuales en el convertidor.
 
@@ -33,7 +33,7 @@ $$
 THD(dB)=20log(\frac{\sqrt{V^2_{2(RMS)}+V^2_{3(RMS)}+...+V^2_{n(RMS)}}}{V_{1(RMS)}})
 $$
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221009225800.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221009225800.png)
 
 ## Cómo probar los parámetros dinámicos
 
@@ -41,7 +41,7 @@ $$
 
 La configuración del sistema de prueba para las pruebas de parámetros dinámicos de ADC es:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221009230212.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221009230212.png)
 
 La resolución de AC SRC debe ser al menos 2 a 4 bits mejor que DUT.
 
@@ -61,7 +61,7 @@ El procedimiento para probar los parámetros dinámicos de un ADC DUT se enumera
 
 Es una práctica común asegurarse de que el reloj analógico/digital esté referenciado a un reloj maestro común, de modo que la relación de la frecuencia de las fuentes de reloj sea fija y sincronizada, lo que hace que los resultados de las pruebas sean altamente repetibles.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011122459.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221011122459.png)
 
 #### 2. Recopilar un conjunto de muestras con el ADC coherentemente
 
@@ -83,11 +83,11 @@ Donde $Fs(dut)$ es la tasa de muestreo del ADC, también la tasa de muestreo de 
 
 #### 3. Enviar el conjunto de muestras de tiempo recopiladas al DSP para realizar el análisis DFT/FFT
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011140834.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221011140834.png)
 
 ?
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011140904.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221011140904.png)
 
 #### 4. Analizar los intervalos de frecuencia de interés utilizando ecuaciones o algoritmos de prueba para SNR, THD y comparar con la especificación
 

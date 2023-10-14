@@ -1,12 +1,12 @@
-# Homelab - Herramienta de notas fragmentadas memos
+# Homelab - أداة مذكرات ملاحظات الحطام memos
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202304111548420.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202304111548420.png)
 
-**memos** es una herramienta de notas de autohospedaje de código abierto. Admite sintaxis Markdown, uso compartido público, incrustación de iframes, gestión de etiquetas, vista de calendario, migración de datos simple y funciones de copia de seguridad.
+**memos** هي أداة مذكرات ملاحظات مفتوحة المصدر وذاتية الاستضافة. تدعم بناء الجمل Markdown والمشاركة العامة وتضمين iframe وإدارة العلامات وعرض التقويم ونقل البيانات والنسخ الاحتياطي البسيط.
 
-## Implementación (Docker Compose)
+## النشر (Docker Compose)
 
-Primero, cree el archivo `compose.yaml` y pegue el siguiente contenido:
+أولاً ، قم بإنشاء ملف `compose.yaml` والصق المحتوى التالي:
 
 ```yaml title="compose.yaml"
 version: "3.0"
@@ -21,34 +21,34 @@ services:
     restart: always
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `memos`).
+(اختياري) يوصى بإنشاء ملف `.env` في نفس مستوى `compose.yaml` وتخصيص متغيرات البيئة الخاصة بك. إذا لم ترغب في استخدام المتغيرات البيئية ، يمكنك تخصيص المعلمات الخاصة بك مباشرة في `compose.yaml` (على سبيل المثال ، استبدال `${STACK_NAME}` بـ `memos`).
 
 ```dotenv title=".env"
 STACK_NAME=memos
-STACK_DIR=xxx # Ruta de almacenamiento personalizada del proyecto, por ejemplo, ./memos
+STACK_DIR=xxx # مسار تخزين المشروع المخصص ، على سبيل المثال ./memos
 
 # memos
 APP_VERSION=latest
-APP_PORT=xxxx # Puerto de acceso personalizado, simplemente elija uno que no esté en uso
+APP_PORT=xxxx # تخصيص منفذ الوصول الخاص بك ، اختر غير مستخدم فقط
 ```
 
-Por último, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores.
+أخيرًا ، قم بتشغيل الأمر `docker compose up -d` في نفس مستوى `compose.yaml` لتشغيل حاويات الترتيب.
 
-## Instrucciones de configuración
+## توضيحات التكوين
 
-Aplicación móvil iOS/Android: [**Moe Memos**](https://memos.moe/). Para obtener más clientes de terceros (como mini programas de WeChat, extensiones de navegador, bots de Telegram, etc.), consulte la documentación [**contribution·memos**](https://github.com/usememos/memos#contribution).
+تطبيق الجوال iOS / Android: [**Moe Memos**](https://memos.moe/) . هناك المزيد من العملاء الجانب الثالث (مثل برنامج WeChat Mini ، وامتداد المتصفح ، و Telegram Bot ، إلخ) ، يرجى الرجوع إلى وثائق [**contribution·memos**](https://github.com/usememos/memos#contribution) .
 
-Para importar y exportar datos de usuario, puede utilizar la extensión de VS Code [**SQLite**](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite), descargar y abrir `memos_prod.db` en `${DIR}` para realizar operaciones de agregar, eliminar, modificar y consultar, así como para realizar copias de seguridad de importación y exportación. Tenga en cuenta que el archivo `memos_prod.db` solo se actualizará cuando el contenedor de Docker se cierre o reinicie.
+يمكن استخدام إضافة VS Code [**SQLite**](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite) لتصدير واستيراد بيانات المستخدم ، وتنزيل وفتح `memos_prod.db` في `${DIR}` لإجراء عمليات الإضافة والحذف والتعديل والبحث والنسخ الاحتياطي والاستيراد. تنبيه ، سيتم تحديث ملف `memos_prod.db` فقط عند إغلاق / إعادة تشغيل حاويات Docker.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Sitio web oficial](https://usememos.com/)
-- [Documentación](https://usememos.com/docs/install#docker-compose)
-- [Repositorio de GitHub](https://github.com/usememos/memos)
+- [الموقع الرسمي](https://usememos.com/)
+- [الوثائق](https://usememos.com/docs/install#docker-compose)
+- [مستودع GitHub](https://github.com/usememos/memos)
 - [Docker Hub](https://hub.docker.com/r/neosmemo/memos)
-- [Sitio de demostración](https://demo.usememos.com/)
+- [موقع العرض التوضيحي](https://demo.usememos.com/)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

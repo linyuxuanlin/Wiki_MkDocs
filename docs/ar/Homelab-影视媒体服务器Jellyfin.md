@@ -1,12 +1,12 @@
-# Homelab - Servidor de medios de cine y televisión Jellyfin
+# Homelab - خادم وسائط الفيديو Jellyfin
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230531213856.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20230531213856.png)
 
-**Jellyfin** es un servidor de medios de cine y televisión de código abierto que se puede utilizar para administrar películas, programas de televisión, etc. y verlos en diferentes dispositivos. Puede ser utilizado como alternativa a los software propietarios Emby y Plex.
+**Jellyfin** هو خادم وسائط الفيديو والتدفق المفتوح المصدر ، ويمكن استخدامه لإدارة الأفلام والبرامج التلفزيونية ومشاهدتها على أجهزة مختلفة. يمكن استخدامه كبديل للبرامج الخاصة Emby و Plex.
 
-## Implementación (Docker Compose)
+## نشر (Docker Compose)
 
-Primero, cree el archivo `compose.yaml` y pegue el siguiente contenido:
+أولاً ، قم بإنشاء ملف `compose.yaml` والصق المحتوى التالي:
 
 ```yaml title="compose.yaml"
 version: "3.5"
@@ -31,35 +31,35 @@ services:
     #  - "host.docker.internal:host-gateway"
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `jellyfin`).
+(اختياري) يوصى بإنشاء ملف `.env` في نفس مستوى `compose.yaml` وتخصيص المتغيرات البيئية الخاصة بك. إذا كنت لا ترغب في استخدام المتغيرات البيئية ، يمكنك تخصيص المعلمات الخاصة بك مباشرة في `compose.yaml` (على سبيل المثال ، استبدال `${STACK_NAME}` بـ `jellyfin`).
 
 ```dotenv title=".env"
 STACK_NAME=jellyfin
-STACK_DIR=xxx # Ruta personalizada de almacenamiento del proyecto, por ejemplo, ./jellyfin
-DATA_DIR=xxx # Ruta personalizada de almacenamiento de videos, por ejemplo, ./video
+STACK_DIR=xxx # مسار تخزين المشروع المخصص ، على سبيل المثال ./jellyfin
+DATA_DIR=xxx # مسار تخزين الفيديو المخصص ، على سبيل المثال ./video
 
 # jellyfin
 APP_VERSION=latest
-APP_PORT=xxxx # Puerto de acceso personalizado, simplemente elija uno que no esté en uso
+APP_PORT=xxxx # منفذ الوصول المخصص ، اختر غير مستخدم فقط
 ```
 
-Si tiene un NAS, también puede montar el espacio de almacenamiento en el NAS a través del protocolo NFS, almacenar la música en el NAS para ahorrar espacio en el servidor. Para obtener más detalles, consulte [**Montar el disco duro de expansión del NAS Synology en Linux (NFS)**](https://wiki-power.com/es/Linux%E4%B8%8B%E6%8C%82%E8%BD%BD%E7%BE%A4%E6%99%96NAS%E7%A1%AC%E7%9B%98%E6%8B%93%E5%B1%95%E7%A9%BA%E9%97%B4%EF%BC%88NFS%EF%BC%89/).
+إذا كان لديك NAS ، فيمكنك أيضًا تثبيت مساحة التخزين على NAS باستخدام بروتوكول NFS ، وتخزين الموسيقى على NAS لتوفير مساحة الخادم ، يرجى الرجوع إلى [**Linux 下挂载群晖 NAS 硬盘拓展空间（NFS）**](https://wiki-power.com/ar/Linux%E4%B8%8B%E6%8C%82%E8%BD%BD%E7%BE%A4%E6%99%96NAS%E7%A1%AC%E7%9B%98%E6%8B%93%E5%B1%95%E7%A9%BA%E9%97%B4%EF%BC%88NFS%EF%BC%89/) للحصول على التفاصيل.
 
-Por último, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar el contenedor.
+أخيرًا ، يمكنك تشغيل حاويات الترتيب باستخدام الأمر `docker compose up -d` في نفس مستوى `compose.yaml`.
 
-## Instrucciones de configuración
+## شرح التكوين
 
-La aplicación móvil se puede descargar desde la tienda de aplicaciones oficial de Jellyfin.
+يمكن استخدام تطبيق Jellyfin الرسمي على الهواتف المحمولة.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Sitio web oficial](https://jellyfin.org/)
-- [Documentación](https://jellyfin.org/docs/general/installation/container#using-docker-compose)
-- [Repositorio de GitHub](https://github.com/jellyfin/jellyfin)
+- [الموقع الرسمي](https://jellyfin.org/)
+- [الوثائق](https://jellyfin.org/docs/general/installation/container#using-docker-compose)
+- [مستودع GitHub](https://github.com/jellyfin/jellyfin)
 - [Docker Hub](https://hub.docker.com/r/jellyfin/jellyfin)
-- [Sitio de demostración](https://demo.jellyfin.org/stable)
+- [موقع العرض التوضيحي](https://demo.jellyfin.org/stable)
 
-a_ser_reemplazado[1]  
-a_ser_reemplazado[2]
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

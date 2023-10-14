@@ -1,6 +1,6 @@
 # RobotCtrl_Power - Power Supply Board
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220527113517.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220527113517.png)
 
 Project Repository: [**linyuxuanlin/RobotCtrl/RobotCtrl_Power**](https://github.com/linyuxuanlin/RobotCtrl/tree/main/RobotCtrl_MultiBoard_Project/RobotCtrl_Power)
 

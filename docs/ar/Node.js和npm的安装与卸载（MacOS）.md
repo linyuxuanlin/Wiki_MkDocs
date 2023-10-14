@@ -1,29 +1,29 @@
-# Instalación y desinstalación de Node.js y npm (MacOS)
+# تثبيت وإزالة Node.js و npm (MacOS)
 
-## Instalación
+## التثبيت
 
 [http://nodejs.cn/download/](http://nodejs.cn/download/)
 
-## Desinstalación
+## الإزالة
 
-Si se instaló a través de `homebrew`:
+للحذف عن طريق `homebrew`:
 
 ```shell
 brew uninstall node
 ```
 
-Si se instaló a través de un paquete `.pkg`:
+للحذف عن طريق حزمة التثبيت `.pkg`:
 
 ```shell
 sudo rm -rf /usr/local/{bin/{node,npm},lib/node_modules/npm,lib/node,share/man/*/node.*}
 ```
 
-## Solución de problemas
+## الأسئلة الشائعة
 
-P: Después de cambiar el nombre de usuario en MacOS, aparece el mensaje de error "EACCES: permission denied". 
-R: Ejecute `sudo npm install -g appium --unsafe-perm=true --allow-root` en modo no seguro. 
+س: بعد تغيير اسم المستخدم في MacOS ، يتم عرض رسالة الخطأ "EACCES: permission denied"؟
+ج: `sudo npm install -g appium --unsafe-perm=true --allow-root`، تشغيل بدون الأمان. 
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

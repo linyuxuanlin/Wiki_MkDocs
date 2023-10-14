@@ -1,10 +1,10 @@
-# Esquema de alimentación (Buck) - TPS54531
+# مشروع تصميم الطاقة (Buck) - TPS54531
 
-TPS54531 es un convertidor Buck de 3.5V a 28V de entrada, 5A y 570kHz con Eco-mode de TI.
+TPS54531 هي محول تيار مستمر / تيار مستمر (Buck) بتردد 570 كيلو هرتز وقدرة 5 أمبير ومدخلات من 3.5 فولت إلى 28 فولت وتتميز بوضع Eco-mode.
 
-Repositorio del proyecto: [**Collection_of_Power_Module_Design/DC-DC(Buck)/TPS54531**](<https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/DC-DC(Buck)/TPS54531>)
+مستودع المشروع: [**Collection_of_Power_Module_Design/DC-DC(Buck)/TPS54531**](<https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/DC-DC(Buck)/TPS54531>)
 
-Vista previa en línea del proyecto:
+معاينة المشروع عبر الإنترنت:
 
 <div class="altium-iframe-viewer">
   <div
@@ -13,67 +13,67 @@ Vista previa en línea del proyecto:
   ></div>
 </div>
 
-## Características principales
+## الميزات الرئيسية
 
-- **Principio**: DC/DC (Buck)
-- **Voltaje de entrada**: 3.5-28 V
-- **Voltaje de salida**: mínimo 0.8 V
-- **Corriente de salida**: 5 A
-- **Frecuencia de trabajo**: 570 kHz
-- **Eficiencia**: hasta un 92%
-- **Precio**: ¥ 3.80
-- **Características**
-  - Función Eco-mode de salto de pulso en carga ligera
-  - Arranque lento ajustable para limitar la corriente de entrada
-  - Umbral de bloqueo de subvoltaje programable (UVLO)
-  - Protección contra sobretensión transitoria
-  - Protección de límite de corriente por ciclo, plegado de frecuencia y apagado térmico
+- **المبدأ**: تيار مستمر / تيار مستمر (Buck)
+- **الجهد الكهربائي الداخل**: 3.5-28 فولت
+- **الجهد الكهربائي الخارج**: 0.8 فولت كحد أدنى
+- **التيار الكهربائي الخارج**: 5 أمبير
+- **التردد الكهربائي العامل**: 570 كيلو هرتز
+- **الكفاءة**: تصل إلى 92%
+- **السعر**: 3.80 يوان صيني
+- **الميزات**
+  - وضع Eco-mode للنبضات القفزة عند الأحمال الخفيفة
+  - بدء التشغيل البطيء قابل للتعديل لتقييد التيار الزائد
+  - قفل الجهد الكهربائي الدنيا (UVLO) قابل للبرمجة
+  - حماية الزيادة الزائدة
+  - حماية الحد الأقصى للتيار الكهربائي لكل دورة والتردد العكسي والإيقاف الحراري
 
-## Definición de pines
+## تعريف الأقطاب
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210713153815.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210713153815.png)
 
-## Diseño de referencia
+## التصميم المرجعي
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210713173605.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210713173605.png)
 
-## Ajuste de parámetros
+## ضبط المعلمات
 
-(Para obtener parámetros más detallados, consulte el manual de datos)
+(يرجى الرجوع إلى دليل البيانات للمزيد من التفاصيل)
 
-### Ajuste del voltaje de salida
+### ضبط الجهد الكهربائي الخارج
 
-Ajuste el voltaje de salida (voltaje de referencia $V_{REF}=0.8 V$) ajustando la resistencia de división de retroalimentación $R_5$ y $R_6$:
+يمكن ضبط الجهد الكهربائي الخارجي (جهد الرجوع = 0.8 فولت) عن طريق تعديل مقاومة تقسيم الجهد الكهربائي للرجوع $R_5$ و $R_6$:
 
 $$
 V_{OUT}=V_{REF}\times[\frac{R5}{R6}+1]
 $$
 
-$R_5$ se toma aproximadamente como 10 kΩ. En el diseño de referencia, necesitamos una salida de 4.96 V, por lo que se toma $R_5$ = 10.2 kΩ y $R_6$ = 1.96 kΩ.
+يتم اختيار $R_5$ بحوالي 10 كيلو أوم ، وفي التصميم المرجعي ، نحتاج إلى جهد كهربائي خارجي يبلغ 4.96 فولت ، لذلك يتم اختيار $R_5$ = 10.2 كيلو أوم و $R_6$ = 1.96 كيلو أوم.
 
-### Pin de habilitación
+### دبوس التمكين
 
-El pin EN se desactiva por debajo de 1.25 V y se habilita en flotación. Aquí se utilizan dos resistencias para el bloqueo de subvoltaje.
+يتم تعطيل دبوس EN عندما يكون الجهد الكهربائي أقل من 1.25 فولت ، ويتم تمكينه عندما يكون مفتوحًا. يتم استخدام مقاومتين لقفل الجهد الكهربائي الدنيا.
 
-### Modo de ahorro de energía Eco-mode
+### وضع Eco-mode
 
-Cuando la corriente pico del inductor es inferior a 160 mA, el chip entra en modo de ahorro de energía y se cierra la salida.
+عندما يكون التيار الذروة للملف اللولبي أقل من 160 مللي أمبير ، يدخل الرقاقة في وضع الحفظ ، ويتم إيقاف الإخراج.
 
-### Apagado térmico
+### إيقاف التشغيل الحراري
 
-Cuando la temperatura del chip supera los 165℃, el chip se detiene y se reinicia cuando la temperatura baja a menos de 165℃.
+عندما يتجاوز حرارة الرقاقة 165 درجة مئوية ، يتوقف الرقاقة عن العمل. عندما يكون أقل من 165 درجة مئوية ، يتم إعادة التشغيل.
 
-## Referencia de diseño de PCB
+## مرجع تخطيط الدوائر الإلكترونية
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210713161521.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210713161521.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210713162833.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210713162833.png)
 
-## Resumen de problemas comunes
+## ملخص الأخطاء الشائعة
 
-- La corriente del diodo de continuación y del inductor debe ser mayor que la corriente de salida.
-- La parte posterior del chip debe tener cobre desnudo con estaño para la disipación de calor.
-- El diseño debe seguir la dirección de la corriente Buck.
-- La placa terminada puede proporcionar una corriente de salida de 5 A, pero se necesita disipación de calor adicional para correr durante largos períodos de tiempo con más de 3 A. Los dispositivos de potencia como el diodo y el inductor pueden calentarse.
+- يجب أن يكون تيار الدائرة المستمرة للثنائي الصمامي المتصل بالملف اللولبي أكبر من التيار الكهربائي الخارج.
+- يجب أن يتم تغطية الجزء الخلفي من الرقاقة بالنحاس الخام لتبديد الحرارة.
+- يجب تخطيط الدائرة وفقًا لتدفق التيار الكهربائي لـ Buck.
+- يمكن أن تنتج اللوحة النهائية تيارًا يصل إلى 5 أمبير ، ولكن يجب إضافة تبريد إضافي للتشغيل الطويل بمعدل 3 أمبير أو أكثر. يمكن أن تسخن الأجهزة القوية مثل الثنائي الصمامي والملف اللولبي.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

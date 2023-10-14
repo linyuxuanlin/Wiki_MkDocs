@@ -1,167 +1,172 @@
-# Desarrollo de hardware STM32F4
+# تطوير الأجهزة الصلبة لـ STM32F4
 
-Este artículo explicará el sistema mínimo de MCU de STM32F4 (alimentación, reloj, reinicio, modo de arranque, gestión de depuración).
+سيتم في هذه المقالة شرح أدنى نظام لـ MCU STM32F4 (الطاقة والساعة وإعادة التعيين ووضع البدء وإدارة التصحيح).
 
-## Alimentación
+## الطاقة
 
-La tensión de trabajo normal de STM32F4 es de 1,8-3,6 V (en algunos casos puede ser inferior a 1,7 V, como se indica en la hoja de datos), y cuenta con un regulador interno que proporciona una fuente de alimentación digital de 1,2 V.
+الجهد العادي لعمل STM32F4 هو 1.8-3.6 فولت (قد ينخفض في بعض الحالات إلى أقل من 1.7 فولت ، وفقًا للكتيبات الفنية) ، ويوفر مثبت الجهد الداخلي 1.2 فولت للطاقة الرقمية الداخلية.
 
-Cuando se interrumpe la alimentación principal VDD, se puede suministrar energía a la RTC y a los registros de copia de seguridad a través del voltaje de VBAT.
+عندما يتم فصل الطاقة الرئيسية VDD ، يمكن توفير الطاقة لمؤقت الوقت الحقيقي (RTC) والسجلات الاحتياطية عن طريق جهد VBAT.
 
-### Introducción a los pines
+### مقدمة للأقطاب المختلفة
 
-#### Alimentación y voltaje de referencia ADC
+#### مصدر الطاقة والجهد المرجعي للمحول الرقمي التناظري
 
-Para mejorar la precisión de conversión, ADC cuenta con pines de alimentación independientes que pueden filtrarse y aislar el ruido de la PCB.
+لتحسين دقة التحويل ، يحتوي ADC على أقطاب طاقة مستقلة يمكن تصفيتها وحجب الضوضاء على PCB.
 
-La fuente de voltaje ADC proviene del pin VDDA independiente. En el diseño del circuito, se debe conectar VSSA al mismo suministro de tierra en lugar de VSS.
+يتم إدخال مصدر الجهد ADC من الدبوس VDDA المستقل. عند تصميم الدائرة ، يجب توصيل VSSA بنفس الأرضية الكهربائية المزودة ، وليس VSS.
 
-Si el encapsulado del chip tiene más de 100 pines, habrá pines VREF+ y VREF-, que se utilizan para proporcionar voltaje de referencia externo al ADC. VREF- debe conectarse a VSSA interno. Si el número de pines del chip es inferior a 100, estos dos pines no se conectan y se conectan internamente a VDDA y VSSA.
+إذا كانت حزمة الشريحة أكثر من 100 دبوس ، فسيكون هناك دبوس VREF + و VREF- ، والتي تستخدم لإدخال الجهد المرجعي الخارجي لـ ADC. يجب توصيل VREF- بـ VSSA الداخلية. إذا كان عدد دبابيس الشريحة أقل من 100 ، فلن يتم توصيل هذين الدبوسين ، وسيتم توصيلهما داخليًا بـ VDDA و VSSA.
 
-#### Alimentación de la batería de respaldo
+#### مصدر الطاقة الاحتياطية للبطارية
 
-Si se necesita mantener el contenido del registro de copia de seguridad después de que se interrumpe VDD, se puede conectar VBAT a una batería u otra fuente de alimentación.
+إذا كنت بحاجة إلى الاحتفاظ بمحتويات سجلات الاحتياطية بعد فصل VDD ، فيمكن توصيل VBAT بالبطارية أو مصدر طاقة آخر.
 
-VBAT también puede suministrar energía a la RTC, controlada por el circuito de reinicio por caída de energía (PDR) integrado en el módulo de reinicio.
+يمكن أيضًا استخدام VBAT لتوفير الطاقة لـ RTC ، ويتم التحكم فيها من خلال دائرة إعادة التعيين الداخلية في وحدة إعادة التعيين (PDR).
 
-#### Regulador interno
+#### مثبت الجهد الداخلي
 
-El regulador interno siempre está habilitado después del reinicio y tiene tres modos de funcionamiento:
+يتم تمكين مثبت الجهد الداخلي بعد إعادة التعيين ، ويوجد لديه ثلاثة أنماط عمل:
 
-- Ejecución: el regulador proporciona suministro de energía de plena potencia de 1,2 V (núcleo, memoria y periféricos digitales).
-- Parada: el regulador proporciona suministro de energía de baja potencia de 1,2 V al núcleo y conserva el contenido de los registros y la SRAM.
-- En espera: el regulador se apaga. Se perderá el contenido de los registros y la SRAM, excepto el circuito de espera y el dominio de copia de seguridad.
+- تشغيل: يوفر المثبت الجهد الكامل (للنواة والذاكرة والأجهزة الرقمية الخارجية) لمجال 1.2 فولت.
+- إيقاف: يوفر المثبت الجهد الكامل (للنواة والذاكرة والأجهزة الرقمية الخارجية) لمجال 1.2 فولت ، وفي الوقت نفسه يحتفظ بمحتويات السجلات والذاكرة العشوائية SRAM.
+- وضع الاستعداد: يتم فصل المثبت الجهد. سيتم فقدان محتويات السجلات والذاكرة العشوائية SRAM باستثناء دائرة الاستعداد ومجال الاحتياطي.
 
-### Diseño del circuito
+### تصميم الدائرة
 
-A continuación se muestra el método de diseño de los pines de alimentación:
+فيما يلي طريقة تصميم أقطاب الطاقة:
 
 - **VDD**
-  - **Condensador de desacoplamiento**: un condensador cerámico/tantalio de 10 μF en total, más un condensador cerámico de 100 nF conectado a cada pin VDD.
+  - **التحويل الكهربائي**: سعة 10 ميكروفاراد الإجمالية من السيراميك / التانتالوم ، بالإضافة إلى سعة 100 نانوفاراد من السيراميك لكل دبوس VDD.
 - **VDDA**
-  - **Condensador de desacoplamiento**: un condensador cerámico de 100 nF + un condensador cerámico/tantalio de 1 µF.
-  - **Filtrar el ruido analógico**: se puede conectar a VDD mediante un núcleo magnético.
-- **VREF+**
-  - **Condensador de desacoplamiento**: si se utiliza la función VREF+, se necesitan un condensador de 100 nF y otro de 1 µF.
-  - **Filtrar el ruido analógico**: se puede conectar a VDDA mediante una resistencia de 47 Ω.
-- **VBAT**: conecte una batería externa (1,65 V-3,6 V). Si no se necesita una fuente de alimentación de batería, conéctela al pin VDD.
-- **VCAP1/VCAP2**: conecte un condensador cerámico de 2,2 µF (ESR < 2 Ω) a tierra para cada uno; si solo hay VCAP1, conecte un condensador cerámico de 4,7 µF (ESR < 1 Ω).
+  - **التحويل الكهربائي**: سعة 100 نانوفاراد من السيراميك + سعة 1 ميكروفاراد من السيراميك / التانتالوم.
+  - **تصفية الضوضاء التناظرية**: يمكن توصيلها بـ VDD عن طريق الخرز المغناطيسي.
+- **VREF +**
+  - **التحويل الكهربائي**: إذا تم تمكين وظيفة VREF + ، فيجب توصيل سعة 100 نانوفاراد وسعة 1 ميكروفاراد.
+  - **تصفية الضوضاء التناظرية**: يمكن توصيلها بـ VDDA عن طريق مقاومة 47 أومًا.
+- **VBAT**: توصيل البطارية الخارجية (1.65-3.6 فولت). إذا لم يكن هناك حاجة لمصدر الطاقة الاحتياطية ، فتوصيلها بدبوس VDD.
+- **VCAP1 / VCAP2**: توصيل كل منها بالأرض بسعة 2.2 ميكروفاراد من السيراميك (ESR <2 أوم) ؛ إذا كان هناك VCAP1 فقط ، فتوصيل سعة 4.7 ميكروفاراد من السيراميك (ESR <1 أوم).
 
-### Reinicio y supervisión de alimentación
+### إعادة التعيين ومراقبة الطاقة
 
-#### Reinicio por encendido (POR) / Reinicio por caída de energía (PDR)
+#### إعادة التعيين عند الطاقة على / إيقاف التشغيل
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210529143014.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210529143014.png)
 
-El chip STM32F4 integra el circuito POR/PDR, y las características específicas del reinicio por encendido / caída de energía se muestran en la figura anterior. Si se desea deshabilitar esta función, se puede hacer a través del pin PDR_ON.
+يتم دمج دائرة POR / PDR في رقاقة STM32F4 ، وتتميز بميزات إعادة التعيين عند الطاقة على / إيقاف التشغيل كما هو موضح في الشكل أعلاه. إذا كنت ترغب في تعطيل هذه الميزة ، فيمكن تحقيق ذلك عن طريق دبوس PDR_ON.
 
-#### Reinicio del sistema
+#### إعادة تعيين النظام
 
-Las condiciones de activación del reinicio del sistema son:
+شروط إعادة تعيين النظام:
 
-- Bajo nivel de voltaje en el pin NRST (reinicio externo)
-- Finalización del conteo del perro guardián de ventana (reinicio WWDG)
-- Finalización del conteo del perro guardián independiente (reinicio IWDG)
-- Reinicio de software (reinicio SW)
-- Reinicio de gestión de baja potencia
+- NRST دبوس الجهد المنخفض (إعادة تعيين خارجي)
+- انتهاء عداد مراقبة الوقت الحقيقي (إعادة تعيين WWDG)
+- انتهاء عداد مراقبة الوقت الحقيقي المستقل (إعادة تعيين IWDG)
+- إعادة تعيين البرامج الثابتة (إعادة تعيين SW)
+- إعادة تعيين إدارة الطاقة المنخفضة
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210529143925.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210529143925.png)
 
-Se puede determinar la fuente de reinicio mediante la visualización de la bandera de reinicio en el registro de control / estado (RCC_CSR).
+يمكن تحديد مصدر إعادة التعيين من خلال عرض العلامات في سجل التحكم / الحالة (RCC_CSR).
 
-Incluso si no se necesita un circuito de reinicio externo, se recomienda agregar un condensador de descarga para mejorar el rendimiento de EMS.
+حتى إذا لم يكن هناك دائرة إعادة تعيين خارجية ، فمن المستحسن أيضًا إضافة سعة تفريغ لتحسين أداء EMS.
 
-## Reloj
+## الساعة
 
-En STM32F4, se pueden utilizar tres fuentes de reloj diferentes para impulsar el reloj del sistema (SYSCLK):
+يمكن استخدام ثلاثة مصادر ساعة مختلفة لتشغيل ساعة النظام (SYSCLK) على STM32F4:
 
-- HSI (señal de reloj interno de alta velocidad)
-- HSE (señal de reloj externo de alta velocidad)
-- Reloj PLL
+- HSI (إشارة الساعة الداخلية عالية السرعة)
+- HSE (إشارة الساعة الخارجية عالية السرعة)
+- ساعة PLL
 
-También hay dos fuentes de reloj secundarias:
+هناك أيضًا مصدران ثانويان للساعة:
 
-- LSI RC (32 kHz RC interno de baja velocidad), utilizado para conducir un watchdog independiente, también se puede utilizar para despertar automáticamente en modo de apagado / espera RTC.
-- LSE (32.768 kHz cristal externo de baja velocidad), utilizado para conducir RTC.
+- LSI (إشارة الساعة الداخلية المنخفضة السرعة)
+- LSE (إشارة الساعة الخارجية المنخفضة السرعة)
 
-Si se necesita reducir el consumo de energía, cada reloj se puede apagar individualmente cuando no se está utilizando.
 
-### Reloj externo de alta velocidad (HSE)
 
-Hay dos formas de proporcionar la fuente de reloj HSE: fuente externa (activa) y cristal externo / resonador cerámico (pasivo).
+- LSI RC (32 kHz low-speed internal RC)، يستخدم لتشغيل المراقب الذاتي للبوابة ويمكن استخدامه أيضًا في وضع إيقاف التشغيل / الاستعداد للمنبه التلقائي RTC.
+- LSE (32.768 kHz low-speed external crystal oscillator)، يستخدم لتشغيل RTC.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210529145726.png)
+إذا كنت بحاجة إلى تقليل استهلاك الطاقة ، فيمكن إيقاف كل ساعة عند عدم الاستخدام.
 
-#### Fuente externa (bypass HSE)
+### ساعة خارجية عالية السرعة (HSE)
 
-Si se elige la entrada de señal de reloj externa activa, se debe proporcionar una fuente de reloj de 1-50 MHz, OSC_IN se conecta a una señal de reloj externa con un ciclo de trabajo de aproximadamente el 50% (onda cuadrada, senoidal o triangular), y OSC_OUT se mantiene en alta impedancia.
+يمكن توفير مصدر ساعة HSE بطريقتين: مصدر خارجي (نشط) ومنبع خارجي للكريستال / الموجات الصوتية السيراميكية (غير نشط).
 
-#### Cristal externo / resonador cerámico (HSE cristal)
+![](https://img.wiki-power.com/d/wiki-media/img/20210529145726.png)
 
-Si se utiliza un cristal externo, el rango de frecuencia es de 4-26 MHz. Al diseñar el circuito, el resonador y la capacidad de carga deben estar lo más cerca posible de los pines del oscilador para minimizar la distorsión de salida y el tiempo de estabilización de la oscilación. El valor de la capacidad de carga debe ajustarse adecuadamente según el oscilador seleccionado.
+#### مصدر خارجي (تجاوز HSE)
 
-CL1 y CL2 deben tener el mismo tamaño (5-25 pF, valor típico 25 pF) de capacidad de cerámica.
+إذا تم اختيار إدخال إشارة ساعة خارجية نشطة ، فيجب توفير مصدر ساعة بتردد 1-50 ميجاهرتز ، يتصل OSC_IN بإشارة ساعة خارجية (موجة مربعة أو موجة جيبية أو موجة مثلثة) بنسبة حجم 50٪ ، ويتم الاحتفاظ بـ OSC_OUT في حالة عالية المقاومة.
 
-### Reloj externo de baja velocidad (LSE)
+#### كريستال HSE الخارجي / موجات صوتية سيراميكية (كريستال HSE)
 
-Hay dos formas de proporcionar la fuente de reloj LSE: fuente externa (activa) y cristal externo / resonador cerámico (pasivo).
+إذا تم اختيار الكريستال الخارجي ، فسيكون نطاق التردد من 4-26 ميجاهرتز. عند تصميم الدائرة ، يجب أن يتم وضع مكثف الحمل والمكثف الكهربائي قريبين قدر الإمكان من دبوس المذبذب لتقليل التشويش في الإخراج وزمن الاستقرار. يجب تعديل قيمة مكثف الحمل بناءً على المذبذب المختار.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210529152354.png)
+يجب استخدام مكثف CL1 و CL2 بحجم متساوٍ (5-25 بيكوفاراد ، قيمة نموذجية 25 بيكوفاراد) من المكثفات السيراميكية.
 
-#### Fuente externa (bypass LSE)
+### ساعة خارجية منخفضة السرعة (LSE)
 
-Si se elige la entrada de señal de reloj externa activa, se debe proporcionar una fuente de reloj de menos de 1 MHz, OSC32_IN se conecta a una señal de reloj externa con un ciclo de trabajo de aproximadamente el 50% (onda cuadrada, senoidal o triangular), y OSC32_OUT se mantiene en alta impedancia.
+يمكن توفير مصدر ساعة LSE بطريقتين: مصدر خارجي (نشط) ومنبع خارجي للكريستال / الموجات الصوتية السيراميكية (غير نشط).
 
-#### Cristal externo / resonador cerámico (LSE cristal)
+![](https://img.wiki-power.com/d/wiki-media/img/20210529152354.png)
 
-Si se utiliza un cristal externo, el rango de frecuencia es de 32.768 kHz y se puede utilizar como fuente de reloj RTC. Al diseñar el circuito, el resonador y la capacidad de carga deben estar lo más cerca posible de los pines del oscilador para minimizar la distorsión de salida y el tiempo de estabilización de la oscilación. El valor de la capacidad de carga debe ajustarse adecuadamente según el oscilador seleccionado.
+#### مصدر خارجي (تجاوز LSE)
 
-## Modo de arranque
+إذا تم اختيار إدخال إشارة ساعة خارجية نشطة ، فيجب توفير مصدر ساعة بتردد أقل من 1 ميجاهرتز ، يتصل OSC32_IN بإشارة ساعة خارجية (موجة مربعة أو موجة جيبية أو موجة مثلثة) بنسبة حجم 50٪ ، ويتم الاحتفاظ بـ OSC32_OUT في حالة عالية المقاومة.
 
-El modo de arranque también se llama modo de autorecuperación. Se pueden seleccionar tres modos de arranque diferentes mediante los pines BOOT0 y BOOT1: arranque desde la memoria flash principal, arranque desde la memoria del sistema, arranque desde la SRAM incorporada.
+#### كريستال LSE الخارجي / موجات صوتية سيراميكية (كريستال LSE)
 
-Para obtener más información sobre el modo de arranque, consulte el artículo [**Modo de arranque de STM32**](https://wiki-power.com/es/STM32%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F)
+إذا تم اختيار الكريستال الخارجي ، فسيكون نطاق التردد 32.768 كيلوهرتز ، ويمكن استخدامه كمصدر ساعة RTC. عند تصميم الدائرة ، يجب أن يتم وضع مكثف الحمل والمكثف الكهربائي قريبين قدر الإمكان من دبوس المذبذب لتقليل التشويش في الإخراج وزمن الاستقرار. يجب تعديل قيمة مكثف الحمل بناءً على المذبذب المختار.
 
-En general, conectamos una resistencia de 10 K en serie con BOOT0 y BOOT1 es arbitrario. Si es necesario cambiar de modo, se puede diseñar de la siguiente manera:
+## وضع البدء
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200605163537.png)
+وضع البدء أو وضع الإقلاع. يمكن اختيار ثلاثة أنماط مختلفة لوضع البدء عن طريق توصيل دبوسي BOOT0 و BOOT1: البدء من ذاكرة التخزين الفلاش الرئيسية ، البدء من ذاكرة التخزين النظامية ، البدء من SRAM المدمج.
 
-## Gestión de depuración
+لمزيد من التفاصيل حول وضع البدء ، يرجى الرجوع إلى المقالة [**وضع البدء لـ STM32**](https://wiki-power.com/ar/وضع البدء لـ STM32)
 
-STM32 generalmente utiliza el protocolo SWJ para la descarga y depuración.
+عادةً ما نستخدم مقاومة سحب 10 كيلو أوم على BOOT0 ، ويمكن ترك BOOT1 بأي شكل من الأشكال. إذا كنت بحاجة إلى تغيير وضع البدء ، فيمكنك الاستشارة التصميم التالي:
 
-### Puerto de depuración SWJ
+![](https://img.wiki-power.com/d/wiki-media/img/20200605163537.png)
 
-El STM32F4 tiene una interfaz SWJ (SW/JTAG) integrada. Entre ellas, SW-DP tiene 2 pines (reloj + datos) y JTAG-DP tiene 5 pines, algunos de los cuales son compartidos. Para obtener más información, consulte el artículo [**Diferencias y conexiones entre SWD y JTAG**](https://wiki-power.com/es/SWD%E4%B8%8EJTAG%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB)
+## إدارة التصحيح
 
-En STM32F4, la asignación de pines SWJ es la siguiente:
+عادةً ما يتم استخدام بروتوكول SWJ لتنزيل التصحيح لـ STM32.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210529210858.png)
+### منفذ تصحيح SWJ
 
-### Pull-up y pull-down internos de JTAG
+يحتوي STM32F4 على واجهة SWJ (SW / JTAG) المدمجة. يتكون SW-DP من 2 دبوس (ساعة + بيانات) ، و JTAG-DP من 5 دبوس ، وبعض الدبابيس متعددة الاستخدام. لمزيد من التفاصيل ، يرجى الرجوع إلى المقالة [**الفرق والاتصال بين SWD و JTAG**](https://wiki-power.com/ar/الفرق والاتصال بين SWD و JTAG)
 
-Los pines JTAG no pueden estar en el aire (porque están conectados directamente a los disparadores utilizados para el control de depuración de modo), por lo que se integran en el chip para tirar hacia arriba y hacia abajo:
+في STM32F4 ، يتم تخصيص دبابيس SWJ على النحو التالي:
 
-- **JNTRST**: Pull-up interno
-- **JTDI**: Pull-up interno
-- **JTMS/SWDIO**: Pull-up interno
-- **TCK/SWCLK**: Pull-down interno
+![](https://img.wiki-power.com/d/wiki-media/img/20210529210858.png)
 
-Después de liberar el I/O de JTAG mediante software, se puede utilizar como un puerto I/O normal.
+### السحب الداخلي والخارجي لـ JTAG
 
-### Diseño de hardware para conectar un conector JTAG estándar
+لا يمكن ترك دبابيس JTAG معلقة (لأنها متصلة مباشرة بمشغلات التحكم في التصحيح المستخدمة للتحكم في الوضع) ، لذلك يتم دمج السحب الداخلي والخارجي لها داخل الشريحة:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210529211840.png)
+- **JNTRST**: سحب داخلي
+- **JTDI**: سحب داخلي
+- **JTMS / SWDIO**: سحب داخلي
+- **TCK / SWCLK**: سحب خارجي
 
-## Diseño de referencia
+عندما يتم إطلاق سراح برنامج JTAG I/O ، يمكن استخدامه كمنفذ I/O عادي.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210529213723.png)
+### تصميم الأجهزة المتصلة بمقعد JTAG القياسي
 
-## Referencias y agradecimientos
+![](https://img.wiki-power.com/d/wiki-media/img/20210529211840.png)
 
-- [AN4488: Getting started with STM32F4xxxx MCU hardware development](https://www.st.com/content/ccc/resource/technical/document/application_note/76/f9/c8/10/8a/33/4b/f0/DM00115714.pdf/files/DM00115714.pdf/jcr:content/translations/en.DM00115714.pdf)
+## التصميم المرجعي
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+![](https://img.wiki-power.com/d/wiki-media/img/20210529213723.png)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+## المراجع والشكر
+
+- [AN4488: البدء في تطوير الأجهزة لمعالجات STM32F4xxxx](https://www.st.com/content/ccc/resource/technical/document/application_note/76/f9/c8/10/8a/33/4b/f0/DM00115714.pdf/files/DM00115714.pdf/jcr:content/translations/en.DM00115714.pdf)
+
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

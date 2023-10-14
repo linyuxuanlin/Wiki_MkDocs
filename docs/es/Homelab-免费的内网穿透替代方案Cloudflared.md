@@ -1,6 +1,6 @@
 # Homelab - Alternativa gratuita a la conexión a través de la red interna: Cloudflared
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230416143051.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20230416143051.png)
 
 **Cloudflared** es una solución gratuita para la conexión a través de la red interna, utilizada para acceder a máquinas sin dirección IP pública desde la red externa.
 
@@ -58,7 +58,7 @@ Acceda al panel [**Cloudflare Zero Trust**](https://one.dash.cloudflare.com/), s
 
 A continuación, haga clic en el túnel que ha creado y, en la pestaña `Public Hostname Page`, agregue el puerto que desea utilizar como proxy. Por ejemplo, si su dominio está vinculado a Cloudflare y es `wiki-power.com`, y desea utilizar el puerto `80` y el protocolo `HTTP` en su máquina local, simplemente escriba lo siguiente:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230416183438.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20230416183438.png)
 
 De esta manera, podrá acceder al puerto local a través de <https://dashboard.wiki-power.com>, y automáticamente se solicitará un certificado SSL para el acceso a través de https desde la red externa.
 

@@ -36,17 +36,17 @@ Configure según la placa.
 
 Por ejemplo, consulte el esquemático de la placa:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210205205030.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210205205030.png)
 
 Configure las opciones `HSE` y `LSE` como cristales externos:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210205205140.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210205205140.png)
 
 ### Configuración del árbol de reloj
 
 Configure en la interfaz `Clock Configuration`.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210205205550.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210205205550.png)
 
 Siga los pasos de la imagen anterior:
 
@@ -57,9 +57,9 @@ Siga los pasos de la imagen anterior:
 
 ### Configuración de opciones de gestión de proyectos
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210130095224.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210130095224.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210130095239.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210130095239.png)
 
 ## Diferencias entre la biblioteca HAL y la biblioteca estándar
 

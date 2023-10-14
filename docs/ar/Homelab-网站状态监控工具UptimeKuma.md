@@ -1,12 +1,12 @@
-# Homelab - Herramienta de monitoreo de estado del sitio web Uptime Kuma
+# Homelab - أداة مراقبة حالة الموقع Uptime Kuma
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230410160253.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20230410160253.jpg)
 
-**Uptime Kuma** es una herramienta de monitoreo de estado que admite varios protocolos de red. Puede monitorear el estado en tiempo real, la duración de la respuesta, la validez del certificado, etc. de varios sitios web personalizados y proporciona varios métodos de notificación.
+**Uptime Kuma** هي أداة مراقبة حالة تدعم العديد من بروتوكولات الشبكة ، والتي يمكنها مراقبة حالة الوقت الفعلي ومدة الاستجابة وصلاحية الشهادة لعدة مواقع مخصصة ، وتوفير العديد من طرق الإشعار.
 
-## Implementación (Docker Compose)
+## نشر (Docker Compose)
 
-Primero, cree el archivo `compose.yaml` y pegue el siguiente contenido:
+أولاً ، قم بإنشاء ملف `compose.yaml` والصق المحتوى التالي:
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -21,31 +21,31 @@ services:
     restart: always
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplace `${STACK_NAME}` con `uptime-kuma`).
+(اختياري) يوصى بإنشاء ملف `.env` في نفس مستوى `compose.yaml` وتخصيص المتغيرات البيئية الخاصة بك. إذا كنت لا ترغب في استخدام المتغيرات البيئية ، فيمكنك تخصيص المعلمات الخاصة بك مباشرةً في `compose.yaml` (على سبيل المثال ، استبدال `${STACK_NAME}` بـ `uptime-kuma`).
 
 ```dotenv title=".env"
 STACK_NAME=uptime-kuma
-STACK_DIR=xxx # Ruta personalizada de almacenamiento del proyecto, por ejemplo, ./uptime-kuma
+STACK_DIR=xxx # مسار تخزين المشروع المخصص ، على سبيل المثال ./uptime-kuma
 
 # uptime-kuma
 APP_VERSION=latest
-APP_PORT=xxxx # Puerto de acceso personalizado, simplemente elija uno que no esté en uso
+APP_PORT=xxxx # تخصيص منفذ الوصول الخاص بك ، اختر غير مستخدم فقط
 ```
 
-Por último, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores.
+أخيرًا ، قم بتشغيل الأمر `docker compose up -d` في نفس مستوى `compose.yaml` لتشغيل حاويات الإعداد.
 
-## Instrucciones de configuración
+## تفاصيل الإعداد
 
-Nota: Si utiliza un proxy inverso, habilite la función "Soporte de Websockets".
+ملاحظة: إذا كنت تستخدم خادم وكيل عكسي ، فيرجى تمكين خاصية `Websockets Support`.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Sitio web oficial](https://uptime.kuma.pet/)
-- [Documentación](https://github.com/louislam/uptime-kuma/wiki)
-- [Repositorio de GitHub](https://github.com/louislam/uptime-kuma)
+- [الموقع الرسمي](https://uptime.kuma.pet/)
+- [الوثائق](https://github.com/louislam/uptime-kuma/wiki)
+- [مستودع GitHub](https://github.com/louislam/uptime-kuma)
 - [Docker Hub](https://hub.docker.com/r/louislam/uptime-kuma)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

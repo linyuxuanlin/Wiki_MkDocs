@@ -10,30 +10,30 @@ ssh user@IP
 
 ## Root Directory Structure
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211009094302.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211009094302.png)
 
-| Directory   | Contents                                                                                                                                |
-| ----------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| bin         | Binary files for system commands such as cat, cp, and mkdir.                                                                             |
-| boot        | Contains files needed for the boot process, such as the boot manager grub2.                                                               |
-| dev         | Directory for all device files (e.g. sound card, hard drive, CD-ROM).                                                                     |
-| etc         | Etcetera, contains main system configuration files.                                                                                      |
-| home        | Directory for storing user home directory data.                                                                                           |
-| lib         | Library, contains library files needed for commands in sbin and bin directories to avoid duplication.                                   |
-| lib32/lib64 | Contains binary function libraries that support 32/64-bit.                                                                               |
+| Directory   | Contents                                                                                                                                                                                          |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| bin         | Binary files for system commands such as cat, cp, and mkdir.                                                                                                                                      |
+| boot        | Contains files needed for the boot process, such as the boot manager grub2.                                                                                                                       |
+| dev         | Directory for all device files (e.g. sound card, hard drive, CD-ROM).                                                                                                                             |
+| etc         | Etcetera, contains main system configuration files.                                                                                                                                               |
+| home        | Directory for storing user home directory data.                                                                                                                                                   |
+| lib         | Library, contains library files needed for commands in sbin and bin directories to avoid duplication.                                                                                             |
+| lib32/lib64 | Contains binary function libraries that support 32/64-bit.                                                                                                                                        |
 | lost+found  | In EXT3/4 systems, when the system crashes or shuts down unexpectedly, some fragment files will be generated in this directory. The fcsk tool will check this directory and repair damaged files. |
-| media       | Used to mount devices such as CDs, floppy disks, and DVDs.                                                                                |
-| mnt         | Same as media, used to temporarily mount storage devices.                                                                                 |
-| opt         | Directory for installing third-party software.                                                                                            |
-| proc        | Directory for storing process and kernel information, does not occupy hard disk space.                                                   |
-| root        | Home directory for the root user.                                                                                                        |
-| run         | A temporary file system that stores information since system startup. These files should be deleted or cleared when the system restarts. |
-| sbin        | System bin, contains commands used by the root user, such as the formatting command mkfs.                                               |
-| srv         | Data files required for some network services.                                                                                            |
-| sys         | Same as proc directory, used to record CPU and system hardware information.                                                               |
-| tmp         | Directory for storing temporary files generated during program execution.                                                                 |
-| usr         | Directory for storing system programs, similar to the "Program Files" folder in Windows.                                                 |
-| var         | Directory for storing files that frequently change, such as system log files.                                                            |
+| media       | Used to mount devices such as CDs, floppy disks, and DVDs.                                                                                                                                        |
+| mnt         | Same as media, used to temporarily mount storage devices.                                                                                                                                         |
+| opt         | Directory for installing third-party software.                                                                                                                                                    |
+| proc        | Directory for storing process and kernel information, does not occupy hard disk space.                                                                                                            |
+| root        | Home directory for the root user.                                                                                                                                                                 |
+| run         | A temporary file system that stores information since system startup. These files should be deleted or cleared when the system restarts.                                                          |
+| sbin        | System bin, contains commands used by the root user, such as the formatting command mkfs.                                                                                                         |
+| srv         | Data files required for some network services.                                                                                                                                                    |
+| sys         | Same as proc directory, used to record CPU and system hardware information.                                                                                                                       |
+| tmp         | Directory for storing temporary files generated during program execution.                                                                                                                         |
+| usr         | Directory for storing system programs, similar to the "Program Files" folder in Windows.                                                                                                          |
+| var         | Directory for storing files that frequently change, such as system log files.                                                                                                                     |
 
 ## File Types
 

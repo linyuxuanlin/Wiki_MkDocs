@@ -10,7 +10,7 @@ Cuando el tiempo dedicado a la maquetación supera al de la escritura en sí mis
 
 ## Herramientas
 
-En primer lugar, necesitarás un editor que admita Markdown. Recomiendo usar VS Code o Typora. 
+En primer lugar, necesitarás un editor que admita Markdown. Recomiendo usar VS Code o Typora.
 Para la instalación y configuración del software, puedes consultar el tutorial que he escrito: [**Guía de productividad de VS Code - Configuración del entorno**](https://wiki-power.com/es/VSCode生产力指南-环境配置)
 
 ## Sintaxis común
@@ -37,12 +37,12 @@ Para crear títulos, agrega de 1 a 6 símbolos `#` antes del texto del título. 
 
 Agrega símbolos alrededor del texto para darle estilo:
 
-|   Estilo   |    Atajo de teclado    | Sintaxis                   | Apariencia             |
-| :------: | :--------------: | ---------------------- | -------------------- |
-|   Negrita   | `Ctrl`/`⌘` + `B` | `**Texto en negrita**`         | **Texto en negrita**         |
-|   Cursiva   | `Ctrl`/`⌘` + `I` | `*Texto en cursiva*`           | _Texto en cursiva_           |
+|      Estilo       | Atajo de teclado | Sintaxis                           | Apariencia                       |
+| :---------------: | :--------------: | ---------------------------------- | -------------------------------- |
+|      Negrita      | `Ctrl`/`⌘` + `B` | `**Texto en negrita**`             | **Texto en negrita**             |
+|      Cursiva      | `Ctrl`/`⌘` + `I` | `*Texto en cursiva*`               | _Texto en cursiva_               |
 | Negrita y cursiva |                  | `***Texto en negrita y cursiva***` | **_Texto en negrita y cursiva_** |
-|  Tachado  |                  | `~~Texto tachado~~`         | ~~Texto tachado~~         |
+|      Tachado      |                  | `~~Texto tachado~~`                | ~~Texto tachado~~                |
 
 Nota: El texto en cursiva está diseñado específicamente para el inglés. Para mayor legibilidad y coherencia, no uses cursiva en el texto en español.
 
@@ -76,7 +76,7 @@ Descomprime el archivo `hugo.exe` en la carpeta `D:\hugo`.
 
 Si necesitas varias líneas de código, puedes usar tres comillas invertidas <code>```</code> para encerrar el bloque de código:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210215164653.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210215164653.png)
 
 ```c
 int fputc(int ch,FILE *f)
@@ -190,15 +190,15 @@ Use el símbolo `|` para separar las celdas y el símbolo `-` para separar las f
 
 ```markdown
 | nombre     | edad |
-| ---------- | --- |
-| LearnShare | 12  |
-| Mike       | 32  |
+| ---------- | ---- |
+| LearnShare | 12   |
+| Mike       | 32   |
 ```
 
 | nombre     | edad |
-| ---------- | --- |
-| LearnShare | 12  |
-| Mike       | 32  |
+| ---------- | ---- |
+| LearnShare | 12   |
+| Mike       | 32   |
 
 Si desea alinear las columnas de la tabla, puede usar el símbolo `:`:
 
@@ -207,16 +207,16 @@ Si desea alinear las columnas de la tabla, puede usar el símbolo `:`:
 - `---:` representa alineación a la derecha
 
 ```markdown
-|    nombre    | edad |
-| :--------: | --: |
-| LearnShare |  12 |
-|    Mike    |  32 |
+|   nombre   | edad |
+| :--------: | ---: |
+| LearnShare |   12 |
+|    Mike    |   32 |
 ```
 
-|    nombre    | edad |
-| :--------: | --: |
-| LearnShare |  12 |
-|    Mike    |  32 |
+|   nombre   | edad |
+| :--------: | ---: |
+| LearnShare |   12 |
+|    Mike    |   32 |
 
 ### Línea divisoria
 
@@ -226,7 +226,7 @@ Puedes usar el símbolo `---` para generar una línea divisoria y separar difere
 ---
 ```
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210216123630.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210216123630.png)
 
 ## Funciones avanzadas
 

@@ -6,27 +6,27 @@ Homelab refers to an experimental (tinkering) environment that can be built at h
 
 My own Homelab configuration is a **lightweight cloud server** + **small host** + **NAS**, each with its own configuration and purpose:
 
-|          | Lightweight Cloud Server (Alibaba Cloud 1C2G) | Small Host (N100 CPU) | NAS (Synology DS220+) |
-| -------- | ------------------------------------------- | --------------------- | --------------------- |
-| Public IP | Yes                                         | No                    | No                    |
-| Storage  | Small                                       | Medium                | Large                 |
-| Performance | Low                                      | High                  | Low                   |
+|             | Lightweight Cloud Server (Alibaba Cloud 1C2G) | Small Host (N100 CPU) | NAS (Synology DS220+) |
+| ----------- | --------------------------------------------- | --------------------- | --------------------- |
+| Public IP   | Yes                                           | No                    | No                    |
+| Storage     | Small                                         | Medium                | Large                 |
+| Performance | Low                                           | High                  | Low                   |
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202304130031463.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202304130031463.png)
 
 It is not difficult to see that they are all biased towards a particular area, but as long as they work together, they are a triangle warrior. The **lightweight cloud server** is biased towards network access, the **small host** is biased towards performance processing, and the **NAS** is biased towards storage space.
 
 ### Lightweight Cloud Server
 
-The **lightweight cloud server** is actually the surplus material of cloud server manufacturers, with low configuration but affordable prices. For example, the Alibaba Cloud lightweight server I purchased is only ￥96/year (if you have a cheaper package, let me know).
+The **lightweight cloud server** is actually the surplus material of cloud server manufacturers, with low configuration but affordable prices. For example, the Alibaba Cloud lightweight server I purchased is only ￥ 96/year (if you have a cheaper package, let me know).
 
 Because it has a public IP (ports 80/443 are also open), the services I deploy on this lightweight cloud host are mainly frp server, reverse proxy server, jump server for accessing other machines, monitoring panel for other hosts, small website services, website uptime monitoring, and other services that need to be accessed directly through the public network.
 
 ### Small Host
 
-I chose the zero moment N100 CPU quasi-system for the **small host**, with a self-configured 16G DDR5 memory and 250G SSD hard drive, which cost about ￥1000 in total. The daily power consumption is not high, and it can also be called upon when performance is needed.
+I chose the zero moment N100 CPU quasi-system for the **small host**, with a self-configured 16G DDR5 memory and 250G SSD hard drive, which cost about ￥ 1000 in total. The daily power consumption is not high, and it can also be called upon when performance is needed.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202304130043744.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202304130043744.png)
 
 The types of applications deployed on the small host are mainly web VS Code code editor, private note library, RSS reader, podcast server, movie library, intranet browser, and other services that consume performance.
 
@@ -34,7 +34,7 @@ The types of applications deployed on the small host are mainly web VS Code code
 
 I chose the Synology DS220+ for the **NAS**, which has an X86 architecture that is convenient for running Docker environments. Recently, I also added a 16G memory module to it in an attempt to improve its performance. However, I later found that the bottleneck was still the weak J4025 CPU. The white Synology can be considered as buying software and sending hardware, but it is still worth it for the security of data.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202304130053483.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202304130053483.png)
 
 What I deploy on the NAS is mainly storage-demanding services such as device data backup, network disk synchronization, photo library, and book library.
 

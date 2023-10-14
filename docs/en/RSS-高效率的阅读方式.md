@@ -6,8 +6,8 @@ Simply put, when the author you follow writes an article on their platform (whic
 
 > If a website supports RSS, it means that every time it publishes a new article, it will add a record to a file located at a specific URL in a specific syntax (specifically XML markup language or JSON), listing the title, author, publication time, and content (which can be the full text or summary) of the article. In this way, users can collect the URLs of all the files provided by the websites they are interested in and periodically check for updates to know whether and when these websites have published new content. The core function of an RSS reader is to store the RSS addresses subscribed by users, automatically check for updates at a fixed frequency, and present the content in an easy-to-read format to users.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200225145439.png)
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200225145502.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200225145439.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200225145502.png)
 
 ## Why Use RSS
 
@@ -33,7 +33,7 @@ Using Inoreader as an example, the simplest way is to copy the blog address and 
 
 To determine if a website has an RSS feed, look for this icon:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/rss.png)
+![](https://img.wiki-power.com/d/wiki-media/img/rss.png)
 
 Clicking on this icon will allow you to subscribe to the RSS link directly.  
 If there is no icon, it may still have an RSS feed, but it may be hidden.

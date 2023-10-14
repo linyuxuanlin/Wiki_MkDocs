@@ -1,24 +1,24 @@
-# Cómo usar WeChat en Linux
+# كيفية استخدام WeChat على نظام Linux
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200311141406.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200311141406.png)
 
-DoChat (WeChat en una caja) es una aplicación de WeChat en contenedor para escritorio Linux.
+DoChat (WeChat العلبة) هو تطبيق WeChat المحمول لنظام Linux.
 
-Características principales:
+الميزات الرئيسية:
 
-- Fácil instalación con una sola línea de comando
-- Soporte para entrada de caracteres chinos
-- Pegar imágenes en WeChat con Ctrl+V
+- سهولة التثبيت ، يمكن تشغيله بسطر واحد من الأوامر في الشل
+- دعم إدخال الحروف الصينية
+- Ctrl + V لصق الصور في WeChat
 
-Requisitos: Ubuntu Linux de escritorio y Docker instalado.
+الشروط اللازمة للتشغيل: نظام Ubuntu Linux وتثبيت Docker
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200311141459.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200311141459.png)
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
 - [huan/docker-wechat](https://github.com/huan/docker-wechat)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

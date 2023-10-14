@@ -1,6 +1,6 @@
 # Homelab - Free Intranet Penetration Alternative Cloudflared
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230416143051.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20230416143051.png)
 
 **Cloudflared** is a free intranet penetration solution used for external access to hosts without public IP addresses.
 
@@ -40,15 +40,15 @@ services:
       - TUNNEL_TOKEN=${APP_TUNNEL_TOKEN}
 ```
 
-(Optional) It is recommended to create a `.env` file at the same level as `compose.yaml` and customize your environment variables. If you do not want to use environment variables, you can also customize your parameters directly in `compose.yaml` (such as replacing `${STACK_NAME}` with `cloudflared`). 
+(Optional) It is recommended to create a `.env` file at the same level as `compose.yaml` and customize your environment variables. If you do not want to use environment variables, you can also customize your parameters directly in `compose.yaml` (such as replacing `${STACK_NAME}` with `cloudflared`).
 
-```dotenv title=".env"
+````dotenv title=".env"
 STACK_NAME=cloudflared```
 
 # cloudflared
 APP_VERSION=latest
 APP_TUNNEL_TOKEN=xxx # Replace with your token
-```
+````
 
 Finally, execute the `docker compose up -d` command in the same directory as `compose.yaml` to start the orchestrated containers.
 
@@ -58,7 +58,7 @@ Access the [**Cloudflare Zero Trust**](https://one.dash.cloudflare.com/) panel, 
 
 Then click into the tunnel you created and add the proxy port in the `Public Hostname Page` tab. For example, if I bind a domain name `wiki-power.com` on Cloudflare and the local port of the service I need to proxy is `80` with the `HTTP` protocol, I just need to fill it out like this:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230416183438.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20230416183438.png)
 
 You can access the local port through <https://dashboard.wiki-power.com>, and it will automatically apply for an SSL certificate for you, allowing you to access it via https on the public network.
 

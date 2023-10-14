@@ -1,65 +1,65 @@
-# Definiciones de macros comunes en C y STM32
+# تعريفات الماكروالشائعة في لغة السي و المستخدمة في STM32
 
-En el desarrollo de sistemas embebidos, existen algunas definiciones de macros comunes que pueden mejorar la compatibilidad y portabilidad del proyecto.
+في تطوير الأنظمة المضمنة ، هناك بعض التعريفات الماكروية العامة التي يمكن أن تجعل المشروع أكثر توافقية وقابلية للنقل.
 
-## Evitar la redefinición de archivos de cabecera
+## تجنب تعريف الملف الرأسي بشكل متكرر
 
 ```c
 #ifndef COMDEF_H
 #define COMDEF_H
 
-// Contenido del archivo de cabecera
+//محتوى الملف الرأسي
 
 #endif
 ```
 
-## Definición de tipos de datos personalizados
+## تعريفات الأنواع المخصصة
 
-Definir algunos tipos de datos personalizados para evitar diferencias en el número de bytes debido a las diferentes plataformas y compiladores. Esto también facilita la portabilidad.
+تعريف بعض الأنواع المخصصة ، لتجنب اختلاف عدد بايتات الأنواع بسبب اختلاف المنصات والمترجمات. وبهذه الطريقة يسهل النقل.
 
 ```c
-typedef unsigned char boolean; /* Tipo de valor booleano */
-typedef unsigned long int uint32; /* Valor sin signo de 32 bits */
-typedef unsigned short uint16; /* Valor sin signo de 16 bits */
-typedef unsigned char uint8; /* Valor sin signo de 8 bits */
-typedef signed long int int32; /* Valor con signo de 32 bits */
-typedef signed short int16; /* Valor con signo de 16 bits */
-typedef signed char int8; /* Valor con signo de 8 bits */
+typedef unsigned char boolean; /* نوع القيمة الثنائية الصحيحة. */
+typedef unsigned long int uint32; /* قيمة غير موقعة بـ 32 بت */
+typedef unsigned short uint16; /* قيمة غير موقعة بـ 16 بت */
+typedef unsigned char uint8; /* قيمة غير موقعة بـ 8 بت */
+typedef signed long int int32; /* قيمة موقعة بـ 32 بت */
+typedef signed short int16; /* قيمة موقعة بـ 16 بت */
+typedef signed char int8; /* قيمة موقعة بـ 8 بت */
 ```
 
-## Obtener un byte o palabra de una dirección específica
+## الحصول على كلمة أو بايت محدد في عنوان محدد
 
 ```c
 #define MEM_B( x ) ( *( (byte *) (x) ) )
 #define MEM_W( x ) ( *( (word *) (x) ) )
 ```
 
-## Obtener el valor máximo / mínimo
+## الحصول على الحد الأقصى / الحد الأدنى
 
 ```c
 #define MAX( x, y ) ( ((x) > (y)) ? (x) : (y) )
 #define MIN( x, y ) ( ((x) < (y)) ? (x) : (y) )
 ```
 
-## Devolver el número de elementos de un arreglo
+## إرجاع عدد عناصر المصفوفة
 
 ```c
 #define ARR_SIZE( a ) ( sizeof( (a) ) / sizeof( (a[0]) ) )
 ```
 
-## Convertir la primera letra en mayúscula
+## تحويل الحرف الأول إلى حرف كبير
 
 ```c
 #define UPCASE( c ) ( ((c) >= 'a' && (c) <= 'z') ? ((c) - 0x20) : (c) )
 ```
 
-## Verificar si un carácter es decimal
+## التحقق من أن الحرف عشري
 
 ```c
 #define DECCHK( c ) ((c) >= '0' && (c) <= '9')
 ```
 
-## Verificar si un carácter es hexadecimal
+## التحقق من أن الحرف سداسي عشري
 
 ```c
 #define HEXCHK( c ) ( ((c) >= '0' && (c) <= '9') ||\
@@ -67,8 +67,11 @@ typedef signed char int8; /* Valor con signo de 8 bits */
 ((c) >= 'a' && (c) <= 'f') )
 ```
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Definiciones de macros comunes para ingenieros embebidos](https://mp.weixin.qq.com/s/4YPwxtBX6Qdlz9fGKvSCUg)
+- [تعريفات الماكرو الشائعة لمهندسي الأنظمة المضمنة](https://mp.weixin.qq.com/s/4YPwxtBX6Qdlz9fGKvSCUg)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

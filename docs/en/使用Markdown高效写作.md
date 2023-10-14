@@ -10,7 +10,7 @@ When the time spent on formatting exceeds the time spent on writing itself, it p
 
 ## Tools
 
-First, you need an editor that supports Markdown. I recommend using VS Code or Typora. 
+First, you need an editor that supports Markdown. I recommend using VS Code or Typora.
 For installation and configuration of the software, you can refer to my tutorial: [**VS Code Productivity Guide - Environment Configuration**](https://wiki-power.com/en/VSCode%E7%94%9F%E4%BA%A7%E5%8A%9B%E6%8C%87%E5%8D%97-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE)
 
 ## Common Syntax
@@ -37,12 +37,12 @@ To create headings, add 1-6 `#` symbols before the heading text. The number of h
 
 Add symbols on both sides of the characters to style the text:
 
-|   Style   |    Keyboard Shortcut    | Syntax                   | Rendered Output             |
-| :------: | :--------------: | ---------------------- | -------------------- |
-|   Bold   | `Ctrl`/`⌘` + `B` | `**Bold Text**`         | **Bold Text**         |
-|   Italic   | `Ctrl`/`⌘` + `I` | `*Italic Text*`           | _Italic Text_           |
-| Bold and Italic |                  | `***Bold and Italic Text***` | **_Bold and Italic Text_** |
-|  Strikethrough  |                  | `~~Strikethrough Text~~`         | ~~Strikethrough Text~~         |
+|      Style      | Keyboard Shortcut | Syntax                       | Rendered Output            |
+| :-------------: | :---------------: | ---------------------------- | -------------------------- |
+|      Bold       | `Ctrl`/`⌘` + `B`  | `**Bold Text**`              | **Bold Text**              |
+|     Italic      | `Ctrl`/`⌘` + `I`  | `*Italic Text*`              | _Italic Text_              |
+| Bold and Italic |                   | `***Bold and Italic Text***` | **_Bold and Italic Text_** |
+|  Strikethrough  |                   | `~~Strikethrough Text~~`     | ~~Strikethrough Text~~     |
 
 Note: Italic text is designed for English, please do not use italics for Chinese for readability and standardization.
 
@@ -76,7 +76,7 @@ Extract the `hugo.exe` file from the compressed package to the `D:\hugo` folder 
 
 If you need multiple lines of code, you can use three backticks <code>```</code> to surround the code block:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210215164653.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210215164653.png)
 
 ```c
 int fputc(int ch,FILE *f)
@@ -226,7 +226,7 @@ You can use the `---` symbol to generate a dividing line to separate different s
 ---
 ```
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210216123630.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210216123630.png)
 
 ## Advanced Usage
 

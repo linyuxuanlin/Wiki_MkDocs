@@ -1,6 +1,6 @@
 # Homelab - Sistema de almacenamiento en la nube Cloudreve compatible con la nube pública
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230304195423.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20230304195423.png)
 
 **Cloudreve** es un sistema de archivos en la nube compatible con múltiples controladores de almacenamiento en la nube pública. Admite el almacenamiento local, secundario, Qiniu, Aliyun OSS, Tencent Cloud COS, Upyun, OneDrive, S3 y protocolos compatibles para la conexión con Aria2 para descargas sin conexión, múltiples usuarios, carga / gestión de arrastrar y soltar, vista / edición en línea, WebDAV, entre otros. El uso típico es como un servicio de almacenamiento de imágenes personal o gestión de archivos en la nube.
 

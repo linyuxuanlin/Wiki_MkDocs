@@ -2,7 +2,7 @@
 
 - Construye un entorno de desarrollo integrado para reemplazar Keil / Arduino IDE
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200531112801.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200531112801.png)
 
 ## Contexto
 
@@ -29,7 +29,7 @@ Primero, asegúrate de tener VSCode instalado en tu computadora (la descarga e i
 
 Busca e instala `Python` y `PlatformIO IDE` en la sección de `Extensiones` (`Ctrl + Shift + X`).
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200531113916.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200531113916.png)
 
 Una vez que se haya instalado el complemento, haz clic en `Recargar` para iniciar el complemento, luego haz una taza de café mientras se instala automáticamente el componente principal `platformIO-core` (la instalación inicial puede tardar un poco).
 

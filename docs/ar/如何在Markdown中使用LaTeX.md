@@ -1,90 +1,86 @@
-# Cómo usar LaTeX en Markdown
+# كيفية استخدام LaTeX في Markdown
 
-Markdown admite nativamente el uso de LaTeX para escribir fórmulas y símbolos matemáticos.
+يدعم Markdown بشكل أساسي كتابة الرموز والمعادلات الرياضية باستخدام LaTeX.
 
-## Estilos de fuente
+## نمط الخط
 
-- Salto de línea: `\\`
-- Espacio: `\`
-- Centrado: usar `$$` para envolver
-- Estilos de fuente: negrita: `\mathbf`, cursiva: `\mathit`
-- Tamaño de fuente: `\tiny`, `\scriptsize`, `\small`, `\normalsize`, `\large`, `\Large`, `\huge`, `\Huge`
-- Color: `\color{valor de color}{número / letra / símbolo}`
-- Comentario: `\text{contenido}`
+- السطر الجديد: `\\`
+- المسافة: `\`
+- الوسط: استخدم `$$` للتغليف
+- نمط الخط: عريض: `\mathbf`، مائل: `\mathit`
+- حجم الخط: `\tiny`، `\scriptsize`، `\small`، `\normalsize`، `\large`، `\Large`، `\huge`، `\Huge`
+- اللون: `\color{قيمة اللون}{رقم/حرف/رمز}`
+- التعليق: `\text{المحتوى}`
 
-## Operaciones aritméticas
+## العمليات الحسابية الأربعة
 
-- Producto punto: `\cdot`
-- Producto cruzado: `\times`
+- الضرب: `\cdot`
+- الجمع: `\times`
 
-## Subíndices / Superíndices
+## الأس العلوي / الأس السفلي
 
-- Superíndice: `^`
-- Subíndice: `_`
-- Si hay anidamiento, use `{}` para contener.
+- الأس العلوي: `^`
+- الأس السفلي: `_`
+- إذا كان هناك تضمين، استخدم `{}` للتغليف.
 
-Ejemplo: $$X^{2m}_{3n}$$
+مثال: $$X^{2m}_{3n}$$
 
-## Subrayado / Sobrescrito
+## الخط العلوي / الخط السفلي
 
-- Sobrescrito: `\overline`
-- Subrayado: `\underline`
+- الخط العلوي: `\overline`
+- الخط السفلي: `\underline`
 
-Ejemplo: $$\overline{x^2+a+b}$$
+مثال: $$\overline{x^2+a+b}$$
 
-## Fracciones
+## الكسور
 
-Representación de fracciones: `\frac{numerador}{denominador}`
+تمثيل الكسور: `\frac{البسط}{المقام}`
 
-## Sistemas de ecuaciones
+## مجموعة المعادلات
 
-Método 1: `\begin{array}{c} expresión 1\\expresión 2... \end{array}`
-Método 2: `\begin{cases}…\end{cases}`
+الطريقة الأولى: `\begin{array}{c} المعادلة الأولى\\المعادلة الثانية... \end{array}`
+الطريقة الثانية: `\begin{cases}…\end{cases}`
 
-## Raíz cuadrada
+## الجذر التربيعي
 
-Formato: `\sqrt[n`]{x}`, donde `n` representa la raíz cuadrada y `x` representa el término que se está sacando raíz.
+التنسيق: `\sqrt[n`]{x}`، حيث `n` يشير إلى عدد جذور التربيع، و `x` يشير إلى العنصر الذي يتم استخراج الجذر التربيعي منه.
 
-## Letras griegas
+## الحروف اليونانية
 
-| Letra griega (mayúscula) | Expresión | Letra griega (minúscula) | Expresión |
-| :---------------------: | :------: | :---------------------: | :-------: |
-|            A            |    A     |            α            |  \alpha   |
-|            B            |    B     |            β            |   \beta   |
-|            Γ            |  \Gamma  |            γ            |  \gamma   |
-|            Δ            |  \Delta  |            δ            |  \delta   |
-|            E            |    E     |            ϵ            | \epsilon |
-|            Z            |    Z     |            ε            | \varepsilon |
-|            H            |    H     |            η            |   \eta    |
-|            Θ            |  \Theta  |            θ            |  \theta   |
-|            I            |    I     |            ι            |   \iota   |
-|            K            |    K     |            κ            |  \kappa   |
-|            Λ            | \Lambda  |            λ            |  \lambda  |
-|            M            |    M     |            μ            |    \mu    |
-|            N            |    N     |            ν            |    \nu    |
-|            Ξ            |   \Xi    |            ξ            |    \xi    |
-|            O            |    O     |            ο            | \omicron |
-|            Π            |   \Pi    |            π            |   \pi    |
-|            P            |    P     |            ρ            |   \rho   |
-|            Σ            |  \Sigma  |            σ            |  \sigma  |
-|            T            |    T     |            τ            |   \tau   |
-|            Υ            | \Upsilon |            υ            | \upsilon |
-|            Φ            |   \Phi   |            ϕ            |   \phi   |
-|            −            |    -     |            φ            | \varphi |
-|            X            |    X     |            χ            |   \chi   |
-|            Ψ            |   \Psi   |            ψ            |   \psi   |
-|            Ω            |  \Omega  |            ω            |  \omega  |
+Greek:
 
-## Operadores
+| الحروف اليونانية (أحرف كبيرة) | التعبير | الحروف اليونانية (أحرف صغيرة) | التعبير |
+| :---------------------------: | :-----: | :---------------------------: | :------: |
+|               A               |    A    |                α                |  \alpha  |
+|               B               |    B    |                β                |  \beta   |
+|               Γ               |  \Gamma |                γ                |  \gamma  |
+|               Δ               |  \Delta |                δ                |  \delta  |
+|               E               |    E    |                ϵ                | \epsilon |
+|               Z               |    Z    |                ε                | \varepsilon |
+|               H               |    H    |                η                |   \eta   |
+|               Θ               |  \Theta |                θ                |  \theta  |
+|               I               |    I    |                ι                |   \iota  |
+|               K               |    K    |                κ                |  \kappa  |
+|               Λ               | \Lambda |                λ                | \lambda |
+|               M               |    M    |                μ                |   \mu   |
+|               N               |    N    |                ν                |   \nu   |
+|               Ξ               |   \Xi   |                ξ                |   \xi   |
+|               O               |    O    |                ο                | \omicron |
+|               Π               |   \Pi   |                π                |   \pi   |
+|               P               |    P    |                ρ                |   \rho  |
+|               Σ               |  \Sigma |                σ                |  \sigma |
+|               T               |    T    |                τ                |   \tau  |
+|               Υ               | \Upsilon |                υ                | \upsilon |
+|               Φ               |   \Phi  |                ϕ                |   \phi  |
+|               −               |    -    |                φ                | \varphi |
+|               X               |    X    |                χ                |   \chi  |
+|               Ψ               |   \Psi  |                ψ                |   \psi  |
+|               Ω               |  \Omega |                ω                |  \omega |
 
-# Símbolos matemáticos en Markdown
+## العمليات الحسابية
 
-Aquí hay una lista de símbolos matemáticos comunes que se pueden usar en Markdown. 
-
-## Operadores
-
-| Operador | Expresión | Operador | Expresión |
-| :-----: | :------: | :-----: | :------: |
+| العامل | الصيغة | العامل | الصيغة |
+| :----: | :--------: | :----: | :-------: |
 |   ±    |    \pm     |   ∅    | \emptyset |
 |   ×    |   \times   |   ∈    |    \in    |
 |   ÷    |    \div    |   ∉    |  \notin   |
@@ -99,25 +95,25 @@ Aquí hay una lista de símbolos matemáticos comunes que se pueden usar en Mark
 |   ≥    |    \geq    |   ≠    |   \neq    |
 |   ≈    |  \approx   |   ≡    |  \equiv   |
 
-## Símbolos de cálculo
+## رموز الحساب التفاضلي والتكاملي
 
-| Operador | Expresión | Operador | Expresión |
-| :-----: | :------: | :-----: | :------: |
+| العامل | الصيغة | العامل | الصيغة |
+| :----: | :----: | :----: | :----: |
 |   ∮    | \oint  |   ∞    | \infty |
 |   ∇    | \nabla |   ∫    |  \int  |
 |   ∑    |  \sum  |  lim   |  \lim  |
 |   →    | \vec{} |   -    |   -    |
 
-## Símbolos lógicos
+## رموز المنطق
 
-| Operador |  Expresión  | Operador |   Expresión   |
-| :-----: | :------: | :-----: | :--------: |
+| العامل |  الصيغة  | العامل |   الصيغة   |
+| :----: | :------: | :----: | :--------: |
 |   ∵    | \because |   ∴    | \therefore |
 |   ∀    | \forall  |   ∃    |  \exists   |
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
 - [Markdown 数学公式](https://markdown.budshome.com/formula.html)
 - [LaTeX-Symbols.pdf](https://def.fe.up.pt/latex/Symbols.pdf)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

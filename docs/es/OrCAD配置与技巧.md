@@ -56,7 +56,7 @@ En general, un archivo `.DSN` es suficiente para todo el proyecto, y al abrirlo 
 
 # Carpeta
 # Filtrar toda la carpeta
-/signoise.run/ 
+/signoise.run/
 
 #############
 ## OrCAD
@@ -67,22 +67,22 @@ En general, un archivo `.DSN` es suficiente para todo el proyecto, y al abrirlo 
 *.DSNlck
 
 # Ignorar lista de redes
-allegro/ 
+allegro/
 ```
 
 ## Algunas configuraciones
 
 Configuración de DRC:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210810134720.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210810134720.png)
 
 Renombrar automáticamente los identificadores al copiar componentes:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210810134747.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210810134747.png)
 
 Mover caracteres cerca de la cuadrícula:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210810134758.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210810134758.png)
 
 Truco: Cuando se utiliza la biblioteca CIP, si aparece el mensaje "not found in the configured librarie lists", verifique la codificación de los espacios en blanco en la ruta.
 

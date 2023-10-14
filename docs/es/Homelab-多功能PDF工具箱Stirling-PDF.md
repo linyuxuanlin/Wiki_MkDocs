@@ -1,6 +1,6 @@
 # Homelab - Caja de herramientas PDF multifuncional Stirling-PDF
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230410172939.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20230410172939.png)
 
 **Stirling-PDF** es un paquete de herramientas PDF autoalojado que incluye funciones como la división, fusión, rotación, extracción de páginas, conversión de imágenes, reordenamiento, agregado/extracción de imágenes, agregado/eliminación de contraseñas, configuración de permisos, agregado de marcas de agua, conversión de otros archivos a PDF, reconocimiento de texto OCR, edición de metadatos y soporte para modo oscuro.
 

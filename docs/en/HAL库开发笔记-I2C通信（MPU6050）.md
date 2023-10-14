@@ -6,13 +6,13 @@ This article is based on the self-developed RobotCtrl development kit, with the 
 
 ### I2C Communication
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20211026174634.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211026174634.png)
 
 The basic principle of I2C communication can be found in the article [**Communication Protocol - I2C**](https://wiki-power.com/en/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-I2C).
 
 ### MPU6050 Module
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220404145145.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220404145145.png)
 
 Pin definitions for the module:
 
@@ -28,7 +28,7 @@ Pin definitions for the module:
 
 Here, we use the MPU6050 library with Kalman filter: [**leech001/MPU6050**](https://github.com/leech001/MPU6050). Copy the downloaded `mpu6050.c` and `mpu6050.h` files to the project folder, and add them to the project in STM32CubeIDE/Keil:
 
-```c title="mpu6050.h"
+````c title="mpu6050.h"
 
 #ifndef INC_GY521_H_
 #define INC_GY521_H_
@@ -193,17 +193,17 @@ float Get_Angle(I2C_HandleTypeDef *I2Cx, float *Roll, float *Pitch)
     return *Pitch;
 }
 
-The code above is written in C language and is configuring a MPU6050 sensor. The check variable is checking if the sensor is working properly and returning a value of 104 (0x68 in hexadecimal) if everything is okay. If the check variable returns 104, the code will proceed to configure the sensor by writing values to specific registers using the HAL_I2C_Mem_Write function. 
+The code above is written in C language and is configuring a MPU6050 sensor. The check variable is checking if the sensor is working properly and returning a value of 104 (0x68 in hexadecimal) if everything is okay. If the check variable returns 104, the code will proceed to configure the sensor by writing values to specific registers using the HAL_I2C_Mem_Write function.
 
-First, the power management register (PWR_MGMT_1_REG) is written with all 0's to wake up the sensor. Then, the sample rate divider register (SMPLRT_DIV_REG) is set to a data rate of 1KHz. 
+First, the power management register (PWR_MGMT_1_REG) is written with all 0's to wake up the sensor. Then, the sample rate divider register (SMPLRT_DIV_REG) is set to a data rate of 1KHz.
 
-Next, the accelerometer configuration is set in the ACCEL_CONFIG_REG register. The XA_ST, YA_ST, and ZA_ST bits are set to 0, and the FS_SEL bits are set to 0, which corresponds to a range of +/- 2g. 
+Next, the accelerometer configuration is set in the ACCEL_CONFIG_REG register. The XA_ST, YA_ST, and ZA_ST bits are set to 0, and the FS_SEL bits are set to 0, which corresponds to a range of +/- 2g.
 
-Finally, the gyroscopic configuration is set in the GYRO_CONFIG_REG register. The XG_ST, YG_ST, and ZG_ST bits are set to 0, and the FS_SEL bits are set to 0, which corresponds to a range of +/- 250 degrees per second. 
+Finally, the gyroscopic configuration is set in the GYRO_CONFIG_REG register. The XG_ST, YG_ST, and ZG_ST bits are set to 0, and the FS_SEL bits are set to 0, which corresponds to a range of +/- 250 degrees per second.
 
 If the check variable does not return 104, the code will return a value of 1.
 
-The following code is for reading accelerometer data from the MPU6050 sensor using I2C communication. The function takes in the I2C handle and a pointer to a MPU6050 data structure as arguments. 
+The following code is for reading accelerometer data from the MPU6050 sensor using I2C communication. The function takes in the I2C handle and a pointer to a MPU6050 data structure as arguments.
 
 ```c
 void MPU6050_Read_Accel(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct)
@@ -227,9 +227,9 @@ void MPU6050_Read_Accel(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct)
     DataStruct->Ay = DataStruct->Accel_Y_RAW / 16384.0;
     DataStruct->Az = DataStruct->Accel_Z_RAW / Accel_Z_corrector;
 }
-```
+````
 
-The function first declares an array of 6 bytes to store the received data. It then uses the HAL_I2C_Mem_Read function to read 6 bytes of data starting from the ACCEL_XOUT_H register of the MPU6050 sensor. The received data is stored in the Rec_Data array. 
+The function first declares an array of 6 bytes to store the received data. It then uses the HAL_I2C_Mem_Read function to read 6 bytes of data starting from the ACCEL_XOUT_H register of the MPU6050 sensor. The received data is stored in the Rec_Data array.
 
 The function then converts the received raw data into acceleration values in 'g' units. This is done by dividing the raw data by a scaling factor. The scaling factor depends on the full scale value set in the ACCEL_CONFIG register. In this case, the full scale value is set to 0, so the scaling factor is 16384.0. The resulting acceleration values are stored in the MPU6050 data structure.
 
@@ -288,27 +288,27 @@ double dt = (double)(HAL_GetTick() - timer) / 1000;
 timer = HAL_GetTick();
 double roll;
 double roll_sqrt = sqrt(
-    DataStruct->Accel_X_RAW * DataStruct->Accel_X_RAW + DataStruct->Accel_Z_RAW * DataStruct->Accel_Z_RAW);
+DataStruct->Accel_X_RAW _ DataStruct->Accel_X_RAW + DataStruct->Accel_Z_RAW _ DataStruct->Accel_Z_RAW);
 if (roll_sqrt != 0.0)
 {
-    roll = atan(DataStruct->Accel_Y_RAW / roll_sqrt) * RAD_TO_DEG;
+roll = atan(DataStruct->Accel_Y_RAW / roll_sqrt) _ RAD_TO_DEG;
 }
 else
 {
-    roll = 0.0;
+roll = 0.0;
 }
-double pitch = atan2(-DataStruct->Accel_X_RAW, DataStruct->Accel_Z_RAW) * RAD_TO_DEG;
+double pitch = atan2(-DataStruct->Accel_X_RAW, DataStruct->Accel_Z_RAW) _ RAD_TO_DEG;
 if ((pitch < -90 && DataStruct->KalmanAngleY > 90) || (pitch > 90 && DataStruct->KalmanAngleY < -90))
 {
-    KalmanY.angle = pitch;
-    DataStruct->KalmanAngleY = pitch;
+KalmanY.angle = pitch;
+DataStruct->KalmanAngleY = pitch;
 }
 else
 {
-    DataStruct->KalmanAngleY = Kalman_getAngle(&KalmanY, pitch, DataStruct->Gy, dt);
+DataStruct->KalmanAngleY = Kalman_getAngle(&KalmanY, pitch, DataStruct->Gy, dt);
 }
 if (fabs(DataStruct->KalmanAngleY) > 90)
-    DataStruct->Gx = -DataStruct->Gx;
+DataStruct->Gx = -DataStruct->Gx;
 DataStruct->KalmanAngleX = Kalman_getAngle(&KalmanX, roll, DataStruct->Gx, dt);
 
 The above code is a function called `Kalman_getAngle` written in C language. It takes in four parameters: a pointer to a struct called `Kalman_t`, a new angle value, a new rate value, and a time interval `dt`. The function uses a Kalman filter algorithm to calculate and return an updated angle value.
@@ -327,7 +327,7 @@ Overall, this function is used to filter noisy sensor data and provide a more ac
 
 In the CubeMX left-hand functional category bar, select `Communication` - `I2Cx`, change the I2C option from `disable` to `I2C`, and configure the parameters in the pop-up configuration interface (default is fine):
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220403190116.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220403190116.png)
 
 ### Configuring I2C to Read Information Returned by MPU6050 in Code
 
@@ -381,6 +381,7 @@ typedef struct
 {
 
 ```
+
 int16_t Accel_X_RAW;
 int16_t Accel_Y_RAW;
 int16_t Accel_Z_RAW;
@@ -400,13 +401,14 @@ float Temperature;
 double KalmanAngleX;
 double KalmanAngleY;
 } MPU6050_t;
-```
+
+````
 
 After configuring the serial port, the following statement can be used to output variables:
 
 ```c
 printf("XAngle: %.2f°\t", MPU6050.KalmanAngleX);
-```
+````
 
 ## References and Acknowledgements
 

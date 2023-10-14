@@ -1,12 +1,12 @@
-# Homelab - Editor de código en línea code-server
+# Homelab - محرر الكود عبر الإنترنت code-server
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202304132214418.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202304132214418.png)
 
-**code-server** es un VS Code que se puede ejecutar en un navegador. En comparación con la versión de escritorio, la ventaja es que puedes escribir código en cualquier dispositivo en línea, incluyendo dispositivos como teléfonos móviles y tabletas que no pueden instalar directamente VS Code.
+**code-server** هو برنامج يمكن تشغيله في المتصفح ويعمل على نفس نظام VS Code. وبالمقارنة مع الإصدار السطحي ، يمكنك كتابة الشفرة عبر الإنترنت باستخدام أي جهاز ، بما في ذلك الهواتف المحمولة والأجهزة اللوحية التي لا يمكن تثبيت VS Code مباشرة عليها.
 
-## Implementación (Docker Compose)
+## التنصيب (Docker Compose)
 
-Primero, crea el archivo `compose.yaml` y pega el siguiente contenido:
+أولاً ، قم بإنشاء ملف `compose.yaml` ولصق المحتوى التالي:
 
 ```yaml title="compose.yaml"
 version: "2.1"
@@ -19,69 +19,69 @@ services:
     volumes:
       - ${STACK_DIR}/config:/config
       - ${DATA_DIR_LOCAL}:/DATA
-    environment: # necesita ejecutarse con permisos de root, de lo contrario no podrá leer otros directorios de docker o el directorio raíz del host
+    environment: # يجب تشغيله بصلاحيات root ، وإلا فلن يتمكن من قراءة أي دليل آخر لـ docker أو دليل root لجهاز الاستضافة
       - PUID=0
       - PGID=0
       - TZ=Asia/Shanghai
-      - PASSWORD=${APP_PASSWORD} #opcional
-      - SUDO_PASSWORD=${APP_SUDO_PASSWORD} #opcional
-      #- SUDO_PASSWORD_HASH= #opcional
-      #- PROXY_DOMAIN=code.wiki-power.com #opcional
+      - PASSWORD=${APP_PASSWORD} #optional
+      - SUDO_PASSWORD=${APP_SUDO_PASSWORD} #optional
+      #- SUDO_PASSWORD_HASH= #optional
+      #- PROXY_DOMAIN=code.wiki-power.com #optional
     restart: unless-stopped
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar tus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `code-server`).
+(اختياري) يوصى بإنشاء ملف `.env` في نفس مستوى `compose.yaml` وتخصيص المتغيرات البيئية الخاصة بك. إذا كنت لا ترغب في استخدام المتغيرات البيئية ، فيمكنك تخصيص المعلمات الخاصة بك مباشرةً في `compose.yaml` (على سبيل المثال ، استبدال `${STACK_NAME}` بـ `code-server`).
 
 ```dotenv title=".env"
 STACK_NAME=code-server
-STACK_DIR=xxx # ruta personalizada de almacenamiento del proyecto, por ejemplo, ./code-server
-DATA_DIR_LOCAL=xxx # directorio local montado personalizado, por ejemplo, /DATA
+STACK_DIR=xxx # مسار تخزين المشروع المخصص ، على سبيل المثال ./code-server
+DATA_DIR_LOCAL=xxx # مسار الدليل المحلي المراد تعليقه ، على سبيل المثال /DATA
 
 # code-server
 APP_VERSION=latest
-APP_PORT=xxxx # puerto de acceso personalizado, elige uno que no esté en uso
-APP_PASSWORD=xxx # contraseña de inicio de sesión
-APP_SUDO_PASSWORD=xxx # contraseña de permisos de superusuario
+APP_PORT=xxxx # منفذ الوصول المخصص ، اختر أي منفذ غير مستخدم بالفعل
+APP_PASSWORD=xxx # كلمة المرور لتسجيل الدخول
+APP_SUDO_PASSWORD=xxx # كلمة مرور المستخدم الجذرية
 
 ```
 
-Finalmente, ejecuta el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores.
+أخيرًا ، يمكنك تشغيل الأمر `docker compose up -d` في نفس مستوى `compose.yaml` لتشغيل حاويات الترتيب.
 
-## Instrucciones de configuración
+## تعليمات التكوين
 
-### Configurar Git
+### تكوين git
 
-Después de la instalación, si necesitas usar Git, configura tu nombre de usuario y correo electrónico. Consulta el artículo [**Notas de aprendizaje de Git**](https://wiki-power.com/es/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE) para obtener más información.
+بعد التثبيت ، إذا كنت ترغب في استخدام Git ، فيجب تهيئة اسم المستخدم والبريد الإلكتروني ، يرجى الرجوع إلى المقالة [**Git 学习笔记**](https://wiki-power.com/ar/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE).
 
-### Problemas de permisos de lectura y escritura
+### مشكلة الصلاحيات للقراءة والكتابة
 
-Si encuentras el error `Error: EACCES: permission denied` al trabajar con archivos, abre la terminal e ingresa el siguiente comando para otorgar la propiedad al usuario actual:
+إذا واجهت خطأ `Error: EACCES: permission denied` أثناء عملية الملف ، يمكنك فتح الطرفية وإدخال الأمر التالي لمنح المستخدم الحالي الحقوق الكاملة:
 
 ```shell
-sudo chown -R username folder_path
+sudo chown -R اسم_المستخدم مسار_المجلد
 ```
 
-Por ejemplo, el siguiente comando otorga la propiedad del directorio actual al usuario `abc`:
+على سبيل المثال ، هذا هو كيفية منح المستخدم `abc` الحقوق الكاملة للمجلد الحالي:
 
 ```shell
 sudo chown -R abc .
 ```
 
-### Configurar la contraseña de la cuenta root
+### تعيين كلمة مرور حساب root
 
-Si necesitas usar la cuenta root, usa el siguiente comando para configurar su contraseña:
+إذا كنت بحاجة إلى استخدام حساب root ، فيمكنك استخدام الأمر التالي لتهيئة كلمة مروره:
 
 ```shell
 sudo passwd root
 ```
 
-## Referencias y Agradecimientos
+## المراجع والشكر
 
-- [Sitio web oficial](https://coder.com/docs/code-server/latest)
-- [Documentación / Repositorio de GitHub](https://github.com/linuxserver/docker-code-server)
+- [الموقع الرسمي](https://coder.com/docs/code-server/latest)
+- [الوثائق / مستودع GitHub](https://github.com/linuxserver/docker-code-server)
 - [Docker Hub](https://hub.docker.com/r/linuxserver/code-server)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

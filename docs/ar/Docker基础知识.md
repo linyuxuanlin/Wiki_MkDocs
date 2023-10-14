@@ -1,138 +1,139 @@
-# Fundamentos de Docker
+# أساسيات Docker
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210116153041.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210116153041.png)
 
-Es bien sabido que una de las cosas más molestas en el desarrollo de software es la configuración del entorno. Las diferencias en los entornos de ejecución pueden causar resultados inesperados, pero el uso de Docker puede evitar este tipo de problemas.
+من المعروف أن تكوين البيئة هو واحد من أكثر الأشياء المزعجة في تطوير البرمجيات. يمكن أن تؤدي اختلافات بيئة التشغيل إلى نتائج غير متوقعة ، ويمكن تجنب هذه المشكلة باستخدام Docker.
 
-## Docker y la tecnología de contenedores
+## Docker وتقنية الحاويات
 
-Docker empaqueta el software en sí mismo y su entorno de ejecución necesario, por lo que no es necesario configurar el entorno al utilizarlo (ya que el entorno está dentro del paquete). Esto asegura que su entorno sea exactamente igual al del desarrollador, evitando problemas causados por diferencias en los entornos de ejecución.
+يقوم Docker بتعبئة البرنامج نفسه والبيئة التي يحتاجها في حزمة واحدة ، لذلك لا يحتاج المستخدم إلى تكوين البيئة مرة أخرى (لأن البيئة موجودة في الحزمة) ، وبالتالي يمكن ضمان أن بيئتك مطابقة لبيئة المطور وتجنب مشكلات الاختلاف في بيئة التشغيل.
 
-Docker utiliza la tecnología de **contenedores**. Cuando hablamos de tecnología de contenedores, podemos compararla con los **contenedores de carga**. Son contenedores grandes y estandarizados que se pueden cargar y descargar fácilmente entre diferentes medios de transporte (como barcos, trenes y camiones) sin tener que preocuparse por su contenido interno específico. De manera similar, la tecnología de contenedores empaqueta la aplicación y todas sus dependencias en un entorno independiente y portátil, llamado contenedor.
+يستخدم Docker تقنية **الحاويات**. عندما نتحدث عن تقنية الحاويات ، يمكننا مقارنتها بـ **حاوية الشحن**. إنها حاوية كبيرة **موحدة** يمكن تحميلها وتفريغها بسهولة بين مختلف وسائل النقل (مثل السفن والقطارات والشاحنات) ، دون الحاجة إلى النظر في تكوين محتوياتها الداخلية. بطريقة مماثلة ، تقوم تقنية الحاويات بتعبئة التطبيق وجميع الاعتماديات الخاصة به في بيئة مستقلة وقابلة للتنقل ، وتسمى الحاوية.
 
-El objetivo principal de la tecnología de contenedores es lograr una implementación rápida, escalabilidad y aislamiento del entorno de las aplicaciones. Al empaquetar la aplicación y sus dependencias en un contenedor, podemos asegurarnos de que se ejecute de manera consistente en diferentes computadoras o servidores sin preocuparnos por las diferencias en los entornos o conflictos de dependencias. Esto permite a los desarrolladores entregar aplicaciones más rápidamente y simplifica el proceso de implementación y gestión de aplicaciones.
+الهدف الرئيسي لتقنية الحاويات هو تحقيق نشر التطبيقات بسرعة وقابلية التوسع والعزلة البيئية. من خلال تعبئة التطبيق والاعتماديات ذات الصلة في حاوية واحدة ، يمكننا التأكد من تشغيل التطبيق بنفس الطريقة على أجهزة الكمبيوتر أو الخوادم المختلفة ، دون الحاجة إلى القلق بشأن اختلافات البيئة أو تعارض الاعتماديات. هذا يتيح للمطورين تسليم التطبيقات بشكل أسرع ، ويبسط أيضًا عملية نشر وإدارة التطبيقات.
 
-Una de las principales ventajas de la tecnología de contenedores es que proporciona una solución de virtualización ligera. En comparación con las máquinas virtuales tradicionales, la tecnología de contenedores es más liviana y consume menos recursos. Cada contenedor se ejecuta en el mismo kernel del sistema operativo host, compartiendo los recursos del sistema operativo, lo que significa que los contenedores se inician más rápido, ocupan menos memoria y pueden ejecutarse varios contenedores en la misma máquina.
+أحد مزايا تقنية الحاويات الرئيسية هو أنها توفر حلًا للتجاوز الخفيف للتقنية الافتراضية. بالمقارنة مع الآلة الافتراضية التقليدية ، تقنية الحاويات أخف وزنًا وتستهلك موارد أقل. يتم تشغيل كل حاوية على نفس النواة في نظام التشغيل المضيف ، ويتم مشاركة موارد نظام التشغيل ، لذلك يتم تشغيل الحاوية بشكل أسرع وتستهلك ذاكرة أقل ، ويمكن تشغيل عدة حاويات في نفس الجهاز.
 
-Docker es una solución de contenedorización popular en la actualidad. Incluye principalmente tres elementos: Image (imagen), Container (contenedor) y Repository (repositorio).
+يعد Docker حاليًا حلًا شائعًا لتقنية الحاويات. يتكون بشكل أساسي من ثلاثة عناصر ، وهي Image (صورة) و Container (حاوية) و Repository (مستودع).
 
-- **Image (imagen)**: Una imagen es un archivo ejecutable que contiene todos los sistemas de archivos (código, tiempo de ejecución, herramientas del sistema, archivos de biblioteca) y configuraciones necesarias para la aplicación y sus dependencias. Podemos considerar una imagen como una plantilla para contenedores, a través de la cual se pueden crear múltiples instancias de contenedores diferentes.
-- **Container (contenedor)**: Un contenedor es una instancia de ejecución creada a partir de una imagen. Cada contenedor es un entorno aislado e independiente en el que se puede ejecutar una aplicación.
-- **Repository (repositorio)**: Un repositorio es un lugar para almacenar y compartir imágenes. Podemos cargar nuestras propias imágenes en el repositorio y descargar imágenes creadas por otros.
+- **Image (صورة)**: الصورة هي ملف قابل للتنفيذ ، يحتوي على جميع نظام الملفات الخاص بالتطبيق واعتمادياته (الشفرة والوقت التشغيلي وأدوات النظام وملفات المكتبات) والتكوين. يمكننا النظر إلى الصورة على أنها قالب الحاوية ، ويمكن استخدامها لإنشاء عدة حاويات مختلفة.
+- **Container (حاوية)**: الحاوية هي نسخة تعمل من الصورة. كل حاوية معزولة وتعمل بشكل مستقل ، ويمكن تشغيل التطبيقات فيها.
+- **Repository (مستودع)**: المستودع هو مكان لتخزين ومشاركة الصور. يمكننا دفع الصور التي أنشأناها إلى المستودع ، ويمكننا أيضًا سحب الصور التي أنشأها الآخرون من المستودع.
 
-La relación entre contenedores e imágenes es similar a la relación entre objetos y clases en la programación orientada a objetos.
+علاقة الحاوية بالصورة تشبه علاقة الكائن بالفئة في برمجة الكائنات.
 
-## Instalación y configuración de Docker
+## تثبيت وتكوين Docker
 
-Antes de instalar Docker, puede desinstalar los paquetes de versiones antiguas con el siguiente comando para evitar conflictos:
+قبل تثبيت Docker ، يمكن استخدام الأمر التالي لإلغاء تثبيت حزم الإصدارات القديمة وتجنب التعارض:
 
 ```shell
 for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
 ```
 
-Para los sistemas Linux principales, puede descargar e instalar Docker Engine utilizando el script oficial (se requieren permisos de usuario root):
+يمكن تنزيل وتثبيت Docker Engine باستخدام البرنامج النصي الرسمي للموقع الرسمي لـ Docker: (يتطلب صلاحيات root)
 
 ```shell
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh ./get-docker.sh --dry-run
 ```
 
-Dado que Docker se ejecuta y depende del entorno de Linux, prácticamente no tiene pérdida de eficiencia. Sin embargo, si desea implementar Docker en otros sistemas, primero debe instalar un entorno de Linux virtual.
+نظرًا لأن Docker يعمل ويعتمد على بيئة Linux ، فإنه لا يتسبب في أي فقد في الكفاءة. ومع ذلك ، إذا كنت ترغب في نشر Docker على أنظمة أخرى ، فيجب عليك تثبيت بيئة Linux افتراضية أولاً.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230708005714.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20230708005714.png)
 
-Para obtener información sobre cómo instalar Docker en Windows, consulte la documentación oficial [**Instalar Docker Desktop en Windows**](https://docs.docker.com/desktop/install/windows-install/).
+للحصول على طريقة تثبيت Docker على Windows ، يرجى الرجوع إلى الوثائق الرسمية [**Install Docker Desktop on Windows**](https://docs.docker.com/desktop/install/windows-install/).
 
-Para instalar Docker Desktop en MacOS, consulte la documentación oficial [**Install Docker Desktop on Mac**](https://docs.docker.com/desktop/install/mac-install/).
+للحصول على طريقة تثبيت Docker على MacOS ، يرجى الرجوع إلى الوثائق الرسمية [**Install Docker Desktop on Mac**](https://docs.docker.com/desktop/install/mac-install/).
 
-Una vez instalado, podemos verificar si Docker se ha instalado correctamente con el siguiente comando:
+بعد الانتهاء من التثبيت ، يمكننا استخدام الأمر التالي للتحقق مما إذا كان Docker قد تم تثبيته بنجاح:
 
 ```shell
 docker version
 ```
 
-Después de instalar Docker Engine en Linux, si desea usarlo como usuario no root, puede configurar los permisos con el siguiente comando:
+بعد تثبيت Docker Engine على Linux ، إذا كنت ترغب في استخدامه كمستخدم غير root ، فيمكنك استخدام الأمر التالي لتكوين الأذونات:
 
 ```shell
 sudo groupadd docker
 sudo usermod -aG docker $USER
 ```
 
-Después de completar la configuración, es posible que deba cerrar sesión y volver a iniciar sesión para actualizar los permisos.
+بعد الانتهاء من التكوين ، قد يكون من الضروري تسجيل الخروج وتسجيل الدخول مرة أخرى لتحديث الأذونات.
 
-Si tiene problemas durante la instalación, consulte la documentación oficial [**Troubleshoot Docker Engine installation**](https://docs.docker.com/engine/install/troubleshoot/).
+إذا واجهت مشكلة أثناء التثبيت ، يرجى الرجوع إلى الوثائق الرسمية [**Troubleshoot Docker Engine installation**](https://docs.docker.com/engine/install/troubleshoot/) .
 
-## Ejemplo: Hola mundo
+## مثال: Hello World
 
-A continuación, usaremos el ejemplo oficial de hello-world para demostrar Docker. Abra la terminal o el símbolo del sistema e ingrese el siguiente comando para ejecutar el contenedor hello-world:
+سنستخدم مثال hello-world الرسمي لـ Docker لشرح كيفية استخدامه. قم بفتح الطرفية أو موجه الأوامر وأدخل الأمر التالي لتشغيل حاوية hello-world:
 
 ```shell
 docker run hello-world
 ```
 
-Esto descargará la imagen hello-world del repositorio de imágenes de Docker, creará y ejecutará el contenedor. Cuando vea la salida de hello world, significa que se ha ejecutado correctamente.
+سيتم تنزيل صورة hello-world من مستودع صور Docker وإنشاء وتشغيل الحاوية. عندما ترى إخراج hello world ، فهذا يعني أن التشغيل نجح.
 
-## Algunos comandos de Docker CLI comunes
+## بعض أوامر CLI الشائعة لـ Docker
 
-Docker proporciona un conjunto de comandos poderosos y ricos para administrar y operar recursos como contenedores, imágenes, redes, etc. A continuación se muestran algunos comandos de Docker CLI comunes:
+يوفر Docker مجموعة قوية وغنية من الأوامر لإدارة وتشغيل الموارد مثل الحاويات والصور والشبكات. فيما يلي بعض الأوامر الشائعة لـ Docker CLI:
 
-- `docker run`: crea y ejecuta un nuevo contenedor basado en la imagen especificada. Por ejemplo, `docker run -d -p 8080:80 nginx` ejecutará un contenedor NGINX en segundo plano y mapeará el puerto 8080 del host al puerto 80 del contenedor.
-- `docker ps`: lista los contenedores en ejecución. De forma predeterminada, mostrará información como el ID del contenedor, la imagen y el comando en ejecución. Use `docker ps -a` para mostrar todos los contenedores, incluidos los detenidos.
-- `docker stop`: detiene uno o más contenedores en ejecución. Puede especificar el ID o el nombre del contenedor. Por ejemplo, `docker stop mycontainer` detendrá el contenedor llamado `mycontainer`.
-- `docker start`: inicia uno o más contenedores detenidos. Puede especificar el ID o el nombre del contenedor.
-- `docker restart`: reinicia uno o más contenedores.
-- `docker rm`: elimina uno o más contenedores. Use `docker rm -f` para eliminar un contenedor en ejecución.
-- `docker images`: lista las imágenes locales. Muestra una lista de imágenes de Docker descargadas y creadas en la computadora local, incluida información como el ID de la imagen, el tamaño y la hora de creación.
-- `docker rmi`: elimina una o más imágenes. Puede especificar el ID o la etiqueta de la imagen. Por ejemplo, `docker rmi myimage:1.0` eliminará la imagen llamada `myimage` con la etiqueta `1.0`.
-- `docker build`: construye una imagen personalizada basada en un Dockerfile. Por ejemplo, `docker build -t myimage:1.0 .` construirá una imagen llamada `myimage` con la etiqueta `1.0` basada en el Dockerfile en el directorio actual.
-- `docker exec`: ejecuta un comando en un contenedor en ejecución. Puede especificar el ID o el nombre del contenedor y el comando a ejecutar. Por ejemplo, `docker exec -it mycontainer bash` iniciará una nueva terminal interactiva en el contenedor llamado `mycontainer`.
+- `docker run`: يستخدم لإنشاء وتشغيل حاوية جديدة بناءً على الصورة المحددة. على سبيل المثال ، `docker run -d -p 8080:80 nginx` سيشغل حاوية NGINX في الخلفية ويعيد توجيه منفذ 8080 من المضيف إلى منفذ 80 في الحاوية.
+- `docker ps`: يعرض الحاويات التي تعمل حاليًا. عندما يتم تشغيل هذا الأمر ، يتم عرض معلومات مثل معرف الحاوية والصورة والأمر. باستخدام الأمر `docker ps -a` يمكن عرض جميع الحاويات ، بما في ذلك تلك التي تم إيقافها.
+- `docker stop`: يتوقف عن تشغيل حاوية واحدة أو أكثر. يمكن تحديد معرف الحاوية أو الاسم. على سبيل المثال ، `docker stop mycontainer` سيتوقف عن تشغيل الحاوية التي تحمل الاسم `mycontainer`.
+- `docker start`: يبدأ حاوية واحدة أو أكثر التي تم إيقاف تشغيلها. يمكن تحديد معرف الحاوية أو الاسم.
+- `docker stop`: يتوقف عن تشغيل حاوية واحدة أو أكثر.
+- `docker restart`: يعيد تشغيل حاوية واحدة أو أكثر.
+- `docker rm`: يحذف حاوية واحدة أو أكثر. يمكن استخدام الأمر `docker rm -f` لحذف الحاويات التي تعمل حاليًا.
+- `docker images`: يعرض الصور المحلية. يتم عرض قائمة بالصور التي تم تنزيلها وإنشاؤها على الكمبيوتر المحلي ، بما في ذلك معرف الصورة والحجم ووقت الإنشاء.
+- `docker rmi`: يحذف صورة واحدة أو أكثر. يمكن تحديد معرف الصورة أو العلامة. على سبيل المثال ، `docker rmi myimage:1.0` سيحذف الصورة التي تحمل الاسم `myimage` والعلامة `1.0`.
+- `docker build`: يستخدم لبناء صورة مخصصة بناءً على Dockerfile. على سبيل المثال ، `docker build -t myimage:1.0 .` سيقوم ببناء صورة تحمل الاسم `myimage` والعلامة `1.0` بناءً على Dockerfile الموجود في الدليل الحالي.
+- `docker exec`: يستخدم لتنفيذ أمر داخل حاوية تعمل. يمكن تحديد معرف الحاوية أو الاسم والأمر الذي يجب تنفيذه. على سبيل المثال ، `docker exec -it mycontainer bash` سيبدأ محطة عمل تفاعلية جديدة داخل الحاوية التي تحمل الاسم `mycontainer`.
 
-Estos son algunos comandos de Docker comunes utilizados para administrar y operar contenedores e imágenes. Hay muchos más comandos para explorar, se pueden ver la lista completa de comandos y otras opciones disponibles a través del comando `docker --help`, o consultando la documentación oficial [**Use the Docker command line**](https://docs.docker.com/engine/reference/commandline/cli/).
+هذه بعض الأوامر الشائعة لـ Docker لإدارة وتشغيل الحاويات والصور. هناك المزيد من الأوامر التي يمكن استكشافها ، يمكن العثور على قائمة كاملة للأوامر والخيارات الأخرى المتاحة من خلال الأمر `docker --help` ، كما يمكن الرجوع إلى الوثائق الرسمية [**Use the Docker command line**](https://docs.docker.com/engine/reference/commandline/cli/) .
 
-Para obtener más información sobre Docker, consulte los siguientes artículos:
+لمزيد من المعلومات حول Docker ، يرجى الرجوع إلى المقالات التالية:
 
-- [**Docker Compose - Herramienta de orquestación de imágenes**](https://wiki-power.com/es/DockerCompose-%E9%95%9C%E5%83%8F%E7%BC%96%E6%8E%92%E5%B7%A5%E5%85%B7/)
-- [**Empaquetar aplicaciones como contenedores Docker**](https://wiki-power.com/es/%E5%B0%86%E5%BA%94%E7%94%A8%E5%B0%81%E8%A3%85%E4%B8%BADocker%E5%AE%B9%E5%99%A8/)
+- [**Docker Compose - أداة ترتيب الصور**](](https://wiki-power.com/ar/DockerCompose-%E9%95%9C%E5%83%8F%E7%BC%96%E6%8E%92%E5%B7%A5%E5%85%B7/)
+- [**تغليف التطبيق كحاوية Docker**](](https://wiki-power.com/ar/%E5%B0%86%E5%BA%94%E7%94%A8%E5%B0%81%E8%A3%85%E4%B8%BADocker%E5%AE%B9%E5%99%A8/)
 
-Si desea comenzar a practicar directamente, también puede consultar la siguiente serie de artículos:
+إذا كنت ترغب في البدء في التطبيق العملي مباشرةً ، فيمكنك الاطلاع على سلسلة المقالات التالية:
 
-- [Cómo construir tu propio HomeLab](https://wiki-power.com/es/Construyendo-tu-propio-HomeLab)
-- [Homelab - Panel de gestión de servidores ligero CasaOS](https://wiki-power.com/es/Homelab-Panel-de-gestión-de-servidores-ligero-CasaOS)
-- [Homelab - Panel de gestión de certificados de proxy inverso Nginx Proxy Manager](https://wiki-power.com/es/Homelab-Panel-de-gestión-de-certificados-de-proxy-inverso-Nginx-Proxy-Manager)
-- [Homelab - Herramienta de penetración de red frp](https://wiki-power.com/es/Homelab-Herramienta-de-penetración-de-red-frp)
-- [Homelab - Alternativa gratuita de penetración de red interna Cloudflared](https://wiki-power.com/es/Homelab-Alternativa-gratuita-de-penetración-de-red-interna-Cloudflared)
-- [Homelab - Editor de código en línea code-server](https://wiki-power.com/es/Homelab-Editor-de-código-en-línea-code-server)
-- [Homelab - Herramienta de monitoreo de estado de sitio web Uptime Kuma](https://wiki-power.com/es/Homelab-Herramienta-de-monitoreo-de-estado-de-sitio-web-Uptime-Kuma)
-- [Homelab - Herramienta de compresión de imágenes de alta calidad TinyPNG-docker](https://wiki-power.com/es/Homelab-Herramienta-de-compresión-de-imágenes-de-alta-calidad-TinyPNG-docker)
-- [Homelab - Sitio de navegación de marcadores personales minimalista Flare](https://wiki-power.com/es/Homelab-Sitio-de-navegación-de-marcadores-personales-minimalista-Flare)
-- [Homelab - Plataforma de gestión de aplicaciones de contenedores Portainer](https://wiki-power.com/es/Homelab-Plataforma-de-gestión-de-aplicaciones-de-contenedores-Portainer)
-- [Homelab - Herramienta de sincronización entre dispositivos Syncthing](https://wiki-power.com/es/Homelab-Herramienta-de-sincronización-entre-dispositivos-Syncthing)
-- [Homelab - Herramienta de notas fragmentadas memos](https://wiki-power.com/es/Homelab-Herramienta-de-notas-fragmentadas-memos)
-- [Homelab - Sistema wiki potente Wiki.js](https://wiki-power.com/es/Homelab-Sistema-wiki-potente-Wiki.js)
-- [Homelab - Gestor de contraseñas autohospedado Vaultwarden](https://wiki-power.com/es/Homelab-Gestor-de-contraseñas-autohospedado-Vaultwarden)
-- [Homelab - Sistema de almacenamiento de imágenes en la nube compatible con la nube pública Cloudreve](https://wiki-power.com/es/Homelab-Sistema-de-almacenamiento-de-imágenes-en-la-nube-compatible-con-la-nube-pública-Cloudreve)
-- [Homelab - Agregador de RSS autohospedado FreshRSS](https://wiki-power.com/es/Homelab-Agregador-de-RSS-autohospedado-FreshRSS)
-- [Homelab - Bastión que admite varios protocolos Next Terminal](https://wiki-power.com/es/Homelab-Bastión-que-admite-varios-protocolos-Next-Terminal)
-- [Homelab - Caja de herramientas PDF multifuncional Stirling-PDF](https://wiki-power.com/es/Homelab-Caja-de-herramientas-PDF-multifuncional-Stirling-PDF)
-- [Homelab - Herramienta de captura de favicon de sitio web iconserver](https://wiki-power.com/es/Homelab-Herramienta-de-captura-de-favicon-de-sitio-web-iconserver)
-- [Homelab - Herramienta de actualización automática de contenedores Docker Watchtower](https://wiki-power.com/es/Homelab-Herramienta-de-actualización-automática-de-contenedores-Docker-Watchtower)
-- [Homelab - Programa de lista de archivos compatible con múltiples almacenamientos Alist](https://wiki-power.com/es/Homelab-Programa-de-lista-de-archivos-compatible-con-múltiples-almacenamientos-Alist)
-- [Homelab - Software de pizarra rico en funciones WeKan](https://wiki-power.com/es/Homelab-Software-de-pizarra-rico-en-funciones-WeKan)
-- [Homelab - Servidor de podcast y audiolibros Audiobookshelf](https://wiki-power.com/es/Homelab-Servidor-de-podcast-y-audiolibros-Audiobookshelf)
-- [Homelab - Servidor de música en la nube Navidrome](https://wiki-power.com/es/Homelab-Servidor-de-música-en-la-nube-Navidrome)
-- [Homelab - Servidor multimedia de películas y series Jellyfin](https://wiki-power.com/es/Homelab-Servidor-multimedia-de-películas-y-series-Jellyfin)
-- [Homelab - Servidor de gestión de libros electrónicos calibre-web](https://wiki-power.com/es/Homelab-Servidor-de-gestión-de-libros-electrónicos-calibre-web)
-- [Homelab - Servidor de hogar inteligente Home Assistant](https://wiki-power.com/es/Homelab-Servidor-de-hogar-inteligente-Home-Assistant)
-- [Homelab - Software de memoria asistida por tarjetas Anki](https://wiki-power.com/es/Homelab-Software-de-memoria-asistida-por-tarjetas-Anki)
+- [بناء HomeLab الخاص بك](https://wiki-power.com/ar/بناء HomeLab الخاص بك)
+- [Homelab - لوحة إدارة خادم خفيفة CasaOS](https://wiki-power.com/ar/Homelab - لوحة إدارة خادم خفيفة CasaOS)
+- [Homelab - لوحة إدارة شهادة الوكيل Nginx Proxy Manager](https://wiki-power.com/ar/Homelab - لوحة إدارة شهادة الوكيل Nginx Proxy Manager)
+- [Homelab - أداة اختراق الشبكة الداخلية frp](https://wiki-power.com/ar/Homelab - أداة اختراق الشبكة الداخلية frp)
+- [Homelab - بديل مجاني لأداة اختراق الشبكة الداخلية Cloudflared](https://wiki-power.com/ar/Homelab - بديل مجاني لأداة اختراق الشبكة الداخلية Cloudflared)
+- [Homelab - محرر كود عبر الإنترنت code-server](https://wiki-power.com/ar/Homelab - محرر كود عبر الإنترنت code-server)
+- [Homelab - أداة مراقبة حالة الموقع على الإنترنت Uptime Kuma](https://wiki-power.com/ar/Homelab - أداة مراقبة حالة الموقع على الإنترنت Uptime Kuma)
+- [Homelab - أداة ضغط صور عالية الجودة TinyPNG-docker](https://wiki-power.com/ar/Homelab - أداة ضغط صور عالية الجودة TinyPNG-docker)
+- [Homelab - موقع توجيه الإشارات المرجعية الشخصي البسيط Flare](https://wiki-power.com/ar/Homelab - موقع توجيه الإشارات المرجعية الشخصي البسيط Flare)
+- [Homelab - منصة إدارة تطبيقات الحاويات Portainer](https://wiki-power.com/ar/Homelab - منصة إدارة تطبيقات الحاويات Portainer)
+- [Homelab - أداة مزامنة عبر الأجهزة Syncthing](https://wiki-power.com/ar/Homelab - أداة مزامنة عبر الأجهزة Syncthing)
+- [Homelab - أداة ملاحظات متناثرة memos](https://wiki-power.com/ar/Homelab - أداة ملاحظات متناثرة memos)
+- [Homelab - نظام ويكي قوي Wiki.js](https://wiki-power.com/ar/Homelab - نظام ويكي قوي Wikijs)
+- [Homelab - أداة إدارة كلمات المرور الذاتية الاستضافة Vaultwarden](https://wiki-power.com/ar/Homelab - أداة إدارة كلمات المرور الذاتية الاستضافة Vaultwarden)
+- [Homelab - نظام تخزين الصور العام يدعم Cloudreve](https://wiki-power.com/ar/Homelab - نظام تخزين الصور العام يدعم Cloudreve)
+- [Homelab - مجمع RSS الذاتي الاستضافة FreshRSS](https://wiki-power.com/ar/Homelab - مجمع RSS الذاتي الاستضافة FreshRSS)
+- [Homelab - جهاز حماية متعدد البروتوكولات Next Terminal](https://wiki-power.com/ar/Homelab - جهاز حماية متعدد البروتوكولات Next Terminal)
+- [Homelab - صندوق أدوات PDF متعدد الوظائف Stirling-PDF](https://wiki-power.com/ar/Homelab - صندوق أدوات PDF متعدد الوظائف Stirling-PDF)
+- [Homelab - أداة جلب رمز الموقع favicon iconserver](https://wiki-power.com/ar/Homelab - أداة جلب رمز الموقع favicon iconserver)
+- [Homelab - أداة تحديث الحاويات Docker تلقائيًا Watchtower](https://wiki-power.com/ar/Homelab - أداة تحديث الحاويات Docker تلقائيًا Watchtower)
+- [Homelab - برنامج قائمة الملفات الذي يدعم العديد من التخزين Alist](https://wiki-power.com/ar/Homelab - برنامج قائمة الملفات الذي يدعم العديد من التخزين Alist)
+- [Homelab - برنامج لوحة الإعلانات الغني بالميزات WeKan](https://wiki-power.com/ar/Homelab - برنامج لوحة الإعلانات الغني بالميزات WeKan)
+- [Homelab - خادم البودكاست والكتب الصوتية Audiobookshelf](https://wiki-power.com/ar/Homelab - خادم البودكاست والكتب الصوتية Audiobookshelf)
+- [Homelab - خادم الموسيقى السحابي Navidrome](https://wiki-power.com/ar/Homelab - خادم الموسيقى السحابي Navidrome)
+- [Homelab - خادم الوسائط المرئية والسمعية Jellyfin](https://wiki-power.com/ar/Homelab - خادم الوسائط المرئية والسمعية Jellyfin)
+- [Homelab - خادم إدارة الكتب الإلكترونية calibre-web](https://wiki-power.com/ar/Homelab - خادم إدارة الكتب الإلكترونية calibre-web)
+- [Homelab - خادم المنزل الذكي Home Assistant](https://wiki-power.com/ar/Homelab - خادم المنزل الذكي Home Assistant)
+- [Homelab - برنامج مساعدة الذاكرة بالبطاقات Anki](https://wiki-power.com/ar/Homelab - برنامج مساعدة الذاكرة بالبطاقات Anki)
 
-## Referencias y Agradecimientos
+## المراجع والشكر
 
-- [Docker - Desde principiante hasta práctico](https://yeasy.gitbook.io/docker_practice/)
-- [Tutorial de Docker](https://www.runoob.com/docker/docker-tutorial.html)
-- [Tutorial de introducción a Docker](http://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html)
-- [Instalación de Docker en CentOS](https://wiki-power.com/es/unlist/CentOS%E5%AE%89%E8%A3%85Docker)
+- [Docker - من البداية إلى العملية](https://yeasy.gitbook.io/docker_practice/)
+- [دليل Docker](https://www.runoob.com/docker/docker-tutorial.html)
+- [دليل بدء استخدام Docker](http://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html)
+- [تثبيت Docker على CentOS](http://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html)
 
-por_reemplazar[1]  
-por_reemplazar[2]
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

@@ -1,6 +1,6 @@
 # Homelab - Servidor de hogar inteligente Home Assistant
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202306011647498.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202306011647498.png)
 
 **Home Assistant** es un servidor de hogar inteligente de código abierto que puede monitorear todos los dispositivos de su hogar. Tiene funciones similares a Mi Home y una interfaz amigable y atractiva, y su implementación es relativamente sencilla.
 

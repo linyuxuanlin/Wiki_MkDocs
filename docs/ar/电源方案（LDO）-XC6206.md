@@ -1,58 +1,58 @@
-# Esquema de alimentación (LDO) - XC6206
+# مخطط الطاقة (LDO) - XC6206
 
-La serie XC6206 es un regulador de voltaje positivo de tres terminales de alta precisión y bajo consumo de energía que proporciona una corriente alta y una diferencia de voltaje mínima. Está compuesto internamente por un circuito limitador de corriente, un transistor de conducción, un voltaje de referencia de precisión y un circuito corrector de error. Esta serie es compatible con capacitores cerámicos de baja ESR. El voltaje de salida se puede seleccionar en incrementos de 0.1V en el rango de 1.2V a 5.0V.
+سلسلة XC6206 هي محولات جهد ثلاثية الأطراف عالية الدقة والطاقة المنخفضة ، وتوفر تيارًا كبيرًا وفرق جهد صغيرًا للغاية ، وتتكون من دائرة تيار محدود ومفتاح تشغيل وجهد مرجع دقيق ودائرة تصحيح خطأ. تتوافق هذه السلسلة مع السعة الكهربائية الخزفية المنخفضة. يمكن اختيار الجهد الناتج في نطاق 1.2 فولت إلى 5.0 فولت بزيادة 0.1 فولت.
 
-En este artículo, se utiliza la serie XC6206 de TOREX en un paquete SOT-23. Otros fabricantes pueden utilizar el mismo modelo, pero se recomienda verificar los parámetros detallados.
+تم اختيار سلسلة XC6206 من TOREX (تيريش) في هذه المقالة ، وهي معبأة بـ SOT-23 ، ويمكن استبدال الطرازات المماثلة من الشركات الأخرى ، ولكن يرجى التحقق من المعلمات التفصيلية.
 
-Repositorio del proyecto: [**Collection_of_Power_Module_Design/LDO/XC6206**](https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/LDO/XC6206)
+مستودع المشروع: [**Collection_of_Power_Module_Design/LDO/XC6206**](https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/LDO/XC6206)
 
-## Características principales
+## الميزات الرئيسية
 
-- Corriente máxima de salida: 200mA (valor típico a 6.0V)
-- Diferencia de voltaje: 250mV@100mA (valor típico a 6.0V)
-- Voltaje de operación máximo: 6.0V
-- Rango de voltaje de salida: 1.2V ~ 5.0V (incrementos de 0.1V)
-- Precisión: ±30mV cuando Vout<1.5V; ±2% cuando Vout>1.5V; ±1% cuando Vout>2V
-- Bajo consumo de energía: valor típico de 1.0uA
-- Circuitos de protección: circuito limitador de corriente incorporado
-- Temperatura de operación: -40℃~ +85℃
-- Paquetes opcionales: SOT-23, SOT-89, USP-6B
+- أقصى تيار إخراج: 200 مللي أمبير (القيمة النموذجية 6.0 فولت)
+- فرق الجهد: 250 مللي فولت @ 100 مللي أمبير (القيمة النموذجية 6.0 فولت)
+- أقصى جهد تشغيل: 6.0 فولت
+- نطاق الجهد الناتج: 1.2 فولت ~ 5.0 فولت (زيادة 0.1 فولت)
+- الدقة: عندما يكون Vout <1.5 فولت ، الدقة ± 30 مللي فولت ؛ عندما يكون Vout> 1.5 فولت ، الدقة ± 2٪ ؛ عندما يكون Vout> 2 فولت ، الدقة ± 1٪
+- استهلاك الطاقة المنخفض: القيمة النموذجية 1.0 ميكرو أمبير
+- دائرة حماية: دائرة تيار محدود مدمجة
+- درجة حرارة التشغيل: -40 ℃ ~ + 85 ℃
+- الحزمة الاختيارية: SOT-23 ، SOT-89 ، USP-6B
 
-## Selección del modelo
+## شرح الاختيار
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220420102910.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420102910.png)
 
-## Circuito de aplicación típico
+## مخطط التطبيق النموذجي
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220420102323.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420102323.png)
 
-## Diagrama de funciones internas
+## مخطط الوظائف الداخلية
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220420102514.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420102514.png)
 
-Nota: El diodo en el diagrama es un diodo ESD o un diodo parásito.
+ملاحظة: يتمثل الثنائي في المخطط الدائري في ESD أو الثنائي الطفري.
 
-## Definición de pines
+## تعريف الأقدام
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220420103005.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420103005.png)
 
-| Nombre del pin | Descripción del pin |
+| اسم القدم | وصف القدم |
 | -------- | -------- |
-| VSS      | Tierra       |
-| Vin      | Entrada de alimentación |
-| Vout     | Salida de alimentación |
+| VSS      | الأرض       |
+| Vin      | مدخل الطاقة |
+| Vout     | مخرج الطاقة |
 
-## Descripción de características
+## وصف الميزات
 
-Tabla de parámetros específicos de cada modelo:
+جدول المعلمات الدقيقة لكل نموذج:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220420103738.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420103738.png)
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
 - [XC6206_Datasheet](https://www.torexsemi.com/file/xc6206/XC6206.pdf)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

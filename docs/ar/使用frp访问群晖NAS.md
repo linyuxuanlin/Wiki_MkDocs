@@ -1,72 +1,72 @@
-# Accediendo a Synology NAS con frp
+# استخدام frp للوصول إلى NAS من Synology
 
-Acceda a Synology NAS en cualquier red utilizando frp.
+استخدام frp للوصول إلى NAS من Synology في أي شبكة.
 
-## ¿Por qué acceder a Synology a través de frp?
+## لماذا يجب استخدام frp للوصول إلى NAS من Synology
 
-- Sin IP pública
-- El servicio QuickConnect es demasiado lento
-- Servicios como Peanut Shell requieren la compra de tráfico por separado
+- لا يوجد عنوان IP العام
+- خدمة QuickConnect بطيئة جدًا
+- يتطلب Peanut Shell وغيرها من الخدمات شراء حركة المرور بشكل منفصل
 
-## Configuración del servidor
+## تكوين الخادم
 
-Ir al artículo [**Cómo implementar el control remoto RDP externo (frp) · Configuración del servidor**](https://wiki-power.com/es/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91RDP%E8%BF%9C%E6%8E%A7%EF%BC%88frp%EF%BC%89#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%85%8D%E7%BD%AE). Tenga en cuenta que los parámetros `vhost_http_port` / `vhost_https_port` en el archivo de configuración `frpc.ini` deben mantenerse.
+انتقل إلى المقالة [**كيفية تحقيق التحكم عن بعد في RDP عبر الإنترنت (frp) · تكوين الخادم**](https://wiki-power.com/ar/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91RDP%E8%BF%9C%E6%8E%A7%EF%BC%88frp%EF%BC%89#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%85%8D%E7%BD%AE). يجب الانتباه إلى أن المعلمات `vhost_http_port` / `vhost_https_port` في ملف التكوين `frpc.ini` يجب الاحتفاظ بها.
 
-### Asociar un nombre de dominio
+### ربط النطاق
 
-- Agregue un registro A en la resolución de nombres de dominio con la dirección IP del servidor.
-- Configure la asociación de nombres de dominio en el servidor en la nube.
+- في تحليل النطاق ، أضف سجل A باستخدام عنوان IP للخادم
+- في خادم السحابة ، قم بتكوين ربط النطاق
 
-## Configuración de Synology NAS
+## تكوين NAS من Synology
 
-### Edite el archivo de configuración
+### تحرير ملف التكوين
 
-Cree un archivo `frpc.ini` en cualquier ubicación y agregue el siguiente contenido:
+أنشئ ملف `frpc.ini` في أي مكان وأدخل المحتوى التالي:
 
 ```ini title="frpc.ini"
 [common]
-server_addr = Dirección IP del servidor
-server_port = Puerto frp del servidor, predeterminado 7000
-token = Clave, debe ser la misma que la configurada en el servidor
+server_addr = عنوان IP للخادم
+server_port = منفذ frp للخادم ، الافتراضي هو 7000
+token = المفتاح السري ، يجب أن يكون مطابقًا لتكوين الخادم
 
 [dsm-http]
 type = tcp
 local_ip = localhost
-local_port = Puerto http DSM de Synology, predeterminado 5000
-custom_domains = Nombre de dominio asociado
-remote_port = Puerto remoto personalizado
+local_port = منفذ DSM http لـ Synology ، الافتراضي هو 5000
+custom_domains = النطاق المرتبط
+remote_port = منفذ عن بعد مخصص
 
 [dsm-https]
 type = tcp
 local_ip = localhost
-local_port = Puerto https DSM de Synology, predeterminado 5001
-custom_domains = Nombre de dominio asociado
-remote_port = Puerto remoto personalizado
+local_port = منفذ DSM https لـ Synology ، الافتراضي هو 5001
+custom_domains = النطاق المرتبط
+remote_port = منفذ عن بعد مخصص
 
 [ssh]
 type = tcp
 local_ip = localhost
-local_port = predeterminado 22
-custom_domains = Nombre de dominio asociado
-remote_port = Puerto remoto personalizado
+local_port = الافتراضي هو 22
+custom_domains = النطاق المرتبط
+remote_port = منفذ عن بعد مخصص
 ```
 
-### Método de uso de Docker
+### استخدام طريقة Docker
 
-Instale la imagen `stilleshan/frpc` en Docker de Synology y use los siguientes parámetros para inicializar el contenedor:
+في داخل Docker من Synology ، قم بتثبيت الصورة `stilleshan/frpc` واستخدم المعلمات التالية لتهيئة الحاوية:
 
-- Seleccione "Ejecutar el contenedor con privilegios elevados".
-- Seleccione "Habilitar reinicio automático".
-- Agregue el archivo seleccionando "Volumen" y seleccione el archivo `frpc.ini` local. La ruta de montaje correspondiente es `/frp/frpc.ini`.
-- Seleccione "Usar la misma red que el host de Docker".
+- حدد "استخدام تنفيذ الحاوية بأذونات عالية"
+- حدد "تمكين إعادة التشغيل التلقائي"
+- في علامة التبويب "الحجم" ، أضف ملفًا واختر ملف `frpc.ini` المحلي ، ويجب أن يكون المسار المحمل `/frp/frpc.ini`
+- حدد "استخدام نفس شبكة Docker Host"
 
-Inicie el contenedor y espere un momento para acceder a Synology DSM a través del nombre de dominio y el número de puerto http.
+قم بتشغيل الحاوية وانتظر قليلاً ، ثم يمكنك الوصول إلى DSM من Synology عبر النطاق + رقم المنفذ http.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Tutorial de penetración de red interna de Synology NAS con Docker frpc](https://www.ioiox.com/archives/26.html)
+- [دليل تثبيت وتكوين frpc للوصول إلى الشبكة الداخلية من Synology NAS باستخدام Docker](https://www.ioiox.com/archives/26.html)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

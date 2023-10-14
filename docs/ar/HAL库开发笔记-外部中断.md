@@ -1,34 +1,34 @@
-# Notas de desarrollo de la biblioteca HAL - Interrupción externa
+# مذكرات تطوير مكتبة HAL - المقاطعات الخارجية
 
-En el artículo anterior, mencionamos que eliminar el rebote de los botones y detectar la entrada mediante encuesta puede consumir demasiados recursos del sistema y provocar bloqueos, y también puede perder la detección. Es por eso que necesitamos usar interrupciones.
+في المقالة السابقة ، ذكرنا أن استخدام الاستطلاع لإزالة اهتزاز المفاتيح والكشف عن المدخلات قد يستهلك موارد النظام الزائدة ويؤدي إلى تعليق النظام ، وقد يفوت الكشف. هذا هو السبب في أننا بحاجة إلى استخدام المقاطعات.
 
-## Principios básicos
+## المبادئ الأساسية
 
-### Encuesta e interrupción
+### الاستطلاع والمقاطعات
 
-¿Qué son la encuesta y la interrupción? Tomemos la entrega de comida como ejemplo. La encuesta es que tengo que ir a la puerta cada minuto para ver si el repartidor de comida ha llegado. Entonces, durante este tiempo, no puedo hacer nada más que mirar la comida; pero si el repartidor de comida llega justo cuando salgo de la puerta, entonces perderé la comida. Por el contrario, la interrupción es que cuando llega el repartidor de comida, me llama por teléfono, dejo lo que estoy haciendo y voy a buscar la comida, de esta manera puedo trabajar con tranquilidad y no perder la comida.
+ما هي الاستطلاع والمقاطعات؟ لنأخذ مثالًا على طلب الطعام ، الاستطلاع هو أنني أذهب إلى الباب كل دقيقة لأرى هل وصل سائق الطعام أم لا. في هذه الفترة ، لا يمكنني القيام بأي شيء آخر ، فقط أنظر إلى الطعام. ولكن إذا وصل سائق الطعام في الوقت الذي غادرت فيه الباب ، فسوف تفوتني الطعام. على العكس ، المقاطعات هي عندما يتصل سائق الطعام عندما يأتي ، أضع العمل الذي أقوم به جانبًا لأخذ الطعام ، بحيث يمكنني العمل بشكل آمن ولا يوجد خطر فوات الطعام.
 
-### Interrupción externa
+### المقاطعات الخارجية
 
-Las interrupciones se dividen en externas (Interrupt) e internas (Exception). La interrupción externa es interrumpida por un dispositivo externo al MCU, y la interrupción interna es interrumpida por el programa de software interno.
+تنقسم المقاطعات إلى خارجية (مقاطعة) وداخلية (استثناء). المقاطعات الخارجية تتم عن طريق جهاز خارجي يقوم بإيقاف تشغيل MCU ، بينما تتم المقاطعات الداخلية عن طريق برنامج البرامج الثابتة الداخلية التي تقوم بإيقاف تشغيل MCU.
 
 ### NVIC
 
-NVIC significa Nested Vectored Interrupt Controller, que se traduce como **Controlador de interrupción vectorial anidado**. Tiene tres parámetros principales: habilitación de interrupción, prioridad de preempción y prioridad de respuesta. (Cuanto menor sea el valor de prioridad, mayor será la prioridad).
+يعني NVIC بالكامل Nested Vectored Interrupt Controller ، وترجمتها هي **متحكم المقاطعات المتجهة المتداخلة**. لديها ثلاثة معلمات رئيسية ، وهي: تمكين المقاطعات ، أولوية الاستيلاء ، وأولوية الاستجابة. (كلما كانت قيمة الأولوية أقل ، كانت الأولوية أعلى)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210206121058.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210206121058.png)
 
-**Habilitación de interrupción**: se refiere a si se habilita la interrupción. Si se habilita la interrupción, cuando se cumple la condición de activación de la interrupción, se saltará al programa de servicio de interrupción para ejecutar; de lo contrario, el programa de servicio de interrupción no se tendrá en cuenta y el programa principal seguirá ejecutándose.
+**تمكين المقاطعات**: يشير إلى ما إذا كانت المقاطعات مفتوحة. إذا تم تمكين المقاطعات ، فعندما يتم تلبية شرط تشغيل المقاطعات ، سيتم الانتقال إلى برنامج خدمة المقاطعات. وإلا ، فلن يتم النظر في برنامج خدمة المقاطعات ، وسيتم استمرار تشغيل البرنامج الرئيسي.
 
-**Prioridad de preempción**: se utiliza para determinar si una interrupción puede interrumpir el programa de servicio de otra interrupción y ejecutarse primero. Tomemos un ejemplo. Se cumple la condición de activación de la interrupción A, el programa de servicio de la interrupción A está en ejecución, y en este momento se cumple la condición de activación de la interrupción B. Si la prioridad de preempción de la interrupción B es mayor que la de la interrupción A, el programa de servicio de la interrupción A será interrumpido y se ejecutará primero el programa de servicio de la interrupción B, y luego se continuará ejecutando la interrupción A. Esto también se llama interrupción anidada. Si la prioridad de preempción de B no es mayor que la de A, entonces primero se ejecutará A y luego se ejecutará B.
+**أولوية الاستيلاء**: يستخدم لتحديد ما إذا كانت المقاطعة يمكن أن تقاطع برنامج خدمة المقاطعات الآخر ، وتشغيلها بشكل مسبق. على سبيل المثال ، إذا تم تلبية شرط A المقاطعة ، ويتم تشغيل برنامج خدمة المقاطعات A ، وفي هذا الوقت تم تلبية شرط B المقاطعة ، إذا كانت أولوية استيلاء المقاطعة B أعلى من A ، فسيتم إيقاف تشغيل برنامج خدمة المقاطعات A ، والذهاب لتشغيل برنامج خدمة المقاطعات B ، وبعد الانتهاء من ذلك ، يتم استئناف تشغيل A ، ويشار إلى هذا باسم المقاطعات المتداخلة. إذا كانت أولوية استيلاء المقاطعة B لا تزال أقل من A ، فلا يزال يجب إكمال A بالكامل قبل الانتقال إلى B.
 
-**Prioridad de respuesta**: si varias interrupciones con la misma prioridad de preempción se activan al mismo tiempo, se ejecutará primero la de mayor prioridad de respuesta.
+**أولوية الاستجابة**: إذا تم تشغيل عدة مقاطعات في نفس الوقت وكانت أولوية استيلاءها متساوية ، فسيتم تشغيل المقاطعة التي لديها أولوية استجابة أعلى أولاً.
 
-Para determinar la prioridad de la interrupción, primero debe compararse la prioridad de preempción. Si la prioridad de preempción es la misma, la interrupción con la prioridad de respuesta más alta tiene una prioridad más alta. Si ambas prioridades son iguales, entonces se debe determinar según la tabla de vectores de interrupción.
+لتحديد أولوية المقاطعة ، يجب أولاً مقارنة أولوية الاستيلاء. في حالة تساوي أولوية الاستيلاء ، فإن المقاطعة التي لديها أولوية استجابة أعلى لها أولوية أعلى. إذا كانت الأولويات متساوية ، فيجب استخدام جدول المقاطعات المتجهة لتحديد ذلك.
 
-### Referencia de la función de devolución de llamada de interrupción
+### مرجع دالة الاستدعاء العائدة للمقاطعات
 
-Después de configurar la interrupción GPIO y la prioridad NVIC, simplemente reescriba la función de devolución de llamada de interrupción al final del archivo `stm32f4xx_it.c` para implementar la función.
+بعد تكوين المقاطعات GPIO وأولوية NVIC ، يمكن تحقيق الوظيفة عن طريق إعادة كتابة دالة الاستدعاء العائدة للمقاطعات في ملف `stm32f4xx_it.c`.
 
 ```c
 /* USER CODE BEGIN 1 */
@@ -41,54 +41,41 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 /* USER CODE END 1 */
 ```
 
-## Control de luz de tecla de interrupción externa
+## تحكم الأزرار الخارجية في الإضاءة
 
-Antes de realizar el siguiente experimento, debe configurar varios parámetros como la descarga de serie, el reloj, etc. en CubeMX.  
-Para obtener información detallada, consulte el método en el artículo [**Notas de desarrollo de la biblioteca HAL - Configuración del entorno**](https://wiki-power.com/es/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE).
+قبل القيام بالتجربة التالية ، يجب تكوين جميع المعلمات المختلفة في CubeMX ، مثل تنزيل المنفذ التسلسلي ، والساعة ، وما إلى ذلك.  
+يرجى الرجوع إلى المقالة [**مذكرات تطوير مكتبة HAL - تكوين البيئة**](https://wiki-power.com/ar/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE) للحصول على الخطوات المحددة.
 
-### Configuración de interrupción en CubeMX
+### تكوين المقاطعات في CubeMX
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210205150422.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210205150422.png)
 
-Como se muestra en la figura, el LED todavía se configura como salida utilizando el método del artículo anterior; debido a que la tecla es activada por nivel bajo, es decir, se genera un flanco descendente en el momento de la presión, el pin debe configurarse como una interrupción activada por flanco descendente.
+كما هو موضح في الصورة ، لا يزال يتم تكوين LED باستخدام الطريقة المذكورة في المقالة السابقة ، ويتم تكوين دبوس المفتاح كمقاطعة تنشيطها من الجهد المنخفض ، وهي تنتج حافة هابطة عند الضغط. بناءً على الرسم البياني ، يتم تحديد المقاطعة على أنها وضع `GPIO_EXTI8` (مقاطعة خارجية ، معلقة على خط المقاطعة 8) ، وتم تكوينها لتنتج حافة هابطة ، وفقًا للرسم البياني ، يتم اختيار السحب الداخلي (Pull-up) . كما هو موضح في الصورة:
 
-En mi placa, se configura `PI8` como modo `GPIO_EXTI8` (interrupción externa, montada en la línea de interrupción 8) y se configura como activada por flanco descendente. Según el esquemático, se selecciona la resistencia pull-up interna. Como se muestra en la figura:
+![](https://img.wiki-power.com/d/wiki-media/img/20210403222304.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210403222304.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210206131409.png)
 
-Configuración de interrupciones externas en STM32CubeMX
+ثم ، انقر فوق العلامة التبويب NVIC لتمكين المقاطعة التي تم تكوينها:
 
-En este tutorial, aprenderemos cómo configurar interrupciones externas en STM32CubeMX para controlar el encendido y apagado de un LED mediante un botón.
+![](https://img.wiki-power.com/d/wiki-media/img/20210206134916.png)
 
-## Requisitos previos
+بالإضافة إلى ذلك ، يجب تخفيض أولوية الاستيلاء بمقدار واحد (من 0 إلى 1 ، وسيتم شرح السبب في النص التالي).
 
-- STM32CubeMX
-- IDE de desarrollo de STM32 (por ejemplo, STM32CubeIDE)
-- Placa de desarrollo STM32
+### تكوين المقاطع في الكود
 
-## Configuración de hardware
+يتم إضافة الكود التالي فقط في نهاية `stm32f4xx_it.c`:
 
-Conecte un botón y un LED a la placa de desarrollo STM32. En este tutorial, usaremos el botón KEY1 y el LED LED1.
+```c
+/* USER CODE BEGIN 1 */
 
-## Configuración de software
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
 
-### Configuración de pines
+}
 
-Abra STM32CubeMX y cree un nuevo proyecto. Seleccione la placa de desarrollo STM32 que está utilizando y configure los pines correspondientes al botón y al LED.
-
-En este tutorial, el botón KEY1 está conectado al pin PA0 y el LED LED1 está conectado al pin PD12.
-
-### Configuración de interrupciones externas
-
-Haga clic en la pestaña NVIC y habilite la interrupción externa correspondiente al pin del botón. En este tutorial, la interrupción externa correspondiente al pin PA0 se habilita.
-
-A continuación, haga clic en la página de etiquetas NVIC para habilitar la interrupción que hemos configurado.
-
-Además, debemos reducir la prioridad de prelación en un nivel (de 0 a 1, se explicará más adelante).
-
-### Configuración de interrupciones en el código
-
-Solo necesitamos agregar el siguiente código al final de `stm32f4xx_it.c`:
+/* USER CODE END 1 */
+```
 
 ```c title="stm32f4xx_it.c"
 /* USER CODE BEGIN 1 */
@@ -108,13 +95,16 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 /* USER CODE END 1 */
 ```
 
-Este código reescribe la función de devolución de llamada de la interrupción y agrega la función de cambiar el estado del LED mediante el botón. Sin embargo, la función de retardo `HAL_Delay()` tiene un problema porque proviene del temporizador SysTick (genera interrupciones en intervalos de tiempo fijos), por lo que tiene una prioridad de interrupción correspondiente. En la figura de configuración NVIC anterior, podemos ver que SysTick y la prioridad de prelación de la interrupción que configuramos son ambos 0, por lo que no se puede continuar con SysTick después de que se produce una interrupción externa. Por lo tanto, debemos reducir la prioridad de prelación de la interrupción externa (de 0 a 1).
+يقوم هذا الكود بإعادة كتابة دالة استدعاء التقاطعات وإضافة وظيفة تبديل الإضاءة باستخدام زر. ولكن توجد مشكلة في دالة التأخير `HAL_Delay()`، حيث أنها تعتمد على مؤقت SysTick (ينتج تقاطعات في فترات زمنية ثابتة)، وبالتالي لها أولوية تقاطع محددة. يمكن ملاحظة أن SysTick وأولوية التقاطع المكونة مناختيارنا لم يتم تحديدها بشكل صحيح في صورة NVIC المكونة مناختيارنا، حيث أن SysTick وأولوية التقاطع المكونة مناختيارنا هما 0، وبالتالي لا يمكن تنشيط SysTick بعد تنشيط التقاطع الخارجي. لذلك، يجب تغيير أولوية التقاطع الخارجي (من 0 إلى 1).
 
-Después de compilar y cargar el código, puede cambiar el estado del LED presionando el botón.
+بعد الترجمة والتحميل، يمكن تبديل حالة الإضاءة عن طريق الضغط على الزر.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Advanced II [Interrupt]](https://alchemicronin.github.io/posts/ff6aca34/)
-- [STM32CubeMX Practical Tutorial (3) - External Interrupts (Interrupts and HAL_Delay Function Pitfalls)](https://blog.csdn.net/weixin_43892323/article/details/104383560?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control)
+- [الجزء المتقدم II [التقاطعات]](https://alchemicronin.github.io/posts/ff6aca34/)
+- [STM32CubeMX دليل التطبيق العملي (الجزء الثالث) - التقاطعات الخارجية (تجنب التأخير في دالة HAL_Delay)](https://blog.csdn.net/weixin_43892323/article/details/104383560?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

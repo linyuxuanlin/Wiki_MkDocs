@@ -1,38 +1,40 @@
-# Acelerando el servicio de Pages con Vercel
+# تسريع خدمة Pages باستخدام Vercel
 
-Hace un tiempo, mi blog (alojado en GitHub Pages) fue bloqueado. Como la mayoría de mi audiencia es de China, esto fue un gran problema. Por lo general, la solución es comprar un servidor o migrar a OSS. Pero ambos métodos son complicados y costosos. Afortunadamente, encontré esta herramienta llamada Vercel. Ahora puedo escribir mi blog felizmente de nuevo.
+في الوقت السابق، تم حظر مدونتي (التي تستضيف على GitHub Pages). وبما أن معظم المستخدمين هم من الصين، فكانت المشكلة كبيرة. 
+عادةً، الحل الوحيد هو شراء خادم / الانتقال إلى OSS. ولكن هذه الطرق معقدة وتكلف المال.
+لحسن الحظ، اكتشفت هذه الأداة الرائعة Vercel. لذلك، يمكنني الآن الكتابة بسعادة على مدونتي.
 
-## Ventajas de Vercel
+## مزايا Vercel
 
-- Dominio personalizado gratuito con soporte HTTPS
-- Servicio Serverless
-- Nodos de Google Cloud y AWS, con nodos en Hong Kong y Taiwán, lo que permite una velocidad de acceso decente desde China
-- 20 GB de cuota gratuita, suficiente para la mayoría de los sitios web
-- Sin límite en la cantidad de sitios y API Serverless
-- Serverless compatible con Node.js, Go, Python y Ruby
-- Compatible con la CLI now.sh, GitHub, GitLab y Bitbucket para importar y desplegar
+- دعم اسم نطاق مخصص مجاني و HTTPS
+- توفير خدمة Serverless
+- توفير عقد Google Cloud و AWS، ويوجد نقاط في هونغ كونغ وتايوان، وسرعة الوصول من الصين جيدة
+- الحد الأقصى للحجم المجاني هو 20 جيجابايت، وهو كافٍ
+- لا يوجد حد لعدد المواقع وعدد Serverless API
+- دعم Serverless لـ Node.js و Go و Python و Ruby
+- دعم now.sh CLI و GitHub و GitLab و Bitbucket للاستيراد / النشر
 
-## Cómo usarlo
+## الاستخدام
 
-La configuración es sencilla, así que solo proporcionaré una breve explicación en texto.
+نظرًا لأن خطوات التكوين ليست معقدة، فسأشرحها بشكل موجز فقط.
 
-1. Inicia sesión con tu cuenta de GitHub
-2. Importa tu sitio web (importa directamente desde el repositorio de GitHub)
-3. Configura las instrucciones de despliegue (para la plataforma VuePress, se puede dejar en blanco)
-4. Configura la ruta de salida (para VuePress, es `docs/.vuepress/dist`)
-5. Asegúrate de establecer la rama de producción como `gh-pages` en la configuración
-6. Asocia tu dominio
+1. تسجيل الدخول مباشرة باستخدام حساب GitHub
+2. استيراد الموقع (استيراد مستودع GitHub مباشرة)
+3. تكوين تعليمات النشر (يمكن ترك منصة VuePress فارغة)
+4. تكوين مسار الإخراج (VuePress هو `docs/.vuepress/dist`)
+5. يجب تعيين فرع الإنتاج على `gh-pages` في الإعدادات
+6. ربط النطاق
 
-## Notas
+## تنبيه
 
-Asegúrate de escribir un mensaje de commit de más de 1 carácter, de lo contrario, no se desplegará.
+يجب كتابة رسالة commit message تزيد عن حرف واحد، وإلا لن يتم النشر.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
 - [Vercel](https://vercel.com/)
-- [ZEIT (Vercel) now.sh Free Deployment of Blog Websites, Supporting Serverless Python Go Node.js](https://wivwiv.com/post/zeit-use-guide/)
+- [ZEIT (Vercel) now.sh 免费部署博客网站，支持 Serverless Python Go Node.js](https://wivwiv.com/post/zeit-use-guide/)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

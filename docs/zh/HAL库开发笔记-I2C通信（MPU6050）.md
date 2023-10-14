@@ -6,13 +6,13 @@
 
 ### I2C 通信
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211026174634.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211026174634.png)
 
 I2C 通信的基本原理可跳转文章 [**通信协议 - I2C**](https://wiki-power.com/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-I2C)
 
 ### MPU6050 模组
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220404145145.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220404145145.png)
 
 模组的引脚定义：
 
@@ -302,7 +302,7 @@ double Kalman_getAngle(Kalman_t *Kalman, double newAngle, double newRate, double
 
 在 CubeMX 左侧功能分类栏选择 `通信` - `I2Cx`，将 I2C 的选项设置从 `disable` 更改为 `I2C`，并在弹出的配置界面配置参数（默认即可）：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220403190116.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220403190116.png)
 
 ### 在代码内配置 I2C 读取 MPU6050 返回的信息
 

@@ -7,16 +7,16 @@ This tutorial is based on the [**Fanke STM32F407 control core board**](https://i
 The DP83848 interface is RMII, and it supports 10M/100M line speed. The board has a 50MHz passive crystal oscillator.
 
 | STM32 Control Core | DP83848 Module |
-| ----------- | ------------ |
-| ETH_REF_CLK | PA1          |
-| ETH_MDIO    | PA2          |
-| ETH_MDC     | PC1          |
-| ETH_CRS_DV  | PA7          |
-| ETH_RXD0    | PC4          |
-| ETH_RXD1    | PC5          |
-| ETH_TX_EN   | PB11         |
-| ETH_TXD0    | PB12         |
-| ETH_TXD1    | PB13         |
+| ------------------ | -------------- |
+| ETH_REF_CLK        | PA1            |
+| ETH_MDIO           | PA2            |
+| ETH_MDC            | PC1            |
+| ETH_CRS_DV         | PA7            |
+| ETH_RXD0           | PC4            |
+| ETH_RXD1           | PC5            |
+| ETH_TX_EN          | PB11           |
+| ETH_TXD0           | PB12           |
+| ETH_TXD1           | PB13           |
 
 ## Software
 
@@ -48,7 +48,7 @@ The DP83848 interface is RMII, and it supports 10M/100M line speed. The board ha
 
 Clock tree configuration: configured according to the onboard crystal oscillator (8M for this board).
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220702145310.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220702145310.png)
 
 ### Adding functional code
 
@@ -142,7 +142,8 @@ LwIP provides three programming interfaces: RAW/Callback API, NETCONN API, and S
 
 > Article author: **Power Lin**
 > Original address: <https://wiki-power.com>
-> Copyright statement: The article is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). 
+> Copyright statement: The article is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh).
 > Please indicate the source when reprinting.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.
+```

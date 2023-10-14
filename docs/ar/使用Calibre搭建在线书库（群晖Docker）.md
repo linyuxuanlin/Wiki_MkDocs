@@ -1,60 +1,60 @@
-# Cómo construir una biblioteca en línea con Calibre (Docker en Synology)
+# استخدام Calibre لإنشاء مكتبة على الإنترنت (Docker Synology)
 
-Cómo construir una biblioteca en línea con calibre-web (Docker) en Synology NAS.
+كيفية إنشاء مكتبة على الإنترنت باستخدام calibre-web (Docker) على Synology NAS.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210429125418.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210429125418.png)
 
-En comparación con el método tradicional de usar carpetas, el método de gestión de bibliotecas representado por Calibre de código abierto puede proporcionar funciones más ricas, como lectura en línea, descarga, conversión de formato, envío por correo electrónico, eliminación de libros duplicados, etc. Calibre-web es una imagen de Docker basada en Calibre que nos permite implementar la biblioteca en servidores como Synology de manera muy conveniente.
+بالمقارنة مع الطريقة التقليدية باستخدام المجلدات ، فإن طريقة إدارة المكتبة التي تمثلها Calibre مفتوحة المصدر توفر ميزات أكثر ثراءً مثل القراءة عبر الإنترنت والتنزيل وتحويل التنسيق والإرسال إلى البريد الإلكتروني وإزالة الكتب المكررة. calibre-web هو صورة Docker مبنية على Calibre ، ويمكننا بسهولة نشر مكتبتنا على خوادم مثل Synology.
 
-## Crear una carpeta inicial
+## إنشاء مجلد أولي
 
-En primer lugar, cree una carpeta de recursos de biblioteca. Aquí, creé una carpeta compartida llamada `book` directamente en la raíz del disco:
+أولاً ، قم بإنشاء مجلد موارد المكتبة ، حيث قمت بإنشاء مجلد مشترك باسم `book` مباشرةً في جذر القرص:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210429214028.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210429214028.png)
 
-En consecuencia, cree una carpeta llamada `calibre-web` en la carpeta `docker`, que se utiliza específicamente para almacenar los archivos de configuración de la imagen de Docker.
+على النحو المناسب ، قم بإنشاء مجلد باسم `calibre-web` داخل مجلد `docker` ، وهو مخصص لتخزين ملفات تكوين صور Docker.
 
-## Crear contenedor
+## إنشاء حاوية
 
-Abra el paquete Docker de Synology, busque `johngong/calibre-web` en el registro, descárguelo haciendo doble clic y luego inicialice el contenedor y haga clic en la configuración avanzada.
+افتح حزمة Docker على Synology ، وابحث في السجل عن `johngong/calibre-web` ، وبعد التنزيل ، قم بتهيئة الحاوية وانقر فوق الإعدادات المتقدمة.
 
-En la página `Volumen`, agregue carpetas de mapeo y cargue las rutas `/library` y `/config` respectivamente:
+في صفحة `الحجم` ، أضف مجلدات الربط ، وهي `/library` و `/config` على التوالي:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210429214908.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210429214908.png)
 
-En la página `Configuración de puerto`, agregue el mapeo de puerto y principalmente mapee el puerto `8083` interno del contenedor. Aquí elegí `5004`.
+في صفحة `إعدادات المنفذ` ، أضف ربط المنفذ ، حيث يتم ربط المنفذ الداخلي `8083` في الحاوية بالخارج ، وهنا اخترت `5004`.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210429215121.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210429215121.png)
 
-Luego, cree y ejecute el contenedor.
+ثم قم بإنشاء وتشغيل الحاوية.
 
-## Ejecutar prueba
+## تشغيل الاختبار
 
-Abra la dirección IP interna de Synology: 5004 para abrir la interfaz de administración. La cuenta predeterminada es `admin` y la contraseña es `admin123`.
+افتح عنوان IP الداخلي لـ Synology مع المنفذ 5004 لفتح واجهة الإدارة ، واسم المستخدم الافتراضي هو `admin` وكلمة المرور هي `admin123`
 
-Tenga en cuenta que la función de carga de libros no está habilitada de forma predeterminada. Debe hacer clic en `Permisos de administración` - `Editar configuración básica` - `Habilitar carga` en orden para habilitar la función de carga de libros.
+يجب ملاحظة أنه لا يوجد وظيفة تحميل الكتب افتراضيًا ، ويجب النقر على `أذونات الإدارة` - `تحرير التكوين الأساسي` - `تمكين التحميل` بالترتيب لتمكين وظيفة تحميل الكتب.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210429215628.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210429215628.png)
 
-## Habilitar HTTPS
+## تمكين HTTPS
 
-### Usar el proxy inverso incorporado en Synology (recomendado)
+### استخدام الوكيل العكسي المدمج في Synology (موصى به)
 
-Puede consultar el tutorial específico en el artículo [**Implementar acceso HTTPS con proxy inverso incorporado en Synology**](https://wiki-power.com/es/%E7%94%A8%E7%BE%A4%E6%99%96%E8%87%AA%E5%B8%A6%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0HTTPS%E8%AE%BF%E9%97%AE).
+يمكنك الرجوع إلى المقالة [**استخدام الوكيل العكسي المدمج في Synology للوصول إلى HTTPS**](https://wiki-power.com/ar/%E7%94%A8%E7%BE%A4%E6%99%96%E8%87%AA%E5%B8%A6%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0HTTPS%E8%AE%BF%E9%97%AE) لمعرفة التفاصيل.
 
-### Método de agregar certificado directamente
+### طريقة إضافة الشهادة مباشرةً
 
-Copia el certificado y el archivo de clave que ha solicitado en la carpeta `docker/calibre-web/`.
+قم بنسخ ملف الشهادة وملف المفتاح الخاص إلى مجلد `docker / calibre-web /`.
 
-Luego, en calibre-web, haga clic en `Permisos de administración` - `Editar configuración básica` - `Configuración del servidor` en orden para configurar la ruta del archivo de certificado SSL y clave (por ejemplo, `/config/wiki-power.com.cer` y `/config/wiki-power.com.key`), y luego haga clic en Guardar.
+ثم في calibre-web ، انقر على `أذونات الإدارة` - `تحرير التكوين الأساسي` - `تكوين الخادم` ، وقم بتكوين مسار ملف شهادة SSL وملف المفتاح (على سبيل المثال ، `/config/wiki-power.com.cer` و `/config/wiki-power.com.key`) ، ثم انقر فوق حفظ.
 
-De esta manera, puede habilitar el acceso HTTPS.
+بهذه الطريقة ، يمكنك تمكين الوصول إلى HTTPS.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Instalación del sistema de gestión de libros calibre-web en Synology Docker](https://www.chrno.cn/index.php/docker/15.html)
+- [تثبيت نظام إدارة الكتب calibre-web على Synology باستخدام Docker](https://www.chrno.cn/index.php/docker/15.html)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

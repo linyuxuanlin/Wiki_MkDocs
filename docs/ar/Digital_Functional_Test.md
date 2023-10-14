@@ -1,36 +1,36 @@
-# Prueba Funcional Digital 🚧
+# اختبار الوظائف الرقمية 🚧
 
-> Esta publicación solo está disponible en inglés.
+> هذا المنشور متاح فقط باللغة الإنجليزية.
 
-## Referencias y Agradecimientos
+## المراجع والاعترافات
 
-- _Los Fundamentos de la Prueba de Semiconductores Digitales_
-- _Fundamentos de la Prueba Utilizando ATE_
+- _أساسيات اختبار الشرائح الرقمية_
+- _أساسيات الاختبار باستخدام ATE_
 
-> Original: <https://wiki-power.com/>  
-> Esta publicación está protegida por el acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en), debe ser reproducida con atribución.
+> المصدر: <https://wiki-power.com/>  
+> يتم حماية هذا المنشور باتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) ، يجب إعادة إنتاجه بالإضافة إلى الإشارة إلى المصدر.
 
-## Tiempo de Conducción y Comparación
+## توقيت الدفع والمقارنة
 
-- D0 o Conducción Encendida: Inicio del ciclo para cada canal.
-- D1 o Conducción de Datos: Inicio del pulso de conducción para cada canal.
-- D2 o Retorno de Conducción: Fin del pulso de conducción para cada canal.
-- D3 o Conducción Apagada: Tiempo del interruptor de E/S.
-- R0 o Inicio de Comparación (Encendido): Inicio de la ventana de comparación para cada canal (disparo de ventana).
-- R1 o Fin de Comparación (Apagado): Fin de la ventana de comparación para cada canal (disparo de ventana) o borde de disparo.
+- D0 أو Drive On: بداية الدورة لكل قناة
+- D1 أو Drive Data: بداية نبضة الدفع لكل قناة
+- D2 أو Drive Return: نهاية نبضة الدفع لكل قناة
+- D3 أو Drive Off: وقت تبديل المدخل / الإخراج
+- R0 أو Compare Start (On): بداية نافذة المقارنة لكل قناة (نبضة النافذة)
+- R1 أو Compare End (Off): نهاية نافذة المقارنة لكل قناة (نبضة النافذة) أو نبضة الحافة
 
-## Solución de Problemas de Depuración Funcional Digital
+## استكشاف الأخطاء وإصلاحها في الاختبار الرقمي
 
-1. Reducir la frecuencia de prueba.
-2. Ver la forma de onda real, modificar la posición de comparación.
-3. Repetir las líneas de patrón varias veces para evitar la influencia del tiempo de configuración.
-4. Utilizar el método Shmoo para analizar.
-5. Cambiar el orden de ejecución de la prueba, para evitar la interacción entre pruebas.
-6. Prestar atención al Modo de Conductor Electrónico de Pin.
-7. ¿Vt, Hi-Z, Largeswing-VT1K o Smallswing-VT?
-   - Hi-Z: se utilizará el puente de equilibrio para la conducción, y VCOM se utilizará para las cargas de corriente.
-   - Vt: conectarse directamente al nivel Vt a través de una resistencia de 50Ω. Si la salida del DUT está funcionando a alta velocidad, el uso de VT resulta en menos reflexiones vistas por el comparador.
-8. Verificar si TDR está calibrado.
-9. Defectos con el patrón en sí mismo.
+1. تقليل تردد الاختبار.
+2. عرض الموجة الفعلية ، وتعديل موضع المقارنة.
+3. تكرار خطوط النمط لمرات أكثر لمنع تأثير وقت الإعداد.
+4. استخدام طريقة Shmoo للتحليل.
+5. تبديل ترتيب تنفيذ الاختبار ، لمنع التفاعل بين الاختبارات.
+6. الانتباه إلى وضع محرك الدبابيس الإلكتروني.
+7. Vt ، Hi-Z ، Largeswing-VT1K أو Smallswing-VT؟
+   - Hi-Z: سيتم استخدام جسر التوازن للقيادة ، وسيتم استخدام VCOM لتحميل التيار.
+   - Vt: يتصل مباشرة بمستوى Vt من خلال مقاومة 50Ω. إذا كان إخراج DUT يعمل بسرعة عالية ، فإن استخدام VT يؤدي إلى رؤية أقل للاهتزازات من قبل المقارن.
+8. التحقق مما إذا كان TDR معايرًا.
+9. عيوب في النمط نفسه.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

@@ -5,7 +5,7 @@
 **Sublime Text** is a very powerful text editor. As I will be taking Python-related courses next semester, and tools like Pycharm have a somewhat unattractive UI, I want to try to turn Sublime Text into a Python development tool.
 
 Customized effect picture:  
-![](https://f004.backblazeb2.com/file/wiki-media/img/ST3效果.png)
+![](https://img.wiki-power.com/d/wiki-media/img/ST3效果.png)
 
 ## [Minimal Deployment](https://www.jianguoyun.com/p/Da9TMr0Q-OOjBxif86sB)
 
@@ -61,7 +61,7 @@ The following code can be added to the user settings:
 
 The following plugins can be installed directly through `Package Control`.
 
-**StyleToken**: displays the color (RGB) represented by the code. 
+**StyleToken**: displays the color (RGB) represented by the code.
 
 **FileHeader**: customizes file templates. Open `Preferences -> Package Settings -> FileHeader -> Settings - User`, copy the contents of `Default` to `User`, and modify personal information such as:
 
@@ -75,10 +75,10 @@ The following plugins can be installed directly through `Package Control`.
 }
 ```
 
-Modify the template content in `Preferences -> Browse Packages... -> FileHeader -> template -> header or body`. 
+Modify the template content in `Preferences -> Browse Packages... -> FileHeader -> template -> header or body`.
 
 Effect:  
- ![](https://f004.backblazeb2.com/file/wiki-media/img/ST3 模板效果。png)
+ ![](https://img.wiki-power.com/d/wiki-media/img/ST3 模板效果。png)
 
 ### Running Python
 

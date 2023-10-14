@@ -36,7 +36,7 @@ Set it according to the board situation.
 
 For example, referring to the board schematic:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210205205030.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210205205030.png)
 
 Set both `HSE` and `LSE` options to external crystal.
 
@@ -44,7 +44,7 @@ Set both `HSE` and `LSE` options to external crystal.
 
 Configure in the `Clock Configuration` interface.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210205205550.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210205205550.png)
 
 Follow the steps in the above figure:
 
@@ -55,9 +55,9 @@ Follow the steps in the above figure:
 
 ### Configuring Project Management Options
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210130095224.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210130095224.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210130095239.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210130095239.png)
 
 ## Differences between HAL Library and Standard Library
 

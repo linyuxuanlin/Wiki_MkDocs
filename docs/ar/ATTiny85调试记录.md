@@ -19,7 +19,7 @@ P:\Arduino\hardware\tools\avr/bin/avrdude -C "P:\Arduino\hardware\tools\avr/etc/
 
 أولاً ، حرق برنامج ISP على Arduino:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200426144425.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200426144425.png)
 
 افتح تفضيلات IDE واملأ عنوان لوحة التطوير الإضافية:
 
@@ -29,15 +29,15 @@ https://raw.githubusercontent.com/damellis/attiny/ide-1.6.x-boards-manager/packa
 
 افتح مدير لوحة التطوير:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200426144642.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200426144642.png)
 
 ابحث وقم بتثبيت (قد يحتاج إلى وكيل):
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200426144732.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200426144732.png)
 
 عند الحرق ، تأكد من اختيار نوع الرقاقة الصحيح وسرعة الساعة (16 ميجاهرتز داخليًا) ومنفذ Arduino ، وتأكد من اختيار برنامج الترميز "Arduino as ISP":
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200426144834.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200426144834.png)
 
 ## استنتاج
 

@@ -4,7 +4,7 @@
 
 El Convertidor Digital a Analógico (DAC) es un dispositivo que convierte una secuencia de datos de entrada digital en señales analógicas.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011141644.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221011141644.png)
 
 ## Parámetros Estáticos
 
@@ -18,7 +18,7 @@ Los parámetros estáticos del DAC contienen principalmente:
 - Error de no linealidad diferencial (DNE o DNL)
 - Error de no linealidad integral (INE o INL)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011144045.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221011144045.png)
 
 ### Salida de escala cero
 
@@ -28,7 +28,7 @@ La **Salida de escala cero** es el valor de salida medido cuando se presenta el 
 
 El rango de voltaje de salida del DAC entre las salidas analógicas mínima ($V_{ZS}$) y máxima ($V_{FS}$) se llama **Rango de escala completa (FSR)**:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011142249.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221011142249.png)
 
 ### Tamaño del LSB
 
@@ -46,7 +46,7 @@ $$
 ErrorDeDesplazamiento=V_{ZS(Real)}-V_{ZS(Ideal)}
 $$
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011144415.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221011144415.png)
 
 ### Error de ganancia
 
@@ -66,7 +66,7 @@ $$
 FSR_{Real}=V_{FS(Real)}-V_{ZS(Real)}
 $$
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011144925.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221011144925.png)
 
 ### Error de no linealidad diferencial (DNL)
 
@@ -80,7 +80,7 @@ donde $V_{in2}$ es el voltaje de la transición superior, $V_{in1}$ es el inferi
 
 DNL es una medida del error de linealidad de "señal pequeña". La medición de DNL se realiza de un paso al siguiente, no de cada paso al valor ideal.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011153556.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221011153556.png)
 
 ### Error de no linealidad integral (INL)
 
@@ -100,7 +100,7 @@ $$
 INL[i]=\sum_{n=1}^{n=i}DNL[n]
 $$
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011184739.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221011184739.png)
 
 ## Cómo probar parámetros estáticos
 
@@ -108,21 +108,21 @@ $$
 
 Configuración del sistema de prueba para pruebas de parámetros estáticos de DAC:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011185006.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221011185006.png)
 
 Diagrama de bloques de la configuración de la señal:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011185447.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221011185447.png)
 
 ### Concepto de pruebas
 
 El procedimiento para probar los parámetros estáticos de un DAC DUT se muestra a continuación.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011185739.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221011185739.png)
 
 #### 1. Medir el voltaje de salida aplicando las entradas de datos digitales desde Cero Escala hasta Escala Completa
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221011185711.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221011185711.png)
 
 #### 2. Calcular DNL para cada código de entrada
 
@@ -144,8 +144,8 @@ $$
 
 ## Referencias y Agradecimientos
 
-- *Fundamentos de Pruebas Usando ATE*
-- *The-Fundamentals-of-Mixed-Signal-Testing_Brian-Lowe*
+- _Fundamentos de Pruebas Usando ATE_
+- _The-Fundamentals-of-Mixed-Signal-Testing_Brian-Lowe_
 
 > Original: <https://wiki-power.com/>  
 > Este post está protegido por el acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en), debe ser reproducido con atribución.

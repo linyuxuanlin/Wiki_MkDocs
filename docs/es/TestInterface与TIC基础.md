@@ -8,13 +8,13 @@ En las pruebas de semiconductores, **TIC (Test Interface Controller, Controlador
 
 Dado que la filosofía de AMBA es aislar las pruebas de cada módulo individual en el sistema, cada prueba de módulo depende solo de la interfaz del bus, por lo que se necesita un método de prueba para probar las entradas y salidas de los periféricos no conectados al bus.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202308262214877.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202308262214877.png)
 
 Este método de prueba se puede implementar a través de la Interfaz de Prueba. Utiliza un simple protocolo de tres vías para controlar la lectura y escritura de vectores; al mismo tiempo, utiliza la **EBI (External Bus Interface, Interfaz de Bus Externo)** como ruta de datos para importar vectores externos a los buses internos.
 
 ## Pines de la Interfaz de Prueba
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202308262225257.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202308262225257.png)
 
 Como se puede ver en la figura anterior, los pines de la Interfaz de Prueba constan de tres partes:
 
@@ -34,22 +34,22 @@ En la configuración mínima, la Interfaz de Prueba solo necesita TREQA y TACK c
 
 Cuando el sistema está funcionando normalmente, la tabla de verdad controlada por tres líneas de la Interfaz de Prueba es la siguiente:
 
-| TREQA | TREQB | TACK | Estado                    |
-| ----- | ----- | ---- | ------------------------ |
+| TREQA | TREQB | TACK | Estado                                      |
+| ----- | ----- | ---- | ------------------------------------------- |
 | 0     | 0     | 0    | Funcionamiento normal, no en modo de prueba |
-| 1     | 0     | 0    | Solicita entrar en modo de prueba |
-| 0     | 1     | 0    | Reservado para solicitudes de host externo |
-| -     | -     | 1    | Ya se encuentra en modo de prueba |
+| 1     | 0     | 0    | Solicita entrar en modo de prueba           |
+| 0     | 1     | 0    | Reservado para solicitudes de host externo  |
+| -     | -     | 1    | Ya se encuentra en modo de prueba           |
 
 Inicialmente, TREQA está en bajo nivel, lo que indica que aún no se ha entrado en el modo de prueba. Cuando TREQA se establece en alto nivel, se solicita entrar en el modo de prueba. Luego, cuando TACK emite un nivel alto, indica que TIC permite entrar en el modo de prueba. En este momento, TCLK se convierte en la fuente de reloj interno. Una vez que se entra en el modo de prueba, los valores en las tres líneas y los estados del sistema correspondientes son los siguientes:
 
-| TREQA | TREQB | TACK | Estado                             |
-| ----- | ----- | ---- | ---------------------------------- |
-| -     | -     | 0    | La operación actual aún no se ha completado |
+| TREQA | TREQB | TACK | Estado                                          |
+| ----- | ----- | ---- | ----------------------------------------------- |
+| -     | -     | 0    | La operación actual aún no se ha completado     |
 | 1     | 1     | 1    | Vector de dirección/control/cambio de dirección |
-| 1     | 0     | 1    | Vector de prueba de escritura |
-| 0     | 1     | 1    | Vector de prueba de lectura |
-| 0     | 0     | 1    | Salir del modo de prueba |
+| 1     | 0     | 1    | Vector de prueba de escritura                   |
+| 0     | 1     | 1    | Vector de prueba de lectura                     |
+| 0     | 0     | 1    | Salir del modo de prueba                        |
 
 A continuación, se puede establecer TREQB en alto para cargar el Vector de dirección. Luego, se pueden realizar operaciones de lectura/escritura. Cuando se necesita salir del modo de prueba, primero se debe ingresar un Vector de dirección para asegurarse de que todas las transferencias internas se hayan completado. Luego, se deben establecer TREQA y TREQB en bajo nivel para indicar que se está saliendo del modo de prueba. Finalmente, TACK emitirá un nivel bajo, indicando que se ha salido del modo de prueba.
 

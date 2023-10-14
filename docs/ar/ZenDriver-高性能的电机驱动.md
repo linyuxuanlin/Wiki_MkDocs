@@ -1,45 +1,45 @@
-# ZenDriver - Controlador de motor de alto rendimiento
+# ZenDriver - محرك كهربائي عالي الأداء
 
-- Basado en la versión V5.1 Release
+- استنادًا إلى إصدار V5.1 Release
 
-Repositorio del proyecto: [**linyuxuanlin/ZenDriver**](https://github.com/linyuxuanlin/ZenDriver)
+مستودع المشروع: [**linyuxuanlin/ZenDriver**](https://github.com/linyuxuanlin/ZenDriver)
 
-## Parámetros básicos
+## المعلمات الأساسية
 
-1. Voltaje de entrada: **7.2 ~ 20 V**
-2. Corriente de salida: **0 ~ 68 A**
-3. Proporciona una salida de alimentación de **5V 1.5A**, que puede ser utilizada por el controlador
-4. Dispositivos de protección: circuito integrado de protección contra polaridad inversa y aislamiento óptico
+1. الجهد المدخل: **7.2 ~ 20 V**
+2. التيار الناتج: **0 ~ 68 A**
+3. يوفر مخرج طاقة **5V 1.5A** للاستخدام من قبل المتحكم
+4. الأجهزة الواقية: دوائر الحماية المتكاملة للحماية من العكس والعزل الضوئي
 
-## Definición de interfaces
+## تعريف الواجهة
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200125192433.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200125192433.png)
 
-En el **lado del motor**, de izquierda a derecha, se encuentran: **M-, 5V, codificador A, codificador B, GND, M+**, correspondientes a los pines del motor, que se pueden conectar directamente al motor.
+**الجانب الكهربائي للمحرك** من اليسار إلى اليمين: **M-، 5V، مُشفر A، مُشفر B، GND، M+**، وهي تتوافق مع دبابيس المحرك ويمكن توصيلها مباشرة بالمحرك.
 
-En el **lado de la señal**, de derecha a izquierda, se encuentran: **GND, codificador B, codificador A, IN2, IN1, 5V**. Tenga en cuenta que el puerto de 5V **puede proporcionar energía para el microcontrolador** (máximo 1.5 A).
+**الجانب الإشارة** من اليمين إلى اليسار: **GND، مُشفر B، مُشفر A، IN2، IN1، 5V**. يرجى ملاحظة: يمكن استخدام منفذ 5V لتوفير الطاقة للميكروكنترولر (حتى 1.5 A).
 
-En la **entrada de alimentación**, los tres puertos son universales, y se recomienda conectar la batería al puerto central, y los otros dos puertos se pueden utilizar para expandir la alimentación a otras placas de control.
+**مدخل الطاقة** يتم استخدام ثلاث واجهات بشكل عام ، ويوصى عادة باستخدام الواجهة الوسطى لتوصيل البطارية ، واستخدام واجهتين جانبيتين لتوسيع الطاقة للوحدات الأخرى.
 
-## Guía de uso
+## دليل الاستخدام
 
-### Prueba de alimentación directa
+### اختبار التشغيل المباشر
 
-1. Conecte una batería de **7.2 ~ 20 V**
-2. Conecte el motor
-3. Conecte **IN1, IN2** a la salida de **5V** en el **lado de la señal**, y el motor girará en ambas direcciones.
+1. توصيل البطارية بجهد **7.2 ~ 20 V**
+2. توصيل المحرك
+3. توصيل **5V** من الجانب الإشارة بالترتيب إلى **IN1، IN2** ، وسيتم تشغيل المحرك في الاتجاهين.
 
-### Prueba de conexión al microcontrolador
+### اختبار الاتصال بالميكروكنترولر
 
-1. Conecte una batería de **7.2 ~ 20 V**
-2. Conecte el motor
-3. Conecte **GND** en el **lado de la señal** al **GND** del microcontrolador, y el puerto **5V** al **5V** del microcontrolador.
-4. Conecte los pines **IN1, IN2** al puerto PWM del microcontrolador.
-5. Depure el código.
+1. توصيل البطارية بجهد **7.2 ~ 20 V**
+2. توصيل المحرك
+3. توصيل **GND** من الجانب الإشارة بـ **GND** الميكروكنترولر ، وتوصيل منفذ **5V** بـ **5V** الميكروكنترولر.
+4. توصيل دبوس **IN1، IN2** بمنفذ PWM الميكروكنترولر
+5. تصحيح الأخطاء في الكود
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200125192734.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200125192734.png)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

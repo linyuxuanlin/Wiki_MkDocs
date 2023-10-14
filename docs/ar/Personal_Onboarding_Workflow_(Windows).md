@@ -1,58 +1,58 @@
-# Flujo de trabajo personal de incorporación (Windows)
+# سير العمل الشخصي للتدريب (ويندوز)
 
-> Esta publicación solo está disponible en inglés.
+> هذا المنشور متاح باللغة الإنجليزية فقط.
 
-## Configuraciones
+## الإعدادات
 
-### Inicialización
+### التهيئة الأولية
 
-- Inicie Windows sin una cuenta de Microsoft.
-- Abra el diagnóstico (para la versión de desarrollo).
-- Verifique las actualizaciones del sistema y los controladores.
+- تشغيل Windows بدون حساب Microsoft.
+- فتح التشخيص (لإصدار التطوير).
+- التحقق من تحديث النظام والتعريفات.
 
-### Configuraciones del sistema
+### إعدادات النظام
 
-- Sistema
-  - Multitarea
-    - No mostrar pestañas de Edge
-  - Pantalla
-    - Luz nocturna
-  - Escritorio remoto - encendido
-- Personalización
-  - Tema oscuro
-  - Fondo de pantalla y pantalla de bloqueo
-  - Barra de tareas
-- Privacidad y seguridad
-  - Permisos de búsqueda - desactivados
-  - Para desarrolladores - encendido
-- Actualización de Windows
+- النظام
+  - التعددية
+    - عدم إظهار علامات تبويب Edge
+  - العرض
+    - Night Light
+  - سطح المكتب البعيد - تشغيل
+- التخصيص
+  - السمة الداكنة
+  - الخلفية وشاشة القفل
+  - شريط المهام
+- الخصوصية والأمان
+  - إذن البحث - إيقاف
+  - للمطورين - تشغيل
+- تحديث Windows
 
-### Otras configuraciones
+### إعدادات أخرى
 
-- Rendimiento máximo (powershell - `powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61`)
-- Explorador de archivos
-  - Barra lateral
-- Configuraciones de controladores NVIDIA e Intel
-- Formato de idioma / hora / escritura
-- Edge: habilitar [**descarga paralela**](edge://flags/#enable-parallel-downloading)
-- Desactivar hibernación: `powercfg /hibernate off`
+- الأداء النهائي (powershell - `powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61`)
+- مستكشف الملفات
+  - الشريط الجانبي
+- إعدادات برنامج تشغيل NVIDIA و Intel
+- تنسيق اللغة / الوقت / الكتابة
+- Edge: تمكين [**parallel downloading**](edge://flags/#enable-parallel-downloading)
+- إيقاف تشغيل السبات: `powercfg /hibernate off`
 - frp
 
-## Instalación de software
+## تثبيت البرامج
 
-### Ejecutable
+### تنفيذي
 
 - HuoRong Security
-- Synology Drive (con configuraciones)
-- [Visual Studio Code Insiders](https://code.visualstudio.com/insiders/) (con configuraciones)
-- (Solo para Matebook) Huawei PC Manager (con configuraciones)
-- Logi Options+ (con configuraciones)
-- [Powertoys](https://github.com/microsoft/PowerToys/releases) (con copia de seguridad)
-- Wechat (con configuraciones)
+- Synology Drive (مع الإعدادات)
+- [Visual Studio Code Insiders](https://code.visualstudio.com/insiders/) (مع الإعدادات)
+- (فقط لـ Matebook) Huawei PC Manager (مع الإعدادات)
+- Logi Options+ (مع الإعدادات)
+- [Powertoys](https://github.com/microsoft/PowerToys/releases) (مع النسخ الاحتياطي)
+- Wechat (مع الإعدادات)
 - [Git](https://git-scm.com/downloads)
 - [GitHub Desktop](https://desktop.github.com/)
 
-### Portátil (sincronizado con Synology Drive)
+### محمول (مزامنة مع Synology Drive)
 
 - 0_init
 - Clash
@@ -70,19 +70,19 @@
 - SumatraPDF
 - JPEGView
 - Telegram
-- Peazip (con asociaciones de archivos e integración en el menú del sistema)
+- Peazip (مع ارتباطات الملفات والتكامل في القائمة النظامية)
 - DeepL
 
-### Microsoft Store
+### متجر Microsoft
 
-- (Solo para Matebook) Centro de comando de gráficos Intel® (Beta)
+- (فقط لـ Matebook) Intel® Graphics Command Center (Beta)
 
-## Desinstalación de software
+## إلغاء تثبيت البرامج
 
-- Onedrive (por HiBit Uninstaller)
-- Aplicaciones innecesarias de Windows (por Win10Apps)
+# Onedrive (بواسطة HiBit Uninstaller)
+# تطبيقات Windows غير الضرورية (بواسطة Win10Apps)
 
-> Original: <https://wiki-power.com/>  
-> Este artículo está protegido por el acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) y debe ser reproducido con atribución.
+> الأصل: <https://wiki-power.com/>  
+> يتم حماية هذا المنشور باتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) ويجب إعادة إنتاجه بالإشارة إلى المصدر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

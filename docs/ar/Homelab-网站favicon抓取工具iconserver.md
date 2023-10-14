@@ -1,12 +1,12 @@
-# Homelab - Herramienta de captura de favicon del sitio web iconserver
+# Homelab - أداة جلب رمز موقع favicon iconserver
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230304195157.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20230304195157.png)
 
-**iconserver** es una herramienta de captura de iconos favicon de sitios web. Admite la captura de `favicon.ico` y `apple-touch-icon.png`, tiene una API de URL simple y una página de operación web. Si la captura falla, se generará un favicon que comienza con la primera letra.
+**iconserver** هي أداة جلب رمز موقع favicon. تدعم جلب `favicon.ico` و `apple-touch-icon.png` ، وتحتوي على واجهة برمجة تطبيقات URL وصفحة عمليات ويب بسيطة. إذا فشل جلب الرمز ، فسيتم إنشاء رمز بحرف أول.
 
-## Implementación (docker-compose)
+## التنصيب (docker-compose)
 
-Primero, cree el archivo `compose.yaml` y pegue el siguiente contenido:
+أولاً ، قم بإنشاء ملف `compose.yaml` والصق المحتوى التالي:
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -19,26 +19,26 @@ services:
     restart: always
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `iconserver`).
+(اختياري) يوصى بإنشاء ملف `.env` في نفس مستوى `compose.yaml` وتخصيص المتغيرات البيئية الخاصة بك. إذا كنت لا ترغب في استخدام المتغيرات البيئية ، فيمكنك تخصيص المعلمات مباشرة في `compose.yaml` (على سبيل المثال ، استبدال `${STACK_NAME}` بـ `iconserver`).
 
 ```dotenv title=".env"
 STACK_NAME=iconserver
 
 # iconserver
 APP_VERSION=latest
-APP_PORT=xxxx # Personalice el puerto de acceso, simplemente elija uno que no esté ocupado
+APP_PORT=xxxx # اختر منفذًا مخصصًا للوصول إليه ، واختر أي منفذ غير مستخدم
 ```
 
-Por último, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores de la implementación.
+أخيرًا ، قم بتشغيل الأمر `docker compose up -d` في نفس مستوى `compose.yaml` لتشغيل حاويات الترتيب.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Documentación](https://github.com/mat/besticon#docker)
-- [Repositorio de GitHub](https://github.com/mat/besticon)
+- [الوثائق](https://github.com/mat/besticon#docker)
+- [مستودع GitHub](https://github.com/mat/besticon)
 - [Docker Hub](https://hub.docker.com/r/matthiasluedtke/iconserver)
-- [Sitio de demostración](https://besticon-demo.herokuapp.com/)
+- [موقع العرض التوضيحي](https://besticon-demo.herokuapp.com/)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

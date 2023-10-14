@@ -6,27 +6,27 @@
 
 **Fill in the relevant information as shown below and click the `Submit` button:**
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564402348383.png)
+![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564402348383.png)
 
 **Click on the download package:**
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564402469518.png)
+![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564402469518.png)
 
 ## 2. Installation
 
 **Open the downloaded installation package and follow the steps below:**
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564405005991.png)
+![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405005991.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564405034468.png)
+![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405034468.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564405123578.png)
+![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405123578.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564405166784.png)
+![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405166784.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564405201092.png)
+![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405201092.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564405260737.png)
+![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405260737.png)
 
 **Install the chip package (we need STM32 F1 and F4 series):**
 
@@ -36,23 +36,23 @@ Click to download the [**crack tool**](https://github.com/linyuxuanlin/File-host
 
 **Close MDK and right-click to open as administrator:**
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564406135091.png)
+![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406135091.png)
 
 **Open the menu bar - File - License Management:**
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564406171844.png)
+![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406171844.png)
 
 **Copy this `CID`:**
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564406230209.png)
+![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406230209.png)
 
 **Paste it in the crack tool, select `Arm` in the `Target` drop-down box, and click `Generate` to generate the activation code:**
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564406292113.png)
+![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406292113.png)
 
 **Copy the activation code, paste it into MDK, and click `Add LIC`:**
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/UTOOLS1564406431978.png)
+![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406431978.png)
 
 ## References and Acknowledgements
 

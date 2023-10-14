@@ -1,12 +1,12 @@
-# Homelab - Panel de gestión de certificados de proxy inverso Nginx Proxy Manager
+# Homelab - لوحة إدارة شهادات الوكيل العكسي Nginx Proxy Manager
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230408182138.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20230408182138.png)
 
-**Nginx Proxy Manager** es un panel gráfico de Nginx que permite a los usuarios configurar fácilmente un proxy inverso y solicitar certificados SSL para sitios web a través de una interfaz web, sin necesidad de conocer los detalles técnicos de Nginx/Letsencrypt.
+**Nginx Proxy Manager** هو لوحة تحكم رسومية لـ Nginx ، والتي تتيح للمستخدمين تكوين الوكيل العكسي وطلب شهادة SSL للمواقع على واجهة الويب بسهولة ، دون الحاجة إلى معرفة الكثير من تفاصيل Nginx / Letsencrypt.
 
-## Implementación (Docker Compose)
+## النشر (Docker Compose)
 
-Primero, cree el archivo `compose.yaml` y pegue el siguiente contenido:
+أولاً ، قم بإنشاء ملف `compose.yaml` والصق المحتوى التالي:
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -15,7 +15,7 @@ services:
     container_name: ${STACK_NAME}_app
     image: "jc21/nginx-proxy-manager:${APP_VERSION}"
     ports:
-      - "${APP_PORT}:81" # Dirección del panel
+      - "${APP_PORT}:81" # عنوان اللوحة
       - "80:80"
       - "443:443"
     volumes:
@@ -24,42 +24,42 @@ services:
     restart: unless-stopped
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar las variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar los parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `nginx-proxy-manager`).
+(اختياري) يوصى بإنشاء ملف `.env` في نفس مستوى `compose.yaml` وتخصيص المتغيرات الخاصة بك. إذا كنت لا ترغب في استخدام المتغيرات البيئية ، يمكنك تخصيص المعلمات الخاصة بك مباشرةً في `compose.yaml` (على سبيل المثال ، استبدال `${STACK_NAME}` بـ `nginx-proxy-manager`).
 
 ```dotenv title=".env"
 STACK_NAME=nginx-proxy-manager
-STACK_DIR=xxx # Ruta personalizada de almacenamiento del proyecto, por ejemplo, ./nginx-proxy-manager
+STACK_DIR=xxx # مسار تخزين المشروع المخصص ، على سبيل المثال ./nginx-proxy-manager
 
 # nginx-proxy-manager
 APP_VERSION=latest
-APP_PORT=81 # Por defecto es 81, consulte la documentación para cambiarlo
+APP_PORT=81 # الافتراضي هو 81 ، يرجى الرجوع إلى الوثائق للتغيير
 ```
 
-Por último, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores.
+أخيرًا ، يمكنك تشغيل الأمر `docker compose up -d` في نفس مستوى `compose.yaml` لتشغيل حاويات الترتيب.
 
-## Instrucciones de configuración
+## تعليمات التكوين
 
-Credenciales iniciales:
+اسم المستخدم وكلمة المرور الافتراضية:
 
-- Email: `admin@example.com`
-- Contraseña: `changeme`
+- البريد الإلكتروني: `admin@example.com`
+- كلمة المرور: `changeme`
 
-Obtenga la dirección IP de Docker:
+الحصول على عنوان IP لـ Docker:
 
 ```shell
 ip addr show docker0
 ```
 
-Nota: Para mejorar la seguridad, se recomienda acceder a los servicios de autohospedaje a través de un proxy inverso, utilizando un subdominio y los puertos 80/443, y cerrar todos los demás puertos en el firewall del servidor público.
+ملاحظة: يرجى استخدام الوكيل العكسي للخدمات الذاتية الاستضافة عن طريق ربط النطاقات الفرعية (80/443 منافذ) وإغلاق المنافذ الأخرى في لوحة التحكم العامة للخادم على الإنترنت لزيادة الأمان.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Sitio web oficial](https://nginxproxymanager.com)
-- [Documentación](https://nginxproxymanager.com/guide)
-- [Repositorio de GitHub](https://github.com/NginxProxyManager/nginx-proxy-manager)
+- [الموقع الرسمي](https://nginxproxymanager.com)
+- [الوثائق](https://nginxproxymanager.com/guide)
+- [مستودع GitHub](https://github.com/NginxProxyManager/nginx-proxy-manager)
 - [Docker Hub](https://hub.docker.com/r/jlesage/nginx-proxy-manager)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

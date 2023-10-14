@@ -6,9 +6,9 @@ A continuación se presentan tres modos de arranque:
 
 ## 1. Arranque desde la memoria flash principal
 
-| BOOT0 | BOOT1 |
-| :---: | :---: |
-|  Bajo | Cualquier |
+| BOOT0 |   BOOT1   |
+| :---: | :-------: |
+| Bajo  | Cualquier |
 
 Arranque desde la memoria flash en el chip (es decir, flash con parámetros de 64K / 128K / 256K), que generalmente se configura de esta manera en condiciones normales.
 
@@ -16,7 +16,7 @@ Arranque desde la memoria flash en el chip (es decir, flash con parámetros de 6
 
 | BOOT0 | BOOT1 |
 | :---: | :---: |
-| Alto | Bajo |
+| Alto  | Bajo  |
 
 Se requiere esta configuración para descargar programas a través de serie / ISP.
 
@@ -24,7 +24,7 @@ Se requiere esta configuración para descargar programas a través de serie / IS
 
 | BOOT0 | BOOT1 |
 | :---: | :---: |
-| Alto | Alto |
+| Alto  | Alto  |
 
 El arranque desde la SRAM incorporada tiene dos usos:
 
@@ -35,7 +35,7 @@ El arranque desde la SRAM incorporada tiene dos usos:
 
 En la tabla anterior, "alto" y "bajo" indican una resistencia de 10K conectada a VCC / GND, no una conexión directa a VCC / GND.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200603134417.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20200603134417.jpg)
 
 ## Referencia y agradecimiento
 

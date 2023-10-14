@@ -2,7 +2,7 @@
 
 Crea herramientas de productividad eficientes con VS Code.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200323155728.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200323155728.png)
 
 Jupyter Notebook es una herramienta muy poderosa que nos permite escribir, ejecutar y visualizar código, datos y resultados en un solo documento. En resumen, nos facilita mucho la tarea de escribir documentos que contienen código.
 
@@ -23,7 +23,7 @@ Después de configurar el entorno de Python local, también necesitamos instalar
 
 Después de configurar el entorno, puedes crear un cuaderno Jupyter en blanco (archivo `.ipynb`) en el panel de comandos de VS Code (`Ctrl + Shift + P`) escribiendo **Python: Create Blank New Jupyter**. A continuación, se muestra una prueba simple:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200323153020.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200323153020.png)
 
 Como se puede ver, el código se ejecuta correctamente.
 
@@ -31,47 +31,45 @@ Como se puede ver, el código se ejecuta correctamente.
 
 Jupyter Notebook utiliza **celdas de código (code cells)** para crear, editar y ejecutar código.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200323153717.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200323153717.png)
 
 ### Agregar celdas de código
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200323153850.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200323153850.png)
 
 ### Ejecutar una sola celda de código
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200323153939.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200323153939.png)
 
 ### Ejecutar varias celdas de código
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200323154005.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200323154005.png)
 
 ### Mover celdas de código
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200323154059.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200323154059.png)
 
 ### Eliminar celdas de código
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200323154148.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200323154148.png)
 
 ### Cambiar entre código y Markdown
-
-
 
 ### Visor de gráficos
 
 Con el visor de gráficos, puede ver fácilmente los gráficos generados por el código y exportarlos en varios formatos de imagen:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200323154555.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200323154555.png)
 
 ### Visor de datos y variables
 
 Puede ver el tipo, la cantidad y el valor de las variables en tiempo real a través del visor de variables:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200323154758.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200323154758.png)
 
 También puede explorar datos más específicos a través del visor de datos:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200323154832.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200323154832.png)
 
 ## Referencias y agradecimientos
 

@@ -1,94 +1,92 @@
-# RSS - Una forma eficiente de leer
+# RSS - طريقة قراءة فعالة
 
-El RSS significa "Really Simple Syndication" (Sindicación Realmente Simple) y es una herramienta que te permite suscribirte a varios sitios web que te interesan en un solo lugar.
+RSS هي اختصار لـ "تجميع المحتوى الفعلي" (Really Simple Syndication) ، وهي أداة تتيح لك الاشتراك في مجموعة متنوعة من المواقع التي تهمك في مكان واحد.
 
-En pocas palabras, cuando un autor al que sigues escribe un artículo en su plataforma (puede ser un blog, una cuenta pública, Quora, etc.), el RSS lo envía para que lo leas.
+ببساطة ، عندما يكتب المؤلف الذي تتابعه مقالًا على منصته الخاصة (مثل المدونة أو الحساب العام أو Quora) ، فإن RSS يقوم بإرساله إلي لقراءته.
 
-> Si un sitio web admite RSS, significa que cada vez que publique un nuevo artículo, agregará una entrada en un archivo ubicado en una dirección web específica, utilizando una sintaxis específica (específicamente lenguaje de marcado XML o JSON), que enumera el título del artículo, el autor, la fecha de publicación y la información del contenido (puede ser el artículo completo o un resumen). De esta manera, los usuarios pueden recopilar las direcciones web de estos archivos que ofrecen todos los sitios web que les interesan y verificar periódicamente las actualizaciones de estos archivos para saber si y cuándo se publicó contenido en estos sitios web. La función principal de un lector de RSS es almacenar las direcciones RSS que el usuario ha suscrito, verificar automáticamente las actualizaciones a intervalos fijos y presentar el contenido en un formato fácil de leer para el usuario.
+> إذا كان موقعًا يدعم RSS ، فهذا يعني أنه سيتم إضافة سجل جديد إلى ملف موجود في عنوان ويب محدد بتنسيق محدد (عادةً XML أو JSON) يحتوي على عنوان المقال والمؤلف ووقت النشر والمحتوى (يمكن أن يكون النص الكامل أو ملخص) ومعلومات أخرى. بمجرد جمع جميع عناوين الويب التي تقدم هذا النوع من الملفات وفحص محتويات هذه الملفات بشكل منتظم ، يمكن للمستخدم معرفة ما إذا كانت هذه المواقع قد نشرت أي محتوى ومتى. يتم تخزين عناوين RSS التي يشترك فيها المستخدم في قارئ RSS ، ويتم فحصها تلقائيًا بتردد ثابت وتحويل محتوياتها إلى تنسيق قابل للقراءة للمستخدم.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200225145439.png)
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200225145502.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200225145439.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200225145502.png)
 
-## ¿Por qué usar RSS?
+## لماذا استخدام RSS
 
-### 1. Conveniencia
+### 1. الراحة
 
-Cuando sigues a muchas personas, no necesitas abrir Quora, Jianshu o incluso blogs para obtener actualizaciones, sino que puedes leer todo en una sola terminal.
+عندما يزداد عدد الأشخاص الذين أتابعهم ، لا يلزمني النقر على Quora أو Medium أو حتى البحث في المدونات للحصول على التحديثات ، بل يمكنني قراءتها في واجهة موحدة.
 
-### 2. Derecho a la información
+### 2. حق المعلومات
 
-El opuesto de RSS es la recomendación de algoritmos, como WeChat Official Accounts, Quora, Weibo, Toutiao, etc. Además de la gran cantidad de publicidad en estas plataformas y el problema de la migración, la característica de la recomendación de algoritmos es que no necesitas elegir conscientemente, el algoritmo te dará contenido según tus preferencias. De esta manera, casi no tienes margen de elección y pierdes gradualmente la capacidad de juzgar mientras te alimentan constantemente. Lo más aterrador es que **define tu perfil por ti y te convierte en lo que cree que eres**. El incidente de "Big Data Kills Friends" no es casualidad, y es común que las empresas de Internet espíen la privacidad de los usuarios a través de algoritmos.
+يتعارض RSS مع الخوارزميات التي توصي بالمحتوى ، مثل حسابات الجمهور على WeChat و Quora و Weibo و Toutiao وغيرها من المنصات. دعونا لا نتحدث عن مشكلة الإعلانات الزائدة على منصات الخوارزميات ومشكلة الانتقال. يتميز التوصية بالخوارزميات بأنه لا يلزمك اختيار متعمد ، فسيقوم الخوارزمي بتوصيل المحتوى وفقًا لذوقك. وبالتالي ، فإنك لا تملك مجالًا للاختيار ، وتفقد تدريجيًا القدرة على الحكم في الاستمرار في "التغذية". والأمر الأكثر رعبًا هو أنه يحدد صورتك الذاتية بالنسبة لك ، ثم يحولك إلى ما يعتقد أنه أنت. ليس من الصدفة أن تم الكشف عن "البيانات الكبيرة تقتل الأصدقاء" ، وهو أمر يتم تطبيقه على خصوصية المستخدمين من قبل شركات الإنترنت الحالية.
 
-**Sé el dueño de la información, no un esclavo.** RSS es un protocolo público que permite cambiar libremente de plataforma y cliente. Lo importante es que **el poder de obtener información es completamente autónomo**. En comparación con la recomendación de algoritmos, RSS tiene control y seguridad, y la privacidad está completamente en manos del usuario.
+**كن مالكًا للمعلومات ، لا عبدًا.** RSS هو بروتوكول مفتوح المصدر ، يمكن تغيير المنصة والعميل بحرية. النقطة المهمة هي أن **حق الحصول على المعلومات يتمتع بالحكمة الذاتية الكاملة**. بالمقارنة مع التوصية بالخوارزميات ، يتمتع RSS بالقابلية للتحكم والأمان ، ويتمتع المستخدم بالسيطرة الكاملة على الخصوصية.
 
-### 3. Descentralización
+### 3. اللامركزية
 
-Los artículos publicados en plataformas que requieren registro (cuentas públicas, Weibo, Quora, etc.) a menudo se eliminan debido a problemas de sensibilidad. Para la libre circulación de información, es necesario adoptar un enfoque descentralizado, es decir, plataformas construidas por los propios autores. RSS recopila contenido disperso y lo presenta para su lectura.
+يتم حذف المقالات التي تم نشرها على المنصات التي يتطلب تسجيلها (مثل الحسابات العامة و Weibo و Quora) غالبًا بسبب الحساسية. من أجل حرية تدفق المعلومات ، من الضروري استخدام الأدوات التي يقوم بها المؤلفون بإنشاء منصاتهم الخاصة. وسيقوم RSS بجمع المحتوى المتناثر وعرضه لك للقراءة.
 
-## Comenzando a leer RSS
+## بدء قراءة RSS
 
-### 1. Obtener fuentes RSS
+### 1. الحصول على مصدر RSS للمحتوى
 
-Tomemos Inoreader como ejemplo. El método más simple es copiar la dirección del blog y pegarla en la barra de búsqueda de Inoreader, generalmente se puede suscribir directamente.
+على سبيل المثال ، في Inoreader ، أسهل طريقة هي نسخ عنوان المدونة ولصقه في مربع البحث في Inoreader ، ويمكن الاشتراك مباشرةً.
 
-Para determinar si un sitio web tiene RSS, simplemente busca este ícono:
+لتحديد ما إذا كان الموقع يدعم RSS ، يمكنك النظر إلى هذا الرمز:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/rss.png)
+![](https://img.wiki-power.com/d/wiki-media/img/rss.png)
 
-y haz clic en él para suscribirte al enlace RSS directamente.  
-Si no hay un ícono, es posible que haya RSS, pero está oculto.
+يمكن النقر مباشرةً على هذا الرمز والاشتراك في رابط RSS.  
+إذا لم يكن هناك علامة ، فقد يكون هناك RSS ، ولكنه مخبأ بشكل أعمق.
 
-En este caso, podemos usar una extensión del navegador llamada RSS+:
+في هذه الحالة ، يمكننا استخدام ملحق المتصفح المسمى RSS +:
 
-- Primero, instala la extensión Tampermonkey (necesitas acceso a Internet).
-- Luego, instala el script RSS+.
-- Si el sitio web tiene RSS, lo encontrarás en el pequeño círculo en la esquina inferior derecha.
+- تثبيت ملحق [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) ، يتطلب الوصول إلى الإنترنت بشكل علمي.
+- ثم تثبيت البرنامج النصي [RSS +](https://greasyfork.org/zh-CN/scripts/373252-rss-show-site-all-rss)
+- في هذه الحالة ، إذا كان هناك RSS في الموقع ، فيمكن العثور عليه في الدائرة الصغيرة في الزاوية السفلية اليمنى.
 
-Para los sitios web sin RSS, puedes crear tu propio RSS. Aquí hay algunas herramientas recomendadas:
+بالنسبة للمواقع التي لا تدعم RSS ، يمكنك إنشاء RSS بنفسك ، وهناك بعض الأدوات الموصى بها هنا:
 
 - [feed43](http://feed43.com/)
 - [RSSHub](https://docs.rsshub.app/#%E5%BE%AE%E5%8D%9A)
 - [FeedOcean](https://feedocean.com/?lang=zh-CN)
 
-## Cómo usar RSS para obtener información de alta calidad
+يمكن لهذه الأدوات أن تشترك في المدونات التي لا تدعم RSS ، ويمكنها أيضًا الاشتراك مباشرةً في الحسابات العامة والحسابات العامة و Weibo و Tieba. راجع الوثائق للحصول على التفاصيل.
 
-### 1. Encuentra fuentes interesantes
+### 2. اختيار قارئ RSS
 
-Hay muchas herramientas para encontrar fuentes interesantes, como [Feedly](https://feedly.com/), [Inoreader](https://www.inoreader.com/) y [RSSHub](https://docs.rsshub.app/). Estas herramientas no solo pueden suscribirse a blogs sin RSS, sino que también pueden suscribirse directamente a columnas de Zhihu, cuentas públicas de WeChat, Weibo, Tieba, etc. Consulte la documentación para obtener información detallada.
+**Inoreader** يتميز بميزات أساسية مجانية ووقت جلب يبلغ حوالي 15 دقيقة ، وهو يلبي المتطلبات. يتوفر في إصدارات ويب و iOS (يتطلب حساب App Store في المنطقة الجميلة) و Android.
 
-### 2. Elija un lector de RSS
+**Reabble** هو تطبيق يعتمد على واجهة برمجة تطبيقات Inoreader API ويتم تصميمه خصيصًا للقراءة على شاشات الحبر الإلكتروني. يُنصح بترقية الإصدار المدفوع (21 يوانًا سنويًا، الإصدار المجاني يتيح 7 مقالات في اليوم ولا يدعم الإشعارات). أنا أقوم بتعيين توقيت الإشعارات اليومية في الساعة 9 صباحًا لقراءة المقالات الجديدة على قارئ Kindle، كما يسهل الإشارة وتصدير المقتطفات. إذا كنت ترغب في القراءة على جهاز الكمبيوتر، يمكنك فتح موقع [reabble.com](https://reabble.com) مباشرةً وإنشاء اختصار سطح المكتب، حيث يتميز بواجهة أكثر بساطة وخالية من الإعلانات مقارنةً بـ Inoreader.
 
-**Inoreader** tiene una versión gratuita con funciones básicas completas y un tiempo de captura de aproximadamente 15 minutos, lo que cumple con los requisitos. Tiene una versión web, iOS (requiere una cuenta de App Store en EE. UU.) Y una versión de Android.
+## اشترك في مصادر مثيرة للاهتمام
 
-**Reabble** se basa en la API de Inoreader y está diseñado para la lectura de tinta electrónica. Se recomienda actualizar a la versión de pago (¥ 21 por año, 7 artículos / día en la versión gratuita y no admite notificaciones push). Configuré la entrega programada de nuevos artículos a mi Kindle a las 9 a.m. todos los días, lo que también facilita la anotación y la exportación de extractos de libros. Si desea leer en su computadora, también puede abrir [reabble.com](https://reabble.com), crear un acceso directo en su escritorio, la interfaz es más simple y no tiene publicidad que Inoreader.
+ملاحظة: لا يناسب RSS الاشتراك في مواقع الأخبار، حيث يتم تحديث المحتوى بشكل سريع ويؤدي ذلك إلى تجربة قراءة سيئة. لذلك، يناسب RSS الاشتراك في مواقع الويب ذات الجودة العالية مثل المدونات. لا يجب الاشتراك في العديد من المصادر، بل يجب اختيار المصادر الأكثر أهمية. يمكن أن يؤدي الاشتراك في العديد من المصادر إلى "تحميل المعلومات"، حيث ستجد نفسك تتلقى مئات المعلومات الجديدة كل يوم ولكن لا يمكنك قراءتها.
 
-## Suscribirse a algunas fuentes interesantes
+لقد قمت بتصدير مصادر الاشتراك الخاصة بي، يمكنك الاطلاع عليها: [**مصادر الاشتراك الخاصة بي**](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/doc/Blogs.opml) يمكنك استيراد ملف `.opml` في Inoreader أو أي قارئ RSS آخر.
 
-Nota: RSS no es adecuado para suscribirse a sitios web de noticias, ya que la actualización es demasiado rápida y el contenido es complicado, lo que resulta en una mala experiencia de lectura. Por lo tanto, RSS es más adecuado para suscribirse a sitios web de **blogs de alta calidad**. No es mejor tener demasiadas fuentes de suscripción. Demasiadas fuentes de suscripción pueden causar "sobrecarga de información", y descubrirá que recibe cientos de nuevas noticias todos los días, pero no tiene tiempo para leerlas.
+تمت إضافة في أبريل 2023: طريقة إنشاء مجمع RSS الذاتي المستضاف: [**Homelab - مجمع RSS الذاتي المستضاف FreshRSS**](https://wiki-power.com/ar/Homelab-%E8%87%AA%E6%89%98%E7%AE%A1RSS%E8%81%9A%E5%90%88%E5%99%A8FreshRSS/).
 
-Exporté mi fuente de suscripción, puede consultarla: [**Mi fuente de suscripción**](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/doc/Blogs.opml)  
-Puede importar el archivo `.opml` en Inoreader u otro lector de RSS.
+## الأسئلة الشائعة
 
-Actualización de abril de 2023: Método para construir un agregador de RSS autoalojado: [**Homelab - FreshRSS, un agregador de RSS autoalojado**](https://wiki-power.com/es/Homelab-%E8%87%AA%E6%89%98%E7%AE%A1RSS%E8%81%9A%E5%90%88%E5%99%A8FreshRSS/)。
+س: هل سيتم إزالة قراءة RSS مع تطور العصر؟
+ج: لم يتم إزالة القراءة بالطريقة التي يتم فيها إزالة RSS. لا يتأثر RSS بتقلبات المنصات، وإلا فلن يتم إزالته ما لم يظهر بروتوكول أفضل.
 
-## Preguntas frecuentes
+## الخلاصة
 
-P: ¿El lector de RSS será obsoleto con el tiempo?  
-A: La lectura de libros no ha sido obsoleta. Una tendencia es que todas las plataformas de Internet siempre se desarrollan en la dirección que a la gente le gusta, hasta que el contenido se vuelve acuoso y una nueva plataforma lo reemplaza, como Zhihu y Douban. RSS no se ve afectado por el auge y la caída de la plataforma, a menos que aparezca un protocolo mejor, RSS no será obsoleto.
+اقتباس من "notajerk":
 
-## Conclusión
+> عند الحصول على المعلومات عبر الإنترنت، يمكنك أن تتخيل نفسك كملك قديم يستمع إلى آراء المستشارين. بالنسبة للملك، فإن الشيء الأكثر خطورة والذي يجب تجنبه هو الكشف عن أذواقه، حيث يتم بناء الخيانة والانقلاب على هذا الأساس. يحافظ الملك الحكيم على هدوئه الداخلي (الحيادية الموضوعية)، ويستمر في الاستماع إلى آراء الجميع دون الكشف عن مشاعره، ويتحقق من مصداقية كل رأي من خلال التحقق من الحقائق الموضوعية. هذا هو المبدأ الذي يجب على كل شخص اتباعه عند الحصول على المعلومات. اختيار مصادر المعلومات هو أيضًا أهم ما يستحق الوقت.
 
-Cito las palabras de "[notajerk](https://sspai.com/user/701048/updates)":
+## المراجع والشكر
 
-> Al obtener información en línea, puede ser un poco cursi imaginarse a uno mismo como un emperador que escucha las opiniones de sus ministros en la antigüedad. Para el emperador, lo más peligroso y lo que no debería hacer es exponer sus gustos, que es la base para que los subordinados sean engañados y, finalmente, para ser destituido. Un emperador sabio mantendrá su mente en calma y objetiva (neutral), insistirá en escuchar las opiniones de todas las partes sin exponer sus propias ideas, y verificará la credibilidad de cada opinión con hechos objetivos. Este es el principio que cada persona debe seguir para obtener información después de miles de años. **La selección de fuentes de información también es el lugar donde vale la pena invertir tiempo**.
+- [ما يمكن فعله باستخدام RSS والأشياء التي لم تفكر بها](https://sspai.com/post/34280)
+- [كيفية العثور على عنوان RSS لموقع ويب؟ استخدم RSS +!](https://blog.wizos.me/20181022-258.html)
+- [قائمة أدوات RSS الشاملة](https://blog.wizos.me/20180412-134.html)
+- [مقدمة في استخدام RSS](https://www.cnblogs.com/buwuliao/p/8379549.html)
+- [تجميع RSS الكامل الذاتي (مع أدوات موصى بها)](https://www.douban.com/note/522518464/)
+- [عودة RSS](https://sspai.com/post/43998)
 
-## Referencias y agradecimientos
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-- [Cosas que no sabías que podías hacer con RSS](https://sspai.com/post/34280)
-- [¿Cómo encontrar la dirección RSS de un sitio web? Use RSS +!](https://blog.wizos.me/20181022-258.html)
-- [Lista de herramientas RSS](https://blog.wizos.me/20180412-134.html)
-- [Mi introducción al uso de RSS](https://www.cnblogs.com/buwuliao/p/8379549.html)
-- [Recopilación de RSS de texto completo hecha en casa (con herramientas recomendadas)](https://www.douban.com/note/522518464/)
-- [Sobre el "renacimiento" de RSS](https://sspai.com/post/43998)
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

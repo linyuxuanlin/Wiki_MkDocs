@@ -2,7 +2,7 @@
 
 XL2009E1 is a Buck chip from Xilinx with a maximum input of 36V, output of 3A, and fixed frequency of 180kHz. It has overcurrent protection, and when short-circuited, the frequency drops to 48kHz.
 
-Project repository: [**Collection_of_Power_Module_Design/DC-DC(Buck)/XL2009E1**](https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/DC-DC(Buck)/XL2009E1)
+Project repository: [**Collection_of_Power_Module_Design/DC-DC(Buck)/XL2009E1**](<https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/DC-DC(Buck)/XL2009E1>)
 
 ## Main Features
 
@@ -26,11 +26,11 @@ Project repository: [**Collection_of_Power_Module_Design/DC-DC(Buck)/XL2009E1**]
 
 According to the datasheet's typical application circuit (input 8-36V, output 5V@2.1A):
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220407103157.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220407103157.png)
 
 ## Pin Definitions
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220407065806.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220407065806.png)
 
 - FB: Feedback input pin, feedback is input through a resistor divider from $V_{OUT}$, cannot be directly grounded. The feedback reference voltage is 1.25V.
 - OCSET: Output constant current setting pin.
@@ -42,7 +42,7 @@ According to the datasheet's typical application circuit (input 8-36V, output 5V
 
 ### Internal Functional Block Diagram
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220407070413.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220407070413.png)
 
 ### Output Voltage Regulation
 
@@ -59,7 +59,7 @@ The rated breakdown voltage of the diode should be 25% higher than the maximum i
 The datasheet for XL2009E1 provides a direct selection table (3A):
 
 | Input Voltage | Model       |
-| -------------| ------------|
+| ------------- | ----------- |
 | 20V           | SK32        |
 | 30V           | SK33/30WQ03 |
 | 40V           | SK34/30WQ04 |
@@ -70,13 +70,13 @@ The datasheet for XL2009E1 provides a direct selection table (3A):
 
 Relationship between output voltage and current:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220407100229.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220407100229.png)
 
 Relationship between efficiency and output current:
 
 Relationship between Output Current and RCS Resistance (Constant Current Control):
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220407103033.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220407103033.png)
 
 Reference and Acknowledgements:
 

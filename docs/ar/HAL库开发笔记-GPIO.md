@@ -1,72 +1,94 @@
-# Notas de desarrollo de la biblioteca HAL - GPIO
+# ملاحظات تطوير مكتبة HAL - GPIO
 
-## Principios básicos
+## المبدأ الأساسي
 
-GPIO significa **puerto de entrada/salida general** (General Purpose Input Output).
+GPIO هي مدخل / مخرج عام (General Purpose Input Output).
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200615205256.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20200615205256.jpg)
 
-Tomemos como ejemplo el chip F103C8T6 (en la imagen de arriba), todo lo que no sean los pines de color (pines de alimentación y algunos pines de función) se llaman GPIO. Se puede ver su grado de generalidad.
+على سبيل المثال ، دعونا نأخذ شريحة F103C8T6 كمثال (الصورة أعلاه) ، بالإضافة إلى دبابيس اللون (مصدر الطاقة ودبابيس بعض الوظائف) ، يسمى كل GPIO. يمكن رؤية مدى تعميمه.
 
-La función de GPIO es la entrada/salida de señales eléctricas. Echemos un vistazo a su estructura interna:
+وظيفة GPIO هي إدخال / إخراج إشارات كهربائية. دعونا نلقي نظرة على هيكلها الداخلي:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200615211744.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20200615211744.jpg)
 
-- El pin I/O más a la derecha es el pin del chip físico. Las dos diodos de protección arriba y abajo pueden prevenir en cierta medida que el voltaje anormal externo queme el chip a través del pin.
-- El cuadro de línea roja es la función de entrada (el chip lee la señal externa). Las dos resistencias de pull-up/pull-down con interruptores son para implementar la función de entrada de pull-up/pull-down. Si ambos interruptores no están cerrados, lo llamamos entrada flotante (no hay nivel de referencia). Los tres modos de entrada leen una cantidad digital (nivel alto/bajo). Además, también hay una función de entrada analógica, que se entiende como la lectura directa de la señal analógica en el pin. (Hablaremos de la función de entrada de función múltiple más adelante).
-- El cuadro de línea azul es la función de salida. Hay cuatro modos de salida: push-pull, open-drain, push-pull de función múltiple y open-drain de función múltiple.
+- دبوس I / O الأقصى الأيمن هو دبوس الشريحة الفعلي. يمكن للثنائيات الثنائية الحماية العلوية والسفلية في حدود معينة منع الجهد الغير طبيعي الخارجي من حرق الشريحة.
+- إطار الخط الأحمر الظاهر هو وظيفة الإدخال (الشريحة تقرأ الإشارة الخارجية). المقاومتان الموجودتان في الأعلى / الأسفل مع مفاتيح السحب العلوي / السفلي هي لتحقيق وظيفة الإدخال العلوي / السفلي. إذا لم يتم إغلاق المفاتيح ، فإننا نسميه إدخالًا عائمًا (لا يوجد مستوى إشارة مرجعي). يتم قراءة هذه الأنماط الثلاثة من الإدخال كمقدار رقمي (مستوى عالي / منخفض). بالإضافة إلى ذلك ، هناك وظيفة الإدخال التناظرية ، والتي تعني ببساطة قراءة الكمية التناظرية على دبوس الشريحة. (سنتحدث عن وظيفة الإدخال المتعددة الاستخدامات فيما بعد).
+- إطار الخط الأزرق الظاهر هو وظيفة الإخراج. يوجد 4 أنماط للإخراج: الدفع والسحب والدفع المتعدد الاستخدامات والسحب المتعدد الاستخدامات.
 
-### Modos de entrada/salida
+### أنماط الإدخال / الإخراج
 
-Modos de entrada:
+نمط الإدخال:
 
-- **Entrada flotante**: ni pull-up ni pull-down, el modo predeterminado después del reinicio del STM32.
-- **Entrada pull-up**: cierre el interruptor de la resistencia pull-up para mantener el nivel de referencia siempre en alto, y se activará cuando la señal de entrada sea de nivel bajo.
-- **Entrada pull-down**: cierre el interruptor de la resistencia pull-down para mantener el nivel de referencia siempre en bajo, y se activará cuando la señal de entrada sea de nivel alto.
-- **Entrada analógica**: en este modo, ni pull-up ni pull-down, ni pasa por el disparador TTL, el STM32 lee directamente la señal analógica en el pin.
+- **إدخال عائم**: لا يوجد سحب علوي أو سفلي ، وهو الوضع الافتراضي بعد إعادة تعيين STM32.
+- **إدخال علوي**: إغلاق مفتاح السحب العلوي لجعل مستوى الإشارة المرجعي يبقى عاليًا ، وعندما يكون إشارة الإدخال منخفضة ، يتم تشغيلها.
+- **إدخال سفلي**: إغلاق مفتاح السحب السفلي لجعل مستوى الإشارة المرجعي يبقى منخفضًا ، وعندما يكون إشارة الإدخال عالية ، يتم تشغيلها.
+- **إدخال تناظري**: في هذا النمط ، لا يوجد سحب علوي أو سفلي ، ولا يتم تمريرها عبر المؤقت الثنائي القطب (TTL) ، ويقرأ STM32 مباشرة الإشارة على دبوس الشريحة.
 
-Modos de salida:
+نمط الإخراج:
 
-- **Salida open-drain**: open-drain se refiere a la fuga de la fuente del N-MOSFET (el pin de arriba), este modo solo utiliza el N-MOSFET de abajo. Sabemos que el MOSFET es un componente controlado por voltaje. Entendámoslo como un grifo, cuando se ingresa una señal de nivel bajo al electrodo de la puerta del N-MOSFET (el pin izquierdo), el N-MOSFET se enciende.
-- **Salida push-pull**: hay dos modos de push-pull, el primer modo es enviar una señal de nivel bajo a los electrodos de la puerta de los dos MOSFET al mismo tiempo, en este momento el P-MOSFET está encendido y el N-MOSFET está apagado, la corriente fluye desde VDD hacia el pin externo, y el pin es de nivel alto. El segundo modo es lo contrario, enviar una señal de nivel alto a los electrodos de la puerta de los dos MOSFET al mismo tiempo, en este momento el P-MOSFET está apagado y el N-MOSFET está encendido, la corriente fluye desde el pin externo hacia el GND interno, y el pin es de nivel bajo.
-- **Salida open-drain de función múltiple**
-- **Salida push-pull de función múltiple**
+- **إخراج السحب**: يشير السحب إلى تصريف المصدر (الدبابيس العلوية) للمفتاح السفلي. يتم استخدام هذا النمط فقط للمفتاح السفلي. نعلم أن المفاتيح MOS هي عناصر قابلة للتحكم بالجهد. فهمها كصنبور ، عند إدخال إشارة جهد منخفض على بوابة N-MOS (الدبابيس اليسرى) ، يتم توصيل N-MOS.
+- **إخراج الدفع**: يوجد نوعان من أنماط الدفع ، الأول هو إدخال إشارة جهد منخفض على بوابتي MOS في نفس الوقت ، وفي هذه الحالة يتم توصيل P-MOS ويتم قطع N-MOS ، ويتدفق التيار من VDD إلى دبوس الشريحة الخارجي ، ويكون مستوى الإشارة عاليًا. الثاني هو العكس ، حيث يتم إدخال إشارة جهد عالي على بوابتي MOS في نفس الوقت ، وفي هذه الحالة يتم قطع P-MOS ويتم توصيل N-MOS ، ويتدفق التيار من دبوس الشريحة الخارجي إلى الأرض الداخلية ، ويكون مستوى الإشارة منخفضًا.
+- **الدفع المتعدد الاستخدامات**
+- **السحب المتعدد الاستخدامات**
 
-### Referencia de funciones GPIO comunes
+### مراجع الدوال GPIO الشائعة
 
-Leer el estado GPIO, devolver nivel alto/bajo:
+قراءة حالة GPIO ، وإرجاع مستوى عالي / منخفض:
 
 ```c
 GPIO_PinState HAL_GPIO_ReadPin(GPIOx, GPIO_Pin);
 ```
 
-Escribir el estado GPIO, escribir nivel alto/bajo:
+كتابة حالة GPIO ، وكتابة مستوى عالي / منخفض:
 
 ```c
 HAL_GPIO_WritePin(GPIOx, GPIO_Pin, PinState);
 ```
 
-Invertir el nivel GPIO:
+عكس مستوى GPIO:
 
 ```c
 HAL_GPIO_TogglePin(GPIOx, GPIO_Pin);
 ```
 
-## Encender el LED
+## تشغيل LED
 
-Antes de continuar con el siguiente experimento, es necesario configurar varios parámetros como la descarga de la serie, el reloj, etc. en CubeMX. No se explicará aquí, por favor consulte el método en el artículo [**Notas de desarrollo de la biblioteca HAL - Configuración del entorno**](https://wiki-power.com/es/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE).
+قبل القيام بالتجربة التالية ، يجب تكوين معلمات التنزيل التسلسلي والساعة وغيرها في CubeMX.
+لا يتم التطرق إلى هذا الموضوع هنا ، يرجى الرجوع إلى المقالة [**HAL 库开发笔记 - 环境配置**](https://wiki-power.com/ar/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE) للحصول على طريقة التكوين.
 
-### Configuración GPIO en CubeMX
+### تكوين GPIO داخل CubeMX
 
-Configure el puerto GPIO correspondiente al LED como salida y establezca el nivel inicial.
+قم بتعيين مخرج GPIO المناسب للمصباح الأمامي وتعيين مستوى الإشارة الأولي.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210205150422.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210205150422.png)
 
-En mi placa, necesito configurar los GPIO `PD4` y `PI3` como salida (`GPIO_Output`). Si quiero que se enciendan al encender, según el esquema del circuito, debo establecer el potencial inicial como bajo (`Low`).
+على اللوحة الخاصة بي ، يجب تعيين دبوسي GPIO "PD4" و "PI3" كمخرج (GPIO_Output).
+إذا كنت ترغب في تشغيلها عند التشغيل ، فاستنادًا إلى مخطط الدائرة ، قم بتعيين مستوى الإشارة الأولي على "Low".
 
-### Configuración de GPIO en el código
+### تكوين GPIO داخل الشفرة
 
-Si la configuración es correcta, los dos LED de usuario se encenderán al encender. Si desea agregar un efecto intermitente, simplemente agregue algunas líneas de código en el área de código de usuario del bucle principal:
+إذا تم التكوين بشكل صحيح ، فيمكن تشغيل مصباحين LED المستخدمين عند التشغيل.
+إذا كنت ترغب في إضافة تأثير وميض ، فما عليك سوى إضافة بضعة أسطر من الشفرة في منطقة الشفرة الرئيسية للحلقة الرئيسية:
+
+# تحكم بالأضواء باستخدام STM32CubeMX
+
+في هذه المقالة، سنتعلم كيفية التحكم بالأضواء باستخدام STM32CubeMX و STM32F4DISCOVERY board.
+
+## تحكم بالأضواء
+
+### تكوين GPIO داخل CubeMX
+
+لتحكم في الأضواء، يجب تكوين GPIO المناسب لها. يمكن القيام بذلك باستخدام CubeMX.
+
+1. انقر فوق "Pinout & Configuration" في الجزء العلوي من CubeMX.
+2. انقر على الدبوس المراد تكوينه.
+3. في القائمة المنسدلة "Mode" ، حدد "Output" ، ثم حدد "Push-Pull" في "Output Type".
+4. انقر فوق "Generate Code" لتوليد الكود.
+
+### تحكم بالأضواء في الكود
+
+بعد توليد الكود، يمكنك التحكم في الأضواء في الكود الخاص بك. يمكن القيام بذلك باستخدام دالة `HAL_GPIO_TogglePin()`.
 
 ```c title="main.c"
 /* USER CODE BEGIN 3 */
@@ -79,23 +101,24 @@ HAL_GPIO_TogglePin(GPIOI, GPIO_PIN_3);
 /* USER CODE END 3 */
 ```
 
-Esto logrará el efecto intermitente.
+ستتمكن من تحقيق تأثير الوميض.
 
-## Control de luz con botón
+## تحكم بالأضواء باستخدام الأزرار
 
-Después de aprender sobre la salida GPIO, usaremos un botón para aprender sobre el modo de entrada GPIO.
+بعد تعلم الإخراج GPIO ، سنتعلم كيفية الإدخال باستخدام الأزرار.
 
-### Configuración de GPIO en CubeMX
+### تكوين GPIO داخل CubeMX
 
-Después de configurar el puerto GPIO al que pertenece el LED según el método anterior, según el esquema del botón de la placa:
+بعد تكوين GPIO المناسب للأضواء، يجب تكوين GPIO المناسب للأزرار. يمكن القيام بذلك باستخدام CubeMX.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210205150422.png)
+1. انقر فوق "Pinout & Configuration" في الجزء العلوي من CubeMX.
+2. انقر على الدبوس المراد تكوينه.
+3. في القائمة المنسدلة "Mode" ، حدد "Input" ، ثم حدد "Pull-up" في "Pull".
+4. انقر فوق "Generate Code" لتوليد الكود.
 
-Configure el GPIO al que pertenece el botón (`PI8`) como entrada (`GPIO_Input`). Según el esquema, seleccione la resistencia pull-up interna (`Pull-up`). Genere el código.
+### تحكم بالأضواء في الكود
 
-### Configuración de GPIO en el código
-
-Agregue el siguiente código al área de código de usuario del bucle principal:
+بعد توليد الكود، يمكنك التحكم في الأضواء باستخدام الأزرار في الكود الخاص بك. يمكن القيام بذلك باستخدام دالة `HAL_GPIO_ReadPin()`.
 
 ```c title="main.c"
 /* USER CODE BEGIN 3 */
@@ -115,18 +138,11 @@ if(HAL_GPIO_ReadPin(KEY1_GPIO_Port,KEY1_Pin)==0)
 /* USER CODE END 3 */
 ```
 
-Esto logrará el efecto de encender la luz al presionar el botón y apagarla al soltarlo.
+ستتمكن من تحقيق تأثير تشغيل الأضواء عند الضغط على الزر وإيقافها عند تحريره.
 
-Muchas personas no entienden qué significan `GPIO_PIN_SET` y `GPIO_PIN_RESET`. De hecho, la función de estas dos variables es simplemente establecer el nivel alto / bajo del pin GPIO. La luz específica está encendida o apagada, dependiendo del esquema del circuito.
+## المراجع
 
-Además, la función de `HAL_Delay(100)` es eliminar el rebote del botón. Sin embargo, la función `HAL_Delay()` utiliza una encuesta, lo que ocupará recursos y causará bloqueos. En el próximo artículo, usaremos interrupciones de hardware para resolver esta deficiencia.
+- [【STM32】STM32CubeMX 教程二 -- 基本使用 (新建工程点亮 LED 灯)](https://blog.csdn.net/as480133937/article/details/98947162)
+- [STM32CubeMX 实战教程（二）—— 按键点个灯](https://blog.csdn.net/weixin_43892323/article/details/104343933)
 
-## Referencias y agradecimientos
-
-- [【STM32】STM32CubeMX Tutorial 2 - Uso básico (Crear un proyecto para encender un LED)](https://blog.csdn.net/as480133937/article/details/98947162)
-- [STM32CubeMX Tutorial práctico (2) - Encender un LED con un botón](https://blog.csdn.net/weixin_43892323/article/details/104343933)
-
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

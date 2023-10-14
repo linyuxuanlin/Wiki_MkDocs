@@ -1,12 +1,12 @@
-# Homelab - Programa de lista de archivos con soporte para múltiples almacenamientos: Alist
+# Homelab - برنامج Alist لقائمة الملفات المدعومة بالتخزين المتعدد
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202304141808001.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202304141808001.png)
 
-**Alist** es un programa de lista de archivos que admite varios métodos de almacenamiento, como local, Alibaba Cloud Drive, OneDrive, GoogleDrive, Baidu Netdisk, KuaiPan, Lanzou Cloud, S3, FTP / SFTP, etc., con un reproductor de video en línea y varios tipos de vista previa de archivos (compatible con Office, PDF, Markdown, etc.), y también tiene funciones de descarga sin conexión.
+**Alist** هو برنامج لقائمة الملفات يدعم العديد من طرق التخزين مثل المحلي وسحابة Alibaba و OneDrive و GoogleDrive و Baidu و KuaiPan و LanZou و S3 و FTP / SFTP وغيرها، ويحتوي على مشغل فيديو عبر الإنترنت ومعاينة ملفات مختلفة (متوافق مع Office و PDF و Markdown وغيرها)، بالإضافة إلى وظيفة التنزيل غير المتصل بالإنترنت.
 
-## Implementación (Docker Compose)
+## التنفيذ (Docker Compose)
 
-Primero, cree el archivo `compose.yaml` y pegue el siguiente contenido:
+أولاً، قم بإنشاء ملف `compose.yaml` ولصق المحتوى التالي:
 
 ```yaml title="compose.yaml"
 version: "3.3"
@@ -18,39 +18,39 @@ services:
       - ${STACK_DIR}:/opt/alist/data
     ports:
       - ${APP_PORT}:5244
-    environment: # necesita ejecutarse con permisos de root, de lo contrario no podrá leer otros directorios de docker o el directorio raíz del host
+    environment: # يجب تشغيله بصلاحيات root، وإلا لن يتمكن من قراءة مجلدات Docker الأخرى أو مجلد root على المضيف
       - PUID=0
       - PGID=0
       - UMASK=022
     restart: always
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `alist`).
+(اختياري) يوصى بإنشاء ملف `.env` في نفس مجلد `compose.yaml` وتخصيص المتغيرات البيئية الخاصة بك. إذا كنت لا تريد استخدام المتغيرات البيئية، يمكنك تخصيص المعلمات الخاصة بك مباشرة في `compose.yaml` (على سبيل المثال، استبدال `${STACK_NAME}` بـ `alist`).
 
 ```dotenv title=".env"
 STACK_NAME=alist
-STACK_DIR=xxx # ruta de almacenamiento personalizada del proyecto, por ejemplo, ./alist
+STACK_DIR=xxx # مسار تخزين المشروع المخصص، مثل ./alist
 
 # alist
 APP_VERSION=latest
-APP_PORT=xxxx # puerto de acceso personalizado, simplemente elija uno que no esté ocupado
+APP_PORT=xxxx # تخصيص منفذ الوصول الخاص بك، اختر أي منفذ غير مستخدم
 ```
 
-Por último, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores.
+أخيرًا، قم بتنفيذ الأمر `docker compose up -d` في نفس مجلد `compose.yaml` لتشغيل حاويات الترتيب.
 
-## Instrucciones de configuración
+## تفاصيل الإعداد
 
-La documentación oficial explica muy detalladamente cómo conectarse a varios tipos de almacenamiento. Solo siga la configuración paso a paso.
+طرق الوصول إلى مختلف أنواع السحابات موضحة بشكل مفصل في الوثائق الرسمية.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Sitio web oficial](https://alist.nn.ci/)
-- [Documentación](https://alist.nn.ci/guide/install/docker.html#release-version)
-- [Repositorio de GitHub](https://github.com/alist-org/alist)
+- [الموقع الرسمي](https://alist.nn.ci/)
+- [الوثائق](https://alist.nn.ci/guide/install/docker.html#release-version)
+- [مستودع GitHub](https://github.com/alist-org/alist)
 - [Docker Hub](https://hub.docker.com/r/xhofe/alist)
-- [Sitio de demostración](https://al.nn.ci/)
+- [موقع العرض التوضيحي](https://al.nn.ci/)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

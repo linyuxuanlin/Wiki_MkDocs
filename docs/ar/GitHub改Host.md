@@ -1,16 +1,16 @@
-# GitHub Cambio de Host
+# تغيير Host في GitHub
 
-## Problema
+## المشكلة
 
-Error: `curl: (7) Failed to connect to raw.githubusercontent.com port 443: Connection refused`
+خطأ: `curl: (7) Failed to connect to raw.githubusercontent.com port 443: Connection refused `
 
-## Causa
+## السبب
 
-DNS contaminado en el país.
+تلوث DNS في الصين.
 
-## Solución
+## الحل
 
-Agregar lo siguiente al archivo host de la máquina local:
+أضف الآتي إلى ملف host على جهازك:
 
 ```
 199.232.68.133 raw.githubusercontent.com
@@ -19,31 +19,31 @@ Agregar lo siguiente al archivo host de la máquina local:
 199.232.68.133 avatars1.githubusercontent.com
 ```
 
-Ruta del host:
+مسار host:
 
 - Windows: `C:\Windows\System32\drivers\etc`
 - Linux: `/etc/hosts`
 
-A continuación, se presenta un método de operación en Linux:
+إليك بعض طرق التعامل مع Linux:
 
-1. Abra la terminal
-2. Ingrese el comando: `vi /etc/hosts`
-3. Presione `A` para cambiar al modo de edición
-4. Agregue las líneas de host mencionadas anteriormente al final
-5. Presione `Esc` para salir de la edición y `:wq` para guardar y salir
+1. افتح الطرفية
+2. أدخل الأمر: `vi /etc/hosts`
+3. اضغط على `A` للتبديل إلى وضع التحرير
+4. أضف الآتي إلى نهاية Host
+5. اضغط على `Esc` للخروج من وضع التحرير، ثم اضغط على `:wq` للحفظ والخروج
 
-## Ampliación
+## توسيع
 
-### Consulta de IP de dominio
+### البحث عن عنوان IP لاسم النطاق
 
-Utilice [**IPAddress**](https://www.ipaddress.com/)
+استخدم [**IPAddress**](https://www.ipaddress.com/)
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Agregar Host para acelerar el acceso a github](https://yangshun.win/blogs/2b7abf4f/#%E4%BF%AE%E6%94%B9-host)
+- [إضافة Host لتسريع الوصول إلى GitHub](https://yangshun.win/blogs/2b7abf4f/#%E4%BF%AE%E6%94%B9-host)
 
-> Autor del artículo: **Power Lin**
-> Dirección original: <https://wiki-power.com>
-> Declaración de derechos de autor: Este artículo utiliza la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Por favor, indique la fuente al volver a publicar.
+> مؤلف المقال: **Power Lin**
+> الرابط الأصلي للمقال: <https://wiki-power.com>
+> بيان حقوق النشر: يتم ترخيص المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يرجى الإشارة إلى المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

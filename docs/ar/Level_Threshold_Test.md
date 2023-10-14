@@ -1,10 +1,10 @@
-# Prueba de umbral de nivel 🚧
+# اختبار عتبة المستوى 🚧
 
-> Esta publicación solo está disponible en inglés.
+> هذا المنشور متاح فقط باللغة الإنجليزية.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220912163403.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220912163403.png)
 
-La prueba de umbral de nivel incluye el umbral de nivel de salida (VOL y VOH) y el umbral de nivel de entrada (VIL y VIH). Se originan a partir del umbral de nivel típico de TTL y CMOS:
+يتضمن اختبار عتبة المستوى عتبة مستوى الإخراج (VOL وVOH) وعتبة مستوى الإدخال (VIL وVIH). وهي تنبع من عتبة المستوى النموذجية TTL و CMOS:
 
 |              | VCC   | VOL             | VOH             | VIL             | VIH             | GND   |
 | :----------- | :---- | :-------------- | :-------------- | :-------------- | :-------------- | :---- |
@@ -15,44 +15,44 @@ La prueba de umbral de nivel incluye el umbral de nivel de salida (VOL y VOH) y 
 | CMOS (2.5V)  | 2.50V | 0.40V           | 2.00V           | 0.70V           | 1.70V           | 0.00V |
 | CMOS (1.8V)  | 1.80V | 0.45V           | 1.35V           | 0.63V           | 1.170V          | 0.00V |
 
-## Prueba de umbral de nivel de salida (VOL/IOL y VOH/IOH)
+## اختبار عتبة مستوى الإخراج (VOL/IOL & VOH/IOH)
 
-VOL representa el voltaje de salida máximo cuando el nivel de voltaje de salida es BAJO, IOL representa la capacidad máxima de corriente de **hundimiento** en el estado de salida BAJO. En realidad, miden la resistencia del pin de salida cuando proporcionan la lógica `0`, asegurando que pueda proporcionar una corriente de IOL sin exceder el voltaje de VOL, examinando la capacidad de hundimiento de corriente y mantenerse en un estado lógico correcto.
+يمثل VOL الجهد الأقصى للإخراج عند مستوى جهد الإخراج المنخفض، ويمثل IOL القدرة القصوى على التيار الانسحابي في حالة الإخراج المنخفض. فهي في الواقع تقيس مقاومة دبوس الإخراج عند توفير المنطق `0`، وتضمن أنه يمكن توفير تيار IOL دون تجاوز VOL، وفحص قدرة التيار الانسحابي والبقاء في حالة منطقية صحيحة.
 
-VOH representa el voltaje de salida mínimo cuando el nivel de voltaje de salida es ALTO, IOH representa la capacidad máxima de corriente de fuente en estado de salida ALTO. En realidad, miden la resistencia del pin de salida cuando proporcionan la lógica `1`, asegurando que pueda proporcionar una corriente de IOH sin menos que el voltaje de VOH, examinando la capacidad de corriente de fuente y manteniéndose en un estado lógico correcto.
+VOH تمثل الجهد الأدنى للإخراج عند مستوى جهد HIGH، و IOH تمثل الحد الأقصى لقدرة التيار المصدر في حالة الإخراج HIGH. فهي تقيس في الواقع مقاومة دبوس الإخراج عند توفير المنطق 1، وتضمن أنه يمكنه توفير تيار IOH دون أقل من جهد VOH، وفحص قدرة التيار المصدر والبقاء في حالة منطقية صحيحة.
 
-### Método de prueba (Serie)
+### طريقة الاختبار (تسلسلي)
 
-#### Prueba VOL/IOL (Serie)
+#### اختبار VOL / IOL (تسلسلي)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220912172403.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220912172403.png)
 
-1. Aplicar VDDmin al pin VDD (con abrazadera de corriente).
-2. Preacondicionar el pin de salida específico a la lógica '0'.
-3. Forzar IOLmax al Pin bajo prueba (fluir hacia DUT) y medir el voltaje en él:
-   - **Mayor que el valor especificado(>0.4V)**: FALLA
-   - **Menor que el valor especificado(<0.4V)**: PASA
-4. Repetir para probar con diferentes pines de salida.
+1. تطبيق VDDmin على دبوس VDD (مع مشبك التيار).
+2. شرط معين دبوس الإخراج إلى المنطق "0".
+3. فرض IOLmax على دبوس التحت الاختبار (تدفق إلى DUT) وقياس الجهد عليه:
+   - **أعلى من قيمة المواصفات (> 0.4 فولت)**: فشل
+   - **أقل من قيمة المواصفات (< 0.4 فولت)**: نجاح
+4. كرر الاختبار مع دبابيس إخراج مختلفة.
 
-#### Prueba VOH/IOH (Serie)
+#### اختبار VOH / IOH (تسلسلي)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220912172445.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220912172445.png)
 
-1. Aplicar VDDmin al pin VDD (con abrazadera de corriente).
-2. Preacondicionar el pin de salida específico a la lógica '1'.
-3. Forzar IOHmax al Pin bajo prueba (fluir fuera de DUT) y medir el voltaje en él:
-   - **Mayor que el valor especificado(>2.4V)**: PASA
-   - **Menor que el valor especificado(<2.4V)**: FALLA
-4. Repetir para probar con diferentes pines de salida.
+1. تطبيق VDDmin على دبوس VDD (مع مشبك التيار).
+2. شرط معين دبوس الإخراج إلى المنطق "1".
+3. فرض IOHmax على دبوس التحت الاختبار (تدفق خارج DUT) وقياس الجهد عليه:
+   - **أعلى من قيمة المواصفات (> 2.4 فولت)**: نجاح
+   - **أقل من قيمة المواصفات (< 2.4 فولت)**: فشل
+4. كرر الاختبار مع دبابيس إخراج مختلفة.
 
-## Prueba de umbral de nivel de entrada (VIL y VIH)
+## اختبار عتبة مستوى الإدخال (VIL و VIH)
 
-## Referencias y Agradecimientos
+## المراجع والتقديرات
 
-- _Los Fundamentos de la Prueba de Semiconductores Digitales_
-- _Fundamentos de la Prueba Utilizando ATE_
+- _أساسيات اختبار شرائح النصف الموصلات الرقمية_
+- _أساسيات الاختبار باستخدام ATE_
 
-> Original: <https://wiki-power.com/>  
-> Esta publicación está protegida por el acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en), debe ser reproducida con atribución.
+> المصدر الأصلي: <https://wiki-power.com/>  
+> يتم حماية هذا المنشور باتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) ويجب إعادة إنتاجه مع الإشارة إلى المصدر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

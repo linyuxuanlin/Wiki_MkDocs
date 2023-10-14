@@ -1,12 +1,12 @@
 # BookJourney - Second-hand Book Mall Mini Program
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/书程小驿.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/书程小驿.jpg)
 
 Project Repository: [**linyuxuanlin/BookJourney**](https://github.com/linyuxuanlin/BookJourney)
 
 Demo (Scan the QR code with WeChat to experience):
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/1.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/1.jpg)
 
 ## Background
 

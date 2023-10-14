@@ -1,28 +1,28 @@
-# Empaquetar una aplicación como contenedor Docker
+# تغليف التطبيق كحاوية Docker
 
-Empaquetar una aplicación como contenedor Docker puede facilitar su implementación y gestión. A continuación, se muestra un ejemplo de cómo empaquetar una aplicación Python como contenedor Docker y ejecutarla utilizando Docker Compose.
+تغليف التطبيق كحاوية Docker يمكن أن يسهل إدارته ونشره بشكل أفضل. فيما يلي مثال يوضح كيفية تغليف تطبيق Python كحاوية Docker وتشغيله باستخدام Docker Compose.
 
-## Plantilla básica
+## القالب الأساسي
 
-Para contenerizar una aplicación, primero asegúrate de tener Docker instalado. Luego, en el directorio raíz de tu aplicación Python, crea estos dos archivos: `Dockerfile` y `compose.yaml`, que contendrán lo siguiente:
+لتحويل التطبيق إلى حاوية Docker ، يجب التأكد من تثبيت Docker أولاً. ثم ، يجب إنشاء ملفين في دليل تطبيق Python الخاص بك: `Dockerfile` و `compose.yaml` ، والتي ستحتوي على ما يلي:
 
 ```Dockerfile title="Dockerfile"
-# Establecer la imagen base como la imagen oficial de Python, la versión puede ser personalizada
+# تعيين الصورة الأساسية لصورة Python الرسمية ، يمكن تخصيص الإصدار
 FROM python:3.9
 
-# Establecer el directorio de trabajo como /app
+# تعيين دليل العمل إلى /app
 WORKDIR /app
 
-# Copiar los archivos de dependencias de la aplicación Python
+# نسخ ملفات الاعتماديات لتطبيق Python
 COPY requirements.txt .
 
-# Instalar las dependencias de la aplicación
+# تثبيت الاعتماديات للتطبيق
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiar los archivos de la aplicación, desde el directorio actual al directorio dentro del contenedor
+# نسخ ملفات التطبيق ، من الدليل الحالي إلى الدليل داخل الحاوية
 COPY . .
 
-# Establecer el comando de ejecución predeterminado
+# تعيين الأمر الافتراضي للتشغيل
 CMD ["python", "app.py"]
 ```
 
@@ -33,11 +33,13 @@ services:
     build: .
 ```
 
-En el archivo `compose.yaml`, se define un servicio llamado `app`. Con la instrucción `build: .`, se utilizará el archivo `Dockerfile` en el directorio actual para construir la imagen. Ejecuta `docker compose up` en el directorio de `compose.yaml` para construir y ejecutar la aplicación.
+في ملف `compose.yaml` هذا ، قمنا بتعريف خدمة تسمى `app`. باستخدام التعليمة `build: .` ، سيتم استخدام ملف `Dockerfile` في الدليل الحالي لبناء الصورة. يمكن بناء التطبيق باستخدام `docker compose up` في دليل `compose.yaml`.
 
-## Ejemplo: Empaquetar una aplicación Python simple como contenedor Docker
+## مثال: تغليف تطبيق Python بسيط كحاوية Docker
 
-A continuación, se muestra un ejemplo de una aplicación Hello World simple que imprime "Hello World" en una página web:
+فيما يلي مثال بسيط على تطبيق Hello World:
+
+هذا هو تطبيق Python بسيط يستخدم Flask لطباعة Hello World على صفحة الويب:
 
 ```python title="app.py"
 from flask import Flask
@@ -49,31 +51,31 @@ if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int("8000"), debug=True)
 ```
 
-Si implementamos la aplicación Python de manera convencional, sin contenerizarla, necesitamos instalar las dependencias primero. Para algunas dependencias que requieren la compilación de paquetes, esto puede dar problemas en entornos de Windows, donde pueden faltar archivos de encabezado necesarios. Si la contenerizamos como Docker, podemos ignorar las diferencias de entorno; incluso si el host no está conectado a Internet, solo necesitamos copiar la imagen para implementarla. Los siguientes pasos muestran cómo contenerizarla y implementarla con Docker Compose.
+إذا قمنا بنشر تطبيق Python بشكل عادي دون استخدام الحاويات ، فسيتعين علينا تثبيت الاعتماديات أولاً ، وقد يتعذر ذلك في بعض الحالات ، وخاصةً في بيئة Windows. إذا قمنا بتغليفه كحاوية Docker ، يمكننا تجاهل الفروق في البيئة. حتى إذا لم يتم توصيل الجهاز المضيف بالإنترنت ، يمكننا نسخ الصورة وإكمال النشر. يوضح الخطوات التالية كيفية تحويله إلى حاوية Docker ونشره باستخدام Docker Compose.
 
-Primero, crea un archivo llamado `Dockerfile` y escribe lo siguiente:
+أولاً ، قم بإنشاء ملف يسمى `Dockerfile` وأضف المحتويات التالية:
 
 ```Dockerfile title="Dockerfile"
-# Establecer la imagen base como la imagen oficial de Python
+# تعيين الصورة الأساسية لصورة Python الرسمية
 FROM python:3.9
 
-# Copiar los archivos de la aplicación
+# نسخ ملفات التطبيق
 COPY . /app
 
-# Establecer el directorio de trabajo
+# تعيين دليل العمل
 WORKDIR /app
 
-# Instalar las dependencias
+# تثبيت الاعتماديات
 RUN pip install flask
 
-# Exponer el puerto 8000 para acceder a la aplicación
+# فتح منفذ 8000 للوصول
 EXPOSE 8000
 
-# Iniciar la aplicación
+# تشغيل التطبيق
 CMD python ./app.py
 ```
 
-Luego, en el mismo directorio, crea un archivo llamado `compose.yaml` y copia lo siguiente:
+ثم ، في نفس الدليل ، قم بإنشاء ملف يسمى `compose.yaml` وأضف المحتويات التالية:
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -81,20 +83,20 @@ services:
   helloworld-flask:
     build: .
     ports:
-      - "8099:8000" # El puerto 8099 se puede personalizar
+      - "8099:8000" # يمكن تخصيص المنفذ 8099
 ```
 
-Ahora, abre la terminal, ve al directorio que contiene los archivos `Dockerfile` y `compose.yaml`, y ejecuta el siguiente comando para iniciar la aplicación:
+الآن ، يمكنك فتح الطرفية والانتقال إلى الدليل الذي يحتوي على ملفي `Dockerfile` و `compose.yaml` وتشغيل الأمر التالي لتشغيل التطبيق:
 
 ```shell
 docker compose up
 ```
 
-Docker construirá la imagen y lanzará el contenedor. Acceda a <http://localhost:8099> para ver los caracteres de Hello World. Con estos pasos, se puede contenerizar una aplicación Python simple y desplegarla utilizando Docker Compose.
+# Docker سيقوم ببناء الصورة وتشغيل الحاوية. يمكنك الوصول إلى http://localhost:8099 لرؤية حرف Hello World. باستخدام الخطوات المذكورة أعلاه ، يمكن تحويل تطبيق Python البسيط إلى حاوية ونشره باستخدام Docker Compose.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Contenerizar una aplicación](https://docs.docker.com/get-started/02_our_app/)
-- [Contenerizar una aplicación Python en 3 minutos](https://cloud.tencent.com/developer/article/1752513)
+- [تحويل التطبيق إلى حاوية](https://docs.docker.com/get-started/02_our_app/)
+- [تحويل تطبيق Python إلى حاوية في 3 دقائق](https://cloud.tencent.com/developer/article/1752513)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

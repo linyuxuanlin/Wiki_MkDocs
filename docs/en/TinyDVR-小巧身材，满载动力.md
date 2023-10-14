@@ -2,7 +2,7 @@
 
 —— Based on TinyDVR Master V1.1 & Slave V7.2 Release
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200125191345.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20200125191345.jpg)
 
 TinyDVR is a motor driver kit that includes a motherboard (Master) and a daughterboard (Slave). The power supply and drive parts are separated, and the volume is greatly reduced compared to its predecessor ZenDriver, greatly improving scalability. You can stack different numbers of daughterboards according to your needs to drive n motors.
 
@@ -41,11 +41,11 @@ Project online preview:
 
 ### TinyDVR Master
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200125191439.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200125191439.png)
 
 ### TinyDVR Slave
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200125191457.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200125191457.png)
 
 Back pin details:
 
@@ -75,11 +75,11 @@ Back pin details:
 ## Behind the Scenes
 
 Early daughterboard:
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200311182442.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20200311182442.jpg)
 
 Batch welding:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200311182441.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20200311182441.jpg)
 
 > Original: <https://wiki-power.com/>  
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.

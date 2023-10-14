@@ -10,9 +10,9 @@
 
 打开群晖的 `控制面板` - `任务计划` - `新增` - `计划的任务` - `用户定义的脚本`，随后按以下图片填写配置：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202301092319956.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202301092319956.png)
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202301092321592.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202301092321592.png)
 
 其中的脚本：
 

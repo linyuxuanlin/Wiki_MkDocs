@@ -34,7 +34,7 @@ Desde la perspectiva de EMI, se recomienda colocar cobre; desde la perspectiva d
 
 ## Cómo juzgar si el inductor de potencia está saturado
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210723133831.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210723133831.png)
 
 Además, también se puede juzgar a partir de la temperatura anormal, el zumbido, etc.
 
@@ -42,7 +42,7 @@ Además, también se puede juzgar a partir de la temperatura anormal, el zumbido
 
 - **Capacitancia de entrada / salida**: debe cumplir con los requisitos de voltaje (1.5-2 veces el voltaje de entrada) y ondulación de entrada.
 - **Capacitancia BST**: capacitancia de arranque de autoalimentación, se utiliza para elevar el voltaje para encender el tubo superior dentro del chip. Por lo general, se selecciona el valor recomendado en el manual de datos (generalmente 0.1-1uF), y la resistencia a la tensión generalmente debe ser mayor que la tensión de entrada.
-- **Inductancia**: se requiere una inductancia diferente para diferentes voltajes de salida; preste atención a la temperatura y asegúrese de que la corriente de saturación cumpla con los requisitos de margen, generalmente más del 1.3 veces la corriente máxima (o la corriente de saturación de la inductancia debe ser mayor que la corriente máxima de salida + 0.5 * corriente de ondulación de la inductancia).
+- **Inductancia**: se requiere una inductancia diferente para diferentes voltajes de salida; preste atención a la temperatura y asegúrese de que la corriente de saturación cumpla con los requisitos de margen, generalmente más del 1.3 veces la corriente máxima (o la corriente de saturación de la inductancia debe ser mayor que la corriente máxima de salida + 0.5 \* corriente de ondulación de la inductancia).
 - **Capacitancia de retroalimentación**: seleccione el valor según lo requerido en el manual de datos, diferentes fabricantes de chips tendrán diferentes requisitos de valor, y diferentes voltajes de salida también tendrán diferentes requisitos.
 - **Resistencia de retroalimentación y resistencia de división EN**: se requiere que se seleccione el valor según las especificaciones, y se debe seleccionar una precisión del 1%.
 
@@ -51,8 +51,6 @@ Además, también se puede juzgar a partir de la temperatura anormal, el zumbido
 🚧
 
 ## Requisitos de diseño de PCB
-
-
 
 - Inductores: Se debe priorizar la selección de inductores moldeados en una sola pieza, ya que tienen una EMI más baja.
 - Red de retroalimentación: Las líneas de retroalimentación deben estar lo más alejadas posible de las líneas de ruido del inductor y la fuente de alimentación. Si se cumple la primera condición, se pueden hacer las líneas lo más cortas y gruesas posible. Lo mejor es que las líneas estén en el otro lado de la PCB opuesto al inductor y separadas por una tierra intermedia. La resistencia de división de voltaje inferior generalmente se conecta a la tierra de la señal AGND y la línea de retroalimentación se puede conectar a tierra.

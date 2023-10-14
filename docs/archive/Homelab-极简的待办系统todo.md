@@ -3,7 +3,7 @@ id: Homelab-极简的待办系统todo
 title: Homelab - 极简的待办系统 todo
 ---
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202304111520508.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202304111520508.png)
 
 **todo** 是一个极简的待办系统工具。
 

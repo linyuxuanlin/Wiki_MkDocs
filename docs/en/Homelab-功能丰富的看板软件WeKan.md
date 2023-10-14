@@ -1,6 +1,6 @@
 # Homelab - Feature-rich Kanban software WeKan
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230508175842.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20230508175842.png)
 
 **WeKan** is a flexible, easy-to-use, and efficient open-source Kanban software that helps teams collaborate and manage tasks, projects, and workflows. It provides a simple yet powerful user interface where users can easily create multiple boards, add lists and cards to each board, and assign tasks to different members to better manage projects and track progress.
 
@@ -71,7 +71,6 @@ networks:
   wekan-tier:
     driver: bridge
 ```
-
 
 (Optional) It is recommended to create a `.env` file in the same directory as `compose.yaml` and customize your environment variables. If you do not want to use environment variables, you can also customize your parameters directly in `compose.yaml` (such as replacing `${STACK_NAME}` with `wekan`).
 

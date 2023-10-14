@@ -10,9 +10,9 @@ Abra el paquete Docker de Synology y descargue la imagen `containrrr/watchtower`
 
 Abra el `Panel de control` de Synology - `Tarea programada` - `Agregar` - `Tarea programada` - `Script definido por el usuario`, y luego complete la configuración según las siguientes imágenes:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202301092319956.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202301092319956.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202301092321592.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202301092321592.png)
 
 El script es el siguiente:
 

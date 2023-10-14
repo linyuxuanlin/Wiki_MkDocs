@@ -4,7 +4,7 @@
 
 首先，连接 Cape 的 12V 电源输入，使用 USB 转串口模块，连接板载串口（J3 口才能用于调试）：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20211027164010.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211027164010.png)
 
 确保 USB 转串口模块有驱动（我用到是 FTDI 模块，驱动下载地址是 <https://ftdichip.com/drivers/vcp-drivers/>）。
 

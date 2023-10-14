@@ -4,10 +4,10 @@
 
 Altium Designer admite el uso de Git/SVN para el control de versiones. Si se utiliza Git, simplemente se debe crear un repositorio Git en la ruta del proyecto. Al reiniciar Altium Designer, se verá el estado de la versión en el borde del árbol de archivos:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200421100348.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200421100348.png)
 
 El significado de los iconos es el siguiente:
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200421101221.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200421101221.png)
 
 Se pueden realizar operaciones de Git directamente en el menú `Proyecto (C) - Control de versiones (E)`, incluso se puede enviar directamente a GitHub.
 
@@ -101,84 +101,113 @@ El archivo `.gitignore` para Altium Designer incluye lo siguiente:
 # Datos binarios de perforación NC CAMtastic
 
 # ============================= Gerber =============================
-*.G[1-30]
+
+\*.G[1-30]
+
 # Datos de capa media 1-30 de CAMtastic Gerber
 
 # ============================= Salidas =============================
-*.Drc
+
+\*.Drc
+
 # Informe de verificación de reglas de diseño
 
-*.Drr
+\*.Drr
+
 # Archivo de informe de perforación NC de Altium
 
-*.Net
+\*.Net
+
 # Archivo de lista de red de Altium
 
-*.Nsx
+\*.Nsx
+
 # Documento de lista de simulación
 
-*.OutJob
+\*.OutJob
+
 # Archivo de trabajo de salida de Altium
 
-*.Rep
+\*.Rep
+
 # Archivo de informe
 
-*.Rpt
+\*.Rpt
+
 # Archivo de informe
 
 # ============================= Scripts =============================
-*.Bas
+
+\*.Bas
+
 # Documento de script de Altium
 
-*.SrcDoc
+\*.SrcDoc
+
 # Documento de script de Altium
 
-*.Tcl
+\*.Tcl
+
 # Documento de script de Altium
 
 # ============================= Simulación =============================
-*.Ckt
+
+\*.Ckt
+
 # Subcircuito de simulación
 
-*.LaxAn
+\*.LaxAn
+
 # Archivo analógico del analizador lógico
 
-*.LaxDig
+\*.LaxDig
+
 # Archivo digital del analizador lógico
 
-*.Mdl
+\*.Mdl
+
 # Modelo de simulación
 
-*.Pld
+\*.Pld
+
 # Archivo PLD de CUPL
 
-*.Pwl
+\*.Pwl
+
 # Descripción lineal por tramos de simulación
 
-*.Sdf
+\*.Sdf
+
 # Archivo de datos de simulación de Altium
 
-*.Si
+\*.Si
+
 # Archivo de entrada de simulación de CUPL
 
-*.So
+\*.So
+
 # Archivo de forma de onda digital
 
 # ============================= Carpetas =============================
-__Previews/
+
+\_\_Previews/
 
 History/
 
-Registros de proyecto para */
+Registros de proyecto para \*/
 
 # ============================= Otros =============================
-*.BomDoc
+
+\*.BomDoc
+
 # Documento de lista de materiales
 
-*.DBLib
+\*.DBLib
+
 # Archivo de biblioteca de base de datos de Altium
 
-*.DBLink
+\*.DBLink
+
 # Archivo de enlace de base de datos de Altium
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

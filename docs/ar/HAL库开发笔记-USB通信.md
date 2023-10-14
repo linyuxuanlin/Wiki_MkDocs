@@ -1,37 +1,37 @@
-# Notas de desarrollo de la biblioteca HAL - Comunicación USB 🚧
+# ملاحظات تطوير مكتبة HAL - الاتصال بواسطة USB 🚧
 
-Este artículo se basa en el kit de desarrollo RobotCtrl, desarrollado internamente, con un núcleo de microcontrolador STM32F407ZET6, y los pines USB_Slave son `PA11` y `PA12`. Para obtener el esquema y una descripción detallada, consulte [**RobotCtrl - Kit de desarrollo STM32 universal**](https://wiki-power.com/es/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
+يستند هذا المقال إلى مجموعة تطوير RobotCtrl الخاصة بنا ، ويتم تشغيل نواة الميكروكنترولر بواسطة STM32F407ZET6 ، ويتم توصيل دبوس USB_Slave بـ `PA11` و `PA12` ، يرجى الرجوع إلى المخطط الأساسي والمقدمة المفصلة في [**RobotCtrl - STM32 通用开发套件**](https://wiki-power.com/ar/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6) .
 
-## Pasos simples para la prueba de bucle de retroalimentación
+## خطوات بسيطة للاختبار الدائري
 
-### Configuración interna de CubeMX
+### التكوين الداخلي لـ CubeMX
 
-1. Configure el reloj externo de alta velocidad (HSE).
-2. Configure el árbol de reloj para asegurarse de que el extremo del árbol de reloj "48MHz Clocks (MHz)" sea 48MHz.
-3. En la página `USB_OTG_FS`, configure el `Mode` como `Device_Only`, y los pines predeterminados son `PA11` y `PA12`.
-4. En la página `USB_DEVICE`, configure `Class For FS IP` como `Commmunication Device Class (Virtual Port Com)`.
+1. تكوين المؤقت الخارجي (HSE).
+2. تكوين شجرة الساعة ، وتأكد من أن نهاية شجرة الساعة "48MHz Clocks (MHz)" هي 48 ميجاهرتز.
+3. في صفحة `USB_OTG_FS` ، قم بتكوين `Mode` كـ `Device_Only` ، والدبابيس الافتراضية هي `PA11` و `PA12`.
+4. في صفحة `USB_DEVICE` ، قم بتكوين `Class For FS IP` كـ `Commmunication Device Class (Virtual Port Com)`.
 
-### Configuración interna del código
+### التكوين الداخلي للكود
 
-Para implementar la función de retroalimentación de datos, solo necesita agregar una línea en la función `CDC_Receive_FS` del archivo `usbd_cdc_if.c`:
+لتنفيذ وظيفة الدائرة الراجعة للبيانات ، ما عليك سوى إضافة سطر واحد في دالة `CDC_Receive_FS` في ملف `usbd_cdc_if.c`:
 
 ```c title="usbd_cdc_if.c"
-CDC_Transmit_FS(Buf,*Len); // Devuelve los mismos datos
+CDC_Transmit_FS(Buf,*Len); // إرجاع نفس البيانات
 ```
 
-### Prueba
+### الاختبار
 
-Abra el Administrador de dispositivos para ver si el dispositivo se ha mostrado. Si no se encuentra el dispositivo o hay un signo de exclamación amarillo, descargue el controlador de la página web de ST [**STM32 Virtual COM Port Driver**](https://www.st.com/content/st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-utilities/stsw-stm32102.html).
+افتح مدير الأجهزة للتحقق مما إذا كان الجهاز قد تم عرضه ، إذا لم يتم العثور على الجهاز أو كان هناك علامة تعجب صفراء ، يرجى تنزيل برنامج التشغيل من موقع ST [**STM32 Virtual COM Port Driver**](https://www.st.com/content/st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-utilities/stsw-stm32102.html) .
 
-Si ha instalado el controlador pero aún no se puede reconocer correctamente, intente ajustar el `Minimum Heap Size` a `0x600` o superior en CubeMX - `Project Manager` - `Project` - `Linker Settings`.
+إذا لم يتم التعرف على الجهاز بشكل صحيح بعد تثبيت التعريفات ، فيمكنك محاولة زيارة CubeMX - `Project Manager` - `Project` - `Linker Settings` ، وتعديل `Minimum Heap Size` إلى `0x600` أو أعلى.
 
-Abra la herramienta de puerto serie (cualquier velocidad de transmisión) y envíe cualquier carácter. Devolverá el mismo carácter.
+افتح أداة المنفذ التسلسلي (أي معدل بت يعمل) ، وسوف تلاحظ أنه عند إرسال أي حرف ، سيتم إرجاع نفس الحرف.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [STM32 utiliza CubeMX HAL para generar rápidamente el proyecto USBVCP Virtual Serial Port](https://blog.csdn.net/yxy244/article/details/102620249)
+- [استخدام STM32 CubeMX HAL لإنشاء مشروع USBVCP Virtual Serial Port بسرعة](https://blog.csdn.net/yxy244/article/details/102620249)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

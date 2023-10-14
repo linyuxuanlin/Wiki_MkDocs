@@ -10,9 +10,9 @@ Open Synology Docker Suite and download the `containrrr/watchtower` image.
 
 Open Synology's `Control Panel` - `Task Scheduler` - `Create` - `Scheduled Task` - `User-defined script`, and then fill in the configuration according to the following pictures:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202301092319956.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202301092319956.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202301092321592.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202301092321592.png)
 
 The script is as follows:
 

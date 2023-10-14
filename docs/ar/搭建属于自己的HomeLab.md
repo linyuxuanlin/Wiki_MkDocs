@@ -1,62 +1,62 @@
-# Cómo construir tu propio HomeLab
+# بناء HomeLab الخاص بك
 
-Homelab se refiere a un entorno de experimentación (tinkering) que se puede construir en casa para realizar experimentos y aprender. Por lo general, se refiere a una serie de dispositivos de hardware (servidores domésticos, mini ordenadores, viejos ordenadores portátiles, Raspberry Pi, etc.) que ejecutan sistemas operativos y software (Linux, máquinas virtuales, Docker, etc.). Homelab tiene muchos usos, como ser un enrutador suave, un host remoto, o desplegar una serie de servicios de auto-alojamiento, como una biblioteca personal, una biblioteca de películas, un gestor de contraseñas, un sitio web personal, un lector de RSS, un servidor de podcasts, una libreta de notas, etc. No sólo es práctico, sino que también puede ser un hobby que añade diversión a la vida.
+يشير Homelab إلى بيئة التجربة (التحريك) التي يمكن بناؤها في المنزل للتجربة والتعلم. وعادة ما يشير إلى سلسلة من الأجهزة (خوادم المنزل ، وحدات الكمبيوتر الصغيرة ، والهواتف القديمة ، والتوت بي إلخ) التي تعمل عليها بيئة نظام التشغيل والبرامج (Linux والأجهزة الافتراضية و Docker وما إلى ذلك). يوجد لـ Homelab العديد من الاستخدامات ، مثل توجيه البرامج النصية ، والمضيف البعيد ، ويمكن أيضًا نشر سلسلة من الخدمات الخاصة بالتحكم الذاتي ، مثل مكتبة الكتب الشخصية ومكتبة الأفلام ومدير كلمات المرور وموقع الويب الشخصي وقارئ RSS وخادم البودكاست والمذكرات الخ.
 
-## Mi configuración de Homelab
+## تكوين Homelab الخاص بي
 
-Mi configuración de Homelab es un **servidor en la nube ligero** + **mini ordenador** + **NAS**, cada uno con su propia configuración y uso:
+تكوين Homelab الخاص بي هو **خادم سحابي خفيف** + **وحدة كمبيوتر صغيرة** + **NAS** ، ولكل منها تكوين واستخدامات مختلفة:
 
-|          | Servidor en la nube ligero (Alibaba Cloud 1C2G) | Mini ordenador (CPU N100) | NAS (Synology DS220+) |
-| -------- | --------------------------------------------- | ------------------------ | --------------------- |
-| IP pública | Sí | No | No |
-| Espacio de almacenamiento | Pequeño | Mediano | Grande |
-| Rendimiento | Bajo | Alto | Bajo |
+|          | خادم سحابي خفيف (Alibaba Cloud 1C2G) | وحدة كمبيوتر صغيرة (N100 CPU) | NAS (Synology DS220+) |
+| -------- | --------------------------- | ------------------ | ------------------ |
+| عنوان IP العام | متاح                          | غير متاح                 | غير متاح                 |
+| مساحة التخزين | صغير                          | متوسط                 | كبير                 |
+| الأداء     | منخفض                          | عالي                 | منخفض                 |
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202304130031463.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202304130031463.png)
 
-No es difícil ver que cada uno tiene sus propias fortalezas, pero juntos forman un equipo triangular. El **servidor en la nube ligero** se centra en el acceso a la red, el **mini ordenador** se centra en el procesamiento de rendimiento, y el **NAS** se centra en el almacenamiento de espacio.
+من السهل ملاحظة أنهم جميعًا متخصصون ، ولكن بمجرد أن يتعاونوا ، فإنهم يشكلون مثلثًا. يميل **خادم سحابي خفيف** إلى النوع الذي يتطلب الوصول إلى الشبكة ، يميل **وحدة كمبيوتر صغيرة** إلى النوع الذي يتطلب معالجة الأداء ، ويميل **NAS** إلى النوع الذي يتطلب تخزين المساحة.
 
-### Servidor en la nube ligero
+### خادم سحابي خفيف
 
-El **servidor en la nube ligero** es en realidad el excedente de los proveedores de servidores en la nube, con una configuración no muy alta, pero con un precio asequible, como el Alibaba Cloud que compré por sólo 96 yuanes al año (si tienes un paquete más barato, házmelo saber).
+**خادم سحابي خفيف** هو في الواقع ما تبقى من خوادم السحاب التي يملكها مزودو خدمات السحابة ، وهي ذات تكوين منخفض ، ولكنها تفوز بأنها بأسعار معقولة ، مثل خادم Alibaba Cloud الخفيف الذي اشتريته بسعر 96 يوانًا / سنة فقط (إذا كان لديك باقة أرخص ، فلا تتردد في إعلامي).
 
-Debido a que tiene una IP pública (los puertos 80/443 también están abiertos), los servicios que despliego en este servidor en la nube ligero son principalmente un servidor frp, un servidor proxy inverso, un salto para acceder a otras máquinas, un panel de monitorización de otros hosts, un servicio de sitio web de pequeña escala, un monitor de tiempo de actividad del sitio web, etc., que necesitan ser accesibles directamente desde la red pública.
+نظرًا لوجود عنوان IP العام (تم فتح منافذ 80/443 أيضًا) ، فإن الخدمات التي نشرتها على هذا الخادم السحابي الخفيف هي خادم frp وخادم الوكيل العكسي وجسر الوصول إلى الأجهزة الأخرى ولوحة مراقبة الأجهزة الأخرى وخدمة موقع الويب الصغير ومراقبة توفر الموقع وما إلى ذلك.
 
-### Mini ordenador
+### وحدة كمبيوتر صغيرة
 
-Para el **mini ordenador**, elegí el sistema N100 CPU de Zero-Knowledge, con 16 GB de memoria DDR5 y un disco duro SSD de 250 GB, que en general cuesta alrededor de 1.000 yuanes. El consumo diario de energía no es alto, y puede ser llamado cuando se necesita rendimiento.
+**وحدة كمبيوتر صغيرة** اخترت Zero N100 CPU Quan System ، وقمت بتجهيزه بذاكرة وصول عشوائي DDR5 بسعة 16 جيجابايت وقرص صلب SSD بسعة 250 جيجابايت ، وبشكل عام يبلغ سعرها حوالي 1000 يوان. لا يستهلك الكثير من الطاقة اليومية ، ويمكن استدعاؤه عند الحاجة إلى الأداء.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202304130043744.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202304130043744.png)
 
-Los tipos de aplicaciones que despliego en el mini ordenador son principalmente servicios que consumen rendimiento, como el editor de código web VS Code, la biblioteca privada de notas, el lector de RSS, el servidor de podcasts, la biblioteca de películas, el navegador interno de la red local, etc.
+يتم نشر نوع التطبيقات التي تم تثبيتها على وحدة الكمبيوتر الصغيرة بشكل رئيسي ، مثل محرر كود VS Code على الويب ومكتبة الملاحظات الخاصة وقارئ RSS وخادم البودكاست ومكتبة الأفلام ومتصفح الشبكة الداخلية وما إلى ذلك.
 
 ### NAS
 
-Para el **NAS**, elegí el Synology DS220+, que tiene una arquitectura X86 que facilita la ejecución del entorno Docker. Hace un tiempo, también le añadí una memoria RAM de 16 GB para intentar mejorar su rendimiento. Pero luego descubrí que el cuello de botella seguía siendo la débil CPU J4025. El Synology blanco es como comprar software y obtener hardware gratis, pero por la seguridad de los datos, todavía vale la pena.
+**NAS** اخترت Synology DS220 + ، وهي تعمل على بنية X86 وتسهل تشغيل بيئة Docker. في وقت سابق ، قمت بإضافة شريط ذاكرة وصول عشوائي بسعة 16 جيجابايت لتحسين أدائه. ولكن بعد ذلك ، تبين أن الزجاجة الرقبة لا تزال تلك الوحدة المعالجة المركزية الضعيفة J4025. يمكن اعتبار Synology الأبيض هدية برمجية مع أجهزة ، ولكن لأجل سلامة البيانات ، فهي تستحق الثمن.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202304130053483.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202304130053483.png)
 
-Los servicios que despliego en el NAS son principalmente para necesidades de almacenamiento, como la copia de seguridad de datos de dispositivos, la sincronización de la nube, la biblioteca de fotos, la biblioteca de libros, etc.
+يتم نشر ما تم تثبيته على NAS بشكل رئيسي ، مثل نسخ احتياطي للبيانات الجهازية ومزامنة القرص الصلب ومكتبة الصور ومكتبة الكتب وما إلى ذلك.
 
-## Cómo desplegar Docker Compose en un solo paso
+## كيفية نشر Docker compose بنقرة واحدة
 
-Con el espíritu de experimentación, es inevitable que se tenga que reinstalar el sistema cada dos o tres días. Después de desplegar tantas aplicaciones, no es posible que se inicien una por una. Aquí hay un sencillo script de shell que puede desplegar todas las composiciones de Docker en un solo paso:
+مع روح التحريك ، لا يمكن تجنب تثبيت النظام بانتظام. بعد تثبيت العديد من التطبيقات ، لا يمكن تشغيلها جميعًا بشكل فردي. هناك سكريبت shell بسيط يمكنه نشر جميع Docker compose بنقرة واحدة:
 
 ```shell title="compose.sh"
-echo "iniciando compose.sh..."
+echo "starting compose.sh..."
 
-# Recorre todas las carpetas de primer nivel en el directorio actual
+# تمرير المجلدات في المستوى الأول للمجلد الحالي
 for folder in */; do
-  [ "$folder" != "Archive/" ] # Ignora la carpeta Archive
-  cd "$folder"  # Entra en la carpeta
-  docker-compose up -d # Ejecuta el comando docker compose up -d
-  cd .. # Regresa al directorio anterior
+  [ "$folder" != "Archive/" ] # تجاهل مجلد Archive
+  cd "$folder"  # الدخول إلى المجلد
+  docker-compose up -d # تنفيذ أمر docker compose up -d
+  cd .. # العودة إلى المجلد الأعلى
 done
 
-echo "listo."
+echo "done."
 ```
 
-Mi estructura de directorios es la siguiente:
+هذه هي هيكلي الدليل:
 
 ```
 ├── compose
@@ -71,20 +71,20 @@ Mi estructura de directorios es la siguiente:
 │   └── compose.sh
 ```
 
-Simplemente ejecutando `sh compose.sh` en el directorio compose, se pueden iniciar todos los Docker compose con un solo comando.
+فقط قم بتشغيل `sh compose.sh` في الدليل compose لتشغيل جميع Docker compose بنقرة واحدة.
 
-## Ventajas del autohospedaje
+## مزايا الاستضافة الذاتية
 
-En comparación con el alojamiento de terceros, donde alguien más se encarga de tus datos, el **autohospedaje (Self-Hosted)** tiene muchas ventajas, como el control total sobre tus datos personales, la capacidad de personalizar según tus necesidades y la posibilidad de acceder a más fuentes de información de calidad (biblioteca personal, biblioteca de películas y series, servicios RSS). La única condición es tener tiempo, recursos y la disposición para experimentar.
+بالمقارنة مع الاستضافة الخارجية، التي تسمح للآخرين بحفظ بياناتك، فإن الاستضافة الذاتية (Self-Hosted) لها مزايا كاملة، حيث تمنحك السيطرة الكاملة على بياناتك الشخصية، ويمكنك تخصيصها وفقًا لاهتماماتك الخاصة، وتساعدك على الحصول على مصادر معلوماتية أفضل (مكتبة شخصية، مكتبة فيديو، خدمة RSS). الشرط الأساسي هو وجود الوقت والجهد والاستثمار المالي، ويجب أن يكون لديك روح للتجريب.
 
-En los próximos artículos, presentaré algunas configuraciones básicas y servicios interesantes. La combinación de "triángulo de hierro" mencionada anteriormente es solo una configuración personalizada, pero si solo tienes una máquina, también puedes experimentar con ella. La mayoría de los servicios que presentaré se basan en Docker y Docker-compose, ya que son altamente compatibles y se pueden utilizar en diferentes configuraciones de máquinas. Sin embargo, es importante mencionar que es mejor elegir una máquina con arquitectura X86, ya que algunos contenedores no están adaptados para ARM y deben compilarse e instalarse manualmente.
+في سلسلة المقالات التالية، سأقدم بعض الإعدادات الأساسية، بالإضافة إلى العديد من الخدمات المثيرة للاهتمام. الثلاثي الحديدي المذكور أعلاه هو تكوين تفضيلي شخصي، وإذا كان لديك جهاز واحد فقط، فلا يوجد مشكلة في التجريب. يتم نشر معظم المحتوى الذي سأقدمه باستخدام Docker و Docker-compose، لأن هذه الطريقة متوافقة للغاية ويمكن استخدامها على أجهزة مختلفة. ولكن يجب الإشارة إلى أنه يجب اختيار جهاز X86 لأن بعض الحاويات لم تتم ملائمتها لـ ARM وتحتاج إلى تثبيت مخصص.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [¿Qué servicios interesantes tienes en tu NAS?](https://www.v2ex.com/t/901954)
-- [Iniciar varios contenedores de docker-compose con un solo comando](https://juejin.cn/post/7082842557482270734)
+- [ما هي الخدمات المثيرة للاهتمام التي يتم استضافتها على NAS الخاص بك؟](https://www.v2ex.com/t/901954)
+- [تشغيل عدة تكوينات لحاويات docker-compose بنقرة واحدة](https://juejin.cn/post/7082842557482270734)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

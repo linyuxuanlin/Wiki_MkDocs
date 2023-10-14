@@ -1,6 +1,6 @@
 # RobotCtrl_Core - Placa central
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220527113423.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220527113423.png)
 
 Repositorio del proyecto: [**linyuxuanlin/RobotCtrl/RobotCtrl_Core**](https://github.com/linyuxuanlin/RobotCtrl/tree/main/RobotCtrl_MultiBoard_Project/RobotCtrl_Core)
 

@@ -1,33 +1,33 @@
-# Método para habilitar la virtualización en placas base MSI
+# طريقة تمكين الافتراضي للوحة الأم MSI
 
-## Reiniciar y acceder a la BIOS
+## إعادة التشغيل والدخول إلى BIOS
 
 ```cmd
 shutdown.exe /r /o
 ```
 
-Después de reiniciar, haga clic en `Solucionar problemas (Troubleshoot)` - `Opciones avanzadas (Advanced options)` - `Configuración del firmware UEFI (UEFI Firmware Settings)` para acceder a la BIOS de la placa base.
+بعد إعادة التشغيل ، انقر فوق `حل المشكلات (Troubleshoot)` - `خيارات متقدمة (Advanced options)` - `إعدادات البرنامج الثابت UEFI (UEFI Firmware Settings)` للدخول إلى BIOS لوحة الأم.
 
-## Buscar la configuración relevante
+## العثور على الإعدادات ذات الصلة
 
-1. Presione `F7` para ingresar a las opciones avanzadas.
-2. Haga clic en `OC` - `Características de la CPU (CPU Features)` en secuencia.
-3. Busque `SVM Mode / Intel Virtualization (dependiendo de la CPU)`.
+1. الضغط على `F7` للدخول إلى الخيارات المتقدمة
+2. النقر على `OC` - `ميزات المعالج (CPU Features)` بالترتيب
+3. العثور على `SVM Mode / Intel Virtualization (يعتمد على المعالج)`
 
-## Modificar la configuración
+## تعديل الإعدادات
 
-Cambie `Disabled (Deshabilitado)` a `Enabled (Habilitado)`.
+قم بتغيير `Disabled (معطل)` إلى `Enabled (ممكّن)`
 
-## Guardar y salir
+## حفظ والخروج
 
-Presione `F10` para guardar y salir.
+اضغط على `F10` للحفظ والخروج
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [¿Cómo acceder a la BIOS?](https://zhuanlan.zhihu.com/p/34223088)
-- [Cómo habilitar VT en computadoras y placas base MSI](http://mumu.163.com/20181108/25905_784199.html)
+- [كيفية الدخول إلى BIOS؟](https://zhuanlan.zhihu.com/p/34223088)
+- [طريقة تمكين VT لجهاز الكمبيوتر ولوحة الأم MSI](http://mumu.163.com/20181108/25905_784199.html)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

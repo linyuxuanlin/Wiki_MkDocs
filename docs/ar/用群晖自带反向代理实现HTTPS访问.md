@@ -1,30 +1,30 @@
-# Cómo implementar el acceso HTTPS con el proxy inverso incorporado de Synology
+# استخدام الخادم العكسي المدمج في Synology لتحقيق الوصول الآمن عبر HTTPS
 
-En primer lugar, necesitarás una dirección IP o un nombre de dominio para acceder a Synology desde el exterior, y ya habrás solicitado un certificado SSL. Puedes encontrar una explicación detallada en el artículo [**Cómo solicitar automáticamente un certificado de dominio con acme.sh (Synology Docker)**](https://wiki-power.com/es/%E5%9F%BA%E4%BA%8Eacme.sh%E8%87%AA%E5%8A%A8%E7%94%B3%E8%AF%B7%E5%9F%9F%E5%90%8D%E8%AF%81%E4%B9%A6%EF%BC%88Synology%20Docker%EF%BC%89).
+أولاً ، تحتاج إلى عنوان IP أو اسم نطاق يمكن الوصول إليه من الخارج لـ Synology ، ولقد قمت بتطبيق شهادة SSL. يمكنك الرجوع إلى المقالة التالية للحصول على تفاصيل حول كيفية تطبيق شهادة SSL باستخدام acme.sh (لـ Synology Docker): [**استخدام acme.sh للحصول على شهادة SSL لاسم النطاق (Synology Docker)**](https://wiki-power.com/ar/%E5%9F%BA%E4%BA%8Eacme.sh%E8%87%AA%E5%8A%A8%E7%94%B3%E8%AF%B7%E5%9F%9F%E5%90%8D%E8%AF%81%E4%B9%A6%EF%BC%88%E7%BE%A4%E6%99%96Docker%EF%BC%89)
 
-## Configuración del proxy inverso
+## تكوين الخادم العكسي
 
-Abre `Panel de control` - `Puerta de enlace de inicio de sesión` - `Avanzado` - `Servidor de proxy inverso`.
+افتح "لوحة التحكم" - "بوابة الدخول" - "متقدم" - "خادم الوكيل العكسي" بالترتيب.
 
-En el caso de [**Cómo construir un gestor de contraseñas con Bitwarden (Synology Docker)**](https://wiki-power.com/es/%E5%9F%BA%E4%BA%8EBitwarden%E6%90%AD%E5%BB%BA%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86%E5%99%A8%EF%BC%88Synology%20Docker%EF%BC%89), agregamos un servicio de proxy inverso con el nombre `bitwarden`. Completa la configuración según la siguiente imagen:
+في هذا المثال ، سنضيف خدمة عكسية جديدة باسم "bitwarden". يرجى ملء التكوين وفقًا للصورة التالية:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210503213004.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210503213004.png)
 
-- `Origen`
-  - `Protocolo`: selecciona `HTTPS`
-  - `Nombre de host`: introduce el nombre de dominio para acceder desde el exterior
-  - `Puerto`: introduce el puerto para acceder desde el exterior
-  - Marca la casilla `Habilitar HSTS` (redirección forzada a HTTPS)
-- `Destino`
-  - `Protocolo`: selecciona `HTTP`
-  - `Nombre de host`: introduce `localhost`
-  - `Puerto`: introduce el puerto de acceso interno (para Bitwarden, es el puerto mapeado `80` del contenedor, como `8003`)
+- "المصدر"
+  - "بروتوكول": حدد "HTTPS"
+  - "اسم المضيف": اكتب اسم النطاق الذي يمكن الوصول إليه من الخارج
+  - "المنفذ": اكتب المنفذ الذي يمكن الوصول إليه من الخارج
+  - حدد "تمكين HSTS" (توجيه القوة إلى HTTPS)
+- "الوجهة"
+  - "بروتوكول": حدد "HTTP"
+  - "اسم المضيف": اكتب "localhost"
+  - "المنفذ": اكتب المنفذ الذي يمكن الوصول إليه داخليًا (بالنسبة لـ bitwarden ، فإنه يعني المنفذ الذي تم تعيينه لـ "80" في الحاوية ، مثل "8003")
 
-## Configuración del certificado
+## تكوين الشهادة
 
-Abre `Panel de control` - `Seguridad` - `Certificado`, selecciona el certificado en uso, haz clic en `Configuración` y asegúrate de que el certificado correspondiente al servicio de proxy inverso `bitwarden` sea el certificado actual.
+افتح "لوحة التحكم" - "الأمان" - "الشهادة" ، حدد الشهادة التي تستخدمها ، انقر فوق "الإعدادات" ، وتأكد من أن شهادة النطاق المقابل لخدمة الوكيل العكسي "bitwarden" هي الشهادة الحالية.
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

@@ -2,7 +2,7 @@
 
 XL2009E1 是芯龙的一款最高 36V 输入、3A 输出、固定 180kHz 的 Buck 芯片，被指过流保护功能，当短路的时候，频率会降到 48kHz。
 
-项目仓库：[**Collection_of_Power_Module_Design/DC-DC(Buck)/XL2009E1**](https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/DC-DC(Buck)/XL2009E1)
+项目仓库：[**Collection_of_Power_Module_Design/DC-DC(Buck)/XL2009E1**](<https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/DC-DC(Buck)/XL2009E1>)
 
 ## 主要特性
 
@@ -26,11 +26,11 @@ XL2009E1 是芯龙的一款最高 36V 输入、3A 输出、固定 180kHz 的 Buc
 
 根据数据手册提供的典型应用电路（输入 8-36V，输出 5V@2.1A）：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407103157.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220407103157.png)
 
 ## 引脚定义
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407065806.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220407065806.png)
 
 - FB：反馈输入引脚，由电阻从 $V_{OUT}$ 分压输入反馈，不可直接接地。反馈参考电压为 1.25V。
 - OCSET：输出恒流设置引脚。
@@ -42,7 +42,7 @@ XL2009E1 是芯龙的一款最高 36V 输入、3A 输出、固定 180kHz 的 Buc
 
 ### 内部功能框图
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407070413.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220407070413.png)
 
 ### 输出电压调节
 
@@ -70,15 +70,15 @@ XL2009E1 的数据手册提供了直接选型表（3A）：
 
 输出电压与电流的关系：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407100229.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220407100229.png)
 
 效率与输出电流的关系：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407103033.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220407103033.png)
 
 输出电流与 RCS 电阻的关系（恒流控制）：
 
-![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/20220407102905.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220407102905.png)
 
 ## 参考与致谢
 

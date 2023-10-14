@@ -1,70 +1,70 @@
-# Cómo escribir un BRD
+# كيفية كتابة BRD
 
-- Guía para escribir un documento de requisitos comerciales (BRD)
+—— دليل كتابة وثيقة متطلبات الأعمال (BRD)
 
-## ¿Qué es un BRD?
+## ما هو BRD
 
-En pocas palabras, un BRD sistematiza y organiza las ideas, por un lado, para ayudar a definir la dirección del proyecto y, por otro, para presentarlas a las personas que tienen los recursos necesarios para el desarrollo del producto.
+ببساطة، يقوم BRD بتنظيم الأفكار وترتيبها، من جهة تساعد على تنظيم اتجاه المشروع، ومن جهة أخرى تستخدم لعرضها على الأشخاص الذين يمتلكون الموارد، للحصول على الموارد اللازمة لعملية تطوير المنتج.
 
-En el proceso de desarrollo del producto, la aprobación del proyecto es un punto de inflexión. Antes de la aprobación, se lleva a cabo una gran cantidad de investigación y análisis, y se produce un plan basado en los resultados de la investigación, que es el BRD.
+في عملية تطوير المنتج، يعد الإقرار بمشروع هو مفترق طرق. وقبل الإقرار، يتعين عادة إجراء العديد من الدراسات والأبحاث، وبناءً على نتائج الدراسة، يتم إخراج خطة، وهذه الخطة هي BRD.
 
-## ¿Cómo escribir un BRD?
+## كيفية كتابة BRD
 
-### 1. Introducción del producto
+### 1. مقدمة المنتج
 
-La introducción del producto debe explicar de manera breve y concisa qué tipo de producto se va a desarrollar. La explicación debe ser breve y preferiblemente se debe poder explicar en una sola oración (función del producto, posicionamiento, visión, etc.). Se puede describir desde la perspectiva del **usuario** y de los **profesionales**.
+مقدمة المنتج، هي شرح موجز للمنتج الذي تريد إنتاجه. يجب أن يكون الشرح موجزًا، ويفضل أن يتم شرحه في جملة واحدة (وظيفة المنتج، وموقعه، ورؤيته، إلخ). يمكن تحليل الشرح من منظور المستخدم والمحترفين.
 
-### 2. Valor del producto
+### 2. قيمة المنتج
 
-El valor del producto debe explicar a los tomadores de decisiones por qué se debe desarrollar este producto. Se puede describir desde dos perspectivas: las **necesidades del usuario** (cómo se satisfacen las necesidades, cómo se resuelven los problemas, etc.) y la **estrategia** (qué valor puede aportar a la empresa, cómo se pueden obtener beneficios del mercado, cómo se puede ampliar la cuota de mercado, etc.).
+قيمة المنتج، هي أن تخبر القادة لماذا يجب عليهم إنتاج هذا المنتج. يمكن شرحه من منظور "احتياجات المستخدم" (كيف يلبي احتياجات ما، ويحل مشاكل ما) و "الاستراتيجية" (ما القيمة التي يمكن أن يجلبها للشركة، وكسب الأرباح، وزيادة حصة السوق، وما إلى ذلك).
 
-### 3. Solución del producto
+### 3. حلول المنتج
 
-La solución del producto debe explicar a los tomadores de decisiones el marco y el contorno general del producto, que incluye principalmente los siguientes aspectos:
+حلول المنتج، هي أن تخبر صانعي القرار بالإطار العام والملامح الرئيسية لهذا المنتج، وتشمل بشكل رئيسي ما يلي:
 
-1. **Forma del producto**: ¿Qué tipo de arquitectura tiene el producto? ¿Es una forma de información, una forma social, una forma de búsqueda o una forma O2O?
-2. **Modelo de negocio**: ¿Es un negocio 2C o 2B? ¿Quiénes son los participantes y cómo se forma el ciclo cerrado?
-3. **Modelo de operación**: ¿Qué estrategias y medios se utilizarán para hacer funcionar el producto, como los recursos de los profesores en los productos educativos, la contratación o la colaboración masiva?
-4. **Modelo de beneficio**: ¿Cómo se puede ganar dinero, por ejemplo, a través de publicidad, servicios de valor añadido, venta de productos, etc.?
+1. **شكل المنتج**: ما هي هيكلية هذا المنتج، هل هو شكل معلوماتي، أو شكل اجتماعي، أو شكل بحثي، أو O2O؟
+2. **نموذج العمل**: هل هذا العمل هو 2C أو 2B، ومن هم المشاركون، وكيف يتم تشكيل الدائرة المغلقة؟
+3. **نموذج التشغيل**: ما هي الاستراتيجية والأدوات التي سيتم استخدامها لتشغيل المنتج، مثل موارد المعلمين في المنتجات التعليمية، هل هي عن طريق التوظيف أو الاستدعاء الجماعي؟
+4. **نموذج الربح**: كيف يتم الربح، عن طريق الإعلانات، الخدمات الإضافية، بيع السلع، وما إلى ذلك.
 
-### 4. Análisis de mercado
+### 4. تحليل السوق
 
-No se puede desarrollar un producto sin conocer el mercado, lo que incluye principalmente:
+لا يمكن تطوير المنتج بمفرده، يجب أن ننظر إلى الوضع السوقي، وتشمل بشكل رئيسي:
 
-- **Capacidad del mercado**: se debe evaluar a través del análisis de la demanda y la evaluación de la población objetivo. Los tomadores de decisiones utilizarán esta evaluación para determinar si vale la pena invertir.
-- **Análisis de la competencia**: se debe analizar los productos similares en el mercado, cómo se resuelven los problemas, qué necesidades de los usuarios se satisfacen, qué necesidades no se satisfacen, cómo se invierte, cómo es el equipo, qué resultados se obtienen, cuáles son las ventajas y desventajas en comparación con nuestro producto.
-- **Predicción del futuro del mercado**: incluye la predicción del patrón de competencia del mercado, los riesgos de la industria, los cambios en las políticas y la dirección del desarrollo de la industria.
-- **Oportunidades de mercado**: ¿Cómo encontrar un punto de apoyo? ¿Qué posición puede alcanzar nuestro producto?
+- **سعة السوق**: يتعين تقييمها من خلال تحليل الطلب وتحديد الجماهير. يحدد صانعو القرارات ما إذا كان يستحق الاستثمار.
+- **تحليل المنافسين**: ننظر إلى المنافسين الآخرين في السوق، كيف يحلون المشاكل، ويفي بمتطلبات المستخدمين، وما هي الاحتياجات التي لم يتم تلبيتها، وكيفية الاستثمار، وكيفية الفريق، وكيفية الإنتاج، وما هي مزايانا وعيوبنا.
+- **تقدير المستقبل السوقي**: يتضمن تقدير المنافسة السوقية المستقبلية، ومخاطر الصناعة، وتغييرات السياسة، واتجاهات التطور الصناعي.
+- **فرص السوق**: كيف يمكننا العثور على نقطة الانطلاق، وكيف يمكن لهذه الفرصة أن تجعلنا نتطور إلى ماذا.
 
-### 5. Plan de ejecución
+### 5. خطة التنفيذ
 
-Descripción general de cómo se va a desarrollar el producto:
+توضح بشكل عام كيفية تطوير هذا المنتج:
 
-- **Primera etapa**: verificar las necesidades del usuario con el MVP, desde xxx hasta xxx.
-- **Segunda etapa**: mejorar el producto y ampliar la base de usuarios, desde xxx hasta xxx.
-- **Tercera, cuarta etapa, etc.**
+- **المرحلة الأولى**: التحقق من احتياجات المستخدم من خلال MVP، الفترة الزمنية من xxx إلى xxx
+- **المرحلة الثانية**: تحسين المنتج، وزيادة حجم المستخدمين، الفترة الزمنية من xxx إلى xxx
+- **المرحلة الثالثة، الرابعة، وما إلى ذلك**
 
-### 6. Estimación financiera
+### 6. التقدير المالي
 
-Estimación de los costos de inversión y los ingresos, que es lo que más les importa a los tomadores de decisiones. La inversión es relativamente fácil de calcular; los ingresos se pueden estimar en función de los valores de referencia del modelo de beneficio (como CPC/CPA para publicidad).
+تقدير التكلفة والعائدات، وهي الجزء الأكثر أهمية بالنسبة لصانعي القرارات. يمكن حساب التكلفة بسهولة نسبية؛ يمكن تقدير الإيرادات بناءً على قيمة المرجعية لنموذج الربح (مثل CPC / CPA للإعلانات).
 
-### 7. Estimación de riesgos
+### 7. تقدير المخاطر
 
-El riesgo se refiere a los comportamientos y factores que pueden afectar el logro de los objetivos del producto o aumentar los costos del producto. Al considerar los riesgos, no solo se deben evaluar todos los posibles riesgos, determinar la probabilidad y la gravedad de los riesgos, sino también proporcionar planes de mitigación correspondientes y aclarar los beneficios de la mitigación.
+المخاطر هي العوامل والسلوكيات التي يمكن أن تؤثر على تحقيق أهداف المنتج، أو زيادة تكلفة المنتج. عند التفكير في المخاطر، يجب تقييم جميع المخاطر المحتملة، وتحديد احتمالية حدوث المخاطر وخطورتها، وتحديد خطط الوقاية المناسبة، وتحديد فوائد الوقاية.
 
-## Consideraciones
+## نصائح
 
-- El BRD no es solo un documento simple, requiere mucho trabajo preparatorio.
-- Prestar menos atención a los detalles del producto y más atención a la parte del valor comercial del producto.
-- Prestar atención a la lógica rigurosa y tratar de ser conciso.
-- Basarse en la realidad y tratar de inclinar el contenido hacia su propio beneficio.
+- BRD ليس مجرد وثيقة بسيطة، يجب إجراء العديد من الاستعدادات.
+- يجب التركيز في الوثيقة على قيمة المنتج التجارية بدلاً من التفاصيل الفنية.
+- يجب الانتباه إلى الاتساق المنطقي وتجنب الشرح الطويل.
+- يجب أن يكون المحتوى موجهًا نحو الجانب الذي يخدم مصلحتك.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [No busques plantillas, un artículo te dice cómo escribir un documento de requisitos comerciales (BRD)](http://www.woshipm.com/pmd/645578.html)
+- [لا تبحث عن قالب، مقالة واحدة تخبرك كيفية كتابة وثيقة متطلبات الأعمال (BRD)](http://www.woshipm.com/pmd/645578.html)
 
-> Autor del artículo: **Power Lin**
-> Dirección original: <https://wiki-power.com>
-> Declaración de derechos de autor: el artículo utiliza la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh), por lo que se permite la reproducción con la atribución correspondiente.
+> مؤلف المقال: **Power Lin**
+> العنوان الأصلي للمقالة: <https://wiki-power.com>
+> إخلاء المسؤولية: تستخدم هذه المقالة بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يرجى الإشارة إلى المصدر عند النقل.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

@@ -1,31 +1,34 @@
-# Cómo actualizar automáticamente los contenedores en Docker de Synology utilizando Watchtower
+# استخدام Watchtower لتحديث حاويات Docker (Synology Docker)
 
-Utilice Watchtower para actualizar automáticamente los contenedores en Docker de Synology.
+استخدام Watchtower لتحديث حاويات Synology Docker تلقائيًا.
 
-## Descargar la imagen en la aplicación Docker de Synology
+## تنزيل الصورة في تطبيق Synology Docker
 
-Abra el paquete Docker de Synology y descargue la imagen `containrrr/watchtower`.
+افتح حزمة Synology Docker وقم بتنزيل صورة `containrrr/watchtower`.
 
-## Configurar Watchtower en la tarea programada
+## تكوين Watchtower في المهام المجدولة
 
-Abra el `Panel de control` de Synology - `Tarea programada` - `Agregar` - `Tarea programada` - `Script definido por el usuario`, y luego complete la configuración según las siguientes imágenes:
+افتح "لوحة التحكم" في Synology - "المهام المجدولة" - "جديد" - "مهمة مجدولة" - "نص مخصص للمستخدم" ، ثم قم بملء التكوين كما هو موضح في الصور التالية:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202301092319956.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202301092319956.png)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202301092321592.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202301092321592.png)
 
-El script es el siguiente:
+البرنامج النصي هو:
 
 ```shell
 docker run --rm --name watchtower -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --cleanup --run-once calibre-web freshrss code-server
 ```
 
-Tenga en cuenta que `calibre-web freshrss code-server` al final del script son los nombres de los contenedores que se deben actualizar. Reemplácelos con los nombres de los contenedores que desea actualizar o déjelos en blanco para actualizar todos los contenedores.
+يرجى ملاحظة أن اسماء الحاويات التي تحتاج إلى التحديث في نهاية البرنامج النصي `calibre-web freshrss code-server` يجب استبدالها بالحاويات التي تريد تحديثها ؛ أو يمكن تركها فارغة لتحديث جميع الحاويات.
 
-Guarde y ejecute el script para actualizar los contenedores de Docker de forma programada.
+حفظ التكوين وتشغيل البرنامج النصي لتحديث حاويات Docker بشكل دوري.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Cómo actualizar los contenedores de Docker de Synology de manera elegante con un solo comando - Tutorial de Watchtower](https://post.smzdm.com/p/awzggnqp/)
+- [كيفية استخدام Watchtower بشكل أنيق لتحديث حاويات Synology Docker - دليل Watchtower](https://post.smzdm.com/p/awzggnqp/) 
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

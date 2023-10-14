@@ -1,34 +1,34 @@
-# Cómo escribir un currículum vitae en Markdown
+# كيفية كتابة سيرة ذاتية باستخدام Markdown
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210318220041.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210318220041.png)
 
-Escriba un currículum vitae en Markdown que se pueda previsualizar en línea y exportar en formato PDF.
+استخدم Markdown لكتابة سيرة ذاتية يمكن معاينتها عبر الإنترنت وتصديرها إلى PDF.
 
-**URL de previsualización**: [**cv-template.wiki-power.com**](https://cv-template.wiki-power.com/)
+**رابط المعاينة**: [**cv-template.wiki-power.com**](https://cv-template.wiki-power.com/)
 
-**Cómo exportar en PDF**: Use la combinación de teclas `Ctrl` + `P` en la página web para abrir la ventana de impresión, seleccione `Microsoft Print to PDF` como impresora y podrá exportar una versión en PDF de su currículum vitae.
+**كيفية تصدير إلى PDF**: استخدم اختصارات لوحة المفاتيح `Ctrl` + `P` لفتح واجهة الطباعة على الموقع، ثم حدد `Microsoft Print to PDF` كطابعة هدف لتصدير السيرة الذاتية إلى PDF.
 
-## Instrucciones de uso
+## طريقة الاستخدام
 
-Abra el proyecto [**linyuxuanlin/Markdown-CV-Site**](https://github.com/linyuxuanlin/Markdown-CV-Site), haga clic en el botón verde `Use this template` para inicializar su propio repositorio.
+افتح المشروع [**linyuxuanlin/Markdown-CV-Site**](https://github.com/linyuxuanlin/Markdown-CV-Site)، ثم انقر على الزر الأخضر `Use this template` لإنشاء مستودع خاص بك.
 
-Abra [**Vercel**](https://vercel.com/), haga clic en `New Project`, importe el repositorio de GitHub que acaba de inicializar y configure los siguientes parámetros:
+افتح [**Vercel**](https://vercel.com/)، ثم انقر على `New Project` واستورد المستودع الذي أنشأته في GitHub، وحدد الإعدادات التالية:
 
-- `FRAMEWORK PRESET`: seleccione `Other`
-- `BUILD COMMAND`: escriba `npm run build`
-- `OUTPUT DIRECTORY`: escriba `dist`
+- `FRAMEWORK PRESET`: اختر `Other`
+- `BUILD COMMAND`: اكتب `npm run build`
+- `OUTPUT DIRECTORY`: اكتب `dist`
 
-Haga clic en siguiente y espere unos segundos para que se genere el sitio web.
+انقر على الخطوة التالية، وانتظر بضع ثوانٍ حتى يتم إنشاء الموقع.
 
-Si desea modificar el contenido de su currículum vitae, edite los archivos `_config.yml` y `markdown/resume-template.md` en el directorio raíz y, después de enviarlos al repositorio de GitHub, se iniciará automáticamente la construcción en Vercel.
+إذا كنت ترغب في تعديل محتوى السيرة الذاتية، فعليك تحرير الملفات `_config.yml` و `markdown/resume-template.md` في الدليل الرئيسي، ثم تحميل التغييرات إلى مستودع GitHub الخاص بك، وسيتم تشغيل بناء Vercel تلقائيًا.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-Este proyecto se basa en [**BigLiao/markCV**](https://github.com/BigLiao/markCV) y se han realizado algunas mejoras en la interfaz de usuario. La plantilla del currículum vitae utiliza el contenido predeterminado de [**冷熊简历**](https://cv.ftqq.com/).
+يستند هذا المشروع إلى [**BigLiao/markCV**](https://github.com/BigLiao/markCV)، وقد تم تبسيط وتحسين بعض عناصر واجهة المستخدم. تم استخدام قالب السيرة الذاتية الافتراضي من [**لينغ زينغ سيرة ذاتية**](https://cv.ftqq.com/).
 
-- [¿Cómo escribir un currículum vitae?](https://mp.weixin.qq.com/s/P64bm-SBYXyQymfHAR1rqA)
+- [كيفية كتابة سيرة ذاتية؟](https://mp.weixin.qq.com/s/P64bm-SBYXyQymfHAR1rqA)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

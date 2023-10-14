@@ -8,7 +8,7 @@ Como parte de ella, las señales analógicas son señales que usamos en el mundo
 
 ## Teoría del muestreo
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220929094314.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220929094314.png)
 
 La teoría del muestreo se aplica a la señal para que sea periódica, o se introducirán errores.
 
@@ -26,7 +26,7 @@ Si muestreamos a una frecuencia menor que la tasa de Nyquist, exhibirá un fenó
 
 Para minimizar el problema de aliasing, necesitamos eliminar la frecuencia mayor que $\frac{F_s}{2}$ de la señal, a través del filtro antialiasing (por ejemplo, filtro pasa bajos):
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220930154335.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220930154335.png)
 
 ### Muestreo Coherente
 
@@ -42,7 +42,7 @@ El tiempo total requerido para tomar todas las muestras se llama **Período de P
 
 Por ejemplo, si queremos calcular el $F_s$ de una onda sinusoidal continua repetitiva, donde $F_i$ es 1kHz, $M=3$ y $N=16$:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220930164712.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220930164712.png)
 
 Entonces podemos concluir que $F_s=5.333kHz$.
 
@@ -55,17 +55,17 @@ Consejos importantes de muestreo coherente:
 
 Si $M$ y $N$ no son primos entre sí ($M=3,N=12$), las muestras se toman en la misma posición en cada ciclo, por lo que no hay información nueva:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220930170300.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220930170300.png)
 
 Si $M$ y $N$ son primos entre sí ($M=3,N=16$), por lo que son primos entre sí y cada muestra es discreta, por lo que proporciona información única:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220930170343.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220930170343.png)
 
 ## Algoritmos comunes de análisis de frecuencia
 
 Para $N$ muestras de señal en el dominio del tiempo, hay $N$ valores de señal en el dominio de la frecuencia, y hay $N/2$ valores de espectro de potencia en el dominio de la frecuencia. A continuación se muestra un ejemplo típico de componentes espectrales:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221002145846.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221002145846.png)
 
 Existen varios parámetros para describir las componentes espectrales de la siguiente manera:
 
@@ -79,15 +79,15 @@ Existen varios parámetros para describir las componentes espectrales de la sigu
 
 La **relación señal-ruido (SNR)** se deriva almacenando primero el valor del fundamental (potencia de la señal):
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221002151235.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221002151235.png)
 
 Luego se elimina la componente de corriente continua y las armónicas (generalmente hasta 5):
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221002151402.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221002151402.png)
 
 A continuación, se suman todos los bins del espectro de potencia restante (la potencia del ruido) medido por el valor RMS (raíz cuadrada media, el voltaje analógico que es igual a un voltaje de corriente continua que contiene la misma cantidad de energía, para una onda sinusoidal, el valor RMS es 0,707 veces el valor pico):
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221002151646.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221002151646.png)
 
 En última instancia, podemos concluir que:
 
@@ -101,7 +101,7 @@ SNR se expresa generalmente en decibelios (dB) y a menudo es un valor positivo (
 
 La **distorsión armónica total (THD)** se deriva manteniendo una suma acumulada de la potencia armónica total (generalmente solo las primeras cinco armónicas, comenzando en la segunda armónica):
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221002155148.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221002155148.png)
 
 Y podemos concluir que:
 
@@ -135,7 +135,7 @@ $$
 
 ### Distorsión de Intermodulación (IM)
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221018162800.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221018162800.png)
 
 La Distorsión de Intermodulación (IM) ocurre cuando se utilizan dos o más señales en un sistema no lineal. El espectro no solo consistirá en las señales originales, sino que también contendrá la suma y la diferencia de las señales de entrada junto con sus armónicos.
 
@@ -143,7 +143,7 @@ La Distorsión de Intermodulación (IM) ocurre cuando se utilizan dos o más se�
 
 **Rango Dinámico Libre de Espurios (SFRD)** se deriva encontrando el elemento más alto después del fundamental (ignorando el componente de CC):
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221002161334.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221002161334.png)
 
 Tenga en cuenta que el elemento más alto puede o no ser armónico. Por lo tanto, podemos concluir que:
 
@@ -161,7 +161,7 @@ En el probador genérico de señal mixta, el AWG (fuente de CA) y el WD (digital
 
 El **Generador de forma de onda arbitraria (AWG)** es un generador de señal de baja distorsión. Contiene un DAC para generar una señal analógica a partir de los datos digitales.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221006175627.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221006175627.png)
 
 LPF (Filtro de paso bajo) suaviza la forma de onda y elimina los componentes de alta frecuencia. Un conjunto de puntos de datos para una forma de onda dada se almacena en la memoria de origen de forma de onda, cada vez que ocurre un reloj, un punto de datos pasará al DAC.
 
@@ -178,7 +178,7 @@ Parámetros importantes del AWG:
 
 El **Digitalizador de forma de onda (WD)** muestrea señales analógicas y las convierte en valores digitales. Realiza la operación opuesta al AWG. Convierte la señal analógica en muestras digitales que representan la señal analógica original.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221006180242.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221006180242.png)
 
 El filtro de paso bajo limita el ancho de banda de la señal para eliminar componentes de frecuencia no deseados como el ruido y las espurias, también proporciona anti-aliasing atenuando las espurias que se aliasarían en la banda de paso del filtro durante la conversión ADC.
 
@@ -201,7 +201,7 @@ El **procesador de señal digital (DSP)** es un microprocesador especializado qu
 
 La arquitectura de un DSP está optimizada para permitir una multiplicación rápida, sumas, cálculos de logaritmos, cálculos de cuadrados y raíces cuadradas.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20221007142019.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20221007142019.png)
 
 El probador llevará la señal capturada almacenada al procesador DSP a través de buses de datos.
 

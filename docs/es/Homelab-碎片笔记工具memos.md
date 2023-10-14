@@ -1,6 +1,6 @@
 # Homelab - Herramienta de notas fragmentadas memos
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/202304111548420.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202304111548420.png)
 
 **memos** es una herramienta de notas de autohospedaje de código abierto. Admite sintaxis Markdown, uso compartido público, incrustación de iframes, gestión de etiquetas, vista de calendario, migración de datos simple y funciones de copia de seguridad.
 

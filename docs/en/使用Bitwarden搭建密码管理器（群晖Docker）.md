@@ -4,7 +4,7 @@ Note: Due to the renaming of the bitwarden_rs image and the incompatibility of t
 
 This article introduces how to deploy the cross-platform password management server Bitwarden on your own Synology with Docker for private use.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210503221838.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210503221838.png)
 
 Currently, there are various password manager solutions, such as 1Password, Lastpass, KeePass, and Bitwarden, each with its own advantages and disadvantages. My requirements are multi-device synchronization, open-source self-deployment, automatic filling, and a beautiful interface. Therefore, I chose to deploy the Bitwarden service on my own Synology.
 
@@ -20,15 +20,15 @@ Open the Synology Docker Suite, download the `bitwardenrs/server` image, double-
 
 On the `Volume` page, configure the mounted folder, click `Add Folder`, select the local `docker/bitwarden` path, and fill in the mounting path as `/data` (which cannot be changed by default):
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210503211711.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210503211711.png)
 
 On the `Port Settings` page, manually set the local port corresponding to container port 80 (e.g. I set it to `8003`):
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210503211759.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210503211759.png)
 
 After completing the configuration, start the container. Enter the Synology local IP:8003, and we can see the Bitwarden login page. However, when we create an account and log in, we will see the following prompt:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210503212146.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210503212146.png)
 
 This is because the Docker container itself does not provide https port configuration, and Bitwarden can only log in through https (SSL encryption to prevent man-in-the-middle attacks). Therefore, we must use Synology's built-in reverse proxy service to access the internal http port through https. For specific tutorials, please refer to the article [**Implementing HTTPS Access with Synology's Built-in Reverse Proxy**](https://wiki-power.com/en/%E7%94%A8%E7%BE%A4%E6%99%96%E8%87%AA%E5%B8%A6%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0HTTPS%E8%AE%BF%E9%97%AE).
 
@@ -42,7 +42,7 @@ It is recommended to use the browser extension [**Bitwarden - Free Password Mana
 
 When logging in, click the small gear icon in the upper left corner to enter the settings:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20210503215149.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210503215149.png)
 
 In the "Self-hosted Environment", fill in the Synology NAS IP: external port in the "Server URL" to log in normally.
 

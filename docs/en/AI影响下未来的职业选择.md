@@ -28,7 +28,7 @@ In the future society, the three qualities required to work without being replac
 
 Empathy is the ability to **think from others' perspectives**. Often, demand does not come out on its own, but needs us to project our thinking onto others to explore demand, rather than just focusing on technical implementation.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200226140150.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200226140150.png)
 
 Team collaboration is related to the "long tail effect". Modern society does not require everyone to fill in their weaknesses, but rather to focus on developing their own expertise and use team collaboration to make up for their weaknesses. Only by combining everyone's strengths can a team with long-term advantages be formed. Otherwise, if everyone develops in all areas but has mediocre qualifications, how can this team stand out from the competition?
 

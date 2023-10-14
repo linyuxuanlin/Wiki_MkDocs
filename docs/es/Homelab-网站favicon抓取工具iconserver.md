@@ -1,6 +1,6 @@
 # Homelab - Herramienta de captura de favicon del sitio web iconserver
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230304195157.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20230304195157.png)
 
 **iconserver** es una herramienta de captura de iconos favicon de sitios web. Admite la captura de `favicon.ico` y `apple-touch-icon.png`, tiene una API de URL simple y una página de operación web. Si la captura falla, se generará un favicon que comienza con la primera letra.
 

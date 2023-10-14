@@ -1,6 +1,6 @@
 # Homelab - Servidor de podcasts y audiolibros Audiobookshelf
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230531204505.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20230531204505.png)
 
 **Audiobookshelf** es un servidor de podcasts y audiolibros autohospedado que permite buscar fácilmente podcasts, detectar actualizaciones y descargarlos automáticamente, y organizarlos automáticamente.
 

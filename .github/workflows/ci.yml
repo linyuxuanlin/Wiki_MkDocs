@@ -26,6 +26,7 @@ jobs:
           python tools/translate-to-ar-using-chatgpt.py || true
       - name: Commit translated
         run: |
+          git pull
           git config --global user.email 824676271@qq.com
           git config --global user.name linyuxuanlin
           git commit -m "Commit translated" -a || true

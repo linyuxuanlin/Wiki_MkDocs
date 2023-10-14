@@ -1,64 +1,65 @@
-# Desarrollo remoto con VS Code
+# استخدام VS Code للتطوير عن بعد
 
-- Utilizando VS Code como herramienta SSH para conectarse a servidores remotos y desarrollar.
+- استخدام VS Code كأداة SSH للاتصال بخادم عن بعد للتطوير.
 
-## Contexto
+## الخلفية
 
-Después de probar varias herramientas SSH, finalmente volví a VS Code por su interfaz atractiva y su gran potencial. Este artículo es solo una guía de referencia para futuras consultas, y algunos detalles no se explican en profundidad. Para obtener más tutoriales, consulte los enlaces al final del artículo.
+بعد تجربة جميع أدوات SSH المتاحة، عدت أخيرًا إلى VS Code الذي يتميز بواجهة جميلة وقوية.  
+يتم توثيق هذه المقالة فقط للاستشارة في المستقبل، ولم يتم شرح بعض المحتويات بالتفصيل. لمزيد من الدروس، يرجى الرجوع إلى الروابط في نهاية المقالة.
 
-Guía de configuración básica de VS Code: [**Guía de productividad de VS Code - Configuración del entorno**](https://wiki-power.com/es/VSCode生产力指南-环境配置)
+دليل تكوين VS Code: [**دليل إنتاجية VS Code - تكوين البيئة**](](https://wiki-power.com/ar/VSCode生产力指南-环境配置)
 
-## Configuración de extensiones
+## تكوين الامتداد
 
-Haga clic en "Instalar extensión": [**Remoto - SSH**](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh)
+انقر لتثبيت الامتداد: [**Remote - SSH**](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh)
 
-Haga clic en el botón "Remoto" en la esquina inferior izquierda para usarlo.
+انقر على زر `Remote` في الزاوية السفلية اليسرى للبدء.
 
-## Otras configuraciones
+## تكوينات أخرى
 
-### VS Code no puede monitorear cambios de archivos en espacios de trabajo grandes
+### لا يمكن لـ VS Code مراقبة تغييرات ملفات مساحة العمل الكبيرة
 
-Ejecute este comando para ver las restricciones actuales:
+قم بتشغيل هذا الأمر لعرض القيود الحالية:
 
 ```shell
 cat /proc/sys/fs/inotify/max_user_watches
 ```
 
-Edite el archivo `/etc/sysctl.conf`:
+تحرير ملف `/etc/sysctl.conf`:
 
 ```shell
 sudo vim /etc/sysctl.conf
 ```
 
-Agregue el siguiente código para aumentar esta restricción al valor máximo:
+أضف الكود التالي لزيادة هذا الحد إلى الحد الأقصى:
 
 ```shell
 fs.inotify.max_user_watches=524288
 ```
 
-Guarde y active la configuración:
+حفظ وتمكين الإعدادات:
 
 ```shell
 sudo sysctl -p
 ```
 
-### No se puede iniciar sesión con un nombre de usuario personalizado
+### لا يمكن استخدام اسم مستخدم مخصص لتسجيل الدخول
 
-En la configuración de VS Code, busque "Remote.SSH: Config File" y complete el valor de reemplazo con `C:\Users\your_username\.ssh\config`, y cree el archivo de configuración correspondiente en su computadora local.
+ابحث في إعدادات VS Code عن `Remote.SSH: Config File`، واملأ القيمة المغطاة بـ `C:\Users\اسم المستخدم الذي تحتاجه\.ssh\config`، وأنشئ ملف التكوين المناسب محليًا.
 
-### Error de conexión, pero se puede conectar con otros clientes SSH
+### فشل الاتصال، ولكن يمكن الاتصال باستخدام عميل SSH آخر
 
-Es posible que la versión de sshd en el servidor remoto sea inferior a 7.6.0 y carezca de la función para mostrar el puerto remoto. Para solucionar este problema, debe actualizar la versión de sshd:
+قد يكون ذلك بسبب إصدار sshd على الخادم البعيد الذي يقل عن 7.6.0، والذي يفتقر إلى ميزة عرض منفذ الجهاز البعيد. لحل هذه المشكلة، يجب تحديث إصدار sshd:
 
-- Para Debian o Ubuntu: `sudo apt-get update && sudo apt-get install openssh-server`
-- Para Red Hat o CentOS: `sudo yum update openssh-server`
+- لـ Debian أو Ubuntu: `sudo apt-get update && sudo apt-get install openssh-server`
+- لـ Red Hat أو CentOS: `sudo yum update openssh-server`
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
-- [Experiencia remota de VSCode | Desarrollo de entornos Linux remotos es genial](https://zhuanlan.zhihu.com/p/64849549)
-- [Solución de problemas de VSCode: VisualStudioCode no puede monitorear cambios de archivos en este espacio de trabajo grande](http://www.deadnine.com/somehow/2019/0208/1481.html)
+- [تجربة Remote VSCode | تطوير بيئة Linux عن بعد](https://zhuanlan.zhihu.com/p/64849549)
+- [معالجة إنذار VSCode: لا يمكن لـ VisualStudioCode مراقبة تغييرات مساحة العمل الكبيرة هذه](http://www.deadnine.com/somehow/2019/0208/1481.html)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

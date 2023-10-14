@@ -84,7 +84,7 @@ Exit screen: `Ctrl + A + D`
 
 Simply enter `http://your server IP` in your browser to enjoy cloud-based VS Code.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200413181001.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/20200413181001.jpg)
 
 Configuring domain name access: `To be explored...`
 
@@ -101,7 +101,7 @@ Configuring domain name access: `To be explored...`
 
 > Article author: **Power Lin**
 > Original address: <https://wiki-power.com>
-> Copyright statement: This article is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/) license. 
+> Copyright statement: This article is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/) license.
 > Please indicate the source when reprinting.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

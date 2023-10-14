@@ -26,7 +26,7 @@ replace_rules = [
     {"find": "> 原文地址：<https://wiki-power.com/>", "replace_with": "> عنوان النص: <https://wiki-power.com/>"},
     {"find": "> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。", "replace_with": "> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر."},
     {"find": "](https://wiki-power.com/", "replace_with": "](https://wiki-power.com/ar/"},
-    {"find": "![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/", "replace_with": "![](https://f004.backblazeb2.com/file/wiki-media/"},
+    #{"find": "![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/", "replace_with": "![](https://f004.backblazeb2.com/file/wiki-media/"},
     {"find": "](/ar/", "replace_with": "](https://wiki-power.com/ar/"},
     #{"find": "", "replace_with": ""},
 ]

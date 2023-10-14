@@ -1,6 +1,6 @@
 # Homelab - Herramienta de penetración de red interna frp
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230304195137.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20230304195137.png)
 
 **frp** es un método de penetración de red interna. Puede exponer los puertos del host de la red interna a Internet a través de un servidor con una dirección IP pública. frp admite varios protocolos como TCP, UDP, HTTP, HTTPS, etc.
 
@@ -107,7 +107,7 @@ Finalmente, ejecute el comando `docker compose up -d` en el directorio del mismo
 - [Docker Hub · snowdreamtech/frps](https://hub.docker.com/r/snowdreamtech/frps)
 - [Docker Hub · stilleshan/frpc](https://hub.docker.com/r/stilleshan/frpc)
 - [Cómo implementar el control remoto RDP de Internet (frp)](https://wiki-power.com/es/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91RDP%E8%BF%9C%E6%8E%A7%EF%BC%88frp%EF%BC%89/)
-- [Acceso a Synology NAS con frp](https://wiki-power.com/es/%E4%BD%BF%E7%94%A8frp%E8%AE%BF%E9%97%AE%E7%BE%A4%E6%99%96NAS/) 
+- [Acceso a Synology NAS con frp](https://wiki-power.com/es/%E4%BD%BF%E7%94%A8frp%E8%AE%BF%E9%97%AE%E7%BE%A4%E6%99%96NAS/)
 
 a_reemplazar[1]  
 a_reemplazar[2]

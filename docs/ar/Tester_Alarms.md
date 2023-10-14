@@ -1,22 +1,22 @@
-# Alarmas del Tester
+# إنذارات الفاحص
 
-> Esta publicación solo está disponible en inglés.
+> هذه المقالة متاحة فقط باللغة الإنجليزية.
 
-## Alarmas DCVI
+## إنذارات DCVI
 
-### Modo (0010)
+### الوضع (0010)
 
-El V/I está programado para forzar el modo de voltaje y alcanzó la abrazadera de corriente; o está programado para forzar el modo de corriente y alcanzó la abrazadera de voltaje.
+تم برمجة V/I لإجبار وضع الجهد ووصل إلى مشبك التيار ؛ أو تم برمجته لإجبار وضع التيار ووصل إلى مشبك الجهد.
 
-**Solución**:
+**الحل**:
 
-- **En modo de voltaje forzado**: verificar si el circuito está en cortocircuito o tiene una carga capacitiva.
-- **En modo de corriente forzada**: verificar si el circuito está abierto.
+- **في وضع الجهد الإجباري**: تحقق مما إذا كان الدائرة قصيرة أو لديها حمل سعوي.
+- **في وضع الجهد الإجباري**: تحقق مما إذا كانت الدائرة مفتوحة.
 
-### Captura (0016)
+### الالتقاط (0016)
 
-Se produjo una alarma durante una captura.
+حدث إنذار خلال الالتقاط.
 
-**Solución**: Verificar la operación relacionada con la captura.
+**الحل**: تحقق من العملية المتعلقة بالالتقاط.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

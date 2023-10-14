@@ -1,6 +1,6 @@
 # Homelab - Next Terminal, a Bastion Host Supporting Multiple Protocols
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20230312001443.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20230312001443.png)
 
 **Next Terminal** is a simple and easy-to-use jump server (bastion host) that integrates Apache Guacamole's clientless remote desktop gateway bastion host solution. It supports multiple protocols such as RDP, SSH, VNC, TELNET, and Kubernetes, and can directly access internal network resources through the web with excellent cross-platform compatibility. It supports MFA multi-factor authentication login, as well as audit recording function and other records.
 

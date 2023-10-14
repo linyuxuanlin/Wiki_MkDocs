@@ -1,12 +1,12 @@
-# SwiftCtrl - Controlador Bluetooth
+# SwiftCtrl - يد تحكم بلوتوث
 
-SwiftCtrl es un controlador remoto Bluetooth (HC-06) basado en Arduino que ofrece control de doble joystick, dos botones y una pantalla OLED.
+SwiftCtrl هو يد تحكم عن بعد بلوتوث (HC-06) مستندة إلى Arduino ، ويوفر تحكمًا بزرين ومزدوج للرافعة وعرض OLED.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200221145040.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200221145040.png)
 
-Repositorio del proyecto: [**linyuxuanlin/SwiftCtrl**](https://github.com/linyuxuanlin/SwiftCtrl)
+مستودع المشروع: [**linyuxuanlin/SwiftCtrl**](https://github.com/linyuxuanlin/SwiftCtrl)
 
-Vista previa en línea del proyecto:
+معاينة المشروع عبر الإنترنت:
 
 <div class="altium-iframe-viewer">
   <div
@@ -15,14 +15,14 @@ Vista previa en línea del proyecto:
   ></div>
 </div>
 
-## Parámetros básicos
+## المعلمات الأساسية
 
-- Controlador principal: basado en Arduino Nano (ATmega328)
-- Voltaje del sensor: 3.3V
+- المتحكم الرئيسي: مستند إلى Arduino Nano (ATmega328)
+- جهد المستشعر: 3.3 فولت
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200311182440.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200311182440.png)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

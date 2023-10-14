@@ -2,7 +2,7 @@
 
 SwiftCtrl is a Bluetooth (HC-06) gamepad based on Arduino, providing dual joysticks, two buttons, and OLED display functionality.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200221145040.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200221145040.png)
 
 Project repository: [**linyuxuanlin/SwiftCtrl**](https://github.com/linyuxuanlin/SwiftCtrl)
 
@@ -20,7 +20,7 @@ Project online preview:
 - Main control: based on Arduino Nano (ATmega328)
 - Sensor voltage: 3.3V
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200311182440.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200311182440.png)
 
 > Original: <https://wiki-power.com/>  
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.

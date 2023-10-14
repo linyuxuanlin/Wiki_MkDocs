@@ -1,46 +1,49 @@
-# PlatformIO - Herramienta de desarrollo integrado para sistemas embebidos
+# PlatformIO - أداة تطوير مدمجة
 
-- Construye un entorno de desarrollo integrado para reemplazar Keil / Arduino IDE
+- إنشاء بيئة تطوير مدمجة لاستبدال Keil / Arduino IDE
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200531112801.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200531112801.png)
 
-## Contexto
+## الخلفية
 
-PlatformIO es una herramienta poderosa de desarrollo integrado que cuenta con las siguientes características:
+PlatformIO هي أداة مدمجة قوية ، وهناك بعض الميزات:
 
-- Multiplataforma, solo requiere un entorno Python (lo que significa que se puede utilizar en Windows/MacOS/Linux)
-- Se puede instalar como un complemento dentro de VSCode (finalmente se puede abandonar Keil)
-- Ecosistema poderoso:
-  - [**800+ placas de desarrollo comunes**](https://docs.platformio.org/en/latest/boards/index.html#boards): casi todas las placas de desarrollo comunes que se pueden comprar están disponibles aquí
-  - [**35+ plataformas de desarrollo**](https://docs.platformio.org/en/latest/platforms/index.html#platforms): cubre Atmel AVR (Arduino) / ESP / NXP / 8051 / PIC32 / FPGA / FreeRTOS / ARM (STM32) y muchas más
-  - [**20+ frameworks**](https://docs.platformio.org/en/latest/frameworks/index.html#frameworks): Arduino / CMSIS / STM32Cube y muchos más
-- Funciones de compilación / descarga / depuración / monitor de puerto serie, y soporte para varios compiladores / depuradores
-- Proporciona una variedad de bibliotecas de funciones
-- Autocompletado de código, verificación de sintaxis, gestión de múltiples proyectos, adaptación de temas
-- Función de desarrollo remoto (no probada)
-- Pruebas unitarias (no probadas)
-- Disponible en línea de comandos y en entorno gráfico
+- متعددة المنصات ، تحتاج فقط إلى بيئة Python (مما يعني أنه يمكن استخدامه على Windows / MacOS / Linux)
+- يمكن تثبيته كإضافة داخل VSCode (يمكن التخلص من Keil أخيرًا)
+- بيئة قوية:
+  - [**800+ لوحة تطوير شائعة**](https://docs.platformio.org/en/latest/boards/index.html#boards) : تقريبًا كل ما يمكنك شراؤه من لوحات التطوير العامة متاح هنا
+  - [**35+ منصة تطوير**](https://docs.platformio.org/en/latest/platforms/index.html#platforms) : تغطي Atmel AVR (Arduino) / ESP / NXP / 8051 / PIC32 / FPGA / FreeRTOS / ARM (STM32) وغيرها
+  - [**20+ إطار عمل**](https://docs.platformio.org/en/latest/frameworks/index.html#frameworks) : Arduino / CMSIS / STM32Cube وغيرها
+- يحتوي على وظائف الترميز / التنزيل / التصحيح / مراقبة المنافذ التسلسلية ، ويدعم جميع أنواع المترجمات / المصححين
+- يوفر مكتبات وظائف مختلفة
+- إكمال تلقائي للشفرة ، فحص الصياغة ، إدارة المشاريع المتعددة ، والتكيف مع الموضوع
+- ميزة التطوير عن بعد (لم يتم تجربتها)
+- اختبار الوحدة (لم يتم تجربتها)
+- يوجد بيئة سطر الأوامر والواجهة الرسومية
 
-En resumen, es hora de abandonar los diferentes IDE (como Arduino IDE / Keil / IAR) y disfrutar de un servicio integral.
+على العموم ، حان الوقت للتخلص من جميع بيئات التطوير (مثل Arduino IDE / Keil / IAR) والاستمتاع بخدمة واحدة.
 
-## Descarga e instalación
+## التنزيل والتثبيت
 
-Primero, asegúrate de tener VSCode instalado en tu computadora (la descarga e instalación de VSCode se puede encontrar en [**este artículo**](https://wiki-power.com/es/VSCode生产力指南-环境配置))
+أولاً ، تأكد من وجود VSCode على جهاز الكمبيوتر الخاص بك (يمكنك الانتقال إلى [**هذه المقالة**](https://wiki-power.com/ar/ دليل إنتاجية VSCode - تكوين البيئة)
 
-Busca e instala `Python` y `PlatformIO IDE` en la sección de `Extensiones` (`Ctrl + Shift + X`).
+ابحث وقم بتثبيت `Python` و `PlatformIO IDE` داخل `الملحقات` (`Ctrl + Shift + X`).
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200531113916.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200531113916.png)
 
-Una vez que se haya instalado el complemento, haz clic en `Recargar` para iniciar el complemento, luego haz una taza de café mientras se instala automáticamente el componente principal `platformIO-core` (la instalación inicial puede tardar un poco).
+بعد تثبيت الإضافة بنجاح ، انقر فوق `إعادة تحميل` لتشغيل الإضافة ، ثم اصنع فنجانًا من القهوة وانتظر حتى يتم تثبيت مكونات النواة الأساسية `platformIO-core` تلقائيًا (قد يستغرق الأمر وقتًا طويلاً في المرة الأولى).
 
-Una vez que se complete la instalación, haz clic en el botón correspondiente en la barra lateral para iniciar PlatformIO.
+بعد الانتهاء من التثبيت ، انقر فوق الأزرار ذات الصلة في الشريط الجانبي لتشغيل PlatformIO.
 
-## Referencias y agradecimientos
+## المراجع والشكر
 
 - [PlatformIO](https://platformio.org/)
 - [PlatformIO Docs](https://docs.platformio.org/en/latest/index.html)
 - [ussserrr/stm32pio](https://github.com/ussserrr/stm32pio#requirements)
-- [Usar VS Code como plataforma de desarrollo STM32 (platformIO)](https://www.jianshu.com/p/49cfa03d6164)
-- [PlatformIO IDE (VSCode) - Proyecto con marco STM32Cube](https://www.smslit.top/2019/08/24/platformio-stm32-cubemx/)
+- [استخدام VS Code كمنصة تطوير STM32 (platformIO)](https://www.jianshu.com/p/49cfa03d6164)
+- [PlatformIO IDE (VSCode) - مشروع إطار stm32cube](https://www.smslit.top/2019/08/24/platformio-stm32-cubemx/)
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

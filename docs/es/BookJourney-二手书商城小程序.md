@@ -1,12 +1,12 @@
 # BookJourney - Tienda de libros de segunda mano en miniatura
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/书程小驿.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/书程小驿.jpg)
 
 Repositorio del proyecto: [**linyuxuanlin/BookJourney**](https://github.com/linyuxuanlin/BookJourney)
 
 Demo (escanea con WeChat para probar):
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/1.jpg)
+![](https://img.wiki-power.com/d/wiki-media/img/1.jpg)
 
 ## Antecedentes
 

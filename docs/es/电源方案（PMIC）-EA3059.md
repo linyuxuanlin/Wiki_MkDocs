@@ -32,27 +32,27 @@ Vista previa en línea del proyecto:
 
 ## Circuito de aplicación típico
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220420171841.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420171841.png)
 
 ## Diagrama de funciones internas
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220420171859.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420171859.png)
 
 ## Definición de pines
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220420171920.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420171920.png)
 
-| Nombre del pin | Descripción del pin                                          |
-| -------------- | ------------------------------------------------------------ |
-| VCC            | Pin de entrada de alimentación del circuito de control interno |
-| VINx           | Pin de entrada de alimentación del canal x, con un condensador MLCC de 10uF para la eliminación de ruido |
+| Nombre del pin | Descripción del pin                                                                                                                             |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| VCC            | Pin de entrada de alimentación del circuito de control interno                                                                                  |
+| VINx           | Pin de entrada de alimentación del canal x, con un condensador MLCC de 10uF para la eliminación de ruido                                        |
 | LXx            | Salida de conmutación del MOS interno del canal x, que se puede conectar a un circuito de filtro paso bajo para obtener una tensión más estable |
-| FBx            | Pin de retroalimentación del canal x, conectado a la salida de tensión a través de un circuito divisor de tensión |
-| ENx            | Pin de habilitación, no debe dejarse en flotación             |
-| GNDx           | Tierra del canal x                                            |
-| AGND           | Tierra analógica                                             |
-| Pad inferior   | Para disipación de calor, debe estar conectado a tierra       |
-| NC             | Sin conexión                                                 |
+| FBx            | Pin de retroalimentación del canal x, conectado a la salida de tensión a través de un circuito divisor de tensión                               |
+| ENx            | Pin de habilitación, no debe dejarse en flotación                                                                                               |
+| GNDx           | Tierra del canal x                                                                                                                              |
+| AGND           | Tierra analógica                                                                                                                                |
+| Pad inferior   | Para disipación de calor, debe estar conectado a tierra                                                                                         |
+| NC             | Sin conexión                                                                                                                                    |
 
 ## Descripción de características
 
@@ -66,7 +66,7 @@ EA3059 es un IC de gestión de energía diseñado específicamente para aplicaci
 
 Si se necesita establecer el tiempo de encendido de cada canal Buck, se puede programar mediante el siguiente circuito:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220420172125.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420172125.png)
 
 ### Arquitectura de desplazamiento de fase de 180°
 
@@ -88,16 +88,16 @@ $$
 V_{OUTx}=0.6*\frac{R_1}{R_2}+0.6V
 $$
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220420172602.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420172602.png)
 
 Si se necesitan valores de voltaje de salida comunes, se puede consultar la siguiente tabla para configurar la resistencia de división (se debe utilizar una precisión del 1%):
 
 | Tensión de salida | R1    | R2    |
-| ---------------- | ----- | ----- |
-| 3.3V             | 510kΩ | 110kΩ |
-| 1.8V             | 200kΩ | 100kΩ |
-| 1.5V             | 150kΩ | 100kΩ |
-| 1.1V             | 68kΩ  | 82kΩ  |
+| ----------------- | ----- | ----- |
+| 3.3V              | 510kΩ | 110kΩ |
+| 1.8V              | 200kΩ | 100kΩ |
+| 1.5V              | 150kΩ | 100kΩ |
+| 1.1V              | 68kΩ  | 82kΩ  |
 
 ### Selección de capacitores de entrada/salida
 
@@ -147,19 +147,19 @@ Referencia de diseño:
 
 Capa superior:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220420175756.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420175756.png)
 
 Capa de alimentación intermedia:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220420175833.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420175833.png)
 
 Capa de tierra intermedia:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220420175851.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420175851.png)
 
 Capa inferior:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220420175906.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220420175906.png)
 
 ## Referencias y agradecimientos
 

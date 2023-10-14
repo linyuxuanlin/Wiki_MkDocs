@@ -31,7 +31,7 @@
 **Method**: Use font software Font Creator, download my font library as a template on [GitHub](https://github.com/linyuxuanlin/Modularity_of_Functional_Circuit/tree/master/%E4%B8%93%E7%94%A8%E5%AD%97%E4%BD%93), and customize your own exclusive font library. After the font library is created, install the .ttf file and use the corresponding characters to call out the logo in Altium.
 
 The corresponding logos for characters are shown in the following figure:  
-![](https://f004.backblazeb2.com/file/wiki-media/img/20200207200606.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20200207200606.png)
 
 ### Automatically Placing Components in a Designated Area
 

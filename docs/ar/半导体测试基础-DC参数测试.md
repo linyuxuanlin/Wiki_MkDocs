@@ -1,270 +1,297 @@
-# Fundamentos de prueba de semiconductores - Prueba de parámetros DC
+# أساسيات اختبار الشرائح النصفية - اختبار معلمات التيار المستمر
 
-La prueba de parámetros DC mide principalmente algunas características de un solo pin en el dispositivo. Para la mayoría de los parámetros DC, esencialmente se está midiendo la resistividad del semiconductor, y la ley de Ohm se utiliza para explicar la resistividad. Si se necesita verificar la viabilidad del proceso de prueba DC, también se puede utilizar un resistor para equivaler al DUT y descartar problemas fuera del DUT. Por ejemplo, para el parámetro VOL que aparece en la hoja de especificaciones del chip:
+يتم اختبار معلمات التيار المستمر لقياس بعض الخصائص الفردية للأقطاب على الجهاز. بالنسبة لمعظم معلمات التيار المستمر ، يتم في الواقع قياس مقاومة الشريحة النصفية ، ويتم شرح مقاومة الشريحة النصفية باستخدام قانون أوم. إذا كنت ترغب في التحقق من قابلية عملية اختبار التيار المستمر ، فيمكنك أيضًا استخدام مقاوم لتعويض DUT بشكل مكافئ ، لاستبعاد المشكلات خارج DUT. على سبيل المثال ، في حالة معلمات VOL التي تظهر في كتيب المواصفات للشريحة:
 
-| Parámetro | Descripción         | Condiciones de prueba    | Min | Max | Unidades |
-| --------- | ------------------ | ----------------------- | --- | --- | -------- |
-| VOL       | Voltaje de salida   | VDD = Min, IOL = 8.0mA   |     | 0.4 | V        |
+| المعلمة | الوصف | شروط الاختبار | الحد الأدنى | الحد الأقصى | الوحدات |
+| --------- | ------------------ | ---------------------- | --- | --- | ----- |
+| VOL       | جهد الإخراج الأقل | VDD = Min، IOL = 8.0mA |     | 0.4 | V     |
 
-Podemos ver que el valor máximo de VOL es 0.4V, IOL es 8mA, lo que significa que cuando se produce una corriente de 8mA en una situación de nivel bajo lógico de salida, debe ser a un voltaje no superior a 0.4V, por lo que podemos concluir que la resistencia máxima del dispositivo no supera los 50Ω. Por lo tanto, se puede utilizar una resistencia no superior a 50Ω para reemplazar el DUT y verificar el proceso de prueba. Nuestro objetivo es centrar el problema en el DUT, no en problemas fuera del DUT.
+يمكننا أن نرى أن القيمة القصوى لـ VOL هي 0.4 فولت ، و IOL هي 8 مللي أمبير ، وهذا يعني أنه يجب أن يتم إنتاج تيار يصل إلى 8 مللي أمبير في جهد لا يتجاوز 0.4 فولت عندما يكون مستوى الجهد المنخفض للإخراج منخفضًا ، لذلك يمكننا الحصول على أن المقاومة الكهربائية القصوى لهذا الجهاز لا تتجاوز 50 أومًا. لذلك ، يمكن استخدام مقاومة لا تتجاوز 50 أومًا بدلاً من DUT للتحقق من عملية الاختبار. هدفنا هو تركيز المشكلة على DUT وليس على المشكلات خارج DUT.
 
-## IDD y Gross IDD
+## IDD و Gross IDD
 
-IDD representa la corriente (I) desde el drenador (D) hasta el drenador (D) en un circuito CMOS, y si es un circuito TTL, se llama ICC (corriente desde el colector hasta el colector). Gross IDD se refiere a la corriente total que fluye hacia el pin VDD (se puede probar en la etapa de prueba de Wafer Probe o producto terminado). IDD se utiliza para verificar si la corriente total del chip cumple con las especificaciones, generalmente se debe verificar la corriente en el consumo de energía mínimo y la frecuencia de trabajo máxima.
+تعني IDD التيار الكهربائي من المصب (D) إلى المصب (D) في الدوائر الكهربائية CMOS (إذا كانت دائرة كهربائية TTL ، فإنها تسمى ICC (التيار الكهربائي من المجمع إلى المجمع)). يشير Gross IDD إلى التيار الكلي الذي يتدفق إلى دبوس VDD (يمكن اختباره في مرحلة Wafer Probe أو المنتج النهائي). يتم استخدام IDD لمعرفة ما إذا كان التيار الكلي للشريحة يتجاوز الحدود المحددة ، وعادة ما يتم النظر في التيار في أدنى استهلاك للطاقة وأعلى تردد.
 
-La prueba de Gross IDD se realiza para determinar si se puede continuar probando el DUT. Por lo general, esta prueba se realiza inmediatamente después de la prueba del sistema operativo y es la primera prueba después de que el DUT se enciende. Si la prueba de Gross IDD no pasa (como una corriente demasiado grande), entonces no se puede continuar probando.
+يتم اختبار Gross IDD لتحديد ما إذا كان يمكن مواصلة اختبار DUT. عادةً ما يتم هذا الاختبار بعد اختبار OS وهو أول اختبار بعد تشغيل DUT. إذا فشل اختبار Gross IDD (مثل تدفق التيار الزائد) ، فلا يمكن المتابعة في الاختبار.
 
-Durante la etapa de prueba de Gross IDD, aún no se sabe si el preprocesamiento se puede realizar normalmente, por lo que se debe relajar la especificación de IDD. Después de que la prueba de Gross IDD pase, se puede definir con precisión la corriente de especificación de IDD mediante el programa de preprocesamiento.
+في مرحلة اختبار Gross IDD ، لا نعرف ما إذا كان الإعداد المسبق يمكن أن يتم بشكل صحيح ، لذلك يجب تخفيف مواصفات IDD. بعد اجتياز اختبار Gross IDD ، يمكن تعريف مواصفات IDD الحالية بدقة من خلال برنامج المعالجة المسبقة.
 
-La prueba de Gross IDD debe comenzar con un reinicio para establecer todos los pines de entrada en un nivel bajo / alto. Por lo general, VIL se establece en 0V y VIH se establece en VDD, y todos los pines de salida están en carga libre (para evitar la corriente de fuga flotante que aumenta IDD). El diagrama de prueba es el siguiente:
+يتطلب اختبار Gross IDD إعادة التعيين أولاً ، لتعيين جميع أقطاب الإدخال على مستوى منخفض / عالي الجهد. عادةً ما يتم تعيين VIL على 0 فولت و VIH على VDD ، ويتم ترك جميع أقطاب الإخراج فارغة (لمنع تدفق التيار الخفيف وجعل IDD أكبر). يتم توضيح الرسم التوضيحي للاختبار كما يلي:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220728162655.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220728162655.png)
 
-Algunos puntos a tener en cuenta:
+يجب مراعاة النقاط التالية:
 
-- Se debe establecer un pinza de corriente para evitar dañar el equipo de prueba debido a una corriente demasiado grande.
-- Si hay corriente negativa, también significa que la prueba no pasa.
-- Si hay un error en la prueba, primero se debe descartar el problema del equipo de prueba. Si se ejecuta la prueba con el zócalo vacío, la corriente debería ser 0, de lo contrario, significa que otros dispositivos fuera del DUT también están consumiendo corriente.
+- يجب تعيين مشبك التيار الكهربائي لمنع تلف أجهزة الاختبار بسبب تدفق التيار الزائد.
+- إذا ظهر تيار كهربائي سلبي ، فهذا يعني أن الاختبار لم ينجح.
+- إذا حدث خطأ في الاختبار ، فيمكن إلغاء المشكلة بتحديد مشكلة الجهاز ، وتشغيل الاختبار بدون شريحة ، ويجب أن يكون التيار الكهربائي 0 ، وإلا فهذا يعني أن الأجهزة خارج DUT تستهلك التيار الكهربائي.
 
-### Prueba IDD - Método estático
+### اختبار IDD - الطريقة الثابتة
 
-La prueba IDD estática mide la corriente total que fluye hacia el pin VDD y generalmente requiere que el DUT funcione en modo de consumo de energía mínimo. La diferencia entre la prueba IDD estática y la prueba de Gross IDD es que la prueba de Gross IDD aún no tiene un programa de preprocesamiento y es una prueba aproximada, mientras que la prueba IDD estática ya tiene un modo de preprocesamiento y se realiza después del preprocesamiento.
+يقيس اختبار IDD الثابت التيار الكهربائي الكلي الذي يتدفق إلى دبوس VDD وعادة ما يتم تشغيل DUT في وضع أدنى استهلاك للطاقة. الفرق بين اختبار Gross IDD و IDD الثابت هو أن اختبار Gross IDD ليس لديه برنامج معالجة مسبقة ، وهو اختبار خشن ، بينما يتم اختبار IDD الثابت بعد وجود برنامج معالجة مسبقة ، ويتم الاختبار بعد البرنامج المعالجة المسبقة.
 
-Por ejemplo, la siguiente tabla es una muestra de parámetros IDD:
+على سبيل المثال ، فيما يلي عينة من معلمات IDD:
 
-| Parámetro  | Descripción          | Condiciones de prueba              | Min | Max | Unidades |
-| ---------- | -------------------- | --------------------------------- | --- | --- | -------- |
-| IDD estática | Corriente de alimentación | VDD = 5.25V, entradas = VDD, Iout=0 |     | +22 | µA    |
+| المعلمة | الوصف | شروط الاختبار | الحد الأدنى | الحد الأقصى | الوحدات |
+| ---------- | -------------------- | --------------------------------- | --- | --- | ----- |
+| IDD الثابت | تيار إمداد الطاقة | VDD = 5.25 فولت ، inputs = VDD ، Iout = 0 |     | +22 | µA    |
 
-El diagrama de prueba IDD estática es el siguiente:
+يتم توضيح الرسم التوضيحي للاختبار IDD الثابت كما يلي:
 
-El proceso de prueba es el siguiente:
+![](https://img.wiki-power.com/d/wiki-media/img/20220728162341.png)
 
-1. Configure el DUT con el vector de prueba para consumir la corriente mínima y mantenerse en estado estático.
-2. Verifique el valor de corriente de los pines
-   - Mayor que IDD Spec: Fail
-   - Otro rango: Pass
+## اختبار IDD - طريقة ساكنة
 
-Durante la prueba, generalmente se requiere un retraso entre la alimentación y la toma de muestras para permitir que los capacitores parásitos se carguen y evitar interferencias.
+يتم استخدام اختبار IDD الساكن لقياس التيار الكهربائي الذي يستهلكه DUT عند الحالة الثابتة والتي يتم تعيينها باستخدام متجه الاختبار. يتم قياس قيمة التيار الكهربائي على الأقل مرة واحدة ويتم تحديد ما إذا كانت القيمة أقل من IDD Spec أم لا. يتم إجراء الاختبار بشكل عام بعد تحميل البرنامج وقبل الاختبار الفعلي.
 
-Si necesita probar la corriente estática en diferentes lógicas, puede medir el parámetro IDDQ para aumentar la cobertura de prueba (IDDQ mide la corriente en un estado lógico estático, como probar un estado con algunos MOSFET abiertos).
+يتم تعيين DUT على أن يستهلك أقل تيار كهربائي ويكون في حالة ساكنة باستخدام متجه الاختبار. يتم قياس قيمة التيار الكهربائي على الأقل مرة واحدة ويتم تحديد ما إذا كانت القيمة أقل من IDD Spec أم لا.
 
-### Prueba IDD - Método dinámico
+عند إجراء الاختبار ، يتم عادة إضافة تأخير بين التشغيل والعينة للسماح للسعة الطفرية بالشحن بالكامل وتجنب التداخل.
 
-El propósito de la prueba dinámica IDD es medir la corriente consumida por el DUT durante la **ejecución dinámica de la función** (generalmente a la máxima frecuencia del DUT) para garantizar que no supere el valor nominal.
+إذا كان هناك حاجة إلى اختبار التيار الكهربائي الساكن في سياقات منطقية مختلفة ، فيمكن اختبار معلمة IDDQ لزيادة نسبة التغطية (IDDQ هو قياس التيار الكهربائي في حالة منطقية ثابتة معينة ، مثل افتتاح بعض صمامات MOS لاختبار حالة معينة).
 
-Por ejemplo, la siguiente tabla es una muestra de parámetros IDD dinámicos:
+## اختبار IDD - طريقة ديناميكية
 
-| Parámetro   | Descripción           | Condiciones de prueba                            | Min | Max | Unidades |
-| ----------- | --------------------- | ----------------------------------------------- | --- | --- | ------- |
-| IDD Dinámico | Corriente de suministro | VDD = 5.25V (comercial), f = f_max (66MHz) |     | +18 | mA      |
+يهدف اختبار IDD الديناميكي إلى قياس التيار الكهربائي الذي يستهلكه DUT عند تنفيذ الوظائف الديناميكية (عادة عند أعلى تردد عمل لـ DUT) للتأكد من عدم تجاوزه القيمة المحددة.
 
-Diagrama de prueba:
+على سبيل المثال ، يتم تقديم عينة من معلمة IDD الديناميكية في الجدول التالي:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220728171447.png)
+| المعلمة | الوصف | شروط الاختبار | الحد الأدنى | الحد الأقصى | الوحدات |
+| ----------- | -------------------- | ------------------------------------------- | --- | --- | ----- |
+| IDD Dynamic | Power Supply Current | VDD = 5.25V (تجاري) ، f = f_max (66MHz) | | +18 | mA |
 
-El proceso de prueba es similar al método estático.
+رسم تخطيطي للاختبار:
 
-## VOL/IOL & VOH/IOH
+![](https://img.wiki-power.com/d/wiki-media/img/20220728171447.png)
 
-VOL representa la limitación de voltaje máximo cuando se produce una salida de nivel bajo (L) (no se reconocerá como lógica 1). IOL representa la capacidad de conducción de corriente de drenaje (I, sink) cuando se produce una salida de nivel bajo (L). Juntos miden la impedancia del pin del buffer cuando se produce una salida de nivel bajo para garantizar que pueda absorber un valor constante de corriente en el voltaje de salida adecuado.
+يتم تنفيذ الاختبار بطريقة مشابهة لطريقة الاختبار الساكن.
 
-VOH representa la limitación de voltaje mínimo cuando se produce una salida de nivel alto (H) (no se reconocerá como lógica 0). IOH representa la capacidad de conducción de corriente de fuente (I, source) cuando se produce una salida de nivel alto (H). Juntos miden la impedancia del buffer cuando se produce una salida de nivel alto para garantizar que pueda producir un valor constante de corriente en el voltaje de salida adecuado.
+## VOL / IOL و VOH / IOH
 
-Por ejemplo, la siguiente tabla muestra los parámetros VOL/IOL y VOH/IOH de una RAM estática de 256 x 4:
+تعبر VOL عن الحد الأقصى للجهد عند إخراج الجهد المنخفض (L) (لا يتم التعرف عليه كـ 1 منطقي). يعبر IOL عن قدرة الدفع لتيار التصريف (I ، sink) عند إخراج الجهد المنخفض (L). يقيس كلاهما مقاومة Buffer عند إخراج الجهد المنخفض لضمان امتصاص قيمة تيار ثابتة بالجهد المناسب.
 
-| Parámetro | Descripción         | Condiciones de prueba         | Min | Max | Unidades |
-| --------- | ------------------- | ----------------------------- | --- | --- | ------- |
-| VOL       | Voltaje de salida bajo | VDD = 4.75V, IOL = 8.0mA  |     | 0.4 | V       |
-| VOH       | Voltaje de salida alto | VDD = 4.75V, IOH = -5.2mA | 2.4 |     | V       |
+يعبر VOH عن الحد الأدنى للجهد عند إخراج الجهد العالي (H) (لا يتم التعرف عليه كـ 0 منطقي). يعبر IOH عن قدرة الدفع لتيار السحب (I ، source) عند إخراج الجهد العالي (H). يقيس كلاهما مقاومة Buffer عند إخراج الجهد العالي لضمان إخراج قيمة تيار ثابتة بالجهد المناسب.
 
-La prueba de VOL/IOL y VOH/IOH se realiza principalmente para verificar si VOL/VOH está en el nivel correcto cuando se aplica corriente de fuente o drenaje (si puede alcanzar el umbral de voltaje en la corriente de salida adecuada). Hay dos métodos de prueba: estático y dinámico. **El método estático aplica corriente a los pines y luego mide el voltaje uno por uno; el método dinámico proporciona VREF durante la prueba de función para formar una corriente de carga dinámica y luego mide el voltaje.**
+على سبيل المثال ، يتم تقديم عينة من معلمات VOL / IOL و VOH / IOH لـ 256 × 4 Static RAM في الجدول التالي:
 
-### Prueba VOL/IOL - Método estático en serie
+| المعلمة | الوصف | شروط الاختبار | الحد الأدنى | الحد الأقصى | الوحدات |
+| --------- | ------------------- | ------------------------- | --- | --- | ----- |
+| VOL | Output LOW Voltage | VDD = 4.75V ، IOL = 8.0mA | | 0.4 | V |
+| VOH | Output HIGH Voltage | VDD = 4.75V ، IOH = -5.2mA | 2.4 | | V |
 
-El diagrama de prueba de VOL/IOL utilizando el método estático en serie es el siguiente:
+يتم اختبار VOL / IOL و VOH / IOH للتحقق مما إذا كانت VOL / VOH في المستوى الصحيح عند تطبيق تيار السحب أو التصريف (هل يمكن الوصول إلى عتبة الجهد عند إخراج تيار ثابت). يوجد طريقتان للاختبار: الطريقة الساكنة والطريقة الديناميكية. **الطريقة الساكنة تتمثل في تطبيق تيار على الدبوس ، ثم قياس الجهد بشكل فردي ؛ الطريقة الديناميكية تتمثل في توفير VREF في اختبار الوظيفة لتشكيل تيار الحمل الديناميكي ، ثم قياس الجهد.**.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220728150542.png)
+### اختبار VOL / IOL - الطريقة الساكنة السلسلية
 
-El proceso de prueba es el siguiente:
+يتم استخدام الطريقة الساكنة السلسلية لقياس VOL / IOL كما هو موضح في الشكل التالي:
 
-## Pruebas de VOH/IOH - Método estático en serie
+![](https://img.wiki-power.com/d/wiki-media/img/20220728150542.png)
 
-El diagrama de prueba para medir VOH/IOH utilizando el método estático en serie es el siguiente:
+يتم تنفيذ الاختبار بطريقة مشابهة لطريقة الاختبار الساكن.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220728143124.png)
+1. يجب إعداد الدبوس المراد اختباره كإخراج منخفض الجهد من خلال المعالجة المسبقة.
+2. يتم تطبيق IOH ثابت على الدبوس والانتظار لمدة 1-5 مللي ثانية قبل القياس (في تأخير PMU).
+3. يتم فحص الجهد على الدبوس
+   - أعلى من VOL (+0.4V): فشل
+   - منطقة أخرى: نجاح
 
-El proceso de prueba es el siguiente:
+أمور يجب مراعاتها:
 
-1. Primero, se debe configurar el pin de prueba como una salida de nivel alto mediante preprocesamiento.
-2. Se aplica IOH constante al pin y se espera de 1 a 5 milisegundos antes de medir (según la configuración de delay en el PMU).
-3. Se mide el voltaje del pin.
-   - Si es mayor que VOL (+0.4V): Fail
-   - En cualquier otro rango: Pass
+- IOL هو قيمة تيار موجب لأنه يتدفق من PMU إلى DUT.
+- نظرًا لأن التيار المطبق هو تيار ثابت ، فإنه يتطلب ضبط مشبك الجهد. إذا كان الجهد المقاس أقل من جهد المشبك ، فقد يكون السبب في أن الدائرة المنطقية معدة للجهد العالي ، مما يؤدي إلى تنشيط الثنائي الثنائي لحماية الطاقة في الاتجاه الموجب.
+- يشير معلمة VDDmin إلى أدنى جهد تغذية يمكنه تشغيل DUT بشكل صحيح ، وإذا كان أقل من ذلك ، فلن يتم الحصول على نتائج اختبار دقيقة.
 
-Consideraciones importantes:
+### اختبار VOH/IOH - الطريقة الثابتة السلسلية
 
-- IOL es un valor de corriente positiva, ya que fluye desde el PMU hacia el DUT.
-- Debido a que se aplica una corriente constante, se debe configurar un clamp de voltaje. Si se mide un voltaje más bajo que el voltaje del clamp, es posible que la lógica del pin se haya configurado como un nivel alto, lo que activa el diodo de protección de la fuente.
-- El parámetro VDDmin indica el voltaje mínimo de suministro de energía que permite que el DUT se pruebe correctamente. Si es menor, no se pueden obtener resultados de prueba precisos.
+يتمثل رسم توضيحي لاختبار VOH/IOH باستخدام الطريقة الثابتة السلسلية في الشكل التالي:
+
+![](https://img.wiki-power.com/d/wiki-media/img/20220728143124.png)
+
+يتم تنفيذ الاختبار وفقًا للخطوات التالية:
+
+1. يجب إعداد الدبوس المراد اختباره كإخراج عالي الجهد من خلال المعالجة المسبقة.
+2. يتم تطبيق IOH ثابت على الدبوس والانتظار لمدة 1-5 مللي ثانية قبل القياس (في تأخير PMU).
+3. يتم فحص الجهد على الدبوس
+   - أقل من VOH (+2.4V): فشل
+   - منطقة أخرى: نجاح
+
+أمور يجب مراعاتها:
+
+- نظرًا لأن IOL يتدفق من PMU إلى DUT ، فإنه يكون قيمة سالبة.
+- نظرًا لأن التيار المطبق هو تيار ثابت ، فإنه يتطلب ضبط مشبك الجهد. إذا كان الجهد المقاس أعلى من جهد المشبك ، فقد يكون السبب في أن الدائرة المنطقية معدة للجهد المنخفض ، مما يؤدي إلى تنشيط الثنائي الثنائي لحماية الأرض في الاتجاه الموجب.
+- يشير معلمة VDDmin إلى أدنى جهد تغذية يمكنه تشغيل DUT بشكل صحيح ، وإذا كان أقل من ذلك ، فلن يتم الحصول على نتائج اختبار دقيقة.
 
 ## IIL/IIH
 
-IIL se refiere a la corriente máxima de pull-up permitida (I, source, desde VSS del DUT a través del pin hacia el exterior) cuando la lógica del pin de entrada (I) es un nivel bajo (L). Esto se utiliza para verificar si la corriente de fuga del pin al suministro de energía está dentro de los límites y para verificar el grado de aislamiento. IIH se refiere a la corriente máxima de pull-down permitida (I, sink, desde VDD del DUT a través del pin hacia el exterior) cuando la lógica del pin de entrada (I) es un nivel alto (H). Por ejemplo, los parámetros IIL y IIH para una RAM estática de 256 x 4 son los siguientes:
+يشير IIL إلى أقصى تيار سحب مسموح به (I ، source ، من VSS الخارجي عبر الدبوس إلى DUT) عندما يكون الدبوس المدخل هو منخفض الجهد (L) من أجل مراقبة تسرب التيار إلى مصدر الطاقة ولمعرفة مدى العزل ، ويشير IIH إلى أقصى تيار يمكن تصريفه (I ، sink ، من VDD DUT عبر الدبوس إلى الخارج). على سبيل المثال ، يتم توضيح معلمات IIL و IIH لذاكرة الوصول العشوائي الثابتة 256 × 4 في الجدول التالي:
 
-| Parámetro | Descripción         | Condiciones de prueba | Mínimo | Máximo | Unidades |
-| --------- | ------------------ | --------------------- | ------ | ------ | -------- |
-| IIL, IIH  | Corriente de carga de entrada | Vss ≤ Vin ≤ VDD(5.25V) | -10 | +10 | µA    |
+| المعلمة | الوصف | شروط الاختبار | الحد الأدنى | الحد الأقصى | الوحدات |
+| --------- | ------------------ | ---------------------- | --- | --- | ----- |
+| IIL، IIH | تيار التحميل الداخلي | Vss ≤ Vin ≤ VDD (5.25V) | -10 | +10 | µA |
 
-IIL mide la resistencia del pin de entrada al suministro de energía VDD; IIH mide la resistencia del pin de entrada a VSS. Esta prueba se utiliza para garantizar que la impedancia de entrada cumpla con los requisitos de diseño y que la corriente de entrada no exceda los límites. IIL/IIH se pueden medir mediante métodos en serie, paralelos o combinados, así como mediante pruebas de función. El método en serie prueba los pines uno por uno, lo que es preciso pero relativamente lento.
+يقيس IIL مقاومة الدخل على الدبوس إلى VDD ؛ يقيس IIH مقاومة الدخل على الدبوس إلى VSS. يتم إجراء هذا الاختبار للتأكد من أن مقاومة الدخل تلبي متطلبات التصميم وأن التيار المدخل لا يتجاوز الحدود. يمكن اختبار IIL/IIH باستخدام الطريقة الثابتة السلسلية/التوازية/المدمجة ، كما يمكن استخدام طريقة الاختبار الوظيفية. تستخدم الطريقة الثابتة السلسلية لاختبار الدبابيس بشكل فردي ، وهي دقيقة ولكنها تستغرق وقتًا نسبيًا.
 
-Además, las pruebas de IIL/IIH generalmente solo se pueden realizar en pines de entrada pura. Si se encuentra un pin bidireccional, se debe agregar una carga de salida para estabilizar el nivel alto o bajo y evitar que se genere corriente en los dispositivos de protección, lo que afectaría los resultados de la prueba.
+علاوة على ذلك ، يمكن إجراء اختبار IIL/IIH عادةً على دبابيس الإدخال النقية فقط. إذا كان هناك دبوس ذو اتجاهين ، فيجب إضافة حمل إخراجي لتثبيت مستوى الجهد وتجنب تدفق التيار على أجهزة الحماية وتأثير نتائج الاختبار.
 
-### Pruebas de IIL/IIH - Método estático en serie
+### اختبار IIL/IIH - الطريقة الثابتة السلسلية
 
-El diagrama de prueba para medir IIL en pines de entrada utilizando el método estático en serie es el siguiente:
+يتمثل رسم توضيحي لاختبار IIL لدبوس الإدخال باستخدام الطريقة الثابتة السلسلية في الشكل التالي:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220729100620.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220729100620.png)
 
-El proceso de prueba es el siguiente:
+يتم تنفيذ الاختبار وفقًا للخطوات التالية:
 
-1. Primero, se debe suministrar la fuente de alimentación VDDmax (peor caso) al DUT.
-2. Se configuran todos los pines de entrada del DUT en nivel alto (VIH).
-3. Se baja un solo pin de entrada a VSS utilizando el PMU.
-4. Se espera de 1 a 5 microsegundos y se mide el valor de corriente.
-   - Si es menor que IIL (-10µA): Fail (la corriente que fluye hacia el DUT excede los límites)
-   - En cualquier otro rango: Pass
+1. يجب توفير أقصى جهد تغذية (VDDmax) لـ DUT.
+2. يتم تعيين جميع دبابيس الإدخال في DUT على مستوى عالٍ (VIH).
+3. يتم سحب دبوس الإدخال الفردي إلى VSS باستخدام PMU.
+4. انتظر 1-5 ميكرو ثانية وقم بقياس التيار.
+   - أقل من IIL (-10µA): فشل (تجاوز التيار الذي يتدفق إلى DUT)
+   - منطقة أخرى: نجاح
 
-El diagrama de prueba para medir IIH en pines de entrada utilizando el método estático en serie es el siguiente:
+يتمثل رسم توضيحي لاختبار IIH لدبوس الإدخال باستخدام الطريقة الثابتة السلسلية في الشكل التالي:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220729100739.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220729100739.png)
 
-El proceso de prueba es el siguiente:
+يتم تنفيذ الاختبار وفقًا للخطوات التالية:
 
-# Pruebas de IIL/IIH
+### اختبار IIL/IIH - الطريقة الثابتة السلسلية
 
-## Método estático en serie
+1. أولاً ، يجب توفير الطاقة VDDmax لـ DUT.
+2. ضع جميع دبابيس الإدخال في DUT على مستوى منخفض (VIL).
+3. استخدم PMU لسحب دبوس الإدخال الفردي إلى VDDmax.
+4. انتظر لمدة 1-5 ميكروثانية وقم بقياس التيار.
+   - أعلى من IIH (+ 10µA): فشل (تدفق التيار الخارجي من DUT يتجاوز الحد الأقصى)
+   - المناطق الأخرى: نجاح
 
-1. Proporcionar la fuente de alimentación VDDmax al DUT.
-2. Establecer todos los pines de entrada del DUT en nivel bajo (VIL).
-3. Usar PMU para elevar un solo pin de entrada a VDDmax.
-4. Esperar de 1 a 5 microsegundos y medir la corriente.
-   - Si es mayor que IIH (+10µA): Fail (la corriente que sale del DUT es demasiado alta)
-   - En otros intervalos: Pass
+### اختبار IIL/IIH - الطريقة الثابتة المتوازية
 
-## Método estático en paralelo
+في بعض أنظمة الاختبار ، يمكن قياس تسرب التيار بشكل متوازٍ (طريقة الاختبار المتوازي). يتم قياس تسرب التيار المتوازي باستخدام عدة PMU لقياس كل دبوس منفصل ، ويتم سحب جميع دبابيس الإدخال بقوة إلى الحد الأقصى (VDDmax) ، ويتم قياس تيار كل دبوس بشكل متوازٍ في نفس الوقت ، ثم يتم مقارنة نتائج الاختبار مع القيمة المحددة لتحديد النتيجة.
 
-En algunos sistemas de prueba, se puede medir la corriente de fuga en paralelo (Método de prueba paralela). La medición de corriente de fuga en paralelo implica la medición de múltiples pines con múltiples PMU, donde todos los pines de entrada se elevan a un nivel alto y se mide la corriente de cada pin en paralelo. Luego, los resultados se comparan con los valores nominales para obtener una conclusión.
+![](https://img.wiki-power.com/d/wiki-media/img/20220729103317.png)
 
-1. Proporcionar la fuente de alimentación VDDmax al DUT.
-2. Usar múltiples PMU para elevar cada pin de entrada a VDDmax (medir IIH).
-3. Esperar de 1 a 5 microsegundos y medir la corriente para obtener una conclusión.
-4. Luego, bajar a VSS y repetir los pasos anteriores para medir IIL.
+1. أولاً ، يجب توفير الطاقة VDDmax لـ DUT.
+2. استخدم عدة PMU لسحب كل دبوس إدخال إلى الحد الأقصى (VDDmax) (لقياس IIH).
+3. انتظر لمدة 1-5 ميكروثانية وقم بقياس التيار ومقارنته بالقيمة المحددة.
+4. ثم اسحبه إلى VSS وكرر الخطوات السابقة لقياس IIL.
 
-La característica del método en paralelo es que se pueden medir rápidamente las corrientes individuales de cada pin de entrada. La desventaja es que es más difícil detectar las fugas entre los pines de entrada, ya que todos los pines se mantienen en el mismo nivel.
+يتميز الاختبار المتوازي بقدرته على قياس تيار كل دبوس بشكل منفصل وإنهاء اختبار IIL/IIH بسرعة ؛ عيبه هو أنه من الأصعب اكتشاف تسرب الإدخال بين دبابيس الإدخال ، لأن جميع الإدخالات تحتفظ بنفس المستوى.
+
+### اختبار IIL/IIH - الطريقة الثابتة المجمعة
+
+تشير طريقة الاختبار المجمعة (Ganged Method) إلى دمج جميع دبابيس الإدخال في دبوس واحد واستخدام PMU واحد لقياس مجموع تسرب التيار. يتم توضيح ذلك في الرسم التوضيحي للاختبار التالي:
+
+![](https://img.wiki-power.com/d/wiki-media/img/20220729104449.png)
+
+يتم تحديد حدود التيار الإجمالي للمجموعة بقيمة الإدخال الفردي ، وإذا تجاوزت النتيجة المحددة للمجموعة الحد الأقصى ، فيجب استبدال الاختبار بالاختبار السلسلي وإعادة الاختبار. يعمل هذا الاختبار بشكل جيد لأجهزة CMOS (إدخال عالي المقاومة).
 
 ## IOZL/IOZH
 
-La corriente de alta impedancia IOZ se refiere a la corriente de fuga (I) de un pin de salida (O) en estado de alta impedancia (Z). IOZL se refiere a la corriente de fuga en el estado de nivel bajo (L) del pin, mientras que IOZH se refiere a la corriente de fuga en el estado de nivel alto (H) del pin. Se utiliza para verificar si la corriente de fuga está dentro de los límites cuando se apaga el pin de salida de doble dirección o de alta impedancia.
+تشير تيارات الدخل العالية IOZ إلى تسرب التيار في حالة الحالة العالية المقاومة لدبوس الإخراج (Z). يشير IOZL إلى تسرب التيار في حالة مستوى منخفض (L) للدبوس ، بينما يشير IOZH إلى تسرب التيار في حالة مستوى عالي (H) للدبوس. يستخدم للتحقق مما إذا كان تسرب التيار يتجاوز الحد الأقصى عند إيقاف تشغيل دبوس الإخراج ذو الاتجاهين أو المقاومة العالية.
 
-Este parámetro garantiza que los pines de salida bidireccionales o de alta impedancia se puedan apagar correctamente (estado de alta impedancia de salida). IOZL mide la resistencia del pin a VDD en estado de alta impedancia de salida, mientras que IOZH mide la resistencia del pin a VSS. Por lo general, se expresa en las especificaciones de la siguiente manera:
+يتم تحديد هذا المعلمة لضمان "إيقاف تشغيل دبوس الإخراج ذو الاتجاهين أو المقاومة العالية بشكل صحيح". يقيس IOZL مقاومة دبوس الإخراج إلى VDD في حالة الحالة العالية المقاومة ، بينما يقيس IOZH مقاومة دبوس الإخراج إلى VSS. عادةً ما يتم تمثيلها في دليل المواصفات على النحو التالي:
 
-| Parámetro | Descripción | Condiciones de prueba | Mínimo | Máximo | Unidades |
+| المعلمة | الوصف | شروط الاختبار | الحد الأدنى | الحد الأقصى | الوحدات |
 | --------- | --------------------- | --------------------------------------- | ---- | ---- | ----- |
-| IOZ | Corriente de salida de alta impedancia | VSS ≤ Vout ≤VDD(5.25V), Salida desactivada | -2.0 | +2.0 | µA |
+| IOZ       | تيار الإخراج عالي المقاومة | VSS ≤ Vout ≤VDD(5.25V), إخراج معطل | -2.0 | +2.0 | µA    |
 
-## Método estático en serie
+### اختبار IOZL/IOZH - الطريقة الثابتة السلسلية
 
-1. Proporcionar la fuente de alimentación VDD al dispositivo.
-2. Establecer los pines del dispositivo en estado de alta impedancia y usar PMU para forzar el pin a un estado alto o bajo.
-3. Medir la corriente del pin.
-   - Si es menor que -IOZ (-2µA): Fail
-   - Si es mayor que +IOZ (+2µA): Fail
-   - En otros intervalos: Pass
+يتم توضيح الاختبار الثابت السلسلي لـ IOZL/IOZH في الرسم التوضيحي التالي:
 
-La ventaja de la prueba en serie es que se puede medir con precisión la corriente de cada pin. La desventaja es que es lenta y requiere la configuración de la corriente de pinza.
+![](https://img.wiki-power.com/d/wiki-media/img/20220807202447.png)
 
-## Método estático en paralelo
+يتم تنفيذ الاختبار على النحو التالي:
 
-El método estático en paralelo implica el uso de múltiples PMU para medir múltiples pines en paralelo. No se profundizará en este método aquí, pero su ventaja es la velocidad.
+1. أولاً ، يجب توفير الطاقة VDD للجهاز.
+2. ضع دبوس الجهاز في حالة عالية المقاومة واستخدم PMU لسحب الدبوس بقوة إلى الحد الأقصى / الحد الأدنى.
+3. قياس تيار الدبوس
+   - أقل من -IOZ (-2µA): فشل
+   - أعلى من +IOZ (+2µA): فشل
+   - المناطق الأخرى: نجاح
 
-La pinza de voltaje de entrada VI se refiere al voltaje medido en el pin de entrada (I) de un dispositivo TTL (no CMOS) cuando se aplica una corriente negativa (corriente de extracción) en el pin. El propósito de esta prueba es **verificar la integridad del diodo de pinza entre el emisor del transistor y la tierra**. Se representa en las especificaciones de la siguiente manera:
+يتميز الاختبار السلسلي بقدرته على قياس قيمة التيار بدقة لكل دبوس بشكل منفصل ، ولكنه يتميز بالبطء. بالإضافة إلى ذلك ، يتطلب هذا الاختبار ضبط تيار القيود. 
 
-| Parámetro | Descripción           | Condiciones de prueba   | Mín | Máx  | Unidades |
-| --------- | --------------------- | ----------------------- | --- | ---- | -------- |
-| VI        | Voltaje de pinza de entrada | VCC = Min, Iin = -18mA |     | +1.5 | V        |
+### اختبار IOZL/IOZH - الطريقة الثابتة المتوازية
 
-### Prueba VI - Método estático en serie
+يتم تنفيذ الاختبار المتوازي الثابت بواسطة عدة PMU في نفس الوقت لقياس عدة دبابيس. لا يتم التطرق إلى ذلك هنا بالتفصيل ، ولكن يتميز هذا الاختبار بالسرعة.
 
-La prueba VI estática en serie se realiza de la siguiente manera:
+يشير مشبك الجهد المدخل VI إلى الجهد الذي يتم قياسه على دبوس المدخل (I) عند تطبيق تيار سالب (استخراج التيار) على دائرة TTL (غير CMOS). الهدف من هذا الاختبار هو التحقق من سلامة الثنائي الثنائي الموجود بين قاعدة المنبعث والأرض. يتم تمثيله في ورقة المواصفات على النحو التالي:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220729145425.png)
+| المعلمة | الوصف | شروط الاختبار | الحد الأدنى | الحد الأقصى | الوحدات |
+| --------- | ------------------- | ---------------------- | --- | ---- | ----- |
+| VI        | جهد مشبك المدخل | VCC = Min، Iin = -18mA |     | +1.5 | V     |
 
-El proceso de prueba es el siguiente:
+### اختبار VI - الطريقة الثابتة السلسلية
 
-1. Asegurarse de que es un pin de entrada de un dispositivo TTL y suministrar energía a VCCmin.
-2. Después de configurar la pinza de voltaje, utilizar PMU para extraer una corriente de -15mA~-20mA.
-3. Medir el voltaje en el pin:
-   - Por debajo de VI (-1.5V): Fallo
-   - En cualquier otro rango: Aprobado
+يتم قياس VI بالطريقة الثابتة السلسلية. يتم تمثيل الاختبار كما يلي:
 
-## IOS (Corriente de cortocircuito de salida)
+![](https://img.wiki-power.com/d/wiki-media/img/20220729145425.png)
 
-La corriente de cortocircuito de salida indica la corriente (I) generada en el pin de salida (O) cuando se produce un cortocircuito (S). El propósito es **medir la impedancia de salida cuando el pin de salida está en un estado alto pero se cortocircuita a cero voltios, para asegurarse de que la corriente de salida no sea demasiado alta en las peores condiciones de carga, y también indica la corriente máxima instantánea que el pin DUT puede proporcionar para cargar la carga capacitiva, lo que se puede utilizar para calcular el tiempo de subida**. IOS se representa en las especificaciones de la siguiente manera:
+يتم تنفيذ الاختبار على النحو التالي:
 
-| Parámetro | Descripción                  | Condiciones de prueba                                                                 | Mín  | Máx  | Unidades |
-| --------- | ---------------------------- | ----------------------------------------------------------------------------------- | ---- | ---- | -------- |
-| IOS       | Corriente de cortocircuito de salida | Vout = 0V, VDD = 5.25V, \*Solo cortocircuitar una salida a la vez durante no más de 1 segundo | -85  | -30  | mA       |
+1. تأكد من أن هذا هو دبوس المدخل لدائرة TTL وتوفير الطاقة لـ VCCmin.
+2. بعد تعيين مشبك الجهد ، استخدم PMU لسحب تيار سالب بين -15mA و -20mA.
+3. قياس قيمة الجهد على دبوس الإدخال
+   - أقل من VI (-1.5V): فشل
+   - غير ذلك: نجاح
 
-### Prueba IOS - Método estático en serie
+## IOS (تيار الانهيار القصير)
 
-La prueba IOS estática en serie se realiza de la siguiente manera:
+يشير تيار الانهيار القصير إلى التيار الذي يتم إنتاجه عند توصيل دبوس الإخراج (O) في ظروف الانهيار القصير (S) (I). الهدف هو قياس مقاومة الإخراج عندما يتم توصيل الدبوس بجهد عالٍ ولكنه يتم انهياره إلى جهد صفري ، والتأكد من أن التيار الناتج لا يكون كبيرًا جدًا في أسوأ حالات الحمل. كما يعبر عن التيار اللحظي الأقصى الذي يمكن توفيره من قبل دبوس DUT للحمل السعوي ، ويمكن حساب الوقت الصاعد من خلاله. يتم تمثيل IOS في ورقة المواصفات على النحو التالي:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220729152549.png)
+| المعلمة | الوصف | شروط الاختبار | الحد الأدنى | الحد الأقصى | الوحدات |
+| --------- | ---------------------------- | -------------------------------------------------------------------------------- | --- | --- | ----- |
+| IOS       | تيار الانهيار القصير | Vout = 0V، VDD = 5.25V، \*Short only 1 output at a time for no longer than 1 sec | -85 | -30 | mA    |
 
-El proceso de prueba es el siguiente:
+### اختبار IOS - الطريقة الثابتة السلسلية
 
-1. Suministrar energía a VDDmax, preparar el dispositivo para que el pin de salida tenga un estado alto.
-2. Utilizar PMU para bajar el pin a 0V, medir la corriente de salida y compararla con el valor nominal para obtener una conclusión.
+يتم تمثيل الاختبار كما يلي:
 
-En la prueba de IOS, se necesita una lógica razonable para evitar el cambio térmico. En primer lugar, se debe configurar PMU en el modo de medición de voltaje de corriente cero forzado, conectarlo a la salida DUT, medir y guardar el voltaje VOH de DUT, luego desconectarlo y configurar PMU para subir a VOH justo, y luego volver a conectar DUT (en este momento, ambos extremos tienen el mismo voltaje de VOH), y luego bajar PMU a 0V para medir el valor de corriente. Después de completar la medición, PMU debe volver a subir a VOH antes de desconectarlo. De esta manera, se puede garantizar que cuando el relé cambia de estado, los voltajes en ambos extremos sean consistentes.
+![](https://img.wiki-power.com/d/wiki-media/img/20220729152549.png)
 
-Factores que pueden causar una prueba fallida:
+يتم تنفيذ الاختبار على النحو التالي:
 
-- **Exceder el límite superior**
-  - La impedancia de salida es demasiado alta, lo que resulta en una corriente absoluta insuficiente.
-  - La abrazadera en sí tiene resistencia.
-  - No se ha realizado el pretratamiento correcto.
-- **Por debajo del límite inferior**
-  - La impedancia de salida es demasiado baja, lo que resulta en una corriente absoluta demasiado alta.
+1. توفير VDDmax للطاقة ومعالجة الجهاز لجعل دبوس الإخراج عاليًا.
+2. استخدم PMU لسحب الدبوس إلى 0 فولت وقياس التيار الناتج ومقارنته بالقيمة المحددة للحصول على النتيجة.
 
-Algunos pines de entrada pueden tener una estructura activa de pull-up o pull-down, lo que requiere garantizar que la ruta de resistencia de pull-up/down del buffer de entrada esté funcionando correctamente. Solo se puede probar en serie, ya que la estructura de pull-up/down interna de diferentes pines puede ser diferente. Diagrama esquemático de la estructura del pin:
+في اختبار IOS ، يجب أن يكون هناك منطق مناسب لتجنب التبديل الحراري. يجب أولاً تعيين PMU على وضع قياس الجهد القسري الصفري وتوصيله بالإخراج DUT وقياس وحفظ جهد VOH لـ DUT ، ثم فصل الاتصال وضبط PMU على سحب الجهد إلى VOH الذي تم الحصول عليه للتو ، ثم إعادة توصيل DUT (في هذه الحالة ، يكون الجهد على كلا الطرفين هو VOH) ، ثم سحب PMU إلى 0 فولت وقياس قيمة التيار. بعد الانتهاء من القياس ، يجب على PMU العودة إلى VOH قبل فصل الاتصال. يمكن بهذه الطريقة التأكد من أن الجهد على كلا الطرفين متساوٍ عند تبديل المفاتيح.
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220729130655.png)
+العوامل التي تؤدي إلى عدم اجتياز الاختبار هي:
 
-## Capacidad de ventilador de salida (Output Fanout)
+- **تجاوز الحد الأقصى**
+  - مقاومة الإخراج عالية جدًا ، مما يؤدي إلى عدم وجود قيمة تيار مطلقة كافية.
+  - الحاجز نفسه له مقاومة.
+  - لم يتم المعالجة الصحيحة.
+- **أقل من الحد الأدنى**
+  - مقاومة الإخراج منخفضة جدًا ، مما يؤدي إلى وجود قيمة تيار مطلقة كبيرة جدًا.
 
-La capacidad de ventilador (Fanout) se refiere a la capacidad del pin de salida para conducir varios pines de entrada según sus parámetros de voltaje y corriente. Es decir, la capacidad de conducción del pin es un indicador de cuántos pines de entrada puede conducir un pin de salida.
+قد تحتوي بعض دبابيس الإدخال على هيكل تحميل نشط لأعلى أو لأسفل ، ويجب ضمان سلامة مسارات مقاومة السحب والإسقاط لمخزن الإدخال. يمكن فقط اختبارها بشكل متسلسل ، لأن هياكل السحب والإسقاط الداخلية للدبابيس المختلفة قد تختلف. رسم توضيحي لهيكل الدبابيس:
 
-![](https://f004.backblazeb2.com/file/wiki-media/img/20220729132621.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20220729130655.png)
 
-Como se muestra en la figura anterior, esta salida TTL puede elevar aproximadamente 17 pines de entrada o bajar 30 pines de entrada. En las especificaciones del pin, los parámetros se expresan de la siguiente manera:
+## قدرة الانتشار الخارجية
 
-| Parámetro | Descripción             | Condiciones de prueba       | Mínimo | Máximo | Unidades |
-| --------- | ----------------------- | --------------------------- | ------ | ------ | -------- |
-| VOH       | Voltaje alto de salida   | VCC = 4.75V, IOH = -2.6mA    | 2.4    |        | V        |
-| VOL       | Voltaje bajo de salida   | VCC = 4.75V, IOH = 24mA      |        | 0.4    | V        |
-| IIL       | Corriente de carga baja de entrada | Vin = 0.4V         | -800   |        | µA       |
-| IIH       | Corriente de carga alta de entrada | Vin = 2.4V         |        | 150    | µA       |
+قدرة الانتشار (Fanout) هي القدرة على تشغيل دبابيس الإدخال المتعددة بناءً على معلمات الجهد والتيار الخاصة بها. أي أنها مؤشر على قدرة دبوس الإخراج على تشغيل عدد كبير من دبابيس الإدخال.
 
-La capacidad de ventilador varía mucho entre los dispositivos TTL y CMOS, ya que la impedancia de entrada de CMOS es alta, teóricamente una salida CMOS puede conducir cualquier número de entradas CMOS. Pero los pines de entrada CMOS tienen capacitancia parásita, cuanto más se conectan las entradas, mayor es la capacitancia, lo que produce un efecto de carga y descarga de la capacitancia al cambiar entre los niveles alto y bajo, lo que produce una demora.
+![](https://img.wiki-power.com/d/wiki-media/img/20220729132621.png)
 
-## Referencias y agradecimientos
+كما هو موضح في الشكل أعلاه ، يمكن لهذا الإخراج TTL رفع حوالي 17 دبوس إدخال أو خفض 30 دبوس إدخال. في ورقة المواصفات ، يتم تمثيل معلمات الدبابيس على النحو التالي:
 
-- "The Fundamentals Of Digital Semiconductor Testing"
-- "DC Test Theory"
+| المعلمة | الوصف | شروط الاختبار | الحد الأدنى | الحد الأقصى | الوحدات |
+| --------- | ----------------------- | ------------------------- | ---- | --- | ----- |
+| VOH       | الجهد العالي الناتج     | VCC = 4.75V, IOH = -2.6mA | 2.4  |     | V     |
+| VOL       | الجهد المنخفض الناتج      | VCC = 4.75V, IOH = 24mA   |      | 0.4 | V     |
+| IIL       | تيار الحمل المنخفض للإدخال  | Vin = 0.4V                | -800 |     | µA    |
+| IIH       | تيار الحمل العالي للإدخال | Vin = 2.4V                |      | 150 | µA    |
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+تختلف قدرة الانتشار بشكل كبير بين الأجهزة TTL و CMOS ، حيث يكون مقاومة الإدخال لأجهزة CMOS عالية ، لذلك في النظرية يمكن لإخراج CMOS واحد تشغيل أي عدد من الإدخالات CMOS. ومع ذلك ، تحتوي دبابيس الإدخال CMOS على سعة طفوية ، وكلما زاد عدد الإدخالات ، زادت السعة ، وعند التبديل بين الجهد العالي والمنخفض ، يحدث تأخير بسبب تأثير الشحن والتفريغ الكهربائي للسعة.
 
-> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+## المراجع والشكر
+
+- 《The Fundamentals Of Digital Semiconductor Testing》
+- 《DC Test Theory》
+
+> عنوان النص: <https://wiki-power.com/>  
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+
+> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
