@@ -1,6 +1,6 @@
 # Basics of Signal and Power Integrity 🚧
 
-> This post is only available in English.
+> This post was originally written in English.
 
 ## References & Acknowledgements
 

@@ -1,6 +1,6 @@
 # Personal Onboarding Workflow (Windows)
 
-> This post is only available in English.
+> This post was originally written in English.
 
 ## Settings
 

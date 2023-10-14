@@ -1,6 +1,6 @@
 # DAC - Dynamic Parameters
 
-> This post is only available in English.
+> This post was originally written in English.
 
 ## Dynamic Parameters
 

@@ -1,6 +1,6 @@
 # TheExec (The Executive) 🚧
 
-> This post is only available in English.
+> This post was originally written in English.
 
 **TheExec(The Executive)** is one of the highest-level objects, which gives access to test executive related properties.
 

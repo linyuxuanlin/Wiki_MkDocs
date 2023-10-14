@@ -1,6 +1,6 @@
 # Tester Alarms
 
-> This post is only available in English.
+> This post was originally written in English.
 
 ## DCVI Alarms
 

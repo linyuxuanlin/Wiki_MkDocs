@@ -1,6 +1,6 @@
 # IDD Test
 
-> This post is only available in English.
+> This post was originally written in English.
 
 Power supply current (IDD) indicates the current flows from Drain to Drain in a CMOS circuit (named ICC in TTL circuit, means Collector to Collector). IDD can be equivalent as:
 

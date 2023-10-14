@@ -1,6 +1,6 @@
 # Level Threshold Test 🚧
 
-> This post is only available in English.
+> This post was originally written in English.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20220912163403.png)
 

@@ -1,6 +1,6 @@
 # DAC - Static Parameters
 
-> This post is only available in English.
+> This post was originally written in English.
 
 Digital to Analog Converter (ADC) is a device to converts a sequence of digital input data into analog signals.
 

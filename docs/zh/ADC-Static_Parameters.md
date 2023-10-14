@@ -1,6 +1,6 @@
 # ADC - Static Parameters
 
-> This post is only available in English.
+> This post was originally written in English.
 
 Analog to Digital Converter (ADC) is a device to converts analog signals into a sequence of digital data.
 

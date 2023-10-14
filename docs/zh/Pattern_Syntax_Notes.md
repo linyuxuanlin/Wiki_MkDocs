@@ -1,6 +1,6 @@
 # Pattern Syntax Notes 🚧
 
-> This post is only available in English.
+> This post was originally written in English.
 
 A digital pattern file contains mainly 3 parts:
 **Header Statement**, **Setup Statement** and **Pattern Module**. (**Preprocessing statements** and **Comments** are optional).

@@ -1,6 +1,6 @@
 # Leakage Test
 
-> This post is only available in English.
+> This post was originally written in English.
 
 Leakage test contains input leakage test (IIL & IIH) and output tristate leakage test (IOZL & IOZH).
 

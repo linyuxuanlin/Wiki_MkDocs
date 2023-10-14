@@ -1,6 +1,6 @@
 # Troubleshooting of ADC and DAC
 
-> This post is only available in English.
+> This post was originally written in English.
 
 ## Why AC Source should be 2-4 bits more resolution than the ADC under test?
 
