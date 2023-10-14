@@ -1,6 +1,13 @@
-# 需求
-# 1. 因为我有些文章本身就是使用英文撰写，它们不需要翻译为英文。（文章中包含字段 "> This post is only available in English."）
-# 2.
+# 程序执行的逻辑：
+# 1. 程序会默认翻译 dir_to_translate 下的所有 Markdown 文件，如果有不需要翻译的文件，请加进 exclude_list 变量中
+# 2. 经程序处理过的文件，文件名会被加进自动生成的 `processed_list.txt` 中，下次默认不进行处理。
+# 3. 原本就用英文撰写的文章，不会被重新翻译为英文，也不会翻译回中文，会翻译为其他语言。需要在文章中添加字段 `> This post was originally written in English.`（注意上下需各留一个空行），以便程序识别。
+# 4. 如果某篇文章需要重新翻译（例如翻译结果不完备，或文章内容有修改），可在文章中加入字段 `[translate]`（注意上下需各留一个空行）。这个操作将不理会 exclude_list 与 processed_list 规则，仅遵守规则3（如果原本为英文，则不会被重新翻译为英语），进行翻译处理
+
+# 缺陷：
+# 1. 如果Markdown文件包含 Front Matter，可能也会被翻译而造成问题。我的解决方法是不适用Front Matter，直接用一级标题作为文章标题。
+# 2. 如果文章不完整，可能会出现 ChatGPT 帮你翻译并续写的情况，需要手动验证
+# 3. 在某些特殊的情况下，可能会出现翻译不正确或某些字段没有翻译的情况，需进行验证并手动调整
 
 # -*- coding: utf-8 -*-
 
@@ -9,8 +16,6 @@ import openai
 
 import env
 import sys
-import re
-
 
 # 设置 OpenAI API Key 和 API Base 参数
 openai.api_key = os.environ.get("CHATGPT_API_KEY")
@@ -29,11 +34,10 @@ dir_translated_ar = "docs/ar"
 # dir_to_translate = "../draft/to-translate_ar"
 # dir_translated = "../docs/ar"
 
-# 不进行翻译的文件列表
-exclude_list = ["index.md", "Contact-and-Subscribe.md", "WeChat.md"]
+exclude_list = ["index.md", "Contact-and-Subscribe.md", "WeChat.md"]  # 不进行翻译的文件列表
 processed_list = "processed_list.txt"  # 已处理的 Markdown 文件名的列表，会自动生成
 
-# 最大输入字段，超出会拆分输入，防止超出输入字数限制
+# 设置最大输入字段，超出会拆分输入，防止超出输入字数限制
 max_length = 1800
 
 # 由 ChatGPT 翻译的提示
@@ -41,22 +45,22 @@ tips_translated_by_chatgpt_en = "\n\n> This post is translated using ChatGPT, pl
 tips_translated_by_chatgpt_es = "\n\n> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión."
 tips_translated_by_chatgpt_ar = "\n\n> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال."
 
-# 文章最初使用英语撰写的提示，用来跳过本身为英语的文章被重复翻译为英文
-tips_originally_in_en = "> This post was originally written in English."
-# 这个变量用于保存删除的位置，以便在处理后添加回原文件
-deleted_tips_pos = None
+# 文章使用英文撰写的提示，避免本身为英文的文章被重复翻译为英文
+marker_written_in_en = "\n> This post was originally written in English.\n"
+# 即使在已处理的列表中，仍需要重新翻译的标记
+marker_force_translate = "\n[translate]\n"
 
 # 固定字段替换规则。文章中一些固定的字段，不需要每篇都进行翻译，且翻译结果可能不一致，所以直接替换掉。
 replace_rules = [
     {
-        # 版权信息
+        # 版权信息手动翻译
         "orginal_text": "> 原文地址：<https://wiki-power.com/>",
         "replaced_en": "> Original: <https://wiki-power.com/>",
         "replaced_es": "> Dirección original del artículo: <https://wiki-power.com/>",
         "replaced_ar": "> عنوان النص: <https://wiki-power.com/>",
     },
     {
-        # 版权信息
+        # 版权信息手动翻译
         "orginal_text": "> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。",
         "replaced_en": "> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.",
         "replaced_es": "> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.",
@@ -140,11 +144,17 @@ def translate_file(input_file, filename, lang):
 
     # 定义输出文件
     if lang == "en":
+        if not os.path.exists(dir_translated_en):
+            os.makedirs(dir_translated_en)
         output_file = os.path.join(dir_translated_en, filename)
     elif lang == "es":
+        if not os.path.exists(dir_translated_es):
+            os.makedirs(dir_translated_es)
         output_file = os.path.join(dir_translated_es, filename)
     elif lang == "ar":
-        output_file = os.path.join(dir_translated_es, filename)
+        if not os.path.exists(dir_translated_ar):
+            os.makedirs(dir_translated_ar)
+        output_file = os.path.join(dir_translated_ar, filename)
 
     # 读取输入文件内容
     with open(input_file, "r", encoding="utf-8") as f:
@@ -232,6 +242,8 @@ try:
     for filename in sorted_file_list:
         if filename.endswith(".md"):
             input_file = os.path.join(dir_to_translate, filename)
+
+            # 读取 Markdown 文件的内容
             with open(input_file, "r", encoding="utf-8") as f:
                 md_content = f.read()
 
@@ -239,45 +251,46 @@ try:
             with open(processed_list, "r", encoding="utf-8") as f:
                 processed_list_content = f.read()
 
-            if filename in exclude_list:
+            if marker_force_translate in md_content:  # 如果有强制翻译的标识，则执行这部分的代码
+                # 删除这个提示字段
+                md_content = md_content.replace(marker_force_translate, "")
+                # 将删除marker_force_translate后的内容写回原文件
+                # with open(filename, "w", encoding="utf-8") as f:
+                #    f.write(md_content)
+                if marker_written_in_en in md_content:  # 翻译为除英文之外的语言
+                    print("Pass the en-en translation: ", filename)  # 删除这个字段
+                    md_content = md_content.replace(marker_written_in_en, "")
+                    translate_file(input_file, filename, "es")
+                    translate_file(input_file, filename, "ar")
+                else:  # 翻译为所有语言
+                    translate_file(input_file, filename, "en")
+                    translate_file(input_file, filename, "es")
+                    translate_file(input_file, filename, "ar")
+            elif filename in exclude_list:  # 不进行翻译
                 print("Pass the post in exclude_list: ", filename)
-            elif filename in processed_list_content:
+            elif filename in processed_list_content:  # 不进行翻译
                 print("Pass the post in processed_list: ", filename)
-            elif tips_originally_in_en in md_content:
+            elif marker_written_in_en in md_content:  # 翻译为除英文之外的语言
                 print("Pass the en-en translation: ", filename)
-
-                # 匹配tips_originally_in_en字段在Markdown文件中的位置
-                pattern = re.compile(tips_originally_in_en)
-                match = pattern.search(md_content)
-                if match:
-                    deleted_tips_pos = match.start()
-
-                # 删除这个提示字段，继续翻译为别的文章
-                md_content.replace(tips_originally_in_en, "")
+                md_content = md_content.replace(marker_written_in_en, "")  # 删除这个字段
                 translate_file(input_file, filename, "es")
                 translate_file(input_file, filename, "ar")
-
-                # 在处理完成后，将tips_originally_in_en字段添加回原文件
-                if deleted_tips_pos is not None:
-                    md_content = (
-                        md_content[:deleted_tips_pos]
-                        + tips_originally_in_en
-                        + md_content[deleted_tips_pos:]
-                    )
-            else:
+            else:  # 翻译为所有语言
                 translate_file(input_file, filename, "en")
                 translate_file(input_file, filename, "es")
                 translate_file(input_file, filename, "ar")
 
-            sys.stdout.flush()
-
             # 将处理完成的文件名加到列表，下次跳过不处理
-            with open(processed_list, "a", encoding="utf-8") as f:
-                # 如果文件名已经在list中，则不重复写入
-                if filename not in processed_list_content:
+            if filename not in processed_list_content:
+                print("Added into processed_list: ", filename)
+                with open(processed_list, "a", encoding="utf-8") as f:
                     # 写入字符串到文件中
                     f.write(filename)
                     f.write("\n")
+
+            # 强制将缓冲区中的数据刷新到终端中，使用 GitHub Action 时方便实时查看过程
+            sys.stdout.flush()
+
 except Exception as e:
     # 捕获异常并输出错误信息
     print(f"An error has occurred: {e}")

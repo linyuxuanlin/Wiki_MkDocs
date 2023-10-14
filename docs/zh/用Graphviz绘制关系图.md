@@ -42,28 +42,3 @@ graph graph_name {
 
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-
-``` mermaid
-graph TD
-    start(开始) -->|检查marker_force_translate| A{marker_force_translate in md_content?}
-    A -->|包含| B{marker_written_in_en in md_content?}
-    B -->|包含| C{翻译为除英文之外的语言}
-    C -->|翻译| D{输出结果}
-    B -->|不包含| E{翻译为所有语言}
-    E -->|翻译| F{输出结果}
-    A -->|不包含| G{filename in exclude_list?}
-    G -->|在| H{不进行翻译}
-    G -->|不在| I{filename in processed_list_content?}
-    I -->|在| J{不进行翻译}
-    I -->|不在| K{marker_written_in_en in md_content?}
-    K -->|包含| L{翻译为除英文之外的语言}
-    L -->|翻译| M{输出结果}
-    K -->|不包含| N{翻译为所有语言}
-    N -->|翻译| O{输出结果}
-    D -->|结束| end(结束)
-    F -->|结束| end
-    H -->|结束| end
-    J -->|结束| end
-    M -->|结束| end
-    O -->|结束| end
-```
