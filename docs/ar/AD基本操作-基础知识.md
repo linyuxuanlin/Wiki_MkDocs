@@ -1,4 +1,4 @@
-# AD Basic Operations - Basic Knowledge
+# العمليات الأساسية في AD - المفاهيم الأساسية
 
 —— Altium Designer Tutorial Series
 
@@ -103,6 +103,7 @@ For Altium Designer, mastering commonly used shortcuts can greatly improve effic
 2. رسم المخطط
    1. التأكد من تجميع المخطط بنجاح بعد الانتهاء من الرسم
 3. رسم PCB
+
    1. استيراد التغييرات من المخطط
    2. إخفاء علامات تحديد العناصر
       1. فتح لوحة الخصائص على اليمين
