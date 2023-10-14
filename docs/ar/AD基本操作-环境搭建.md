@@ -1,4 +1,4 @@
-# AD Basic Operations - Environment Setup
+# تعلّم العمليات الأساسية في AD - إعداد البيئة
 
 - Altium Designer Tutorial Series
 
