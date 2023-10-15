@@ -207,11 +207,6 @@ def translate_file(input_file, filename, lang):
     for placeholder, replacement in placeholder_dict.items():
         output_text = output_text.replace(placeholder, replacement)
 
-    if not os.path.exists(output_file):
-        with open(output_file, "w", encoding="utf-8") as f:
-            pass
-            #print("output_file created: ", filename)
-
     # 写入输出文件
     with open(output_file, "w", encoding="utf-8") as f:
         f.write(output_text)
