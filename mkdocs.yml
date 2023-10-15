@@ -182,7 +182,7 @@ plugins:
             自托管应用收藏（Docker）: مجموعة تطبيقات الاستضافة الذاتية (دوكر)
             群晖 NAS: محرك التخزين الشبكي من شركة Synology
             技术流: تدفق التقنية
-            一些小技巧: بعض النصائح والحيل  
+            一些小技巧: بعض النصائح والحيل
   - search
   - rss:
       abstract_chars_count: -1 # -1 for full content
@@ -554,15 +554,16 @@ nav:
               - 使用Calibre搭建在线书库（群晖Docker）.md #  CSDN
               - 使用Watchtower自动更新容器（群晖Docker）.md
           - 技术流:
-              - 使用Rclone同步网盘数据.md
               - 为什么你需要一个知识库.md #  CSDN
               - 个人知识库的搭建-基于Docusaurus.md #  CSDN
+              - 如何用Markdown写一份简历.md #  CSDN
+              - Auto-i18n：使用ChatGPT的自动多语言翻译工具.md
               - 小米手机折腾记录.md
               - Docusaurus极简部署指南.md #  CSDN todo
               - 使用Markdown高效写作.md #  CSDN
+              - 使用Rclone同步网盘数据.md
               - 个人文案排版规范.md #  CSDN todo
               - 如何保存易逝的文字.md
-              - 如何用Markdown写一份简历.md #  CSDN
               - 如何在iPad上运行VSCode.md #  CSDN
               - MkDocs测试实验室.md
               - Windows初始化与软件推荐（旧）.md #  CSDN todo
