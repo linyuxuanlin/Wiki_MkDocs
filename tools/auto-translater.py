@@ -208,9 +208,6 @@ def translate_file(input_file, filename, lang):
     # 写入输出文件
     with open(output_file, "w", encoding="utf-8") as f:
         f.write(output_text)
-        print("writted output_file")
-        sys.stdout.flush()
-
 
 # 按文件名称顺序排序
 file_list = os.listdir(dir_to_translate)
