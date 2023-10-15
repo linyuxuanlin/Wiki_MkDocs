@@ -81,7 +81,7 @@ def translate_text(text, lang):
         messages=[
             {
                 "role": "user",
-                "content": "Translate the following article into {}, maintain the original markdown format.\n\n{}\n\n{}:".format(
+                "content": "Translate the following text into {}, maintain the original markdown format.\n\n{}\n\n{}:".format(
                     target_lang, text, target_lang
                 ),
             }
@@ -124,6 +124,7 @@ def split_text(text, max_length):
 # 定义翻译文件函数
 def translate_file(input_file, filename, lang):
     print("Translating into {}: ".format(lang), filename)
+    sys.stdout.flush()
 
     # 定义输出文件
     if lang == "en":
@@ -247,8 +248,9 @@ try:
                 # with open(filename, "w", encoding="utf-8") as f:
                 #    f.write(md_content)
                 if marker_written_in_en in md_content:  # 翻译为除英文之外的语言
-                    print("Pass the en-en translation: ", filename)  # 删除这个字段
-                    md_content = md_content.replace(marker_written_in_en, "")
+                    print("Pass the en-en translation: ", filename)
+                    sys.stdout.flush()
+                    md_content = md_content.replace(marker_written_in_en, "")  # 删除这个字段
                     translate_file(input_file, filename, "es")
                     translate_file(input_file, filename, "ar")
                 else:  # 翻译为所有语言
@@ -257,10 +259,13 @@ try:
                     translate_file(input_file, filename, "ar")
             elif filename in exclude_list:  # 不进行翻译
                 print("Pass the post in exclude_list: ", filename)
+                sys.stdout.flush()
             elif filename in processed_list_content:  # 不进行翻译
                 print("Pass the post in processed_list: ", filename)
+                sys.stdout.flush()
             elif marker_written_in_en in md_content:  # 翻译为除英文之外的语言
                 print("Pass the en-en translation: ", filename)
+                sys.stdout.flush()
                 md_content = md_content.replace(marker_written_in_en, "")  # 删除这个字段
                 translate_file(input_file, filename, "es")
                 translate_file(input_file, filename, "ar")
