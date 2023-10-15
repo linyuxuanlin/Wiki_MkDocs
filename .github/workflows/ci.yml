@@ -26,7 +26,6 @@ jobs:
           python tools/auto-translater.py || true
       - name: Commit translated
         run: |
-          git pull
           git config --global user.email 824676271@qq.com
           git config --global user.name linyuxuanlin
           git commit -m "Commit translated" -a || true
