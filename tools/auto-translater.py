@@ -12,7 +12,12 @@ openai.api_base = os.environ.get("CHATGPT_API_BASE")
 
 # 设置翻译的路径
 ## local
-dir_to_translate = "/home/runner/work/Wiki_MkDocs/Wiki_MkDocs/docs/zh"
+#dir_to_translate = "/home/runner/work/Wiki_MkDocs/Wiki_MkDocs/docs/zh"
+#dir_translated_en = "/home/runner/work/Wiki_MkDocs/Wiki_MkDocs/docs/en"
+#dir_translated_es = "/home/runner/work/Wiki_MkDocs/Wiki_MkDocs/docs/es"
+#dir_translated_ar = "/home/runner/work/Wiki_MkDocs/Wiki_MkDocs/docs/ar"
+
+dir_to_translate = "../docs/zh"
 dir_translated_en = "/home/runner/work/Wiki_MkDocs/Wiki_MkDocs/docs/en"
 dir_translated_es = "/home/runner/work/Wiki_MkDocs/Wiki_MkDocs/docs/es"
 dir_translated_ar = "/home/runner/work/Wiki_MkDocs/Wiki_MkDocs/docs/ar"
