@@ -309,4 +309,4 @@ npm和Yarn换源加速国内访问.md
 防反接电路的设计.md
 音乐相关.md
 高速电路的设计.md
-麦轮小车.md
+麦轮小车.mdAuto-i18n：使用ChatGPT的自动多语言翻译工具.md
