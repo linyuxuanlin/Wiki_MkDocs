@@ -208,7 +208,8 @@ def translate_file(input_file, filename, lang):
 
     if not os.path.exists(output_file):
         with open(output_file, "w", encoding="utf-8") as f:
-            print("output_file created: ", filename)
+            pass
+            #print("output_file created: ", filename)
 
     # 写入输出文件
     with open(output_file, "w", encoding="utf-8") as f:
