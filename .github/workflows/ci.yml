@@ -1,4 +1,4 @@
-name: ci 
+name: ci
 on:
   push:
     branches:
@@ -10,19 +10,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
           python-version: 3.x
-      - uses: actions/cache@v2
+      - name: Cache dependencies
+        uses: actions/cache@v2
         with:
-          key: ${{ github.ref }}
-          path: .cache
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
       - name: Auto-i18n_translate
-        env:  # 设置环境变量
+        env:
+          # 设置环境变量
           CHATGPT_API_KEY: ${{ secrets.CHATGPT_API_KEY }}
           CHATGPT_API_BASE: ${{ secrets.CHATGPT_API_BASE }}
         run: |
-          pip install openai #-r tools/requirements_translate.txt
+          pip install openai
           python tools/auto-translater.py || true
       - name: Commit translated
         run: |
@@ -33,6 +38,7 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-      - run: pip install -r requirements.txt 
-      - run: mkdocs gh-deploy --force
-      
+      - name: Install project dependencies
+        run: pip install -r requirements.txt
+      - name: Deploy with MkDocs
+        run: mkdocs gh-deploy --force

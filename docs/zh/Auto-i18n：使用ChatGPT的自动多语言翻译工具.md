@@ -8,7 +8,7 @@ Auto-i18n 是一个使用 ChatGPT 自动将 Markdown 文件批量翻译为多语
 
 我的博客实现 i18n 后的效果：
 
-![](https://img.wiki-power.com/d/wiki-media/img/202310151317233.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202310151317234.png)
 
 ## 快速上手
 
