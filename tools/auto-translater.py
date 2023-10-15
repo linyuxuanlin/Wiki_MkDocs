@@ -11,10 +11,10 @@ openai.api_key = os.environ.get("CHATGPT_API_KEY")
 openai.api_base = os.environ.get("CHATGPT_API_BASE")
 
 # 设置翻译的路径
-dir_to_translate = "/home/runner/work/Wiki_MkDocs/Wiki_MkDocs/docs/zh"
-dir_translated_en = "/home/runner/work/Wiki_MkDocs/Wiki_MkDocs/docs/en"
-dir_translated_es = "/home/runner/work/Wiki_MkDocs/Wiki_MkDocs/docs/es"
-dir_translated_ar = "/home/runner/work/Wiki_MkDocs/Wiki_MkDocs/docs/ar"
+dir_to_translate = "docs/zh"
+dir_translated_en = "docs/en"
+dir_translated_es = "docs/es"
+dir_translated_ar = "docs/ar"
 
 exclude_list = ["index.md", "Contact-and-Subscribe.md", "WeChat.md"]  # 不进行翻译的文件列表
 processed_list = "tools/processed_list.txt"  # 已处理的 Markdown 文件名的列表，会自动生成
