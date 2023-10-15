@@ -10,7 +10,6 @@ import sys
 openai.api_key = os.environ.get("CHATGPT_API_KEY")
 openai.api_base = os.environ.get("CHATGPT_API_BASE")
 
-
 # 设置翻译的路径
 dir_to_translate = "docs/zh"
 dir_translated_en = "docs/en"
