@@ -206,6 +206,10 @@ def translate_file(input_file, filename, lang):
     for placeholder, replacement in placeholder_dict.items():
         output_text = output_text.replace(placeholder, replacement)
 
+    if not os.path.exists(output_file):
+        with open(output_file, "w", encoding="utf-8") as f:
+            print("output_file created: ", filename)
+
     # 写入输出文件
     with open(output_file, "w", encoding="utf-8") as f:
         f.write(output_text)
@@ -215,13 +219,12 @@ file_list = os.listdir(dir_to_translate)
 sorted_file_list = sorted(file_list)
 # print(sorted_file_list)
 
-
-
 try:
     # 创建一个外部列表文件，存放已处理的 Markdown 文件名列表
     if not os.path.exists(processed_list):
         with open(processed_list, "w", encoding="utf-8") as f:
-            pass
+            print("processed_list created")
+            sys.stdout.flush()
     # 遍历目录下的所有.md文件，并进行翻译
     for filename in sorted_file_list:
         if filename.endswith(".md"):
