@@ -17,13 +17,13 @@ jobs:
         with:
           key: ${{ github.ref }}
           path: .cache
-      - name: Translate to Arabic
+      - name: Auto-i18n_translate
         env:  # 设置环境变量
           CHATGPT_API_KEY: ${{ secrets.CHATGPT_API_KEY }}
           CHATGPT_API_BASE: ${{ secrets.CHATGPT_API_BASE }}
         run: |
-          pip install -r tools/requirements_translate.txt
-          python tools/translate-to-ar-using-chatgpt.py || true
+          pip install openai #-r tools/requirements_translate.txt
+          python tools/auto-translater.py || true
       - name: Commit translated
         run: |
           git pull
