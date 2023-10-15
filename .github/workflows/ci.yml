@@ -35,7 +35,8 @@ jobs:
         run: |
           git config --global user.email 824676271@qq.com
           git config --global user.name linyuxuanlin
-          git commit -m "Commit translated" -a || true
+          git add ,
+          git commit -m "Commit translated" || true
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
