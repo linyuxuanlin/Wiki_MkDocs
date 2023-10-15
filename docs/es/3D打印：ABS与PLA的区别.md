@@ -1,6 +1,6 @@
 # Impresión 3D: Diferencias entre ABS y PLA
 
-¿Cómo elegir de manera adecuada los materiales ABS y PLA en la impresión 3D?
+¿Cómo elegir adecuadamente los materiales ABS y PLA en la impresión 3D?
 
 ## Material ABS
 
@@ -12,11 +12,11 @@ Cuando se utiliza ABS para imprimir, generalmente se establece la temperatura de
 
 ### Rendimiento de impresión
 
-La impresión con ABS es muy suave, pero al enfriarse, puede encogerse y causar problemas como bordes levantados y desprendimiento.
+La impresión con ABS es muy suave, pero puede encogerse al enfriarse, lo que puede causar problemas como bordes levantados y desprendimiento.
 
 ### Resistencia
 
-El ABS es fuerte y, debido a su buena elasticidad, incluso bajo presión solo se doblará y generalmente no se romperá.
+El ABS es fuerte y, debido a su buena elasticidad, incluso bajo presión solo se doblará y no se romperá.
 
 ### Olor
 
@@ -24,9 +24,9 @@ El ABS produce un olor desagradable durante la impresión. Es mejor utilizar una
 
 ### Escenarios de uso
 
-En general, el ABS es adecuado para escenarios que requieren resistencia a impactos, tenacidad y temperaturas relativamente altas.
+En comparación con el PLA, el ABS es adecuado para escenarios que requieren resistencia a los golpes, tenacidad y temperaturas relativamente altas.
 
-La desventaja es que las impresoras sin cama caliente no pueden imprimir con ABS, ya que puede haber bordes levantados y desprendimiento durante la impresión. También se recomienda no utilizarlo en habitaciones con mala ventilación.
+La desventaja es que las impresoras sin cama caliente no pueden utilizar ABS para imprimir, ya que puede haber bordes levantados y desprendimiento durante la impresión. Además, se recomienda no utilizarlo en habitaciones con mala ventilación.
 
 ## Material PLA
 
@@ -38,15 +38,15 @@ Cuando se utiliza PLA para imprimir, generalmente se establece la temperatura de
 
 ### Rendimiento de impresión
 
-En comparación con el ABS, el PLA es más propenso a obstruir la boquilla durante la impresión (debido a que se adhiere y se extiende fácilmente después de derretirse), pero no causará bordes levantados y desprendimiento.
+En comparación con el ABS, el PLA es más propenso a obstruir la boquilla durante la impresión (debido a que el PLA se adhiere y se extiende fácilmente después de derretirse), pero no causará bordes levantados y desprendimiento.
 
 ### Resistencia
 
-La elasticidad y la resistencia del PLA son un poco más bajas que las del ABS, pero se pueden solucionar durante la impresión ajustando el relleno y el grosor de las paredes.
+La elasticidad y la resistencia del PLA son un poco más bajas que las del ABS, pero se pueden resolver durante la impresión ajustando el relleno y el grosor de las paredes.
 
 ### Escenarios de uso
 
-El PLA es relativamente ecológico (debido a su capacidad degradante), relativamente barato, no se levanta y no produce olores desagradables durante la impresión.
+El PLA es relativamente ecológico (porque es biodegradable), relativamente barato y no se levanta en los bordes durante la impresión, y no produce olores desagradables durante la impresión.
 
 El PLA no es adecuado para escenarios de alta temperatura y golpes. Las temperaturas superiores a 60°C y los golpes pueden hacer que las piezas impresas se deformen o se rompan.
 
