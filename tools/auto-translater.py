@@ -208,6 +208,8 @@ def translate_file(input_file, filename, lang):
     # 写入输出文件
     with open(output_file, "w", encoding="utf-8") as f:
         f.write(output_text)
+        print("writted output_file")
+        sys.stdout.flush()
 
 
 # 按文件名称顺序排序
@@ -267,8 +269,8 @@ try:
                 print("Added into processed_list: ", filename)
                 with open(processed_list, "a", encoding="utf-8") as f:
                     # 写入字符串到文件中
-                    f.write(filename)
                     f.write("\n")
+                    f.write(filename)
 
             # 强制将缓冲区中的数据刷新到终端中，使用 GitHub Action 时方便实时查看过程
             sys.stdout.flush()
