@@ -30,7 +30,7 @@ dir_translated_ar = "/home/runner/work/Wiki_MkDocs/Wiki_MkDocs/docs/ar"
 # dir_translated = "../docs/ar"
 
 exclude_list = ["index.md", "Contact-and-Subscribe.md", "WeChat.md"]  # 不进行翻译的文件列表
-processed_list = "processed_list.txt"  # 已处理的 Markdown 文件名的列表，会自动生成
+processed_list = "/home/runner/work/Wiki_MkDocs/Wiki_MkDocs/tools/processed_list.txt"  # 已处理的 Markdown 文件名的列表，会自动生成
 
 # 设置最大输入字段，超出会拆分输入，防止超出输入字数限制
 max_length = 1800
