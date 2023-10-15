@@ -21,6 +21,8 @@ jobs:
           key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
+      - name: Change permissions
+        run: chmod 755 docs
       - name: Auto-i18n_translate
         env:
           # 设置环境变量
@@ -38,7 +40,7 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Install project dependencies
+      - name: Install MkDocs dependencies
         run: pip install -r requirements.txt
       - name: Deploy with MkDocs
         run: mkdocs gh-deploy --force
