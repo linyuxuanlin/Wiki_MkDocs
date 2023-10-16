@@ -47,7 +47,7 @@ Finally, execute the command `docker compose up -d` in the same directory as `co
 
 ## Configuration
 
-There are many choices for mobile apps. The best experience I have used on Android is substreamer. For more apps, please refer to the official list [**Apps **](https://www.navidrome.org/docs/overview/#apps).
+There are many choices for mobile apps. The best experience I have used on Android is substreamer. For more apps, please refer to the official list [**Apps**](https://www.navidrome.org/docs/overview/#apps).
 
 ## Reference and Acknowledgement
 
