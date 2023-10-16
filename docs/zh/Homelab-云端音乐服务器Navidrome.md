@@ -47,7 +47,7 @@ APP_PORT=xxxx # 自定义访问端口，选择不被占用的即可
 
 ## 配置说明
 
-移动端 App 有很多种选择，Android 上我自用体验最佳的是 substreamer，更多 App 可以参考官方列表 [**Apps **](https://www.navidrome.org/docs/overview/#apps)。
+移动端 App 有很多种选择，Android 上我自用体验最佳的是 substreamer，更多 App 可以参考官方列表 [**Apps**](https://www.navidrome.org/docs/overview/#apps)。
 
 ## 参考与致谢
 
