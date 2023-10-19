@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
-
 import os
 import openai
 import sys
-
-#import env
+# import env
 
 # 设置 OpenAI API Key 和 API Base 参数，通过 env.py 传入
 openai.api_key = os.environ.get("CHATGPT_API_KEY")
@@ -12,20 +10,25 @@ openai.api_base = os.environ.get("CHATGPT_API_BASE")
 
 # 设置翻译的路径
 dir_to_translate = "docs/zh"
-dir_translated_en = "docs/en"
-dir_translated_es = "docs/es"
-dir_translated_ar = "docs/ar"
+dir_translated = {
+    "en": "docs/en",
+    "es": "docs/es",
+    "ar": "docs/ar"
+}
 
-exclude_list = ["index.md", "Contact-and-Subscribe.md", "WeChat.md"]  # 不进行翻译的文件列表
+exclude_list = ["index.md", "Contact-and-Subscribe.md",
+                "WeChat.md"]  # 不进行翻译的文件列表
 processed_list = "tools/processed_list.txt"  # 已处理的 Markdown 文件名的列表，会自动生成
 
 # 设置最大输入字段，超出会拆分输入，防止超出输入字数限制
 max_length = 1800
 
 # 由 ChatGPT 翻译的提示
-tips_translated_by_chatgpt_en = "\n\n> This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions."
-tips_translated_by_chatgpt_es = "\n\n> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión."
-tips_translated_by_chatgpt_ar = "\n\n> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال."
+tips_translated_by_chatgpt = {
+    "en": "\n\n> This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.",
+    "es": "\n\n> Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.",
+    "ar": "\n\n> تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال."
+}
 
 # 文章使用英文撰写的提示，避免本身为英文的文章被重复翻译为英文
 marker_written_in_en = "\n> This post was originally written in English.\n"
@@ -37,24 +40,30 @@ replace_rules = [
     {
         # 版权信息手动翻译
         "orginal_text": "> 原文地址：<https://wiki-power.com/>",
-        "replaced_en": "> Original: <https://wiki-power.com/>",
-        "replaced_es": "> Dirección original del artículo: <https://wiki-power.com/>",
-        "replaced_ar": "> عنوان النص: <https://wiki-power.com/>",
+        "replaced_text": {
+            "en": "> Original: <https://wiki-power.com/>",
+            "es": "> Dirección original del artículo: <https://wiki-power.com/>",
+            "ar": "> عنوان النص: <https://wiki-power.com/>",
+        }
     },
     {
         # 版权信息手动翻译
         "orginal_text": "> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。",
-        "replaced_en": "> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.",
-        "replaced_es": "> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.",
-        "replaced_ar": "> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.",
+        "replaced_text": {
+            "en": "> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.",
+            "es": "> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.",
+            "ar": "> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.",
+        }
     },
     {
         # 文章中的站内链接，跳转为当前相同语言的网页
         "orginal_text": "](https://wiki-power.com/",
-        "replaced_en": "](https://wiki-power.com/en/",
-        "replaced_es": "](https://wiki-power.com/es/",
-        "replaced_ar": "](https://wiki-power.com/ar/",
-    },
+        "replaced_text": {
+            "en": "](https://wiki-power.com/en/",
+            "es": "](https://wiki-power.com/es/",
+            "ar": "](https://wiki-power.com/ar/",
+        }
+    }
     # {
     #    # 不同语言使用不同图床
     #    "orginal_text": "![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/",
@@ -67,12 +76,11 @@ replace_rules = [
 
 # 定义翻译函数
 def translate_text(text, lang):
-    if lang == "en":
-        target_lang = "English"
-    elif lang == "es":
-        target_lang = "Spanish"
-    elif lang == "ar":
-        target_lang = "Arabic"
+    target_lang = {
+        "en": "English",
+        "es": "Spanish",
+        "ar": "Arabic"
+    }[lang]
 
     # 使用OpenAI API进行翻译
     completion = openai.ChatCompletion.create(
@@ -80,9 +88,7 @@ def translate_text(text, lang):
         messages=[
             {
                 "role": "user",
-                "content": "Translate the following text into {}, maintain the original markdown format.\n\n{}\n\n{}:".format(
-                    target_lang, text, target_lang
-                ),
+                "content": f"Translate the following text into {target_lang}, maintain the original markdown format.\n\n{text}\n\n{target_lang}:",
             }
         ],
     )
@@ -122,22 +128,15 @@ def split_text(text, max_length):
 
 # 定义翻译文件函数
 def translate_file(input_file, filename, lang):
-    print("Translating into {}: ".format(lang), filename)
+    print(f"Translating into {lang}: {filename}")
     sys.stdout.flush()
 
     # 定义输出文件
-    if lang == "en":
-        if not os.path.exists(dir_translated_en):
-            os.makedirs(dir_translated_en)
-        output_file = os.path.join(dir_translated_en, filename)
-    elif lang == "es":
-        if not os.path.exists(dir_translated_es):
-            os.makedirs(dir_translated_es)
-        output_file = os.path.join(dir_translated_es, filename)
-    elif lang == "ar":
-        if not os.path.exists(dir_translated_ar):
-            os.makedirs(dir_translated_ar)
-        output_file = os.path.join(dir_translated_ar, filename)
+    if lang in dir_translated:
+        output_dir = dir_translated[lang]
+        if not os.path.exists(output_dir):
+            os.makedirs(output_dir)
+        output_file = os.path.join(output_dir, filename)
 
     # 读取输入文件内容
     with open(input_file, "r", encoding="utf-8") as f:
@@ -149,12 +148,7 @@ def translate_file(input_file, filename, lang):
     # 使用 for 循环应用替换规则，并将匹配的文本替换为占位词
     for i, rule in enumerate(replace_rules):
         find_text = rule["orginal_text"]
-        if lang == "en":
-            replace_with = rule["replaced_en"]
-        elif lang == "es":
-            replace_with = rule["replaced_es"]
-        elif lang == "ar":
-            replace_with = rule["replaced_ar"]
+        replace_with = rule["replaced_text"][lang]
         placeholder = f"to_be_replace[{i + 1}]"
         input_text = input_text.replace(find_text, placeholder)
         placeholder_dict[placeholder] = replace_with
@@ -196,11 +190,11 @@ def translate_file(input_file, filename, lang):
 
     # 加入由 ChatGPT 翻译的提示
     if lang == "en":
-        output_text = output_text + tips_translated_by_chatgpt_en
+        output_text = output_text + tips_translated_by_chatgpt["en"]
     elif lang == "es":
-        output_text = output_text + tips_translated_by_chatgpt_es
+        output_text = output_text + tips_translated_by_chatgpt["es"]
     elif lang == "ar":
-        output_text = output_text + tips_translated_by_chatgpt_ar
+        output_text = output_text + tips_translated_by_chatgpt["ar"]
 
     # 最后，将占位词替换为对应的替换文本
     for placeholder, replacement in placeholder_dict.items():
@@ -209,6 +203,7 @@ def translate_file(input_file, filename, lang):
     # 写入输出文件
     with open(output_file, "w", encoding="utf-8") as f:
         f.write(output_text)
+
 
 # 按文件名称顺序排序
 file_list = os.listdir(dir_to_translate)
@@ -221,6 +216,7 @@ try:
         with open(processed_list, "w", encoding="utf-8") as f:
             print("processed_list created")
             sys.stdout.flush()
+
     # 遍历目录下的所有.md文件，并进行翻译
     for filename in sorted_file_list:
         if filename.endswith(".md"):
@@ -243,7 +239,8 @@ try:
                 if marker_written_in_en in md_content:  # 翻译为除英文之外的语言
                     print("Pass the en-en translation: ", filename)
                     sys.stdout.flush()
-                    md_content = md_content.replace(marker_written_in_en, "")  # 删除这个字段
+                    md_content = md_content.replace(
+                        marker_written_in_en, "")  # 删除这个字段
                     translate_file(input_file, filename, "es")
                     translate_file(input_file, filename, "ar")
                 else:  # 翻译为所有语言
@@ -251,27 +248,26 @@ try:
                     translate_file(input_file, filename, "es")
                     translate_file(input_file, filename, "ar")
             elif filename in exclude_list:  # 不进行翻译
-                print("Pass the post in exclude_list: ", filename)
+                print(f"Pass the post in exclude_list: {filename}")
                 sys.stdout.flush()
             elif filename in processed_list_content:  # 不进行翻译
-                print("Pass the post in processed_list: ", filename)
+                print(f"Pass the post in processed_list: {filename}")
                 sys.stdout.flush()
             elif marker_written_in_en in md_content:  # 翻译为除英文之外的语言
-                print("Pass the en-en translation: ", filename)
+                print(f"Pass the en-en translation: {filename}")
                 sys.stdout.flush()
-                md_content = md_content.replace(marker_written_in_en, "")  # 删除这个字段
-                translate_file(input_file, filename, "es")
-                translate_file(input_file, filename, "ar")
+                md_content = md_content.replace(
+                    marker_written_in_en, "")  # 删除这个字段
+                for lang in ["es", "ar"]:
+                    translate_file(input_file, filename, lang)
             else:  # 翻译为所有语言
-                translate_file(input_file, filename, "en")
-                translate_file(input_file, filename, "es")
-                translate_file(input_file, filename, "ar")
+                for lang in ["en", "es", "ar"]:
+                    translate_file(input_file, filename, lang)
 
             # 将处理完成的文件名加到列表，下次跳过不处理
             if filename not in processed_list_content:
-                print("Added into processed_list: ", filename)
+                print(f"Added into processed_list: {filename}")
                 with open(processed_list, "a", encoding="utf-8") as f:
-                    # 写入字符串到文件中
                     f.write("\n")
                     f.write(filename)
 
@@ -282,6 +278,5 @@ except Exception as e:
     # 捕获异常并输出错误信息
     print(f"An error has occurred: {e}")
     sys.stdout.flush()
-    # 可选：在这里添加其他处理异常的代码
     raise SystemExit(1)  # 1 表示非正常退出，可以根据需要更改退出码
     # os.remove(input_file)  # 删除源文件
