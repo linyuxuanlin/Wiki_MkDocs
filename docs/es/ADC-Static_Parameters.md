@@ -4,7 +4,7 @@ El Convertidor Analógico a Digital (ADC, por sus siglas en inglés) es un dispo
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221011141438.png)
 
-Aunque la función de transferencia ideal de un ADC debería ser una línea recta, en realidad es una escalera uniforme, donde el número de escalones corresponde al número de códigos de salida digitales. Dado que lo analógico es continuo y lo digital es discreto, se introduce un error de cuantización en el procedimiento.
+Aunque la función de transferencia ideal de un ADC debería ser una línea recta, en realidad es una escalera uniforme, donde el número de escalones corresponde al número de códigos de salida digitales. Dado que lo analógico es continuo y lo digital es discreto, se introducirá un error de cuantización en el procedimiento.
 
 ## Parámetros estáticos
 
@@ -43,7 +43,7 @@ Por ejemplo, para un convertidor de 3 bits, hay:
 
 ### Error de desplazamiento
 
-**Error de Desplazamiento** (Error de Escala Cero) es la diferencia entre los puntos de desplazamiento (inicial) ideal y real. Se mide desde el punto medio del paso cero (ideal a real) para el ADC.
+**Error de Desplazamiento** (Error de Cero-Escala) es la diferencia entre los puntos de desplazamiento (inicial) ideal y real. Se mide desde el punto medio del paso cero (ideal a real) para el ADC.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221008154521.png)
 
@@ -67,7 +67,7 @@ $$
 
 ### Error de No Linealidad Diferencial (DNL)
 
-**Error de No Linealidad Diferencial (DNL)** es la diferencia entre el ancho de paso real y el ancho de paso ideal (1 LSB). Es una medida del error de linealidad "de pequeña señal" y se mide a partir de la diferencia en el voltaje de entrada analógica entre 2 transiciones adyacentes y el LSB promedio del dispositivo.
+**Error de No Linealidad Diferencial (DNL)** es la diferencia entre el ancho de paso real y el ancho de paso ideal (1 LSB). Es una medida del error de linealidad "de pequeña señal" y se mide a partir de la diferencia en el voltaje de entrada analógico entre 2 transiciones adyacentes y el LSB promedio del dispositivo.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221008160020.png)
 
@@ -119,7 +119,7 @@ Dado que la curva de transferencia de voltaje a código del ADC es una función 
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221008185819.png)
 
-Prácticamente utilizamos el método del histograma de rampa lineal (medición del ancho del código). La rampa de entrada es lo suficientemente lenta como para proporcionar un "número estadísticamente relevante de aciertos por código".
+Prácticamente utilizamos el método del histograma de rampa lineal (medición del ancho del código). La rampa de entrada es lo suficientemente lenta como para proporcionar un "número de aciertos por código" estadísticamente relevante.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221008190154.png)
 
@@ -137,9 +137,9 @@ Las rampas de entrada van por encima y por debajo de ±Fs para asegurar que se c
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221008193036.png)
 
-#### 2. Tomar datos entre el inicio (min+1, por ejemplo, 0…01) y el final (max-1, por ejemplo, 1…10) de la rampa. Esto proporciona un valor de datos equivalente a $2^n – 2$ códigos
+#### 2. Tomar datos entre el inicio (min+1, por ejemplo, 0...01) y el final (max-1, por ejemplo, 1...10) de la rampa. Esto proporciona datos equivalentes a $2^n – 2$ códigos
 
-El voltaje aplicado debe ser más amplio que el rango de escala completa para cubrir todas las transiciones. A continuación se muestra un ejemplo de 16 pasos entre cada transición de código:
+El voltaje aplicado debe ser más amplio que el rango de escala completa para cubrir todas las transiciones. A continuación se muestra un ejemplo con 16 pasos entre cada transición de código:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221008194207.png)
 
@@ -147,7 +147,7 @@ para el ADC DUT ideal, 16 códigos de salida aparecen al mismo tiempo:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221008194450.png)
 
-Sin embargo, un dispositivo real tendrá un recuento más de 16 veces para códigos más anchos y menos de 16 veces para los más estrechos (pero la suma del total de ocurrencias debe seguir siendo $2^{bits}$ veces 16):
+Sin embargo, un dispositivo real tendrá una cuenta más de 16 veces para códigos más anchos y menos de 16 veces para los más estrechos (pero la suma de la ocurrencia total aún debe ser $2^{bits}$ veces 16):
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221008194813.png)
 
@@ -157,7 +157,7 @@ $$
 DNL[i]=\frac{Hits[i]-\frac{\sum Hits[i]}{2^n-2}}{\frac{\sum Hits[i]}{2^n-2}}
 $$
 
-Donde $Hits[i]$ representa el recuento real del código de salida y $\frac{\sum Hits[i]}{2^n-2}$ representa el recuento ideal del código de salida.
+Donde $Hits[i]$ representa la cuenta real del código de salida y $\frac{\sum Hits[i]}{2^n-2}$ representa la cuenta ideal del código de salida.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221008234157.png)
 
@@ -165,10 +165,10 @@ Para un ejemplo de gráfico de histograma como se muestra a continuación:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221008234921.png)
 
-para DNL[1](Código 001),
+para DNL[1] (Código 001),
 
-- Recuento real del código de salida = 14
-- Recuento ideal del código de salida = (14 +18 +15 + 17+ 17 + 15) / (8 -2 ) = 16.
+- Cuenta real del código de salida = 14
+- Cuenta ideal del código de salida = (14 +18 +15 + 17+ 17 + 15) / (8 -2 ) = 16.
 
 Por lo tanto, $DNL[1] (Código 001) = (14-16)/16 \ LSB => -0.125 \ LSB$.
 
