@@ -5,7 +5,7 @@
 
 基于 MkDocs 与 MkDocs Material 的个人 Wiki 知识库
 
-(故障备用地址：https://linyuxuanlin.github.io/Wiki_MkDocs/ 或 https://mkdocs.wiki-power.com/)
+(故障备用地址：https://linyuxuanlin.github.io/Wiki_MkDocs/ / https://mkdocs.wiki-power.com/)
 
 Sitemap: <https://wiki-power.com/sitemap.xml>  
 RSS of created post: <https://wiki-power.com/feed_rss_created.xml>  
