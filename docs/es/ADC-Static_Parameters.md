@@ -4,11 +4,11 @@ El Convertidor Analógico a Digital (ADC, por sus siglas en inglés) es un dispo
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221011141438.png)
 
-Aunque la función de transferencia ideal de un ADC debería ser una línea recta, en realidad es una escalera uniforme, donde el número de escalones corresponde al número de códigos de salida digitales. Dado que lo analógico es continuo y lo digital es discreto, se introducirá un error de cuantización en el procedimiento.
+Aunque la función de transferencia ideal de un ADC debería ser una línea recta, en realidad es una escalera uniforme, donde el número de escalones corresponde al número de códigos de salida digitales. Dado que lo analógico es continuo y lo digital es discreto, se introduce un error de cuantización en el procedimiento.
 
 ## Parámetros estáticos
 
-Los parámetros estáticos de un ADC principalmente incluyen:
+Los parámetros estáticos de un ADC incluyen principalmente:
 
 - Tamaño del LSB
 - Rango de escala completa (FSR, por sus siglas en inglés)
@@ -43,7 +43,7 @@ Por ejemplo, para un convertidor de 3 bits, hay:
 
 ### Error de desplazamiento
 
-**Error de Desplazamiento** (Error de Cero-Escala) es la diferencia entre los puntos de desplazamiento (inicial) ideal y real. Se mide desde el punto medio del paso cero (ideal a real) para el ADC.
+**Error de Desplazamiento** (Error de Escala Cero) es la diferencia entre los puntos de desplazamiento (inicial) ideal y real. Se mide desde el punto medio del paso cero (ideal a real) para el ADC.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221008154521.png)
 
@@ -55,7 +55,7 @@ $$
 
 ### Error de Ganancia
 
-**Error de Ganancia** es la diferencia entre los puntos de ganancia ideal y real en la función de transferencia (después de que el error de desplazamiento se ha corregido a cero). Se mide desde el punto medio del paso completo para el ADC.
+**Error de Ganancia** es la diferencia entre los puntos de ganancia ideal y real en la función de transferencia (después de que el error de desplazamiento se haya corregido a cero). Se mide desde el punto medio del paso completo para el ADC.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221008155259.png)
 
@@ -67,7 +67,7 @@ $$
 
 ### Error de No Linealidad Diferencial (DNL)
 
-**Error de No Linealidad Diferencial (DNL)** es la diferencia entre el ancho de paso real y el ancho de paso ideal (1 LSB). Es una medida del error de linealidad "de pequeña señal" y se mide a partir de la diferencia en el voltaje de entrada analógico entre 2 transiciones adyacentes y el LSB promedio del dispositivo.
+**Error de No Linealidad Diferencial (DNL)** es la diferencia entre el ancho de paso real y el ancho de paso ideal (1 LSB). Es una medida del error de linealidad de "señal pequeña" y se mide a partir de la diferencia en el voltaje de entrada analógico entre 2 transiciones adyacentes y el LSB promedio del dispositivo.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221008160020.png)
 
@@ -85,11 +85,11 @@ otra imagen para describir DNL:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221008161707.png)
 
-Si el DNL es demasiado grande, faltará uno o más códigos y nunca se recibirá una salida.
+Si DNL es demasiado grande, faltará uno o más códigos y nunca se recibirá una salida.
 
 ### Error de No Linealidad Integral (INL)
 
-**Error de No Linealidad Integral (INL)** es el efecto acumulativo en cualquier entrada dada de todos los valores de no linealidad diferencial. Es una medida del error de linealidad "de gran señal". El INL en cualquier punto a lo largo de la curva es la desviación de la línea de linealidad ideal.
+**Error de No Linealidad Integral (INL)** es el efecto acumulativo en cualquier entrada dada de todos los valores de no linealidad diferencial. Es una medida del error de linealidad de "señal grande". INL en cualquier punto a lo largo de la curva es la desviación de la línea de linealidad ideal.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221008163705.png)
 
@@ -102,7 +102,7 @@ INL[n]=INL_{n-1}+{\frac{DNL_{n-1}+DNL_{n}}{2}}
 $$
 
 $$
-INL=[(\frac{BinaryCode}{2^{bits}-1})(V_{FS}-V_{ZS})+V_{offset}]-CodeCentor
+INL=[(\frac{CódigoBinario}{2^{bits}-1})(V_{FS}-V_{ZS})+V_{offset}]-CentroCódigo
 $$
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221008163911.png)
@@ -119,7 +119,7 @@ Dado que la curva de transferencia de voltaje a código del ADC es una función 
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221008185819.png)
 
-Prácticamente utilizamos el método del histograma de rampa lineal (medición del ancho del código). La rampa de entrada es lo suficientemente lenta como para proporcionar un "número de aciertos por código" estadísticamente relevante.
+Prácticamente utilizamos el método del histograma de rampa lineal (medición del ancho del código). La rampa de entrada es lo suficientemente lenta como para proporcionar un "número estadísticamente relevante de aciertos por código".
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221008190154.png)
 
@@ -133,7 +133,7 @@ El procedimiento para probar los parámetros estáticos de un ADC DUT se enumera
 
 #### 1. Crear un segmento de onda de rampa para AC SRC
 
-Las rampas de entrada van por encima y por debajo de ±Fs para asegurar que se cubran todos los códigos:
+Las rampas de entrada superan y se encuentran por debajo de ±Fs para asegurar que se cubran todos los códigos:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221008193036.png)
 
@@ -147,7 +147,7 @@ para el ADC DUT ideal, 16 códigos de salida aparecen al mismo tiempo:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221008194450.png)
 
-Sin embargo, un dispositivo real tendrá una cuenta más de 16 veces para códigos más anchos y menos de 16 veces para los más estrechos (pero la suma de la ocurrencia total aún debe ser $2^{bits}$ veces 16):
+Sin embargo, un dispositivo real tendrá un recuento más de 16 veces para códigos más anchos y menos de 16 veces para los más estrechos (pero la suma del total de ocurrencias debe seguir siendo $2^{bits}$ veces 16):
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221008194813.png)
 
@@ -157,7 +157,7 @@ $$
 DNL[i]=\frac{Hits[i]-\frac{\sum Hits[i]}{2^n-2}}{\frac{\sum Hits[i]}{2^n-2}}
 $$
 
-Donde $Hits[i]$ representa la cuenta real del código de salida y $\frac{\sum Hits[i]}{2^n-2}$ representa la cuenta ideal del código de salida.
+Donde $Hits[i]$ representa el recuento real del código de salida y $\frac{\sum Hits[i]}{2^n-2}$ representa el recuento ideal del código de salida.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221008234157.png)
 
@@ -167,8 +167,8 @@ Para un ejemplo de gráfico de histograma como se muestra a continuación:
 
 para DNL[1] (Código 001),
 
-- Cuenta real del código de salida = 14
-- Cuenta ideal del código de salida = (14 +18 +15 + 17+ 17 + 15) / (8 -2 ) = 16.
+- Recuento real del código de salida = 14
+- Recuento ideal del código de salida = (14 +18 +15 + 17+ 17 + 15) / (8 -2 ) = 16.
 
 Por lo tanto, $DNL[1] (Código 001) = (14-16)/16 \ LSB => -0.125 \ LSB$.
 
@@ -178,7 +178,7 @@ Por lo tanto, $DNL[1] (Código 001) = (14-16)/16 \ LSB => -0.125 \ LSB$.
 
 #### 5. Calcular el INL para cada paso
 
-INL es el valor acumulativo del primer DNL al DNL[i] (excepto el DNL de cero y de escala completa):
+INL es el valor acumulativo del primer DNL al DNL[i] (excepto el DNL cero y de escala completa):
 
 $$
 INL[i]=DNL[i]+DNL[i-1]+...+DNL[2]+DNL[1]
