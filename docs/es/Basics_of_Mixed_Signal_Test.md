@@ -1,12 +1,10 @@
-# Fundamentos de la Prueba de Señal Mixta
+# Fundamentos de Prueba de Señal Mixta
 
-> Esta publicación solo está disponible en inglés.
+La señal mixta contiene tanto señales analógicas como digitales. Los dispositivos que procesan señales mixtas suelen incluir convertidores analógico-digitales (ADC), convertidores digitales-analógicos (DAC), interruptores y multiplexores analógicos, amplificadores de muestreo y retención, y así sucesivamente.
 
-La señal mixta contiene tanto señales analógicas como digitales. Los dispositivos que procesan señales mixtas típicamente incluyen ADC, DAC, interruptores y multiplexores analógicos, amplificadores de retención de muestra, entre otros.
+Como parte de esto, las señales analógicas son señales que utilizamos en el mundo real, como voz o temperatura; son continuas tanto en el tiempo como en la amplitud. Para procesar señales analógicas en computadoras, necesitamos convertirlas en señales digitales, ya que son discretas tanto en el tiempo como en la amplitud.
 
-Como parte de ella, las señales analógicas son señales que usamos en el mundo real, como la voz o la temperatura, son continuas tanto en el tiempo como en la amplitud. Para procesar señales analógicas en computadoras, necesitamos convertirlas en señales digitales, ya que son discretas tanto en el tiempo como en la amplitud.
-
-## Teoría del muestreo
+## Teoría del Muestreo
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20220929094314.png)
 
@@ -14,203 +12,212 @@ La teoría del muestreo se aplica a la señal para que sea periódica, o se intr
 
 ### Teorema de Nyquist
 
-Usamos el **Teorema de Nyquist** para obtener la frecuencia de muestreo mínima al muestrear señales:
+Utilizamos el **Teorema de Nyquist (奈奎斯特定理)** para obtener la frecuencia mínima de muestreo cuando se toman muestras de señales:
 
 $$
 F_s≥2F_i
 $$
 
-Debemos muestrear a una frecuencia mayor que el doble de la frecuencia más alta de interés, para poder recrear una señal a partir de sus muestras y evitar perder información.
+Debemos muestrear a una frecuencia mayor que el doble de la frecuencia más alta de interés para poder recrear una señal a partir de sus muestras y evitar la pérdida de información.
 
-Si muestreamos a una frecuencia menor que la tasa de Nyquist, exhibirá un fenómeno llamado **aliasing** (componentes no deseadas) cuando intentemos convertirlo de vuelta a una señal continua en el tiempo, y algunas de las frecuencias en la señal original pueden perderse.
+Si muestreamos a una frecuencia inferior a la tasa de Nyquist, se producirá un fenómeno llamado **aliasing (混叠)** (componentes no deseadas) cuando intentemos convertirlo nuevamente en una señal continua en el tiempo, y algunas de las frecuencias en la señal original pueden perderse.
 
-Para minimizar el problema de aliasing, necesitamos eliminar la frecuencia mayor que $\frac{F_s}{2}$ de la señal, a través del filtro antialiasing (por ejemplo, filtro pasa bajos):
+Para minimizar el problema del aliasing, debemos eliminar las frecuencias mayores que $\frac{F_s}{2}$ de la señal a través de un filtro antialiasing (por ejemplo, un filtro pasa bajos):
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20220930154335.png)
 
 ### Muestreo Coherente
 
-Si un conjunto de muestras de tiempo no contiene un número entero preciso de ciclos, se producirá **fugas espectrales**.
+Si un conjunto de muestras en el tiempo no contiene un número entero preciso de ciclos, se producirá **fuga espectral (频谱泄露)**.
 
-La **muestreo coherente** es para garantizar la continuidad del muestreo y evitar la fuga espectral, garantiza que un conjunto de muestras (una serie de muestras que representan la señal analógica) tenga una relación fija y bien definida entre la frecuencia de muestreo $F_s$, el número de muestras $N$, la frecuencia de la señal de prueba $F_i$ y el número de períodos de señal de prueba muestreados $M$:
+**Muestreo coherente (相干采样)** es para asegurar la continuidad del muestreo y prevenir la fuga espectral, garantiza que un conjunto de muestras (una serie de muestras que representan la señal analógica) tenga una relación fija y bien definida entre la frecuencia de muestra $F_s$, el número de muestras $N$, la frecuencia de la señal de prueba $F_i$, y el número de periodos de señal de prueba muestreados $M$:
 
 $$
 \frac{M}{N}=\frac{F_i}{F_s}
 $$
 
-El tiempo total requerido para tomar todas las muestras se llama **Período de Prueba Unitario (UTP)** y requiere $M$ ciclos de la señal de prueba, que tiene una frecuencia de $F_i$.
+El tiempo total requerido para tomar todas las muestras se llama **Periodo de Prueba Unitario (UTP)** y requiere $M$ ciclos de la señal de prueba, que tiene una frecuencia de $F_i$.
 
-Por ejemplo, si queremos calcular el $F_s$ de una onda sinusoidal continua repetitiva, donde $F_i$ es 1kHz, $M=3$ y $N=16$:
+Por ejemplo, si queremos calcular la $F_s$ de una sinusoide continua repetida, donde $F_i$ es 1 kHz, $M=3$ y $N=16`:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20220930164712.png)
 
-Entonces podemos concluir que $F_s=5.333kHz$.
+Así que podemos concluir que $F_s=5.333 kHz`.
 
-Consejos importantes de muestreo coherente:
+Consejos importantes sobre el muestreo coherente:
 
-- Aumentar $M$ y/o $N$ aumentará tanto la precisión como el tiempo de prueba.
-- $M$ y $N$ deben ser enteros.
-- $N$ debe ser una potencia de 2 al usar la Transformada Rápida de Fourier (FFT).
-- Se recomienda que $M$ y $N$ sean primos entre sí para que cada muestra proporcione información única. Descrito a continuación.
+- Aumentar $M` y/o $N` aumentará tanto la precisión como el tiempo de prueba.
+- $M` y $N` deben ser números enteros.
+- $N` debe ser una potencia de 2 cuando se utiliza la Transformada Rápida de Fourier (FFT).
+- Se recomienda que $M` y $N` sean primos entre sí (互质) para que cada muestra proporcione información única. Se describe a continuación.
 
-Si $M$ y $N$ no son primos entre sí ($M=3,N=12$), las muestras se toman en la misma posición en cada ciclo, por lo que no hay información nueva:
+Si $M` y $N` no son primos entre sí ($M=3`, $N=12`), las muestras se toman en la misma posición en cada ciclo, por lo que no hay nueva información:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20220930170300.png)
 
-Si $M$ y $N$ son primos entre sí ($M=3,N=16$), por lo que son primos entre sí y cada muestra es discreta, por lo que proporciona información única:
+Si $M` y $N` son primos entre sí ($M=3`, $N=16`), entonces son primos entre sí y cada muestra es discreta, por lo que proporciona información única:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20220930170343.png)
 
-## Algoritmos comunes de análisis de frecuencia
+## Algoritmos Comunes de Análisis de Frecuencia
 
-Para $N$ muestras de señal en el dominio del tiempo, hay $N$ valores de señal en el dominio de la frecuencia, y hay $N/2$ valores de espectro de potencia en el dominio de la frecuencia. A continuación se muestra un ejemplo típico de componentes espectrales:
+```markdown
+Para $N$ muestras de una señal en el dominio del tiempo, existen $N$ valores de la señal en el dominio de la frecuencia y $N/2$ valores del espectro de potencia en el dominio de la frecuencia. A continuación, se muestra un ejemplo típico de componentes espectrales:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20221002145846.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221002145846.png)
 
 Existen varios parámetros para describir las componentes espectrales de la siguiente manera:
 
-- Relación señal-ruido (SNR)（信噪比）
-- Distorsión armónica total (THD)（总谐波失真）
-- Relación señal-ruido y distorsión (SINAD)（信纳比）
-- Distorsión de intermodulación (IM)（互调失真）
-- Rango dinámico libre de espurias (SFDR)（无杂散动态范围）
+- Relación Señal a Ruido (SNR)（Relación Señal a Ruido）
+- Distorsión Armónica Total (THD)（Distorsión Armónica Total）
+- Relación Señal a Ruido y Distorsión (SINAD)（Relación Señal a Ruido y Distorsión）
+- Distorsión de Intermodulación (IM)（Distorsión de Intermodulación）
+- Rango Dinámico Libre de Espurias (SFDR)（Rango Dinámico Libre de Espurias）
 
-### Relación señal-ruido (SNR)
+### Relación Señal a Ruido (SNR)
 
-La **relación señal-ruido (SNR)** se deriva almacenando primero el valor del fundamental (potencia de la señal):
+La **Relación Señal a Ruido (SNR)** se deriva almacenando primero el valor del fundamental (potencia de la señal):
 
-![](https://img.wiki-power.com/d/wiki-media/img/20221002151235.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221002151235.png)
 
-Luego se elimina la componente de corriente continua y las armónicas (generalmente hasta 5):
+Luego, se elimina el componente de corriente continua (CC) y las armónicas (generalmente hasta la quinta):
 
-![](https://img.wiki-power.com/d/wiki-media/img/20221002151402.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221002151402.png)
 
-A continuación, se suman todos los bins del espectro de potencia restante (la potencia del ruido) medido por el valor RMS (raíz cuadrada media, el voltaje analógico que es igual a un voltaje de corriente continua que contiene la misma cantidad de energía, para una onda sinusoidal, el valor RMS es 0,707 veces el valor pico):
+A continuación, se suman todos los bins del espectro de potencia restante (la potencia del ruido) medida por el valor RMS (Root Mean Squared, la tensión analógica que es igual a una tensión de CC que contiene la misma cantidad de energía; para una onda sinusoidal, el valor RMS es 0.707 veces el valor pico):
 
-![](https://img.wiki-power.com/d/wiki-media/img/20221002151646.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221002151646.png)
 
 En última instancia, podemos concluir que:
 
 $$
-{SNR}(dB)=10log_{10}(\frac{{Fundamental}}{{Potencia\ de\ ruido}})
+{SNR}(dB)=10\log_{10}(\frac{{Fundamental}}{{Potencia\ de\ Ruido}})
 $$
 
-SNR se expresa generalmente en decibelios (dB) y a menudo es un valor positivo (suponiendo que la potencia fundamental es mucho mayor que la potencia del ruido).
+La SNR generalmente se expresa en decibelios (dB) y a menudo es un valor positivo (suponiendo que la Potencia Fundamental es mucho mayor que la Potencia de Ruido).
 
-### Distorsión armónica total (THD)
+### Distorsión Armónica Total (THD)
 
-La **distorsión armónica total (THD)** se deriva manteniendo una suma acumulada de la potencia armónica total (generalmente solo las primeras cinco armónicas, comenzando en la segunda armónica):
+La **Distorsión Armónica Total (THD)** se deriva manteniendo una suma acumulativa de la potencia armónica total (generalmente solo las primeras cinco armónicas, comenzando en la segunda armónica):
 
-![](https://img.wiki-power.com/d/wiki-media/img/20221002155148.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221002155148.png)
+
+Y podemos concluir que:
+
+```
+```
+
+```markdown
+$$
+\text{THD}(dB)=10\log_{10}\left(\frac{\text{Potencia Armónica}}{\text{Fundamental}}\right)
+$$
+
+THD es a menudo un valor negativo (asumiendo que la Potencia Fundamental es mucho mayor que la Potencia Armónica total).
+
+### Relación Señal a Ruido y Distorsión (SINAD)
+
+**Relación Señal a Ruido y Distorsión (SINAD)** es la misma metodología que se utiliza para calcular la SNR, pero ahora se añade la potencia de las armónicas y se anula solo el componente de corriente continua.
+
+$$
+\text{SINAD}=\frac{S}{N+D}
+$$
 
 Y podemos concluir que:
 
 $$
-{THD}(dB)=10log_{10}(\frac{{Potencia \ Armónica}}{{Fundamental}})
-$$
-
-THD suele ser un valor negativo (suponiendo que la Potencia Fundamental es mucho mayor que la Potencia Armónica total).
-
-### Relación Señal-Ruido y Distorsión (SINAD)
-
-**Relación Señal-Ruido y Distorsión (SINAD)** es la misma metodología que el cálculo de SNR, pero ahora se agrega la potencia de las armónicas y solo se anula el componente de CC.
-
-$$
-{SINAD}=\frac{S}{N+D}
-$$
-
-Y podemos concluir que:
-
-$$
-\because {SNR}=\frac{S}{N}, {THD}=\frac{D}{S}
+\because \text{SNR}=\frac{S}{N}, \text{THD}=\frac{D}{S}
 $$
 
 $$
-\therefore {SNR}^{-1}+{THD}=\frac {N}{S}+\frac {D}{S}=\frac {N+D}{S}={SINAD}^{-1}
+\therefore \text{SNR}^{-1}+\text{THD}=\frac{N}{S}+\frac{D}{S}=\frac{N+D}{S}=\text{SINAD}^{-1}
 $$
 
 $$
-\therefore {SINAD}=({SNR}^{-1}+{THD})^{-1}
+\therefore \text{SINAD}=(\text{SNR}^{-1}+\text{THD})^{-1}
 $$
 
 ### Distorsión de Intermodulación (IM)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20221018162800.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221018162800.png)
 
-La Distorsión de Intermodulación (IM) ocurre cuando se utilizan dos o más señales en un sistema no lineal. El espectro no solo consistirá en las señales originales, sino que también contendrá la suma y la diferencia de las señales de entrada junto con sus armónicos.
+La Distorsión de Intermodulación (IM) ocurre cuando dos o más señales se utilizan en un sistema no lineal. El espectro no solo contendrá las señales originales, sino que también contendrá la suma y la diferencia de las señales de entrada junto con sus armónicas.
 
-### Rango Dinámico Libre de Espurios (SFRD)
+### Rango Dinámico Libre de Espurias (SFRD)
 
-**Rango Dinámico Libre de Espurios (SFRD)** se deriva encontrando el elemento más alto después del fundamental (ignorando el componente de CC):
+**Rango Dinámico Libre de Espurias (SFRD)** se obtiene encontrando el elemento más alto después del fundamental (ignorando el componente de corriente continua):
 
-![](https://img.wiki-power.com/d/wiki-media/img/20221002161334.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221002161334.png)
 
-Tenga en cuenta que el elemento más alto puede o no ser armónico. Por lo tanto, podemos concluir que:
+Tenga en cuenta que el elemento más alto puede o no ser un armónico. Por lo tanto, podemos concluir que:
 
 $$
-{SFDR}(dB)=10log_{10}(\frac{{Fundamental}}{{Siguiente \ Más \ Alto}})
+\text{SFDR}(dB)=10\log_{10}\left(\frac{\text{Fundamental}}{\text{Siguiente más Alto}}\right)
 $$
 
-El Rango Dinámico Libre de Espurios es un valor positivo (suponiendo que la Potencia Fundamental es mucho mayor que la Potencia de Espurio siguiente más alta.
+El Rango Dinámico Libre de Espurias es un valor positivo (asumiendo que la Potencia Fundamental es mucho mayor que la Potencia Espuria más alta).
 
 ## Arquitectura del Probador Genérico de Señal Mixta
 
-En el probador genérico de señal mixta, el AWG (fuente de CA) y el WD (digitalizador de CA) están conectados al DUT a través de interconexiones de relé a través de la placa de canal.
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221006174550.png)
 
-### Generador de forma de onda arbitraria (AWG)
+En el probador genérico de señal mixta, el Generador de Funciones Arbitrarias (fuente de CA) y el Analizador de Forma de Onda (digitalización de CA) están conectados al Dispositivo Bajo Prueba (DUT) a través de conexiones de relé a través de la placa de canal.
+```
+```
 
-El **Generador de forma de onda arbitraria (AWG)** es un generador de señal de baja distorsión. Contiene un DAC para generar una señal analógica a partir de los datos digitales.
+### Generador de Formas de Onda Arbitrarias (AWG)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20221006175627.png)
+**El Generador de Formas de Onda Arbitrarias (AWG)** es un generador de señales de baja distorsión. Contiene un DAC para generar una señal analógica a partir de datos digitales.
 
-LPF (Filtro de paso bajo) suaviza la forma de onda y elimina los componentes de alta frecuencia. Un conjunto de puntos de datos para una forma de onda dada se almacena en la memoria de origen de forma de onda, cada vez que ocurre un reloj, un punto de datos pasará al DAC.
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221006175627.png)
 
-Parámetros importantes del AWG:
+El LPF (Filtro Paso Bajo) se utiliza para suavizar la forma de onda y eliminar componentes de alta frecuencia. Un conjunto de puntos de datos para una forma de onda dada se almacena en la memoria de origen de la forma de onda, y cada vez que ocurre un pulso, un punto de datos se envía al DAC.
 
-- Salida máxima de voltaje pico a pico
-- Resolución de forma de onda (resolución DAC)
-- Ancho de banda
-- Profundidad de memoria de origen de forma de onda
-- Impedancia de salida
+Parámetros importantes de AWG:
+
+- Salida de Voltaje Máximo Pico a Pico
+- Resolución de la Forma de Onda (Resolución del DAC)
+- Ancho de Banda
+- Profundidad de Memoria de Origen de la Forma de Onda
+- Impedancia de Salida
 - Ruido, THD, SNR
 
-### Digitalizador de forma de onda (WD)
+### Digitalizador de Formas de Onda (WD)
 
-El **Digitalizador de forma de onda (WD)** muestrea señales analógicas y las convierte en valores digitales. Realiza la operación opuesta al AWG. Convierte la señal analógica en muestras digitales que representan la señal analógica original.
+**El Digitalizador de Formas de Onda (WD)** muestrea señales analógicas y las convierte en valores digitales. Realiza la operación opuesta a la del AWG. Convierte señales analógicas en muestras digitales que representan la señal analógica original.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20221006180242.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221006180242.png)
 
-El filtro de paso bajo limita el ancho de banda de la señal para eliminar componentes de frecuencia no deseados como el ruido y las espurias, también proporciona anti-aliasing atenuando las espurias que se aliasarían en la banda de paso del filtro durante la conversión ADC.
+El filtro paso bajo limita el ancho de banda de la señal para eliminar componentes de frecuencia no deseados, como ruido y espurias, y proporciona un anti-aliasing al atenuar espurias que podrían ser aliasadas en la banda de paso del filtro durante la conversión del ADC.
 
-Parámetros importantes del WD:
+Parámetros importantes de WD:
 
-- Rango máximo de voltaje de entrada de pico a pico
-- Resolución de forma de onda (resolución ADC)
-- Ancho de banda
-- Profundidad de memoria de captura de forma de onda
-- Impedancia de entrada
+- Rango de Voltaje de Entrada Máximo Pico a Pico
+- Resolución de la Forma de Onda (Resolución del ADC)
+- Ancho de Banda
+- Profundidad de Memoria de Captura de Forma de Onda
+- Impedancia de Entrada
 - Ruido, THD, SNR, espurias
 
 ### Reloj
 
-Los relojes analógicos y digitales se derivan de un reloj de referencia de todo el sistema. Si no hay una señal de sincronización de reloj, el desfase de tiempo puede llevar a resultados incorrectos.
+Los relojes analógicos y digitales se derivan de un reloj de referencia en todo el sistema. Si no hay una señal de sincronización de reloj, el desfase de tiempo puede llevar a resultados incorrectos.
 
-### Procesador de señal digital (DSP)
+### Procesador de Señal Digital (DSP)
 
-El **procesador de señal digital (DSP)** es un microprocesador especializado que realiza operaciones matemáticas en matrices de números digitales. Se realizan varios algoritmos como DFT y FFT en DSP para transformar la información del dominio del tiempo en el dominio de la frecuencia.
+El **Procesador de Señal Digital (DSP)** es un microprocesador especializado que realiza operaciones matemáticas en matrices de números digitales. En un DSP se ejecutan diversos algoritmos como la Transformada Discreta de Fourier (DFT) y la Transformada Rápida de Fourier (FFT) para transformar información del dominio temporal al dominio de frecuencia.
 
-La arquitectura de un DSP está optimizada para permitir una multiplicación rápida, sumas, cálculos de logaritmos, cálculos de cuadrados y raíces cuadradas.
+La arquitectura de un DSP está optimizada para permitir multiplicaciones rápidas, sumas, cálculos de logaritmos, operaciones de cuadrado y cálculos de raíz cuadrada.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20221007142019.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221007142019.png)
 
 El probador llevará la señal capturada almacenada al procesador DSP a través de buses de datos.
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
-- _Fundamentos de pruebas utilizando ATE_
-- _Los fundamentos de las pruebas de señal mixta_Brian-Lowe_
+- _Fundamentos de Pruebas con ATE_
+- _Los Fundamentos de las Pruebas de Señal Mixta por Brian Lowe_
 
-> Original: <https://wiki-power.com/>  
-> Esta publicación está protegida por el acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en), debe ser reproducida con atribución.
+> Original: <https://wiki-power.com/>
+> Esta publicación está protegida por un acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en), y debe ser reproducida con atribución.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
