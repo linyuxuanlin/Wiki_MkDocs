@@ -1,10 +1,8 @@
 # DAC - Parámetros Dinámicos
 
-> Esta publicación solo está disponible en inglés.
-
 ## Parámetros Dinámicos
 
-Los parámetros dinámicos de DAC contienen principalmente:
+Los parámetros dinámicos del DAC principalmente incluyen:
 
 - Relación Señal-Ruido (SNR)
 - Distorsión Armónica Total (THD)
@@ -13,24 +11,24 @@ Los parámetros dinámicos de DAC contienen principalmente:
 
 ### Relación Señal-Ruido (SNR)
 
-La **Relación Señal-Ruido (SNR)** de un DAC se define como la relación de la Potencia de Señal Medida RMS (excluyendo la Distorsión Armónica) a la Potencia de Ruido RMS:
+La **Relación Señal-Ruido (SNR)** de un DAC se define como la relación entre la Potencia de Señal Medida RMS (excluyendo la Distorsión Armónica) y la Potencia de Ruido RMS:
 
 $$
-SNR(dB)=20log(\frac{V_{Señal(RMS)}}{V_{Ruido(RMS)}})
+SNR(dB) = 20log(\frac{V_{Señal(RMS)}}{V_{Ruido(RMS)})
 $$
 
-Dado que SNR es una relación de potencia, el $20$ en la ecuación significa el cuadrado de la relación de voltaje.
+Dado que el SNR es una relación de potencia, el valor de $20$ en la ecuación representa el cuadrado de la relación de voltaje.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221009221450.png)
 
-Aunque la Distorsión Armónica no se incluye en la medición de SNR, se incluyen la Cuantización, el Ruido Térmico y otros ruidos residuales en el convertidor.
+Aunque la Distorsión Armónica no se incluye en la medición del SNR, se incluyen el ruido de cuantificación, térmico y otros ruidos residuales en el convertidor.
 
 ### Distorsión Armónica Total (THD)
 
-La **Distorsión Armónica Total (THD)** de un DAC se define como la relación del fundamental a toda la distorsión armónica:
+La **Distorsión Armónica Total (THD)** de un DAC se define como la relación entre la componente fundamental y todas las distorsiones armónicas:
 
 $$
-THD(dB)=20log(\frac{\sqrt{V^2_{2(RMS)}+V^2_{3(RMS)}+...+V^2_{n(RMS)}}}{V_{1(RMS)}}
+THD(dB) = 20log(\frac{\sqrt{V^2_{2(RMS)}+V^2_{3(RMS)}+...+V^2_{n(RMS)}}}{V_{1(RMS)}}
 $$
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221009225800.png)
@@ -39,23 +37,23 @@ $$
 
 ### Configuración del Sistema de Prueba
 
-Configuración del sistema de prueba para las pruebas de parámetros dinámicos de ADC:
+Configuración del sistema de prueba para las pruebas de parámetros dinámicos de un DAC:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221009230212.png)
 
-La resolución del Digitalizador de CA debe ser al menos 2 a 4 bits mejor que el DUT.
+La resolución del Digitalizador de CA debe ser al menos 2 a 4 bits mejor que el Dispositivo bajo Prueba.
 
-### Concepto de Pruebas
+### Concepto de las Pruebas
 
-El procedimiento para probar los parámetros dinámicos de un DAC se describe a continuación.
+El procedimiento para probar los parámetros dinámicos de un DAC se enumera a continuación.
 
-#### 1.Crear una señal de datos digitales de entrada continua (de una onda sinusoidal) con el probador para que el DAC la convierta.
+#### 1. Generar una señal digital de entrada continua (de una onda senoidal) con el probador para que el DAC la convierta
 
 Es una práctica común asegurarse de que el reloj analógico/digital esté referenciado a un reloj maestro común, de modo que la relación de la frecuencia de las fuentes de reloj esté fija y sincronizada, lo que hace que los resultados de las pruebas sean altamente repetibles.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221011195204.png)
 
-#### 2. Colectar coherentemente un conjunto de muestras con el DAC
+#### 2. Recopile de manera coherente un conjunto de muestras con el DAC
 
 Para la fuente digital:
 
@@ -63,32 +61,32 @@ $$
 \frac{Fs(dut)}{Fi}=\frac{N}{M}
 $$
 
-Donde $Fs(dut)$ es la tasa de muestreo de la fuente digital, $Fi$ es la frecuencia de la señal, $N$ es el número de muestras, $M$ es el número de ciclos enteros.
+Donde $Fs(dut)$ es la velocidad de muestreo de la fuente digital, $Fi$ es la frecuencia de la señal, $N$ es el número de muestras y $M$ es el número de ciclos enteros.
 
-Para la captura digital de CA:
+Para la Captura Digital AC:
 
 $$
 \frac{Fs}{Fi}=\frac{Ncap}{Mc}
 $$
 
-Donde $Fs$ es la tasa de muestreo del DAC y también la tasa de muestreo de la captura digital, $Fi$ es la frecuencia de la señal, $Ncap$ es el número de muestras capturadas (2x número), $Mc$ es el número de ciclos enteros (impar).
+Donde $Fs$ es la velocidad de muestreo del DAC, que también es la velocidad de muestreo de la Captura Digital, $Fi$ es la frecuencia de la señal, $Ncap$ es el número de muestras capturadas (2 veces el número) y $Mc$ es el número de ciclos enteros (impares).
 
-#### 3. Enviar el conjunto de muestras de tiempo recopiladas al DSP para realizar análisis DFT / FFT
+#### 3. Envíe el conjunto de muestras de tiempo recopiladas al DSP para realizar el análisis DFT/FFT
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221011140834.png)
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221011140904.png)
 
-#### 4. Analizar los bins de frecuencia de interés utilizando ecuaciones o algoritmos de prueba para SNR, THD y comparar con la especificación
+#### 4. Analice los bins de frecuencia de interés utilizando ecuaciones o algoritmos de prueba para SNR, THD y compárelos con las especificaciones.
 
-#### 5. Tomar una decisión de aprobación / rechazo basada en los resultados
+#### 5. Tome una decisión de aprobación o rechazo basada en los resultados.
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
-- _Fundamentos de pruebas utilizando ATE_
-- _Los fundamentos de las pruebas de señal mixta_Brian-Lowe_
+- _Fundamentos de Pruebas Utilizando ATE_
+- _Los Fundamentos de las Pruebas de Señal Mixta de Brian Lowe_
 
 > Original: <https://wiki-power.com/>  
-> Esta publicación está protegida por el acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en), debe ser reproducida con atribución.
+> Esta publicación está protegida por un acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) y debe reproducirse con atribución.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

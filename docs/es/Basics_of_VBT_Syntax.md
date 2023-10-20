@@ -1,38 +1,37 @@
-# Básicos de la sintaxis de VBT
+```markdown
+# Fundamentos de la Sintaxis de VBT
 
-> Esta publicación solo está disponible en inglés.
-
-## Objetos de datos
+## Objetos de Datos
 
 ### TheHdw y TheExec
 
-Hay dos manejadores globales en la interfaz VBT, para operar el hardware del probador:
+Existen dos manejadores globales en la interfaz de VBT para operar el hardware del probador:
 
-- **TheHdw (El Hardware)**: Soporte para acceder y controlar los instrumentos, e incluye funciones más generales del hardware, como alarmas.
-- **TheExec (El Ejecutivo)**: Para controlar las funciones generales del programa de prueba, como ejecutar la prueba, manejar los resultados de la prueba y registrar el registro de datos.
+- **TheHdw (El Hardware)**: Proporciona acceso y control a los instrumentos, e incluye funciones generales del hardware, como las alarmas.
+- **TheExec (El Ejecutivo)**: Para controlar las funciones relacionadas con el programa de pruebas en general, como ejecutar la prueba, manejar los resultados de la prueba y grabar el registro de datos.
 
-A continuación se muestran ejemplos de su uso:
+A continuación, se muestran ejemplos de su uso:
 
 ```vbscript
-' Establecer el rango actual del pin p0
+' Establecer el rango actual actual del pin p0
 TheHdw.DCVI.Pins("p0").CurrentRange = 0.002
 ```
 
 ```vbscript
-' Obtener la ruta del archivo de salida STDF actual
+' Obtener la ruta del archivo STDF de salida actual
 CurrStdfFile = TheExec.Datalog.Setup.STDFOutputFile
 ```
 
-### Otros objetos de datos
+### Otros Objetos de Datos
 
-Se incluyen más manejadores globales en la interfaz VBT, como **PinListData**, **DSPWave**, **RtaDataObj (Objeto de datos de ajuste en tiempo de ejecución)** y así sucesivamente. Continuaremos explorándolos en futuros artículos.
+En la interfaz de VBT se incluyen otros manejadores globales, como **PinListData** (Datos de la Lista de Pines), **DSPWave** (Onda DSP), **RtaDataObj (Objeto de Datos de Ajuste en Tiempo de Ejecución)**, y otros más. Continuaremos explorándolos en futuros artículos.
 
-## Acceso por instrumento o por pin
+## Acceso Por Instrumento o Por Pin
 
-La sintaxis VBT admite el acceso al hardware del probador **por instrumento** o **por pin**, son equivalentes en el resultado. A continuación se muestran ejemplos de su uso:
+La sintaxis de VBT admite el acceso al hardware del probador **por instrumento** o **por pin**, y son equivalentes en el resultado. A continuación, se muestran ejemplos de su uso:
 
 ```vbscript
-' Acceso por instrumento, aplica un solo instrumento a diferentes pines
+' Acceso por Instrumento, aplica un solo instrumento a diferentes pines
 With TheHdw.instrument
     .Pins("Vcc").CurrentLimit = 0.75
     .Pins("Vee").ForceValue = 3.2
@@ -40,26 +39,27 @@ End With
 ```
 
 ```vbscript
-' Acceso por pin, define una lista de pines y luego usa diferentes instrumentos
+' Acceso por Pin, define una lista de pines y luego utiliza diferentes instrumentos
 With TheHdw.Pins("Vcc,Vdd,Vee")
     .instrument1.Disconnect
     .instrument2.CurrentLimit = 0.75
 End With
 ```
 
-## Estructura del código VBT
+## Estructura del Código de VBT
 
 Un archivo de código VBT debe tener el nombre `VBT_xxx`, y el nombre debe ser único.
 
-El **valor de retorno** de una función VBT se espera que sea 0 por defecto, o puede causar resultados inesperados.
+El **valor de retorno** de una función de VBT se espera que sea 0 de forma predeterminada, o puede causar resultados inesperados.
+```
 
-Para los parámetros de **timing** y **levels**, puedes agregarlos en el Editor de Instancias o en la hoja de Prueba Instantánea, no es necesario incluirlos en la función VBT. Y puedes controlar si habilitarlos en la función VBT siguiendo este uso:
+Para los parámetros relacionados con **timing** (tiempo) y **levels** (niveles), puedes añadirlos en el Editor de Instancias o en la hoja de Prueba Instantánea, sin necesidad de incluirlos en la función VBT. Y puedes controlar si habilitarlos en la función VBT siguiendo este uso:
 
 ```vbscript
 TheHdw.Digital.ApplyLevelsTiming
 ```
 
-Para los **límites de prueba**, puedes usar el siguiente código:
+Para los **límites de prueba**, puedes utilizar el siguiente código:
 
 ```vbscript
 TheExec.Flow.TestLimit
@@ -67,7 +67,7 @@ TheExec.Flow.TestLimit
 
 para comparar un valor de resultado con límites bajos/alto, y enviar el resultado de la prueba (`TL_SUCCESS`/`TL_ERROR`) y otra información al registro de datos.
 
-Para ver más claramente **la estructura básica** de una función de prueba VBT, aquí hay un ejemplo:
+Para comprender más claramente **la estructura básica** de una función de prueba VBT, aquí tienes un ejemplo:
 
 ```vbscript
 Public Function VBTLeakTest(Pins As PinList, ForceVoltage As Double, PrePattern As PatternSet) As Long
@@ -75,20 +75,20 @@ Public Function VBTLeakTest(Pins As PinList, ForceVoltage As Double, PrePattern 
 
     Dim measure_results As New PinListData
 
-    ' Configurar timing y levels para el Patrón de Preacondicionamiento
+    ' Configurar timing y niveles para el Patrón de Preacondicionamiento
     TheHdw.Digital.ApplyLevelsTiming ConnectAllPins:=True, loadLevels:=True, loadTiming:=True, relaymode:=tlPowered
 
-    ' Ejecutar el Patrón de Preacondicionamiento y probar para Pasar/Fallar
+    ' Ejecutar el Patrón de Preacondicionamiento y probar si pasa o falla
     TheHdw.Patterns(PrePattern).test pfAlways, 0
 
-    ' Forzar V, Medir I
+    ' Aplicar voltaje y medir corriente
     With TheHdw.DCVI.Pins(Pins)
         .Mode = tlDCVIModeVoltage
             ... ' Código adicional
         measure_results = .Meter.Read
     End With
 
-    ' Probar usando límites en el flujo y escribir en el registro de datos
+    ' Prueba utilizando límites en el flujo y escribir en el registro de datos
     Call TheExec.Flow.TestLimit(resultval:=measure_results, unit:=unitAmp, forceval:=ForceVoltage, forceunit:=unitVolt, ForceResults:=tlForceFlow)
 
     ' Restablecer la variable
@@ -100,17 +100,17 @@ errHandler:
 End Function
 ```
 
-## Multi-sitio
+## Multi-Sitio
 
 🚧
 
-## Operación de PinList
+## Operación de la Lista de Pines
 
 🚧
 
 ## Consejos en VBA
 
-- Evite guardar código en VBA, ya que esto creará enlaces internos en el libro de trabajo. En su lugar, guarde en la interfaz de DataTool.
-- Si encuentra el error "Procedimiento demasiado grande", es posible que esté en contra de la restricción de Excel de 64K de límite por archivo vb. Pero en realidad, es posible que haya olvidado cambiar la versión de 32 bits a 64 bits del sistema Windows.
+- Evita guardar código en VBA, ya que esto creará enlaces internos en el libro de trabajo. En su lugar, guarda en la interfaz de DataTool.
+- Si te encuentras con el error "Procedimiento Demasiado Grande", es posible que estés chocando con la restricción de Excel de 64K límite por archivo vb. Pero en realidad, es posible que hayas olvidado cambiar la versión de 32 bits a 64 bits del sistema Windows.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

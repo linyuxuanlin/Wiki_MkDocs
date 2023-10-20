@@ -1,153 +1,153 @@
 # DAC - Parámetros Estáticos
 
-> Esta publicación solo está disponible en inglés.
-
 El Convertidor Digital a Analógico (DAC) es un dispositivo que convierte una secuencia de datos de entrada digital en señales analógicas.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221011141644.png)
 
 ## Parámetros Estáticos
 
-Los parámetros estáticos del DAC contienen principalmente:
+Los parámetros estáticos del DAC incluyen principalmente:
 
-- Salida de escala cero
-- Rango de escala completa (FSR)
+- Salida a Escala Cero
+- Rango de Escala Completa (REC)
 - Tamaño del LSB
-- Error de desplazamiento
-- Error de ganancia
-- Error de no linealidad diferencial (DNE o DNL)
-- Error de no linealidad integral (INE o INL)
+- Error de Desplazamiento
+- Error de Ganancia
+- Error de No Linealidad Diferencial (DNE o DNL)
+- Error de No Linealidad Integral (INE o INL)
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221011144045.png)
 
-### Salida de escala cero
+### Salida a Escala Cero
 
-La **Salida de escala cero** es el valor de salida medido cuando se presenta el código de entrada digital de nivel cero/nulo al DUT.
+La **Salida a Escala Cero** es el valor de salida medido cuando se presenta el código de entrada digital de nivel cero o nulo al Dispositivo Bajo Prueba (DUT).
 
-### Rango de escala completa (FSR)
+### Rango de Escala Completa (REC)
 
-El rango de voltaje de salida del DAC entre las salidas analógicas mínima ($V_{ZS}$) y máxima ($V_{FS}$) se llama **Rango de escala completa (FSR)**:
+El rango de voltaje de salida del DAC entre las salidas analógicas mínimas ($V_{ZS}$) y máximas ($V_{FS}$) se llama **Rango de Escala Completa (REC)**:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221011142249.png)
 
 ### Tamaño del LSB
 
-El cambio promedio en voltaje cuando se encuentra entre los códigos de entrada se define como LSB:
+El cambio promedio de voltaje entre los códigos de entrada se define como LSB:
 
 $$
-LSB=\frac{FSR_{medido}}{2^{bits}-1}
+LSB=\frac{REC_{medido}}{2^{bits}-1}
 $$
 
-### Error de desplazamiento
+### Error de Desplazamiento
 
-El **Error de desplazamiento** (Error de escala cero) es la diferencia de voltaje entre los puntos de desplazamiento (inicial) ideal y real.
+El **Error de Desplazamiento** (Error de Escala Cero) es la diferencia de voltaje entre los puntos de escala cero ideales y reales.
 
 $$
-ErrorDeDesplazamiento=V_{ZS(Real)}-V_{ZS(Ideal)}
+ErrorDesplazamiento=V_{ZS(Real)}-V_{ZS(Ideal)}
 $$
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221011144415.png)
 
-### Error de ganancia
+### Error de Ganancia
 
-El **Error de ganancia** es la diferencia de voltaje entre los puntos de ganancia ideal y real en la función de transferencia.
+El **Error de Ganancia** es la diferencia de voltaje entre los puntos de ganancia ideales y reales en la función de transferencia.
 
 $$
-ErrorDeGanancia=FSR_{Ideal}-FSR_{Real}
+ErrorGanancia=REC_{Ideal}-REC_{Real}
 $$
 
 Donde
 
 $$
-FSR_{Ideal}=V_{FS(Ideal)}-V_{ZS(Ideal)}
+REC_{Ideal}=V_{FS(Ideal)}-V_{ZS(Ideal)}
 $$
 
 $$
-FSR_{Real}=V_{FS(Real)}-V_{ZS(Real)}
+REC_{Real}=V_{FS(Real)}-V_{ZS(Real)}
 $$
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221011144925.png)
 
-### Error de no linealidad diferencial (DNL)
+### Error de No Linealidad Diferencial (DNL)
 
-**Error de no linealidad diferencial (DNL)** es la diferencia en el voltaje de salida en un punto específico, en comparación con la salida en la entrada anterior, menos un LSB del dispositivo:
+**Error de No Linealidad Diferencial (DNL)** es la diferencia en el voltaje de salida en un punto específico, comparado con la salida en la entrada anterior, luego menos un valor LSB del dispositivo:
 
 $$
 DNL=(V_{in2}-V_{in1})-LSB_{promedio}
 $$
 
-donde $V_{in2}$ es el voltaje de la transición superior, $V_{in1}$ es el inferior.
+donde $V_{in2}$ es el voltaje de la transición superior, y $V_{in1}$ es el inferior.
 
-DNL es una medida del error de linealidad de "señal pequeña". La medición de DNL se realiza de un paso al siguiente, no de cada paso al valor ideal.
+El DNL es una medida del error de linealidad de "pequeña señal". La medición del DNL se realiza de un paso al siguiente, no de cada paso al valor ideal.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20221011153556.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221011153556.png)
 
-### Error de no linealidad integral (INL)
+### Error de No Linealidad Integral (INL)
 
-**Error de no linealidad integral (INL)** es el efecto acumulativo de todos los valores de no linealidad diferencial. Es una medida del error de linealidad de "señal grande". INL en cualquier punto a lo largo de la curva es la desviación de la línea de linealidad ideal.
+**Error de No Linealidad Integral (INL)** es el efecto acumulativo de todos los valores de no linealidad diferencial. Es una medida del error de linealidad de "gran señal". El INL en cualquier punto a lo largo de la curva es la desviación de la línea de linealidad ideal.
 
 $$
-SalidaEsperada[i]=FSR*CódigoDeEntrada[i]+ErrorDeDesplazamiento
+SalidaEsperada[i]=FSR*CódigoEntrada[i]+ErrorDeDesplazamiento
 $$
 
 $$
 INL[i]=\frac{SalidaReal[i]-SalidaEsperada[i]}{LSB_{promedio}}
 $$
 
-Además, INL también se puede expresar como una función de DNL:
+Además, el INL también se puede expresar como una función del DNL:
 
 $$
 INL[i]=\sum_{n=1}^{n=i}DNL[n]
 $$
 
-![](https://img.wiki-power.com/d/wiki-media/img/20221011184739.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221011184739.png)
 
-## Cómo probar parámetros estáticos
+## Cómo Probar Parámetros Estáticos
 
-### Configuración del sistema de prueba
+### Configuración del Sistema de Pruebas
 
-Configuración del sistema de prueba para pruebas de parámetros estáticos de DAC:
+Configuración del sistema de pruebas para las pruebas de parámetros estáticos del DAC:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20221011185006.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221011185006.png)
 
-Diagrama de bloques de la configuración de la señal:
+Diagrama de bloque de la configuración de señal:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20221011185447.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221011185447.png)
 
-### Concepto de pruebas
+### Concepto de Pruebas
 
-El procedimiento para probar los parámetros estáticos de un DAC DUT se muestra a continuación.
+El procedimiento para probar los parámetros estáticos de un DAC DUT se enumera a continuación.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20221011185739.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221011185739.png)
 
-#### 1. Medir el voltaje de salida aplicando las entradas de datos digitales desde Cero Escala hasta Escala Completa
+#### 1. Medir el voltaje de salida aplicando las entradas de datos digitales desde Cero Escala a Escala Completa
 
-![](https://img.wiki-power.com/d/wiki-media/img/20221011185711.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221011185711.png)
 
-#### 2. Calcular DNL para cada código de entrada
+#### 2. Calcular el DNL para cada código de entrada
 
+```markdown
 $$
-DNL[i]=\frac{OutputMeasured[i]-OutputMeasured[i-1]-LSB_{average}}{LSB_{average}}
+DNL[i]=\frac{SalidaMedida[i]-SalidaMedida[i-1]-LSB_{promedio}}{LSB_{promedio}}
 $$
 
 Donde
 
 $$
-LSB_{average}=\frac{OutputMeasured[n]-OutputMeasured[0]}{2^{bits}-1}
+LSB_{promedio}=\frac{SalidaMedida[n]-SalidaMedida[0]}{2^{bits}-1}
 $$
 
 #### 3. Obtener el DNL máximo y mínimo
 
-#### 4. Calcular INL para cada paso
+#### 4. Calcular el INL para cada paso
 
 #### 5. Obtener el INL máximo y mínimo
 
 ## Referencias y Agradecimientos
 
-- _Fundamentos de Pruebas Usando ATE_
-- _The-Fundamentals-of-Mixed-Signal-Testing_Brian-Lowe_
+- _Fundamentos de Pruebas Utilizando ATE (Equipos de Prueba Automatizados)_
+- _Los Fundamentos de las Pruebas de Señal Mixta (Mixed-Signal Testing) de Brian Lowe_
 
 > Original: <https://wiki-power.com/>  
-> Este post está protegido por el acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en), debe ser reproducido con atribución.
+> Esta publicación está protegida por un acuerdo de [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en), y debe ser reproducida con atribución.
+```
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
