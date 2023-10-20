@@ -11,7 +11,7 @@ Sitemap: <https://wiki-power.com/sitemap.xml>
 RSS of created post: <https://wiki-power.com/feed_rss_created.xml>  
 RSS of updated post: <https://wiki-power.com/feed_rss_updated.xml>
 
-[![Star History Chart](https://api.star-history.com/svg?repos=linyuxuanlin/Wiki_MkDocs&type=Timeline)](https://star-history.com/#linyuxuanlin/Wiki_MkDocs&Timeline)
+[![Star History Chart](https://api.star-history.com/svg?repos=linyuxuanlin/Wiki_MkDocs&type=Date)](https://star-history.com/#linyuxuanlin/Wiki_MkDocs&Date)
 
 > Ref:
 > Check the version of MkDocs: `mkdocs --version`  
