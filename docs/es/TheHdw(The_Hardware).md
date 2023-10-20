@@ -1,6 +1,7 @@
+```markdown
 # TheHdw (El Hardware) 🚧
 
-**TheHdw** es un objeto para acceder a propiedades y métodos relacionados con el hardware del sistema de prueba.
+**TheHdw** es un objeto para acceder a propiedades y métodos relacionados con el hardware del sistema de pruebas.
 
 ## DCVI
 
@@ -11,7 +12,7 @@ TheHdw.DCVI
 ### Pines
 
 ```vbscript
-TheHdw.DCVI.Pins(PinList)
+TheHdw.DCVI.Pines(ListaDePines)
 ```
 
 ---
@@ -22,39 +23,40 @@ TheHdw.DCVI.Pins(PinList)
 
 ## TheHdw.Digital
 
-### ApplyLevelsTiming
+### AplicarNivelesTiempo
 
 Para cargar los datos de nivel y tiempo.
 
 #### Uso
 
 ```vbscript
-TheHdw.Digital.ApplyLevelsTiming(ConnectAllPins, LoadLevels, LoadTiming, RelayMode, InitPinsHi, InitPinsLo, InitPinsHiZ, PinLevelsSheet, DCCategory, DCSelector, TimeSetSheet, ACCategory, ACSelector, EdgeSetSheet)
+TheHdw.Digital.AplicarNivelesTiempo(ConectarTodosLosPines, CargarNiveles, CargarTiempo, ModoRelé, IniciarPinesAltos, IniciarPinesBajos, IniciarPinesAltoZ, HojaDeNivelesDePines, CategoríaDC, SelectorDC, HojaDeConjuntoDeTiempo, CategoríaAC, SelectorAC, HojaDeConjuntoDeBordes)
 ```
 
 #### Parámetros
 
-- **ConnectAllPins**: Booleano opcional, valor predeterminado como `False`.
+- **ConectarTodosLosPines**: Booleano opcional, valor predeterminado `False`.
   - `True`: Conectar todos los pines del dispositivo.
   - `False`: No conectar.
-- **LoadLevels**: Booleano opcional, valor predeterminado como `False`.
+- **CargarNiveles**: Booleano opcional, valor predeterminado `False`.
   - `True`: Cargar valores de nivel.
   - `False`: No cargar.
-- **LoadTiming**: Booleano opcional, valor predeterminado como `False`.
+- **CargarTiempo**: Booleano opcional, valor predeterminado `False`.
   - `True`: Cargar valores de tiempo.
   - `False`: No cargar.
-- **RelayMode**: `tlRelayMode` opcional, valor predeterminado como `tlUnpowered`. Controla el cambio en caliente de los relés.
-  - `tlPowered`: Cambio en caliente. No apaga el DUT antes de establecer los niveles y conectar.
-  - `tlUnpowered`: Evita el cambio en caliente. Apaga el DUT antes de establecer los niveles y conectar.
-- **InitPinsHi**: Cadena opcional. Establece los pines con estado de conductor alto.
-- **InitPinsLo**: Cadena opcional. Establece los pines con estado de conductor bajo.
-- **InitPinsHiZ**: Cadena opcional. Establece los pines con estado de conductor de impedancia.
-- **PinLevelsSheet**: Cadena opcional. Una hoja de niveles de pin.
-- **DCCategory**: Cadena opcional.
-- **DCSelector**: Cadena opcional.
-- **TimeSetSheet**: Cadena opcional.
-- **ACCategory**: Cadena opcional.
-- **ACSelector**: Cadena opcional.
-- **EdgeSetSheet**: Cadena opcional.
+- **ModoRelé**: `tlRelayMode` opcional, valor predeterminado `tlUnpowered`. Controla la conmutación en caliente de los relés.
+  - `tlPowered`: Conmutación en caliente. No apagar el DUT antes de establecer niveles y conectar.
+  - `tlUnpowered`: Evitar la conmutación en caliente. Apagar el DUT antes de establecer niveles y conectar.
+- **IniciarPinesAltos**: Cadena opcional. Establecer los pines con estado alto.
+- **IniciarPinesBajos**: Cadena opcional. Establecer los pines con estado bajo.
+- **IniciarPinesAltoZ**: Cadena opcional. Establecer los pines con estado de impedancia.
+- **HojaDeNivelesDePines**: Cadena opcional. Una hoja de niveles de pines.
+- **CategoríaDC**: Cadena opcional.
+- **SelectorDC**: Cadena opcional.
+- **HojaDeConjuntoDeTiempo**: Cadena opcional.
+- **CategoríaAC**: Cadena opcional.
+- **SelectorAC**: Cadena opcional.
+- **HojaDeConjuntoDeBordes**: Cadena opcional.
+```
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

@@ -1,10 +1,9 @@
+```markdown
 # Prueba de umbral de nivel 🚧
-
-> Esta publicación solo está disponible en inglés.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20220912163403.png)
 
-La prueba de umbral de nivel incluye el umbral de nivel de salida (VOL y VOH) y el umbral de nivel de entrada (VIL y VIH). Se originan a partir del umbral de nivel típico de TTL y CMOS:
+La prueba de umbral de nivel incluye el Umbral de Nivel de Salida (VOL y VOH) y el Umbral de Nivel de Entrada (VIL y VIH). Se originan a partir de los umbrales de nivel típicos de TTL y CMOS:
 
 |              | VCC   | VOL             | VOH             | VIL             | VIH             | GND   |
 | :----------- | :---- | :-------------- | :-------------- | :-------------- | :-------------- | :---- |
@@ -15,13 +14,15 @@ La prueba de umbral de nivel incluye el umbral de nivel de salida (VOL y VOH) y 
 | CMOS (2.5V)  | 2.50V | 0.40V           | 2.00V           | 0.70V           | 1.70V           | 0.00V |
 | CMOS (1.8V)  | 1.80V | 0.45V           | 1.35V           | 0.63V           | 1.170V          | 0.00V |
 
-## Prueba de umbral de nivel de salida (VOL/IOL y VOH/IOH)
+## Prueba de Umbral de Nivel de Salida (VOL/IOL y VOH/IOH)
 
-VOL representa el voltaje de salida máximo cuando el nivel de voltaje de salida es BAJO, IOL representa la capacidad máxima de corriente de **hundimiento** en el estado de salida BAJO. En realidad, miden la resistencia del pin de salida cuando proporcionan la lógica `0`, asegurando que pueda proporcionar una corriente de IOL sin exceder el voltaje de VOL, examinando la capacidad de hundimiento de corriente y mantenerse en un estado lógico correcto.
+VOL representa el voltaje de salida máximo cuando el nivel de voltaje de salida es BAJO, IOL representa la máxima capacidad de corriente de **saturación** en el estado de salida BAJO. En realidad, miden la resistencia del pin de salida cuando se proporciona la lógica `0`, asegurando que pueda suministrar una corriente de IOL sin exceder el voltaje de VOL, examinando la capacidad de saturación de corriente y manteniendo un estado lógico correcto.
+```
 
-VOH representa el voltaje de salida mínimo cuando el nivel de voltaje de salida es ALTO, IOH representa la capacidad máxima de corriente de fuente en estado de salida ALTO. En realidad, miden la resistencia del pin de salida cuando proporcionan la lógica `1`, asegurando que pueda proporcionar una corriente de IOH sin menos que el voltaje de VOH, examinando la capacidad de corriente de fuente y manteniéndose en un estado lógico correcto.
+```markdown
+VOH representa el voltaje de salida mínimo cuando el nivel de voltaje de salida es ALTO, IOH representa la máxima capacidad de corriente de fuente en el estado de salida ALTO. En realidad, miden la resistencia del pin de salida al proporcionar la lógica `1`, asegurando que pueda proporcionar una corriente de IOH sin caer por debajo del voltaje de VOH, examinando la capacidad de corriente de fuente y manteniendo un estado lógico correcto.
 
-### Método de prueba (Serie)
+### Método de Prueba (Serie)
 
 #### Prueba VOL/IOL (Serie)
 
@@ -29,10 +30,10 @@ VOH representa el voltaje de salida mínimo cuando el nivel de voltaje de salida
 
 1. Aplicar VDDmin al pin VDD (con abrazadera de corriente).
 2. Preacondicionar el pin de salida específico a la lógica '0'.
-3. Forzar IOLmax al Pin bajo prueba (fluir hacia DUT) y medir el voltaje en él:
-   - **Mayor que el valor especificado(>0.4V)**: FALLA
-   - **Menor que el valor especificado(<0.4V)**: PASA
-4. Repetir para probar con diferentes pines de salida.
+3. Forzar IOLmax al Pin bajo Prueba (fluir hacia el DUT) y medir el voltaje en él:
+   - **Mayor que el valor especificado (>0.4V)**: FALLA
+   - **Menor que el valor especificado (<0.4V)**: APROBADO
+4. Repetir la prueba con diferentes pines de salida.
 
 #### Prueba VOH/IOH (Serie)
 
@@ -40,19 +41,20 @@ VOH representa el voltaje de salida mínimo cuando el nivel de voltaje de salida
 
 1. Aplicar VDDmin al pin VDD (con abrazadera de corriente).
 2. Preacondicionar el pin de salida específico a la lógica '1'.
-3. Forzar IOHmax al Pin bajo prueba (fluir fuera de DUT) y medir el voltaje en él:
-   - **Mayor que el valor especificado(>2.4V)**: PASA
-   - **Menor que el valor especificado(<2.4V)**: FALLA
-4. Repetir para probar con diferentes pines de salida.
+3. Forzar IOHmax al Pin bajo Prueba (fluir desde el DUT) y medir el voltaje en él:
+   - **Mayor que el valor especificado (>2.4V)**: APROBADO
+   - **Menor que el valor especificado (<2.4V)**: FALLA
+4. Repetir la prueba con diferentes pines de salida.
 
-## Prueba de umbral de nivel de entrada (VIL y VIH)
+## Prueba del Umbral de Nivel de Entrada (VIL y VIH)
 
-## Referencias y Agradecimientos
+## Referencias y Reconocimientos
 
 - _Los Fundamentos de la Prueba de Semiconductores Digitales_
 - _Fundamentos de la Prueba Utilizando ATE_
 
-> Original: <https://wiki-power.com/>  
-> Esta publicación está protegida por el acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en), debe ser reproducida con atribución.
+> Original: <https://wiki-power.com/>
+> Esta publicación está protegida por el acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) y debe ser reproducida con atribución.
+```
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

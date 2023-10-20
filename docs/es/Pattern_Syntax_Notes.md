@@ -1,11 +1,10 @@
-# Notas de sintaxis de patrones 🚧
+```markdown
+# Notas sobre la Sintaxis de Patrones 🚧
 
-> Esta publicación solo está disponible en inglés.
+Un archivo de patrón digital consta principalmente de 3 partes:
+**Declaración de Encabezado**, **Declaración de Configuración** y **Módulo de Patrón**. (Las **Declaraciones de Preprocesamiento** y los **Comentarios** son opcionales).
 
-Un archivo de patrón digital contiene principalmente 3 partes:
-**Declaración de encabezado**, **Declaración de configuración** y **Módulo de patrón**. (**Las declaraciones de preprocesamiento** y **comentarios** son opcionales).
-
-A continuación se muestra un archivo de patrón de ejemplo en formato `.atp` que se utiliza principalmente:
+A continuación se muestra un ejemplo de archivo de patrón ampliamente utilizado en formato `.atp`:
 
 ```atp
 // example.atp
@@ -24,80 +23,82 @@ repeat 100
  > tset1 0 X 1 1 .rFFFFFF ;
  > tset1 0 X 0 0    .X    ;
  ((TIC_DATABUS):DigCap = Store)
- > tset1 0 X 0 0    .V 	  ; // capture
+ > tset1 0 X 0 0    .V 	  ; // captura
 HALT
- > tset1 0 X 0 0  d000000 ; // end
+ > tset1 0 X 0 0  d000000 ; // fin
 }
 ```
 
-## Declaración de encabezado
+## Declaración de Encabezado
 
-La **Declaración de encabezado** contiene estas declaraciones: instrumento digital, asignación de pines, control de compilador, importación de tset o etiqueta. Aquí hay un ejemplo:
+La **Declaración de Encabezado** contiene estas declaraciones: instrumento digital, mapa de pines, control del compilador, importación de conjuntos de tiempos o etiquetas. Aquí tienes un ejemplo:
 
 ```
 digital_inst = HSDMQ;           // Declaración de instrumento digital
 opcode_mode = single;           // Declaración de compilación
-import tset tset1, tset1;       // importar conjuntos de tiempo
-import subr xxx;                // importar subrutinas
+import tset tset1, tset1;       // Importar conjuntos de tiempo
+import subr xxx;                // Importar Subrutinas
 ```
 
 Parámetros frecuentemente utilizados:
 
-- Declaraciones de instrumentos digitales
+```
+
+- Declaraciones de Instrumento Digital
   - **digital_inst**: `hsdm`(HSD1000, UltraPin800), `hsdmq`(UltraPin1600), `hsdp`(UltraPin2200) ...
-- Especificaciones del mapa de pines:
-  - **pinmap_workbook**: nombre del libro de trabajo IG‑XL, como `"xxx.igxl"`
-  - **sheetname**: nombre de la hoja del mapa de pines, como `"pinmap"`
-- Declaraciones de control de compilador
+- Especificaciones del Mapa de Pines:
+  - **pinmap_workbook**: Nombre del libro IG‑XL, como `"xxx.igxl"`
+  - **sheetname**: Nombre de la hoja del Mapa de Pines, como `"pinmap"`
+- Declaraciones de Control del Compilador
   - **compressed**: `sí` o `no`
-  - **opcode_mode**: `single` o `dual` o `quad`(UltraPin1600), cada 1/2/4 vectores pueden incluir un opcode.
+  - **opcode_mode**: `simple` o `dual` o `cuádruple`(UltraPin1600), cada 1/2/4 vectores puede incluir un opcode.
   - **save_comments**: `sí` o `no`
-  - **version**: como `V1.0`
-- Tset y etiqueta
-  - **Tset**: `import tset tset1, tset2, ... ;`
-  - **Etiqueta**: `import label label1, label2, ... ;`
+  - **versión**: como `V1.0`
+- Tset y Etiqueta
+  - **Tset**: `importar tset tset1, tset2, ... ;`
+  - **Etiqueta**: `importar etiqueta etiqueta1, etiqueta2, ... ;`
 
-## Declaración de configuración
+## Declaración de Configuración
 
-La **Declaración de configuración** contiene la configuración de pines, instrumentos y pines de escaneo.
+La **Declaración de Configuración** contiene la configuración de pines, instrumentos y pines de escaneo.
 
 ```
-pin_setup = {
-    gpio_1    2x;                                           //Configuración de pines: gpio_1 configurado en modo 2X
+configuración_de_pines = {
+    gpio_1    2x;                                           // Configuración de pines: gpio_1 configurado en modo 2X
 }
-instruments = {
+instrumentos = {
 vcc:DCVS 1;                                                 // Instrumento DCVS
-    tdo:DigCap 32:format=twos_complement:auto_trig_enable;  // Instrumento DigCap
+    tdo:DigCap 32:formato=dos_complemento:auto_trig_enable;  // Instrumento DigCap
 }
-scan_pins = {
+pines_de_escaneo = {
     tdi, tdo;                                               // tdi - escaneo de entrada, tdo - escaneo de salida
 }
 ```
 
-Parámetros frecuentemente utilizados:
+Parámetros de uso frecuente:
 
-- Caracteres de Estado de Pin y Microcódigos
-  - **Caracteres de Estado de Pin**: `0`(Conducir Bajo), `1`(Conducir Alto), `2`(Conducir Voltaje Alto solo para UP800), `L`(Esperar Bajo), `H`(Esperar Alto), `M`(Esperar Banda Media), `V`(Esperar Válido), `X`(Máscara), `W`(Strobe de Ventana), `D`(Conducir ADS (DigSrc/MTO)), `I`(Conducir ADS inverso (DigSrc/MTO)), `E`(Esperar ADS (DigSrc/MTO)), `C`(Esperar ADS inverso (DigSrc/MTO)), `-`(Repetir estado anterior).
-  - **Microcódigos de DigCap**: `Trig`(Iniciar una captura), `Store`(Almacenar una muestra de datos), `Trig, Store`(Combinación de Trig y Store), `Store, Inst_Cond_Strobe`(Almacenar y activar la señal interna de `condición` para actuar sobre ella).
+- Caracteres de Estado de Pines y Microcódigos
+  - **Caracteres de Estado de Pines**: `0` (Bajo), `1` (Alto), `2` (Alto Voltaje solo para UP800), `L` (Esperar Bajo), `H` (Esperar Alto), `M` (Esperar en el Rango Medio), `V` (Esperar Válido), `X` (Máscara), `W` (Destello de Ventana), `D` (Impulsar ADS (DigSrc/MTO)), `I` (Impulsar ADS inverso (DigSrc/MTO)), `E` (Esperar ADS (DigSrc/MTO)), `C` (Esperar ADS inverso (DigSrc/MTO)), `-` (Repetir estado anterior).
+  - **Microcódigos DigCap**: `Trig` (Iniciar una captura), `Store` (Almacenar una muestra de datos), `Trig, Store` (Combinación de Trig y Store), `Store, Inst_Cond_Strobe` (Almacenar y enmascarar la señal de `condición` generada internamente para su posterior acción).
 
-## Módulo de Patrón
+## Módulo de Patrones
 
-Un **módulo de patrón** contiene una lista de pines y un conjunto de vectores. Hay 2 tipos de módulos: memoria de vector (VM) y memoria (SRM):
+Un **módulo de patrones** contiene una lista de pines y un conjunto de vectores. Hay 2 tipos de módulos: memoria de vectores (VM) y memoria (SRM):
 
 ```
-vm_vector [nombre-de-módulo] (lista-de-pines)
+vm_vector [nombre-del-módulo] (lista-de-pines)
 { vectores }
 
-srm_vector [nombre-de-módulo] (lista-de-pines)
+srm_vector [nombre-del-módulo] (lista-de-pines)
 { vectores }
 ```
 
-Se requiere al menos 1 módulo de patrón en un archivo de patrón. Si hay más de 1, sus columnas y listas de pines deben ser iguales.
+Se requiere al menos 1 módulo de patrones en un archivo de patrones. Si hay más de 1, sus columnas y listas de pines deben ser iguales.
 
-Parámetros frecuentemente utilizados:
+Parámetros de uso frecuente:
 
 - lista-de-pines
-  - **Elementos de Pin**: `pin-o-grupo[.modificador][:radix]`, el radix podría ser `:S`(Simbólico, por defecto), `:B`(Bin), `:D`(Dec), `:O`(Oct), `:H`(Hex)
-- Etiqueta: por determinar
+  - **Elementos de Pines**: `pin-o-grupo[.modificador][:radix]`, el radix puede ser `:S` (Símbolo, predeterminado), `:B` (Bin), `:D` (Dec), `:O` (Oct), `:H` (Hex)
+- Etiqueta: pendiente
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

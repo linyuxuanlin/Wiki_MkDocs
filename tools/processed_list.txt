@@ -303,3 +303,11 @@ DAC-Static_Parameters.md
 DC_Parameters.md
 Digital_Functional_Test.md
 IDD_Test.md
+Leakage_Test.md
+Level_Threshold_Test.md
+Pattern_Syntax_Notes.md
+Personal_Onboarding_Workflow_(Windows).md
+Tester_Alarms.md
+TheExec(The_Executive).md
+TheHdw(The_Hardware).md
+Troubleshooting_of_ADC_and_DAC.md

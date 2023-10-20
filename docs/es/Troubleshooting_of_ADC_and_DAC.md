@@ -1,31 +1,29 @@
 # Solución de problemas de ADC y DAC
 
-> Esta publicación solo está disponible en inglés.
+## ¿Por qué la fuente de CA debe tener de 2 a 4 bits más de resolución que el ADC bajo prueba?
 
-## ¿Por qué la fuente de CA debe tener una resolución de 2-4 bits más que el ADC en prueba?
-
-Como una definición a menudo utilizada de ENOB:
+Como una definición frecuentemente utilizada de ENOB:
 
 $$
-ENOB=\frac{SINAD-1.76}{6.02}
+ENOB = \frac{SINAD - 1.76}{6.02}
 $$
 
-Entonces, si el ENOB del DAC (en la fuente de CA) disminuye, el SINAD también disminuirá, lo que significa que el ruido y las distorsiones aumentarán relativamente, lo que afectará la precisión de la medición.
+Entonces, si el ENOB del DAC (en la Fuente de CA) disminuye, el SINAD también disminuirá, lo que significa que el ruido y las distorsiones aumentarán relativamente, lo que afectará la precisión de la medición.
 
-Otro punto es que la resolución de la fuente de CA menor que 2-4 bits inducirá distorsiones armónicas más altas, la señal digital en la salida del ADC se deteriorará tanto por las distorsiones armónicas del DAC como del ADC, y la amplitud del segundo armónico (por ejemplo) podría ser sumada. Debido a que la fuente de CA con una resolución más alta traerá distorsiones armónicas más bajas, los resultados de salida de prueba serán más precisos.
+Otro punto a considerar es que una resolución de la Fuente de CA inferior a 2-4 bits inducirá distorsiones armónicas más altas. La señal digital en la salida del ADC se deteriorará tanto por las distorsiones armónicas del DAC como por las del ADC, y la amplitud del segundo armónico (por ejemplo) podría sumarse. Una Fuente de CA con una mayor resolución reducirá las distorsiones armónicas, lo que hará que los resultados de la salida de la prueba sean más precisos.
 
-Consulte este artículo: [ADC Production Test Technique Using Low-Resolution Arbitrary Waveform Generator](https://www.hindawi.com/journals/vlsi/2008/482159/)
+Consulta este artículo: [Técnica de Prueba de Producción de ADC Utilizando un Generador de Formas de Onda Arbitrarias de Baja Resolución](https://www.hindawi.com/journals/vlsi/2008/482159/)
 
-## ¿Existen otras formas de mejorar la precisión de la medición con la entrada de CA en la prueba de ADC?
+## ¿Existen otras formas de mejorar la precisión de la medición con la entrada de CA en la prueba del ADC?
 
 Reducir la pendiente de la onda de rampa de entrada puede mejorar la precisión de la medición.
 
-## ¿Qué hacer con el ruido de base alto en la prueba de ADC?
+## ¿Qué hacer con el ruido de base alto en la prueba del ADC?
 
-1. Aumente el número de muestras (N) y el número de períodos de señal de prueba muestreados (M), ambos también resultarán en más tiempo de prueba.
-2. Aumente la frecuencia de muestreo (Fs).
+1. Aumentar el número de muestras (N) y el número de periodos de señal de prueba muestreados (M), lo que también resultará en un mayor tiempo de prueba.
+2. Aumentar la frecuencia de muestreo (Fs).
 
-No es posible distinguir entre ruido y armónicos si solo se muestrea 1 período de señal.
+No es posible distinguir entre el ruido y las armónicas si solo se muestrea un período de señal.
 
 > ¿Existe esta fórmula? Precisión de ruido = frecuencia de muestreo / M
 
@@ -35,6 +33,6 @@ El método del histograma se utiliza en la práctica para medir el error de gana
 
 ## ¿Necesitamos un digitalizador de CA con 2-4 bits más de resolución en la prueba del DAC?
 
-No, no es necesario tener un digitalizador de CA de muy alta resolución. Un digitalizador de CA que cumpla con la resolución de Nyquist cumplirá con el estándar de prueba.
+No, no es necesario un Digitalizador de CA de muy alta resolución. Un Digitalizador de CA que cumpla con la resolución de Nyquist satisfará el estándar de prueba.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
