@@ -19,7 +19,7 @@ dir_translated = {"en": "docs/en", "es": "docs/es", "ar": "docs/ar"}
 
 # 不进行翻译的文件列表
 exclude_list = ["index.md", "Contact-and-Subscribe.md", "WeChat.md"]  # 不进行翻译的文件列表
-processed_list = "processed_list.txt"  # 已处理的 Markdown 文件名的列表，会自动生成
+processed_list = "tools/processed_list.txt"  # 已处理的 Markdown 文件名的列表，会自动生成
 
 # 由 ChatGPT 翻译的提示
 tips_translated_by_chatgpt = {
