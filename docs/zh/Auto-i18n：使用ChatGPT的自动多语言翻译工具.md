@@ -7,7 +7,7 @@ Auto-i18n 的主要特性：
 - **批量多语言翻译**：Auto-i18n 提供了批量翻译的功能，使你能够将一整个路径下的所有 Markdown 文档一次性翻译多语言，极大地提高了多语言化项目的效率。
 - **兼容 Front Matter**：Auto-i18n 兼容 Markdown Front Matter 语法，你可以自定义不同字段的翻译或替换规则。
 - **固定内容替换**：Auto-i18n 还支持固定内容替换。如果你希望文档中一些重复字段的译文保持不变，这个功能可以帮助你实现文档的一致性。
-- **自动化工作流**：你可以借助 GitHub Actions 实现翻译流程自动化。无需手动干预，翻译工作会自动进行并更新文档，使你能够更专注于内容。
+- **自动化工作流**：你可以使用 GitHub Actions 实现自动化的翻译流程"。。无需手动干预，翻译工作会自动进行并更新文档，使你能够更专注于内容。
 
 ## 快速上手
 
@@ -19,7 +19,7 @@ Auto-i18n 的主要特性：
 
 程序 `auto-translater.py` 的运行逻辑如下：
 
-1. 程序会自动处理测试目录 `testdir/to-translate` 下的所有 Markdown 文件，你可以在 `exclude_list` 变量中排除不需要翻译的文件。
+1. 程序将自动处理测试目录 `testdir/to-translate` 下的所有 Markdown 文件，你可以在 `exclude_list` 变量中排除不需要翻译的文件。
 2. 处理后的文件名会被记录在自动生成的 `processed_list.txt` 中。下次运行程序时，已处理的文件将不会再次翻译。
 3. 对于原本使用英文撰写的文章，程序不会重新翻译成英文，也不会翻译回中文，而会翻译为其他语言。你需要在文章中添加字段 `> This post was originally written in English.`（注意在上下各留一个空行），以便程序识别。请参考 [测试文章\_en.md](testdir/to-translate/测试文章_en.md)。
 4. 如果需要重新翻译指定文章（例如，翻译结果不准确，或文章内容发生更改等），你可以在文章中加入字段 `[translate]`（同样需要在上下各留一个空行）。这将会忽略 `exclude_list` 和 `processed_list` 的规则，强制进行翻译处理。请参考 [测试文章\_force-mark.md](testdir/to-translate/测试文章_force-mark.md)。
@@ -40,7 +40,7 @@ Auto-i18n 的主要特性：
 
 1. 如果需要验证 ChatGPT API key 的可用性，可以使用程序 [verify-api-key.py](Archive/verify-api-key.py) 进行测试。如果在国内使用官方 API，需要有本地代理。
 2. 如果 Markdown 中的 Front Matter 无法被正常识别，可以使用程序 [detect_front_matter.py](Archive/detect_front_matter.py) 测试。
-3. 使用 GitHub Actions 遇到问题时，请优先检查路径引用是否正确（例如 `dir_to_translate` `dir_translated_en` `dir_translated_es` `dir_translated_ar` `processed_list`）。
+3. 在使用 GitHub Actions 遇到问题时，请优先检查路径引用是否正确（例如 `dir_to_translate` `dir_translated_en` `dir_translated_es` `dir_translated_ar` `processed_list`）。
 
 ## 待解决的问题
 
