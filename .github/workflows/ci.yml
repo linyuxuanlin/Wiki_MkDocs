@@ -29,7 +29,7 @@ jobs:
           CHATGPT_API_KEY: ${{ secrets.CHATGPT_API_KEY }}
           CHATGPT_API_BASE: ${{ secrets.CHATGPT_API_BASE }}
         run: |
-          pip install openai PyYAML
+          pip install -r tools/requirements.txt
           python tools/auto-translater.py || true
       - name: Commit translated
         run: |
@@ -45,4 +45,3 @@ jobs:
         run: pip install -r requirements.txt
       - name: Deploy with MkDocs
         run: mkdocs gh-deploy --force
-        
