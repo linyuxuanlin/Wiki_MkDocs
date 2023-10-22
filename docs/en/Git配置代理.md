@@ -1,36 +1,36 @@
 # Configuring Git Proxy
 
-## Problem
+## Issue
 
-`git clone` and `git pull` are too slow in China.
+In China, the speed of `git clone` and `git pull` is often too slow.
 
 ## Solution
 
-### 1. Configure proxy software
+### 1. Configuration within Proxy Software
 
-1. Check "Allow connections from local network" in the proxy software.
-2. Note the port number (e.g. 1080).
-3. Enable "Global Mode".
+1. In your proxy software, enable the option for "Allow connections from local network."
+2. Take note of the port number (e.g., 1080).
+3. Activate "Global Mode."
 
-### 2. Configure Git global http proxy
+### 2. Configuring Global Git HTTP Proxy
 
 ```shell
-git config --global http.proxy http://127.0.0.1:【port number】
-git config --global https.proxy https://127.0.0.1:【port number】
+git config --global http.proxy http://127.0.0.1:【Port Number】
+git config --global https.proxy https://127.0.0.1:【Port Number】
 
 # For example:
 git config --global http.proxy http://127.0.0.1:10808
 git config --global https.proxy https://127.0.0.1:10808
 
-# If the above does not work, try using the socks5 port:
-git config --global http.proxy socks5://127.0.0.1:【port number】
-git config --global https.proxy socks5://127.0.0.1:【port number】
+# If the above doesn't work, try using the socks5 protocol:
+git config --global http.proxy socks5://127.0.0.1:【Port Number】
+git config --global https.proxy socks5://127.0.0.1:【Port Number】
 
-# If you only want to proxy GitHub and not affect domestic repositories (not recommended if you are not familiar with configuration files):
-git config --global http.https://github.com.proxy https://127.0.0.1:【port number】
-git config --global https.https://github.com.proxy https://127.0.0.1:【port number】
+# To proxy only GitHub without affecting domestic repositories (not recommended for those unfamiliar with configuration files):
+git config --global http.https://github.com.proxy https://127.0.0.1:【Port Number】
+git config --global https.https://github.com.proxy https://127.0.0.1:【Port Number】
 
-# If you only want to proxy GitLab and not affect domestic repositories (not recommended if you are not familiar with configuration files):
+# To proxy only GitLab without affecting domestic repositories (not recommended for those unfamiliar with configuration files):
 git config --global https.https://https://gitlab.com.proxy https://127.0.0.1:1080
 ```
 
@@ -40,15 +40,15 @@ Configuration on Ubuntu:
 git config --global http.https://github.com.proxy socks5://127.0.0.1:10808
 ```
 
-### View the path of the configuration file.
+### Viewing Configuration File Paths
 
+```shell
+git config --list --show-origin
 ```
-git config –list –show-origin
-```
 
-### Recovery
+### Reverting Changes
 
-If you don't want to use a proxy, you can restore it using the following method:
+If you no longer wish to use the proxy, you can undo the changes using the following method:
 
 ```shell
 git config --global --unset http.proxy
@@ -57,9 +57,9 @@ git config --global --unset https.proxy
 
 ## References and Acknowledgments
 
-- [**Conquer the Slow Submission of git clone and git pull**](https://c.lanmit.com/czxt/Linux/16965.html)
+- [**Overcoming the Slow Speed of Git Clone and Git Pull**](https://c.lanmit.com/czxt/Linux/16965.html)
 
-> Original: <https://wiki-power.com/>  
+> Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

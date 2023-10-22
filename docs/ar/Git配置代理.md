@@ -2,39 +2,39 @@
 
 ## مصدر المشكلة
 
-بطء سرعة `git clone` و `git pull` في الصين.
+سرعة `git clone` و `git pull` في الصين بطيئة للغاية.
 
-## الحل
+## الحلول
 
-### 1. تكوين الوكيل في البرنامج المساند
+### 1. إعداد الوكيل داخل برنامج الوكيل
 
-1. تحقق من تحديد "السماح بالاتصالات من الشبكة المحلية".
-2. اكتب رقم المنفذ (على سبيل المثال: 1080).
-3. تفعيل "الوضع العالمي".
+1. في برنامج الوكيل، حدد "السماح بالاتصالات من الشبكة المحلية".
+2. اكتب رقم المنفذ (مثال: 1080).
+3. قم بتمكين "الوضع العام".
 
-### 2. تكوين الوكيل العالمي لـ Git
+### 2. تكوين الوكيل HTTP على Git على مستوى عالمي
 
 ```shell
-git config --global http.proxy http://127.0.0.1:【端口号】
-git config --global https.proxy https://127.0.0.1:【端口号】
+git config --global http.proxy http://127.0.0.1:【المنفذ】
+git config --global https.proxy https://127.0.0.1:【المنفذ】
 
 # مثال:
 git config --global http.proxy http://127.0.0.1:10808
 git config --global https.proxy https://127.0.0.1:10808
 
-# إذا لم يعمل الأمر أعلاه، جرب استخدام منفذ socks5:
-git config --global http.proxy socks5://127.0.0.1:【端口号】
-git config --global https.proxy socks5://127.0.0.1:【端口号】
+# إذا لم يكن ذلك فعالًا، جرب استخدام منفذ socks5:
+git config --global http.proxy socks5://127.0.0.1:【المنفذ】
+git config --global https.proxy socks5://127.0.0.1:【المنفذ】
 
-# إذا كنت تريد استخدام الوكيل فقط لـ GitHub ولا تؤثر على المستودعات المحلية (لا يوصى باستخدام المستخدمين الجدد):
-git config --global http.https://github.com.proxy https://127.0.0.1:【端口号】
-git config --global https.https://github.com.proxy https://127.0.0.1:【端口号】
+# إذا كنت ترغب في استخدام الوكيل فقط لـ GitHub وعدم التأثير على المستودعات المحلية (غير موصى به إذا كنت غير ملم بملفات التكوين):
+git config --global http.https://github.com.proxy https://127.0.0.1:【المنفذ】
+git config --global https.https://github.com.proxy https://127.0.0.1:【المنفذ】
 
-# إذا كنت تريد استخدام الوكيل فقط لـ GitLab ولا تؤثر على المستودعات المحلية (لا يوصى باستخدام المستخدمين الجدد):
+# استخدم الوكيل فقط لـ GitLab وعدم التأثير على المستودعات المحلية (غير موصى به إذا كنت غير ملم بملفات التكوين):
 git config --global https.https://https://gitlab.com.proxy https://127.0.0.1:1080
 ```
 
-تكوين Ubuntu:
+للتكوين على نظام Ubuntu:
 
 ```shell
 git config --global http.https://github.com.proxy socks5://127.0.0.1:10808
@@ -43,12 +43,12 @@ git config --global http.https://github.com.proxy socks5://127.0.0.1:10808
 ### عرض مسار ملف التكوين
 
 ```
-git config –list –show-origin
+git config --list --show-origin
 ```
 
-### استعادة
+### استعادة الإعدادات الافتراضية
 
-إذا كنت لا تريد استخدام الوكيل، يمكنك استخدام الطريقة التالية لاستعادة الإعدادات الافتراضية:
+إذا كنت لا ترغب في استخدام الوكيل، يمكنك استخدام الأمر التالي لاستعادة الإعدادات الافتراضية:
 
 ```shell
 git config --global --unset http.proxy
@@ -57,9 +57,9 @@ git config --global --unset https.proxy
 
 ## المراجع والشكر
 
-- [**التغلب على بطء git clone و git pull**](https://c.lanmit.com/czxt/Linux/16965.html)
+- [**تغلب على بطء git clone و git pull**](https://c.lanmit.com/czxt/Linux/16965.html)
 
-> عنوان النص: <https://wiki-power.com/>  
+> عنوان النص: <https://wiki-power.com/>
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

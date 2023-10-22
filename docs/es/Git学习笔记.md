@@ -1,102 +1,110 @@
-# Notas de aprendizaje de Git
+# Notas de Estudio de Git
 
-## Instalación y configuración
+## Instalación y Configuración
 
 Descargar el paquete de instalación: [**git-scm.com/downloads**](https://git-scm.com/downloads)
 
 Configuración:
 
 ```shell
-git config --global user.name "nombre de usuario"
-git config --global user.email "correo@example.com"
+git config --global user.name "nombredeusuario"
+git config --global user.email "correo@ejemplo.com"
 ```
 
-## Sentencias básicas
+## Comandos Básicos
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20200216204934.png)
 
-### Proceso básico
+### Flujo Básico
 
-1. Cambiar al directorio especificado: `cd git-learning`
-2. Inicializar el repositorio de Git: `git init`
-3. Transferir archivos existentes / nuevos del **área de trabajo** al **área de preparación**:
-   - `git add .`: agregar todos los archivos del área de trabajo
-   - `git add xxx.xx`: agregar un archivo individual
-4. Enviar actualizaciones al **branch de área de preparación**: `git commit -m "descripción"`
-5. Cambiar a una versión específica: `git reset --hard commit_id`
+1. Cambiar al directorio deseado: `cd git-learning`
+2. Inicializar el repositorio Git: `git init`
+3. Mover los archivos existentes o nuevos del **área de trabajo** al **área de preparación**:
+   - `git add .`: Agregar todos los archivos del área de trabajo
+   - `git add xxx.xx`: Agregar un archivo individual
+4. Confirmar las actualizaciones en el **área de preparación**: `git commit -m "descripción"`
+5. Cambiar a una versión específica: `git reset --hard id_de_commit`
 
-### Sentencias comunes
+### Comandos Comunes
 
-- Ver cambios (solo se puede usar cuando el archivo está en el área de trabajo): `git diff`
+- Ver las modificaciones (solo se puede usar cuando los archivos están en el área de trabajo): `git diff`
 - Ver el estado del repositorio: `git status`
-- Ver el historial de envío (en orden de envío): `git log`, presione `q` para salir
-- Ver el historial de comandos (todos los registros de envío): `git reflog`
+- Ver el historial de confirmaciones (en orden de confirmación): `git log`, presionar `q` para salir
+- Ver el historial de comandos (todos los registros de confirmación): `git reflog`
 
-## Repositorio remoto
+## Repositorio Remoto
 
-### Convertir un proyecto local en remoto
+### Localizar un Proyecto Local
 
-Adecuado para casos en los que ya se tienen archivos de proyecto locales.
+Para casos en los que ya tienes archivos de proyecto locales.
 
-1. Crear una clave SSH: `ssh-keygen -t rsa -C "tu_correo@example.com"`
-   - Reemplazar con tu correo electrónico, presionar Enter en todo momento
-2. Abrir [**Configuración personal - Claves SSH y GPG**](https://github.com/settings/keys) en GitHub y agregar una nueva clave SSH
-   - El título es arbitrario, la clave es el contenido del archivo `id_rsa.pub`
-3. Crear un nuevo repositorio en GitHub, no seleccione `Initialize this repository with a README`
-   - Si accidentalmente se inicializa el repositorio, primero hay que hacer pull: `git pull origin master`
-4. Copiar la dirección SSH (por ejemplo: `git@github.com:linyuxuanlin/git-learning.git`) y ejecutar el comando en el repositorio local de Git: `git remote add origin git@server-name:user/repo-name.git`
-5. Enviar el contenido local al repositorio remoto: `git push -u origin master`
-   - Ingrese `yes` y presione Enter para continuar cuando aparezca el mensaje de confirmación
-   - Como el repositorio remoto está vacío, al enviar la rama principal por primera vez, se agrega el parámetro `-u`, lo que hace que Git no solo envíe el contenido de la rama principal local al nuevo branch principal remoto, sino que también relacione la rama principal local y la rama principal remota. Esto simplifica los comandos de envío o extracción en el futuro.
-6. Para cada envío futuro: `git push origin master`
+1. Crear una clave SSH: `ssh-keygen -t rsa -C "tuemail@ejemplo.com"`
+   - Sustituye con tu dirección de correo electrónico, simplemente presiona Enter para todas las opciones.
+2. Abre [**Configuración personal de GitHub - Claves SSH y GPG**](https://github.com/settings/keys) y agrega una nueva clave SSH.
+   - Elige un título y usa el contenido del archivo `id_rsa.pub`.
+3. Crea un nuevo repositorio en GitHub, no selecciones "Inicializar este repositorio con un archivo README".
+   - Si por error inicializaste el repositorio, primero realiza un pull: `git pull origin master`
+4. Copia la dirección SSH (por ejemplo: `git@github.com:linyuxuanlin/git-learning.git`) y ejecuta el siguiente comando en el repositorio Git local: `git remote add origin git@server-name:usuario/nombre-repo.git`
+5. Sube el contenido local al repositorio remoto: `git push -u origin master`
+   - Cuando se muestre un mensaje de confirmación, ingresa "yes" y presiona Enter para continuar.
+   - Dado que el repositorio remoto está vacío, al empujar la rama master local por primera vez con el parámetro "-u", Git asocia la rama local y la rama remota, lo que simplifica los comandos futuros.
+6. Para futuras confirmaciones: `git push origin master`
 
-### Convertir un proyecto remoto en local
+### Localizar un Proyecto Remoto
 
-Adecuado para comenzar desde cero o para desarrollar sobre el proyecto de otra persona.
+Para comenzar desde cero o basarse en un proyecto existente.
 
-1. Clonar el repositorio remoto: `git clone git@server-name:user/repo-name.git`
+1. Clonar el repositorio remoto: `git clone git@server-name:usuario/nombre-repo.git`
 
-## Gestión de ramas
+## Gestión de Ramas
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20200217195056.png)
 
-Las ramas en Git son como universos paralelos en las películas de ciencia ficción. Mientras estás trabajando duro en aprender Git en tu computadora, en otro universo paralelo, estás trabajando duro en aprender SVN. Si estos universos paralelos no interfieren entre sí, no tendrán ningún impacto en ti. Pero en algún momento, estos universos paralelos se fusionan y resulta que has aprendido tanto Git como SVN.
+> A branch is like a parallel universe in a science fiction movie. While you're diligently studying Git in front of your computer, another "you" is working hard in a parallel universe, learning SVN.
+> 
+> If these two parallel universes don't interfere with each other, they have no impact on your current self. However, at some point in time, these two universes merge, and the result is that you've learned both Git and SVN!
+> 
+> So, what's the practical use of branches? Let's say you're about to develop a new feature, but it will take two weeks to complete. In the first week, you've written 50% of the code. If you were to submit it immediately, the incomplete codebase would prevent others from working. If you wait until all the code is written to submit it, there's a significant risk of losing daily progress.
+> 
+> But now, with branches, you don't have to worry. You create your own branch that others can't see, and they continue to work on the original branch as usual. You work on your own branch and submit changes whenever you want. Once the development is complete, you merge it into the original branch all at once. This way, it's both safe and doesn't affect others' work.
+> 
+> ![Image](https://img.wiki-power.com/d/wiki-media/img/20200217202649.png)
+> 
+> 1. Create and switch to a new branch: `git switch -c branch_name`
+>    - `-c` stands for creating and switching branches.
+> 2. View the current branch: `git branch`
+> 3. Merge the content of a new branch into the master branch: `git merge branch_name`
+>    - First, switch to the branch to be merged, and then use the merge command (e.g., switch to the master branch and execute the above command).
+>    - When Git cannot automatically merge the branches, you must resolve conflicts first. After resolving conflicts, you can submit the changes to complete the merge.
+>    - Resolving conflicts involves manually editing the files that Git failed to merge and making them match your desired content before submitting.
+> 4. Delete a branch: `git branch -d dev`
+> 5. Disable fast-forward branch merging: `git merge --no-ff -m "commit text" branch_name`
+>    - Because this merge creates a new commit, use the `-m` parameter to include a commit message.
+>    - In fast-forward mode, if a branch is deleted after merging, it will lose branch information.
 
-¿Para qué sirven las ramas en la práctica? Supongamos que estás desarrollando una nueva función que tardará dos semanas en completarse. En la primera semana, has escrito el 50% del código. Si lo envías de inmediato, el repositorio incompleto impedirá que otros trabajen. Si esperas a que todo el código esté escrito antes de enviarlo, existe un gran riesgo de perder el progreso diario.
+## GitHub Roaming Guide
 
-Ahora, con las ramas, no tienes que preocuparte. Creas una rama propia que nadie más puede ver y continúas trabajando en la rama original. Cuando quieras enviar el código, lo envías a tu propia rama. Cuando hayas terminado, lo fusionas con la rama original. De esta manera, es seguro y no afecta el trabajo de los demás.
-
-1. Crear y cambiar a una nueva rama: `git switch -c nombre_rama`
-   - `-c` significa crear y cambiar de rama
-2. Ver la rama actual: `git branch`
-3. Fusionar el contenido de la nueva rama con la rama principal: `git merge nombre_rama`
-   - Cambia a la rama que deseas fusionar y luego usa el comando de fusión (por ejemplo, cambia a la rama principal y luego ejecuta el comando anterior).
-   - Cuando Git no puede fusionar automáticamente las ramas, primero debes resolver los conflictos. Después de resolver los conflictos, envía el código y completa la fusión.
-   - Resolver conflictos significa editar manualmente los archivos que Git no pudo fusionar y ajustarlos a lo que deseas. Luego, envía los cambios.
-4. Eliminar una rama: `git branch -d nombre_rama`
-5. Deshabilitar la fusión Fast forward de la rama: `git merge --no-ff -m "texto de confirmación" nombre_rama`
-   - Como esta fusión creará un nuevo commit, agrega el parámetro `-m` para incluir la descripción del commit.
-   - En el modo Fast forward, la información de la rama se pierde cuando se elimina.
-
-## Guía de GitHub
-
-Con la plataforma de GitHub, podemos descubrir proyectos de código abierto y construir un mundo de código abierto con desarrolladores de todo el mundo. Cuando encontramos un proyecto de código abierto excelente, podemos hacer un Fork en nuestra cuenta de GitHub (para tener permisos de lectura y escritura) y luego clonarlo en nuestro equipo para desarrollar. Después de completar el desarrollo, podemos enviar una solicitud de extracción en GitHub. Si el propietario del proyecto original cree que tus cambios son adecuados, se fusionarán con el proyecto de código abierto original.
+With the help of the GitHub platform, we can discover a vibrant world of open-source projects and collaborate with developers from around the globe to build an open-source world.
+ 
+When we come across an outstanding open-source project, we can start by forking it to our own GitHub account (to gain read and write permissions). Then, we can clone it to our local environment using SSH for development. After completing the development, we can initiate a pull request on GitHub. If the original project owner finds your changes suitable, they will merge them into the existing open-source project.
 
 ### GitHub CLI
 
-GitHub CLI es una herramienta de línea de comandos de GitHub que permite utilizar funciones como pull requests e issues en la línea de comandos. Descarga: [**cli.github.com**](https://cli.github.com/) GitHub CLI está actualmente en versión beta y vale la pena probarlo.
+GitHub CLI is a command-line tool for GitHub that brings features like pull requests, issues, and more to the command line. 
+Download link: [**cli.github.com**](https://cli.github.com/)
+GitHub CLI is currently in beta and worth trying.
 
-## Referencias y agradecimientos
+## References and Acknowledgments
 
 - [Tutorial de Git - Liao Xuefeng](https://www.liaoxuefeng.com/wiki/896043488029600)
-- [Cómo utilizar Git para la gestión de ramas en proyectos reales](https://blog.csdn.net/ShuSheng0007/article/details/80791849)
-- [Un modelo de ramificación exitoso para Git](https://nvie.com/posts/a-successful-git-branching-model/)
+- [Cómo utilizar Git en proyectos reales para la gestión de ramas](https://blog.csdn.net/ShuSheng0007/article/details/80791849)
+- [Un modelo exitoso de ramificación en Git](https://nvie.com/posts/a-successful-git-branching-model)
 - [git-cheatsheet.pdf](https://github.com/linyuxuanlin/File-host/blob/main/software-development/git-cheatsheet.pdf)
 - [Pro Git](https://git-scm.com/book/zh/v2)
 - [GitHub CLI - Manual](https://cli.github.com/manual/)
-- [Más de 20 hermosas imágenes para adentrarse en el mundo de Git](https://mp.weixin.qq.com/s/oTtMQFEI9J5ymqt6SQ0PFg)
+- [Más de 20 imágenes de calidad para introducirte en el mundo de Git](https://mp.weixin.qq.com/s/oTtMQFEI9J5ymqt6SQ0PFg)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
+> Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

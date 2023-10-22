@@ -1,37 +1,37 @@
 # HAL Library Development Notes - USB Communication 🚧
 
-This article is based on the self-developed RobotCtrl development kit, with the MCU core as STM32F407ZET6 and USB_Slave pins as `PA11` and `PA12`. For schematic and detailed introduction, please refer to [**RobotCtrl - STM32 Universal Development Kit**](https://wiki-power.com/en/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
+In this article, based on our in-house RobotCtrl development kit, the microcontroller core is the STM32F407ZET6, and the USB_Slave pins are `PA11` and `PA12`. For schematic diagrams and detailed information, please refer to [**RobotCtrl - STM32 Universal Development Kit**](to_be_replace[3]).
 
-## Simple Steps for Loopback Test
+## Simple Steps for Loopback Testing
 
 ### Configuration in CubeMX
 
-1. Configure as External High Speed Clock (HSE).
-2. Configure the clock tree to ensure that the end of the clock tree `48MHz Clocks (MHz)` is 48MHz.
-3. On the `USB_OTG_FS` page, configure `Mode` as `Device_Only`, and the default pins are `PA11` and `PA12`.
-4. On the `USB_DEVICE` page, configure `Class For FS IP` as `Communication Device Class (Virtual Port Com)`.
+1. Configure for an external high-speed clock (HSE).
+2. Set up the clock tree to ensure the end of the clock tree shows `48MHz Clocks (MHz)` as 48MHz.
+3. On the `USB_OTG_FS` page, configure the `Mode` as `Device_Only`, and the default pins are `PA11` and `PA12`.
+4. On the `USB_DEVICE` page, set `Class For FS IP` to `Communication Device Class (Virtual Port Com)`.
 
-### Configuration in Code
+### Configuration in the Code
 
-To implement the data loopback function, just add a line in the `CDC_Receive_FS` function of the `usbd_cdc_if.c` file:
+To implement data loopback functionality, you only need to add the following line inside the `CDC_Receive_FS` function in the `usbd_cdc_if.c` file:
 
 ```c title="usbd_cdc_if.c"
-CDC_Transmit_FS(Buf,*Len); // Return the same data
+CDC_Transmit_FS(Buf, *Len); // Returns the same data
 ```
 
 ### Testing
 
-Open the device manager to see if the device is displayed. If the device is not found or there is a yellow exclamation mark, please download the driver [**STM32 Virtual COM Port Driver**](https://www.st.com/content/st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-utilities/stsw-stm32102.html) from the ST official website.
+Open the Device Manager to check if the device is displayed. If you don't see the device or if there is a yellow exclamation mark, please download the driver from the ST official website [**STM32 Virtual COM Port Driver**](https://www.st.com/content/st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-utilities/stsw-stm32102.html).
 
-If the driver has been installed but still cannot be recognized properly, try adjusting the `Minimum Heap Size` to `0x600` or higher in CubeMX - `Project Manager` - `Project` - `Linker Settings`.
+If you have installed the driver and the device is still not recognized correctly, you can try adjusting the `Minimum Heap Size` in CubeMX - `Project Manager` - `Project` - `Linker Settings` to `0x600` or higher.
 
-Open a serial port tool (with any baud rate) and send any character, which will return the same character.
+Open a terminal tool (any baud rate) and send any character. You will receive the same character in response.
 
 ## References and Acknowledgments
 
-- [STM32 Using CubeMX HAL Library to Quickly Generate USBVCP Virtual Serial Port Project](https://blog.csdn.net/yxy244/article/details/102620249)
+- [Quickly Generating USBVCP Virtual Serial Port Projects with STM32 using CubeMX HAL Library](https://blog.csdn.net/yxy244/article/details/102620249)
 
-> Original: <https://wiki-power.com/>  
+> Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

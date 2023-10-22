@@ -1,72 +1,74 @@
 # Notas de desarrollo de la biblioteca HAL - GPIO
 
-## Principios básicos
+## Principios Básicos
 
-GPIO significa **puerto de entrada/salida general** (General Purpose Input Output).
+GPIO es el acrónimo de **General Purpose Input Output** (Entrada/Salida de Propósito General).
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200615205256.jpg)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200615205256.jpg)
 
-Tomemos como ejemplo el chip F103C8T6 (en la imagen de arriba), todo lo que no sean los pines de color (pines de alimentación y algunos pines de función) se llaman GPIO. Se puede ver su grado de generalidad.
+Tomemos como ejemplo el chip F103C8T6 (ver imagen de arriba). Aparte de los pines de color (que son para alimentación y algunas funciones específicas), todos los demás se llaman GPIO. Esto demuestra su versatilidad.
 
-La función de GPIO es la entrada/salida de señales eléctricas. Echemos un vistazo a su estructura interna:
+La función de GPIO es la de entrada/salida de señales eléctricas. Echemos un vistazo a su estructura interna:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200615211744.jpg)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200615211744.jpg)
 
-- El pin I/O más a la derecha es el pin del chip físico. Las dos diodos de protección arriba y abajo pueden prevenir en cierta medida que el voltaje anormal externo queme el chip a través del pin.
-- El cuadro de línea roja es la función de entrada (el chip lee la señal externa). Las dos resistencias de pull-up/pull-down con interruptores son para implementar la función de entrada de pull-up/pull-down. Si ambos interruptores no están cerrados, lo llamamos entrada flotante (no hay nivel de referencia). Los tres modos de entrada leen una cantidad digital (nivel alto/bajo). Además, también hay una función de entrada analógica, que se entiende como la lectura directa de la señal analógica en el pin. (Hablaremos de la función de entrada de función múltiple más adelante).
-- El cuadro de línea azul es la función de salida. Hay cuatro modos de salida: push-pull, open-drain, push-pull de función múltiple y open-drain de función múltiple.
+- Los pines I/O más a la derecha son los pines físicos del chip. Las dos "diodos de protección" superior e inferior evitan que las tensiones anormales desde el exterior dañen el chip.
+- Dentro del recuadro rojo punteado se encuentra la función de entrada (lectura de señales externas). Los dos interruptores con resistencias pull-up/pull-down permiten la activación de entradas con polaridad definida. Si ambos interruptores están abiertos, se denomina entrada en flotación (sin referencia de nivel lógico). Los tres modos de entrada mencionados proporcionan valores lógicos (alto/bajo). Además, existe la función de entrada analógica que lee directamente la señal analógica en el pin (mencionaremos la función multiplexada más adelante).
+- Dentro del recuadro azul punteado se encuentra la función de salida. Hay cuatro modos de salida: push-pull, drenaje abierto, push-pull multiplexado y drenaje abierto multiplexado.
 
-### Modos de entrada/salida
+### Modos de Entrada y Salida
 
 Modos de entrada:
 
-- **Entrada flotante**: ni pull-up ni pull-down, el modo predeterminado después del reinicio del STM32.
-- **Entrada pull-up**: cierre el interruptor de la resistencia pull-up para mantener el nivel de referencia siempre en alto, y se activará cuando la señal de entrada sea de nivel bajo.
-- **Entrada pull-down**: cierre el interruptor de la resistencia pull-down para mantener el nivel de referencia siempre en bajo, y se activará cuando la señal de entrada sea de nivel alto.
-- **Entrada analógica**: en este modo, ni pull-up ni pull-down, ni pasa por el disparador TTL, el STM32 lee directamente la señal analógica en el pin.
+- **Entrada en flotación**: Ni pull-up ni pull-down activados, modo predeterminado después del reinicio del STM32.
+- **Entrada pull-up**: Activación de la resistencia pull-up, manteniendo el nivel lógico alto como referencia, lo que activa la entrada cuando la señal es baja.
+- **Entrada pull-down**: Activación de la resistencia pull-down, manteniendo el nivel lógico bajo como referencia, lo que activa la entrada cuando la señal es alta.
+- **Entrada analógica**: En este modo, ni pull-up ni pull-down están activados y la señal se lee directamente sin pasar por un disparador TTL.
 
 Modos de salida:
 
-- **Salida open-drain**: open-drain se refiere a la fuga de la fuente del N-MOSFET (el pin de arriba), este modo solo utiliza el N-MOSFET de abajo. Sabemos que el MOSFET es un componente controlado por voltaje. Entendámoslo como un grifo, cuando se ingresa una señal de nivel bajo al electrodo de la puerta del N-MOSFET (el pin izquierdo), el N-MOSFET se enciende.
-- **Salida push-pull**: hay dos modos de push-pull, el primer modo es enviar una señal de nivel bajo a los electrodos de la puerta de los dos MOSFET al mismo tiempo, en este momento el P-MOSFET está encendido y el N-MOSFET está apagado, la corriente fluye desde VDD hacia el pin externo, y el pin es de nivel alto. El segundo modo es lo contrario, enviar una señal de nivel alto a los electrodos de la puerta de los dos MOSFET al mismo tiempo, en este momento el P-MOSFET está apagado y el N-MOSFET está encendido, la corriente fluye desde el pin externo hacia el GND interno, y el pin es de nivel bajo.
-- **Salida open-drain de función múltiple**
-- **Salida push-pull de función múltiple**
+- **Salida drenaje abierto**: El "drenaje abierto" se refiere a la apertura del drenaje del transistor N-MOS (el pin superior en la imagen). Este modo utiliza únicamente el transistor N-MOS inferior. Recordemos que los transistores MOS son componentes controlados por voltaje. Imaginemos un grifo de agua: cuando se aplica un nivel bajo al terminal de puerta (el pin izquierdo), el N-MOS conduce.
+- **Salida push-pull**: El push-pull tiene dos modos. En el primer modo, se aplica un nivel bajo a los terminales de puerta de ambos transistores MOS, lo que permite que el P-MOS conduzca y el N-MOS esté en corte. En este caso, la corriente fluye desde VDD hacia el pin de salida, lo que genera un nivel alto en el pin. En el segundo modo, se aplica un nivel alto a los terminales de puerta de ambos transistores, lo que permite que el N-MOS conduzca y el P-MOS esté en corte. En este caso, la corriente fluye desde el pin de salida hacia el GND interno, lo que genera un nivel bajo en el pin.
+- **Salida drenaje abierto multiplexado**
+- **Salida push-pull multiplexado**
 
-### Referencia de funciones GPIO comunes
+### Funciones GPIO comunes de uso
 
-Leer el estado GPIO, devolver nivel alto/bajo:
+Para leer el estado de GPIO y obtener un nivel alto o bajo:
 
 ```c
 GPIO_PinState HAL_GPIO_ReadPin(GPIOx, GPIO_Pin);
 ```
 
-Escribir el estado GPIO, escribir nivel alto/bajo:
+Para escribir el estado de GPIO y establecer un nivel alto o bajo:
 
 ```c
 HAL_GPIO_WritePin(GPIOx, GPIO_Pin, PinState);
 ```
 
-Invertir el nivel GPIO:
+Para cambiar el estado de GPIO:
 
 ```c
 HAL_GPIO_TogglePin(GPIOx, GPIO_Pin);
 ```
 
-## Encender el LED
+## Encender un LED
 
-Antes de continuar con el siguiente experimento, es necesario configurar varios parámetros como la descarga de la serie, el reloj, etc. en CubeMX. No se explicará aquí, por favor consulte el método en el artículo [**Notas de desarrollo de la biblioteca HAL - Configuración del entorno**](https://wiki-power.com/es/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE).
+Antes de continuar con el siguiente experimento, es necesario configurar diversos parámetros en CubeMX, como la descarga de serie y la configuración de reloj.
+No abordaremos estos detalles aquí, por favor refiérase al artículo [**Notas de desarrollo de la biblioteca HAL - Configuración del entorno**](enlace_a_la_configuración).
 
-### Configuración GPIO en CubeMX
+### Configuración de GPIO en CubeMX
 
-Configure el puerto GPIO correspondiente al LED como salida y establezca el nivel inicial.
+Configure los pines GPIO correspondientes a los LEDs como salidas y establezca el nivel inicial.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210205150422.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210205150422.png)
 
-En mi placa, necesito configurar los GPIO `PD4` y `PI3` como salida (`GPIO_Output`). Si quiero que se enciendan al encender, según el esquema del circuito, debo establecer el potencial inicial como bajo (`Low`).
+En mi placa, los pines `PD4` y `PI3` deben configurarse como salidas (`GPIO_Output`). Si desea que el LED se encienda al encender la alimentación, según el diagrama eléctrico, establezca el nivel inicial en "Bajo" (`Low`).
 
 ### Configuración de GPIO en el código
 
-Si la configuración es correcta, los dos LED de usuario se encenderán al encender. Si desea agregar un efecto intermitente, simplemente agregue algunas líneas de código en el área de código de usuario del bucle principal:
+
+Si la configuración es correcta, al encender el dispositivo, se iluminarán dos LEDs de usuario. Si deseas agregar un efecto intermitente, solo necesitas agregar algunas líneas de código en la zona de código de usuario del bucle principal:
 
 ```c title="main.c"
 /* USER CODE BEGIN 3 */
@@ -79,54 +81,56 @@ HAL_GPIO_TogglePin(GPIOI, GPIO_PIN_3);
 /* USER CODE END 3 */
 ```
 
-Esto logrará el efecto intermitente.
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210205151322.png)
 
-## Control de luz con botón
+Esto permitirá lograr el efecto intermitente.
 
-Después de aprender sobre la salida GPIO, usaremos un botón para aprender sobre el modo de entrada GPIO.
+## Control de LEDs mediante pulsadores
+
+Después de aprender sobre la salida GPIO, ahora vamos a aprender sobre el modo de entrada GPIO utilizando pulsadores.
 
 ### Configuración de GPIO en CubeMX
 
-Después de configurar el puerto GPIO al que pertenece el LED según el método anterior, según el esquema del botón de la placa:
+Después de configurar el puerto GPIO al que pertenecen los LEDs de acuerdo con el método mencionado anteriormente, siguiendo el esquemático de los pulsadores en la placa:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210205150422.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210205150422.png)
 
-Configure el GPIO al que pertenece el botón (`PI8`) como entrada (`GPIO_Input`). Según el esquema, seleccione la resistencia pull-up interna (`Pull-up`). Genere el código.
+Configura el GPIO del pulsador (`PI8`) como entrada (`GPIO_Input`) y selecciona la resistencia de pull-up interna (`Pull-up`) según el esquemático. Luego, genera el código.
 
 ### Configuración de GPIO en el código
 
-Agregue el siguiente código al área de código de usuario del bucle principal:
+Agrega el siguiente código en la zona de código de usuario del bucle principal:
 
 ```c title="main.c"
 /* USER CODE BEGIN 3 */
 
 if(HAL_GPIO_ReadPin(KEY1_GPIO_Port,KEY1_Pin)==0)
 {
-	HAL_Delay(100);
-	if(HAL_GPIO_ReadPin(KEY1_GPIO_Port,KEY1_Pin)==0)
-	{
-		HAL_GPIO_WritePin(LED1_GPIO_Port,LED1_Pin,GPIO_PIN_RESET);
-	}
+    HAL_Delay(100);
+    if(HAL_GPIO_ReadPin(KEY1_GPIO_Port,KEY1_Pin)==0)
+    {
+        HAL_GPIO_WritePin(LED1_GPIO_Port,LED1_Pin,GPIO_PIN_RESET);
+    }
 }else{
-	HAL_GPIO_WritePin(LED1_GPIO_Port,LED1_Pin,GPIO_PIN_SET);
+    HAL_GPIO_WritePin(LED1_GPIO_Port,LED1_Pin,GPIO_PIN_SET);
 }
 
 }
 /* USER CODE END 3 */
 ```
 
-Esto logrará el efecto de encender la luz al presionar el botón y apagarla al soltarlo.
+Esto permitirá que al presionar el pulsador, se encienda el LED, y al soltar el pulsador, se apague el LED.
 
-Muchas personas no entienden qué significan `GPIO_PIN_SET` y `GPIO_PIN_RESET`. De hecho, la función de estas dos variables es simplemente establecer el nivel alto / bajo del pin GPIO. La luz específica está encendida o apagada, dependiendo del esquema del circuito.
+Muchas personas pueden confundirse acerca de lo que significa `GPIO_PIN_SET` y `GPIO_PIN_RESET`. Estas dos variables simplemente establecen el nivel alto o bajo del pin GPIO. Si el LED está encendido o apagado depende del esquemático del circuito.
 
-Además, la función de `HAL_Delay(100)` es eliminar el rebote del botón. Sin embargo, la función `HAL_Delay()` utiliza una encuesta, lo que ocupará recursos y causará bloqueos. En el próximo artículo, usaremos interrupciones de hardware para resolver esta deficiencia.
+Además, la función `HAL_Delay(100)` se utiliza para eliminar el rebote del pulsador en el código. Sin embargo, la función `HAL_Delay()` utiliza un enfoque de espera activa, lo que puede consumir recursos y hacer que el sistema se bloquee. En el próximo artículo, abordaremos esta limitación utilizando interrupciones de hardware.
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
-- [【STM32】STM32CubeMX Tutorial 2 - Uso básico (Crear un proyecto para encender un LED)](https://blog.csdn.net/as480133937/article/details/98947162)
-- [STM32CubeMX Tutorial práctico (2) - Encender un LED con un botón](https://blog.csdn.net/weixin_43892323/article/details/104343933)
+- [Tutorial STM32CubeMX - Fundamentos para encender un LED](https://blog.csdn.net/as480133937/article/details/98947162)
+- [STM32CubeMX Practical Tutorial Part 2 - LED Control with Buttons](https://blog.csdn.net/weixin_43892323/article/details/104343933)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+[Reemplazar[1]]
+[Reemplazar[2]]
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
