@@ -1,239 +1,251 @@
 # Basics of ADC and DAC
 
-In the real world, most signals are analog, such as temperature, sound, and air pressure. However, in signal processing and transmission, digital signals are often used to reduce noise interference. Therefore, we often convert analog signals from the real world into digital signals through ADC for calculation, transmission, and storage, and then convert them back into analog signals through DAC to present them.
+In the real world, most common signals are analog, such as temperature, sound, and pressure. However, in signal processing and transmission, digital signals are often used to reduce noise interference. Therefore, we frequently convert real-world analog signals into digital signals through ADC for computation, transmission, and storage, and then convert them back to analog signals using DAC for presentation.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220724210409.png)
+![ADC and DAC](https://img.wiki-power.com/d/wiki-media/img/20220724210409.png)
 
-However, it should be noted that analog signals in the real world are continuous, which means they have infinite resolution. But after being converted into digital signals, a certain degree of precision will be lost, and both time and amplitude will become discrete values.
+It's important to note that analog signals in the real world are continuous, meaning they have infinite resolution. However, when converted into digital form, a certain level of precision is lost, and both time and amplitude become discrete values.
 
 ## Basic Principles of ADC
 
-ADC (Analog-to-Digital Converter) refers to an analog/digital converter that can convert real-world analog signals, such as temperature, pressure, sound, or images, into digital form that is easier to store, process, and transmit.
+ADC, which stands for Analog-to-Digital Converter, is a device that converts real-world analog signals like temperature, pressure, sound, or images into a digital form that's easier to store, process, and transmit.
 
 ### Sampling
 
-Because the input analog signal is continuous and the output digital signal is discrete, only instantaneous sampling can be performed, and then the sampled value is converted into the output digital signal, and the next round of sampling begins.
+Since the input analog signal is continuous, and the desired output is discrete, we can only perform instantaneous sampling. The sampled values are then converted into digital quantities, and the process repeats for the next round of sampling.
 
-In order to accurately represent the analog input signal $v_1$ with the signal $v_s$, the sampling theorem must be satisfied, that is, the sampling frequency $f_s$ must be at least twice the highest frequency component $f_{i(max)}$ of the analog input signal (usually 3-5 times is taken, but too high frequency requires faster working speed, which needs to be considered comprehensively):
+To accurately represent the analog input signal $v_1$ with the signal $v_s$, we need to satisfy the Nyquist sampling theorem. This means that the sampling frequency $f_s$ should be at least twice the maximum frequency component $f_{i(max)}$ of the analog input signal (typically, 3-5 times is chosen, but very high frequencies require faster operation, considering cost):
 
 $$
 f_s≥2\cdot f_{i(max)}
 $$
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220724180529.png)
+As long as the Nyquist theorem is satisfied, a low-pass filter can be used to restore $v_s$ to $v_1$. The filter voltage transfer function should remain constant for frequencies below $f_{i(max)}$ and rapidly decrease to zero before $f_s-f_{i(max)}$.
 
-As long as the sampling theorem is satisfied, the low-pass filter can be used to restore $v_s$ to $v_1$. The voltage transmission coefficient of the filter should remain unchanged when it is lower than $f_{i(max)}$, and rapidly decrease to 0 before $f_s-f_{i(max)}$.
+![Sampling](https://img.wiki-power.com/d/wiki-media/img/20220724180529.png)
 
-### Hold
+### Holding
 
-The hold circuit can keep the signal for a period of time after sampling is completed, allowing the ADC to have sufficient time for conversion. Generally, the higher the sampling pulse frequency and the denser the sampling, the more sampling values there are, and the output signal of the sampling-hold circuit is closer to the waveform of the input signal. The basic form of the sampling-hold circuit is as follows:
+A holding circuit allows the signal to be maintained for a certain duration after sampling, giving the ADC enough time to perform the conversion. Generally, the higher the sampling pulse frequency and the denser the sampling, the more sampled values are obtained, and the output signal of the sample-and-hold circuit will closely resemble the waveform of the input signal. The basic form of a sample-and-hold circuit is as follows:
 
-```markdown
+![Sample and Hold](https://img.wiki-power.com/d/wiki-media/img/20220723161306.png)
 
-```
+The basic steps of sample and hold are:
 
-Sampling - Basic Steps of Holding:
-
-1. When the sampling control signal $v_L$ is high, the MOS transistor $T$ conducts, and $v_1$ charges the capacitor $C_H$ through resistor $R_1$ and MOS transistor $T$.
+1. When the sampling control signal $v_L$ is high, MOS transistor $T$ is turned on, and $v_1$ charges the capacitor $C_H" through resistor $R_1$ and MOS transistor $T$.
 2. If $R_1=R_F$, then after charging, $v_0=v_c=-v_1$.
-3. When the sampling control signal $v_L$ falls back to the low level, the MOS transistor $T$ is cut off, and the voltage on the capacitor $C_H$ will not change abruptly, so $v_0$ can also be held for a period of time, and the sampling result can be recorded.
+3. When the sampling control signal $v_L$ falls back to a low level, MOS transistor $T$ turns off, and the voltage on capacitor $C_H$ does not change suddenly, so $v_0$ can be maintained for a period, allowing the sampling result to be recorded.
 
 ### Quantization
 
-The digital quantity obtained by sampling must be an integer multiple of a certain specified minimum value unit, and this conversion process is called quantization, and the minimum quantity unit taken is called the quantization unit $\Delta$. The size of the quantity represented by the lowest effective bit LSB of the digital signal is equal to $\Delta$.
+The digital quantity obtained through sampling must be an integer multiple of a specified minimum unit value. This process is called quantization, and the minimum unit value is known as the quantization unit Δ. The magnitude represented by the least significant bit (LSB) of the digital signal is equal to Δ.
 
-Because the analog voltage is continuous, it may not be divisible by $\Delta$, resulting in quantization error.
+Because analog voltage is continuous, it may not be divisible by Δ, resulting in quantization error.
 
-The finer the quantization level, the smaller the quantization error, the more binary code bits are used, and the circuit is more complex.
+The finer the quantization level, the smaller the quantization error, but it requires more binary bits, making the circuit more complex.
 
 ### Encoding
 
-Representing the quantized result in binary (or other base) is called encoding.
+The quantized result is represented in binary (or another base), which is known as encoding.
 
 ## Common Types of ADC
 
-### Parallel Comparison Type (Flash)
+### Parallel Comparator (Flash)
 
-Parallel comparison type ADC, also known as Flash ADC, belongs to direct ADC, which can directly convert the input analog voltage into output digital quantity without intermediate variable conversion. It consists of a series of voltage comparators, each of which compares the input signal with a unique divided reference voltage. The output of the comparator is connected to the input of the encoder circuit, generating binary output.
+The parallel comparator ADC, also known as Flash ADC, belongs to the direct ADC category. It directly converts the input analog voltage into digital output without any intermediate variable conversion. It consists of a series of voltage comparators, each of which compares the input signal with a unique divided reference voltage. The outputs of the comparators are connected to the input of the encoder circuit, generating binary output.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220723163931.png)
+![Flash ADC](https://img.wiki-power.com/d/wiki-media/img/20220723163931.png)
 
-Not only is it the simplest in operation theory, but it is also the most efficient ADC technology in terms of speed, only limited by the comparator and gate propagation delay. Unfortunately, for any given number of output bits, it is the most dense component.
+Not only is it the simplest in terms of operational theory, but it is also the most efficient in terms of speed, limited only by the comparator and gate propagation delays. Unfortunately, for any given number of output bits, it is the densest component.
 
-The conversion speed of parallel comparison type ADC is the fastest, but the disadvantage is that it requires many voltage comparators and large-scale code conversion circuits (common parallel comparison type outputs are mostly below 8 bits).
+The fastest conversion speed is achieved by the parallel comparative type ADC, but its drawback lies in the requirement for numerous voltage comparators and large-scale code conversion circuits (commonly used parallel comparative outputs are mostly below 8 bits).
 
 ### Successive Approximation Type
 
-The Successive Approximation ADC uses a feedback comparison circuit structure, consisting of a comparator, DAC, register, clock pulse source, and control logic:
+The Successive Approximation ADC employs a feedback comparative circuit structure composed of comparators, DAC, registers, clock pulse source, and control logic, as shown below:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220723211839.png)
+![Successive Approximation ADC](https://img.wiki-power.com/d/wiki-media/img/20220723211839.png)
 
-The principle is to set a digital quantity, obtain a corresponding output analog voltage through the DAC, and sequentially compare this analog voltage with the input analog voltage signal starting from the highest bit. If they are not equal, adjust the selected digital quantity until the two analog voltages are equal, and the final selected digital quantity is the conversion result. The process is like using a balance to weigh an object's weight by adding larger weights first and then gradually adding or replacing smaller weights.
+The principle involves setting a digital value and obtaining a corresponding analog voltage output via the DAC. This analog voltage is sequentially compared to the input analog voltage signal starting from the highest bit. If they are not equal, the digital value is adjusted until the two analog voltages are equal. The final digital value obtained is the desired conversion result. This process is akin to weighing an object's position and weight using a balance, starting with larger weights and successively adding or replacing smaller weights.
 
-The advantages of the Successive Approximation ADC are high speed, low power consumption, and cost-effectiveness in low resolution (12-bit); the disadvantages are generally slower conversion rate and medium circuit size.
+The advantages of the Successive Approximation ADC include high speed, low power consumption, and cost-effectiveness at low resolutions (12 bits). However, its drawback is the average conversion rate and moderate circuit size.
 
-The Dual-Integration ADC is an indirect ADC that first converts the input analog voltage signal into a time width signal proportional to it, and then counts the fixed-frequency clock pulses within this time width, and the counted value is the digital signal proportional to the analog input voltage. Therefore, this type of ADC is also called a Voltage-Time Transformation (V-T) ADC.
+### Dual Integration Type (V-T)
 
-The Dual-Integration ADC consists of an integrator, comparator, counter, control logic, and clock signal source, as shown in the figure:
+The Dual Integration ADC is an indirect ADC that first converts the input analog voltage signal into a time-width signal directly proportional to it. Within this time width, a fixed-frequency clock is counted, and the count value represents the digital signal proportional to the analog input voltage. Therefore, this type of ADC is also referred to as the Voltage-Time Transformation (V-T) ADC.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220723213208.png)
+The Dual Integration ADC is composed of integrators, comparators, counters, control logic, and a clock signal source, as illustrated below:
 
-The advantages of the Dual-Integration ADC are stable performance (two integrations, excluding RC parameter differences) and strong anti-interference ability (integration is less affected by noise); the disadvantages are low conversion rate (conversion accuracy depends on integration time).
+![Dual Integration ADC](https://img.wiki-power.com/d/wiki-media/img/20220723213208.png)
 
-The Σ-Δ Modulation ADC works differently from the parallel and successive approximation ADCs mentioned above. It does not quantize and encode the absolute value of the sampled signal, but quantizes and encodes the difference (increment) between two adjacent sampled values. Its basic structure is as follows:
+The advantages of the Dual Integration ADC are stable performance (due to double integration, eliminating differences in RC parameters) and strong resistance to interference (minimal impact from noise on the integration process). However, its drawback is the low conversion rate (conversion accuracy depends on integration time).
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220723230949.png)
+### Σ-Δ Type
 
-It consists of a linear voltage integrator, a 1-bit output quantizer, a 1-bit input DAC, and a summing circuit. The output digital signal V0 processed by the quantizer is converted to an analog signal VF by the DAC and fed back to the input summing circuit for negative feedback, subtracted from the input signal v1, and the difference vD is obtained. The integrator linearly integrates vD and outputs the voltage VINT to the quantizer, which quantizes it into a 1-bit digital output. Since a 1-bit output quantizer is used, the output signal V0 is a data stream composed of 0 and 1 in continuous operation.
+The Σ-Δ Modulation ADC operates on a principle distinct from parallel and successive approximation ADCs mentioned earlier. Instead of quantifying and encoding the absolute value of the sampled signal, it quantifies and encodes the difference (increment) between two consecutive sampled values. Its basic structure is depicted below:
 
-The advantage of Σ-Δ modulation ADC is that high-resolution measurement can be easily achieved, but the disadvantage is low conversion rate and large circuit scale.
+![Σ-Δ Modulation ADC](https://img.wiki-power.com/d/wiki-media/img/20220723230949.png)
 
-### Voltage-Frequency Conversion (V-F)
+It consists of a linear voltage integrator, a 1-bit output quantizer, a 1-bit input DAC, and a summation circuit. The quantized output signal $V_0$ is converted to an analog signal $V_F$ through the DAC and fed back to the input summation circuit. This feedback is subtracted from the input signal $v_1$ to yield the difference $v_D$. The integrator linearly integrates $v_D," generating an output voltage $v_{INT}$ for the quantizer, which quantizes it into a 1-bit digital output. Because it employs a 1-bit output quantizer, the output signal $V_0$ in continuous operation is a data stream composed of 0s and 1s.
 
-Voltage-Frequency Conversion (V-F) ADC is an indirect ADC. It mainly consists of a V-F converter (also called a voltage-controlled oscillator, VCO), a counter and its clock signal control gate, a register, a monostable trigger, and other parts:
+The Σ-Δ Modulation ADC's advantages include achieving high-resolution measurements with ease. However, its drawbacks are a low conversion rate and a large circuit size.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220723233236.png)
+### Voltage-Frequency Transformation Type (V-F)
 
-Its principle is:
+The Voltage-Frequency Transformation (V-F) ADC is another indirect ADC consisting mainly of a V-F converter (also known as a Voltage Controlled Oscillator, VCO), a counter with its clock signal control gate, registers, and a monostable trigger, as shown here:
 
-- Convert the input analog voltage signal into the corresponding frequency signal.
-- Count the frequency signal within a fixed time.
-- The counting result is proportional to the amplitude of the input voltage.
+![Voltage-Frequency Transformation ADC](https://img.wiki-power.com/d/wiki-media/img/20220723233236.png)
 
-## Main Parameters of ADC
+The principle involves:
 
-- **Resolution**: The amount of change in analog voltage required to produce a change of one unit in the digital output. It is usually expressed in binary digits, with a resolution of n indicating that the full scale (FS) is divided into 2^n equal parts.
-- **Quantization Error**: The error introduced by the finite number of bits used to represent the analog signal in the ADC. To accurately represent the analog signal, the number of bits in the ADC needs to be very large or even infinite, so all ADC devices have quantization errors. The maximum deviation between the step-like conversion characteristic curve of an ADC with limited resolution and the conversion characteristic curve of an ADC with infinite resolution is the quantization error.
+- Converting the input analog voltage signal into a corresponding frequency signal.
+- Counting the frequency signal over a fixed time period.
+- The count result is proportional to the amplitude of the input voltage.
+
+## Key ADC Parameters
+
+- **Resolution**: The resolution refers to the change in analog voltage that is required to produce a one-unit change in the digital output. It is typically represented in binary bits, where a resolution of 'n' means it is one part in 2^n of the full scale 'Fs'.
+
+- **Quantization Error**: It is the error introduced when quantizing an analog signal with a finite number of bits in an ADC. To accurately represent analog signals, the number of bits in the ADC would need to be very large, or even infinite, which is not practical. Thus, all ADC devices have quantization errors. The quantization error is the maximum deviation between the step-like conversion characteristic curve of a finite-resolution ADC and the conversion characteristic curve of an ADC with infinite resolution.
+
 - **Conversion Rate**: The number of conversions performed per second.
-- **Conversion Range**: The maximum voltage that an ADC can measure, which is usually equal to the reference voltage. Exceeding this voltage may damage the ADC. When the signal is small, the reference voltage can be lowered to improve the resolution. Changing the reference voltage will also change the corresponding conversion value. When calculating the actual voltage, the reference voltage needs to be taken into account, so the reference voltage should generally be stable and free of high-order harmonics.
-- **Offset Error**: The value of the ADC conversion output signal when the input signal is 0.
-- **Full Scale Error**: The difference between the input signal corresponding to the full scale output of the ADC and the ideal input signal value.
-- **Linearity**: The maximum deviation between the actual transfer function of the ADC and the ideal straight line.
+
+- **Conversion Range**: The maximum voltage that an ADC can measure, which is generally equal to the reference voltage. Exceeding this voltage can potentially damage the ADC. When dealing with smaller signals, it's possible to reduce the reference voltage to enhance resolution. However, altering the reference voltage will also change the corresponding conversion values. Therefore, it's important for the reference voltage to be stable and free from high-order harmonics.
+
+- **Offset Error**: When the ADC input signal is zero, but the ADC conversion output signal is not zero, there is an offset error.
+
+- **Full-Scale Error**: The difference between the input signal corresponding to the full-scale output of the ADC and the ideal input signal value.
+
+- **Linearity**: The maximum deviation of the actual transfer function of an ADC from an ideal straight line.
 
 ## Basic Principles of DAC
 
-DAC (Digital-to-Analog Converter) refers to a digital/analog converter that can convert digital signals into proportional analog voltage or current. For example, a computer may produce digital output ranging from `00000000` to `11111111`, and the DAC converts it into a voltage ranging from 0 to 10V. From a basic principle, DAC can be divided into two types: current summing type and voltage divider type.
+DAC (Digital-to-Analog Converter) is a device that converts digital data into proportional analog voltage or current. For example, a computer might generate digital output ranging from `00000000` to `11111111`, and a DAC converts this into a voltage ranging from 0 to 10V. DACs can be broadly categorized into two types based on their basic principles: current summing type and voltage divider type.
 
-## Common Types of DAC
+## Common Types of DACs
 
-### Switched Resistor
+### Switched Resistor Type
 
-Switched resistor DAC is the simplest and most direct type of DAC, consisting of a resistor divider and a tree-like switch network:
+The switched resistor DAC is the simplest type of DAC, consisting of a resistor voltage divider and a tree-like network of switches:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220724172844.png)
+![Switched Resistor DAC](https://img.wiki-power.com/d/wiki-media/img/20220724172844.png)
 
-These switches are controlled by 3-bit inputs $d_0,d_1,d_2$, and we have:
-
-$$
-v_0=\frac{V_{REF}}{2^1} d_2+\frac{V_{REF}}{2^2} d_1+\frac{V_{REF}}{2^3} d_0
-$$
+These switches are controlled by 3-bit inputs $d_0, d_1, d_2$, and the output is calculated as follows:
 
 $$
-v_0=\frac{V_{REF}}{2^3} (d_2 2^2+d_1 2^1+d_0 2^0)
+v_0 = \frac{V_{REF}}{2^1} d_2 + \frac{V_{REF}}{2^2} d_1 + \frac{V_{REF}}{2^3} d_0
 $$
 
-Furthermore, for an n-bit binary input switch tree DAC, the output is:
-
 $$
-v_0=\frac{V_{REF}}{2^n} (d_{n-1} 2^{n-1}+d_{n-2} 2^{n-2}+...+d_1 2^1+d_0 2^0)
+v_0 = \frac{V_{REF}}{2^3} (d_2 2^2 + d_1 2^1 + d_0 2^0)
 $$
 
-The switch tree DAC has the advantage of a single type of resistor and low requirements for switch conduction resistance when the output terminal does not take current. However, the disadvantage is that it uses too many switches.
+Furthermore, for an n-bit binary input in the switched resistor DAC, the output is given by:
+
+$$
+v_0 = \frac{V_{REF}}{2^n} (d_{n-1} 2^{n-1} + d_{n-2} 2^{n-2} + \ldots + d_1 2^1 + d_0 2^0)
+$$
+
+The switched resistor DAC is characterized by its use of a single type of resistor and does not require high switch conduction resistance at the output. However, it has the drawback of using many switches.
 
 ### Weighted Resistor Network
 
-The weight refers to the value represented by each bit of a multi-bit binary number. For example, for an n-bit binary number $D_n=d_{n-1}d_{n-2}...d_1 d_0$, the weights from the most significant bit (MSB) to the least significant bit (LSB) are $2^{n-1},2^{n-2}...2^1,2^0$.
+The term "weight" refers to the value that each 1 in a multi-bit binary number represents. For example, in an n-bit binary number $D_n = d_{n-1}d_{n-2}\ldots d_1 d_0$, the weights from the most significant bit (MSB) to the least significant bit (LSB) are $2^{n-1}, 2^{n-2}, \ldots, 2^1, 2^0$.
 
-The principle of the weighted resistor network DAC (which belongs to the voltage output type) is shown in the following figure (4 bits), which consists of a weighted resistor network, 4 analog switches, and 1 summing amplifier:
+The principle of the weighted resistor network type DAC (which belongs to the voltage output type) is illustrated in the diagram below (4 bits). It consists of a weighted resistor network, four electronic switches, and a summing amplifier:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220724003300.png)
+![Weighted Resistor Network DAC](https://img.wiki-power.com/d/wiki-media/img/20220724003300.png)
 
-Here, $S_0,S_1,S_2,S_3$ are 4 electronic switches controlled by the 4 signals $d_0,d_1,d_2,d_3$. When the input is 1, the switch is connected to $V_{REF}$, and when the input is 0, the switch is grounded. Therefore, when $d_i=1$, the current $I_i$ flows to the summing amplifier, and when $d_i=0$, the current is zero. The summing amplifier is a negative feedback amplifier. When the potential of the inverting input $V_-$ is lower than that of the non-inverting input $V_+$, the output voltage $v_0$ to ground is positive, and when $V_->V_+$, $v_0$ is negative. When $V_-$ is slightly higher than $V_+$, a large negative output voltage can be generated at $v_0$. $v_0$ is fed back to $V_-$ through $R_F$, causing $V_-$ to decrease back to 0V.
+Here, $S_0, S_1, S_2, S_3$ are four electronic switches controlled by signals $d_0, d_1, d_2, d_3$. When the input is 1, the switch connects to $V_{REF}$; when the input is 0, the switch connects to ground. Thus, when $d_i = 1$, a current $I_i$ flows to the summing amplifier, and when $d_i = 0$, the current is zero. The summing amplifier is a negative feedback amplifier, and its output voltage $v_0$ is positive when the inverting input $V_-$ is lower than the non-inverting input $V_+$. When $V_- > V_+$, $v_0$ is negative. Furthermore, when $V_-$ is slightly higher than $V_+$, a significant negative output voltage is generated in $v_0$. $v_0$ is fed back through $R_F$ to reduce $V_-$ back to $V_+$ (0V).
 
-Assuming the operational amplifier is an ideal device (with zero input current), we can obtain:
 
-$$
-v_O=-R_F i_{\sum}=-R_F (I_3+I_2+I_1+I_0)
-$$
-
-Since $V_-\approx 0$, the current in each branch is:
+Assuming the operational amplifier is an ideal device (with zero input current), we can derive the following:
 
 $$
-I_3=\frac{V_{REF}}{2^0 R} d_3
+v_O = -R_F i_{\sum} = -R_F (I_3 + I_2 + I_1 + I_0)
 $$
 
+Additionally, since $V_-\approx 0$, the individual branch currents are as follows:
+
 $$
-I_2=\frac{V_{REF}}{2^1 R} d_2
+I_3 = \frac{V_{REF}}{2^0 R} d_3
 $$
 
 $$
-I_1=\frac{V_{REF}}{2^2 R} d_1
+I_2 = \frac{V_{REF}}{2^1 R} d_2
 $$
 
 $$
-I_0=\frac{V_{REF}}{2^3 R} d_0
-$$
-
-Here, $d_n$ can be either 0 or 1. Substituting into the above equations and assuming that the feedback resistor $R_F=\frac{R}{2}$, the output voltage can be obtained as:
-
-$$
-v_O=-\frac{V_{REF}}{2^4}(d_3 2^3+d_2 2^2+d_1 2^1+d_0 2^0)
-$$
-
-Furthermore, for an n-bit weighted resistor network DAC, when the feedback resistor $R_F=\frac{R}{2}$, the output voltage calculation formula is:
-
-$$
-v_O=-\frac{V_{REF}}{2^n}(d_{n-1} 2^{n-1}+d_{n-2} 2^{n-1}+...+d_{1} 2^{1}+d_{0} 2^{0})
+I_1 = \frac{V_{REF}}{2^2 R} d_1
 $$
 
 $$
-v_O=-\frac{V_{REF}}{2^n}D_n
+I_0 = \frac{V_{REF}}{2^3 R} d_0
 $$
 
-Therefore, the output analog voltage is proportional to the input digital quantity $D_n$, and its range of variation is from 0 to $-\frac{2^n-1}{2^n}V_{REF}$. On the other hand, if a positive output voltage is required, a negative $V_{REF}$ should be provided.
-
-The advantage of the weighted resistor network DAC is its simple structure, but the disadvantage is that the resistance values may differ greatly, which may cause significant accuracy differences in reality. To improve this, a bipolar weighted resistor network can be used, which is not explained here, but still cannot fundamentally solve the problem.
-
-### Inverted T-shaped resistor network
-
-To improve the problem of the resistance values of the weighted resistor network DAC being too different, an inverted T-shaped resistor network DAC can be used, which only uses two types of resistors with resistance values of R and 2R (so it is also called an R2R DAC), and has great help for control accuracy:
-
-![](https://img.wiki-power.com/d/wiki-media/img/20220724165753.png)
-
-When the feedback resistor of the summing amplifier has a resistance value of R, the output voltage is:
+Here, $d_n$ can be either 0 or 1. Substituting into the previous equation and assuming the feedback resistance $R_F=\frac{R}{2}$, we can obtain the output voltage as:
 
 $$
-v_O=-Ri_{\sum}=-\frac{V_{REF}}{2^n}D_n
+v_O = -\frac{V_{REF}}{2^4}(d_3 2^3 + d_2 2^2 + d_1 2^1 + d_0 2^0)
 $$
 
-It can be seen that the calculation formula of the inverted T-shaped resistor network is the same as that of the weighted resistor network DAC.
-
-### Weighted current type
-
-When analyzing the weighted resistor network and inverted T-shaped resistor network, the analog switch is treated as an ideal device. However, in reality, they have a certain on-resistance and voltage drop, and there are differences in consistency between switches, which can cause conversion errors and affect accuracy. The solution is to use a current-output DAC, which has a set of constant current sources, with each current source being half the size of the previous one and proportional to the weight of the corresponding input binary bit. The use of constant current sources ensures that the current in each branch is no longer affected by the on-resistance and voltage drop of the switch.
-
-![](https://img.wiki-power.com/d/wiki-media/img/20220724171436.png)
-
-When a certain bit of the input digital quantity is 1, the corresponding switch connects the constant current source to the input of the operational amplifier; when the input code is 0, the corresponding switch is grounded, so the output voltage is:
+Furthermore, for an n-bit weighted resistor network DAC with feedback resistance $R_F=\frac{R}{2}$, the output voltage calculation formula becomes:
 
 $$
-v_O=\frac{R_F V_{REF}}{2^n R_R}D_n
+v_O = -\frac{V_{REF}}{2^n}(d_{n-1} 2^{n-1} + d_{n-2} 2^{n-1} + ... + d_{1} 2^{1} + d_{0} 2^{0})
 $$
 
-## Main Parameters of DAC
+$$
+v_O = -\frac{V_{REF}}{2^n}D_n
+$$
 
-- **Resolution**: The ratio of the smallest output voltage (i.e., the voltage when the input digital quantity is 1) to the maximum output voltage (i.e., the voltage when the input digital quantity is the maximum, with each bit being 1). Generally expressed by the number of bits of the input digital quantity.
-- **Conversion Range**: The maximum voltage that the DAC can output, usually related to the reference voltage or its multiple.
-- **Settling Time**: The delay time from the input digital quantity to the output analog quantity.
-- **Conversion Accuracy**: Similar to the conversion accuracy of ADC.
+Hence, the analog output voltage is proportional to the digital input quantity $D_n$, and its range varies from 0 to $-\frac{2^n-1}{2^n}V_{REF}$. On the other hand, if a positive output voltage is required, a negative $V_{REF}$ should be provided.
+
+The advantage of a weighted resistor network DAC is its simple structure, but the drawback is that resistor values can differ significantly, leading to potential accuracy issues in practice. To improve this, a bipolar weighted resistor network can be used, which is not detailed here but still does not fundamentally solve the problem.
+
+### Inverted T-Resistor Network
+
+To address the issue of widely varying resistor values in a weighted resistor network DAC, an inverted T-resistor network DAC, also known as R2R DAC, can be used. It uses only two resistor values: R and 2R, which greatly improves control accuracy:
+
+![R2R DAC](https://img.wiki-power.com/d/wiki-media/img/20220724165753.png)
+
+When the feedback resistor of the summing amplifier has a resistance of R, the output voltage is given by:
+
+$$
+v_O = -Ri_{\sum} = -\frac{V_{REF}}{2^n}D_n
+$$
+
+It is evident that the calculation formula for the inverted T-resistor network is the same as that for the weighted resistor network DAC.
+
+### Current-Weighted Type
+
+In the analysis of the weighted resistor network and inverted T-resistor network, analog switches are treated as ideal devices. However, in reality, they have some on-resistance and voltage drop, and there are inconsistencies in switch performance. This can lead to conversion errors affecting accuracy. The solution is to use a current-weighted DAC, which has a set of constant current sources. The current of each source is half of the previous one and is proportional to the binary weight of the input.
+
+![Current-Weighted DAC](https://img.wiki-power.com/d/wiki-media/img/20220724171436.png)
+
+When a certain bit of the input digital value is 1, the corresponding switch connects the constant current source to the input of the operational amplifier. When the input code is 0, the switch is grounded, resulting in an output voltage of:
+
+$$
+v_O = \frac{R_F V_{REF}}{2^n R_R}D_n
+$$
+
+## Key DAC Parameters
+
+- **Resolution**: The ratio of the smallest output voltage (corresponding to an input digital value of 1) to the largest output voltage (corresponding to an input where every bit is 1). Typically represented by the number of bits in the input digital value.
+- **Conversion Range**: The maximum voltage that the DAC can output, often related to the reference voltage or its multiples.
+- **Settling Time**: The delay time from the input digital value to the analog output.
+- **Conversion Accuracy**: Similar to ADC's conversion accuracy.
 
 ## References and Acknowledgments
 
-- [ADC/DAC Application Design Handbook](https://picture.iczhiku.com/resource/eetop/syIFpRpWgQqgOXnx.pdf)
-- [Analog-to-Digital Conversion and Digital-to-Analog Conversion](https://www.cnblogs.com/redlightASl/p/15542623.html)
-- [ADC and DAC (Analog to Digital And Digital to Analog Converters)](https://www.youtube.com/playlist?list=PLwjK_iyK4LLCnW-df-_53d-6yYrGb9zZc)
-- [Talking about DAC Principles](https://www.bilibili.com/read/cv4873472/)
-- Analog Engineer's Pocket Reference
-- Digital Electronics Technology (6th Edition) by Yan Shi
+- [**"ADC/DAC Application Design Compendium"**](https://picture.iczhiku.com/resource/eetop/syIFpRpWgQqgOXnx.pdf)
+- [**"Analog-to-Digital and Digital-to-Analog Conversion"**](https://www.cnblogs.com/redlightASl/p/15542623.html)
+- [**"ADC and DAC (Analog to Digital And Digital to Analog Converters)"**](https://www.youtube.com/playlist?list=PLwjK_iyK4LLCnW-df-_53d-6yYrGb9zZc)
+- [**"Exploring the Principles of DAC"**](https://www.bilibili.com/read/cv4873472/)
+- **"Analog Engineer’s Pocket Reference"**
+- **"Digital Electronics Technology (6th Edition) by Yan Shi"**
+
+> Original: <https://wiki-power.com/>
+> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

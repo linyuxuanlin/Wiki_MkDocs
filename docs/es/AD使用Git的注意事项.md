@@ -1,213 +1,199 @@
-# Consideraciones al usar Git con Altium Designer
+# Consideraciones para el uso de Git en AD
 
 ## Gestión de proyectos con Git
 
-Altium Designer admite el uso de Git/SVN para el control de versiones. Si se utiliza Git, simplemente se debe crear un repositorio Git en la ruta del proyecto. Al reiniciar Altium Designer, se verá el estado de la versión en el borde del árbol de archivos:
+Altium Designer admite el uso de Git/SVN para el control de versiones. Si estás utilizando Git, simplemente crea un repositorio Git en la ubicación de tu proyecto. Al reiniciar Altium Designer, verás que aparece un estado de versión junto al árbol de archivos:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200421100348.png)
+![Estado de versión](https://img.wiki-power.com/d/wiki-media/img/20200421100348.png)
 
-El significado de los iconos es el siguiente:
-![](https://img.wiki-power.com/d/wiki-media/img/20200421101221.png)
+Los iconos tienen el siguiente significado:
+![Significado de los iconos](https://img.wiki-power.com/d/wiki-media/img/20200421101221.png)
 
-Se pueden realizar operaciones de Git directamente en el menú `Proyecto (C) - Control de versiones (E)`, incluso se puede enviar directamente a GitHub.
+Puedes realizar operaciones de Git directamente desde el menú `Proyecto (C) - Control de versiones (E)`, e incluso puedes hacer commits directamente en GitHub.
 
 ## Archivo .gitignore
 
-Al utilizar Altium Designer, el software generará algunos archivos de caché (como la carpeta `History`), que no solo ralentizan la velocidad de envío, sino que también contaminan el registro de envío. En este caso, se debe utilizar `.gitignore` para ignorar estos archivos de caché.
+Cuando trabajas con Altium Designer, el software genera algunos archivos de caché (como la carpeta 'History'), los cuales no solo ralentizan la velocidad de los commits, sino que también ensucian el registro de commits. En este punto, debes utilizar el archivo `.gitignore` para ignorar estos archivos de caché.
 
-El archivo `.gitignore` para Altium Designer incluye lo siguiente:
+El archivo `.gitignore` adecuado para Altium Designer incluye lo siguiente:
 
 ```gitignore
-# ============================= Projects =============================
+# ============================= Proyectos =============================
 *.DesWrk
-# Altium Workspace
+# Espacio de trabajo de Altium
 
 *.DsnWrk
-# Altium Project Group
+# Grupo de proyectos de Altium
 
 !*.LibPkg
-# Altium Inegrated Library Package
+# Paquete de biblioteca integrada de Altium
 
 *.PrjGrp
-# Altium Project Group
+# Grupo de proyectos de Altium
 
 !*.PrjMbd
-# Altium Muti-board Design Project
+# Proyecto de diseño multiplaca de Altium
 
 !*.PrjPcb
-# Altium PCB Project
+# Proyecto de PCB de Altium
 
 *.PrjScr
-# Altium Script Project
+# Proyecto de guion de Altium
 
 *.PrjPCBStructure
 
-# ============================= Schematic =============================
+# ============================= Esquemáticos =============================
 *.Dot
-# Altium Schematic Template
+# Plantilla de esquemático de Altium
 
 !*.MbsDoc
-# Altium Multi-board Schematic
+# Esquemático multitarjeta de Altium
 
 !*.Sch
-# Altium Schematic Document
+# Documento de esquemático de Altium
 
 !*.SchDoc
-# Altium Schematic Document
+# Documento de esquemático de Altium
 
 *.SchDot
-# Altium Schematic Template
+# Plantilla de esquemático de Altium
 
 !*.SchLib
-# Altium Schematic Library
+# Biblioteca de esquemáticos de Altium
 
 # ============================= PCB =============================
 !*.MbaDoc
-# Altium Multi-board Assembly
+# Ensamblaje multitarjeta de Altium
 
 !*.Pcb
-# Protel PCB Document
+# Documento de PCB de Protel
 
 !*.PcbDoc
-# Altium PCB Document
+# Documento de PCB de Altium
 
 !*.PcbLib
-# Altium PCB Library
+# Biblioteca de PCB de Altium
 
-# ============================= Libraries =============================
+# ============================= Bibliotecas =============================
 *.CmpLib
-# Altium Component Library
+# Biblioteca de componentes de Altium
 
 !*.IntLib
-# Altium Compiled Library
+# Biblioteca compilada de Altium
 
 !*.Lib
-# Altium Library
+# Biblioteca de Altium
 
 *.PvLib
-# Altium Pad Via Library
+# Biblioteca de almohadillas y pasantes de Altium
 
 # ============================= CAMtastic =============================
 *.Apr
-# CAMtastic Aperture Data
+# Datos de aperturas CAMtastic
 
 *.Apt
-# CAMtastic Aperture Data
+# Datos de aperturas CAMtastic
 
 *.Cam
-# Altium CAMtastic Document
+# Documento CAMtastic de Altium
+
+*.Drl
+# Datos binarios de taladro NC CAMtastic
 ```
 
-# Datos binarios de perforación NC CAMtastic
+Espero que esta traducción sea de ayuda. Si tienes alguna pregunta o necesitas más asistencia, no dudes en preguntar.
 
+```markdown
 # ============================= Gerber =============================
-
-\*.G[1-30]
-
-# Datos de capa media 1-30 de CAMtastic Gerber
+*.G[1-30]
+# Datos Gerber de capas intermedias 1-30 de CAMtastic
 
 # ============================= Salidas =============================
+*.Drc
+# Informe de Verificación de Reglas de Diseño
 
-\*.Drc
+*.Drr
+# Informe de Taladro NC de Altium
 
-# Informe de verificación de reglas de diseño
+*.Net
+# Archivo de Lista de Red de Altium
 
-\*.Drr
+*.Nsx
+# Documento de Lista de Red de Simulación
 
-# Archivo de informe de perforación NC de Altium
+*.OutJob
+# Archivo de Trabajo de Salida de Altium
 
-\*.Net
+*.Rep
+# Archivo de Informe
 
-# Archivo de lista de red de Altium
-
-\*.Nsx
-
-# Documento de lista de simulación
-
-\*.OutJob
-
-# Archivo de trabajo de salida de Altium
-
-\*.Rep
-
-# Archivo de informe
-
-\*.Rpt
-
-# Archivo de informe
+*.Rpt
+# Archivo de Informe
 
 # ============================= Scripts =============================
+*.Bas
+# Documento de Script de Altium
 
-\*.Bas
+*.SrcDoc
+# Documento de Script de Altium
 
-# Documento de script de Altium
-
-\*.SrcDoc
-
-# Documento de script de Altium
-
-\*.Tcl
-
-# Documento de script de Altium
+*.Tcl
+# Documento de Script de Altium
 
 # ============================= Simulación =============================
+*.Ckt
+# Subcircuito de Simulación
 
-\*.Ckt
+*.LaxAn
+# Archivo Analógico del Analizador Lógico
 
-# Subcircuito de simulación
+*.LaxDig
+# Archivo Digital del Analizador Lógico
 
-\*.LaxAn
+*.Mdl
+# Modelo de Simulación
 
-# Archivo analógico del analizador lógico
-
-\*.LaxDig
-
-# Archivo digital del analizador lógico
-
-\*.Mdl
-
-# Modelo de simulación
-
-\*.Pld
-
+*.Pld
 # Archivo PLD de CUPL
 
-\*.Pwl
+*.Pwl
+# Descripción Lineal por Tramos de Simulación
 
-# Descripción lineal por tramos de simulación
+*.Sdf
+# Archivo de Datos de Simulación de Altium
 
-\*.Sdf
+*.Si
+# Archivo de Entrada de Simulación de CUPL
 
-# Archivo de datos de simulación de Altium
-
-\*.Si
-
-# Archivo de entrada de simulación de CUPL
-
-\*.So
-
-# Archivo de forma de onda digital
+*.So
+# Archivo de Forma de Onda Digital
 
 # ============================= Carpetas =============================
+__Previews/
 
-\_\_Previews/
+Historial/
 
-History/
-
-Registros de proyecto para \*/
+Registros del Proyecto para */
 
 # ============================= Otros =============================
+*.BomDoc
+# Documento de Lista de Materiales (BOM)
 
-\*.BomDoc
+*.DBLib
+# Archivo de Biblioteca de Base de Datos de Altium
 
-# Documento de lista de materiales
+*.DBLink
+# Archivo de Enlace de Base de Datos de Altium
 
-\*.DBLib
+Colóquelo directamente en la raíz del repositorio de Git. Si hay duplicados, mezcle con el archivo `.gitignore` original.
 
-# Archivo de biblioteca de base de datos de Altium
+## Referencias y Agradecimientos
 
-\*.DBLink
+- [.gitignore Configuration for Altium Designer Project File Types](https://blog.csdn.net/u010160335/article/details/80100232)
 
-# Archivo de enlace de base de datos de Altium
+> Dirección original del artículo: <https://wiki-power.com/>
+> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+```
+
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

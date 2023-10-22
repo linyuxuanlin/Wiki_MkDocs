@@ -1,21 +1,22 @@
-# Notes on Using Git with Altium Designer
+# Considerations for Using Git with AD
 
 ## Managing Projects with Git
 
-Altium Designer supports version control using Git/SVN. To use Git, simply create a Git repository in the project directory. After restarting Altium Designer, you will see the version status appear on the file tree:
+Altium Designer supports the use of Git/SVN for version control. If you are using Git, you can simply create a Git repository in the project's location. After restarting Altium Designer, you will see the version status displayed next to the file tree:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200421100348.png)
+![Version Status](https://img.wiki-power.com/d/wiki-media/img/20200421100348.png)
 
-The icons have the following meanings:
-![](https://img.wiki-power.com/d/wiki-media/img/20200421101221.png)
+The icons represent the following:
 
-You can perform Git operations directly in the `Project (C) - Version Control (E)` menu, and even submit to GitHub directly.
+![Icon Meanings](https://img.wiki-power.com/d/wiki-media/img/20200421101221.png)
+
+You can perform Git operations directly from the `Project (C) - Version Control (E)` menu, and you can even directly submit to GitHub.
 
 ## .gitignore File
 
-When using Altium Designer, the software automatically generates some cache files (such as the `History` folder), which not only slows down the submission speed, but also pollutes the submission record. This is where `.gitignore` comes in, to ignore these cache files.
+When using Altium Designer, the software generates certain cache files (such as the `History` folder), which not only slow down the submission process but also clutter the commit history. This is where the `.gitignore` file comes in handy to ignore these cache files.
 
-The `.gitignore` file for Altium Designer includes the following content:
+The `.gitignore` file suitable for Altium Designer includes the following content:
 
 ```gitignore
 # ============================= Projects =============================
@@ -26,13 +27,13 @@ The `.gitignore` file for Altium Designer includes the following content:
 # Altium Project Group
 
 !*.LibPkg
-# Altium Inegrated Library Package
+# Altium Integrated Library Package
 
 *.PrjGrp
 # Altium Project Group
 
 !*.PrjMbd
-# Altium Muti-board Design Project
+# Altium Multi-board Design Project
 
 !*.PrjPcb
 # Altium PCB Project
@@ -99,6 +100,9 @@ The `.gitignore` file for Altium Designer includes the following content:
 
 *.Drl
 # CAMtastic NC Drill Binary Data
+```
+
+These guidelines should help you effectively manage your Altium Designer projects using Git.
 
 # ============================= Gerber =============================
 *.G[1-30]
@@ -180,15 +184,14 @@ Project Logs for */
 
 *.DBLink
 # Altium Database Link File
-```
 
-Simply place it in the root directory of the Git repository. If there are duplicates, merge it with the original `.gitignore`.
+Simply place it in the root directory of your Git repository. In case of duplicates, merge it with the existing `.gitignore` file.
 
-## References and Acknowledgements
+## References and Acknowledgments
 
-- [.gitignore file configuration: Altium Designer project file types](https://blog.csdn.net/u010160335/article/details/80100232)
+- [.gitignore File Configuration: Altium Designer Project File Types](https://blog.csdn.net/u010160335/article/details/80100232)
 
-> Original: <https://wiki-power.com/>  
+> Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

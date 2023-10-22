@@ -1,132 +1,132 @@
 # Fundamentos de ADC y DAC
 
-En el mundo real, la mayoría de las señales son analógicas, como la temperatura, el sonido, la presión, etc. Sin embargo, en el procesamiento y transmisión de señales, se utiliza principalmente la señal digital para reducir la interferencia del ruido. Por lo tanto, a menudo convertimos la señal analógica del mundo real en una señal digital a través de ADC para realizar operaciones, transmisión y almacenamiento, y luego convertirla en una señal analógica a través de DAC para presentarla.
+En el mundo real, la mayoría de las señales que encontramos son analógicas, como la temperatura, el sonido, la presión del aire, etc. Sin embargo, en el procesamiento y la transmisión de señales, se utiliza ampliamente la señal digital para reducir la interferencia de ruido. Por lo tanto, a menudo convertimos señales analógicas del mundo real en señales digitales mediante un ADC para su procesamiento, transmisión y almacenamiento, y luego las convertimos de nuevo en señales analógicas mediante un DAC para su presentación.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20220724210409.png)
 
-Pero hay que tener en cuenta que la señal analógica en el mundo real es continua, lo que significa que tiene una resolución infinita, pero después de convertirse en una señal digital, perderá cierta precisión y se convertirá en valores discretos en tiempo y amplitud.
+Es importante tener en cuenta que las señales analógicas del mundo real son continuas, lo que significa que tienen una resolución infinita. Sin embargo, después de convertirlas en señales digitales, perderemos cierta precisión, y tanto en tiempo como en amplitud, se convertirán en valores discretos.
 
 ## Principios básicos de ADC
 
-ADC (Convertidor analógico a digital) se refiere a un convertidor que convierte señales analógicas del mundo real, como temperatura, presión, sonido o imágenes, en una forma digital más fácil de almacenar, procesar y transmitir.
+ADC (Conversor Analógico-Digital) se refiere a un convertidor que transforma señales analógicas del mundo real, como temperatura, presión, sonido o imágenes, en una forma digital más adecuada para su almacenamiento, procesamiento y transmisión.
 
 ### Muestreo
 
-Dado que la señal analógica de entrada es continua y la señal digital de salida es discreta, solo se puede realizar un muestreo instantáneo, y luego convertir el valor de muestreo en una cantidad digital de salida y comenzar un nuevo ciclo de muestreo.
+Dado que la señal analógica de entrada es continua, mientras que la señal digital de salida es discreta, solo podemos realizar muestreos instantáneos y luego convertir los valores muestreados en cantidades digitales de salida antes de iniciar la próxima ronda de muestreo.
 
-Para representar con precisión la señal de entrada analógica $v_1$ con la señal $v_s$, se debe cumplir al menos el teorema de muestreo, es decir, la frecuencia de muestreo $f_s$ debe ser al menos el doble de la frecuencia máxima de la señal de entrada analógica $f_{i(max)}$ (generalmente se toma de 3 a 5 veces, pero las frecuencias demasiado altas requieren una velocidad de trabajo más rápida y deben considerarse los costos):
+Para representar con precisión una señal de entrada analógica $v_1$ como una señal $v_s$, debemos cumplir al menos con el teorema de muestreo, que establece que la frecuencia de muestreo $f_s$ debe ser al menos el doble de la frecuencia máxima de la señal de entrada analógica $f_{i(max)}$ (generalmente se toma de 3 a 5 veces el valor, pero frecuencias muy altas requerirán velocidades de trabajo más rápidas, lo que aumenta los costos):
 
 $$
 f_s≥2\cdot f_{i(max)}
 $$
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220724180529.png)
+Si se cumple el teorema de muestreo, podemos utilizar un filtro pasa-bajos para restaurar $v_s$ a $v_1$. La ganancia de transferencia del filtro debe mantenerse constante por debajo de $f_{i(max)}$ y disminuir rápidamente a cero antes de $f_s-f_{i(max)}$.
 
-Si se cumple el teorema de muestreo, la señal $v_s$ se puede restaurar a $v_1$ mediante un filtro paso bajo. El coeficiente de transferencia de voltaje del filtro debe mantenerse constante por debajo de $f_{i(max)}$ y caer rápidamente a cero antes de $f_s-f_{i(max)}$.
+### Retención
 
-### Mantenimiento
-
-El circuito de mantenimiento permite que la señal se mantenga durante un período de tiempo después del muestreo para que el ADC tenga suficiente tiempo para realizar la conversión. Cuanto mayor sea la frecuencia de pulso de muestreo y la densidad de muestreo, más cerca estará la señal de salida del circuito de mantenimiento de la forma de onda de la señal de entrada. La forma básica del circuito de muestreo-mantenimiento es la siguiente:
+Un circuito de retención permite que la señal se mantenga durante un cierto tiempo después del muestreo, lo que le da al ADC suficiente tiempo para realizar la conversión. Cuanto mayor sea la frecuencia de los impulsos de muestreo y cuanto más denso sea el muestreo, más valores se obtendrán del circuito de retención, y la señal de salida se asemejará más a la forma de onda de la señal de entrada. Los pasos básicos del circuito de muestreo y retención son los siguientes:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20220723161306.png)
 
-Los pasos básicos del muestreo-mantenimiento son los siguientes:
-
-1. Cuando la señal de control de muestreo $v_L$ es alta, el MOSFET $T$ se enciende, la señal $v_1$ pasa a través de la resistencia $R_1$ y el MOSFET $T$ y carga el capacitor $C_H$.
-2. Si se toma $R_1=R_F$, después de que se complete la carga, $v_0=v_c=-v_1$.
-3. Cuando la señal de control de muestreo $v_L$ cae a nivel bajo, el MOSFET $T$ se apaga y la tensión en el capacitor $C_H$ no cambia abruptamente, por lo que $v_0$ también puede mantenerse durante un período de tiempo y el resultado del muestreo se puede registrar.
+1. Cuando la señal de control de muestreo $v_L$ está en alto, el transistor MOS $T$ se enciende, y la señal $v_1$ pasa a través de la resistencia $R_1$ y el transistor MOS $T$, cargando el condensador $C_H$.
+2. Si elegimos $R_1=R_F$, al final de la carga, $v_0=v_c=-v_1$.
+3. Cuando la señal de control de muestreo $v_L$ vuelve a caer, el transistor MOS $T$ se apaga, y la tensión en el condensador $C_H$ no experimenta un cambio brusco, lo que permite que $v_0$ se mantenga durante un cierto tiempo y se registre el resultado del muestreo.
 
 ### Cuantificación
 
-La cantidad digital obtenida por muestreo debe ser un múltiplo entero de una unidad de cantidad mínima especificada. Este proceso de conversión se llama cuantificación, y la unidad de cantidad mínima tomada se llama unidad de cuantificación $\Delta$. El tamaño de la cantidad representada por el bit menos significativo (LSB) de la señal digital es igual a $\Delta$.
+Las cantidades digitales obtenidas a partir del muestreo deben ser múltiplos de una unidad mínima predefinida, en un proceso conocido como cuantificación. La unidad mínima de cuantización se denomina unidad de cuantización $\Delta$. El valor de la cantidad representada por el bit menos significativo (LSB) en la señal digital es igual a $\Delta$.
 
-Como el voltaje analógico es continuo, no necesariamente es divisible por $\Delta$, lo que resulta en un error de cuantificación.
+Dado que la tensión analógica es continua, no siempre es divisible por $\Delta$, lo que da lugar a errores de cuantización.
 
-Cuanto más fina sea la unidad de cuantificación, menor será el error de cuantificación y mayor será el número de bits de código binario utilizado, lo que aumentará la complejidad del circuito.
+Cuanto más fina sea la cuantización, menor será el error de cuantización, pero se necesitarán más bits en el código binario, lo que hace que el circuito sea más complejo.
 
 ### Codificación
 
-La conversión cuantificada se representa en binario (u otro sistema de numeración), lo que se llama codificación.
+La representación de los resultados cuantificados en binario (u otras bases) se denomina codificación.
 
 ## Tipos comunes de ADC
 
-### Comparador paralelo (Flash)
+### Tipo de comparador paralelo (Flash)
 
-El ADC de comparador paralelo, también conocido como ADC Flash, es un tipo de ADC directo que puede convertir directamente el voltaje analógico de entrada en una cantidad digital de salida sin la necesidad de una conversión intermedia. Está compuesto por una serie de comparadores de voltaje, cada uno de los cuales compara la señal de entrada con un voltaje de referencia único. La salida del comparador se conecta a la entrada del circuito codificador para producir una salida binaria.
+El ADC de tipo comparador paralelo, también conocido como Flash ADC, es un tipo de ADC directo que convierte directamente la tensión analógica de entrada en una cantidad digital de salida sin necesidad de conversiones intermedias. Está compuesto por una serie de comparadores de voltaje, donde cada comparador compara la señal de entrada con una tensión de referencia dividida de manera única. Las salidas de los comparadores se conectan a un circuito codificador que genera una salida binaria.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20220723163931.png)
 
-No solo es la técnica ADC más simple en teoría de operación, sino que también es la más efectiva en velocidad, solo limitada por la propagación de comparadores y retardos de puerta. Desafortunadamente, para cualquier cantidad dada de bits de salida, es el componente más denso.
+Es el más simple en teoría de funcionamiento y el más eficiente en velocidad de todos los tipos de tecnología ADC, limitado solo por las demoras de propagación de los comparadores y las compuertas. Desafortunadamente, para un número dado de bits de salida, requiere el mayor número de componentes.
 
-El ADC de comparación en paralelo tiene la velocidad de conversión más rápida, pero el inconveniente es que requiere el uso de muchos comparadores de voltaje y circuitos de conversión de código a gran escala (la mayoría de las salidas comunes de comparación en paralelo son de 8 bits o menos).
+El tipo de ADC en paralelo es el más rápido, pero tiene la desventaja de requerir múltiples comparadores de voltaje y circuitos de conversión de código a gran escala (los ADC en paralelo comunes tienen una resolución de 8 bits o menos).
 
-### Tipo de aproximación sucesiva
+### Tipo de Aproximación Sucesiva
 
-El ADC de aproximación sucesiva utiliza una estructura de circuito de comparación de retroalimentación. Está compuesto por comparadores, DAC, registros, fuente de pulso de reloj y lógica de control:
+El ADC de Aproximación Sucesiva utiliza una estructura de circuito de retroalimentación de comparación. Está compuesto por comparadores, DAC, registros, fuente de pulsos de reloj y lógica de control, entre otros:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220723211839.png)
+![Aproximación Sucesiva](https://img.wiki-power.com/d/wiki-media/img/20220723211839.png)
 
-Su principio es establecer una cantidad digital, obtener una tensión de salida analógica correspondiente a través de DAC. Compare secuencialmente esta tensión analógica con la señal de tensión analógica de entrada desde el bit más alto. Si no son iguales, ajuste la cantidad digital tomada hasta que las dos tensiones analógicas sean iguales. La cantidad digital tomada finalmente es el resultado de conversión buscado. Su proceso es como pesar un objeto por su peso en una balanza, primero agregue una pesa grande, luego agregue o cambie a una pesa pequeña de forma secuencial.
+Su principio consiste en establecer un valor digital, obtener una tensión analógica de salida correspondiente a través del DAC y comparar secuencialmente esta tensión analógica con la señal de voltaje analógico de entrada, comenzando desde el bit más significativo. Si no son iguales, se ajusta el valor digital hasta que ambas tensiones analógicas sean iguales, y el valor digital final obtenido es el resultado de la conversión. Este proceso es similar a pesar un objeto en una balanza, primero agregando pesos grandes y luego agregando o reemplazando pesos más pequeños.
 
-La ventaja del ADC de aproximación sucesiva es su alta velocidad, bajo consumo de energía y ventaja de costo-beneficio en baja resolución (12 bits); la desventaja es que la velocidad de conversión es generalmente baja y el tamaño del circuito es mediano.
+Las ventajas del ADC de Aproximación Sucesiva son su alta velocidad, bajo consumo de energía y una buena relación calidad-precio a baja resolución (12 bits o menos). La desventaja es que la velocidad de conversión suele ser promedio y el tamaño del circuito es mediano.
 
-### Tipo de doble integración (V-T)
+### Tipo de Doble Integrador (V-T)
 
-El ADC de doble integración es un tipo de ADC indirecto que convierte la señal de voltaje analógica de entrada en una señal de ancho de tiempo proporcional a ella primero, y luego cuenta los pulsos de reloj de frecuencia fija dentro de este ancho de tiempo. El valor de conteo es la señal digital proporcional a la entrada analógica. Por lo tanto, también se llama ADC de transformación de voltaje-tiempo (V-T).
+El ADC de Doble Integrador es un tipo de ADC indirecto que convierte la señal de voltaje analógico de entrada en una señal de ancho de pulso de tiempo proporcional. Luego, dentro de ese ancho de pulso de tiempo, cuenta los pulsos de un reloj de frecuencia fija, y el valor de conteo resultante es una representación digital de la señal de entrada analógica. Por lo tanto, a este tipo de ADC también se le llama ADC de Transformación de Voltaje-Tiempo (V-T).
 
-El ADC de doble integración está compuesto por integradores, comparadores, contadores, lógica de control y fuente de señal de reloj, como se muestra en la figura:
+El ADC de Doble Integrador consta de integradores, comparadores, contadores, lógica de control y una fuente de señal de reloj, entre otros, como se muestra en la siguiente imagen:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220723213208.png)
+![Doble Integrador](https://img.wiki-power.com/d/wiki-media/img/20220723213208.png)
 
-La ventaja del ADC de doble integración es su rendimiento de trabajo estable (dos integraciones, excluyendo las diferencias de parámetros RC), fuerte capacidad antiinterferencias (la integración no se ve muy afectada por el ruido); la desventaja es que la velocidad de conversión es baja (la precisión de conversión depende del tiempo de integración).
+Las ventajas del ADC de Doble Integrador son su estabilidad en el rendimiento (debido a las dos etapas de integración, las diferencias en los parámetros RC se eliminan) y su resistencia a las interferencias (el proceso de integración no se ve afectado significativamente por el ruido). La desventaja es que la velocidad de conversión es baja, ya que la precisión de conversión depende del tiempo de integración.
 
 ### Tipo Σ-Δ
 
-El principio del ADC de modulación Σ-Δ es diferente del tipo de comparación en paralelo y de aproximación sucesiva mencionados anteriormente. No cuantifica y codifica el valor absoluto de la señal de muestreo, sino que cuantifica y codifica la diferencia (incremento) entre dos valores de muestreo adyacentes. Su estructura básica es la siguiente:
+El ADC de Modulación Σ-Δ difiere de los ADC en paralelo y de Aproximación Sucesiva mencionados anteriormente. En lugar de cuantificar y codificar el valor absoluto de la señal de muestreo, cuantifica y codifica la diferencia (incremento) entre los valores de muestreo adyacentes. Su estructura básica se muestra a continuación:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220723230949.png)
+![Modulación Σ-Δ](https://img.wiki-power.com/d/wiki-media/img/20220723230949.png)
 
-Está compuesto por un integrador de voltaje lineal, un cuantizador de salida de 1 bit, un DAC de entrada de 1 bit y un circuito sumador. El valor digital de salida $V_0$ procesado por el cuantizador se convierte en una señal analógica $V_F$ a través del DAC y se retroalimenta al circuito sumador de entrada. Reste la señal de entrada $v_1$ para obtener la diferencia $v_D$. El integrador realiza una integración lineal en $v_D$, la tensión de salida $v_{INT}$ se cuantifica en un bit y se convierte en una señal digital de salida. Debido al uso de un cuantizador de salida de 1 bit, en un estado de trabajo continuo, la señal de salida $V_0$ es una corriente de datos compuesta por 0 y 1.
+Está compuesto por un integrador de voltaje lineal, un cuantizador de salida de 1 bit, un DAC de entrada de 1 bit y un circuito de suma. El valor de la señal digital $V_0$ se obtiene después del procesamiento del cuantizador y se convierte en la señal analógica $V_F$ a través del DAC, que se retroalimenta al circuito de suma en la entrada, donde se resta de la señal de entrada $v_1$ para obtener la diferencia $v_D$. El integrador realiza una integración lineal de $v_D$, produciendo una tensión de salida $v_{INT}$ que se cuantifica en una señal digital de 1 bit a través del cuantizador. Debido al uso de un cuantizador de 1 bit, en un estado de funcionamiento continuo, la señal de salida $V_0$ está formada por una secuencia de datos que consiste en 0 y 1.
 
-La ventaja del ADC de modulación Σ-Δ es que se puede lograr fácilmente una medición de alta resolución; la desventaja es que la velocidad de conversión es baja y el tamaño del circuito es grande.
+Las ventajas del ADC de Modulación Σ-Δ son su capacidad para lograr mediciones de alta resolución con facilidad. La desventaja es que tiene una velocidad de conversión baja y un tamaño de circuito grande.
 
-### Transformación de voltaje-frecuencia (V-F)
+### Tipo de Transformación de Voltaje a Frecuencia (V-F)
 
-El ADC de transformación de voltaje-frecuencia (V-F) es un tipo de ADC indirecto. Está compuesto principalmente por un convertidor V-F (también llamado oscilador controlado por voltaje, VCO), un contador y su puerta de control de señal de reloj, un registro y un disparador de estado estable:
+El ADC de Transformación de Voltaje a Frecuencia (V-F) es otro tipo de ADC indirecto. Está compuesto principalmente por un convertidor V-F (Oscilador Controlado por Voltaje, VCO), un contador con puertas de control de reloj, registros, un disparador monostable y más, como se muestra a continuación:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220723233236.png)
+![Transformación de Voltaje a Frecuencia (V-F)](https://img.wiki-power.com/d/wiki-media/img/20220723233236.png)
 
-Su principio es:
+Su principio es el siguiente:
 
-- Convertir la señal de voltaje analógica de entrada en una señal de frecuencia correspondiente.
-- Contar la tasa de señal de frecuencia en un tiempo fijo.
-- El resultado del conteo es proporcional al valor de amplitud de la tensión de entrada.
+- Convierte la señal de voltaje analógico de entrada en una señal de frecuencia correspondiente.
+- Realiza un conteo de la tasa de señal de frecuencia dentro de un tiempo fijo.
+- El resultado del conteo es proporcional a la amplitud de la señal de entrada.
 
-## Parámetros principales del ADC
+## Parámetros Principales de los ADC
 
-## Principios básicos del ADC
+- **Resolución**: La cantidad de cambio en la señal analógica requerida para un cambio de un valor numérico de salida, generalmente se expresa en términos de la cantidad de bits binarios. Una resolución de "n" significa que es 1 entre 2 elevado a la "n" de la escala completa "Fs".
 
-- **Resolución**: la cantidad de cambio en la tensión analógica de entrada necesaria para producir un cambio de una unidad en la cantidad digital de salida. Por lo general, se expresa en términos de la cantidad de bits binarios utilizados para representar la señal analógica de entrada, y se define como 1/2^n de la escala completa (Fs) del ADC.
-- **Error de cuantificación**: el error que se produce al cuantificar una señal analógica debido a la limitación del número de bits utilizados en el ADC. Para representar con precisión una señal analógica, se necesitaría un número infinito de bits en el ADC, por lo que todos los ADC tienen un error de cuantificación. El error de cuantificación es la máxima desviación entre la curva de conversión de un ADC con resolución limitada y la curva de conversión de un ADC con resolución infinita.
-- **Velocidad de conversión**: la cantidad de conversiones que se realizan por segundo.
-- **Rango de conversión**: la tensión máxima que el ADC puede medir, que generalmente es igual a la tensión de referencia. Si la señal de entrada es demasiado grande, puede dañar el ADC. Si la señal es demasiado pequeña, se puede aumentar la resolución reduciendo la tensión de referencia. Sin embargo, al cambiar la tensión de referencia, también se cambia el valor de conversión correspondiente, por lo que al calcular la tensión real, se debe tener en cuenta la tensión de referencia. Por lo tanto, la tensión de referencia generalmente debe ser estable y no tener armónicos de alta frecuencia.
-- **Error de offset**: el valor de salida del ADC cuando la señal de entrada es cero.
-- **Error de escala completa**: la diferencia entre el valor de entrada ideal y el valor de entrada correspondiente a la salida máxima del ADC.
-- **Linealidad**: la máxima desviación entre la función de transferencia real del ADC y la línea ideal.
+- **Error de cuantificación**: El error causado por la cuantificación de la señal analógica debido a la cantidad finita de bits en un convertidor analógico a digital (ADC). Para representar con precisión una señal analógica, se necesitarían un número infinito de bits en el ADC, por lo que todos los dispositivos ADC tienen un error de cuantificación. La mayor discrepancia entre la curva característica de conversión de un ADC con resolución limitada y la curva característica de un ADC con resolución infinita se conoce como error de cuantificación.
 
-## Principios básicos del DAC
+- **Tasa de conversión**: La cantidad de conversiones realizadas por segundo.
 
-DAC (convertidor digital-analógico) convierte una señal digital en una señal analógica proporcional. Por ejemplo, una computadora puede generar una salida digital que varía de `00000000` a `11111111`, y el DAC la convierte en una tensión de 0 a 10 V. En términos generales, los DAC se pueden dividir en dos tipos: sumador de corriente y divisor de voltaje.
+- **Rango de conversión**: El voltaje máximo que un ADC puede medir, generalmente igual al voltaje de referencia. Superar este voltaje puede dañar el ADC. Cuando la señal es pequeña, se puede considerar la reducción del voltaje de referencia para mejorar la resolución. Cambiar el voltaje de referencia también afectará los valores de conversión correspondientes, por lo que es importante que el voltaje de referencia sea estable y no tenga armónicos de alto orden.
 
-## Tipos comunes de DAC
+- **Error de offset**: Cuando la señal de entrada a un ADC es cero, pero la salida del ADC no es cero.
 
-### Árbol de conmutación
+- **Error de escala completa**: La diferencia entre la señal de entrada correspondiente a la salida de escala completa de un ADC y el valor de entrada ideal.
 
-El DAC de árbol de conmutación es el más simple y directo. Está compuesto por una red de resistencias y un árbol de conmutación:
+- **Linealidad**: La máxima desviación entre la función de transferencia real de un ADC y la línea ideal.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220724172844.png)
+## Principios Básicos de DAC
 
-Estos interruptores están controlados por tres entradas $d_0,d_1,d_2$, y la salida se puede calcular como:
+DAC (Convertidor Digital-Analógico) se refiere a un convertidor que transforma una cantidad digital en una señal analógica proporcional, ya sea en forma de voltaje o corriente. Por ejemplo, una computadora puede generar una salida digital que varía desde `00000000` hasta `11111111`, y un DAC la convierte en un voltaje que va desde 0 hasta 10V. En términos básicos, los DAC se dividen en dos categorías: sumadores de corriente y divisores.
+
+## Tipos Comunes de DAC
+
+### Árbol de Interruptores
+
+El DAC tipo árbol de interruptores es el más simple y directo, compuesto por una red de resistencias divisoras y un conjunto de interruptores en cascada:
+
+![Árbol de Interruptores](https://img.wiki-power.com/d/wiki-media/img/20220724172844.png)
+
+Estos interruptores son controlados por 3 bits de entrada, $d_0, d_1, d_2$, y se calcula de la siguiente manera:
 
 $$
 v_0=\frac{V_{REF}}{2^1} d_2+\frac{V_{REF}}{2^2} d_1+\frac{V_{REF}}{2^3} d_0
@@ -136,80 +136,115 @@ $$
 v_0=\frac{V_{REF}}{2^3} (d_2 2^2+d_1 2^1+d_0 2^0)
 $$
 
-Para un DAC de árbol de conmutación de n bits, la salida se puede calcular como:
+Para un DAC tipo árbol de interruptores con entrada binaria de n bits, la salida es:
 
 $$
 v_0=\frac{V_{REF}}{2^n} (d_{n-1} 2^{n-1}+d_{n-2} 2^{n-2}+...+d_1 2^1+d_0 2^0)
 $$
 
-La ventaja del DAC de árbol de conmutación es que solo se necesita un tipo de resistencia, y los requisitos de resistencia de conmutación no son altos si la corriente de salida es baja. Sin embargo, la desventaja es que se necesitan muchos interruptores.
+La ventaja del DAC tipo árbol de interruptores es que utiliza un solo tipo de resistencia, y no requiere una corriente significativa en la salida. Sin embargo, la desventaja es que utiliza una gran cantidad de interruptores.
 
-### Red de resistencias ponderadas
+### Red de Resistencias Ponderadas
 
-El término "ponderado" se refiere al valor que representa cada bit en un número binario. Por ejemplo, en un número binario de n bits $D_n=d_{n-1}d_{n-2}...d_1 d_0$, el valor de cada bit, de MSB a LSB, es $2^{n-1},2^{n-2}...2^1,2^0$.
+El término "ponderado" se refiere a los valores que representa cada bit en un número binario. Por ejemplo, en un número binario de n bits $D_n=d_{n-1}d_{n-2}...d_1 d_0$, el peso de cada bit desde el bit más significativo (MSB) hasta el menos significativo (LSB) es $2^{n-1},2^{n-2}...2^1,2^0$.
 
-El DAC de red de resistencias ponderadas (que produce una tensión de salida) se compone de una red de resistencias ponderadas, cuatro interruptores analógicos y un amplificador sumador:
+El principio de funcionamiento de un DAC de red de resistencias ponderadas (que produce una salida de voltaje) se muestra en el siguiente diagrama (para 4 bits), y consta de una red ponderada de resistencias, 4 interruptores analógicos y un amplificador sumador:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220724003300.png)
+![Red de Resistencias Ponderadas](https://img.wiki-power.com/d/wiki-media/img/20220724003300.png)
 
-En este artículo se discute el funcionamiento de los convertidores digital-analógico (DAC, por sus siglas en inglés) de tipo red de resistencias y de tipo red de resistencias invertida, así como el DAC de corriente ponderada.
+Donde $S_0,S_1,S_2,S_3$ son 4 interruptores electrónicos, controlados por las señales $d_0,d_1,d_2,d_3$. Cuando la entrada es 1, el interruptor se conecta a $V_{REF}$, y cuando la entrada es 0, se conecta a tierra. Cuando $d_i=1$, la corriente fluye hacia el amplificador sumador. Cuando $d_i=0$, la corriente se bloquea. El amplificador sumador, con retroalimentación a través de $R_F$, ajusta la tensión en $V_-$ para mantenerla igual a $V_+$ (0V).
 
-En el DAC de red de resistencias, se utilizan cuatro interruptores electrónicos, denominados S0, S1, S2 y S3, que son controlados por cuatro señales d0, d1, d2 y d3. Cuando la entrada es 1, el interruptor se conecta a la tensión de referencia VREF, mientras que cuando la entrada es 0, el interruptor se conecta a tierra. Por lo tanto, cuando di=1, la corriente i fluye hacia el amplificador de suma, mientras que cuando di=0, la corriente i es cero. El amplificador de suma es un amplificador de retroalimentación negativa, de tal manera que cuando el potencial en la entrada inversora V- es menor que el potencial en la entrada no inversora V+, la tensión de salida v0 con respecto a tierra es positiva, mientras que cuando V- es mayor que V+, v0 es negativa. Además, cuando V- es ligeramente mayor que V+, se puede obtener una gran tensión de salida negativa en v0. La señal v0 se retroalimenta a través de RF a V-, lo que hace que V- disminuya hasta que se iguala a V+ (0V).
+Suppose the operational amplifier is an ideal device (with zero input current), then we can derive:
 
-Suponiendo que el amplificador operacional es un dispositivo ideal (es decir, que la corriente de entrada es cero), se puede obtener:
+$$
+v_O=-R_F i_{\sum}=-R_F (I_3+I_2+I_1+I_0)
+$$
 
-vO=-RF iΣ=-RF (I3+I2+I1+I0)
+And since $V_-\approx 0$, the currents in each branch can be calculated as follows:
 
-Además, como V-≈0, las corrientes en cada rama son:
+$$
+I_3=\frac{V_{REF}}{2^0 R} d_3
+$$
 
-I3=VREF/2^0R d3
+$$
+I_2=\frac{V_{REF}}{2^1 R} d_2
+$$
 
-I2=VREF/2^1R d2
+$$
+I_1=\frac{V_{REF}}{2^2 R} d_1
+$$
 
-I1=VREF/2^2R d1
+$$
+I_0=\frac{V_{REF}}{2^3 R} d_0
+$$
 
-I0=VREF/2^3R d0
+Where $d_n$ can be either 0 or 1. Substituting these values into the previous equation, and assuming the feedback resistor $R_F$ is equal to $\frac{R}{2}$, we can obtain the output voltage:
 
-donde dn puede ser 0 o 1. Sustituyendo en la ecuación anterior y suponiendo que RF=R/2, se obtiene la siguiente ecuación para la tensión de salida:
+$$
+v_O=-\frac{V_{REF}}{2^4}(d_3 2^3+d_2 2^2+d_1 2^1+d_0 2^0)
+$$
 
-vO=-VREF/2^4(d3 2^3+d2 2^2+d1 2^1+d0 2^0)
+Furthermore, for an n-bit weighted resistor network DAC with a feedback resistor of $R_F=\frac{R}{2}$, the output voltage can be calculated as:
 
-Además, para un DAC de red de resistencias ponderadas de n bits, cuando RF=R/2, la fórmula para la tensión de salida es:
+$$
+v_O=-\frac{V_{REF}}{2^n}(d_{n-1} 2^{n-1}+d_{n-2} 2^{n-1}+...+d_{1} 2^{1}+d_{0} 2^{0})
+$$
 
-vO=-VREF/2^n(dn-1 2^n-1+dn-2 2^n-2+...+d1 2^1+d0 2^0)
+$$
+v_O=-\frac{V_{REF}}{2^n}D_n
+$$
 
-vO=-VREF/2^nDn
+Therefore, the analog output voltage is directly proportional to the digital input $D_n$, and its range varies from 0 to $-\frac{2^n-1}{2^n}V_{REF}$. On the other hand, if you need a positive output voltage, you should provide a negative $V_{REF}$.
 
-Por lo tanto, la tensión analógica de salida es proporcional a la cantidad digital de entrada Dn, y su rango de variación es de 0 a -2^n-1/2^n VREF. Por otro lado, si se desea obtener una tensión de salida positiva, se debe proporcionar una VREF negativa.
+The advantage of the weighted resistor network DAC is its simplicity, but the disadvantage is that the resistor values can differ significantly, leading to potential accuracy issues in practice. To improve this, a double-pole weighted resistor network can be used, which is not discussed here but doesn't fundamentally solve the problem.
 
-La ventaja del DAC de red de resistencias es su estructura simple, pero la desventaja es que los valores de resistencia pueden diferir significativamente, lo que puede causar una gran imprecisión en la práctica. Para mejorar esto, se puede utilizar una red de resistencias invertida, que solo utiliza dos valores de resistencia, R y 2R (también conocido como DAC R2R), lo que ayuda a mejorar la precisión de control.
+### Inverted T-Resistor Network
 
-En el DAC de red de resistencias invertida, cuando la resistencia de retroalimentación del amplificador operacional es R, la tensión de salida es:
+To address the issue of significant resistor value differences in weighted resistor network DACs, an inverted T-resistor network DAC can be employed. It uses only two resistor values, R and 2R (hence, it's called R2R DAC), and it greatly contributes to control precision:
 
-vO=-RiΣ=-VREF/2^nDn
+![](https://img.wiki-power.com/d/wiki-media/img/20220724165753.png)
 
-Por lo tanto, la fórmula de cálculo es la misma que la del DAC de red de resistencias.
+When the feedback resistor of the summing amplifier has a resistance value of R, the output voltage is:
 
-Cuando se analizan las redes de resistencias y las redes de resistencias invertidas, se consideran los interruptores analógicos como dispositivos ideales, pero en la práctica tienen una resistencia de conducción y una caída de voltaje, y la consistencia entre los interruptores puede ser diferente, lo que puede causar errores de conversión y afectar la precisión. Para solucionar esto, se puede utilizar un DAC de corriente ponderada, que tiene una serie de fuentes de corriente constante, donde la corriente de cada fuente es la mitad de la anterior y está en proporción directa con el peso binario de la entrada. El uso de fuentes de corriente constante hace que el tamaño de cada corriente de rama no esté influenciado por la resistencia de conducción y la caída de voltaje de los interruptores.
+$$
+v_O=-Ri_{\sum}=-\frac{V_{REF}}{2^n}D_n
+$$
 
-En el DAC de corriente ponderada, cuando un bit de entrada es 1, el interruptor correspondiente conecta la fuente de corriente constante al amplificador operacional de entrada, mientras que cuando el código de entrada es 0, el interruptor se conecta a tierra, por lo que la tensión de salida es:
+As you can see, the calculation formula for the inverted T-resistor network is the same as that of the weighted resistor network DAC.
 
-vO=RF VREF/2^nRR Dn
+### Weighted Current Type
 
-Los principales parámetros de un DAC son la resolución, la precisión, la velocidad de conversión y la linealidad.
+When analyzing the weighted resistor network and inverted T-resistor network, we treat analog switches as ideal devices. However, in reality, they have some on-resistance and voltage drop, and their consistency may vary, leading to conversion errors that affect accuracy. The solution is to use a weighted current type DAC, which includes a set of constant current sources. Each current source's magnitude is half that of the previous one, and they are directly proportional to the binary input bits. The use of constant current sources eliminates the influence of switch on-resistance and voltage drop on the branch currents.
 
-- **Resolución**: la relación entre la tensión mínima de salida (es decir, la tensión cuando la entrada digital es 1) y la tensión máxima de salida (es decir, la tensión cuando la entrada digital es el valor máximo, con todos los bits en 1). Por lo general, se expresa en función del número de bits de la entrada digital.
-- **Rango de conversión**: la tensión máxima que el DAC puede producir, generalmente en relación con la tensión de referencia o sus múltiplos.
-- **Tiempo de establecimiento**: el tiempo de retardo desde la entrada digital hasta la salida analógica.
-- **Precisión de conversión**: similar a la precisión de conversión del ADC.
+![](https://img.wiki-power.com/d/wiki-media/img/20220724171436.png)
 
-## Referencias y agradecimientos
+When a certain bit of the digital input is 1, the corresponding switch connects the constant current source to the input of the operational amplifier. When the input code is 0, the corresponding switch connects to ground. Therefore, the output voltage is given by:
 
-- [ADC/DAC Application Design Handbook](https://picture.iczhiku.com/resource/eetop/syIFpRpWgQqgOXnx.pdf)
-- [Conversión analógica a digital y digital a analógica](https://www.cnblogs.com/redlightASl/p/15542623.html)
-- [ADC y DAC (convertidores analógico a digital y digital a analógico)](https://www.youtube.com/playlist?list=PLwjK_iyK4LLCnW-df-_53d-6yYrGb9zZc)
-- [Principios de DAC](https://www.bilibili.com/read/cv4873472/)
-- [Referencia de bolsillo del ingeniero analógico](《Analog Engineer’s Pocket Reference》)
-- [Tecnología digital electrónica (6ª edición) \_ Yan Shi](《数字电子技术（第六版）_阎石》)
+$$
+v_O=\frac{R_F V_{REF}}{2^n R_R}D_n
+$$
+
+## Main DAC Parameters
+
+- **Resolution**: The ratio of the smallest output voltage (corresponding to a digital input of 1) to the maximum output voltage (corresponding to all bits being 1 in the input). Generally expressed in terms of the number of input bits.
+
+- **Conversion Range**: The maximum voltage that the DAC can output, typically in relation to the reference voltage or its multiples.
+
+- **Settling Time**: The time it takes for the DAC to produce the analog output after a digital input is applied.
+
+- **Conversion Accuracy**: Similar to ADC's conversion accuracy.
+
+## References and Acknowledgments
+
+
+- [**《Guía de Diseño de Aplicaciones ADC/DAC》**](https://picture.iczhiku.com/resource/eetop/syIFpRpWgQqgOXnx.pdf)
+- [**Conversión Analógica a Digital y Conversión Digital a Analógico**](https://www.cnblogs.com/redlightASl/p/15542623.html)
+- [**ADC y DAC (Convertidores Analógico a Digital y Digital a Analógico)**](https://www.youtube.com/playlist?list=PLwjK_iyK4LLCnW-df-_53d-6yYrGb9zZc)
+- [**Exploración de los Principios del DAC**](https://www.bilibili.com/read/cv4873472/)
+- **《Referencia de Bolsillo para Ingenieros Analógicos》**
+- **《Tecnología Electrónica Digital (Sexta Edición) por 阎石》**
+
+> Dirección original del artículo: <https://wiki-power.com/>  
+> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

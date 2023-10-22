@@ -1,217 +1,199 @@
-# ملاحظات حول استخدام Git في AD
+# نصائح حول استخدام Git في Altium Designer
 
 ## إدارة المشروع باستخدام Git
 
-يدعم Altium Designer استخدام Git/SVN للتحكم في الإصدارات. إذا كنت تستخدم Git، يمكنك إنشاء مستودع Git مباشرة في مسار المشروع. بعد إعادة تشغيل Altium Designer، سترى حالة الإصدارات بجانب شجرة الملفات:
+يدعم Altium Designer استخدام Git/SVN للتحكم في الإصدارات. إذا كنت تستخدم Git، يمكنك بسهولة إنشاء مستودع Git في المسار الذي يحتوي على المشروع. بمجرد إعادة تشغيل Altium Designer، سترى حالة الإصدارات بجوار شجرة الملفات:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20200421100348.png)
 
-تعني الرموز التوضيحية ما يلي:
+معاني الرموز على الصورة كالتالي:
+
 ![](https://img.wiki-power.com/d/wiki-media/img/20200421101221.png)
 
-يمكنك القيام بعمليات Git مباشرة من القائمة "المشروع (C) - التحكم في الإصدارات (E)"، ويمكنك حتى إرسال التعديلات مباشرة إلى GitHub.
+يمكنك أيضًا القيام بعمليات Git مباشرة من القائمة `Project (C) - Version Control (E)`، وحتى يمكنك القيام بمشاركة المشروع مباشرة على GitHub.
 
 ## ملف .gitignore
 
-عند استخدام Altium Designer، يقوم البرنامج بإنشاء بعض الملفات المؤقتة (مثل مجلد "History")، وهذه الملفات لا تؤثر فقط على سرعة الإرسال، بل تلوث أيضًا سجل الإرسال. في هذه الحالة، يجب استخدام ملف `.gitignore` لتجاهل هذه الملفات المؤقتة.
+عند استخدام Altium Designer، ستقوم البرامج بإنشاء بعض الملفات المؤقتة (مثل مجلد "History")، وهذه الملفات ليست فقط تبطئ عملية الإرسال، ولكنها تلوث سجلات الإرسال أيضًا. في هذه الحالة، يمكنك استخدام ملف `.gitignore` لتجاهل هذه الملفات المؤقتة.
 
-يحتوي ملف `.gitignore` المناسب لـ Altium Designer على المحتويات التالية:
+ملف `.gitignore` المناسب لـ Altium Designer يحتوي على ما يلي:
 
 ```gitignore
 # ============================= Projects =============================
 *.DesWrk
-# Altium Workspace
+# مساحة العمل في Altium
 
 *.DsnWrk
-# Altium Project Group
+# مجموعة مشروعات Altium
 
 !*.LibPkg
-# Altium Inegrated Library Package
+# حزمة المكتبة المتكاملة في Altium
 
 *.PrjGrp
-# Altium Project Group
+# مجموعة مشروعات Altium
 
 !*.PrjMbd
-# Altium Muti-board Design Project
+# مشروع تصميم متعدد اللوحات في Altium
 
 !*.PrjPcb
-# Altium PCB Project
+# مشروع لوحة الدوائر المطبوعة في Altium
 
 *.PrjScr
-# Altium Script Project
+# مشروع سكريبت Altium
 
 *.PrjPCBStructure
 
 # ============================= Schematic =============================
 *.Dot
-# Altium Schematic Template
+# قالب المخطط في Altium
 
 !*.MbsDoc
-# Altium Multi-board Schematic
+# مخطط متعدد اللوحات في Altium
 
 !*.Sch
-# Altium Schematic Document
+# وثيقة المخطط في Altium
 
 !*.SchDoc
-# Altium Schematic Document
+# وثيقة المخطط في Altium
 
 *.SchDot
-# Altium Schematic Template
+# قالب المخطط في Altium
 
 !*.SchLib
-# Altium Schematic Library
+# مكتبة المخطط في Altium
 
 # ============================= PCB =============================
 !*.MbaDoc
-# Altium Multi-board Assembly
+# تجميع لوحة متعددة اللوحات في Altium
 
 !*.Pcb
-# Protel PCB Document
+# وثيقة لوحة الدوائر المطبوعة في Protel
 
 !*.PcbDoc
-# Altium PCB Document
+# وثيقة لوحة الدوائر المطبوعة في Altium
 
 !*.PcbLib
-# Altium PCB Library
+# مكتبة لوحة الدوائر المطبوعة في Altium
 
 # ============================= Libraries =============================
 *.CmpLib
-# Altium Component Library
+# مكتبة مكونات Altium
 
 !*.IntLib
-# Altium Compiled Library
+# مكتبة مترجمة Altium
 
 !*.Lib
-# Altium Library
+# مكتبة Altium
 
 *.PvLib
-# Altium Pad Via Library
+# مكتبة الأوجه والفياس في Altium
 
 # ============================= CAMtastic =============================
 *.Apr
-# CAMtastic Aperture Data
+# بيانات فتحات CAMtastic
 
 *.Apt
-# CAMtastic Aperture Data
+# بيانات فتحات CAMtastic
 
 *.Cam
-# Altium CAMtastic Document
+# وثيقة CAMtastic في Altium
 
 *.Drl
-# CAMtastic NC Drill Binary Data
+# بيانات الحفر بتنسيق NC في CAMtastic
 ```
 
+```markdown
 # ============================= جيربر =============================
+*.G[1-30]
+# بيانات جيربر للطبقات الوسطى 1-30 من CAMtastic
 
-\*.G[1-30]
-
-# بيانات جيربر لطبقة CAMtastic 1-30
-
-# ============================= المخرجات =============================
-
-\*.Drc
-
+# ============================= النواتج =============================
+*.Drc
 # تقرير فحص القواعد التصميمية
 
-\*.Drr
+*.Drr
+# ملف تقرير الحفر NC من Altium
 
-# ملف تقرير الحفر NC لبرنامج Altium
+*.Net
+# ملف قائمة الشبكة من Altium
 
-\*.Net
+*.Nsx
+# مستند قائمة شبكة المحاكاة
 
-# ملف قائمة الشبكات لبرنامج Altium
+*.OutJob
+# ملف وظيفة الإخراج من Altium
 
-\*.Nsx
-
-# مستند قائمة الشبكات للمحاكاة
-
-\*.OutJob
-
-# ملف وظيفة الإخراج لبرنامج Altium
-
-\*.Rep
-
+*.Rep
 # ملف تقرير
 
-\*.Rpt
-
+*.Rpt
 # ملف تقرير
 
-# ============================= النصوص البرمجية =============================
+# ============================= النصوص =============================
+*.Bas
+# مستند نصي Altium
 
-\*.Bas
+*.SrcDoc
+# مستند نصي Altium
 
-# مستند نص برمجي لبرنامج Altium
-
-\*.SrcDoc
-
-# مستند نص برمجي لبرنامج Altium
-
-\*.Tcl
-
-# مستند نص برمجي لبرنامج Altium
+*.Tcl
+# مستند نصي Altium
 
 # ============================= المحاكاة =============================
-
-\*.Ckt
-
+*.Ckt
 # دائرة فرعية للمحاكاة
 
-\*.LaxAn
+*.LaxAn
+# ملف تحليل الإشارات التماثلية لجهاز الفحص المنطقي
 
-# ملف تحليل منطقي تناظري
+*.LaxDig
+# ملف تحليل الإشارات الرقمية لجهاز الفحص المنطقي
 
-\*.LaxDig
-
-# ملف تحليل منطقي رقمي
-
-\*.Mdl
-
+*.Mdl
 # نموذج المحاكاة
 
-\*.Pld
-
+*.Pld
 # ملف CUPL PLD
 
-\*.Pwl
+*.Pwl
+# وصف خطي تدريجي للمحاكاة
 
-# وصف خطي قطعي للمحاكاة
+*.Sdf
+# ملف بيانات المحاكاة من Altium
 
-\*.Sdf
+*.Si
+# ملف إدخال محاكاة CUPL
 
-# ملف بيانات المحاكاة لبرنامج Altium
-
-\*.Si
-
-# ملف إدخال المحاكاة CUPL
-
-\*.So
-
-# ملف موجات رقمية
+*.So
+# ملف موجة رقمية
 
 # ============================= المجلدات =============================
-
-\_\_Previews/
+__Previews/
 
 History/
 
-Project Logs for \*/
+Project Logs for */
 
 # ============================= أخرى =============================
+*.BomDoc
+# مستند قائمة الفواتير
 
-\*.BomDoc
+*.DBLib
+# ملف مكتبة قاعدة البيانات من Altium
 
-# مستند BOM
+*.DBLink
+# ملف ربط قاعدة البيانات من Altium
+```
 
-\*.DBLib
+يمكنك ببساطة وضع هذا الملف في الدليل الجذري لمستودع Git. إذا كان هناك تضارب مع ملف `.gitignore` السابق، فيجب دمجهما معًا.
 
-# ملف مكتبة قاعدة البيانات لبرنامج Altium
+## المراجع والشكر
 
-\*.DBLink
+- [تكوين ملف .gitignore: أنواع ملفات مشروع Altium Designer](https://blog.csdn.net/u010160335/article/details/80100232)
 
-# ملف رابط قاعدة البيانات لبرنامج Altium
-
-> عنوان النص: <https://wiki-power.com/>  
+> عنوان النص: <https://wiki-power.com/>
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+```
+
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

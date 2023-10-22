@@ -1,102 +1,99 @@
-# Common Tips for Using Altium Designer
+# Common Techniques for Altium Designer
 
-- This article provides some practical tips for organizing and using Altium Designer.
+Here, we've compiled some practical tips and tricks for using Altium Designer.
 
-## Schematic Library
+## Schematic Library Section
 
 ### Underlining Pin Names (Active Low)
 
-**Method**: Add a "\" symbol after each letter that needs to be underlined.  
-**Example**: `RESET` with underline - `R\E\S\E\T`
+**Method**: Add a backslash "\" after each letter that needs underlining.  
+**Example**: `RESET` with underlining - `R\E\S\E\T`
 
-## PCB Library
+## PCB Footprint Library Section
 
-(to be updated)
+(To be updated)
 
-## Schematic
+## Schematic Section
 
-### Disabling "Add Room" Operation
+### Disabling Add Room Function
 
-**Reason**: Room operation is useful in multi-channel wiring, which can apply wiring within one channel directly to other channels. Single channel does not need Room.  
+**Reason**: Room operations are more useful in multi-channel routing, where you can apply wiring within one channel to other channels. Single-channel designs can skip using Room.
 **Method**:
 
-1. Menu bar - Project - Project Options - Class Generation tab
-2. Uncheck "Generate Room"
+1. Menu bar - Project - Project Options - Class Generation tab.
+2. Uncheck "Generate Room."
 
-## PCB
+## PCB Section
 
-### Adding Logo and Markings
+### Adding Logos and Labels
 
-**Reason**: If imported images are used, the created logo cannot be freely resized.  
-**Method**: Use font software Font Creator, download my font library as a template on [GitHub](https://github.com/linyuxuanlin/Modularity_of_Functional_Circuit/tree/master/%E4%B8%93%E7%94%A8%E5%AD%97%E4%BD%93), and customize your own exclusive font library. After the font library is created, install the .ttf file and use the corresponding characters to call out the logo in Altium.
+**Reason**: Importing images directly results in logos that cannot be freely resized.
+**Method**: Use the Font Creator software, download my custom font library as a template from [GitHub](https://github.com/linyuxuanlin/Modularity_of_Functional_Circuit/tree/master/%E4%B8%93%E7%94%A8%E5%AD%97%E4%BD%93), and create your personalized font library. After creating the font library, install the .ttf file, and you can use the corresponding characters to insert logos in Altium.
 
-The corresponding logos for characters are shown in the following figure:  
-![](https://img.wiki-power.com/d/wiki-media/img/20200207200606.png)
+Character-to-logo mapping is as follows:  
+![Logo](https://img.wiki-power.com/d/wiki-media/img/20200207200606.png)
 
-### Automatically Placing Components in a Designated Area
+### Automatically Placing Components in a Defined Area
 
-**Reason**: When the schematic is updated to the PCB, some components may move far away.  
-**Method**: Select all - **TOL** - box select
+**Reason**: When transferring a schematic to the PCB, some components may be placed far from their intended location.
+**Method**: Select all components - **TOL** - draw a bounding box.
 
 ### Circular Array Layout
 
 **Method**:
 
-1. Select object - copy
-2. **EA** - check "Paste to Current Layer"
-3. Click "Paste Array" - set object quantity and spacing
+1. Select an object - Copy.
+2. **EA** - Check "Paste to Current Layer."
+3. Click "Paste Array" - Set the number of objects and spacing.
 
-### Quick Via and Layer Change
+### Quick Via Creation and Layer Change
 
-**Method**: Use the keypad "+" and "-" to switch during routing.
+**Method**: During routing, use the numpad + / - keys to toggle between layers.
 
-### Uniformly Setting Via Net Properties
+### Uniformly Setting Via Network Attributes
 
 **Method**:
 
-1. Right-click any unattributed via - Find Similar Objects - Set Net to Same
-2. Uniformly add via net properties in the property panel
+1. Right-click on any unattributed via - Find Similar Objects - Set Net to Same.
+2. In the properties panel, uniformly assign via network attributes.
 
-### Adding Tear Drops
+### Adding Teardrops
 
-**Reason**: The function of tear drops is to improve signal integrity, reduce signal loss and reflection, and reduce the risk of wire and via contact point breakage when subjected to external impact.
-
+**Reason**: Teardrops enhance signal integrity, reduce signal loss and reflections, and lower the risk of wire-to-via contact point breakage during external force impacts.
 **Method**: Use the shortcut key **TE**.
 
-### Wire Window
+### Windowing Traces
 
-**Reason**: Tinning on wire windows can increase current flow.
-
-**Method**: Copy the required wiring and paste it onto the corresponding Top/Bottom Solder layer.
+**Reason**: Tinning traces can increase current-carrying capacity.
+**Method**: Copy the desired trace, paste it into the corresponding Top/Bottom Solder layer.
 
 ### Operations in 3D Preview
 
 **Method**:
 
-- Press the number key "3" to enter the 3D preview interface.
-- Press the number key "2" to return to PCB editing.
-- Press the number key "0" to restore the default perspective.
+- Press the number "3" to enter 3D preview mode.
+- Press the number "2" to return to PCB editing.
+- Press the number "0" to reset the default view.
 - Ctrl + F to flip.
 - Ctrl + scroll wheel to zoom.
-- Shift + right-click to change the perspective.
+- Shift + right-click to change the view.
 
-### Maintaining Network Properties When Copying and Pasting
+### Maintaining Network Attributes During Copy-Paste
 
-**Reason**: When copying and pasting objects with electrical properties, network properties are lost.
+**Reason**: When copying and pasting objects with electrical attributes, network properties may be lost.
+**Method**: Copy the object - **EA** - Check "Preserve Network Names" - Paste.
 
-**Method**: Copy the object - **EA** - check "Maintain Network Name" - paste.
-
-### Output of Soldering Position Diagram
+### Outputting Assembly Designator Graphics
 
 (To be updated)
 
-### How to Create Slots on PCB
+### Creating Slots on the PCB
 
-Draw a closed shape for the slot on the **Mechanical 1 layer** of the PCB, select it, and use the shortcut keys `T` - `V` - `B` to generate the slot (it is recommended to switch to 3D view for confirmation).
+To create slots on the PCB, draw a closed shape on **Mechanical Layer 1**, select it, and use the shortcut keys `T` - `V` - `B` to generate the slot (preferably switch to 3D view for confirmation).
 
 ## References and Acknowledgments
 
-- [Altium Designer19 Design Compendium: Practical Operation Skills and Problem Solving Methods](https://item.jd.com/12756518.html)
+- [Altium Designer 19 Design Compendium: Practical Operations and Troubleshooting Techniques](https://item.jd.com/12756518.html)
 
 > Original: <https://wiki-power.com/>  
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.

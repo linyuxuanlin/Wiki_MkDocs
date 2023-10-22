@@ -1,175 +1,177 @@
-# Operaciones básicas de AD - Conocimientos básicos
+# AD Basic Operations - Basic Knowledge
 
-- Tutorial de la serie Altium Designer
+— Altium Designer Tutorial Series
 
-## Contexto
+## Background
 
-Antes de comenzar a diseñar una placa, es importante familiarizarse con algunos conocimientos básicos de Altium Designer y diseño de circuitos después de configurar el entorno de ejecución del software.
+After configuring the software environment, it's essential to acquaint ourselves with some fundamental knowledge of Altium Designer and circuit design before starting to design a PCB.
 
-## Instalación de archivos de biblioteca
+## Library Installation
 
-La biblioteca es como una colección de esquemas / PCB encapsulados para cada componente discreto (como resistencias, capacitores, etc.), lo que facilita su uso directo. No es necesario dibujar la biblioteca / encapsulamiento de cada componente. Sin embargo, **es necesario organizar su propia biblioteca**. Supongamos que cada componente utilizado en su proyecto proviene de otras bibliotecas (y cada biblioteca tiene sus propias reglas), cuanto más avance, más estará limitado. Tener su propia biblioteca no solo facilita la migración y mejora la eficiencia, sino que también es beneficioso para la sistematización del conocimiento. Las reglas y el sistema adecuados para usted, desde la perspectiva del eje de tiempo, el conocimiento aumentará exponencialmente. Aunque la curva de crecimiento al principio es lenta, no habrá trabajo repetitivo en el futuro. Lo que necesita hacer es aprender nuevos conocimientos y resumirlos en el sistema.
+A library acts as an encapsulation of individual discrete components (e.g., resistors, capacitors), making them readily accessible. It's not always necessary to create schematic libraries or component footprints for every component you use, but **organizing your libraries is a must**. Imagine if every component in your project comes from various sources, each with its own rules; you'll find yourself increasingly restricted as you progress. Having your library not only facilitates migration and improves efficiency but also promotes the organization of knowledge. Your own rules and systems will lead to exponential growth in knowledge over time. While the initial growth curve may be slow, later on, there will be no repetitive work. All you'll need to do is learn new knowledge and incorporate it into your system.
 
-Consejo: intente extraer todos los componentes necesarios para su proyecto de su propia biblioteca de esquemas / encapsulamientos.
+Friendly reminder: Extract all the components you need for your project from your organized schematic libraries or component footprints as much as possible.
 
-### Bibliotecas de referencia
+### Recommended Libraries
 
-- [**Power_Lib_Altium**](https://github.com/linyuxuanlin/Power_Lib_Altium): mi propia biblioteca. La biblioteca de encapsulamientos es completa y la biblioteca de esquemas solo incluye los modelos de componentes que necesito para mi proyecto. Actualizado constantemente.
-- [**AltiumDesigner_PcbLibrary**](https://github.com/KitSprout/AltiumDesigner_PcbLibrary): una biblioteca bastante completa.
-- [**My_PCB_Library_Github**](https://github.com/Samwuzhitao/My_PCB_Library_Github): una biblioteca bastante completa que también incluye algunas placas de soluciones de microcontroladores.
-- [**JLCSMT_LIB**](https://gitee.com/JLC_SMT/JLCSMT_LIB): biblioteca de integración estándar proporcionada por Jialichuang, que incluye todos los componentes que Jialichuang puede pegar con SMT. Si usa esta biblioteca de integración, la compatibilidad al imprimir / SMT será mejor.
-- [**Hare_Library**](https://github.com/linyuxuanlin/Power_Lib_Altium/tree/master/Other_Libs/Hare_Library): biblioteca de esquemas / encapsulamientos organizada por Bingge, que cubre la mayoría de los componentes necesarios para el hardware del equipo.
+- [**Power_Lib_Altium**](https://github.com/linyuxuanlin/Power_Lib_Altium): My own organized library. It contains complete footprints and only the schematic symbols for the component models required for my projects. Continuously updated.
+- [**AltiumDesigner_PcbLibrary**](https://github.com/KitSprout/AltiumDesigner_PcbLibrary): A relatively comprehensive library.
+- [**My_PCB_Library_Github**](https://github.com/Samwuzhitao/My_PCB_Library_Github): A quite comprehensive library that also includes some microcontroller solution boards.
+- [**JLCSMT_LIB**](https://gitee.com/JLC_SMT/JLCSMT_LIB): A standard integrated library provided by JLCPCB, which includes all components compatible with JLCPCB SMT placement. Using this integrated library ensures better compatibility when ordering PCBs or SMT assembly.
+- [**Hare_Library**](https://github.com/linyuxuanlin/Power_Lib_Altium/tree/master/Other_Libs/Hare_Library): Curated schematic libraries and component footprints by Bin Ge, covering most components required by the hardware team.
 
-Cómo instalar archivos de biblioteca: consulte [**Cómo instalar archivos de biblioteca Altium Designer**](https://wiki-power.com/es/AltiumDesigner安装库文件)
+How to install library files: Refer to [**Altium Designer Library Installation**](to_be_replaced[3]).
 
-### Componentes poco comunes
+### Uncommon Components
 
-Las bibliotecas proporcionadas anteriormente cubren más del 95% de los modelos de componentes en el mercado. Si realmente no puede encontrar el componente necesario, puede intentar los siguientes métodos:
+The libraries provided above already cover over 95% of component models available in the market. If you can't find the component you need, you can try the following methods:
 
-Complementos de AD:
+AD Plugins:
 
-- [**Altium Library Loader**](https://www.samacsys.com/altium-designer-library-instructions/): realmente fácil de usar
+- [**Altium Library Loader**](https://www.samacsys.com/altium-designer-library-instructions/): This is incredibly convenient to use.
 
-Motor de búsqueda: [**Descarga de esquemas y encapsulamientos · NAV de Power**](https://nav.wiki-power.com/#87696a153c91c609c4c595e421e880ae)
+Search Engine: [**Schematic and Footprint Downloads · Power's NAV**](https://nav.wiki-power.com/#87696a153c91c609c4c595e421e880ae)
 
-## Atajos de teclado
+## Keyboard Shortcuts
 
-Para Altium Designer, dominar los atajos de teclado comunes puede mejorar en gran medida la eficiencia. Los atajos de teclado del sistema Altium Designer se componen de letras subrayadas en los comandos del menú, como el atajo de teclado de **Place-Line** es **P-L** (primero presione P y luego presione L).
+For Altium Designer, mastering commonly used keyboard shortcuts can significantly improve efficiency. Altium Designer's system shortcuts are composed of letter combinations based on the letters with underscores in the menu commands. For example, the shortcut for **Place-Line** is **P-L** (press P followed by L).
 
-### Esquema
+### Schematic
 
-- Mostrar el panel de la biblioteca: **PP**
-- Dibujar cables: **Ctrl + W**
-- Dibujar etiquetas de red: **PN**
-- Copiar componentes y actualizar automáticamente los números de referencia: **Mantener presionado Shift + arrastrar**
-- Numerar los dibujos: **TAT**
-- Numeración automática de componentes: **TAA**
-  - Reset All: restablece todos los números de referencia de los componentes para que estén en formato "letra + ?"
-  - Update Change List: actualiza la lista de componentes con los cambios de numeración
-  - Accept Changes (Create ECO): acepta los cambios de numeración y realiza los cambios en el esquema original
-- Generar lista de materiales (BOM): **RI**
-- Actualizar PCB: **DU**
-- Alinear a la izquierda (derecha): **AL** (**AR**)
+- Show Library Panel: **PP**
+- Draw Wires: **Ctrl + W**
+- Draw Network Labels: **PN**
+- Copy Components and Automatically Update Reference Designators: **Hold Shift + Drag**
+- Number the Schematic Sheet: **TAT**
+- Automatically Number Components: **TAA**
+  - Reset All: Reset all component reference designators to "Letter + ?" format.
+  - Update Change List: Assign reference designators to components in the list.
+  - Accept Changes (Create ECO): Confirm the reference designator changes to implement schematic modifications.
+- Generate BOM (Bill of Materials): **RI**
+- Update PCB: **DU**
+- Left Align (Right): **AL** (**AR**)
 
 ### PCB
 
-- Importar cambios del esquema a la PCB: **DI**
-- Sobrescribir cambios de la PCB en el esquema: **DU**
-- Cambiar unidades (pulgadas / milímetros): **Q**
-- Girar componentes (cualquier ángulo): **EMO**
-- Colocar componentes en la capa inferior: **Arrastrar y mantener presionado L**
-- Distribución automática: **Seleccionar y presionar TOL**
-- Establecer origen de coordenadas: **EOS**
-- Establecer cuadrícula: **G**
-- Enrutamiento automático: **UAA**
-- Limpiar enrutamiento: **UUA**
-- Resaltar conexiones: **Mantener presionado Shift + mover el cursor sobre la línea**
-- Resaltar línea correspondiente al nodo: **Mantener presionado Ctrl + hacer clic izquierdo**
-- Voltear horizontalmente: **Ctrl + F**
-- Medir: **Ctrl + M**
-- Cambiar vista (2D / 3D): **2 / 3**
-- Rotar en la vista 3D: **Mantener presionado Shift + arrastrar**
-- Limpiar filtro: **Shift + C**
-- Cambiar entre vista de una capa / múltiples capas: **Shift + S**
-- Tapar agujeros pasantes (opcional, se puede seleccionar directamente al hacer la placa)
-  1. Hacer clic en un agujero pasante
-  2. Hacer clic derecho - Buscar objetos similares
-  3. Seleccionar Same en la propiedad de tamaño y confirmar para seleccionar todos los agujeros pasantes
-  4. En la propiedad de expansión de la máscara de soldadura, seleccionar tanto la capa superior como la inferior
-- Establecer reglas de enrutamiento
+- Import Schematic Changes into PCB: **DI**
+- Overwrite PCB Changes to Schematic: **DU**
+- Change Units (Inches/Millimeters): **Q**
+- Rotate Components (Any Angle): **EMO**
+- Place Components on Bottom Layer: **Drag while holding L**
+- Auto Route: **Select + TOL**
+- Set the Origin Coordinate: **EOS**
+- Set the Grid: **G**
+- Auto Route: **UAA**
+- Clear Routing: **UUA**
+- Highlight Connections: **Hold Shift + Move Cursor to a Wire**
+- Highlight Connected Nets: **Hold Ctrl + Left-click**
+- Horizontal Flip: **Ctrl + F**
+- Measure: **Ctrl + M**
+- Switch View (2D/3D): **2 / 3**
+- Rotate in 3D View: **Hold Shift + Drag**
+- Clear Filters: **Shift + C**
+- Toggle Single/Multi-layer Display: **Shift + S**
+- Cover Via Holes with Solder Mask (Optional, for PCB manufacturing)
+  1. Click on a via hole.
+  2. Right-click - Find Similar Objects.
+  3. Select Size attribute as Same to activate selecting all via holes.
+  4. In the Solder Mask Expansion attribute, check both Top Layer and Bottom Layer.
+- Set Routing Rules
   1. **UAA**
-  2. Crear una nueva estrategia y editar las reglas
-  3. Modificar las reglas en Routing (crear nuevas reglas)
-     - Width: establecer el grosor de la línea
-     - Routing Via Style: establecer las reglas de los agujeros pasantes
-     - Cobertura de cobre: ?
+  2. Create a new strategy and edit rules.
+  3. Modify rules in Routing (Create new rules)
+     - Width: Set the line thickness.
+     - Routing Via Style: Set via hole rules.
+     - Copper Pour: ?
 
-### Biblioteca de esquemas
+### Schematic Library
 
-Por completar...
+To be added...
 
-### Biblioteca de encapsulados
+### Component Library
 
-- Medir distancia: **Ctrl + N**
-- Cambiar unidades (pulgadas / milímetros): **Q**
+- Measure Distance: **Ctrl + N**
+- Change Units (Inches/Millimeters): **Q**
 
-## Proceso y normas
+## Process and Standards
 
-El proceso básico para diseñar una placa de circuito impreso desde cero es el siguiente:
+The basic process for designing a circuit board from scratch is as follows:
 
+```markdown
 1. Inicialización
    1. Crear un nuevo proyecto
-   2. Crear esquemático y archivo PCB dentro del proyecto
-2. Dibujo del esquemático
-   1. Asegurarse de que se compila correctamente después de completarlo
-3. Dibujo del PCB
+   2. Crear esquemáticos y archivos de PCB dentro del proyecto
+2. Diseñar el esquemático
+   1. Asegurarse de que compila correctamente una vez terminado
+3. Diseñar el PCB
    1. Importar cambios desde el esquemático
-   2. Ocultar la identificación del componente Designator
-      1. Abrir el panel de propiedades a la derecha
-      2. Hacer clic en el icono del ojo al lado de Designator para cerrarlo
-   3. Dibujar la forma de la placa
-      - Cambiar entre líneas de 90°/45° (Shift+Space)
-      - Definir la placa con la forma dibujada (DSD)
-      - Establecer la propiedad del marco de la placa en la capa mecánica 1
-      - Agujeros fijos
-        - Tornillo M3: interno 3,1 mm, externo 4 mm
-   4. Disposición de componentes
-      - Ver artículo [**Normas de disposición de componentes de PCB**](https://wiki-power.com/es/PCB%E5%85%83%E4%BB%B6%E5%B8%83%E5%B1%80%E8%A7%84%E8%8C%83)
-   5. Enrutamiento
-      - Establecer reglas de enrutamiento
-        - Consultar [**Normas de enrutamiento de PCB**](https://wiki-power.com/es/PCB%E5%B8%83%E7%BA%BF%E8%A7%84%E8%8C%83)
-      - ¡No activar el enrutamiento automático!
-      - Activar la función de gota de lágrima
-   6. Identificación de fuentes (identificación de pines / derechos de autor / texto engañoso)
-      - Colocar en la capa de serigrafía (superior / inferior)
-      - Si se coloca en la capa inferior, hay que invertirlo primero
-   7. Cobertura de cobre (PG)
-      - Consultar [**Normas de enrutamiento de PCB**](https://wiki-power.com/es/PCB%E5%B8%83%E7%BA%BF%E8%A7%84%E8%8C%83)
-4. Fabricación de la placa
+   2. Ocultar las designaciones de los componentes
+      1. Abrir el panel **Propiedades** en la parte derecha
+      2. Hacer clic en el icono del **ojo** junto a **Designator** para desactivarlo
+   3. Diseñar la forma de la placa
+      - Cambiar el ángulo de las rutas a 90°/45° (presionar **Shift+Espacio**)
+      - Definir el contorno de la placa con la forma creada (utilizar **DSD**)
+      - Configurar las propiedades del contorno de la placa como "Capa Mecánica 1"
+      - Agregar orificios de montaje
+        - Orificio M3: Diámetro interior de **3.1** mm, diámetro exterior de **4** mm
+   4. Colocar los componentes
+      - Consultar el artículo [**Normas de Disposición de Componentes en PCB**](enlace_a_la_norma)
+   5. Enrutamiento de pistas
+      - Configurar las reglas de enrutamiento
+        - Consultar [**Normas de Enrutamiento en PCB**](enlace_a_la_norma)
+      - ¡No habilitar el enrutamiento automático!
+      - Activar la función de 'teardrops' (lágrimas)
+   6. Identificación con texto (marcadores de pines, derechos de autor, texto informativo)
+      - Colocar en la capa de serigrafía (superior/inferior)
+      - Si se coloca en la capa inferior, se debe espejar primero
+   7. Rellenar con cobre (plano de tierra)
+      - Consultar [**Normas de Enrutamiento en PCB**](enlace_a_la_norma)
+4. Fabricación del PCB
    1. Guardar el proyecto
-   2. Comprimir el archivo .pcb (si es posible, exportar Gerber)
-   3. Subirlo al asistente de pedido de JiaLiChuang
-   4. (Opcional SMT)
+   2. Comprimir el archivo **.pcb** (si es posible, exportar a formato Gerber)
+   3. Subir el archivo al asistente de pedidos de JLCPCB
+   4. (Opcional: montaje superficial - SMT)
 
-## Otros conocimientos
+## Otros Conocimientos
 
-### Propiedades del componente
+### Atributos de Componentes
 
-- **Designator**: número de posición del componente, es la identificación única del componente y se utiliza para identificar diferentes componentes en el esquemático
-  - **R**: resistencia
-  - **RN**: red de resistencias
-  - **C**: capacitancia
-  - **J**: interfaz / cable de puente
-  - **X**: oscilador de cristal
-  - **D**: diodo
-  - **Q** o **T**: transistor
-  - **FB**: perla magnética
-  - **U**: chip
-  - **TP**: punto de prueba
-- **Comment**: parámetros de tamaño del componente, como el valor de resistencia de una resistencia, el valor de capacitancia de un capacitor, el modelo de chip IC, etc.
-- **Description**: se utiliza para escribir una descripción de la función del componente
+- **Designator**: Número de referencia del componente, sirve para identificar de forma única los componentes en el esquemático
+  - **R**: Resistencia
+  - **RN**: Red de resistencias
+  - **C**: Condensador
+  - **J**: Conector/Salto
+  - **X**: Cristal oscilador
+  - **D**: Diodo
+  - **Q** o **T**: Transistor
+  - **FB**: Ferrita
+  - **U**: Microcontrolador
+  - **TP**: Punto de prueba
+- **Comment**: Parámetros del componente, como el valor de resistencia, la capacitancia o el modelo de un chip IC
+- **Description**: Utilizado para describir la función del componente
 
-### Agregar un logotipo
+### Agregar un Logotipo
 
-Consultar el artículo [**Agregar un logotipo**](https://seujxh.wordpress.com/2018/10/03/logo%E6%B7%BB%E5%8A%A0/).
+Consultar el artículo [**Agregar un Logotipo**](enlace_al_artículo).
 
-### Gestión del proyecto con Git
+### Gestión de Proyectos con Git
 
-Consultar [**Consideraciones al utilizar Git en AD**](https://wiki-power.com/es/AD%E4%BD%BF%E7%94%A8Git%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)
+Más detalles en [**Consideraciones al Usar Git en Altium Designer**](enlace_al_artículo).
 
-## Conclusión
+## Resumen
 
-Estos son los conocimientos básicos de Altium Designer y diseño de circuitos.  
-En el próximo capítulo, comenzaremos a diseñar el esquemático.
+Estos son los conceptos fundamentales de Altium Designer y el diseño de circuitos. En el próximo capítulo, comenzaremos con el diseño del esquemático.
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
+```
 
-- [Columna de Altium Designer de la compañía Altium](https://seujxh.wordpress.com/2018/09/30/altium%e5%85%ac%e5%8f%b8altium-designer%e4%b8%93%e6%a0%8f/)
-- [Lista de integración de PADS de SMT de Jialichuang para pegado \ (versión oficial)](http://club.szlcsc.com/article/details_2757_1.html)
-- [Idea de construcción de Git para Altium Designer](https://blog.csdn.net/weifengdq/article/details/78406438)
-- [Usando el control de versiones](https://www.altium.com/documentation/altium-designer/using-version-control-ad)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
+- [Columna sobre Altium Designer de la empresa Altium](https://seujxh.wordpress.com/2018/09/30/altium%e5%85%ac%e5%8f%b8altium-designer%e4%b8%93%e6%a0%8f/)
+- [Lista de componentes SMT para montaje superficial de Jialichuang, integrada en la biblioteca PADS (versión oficial)](http://club.szlcsc.com/article/details_2757_1.html)
+- [Conceptos de uso de Git en Altium Designer](https://blog.csdn.net/weifengdq/article/details/78406438)
+- [Utilización del control de versiones](https://www.altium.com/documentation/altium-designer/using-version-control-ad)
+
+> Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
