@@ -1,12 +1,12 @@
 # Docker Compose - Herramienta de orquestación de imágenes
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210117130925.jpg)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210117130925.jpg)
 
-Docker Compose es una herramienta de orquestación de imágenes de Docker. Se recomienda utilizar Docker Compose como la forma predeterminada de abrir Docker, ya que no solo permite configurar y desplegar imágenes de manera conveniente, sino que también permite configurar servicios de múltiples imágenes de manera más conveniente e incluso distinguir su orden de inicio, lo que no es posible con la forma de abrir mediante comandos.
+Docker Compose es una herramienta de orquestación de imágenes de Docker. Se recomienda usar Docker Compose como la forma predeterminada de abrir Docker, ya que no solo facilita la configuración y implementación de imágenes, sino que también permite configurar servicios con múltiples imágenes de manera más conveniente e incluso diferenciar su secuencia de inicio, lo que no es posible con el método de línea de comandos.
 
-Aunque la idea de Docker es desacoplar (una imagen por proceso), aumentar la reutilización y no encapsular múltiples servicios en una sola imagen, hay algunas aplicaciones que requieren el inicio simultáneo de múltiples servicios. Por ejemplo, una aplicación web típica requiere al menos la colaboración del servidor y la base de datos. De esta manera, es necesario implementar dos contenedores por separado, e incluso algunos servicios deben iniciarse en un orden determinado. De esta manera, las imágenes y los pasos de operación necesarios serán muy complejos.
+Aunque la filosofía de Docker es la desvinculación (un proceso por imagen), aumentar la reutilización y no encapsular múltiples servicios en una sola imagen, hay aplicaciones que requieren el inicio simultáneo de varios servicios. Por ejemplo, una aplicación web típica necesita la colaboración de un servidor y una base de datos. Esto significa que debes implementar dos contenedores por separado, e incluso algunos servicios deben iniciarse en un orden específico. Esto puede complicar el proceso y las operaciones necesarias con imágenes.
 
-Docker Compose escribe todas las imágenes necesarias para llamar (todas las propiedades de los servicios y contenedores necesarios, la configuración de red y el montaje del volumen de almacenamiento) y el orden en un archivo YAML. Al ejecutar directamente este archivo de configuración, se pueden ejecutar los contenedores según el método y los pasos que necesite, sin necesidad de operar manualmente cada contenedor. A continuación se muestra un ejemplo de Docker Compose para implementar un servicio web:
+Docker Compose reúne en un archivo YAML todo lo que se necesita para invocar las imágenes (todas las propiedades de los servicios necesarios, configuración de contenedores, redes y montaje de volúmenes). Al ejecutar directamente este archivo de configuración, puedes iniciar los contenedores de acuerdo a tus necesidades y pasos sin necesidad de operaciones manuales en cada contenedor. A continuación, se muestra un ejemplo de Docker Compose utilizado para implementar un servicio web:
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -36,45 +36,45 @@ services:
     restart: unless-stopped
 ```
 
-En este archivo YAML, se definen y se inician dos instancias, `web` y `database`.
+En este archivo YAML, se definen y se inician las instancias `web` y `database`.
 
 ## Instalación y configuración de Docker Compose
 
-Docker Compose depende de Docker Engine, así que asegúrese de haber instalado el entorno de Docker Engine primero. Si aún no lo ha instalado, consulte el tutorial anterior: [**Conocimientos básicos de Docker**](https://wiki-power.com/es/Docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/) para instalar Docker Engine.
+Docker Compose depende de Docker Engine, por lo que asegúrate de tener Docker Engine instalado antes. Si aún no lo tienes, puedes consultar el tutorial anterior: [**Conceptos básicos de Docker**](to_be_replace[3]) para instalar Docker Engine.
 
-Si está utilizando el cliente de escritorio de Windows/MacOS/Linux, no es necesario instalar Docker Compose por separado, ya que ya está incluido. A continuación se describe cómo instalar Docker Compose en el entorno de Docker Engine de Linux.
+Si estás utilizando el cliente de escritorio de Windows/MacOS/Linux, no es necesario instalar Docker Compose por separado, ya que ya está incluido. A continuación, se describen los métodos de instalación de Docker Compose en un entorno de Docker Engine en Linux.
 
-Para Ubuntu y Debian, utilice el siguiente comando para instalar Docker Compose:
+Para Ubuntu y Debian, utiliza los siguientes comandos para instalar Docker Compose:
 
 ```shell
 sudo apt-get update
 sudo apt-get install docker-compose-plugin
 ```
 
-Para las distribuciones de Linux basadas en RPM (como CentOS), utilice el siguiente comando para instalar Docker Compose:
+Para distribuciones de Linux basadas en RPM, como CentOS, utiliza los siguientes comandos para instalar Docker Compose:
 
 ```shell
 sudo yum update
 sudo yum install docker-compose-plugin
 ```
 
-Después de la instalación, verifique si la instalación fue exitosa con el siguiente comando:
+Después de completar la instalación, verifica si se instaló correctamente mediante el siguiente comando:
 
 ```shell
 docker compose version
 ```
 
-## Cómo usar Docker Compose
+## How to Use Docker Compose
 
-Por lo general, creamos un archivo `compose.yaml` (la versión anterior es `docker-compose.yml`, que también es compatible) y lo colocamos en un directorio nombrado según el nombre de la aplicación, como `web/compose.yaml`.
+Usually, we create a `compose.yaml` file (in older versions, it was `docker-compose.yml`, and it's still compatible) and place it in a directory named after the application, like `web/compose.yaml`.
 
-Para ejecutar este programa, simplemente ejecute el comando `docker compose up` en este directorio para iniciar los servicios según la configuración en el archivo YAML. (Agregar el parámetro `-d` ejecutará el servicio en segundo plano)
+To run this program, simply execute the `docker compose up` command in this directory to start the services according to the configuration in the YAML file. (You can run it in the background by adding the `-d` parameter.)
 
-Para detener la ejecución del stack de la aplicación, simplemente use `docker compose down`.
+To stop the running application stack, use `docker compose down`.
 
-## Cómo escribir un archivo Docker Compose
+## Writing Docker Compose Files
 
-La forma predeterminada de abrir Docker Compose es crear un archivo en formato YAML, con el nombre predeterminado `compose.yaml`. A continuación se muestra una plantilla de ejemplo que incluye todos los parámetros disponibles (pero no es necesario usarlos todos):
+The default way to open Docker Compose is by creating a YAML format file, usually named `compose.yaml`. Below is a template example that includes all available parameters (though not all of them are necessarily required):
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -112,57 +112,83 @@ volumes:
   db-data:
 ```
 
-En un archivo `compose.yaml`, generalmente incluimos los siguientes parámetros:
+In a `compose.yaml` file, you typically include the following parameters:
 
-- **version**: Solo se utiliza para mostrar la información de la versión del archivo compose. Está relacionado con la versión de Docker Engine y las nuevas versiones pueden tener nuevas características o sintaxis. Consulte la documentación oficial [**Versiones de archivo Compose y actualización**](https://docs.docker.com/compose/compose-file/compose-versioning/).
-- **services**: Define los diferentes servicios (contenedores) incluidos en este archivo compose. Cada servicio es un contenedor independiente y se pueden definir su imagen, mapeo de puertos, variables de entorno, etc.
-- **container_name**: Nombre del contenedor, no es obligatorio, pero no puede haber nombres duplicados.
-- **networks**: Define la configuración de red entre los servicios. Se pueden crear redes personalizadas y conectar los servicios a ellas para permitir la comunicación entre contenedores.
-- **volumes**: Define la configuración de montaje de volúmenes del contenedor. Se pueden asociar los directorios o archivos del contenedor con los directorios o archivos del host para lograr la persistencia y el intercambio de datos. Equivalente al parámetro `-v` en la CLI de Docker.
-- **environment** (o `env_file`): Especifica el nombre y la ruta del archivo de variables de entorno del contenedor. Si no se configuran variables de entorno, se pueden ignorar. Si las variables de entorno están en el directorio actual y se llaman `.env`, también se pueden omitir. Equivalente al parámetro `-e` en la CLI de Docker.
-- **build**: Inicia el contenedor utilizando la imagen construida. Especifica la ruta del archivo Dockerfile.
-- **image**: Especifica la imagen utilizada por el contenedor. Se pueden utilizar imágenes públicas del repositorio de imágenes o especificar un archivo Dockerfile local.
-- **ports**: Define la relación de mapeo de puertos entre el contenedor y el host. También se puede especificar el protocolo de mapeo (TCP o UDP). Equivalente al parámetro `-p` en la CLI de Docker.
-- **depends_on**: Define la relación de dependencia entre los servicios. Se pueden especificar uno o varios nombres de servicios, lo que indica que el servicio actual depende de que estos servicios se inicien.
-- **restart**: Define la estrategia de reinicio del contenedor. Se puede establecer en `no` (no se reinicia automáticamente), `always` (siempre se reinicia automáticamente), `unless-stopped` (se reinicia automáticamente a menos que se detenga manualmente el contenedor) o `on-failure` (solo se reinicia automáticamente si falla). Equivalente al parámetro `--restart` en la CLI de Docker.
-- **command**: Especifica el comando que se ejecutará al iniciar el contenedor. Se puede utilizar para anular el comando de inicio predeterminado de la imagen del contenedor.
-- **volumes_from**: Especifica la fuente del contenedor de la que se deben montar los volúmenes.
+- **version**: This is solely used to display the version information of the compose file. It is associated with the version of Docker Engine, and updated versions may introduce new features or syntax. Please refer to the official documentation [**Compose file versions and upgrading**](https://docs.docker.com/compose/compose-file/compose-versioning/).
 
-## Algunos comandos comunes de Docker Compose
+- **services**: Defines the various services (containers) included in this compose file. Each service represents an independent container and can be configured with its image, port mappings, environment variables, and more.
 
-A continuación se muestran algunos comandos comunes de Docker Compose que se utilizan para administrar y operar los servicios definidos en el archivo `compose.yaml`:
+- **container_name**: Container name, not mandatory but must be unique.
 
-- `docker compose up`: Construye las imágenes definidas en el archivo compose y arranca los contenedores. Si es necesario, construye automáticamente las imágenes (si el Dockerfile ha sido modificado) y arranca todos los servicios definidos. Si se desea arrancar en segundo plano, se debe añadir el parámetro `-d`.
-- `docker compose down`: Detiene y elimina todos los contenedores, redes y volúmenes definidos en el archivo compose. Detiene los servicios en ejecución y limpia todos los recursos relacionados.
-- `docker compose pull`: Descarga todas las imágenes definidas en el archivo compose, o las actualiza si ya existen.
-- `docker compose start`: Arranca los contenedores ya creados en el archivo compose, sin crear nuevos contenedores ni construir nuevas imágenes.
-- `docker compose stop`: Detiene los contenedores ya creados en el archivo compose, sin eliminarlos.
-- `docker compose restart`: Reinicia los contenedores ya creados en el archivo compose.
-- `docker compose pause`: Pausa los contenedores ya creados en el archivo compose, deteniendo temporalmente su ejecución.
-- `docker compose unpause`: Reanuda los contenedores pausados en el archivo compose, permitiendo que continúen su ejecución.
-- `docker compose ps`: Muestra el estado de **todos** los contenedores en ejecución definidos en el archivo compose.
-- `docker compose logs`: Muestra los registros de salida de los contenedores definidos en el archivo compose.
-- `docker compose exec`: Ejecuta comandos en los contenedores en ejecución definidos en el archivo compose. Por ejemplo, `docker exec -it [nombre-compose] /bin/bash`.
+- **networks**: Specifies the network configuration between services. Custom networks can be created, and services can be connected to these networks to facilitate communication between containers.
 
-Estos son algunos de los comandos más comunes, pero se pueden encontrar más ejecutando `docker compose --help`.
+- **volumes**: Defines the configuration for mounting volumes in containers. This allows associating container directories or files with directories or files on the host, enabling data persistence and sharing. This is equivalent to the `-v` parameter in the Docker CLI.
+
+- **environment** (or `env_file`): Specifies the file name and path for container environment variables, indicating that these variables should be loaded from this file. If no environment variables are configured, this can be omitted. If the environment variables are located in the current directory and named `.env`, it can also be omitted. This is equivalent to the `-e` parameter in the Docker CLI.
+
+- **build**: Launches using a built image and specifies the path to the Dockerfile.
+
+- **image**: Specifies the image used by the container. You can use images from public image repositories or specify a local Dockerfile.
+
+- **ports**: Defines the mapping of ports between the container and the host, and can also specify the mapping protocol (TCP or UDP). This is equivalent to the `-p` parameter in the Docker CLI.
+
+- **depends_on**: Defines the dependencies between services. You can specify one or more service names, indicating that the current service depends on the startup of these services.
+
+- **restart**: Specifies the container's restart strategy, which can be set to `no` (no automatic restart), `always` (always automatically restart), `unless-stopped` (automatic restart unless the container is manually stopped), or `on-failure` (automatic restart only in case of failure). This is equivalent to the `--restart` parameter in the Docker CLI.
+
+- **command**: Specifies the command to be executed when the container starts. This can be used to override the default startup command in the container image.
+
+- **volumes_from**: Specifies the source container from which the container should mount volumes.
+
+## Some Common Docker Compose Commands
+
+Here are some common Docker Compose commands for managing and operating the services defined in the `compose.yaml` file:
+
+- `docker compose up`: Este comando construye las imágenes definidas en el archivo Compose y pone en marcha los contenedores. Si es necesario, construirá automáticamente las imágenes (si el Dockerfile ha sido modificado) y luego iniciará todos los servicios definidos. Para ejecutar en segundo plano, añade el parámetro `-d`.
+
+- `docker compose down`: Detiene y elimina todos los contenedores, redes y volúmenes definidos en el archivo Compose. Detendrá los servicios en ejecución y limpiará todos los recursos relacionados.
+
+- `docker compose pull`: Descarga todas las imágenes definidas en el archivo Compose o las actualiza si es necesario.
+
+- `docker compose start`: Inicia los contenedores ya creados en el archivo Compose sin recrearlos ni reconstruir las imágenes.
+
+- `docker compose stop`: Detiene los contenedores ya creados en el archivo Compose sin eliminarlos.
+
+- `docker compose restart`: Reinicia los contenedores ya creados en el archivo Compose.
+
+- `docker compose pause`: Pausa temporalmente los contenedores creados en el archivo Compose, deteniendo su ejecución.
+
+- `docker compose unpause`: Reanuda los contenedores previamente pausados en el archivo Compose, permitiéndoles continuar su ejecución.
+
+- `docker compose ps`: Muestra el estado de **todos** los contenedores en ejecución definidos en el archivo Compose.
+
+- `docker compose logs`: Visualiza la salida de registros de los contenedores en el archivo Compose.
+
+- `docker compose exec`: Ejecuta comandos en los contenedores en ejecución del archivo Compose. Por ejemplo, `docker exec -it [nombre-de-compose] /bin/bash`.
+
+Estos son comandos comunes, y puedes ejecutar `docker compose --help` para ver más comandos disponibles.
 
 ## Variables de entorno
 
-Aunque no son obligatorias en Docker Compose, se recomienda el uso de variables de entorno por las siguientes razones:
+En Docker Compose, aunque las variables de entorno no son obligatorias, se recomienda su uso por varias razones:
 
 1. **Flexibilidad y configurabilidad**: Permite ajustar fácilmente la configuración de la aplicación sin necesidad de modificar las imágenes de Docker o reconstruir los contenedores.
-2. **Seguridad y aislamiento**: Almacenar información sensible en variables de entorno en lugar de escribirla directamente en el código o en los archivos de configuración, y otorgar permisos específicos a las variables de entorno, puede mejorar la seguridad de la aplicación.
-3. **Compatibilidad multiplataforma**: Diferentes sistemas operativos o plataformas pueden pasar diferentes configuraciones a través de variables de entorno, sin necesidad de modificar los archivos de configuración o el código de la imagen.
-4. **Simplificación del despliegue y la gestión**: Al utilizar variables de entorno para configurar los parámetros de diferentes contenedores, se puede reducir la duplicación de contenido en los archivos de configuración, lo que hace que todo el proceso sea más claro y fácil de mantener.
-5. **Integración y automatización**: Al combinar con herramientas de CI/CD y automatización, se pueden pasar automáticamente los parámetros de configuración de la aplicación a los contenedores de Docker, lo que permite la implementación y la integración automáticas.
 
-Las variables de entorno se almacenan en un archivo con la extensión `.env`, que generalmente se crea en el mismo directorio que el archivo `compose.yaml`. A continuación se muestra un ejemplo:
+2. **Seguridad y aislamiento**: Almacenar información sensible en variables de entorno en lugar de escribirla directamente en código o archivos de configuración mejora la seguridad de la aplicación al permitir un control separado sobre las variables.
+
+3. **Compatibilidad multiplataforma**: Diferentes sistemas operativos o plataformas pueden pasar diferentes configuraciones a través de variables de entorno sin necesidad de modificar archivos de configuración o código de imagen.
+
+4. **Simplificación de implementación y gestión**: La utilización uniforme de variables de entorno para configurar los parámetros de diferentes contenedores reduce la redundancia en los archivos de configuración, lo que facilita el mantenimiento.
+
+5. **Integración y automatización**: Al combinar variables de entorno con herramientas de CI/CD y automatización, es posible automatizar la transferencia de parámetros de configuración a los contenedores Docker, lo que facilita la implementación y la integración.
+
+Las variables de entorno se almacenan en un archivo con extensión `.env`, que generalmente se crea en el mismo directorio que el archivo `compose.yaml`. Aquí tienes un ejemplo:
 
 ```dotenv title=".env"
 TAG=v1.5
 ```
 
-Las variables de entorno se pueden llamar directamente en el archivo `compose.yaml`:
+En el archivo `compose.yaml`, puedes hacer referencia directa a las variables de entorno:
 
 ```yaml title="compose.yaml"
 services:
@@ -172,18 +198,18 @@ services:
 
 ## Consejos
 
-Hay un sitio web llamado [**composerize**](https://www.composerize.com/) que convierte la CLI de Docker en YAML de Docker Compose. El resultado de la conversión no siempre es preciso y debe ser verificado.
+Existe un sitio web llamado [**composerize**](https://www.composerize.com/) que convierte comandos de Docker CLI en archivos Docker Compose YAML. Ten en cuenta que la precisión de la conversión puede variar y debe verificarse.
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
-- [Usar docker compose en lugar de docker run](https://beginor.github.io/2017/06/08/use-compose-instead-of-run.html)
+- [Sustituir `docker run` con Docker Compose](https://beginor.github.io/2017/06/08/use-compose-instead-of-run.html)
 - [Instalar Docker Compose](https://docs.docker.com/compose/install/#prerequisites)
-- [Explicación detallada de los parámetros del archivo de plantilla Docker-Compose](https://blog.51cto.com/14154700/2466054)
-- [¡Resulta que también se puede usar Docker Compose en Synology NAS!](https://www.himiku.com/archives/docker-compose-for-synology-nas.html)
-- [Docker - De principiante a experto](https://docker-practice.github.io/zh-cn/)
-- [Serie Docker - Comprender el archivo de configuración de Docker Compose](https://blognas.hwb0307.com/linux/docker/3880)
+- [Explicación detallada de los parámetros de los archivos de plantilla de Docker-Compose](https://blog.51cto.com/14154700/2466054)
+- [¡Descubre cómo usar Docker Compose en Synology NAS!](https://www.himiku.com/archives/docker-compose-for-synology-nas.html)
+- [Docker: De principiante a experto](https://docker-practice.github.io/zh-cn/)
+- [Serie sobre Docker: Comprender los archivos de configuración de Docker Compose](https://blognas.hwb0307.com/linux/docker/3880)
 
-a_reemplazar[1]
-a_reemplazar[2]
+[Reemplazo[1]]
+[Reemplazo[2]]
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

@@ -1,28 +1,29 @@
+```markdown
 # تكوين Oh My Zsh على CentOS
 
-## عرض الشل الحالي
+## عرض الشيل الحالي
 
 ```Shell
 echo $SHELL
 ```
 
-عادة ما يعود الرد `bin/bash`
+عادة ما سيعيد `bin/bash` تحت معظم الظروف.
 
-## تثبيت zsh
+## تثبيت Zsh
 
 ```shell
 yum install -y zsh
 ```
 
-## تغيير الشل الافتراضي إلى zsh
+## تغيير الشيل الافتراضي إلى Zsh
 
-يجب تشغيل هذا الأمر كمستخدم root:
+يتعين تشغيل هذا الأمر تحت المستخدم الجذر:
 
 ```shell
 chsh -s /bin/zsh
 ```
 
-## تثبيت git
+## تثبيت Git
 
 ```shell
 yum install -y git
@@ -40,35 +41,35 @@ sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/to
 
 ### يدويًا
 
-إذا لم يكن بإمكانك التثبيت بالطريقة السابقة (ربما بسبب الجدار الناري) ، فيمكنك التثبيت يدويًا عن طريق الطريقة التالية:
+إذا كان غير ممكن تثبيته بالطرق السابقة (ربما بسبب جدار ناري)، يمكنك تثبيته يدويًا على النحو التالي:
 
-تنزيل الشفرة المصدرية:
+قم بتنزيل الشيفرة المصدرية:
 
 ```shell
 git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 ```
 
-نسخ التكوين:
+انسخ الإعدادات:
 
 ```shell
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 ```
 
-## تغيير موضوع Oh My Zsh
+## تغيير مظهر Oh My Zsh
 
-عرض جميع الموضوعات:
+قائمة بجميع المظاهر المتاحة:
 
 ```shell
 ls ~/.oh-my-zsh/themes
 ```
 
-تغيير الموضوع:
+قم بتعديل المظهر:
 
 ```shell
 vim ~/.zshrc
 ```
 
-قم بتغيير الموضوع الافتراضي `ZSH_THEME="robbyrussell"` إلى الموضوع الذي تفضله.
+قم بتغيير المظهر الافتراضي `ZSH_THEME="robbyrussell"` إلى المظهر الذي تفضله.
 
 ## إعادة التشغيل للتفعيل
 
@@ -78,10 +79,13 @@ reboot
 
 ## المراجع والشكر
 
-- [centos7 安装 zsh 配置 oh-my-zsh](https://www.jianshu.com/p/4ce7d511bc13)
-- [CentOs 安装 oh my zsh](https://www.jianshu.com/p/556ff130fc65)
+- [centos7 تثبيت Zsh وتكوين oh-my-zsh](https://www.jianshu.com/p/4ce7d511bc13)
+- [تثبيت oh my zsh على CentOS](https://www.jianshu.com/p/556ff130fc65)
 
-> عنوان النص: <https://wiki-power.com/>  
+> عنوان النص: <https://wiki-power.com/>
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+```
+
+يرجى ملاحظة أنَّ الروابط "> عنوان النص: <https://wiki-power.com/>" و "> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر." لم تتم ترجمتها، وهي تحتاج إلى ترجمة يدوية إذا كانت تشير إلى موارد معينة.
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

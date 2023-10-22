@@ -1,36 +1,36 @@
 # DAC - Parámetros Estáticos
 
-El Convertidor Digital a Analógico (DAC) es un dispositivo que convierte una secuencia de datos de entrada digital en señales analógicas.
+El Convertidor Digital-Analógico (DAC) es un dispositivo que convierte una secuencia de datos de entrada digital en señales analógicas.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20221011141644.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221011141644.png)
 
 ## Parámetros Estáticos
 
-Los parámetros estáticos del DAC incluyen principalmente:
+Los parámetros estáticos del DAC principalmente incluyen:
 
 - Salida a Escala Cero
-- Rango de Escala Completa (REC)
+- Rango a Escala Completa (REC)
 - Tamaño del LSB
 - Error de Desplazamiento
 - Error de Ganancia
 - Error de No Linealidad Diferencial (DNE o DNL)
 - Error de No Linealidad Integral (INE o INL)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20221011144045.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221011144045.png)
 
 ### Salida a Escala Cero
 
-La **Salida a Escala Cero** es el valor de salida medido cuando se presenta el código de entrada digital de nivel cero o nulo al Dispositivo Bajo Prueba (DUT).
+**La Salida a Escala Cero** es el valor de salida medido cuando se presenta el código de entrada digital de nivel cero al dispositivo bajo prueba (DUT).
 
-### Rango de Escala Completa (REC)
+### Rango a Escala Completa (REC)
 
-El rango de voltaje de salida del DAC entre las salidas analógicas mínimas ($V_{ZS}$) y máximas ($V_{FS}$) se llama **Rango de Escala Completa (REC)**:
+El rango del voltaje de salida del DAC entre las salidas analógicas mínimas ($V_{ZS}$) y máximas ($V_{FS}$) se denomina **Rango a Escala Completa (REC)**:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20221011142249.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221011142249.png)
 
 ### Tamaño del LSB
 
-El cambio promedio de voltaje entre los códigos de entrada se define como LSB:
+El cambio promedio en el voltaje entre los códigos de entrada se define como LSB:
 
 $$
 LSB=\frac{REC_{medido}}{2^{bits}-1}
@@ -38,20 +38,20 @@ $$
 
 ### Error de Desplazamiento
 
-El **Error de Desplazamiento** (Error de Escala Cero) es la diferencia de voltaje entre los puntos de escala cero ideales y reales.
+**El Error de Desplazamiento** (Error a Escala Cero) es la diferencia de voltaje entre los puntos de desplazamiento (inicial) ideal y real.
 
 $$
-ErrorDesplazamiento=V_{ZS(Real)}-V_{ZS(Ideal)}
+Error de Desplazamiento=V_{ZS(Real)}-V_{ZS(Ideal)}
 $$
 
-![](https://img.wiki-power.com/d/wiki-media/img/20221011144415.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221011144415.png)
 
 ### Error de Ganancia
 
-El **Error de Ganancia** es la diferencia de voltaje entre los puntos de ganancia ideales y reales en la función de transferencia.
+**El Error de Ganancia** es la diferencia de voltaje entre los puntos de ganancia ideales y reales en la función de transferencia.
 
 $$
-ErrorGanancia=REC_{Ideal}-REC_{Real}
+Error de Ganancia=REC_{Ideal}-REC_{Real}
 $$
 
 Donde
@@ -64,39 +64,39 @@ $$
 REC_{Real}=V_{FS(Real)}-V_{ZS(Real)}
 $$
 
-![](https://img.wiki-power.com/d/wiki-media/img/20221011144925.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221011144925.png)
 
 ### Error de No Linealidad Diferencial (DNL)
 
-**Error de No Linealidad Diferencial (DNL)** es la diferencia en el voltaje de salida en un punto específico, comparado con la salida en la entrada anterior, luego menos un valor LSB del dispositivo:
+El **Error de No Linealidad Diferencial (DNL)** es la diferencia en el voltaje de salida en un punto específico, en comparación con la salida en el punto de entrada anterior, menos un LSB del dispositivo:
 
-$$
-DNL=(V_{in2}-V_{in1})-LSB_{promedio}
-$$
+\[
+DNL = (V_{in2} - V_{in1}) - LSB_{promedio}
+\]
 
-donde $V_{in2}$ es el voltaje de la transición superior, y $V_{in1}$ es el inferior.
+donde $V_{in2}$ es el voltaje de la transición superior y $V_{in1}$ es el voltaje de la inferior.
 
-El DNL es una medida del error de linealidad de "pequeña señal". La medición del DNL se realiza de un paso al siguiente, no de cada paso al valor ideal.
+El DNL es una medida del error de linealidad de "señal pequeña". La medición del DNL se realiza de un paso al siguiente, no de cada paso al valor ideal.
 
 ![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221011153556.png)
 
 ### Error de No Linealidad Integral (INL)
 
-**Error de No Linealidad Integral (INL)** es el efecto acumulativo de todos los valores de no linealidad diferencial. Es una medida del error de linealidad de "gran señal". El INL en cualquier punto a lo largo de la curva es la desviación de la línea de linealidad ideal.
+El **Error de No Linealidad Integral (INL)** es el efecto acumulativo de todos los valores de no linealidad diferencial. Es una medida del error de linealidad de "señal grande". El INL en cualquier punto a lo largo de la curva es la desviación de la línea de linealidad ideal.
 
-$$
-SalidaEsperada[i]=FSR*CódigoEntrada[i]+ErrorDeDesplazamiento
-$$
+\[
+SalidaEsperada[i] = FSR \cdot CódigoDeEntrada[i] + ErrorDeDesplazamiento
+\]
 
-$$
-INL[i]=\frac{SalidaReal[i]-SalidaEsperada[i]}{LSB_{promedio}}
-$$
+\[
+INL[i] = \frac{SalidaReal[i] - SalidaEsperada[i]}{LSB_{promedio}}
+\]
 
 Además, el INL también se puede expresar como una función del DNL:
 
-$$
-INL[i]=\sum_{n=1}^{n=i}DNL[n]
-$$
+\[
+INL[i] = \sum_{n=1}^{n=i} DNL[n]
+\]
 
 ![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221011184739.png)
 
@@ -108,17 +108,17 @@ Configuración del sistema de pruebas para las pruebas de parámetros estáticos
 
 ![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221011185006.png)
 
-Diagrama de bloque de la configuración de señal:
+Diagrama de bloque de la configuración de la señal:
 
 ![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221011185447.png)
 
 ### Concepto de Pruebas
 
-El procedimiento para probar los parámetros estáticos de un DAC DUT se enumera a continuación.
+El procedimiento para probar los parámetros estáticos de un DAC DUT se describe a continuación.
 
 ![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221011185739.png)
 
-#### 1. Medir el voltaje de salida aplicando las entradas de datos digitales desde Cero Escala a Escala Completa
+#### 1. Medir el voltaje de salida aplicando las entradas de datos digitales desde Cero Escala hasta Escala Completa
 
 ![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221011185711.png)
 
@@ -143,11 +143,11 @@ $$
 
 ## Referencias y Agradecimientos
 
-- _Fundamentos de Pruebas Utilizando ATE (Equipos de Prueba Automatizados)_
-- _Los Fundamentos de las Pruebas de Señal Mixta (Mixed-Signal Testing) de Brian Lowe_
+- _Fundamentos de Pruebas Utilizando ATE_
+- _Los Fundamentos de las Pruebas de Señal Mixta de Brian Lowe_
 
 > Original: <https://wiki-power.com/>  
-> Esta publicación está protegida por un acuerdo de [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en), y debe ser reproducida con atribución.
+> Este artículo está protegido por un acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en), y debe ser reproducido con atribución.
 ```
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

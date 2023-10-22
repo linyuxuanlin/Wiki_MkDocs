@@ -1,48 +1,50 @@
-# BookJourney - Tienda de libros de segunda mano en miniatura
+# BookJourney - Aplicación Mini de Libros de Segunda Mano
 
-![](https://img.wiki-power.com/d/wiki-media/img/书程小驿.jpg)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/书程小驿.jpg)
 
-Repositorio del proyecto: [**linyuxuanlin/BookJourney**](https://github.com/linyuxuanlin/BookJourney)
+Repositorio del Proyecto: [**linyuxuanlin/BookJourney**](https://github.com/linyuxuanlin/BookJourney)
 
-Demo (escanea con WeChat para probar):
+Demo (Experimenta escaneando con WeChat):
 
-![](https://img.wiki-power.com/d/wiki-media/img/1.jpg)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/1.jpg)
 
 ## Antecedentes
 
-Un amigo quería hacer un trabajo secundario vendiendo libros de segunda mano en su círculo de amigos de WeChat, así que me pidió que hiciera una miniatura de WeChat. Como estaba libre durante las vacaciones de verano, decidí practicar. La demanda era crear una miniatura de una tienda en línea, con información de libros nuevos que se publican regularmente, para que los compradores puedan elegir por sí mismos.
+Un amigo tenía la idea de incursionar en un negocio secundario, vendiendo libros de segunda mano a través de WeChat Moments, y me pidió que desarrollara una aplicación mini de WeChat para ello. Dado que tenía tiempo libre durante las vacaciones de verano, decidí aceptar el desafío y poner en práctica mis habilidades. La necesidad era crear una aplicación mini de tipo tienda en línea que permitiera publicar información sobre nuevos libros de forma periódica y que permitiera a los compradores seleccionar los libros por sí mismos.
 
 ## Desarrollo
 
-No quería reinventar la rueda, así que encontré un proyecto de código abierto bastante bueno para una miniatura de tienda en línea: [wechat-app-mall](https://github.com/EastWorld/wechat-app-mall), y lo modifiqué y agregué mi propio estilo. (La búsqueda global es muy útil). El estilo predeterminado de esta miniatura de código abierto no se ajustaba a mi estética. Lo que necesitaba era un diseño que pudiera enfocar la atención del usuario en el contenido que se muestra en una página simple. Después de muchas iteraciones, el estilo básico se ajustó a mis necesidades.
+En lugar de reinventar la rueda, encontré un proyecto de código abierto de una aplicación mini de tipo tienda en línea llamado [wechat-app-mall](https://github.com/EastWorld/wechat-app-mall). Utilicé este proyecto como base y realicé modificaciones para adaptarlo a mis preferencias y estilos. (La función de búsqueda global fue de gran utilidad en este proceso). Las características visuales predeterminadas de esta aplicación mini de código abierto no se ajustaban a mi sentido estético. Lo que buscaba era lograr que las páginas fueran lo más limpias posible, de modo que los usuarios se centraran en el contenido que deseaba mostrar. Después de muchas iteraciones, logré que el diseño visual cumpliera con mis requisitos.
 
-En cuanto a la funcionalidad, eliminé una serie de cosas relacionadas con la negociación y el intercambio de recompensas, y solo dejé las funciones principales.
+En cuanto a las funciones, eliminé una serie de características relacionadas con la negociación de precios y recompensas por compartir, y mantuve solo las funciones esenciales.
 
-Como no soy responsable de agregar nuevos productos, la edición de productos en el backend debe ser una interfaz gráfica. BookJourney utiliza el backend de [api factory](https://www.it120.cc/), lo que elimina la necesidad de construir su propio servidor y facilita la adición de nuevos productos por parte de los miembros del equipo. Sin embargo, los usuarios gratuitos tienen limitaciones de almacenamiento.
+Dado que yo no era el responsable de agregar nuevos productos al catálogo en el futuro, era importante que la edición de productos en el backend fuera intuitiva y basada en una interfaz gráfica. Para ello, BookJourney utilizó el backend de [api工厂](https://www.it120.cc/), lo que eliminó la necesidad de configurar mi propio servidor y facilitó la tarea de otros miembros del equipo al agregar nuevos productos. Sin embargo, esto impuso restricciones de almacenamiento para los usuarios gratuitos.
 
-## Evitar problemas
+## Desafíos
 
-En el proceso de desarrollo de BookJourney, encontré muchos problemas. Por ejemplo, el problema del pago. El sentido común me dice que debería integrar WeChat Pay para que los usuarios puedan hacer pedidos fácilmente, pero WeChat ha eliminado la ventana de pago de WeChat Pay para los usuarios que se registran en una miniatura personal. (Aunque también considera la seguridad financiera del usuario). La única forma es registrarse en una cuenta empresarial, pero primero necesito una empresa. Después de investigar más, descubrí que no es fácil registrar una empresa. Necesitas encontrar una firma de contabilidad para representarte, tener una dirección de oficina, un contrato de libro rojo, ser revisado por un gerente de banco, el proceso de solicitud dura casi dos o tres meses, el costo es de casi mil yuanes, sin incluir varios cargos adicionales ... La solución es cambiar el botón de pedido directamente a "contactar al servicio al cliente". En este punto, los usuarios solo necesitan tomar una captura de pantalla en la página del "carrito de compras" y enviarla directamente a los miembros del equipo responsables del servicio al cliente para hacer un pedido.
+Durante el desarrollo de BookJourney, me encontré con varios desafíos. Uno de los desafíos notables fue el problema de los pagos. En un principio, pensé en integrar el pago a través de WeChat para que los usuarios pudieran realizar pedidos de manera sencilla, pero descubrí que WeChat había eliminado la opción de pago para las aplicaciones mini registradas por personas físicas. La única alternativa era registrar una cuenta de empresa, lo que a su vez requería tener una empresa registrada. Investigando más a fondo, descubrí que registrar una empresa no era una tarea sencilla. Se requería contratar a una firma contable, tener una dirección comercial, un contrato legal, pasar por la revisión del gerente bancario, y todo el proceso podía llevar dos o tres meses y costar cerca de mil dólares, sin incluir las tarifas adicionales. La solución fue cambiar el botón de compra por un botón de contacto directo con el servicio al cliente. De esta manera, los usuarios solo tenían que tomar una captura de pantalla de la página del "carrito de compras" y enviarla a un miembro del equipo de servicio al cliente para realizar el pedido.
 
-## Preguntas frecuentes
+## Preguntas Frecuentes
 
 P: ¿Por qué se llama BookJourney?
-R: Originalmente tenía un nombre chino bonito llamado "书程小驿", pero descubrí que ya estaba ocupado cuando registré la miniatura, así que tuve que comprometerme.
 
-P: ¿Ganaste dinero?
-R: Ingresos totales de ganancias: ¥16.66 ...
+R: Originalmente teníamos un nombre en chino muy bonito, "书程小驿", pero al registrar la aplicación mini, descubrimos que ese nombre ya estaba siendo utilizado, por lo que tuvimos que optar por una alternativa.
+
+P: ¿Generó ganancias el proyecto?
+
+R: Ingresos totales: ¥16.66...
 
 ## Conclusión
 
-Después del tiempo, este fue un proyecto fallido.
+Con el paso del tiempo, queda claro que este proyecto fue un fracaso.
 
-Al principio, no investigué cuidadosamente el mercado ni aclaré las necesidades de los usuarios, solo hice un producto que pensé que era genial. En el futuro, al hacer proyectos, debe prestar atención no solo a la tecnología, sino también al mercado y saber qué tipo de productos necesita el mercado.
+En la etapa inicial, no investigamos adecuadamente el mercado ni comprendimos las necesidades de los usuarios. En lugar de eso, simplemente creamos un producto que nos parecía genial. En el futuro, al emprender proyectos, es importante no solo enfocarse en la tecnología, sino también prestar atención al mercado y comprender qué tipo de productos necesita.
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
 - [EastWorld / wechat-app-mall](https://github.com/EastWorld/wechat-app-mall)
 
-> Dirección original del artículo: <https://wiki-power.com/>
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+[Para_ser_reemplazado[1]]  
+[Para_ser_reemplazado[2]]
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

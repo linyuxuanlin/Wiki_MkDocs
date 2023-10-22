@@ -1,12 +1,12 @@
 # Configuración de Oh My Zsh en CentOS
 
-## Verificar la shell actual
+## Verificar la Shell actual
 
-```Shell
+```shell
 echo $SHELL
 ```
 
-Por lo general, devolverá `bin/bash`
+En la mayoría de los casos, esto devolverá `bin/bash`.
 
 ## Instalar zsh
 
@@ -14,7 +14,7 @@ Por lo general, devolverá `bin/bash`
 yum install -y zsh
 ```
 
-## Cambiar la shell predeterminada a zsh
+## Cambiar la Shell predeterminada a zsh
 
 Debe ejecutar este comando como usuario root:
 
@@ -30,7 +30,7 @@ yum install -y git
 
 ## Instalar Oh My Zsh
 
-### Automático
+### Automáticamente
 
 ```shell
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -38,9 +38,9 @@ o
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 ```
 
-### Manual
+### Manualmente
 
-Si no se puede instalar de la manera anterior (posiblemente debido a un bloqueo), se puede instalar manualmente de la siguiente manera:
+Si no es posible instalarlo de la manera anterior (posiblemente debido a restricciones de red), puede hacerlo manualmente de la siguiente manera:
 
 Descargar el código fuente:
 
@@ -56,32 +56,32 @@ cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 
 ## Cambiar el tema de Oh My Zsh
 
-Listar todos los temas:
+Listar todos los temas disponibles:
 
 ```shell
 ls ~/.oh-my-zsh/themes
 ```
 
-Cambiar el tema:
+Modificar el tema:
 
 ```shell
 vim ~/.zshrc
 ```
 
-Cambiar el tema predeterminado `ZSH_THEME="robbyrussell"` por el que prefiera.
+Cambie el tema predeterminado, que es `ZSH_THEME="robbyrussell"`, a uno de su elección.
 
-## Reiniciar para que surta efecto
+## Reiniciar para que los cambios surtan efecto
 
 ```shell
 reboot
 ```
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
-- [centos7 安装 zsh 配置 oh-my-zsh](https://www.jianshu.com/p/4ce7d511bc13)
-- [CentOs 安装 oh my zsh](https://www.jianshu.com/p/556ff130fc65)
+- [CentOS 7: Instalación de zsh y configuración de Oh My Zsh](https://www.jianshu.com/p/4ce7d511bc13)
+- [CentOS: Instalación de Oh My Zsh](https://www.jianshu.com/p/556ff130fc65)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
+> Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

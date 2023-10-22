@@ -1,36 +1,36 @@
 # Configuring Oh My Zsh on CentOS
 
-## Check Current Shell
+## Checking the Current Shell
 
 ```Shell
 echo $SHELL
 ```
 
-In general, it will return `bin/bash`.
+In most cases, this will return `bin/bash`.
 
-## Install zsh
+## Installing Zsh
 
 ```shell
 yum install -y zsh
 ```
 
-## Switch Default Shell to zsh
+## Changing the Default Shell to Zsh
 
-This command needs to be run under root user:
+You need to run this command as the root user:
 
 ```shell
 chsh -s /bin/zsh
 ```
 
-## Install git
+## Installing Git
 
 ```shell
 yum install -y git
 ```
 
-## Install Oh My Zsh
+## Installing Oh My Zsh
 
-### Automatic
+### Automated Installation
 
 ```shell
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -38,9 +38,9 @@ or
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 ```
 
-### Manual
+### Manual Installation
 
-If you cannot install it automatically (probably due to the Great Firewall), you can install it manually by following these steps:
+If you cannot install using the methods above (possibly due to restrictions), you can manually install Oh My Zsh with the following steps:
 
 Download the source code:
 
@@ -54,9 +54,9 @@ Copy the configuration:
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 ```
 
-## Modify Oh My Zsh Theme
+## Changing the Oh My Zsh Theme
 
-List all themes:
+List all available themes:
 
 ```shell
 ls ~/.oh-my-zsh/themes
@@ -68,17 +68,20 @@ Modify the theme:
 vim ~/.zshrc
 ```
 
-Change the default theme `ZSH_THEME="robbyrussell"` to your favorite one.
+Change the default theme, which is `ZSH_THEME="robbyrussell," to your preferred one.
 
-## Restart to Take Effect
+## Reboot to Apply Changes
 
 ```shell
 reboot
 ```
 
-## Reference and Acknowledgement
+## References and Acknowledgments
 
-> Original: <https://wiki-power.com/>  
+- [CentOS 7: Install Zsh and Configure Oh My Zsh](https://www.jianshu.com/p/4ce7d511bc13)
+- [Install Oh My Zsh on CentOS](https://www.jianshu.com/p/556ff130fc65)
+
+> Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

@@ -1,19 +1,19 @@
-# Notas de aprendizaje de CSS
+# Notas de Estudio de CSS
 
 ## Llamado
 
-Agregar una hoja de estilo externa en la sección `<head>` de HTML:
+Para agregar una hoja de estilos externa en el `<head>` de HTML, utiliza el siguiente código:
 
-```
+```html
 <link rel="stylesheet" href="xxx.css">
 ```
 
-Donde `xxx.css` es el archivo CSS en el mismo directorio.  
-Nota: Se recomienda usar **hojas de estilo externas vinculadas** (como se muestra arriba).
+Donde `xxx.css` es el nombre del archivo CSS en el mismo directorio.
+Ten en cuenta: se recomienda utilizar **hojas de estilos externas vinculadas** (como se muestra arriba).
 
 ## Selectores
 
-### Sintaxis básica
+### Sintaxis Básica
 
 ```css
 selector {
@@ -21,101 +21,102 @@ selector {
 }
 ```
 
-### Comparación de varios selectores
+### Comparación de Diferentes Selectores
 
-| Selector       | Definición                     | Llamado                   | Prioridad |
-| :------------- | :----------------------------- | :------------------------| :--------|
-| Selector de etiqueta | p {...}                        | &lt;p&gt; ... &lt;/p&gt; | Baja     |
-| Selector de clase   | .carrot {...} / p.carrot {...} | class = "carrot"         | Media    |
-| Selector de ID      | \#first {...}                  | id = "first"             | Alta     |
+| Selector         | Definición                     | Uso                        | Prioridad |
+| :--------------- | :----------------------------- | :------------------------- | :-------  |
+| Selector de Etiqueta | p {...}                 | &lt;p&gt; ... &lt;/p&gt; | Baja     |
+| Selector de Clase   | .zanahoria {...} / p.zanahoria {...} | class = "zanahoria"     | Media    |
+| Selector de ID      | \#primero {...}                | id = "primero"           | Alta     |
 
-### Grupo de selectores
+### Grupos de Selectores
 
-Definir diferentes elementos con el mismo estilo.
+Define el mismo estilo para diferentes elementos.
 
 ```css
 h1,
 h2,
 h3 {
-  color: navy;
+  color: azul marino;
 }
 ```
 
-## Color
+## Colores
 
 ```css
-/*Color de fuente*/
+/* Color del texto */
 color: #56a455;
 
-/*Color de fondo*/
-background-color: blue;
+/* Color de fondo */
+background-color: azul;
 
-/*Transparencia*/
-/*Valores de 0.0 a 1.0*/
+/* Opacidad */
+/* Valores entre 0.0 y 1.0 */
 opacity: 0.5;
 ```
 
 ## Texto
 
-### Tamaño de fuente
+### Tamaños de Fuente
 
-| Estilo | Porcentaje | Valor EM |
-| :----- | :--------- | :------- |
-| h1     | 200%       | 2em      |
-| h2     | 150%       | 1.5em    |
-| h3     | 133%       | 1.125em  |
-| body   | 100%       | 1em      |
+| Estilo | Porcentaje | Valor EM   |
+| :---   | :-----     | :------     |
+| h1     | 200%       | 2em         |
+| h2     | 150%       | 1.5em       |
+| h3     | 133%       | 1.125em     |
+| body   | 100%       | 1em         |
 
 ```css
-/*Tamaño de fuente*/
+/* Tamaño de fuente */
 font-size: 200%;
 ```
 
-### Selección de fuente
+### Selección de Fuentes
 
-Nota: Los nombres de fuentes compuestos por varias palabras deben ir entre comillas, por ejemplo, 'Courier New'
+Nota: Para nombres de fuentes compuestas por múltiples palabras, se deben usar comillas, por ejemplo, 'Courier New'.
 
 ```css
-/*Selección de fuente*/
-/*Local*/
-font-family: "Courier New", Courier, monospace, nombre_fuente_externa;
-/*Externa*/
+/* Selección de fuentes */
+/* Fuentes locales */
+font-family: "Courier New", Courier, monospace, nombre-de-fuente-externa;
+
+/* Fuentes externas */
 @font-face {
-  font-family: nombre_fuente_externa;
-  src: url("dirección_externa");
+  font-family: nombre-de-fuente-externa;
+  src: url("dirección-de-fuente-externa");
 }
 ```
 
-### Formato de texto
+### Formateo de Texto
 
-El valor predeterminado es `normal`
+El valor predeterminado es `normal`.
 
 ```css
-/*Negrita*/
+/* Negritas */
 font-weight: bold;
 
-/*Cursiva*/
+/* Cursivas */
 font-style: italic;
 
-/*Mayúsculas y minúsculas*/
-/*uppercase, lowercase, capitalize (primera letra en mayúscula)*/
+/* Mayúsculas y minúsculas */
+/* uppercase, lowercase, capitalize (con mayúscula inicial) */
 text-transform: uppercase;
 
-/*Subrayado*/
+/* Subrayado */
 text-decoration: underline;
 
-/*Tachado*/
+/* Tachado */
 text-decoration: line-through;
 
-/*Espacio entre líneas*/
+/* Espaciado entre líneas */
 line-height: 1.4em;
 
-/*Alineación*/
-/*left, right, center, justify (justificado)*/
+/* Alineación de texto */
+/* left, right, center, justify (justificación) */
 text-align: left;
 ```
 
-### Pseudo-clases
+### Pseudo-Clases
 
 ```css
 /* Enlace no visitado */
@@ -128,12 +129,12 @@ a:visited {
   color: #00ff00;
 }
 
-/* Pase el cursor sobre el enlace */
+/* Desplazarse sobre el enlace */
 a:hover {
   color: #ff00ff;
 }
 
-/* Enlace seleccionado */
+/* Enlace activo */
 a:active {
   color: #0000ff;
 }
@@ -141,42 +142,42 @@ a:active {
 
 ## Cajas
 
-## Listas, tablas y formularios
+## Listas, Tablas y Formularios
 
-Por completar
+Por completar.
 
 ## Diseño
 
-Por completar
+Por completar.
 
 ## Normas
 
-### Orden de clasificación de propiedades
+### Orden de Clasificación de Propiedades
 
-- Métodos de visualización y diseño
+- Visualización y Diseño
 - Posicionamiento
-- Cajas de modelo de caja
-  - Margen externo
-  - Borde
+- Modelo de Caja
+  - Márgenes Externos
+  - Bordes
   - Relleno
-- Tamaño
-- Estilo de texto
+- Dimensiones
+- Estilo de Texto
   - Fuente
   - Texto
-  - Color de texto
+  - Color de Texto
 - Fondo
 - Contorno
-- Opacidad y sombras
-- Efectos de animación
-  - Transición
-  - Transformación
-  - Animación
+- Opacidad y Sombras
+- Animaciones
+  - Transiciones
+  - Transformaciones
+  - Animaciones
 - Otros
-  - Pseudo-clases y pseudo-elementos
-  - Referencia
-  - Consultas de medios
+  - Pseudo-clases y Pseudo-elementos
+  - Citas
+  - Consultas de Medios
 
-### Lista de orden de propiedades
+### Lista de Orden de Propiedades
 
 ```css
 [
@@ -360,11 +361,11 @@ Por completar
 
 ## Referencias y Agradecimientos
 
-- [Tutorial de introducción a CSS](https://developer.mozilla.org/es/docs/Learn/CSS/First_steps)
-- [Tutorial de CSS3](https://waylau.gitbooks.io/css3-tutorial/content/)
-- [Especificación de orden de declaración de propiedades CSS](https://wiki.zthxxx.me/wiki/程序语言/CSS/CSS%20 属性声明顺序规范/)
+- [Tutorial de Introducción a CSS](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Getting_started)
+- [Tutorial de CSS3 "CSS3 Tutorial"](https://waylau.gitbooks.io/css3-tutorial/content/)
+- [Normativa de Orden de Declaración de Propiedades CSS](https://wiki.zthxxx.me/wiki/程序语言/CSS/CSS%20 属性声明顺序规范/)
 
-por_reemplazar[1]  
-por_reemplazar[2]
+> Dirección original del artículo: <https://wiki-power.com/>  
+> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

@@ -1,84 +1,84 @@
-# Serie BeagleBone - Parámetros básicos y configuración del entorno
+# BeagleBone Series - Basic Parameters and Environment Configuration
 
-## Recursos de hardware
+## Hardware Resources
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211008090724.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20211008090724.png)
 
-- USB tipo A: se utiliza como modo de host USB
-- USB Micro: alimenta la placa y actúa como esclavo
+- USB Tipo-A: Utilizado en modo Host USB
+- USB Micro: Para alimentar la placa y como dispositivo esclavo
 - LEDs
-  - D2: parpadea como un latido al arrancar
-  - D3: se enciende al leer/escribir datos en la tarjeta SD
-  - D4: se enciende cuando la CPU está activa
-  - D5: se enciende al leer/escribir en la memoria eMMC
-- Botones de arranque/usuario: si hay una tarjeta SD, se iniciará desde ella por defecto (el mismo resultado se obtiene de cualquier manera). Después del arranque, actúa como un botón normal conectado a GPIO_72.
-- Interfaz I2C Grove: conectado a I2C2
-- Interfaz Uart Grove: conectado a UART2
-- Depuración en serie: conectado a UART0, el pin cerca del USB es el pin1, y los pines del 1 al 6 son: GND, NC, NC, RX, TX, NC.
+  - D2: Parpadea como un latido al arrancar
+  - D3: Se enciende al leer/escribir datos en la tarjeta SD
+  - D4: Se enciende cuando la CPU está activa
+  - D5: Se enciende cuando se leen/escriben datos en la memoria eMMC
+- Botones de Inicio/Usuario: Independientemente de si se presionan o no, si hay una tarjeta SD, se iniciará desde la tarjeta SD de manera predeterminada (dos caminos que llevan al mismo lugar). Después del arranque, funcionan como botones normales conectados a GPIO_72.
+- Interfaz Grove I2C: Conectada a I2C2
+- Interfaz Grove UART: Conectada a UART2
+- Depuración Serial: Conectada a UART0, el pin 1 está cerca del USB, y del pin 1 al pin 6 se corresponden con: GND, NC, NC, RX, TX, NC
 
-## Configuración del entorno
+## Environment Configuration
 
-### Problemas de instalación de controladores
+### Driver Installation Issue
 
-En Windows 10 y versiones posteriores, se utiliza por defecto la firma de controladores obligatoria, lo que puede ser la causa de la falla en la instalación de controladores.
+On Windows 10 and newer versions, driver installations may fail due to driver signature enforcement.
 
-Solución:
+Solution:
 
-- Mantenga presionada la tecla `shift` y haga clic en reiniciar la computadora.
-- Ingrese a `Solución de problemas` - `Opciones avanzadas` - `Configuración de inicio` y haga clic en `Reiniciar`.
-- Después del reinicio, siga las instrucciones de la página y presione la tecla `7` en el teclado para deshabilitar la firma de controladores obligatoria.
-- Después del inicio, se pueden instalar los controladores de BeagleBone normalmente.
+- Hold down the `Shift` key and click on "Restart" on your computer.
+- Go to "Troubleshoot" - "Advanced options" - "Startup Settings" and click "Restart."
+- After the restart, follow the on-screen instructions, and press the `7` key on your keyboard to disable driver signature enforcement.
+- Upon booting, you should be able to install BeagleBone's driver software without any issues.
 
-### Descarga e instalación de imágenes
+### Image Download and Flashing
 
-Dirección de descarga de imágenes oficiales: https://beagleboard.org/latest-images  
-Herramienta de grabación: https://sourceforge.net/projects/win32diskimager/files/latest/download
+Official image download link: [https://beagleboard.org/latest-images](https://beagleboard.org/latest-images)  
+Flashing tool: [https://sourceforge.net/projects/win32diskimager/files/latest/download](https://sourceforge.net/projects/win32diskimager/files/latest/download)
 
-Grabe la imagen en la tarjeta SD, desconecte la alimentación e inserte la tarjeta SD en BeagleBone. La próxima vez que se encienda, el sistema se iniciará desde la tarjeta SD.
+Burn the image onto an SD card, power down, insert it into BeagleBone, and the system will boot from the SD card upon the next power-up.
 
-## Acceso mediante herramientas de línea de comandos
+## Access Using Command-Line Tools
 
-### Acceso mediante puerto serie
+### Access via Serial Port
 
-Conecte el puerto serie integrado en la placa mediante un convertidor USB a serie y abra una herramienta de serie en la computadora (como WindTerm) para conectarse. (El nombre de usuario y la contraseña predeterminados son `root`).
+Connect the onboard serial terminal using a USB-to-serial adapter and open a serial terminal tool on your computer (e.g., WindTerm). The initial username and password are both `root`.
 
-La velocidad de transmisión es de 115200.
+The baud rate is 115200!
 
-### Acceso mediante Ethernet
+### Access via Ethernet
 
-En la conexión serie, use el comando `ifconfig` para encontrar la dirección Ethernet y conectarse a ella mediante la dirección. El nombre de usuario es `debian` y la contraseña es `temppwd`.
+Within the serial connection, use the `ifconfig` command to find the Ethernet address for connection. The username is `debian`, and the password is `temppwd`.
 
-### Acceso mediante USB
+### Access via USB
 
 usb0: 192.168.7.2  
 usb1: 192.168.6.2
 
-Conéctese mediante SSH, el nombre de usuario es `debian` y la contraseña es `temppwd`.
+Access using SSH. The username is `debian`, and the password is `temppwd`.
 
-## Habilitar la cuenta root con SSH
+## Enabling the Root Account for SSH
 
 ```shell
 vi /etc/ssh/sshd_config
 ```
 
-Cambie `#PermitRootLogin prohibit-password` a `PermitRootLogin yes`.
+Change `#PermitRootLogin prohibit-password` to `PermitRootLogin yes`.
 
-## Controlador Seeed OLED (SSD1306, I2C, 12864)
+## Driver for Seeed OLED (SSD1306, I2C, 12864)
 
-Descargue el paquete smbus2 con pip3:
+Download the smbus2 package using pip3:
 
 ```py
 sudo apt-get install python3-pip
 pip3 install smbus2
 ```
 
-El programa se puede encontrar en [**Grove - OLED Display 0.96 inch**](https://wiki.seeedstudio.com/Grove-OLED_Display_0.96inch/#play-with-beaglebone-green).
+Refer to the program [**Grove - OLED Display 0.96 inch**](https://wiki.seeedstudio.com/Grove-OLED_Display_0.96inch/#play-with-beaglebone-green).
 
-## Referencias y agradecimientos
+## References and Acknowledgments
 
-- [Problemas en la depuración de Beaglebone black 4G](https://blog.csdn.net/qq_32543253/article/details/53536266)
+- [Problemas en la depuración de Beaglebone Black 4G](https://blog.csdn.net/qq_32543253/article/details/53536266)
 - [Proyecto](https://beagleboard.org/p)
-- [Actualiza el software de tu Beagle](https://beagleboard.org/upgrade#connect)
+- [Actualizar el software en tu Beagle](https://beagleboard.org/upgrade#connect)
 - [Firmware de prueba](http://plm.seeedstudio.com.cn:9002/Windchill/app/#ptc1/tcomp/infoPage?oid=VR%3Awt.doc.WTDocument%3A30844361&u8=1)
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
