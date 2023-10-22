@@ -13,7 +13,6 @@ openai.api_base = os.environ.get("CHATGPT_API_BASE")
 # 设置最大输入字段，超出会拆分输入，防止超出输入字数限制
 max_length = 1800
 
-
 # 设置翻译的路径
 dir_to_translate = "docs/zh"
 dir_translated = {"en": "docs/en", "es": "docs/es", "ar": "docs/ar"}
