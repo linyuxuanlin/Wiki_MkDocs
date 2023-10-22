@@ -2,15 +2,15 @@
 
 ## تثبيت Adafruit-BBIO
 
-```
+```bash
 sudo apt-get update
 sudo apt-get install build-essential python3-dev python3-pip -y
 sudo pip3 install Adafruit_BBIO
 ```
 
-## إطار البرنامج الأساسي
+## هيكل البرنامج الأساسي
 
-```py
+```python
 import time
 import Adafruit_BBIO.GPIO as GPIO
 
@@ -29,40 +29,40 @@ while True:
 
 استدعاء المكتبة:
 
-```py
+```python
 import Adafruit_BBIO.GPIO as GPIO
 ```
 
-### تعيين دخل / إخراج الأرجل
+### تكوين دخل / إخراج الأرجل
 
-```py
+```python
 GPIO.setup("P8_14", GPIO.OUT)
 ```
 
-يمكن اختيار `المدخل` / `المخرج` `GPIO.IN`/`GPIO.OUT`.
+يمكن اختيار "دخل" أو "إخراج" من بين `GPIO.IN` / `GPIO.OUT`.
 
-### تعيين مستوى الإخراج العالي / المنخفض
+### تعيين مستوى عالي / منخفض للإخراج
 
-```py
+```python
 GPIO.output("P8_14", GPIO.HIGH)
 ```
 
-يمكن اختيار `المستوى العالي` / `المستوى المنخفض` `GPIO.HIGH`/`GPIO.LOW`، أو `1`/`0`.
+"عال" أو "منخفض" يمكن اختيارها من بين `GPIO.HIGH` / `GPIO.LOW` أو `1` / `0`.
 
-### وضع الدخل الأرجل
+### وضع الدخل للأرجل
 
-عرض حالة المنفذ الداخلي:
+اعرض حالة المنفذ الداخلي:
 
-```py
+```python
 if GPIO.input("P8_14"):
   print("HIGH")
 else:
   print("LOW")
 ```
 
-انتظار الحافة الداخلية، يوجد معلمات `GPIO.RISING`/`GPIO.FALLING`/`GPIO.BOTH`:
+انتظار إشارة الدخل، مع خيارات `GPIO.RISING` / `GPIO.FALLING` / `GPIO.BOTH`:
 
-```py
+```python
 GPIO.wait_for_edge(channel, GPIO.RISING)
 
 أو
@@ -70,55 +70,55 @@ GPIO.wait_for_edge(channel, GPIO.RISING)
 GPIO.wait_for_edge(channel, GPIO.RISING, timeout)
 ```
 
-### رصد الدخل
+### رصد الإدخال
 
-```py
+```python
 GPIO.add_event_detect("P9_12", GPIO.FALLING)
 if GPIO.event_detected("P9_12"):
-    print "event detected!"
+    print "الحدث تم الكشف عنه!"
 ```
 
 ## التأخير
 
-تأخير لمدة ثانية:
+تأخير لمدة 1 ثانية:
 
-```py
+```python
 import time
 time.sleep(1)
 ```
 
-## PWM الإخراج
+## الإخراج بتقنية PWM
 
-```py
+```python
 import Adafruit_BBIO.PWM as PWM
-#PWM.start(القناة, نسبة العرض, التردد الافتراضي=2000, القطبية=0)
+#PWM.start(القناة, نسبة الواجب, التردد الافتراضي=2000, القطبية=0)
 PWM.start("P9_14", 50)
 
-#يمكن أيضًا تحديد التردد والقطبية بشكل مستقل
+# يمكنك أيضًا تحديد التردد والقطبية بنفسك
 PWM.start("P9_14", 50, 1000, 1)
 ```
 
-حيث يكون نسبة العرض الفعالة بين 0.0-100.0، وتستخدم وظيفة start لتنشيط PWM على هذه القناة.
+حيث يتراوح نسبة الواجب الفعّالة بين 0.0 و 100.0، تُستخدم وظيفة "start" لتنشيط الإخراج بتقنية PWM على هذه القناة.
 
-بعد تشغيل PWM، يمكن تعيين نسبة العرض أو التردد بشكل منفصل:
+بمجرد تشغيل PWM، يمكنك تعيين نسبة الواجب أو التردد بشكل منفصل:
 
-```py
+```python
 PWM.set_duty_cycle("P9_14", 25.5)
 PWM.set_frequency("P9_14", 10)
 ```
 
-بعد الانتهاء، يمكن إيقاف إخراج PWM، أو مسح المعلومات:
+عند الانتهاء من الاستخدام، يمكنك أيضًا إيقاف إخراج PWM أو مسح المعلومات:
 
-```py
+```python
 PWM.stop("P9_14")
 PWM.cleanup()
 ```
 
-## ADC الدخل
+## إدخال ADC
 
-في هذا الإطار، يوجد ثلاثة وظائف لـ ADC: setup و read و read_raw. يجب تعيين setup قبل قراءة البيانات.
+في هذا الهيكل، هناك ثلاث وظائف لـ ADC: setup، read، و read_raw. قبل قراءة البيانات، يجب تنفيذ الإعداد أولاً.
 
-يمكن استخدام المنافذ التالية لـ ADC على BeagleBone:
+على BeagleBone، يمكن استخدام الأرجل التالية للADC:
 
 ```
 "AIN4", "P9_33"
@@ -130,11 +130,13 @@ PWM.cleanup()
 "AIN1", "P9_40"
 ```
 
-تنبيه: الجهد الأقصى لـ ADC هو 1.8 فولت ، وأرضية ADC هي GNDA_ADC (P9_34) pin. إذا كنت بحاجة إلى قياس 3.3 فولت ، فيمكن استخدام تقسيم الجهد باستخدام مقاومة ، مثل الصورة أدناه ، لتقسيم 0-3.3 فولت إلى 0-1.65 فولت لقراءة القيم الأنالوجية.
+
+
+تنبيه: الجهد الأقصى لـ ADC هو 1.8 فولت، والأرضي للـ ADC هو دبوس GNDA_ADC (P9_34). إذا كنت بحاجة لقياس 3.3 فولت، يمكنك استخدام مقسم الجهد باستخدام المقاومات كما هو موضح في الصورة أدناه لتحويل النطاق من 0-3.3 فولت إلى 0-1.65 فولت لقراءة القيم الأنالوجية.
 
 ### تهيئة ADC
 
-```py
+```python
 import Adafruit_BBIO.ADC as ADC
 
 ADC.setup()
@@ -142,7 +144,7 @@ ADC.setup()
 
 ### قراءة القيم الأنالوجية
 
-```py
+```python
 value = ADC.read("P9_40")
 
 أو
@@ -150,33 +152,33 @@ value = ADC.read("P9_40")
 value = ADC.read("AIN1")
 ```
 
-هناك خطأ في هذا الإطار يتطلب قراءة متتالية مرتين للحصول على أحدث القيم الأنالوجية.
+هذا الإطار يعاني من خلل يتطلب قراءة متتالية مرتين للحصول على أحدث القيم الأنالوجية.
 
-القيم المقروءة هي قيمة بين 0 و 1.0 ، يمكن ضربها بـ 1.8 لتحويلها إلى قيمة الجهد. إذا كنت لا تريد ذلك ، فيمكن استخدام read_raw لقراءة الجهد الحقيقي مباشرةً.
+القيم التي تم قراءتها تكون بين 0 و1.0، يمكن ضربها في 1.8 لتحويلها إلى قيم الجهد. إذا كنت لا ترغب في هذا العناء، يمكنك استخدام `read_raw` مباشرة لقراءة الجهد الحقيقي.
 
-## تواصل I2C
+## التواصل عبر I2C
 
-للاستخدام مع I2C ، يتم تحميل المكتبة وتعيين عنوان I2C واختيار I2C المستخدم (الافتراضي هو I2C-1).
+للاستفادة من التواصل عبر I2C، كل ما تحتاجه هو استيراد المكتبة، تعيين عنوان I2C، واختيار الحافلة I2C المراد استخدامها (الافتراضي هو I2C-1).
 
-```py
+```python
 from Adafruit_I2C import Adafruit_I2C
 
 i2c = Adafruit_I2C(0x77)
 ```
 
-يتطلب تشغيل I2C تثبيت حزمة python `python-smbus` ، ولكن هذه الحزمة تعمل فقط مع إصدار python 2. يمكن استخدام [**smbus2**](https://pypi.org/project/smbus2/) كبديل.
+يتعين تثبيت حزمة Python المسماة `python-smbus` لاستخدام الوظائف المتعلقة بـ I2C، ولكن في الوقت الحالي، تلك الحزمة متوافقة فقط مع Python 2. يمكن استخدام [**smbus2**](https://pypi.org/project/smbus2/) كبديل لها.
 
-## تواصل SPI
+## التواصل عبر SPI
 
-يتم تحميل مكتبة SPI كالتالي:
+استيراد مكتبة SPI كما يلي:
 
-```py
+```python
 from Adafruit_BBIO.SPI import SPI
 ```
 
-## آخر
+## ملاحظات أخرى
 
-إذا فشل تثبيت Adafruit-BBIO ، فيمكن التثبيت يدويًا:
+إذا فشل تثبيت Adafruit-BBIO بشكل تلقائي، يمكنك تثبيته يدويًا باستخدام الأوامر التالية:
 
 ```
 sudo apt-get update
@@ -186,21 +188,21 @@ cd adafruit-beaglebone-io-python
 sudo python3 setup.py install
 ```
 
-تحديث Adafruit-BBIO:
+ثم يمكنك ترقية Adafruit-BBIO كما يلي:
 
 ```
 sudo pip3 install --upgrade Adafruit_BBIO
 ```
 
-بسبب اعتمادية python-smbus ، يتم استخدام I2C فقط في python2.
+نظرًا لاعتماد python-smbus على Python 2، فإن التواصل عبر I2C متاح فقط في Python 2.
 
 ## المراجع والشكر
 
-- [Python Adafruit_GPIO.I2C Examples](https://www.programcreek.com/python/example/92524/Adafruit_GPIO.I2C)
+- [أمثلة Python Adafruit_GPIO.I2C](https://www.programcreek.com/python/example/92524/Adafruit_GPIO.I2C)
 - [Adafruit-BBIO 1.2.0](https://pypi.org/project/Adafruit-BBIO/#description)
-- [Setting up IO Python Library on BeagleBone Black](https://learn.adafruit.com/setting-up-io-python-library-on-beaglebone-black)
+- [إعداد مكتبة IO Python على BeagleBone Black](https://learn.adafruit.com/setting-up-io-python-library-on-beaglebone-black)
 
-> عنوان النص: <https://wiki-power.com/>  
+> عنوان النص: <https://wiki-power.com/>
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

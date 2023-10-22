@@ -8,3 +8,16 @@ AD基本操作-原理图绘制.md
 AD基本操作-基础知识.md
 AD基本操作-多板系统设计.md
 AD基本操作-环境搭建.md
+AD常用技巧.md
+AHB上的TIC.md
+AI影响下未来的职业选择.md
+ATTiny85调试记录.md
+AirForce-充满灵性的电机驱动模块.md
+AltiumDesigner安装库文件.md
+Auto-i18n：使用ChatGPT的自动多语言翻译工具.md
+Basics_of_Fourier_Transform.md
+Basics_of_Mixed_Signal_Test.md
+Basics_of_Signal_and_Power_Integrity.md
+Basics_of_VBT_Syntax.md
+BeagleBone系列-BBAI入坑.md
+BeagleBone系列-使用BBIO库开发.md

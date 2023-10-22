@@ -1,16 +1,16 @@
-# Serie BeagleBone - Desarrollo con la biblioteca BBIO
+# BeagleBone Series - Developing with the BBIO Library
 
-## Instalación de Adafruit-BBIO
+## Installing Adafruit-BBIO
 
-```
+```bash
 sudo apt-get update
 sudo apt-get install build-essential python3-dev python3-pip -y
 sudo pip3 install Adafruit_BBIO
 ```
 
-## Estructura básica del programa
+## Basic Program Structure
 
-```py
+```python
 import time
 import Adafruit_BBIO.GPIO as GPIO
 
@@ -27,98 +27,98 @@ while True:
 
 ## GPIO
 
-Llamando a la biblioteca:
+Library Invocation:
 
-```py
+```python
 import Adafruit_BBIO.GPIO as GPIO
 ```
 
-### Configuración de pines de entrada / salida
+### Configuring Pin Direction (Input/Output)
 
-```py
+```python
 GPIO.setup("P8_14", GPIO.OUT)
 ```
 
-`Entrada` / `Salida` se pueden seleccionar como `GPIO.IN`/`GPIO.OUT`.
+`Input`/`Output` can be set to `GPIO.IN`/`GPIO.OUT`.
 
-### Configuración de nivel alto / bajo de salida
+### Setting Pin Output (High/Low)
 
-```py
+```python
 GPIO.output("P8_14", GPIO.HIGH)
 ```
 
-Los niveles `alto` / `bajo` se pueden seleccionar como `GPIO.HIGH`/`GPIO.LOW`, o `1`/`0`.
+`High`/`Low` can be set to `GPIO.HIGH`/`GPIO.LOW` or `1`/`0`.
 
-### Modo de entrada de pin
+### Pin Input Mode
 
-Verificar el estado del puerto de entrada:
+Checking the state of an input port:
 
-```py
+```python
 if GPIO.input("P8_14"):
   print("HIGH")
 else:
   print("LOW")
 ```
 
-Esperar entrada de borde, los parámetros son `GPIO.RISING`/`GPIO.FALLING`/`GPIO.BOTH`:
+Waiting for edge input, with parameters `GPIO.RISING`/`GPIO.FALLING`/`GPIO.BOTH`:
 
-```py
+```python
 GPIO.wait_for_edge(channel, GPIO.RISING)
 
-o
+or
 
 GPIO.wait_for_edge(channel, GPIO.RISING, timeout)
 ```
 
-### Monitoreo de entrada
+### Monitoring Input
 
-```py
+```python
 GPIO.add_event_detect("P9_12", GPIO.FALLING)
 if GPIO.event_detected("P9_12"):
     print "event detected!"
 ```
 
-## Retardo
+## Delay
 
-Retardo de 1 segundo:
+Adding a 1-second delay:
 
-```py
+```python
 import time
 time.sleep(1)
 ```
 
-## Salida PWM
+## PWM Output
 
-```py
+```python
 import Adafruit_BBIO.PWM as PWM
-#PWM.start(通道, 占空比, 默认频率=2000, 极性=0)
+# PWM.start(channel, duty cycle, default frequency=2000, polarity=0)
 PWM.start("P9_14", 50)
 
-#También se pueden definir la frecuencia y la polaridad
+# You can also define your own frequency and polarity
 PWM.start("P9_14", 50, 1000, 1)
 ```
 
-El valor efectivo del ciclo de trabajo es de 0.0-100.0, la función start se utiliza para activar el PWM en ese canal.
+The valid duty cycle values range from 0.0 to 100.0, and the `start` function is used to activate PWM on that channel.
 
-Una vez que se ha iniciado el PWM, se pueden establecer el ciclo de trabajo o la frecuencia por separado:
+Once PWM is started, you can individually set the duty cycle or frequency:
 
-```py
+```python
 PWM.set_duty_cycle("P9_14", 25.5)
 PWM.set_frequency("P9_14", 10)
 ```
 
-Después de su uso, también se puede detener la salida PWM o borrar la información:
+After use, you can stop PWM output or clean up the information:
 
-```py
+```python
 PWM.stop("P9_14")
 PWM.cleanup()
 ```
 
-## Entrada ADC
+## ADC Input
 
-En este marco, ADC tiene tres métodos de función: setup, read y read_raw. Antes de leer los datos, primero se debe configurar.
+In this framework, ADC offers three functions: setup, read, and read_raw. You need to set up before reading data.
 
-En BeagleBone, los siguientes pines se pueden usar como ADC:
+On the BeagleBone, the following pins can be used for ADC:
 
 ```
 "AIN4", "P9_33"
@@ -130,53 +130,53 @@ En BeagleBone, los siguientes pines se pueden usar como ADC:
 "AIN1", "P9_40"
 ```
 
-Nota: El voltaje máximo del ADC es de 1.8V y la tierra del ADC es el pin GNDA_ADC (P9_34). Si se necesita detectar 3.3V, se puede utilizar una división de voltaje con resistencias, como se muestra en la siguiente imagen, para leer el valor analógico en un rango de 0-1.65V.
+**Nota:** El voltaje máximo de ADC es 1.8V, y la tierra de ADC es el pin GNDA_ADC (P9_34). Si es necesario detectar 3.3V, se puede utilizar una resistencia de división de voltaje, como se muestra en la imagen a continuación, para reducir de 0-3.3V a 0-1.65V y así leer el valor analógico.
 
-### Inicialización del ADC
+### Inicialización de ADC
 
-```py
+```python
 import Adafruit_BBIO.ADC as ADC
 
 ADC.setup()
 ```
 
-### Lectura de valores analógicos
+### Lectura del Valor Analógico
 
-```py
-value = ADC.read("P9_40")
+```python
+valor = ADC.read("P9_40")
 
 o
 
-value = ADC.read("AIN1")
+valor = ADC.read("AIN1")
 ```
 
-Este marco tiene un error que requiere leer dos veces consecutivas para obtener el valor analógico más reciente.
+Este marco tiene un pequeño error: necesita leer dos veces consecutivas para obtener el valor analógico más reciente.
 
-El valor leído es un valor entre 0 y 1.0, que se puede multiplicar por 1.8 para convertirlo en un valor de voltaje. Si no se desea hacer esto, también se puede utilizar read_raw para leer directamente el valor de voltaje real.
+El valor leído es un número entre 0 y 1.0, que se puede multiplicar por 1.8 para convertirlo en un valor de voltaje. Si prefiere una solución más sencilla, puede utilizar `read_raw` para obtener directamente el valor de voltaje real.
 
 ## Comunicación I2C
 
-Para utilizar I2C, solo es necesario importar la biblioteca, establecer la dirección I2C y seleccionar el I2C que se va a utilizar (por defecto es I2C-1).
+Para utilizar I2C, solo necesita importar la biblioteca, configurar la dirección I2C y seleccionar el bus I2C correspondiente (por defecto, es I2C-1).
 
-```py
+```python
 from Adafruit_I2C import Adafruit_I2C
 
 i2c = Adafruit_I2C(0x77)
 ```
 
-La función I2C requiere la instalación del paquete de Python `python-smbus`, pero actualmente este paquete solo es compatible con la versión 2 de Python. En su lugar, se puede utilizar [**smbus2**](https://pypi.org/project/smbus2/).
+La funcionalidad I2C requiere la instalación del paquete de Python `python-smbus`, pero actualmente este paquete solo es compatible con Python 2. Puede reemplazarlo con [**smbus2**](https://pypi.org/project/smbus2/) como alternativa.
 
 ## Comunicación SPI
 
-Importar la biblioteca SPI:
+Importe la biblioteca SPI de la siguiente manera:
 
-```py
+```python
 from Adafruit_BBIO.SPI import SPI
 ```
 
 ## Otros
 
-Si la instalación de Adafruit-BBIO falla, se puede realizar una instalación manual:
+Si la instalación de Adafruit-BBIO falla, puede optar por una instalación manual:
 
 ```
 sudo apt-get update
@@ -186,21 +186,21 @@ cd adafruit-beaglebone-io-python
 sudo python3 setup.py install
 ```
 
-Actualizar Adafruit-BBIO:
+Para actualizar Adafruit-BBIO:
 
 ```
 sudo pip3 install --upgrade Adafruit_BBIO
 ```
 
-Debido a la dependencia de python-smbus, I2C solo se puede utilizar en Python 2.
+Debido a la dependencia de python-smbus, la comunicación I2C solo es compatible con Python 2.
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
-- [Python Adafruit_GPIO.I2C Examples](https://www.programcreek.com/python/example/92524/Adafruit_GPIO.I2C)
+- [Ejemplos de Python Adafruit_GPIO.I2C](https://www.programcreek.com/python/example/92524/Adafruit_GPIO.I2C)
 - [Adafruit-BBIO 1.2.0](https://pypi.org/project/Adafruit-BBIO/#description)
-- [Setting up IO Python Library on BeagleBone Black](https://learn.adafruit.com/setting-up-io-python-library-on-beaglebone-black)
+- [Configuración de la Biblioteca IO Python en BeagleBone Black](https://learn.adafruit.com/setting-up-io-python-library-on-beaglebone-black)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
+> Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

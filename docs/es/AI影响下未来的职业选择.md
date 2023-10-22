@@ -1,51 +1,52 @@
-# La elección de carrera en el futuro bajo la influencia de la IA
+# El impacto de la inteligencia artificial en las elecciones profesionales futuras
 
-## Contexto
+## Introducción
 
-[**El futuro del empleo**](http://sep4u.gr/wp-content/uploads/The_Future_of_Employment_ox_2013.pdf) es un artículo que evalúa más de 700 carreras y concluye que la mitad de ellas desaparecerán en los próximos diez años. Entonces, ¿cómo serán las diferentes carreras y cómo deberíamos enfrentarlas? Veamos en detalle.
+El artículo "[**El futuro del empleo**](http://sep4u.gr/wp-content/uploads/The_Future_of_Employment_ox_2013.pdf)" analiza más de 700 profesiones actuales y concluye que en la próxima década, la mitad de estas desaparecerá. Ahora, examinemos en detalle las perspectivas de diversas profesiones y cómo las personas pueden prepararse para el cambio.
 
-## Carreras que desaparecerán
+## Profesiones que desaparecerán
 
-**Las primeras carreras que desaparecerán son**: conductores, empleados de tiendas físicas, árbitros, asistentes administrativos, entre otros. Entre ellos, los conductores de todo tipo de vehículos, incluyendo taxistas, conductores de camiones y pilotos de aviones, serán reemplazados por la conducción autónoma, que tiene menos errores.
+Las profesiones que desaparecerán primero incluyen a los conductores, dependientes de tiendas físicas, árbitros, y empleados administrativos en general. Los conductores, que incluyen taxistas, camioneros, y pilotos de avión, serán reemplazados por vehículos autónomos que cometen menos errores.
 
-Sus carreras son en su mayoría **reguladas con reglas claras, con pocos puntos técnicos y fácilmente reemplazables**.
+Estas profesiones tienden a tener **reglas claras, pocos elementos técnicos y alta sustituibilidad**.
 
-**Carreras que no desaparecerán a corto plazo, pero que desaparecerán gradualmente en el futuro**: médicos, programadores de bajo nivel, bomberos, policías, entre otros. Entre ellos, la carrera de médico tiene un alto riesgo y un gran impacto humano debido a errores humanos; los programadores de bajo nivel serán reemplazados por la auto-programación de la inteligencia artificial; para carreras de alto riesgo como bomberos y policías, obviamente, los robots tienen una ventaja mayor, y en el manejo de casos, la inteligencia artificial puede explorar más posibilidades que los humanos.
+Las profesiones que no desaparecerán de inmediato pero que eventualmente lo harán incluyen a médicos, programadores de nivel básico, bomberos y policías. La profesión de médico conlleva un alto riesgo y un gran impacto en caso de errores humanos. Los programadores de nivel básico serán reemplazados por la programación autónoma de la inteligencia artificial. Para las profesiones de alto riesgo como bomberos y policías, los robots tienen ventajas evidentes, y la inteligencia artificial puede explorar más posibilidades en la resolución de casos.
 
-## Carreras que no desaparecerán
+## Profesiones que perdurarán
 
-**Las carreras que difícilmente desaparecerán son**: jueces, maestros de primaria, clérigos, diseñadores innovadores, cantantes, entre otros. Entre ellos, debido a problemas éticos (las máquinas no pueden condenar a las personas o decidir sobre la vida y la muerte de las personas), la carrera de juez difícilmente desaparecerá; en la etapa de educación temprana, los niños necesitan ser cultivados con conciencia de aprendizaje autónomo y humanidades, y necesitan ser guiados por maestros; los clérigos (sacerdotes, monjes, líderes religiosos, etc.) definitivamente no serán reemplazados.
+Las profesiones que son difíciles de reemplazar incluyen jueces, maestros de primaria, profesionales religiosos, diseñadores innovadores y cantantes, entre otros. La ética desempeña un papel fundamental en estas profesiones (las máquinas no pueden condenar a una persona o decidir sobre su vida o muerte). Durante la etapa de educación temprana, los niños necesitan ser guiados en el aprendizaje autónomo y en la apreciación de aspectos humanos, lo cual requiere la presencia de maestros. Los profesionales religiosos (sacerdotes, monjes, líderes espirituales) ciertamente no serán reemplazados.
 
-Las características comunes de estas carreras son **cuidado humanitario, ética y moral, e innovación**.
+Estas profesiones comparten características comunes de **cuidado humano, ética y creatividad**.
 
 ## Cómo elegir una carrera
 
-En la sociedad del futuro, para trabajar sin ser reemplazado por máquinas e inteligencia artificial, se necesitan tres cualidades:
+En la sociedad del futuro, las carreras que no serán reemplazadas por máquinas o inteligencia artificial requerirán tres cualidades clave:
 
 - Empatía
-- Trabajo en equipo
+- Colaboración en equipo
 - Habilidad para contar historias
 
-La empatía es la capacidad de **pensar en el lugar de otra persona**. Muchas veces, la demanda no surge por sí sola, sino que necesitamos proyectar nuestro pensamiento en los demás para descubrir la demanda, en lugar de solo centrarnos en la implementación técnica.
+La empatía implica la capacidad de **ponerse en el lugar del otro**. A menudo, las necesidades no se generan automáticamente, sino que debemos proyectar nuestras propias reflexiones en otras personas para descubrir esas necesidades, en lugar de centrarnos solo en la tecnología.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200226140150.png)
+![Empatía](https://img.wiki-power.com/d/wiki-media/img/20200226140150.png)
 
-El trabajo en equipo está relacionado con el "efecto de la tabla larga". La sociedad moderna no requiere que todos completen sus debilidades, sino que se centren en desarrollar sus fortalezas y complementen sus debilidades a través del trabajo en equipo. Un equipo de tabla larga es aquel en el que se combinan las fortalezas de cada persona; de lo contrario, si cada persona se desarrolla "en todas las direcciones" pero tiene habilidades mediocres, ¿cómo puede destacar el equipo en la competencia?
+La colaboración en equipo está relacionada con el "efecto del tablero largo". En la sociedad moderna, no se espera que cada individuo sea experto en todo, sino que se centren en sus fortalezas y colaboren en equipo para compensar las debilidades. Un equipo de tablero largo aprovecha las fortalezas individuales y se destaca en la competencia.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200226140223.png)
+![Colaboración en equipo](https://img.wiki-power.com/d/wiki-media/img/20200226140223.png)
 
-La habilidad para contar historias se refleja en la creación de un equipo interno que necesita una comprensión de valores comunes; externamente, para que otros acepten su concepto y usen su producto, también se necesita la habilidad para contar historias.
-
-Debe aprender a contar una historia que todos los interesados puedan aceptar. El valor no solo se ve afectado por el producto en sí, sino que la promoción también es crucial.
+La habilidad para contar historias es esencial tanto interna como externamente. Internamente, se necesita para mantener un equipo unido a través de una comprensión compartida de los valores. Externamente, se utiliza para que otros acepten tus ideas y productos. Aprender a contar una historia que resuene con todas las partes interesadas es crucial, ya que la promoción es tan importante como el producto en sí.
 
 ## Conclusión
 
-El movimiento ludita no pudo detener la ola de la Revolución Industrial. Para las personas comunes, el poder personal nunca puede detener la tendencia de la época. Prediciendo la tendencia de la época y aprovechándola, las personas pueden tener un mejor desarrollo personal.
+La marea de la Revolución Industrial es imparable. Para la persona común, es difícil resistir las tendencias de la época. Prediciendo las corrientes de la era, podemos aprovecharlas para nuestro desarrollo personal.
 
-## Enlaces de referencia
+## Referencias
 
-- [¿Qué habilidades básicas necesitas?](https://mp.weixin.qq.com/s?__biz=MzIyODI1MzYyNA==&mid=2653540387&idx=1&sn=985fbe7c3ca0a3ac90d5f56356eac31a&scene=21##wechat_redirect)
-- [Las carreras que desaparecerán en diez años. Si estás haciendo estos trabajos, es mejor que cambies de carrera lo antes posible](https://www.youtube.com/watch?v=Mshz9DxQLbE&list=PLxaBD9eBZcGTZaMZ-3HN5zXFQ06FDOjzJ&index=2&t=0s)
+- [¿Qué habilidades esenciales necesitas adquirir?](https://mp.weixin.qq.com/s?__biz=MzIyODI1MzYyNA==&mid=2653540387&idx=1&sn=985fbe7c3ca0a3ac90d5f56356eac31a&scene=21##wechat_redirect)
+- [Profesiones que desaparecerán en una década; si tienes uno de estos trabajos, deberías considerar cambiar pronto](https://www.youtube.com/watch?v=Mshz9DxQLbE&list=PLxaBD9eBZcGTZaMZ-3HN5zXFQ06FDOjzJ&index=2&t=0s)
 - [El futuro del empleo](http://sep4u.gr/wp-content/uploads/The_Future_of_Employment_ox_2013.pdf)
+
+[Por reemplazar[1]]
+[Por reemplazar[2]]
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

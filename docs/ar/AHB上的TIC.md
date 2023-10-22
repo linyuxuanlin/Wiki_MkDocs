@@ -1,12 +1,12 @@
 # TIC على AHB
 
-قيد الكتابة ...
+قيد الكتابة...
 
-## المراجع والشكر
+## الإشارة والشكر
 
-- _IHI0011 - ARM advanced microcontroller bus architecture (AMBA) specification.Rev 2.0_
+- _IHI0011 - مواصفات نموذج بنية حافلة الميكروكنترولر المتقدمة لشركة ARM (AMBA)، المراجعة 2.0_
 
-  > عنوان النص: <https://wiki-power.com/>  
-  > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+  [يتم التعويض[1]]
+  [يتم التعويض[2]]
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

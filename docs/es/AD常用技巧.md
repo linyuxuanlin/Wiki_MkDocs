@@ -1,99 +1,99 @@
-# Consejos útiles de AD
+# Consejos útiles para AD
 
-—— Aquí se han recopilado algunos consejos prácticos.
+En esta sección, hemos recopilado algunos consejos prácticos para trabajar con Altium Designer.
 
-## Sección de la biblioteca de esquemas
+## Sección de biblioteca de esquemas
 
-### Subrayado de nombres de pines (activo en bajo)
+### Subrayado de nombres de pines (activo a nivel bajo)
 
-**Método**: Agregar el símbolo "\" detrás de cada letra que se deba subrayar.  
-**Ejemplo**: Subrayar `RESET` - `R\E\S\E\T`
+**Método**: Agregar un símbolo "\" después de cada letra que necesite subrayar.  
+**Ejemplo**: `RESET` subrayado - `R\E\S\E\T`
 
-## Sección de la biblioteca de encapsulados de PCB
+## Sección de biblioteca de encapsulados de PCB
 
-(Pendiente de actualización)
+(Próximamente)
 
-## Sección del esquema
+## Sección de esquema
 
 ### Desactivar la función "Add Room"
 
-**Razón**: La función de Room es útil en el enrutamiento de múltiples canales, ya que permite aplicar directamente el enrutamiento de un canal a otros canales. No es necesario utilizar Room en un solo canal.  
+**Razón**: La función "Room" es útil en el enrutamiento de múltiples canales, ya que permite aplicar el enrutamiento de un canal directamente a otros canales. No es necesario usar "Room" en un solo canal.  
 **Método**:
 
-1. Barra de menú - Proyecto - Selección de Proyecto - Pestaña Generación de Clases
-2. Desmarcar "Generar Room"
+1. Menú - Proyecto - Selección de Proyecto - Pestaña Generación de Clases
+2. Desmarcar la casilla "Generar Room"
 
 ## Sección de PCB
 
-### Agregar logotipos y marcas
+### Agregar logotipos e identificaciones
 
-**Razón**: Si se importa una imagen directamente, el logotipo creado no se puede ajustar libremente en cuanto a tamaño.  
-**Método**: Utilizar el software de creación de fuentes Font Creator, descargue mi fuente personalizada como plantilla en [GitHub](https://github.com/linyuxuanlin/Modularity_of_Functional_Circuit/tree/master/%E4%B8%93%E7%94%A8%E5%AD%97%E4%BD%93) y, una vez creada la fuente, instalar el archivo .ttf para usar el logotipo correspondiente en Altium.
+**Razón**: Si importas imágenes directamente, el logotipo creado no se puede redimensionar fácilmente.  
+**Método**: Utiliza el software de creación de fuentes "Font Creator". Puedes descargar mi fuente desde [GitHub](https://github.com/linyuxuanlin/Modularity_of_Functional_Circuit/tree/master/%E4%B8%93%E7%94%A8%E5%AD%97%E4%BD%93) como plantilla y personalizar tu propia fuente exclusiva. Después de crear la fuente, instala el archivo .ttf y podrás utilizar los caracteres correspondientes en Altium para crear tu logotipo.
 
-La relación de caracteres y logotipos es la siguiente:  
-![](https://img.wiki-power.com/d/wiki-media/img/20200207200606.png)
+La correspondencia de caracteres con el logotipo es la siguiente:  
+![Logo](https://img.wiki-power.com/d/wiki-media/img/20200207200606.png)
 
-### Colocación automática de componentes en una zona designada
+### Distribución automática de componentes en un área designada
 
-**Razón**: Al actualizar el esquema al PCB, algunos componentes pueden alejarse mucho.  
-**Método**: Seleccionar todo - **TOL** - Selección de caja
+**Razón**: Cuando actualizas el esquema al PCB, algunos componentes pueden estar dispersos.  
+**Método**: Selecciona todo - **TOL** - Seleccionar un área con un marco.
 
 ### Disposición en matriz circular
 
 **Método**:
 
-1. Seleccionar objeto - Copiar
-2. **EA** - Marcar "Pegar en la capa actual"
-3. Hacer clic en "Pegar matriz" - Configurar cantidad de objetos y espaciado
+1. Selecciona el objeto - Copiar
+2. **EA** - Marca "Pegar en la capa actual"
+3. Haz clic en "Pegar matriz" - Configura el número de objetos y el espaciado
 
-### Atajos para hacer pasajes y cambiar de capa
+### Cambiar de capa y crear perforaciones rápidamente
 
-**Método**: Utilizar las teclas + / - del teclado numérico al enrutamiento
+**Método**: Usa el teclado numérico + / - mientras enrutamos.
 
-### Establecer propiedades de red de pasajes de forma uniforme
+### Configuración unificada de propiedades de red de perforación
 
 **Método**:
 
-1. Hacer clic con el botón derecho en cualquier pasaje sin propiedades - Encontrar objetos similares - Establecer la Red como "Igual"
-2. En el panel de propiedades, establecer las propiedades de red de pasajes de forma uniforme
+1. Haz clic derecho en cualquier perforación sin atributos: Buscar objetos similares - Configurar "Red" como "Igual"
+2. Agrega las propiedades de la red de perforación en el panel de propiedades.
 
 ### Agregar vias de lágrima
 
-**Razón**: Las vias de lágrima aumentan la integridad de la señal, reducen la pérdida de señal y las reflexiones, y disminuyen el riesgo de rotura del punto de contacto de la pista y la via de paso ante impactos externos.  
-**Método**: Utilizar el atajo **TE**
+**Razón**: Las vias de lágrima mejoran la integridad de la señal, reducen la pérdida de señal y el riesgo de desconexión de los puntos de contacto de las vías cuando se produce un impacto externo.  
+**Método**: Usa el atajo de teclado **TE**
 
-### Ventanas de estañado de pistas
+### Abrir soldadura en las pistas
 
-**Razón**: Estañar las pistas puede aumentar la capacidad de corriente.  
-**Método**: Copiar el trazado necesario y pegarlo de manera especial en la capa Top / Bottom Solder correspondiente
+**Razón**: Agregar estaño a las pistas puede mejorar la capacidad de corriente.  
+**Método**: Copia las pistas necesarias y pégalas en las capas superiores e inferiores de soldadura correspondientes.
 
 ### Operaciones en la vista 3D
 
 **Método**:
 
-- Presionar la tecla numérica "3" para entrar en la vista 3D
-- Presionar la tecla numérica "2" para volver a la edición del PCB
-- Presionar la tecla numérica "0" para restaurar la vista predeterminada
-- Ctrl + F para voltear
-- Ctrl + rueda del ratón para hacer zoom
-- Shift + clic derecho para cambiar la vista
+- Presiona la tecla "3" para ingresar a la vista 3D.
+- Presiona la tecla "2" para volver a la edición de PCB.
+- Presiona la tecla "0" para restablecer la vista predeterminada.
+- Ctrl + F para voltear la vista.
+- Ctrl + rueda del ratón para hacer zoom.
+- Shift + clic derecho para cambiar la perspectiva.
 
-### Mantener las propiedades de red al copiar y pegar
+### Mantener las propiedades de la red al copiar y pegar
 
-**Razón**: Al copiar y pegar objetos con propiedades eléctricas, se pierden las propiedades de red.  
-**Método**: Copiar el objeto - **EA** - Marcar "Mantener nombre de red" - Pegar
+**Razón**: Al copiar y pegar objetos con propiedades eléctricas, se pueden perder las propiedades de la red.  
+**Método**: Copia el objeto - **EA** - Marca "Mantener nombre de la red" - Pega
 
-### Generación de diagramas de pines
+### Generar diagrama de pines soldados
 
-(Pendiente de actualización)
+(Próximamente)
 
 ### Cómo crear ranuras en el PCB
 
-Dibuje una forma cerrada en la **capa Mecánica 1** del PCB, selecciónela y utilice el atajo `T` - `V` - `B` para crear la ranura (se recomienda cambiar a la vista 3D para confirmar).
+En la capa **Mecánica 1** del PCB, dibuja una forma cerrada de la ranura, selecciónala y usa el atajo de teclado `T` - `V` - `B` para generar la ranura (es recomendable cambiar a la vista 3D para confirmar).
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
-- [Altium Designer19 Design Handbook: Practical Techniques and Problem Solving Methods](https://item.jd.com/12756518.html)
+- [Altium Designer 19 Guía Práctica: Técnicas de Operación y Solución de Problemas](https://item.jd.com/12756518.html)
 
 > Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.

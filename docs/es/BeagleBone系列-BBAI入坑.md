@@ -2,13 +2,13 @@
 
 ## Inicialización
 
-En primer lugar, conecte la entrada de alimentación de 12V de la Cape, use un módulo USB a serie para conectar el puerto serie integrado (solo se puede usar el puerto J3 para la depuración):
+En primer lugar, conecta la fuente de alimentación de 12V de la Cape y utiliza un módulo USB a serie para conectar el puerto serie a bordo (el puerto J3 se puede utilizar para fines de depuración):
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20211027164010.png)
 
-Asegúrese de que el módulo USB a serie tenga controladores (utilicé el módulo FTDI, la dirección de descarga del controlador es <https://ftdichip.com/drivers/vcp-drivers/>).
+Asegúrate de que el módulo USB a serie tenga el controlador instalado (yo utilicé un módulo FTDI, puedes descargar el controlador desde <https://ftdichip.com/drivers/vcp-drivers/>).
 
-Conecte el puerto serie con una herramienta de línea de comandos (utilicé MobaXterm), configure la velocidad de transmisión en 115200.
+Utiliza una herramienta de línea de comandos para conectar al puerto serie (yo usé MobaXterm) y configura la velocidad de bits a 115200.
 
 ## Instalación del paquete de parches
 
@@ -16,55 +16,55 @@ Conecte el puerto serie con una herramienta de línea de comandos (utilicé Moba
 wget https://github.com/linyuxuanlin/File-host/blob/main/stash/k3-j721e-beagleboneai64.dtb?raw=true
 ```
 
-Renombre el archivo como `k3-j721e-beagleboneai64.dtb`, muévalo al directorio `/boot` y sobrescriba el archivo original. (Subí el archivo a mi repositorio de GitHub y lo obtuve con el comando `wget`. Es posible que deba modificar el host de GitHub para descargarlo correctamente).
+Renómbralo como `k3-j721e-beagleboneai64.dtb`, muévelo al directorio `/boot` y sobrescribe el archivo original. (Yo subí el archivo a un repositorio de GitHub y lo descargué usando el comando `wget`. Es posible que necesites modificar el host de GitHub para que la descarga sea exitosa).
 
-También puede transferir el archivo directamente a través de sftp.
+También puedes transferir el archivo directamente mediante sftp.
 
 ## evtest
 
-La herramienta de prueba de eventos es una herramienta que imprime eventos del kernel evdev. Lee directamente del dispositivo del kernel y muestra eventos con nombres de valores y símbolos, lo que se puede utilizar para depurar dispositivos de entrada como ratones, teclados y touchpads.
+La herramienta de prueba de eventos es una utilidad que imprime eventos del kernel evdev. Lee directamente del dispositivo del kernel y muestra eventos con nombres de valores y símbolos de dispositivos. Puede ser útil para depurar dispositivos de entrada como ratones, teclados, touchpads, entre otros.
 
-Descargue la herramienta evtest:
+Descarga la herramienta evtest:
 
 ```shell
 sudo apt install evtest
 ```
 
-Usando la herramienta:
+Utiliza la herramienta:
 
 ```shell
-sudo evtest /dev/input/eventｘ（ｘes el número de evento）
+sudo evtest /dev/input/eventｘ（ｘ es el número de evento）
 ```
 
 ## Teclas
 
 ```shell
 debian@BeagleBone:~$ evtest
-No device specified, trying to scan all of /dev/input/event*
-Available devices:
-/dev/input/event0:      gpio-keys
-Select the device event number [0-0]: 0
-Input driver version is 1.0.1
-Input device ID: bus 0x19 vendor 0x1 product 0x1 version 0x100
-Input device name: "gpio-keys"
-Supported events:
-  Event type 0 (EV_SYN)
-  Event type 1 (EV_KEY)
-    Event code 256 (BTN_0)
-    Event code 257 (BTN_1)
-    Event code 258 (BTN_2)
-Key repeat handling:
-  Repeat type 20 (EV_REP)
-    Repeat code 0 (REP_DELAY)
-      Value    250
-    Repeat code 1 (REP_PERIOD)
-      Value     33
-Properties:
-Testing ... (interrupt to exit)
-Event: time 1634868166.060258, type 1 (EV_KEY), code 257 (BTN_1), value 1
-Event: time 1634868166.060258, -------------- SYN_REPORT ------------
-Event: time 1634868166.284257, type 1 (EV_KEY), code 257 (BTN_1), value 0
-Event: time 1634868166.284257, -------------- SYN_REPORT ------------
+No se especificó un dispositivo, intentando escanear todos los eventos en /dev/input/event*
+Dispositivos disponibles:
+/dev/input/event0: gpio-keys
+Selecciona el número de evento del dispositivo [0-0]: 0
+La versión del controlador de entrada es 1.0.1
+ID del dispositivo de entrada: bus 0x19, fabricante 0x1, producto 0x1, versión 0x100
+Nombre del dispositivo de entrada: "gpio-keys"
+Eventos admitidos:
+  Tipo de evento 0 (EV_SYN)
+  Tipo de evento 1 (EV_KEY)
+    Código de evento 256 (BTN_0)
+    Código de evento 257 (BTN_1)
+    Código de evento 258 (BTN_2)
+Gestión de repetición de teclas:
+  Tipo de repetición 20 (EV_REP)
+    Código de repetición 0 (REP_DELAY)
+      Valor    250
+    Código de repetición 1 (REP_PERIOD)
+      Valor     33
+Propiedades:
+Pruebas en curso... (interrumpe para salir)
+Evento: tiempo 1634868166.060258, tipo 1 (EV_KEY), código 257 (BTN_1), valor 1
+Evento: tiempo 1634868166.060258, -------------- INFORME SYN --------------
+Evento: tiempo 1634868166.284257, tipo 1 (EV_KEY), código 257 (BTN_1), valor 0
+Evento: tiempo 1634868166.284257, -------------- INFORME SYN --------------
 ```
 
 ## Dispositivos en el bus SPI
@@ -73,11 +73,11 @@ Event: time 1634868166.284257, -------------- SYN_REPORT ------------
 - 6-DOF - LSM6DS3TR
 - Brújula - BMM150
 
-# Comunicación BeagleConnect
-
 ```shell
+# Cambio de directorio a /sys/bus/iio/devices y listado de archivos y directorios
 cd /sys/bus/iio/devices && ls -l
 
+# Lectura del nombre de los dispositivos IIO
 cat iio\:device0/name
 cat iio\:device1/name
 cat iio\:device2/name
@@ -86,22 +86,24 @@ cat iio\:device4/name
 cat iio\:device5/name
 ```
 
-## BeagleConnect Comunicación
+## Comunicación BeagleConnect
 
 ```shell
-# BC_RST
+# Reinicio de BC_RST
 cd /sys/class/gpio
 echo 326 > export
 echo out > gpio326/direction
 echo 0 > gpio326/value
 echo 1 > gpio326/value
 
-
-# Uart2
+# Configuración y uso de Uart2
 root@BeagleBone:/sys/class/tty# ls -l
 lrwxrwxrwx 1 root root 0 Jul 13 17:29 ttyS4 -> ../../devices/platform/bus@100000/2820000.serial/tty/ttyS4
 
+# Instalación de minicom
 sudo apt-get install minicom
+
+# Inicio de minicom en el puerto /dev/ttyS4
 sudo minicom -D /dev/ttyS4
 
 Welcome to minicom 2.8
@@ -112,24 +114,27 @@ Press CTRL-A Z for help on special keys
 hello
 ```
 
-La prueba no tuvo éxito, no se recibió ni se envió ningún dato.
+La prueba no fue exitosa, ya que no se recibieron ni enviaron datos.
 
 ## LEDs
 
 ```shell
+# Cambio de directorio a /sys/class/leds y listado de archivos y directorios
 cd /sys/class/leds && ls -l
 
+# Encender los LEDs con brillo máximo
 echo 255 > beaglebone:green:cape0/brightness
-echo 255 > beaglebone:green:cape3/brightnessb
+echo 255 > beaglebone:green:cape3/brightness
 
-echo 0 > beaglebone:green:cape1/brightness # No se puede apagar
+# Apagar el LED cape1
+echo 0 > beaglebone:green:cape1/brightness
 ```
 
-## LIDAR
+## LIDAR (Láser Imaging Detection and Ranging)
 
-Si se muestra un mensaje de falta de permisos, consulte [**Habilitar la cuenta de root con ssh**](https://wiki-power.com/es/BeagleBone%E7%B3%BB%E5%88%97-%E5%9F%BA%E6%9C%AC%E5%8F%82%E6%95%B0%E4%B8%8E%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE#%E5%90%AF%E7%94%A8-ssh-%E7%9A%84-root-%E5%B8%90%E6%88%B7)，y ejecute con permisos de root.
+Si se muestra un mensaje de "permiso denegado", consulte [**Habilitar la cuenta de root con SSH**](https://wiki-power.com/es/BeagleBone-Series-Basic-Parameters-and-Environment-Configuration#Enable-root-account-for-SSH], y luego ejecute los siguientes comandos con privilegios de root.
 
-Primero, opere GPIO para hacer que el LIDAR gire.
+Primero, activamos los pines GPIO para que el LIDAR empiece a girar.
 
 ```shell
 cd /sys/class/gpio
@@ -141,10 +146,7 @@ echo 0 > gpio374/value
 echo 1 > gpio306/value
 ```
 
-echo 1 > gpio374/value
-echo 0 > gpio306/value
-
-Confirme la interfaz:
+Después de habilitar los pines GPIO, confirmamos la interfaz disponible:
 
 ```shell
 ls -l /sys/class/tty/
@@ -152,37 +154,39 @@ ls -l /sys/class/tty/
 lrwxrwxrwx 1 root root 0 Jul 13 17:29 ttyS0 -> ../../devices/platform/bus@100000/2880000.serial/tty/ttyS0
 ```
 
-Descargue el último SDK: <https://github.com/Slamtec/rplidar_sdk/releases>
+Para descargar la última versión del SDK, visite: <https://github.com/Slamtec/rplidar_sdk/releases>
 
-Modifique el archivo `/sdk/sdk/src/hal/event.h` para compilar correctamente:
+Realice una modificación en el archivo `/sdk/sdk/src/hal/event.h` para permitir una compilación exitosa:
 
 ```shell
 enum
-     {
-         EVENT_OK = 1,
--        EVENT_TIMEOUT = -1,
-+        EVENT_TIMEOUT = 2,
-         EVENT_FAILED = 0,
-     };
+{
+    EVENT_OK = 1,
+    EVENT_TIMEOUT = 2,  # Cambio de -1 a 2
+    EVENT_FAILED = 0,
+};
 ```
 
-Cambie al directorio `/sdk` y use el comando `make` para compilar. Los archivos compilados se encuentran en el directorio `/sdk/output`.
+```markdown
+Dirígete a la carpeta `/sdk`, y utiliza el comando `make` para compilar. Los archivos generados se encontrarán en la carpeta `/sdk/output`.
 
-Cambie al directorio `/sdk/output/Linux/Release` y use el siguiente comando para ejecutar el programa de prueba:
+Luego, cambia al directorio `/sdk/output/Linux/Release` y ejecuta las pruebas utilizando el siguiente comando:
 
 ```shell
 ./ultra_simple /dev/ttyS0
 ```
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
-- [Esquema eléctrico](file:///C:/Users/Power/Projects/Internship_at_Seeed/Projects/Robotics_Cape_Rev2/Reference/BeagleBone%20AI%20TDA4VM_SCH_V1.0_210805.pdf)
-- [Imagen del sistema operativo](https://rcn-ee.net/rootfs/debian-arm64/)
+- [Esquema original](file:///C:/Users/Power/Projects/Internship_at_Seeed/Projects/Robotics_Cape_Rev2/Reference/BeagleBone%20AI%20TDA4VM_SCH_V1.0_210805.pdf)
+- [Imagen del sistema](https://rcn-ee.net/rootfs/debian-arm64/)
 - [Código de prueba](https://gitee.com/gary87m/notes_seeed/blob/master/BBAI_Robotics%20Cape.md)
-- [Problemas con la cape](https://docs.qq.com/sheet/DU1BBZnNORlJhRG5w)
+- [Problemas con el Cape](https://docs.qq.com/sheet/DU1BBZnNORlJhRG5w)
 - [Lidar láser](https://github.com/Slamtec/rplidar_sdk)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
+> Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+```
+
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

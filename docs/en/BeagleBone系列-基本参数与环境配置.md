@@ -2,68 +2,68 @@
 
 ## Hardware Resources
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211008090724.png)
+![Image](https://img.wiki-power.com/d/wiki-media/img/20211008090724.png)
 
-- USB Type-A: used as a USB host mode
-- USB Micro: used to power the board and as a slave
+- USB Type-A: Used in USB host mode
+- USB Micro: Powers the board and serves as a client
 - LEDs
-  - D2: flashes as a heartbeat light during startup
-  - D3: lights up when reading/writing SD card data
-  - D4: lights up when the CPU is active
-  - D5: lights up when reading/writing eMMC
-- Boot/User button: regardless of whether it is pressed or not, if there is an SD card, it will default to boot from the SD card (different paths lead to the same goal). After booting, it acts as a normal button, connected to GPIO_72.
-- I2C Grove interface: connected to I2C2
-- Uart Grove interface: connected to UART2
-- Serial Debug: connected to UART0, with the pins near USB as pin1, and from pin1-pin6 as: GND, NC, NC, RX, TX, NC
+  - D2: Flashes as a heartbeat indicator during boot
+  - D3: Lights up when reading/writing SD card data
+  - D4: Illuminates when the CPU is active
+  - D5: Shines when reading/writing eMMC
+- Boot/User Button: Regardless of whether it's pressed or not, if an SD card is present, the system will boot from the SD card (converging paths). After booting, it functions as a regular button connected to GPIO_72.
+- I2C Grove Interface: Connected to I2C2
+- UART Grove Interface: Linked to UART2
+- Serial Debug: Connected to UART0, with pins from near USB labeled as pin1 through pin6: GND, NC, NC, RX, TX, NC
 
 ## Environment Configuration
 
-### Driver Installation Issues
+### Driver Installation Issue
 
-In Windows 10 and above, the default is to use driver program forced signature, which may be the reason for the driver installation failure.
+On Windows 10 and later systems, driver installation might fail due to driver enforcement.
 
 Solution:
 
-- Hold down `shift` and click restart the computer
-- Enter `Troubleshoot` - `Advanced Options` - `Startup Settings`, and click `Restart`
-- After restarting, follow the page prompts and press `7` on the keyboard to disable driver program forced signature
-- After booting, you can install the BeagleBone driver program normally
+- Hold down `Shift` and click on "Restart" your computer.
+- Go to "Troubleshoot" - "Advanced Options" - "Startup Settings" and click "Restart."
+- After rebooting, follow on-screen instructions and press key `7` to disable driver enforcement.
+- After startup, you can install BeagleBone drivers as usual.
 
-### Image Download and Burning
+### Image Download and Flashing
 
-Official image download address: https://beagleboard.org/latest-images  
-Burning tool: https://sourceforge.net/projects/win32diskimager/files/latest/download
+Official image download link: [https://beagleboard.org/latest-images](https://beagleboard.org/latest-images)  
+Flashing tool: [https://sourceforge.net/projects/win32diskimager/files/latest/download](https://sourceforge.net/projects/win32diskimager/files/latest/download)
 
-Burn the image into the SD card, power off and insert it into the BeagleBone, and the system will boot from the SD card next time it is powered on.
+Burn the image onto an SD card, disconnect power, insert it into BeagleBone, and the system will boot from the SD card on the next power-up.
 
-## Using Command Line Tools for Access
+## Accessing via Command Line Tools
 
-### Using Serial Port Access
+### Using Serial Port
 
-Use a USB-to-serial connection to connect to the onboard serial port, and open a serial port tool (such as WindTerm) on the computer for connection. (The initial username and password are both `root`)
+Connect to the onboard serial terminal using a USB-to-serial converter, and open a terminal tool on your computer (e.g., WindTerm). (The initial username and password are both `root`).
 
 The baud rate is 115200!
 
-### Using Ethernet Access
+### Using Ethernet
 
-Use the command `ifconfig` in the serial connection to find the Ethernet address and connect through it. The username is `debian` and the password is `temppwd`.
+Within the serial connection, run the `ifconfig` command to find the Ethernet address and connect using it. Username is `debian`, and the password is `temppwd`.
 
 ### Access via USB
 
 usb0: 192.168.7.2  
 usb1: 192.168.6.2
 
-Access using SSH, with the username `debian` and password `temppwd`.
+Access through SSH. Username is `debian`, and the password is `temppwd`.
 
-## Enable root account with SSH
+## Enabling the Root Account for SSH
 
 ```shell
 vi /etc/ssh/sshd_config
 ```
 
-Change `#PermitRootLogin prohibit-password` to `PermitRootLogin yes`.
+Change `#PermitRootLogin prohibit-password` to `PermitRootLogin yes` to enable SSH access with the root account.
 
-## Seeed OLED Driver (SSD1306, I2C, 12864)
+## Driver for Seeed OLED (SSD1306, I2C, 12864)
 
 Use pip3 to download the smbus2 package:
 
@@ -72,13 +72,13 @@ sudo apt-get install python3-pip
 pip3 install smbus2
 ```
 
-Refer to the program in [**Grove - OLED Display 0.96 inch**](https://wiki.seeedstudio.com/Grove-OLED_Display_0.96inch/#play-with-beaglebone-green).
+Refer to the program at [Grove - OLED Display 0.96 inch](https://wiki.seeedstudio.com/Grove-OLED_Display_0.96inch/#play-with-beaglebone-green).
 
 ## References and Acknowledgments
 
-- [Beaglebone black 4G debugging issues](https://blog.csdn.net/qq_32543253/article/details/53536266)
-- [Projects](https://beagleboard.org/p)
-- [Upgrade the software on your Beagle](https://beagleboard.org/upgrade#connect)
-- [Test firmware](http://plm.seeedstudio.com.cn:9002/Windchill/app/#ptc1/tcomp/infoPage?oid=VR%3Awt.doc.WTDocument%3A30844361&u8=1)
+- [Issues During Debugging Beaglebone Black 4G](https://blog.csdn.net/qq_32543253/article/details/53536266)
+- [Project](https://beagleboard.org/p)
+- [Updating Software on Your Beagle](https://beagleboard.org/upgrade#connect)
+- [Firmware Testing](http://plm.seeedstudio.com.cn:9002/Windchill/app/#ptc1/tcomp/infoPage?oid=VR%3Awt.doc.WTDocument%3A30844361&u8=1)
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.
