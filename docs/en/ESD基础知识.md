@@ -1,66 +1,66 @@
-# Basic Knowledge of ESD
+# ESD Fundamentals
 
-ESD (Electrostatic Discharge) refers to the phenomenon of rapid transfer of electrons between two objects when they approach or come into contact with each other. As is well known, objects generate and accumulate charges during contact and friction with other objects. For example, our hands accumulate a lot of positive charges when rubbed against the outside world. When an object with a large amount of accumulated positive charges is very close to or in contact with a conductor, electrons will quickly transfer from the conductor to the object with accumulated positive charges. This rapid transfer of electrons is called electrostatic discharge (ESD).
+ESD (Electrostatic Discharge) refers to the rapid transfer of electrons that occurs when two objects come into close proximity or contact. It is a well-known phenomenon that objects can generate and accumulate electric charges through contact and friction with other objects. For instance, when our hands come into contact with external surfaces, they can accumulate a significant amount of positive charge. When an object with a substantial accumulation of positive charge is in close proximity to or in contact with a conductor, electrons will rapidly transfer from the conductor to the positively charged object. This rapid transfer of electrons is known as electrostatic discharge (ESD).
 
-Electronic devices usually have many interfaces, which are connected to the pins of the chip through wires and then to the inside of the chip. The high voltage (generally up to thousands of volts) generated during electrostatic discharge may break the tube, and if it is a large current, it may also burn the components, so it needs to be avoided.
+Electronic devices typically feature numerous interfaces connected to chips through wires, which in turn are connected to the internal components of the chips. The high voltages generated during electrostatic discharge (often reaching several kilovolts) can potentially puncture the wires and, in the case of high current, even damage the components. Therefore, it is crucial to prevent ESD.
 
-The key to ESD protection is to provide a separate discharge channel for static electricity (similar to a lightning rod). ESD devices are mainly divided into four categories: TVS diodes, varistors, MLCC, and ESD suppressors.
+The key to ESD protection is to provide a dedicated discharge path for electrostatic charges, similar in principle to a lightning rod. ESD protection devices are mainly categorized into four types: TVS diodes, varistors (MOV), MLCC (Multilayer Ceramic Capacitors), and ESD suppressors.
 
-## ESD Test Models
+## ESD Testing Models
 
-|                                       | HBM      | MM      | CDM      | IEC 61000-4-2 MODEL |
-| ------------------------------------- | -------- | ------- | -------- | ------------------- |
-| Test voltage (V)                      | 500-2000 | 100-200 | 500-2000 | 2000-15000          |
-| Pulse time (ns)                       | ~150     | ~80     | ~1       | ~150                |
-| Peak current when applying 2kV (A_pk) | 1.33     | -       | ~5       | 7.5                 |
-| Rise time                             | 25ns     | -       | <400ps   | <1ns                |
-| Voltage shock times                   | 2        | 2       | 2        | 20                  |
+|                               | HBM       | MM       | CDM       | IEC 61000-4-2 MODEL |
+| ----------------------------- | --------- | -------- | --------- | ------------------- |
+| Test Voltage (V)              | 500-2000  | 100-200  | 500-2000  | 2000-15000          |
+| Pulse Duration (ns)           | ~150      | ~80      | ~1       | ~150                |
+| Peak Current at 2kV ($A_{pk}$) | 1.33      | -        | ~5       | 7.5                 |
+| Rise Time                      | 25ns      | -        | <400ps   | <1ns                |
+| Number of Voltage Impacts     | 2         | 2        | 2        | 20                  |
 
 ### Human Body Model (HBM)
 
-Assuming a test is conducted on the static discharge of the human body, it simulates the situation when a person touches a chip with their hand.
+The HBM test simulates electrostatic discharge from the human body, replicating the scenario where a person touches a chip with their hand.
 
 ### Machine Model (MM)
 
-Assuming a test is conducted on the static discharge of a machine, it simulates the situation when static electricity is released when a chip is touched by a mechanical hand or other low-resistance tool.
-
-The difference between this model and the human body model is that the capacitance is larger and there is no resistance. Therefore, the discharge current is much larger. Additionally, due to the inductive effect of the wire, there will be oscillating current, meaning that the current discharged to the chip will change from positive to negative.
+The MM test simulates electrostatic discharge from mechanical sources, imitating scenarios where chips experience ESD due to contact with mechanical tools or objects with lower resistance. The main difference from the HBM is the larger capacitance and absence of resistance, resulting in significantly higher discharge currents. Additionally, the inductance of the conductors can introduce oscillatory currents during chip discharge, causing alternating positive and negative current changes.
 
 ### Charged Device Model (CDM)
 
-The first two models simulate the situation where a charged body discharges to a chip. The charged device model simulates the situation where the chip itself is charged and discharges to the ground. This phenomenon occurs when a chip is taken out of packaging that has been stored in a warehouse for some time. In this case, there is no resistance or capacitance, and the chip discharges directly to the ground through its pins.
+The first two models simulate scenarios where charged objects discharge to the chip. In contrast, the Charged Device Model simulates situations where the chip itself becomes charged and discharges to the ground. This can occur when a chip is taken out of packaging that has been stored for some time. In this case, there is no resistance or capacitance, and the chip directly discharges to the ground through its pins.
 
 ## ESD Reference Standards
 
-Common HBM test specifications:
+Common HBM testing specifications include:
 
-| Standard     | Charging Capacitance $C_d (pF)$ | Discharge Resistance $R_d (Ω)$ |
-| ------------ | ------------------------------- | ------------------------------ |
-| AEC-Q200-002 | 150                             | 2000                           |
-| IEC61000-4-2 | 150                             | 330                            |
+| Standard       | Charging Capacitance $C_d (pF)$ | Discharge Resistance $R_d (Ω)$ |
+| -------------- | ----------------------------- | ---------------------------- |
+| AEC-Q200-002   | 150                           | 2000                         |
+| IEC61000-4-2   | 150                           | 330                          |
 
-Taking the AEC-Q200-002 standard as an example, its ESD HBM test circuit is as follows:
+For example, the ESD HBM test circuit based on the AEC-Q200-002 standard is as follows:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211215164751.png)
+![ESD HBM Test Circuit](https://img.wiki-power.com/d/wiki-media/img/20211215164751.png)
 
-Where $C_x$ is the capacitance of the test object, $C_d$ is the charging capacitance, $R_d$ is the discharge resistance, and $R_c$ is the protection resistance. The ESD test method is as follows:
+In this circuit, $C_x$ represents the capacitance of the device under test, $C_d$ is the charging capacitance, $R_d$ is the discharge resistance, and $R_c$ is the protection resistance. The ESD testing procedure is as follows:
 
-- Close switch 1 and open switch 2: the high voltage power supply charges the charge into $C_d$.
-- Open switch 1 and close switch 2: the charge stored in $C_d$ is applied to $C_x$ for ESD testing.
+- Switch 1 closed, Switch 2 open: High voltage power supplies charge $C_d$ with electric charge.
+- Switch 1 open, Switch 2 closed: The electric charge stored in $C_d$ is applied to $C_x$ for ESD testing.
 
-Discharge current curve:
+Discharge Current Curve:
 
-## ESD Testing Process
+![](https://img.wiki-power.com/d/wiki-media/img/20211215165312.png)
 
-According to the AEC-Q200-002 standard, the HBM testing process can be carried out as shown in the following figure:
+## ESD Test Procedure
+
+Following the AEC-Q200-002 standard, the HBM test procedure can be performed as shown in the following diagram:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20211215165447.png)
 
-The breakdown voltage levels obtained from the test are classified according to the following table:
+The voltage withstand levels determined through testing are categorized as follows:
 
-| Classification | Maximum Breakdown Voltage                |
-| -------------- | ---------------------------------------- |
-| 1A             | Less than 500V (DC)                      |
+| Classification | Maximum Withstand Voltage     |
+| -------------- | ----------------------------- |
+| 1A             | Less than 500V (DC)           |
 | 1B             | 0.5 kV (DC) or more, less than 1 kV (DC) |
 | 1C             | 1 kV (DC) or more, less than 2 kV (DC)   |
 | 2              | 2 kV (DC) or more, less than 4 kV (DC)   |
@@ -69,39 +69,44 @@ The breakdown voltage levels obtained from the test are classified according to 
 | 5A             | 8 kV (DC) or more, less than 12 kV (AD)  |
 | 5B             | 12 kV (AD) or more, less than 16 kV (AD) |
 | 5C             | 16 kV (AD) or more, less than 25 kV (AD) |
-| 6              | 25 kV (AD) or more                       |
+| 6              | 25 kV (AD) or more                  |
 
-DC (Direct Contact Discharge) refers to direct contact discharge, while AD (Air Discharge) refers to air discharge.
+DC (Direct Contact Discharge) refers to direct contact discharge, and AD (Air Discharge) refers to air discharge.
 
-## Relationship between Capacitance Value of Test Object and ESD Resistance
+## Relationship Between Capacitance Value of the Test Object and ESD Resistance
 
-The capacitance value $C_x$ of the test object affects the voltage at both ends, which satisfies the following relationship:
+The capacitance value of the test object $C_x$ affects the voltage at its two ends according to the following relationship:
 
 $$
 V_x=\frac{C_d}{C_d+C_x}V_d
 $$
 
-When the capacitance value of the test object ($C_x$) increases while the capacitance value of the power supply voltage ($V_d$) and charging capacitor ($C_d$) remain constant, the voltage ($V_x$) on both sides of the test object decreases.
+When the power supply voltage ($V_d$) and charging capacitance ($C_d$) are constant, an increase in the capacitance value of the test object ($C_x$) results in a decrease in the voltage ($V_x) at its two ends.
 
-Therefore, in general, the larger the capacitance value of $C_x$, the greater the ESD resistance. However, in reality, due to differences in design such as the type and thickness of the dielectric, the range of voltage resistance performance also varies and does not completely follow the above trend.
+Therefore, in general, as the capacitance value ($C_x$) increases, there is a trend for increased ESD resistance. However, in practice, due to differences in design factors such as the type and thickness of the dielectric, the performance range of voltage withstand also varies and does not entirely follow the trend mentioned above.
 
-### Reference for Capacitance Value and ESD Resistance
+### Capacitance Value and ESD Resistance Reference
 
-- $C_x$ Capacitance Parameter: GCM Series / 0402 Package / X7R / 50V
-- Test Conditions: $C_d=150pF,R_d=2kΩ$
+- $C_x$ capacitance parameters: GCM series / 0402 package / X7R / 50V
+- Test conditions: $C_d=150pF, R_d=2kΩ$
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20211215172528.png)
 
-According to the chart curve, if we want to withstand 1kV ESD, we can use a 1000pF capacitor for defense. In actual circuit design, it is best to parallel a large resistor with the capacitor to discharge the electricity in the capacitor after eliminating ESD.
+From the graph, it can be seen that to withstand 1kV ESD, a 1000pF capacitor can be used for protection. In actual circuit design, it's advisable to parallel a large resistor with the capacitor to discharge the electric charge stored in the capacitor after eliminating ESD.
 
 ## References and Acknowledgments
 
 - [Introduction to Reliability and ESD](https://mazhaoxin.github.io/2021/08/01/Reliability_and_ESD_Introduction/)
-- [Electronic Engineer's Notebook: Basic Knowledge of ESD and Selection of ESD Protection](https://haipeng.me/2019/09/03/esd-protection/)
+- [EE Engineer's Notebook: Basic ESD Knowledge and ESD Protection Selection](https://haipeng.me/2019/09/03/esd-protection/)
 - [ESD Resistance of Capacitors](https://article.murata.com/en-us/article/esd-resistance-of-capacitors)
-- [Understanding the Role of ESD Devices in PCB Design in One Article](http://murata.eetrend.com/article/2021-11/1004974.html)
+- [Understanding the Role of ESD Devices in PCB Design](http://murata.eetrend.com/article/2021-11/1004974.html)
 
-> Original: <https://wiki-power.com/>  
-> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
+Certainly, here's the translation of the provided text into English:
+
+```markdown
+[To be replaced [1]]
+[To be replaced [2]]
+```
+
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

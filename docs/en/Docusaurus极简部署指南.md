@@ -1,8 +1,8 @@
-# Minimal Deployment Guide for Docusaurus
+# Docusaurus Minimal Deployment Guide
 
-Use [**this template**](https://github.com/linyuxuanlin/Docusaurus-Vercel) to generate your own repository.
+1. Utilize [**this template**](https://github.com/linyuxuanlin/Docusaurus-Vercel) to create your own repository.
 
-Register for a [**Vercel**](https://vercel.com) account (choose to register with your GitHub account) and import the repository you just created.
+2. Sign up for a [**Vercel**](https://vercel.com) account (opt for GitHub account registration), and then import the repository you've just created.
 
 That's it.
 

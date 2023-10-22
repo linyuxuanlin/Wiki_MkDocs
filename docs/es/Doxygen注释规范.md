@@ -1,46 +1,47 @@
-# Normas de comentarios Doxygen
+# Normas de Comentarios Doxygen
 
-## Encabezado de archivo con índice desplegable
+## Expansión de la Anotación de Encabezado de Archivo
 
 ```c
 /****************************************************************************
- *   Copyright (C) 2018 by Doxygen C Comment                                *
+ *   Copyright (C) 2018 por Comentario C de Doxygen                         *
  *                                                                          *
- *   This file is part of Box.                                              *
+ *   Este archivo es parte de Box.                                          *
  *                                                                          *
- *   Box is free software: you can redistribute it and/or modify it         *
- *   under the terms of the GNU Lesser General Public License as published  *
- *   by the Free Software Foundation, either version 3 of the License, or   *
- *   (at your option) any later version.                                    *
+ *   Box es software libre: puedes redistribuirlo y/o modificarlo           *
+ *   bajo los términos de la Licencia Pública General Menor de GNU tal     *
+ *   como fue publicada por la Fundación de Software Libre, en su versión  *
+ *   3 de la Licencia, o (a tu elección) cualquier versión posterior.       *
  *                                                                          *
- *   Box is distributed in the hope that it will be useful,                 *
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of         *
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the          *
- *   GNU Lesser General Public License for more details.                    *
+ *   Box se distribuye con la esperanza de que sea útil,                   *
+ *   pero SIN NINGUNA GARANTÍA; incluso sin la garantía implícita de        *
+ *   COMERCIABILIDAD o IDONEIDAD PARA UN PROPÓSITO PARTICULAR. Consulta la  *
+ *   Licencia Pública General Menor de GNU para obtener más detalles.      *
  *                                                                          *
- *   You should have received a copy of the GNU Lesser General Public       *
- *   License along with Box.  If not, see <http://www.gnu.org/licenses/>.   *
+ *   Deberías haber recibido una copia de la Licencia Pública General Menor *
+ *   de GNU junto con Box. Si no la has recibido, consulta                  *
+ *   <http://www.gnu.org/licenses/>.                                        *
  ****************************************************************************/
 
 /**
  * @file doxygen_c.h
- * @author alguien
- * @date 2018.1.4
- * @brief Normas de comentarios de archivos C con Doxygen, pueden haber saltos de línea,
- * todos los resúmenes son iguales.
+ * @autor alguien
+ * @fecha 2018.1.4
+ * @brief Documentación de las normas de comentarios de archivos C para Doxygen, con capacidad de salto de línea,
+ * todos los breves son iguales.
  *
- * @details Descripción detallada y explicación de este documento, pueden haber saltos de línea,
- * todas las descripciones detalladas son iguales.
+ * @details Explicación detallada de este documento y su interpretación, con capacidad de salto de línea,
+ * todos los detalles son iguales.
  */
 
 #include "header.h"
 ```
 
-## Encabezado de estructuras y tipos de enumeración con índice desplegable
+## Expansión de la Anotación de Tipos de Estructuras y Enumeraciones
 
 ```c
 /**
- * @brief Breve descripción
+ * @brief Descripción concisa
  *
  * @details Descripción detallada
  */
@@ -51,54 +52,55 @@ typedef enum BoxEnum_enum {
 } BoxEnum;
 ```
 
-## Desglose de comentarios de encabezado de función
+## Desglose de Comentarios de Encabezado de Función
 
 ```c
 /**
- * @brief Descripción breve de la función, puede ser en varias líneas
+ * @brief Descripción breve de la función, puede ocupar varias líneas
  *
- * @details Descripción detallada y explicación de la función, puede ser en varias líneas
+ * @details Explicación detallada y completa de la función, también puede ocupar varias líneas
  *
- * @note Contenido de notas importantes
+ * @note Contenido de las observaciones
  *
  * @param index Texto explicativo
  * @param cent Texto explicativo
  *
- * @return Descripción del contenido devuelto por la función
- * @retval 1 Prueba exitosa
- * @retval -1 Prueba fallida
+ * @return Descripción del valor devuelto por la función
+ * @retval 1 Éxito en la prueba
+ * @retval -1 Fallo en la prueba
  */
 bool Test(int index, char *cent);
 ```
 
-## Desglose de comentarios de variables
+## Desglose de Comentarios de Variables
 
 ```c
-int element = 0; /**< Breve descripción de la variable */
+int element = 0; /**< Descripción breve de la variable */
 ```
 
 ```
 /**
  * @brief Descripción breve de la variable
  *
- * @details Descripción detallada de la variable
+ * @details Explicación detallada de la variable
  */
 unsigned int variable = 0;
 ```
 
-## Desglose de comentarios de macros
+## Desglose de Comentarios de Macros
 
 ```c
 /**
- * @brief Breve descripción de la macro
+ * @brief Descripción breve del macro
  *
- * @details Descripción detallada de la macro
+ * @details Explicación detallada del macro
  */
 #define variable 10
 ```
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
-- [Especificación de comentarios breves de C con Doxygen](https://www.liuguogy.com/archives/doxygen-c-brief-annotation.html)
+- [Normas de Comentarios Breves en C basadas en Doxygen](https://www.liuguogy.com/archives/doxygen-c-brief-annotation.html)
+```
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

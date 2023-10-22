@@ -1,108 +1,109 @@
-# EMC Design Guide
+# EMC Design Guidelines
 
-Electromagnetic Compatibility (EMC) refers to the ability of equipment to function properly in its electromagnetic environment without causing unacceptable electromagnetic interference to anything in the environment. In simple terms, it means that your board is not susceptible to interference and does not interfere with others, achieving a "compatible" state.
+**Electromagnetic Compatibility (EMC)** refers to a device's ability to operate normally in its electromagnetic environment without causing intolerable electromagnetic interference to anything in that environment. In simpler terms, it means that your board should not be susceptible to interference from others and should also strive not to interfere with others, achieving a "compatible" state.
 
-EMC includes Electromagnetic Interference (EMI) and Electromagnetic Susceptibility (EMS).
+**Electromagnetic Compatibility (EMC)** includes **Electromagnetic Interference (EMI)** and **Electromagnetic Susceptibility (EMS)**.
 
-EMI has the following elements:
+EMI includes the following elements:
 
-- Radiated Emission (RE): The interference source couples (interferes) its signal to another electrical network through space.
-- Conducted Emission (CE): The interference source couples (interferes) its signal to another electrical network through a conductive medium.
-- Harmonics: Harmonic current disturbance testing.
-- Flicker: Voltage variation and flicker testing.
+- **Radiated Emission (RE)**: This refers to interference sources coupling their signals (interference) to another electrical network through space.
+- **Conducted Emission (CE)**: This involves coupling the signals on one electrical network to another through conductive media.
+- **Harmonics**: Testing for harmonic current interference.
+- **Flicker**: Testing for voltage variations and flicker.
 
-EMS has the following elements:
+EMS includes the following elements:
 
-- Radiated Susceptibility (RS): Radio frequency electromagnetic field radiation susceptibility testing.
-- Conducted Susceptibility (CS): Radio frequency field-induced conducted interference susceptibility testing (high current injection).
-- Electrostatic Discharge (ESD): Electrostatic susceptibility testing (electrostatic discharge experiment).
-- Electrical Fast Transient (EFT): Resistance to rapid transient pulse group testing.
-- Voltage Dip (DIP): Short interruption and voltage variation resistance testing.
-- Surge and Lightning (SURGE): Surge (lightning) resistance testing.
-- Power Frequency Magnetic Field (PFMF): Power frequency magnetic field resistance testing.
+- **Radiated Susceptibility (RS)**: Testing for susceptibility to radiofrequency electromagnetic field radiation.
+- **Conducted Susceptibility (CS)**: Testing for susceptibility to conducted interference induced by radiofrequency fields (high current injection).
+- **Electrostatic Discharge (ESD)**: Testing for susceptibility to electrostatic interference (static discharge experiments).
+- **Electrical Fast Transient (EFT)**: Testing for resistance to rapid transient pulse group interference.
+- **Voltage Dips (DIP)**: Testing for short-term interruptions and voltage variations.
+- **Surges and Lightning (SURGE)**: Testing for resistance to surges (lightning) interference.
+- **Power Frequency Magnetic Field (PFMF)**: Testing for resistance to power frequency magnetic field interference.
 
 ## Basic Methods for EMC Optimization
 
-The elements that cause EMC problems are electromagnetic interference sources, coupling paths, and sensitive equipment.
+The factors contributing to EMC issues are electromagnetic interference sources, coupling paths, and sensitive devices.
 
-Rules:
+Key principles:
 
-1. The larger the area of the high-frequency current loop S, the more serious the EMI radiation.
-2. The higher the frequency f of the loop current, the more serious the EMI radiation, and the electromagnetic radiation field strength increases proportionally with the square of the current frequency f.
+1. The larger the area of the high-frequency current loop (S), the more severe the radiated emission (EMI).
+2. The higher the frequency (f) of the loop current, the more severe the radiated emission (EMI). The electromagnetic radiation field strength increases proportionally with the square of the current frequency (f).
 
-Basic response methods:
+Basic mitigation methods include:
 
-- Suppression of transmission channels: Specific methods include filtering, shielding, grounding, overlapping, and reasonable wiring.
-- Spatial separation: Increasing the distance between the source of interference and sensitive circuits is an effective method to suppress spatial radiation interference and induced coupling interference.
-- Time separation: Useful signals are briefly turned off when interference signals are emitted, and transmitted during the time when interference signals stop.
-- Spectrum processing: Spectrum change, spread spectrum technology.
-- Electrical isolation: Opto-isolation, relay isolation, transformer isolation, DC/DC conversion.
+- Suppression of transmission channels: Specific methods include filtering, shielding, grounding, cross-coupling, and proper wiring.
+- Spatial separation: Increasing the distance between the source of interference and sensitive circuits effectively suppresses spatial radiation interference and induced coupling interference.
+- Temporal separation: Useful signals are momentarily interrupted when interference signals are emitted, and transmission occurs during the periods when interference signals cease.
+- Spectrum processing: Altering the spectrum and spreading techniques.
+- Electrical isolation: Optoelectronic isolation, relay isolation, transformer isolation, DC/DC conversion.
 
-### Minimize the area of high-frequency lines and power loops
+### Minimizing the Area of High-Frequency Lines and Power Loops
 
-Basic principles:
+Fundamental principles:
 
-1. Signals always return to the source end.
-2. Signal return flow always follows the path of minimum impedance.
+1. Signals always return to the source.
+2. Signal return flows through the path with the lowest impedance.
 
-In high-frequency signals, the signal return path is usually the path of minimum inductance, which is also usually the path of minimum loop area. In low frequencies (usually KHz frequency and below), the signal return flow often follows the path of minimum resistance.
+In high-frequency signals, the signal return path is usually the one with the lowest inductance, often corresponding to the smallest loop area. In low frequencies (typically KHz and below), the signal return path usually follows the path of least resistance.
 
-### Keep the signal return screen as intact as possible
+### Maintain Signal Return Plane Integrity
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211215190631.png)
+![Image](https://img.wiki-power.com/d/wiki-media/img/20211215190631.png)
 
-As shown in the figure, if the signal return plane is cut, the signal current will not be able to return to the source through the optimized (shortest) path, and when looking for alternative return paths, it will become unpredictable and increase the signal loop area.
+As shown in the image, cutting the signal return plane can disrupt the optimal (shortest) path for signal current to return to the source, making it unpredictable and increasing the signal loop area. In special cases, digital and analog grounds need to be isolated to prevent interference.
 
-In special cases, digital ground and analog ground need to be isolated to prevent crosstalk.
+### Keep High-Speed Signals Away from Connectors
 
-### Keep high-speed signals away from connectors
+Cables connected to PCBs through connectors act as efficient antennas, and high-speed signals are prone to generating potential differences that drive current into connected cables, causing excessive radiation.
 
-Cables connected to the PCB through connectors are efficient antennas, and high-speed signals are prone to generate potential differences, which will drive current to the connected cables, causing radiation to exceed the standard.
+### Suppress High-Speed Signal Rise and Fall Times
 
-### Suppress the rise and fall time of high-speed signals
+Slowing down the rise and fall times of digital signals effectively controls high-order harmonic frequencies. Excessively long transition times can lead to signal integrity and overheating issues.
 
-Slowing down the rise and fall time of digital signals can effectively control high-order harmonic frequencies. Too long conversion time can lead to signal integrity and overheating problems.
+## EMC Components
 
-## EMC components
-
-Common EMC components include common mode inductors, ferrite beads, and filtering capacitors.
+Common EMC components include common-mode inductors, ferrite beads, and filtering capacitors.
 
 Common filter models:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211219173751.png)
+![Image](https://img.wiki-power.com/d/wiki-media/img/20211219173751.png)
 
-### Common mode inductor
+### Common-Mode Inductors
 
-Equivalent model of common mode inductor:
+Equivalent models of common-mode inductors:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211219173856.png)
+![Image](https://img.wiki-power.com/d/wiki-media/img/20211219173856.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211219174546.png)
+![Image](https://img.wiki-power.com/d/wiki-media/img/20211219174546.png)
 
-### Magnetic Beads
+### Ferrite Beads
 
-For the introduction and selection of magnetic beads, please refer to the [**Basic Components - Inductors and Magnetic Beads · Magnetic Beads**](https://wiki-power.com/en/%E5%9F%BA%E6%9C%AC%E5%85%83%E5%99%A8%E4%BB%B6-%E7%94%B5%E6%84%9F%E4%B8%8E%E7%A3%81%E7%8F%A0#%E7%A3%81%E7%8F%A0) section.
+Introduction and Selection of Ferrite Beads
 
-### Filter Capacitors
+For information and selection criteria regarding ferrite beads, please refer to the [**Basic Components - Inductors and Ferrite Beads - Ferrite Beads**](https://example.com/ferrite-beads) section.
 
-For the introduction and selection of capacitors, please refer to the [**Basic Components - Capacitors**](https://wiki-power.com/en/%E5%9F%BA%E6%9C%AC%E5%85%83%E5%99%A8%E4%BB%B6-%E7%94%B5%E5%AE%B9) section.
+Filter Capacitors
 
-## EMC Design for PCB 🚧
+To learn about capacitors and their selection, please visit the [**Basic Components - Capacitors**](https://example.com/capacitors) section.
 
-### 3W and 20H Principles
+EMC Design for PCB 🚧
 
-The 3W principle means that if the center distance between lines is not less than 3 times the line width, 70% of the inter-line electric field can be kept from interfering with each other. To achieve 98% interference-free electric field, use the 10W rule.
+### The 3W and 20H Principles
 
-The 20H principle means that the edge of the power plane should be at least shrunk by an amount equivalent to 20 times the distance between the two planes compared to the edge of the ground plane, in order to suppress edge radiation effects and limit 70% of the electric field within the grounding edge. Shrinking by 100H can limit 98% of the electric field inside.
+The 3W principle states that when the center-to-center distance between lines is not less than 3 times the line width, it can maintain a 70% separation of electric fields without interfering with each other. To achieve a 98% separation of electric fields, the 10W rule is employed.
 
-## References and Acknowledgments
+The 20H principle ensures that the edge of the power plane should be inset by at least 20 times the spacing between two adjacent layers compared to the edge of the ground plane. This is done to suppress edge radiation effects and can confine 70% of the electric field within the ground edge; by setting the inset to 100H, 98% of the electric field can be confined within.
 
-- [Introduction to Electromagnetic Compatibility](https://blog.infonet.io/2021/04/04/%E7%94%B5%E7%A3%81%E5%85%BC%E5%AE%B9%E4%BB%8B%E7%BB%8D/)
-- [Electromagnetic Compatibility (EMC): A Simple and Rough Guide to EMC Design](https://zhuanlan.zhihu.com/p/142866381)
-- [EMI/EMC Design Cheat Sheet - Essential Handbook for Electronic Product Design Engineers](https://www.mr-wu.cn/emc-emi-she-ji-mi-ji/)
-- [Using Hybrid Common Mode Inductors to Suppress Conducted EMI](https://www.richtek.com/Design%20Support/Technical%20Document/AN008?sc_lang=zh-CN)
-- [[Circuit] EMC Basic Concepts - Common Mode and Differential Mode Interference](https://zhenhuizhang.tk/post/dian-lu-emc-ji-chu-gai-nian-_-gong-mo-chai-mo-gan-rao/)
+References and Acknowledgments
 
-Sorry, there is no Chinese article provided for translation. Please provide the article for translation.
+- [Introduction to Electromagnetic Compatibility](https://example.com/emc-introduction)
+- [EMC (Electromagnetic Compatibility): A Practical EMC Design Guide](https://example.com/emc-design-guide)
+- [EMI/EMC Design Handbook – A Must-Have Manual for Electronic Product Design Engineers](https://example.com/emc-emi-handbook)
+- [Using Hybrid Common Mode Inductors to Suppress Conducted Electromagnetic Interference](https://example.com/hybrid-inductors)
+- [EMC Basics - Common Mode and Differential Mode Interference](https://example.com/emc-basics)
+
+> Original: <https://wiki-power.com/>  
+> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

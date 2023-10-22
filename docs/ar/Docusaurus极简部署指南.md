@@ -1,9 +1,9 @@
-# دليل نشر Docusaurus البسيط
+# دليل نشر Docusaurus بسيط
 
-استخدم [**هذا القالب**](https://github.com/linyuxuanlin/Docusaurus-Vercel) لإنشاء مستودع خاص بك.
+استخدم [**هذا القالب**](https://github.com/linyuxuanlin/Docusaurus-Vercel) لإنشاء مستودعك الخاص
 
-سجل حسابًا في [**Vercel**](https://Vercel.com) (اختر التسجيل باستخدام حساب GitHub) واستورد المستودع الذي تم إنشاؤه للتو.
+قم بالتسجيل في حساب [**Vercel**](https://Vercel.com) (اختر التسجيل باستخدام حساب GitHub) وقم بإدخال المستودع الذي أنشأته مسبقًا.
 
-وبذلك تكون قد انتهيت!
+هذا كافٍ.
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

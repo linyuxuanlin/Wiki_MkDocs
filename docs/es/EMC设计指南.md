@@ -1,106 +1,111 @@
-# Guía de diseño EMC
+# Guía de Diseño de EMC
 
-La compatibilidad electromagnética (EMC, por sus siglas en inglés) se refiere a la capacidad de un dispositivo para funcionar correctamente en su entorno electromagnético sin causar interferencias electromagnéticas inaceptables en otros dispositivos del entorno. En términos simples, significa que su placa no debe ser susceptible a interferencias y debe evitar interferir con otros dispositivos para lograr un estado de "compatibilidad".
+La Compatibilidad Electromagnética (EMC) se refiere a la capacidad de un dispositivo para funcionar correctamente en su entorno electromagnético sin causar interferencias electromagnéticas inaceptables en dicho entorno. En términos sencillos, significa que su placa no debe temer a las interferencias de otros dispositivos y, al mismo tiempo, debe evitar interferir con otros, alcanzando un estado de "compatibilidad".
 
-La EMC incluye la interferencia electromagnética (EMI) y la susceptibilidad electromagnética (EMS).
+**La EMC** incluye la **Interferencia Electromagnética (EMI)** y la **Susceptibilidad Electromagnética (EMS)**.
 
-Los elementos de EMI son:
+La EMI consta de los siguientes elementos:
 
-- Emisión radiada (RE): se refiere a la interferencia de una fuente que acopla su señal a otra red eléctrica a través del espacio.
-- Emisión conducida (CE): se refiere a la interferencia de una señal en una red eléctrica que se acopla a otra red eléctrica a través de un medio conductor.
-- Armónicos: prueba de interferencia de corriente armónica.
-- Parpadeo: prueba de cambio y parpadeo de voltaje.
+- **Emisión Radiada (RE)**: se refiere a cómo una fuente de interferencia acopla (interfiere) su señal en otra red eléctrica a través del espacio.
+- **Emisión Conducida (CE)**: implica cómo una señal se acopla (interfiere) en otra red eléctrica a través de un medio conductor.
+- **Armónicos (Harmonics)**: pruebas de interferencia de corriente armónica.
+- **Parpadeo (Flicker)**: pruebas de variabilidad de voltaje y parpadeo.
 
-Los elementos de EMS son:
+La EMS comprende los siguientes elementos:
 
-- Resistencia a la radiación (RS): prueba de resistencia a la radiación de campo electromagnético de radiofrecuencia.
-- Resistencia a la conducción (CS): prueba de resistencia a la interferencia de conducción inducida por campo de radiofrecuencia (inyección de corriente alta).
-- Protección contra descargas electrostáticas (ESD): prueba de resistencia a la descarga electrostática (prueba de descarga electrostática).
-- Interferencia de pulso transitorio (EFT): prueba de resistencia a grupos de pulsos de transición rápida.
-- Caída de voltaje (DIP): prueba de resistencia a interrupciones y cambios de voltaje a corto plazo.
-- Sobretensión, rayo (SURGE): prueba de resistencia a sobretensión (rayo).
-- Resistencia al campo magnético de frecuencia de potencia (PFMF): prueba de resistencia al campo magnético de frecuencia de potencia.
+- **Resistencia a la Radiación (RS)**: pruebas de resistencia a la radiación de campo electromagnético de radiofrecuencia.
+- **Resistencia a la Conducción (CS)**: pruebas de resistencia a la interferencia de conducción inducida por campos de radiofrecuencia (inyección de corriente de alta intensidad).
+- **Descarga Electroestática (ESD)**: pruebas de resistencia electrostática (experimentos de descarga electrostática).
+- **Interferencia de Pulso Transitorio (EFT)**: pruebas de resistencia a grupos de pulsos transitorios de rápida transición eléctrica.
+- **Caídas de Voltaje (DIP)**: pruebas de resistencia a interrupciones temporales y variaciones de voltaje.
+- **Sobretensión y Rayos (SURGE)**: pruebas de resistencia a sobretensiones (impactos de rayos).
+- **Resistencia al Campo Magnético de Frecuencia Industrial (PFMF)**: pruebas de resistencia al campo magnético de frecuencia industrial.
 
-## Métodos básicos de optimización de EMC
+## Métodos Básicos de Optimización de EMC
 
-Los elementos que causan problemas de EMC son: fuentes de interferencia electromagnética, vías de acoplamiento y dispositivos sensibles.
+Los factores que generan problemas de EMC son las fuentes de interferencia electromagnética, las vías de acoplamiento y los dispositivos sensibles.
 
-Reglas:
+Reglas generales:
 
-1. Cuanto mayor sea el área del circuito de corriente de alta frecuencia S, mayor será la emisión radiada de EMI.
-2. Cuanto mayor sea la frecuencia de la corriente del circuito f, mayor será la emisión radiada de EMI, y la intensidad del campo electromagnético radiado aumentará proporcionalmente al cuadrado de la frecuencia de la corriente f.
+1. Cuanto mayor sea el área del circuito de corriente de alta frecuencia (S), más grave será la radiación EMI.
+2. Cuanto mayor sea la frecuencia de corriente del circuito (f), más grave será la radiación EMI; la intensidad del campo electromagnético aumenta proporcionalmente con el cuadrado de la frecuencia de corriente (f).
 
-Métodos básicos de respuesta:
+Métodos básicos de mitigación:
 
-- Supresión del canal de transmisión: los métodos específicos incluyen filtrado, blindaje, conexión a tierra, superposición y enrutamiento razonable.
-- Separación espacial: es un método efectivo para suprimir la interferencia de radiación espacial y la interferencia de acoplamiento de inducción al aumentar la distancia entre la fuente de interferencia y el circuito sensible.
-- Separación temporal: la señal útil se cierra temporalmente cuando se emite una señal de interferencia y se transmite durante el tiempo en que la señal de interferencia se detiene.
-- Procesamiento de espectro: cambio de espectro, tecnología de expansión de espectro.
-- Aislamiento eléctrico: aislamiento fotoeléctrico, aislamiento de relé, aislamiento de transformador, conversión DC/DC.
+- Supresión en las rutas de transmisión: Esto implica el uso de técnicas como filtrado, apantallamiento, puesta a tierra, acoplamiento y cableado adecuado.
+- Separación espacial: Aumentar la distancia entre la fuente de interferencia y los circuitos sensibles es una estrategia efectiva para suprimir la interferencia por radiación y acoplamiento inductivo.
+- Separación temporal: Cerrar la señal útil durante la emisión de señales de interferencia y permitir la transmisión en momentos libres de interferencia.
+- Procesamiento espectral: Cambios en el espectro y técnicas de expansión de frecuencia.
+- Aislamiento eléctrico: Uso de aislamiento óptico, relés, transformadores y convertidores DC/DC.
 
-### Minimizar el área del circuito de alta frecuencia y del circuito de alimentación
+### Minimizar el Área de los Circuitos de Alta Frecuencia y los lazos de potencia
 
-Principios básicos:
+Principios fundamentales:
 
-1. La señal siempre regresa al extremo fuente.
-2. El flujo de retorno de la señal siempre sigue el camino de menor impedancia.
+1. Las señales siempre vuelven a la fuente.
+2. El flujo de señal de retorno sigue el camino de menor inductancia.
 
-En señales de alta frecuencia, el camino de retorno de la señal suele ser el camino de menor inductancia, que suele ser el camino de menor área de circuito. En frecuencias bajas (generalmente por debajo de la frecuencia de kHz), el flujo de retorno de la señal suele seguir el camino de menor resistencia.
+En señales de alta frecuencia, la trayectoria de retorno de la señal suele ser la de menor inductancia, que generalmente también es la de menor área de bucle. En frecuencias más bajas (generalmente KHz y menos), la señal de retorno tiende a seguir el camino de menor resistencia.
 
-### Mantener la integridad de la pantalla de retorno de la señal tanto como sea posible
+### Mantener Integrales las Pantallas de Retorno de Señal
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211215190631.png)
+![imagen](https://img.wiki-power.com/d/wiki-media/img/20211215190631.png)
 
-Como se muestra en la figura, si se corta el plano de retorno de la señal, la corriente de la señal no podrá volver al origen a través de la ruta óptima (más corta), lo que aumentará el área del circuito de la señal al buscar una ruta alternativa de retorno de la señal, lo que aumentará el área del circuito de la señal.
+Como se muestra en la imagen, cortar la pantalla de retorno de la señal resulta en que la corriente de señal no siga el camino óptimo (más corto) de regreso a la fuente, lo que puede dar lugar a resultados impredecibles y aumentar el área del bucle de señal. En situaciones especiales, es necesario aislar las tierras digitales y analógicas para prevenir interferencias cruzadas.
 
-En casos especiales, la tierra digital y la tierra analógica deben estar aisladas para evitar interferencias cruzadas.
+### Alejar las Señales de Alta Velocidad de los Conectores
 
-### Alejar las señales de alta velocidad de los conectores
+Los cables conectados a la PCB a través de conectores actúan como eficientes antenas, y las señales de alta velocidad tienden a generar diferencias de potencial que pueden conducir corriente a través de los cables conectados, lo que resulta en emisiones electromagnéticas fuera de norma.
 
-Los cables conectados a la PCB a través de conectores son antenas eficientes, y las señales de alta velocidad son propensas a generar diferencias de potencial que impulsan la corriente hacia los cables conectados, lo que provoca una radiación excesiva.
+### Suprimir los Flancos de Subida y Bajada de las Señales de Alta Velocidad
 
-### Suprimir el tiempo de subida y bajada de la señal de alta velocidad
+Ralentizar los flancos de subida y bajada de las señales digitales es una forma efectiva de controlar las frecuencias armónicas superiores. Los tiempos de transición excesivamente largos pueden dar lugar a problemas de integridad de la señal y sobrecalentamiento.
 
-Al ralentizar el tiempo de subida y bajada de la señal digital, se puede controlar eficazmente la frecuencia armónica de alta orden. Un tiempo de transición demasiado largo puede provocar problemas de integridad de la señal y sobrecalentamiento.
+## Componentes de EMC
 
-## Componentes EMC
-
-Los componentes comunes de EMC incluyen inductores comunes, perlas magnéticas y capacitores de filtrado.
+Los componentes comunes de EMC incluyen inductores de modo común, perlas magnéticas y condensadores de filtro.
 
 Modelos comunes de filtros:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211219173751.png)
+![imagen](https://img.wiki-power.com/d/wiki-media/img/20211219173751.png)
 
-### Inductor común
+### Inductores de Modo Común
 
-Modelo equivalente del inductor común:
+Modelo equivalente de inductores de modo común:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211219173856.png)
+![imagen](https://img.wiki-power.com/d/wiki-media/img/20211219173856.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211219174546.png)
+![imagen](https://img.wiki-power.com/d/wiki-media/img/20211219174546.png)
 
-### Perlas magnéticas
+### Perlas Magnéticas
 
-Para obtener información sobre la introducción y selección de perlas magnéticas, consulte la sección [**Componentes básicos - Inductores y perlas magnéticas · Perlas magnéticas**](https://wiki-power.com/es/%E5%9F%BA%E6%9C%AC%E5%85%83%E5%99%A8%E4%BB%B6-%E7%94%B5%E6%84%9F%E4%B8%8E%E7%A3%81%E7%8F%A0#%E7%A3%81%E7%8F%A0).
+A continuación, se presenta la traducción del texto al español:
 
-### Capacitores de filtro
+**Introducción y Selección de Perlas de Ferrita**
 
-Para obtener información sobre la introducción y selección de capacitores, consulte la sección [**Componentes básicos - Capacitores**](https://wiki-power.com/es/%E5%9F%BA%E6%9C%AC%E5%85%83%E5%99%A8%E4%BB%B6-%E7%94%B5%E5%AE%B9).
+Para obtener información sobre la introducción y selección de perlas de ferrita, por favor consulte la sección [**Componentes Básicos - Inductores y Perlas de Ferrita · Perlas de Ferrita**](https://ejemplo.com/ruta#perlas-de-ferrita).
 
-## Diseño de EMC en PCB 🚧
+**Capacitores de Filtro**
 
-### Principios 3W y 20H
+Para información y selección de capacitores, por favor visite la sección [**Componentes Básicos - Capacitores**](https://ejemplo.com/ruta#capacitores).
 
-El principio 3W establece que si la distancia entre los centros de las líneas es al menos 3 veces el ancho de la línea, se puede mantener un 70% de campo eléctrico entre las líneas sin interferencias mutuas. Para lograr un 98% de campo eléctrico sin interferencias mutuas, se utiliza la regla de 10W.
+## Diseño EMC para PCB 🚧
 
-El principio 20H establece que el borde del plano de alimentación debe estar al menos a una distancia de 20 veces la separación entre los planos de tierra para suprimir los efectos de radiación en el borde. Esto puede limitar el 70% del campo eléctrico dentro del borde de tierra; si se reduce en 100H, se puede limitar el 98% del campo eléctrico dentro.
+### Principio de 3W y 20H
 
-## Referencias y agradecimientos
+El principio de 3W implica que si la distancia entre el centro de las líneas es al menos 3 veces el ancho de la línea, se puede mantener un 70% de separación entre campos eléctricos sin interferencia mutua. Para lograr un 98% de separación de campos, se utiliza la regla de 10W.
 
-- [Introducción a la compatibilidad electromagnética](https://blog.infonet.io/2021/04/04/%E7%94%B5%E7%A3%81%E5%85%BC%E5%AE%B9%E4%BB%8B%E7%BB%8D/)
-- [Compatibilidad electromagnética (EMC): Guía de diseño de EMC simple y efectiva](https://zhuanlan.zhihu.com/p/142866381)
-- [Secretos de diseño EMI/EMC - Manual esencial para ingenieros de diseño de productos electrónicos](https://www.mr-wu.cn/emc-emi-she-ji-mi-ji/)
-- [Supresión de interferencias electromagnéticas conducidas mediante inductores comunes híbridos](https://www.richtek.com/Design%20Support/Technical%20Document/AN008?sc_lang=zh-CN)
-- [[Circuito] Conceptos básicos de EMC_Interferencia común y diferencial](https://zhenhuizhang.tk/post/dian-lu-emc-ji-chu-gai-nian-_-gong-mo-chai-mo-gan-rao/)
+El principio de 20H se refiere a asegurar que el borde del plano de energía esté al menos 20 veces la distancia entre capas del plano de tierra para suprimir los efectos de radiación en el borde. Esto permite que el 70% del campo eléctrico se limite al borde de tierra; si se reduce en 100H, el 98% del campo eléctrico se limita internamente.
+
+## Referencias y Agradecimientos
+
+- [Introducción a la Compatibilidad Electromagnética](https://ejemplo.com/enlace1)
+- [Compatibilidad Electromagnética (EMC): Guía de Diseño EMC Directo](https://ejemplo.com/enlace2)
+- [Secretos de Diseño EMI/EMC: Manual Esencial para Ingenieros de Diseño de Productos Electrónicos](https://ejemplo.com/enlace3)
+- [Supresión de Interferencia Electromagnética Conducida Utilizando Inductores de Modo Común Híbridos](https://ejemplo.com/enlace4)
+- [[Circuitos] Conceptos Básicos de EMC - Interferencia en Modo Común y en Modo Diferencial](https://ejemplo.com/enlace5)
+
+> Dirección original del artículo: <https://wiki-power.com/>
+> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

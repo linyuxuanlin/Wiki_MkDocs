@@ -1,9 +1,9 @@
-# Guía de implementación mínima de Docusaurus
+# Guía de Implementación Sencilla de Docusaurus
 
-Utilice [**esta plantilla**](https://github.com/linyuxuanlin/Docusaurus-Vercel) para generar su propio repositorio.
+1. Utiliza [**esta plantilla**](https://github.com/linyuxuanlin/Docusaurus-Vercel) para generar tu propio repositorio.
 
-Regístrese en una cuenta de [**Vercel**](https://Vercel.com) (elija registrarse con su cuenta de GitHub) e importe el repositorio recién creado.
+2. Regístrate en una cuenta de [**Vercel**](https://vercel.com) (elige registrarte con tu cuenta de GitHub) y luego importa el repositorio que acabas de crear.
 
-¡Listo!
+¡Y eso es todo!
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

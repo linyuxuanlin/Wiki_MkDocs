@@ -1,8 +1,9 @@
-# Flip - لوحة تطوير لينكس مبنية على معالج F1C200s من Allwinner
+```markdown
+# Flip - لوحة تطوير Linux مبنية على معالج Allwinner F1C200s
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220527234815.jpeg)
+![صورة](https://img.wiki-power.com/d/wiki-media/img/20220527234815.jpeg)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220527234855.jpeg)
+![صورة](https://img.wiki-power.com/d/wiki-media/img/20220527234855.jpeg)
 
 مستودع المشروع: [**linyuxuanlin/Flip**](https://github.com/linyuxuanlin/Flip)
 
@@ -15,53 +16,54 @@
   ></div>
 </div>
 
-يعتمد F1C100s/F1C200s على بنية ARM9 CPU، وتكون التغليف متطابقًا، والفرق هو أن F1C100S يحتوي على ذاكرة DDR1 داخلية بسعة 32 ميجابايت، بينما يحتوي F1C200S على 64 ميجابايت.
+معالجات F1C100s/F1C200s مبنية على الهندسة المعمارية ARM9 ومعبأة بنفس الشكل. الفرق الرئيسي بينهما هو أن معالج F1C100S يأتي مع ذاكرة داخلية DDR1 سعة 32 ميجابايت، بينما معالج F1C200S يأتي مع ذاكرة سعة 64 ميجابايت.
 
-بالإضافة إلى ذلك، يتضمن هذا الشريحة وحدات الإدخال والإخراج العامة مثل USB OTG و UART و SPI و TWI و TP و SD/MMC و CSI.
+بالإضافة إلى ذلك، يتضمن هذا الرقاقة واجهات أخرى مفيدة مثل USB OTG، UART، SPI، TWI، TP، SD/MMC، و CSI.
 
 ## المعلومات الأساسية
 
-تتضمن المعلومات الأساسية لـ F1C200s ما يلي:
+المعلومات الأساسية لمعالج F1C200s هي كالتالي:
 
-- بنية ARM9 CPU بسرعة 400 ميجاهرتز
-- ذاكرة SIP DDR1 بسعة 64 ميجابايت
-- SD2.0، eMMC 4.41
-- فك تشفير الفيديو H.264/MPEG1 بدقة 1920x1080 بمعدل 30 إطارًا في الثانية، وترميز MJPEG بدقة 1280x720 بمعدل 30 إطارًا في الثانية
-- صوت، 2xDAC و 1xADC، DAC يصل إلى 192kHz، ADC يصل إلى 48kHz
+- هندسة معمارية المعالج ARM9 بسرعة 400 ميجاهرتز
+- ذاكرة داخلية بسعة 64 ميجابايت من نوع DDR1
+- دعم SD2.0 و eMMC 4.41
+- فك تشفير الفيديو بصيغ H.264/MPEG1 بدقة 1920x1080@30 إطارًا في الثانية، وترميز الفيديو بصيغة MJPEG بدقة 1280x720@30 إطارًا في الثانية
+- واجهات صوتية، تحتوي على 2 مخرجات DAC ومدخل ADC واحد. الـ DAC يدعم سرعات تصل إلى 192 كيلوهرتز، والـ ADC يدعم سرعات تصل إلى 48 كيلوهرتز
 - واجهة I2S/PCM واحدة
-- واجهة عرض RGB تصل إلى 1280x720 بمعدل 60 إطارًا في الثانية
-- مخرج TV CVBS، يدعم NTSC/PAL
-- USB OTG
-- SDIO
-- IR
-- 3 x TWI
-- 2 x SPI
-- 3 x UART
-- نظام التشغيل Melis أو Linux SDK
-- الحزمة QFN88، 10 مم × 10 مم
+- واجهة عرض RGB تدعم دقة تصل إلى 1280x720@60 إطارًا في الثانية
+- مخرج تلفزيون CVBS مع دعم للمعايير NTSC/PAL
+- منفذ USB OTG
+- دعم SDIO
+- مستقبل الأشعة تحت الحمراء (IR)
+- 3 واجهات TWI
+- 2 واجهات SPI
+- 3 منافذ UART
+- نظام تشغيل Melis أو Linux SDK
+- معبأة بحجم QFN88 بقياس 10 ملم x 10 ملم
 
-مخطط بنية نظام F1C200s:
+هنا نجد مخطط الهندسة المعمارية لمعالج F1C200s:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220422152227.png)
+![صورة](https://img.wiki-power.com/d/wiki-media/img/20220422152227.png)
 
-رسم توضيحي للتطبيقات النموذجية:
+وهذا هو رسم تخطيطي للاستخدام النموذجي:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220513232027.png)
+![صورة](https://img.wiki-power.com/d/wiki-media/img/20220513232027.png)
 
-تعريفات Pin:
+تعريف المنافذ:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220422153239.png)
+![صورة](https://img.wiki-power.com/d/wiki-media/img/20220422153239.png)
 
 ## المراجع والشكر
 
-- [【目录】全志 F1C100S/F1C200S 学习笔记](https://blog.csdn.net/p1279030826/article/details/113370239)
+- [مذكرات دراسة Allwinner F1C100S/F1C200S](https://blog.csdn.net/p1279030826/article/details/113370239)
 - [peng-zhihui/Planck-Pi](https://github.com/peng-zhihui/Planck-Pi)
-- [小白自制 Linux 开发板 一. 瞎抄原理图与乱画 PCB](https://www.cnblogs.com/twzy/p/14714651.html)
+- [Linux الخاصة بالمبتدئين - الجزء 1: رسم مخطط الدوائر وتصميم اللوحة](https://www.cnblogs.com/twzy/p/14714651.html)
 - [MangoPi](https://mangopi.cc/f1c200s)
 
-> عنوان النص: <https://wiki-power.com/>  
+> عنوان النص: <https://wiki-power.com/>
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
-## تصميم كل وحدة
+## تصميم الوحدات المختلفة
+```
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

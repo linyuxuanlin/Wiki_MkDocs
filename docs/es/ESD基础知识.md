@@ -1,109 +1,107 @@
-# Fundamentos de ESD
+# Conocimientos Fundamentales sobre ESD
 
-ESD (descarga electrostática) se refiere al fenómeno de transferencia rápida de electrones entre dos objetos cuando se acercan o entran en contacto. Es bien sabido que los objetos generan y acumulan cargas eléctricas durante el contacto y la fricción con otros objetos. Por ejemplo, nuestras manos acumulan muchas cargas positivas cuando se frotan con el exterior. Cuando un objeto con una gran cantidad de cargas positivas acumuladas se acerca o entra en contacto con un conductor, los electrones se transfieren rápidamente del conductor al objeto con cargas positivas acumuladas. Este proceso de transferencia rápida de electrones se conoce como descarga electrostática (ESD).
+ESD (Descarga Electroestática) se refiere a un fenómeno en el que dos objetos liberan electrones rápidamente cuando se acercan o entran en contacto. Es bien sabido que los objetos acumulan carga cuando entran en contacto o se frotan con otros objetos. Por ejemplo, cuando nuestras manos entran en contacto con el entorno, acumulan una gran cantidad de carga positiva. Cuando un objeto acumula una gran cantidad de carga positiva y se acerca o toca un conductor, los electrones se transfieren rápidamente desde el conductor al objeto cargado positivamente. Este proceso de transferencia rápida de electrones se llama Descarga Electroestática (ESD).
 
-Los dispositivos electrónicos suelen tener muchos interfaces que se conectan a los pines del chip a través de cables y luego al interior del chip. La alta tensión (generalmente de hasta varios miles de voltios) generada durante la descarga electrostática puede perforar el chip y, si la corriente es alta, puede incluso fundir los componentes, por lo que se debe evitar.
+En los dispositivos electrónicos, a menudo hay muchas interfaces que se conectan a los pines de los chips a través de cables, y luego se conectan al interior del chip. Las altas tensiones generadas durante la descarga electroestática (que a menudo alcanzan miles de voltios) pueden perforar los conductos y, en el caso de corrientes elevadas, incluso pueden dañar los componentes. Por lo tanto, es importante prevenir la ESD.
 
-La clave para la protección contra ESD es proporcionar un canal de descarga separado para la electricidad estática (como un pararrayos). Los dispositivos ESD se dividen principalmente en cuatro categorías: diodos TVS, resistencias de protección contra sobretensiones, condensadores multicapa cerámicos (MLCC) y supresores de ESD.
+La clave de la protección ESD radica en proporcionar un camino de descarga independiente para la carga estática (similar al funcionamiento de una pararrayos). Los dispositivos ESD se dividen principalmente en cuatro categorías: diodos TVS, resistencias varistor, condensadores multicapa cerámicos (MLCC) y supresores ESD.
 
-## Modelo de prueba ESD
+## Modelos de Prueba ESD
 
-|                                  | HBM      | MM      | CDM      | Modelo IEC 61000-4-2 |
-| -------------------------------- | -------- | ------- | -------- | -------------------- |
-| Voltaje de prueba (V)            | 500-2000 | 100-200 | 500-2000 | 2000-15000           |
-| Tiempo de pulso (ns)             | ~150     | ~80     | ~1       | ~150                 |
-| Corriente de pico a 2kV ($A_pk$) | 1.33     | -       | ~5       | 7.5                  |
-| Tiempo de subida                 | 25ns     | -       | <400ps   | <1ns                 |
-| Número de impulsos de voltaje    | 2        | 2       | 2        | 20                   |
+|                                 | HBM      | MM      | CDM      | Modelo IEC 61000-4-2 |
+| ------------------------------- | -------- | ------- | -------- | ------------------- |
+| Tensión de Prueba (V)            | 500-2000 | 100-200 | 500-2000 | 2000-15000          |
+| Duración del Pulso (ns)         | ~150     | ~80     | ~1       | ~150                |
+| Corriente Pico a 2kV (μA_pico)   | 1.33     | -       | ~5       | 7.5                 |
+| Tiempo de Subida                | 25ns     | -       | <400ps   | <1ns                |
+| Número de Impulsos de Tensión   | 2        | 2       | 2        | 20                  |
 
-### Modelo de cuerpo humano (HBM, Human Body Model)
+### Modelo de Prueba de Descarga del Cuerpo Humano (HBM, Human Body Model)
 
-Este modelo simula la descarga electrostática del cuerpo humano y simula la situación en la que una persona toca el chip con la mano.
+Este modelo simula la descarga electrostática generada por el cuerpo humano y representa la situación cuando una persona toca un chip con la mano.
 
-### Modelo de máquina (MM, Machine Model)
+### Modelo de Prueba de Descarga de Máquina (MM, Machine Model)
 
-Este modelo simula la descarga electrostática mecánica y simula la situación en la que se produce una descarga electrostática al tocar el chip con una mano mecánica u otra herramienta de baja resistencia.
+Este modelo simula la descarga electrostática generada por una máquina o herramienta con menor resistencia al tocar un chip. A diferencia del modelo de prueba del cuerpo humano, este modelo tiene una mayor capacidad de almacenamiento de carga y carece de resistencia, lo que significa que la corriente de descarga será mucho mayor. Además, debido a los efectos de inductancia de los conductores, se producirán corrientes oscilantes, lo que implica cambios de polaridad en la corriente de descarga al chip.
 
-La diferencia con el modelo de cuerpo humano es que tiene una capacidad mayor y no tiene resistencia, por lo que la corriente de descarga será mucho mayor. Además, debido al efecto de la inductancia del cable, también habrá una corriente de oscilación, es decir, la corriente de descarga del chip cambiará de positiva a negativa.
+### Modelo de Dispositivo Cargado (CDM, Charged Device Model)
 
-### Modelo de dispositivo cargado (CDM, Charged Device Model)
+Los dos primeros modelos simulan situaciones en las que un cuerpo cargado se descarga en un chip. El modelo de dispositivo cargado simula la situación en la que el propio chip está cargado y se descarga a tierra. Esto puede ocurrir cuando se retira un chip de su embalaje después de haber estado almacenado durante un tiempo. En esta situación, no hay resistencia ni capacitancia; el chip se descarga directamente a tierra a través de sus pines.
 
-Los dos modelos anteriores simulan la situación en la que un objeto cargado descarga en el chip. El modelo de dispositivo cargado simula la situación en la que el chip se carga a sí mismo y descarga a tierra. Este fenómeno ocurre cuando se saca el chip del paquete después de haber estado almacenado en un almacén durante un tiempo. En este caso, no hay resistencia ni capacidad, y el chip se descarga directamente a tierra a través de los pines.
+## Estándares de Referencia para ESD
 
-## Normas de referencia ESD
+Especificaciones de prueba HBM comunes:
 
-Especificaciones comunes de prueba HBM:
+| Estándar         | Capacidad de Carga ($C_d$) (pF) | Resistencia de Descarga ($R_d$) (Ω) |
+| --------------- | ----------------------------- | --------------------------------- |
+| AEC-Q200-002    | 150                           | 2000                              |
+| IEC61000-4-2    | 150                           | 330                               |
 
-| Estándar     | Capacidad de carga $C_d (pF)$ | Resistencia de descarga $R_d (Ω)$ |
-| ------------ | ----------------------------- | --------------------------------- |
-| AEC-Q200-002 | 150                           | 2000                              |
-| IEC61000-4-2 | 150                           | 330                               |
+Tomemos como ejemplo el estándar AEC-Q200-002, su circuito de prueba ESD HBM es el siguiente:
 
-Tomando como ejemplo la norma AEC-Q200-002, el circuito de prueba ESD HBM es el siguiente:
+![ESD HBM Test Circuit](https://img.wiki-power.com/d/wiki-media/img/20211215164751.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211215164751.png)
+Donde $C_x$ es la capacitancia del objeto de prueba, $C_d$ es la capacitancia de carga, $R_d$ es la resistencia de descarga y $R_c$ es la resistencia de protección. El método de prueba ESD es el siguiente:
 
-Donde $C_x$ es la capacidad del objeto de prueba, $C_d$ es la capacidad de carga, $R_d$ es la resistencia de descarga y $R_c$ es la resistencia de protección. El método de prueba ESD es el siguiente:
-
-- Interruptor 1 cerrado, interruptor 2 abierto: la fuente de alimentación de alta tensión carga la carga en $C_d$.
-- Interruptor 1 abierto, interruptor 2 cerrado: la carga almacenada en $C_d$ se aplicará a $C_x$ para realizar la prueba de ESD.
+- Conmutador 1 cerrado, conmutador 2 abierto: la fuente de alta tensión carga el condensador $C_d$.
+- Conmutador 1 abierto, conmutador 2 cerrado: la carga almacenada en $C_d$ se aplica a $C_x$ para realizar la prueba ESD.
 
 Curva de corriente de descarga:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211215165312.png)
+![Curva de Corriente de Descarga](https://img.wiki-power.com/d/wiki-media/img/20211215165312.png)
 
-## Proceso de prueba de ESD
+## Proceso de Prueba ESD
 
-Según el estándar AEC-Q200-002, el proceso de prueba HBM se puede realizar según la siguiente figura:
+Según el estándar AEC-Q200-002, el proceso de prueba HBM se puede seguir como se muestra en la siguiente imagen:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211215165447.png)
+![Proceso de Prueba ESD](https://img.wiki-power.com/d/wiki-media/img/20211215165447.png)
 
-Los niveles de resistencia a la tensión probados se clasifican según la siguiente tabla:
+Los niveles de resistencia resultantes se clasifican según la siguiente tabla:
 
-| Nivel de clasificación | Tensión máxima                         |
-| ---------------------- | -------------------------------------- |
-| 1A                     | Menos de 500V (DC)                     |
-| 1B                     | Más de 0,5 kV (DC), menos de 1 kV (DC) |
-| 1C                     | Más de 1 kV (DC), menos de 2 kV (DC)   |
-| 2                      | Más de 2 kV (DC), menos de 4 kV (DC)   |
-| 3                      | Más de 4 kV (DC), menos de 6 kV (DC)   |
-| 4                      | Más de 6 kV (DC), menos de 8 kV (DC)   |
-| 5A                     | Más de 8 kV (DC), menos de 12 kV (AD)  |
-| 5B                     | Más de 12 kV (AD), menos de 16 kV (AD) |
-| 5C                     | Más de 16 kV (AD), menos de 25 kV (AD) |
-| 6                      | Más de 25 kV (AD)                      |
+| Nivel de Clasificación | Voltaje Máximo Soportado     |
+| ----------------------- | ---------------------------- |
+| 1A                      | Menos de 500V (CC)           |
+| 1B                      | 0.5 kV (CC) o más, menos de 1 kV (CC) |
+| 1C                      | 1 kV (CC) o más, menos de 2 kV (CC) |
+| 2                       | 2 kV (CC) o más, menos de 4 kV (CC) |
+| 3                       | 4 kV (CC) o más, menos de 6 kV (CC) |
+| 4                       | 6 kV (CC) o más, menos de 8 kV (CC) |
+| 5A                      | 8 kV (CC) o más, menos de 12 kV (AD) |
+| 5B                      | 12 kV (AD) o más, menos de 16 kV (AD) |
+| 5C                      | 16 kV (AD) o más, menos de 25 kV (AD) |
+| 6                       | 25 kV (AD) o más              |
 
-DC (descarga de contacto directo) es una descarga directa de contacto; AD (descarga de aire) es una descarga de aire.
+(CC) corresponde a Descarga de Contacto Directo, y (AD) a Descarga al Aire.
 
-## Relación entre la capacidad del objeto de prueba y la resistencia a la ESD
+## Relación entre la Capacidad del Objeto de Prueba y la Resistencia ESD
 
-El valor de la capacidad del objeto de prueba $C_x$ afectará el voltaje en ambos extremos, cumpliendo la siguiente relación:
+El tamaño de la capacidad $C_x$ del objeto de prueba afecta la tensión en sus dos extremos de acuerdo con la siguiente relación:
 
 $$
-V_x=\frac{C_d}{C_d+C_x}V_d
+V_x = \frac{C_d}{C_d + C_x}V_d
 $$
 
-Cuando la tensión de la fuente de alimentación ($V_d$) y la capacidad de carga ($C_d$) son constantes, el aumento de la capacidad del objeto de prueba ($C_x$) hará que el voltaje ($V_x$) en ambos lados disminuya.
+Cuando el voltaje de la fuente ($V_d$) y la capacidad de carga ($C_d$) son constantes, un aumento en la capacidad del objeto de prueba ($C_x$) reduce la tensión ($V_x$) en sus extremos.
 
-Por lo tanto, en general, cuanto mayor sea la capacidad de $C_x$, mayor será la resistencia a la ESD. Sin embargo, en realidad, debido a las diferencias en el diseño, como el tipo y el grosor del dieléctrico, el rango de rendimiento de resistencia a la tensión también es diferente y no cumple completamente con la tendencia anterior.
+En general, un mayor valor de $C_x$ tiende a aumentar la resistencia ESD. Sin embargo, debido a diferencias en el diseño, como el tipo y el grosor del dieléctrico, el rango de rendimiento de la resistencia al voltaje puede variar y no seguir exactamente esta tendencia.
 
-### Referencia de capacidad y resistencia a la ESD
+### Referencia para la Capacidad de la Resistencia ESD
 
-- Parámetros de capacidad de $C_x$: serie GCM / encapsulado 0402 / X7R / 50V
-- Condiciones de prueba: $C_d=150pF,R_d=2kΩ$
+- Parámetros de la capacidad $C_x$: Serie GCM / Encapsulado 0402 / X7R / 50V
+- Condiciones de prueba: $C_d=150pF, R_d=2kΩ$
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211215172528.png)
+![Referencia de Capacidad ESD](https://img.wiki-power.com/d/wiki-media/img/20211215172528.png)
 
-Según la curva del gráfico, si queremos resistir una ESD de 1 kV, podemos usar un capacitor de 1000 pF para la defensa. En el diseño de circuitos reales, es mejor conectar un gran resistor en paralelo con el capacitor para descargar la electricidad en el capacitor después de eliminar la ESD.
+Según la curva del gráfico, si se desea protegerse contra 1kV de ESD, se puede utilizar un condensador de 1000pF. En el diseño de circuitos, es recomendable colocar una resistencia grande en paralelo con el condensador para descargar la carga eléctrica del condensador después de eliminar la ESD.
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
-- [Introducción a la fiabilidad y ESD](https://mazhaoxin.github.io/2021/08/01/Reliability_and_ESD_Introduction/)
-- [Notas de un ingeniero electrónico: conocimientos básicos sobre ESD y selección de protección ESD](https://haipeng.me/2019/09/03/esd-protection/)
-- [Resistencia ESD de capacitores](https://article.murata.com/en-us/article/esd-resistance-of-capacitors)
-- [Comprender el papel de los dispositivos ESD en el diseño de PCB en un solo artículo](http://murata.eetrend.com/article/2021-11/1004974.html)
+- [Introducción a la Fiabilidad y ESD](https://mazhaoxin.github.io/2021/08/01/Reliability_and_ESD_Introduction/)
+- [Apuntes de Ingeniería Electrónica: Conceptos Básicos de ESD y Selección de Protección ESD](https://haipeng.me/2019/09/03/esd-protection/)
+- [Resistencia ESD de Condensadores](https://article.murata.com/en-us/article/esd-resistance-of-capacitors)
+- [Comprender el Papel de los Dispositivos ESD en el Diseño de PCB](http://murata.eetrend.com/article/2021-11/1004974.html)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+[Para ser reemplazado[1]]
+[Para ser reemplazado[2]]
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
