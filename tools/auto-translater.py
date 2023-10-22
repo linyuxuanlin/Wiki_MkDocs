@@ -14,8 +14,8 @@ openai.api_base = os.environ.get("CHATGPT_API_BASE")
 max_length = 1800
 
 # 设置翻译的路径
-dir_to_translate = "/docs/zh"
-dir_translated = {"en": "/docs/en", "es": "/docs/es", "ar": "/docs/ar"}
+dir_to_translate = "docs/zh"
+dir_translated = {"en": "docs/en", "es": "docs/es", "ar": "docs/ar"}
 
 # 不进行翻译的文件列表
 exclude_list = ["index.md", "Contact-and-Subscribe.md", "WeChat.md"]  # 不进行翻译的文件列表
