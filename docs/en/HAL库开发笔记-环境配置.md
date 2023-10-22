@@ -1,75 +1,78 @@
 # HAL Library Development Notes - Environment Configuration
 
-Note: This tutorial is based on the Reverse Customer's STM32F429IGT6 board.
+Note: This tutorial is based on the STM32F429IGT6 board from STMicroelectronics.
 
 ## Software Installation
 
 ### Keil MDK
 
-Refer to the article [**Keil MDK Configuration Guide**](https://wiki-power.com/en/KeilMDK%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97)
+For detailed instructions, refer to the article [**Keil MDK Configuration Guide**](to_be_replaced[3]).
 
 ### Java Runtime Environment
 
-This is the Java environment required by STM32CubeMX. Download and install it from the [**official website link**](https://www.java.com/en/download/).
+This is the Java environment required for STM32CubeMX. Download and install it from the [**official website**](https://www.java.com/en/download/).
 
 ### STM32CubeMX
 
-Download and install STM32CubeMX from the [**official website link**](https://my.st.com/content/my_st_com/zh/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-configurators-and-code-generators/stm32cubemx.license=1611899126599.product=STM32CubeMX.version=6.1.1.html).
+Download and install STM32CubeMX from the [**official website**](https://my.st.com/content/my_st_com/zh/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-configurators-and-code-generators/stm32cubemx.license=1611899126599.product=STM32CubeMX.version=6.1.1.html).
 
 ## Project Configuration
 
 ### Initialization
 
-Create a new project and save it after selecting the chip.
+Create a new project and save it after selecting the microcontroller.
 
-### Configure SYS
+### SYS Configuration
 
 `Pinout & Configurations` - `System Core` - `SYS`
 
-Change the `Debug` option to `Serial Wire` (see the article [**CubeMX and CubeIDE Pitfalls**](https://wiki-power.com/en/CubeMX与CubeIDE避坑) for details).
+Change the `Debug` option to `Serial Wire` (for detailed reasons, see the article [**Avoiding Pitfalls with CubeMX and CubeIDE**](to_be_replaced[3])).
 
-### Configure RCC
+### RCC Configuration
 
 `Pinout & Configurations` - `System Core` - `RCC`
 
-Set it according to the board situation.
+Configure it according to your board's specifications.
 
-For example, referring to the board schematic:
+For example, referencing the board's schematic:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210205205030.png)
+![Board Schematic](https://img.wiki-power.com/d/wiki-media/img/20210205205030.png)
 
-Set both `HSE` and `LSE` options to external crystal.
+Set both `HSE` and `LSE` options to use external crystal oscillators:
 
-### Configuring the Clock Tree
+![Clock Configuration](https://img.wiki-power.com/d/wiki-media/img/20210205205140.png)
 
-Configure in the `Clock Configuration` interface.
+### Clock Tree Configuration
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210205205550.png)
+Configure the clock settings in the `Clock Configuration` interface.
 
-Follow the steps in the above figure:
+![Clock Configuration](https://img.wiki-power.com/d/wiki-media/img/20210205205550.png)
 
-1. Fill in the values of the two leftmost frequencies according to the parameters of the onboard external crystal oscillator.
-2. Check `HSE` because the external crystal oscillator has higher frequency and accuracy than the internal one.
-3. Check `PLLCLK` to obtain a high frequency using PLL phase-locked loop multiplication.
-4. Fill in the value of `HCKL`, generally based on the maximum frequency indicated below, and press enter. The division and multiplication factors will be automatically calculated.
+Follow the steps below according to the above image:
 
-### Configuring Project Management Options
+1. Enter the values for the leftmost two frequencies based on the parameters of the onboard external crystal oscillator.
+2. Check `HSE` because external crystal oscillators offer higher frequency and accuracy than internal ones.
+3. Check `PLLCLK` to obtain a higher frequency using PLL multiplication.
+4. Enter the value for `HCKL`, generally based on the maximum frequency suggested below. After inputting the value and pressing Enter, the system will automatically calculate the division and multiplication factors.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210130095224.png)
+### Project Management Options Configuration
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210130095239.png)
+![Project Management Options](https://img.wiki-power.com/d/wiki-media/img/20210130095224.png)
 
-## Differences between HAL Library and Standard Library
+![Project Management Options](https://img.wiki-power.com/d/wiki-media/img/20210130095239.png)
 
-To increase portability, the HAL library has three additional features compared to the standard library: **handle, MSP function, and callback function**. For details, please refer to the content in the reference links at the end of the article.
+## Differences Between HAL Library and Standard Library
 
-## References and Acknowledgements
+To enhance portability, the HAL library includes three additional features compared to the standard library: **Handles, MSP Functions, and Callback Functions**. For more details, refer to the content in the referenced links at the end of the document.
 
-- [STM32 System Clock RCC Detailed Explanation](https://blog.csdn.net/as480133937/article/details/98845509)
-- [Board Initialization, RCC Clock Tree Complete Configuration Method and Detailed Process](https://www.notion.so/2-RCC-770c0c454f954408a3956257aa0fb523)
-- [A Comprehensive Summary of STM32 HAL Knowledge](https://mp.weixin.qq.com/s/ffcjKtl7JdRibLRNGquGXA)
-- [Clearer, A Comprehensive Summary of STM32 HAL Knowledge](https://mp.weixin.qq.com/s/qkj0fQS5NrCXmbppKEhaAg)
+## References and Acknowledgments
 
-Sorry, there is no Chinese article provided for translation. Please provide the article to be translated.
+- [**In-Depth Explanation of STM32 System Clock RCC**](https://blog.csdn.net/as480133937/article/details/98845509)
+- [**Board Initialization: Complete Configuration of RCC Clock Tree**](https://www.notion.so/2-RCC-770c0c454f954408a3956257aa0fb523)
+- [**Comprehensive Summary of STM32 HAL Knowledge**](https://mp.weixin.qq.com/s/ffcjKtl7JdRibLRNGquGXA)
+- [**Clearly Understanding: A Comprehensive Summary of STM32 HAL Knowledge**](https://mp.weixin.qq.com/s/qkj0fQS5NrCXmbppKEhaAg)
+
+> Original: <https://wiki-power.com/>  
+> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

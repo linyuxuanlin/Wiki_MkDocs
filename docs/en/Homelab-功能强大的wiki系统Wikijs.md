@@ -1,8 +1,8 @@
-# Homelab - Powerful wiki system Wiki.js
+# Homelab - Powerful Wiki System Wiki.js
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230304195348.png)
+![Wiki.js](https://img.wiki-power.com/d/wiki-media/img/20230304195348.png)
 
-**Wiki.js** is a wiki documentation tool with a backend editor and management page, including multi-user permission management, Markdown, multiple synchronization and storage methods (such as git synchronization), and other functions.
+**Wiki.js** is a wiki documentation tool with a backend editor and management pages, featuring multi-user permission management, Markdown support, various synchronization and storage methods (such as Git sync), and more.
 
 ## Deployment (Docker Compose)
 
@@ -42,18 +42,18 @@ volumes:
   db-data:
 ```
 
-(Optional) It is recommended to create a `.env` file in the same directory as `compose.yaml` and customize your environment variables. If you do not want to use environment variables, you can also customize your parameters directly in `compose.yaml` (e.g. replace `${STACK_NAME}` with `wikijs`).
+(Optional) It is recommended to create a `.env` file at the same level as `compose.yaml` and customize your environment variables. If you prefer not to use environment variables, you can directly customize your parameters within `compose.yaml` (e.g., replace `${STACK_NAME}` with `wikijs`).
 
 ```dotenv title=".env"
 STACK_NAME=wikijs
-STACK_DIR=xxx # Custom project storage path, such as ./wikijs
+STACK_DIR=xxx # Customize your project storage path, e.g., ./wikijs
 
 # wikijs
 APP_VERSION=2
-APP_PORT=xxxx # Custom access port, choose one that is not occupied
+APP_PORT=xxxx # Customize the access port, choose one that is not already in use
 APP_DB_TYPE=postgres
 APP_DB_HOST=db
-APP_DB_PORT=5432 # Default internal port of the database
+APP_DB_PORT=5432 # Default internal port for the database
 APP_DB_USER=xxx # Database username
 APP_DB_PASS=xxx # Database password
 APP_DB_NAME=wikijs # Database name
@@ -65,20 +65,20 @@ DB_POSTGRES_PASSWORD=xxx # Database password, same as above
 DB_POSTGRES_USER=xxx # Database username, same as above
 ```
 
-Finally, execute the `docker compose up -d` command in the same directory as `compose.yaml` to start the orchestrated containers.
+Finally, in the same directory as `compose.yaml`, execute the `docker compose up -d` command to start the orchestrated containers.
 
-## Configuration Instructions
+## Configuration Guide
 
-Detailed tutorial for configuring git repository synchronization: <https://docs.requarks.io/storage/git>
+For a detailed tutorial on configuring Git repository synchronization, visit: [Git Repository Sync Configuration](https://docs.requarks.io/storage/git).
 
-## References and Acknowledgements
+## References and Acknowledgments
 
 - [Official Website](https://js.wiki)
 - [Documentation](https://docs.requarks.io/install/docker)
-- [GitHub repo](https://github.com/requarks/wiki)
+- [GitHub Repository](https://github.com/requarks/wiki)
 - [Docker Hub](https://hub.docker.com/r/requarks/wiki)
 
-> Original: <https://wiki-power.com/>  
-> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
+[Reference 1]
+[Reference 2]
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

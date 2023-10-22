@@ -1,12 +1,12 @@
-# Homelab - Feature-rich Kanban software WeKan
+# Homelab - Feature-Rich Kanban Software WeKan
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20230508175842.png)
 
-**WeKan** is a flexible, easy-to-use, and efficient open-source Kanban software that helps teams collaborate and manage tasks, projects, and workflows. It provides a simple yet powerful user interface where users can easily create multiple boards, add lists and cards to each board, and assign tasks to different members to better manage projects and track progress.
+**WeKan** is a flexible, user-friendly, and highly efficient open-source Kanban software that facilitates team collaboration in managing tasks, projects, and workflows. It offers a simple yet powerful user interface, enabling users to effortlessly create multiple boards, add lists and cards to each board, and assign tasks to different team members, thereby enhancing project management and progress tracking.
 
 ## Deployment (Docker Compose)
 
-First, create a `compose.yaml` file and paste the following content:
+To begin with, create a `compose.yaml` file and paste the following contents:
 
 ```yaml title="compose.yaml"
 version: "2"
@@ -72,43 +72,45 @@ networks:
     driver: bridge
 ```
 
-(Optional) It is recommended to create a `.env` file in the same directory as `compose.yaml` and customize your environment variables. If you do not want to use environment variables, you can also customize your parameters directly in `compose.yaml` (such as replacing `${STACK_NAME}` with `wekan`).
+Note: The provided Docker Compose configuration is tailored for deploying WeKan.
+
+(Optional) It is recommended to create a `.env` file in the same directory as your `compose.yaml` and customize your environment variables. If you prefer not to use environment variables, you can also directly customize your parameters within the `compose.yaml` (e.g., replace `${STACK_NAME}` with `wekan`).
 
 ```dotenv title=".env"
 STACK_NAME=wekan
-STACK_DIR=xxx # Customize the project storage path, for example, ./wekan
+STACK_DIR=xxx # Customize your project storage path, e.g., ./wekan
 
 # wekandb
 DB_VERSION=6
 
 # wekan
 APP_VERSION=latest
-APP_PORT=xxxx # Customize the access port, choose one that is not occupied
+APP_PORT=xxxx # Customize the access port, ensuring it is not already in use
 ```
 
-Next, we initialize the directory structure. Switch to our custom `STACK_DIR` (such as `./wekan`) and execute the following command to create folders:
+Next, let's initialize the directory structure. Change to the custom `STACK_DIR` you've specified (e.g., `./wekan`) and execute the following command to create the necessary folders:
 
 ```shell
 mkdir -vp {wekan-files,wekan-db,wekan-db-dump}
 ```
 
-Finally, execute the `docker compose up -d` command in the same directory as `compose.yaml` to start the orchestrated containers.
+Finally, in the directory where your `compose.yaml` is located, execute the `docker compose up -d` command to start the orchestrated containers.
 
-## Configuration Instructions
+## Configuration Details
 
-The `compose.yaml` in the previous section has been simplified and modified. If you need to view the full version, please refer to [**wekan/compose.yaml**](https://github.com/wekan/wekan/blob/master/compose.yaml).
+The `compose.yaml` mentioned above has been simplified and modified. For the complete version, please refer to [**wekan/compose.yaml**](https://github.com/wekan/wekan/blob/master/compose.yaml).
 
-After deployment, the first registered account will be the administrator account. If you are using it for yourself, it is recommended to disable user registration in the settings panel.
+After deployment, the first registered account will be the administrator account. If you are using it for personal use, it's advisable to disable user registration in the settings panel.
 
 ## References and Acknowledgments
 
-- [Official website](https://wekan.github.io/)
+- [Official Website](https://wekan.github.io/)
 - [Documentation](https://github.com/wekan/wekan/wiki/Docker#note-docker-composeyml-works)
-- [GitHub repo](https://github.com/wekan/wekan)
+- [GitHub Repository](https://github.com/wekan/wekan)
 - [Docker Hub](https://hub.docker.com/r/wekanteam/wekan)
-- [Demo site](https://boards.wekan.team/b/D2SzJKZDS4Z48yeQH/wekan-open-source-kanban-board-with-mit-license)
+- [Demo Site](https://boards.wekan.team/b/D2SzJKZDS4Z48yeQH/wekan-open-source-kanban-board-with-mit-license)
 
-> Original: <https://wiki-power.com/>  
+> Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

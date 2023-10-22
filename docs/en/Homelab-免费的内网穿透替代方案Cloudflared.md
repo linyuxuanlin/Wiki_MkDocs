@@ -1,31 +1,31 @@
-# Homelab - Free Intranet Penetration Alternative Cloudflared
+# Homelab - A Free Intranet Tunneling Alternative: Cloudflared
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230416143051.png)
+![Cloudflared](https://img.wiki-power.com/d/wiki-media/img/20230416143051.png)
 
-**Cloudflared** is a free intranet penetration solution used for external access to hosts without public IP addresses.
+**Cloudflared** is a free solution for intranet tunneling, allowing external access to hosts without public IP addresses.
 
 Requirements:
 
-- Although Cloudflared is free, it requires binding to VISA/PayPal.
-- The domain NameServer needs to point to Cloudflare.
-- Cloudflare CDN needs to be enabled (domestic access speed is slow).
+- While Cloudflared is free, it requires linking to VISA/PayPal.
+- Domain NameServer must point to Cloudflare.
+- Cloudflare CDN needs to be enabled (which may result in slower domestic access speeds).
 
 Advantages:
 
-- No need for servers with public IP addresses.
-- No need for firewalls or reverse proxies.
-- Can use ports 80 and 443 without filing.
+- No need for a public IP server.
+- No need for a firewall or reverse proxy.
+- Can use ports 80 and 443 without filing for ICP (Internet Content Provider) in China.
 - No need to apply for SSL certificates.
-- Free.
+- Free of charge.
 
 Disadvantages:
 
-- Slow domestic access speed.
+- Slower domestic access speeds.
 - Relatively dependent on the Cloudflare platform.
 
 ## Deployment (Docker Compose)
 
-First, create the `compose.yaml` file and paste the following content:
+First, create a `compose.yaml` file and paste the following content:
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -40,35 +40,35 @@ services:
       - TUNNEL_TOKEN=${APP_TUNNEL_TOKEN}
 ```
 
-(Optional) It is recommended to create a `.env` file at the same level as `compose.yaml` and customize your environment variables. If you do not want to use environment variables, you can also customize your parameters directly in `compose.yaml` (such as replacing `${STACK_NAME}` with `cloudflared`).
+(Optional) It's recommended to create a `.env` file at the same level as `compose.yaml` and customize your environment variables. If you prefer not to use environment variables, you can directly customize your parameters within `compose.yaml` (e.g., replace `${STACK_NAME}` with `cloudflared`).
 
-````dotenv title=".env"
-STACK_NAME=cloudflared```
+```dotenv title=".env"
+STACK_NAME=cloudflared
 
 # cloudflared
 APP_VERSION=latest
 APP_TUNNEL_TOKEN=xxx # Replace with your token
-````
+```
 
-Finally, execute the `docker compose up -d` command in the same directory as `compose.yaml` to start the orchestrated containers.
+Finally, run the `docker compose up -d` command in the same directory as `compose.yaml` to start the orchestrated containers.
 
-## Configuration Instructions
+## Configuration Details
 
-Access the [**Cloudflare Zero Trust**](https://one.dash.cloudflare.com/) panel, select `Access` - `Tunnels` in the left sidebar, and click `Create a tunnel` to create a tunnel. Fill in the tunnel name (used to distinguish different physical machines) and save it. Record the token and fill it in `compose.yaml`.
+Visit the [**Cloudflare Zero Trust**](https://one.dash.cloudflare.com/) dashboard, select `Access` on the left sidebar, then navigate to `Tunnels` and click `Create a tunnel` to create a tunnel. Provide a tunnel name (to distinguish between different physical machines) and save it. Note down the token and insert it into `compose.yaml`.
 
-Then click into the tunnel you created and add the proxy port in the `Public Hostname Page` tab. For example, if I bind a domain name `wiki-power.com` on Cloudflare and the local port of the service I need to proxy is `80` with the `HTTP` protocol, I just need to fill it out like this:
+Next, access the tunnel you created and, in the `Public Hostname Page` tab, add the ports of the services you want to proxy. For example, if your Cloudflare-bound domain is `wiki-power.com`, and you want to proxy a service on your local machine at port `80` using the `HTTP` protocol, you just need to fill it out like this:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230416183438.png)
+![Cloudflare Tunnel Configuration](https://img.wiki-power.com/d/wiki-media/img/20230416183438.png)
 
-You can access the local port through <https://dashboard.wiki-power.com>, and it will automatically apply for an SSL certificate for you, allowing you to access it via https on the public network.
+You can then access your local port via <https://dashboard.wiki-power.com>, and it will automatically handle SSL certificate issuance for secure public access via HTTPS.
 
-## References and Acknowledgements
+## References and Acknowledgments
 
 - [Official Website / Documentation](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/)
-- [GitHub repo](https://github.com/cloudflare/cloudflared)
+- [GitHub Repository](https://github.com/cloudflare/cloudflared)
 - [Docker Hub](https://hub.docker.com/r/cloudflare/cloudflared)
 
-> Original: <https://wiki-power.com/>  
+> Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

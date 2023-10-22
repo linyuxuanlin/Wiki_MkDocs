@@ -1,65 +1,68 @@
-# مذكرات تطوير مكتبة HAL - Ethernet Communication (LwIP) 🚧
+# ملاحظات تطوير مكتبة HAL - اتصال الإيثرنت (LwIP) 🚧
 
-هذا هو دليل استنادًا إلى [** لوحة المفاتيح الرئيسية STM32F407 المعكوسة **] (https://item.taobao.com/item.htm؟spm=a230r.1.14.16.57314534365ZlN&id=569068950037&ns=1&abbucket=4#detail) و [** DP83848 وحدة PHY Ethernet **] (https://item.taobao.com/item.htm؟spm=a230r.1.14.1.38df5bd3YTS6rE&id=12873819988&ns=1&abbucket=4#detail).
+فيما يلي بعض المعلومات المستمدة من [**لوحة تحكم معالج STM32F407 المعكوسة**](https://item.taobao.com/item.htm?spm=a230r.1.14.16.57314534365ZlN&id=569068950037&ns=1&abbucket=4#detail) و[**موديول PHY الإيثرنت DP83848**](https://item.taobao.com/item.htm?spm=a230r.1.14.1.38df5bd3YTS6rE&id=12873819988&ns=1&abbucket=4#detail).
 
 ## الأجهزة
 
-واجهة DP83848 هي RMII ، ويمكن لـ DP83848 دعم سرعة الخط 10M / 100M ، ويوجد على اللوحة مذبذب غير نشط بسرعة 50 ميجا هرتز.
+واجهة DP83848 هي RMII، ويمكن لـ DP83848 دعم سرعات خطية 10M/100M، وتحتوي على مذبذب غير نشط بسرعة 50 ميجاهرتز.
 
-| STM32 المراقب الرئيسي | وحدة DP83848 PHY |
-| --------------------- | ---------------- |
-| ETH_REF_CLK           | PA1              |
-| ETH_MDIO              | PA2              |
-| ETH_MDC               | PC1              |
-| ETH_CRS_DV            | PA7              |
-| ETH_RXD0              | PC4              |
-| ETH_RXD1              | PC5              |
-| ETH_TX_EN             | PB11             |
-| ETH_TXD0              | PB12             |
-| ETH_TXD1              | PB13             |
+| المعالج الرئيسي STM32  | موديول DP83848 |
+| ----------- | ------------ |
+| ETH_REF_CLK | PA1          |
+| ETH_MDIO    | PA2          |
+| ETH_MDC     | PC1          |
+| ETH_CRS_DV  | PA7          |
+| ETH_RXD0    | PC4          |
+| ETH_RXD1    | PC5          |
+| ETH_TX_EN   | PB11         |
+| ETH_TXD0    | PB12         |
+| ETH_TXD1    | PB13         |
 
 ## البرمجيات
 
-### التكوين الداخلي لـ CubeMX
+### إعدادات داخل CubeMX
 
-- RCC: HSE يختار المذبذب الخارجي
+- RCC: اختر HSE كمذبذب خارجي
 - SYS
   - DEBUG: SW
 - GPIO
-  - PA15: `USER_BTN` ، Input ، Pull-up
-  - PC13: `LED_GREEN` ، Output Push Pull ، level High
-  - PC14: `LED_BLUE` ، Output Push Pull ، level High
-  - PC15: `LED_RED` ، Output Push Pull ، level High
+  - PA15: `USER_BTN`, مدخل، مقاومة تأثير السحب إلى أعلى
+  - PC13: `LED_GREEN`, مخرج بوش بول، مستوى عال
+  - PC14: `LED_BLUE`, مخرج بوش بول، مستوى عال
+  - PC15: `LED_RED`, مخرج بوش بول، مستوى عال
 - ETH
-  - Mode: RMII
-  - Advanced Parameters
-    - PHY: DP83848_PHY_ADDRESS
+  - الوضع: RMII
+  - معلمات متقدمة
+    - PHY: عنوان DP83848_PHY
 - LWIP
-  - Key Options
-    - تحقق من Show Advanced Parameters
-    - تأكد من أن LWIP_NETIF_LINK_CALLBACK هو Enable (عادة ما يكون الافتراضي)
-    - xLWIP_LOOPIF_MULTICAST: تمكين
-    - xLWIP_MULTICAST_TX_OPTIONS: تمكين
-    - xLWIP_NETIF_STATUS_CALLBACK: تمكين
-    - xLWIP_NETIF_EXT_STATUS_CALLBACK: تمكين
-    - xLWIP_SO_RCVBUF: تمكين
-  - Genetal Settings
-    - xLWIP_IGMP: تمكين
+  - خيارات مهمة
+    - تحديد خيارات المعلمات المتقدمة
+    - تأكد من أن LWIP_NETIF_LINK_CALLBACK مفعل (عادة مفعل بشكل افتراضي)
+    - xLWIP_LOOPIF_MULTICAST: تم تفعيله
+    - xLWIP_MULTICAST_TX_OPTIONS: تم تفعيله
+    - xLWIP_NETIF_STATUS_CALLBACK: تم تفعيله
+    - xLWIP_NETIF_EXT_STATUS_CALLBACK: تم تفعيله
+    - xLWIP_SO_RCVBUF: تم تفعيله
+  - إعدادات عامة
+    - xLWIP_IGMP: تم تفعيله
 
-تكوين شجرة الساعة: تكوينها وفقًا للمذبذب المدمج (8 ميجا هرتز في هذا اللوحة).
+إعداد شجرة الساعة: وفقًا لمذبذب اللوحة (هذه اللوحة تحتوي على مذبذب 8 ميجاهرتز).
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220702145310.png)
+![الصورة](https://img.wiki-power.com/d/wiki-media/img/20220702145310.png)
 
-### إضافة رمز الوظيفة
+### إضافة الشيفرة البرمجية
 
 ```c title="main.c"
 /* USER CODE BEGIN PV */
 extern struct netif gnetif;
 /* USER CODE END PV */
+```
+
+
 
 /* USER CODE BEGIN 0 */
 void ethernetif_notify_conn_changed(struct netif *netif) {
-	/* ملاحظة: يمكن تنفيذ هذه الوظيفة في ملف المستخدم عند الحاجة إلى الاستدعاء العائد */
+	/* ملحوظة: يمكن تنفيذ هذه الوظيفة في ملف المستخدم عند الحاجة إلى الاستدعاء. */
 	if (netif_is_link_up(netif)) {
 		HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_RESET);
 		HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET);
@@ -90,44 +93,57 @@ if (netif_is_link_up(&gnetif) && !netif_is_up(&gnetif)) {
 /* USER CODE END 4_3 */
 ```
 
-## تصحيح الأخطاء
+## Debugging
 
-- عرض عناوين IP للأجهزة المتصلة بالكمبيوتر الحالي: `arp -a`
-- تحديد عنوان IP لـ STM32 عن طريق الإدخال والإخراج
-- `ping [عنوان IP] (-t)`
-- سيتم إعادة الاتصال تلقائيًا بعد قليل من الوقت عند فصل الكابل.
+- View devices connected to this computer's IP: `arp -a`
+- Determine the STM32's IP address by plugging and unplugging
+- `ping [ip address] (-t)`
+- Hot-plugging the network cable may result in "Transmit Failed, Common Error," but it will automatically reconnect after a short wait.
 
-## المراجع والشكر
+## References and Acknowledgments
 
 - [STM32 HAL Ethernet initialization](https://blog.naver.com/eziya76/221852430347)
 
-| API الدالة     | الوصف                                                     |
-| -------------- | --------------------------------------------------------- |
-| udp_new        | إنشاء PCB UDP جديد                                        |
-| udp_remove     | إزالة PCB UDP وتحرير الموارد ذات الصلة                    |
-| udp_bind       | PCB UDP مرتبط بعنوان IP المحلي والمنفذ                    |
-| udp_connect    | إنشاء PCB UDP عن بعد عنوان IP ومنفذ                       |
-| udp_disconnect | إزالة PCB UDP عن بعد عنوان IP ومنفذ                       |
-| udp_send       | إرسال بيانات UDP                                          |
-| udp_recv       | تسجيل دالة الاستدعاء العائدة عند استلام حزمة بيانات جديدة |
+[to_be_replaced[1]]
+[to_be_replaced[2]]
 
-## تكوين داخل CubeMX
+---
 
-1. في صفحة `RCC` ، حدد المذبذب الخارجي لـ HSE.
-2. في صفحة `ETH` ، قم بتكوين وضع PHY كـ `RMII` ، وقم بتكوين المعلمات التالية:
-   1. في علامة التبويب `Parameter Setting` ، قم بتكوين `عنوان PHY` إلى `0` (وفقًا لتكوين دبوس PHYAD0).
-   2. في علامة التبويب `Advanced Parameter` ، وفقًا لكتيب شرائح LAN8720A ، قم بتكوين `PHY special control/status register Offset` إلى `31` ؛ `PHY Speed mask` إلى `0x0004` ؛ `PHY Duplex mask` إلى `0x0010`.
-3. في صفحة `LWIP` ، قم بتمكينها وتكوين المعلمات التالية:
-   1. في علامة التبويب `General Settings` ، قم بتكوين `LWIP_DHCP (DHCP Module)` إلى `Disabled` (استخدام عنوان IP ثابت) ؛ `IP_ADDRESS` إلى `192.168.001.100` ؛ `NETMASK_ADDRESS` إلى `255.255.255.000` ؛ `GATEWAY_ADDRESS` إلى `192.168.001.001` ؛ `LWIP_UDP (UDP Module)` و `LWIP_TCP (TCP Module)` إلى `Enabled`.
+```
+This article is based on the self-developed RobotCtrl development kit, with the STM32F407ZET6 microcontroller core and LAN8720A as the Ethernet PHY chip. For the schematic and detailed introduction, please see [**RobotCtrl - STM32 Universal Development Kit**[to_be_replaced[3]]RobotCtrl-STM32-Universal-Development-Kit).
 
-## المراجع والشكر
+LwIP is a lightweight IP protocol stack that can run with or without the support of an operating system. LwIP's focus is on reducing RAM usage while maintaining the core functionality of the TCP protocol. It can run with just over ten KB of RAM and around 40K of ROM, making it suitable for low-end embedded systems.
+
+LwIP provides three programming interfaces: RAW/Callback API, NETCONN API, and SOCKETAPI. They vary in terms of ease of use and efficiency, with RAW API being the most efficient but less user-friendly. You can choose the API that best suits your development needs. In this article, we use the Raw API and call the following functions:
+```
+
+| API Function   | Description                               |
+| -------------- | ----------------------------------------- |
+| udp_new        | Create a new UDP PCB                      |
+| udp_remove     | Remove UDP PCB and release related resources |
+| udp_bind       | Bind UDP PCB to local IP address and port |
+| udp_connect    | Establish remote IP address and port for UDP PCB |
+| udp_disconnect | Remove remote IP and port for UDP PCB     |
+| udp_send       | Send UDP data                             |
+| udp_recv       | Register a callback function to be called when new data is received |
+
+## Configuration in CubeMX
+
+1. Select an external crystal oscillator for HSE on the `RCC` page.
+2. Configure PHY mode as `RMII` on the `ETH` page, and set the following parameters:
+   1. On the `Parameter Setting` tab, configure `PHY Address` to `0` (determined by the PHYAD0 pin).
+   2. On the `Advanced Parameter` tab, following the LAN8720A datasheet, configure `PHY special control/status register Offset` to `31`; `PHY Speed mask` to `0x0004`; `PHY Duplex mask` to `0x0010`.
+3. Enable LWIP on the `LWIP` page and set the following parameters:
+   1. On the `General Settings` tab, set `LWIP_DHCP (DHCP Module)` to `Disabled` (use static IP); `IP_ADDRESS` to `192.168.001.100`; `NETMASK_ADDRESS` to `255.255.255.000`; `GATEWAY_ADDRESS` to `192.168.001.001`; `LWIP_UDP (UDP Module)` and `LWIP_TCP (TCP Module)` to `Enabled`.
+
+## References and Acknowledgments
 
 - [LwIP TCP/IP stack demonstration for STM32F4x7 microcontrollers (AN3966)](https://www.st.com/en/embedded-software/stsw-stm32070.html)
 - [Developing applications on STM32Cube with LwIP TCP/IP stack (UM1713)](https://www.st.com/resource/en/user_manual/um1713-developing-applications-on-stm32cube-with-lwip-tcpip-stack-stmicroelectronics.pdf)
 - [54zorb/stm32-lwip](https://github.com/54zorb/stm32-lwip)
 
-> مؤلف المقال: **Power Lin**
-> العنوان الأصلي: <https://wiki-power.com>
-> إعلان حقوق النشر: يتم استخدام المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) ، يرجى ذكر المصدر عند إعادة النشر.
+> Article Author: **Power Lin**
+> Original Source: [https://wiki-power.com](https://wiki-power.com)
+> Copyright Notice: This article is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Please provide proper attribution when reprinting.
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

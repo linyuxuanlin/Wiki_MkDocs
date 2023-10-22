@@ -53,3 +53,14 @@ HAL库开发笔记-GPIO.md
 HAL库开发笔记-I2C通信（MPU6050）.md
 HAL库开发笔记-TIM基本定时器.md
 HAL库开发笔记-TIM通用定时器.md
+HAL库开发笔记-USB通信.md
+HAL库开发笔记-串口通信.md
+HAL库开发笔记-以太网通信（LwIP）.md
+HAL库开发笔记-外部中断.md
+HAL库开发笔记-环境配置.md
+HTML学习笔记.md
+Hack.init()黑客马拉松.md
+Homelab-云端音乐服务器Navidrome.md
+Homelab-免费的内网穿透替代方案Cloudflared.md
+Homelab-内网穿透工具frp.md
+Homelab-功能丰富的看板软件WeKan.md

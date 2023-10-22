@@ -1,12 +1,12 @@
-# Homelab - Software de tablero rico en funciones WeKan
+# Homelab - Software de pizarra WeKan con abundantes funciones
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20230508175842.png)
 
-**WeKan** es un software de tablero de código abierto flexible, fácil de usar y eficiente que puede ayudar a los equipos a colaborar en la gestión de tareas, proyectos y flujos de trabajo. Proporciona una interfaz de usuario simple pero potente que permite a los usuarios crear fácilmente múltiples tableros, agregar listas y tarjetas a cada uno y asignar tareas a diferentes miembros para una mejor gestión del proyecto y seguimiento del progreso.
+**WeKan** es una destacada aplicación de pizarra de código abierto que es flexible, fácil de usar y altamente eficiente. Esta aplicación es ideal para la gestión colaborativa de tareas, proyectos y flujos de trabajo en equipos. WeKan proporciona una interfaz de usuario sencilla pero poderosa que permite a los usuarios crear múltiples pizarras, agregar listas y tarjetas a cada una, y asignar tareas a diferentes miembros del equipo, lo que facilita la gestión de proyectos y el seguimiento del progreso.
 
 ## Implementación (Docker Compose)
 
-Primero, cree un archivo `compose.yaml` y pegue el siguiente contenido:
+Para implementar WeKan, primero debe crear un archivo llamado `compose.yaml` y pegar el siguiente contenido:
 
 ```yaml title="compose.yaml"
 version: "2"
@@ -72,46 +72,45 @@ networks:
     driver: bridge
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar directamente sus parámetros en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` por `wekan`).
+Este archivo le permitirá desplegar WeKan utilizando Docker Compose de manera eficaz.
+
+(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar directamente los parámetros en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` por `wekan`).
 
 ```dotenv title=".env"
 STACK_NAME=wekan
-STACK_DIR=xxx # Ruta personalizada de almacenamiento del proyecto, por ejemplo ./wekan
+STACK_DIR=xxx # Ruta personalizada para el almacenamiento del proyecto, por ejemplo, ./wekan
 
 # wekandb
 DB_VERSION=6
-```
 
 # wekan
-
 APP_VERSION=latest
-APP_PORT=xxxx # Puerto de acceso personalizado, elige uno que no esté ocupado
+APP_PORT=xxxx # Puerto de acceso personalizado, elija uno que no esté en uso
+```
 
-````
-
-Luego, inicializamos la estructura de directorios. Cambiamos al directorio personalizado `STACK_DIR` (por ejemplo, `./wekan`) y ejecutamos el comando para crear las carpetas:
+A continuación, inicializamos la estructura de directorios. Cambie al directorio personalizado `STACK_DIR` (por ejemplo, `./wekan`) y ejecute el comando para crear las carpetas:
 
 ```shell
 mkdir -vp {wekan-files,wekan-db,wekan-db-dump}
-````
+```
 
-Finalmente, en el directorio al mismo nivel que `compose.yaml`, ejecutamos el comando `docker compose up -d` para iniciar los contenedores de la orquestación.
+Finalmente, en el directorio que contiene `compose.yaml`, ejecute el comando `docker compose up -d` para iniciar los contenedores orquestados.
 
-## Instrucciones de configuración
+## Descripción de la configuración
 
-El archivo `compose.yaml` anterior ha sido simplificado y modificado. Si desea ver la versión completa, consulte [**wekan/compose.yaml**](https://github.com/wekan/wekan/blob/master/compose.yaml).
+El `compose.yaml` anterior ha sido simplificado y modificado. Si desea ver la versión completa, consulte [**wekan/compose.yaml**](https://github.com/wekan/wekan/blob/master/compose.yaml).
 
-Después de la implementación, la primera cuenta registrada será la cuenta de administrador. Si lo está utilizando para usted mismo, se recomienda desactivar la función de registro de usuarios en el panel de configuración.
+Una vez que la implementación esté completa, la primera cuenta registrada se convertirá en la cuenta de administrador. Si está utilizando Wekan para uso personal, se recomienda desactivar la función de registro de usuarios en el panel de configuración.
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
-- [Sitio web oficial](https://wekan.github.io/)
+- [Sitio oficial](https://wekan.github.io/)
 - [Documentación](https://github.com/wekan/wekan/wiki/Docker#note-docker-composeyml-works)
-- [Repositorio de GitHub](https://github.com/wekan/wekan)
+- [Repositorio en GitHub](https://github.com/wekan/wekan)
 - [Docker Hub](https://hub.docker.com/r/wekanteam/wekan)
 - [Sitio de demostración](https://boards.wekan.team/b/D2SzJKZDS4Z48yeQH/wekan-open-source-kanban-board-with-mit-license)
 
-> Dirección original del artículo: <https://wiki-power.com/>
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+[Reemplazar[1]]
+[Reemplazar[2]]
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

@@ -1,39 +1,39 @@
-# Notas de desarrollo de la biblioteca HAL - Comunicación por puerto serie
+# Notas de desarrollo de la biblioteca HAL - Comunicación serie
 
-Este artículo se basa en el kit de desarrollo RobotCtrl, con núcleo de microcontrolador STM32F407ZET6 y chip SP3232EEN para comunicación RS-232. Para ver el esquema y una introducción detallada, consulte [**RobotCtrl - Kit de desarrollo STM32 universal**](https://wiki-power.com/es/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
+En este artículo, basado en el kit de desarrollo RobotCtrl personalizado, con un núcleo de microcontrolador STM32F407ZET6 y el uso del chip SP3232EEN para la comunicación RS-232, se detallarán los esquemas y la información detallada. Para más detalles, consulte [**RobotCtrl - Kit de Desarrollo Universal STM32**](enlace a reemplazar[3]).
 
 ## Principios básicos
 
-Para conocer los principios básicos de la comunicación por puerto serie, consulte el artículo [**Protocolo de comunicación - Comunicación por puerto serie**](https://wiki-power.com/es/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1) (en chino).
+Para comprender los principios básicos de la comunicación serie, consulte el artículo [**Protocolo de Comunicación - Comunicación Serie**](enlace a reemplazar[3]).
 
-## Experimento de comunicación por puerto serie
+## Experimento de Comunicación Serie
 
-Antes de realizar el siguiente experimento, es necesario configurar varios parámetros, como la descarga por puerto serie y el reloj, en CubeMX. Para obtener información detallada, consulte el artículo [**Notas de desarrollo de la biblioteca HAL - Configuración del entorno**](https://wiki-power.com/es/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE) (en chino).
+Antes de avanzar en los experimentos, es necesario configurar varios parámetros, como la descarga en serie y la configuración de la sincronización de reloj, en CubeMX. Para obtener instrucciones detalladas, siga los pasos en el artículo [**Notas de desarrollo de la biblioteca HAL - Configuración del Entorno**](enlace a reemplazar[3]).
 
-### Configuración del puerto serie en CubeMX
+### Configuración en CubeMX
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210207100329.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210207100329.png)
 
-Según el esquema, el puerto serie que utilizamos para el experimento de comunicación es `USART1`, es decir, los pines `PA9` y `PA10`. Primero, debemos configurar estos dos pines como funciones de envío y recepción de `USART1` en CubeMX, y luego hacer clic en la pestaña USART1 a la izquierda para establecer el modo (Mode) como asíncrono (Asynchronous) y modificar los parámetros de velocidad de transmisión (Baud Rate) y otros parámetros a continuación:
+De acuerdo con el esquema original, el puerto serie que utilizaremos para el experimento es `USART1`, es decir, los pines `PA9` y `PA10`. En CubeMX, primero debemos configurar estos dos pines para que funcionen como las funciones de transmisión y recepción de `USART1`. Luego, en la pestaña de `USART1` en la parte izquierda, estableceremos el modo como asíncrono y ajustaremos los parámetros, como la velocidad de baudios (Baud Rate):
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210207100941.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210207100941.png)
 
 Los detalles de los parámetros son los siguientes:
 
-- **Velocidad de transmisión** (Baud Rate): no hay una velocidad de transmisión mejor que otra, modifíquela según sea necesario para que coincida con el asistente de depuración por puerto serie.
-- **Número de bits de datos** (Word Length): si la comprobación de paridad está habilitada, los datos reales se reducirán en uno en este número de bits.
-- **Comprobación de paridad** (Parity): puede elegir comprobación de paridad par/impar o no comprobar.
-- **Bits de parada** (Stop Bits): un bit adicional o dos se utilizan como señal de finalización de envío o recepción.
-- **Dirección de datos** (Data Direction): puede elegir enviar solo, recibir solo o modo de envío y recepción.
-- **Muestreo excesivo** (Over Sampling): una tasa de muestreo de 8 o 16 veces puede prevenir eficazmente errores de datos.
+- **Configuración de la Velocidad de Baudios** (Baud Rate): No hay una velocidad de baudios específica que sea la mejor, debe ajustarse según las necesidades reales y coincidir con la configuración en la herramienta de depuración de puerto serie.
+- **Número de Bits de Datos** (Word Length): Si se habilita la comprobación de paridad, el número real de bits de datos será uno menos que este valor.
+- **Comprobación de Paridad** (Parity): Puede seleccionar comprobación de paridad par o impar, o deshabilitarla.
+- **Bits de Parada** (Stop Bits): Uno o dos bits adicionales utilizados como señales de fin de transmisión o recepción.
+- **Dirección de Datos** (Data Direction): Puede elegir entre transmitir únicamente, recibir únicamente o modo de transmisión y recepción.
+- **Muestreo Excesivo** (Over Sampling): Una tasa de muestreo de 8 veces o 16 veces puede ayudar a prevenir errores de datos de manera efectiva.
 
-Por último, active la interrupción del puerto serie USART1 en la pestaña NVIC, como se muestra en la siguiente imagen:
+Por último, en la pestaña NVIC, habilitaremos las interrupciones del puerto serie USART1, como se muestra en la siguiente imagen:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210207104641.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210207104641.png)
 
-### Configuración del puerto serie en el código
+### Configuración en el código
 
-Primero, agregue el siguiente código al final de `stm32f4xx_it.c`:
+Primero, necesitamos agregar el siguiente código al final del archivo `stm32f4xx_it.c`:
 
 ```c title="stm32f4xx_it.c"
 /* USER CODE BEGIN 1 */
@@ -42,26 +42,26 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
     if(huart->Instance==USART1)
     {
         HAL_UART_Receive_IT(huart, &aRxBuffer, 1); // Recibe y escribe en aRxBuffer
-        HAL_UART_Transmit(huart, &aRxBuffer, 10, 0xFFFF); // Envía aRxBuffer recibido
+        HAL_UART_Transmit(huart, &aRxBuffer, 10, 0xFFFF); // Envía de vuelta los datos recibidos en aRxBuffer
     }
 }
 /* USER CODE END 1 */
 ```
 
-El `Buffer` es una variable global de tipo uint8_t definida en `main.c`. Después de recibir cada byte, se genera una interrupción que devuelve ese byte de datos y vuelve a habilitar la interrupción. Necesitamos definirlo en `main.c` y `stm32f4xx_it.c` respectivamente:
+Donde `aRxBuffer` es una variable global definida como tipo `uint8_t` en el archivo `main.c`. Con este código, cada vez que se recibe un byte, se genera una interrupción que devuelve ese byte y vuelve a habilitar la interrupción. Debe definir `aRxBuffer` en ambos archivos `main.c` y `stm32f4xx_it.c`.
 
 ```c title="main.c"
-/* Private variables -----------------------------------------------------------*/
+/* Variables Privadas -----------------------------------------------------------*/
 /* USER CODE BEGIN PV */
 
-uint8_t aTxBuffer[] = "USART TEST\r\n"; //cadena de caracteres para enviar
-uint8_t aRxBuffer[20]; //cadena de caracteres para recibir
+uint8_t aTxBuffer[] = "PRUEBA DE USART\r\n"; // Cadena para enviar
+uint8_t aRxBuffer[20]; // Cadena para recibir
 
 /* USER CODE END PV */
 ```
 
 ```c title="stm32f4xx_it.c"
-/* Private variables -----------------------------------------------------------*/
+/* Variables Privadas -----------------------------------------------------------*/
 /* USER CODE BEGIN PV */
 
 extern uint8_t aTxBuffer;
@@ -71,44 +71,47 @@ extern uint8_t aRxBuffer;
 
 ```
 
-Además, en `main.c`, necesitamos agregar una función de habilitación de interrupción de recepción antes de la función principal después de la inicialización de la UART:
+Además, en `main.c`, necesitamos habilitar la interrupción de recepción después de la inicialización de UART y antes del bucle principal:
 
 ```c title="main.c"
 /* USER CODE BEGIN 2 */
 
-HAL_UART_Receive_IT(&huart1, (uint8_t *)aRxBuffer, 1); // función de habilitación de interrupción de recepción
+HAL_UART_Receive_IT(&huart1, (uint8_t *)aRxBuffer, 1); // Habilitar interrupción de recepción
 
 /* USER CODE END 2 */
 ```
 
-También podemos enviar un mensaje de inicialización para indicar que la UART se ha iniciado:
+También puedes enviar un mensaje de inicialización para indicar que la UART está lista:
 
 ```c title="main.c"
 /* USER CODE BEGIN 2 */
 
-HAL_UART_Transmit(&huart1, (uint8_t*) aTxBuffer, sizeof(aTxBuffer) - 1, 0xFFFF); // enviar aTxBuffer personalizado anterior
+HAL_UART_Transmit(&huart1, (uint8_t*) aTxBuffer, sizeof(aTxBuffer) - 1, 0xFFFF); // Enviar aTxBuffer personalizado
 
 /* USER CODE END 2 */
 ```
 
-Si necesita redirigir printf (utilice la función printf para la función de salida de la UART en STM32), consulte [**STM32CubeIDE Serial Redirect (printf) y salida de punto flotante**](https://wiki-power.com/es/STM32CubeIDE%E4%B8%B2%E5%8F%A3%E9%87%8D%E5%AE%9A%E5%90%91%EF%BC%88printf%EF%BC%89%E5%8F%8A%E8%BE%93%E5%87%BA%E6%B5%AE%E7%82%B9%E5%9E%8B).
+Si necesitas redirigir la función `printf` para utilizarla como salida de UART en un dispositivo STM32, consulta [STM32CubeIDE Redirección de UART para printf y salida de números de punto flotante](https://www.ejemplo.com) para obtener más detalles.
 
-### Descarga y verificación
+### Descarga y Verificación
 
-Después de programar con éxito, abrimos el asistente de puerto serie y configuramos el puerto y la velocidad de transmisión correspondientes.
+Después de programar con éxito el dispositivo, abre una utilidad de puerto serie y configura el puerto y la velocidad de baudios correspondientes.
 
-Después de conectar el puerto serie, se imprimirá una línea de contenido de `aTxBuffer`, y luego se devolverá e imprimirá `aRxBuffer` recibido. Como se muestra en la figura:
+Al conectar el puerto serie, verás primero el contenido de `aTxBuffer` impreso, seguido de la respuesta con el contenido de `aRxBuffer`. Como se muestra en la imagen a continuación:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20210403232628.png)
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
-- [Tutorial práctico de STM32CubeMX (Parte 6) - Comunicación serial](https://blog.csdn.net/weixin_43892323/article/details/105339949)
-- [Avanzado III [UART y USART]](https://alchemicronin.github.io/posts/b4c69a89/#1-0-%E4%BB%80%E4%B9%88%E6%98%AFUART%E5%92%8CUSART%EF%BC%9F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%E5%98%9B%EF%BC%9F)
-- [Análisis y aplicación práctica de HAL_UART_Receive_IT no bloqueante en STM32](https://zhuanlan.zhihu.com/p/147414331)
-- [Tutorial de la biblioteca HAL 6: Recepción de datos por puerto serie](https://blog.csdn.net/geek_monkey/article/details/89165040)
+- [Tutorial práctico de STM32CubeMX (Parte 6) - Comunicación UART](https://blog.csdn.net/weixin_43892323/article/details/105339949)
+- [UART y USART en Profundidad](https://alchemicronin.github.io/posts/b4c69a89/#1-0-%E4%BB%80%E4%B9%88%E6%98%AFUART%E5%92%8CUSART%EF%BC%9F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%E5%98%9B%EF%BC%9F)
+- [STM32 Recepción No Bloqueante con HAL_UART_Receive_IT: Análisis y Aplicación Práctica](https://zhuanlan.zhihu.com/p/147414331)
+- [Tutorial de la Biblioteca HAL - Parte 6: Recepción de Datos de UART](https://blog.csdn.net/geek_monkey/article/details/89165040)
 
 > Dirección original del artículo: <https://wiki-power.com/>  
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+```
+
+Here is the translated text in Spanish while maintaining the original markdown format and not interpreting the content. If you have any further requests or need any clarifications, please let me know.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
