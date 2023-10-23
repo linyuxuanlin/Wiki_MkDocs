@@ -1,20 +1,20 @@
-# StyleTransferCam - Style Transfer Camera based on ESP32-S3
+# StyleTransferCam - Style Transfer Camera Based on ESP32-S3
 
-![](https://img.wiki-power.com/d/wiki-media/img/202308152238959.png)
+![Image](https://img.wiki-power.com/d/wiki-media/img/202308152238959.png)
 
-When art meets technology, a new world unfolds before us. It is a wonderful visual feast and an exploration of infinite possibilities. StyleTransferCam is a style transfer camera based on ESP32-S3. It uses a machine learning technique called "style transfer". When you press the onboard button, it takes a picture of the current scene, blends it with a preset style template photo (such as Van Gogh's "Starry Night"), and generates a unique and creative work.
+When art and technology intersect, a new world unfolds before us. It is a visual feast and an exploration of infinite possibilities. StyleTransferCam is a style transfer camera based on ESP32-S3. It utilizes a machine learning technique called "style transfer." When you press the onboard button, it captures the current scene and blends it with a predefined style template photo, which can be something like Van Gogh's "Starry Night," creating a uniquely crafted artwork.
 
-StyleTransferCam consists of the following processes:
+StyleTransferCam consists of the following main processes:
 
-1. Press the onboard button - take a photo - upload it to a backend server (which can be a PC or an old phone).
-2. Automatically start the Python program for style transfer, process the photo, and output the stylized photo.
-3. If ESP32-S3 comes with a TFT screen, it can also be sent back to the screen for display.
+1. Press the onboard button - Capture a photo - Upload it to the backend server (which can also be a PC or an old phone).
+2. Automatically launch a Python program for style transfer, process the photo, and generate a stylized image.
+3. If the ESP32-S3 is equipped with a TFT screen, it can also display the image on the screen.
 
-![](https://img.wiki-power.com/d/wiki-media/img/202308152244791.png)
+![Image](https://img.wiki-power.com/d/wiki-media/img/202308152244791.png)
 
-## Test Onboard Button and LED
+## Testing the Onboard Button and LED
 
-First, a simple Arduino program is used to test whether the onboard button and LED can be used normally. The program sets up a hardware interrupt to capture the button press event, and the LED is turned on for half a second before automatically turning off.
+First, there's a simple Arduino program to test whether the onboard button and LED are functioning properly. The program sets up a hardware interrupt to detect button presses, illuminates the LED for half a second after the button press, and then automatically turns it off.
 
 ```cpp title="Onboard-Key-ctrl-LED_interrupt.ino"
 #define ONBOARD_KEY 47  // Onboard button
@@ -44,29 +44,31 @@ void buttonInterrupt() {
 }
 ```
 
-## Take and Upload Photo with Button
+## Capturing and Uploading Photos Using the Button
 
-Next, we write an Arduino program to use the onboard button to control ESP32-S3 to take a photo and upload it to a specified network location. This network location is set in the code as `serverName = "http://192.168.31.2:9000/upload"`, which needs to be modified to the address of your backend server. We use a backend Python file upload service (which will be explained in the following steps), and here it needs to be modified to the IP address of the machine running this service. (`9000` and `/upload` are set in the `receive-photo.py` program below)
+Next, we create an Arduino program to capture a photo with the ESP32-S3 using the onboard button and upload it to a specified network location. The server address for photo upload is set in the code as `serverName = "http://192.168.31.2:9000/upload"` and should be modified to match your backend server's address. We are using a backend Python file upload service (explained in the following steps), and here you should change it to the IP address of the machine running this service (`9000` and `/upload` are set in the `receive-photo.py` program in the subsequent steps).
 
 ```cpp title="Capture-and-Upload.ino"
 #include "esp_camera.h"
 #include <WiFi.h>
 #include <HTTPClient.h>
 
-// Server address for uploading photos
+// Server address for photo upload
 const char *serverName = "http://192.168.31.2:9000/upload";
 
+
+```markdown
 //
 // WARNING!!! PSRAM IC required for UXGA resolution and high JPEG quality
 //            Ensure ESP32 Wrover Module or other board with PSRAM is selected
-//            Partial images will be transmitted if image exceeds buffer size
+//            Partial images will be transmitted if the image exceeds the buffer size
 //
-//            You must select partition scheme from the board menu that has at least 3MB APP space.
-//            Face Recognition is DISABLED for ESP32 and ESP32-S2, because it takes up from 15
-//            seconds to process single frame. Face Detection is ENABLED if PSRAM is enabled as well
+//            You must select a partition scheme from the board menu that has at least 3MB of APP space.
+//            Face Recognition is DISABLED for ESP32 and ESP32-S2 because it takes up to 15
+//            seconds to process a single frame. Face Detection is ENABLED if PSRAM is also enabled.
 
 // ===================
-// Select camera model
+// Select the camera model
 // ===================
 #define PWDN_GPIO_NUM -1
 #define RESET_GPIO_NUM -1
@@ -89,7 +91,7 @@ const char *serverName = "http://192.168.31.2:9000/upload";
 #define ONBOARD_KEY 47 // Onboard button
 #define ONBOARD_LED 21 // Onboard LED
 
-volatile bool buttonPressed = false; // Button interrupt flag
+volatile bool buttonPressed = false; // Button falling edge interrupt flag
 
 #include "DFRobot_AXP313A.h"
 
@@ -102,21 +104,28 @@ const char *ssid = "WiFi_SSID";
 const char *password = "********";
 
 void startCameraServer();
+```
 
-void setup()
-{
+```cpp
+void setup() {
+  // Configure pins and initialize serial communication
   pinMode(ONBOARD_KEY, INPUT);
   pinMode(ONBOARD_LED, OUTPUT);
   attachInterrupt(digitalPinToInterrupt(ONBOARD_KEY), buttonInterrupt, FALLING);
   Serial.begin(115200);
   Serial.setDebugOutput(true);
   Serial.println();
-  while (axp.begin() != 0)
-  {
-    Serial.println("init error");
+
+  // Initialize AXP Power Management
+  while (axp.begin() != 0) {
+    Serial.println("Initialization error");
     delay(1000);
   }
-  axp.enableCameraPower(axp.eOV2640); // Set camera power
+
+  // Enable camera power supply for OV2640
+  axp.enableCameraPower(axp.eOV2640);
+
+  // Configure camera settings
   camera_config_t config;
   config.ledc_channel = LEDC_CHANNEL_0;
   config.ledc_timer = LEDC_TIMER_0;
@@ -137,15 +146,19 @@ void setup()
   config.pin_pwdn = PWDN_GPIO_NUM;
   config.pin_reset = RESET_GPIO_NUM;
   config.xclk_freq_hz = 20000000;
-  config.frame_size = FRAMESIZE_UXGA;   // Photo resolution. Default is FRAMESIZE_UXGA
-  config.pixel_format = PIXFORMAT_JPEG; // for streaming
-  // config.pixel_format = PIXFORMAT_RGB565; // for face detection/recognition
+  config.frame_size = FRAMESIZE_UXGA; // Photo resolution (default is FRAMESIZE_UXGA)
+  config.pixel_format = PIXFORMAT_JPEG; // Use PIXFORMAT_JPEG for streaming
+
+  // For face detection/recognition, use PIXFORMAT_RGB565
+  // config.pixel_format = PIXFORMAT_RGB565;
+
   config.grab_mode = CAMERA_GRAB_WHEN_EMPTY;
   config.fb_location = CAMERA_FB_IN_PSRAM;
-  config.jpeg_quality = 0; // 63; // Photo quality. Default is 12
+  config.jpeg_quality = 0; // Photo quality (default is 12)
   config.fb_count = 1;
 
   /*
+  Available photo resolutions:
   FRAMESIZE_QVGA (320 x 240)
   FRAMESIZE_CIF (352 x 288)
   FRAMESIZE_VGA (640 x 480)
@@ -155,74 +168,77 @@ void setup()
   FRAMESIZE_UXGA (1600 x 1200)
   */
 }
+```
 
-// if PSRAM IC present, init with UXGA resolution and higher JPEG quality
-// for larger pre-allocated frame buffer.
+```c
+// If a PSRAM IC is present, initialize with UXGA resolution and higher JPEG quality
+// for a larger pre-allocated frame buffer.
 if (config.pixel_format == PIXFORMAT_JPEG)
 {
-  if (psramFound())
-  {
-    config.jpeg_quality = 0; // 63; // Photo quality. Default is 10
-    config.fb_count = 2;
-    config.grab_mode = CAMERA_GRAB_LATEST;
-  }
-  else
-  {
-    // Limit the frame size when PSRAM is not available
-    config.frame_size = FRAMESIZE_UXGA; // Photo resolution. Default is FRAMESIZE_SVGA
-    config.fb_location = CAMERA_FB_IN_DRAM;
-  }
+    if (psramFound())
+    {
+        config.jpeg_quality = 0; // 63; // Photo quality. Default here is 10
+        config.fb_count = 2;
+        config.grab_mode = CAMERA_GRAB_LATEST;
+    }
+    else
+    {
+        // Limit the frame size when PSRAM is not available
+        config.frame_size = FRAMESIZE_UXGA; // Photo resolution. Default here is FRAMESIZE_SVGA
+        config.fb_location = CAMERA_FB_IN_DRAM;
+    }
 }
 else
 {
-  // Best option for face detection/recognition
-  config.frame_size = FRAMESIZE_UXGA; // FRAMESIZE_240X240;
+    // Best option for face detection/recognition
+    config.frame_size = FRAMESIZE_UXGA; // FRAMESIZE_240X240;
 #if CONFIG_IDF_TARGET_ESP32S3
-  config.fb_count = 2;
+    config.fb_count = 2;
 #endif
 }
 
 #if defined(CAMERA_MODEL_ESP_EYE)
-  pinMode(13, INPUT_PULLUP);
-  pinMode(14, INPUT_PULLUP);
+pinMode(13, INPUT_PULLUP);
+pinMode(14, INPUT_PULLUP);
 #endif
 
 // Camera initialization
 esp_err_t err = esp_camera_init(&config);
 if (err != ESP_OK)
 {
-  Serial.printf("Camera init failed with error 0x%x", err);
-  return;
+    Serial.printf("Camera initialization failed with error 0x%x", err);
+    return;
 }
 
 sensor_t *s = esp_camera_sensor_get();
-// Initial sensors are flipped vertically and colors are a bit saturated
+// Initial sensors are flipped vertically, and colors are a bit saturated
 if (s->id.PID == OV3660_PID)
 {
-  s->set_vflip(s, 1);       // Flip it back
-  s->set_brightness(s, 1);  // Increase brightness just a bit
-  s->set_saturation(s, -2); // Lower saturation
+    s->set_vflip(s, 1);       // Flip it back
+    s->set_brightness(s, 1);  // Increase the brightness slightly
+    s->set_saturation(s, -2); // Reduce the saturation
 }
-// Drop down frame size for higher initial frame rate
+// Reduce frame size for a higher initial frame rate if the pixel format is JPEG
 if (config.pixel_format == PIXFORMAT_JPEG)
 {
-  s->set_framesize(s, FRAMESIZE_QVGA);
+    s->set_framesize(s, FRAMESIZE_QVGA);
 }
 
 #if defined(CAMERA_MODEL_M5STACK_WIDE) || defined(CAMERA_MODEL_M5STACK_ESP32CAM)
-  s->set_vflip(s, 1);
-  s->set_hmirror(s, 1);
+s->set_vflip(s, 1);
+s->set_hmirror(s, 1);
 #endif
 
 #if defined(CAMERA_MODEL_ESP32S3_EYE)
-  s->set_vflip(s, 1);
+s->set_vflip(s, 1);
 #endif
 
 WiFi.begin(ssid, password);
 WiFi.setSleep(false);
+```
 
-The following code is in Arduino format:
-
+```cpp
+```cpp
 while (WiFi.status() != WL_CONNECTED)
 {
   delay(500);
@@ -251,7 +267,7 @@ void loop()
     delay(300);
     digitalWrite(ONBOARD_LED, LOW);
 
-    // Take photo
+    // Capture a photo
     camera_fb_t *fb = esp_camera_fb_get();
     if (!fb)
     {
@@ -259,10 +275,10 @@ void loop()
       return;
     }
 
-    // Create HTTP client
+    // Create an HTTP client
     HTTPClient http;
 
-    // Upload photo to server
+    // Upload the photo to the server
     http.begin(serverName);
     http.addHeader("Content-Type", "image/jpeg");
     int httpResponseCode = http.POST(fb->buf, fb->len);
@@ -270,35 +286,35 @@ void loop()
     {
       Serial.printf("Photo uploaded successfully, server response code: %d\n", httpResponseCode);
 
-      // Blink LED again to indicate successful upload
+      // Flash the LED to indicate successful upload
       digitalWrite(ONBOARD_LED, HIGH);
       delay(300);
       digitalWrite(ONBOARD_LED, LOW);
     }
     else
     {
-      Serial.printf("Photo upload failed, error code: %s\n", http.errorToString(httpResponseCode).c_str());
+      Serial.printf("Failed to upload photo, error code: %s\n", http.errorToString(httpResponseCode).c_str());
     }
     http.end();
 
-    // Release frame buffer
+    // Release the frame buffer
     esp_camera_fb_return(fb);
 
-    // delay(1000); // Wait for 1 second before taking and uploading another photo
+    // delay(1000); // Wait for 1 second before capturing and uploading again
 
-    buttonPressed = false; // Reset interrupt flag
+    buttonPressed = false; // Reset the interrupt flag
   }
 }
 
 void buttonInterrupt()
 {
-  buttonPressed = true; // Set falling edge interrupt flag
+  buttonPressed = true; // Set the falling edge interrupt flag
 }
 ```
 
-## Receiving photo uploads with a server
+## Service for Receiving Photo Uploads
 
-Here we use the Python flask library to build an HTTP server that receives photo uploads.
+Here, we use Python's Flask library to set up an HTTP server for receiving photo uploads.
 
 ```python title="receive-photo.py"
 from flask import Flask, request
@@ -310,30 +326,33 @@ app = Flask(__name__)
 def upload():
     try:
         image = request.data
+```
 
-# Save photos to specified directory
+```python
+# Save the photo to the specified directory
 with open('base.png', 'wb') as f:
     f.write(image)
-print("Photo saved, rendering...")
+print("Photo saved, rendering in progress...")
+
 # Launch the style transfer Python script
 subprocess.run(['python', './style_transfer.py'])
 
 return "Photo uploaded successfully", 200
 except Exception as e:
-    print("Failed to upload photo:", str(e))
-    return "Failed to upload photo", 500
+    print("Photo upload failed:", str(e))
+    return "Photo upload failed", 500
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=9000)
 ```
 
-Don't run the program yet. `style_transfer.py` is the style transfer program, which will be shown in the next step. The logic of this program is that if the photo sent back by ESP32-S3 is successfully received, the script for style transfer will be automatically called using `subprocess`.
+Before running the program, note that `style_transfer.py` is the style transfer program, which will be shown in the next step. The logic of this program is that if it successfully receives a photo from ESP32-S3, it will automatically launch the style transfer script using `subprocess`.
 
-Note that if the program encounters an exception and reports that the port is occupied, you can try changing `port=9000` to a different value.
+Please be aware that if the program encounters an exception and reports that the port is already in use, you can try changing the `port=9000` value to a different one.
 
 ## Style Transfer Program
 
-In the same directory as `receive-photo.py`, we use TensorFlow to write a Python program for style transfer. First, install the dependencies required by the program (due to the network environment in China, it is difficult to download TensorFlow, so you need to be patient), and then prepare a photo to be stylized in the same directory, named `base.png`; and a style reference image named `style_reference.png`. This image can be an artwork, such as Van Gogh's "Starry Night":
+In the same directory as `receive-photo.py`, we have a Python program for style transfer written using TensorFlow. First, install the dependencies required for the program (due to the network environment in China, TensorFlow may be challenging to download, so please be patient). Then, in the same directory, prepare an image to be stylized named `base.png`, and another image for style reference named `style_reference.png`. The style reference image can be an artwork, such as Van Gogh's "Starry Night":
 
 ![](https://img.wiki-power.com/d/wiki-media/img/202308152239917.png)
 
@@ -346,63 +365,104 @@ import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras.applications import vgg19
 
-base_image_path = "./base.png"  # Path to the image to be stylized
+base_image_path = "./base.png"  # Path to the image for style transfer
 style_reference_image_path = "./style_reference.png"  # Path to the style reference image
 
 result_prefix = "img_generated"
 
-# Set weights for each loss component
+# Weight settings for different loss components
 total_variation_weight = 1e-6
 style_weight = 1e-6
 content_weight = 2.5e-8
 
-# Size of the generated image
+# Image dimensions for generating the output
 width, height = keras.preprocessing.image.load_img(base_image_path).size
 img_nrows = 400
 img_ncols = int(width * img_nrows / height)
 
-# View the base image and style reference image to be used for style transfer
+# Use the following commands to view the base image and style reference image for style transfer
+
 display(Image(base_image_path))
 display(Image(style_reference_image_path))
 
 # Image preprocessing
+```
 
-# Image Preprocessing
+```python
+# Define a function to preprocess an image
+def preprocess_image(image_path):
+    # Use Keras library functions to open the image, resize it, and format it as an appropriate tensor
+    img = keras.preprocessing.image.load_img(
+        image_path, target_size=(img_nrows, img_ncols)
+    )
+    img = keras.preprocessing.image.img_to_array(img)
+    img = np.expand_dims(img, axis=0)
+    img = vgg19.preprocess_input(img)
+    return tf.convert_to_tensor(img)
 
-The `preprocess_image` function uses Keras library functions to open an image, resize it to the appropriate tensor size, and format it as a tensor. The image is then preprocessed using VGG19.
+# Define a function to deprocess an image
+def deprocess_image(x):
+    # Reshape the tensor to create a valid image
+    x = x.reshape((img_nrows, img_ncols, 3))
+    # Remove zero center by adding mean pixel values
+    x[:, :, 0] += 103.939
+    x[:, :, 1] += 116.779
+    x[:, :, 2] += 123.68
+    # Convert from 'BGR' to 'RGB'
+    x = x[:, :, ::-1]
+    x = np.clip(x, 0, 255).astype("uint8")
+    return x
 
-The `deprocess_image` function converts the tensor back into a valid image. The function removes the zero center by averaging the pixels, converts the image from 'BGR' to 'RGB', and clips the values to be between 0 and 255.
+# Calculate the gram matrix of an image tensor (the product of feature matrix and its transpose)
+def gram_matrix(x):
+    x = tf.transpose(x, (2, 0, 1))
+    features = tf.reshape(x, (tf.shape(x)[0], -1))
+    gram = tf.matmul(features, tf.transpose(features))
+    return gram
 
-The `gram_matrix` function calculates the gram matrix of an image tensor. The gram matrix is the product of the feature matrix and its transpose.
+# Style loss function aims to preserve the style of the reference image in the generated image
+# It is based on the gram matrix (style extraction) from the style reference image
+# and the feature maps from the generated image
+def style_loss(style, combination):
+    S = gram_matrix(style)
+    C = gram_matrix(combination)
+    channels = 3
+    size = img_nrows * img_ncols
+    return tf.reduce_sum(tf.square(S - C)) / (4.0 * (channels ** 2) * (size ** 2))
 
-# Style Loss
+# Content loss function is designed to maintain the content of the base image in the generated image
+def content_loss(base, combination):
+    return tf.reduce_sum(tf.square(combination - base)
 
-The `style_loss` function is designed to maintain the style of the reference image in the generated image. It is based on the gram matrix (style extraction) from the style reference image and the feature map from the generated image.
+# The third loss function is the total variation loss, designed to make the generated image locally coherent
+def total_variation_loss(x):
+    a = tf.square(
+        x[:, :img_nrows - 1, :img_ncols - 1, :] - x[:, 1:, :img_ncols - 1, :]
+    )
+    b = tf.square(
+        x[:, :img_nrows - 1, :img_ncols - 1, :] - x[:, :img_nrows - 1, 1:, :]
+    )
+    return tf.reduce_sum(tf.pow(a + b, 1.25))
 
-# Content Loss
+# Next, let's create a feature extraction model that retrieves intermediate activations of VGG19 (based on layer names).
 
-The `content_loss` function is designed to maintain the content of the base image in the generated image.
+# Replace with the path to your locally downloaded weight file
+weights_path = "./dependencies/vgg19_weights_tf_dim_ordering_tf_kernels_notop.h5"
+```
 
-# Total Variation Loss
-
-The `total_variation_loss` function is designed to maintain local coherence in the generated image.
-
-# Feature Extraction Model
-
-The feature extraction model retrieves the intermediate activations of VGG19 based on their names. The weights for the model are stored locally in the `weights_path` variable.
-
-# Building a VGG19 model with pre-trained ImageNet weights
+```python
+# Create a VGG19 model with pre-trained ImageNet weights
 model = vgg19.VGG19(weights=weights_path, include_top=False)
 
-# Get symbolic outputs of each "key" layer (we gave them unique names)
+# Obtain symbolic outputs for each "key" layer (we assign them unique names).
 outputs_dict = dict([(layer.name, layer.output) for layer in model.layers])
 
-# Build a model that returns the activation values for every layer in VGG19 (as a dictionary)
+# Build a model that returns activations for each layer in VGG19 as a dictionary.
 feature_extractor = keras.Model(inputs=model.inputs, outputs=outputs_dict)
 
-# Finally, here is the code to compute the style transfer loss.
+# Finally, here's the code for computing style transfer loss.
 
-# List of layers to use for style loss
+# List of layers for style loss
 style_layer_names = [
     "block1_conv1",
     "block2_conv1",
@@ -410,7 +470,8 @@ style_layer_names = [
     "block4_conv1",
     "block5_conv1",
 ]
-# Layer to use for content loss
+
+# Layer for content loss
 content_layer_name = "block5_conv2"
 
 
@@ -420,7 +481,7 @@ def compute_loss(combination_image, base_image, style_reference_image):
     )
     features = feature_extractor(input_tensor)
 
-    # Initialize loss
+    # Initialize the loss
     loss = tf.zeros(shape=())
 
     # Add content loss
@@ -430,6 +491,7 @@ def compute_loss(combination_image, base_image, style_reference_image):
     loss = loss + content_weight * content_loss(
         base_image_features, combination_features
     )
+
     # Add style loss
     for layer_name in style_layer_names:
         layer_features = features[layer_name]
@@ -442,9 +504,10 @@ def compute_loss(combination_image, base_image, style_reference_image):
     loss += total_variation_weight * total_variation_loss(combination_image)
     return loss
 
+# Add the tf.function decorator to the loss computation and gradient computation for faster compilation
+```
 
-# Add the tf.function decorator to the loss and gradient computation to make it run faster during compilation.
-
+```python
 @tf.function
 def compute_loss_and_grads(combination_image, base_image, style_reference_image):
     with tf.GradientTape() as tape:
@@ -453,7 +516,7 @@ def compute_loss_and_grads(combination_image, base_image, style_reference_image)
     grads = tape.gradient(loss, combination_image)
     return loss, grads
 
-# Repeat the batch gradient descent steps to minimize the loss as much as possible, and save the generated images every 100 iterations.
+# Perform batch gradient descent steps repeatedly to minimize the loss as much as possible and save the generated images every 100 iterations.
 # Reduce the learning rate by 0.96 every 100 steps.
 
 optimizer = keras.optimizers.SGD(
@@ -478,22 +541,26 @@ for i in range(1, iterations + 1):
         fname = result_prefix + "_at_iteration_%d.png" % i
         keras.preprocessing.image.save_img(fname, img)
 
-# After 4000 iterations, output the result:
+# After 4000 iterations, the output is as follows:
 display(Image(result_prefix + "_at_iteration_4000.png"))
 ```
 
-Now, you can try running this Python program separately. If the program does not report an error, wait for a while (the specific time depends on the performance of your computer), and you can find the stylized photos after the iterative style transfer in the current directory.
+Now, you can try running this Python program on its own. If the program runs without errors, wait for a little while (the exact time depends on your computer's performance), and you will find the stylized photos in the current directory after the iterative style transfer.
 
-If this program can run normally, you can directly run `receive-photo.py` to receive photos taken by ESP32-S3 and generate stylized photos automatically.
+If this program runs successfully, you can run `receive-photo.py` to automatically receive photos captured by ESP32-S3 and generate stylized photos.
 
-![](https://img.wiki-power.com/d/wiki-media/img/202308152246623.png)
+![Stylized Image](https://img.wiki-power.com/d/wiki-media/img/202308152246623.png)
 
 ## References and Acknowledgments
 
 - [Style Transfer TensorFlow Implementation](https://zhuanlan.zhihu.com/p/349072196)
 - [Neural Style Transfer](https://www.tensorflow.org/tutorials/generative/style_transfer?hl=zh-cn)
 - [Camera Usage](https://wiki.dfrobot.com.cn/_SKU_DFR0975_FireBeetle_2_Board_ESP32_S3_Advanced_Tutorial#target_12)
+```
 
-Sorry, there is no Chinese article provided to be translated. Please provide the article for translation.
+Certainly, here is the translation:
+
+> Original: <https://wiki-power.com/>
+> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

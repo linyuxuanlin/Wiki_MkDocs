@@ -1,167 +1,171 @@
 # Desarrollo de hardware STM32F4
 
-Este artículo explicará el sistema mínimo de MCU de STM32F4 (alimentación, reloj, reinicio, modo de arranque, gestión de depuración).
+En este artículo, se explicará el sistema mínimo de MCU de STM32F4 (energía, reloj, restablecimiento, modos de inicio, gestión de depuración).
 
-## Alimentación
+## Energía
 
-La tensión de trabajo normal de STM32F4 es de 1,8-3,6 V (en algunos casos puede ser inferior a 1,7 V, como se indica en la hoja de datos), y cuenta con un regulador interno que proporciona una fuente de alimentación digital de 1,2 V.
+La tensión de funcionamiento normal de STM32F4 es de 1,8 a 3,6 V (en algunas situaciones puede ser reducida por debajo de 1,7 V, como se indica en el datasheet), con un regulador interno que proporciona una fuente de alimentación digital de 1,2 V.
 
-Cuando se interrumpe la alimentación principal VDD, se puede suministrar energía a la RTC y a los registros de copia de seguridad a través del voltaje de VBAT.
+Cuando la fuente de alimentación principal VDD se desconecta, la tensión de VBAT se utiliza para alimentar el RTC y los registros de respaldo.
 
 ### Introducción a los pines
 
-#### Alimentación y voltaje de referencia ADC
+#### Alimentación y voltaje de referencia del ADC
 
-Para mejorar la precisión de conversión, ADC cuenta con pines de alimentación independientes que pueden filtrarse y aislar el ruido de la PCB.
+Para mejorar la precisión de la conversión, el ADC cuenta con pines de alimentación independientes que pueden filtrarse y aislar el ruido en la PCB.
 
-La fuente de voltaje ADC proviene del pin VDDA independiente. En el diseño del circuito, se debe conectar VSSA al mismo suministro de tierra en lugar de VSS.
+La fuente de voltaje del ADC proviene del pin VDDA independiente. Al diseñar el circuito, asegúrese de conectar VSSA al mismo suministro de tierra, no a VSS.
 
-Si el encapsulado del chip tiene más de 100 pines, habrá pines VREF+ y VREF-, que se utilizan para proporcionar voltaje de referencia externo al ADC. VREF- debe conectarse a VSSA interno. Si el número de pines del chip es inferior a 100, estos dos pines no se conectan y se conectan internamente a VDDA y VSSA.
+Si el encapsulado del chip tiene más de 100 pines, encontrará los pines VREF+ y VREF-, que se utilizan para proporcionar una referencia de voltaje externa al ADC. VREF- debe conectarse a VSSA interna. Si el chip tiene menos de 100 pines, estos dos pines no se dirigen hacia el exterior, ya que están conectados internamente a VDDA y VSSA.
 
-#### Alimentación de la batería de respaldo
+#### Alimentación de batería de respaldo
 
-Si se necesita mantener el contenido del registro de copia de seguridad después de que se interrumpe VDD, se puede conectar VBAT a una batería u otra fuente de alimentación.
+Si es necesario mantener los registros de respaldo después de que VDD se desconecte, VBAT se puede conectar a una batería u otra fuente de energía.
 
-VBAT también puede suministrar energía a la RTC, controlada por el circuito de reinicio por caída de energía (PDR) integrado en el módulo de reinicio.
+VBAT también puede alimentar el RTC y es controlado por el circuito de reinicio por caída de voltaje (PDR) incorporado en el módulo de reinicio.
 
 #### Regulador interno
 
-El regulador interno siempre está habilitado después del reinicio y tiene tres modos de funcionamiento:
+El regulador interno siempre está habilitado después del reinicio y opera en tres modos:
 
-- Ejecución: el regulador proporciona suministro de energía de plena potencia de 1,2 V (núcleo, memoria y periféricos digitales).
-- Parada: el regulador proporciona suministro de energía de baja potencia de 1,2 V al núcleo y conserva el contenido de los registros y la SRAM.
-- En espera: el regulador se apaga. Se perderá el contenido de los registros y la SRAM, excepto el circuito de espera y el dominio de copia de seguridad.
+- Funcionamiento: el regulador proporciona una fuente de alimentación a 1.2 V para el dominio (núcleo, memoria y periféricos digitales).
+- Parada: el regulador suministra una fuente de alimentación de baja potencia a 1.2 V al dominio, mientras que se mantienen los registros y el contenido de la SRAM.
+- En espera: el regulador se apaga. El contenido de los registros y la SRAM se pierde, a excepción de los circuitos en espera y el dominio de respaldo.
 
 ### Diseño del circuito
 
 A continuación se muestra el método de diseño de los pines de alimentación:
 
 - **VDD**
-  - **Condensador de desacoplamiento**: un condensador cerámico/tantalio de 10 μF en total, más un condensador cerámico de 100 nF conectado a cada pin VDD.
+  - **Capacitores de desacoplamiento**: Un capacitor cerámico/tantalio de 10 μF en total, más un capacitor cerámico de 100 nF junto a cada pin VDD.
 - **VDDA**
-  - **Condensador de desacoplamiento**: un condensador cerámico de 100 nF + un condensador cerámico/tantalio de 1 µF.
-  - **Filtrar el ruido analógico**: se puede conectar a VDD mediante un núcleo magnético.
+  - **Capacitores de desacoplamiento**: Un capacitor cerámico de 100 nF y un capacitor cerámico/tantalio de 1 μF.
+  - **Filtrado de ruido analógico**: Puede conectarse a VDD mediante un inductor de filtro.
 - **VREF+**
-  - **Condensador de desacoplamiento**: si se utiliza la función VREF+, se necesitan un condensador de 100 nF y otro de 1 µF.
-  - **Filtrar el ruido analógico**: se puede conectar a VDDA mediante una resistencia de 47 Ω.
-- **VBAT**: conecte una batería externa (1,65 V-3,6 V). Si no se necesita una fuente de alimentación de batería, conéctela al pin VDD.
-- **VCAP1/VCAP2**: conecte un condensador cerámico de 2,2 µF (ESR < 2 Ω) a tierra para cada uno; si solo hay VCAP1, conecte un condensador cerámico de 4,7 µF (ESR < 1 Ω).
+  - **Capacitores de desacoplamiento**: Si se habilita la función VREF+, debe agregarse un capacitor de 100 nF y otro de 1 μF.
+  - **Filtrado de ruido analógico**: Puede conectarse a VDDA a través de una resistencia de 47 Ω.
+- **VBAT**: Conéctelo a una batería externa (1.65 V-3.6 V). Si no se necesita una fuente de batería, conéctelo al pin VDD.
+- **VCAP1/VCAP2**: Conecte un par de capacitores cerámicos de 2.2 μF a tierra (ESR < 2 Ω). Si solo hay un VCAP1, conecte un capacitor cerámico de 4.7 μF (ESR < 1 Ω).
 
-### Reinicio y supervisión de alimentación
+### Restablecimiento y supervisión de la alimentación
 
-#### Reinicio por encendido (POR) / Reinicio por caída de energía (PDR)
+#### Restablecimiento en encendido (POR) / Restablecimiento por caída de voltaje (PDR)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210529143014.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210529143014.png)
 
-El chip STM32F4 integra el circuito POR/PDR, y las características específicas del reinicio por encendido / caída de energía se muestran en la figura anterior. Si se desea deshabilitar esta función, se puede hacer a través del pin PDR_ON.
+El chip STM32F4 integra un circuito POR/PDR. Las características específicas del restablecimiento en encendido/caída de voltaje se muestran en la imagen anterior. Si es necesario deshabilitar esta función, puede hacerlo a través del pin PDR_ON.
 
-#### Reinicio del sistema
+#### Restablecimiento del sistema
 
-Las condiciones de activación del reinicio del sistema son:
+Las condiciones para el restablecimiento del sistema son las siguientes:
 
-- Bajo nivel de voltaje en el pin NRST (reinicio externo)
-- Finalización del conteo del perro guardián de ventana (reinicio WWDG)
-- Finalización del conteo del perro guardián independiente (reinicio IWDG)
-- Reinicio de software (reinicio SW)
-- Reinicio de gestión de baja potencia
+- Nivel bajo en el pin NRST (restablecimiento externo).
+- Fin de la cuenta del reloj del perro guardián de ventana (WWDG).
+- Fin de la cuenta del perro guardián independiente (IWDG).
+- Restablecimiento por software (restablecimiento por software).
+- Restablecimiento de gestión de baja potencia.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210529143925.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210529143925.png)
 
-Se puede determinar la fuente de reinicio mediante la visualización de la bandera de reinicio en el registro de control / estado (RCC_CSR).
+Puede determinar la fuente de restablecimiento consultando las señales de restablecimiento en el registro de control y estado (RCC_CSR).
 
-Incluso si no se necesita un circuito de reinicio externo, se recomienda agregar un condensador de descarga para mejorar el rendimiento de EMS.
+Incluso si no se requiere un circuito de restablecimiento externo, se recomienda agregar un condensador de pull-down adicional para mejorar el rendimiento de EMC.
 
 ## Reloj
 
-En STM32F4, se pueden utilizar tres fuentes de reloj diferentes para impulsar el reloj del sistema (SYSCLK):
+En STM32F4, puede usar tres fuentes de reloj diferentes para alimentar el reloj del sistema (SYSCLK):
 
-- HSI (señal de reloj interno de alta velocidad)
-- HSE (señal de reloj externo de alta velocidad)
+- HSI (señal de reloj interna de alta velocidad)
+- HSE (señal de reloj externa de alta velocidad)
 - Reloj PLL
 
 También hay dos fuentes de reloj secundarias:
 
-- LSI RC (32 kHz RC interno de baja velocidad), utilizado para conducir un watchdog independiente, también se puede utilizar para despertar automáticamente en modo de apagado / espera RTC.
-- LSE (32.768 kHz cristal externo de baja velocidad), utilizado para conducir RTC.
+- LSI RC (RC interno de baja velocidad de 32 kHz), utilizado para alimentar el reloj independiente del perro guardián y también se puede utilizar para la activación automática en el modo de parada/standby del RTC.
+- LSE (cristal externo de baja velocidad de 32.768 kHz), utilizado para alimentar el RTC.
 
-Si se necesita reducir el consumo de energía, cada reloj se puede apagar individualmente cuando no se está utilizando.
+Si desea reducir el consumo de energía, cada reloj se puede apagar cuando no se utiliza.
 
-### Reloj externo de alta velocidad (HSE)
+```markdown
+### External High-Speed Clock (HSE)
 
-Hay dos formas de proporcionar la fuente de reloj HSE: fuente externa (activa) y cristal externo / resonador cerámico (pasivo).
+La fuente de reloj HSE puede proporcionarse de dos maneras: fuente externa (activa) y oscilador de cristal externo / resonador cerámico (inactivo).
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210529145726.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210529145726.png)
 
-#### Fuente externa (bypass HSE)
+#### Fuente Externa (Derivación HSE)
 
-Si se elige la entrada de señal de reloj externa activa, se debe proporcionar una fuente de reloj de 1-50 MHz, OSC_IN se conecta a una señal de reloj externa con un ciclo de trabajo de aproximadamente el 50% (onda cuadrada, senoidal o triangular), y OSC_OUT se mantiene en alta impedancia.
+Si se elige la entrada de señal de reloj externa activa, se debe suministrar una fuente de reloj de 1-50 MHz, con el pin OSC_IN conectado a una señal de reloj externa con un ciclo de trabajo de aproximadamente el 50% (forma de onda cuadrada, senoidal o triangular), mientras que el pin OSC_OUT debe permanecer en alta impedancia.
 
-#### Cristal externo / resonador cerámico (HSE cristal)
+#### Oscilador de Cristal Externo / Resonador Cerámico (Cristal HSE)
 
-Si se utiliza un cristal externo, el rango de frecuencia es de 4-26 MHz. Al diseñar el circuito, el resonador y la capacidad de carga deben estar lo más cerca posible de los pines del oscilador para minimizar la distorsión de salida y el tiempo de estabilización de la oscilación. El valor de la capacidad de carga debe ajustarse adecuadamente según el oscilador seleccionado.
+Si se opta por el uso de un oscilador de cristal externo, la frecuencia debe estar en el rango de 4-26 MHz. Al diseñar el circuito, el resonador y la capacitancia de carga deben estar lo más cerca posible de los pines del oscilador para minimizar la distorsión de la salida y el tiempo de arranque del oscilador. El valor de la capacitancia de carga debe ajustarse adecuadamente según el oscilador seleccionado.
 
-CL1 y CL2 deben tener el mismo tamaño (5-25 pF, valor típico 25 pF) de capacidad de cerámica.
+Se deben utilizar capacitores cerámicos CL1 y CL2 de tamaño idéntico (5-25 pF, valor típico de 25 pF).
 
-### Reloj externo de baja velocidad (LSE)
+### External Low-Speed Clock (LSE)
 
-Hay dos formas de proporcionar la fuente de reloj LSE: fuente externa (activa) y cristal externo / resonador cerámico (pasivo).
+La fuente de reloj LSE puede proporcionarse de dos maneras: fuente externa (activa) y oscilador de cristal externo / resonador cerámico (inactivo).
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210529152354.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210529152354.png)
 
-#### Fuente externa (bypass LSE)
+#### Fuente Externa (Derivación LSE)
 
-Si se elige la entrada de señal de reloj externa activa, se debe proporcionar una fuente de reloj de menos de 1 MHz, OSC32_IN se conecta a una señal de reloj externa con un ciclo de trabajo de aproximadamente el 50% (onda cuadrada, senoidal o triangular), y OSC32_OUT se mantiene en alta impedancia.
+Si se elige la entrada de señal de reloj externa activa, se debe suministrar una fuente de reloj de menos de 1 MHz, con el pin OSC32_IN conectado a una señal de reloj externa con un ciclo de trabajo de aproximadamente el 50% (forma de onda cuadrada, senoidal o triangular), mientras que el pin OSC32_OUT debe permanecer en alta impedancia.
 
-#### Cristal externo / resonador cerámico (LSE cristal)
+#### Oscilador de Cristal Externo / Resonador Cerámico (Cristal LSE)
 
-Si se utiliza un cristal externo, el rango de frecuencia es de 32.768 kHz y se puede utilizar como fuente de reloj RTC. Al diseñar el circuito, el resonador y la capacidad de carga deben estar lo más cerca posible de los pines del oscilador para minimizar la distorsión de salida y el tiempo de estabilización de la oscilación. El valor de la capacidad de carga debe ajustarse adecuadamente según el oscilador seleccionado.
+Si se opta por el uso de un oscilador de cristal externo, la frecuencia debe ser de 32.768 kHz y puede usarse como fuente de reloj para RTC. Al diseñar el circuito, el resonador y la capacitancia de carga deben estar lo más cerca posible de los pines del oscilador para minimizar la distorsión de la salida y el tiempo de arranque del oscilador. El valor de la capacitancia de carga debe ajustarse adecuadamente según el oscilador seleccionado.
 
-## Modo de arranque
+## Modo de Arranque
 
-El modo de arranque también se llama modo de autorecuperación. Se pueden seleccionar tres modos de arranque diferentes mediante los pines BOOT0 y BOOT1: arranque desde la memoria flash principal, arranque desde la memoria del sistema, arranque desde la SRAM incorporada.
+El modo de arranque, también conocido como modo de autoarranque, se puede seleccionar mediante los pines BOOT0 y BOOT1 para elegir entre tres modos de arranque diferentes: arranque desde la memoria flash principal, arranque desde la memoria de sistema o arranque desde la SRAM integrada.
 
-Para obtener más información sobre el modo de arranque, consulte el artículo [**Modo de arranque de STM32**](https://wiki-power.com/es/STM32%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F)
+Para obtener más detalles sobre los modos de arranque, consulte el artículo [**Modos de Arranque de STM32**](https://wiki-power.com/STM32%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F) (en inglés).
 
-En general, conectamos una resistencia de 10 K en serie con BOOT0 y BOOT1 es arbitrario. Si es necesario cambiar de modo, se puede diseñar de la siguiente manera:
+En condiciones normales, se recomienda conectar un resistor de 10 KΩ a BOOT0, mientras que BOOT1 puede dejarse sin conexión. Si es necesario cambiar el modo de arranque, puede seguir el diseño a continuación:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200605163537.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200605163537.png)
 
-## Gestión de depuración
+## Gestión de Depuración
 
-STM32 generalmente utiliza el protocolo SWJ para la descarga y depuración.
+En general, los dispositivos STM32 utilizan el protocolo SWJ para la depuración y descarga de firmware.
 
-### Puerto de depuración SWJ
+### Puerto de Depuración SWJ
 
-El STM32F4 tiene una interfaz SWJ (SW/JTAG) integrada. Entre ellas, SW-DP tiene 2 pines (reloj + datos) y JTAG-DP tiene 5 pines, algunos de los cuales son compartidos. Para obtener más información, consulte el artículo [**Diferencias y conexiones entre SWD y JTAG**](https://wiki-power.com/es/SWD%E4%B8%8EJTAG%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB)
+Los microcontroladores STM32F4 incorporan una interfaz SWJ (SW/JTAG). En esta interfaz, SW-DP utiliza 2 pines (reloj + datos) y JTAG-DP utiliza 5 pines, algunos de los cuales son compartidos. Para conocer las diferencias detalladas, consulte el artículo [**Diferencias y Conexiones entre SWD y JTAG**](https://wiki-power.com/SWD%E4%B8%8EJTAG%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB) (en inglés).
 
-En STM32F4, la asignación de pines SWJ es la siguiente:
+En los microcontroladores STM32F4, la asignación de pines para SWJ es la siguiente:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210529210858.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210529210858.png)
 
-### Pull-up y pull-down internos de JTAG
+### Resistencias Pull-up/Pull-down Internas para JTAG
 
-Los pines JTAG no pueden estar en el aire (porque están conectados directamente a los disparadores utilizados para el control de depuración de modo), por lo que se integran en el chip para tirar hacia arriba y hacia abajo:
+Los pines JTAG no deben dejarse flotantes, ya que están directamente relacionados con los disparadores utilizados para el control del modo de depuración. Por lo tanto, en el interior del chip, se han incorporado resistencias pull-up/pull-down para estos pines:
 
-- **JNTRST**: Pull-up interno
-- **JTDI**: Pull-up interno
-- **JTMS/SWDIO**: Pull-up interno
-- **TCK/SWCLK**: Pull-down interno
+- **JNTRST**: pull-up interno
+- **JTDI**: pull-up interno
+- **JTMS/SWDIO**: pull-up interno
+- **TCK/SWCLK**: pull-down interno
 
-Después de liberar el I/O de JTAG mediante software, se puede utilizar como un puerto I/O normal.
+Una vez que el software libera las E/S JTAG, se pueden utilizar como puertos de E/S normales.
 
-### Diseño de hardware para conectar un conector JTAG estándar
+### Diseño de Hardware para Conectar un Enchufe JTAG Estándar
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210529211840.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210529211840.png)
 
-## Diseño de referencia
+## Diseño de Referencia
+```
 
+```markdown
 ![](https://img.wiki-power.com/d/wiki-media/img/20210529213723.png)
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
-- [AN4488: Getting started with STM32F4xxxx MCU hardware development](https://www.st.com/content/ccc/resource/technical/document/application_note/76/f9/c8/10/8a/33/4b/f0/DM00115714.pdf/files/DM00115714.pdf/jcr:content/translations/en.DM00115714.pdf)
+- [AN4488: Inicio del desarrollo de hardware de MCU STM32F4xxxx](https://www.st.com/content/ccc/resource/technical/document/application_note/76/f9/c8/10/8a/33/4b/f0/DM00115714.pdf/files/DM00115714.pdf/jcr:content/translations/en.DM00115714.pdf)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
+> Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+```
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

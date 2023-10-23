@@ -1,48 +1,48 @@
 # STM32 Boot Modes
 
-STM32 provides BOOT0 and BOOT1 pins, which can be used to select the boot mode after power-on reset by setting the status of these pins.
+The STM32 microcontroller offers the flexibility of choosing the startup mode by configuring the BOOT1 and BOOT0 pins. These pins determine the boot behavior of the microcontroller upon power-on or reset.
 
-There are three boot modes:
+Here are the three available startup modes:
 
 ## 1. Boot from Main Flash Memory
 
 | BOOT0 | BOOT1 |
 | :---: | :---: |
-|  Low  |  Any  |
+|  Low  | Any   |
 
-This is the default configuration for booting from the on-chip flash memory (i.e. the flash memory with parameters of 64K/128K/256K).
+In this mode, the microcontroller starts up from the onboard Flash memory. This is the typical configuration for normal operation when using Flash memory with sizes of 64K, 128K, or 256K.
 
 ## 2. Boot from System Memory
 
 | BOOT0 | BOOT1 |
 | :---: | :---: |
-| High  |  Low  |
+|  High | Low   |
 
-This mode is used when downloading programs via serial port/ISP.
+This mode is used when downloading firmware via serial communication (e.g., UART) or in-system programming (ISP). It allows for programming and debugging of the microcontroller.
 
 ## 3. Boot from Internal SRAM
 
 | BOOT0 | BOOT1 |
 | :---: | :---: |
-| High  | High  |
+|  High | High  |
 
-There are two uses for booting from internal SRAM:
+Starting from internal SRAM serves two primary purposes:
 
-- To improve efficiency when repeatedly downloading and debugging (because downloading to flash is relatively slow). Note that the program will be lost after power-off.
-- To release the chip's read protection function/erase flash to restore factory settings.
+- It enhances efficiency during repetitive firmware downloads and debugging processes because downloading to Flash memory is relatively slower. However, it's important to note that power loss will result in the loss of the program.
+- It is used for disabling read protection and erasing the Flash memory to restore it to its factory state.
 
-## Supplement
+## Additional Information
 
-In the above table, "High" and "Low" indicate connection to a 10K resistor pull-up/pull-down, not directly to VCC/GND.
+In the tables above, "High" and "Low" indicate the states when the pins are connected to a 10KΩ pull-up or pull-down resistor, rather than directly connected to VCC or GND.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200603134417.jpg)
+![Boot Mode Configuration](https://img.wiki-power.com/d/wiki-media/img/20200603134417.jpg)
 
-## Reference and Acknowledgement
+## References and Acknowledgments
 
 - [Configuration of STM32 BOOT0 and BOOT1](https://blog.csdn.net/Creative_Team/article/details/79315876)
-- [Configuration and Function of STM32 BOOT Mode](https://blog.csdn.net/weixin_34349320/article/details/86231081?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase)
+- [STM32 BOOT Mode Configuration and Its Applications](https://blog.csdn.net/weixin_34349320/article/details/86231081?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase)
 
-> Original: <https://wiki-power.com/>  
+> Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

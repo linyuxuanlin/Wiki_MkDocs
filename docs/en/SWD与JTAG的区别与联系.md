@@ -1,75 +1,75 @@
-# Differences and Connections between SWD and JTAG
+# Differences and Connections Between SWD and JTAG
 
-As we all know, SWD and JTAG are commonly used interfaces for downloading programs and debugging microcontrollers. Their similarities are:
+As we all know, SWD and JTAG are common interfaces for programming and debugging microcontrollers. They share the following features:
 
-- **Power supply voltage range**: 1.2 V - 5.5 V
-- **Clock rate**: Configurable up to 10 MHz
-- **SWO trace capture**: Data rate up to 50 Mbit/s (UART/NRZ mode)
-- **Isolation voltage**: 1 kV
-- **Hot plug**: Supported
+- **Voltage Range**: 1.2 V - 5.5 V
+- **Clock Speed**: Configurable up to 10 MHz
+- **SWO Trace Capture**: Data rate of up to 50 Mbit/s (UART/NRZ mode)
+- **Isolation Voltage**: 1 kV
+- **Hot Plug Support**: Yes
 
 ## JTAG
 
-JTAG, short for Joint Test Action Group. The latest standard as of this article is IEEE Standard 1149.1-1990.
+JTAG, short for Joint Test Action Group, is defined by the IEEE Standard 1149.1-1990 as of the latest update at the time of this writing.
 
-Its topology diagram (daisy chain) is as follows:
+Here is the topology diagram (daisy chain) for JTAG:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210209191921.png)
+![JTAG Topology](https://img.wiki-power.com/d/wiki-media/img/20210209191921.png)
 
-JTAG generally uses 5 pins:
+JTAG typically uses 5 pins:
 
 - **TDI** (Test Data In): Serial input pin
 - **TDO** (Test Data Out): Serial output pin
-- **TCK** (Test Clock): Clock pin, generally with a 100k pull-down resistor
-- **TMS** (Test Mode Select): Mode selection (control signal) pin
+- **TCK** (Test Clock): Clock pin, usually with a 100k pull-down resistor
+- **TMS** (Test Mode Select): Mode select (control signal) pin
 - **TRST** (Test Reset): Reset pin
 
 Advantages of JTAG:
 
 - Not limited to ARM series chips
-- Has more uses for programming, debugging, and production testing
+- Has more versatile applications for programming, debugging, and production testing
 
 ## SWD
 
-Serial Wire Debug, specifically designed by ARM, only supports ARM (so it performs better in ARM series microcontrollers).
+Serial Wire Debug (SWD) is a protocol designed specifically by ARM and is primarily supported by ARM devices, making it perform better in ARM microcontrollers.
 
-SWD generally uses 2 pins:
+SWD typically uses 2 pins:
 
-- **SWDIO** (Serial Wire Data Input Output): Serial data input and output pin
-- **SWCLK** (Serial Wire Clock): Serial line clock pin
+- **SWDIO** (Serial Wire Data Input Output): Serial data input/output pin
+- **SWCLK** (Serial Wire Clock): Serial wire clock pin
 
 Advantages of SWD:
 
-- Uses fewer pins, only SWDIO and SWCLK are needed
-- SWD has special functions, such as printing debugging information
-- Compared with JTAG, SWD has better overall performance in speed
+- Uses fewer pins, only requiring SWDIO and SWCLK
+- SWD has special features, such as printing debugging information
+- Compared to JTAG, SWD offers better overall performance in terms of speed
 
-## Compatibility between JTAG and SWD
+## Compatibility Between JTAG and SWD
 
-Generally, the following burning sockets will be available on the microcontroller board, which can be compatible with both JTAG and SWD:
+In general, microcontroller boards are equipped with programming connectors that can be compatible with both JTAG and SWD simultaneously. Here is an example:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210210122923.jpg)
+![Compatibility Connectors](https://img.wiki-power.com/d/wiki-media/img/20210210122923.jpg)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210210123714.png)
+![Compatibility Connectors](https://img.wiki-power.com/d/wiki-media/img/20210210123714.png)
 
 - TCK is compatible with SWCLK
 - TMS is compatible with SWDIO
 - (TDO is compatible with SWO)
 
-Reasons for choosing SWD instead of JTAG:
+Reasons for choosing SWD over JTAG:
 
-- The circuit schematic design needs to be simple enough and can be tested without JTAG functionality
-- The PCB has size limitations, and SWD can save space
-- The MCU no longer has extra pins for JTAG
+- Circuit schematic design needs to be simple and testable without JTAG functionality.
+- PCB has size constraints, and SWD can save space.
+- The MCU no longer has extra pins available for JTAG.
 
 ## References and Acknowledgments
 
-- [Difference between SWD and JTAG download and debug interface](https://mp.weixin.qq.com/s/MW57t266yvv6TOweeFEUVA)
+- [Differences Between SWD and JTAG Debugging Interfaces](https://mp.weixin.qq.com/s/MW57t266yvv6TOweeFEUVA)
 - [Cortex JTAG, SWD Debug Port Sharing](https://southlife.tistory.com/107)
 - [JTAG/SWD Interface](https://www.keil.com/support/man/docs/ulinkplus/ulinkplus_jtagswd_interface.htm)
 - [JTAG](https://en.wikipedia.org/wiki/JTAG)
 
-> Original: <https://wiki-power.com/>  
+> Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.
