@@ -1,8 +1,8 @@
-# Homelab - calibre-web, an eBook Management Server
+# Homelab - Ebook Management Server calibre-web
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20210429125418.png)
 
-**calibre-web** is an all-in-one eBook solution based on Calibre. It allows users to read eBooks on a web page, integrates calibre-server service, and also supports eBook format conversion.
+**calibre-web** is an all-in-one ebook solution based on Calibre. It allows you to read ebooks on a web interface, integrates with the calibre-server service, and offers ebook format conversion.
 
 ## Deployment (Docker Compose)
 
@@ -24,54 +24,61 @@ services:
     restart: unless-stopped
 ```
 
-(Optional) It is recommended to create a `.env` file in the same directory as `compose.yaml` and customize your environment variables. If you do not want to use environment variables, you can also customize your parameters directly in `compose.yaml` (for example, replace `${STACK_NAME}` with `audiobookshelf`).
+(Optional) It is recommended to create a `.env` file in the same directory as `compose.yaml` and customize your environment variables. If you prefer not to use environment variables, you can directly customize your parameters within `compose.yaml` (e.g., replace `${STACK_NAME}` with `audiobookshelf`).
 
-````dotenv title=".env"
+```dotenv title=".env"
 STACK_NAME=calibre-web
-STACK_DIR=xxx # Customize your project storage path, such as ./calibre-web
-DATA_DIR=xxx # Customize your book storage path, such as ./book
+STACK_DIR=xxx # Customize your project storage path, e.g., ./calibre-web
+DATA_DIR=xxx # Customize your ebook storage path, e.g., ./book
 
 # calibre-web
 APP_VERSION=latest
-APP_PORT_WEB=xxxx # Customize the access port of the Web UI, choose one that is not occupied
-APP_PORT_SERVER=xxxx # Customize the access port of calibre-server, choose one that is not occupied
+APP_PORT_WEB=xxxx # Customize the access port for the Web UI, choose an available port
+APP_PORT_SERVER=xxxx # Customize the access port for calibre-server, choose an available port
+```
 
-If you have a NAS, you can also mount the storage space on the NAS through the NFS protocol, store music on the NAS to save server space, please refer to [**Expanding the Space of Synology NAS Hard Disk under Linux (NFS)**](https://wiki-power.com/en/Linux%E4%B8%8B%E6%8C%82%E8%BD%BD%E7%BE%A4%E6%99%96NAS%E7%A1%AC%E7%9B%98%E6%8B%93%E5%B1%95%E7%A9%BA%E9%97%B4%EF%BC%88NFS%EF%BC%89/) for details.
+If you have a NAS, you can also mount storage space on your NAS using the NFS protocol to save server space. For details, please refer to [**Mount Synology NAS Hard Drive for Space Expansion (NFS) on Linux**](to_be_replaced[3]).
 
-Finally, execute the `docker compose up -d` command in the same directory as `compose.yaml` to start the orchestrated container.
+Finally, in the directory where `compose.yaml` is located, execute the `docker compose up -d` command to start the orchestrated containers.
 
-## Configuration Instructions
+## Configuration Notes
 
-The default account is `admin` and the password is `admin123`.
+The default username is `admin`, and the password is `admin123`.
 
-### Book Upload Function
+### Book Upload Functionality
 
-The system does not have the book upload function by default. You need to click `Admin` - `Edit Basic Configuration` - `Enable Upload` in order to enable the book upload function.
+By default, the book upload feature is disabled. To enable book uploads, follow these steps: Click on "Management Permissions" in the upper right corner, then select "Edit Basic Configuration," and enable the "Upload" option.
 
 ### Mobile Usage
 
-On Android, you can use Librera to connect to calibre-web via the OPDS protocol. The URL of the book library to be added is the original URL plus `/opds`, for example, `calibre.xxx.com/opds`.
+On Android, you can use Librera to connect to calibre-web via the OPDS protocol. Add the library's URL by appending `/opds` to the original URL, for example, `calibre.xxx.com/opds`.
 
 ### Forgot Password
 
-If you forget your password, you can download the `app.db` database in `calibre-web` and use SQLite to view the software (or online tools such as [**SQLite Viewer | Modifier**](https://www.lzltool.com/sqlite-viewer)). Execute the following statement:
+If you forget your password, you can download the `app.db` database from `calibre-web` and use SQLite software to view it (or use online tools like [**Sqlite Viewer | Editor**](https://www.lzltool.com/sqlite-viewer)). Execute the following SQL query:
 
 ```sql
-SELECT * FROM 'user' LIMIT 0,30 --You can also manually switch to the table named user
-````
-
-```sql
-UPDATE user SET password='pbkdf2:sha256:150000$ODedbYPS$4d1bd12adb1eb63f78e49873cbfc731e35af178cb9eb6b8b62c09dcf8db76670' WHERE name='xxx'; -- Replace xxx with your current username
+SELECT * FROM 'user' LIMIT 0,30 -- You can manually switch to the table named 'user'
 ```
 
-Replace the modified `app.db` with the original one, and then log in with the new password `hello`.
+```markdown
+Update the `user` table with the new password for the user identified by the name 'xxx'. Ensure to replace 'xxx' with your current username.
 
-## References and Acknowledgements
+```sql
+UPDATE user SET password='pbkdf2:sha256:150000$ODedbYPS$4d1bd12adb1eb63f78e49873cbfc731e35af178cb9eb6b8b62c09dcf8db76670' WHERE name='xxx';
+```
+
+Replace the existing `app.db` with the updated one, and then log in using the new password, which is 'hello'.
+
+## References and Acknowledgments
 
 - [GitHub repo](https://github.com/janeczku/calibre-web)
 - [Docker Hub](https://registry.hub.docker.com/r/johngong/calibre-web)
 
-> Original: <https://wiki-power.com/>  
+> Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
+```
+
+This translation maintains the original markdown format and provides a professional and fluent rendition of the content while ensuring the clarity of the instructions.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

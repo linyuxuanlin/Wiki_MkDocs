@@ -1,12 +1,12 @@
-# Homelab - Cloudreve, a Public Cloud Image Hosting System that Supports Multiple Cloud Storage Providers
+# Homelab - Cloudreve, a Public Cloud Image Hosting System Supporting Multiple Cloud Providers
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230304195423.png)
+![Cloudreve](https://img.wiki-power.com/d/wiki-media/img/20230304195423.png)
 
-**Cloudreve** is a public cloud file system that supports multiple cloud storage drivers. It supports local, secondary, Qiniu, Alibaba Cloud OSS, Tencent Cloud COS, Upyun, OneDrive, S3 compatible protocols as storage endpoints, and can be integrated with Aria2 offline download, multi-user, drag-and-drop upload/management, online preview/editing, WebDAV, etc. The typical use case is personal image hosting or cloud file management.
+**Cloudreve** is a public cloud file system that supports multiple cloud storage providers, including local storage, remote hosts, Qiniu, Alibaba Cloud OSS, Tencent Cloud COS, UpYun, OneDrive, and S3-compatible protocols as storage endpoints. It can also be integrated with Aria2 for offline downloads, supports multiple users, drag-and-drop uploads/management, online preview/editing, WebDAV, and more. It is typically used for personal image hosting or web-based file management.
 
 ## Deployment (Docker Compose)
 
-First, we need to create the directory structure. Switch to the directory where Cloudreve is stored (e.g. `/DATA/AppData/cloudreve`) and execute:
+To begin, create the directory structure. Navigate to the directory where you want to store Cloudreve (e.g., `/DATA/AppData/cloudreve`) and execute the following commands:
 
 ```shell
 mkdir -vp cloudreve/{uploads,avatar,data} \
@@ -18,7 +18,7 @@ mkdir -vp cloudreve/{uploads,avatar,data} \
 && mkdir data
 ```
 
-First, create the `compose.yaml` file and paste the following content:
+Next, create a `compose.yaml` file and paste the following content:
 
 ```yaml title="compose.yaml"
 version: "3.8"
@@ -56,23 +56,15 @@ volumes:
       o: bind
 ```
 
-The above code is a YAML file for a Docker Compose configuration. It defines two services, `cloudreve` and `aria2`, which are containers that run the Cloudreve and Aria2 applications respectively. The `cloudreve` service is dependent on the `aria2` service.
-
-The `cloudreve` service is configured to use the `cloudreve/cloudreve` Docker image with the version specified by the `APP_VERSION` environment variable. It exposes port `5212` on the host machine and mounts several volumes for data storage and configuration. The `restart` policy is set to `unless-stopped`.
-
-The `aria2` service is configured to use the `p3terx/aria2-pro` Docker image with the version specified by the `ARIA2_VERSION` environment variable. It mounts volumes for configuration and data storage, and sets environment variables for the RPC secret and port. The `restart` policy is also set to `unless-stopped`.
-
-Finally, a volume named `temp_data` is defined with a local driver and mounted to the `cloudreve` service for temporary data storage.
-
-(Optional) It is recommended to create a `.env` file in the same directory as `compose.yaml` and customize your environment variables. If you do not want to use environment variables, you can also customize your parameters directly in `compose.yaml` (such as replacing `${STACK_NAME}` with `cloudreve`).
+(Optional) It's recommended to create a `.env` file in the same directory as `compose.yaml` and customize your environment variables. If you prefer not to use environment variables, you can directly customize your parameters within `compose.yaml` (e.g., replace `${STACK_NAME}` with `cloudreve`).
 
 ```dotenv title=".env"
 STACK_NAME=cloudreve
-STACK_DIR=xxx # Customize the project storage path, such as ./cloudreve
+STACK_DIR=xxx # Custom project storage path, e.g., ./cloudreve
 
 # cloudreve
 APP_VERSION=latest
-APP_PORT=xxxx # Customize the access port, choose one that is not occupied
+APP_PORT=xxxx # Custom access port, choose one that is not in use
 
 # aria2
 ARIA2_VERSION=latest
@@ -80,24 +72,25 @@ ARIA2_RPC_SECRET=xxx # ARIA2 password
 ARIA2_RPC_PORT=6800
 ```
 
-Finally, execute the `docker compose up -d` command in the same directory as `compose.yaml` to start the orchestrated containers.
+Finally, execute the `docker compose up -d` command in the same directory as the `compose.yaml` to start the orchestrated containers.
 
-## Configuration Instructions
+## Configuration Notes
 
-When starting for the first time, an initial administrator account will be created automatically, which can be found in the log. If you miss it, please delete the `cloudreve.db` file in the directory and restart the main program to initialize a new administrator account.
+Upon the initial launch, an initial admin account will be created automatically, and you can find it in the logs. If you miss it, delete the `cloudreve.db` in the directory and restart the main program to initialize a new admin account.
 
-I use the image naming convention: `{year}{month}{day}{hour}{minute}{second}{ext}`.
+I adhere to the image naming convention: `{year}{month}{day}{hour}{minute}{second}{ext}`.
 
 ## References and Acknowledgments
 
 - [Official Website](https://docs.cloudreve.org/)
 - [Documentation](https://docs.cloudreve.org/getting-started/install#docker-compose)
 - [Forum](https://forum.cloudreve.org/)
-- [GitHub repo](https://github.com/cloudreve/Cloudreve)
+- [GitHub Repository](https://github.com/cloudreve/Cloudreve)
 - [Docker Hub](https://hub.docker.com/r/cloudreve/cloudreve)
-- [Demo site](https://demo.cloudreve.org/)
+- [Demo Site](https://demo.cloudreve.org/)
 
 > Original: <https://wiki-power.com/>  
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
+```
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

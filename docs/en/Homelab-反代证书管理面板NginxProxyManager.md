@@ -1,8 +1,8 @@
 # Homelab - Reverse Proxy Certificate Management Panel Nginx Proxy Manager
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230408182138.png)
+![Nginx Proxy Manager](https://img.wiki-power.com/d/wiki-media/img/20230408182138.png)
 
-**Nginx Proxy Manager** is a graphical panel for Nginx that allows users to easily configure reverse proxies and apply SSL certificates to websites through a web interface, without needing to understand the underlying principles of Nginx/Letsencrypt.
+**Nginx Proxy Manager** is a graphical interface for Nginx that allows users to easily configure reverse proxies and request SSL certificates for websites through a web interface, without needing an in-depth understanding of Nginx or Letsencrypt's underlying principles.
 
 ## Deployment (Docker Compose)
 
@@ -24,42 +24,42 @@ services:
     restart: unless-stopped
 ```
 
-(Optional) It is recommended to create a `.env` file in the same directory as `compose.yaml` and customize your environment variables. If you do not want to use environment variables, you can also customize your parameters directly in `compose.yaml` (such as replacing `${STACK_NAME}` with `nginx-proxy-manager`).
+(Optional) It's recommended to create a `.env` file in the same directory as `compose.yaml` and customize your environment variables. If you prefer not to use environment variables, you can directly customize your parameters in `compose.yaml` (for example, replace `${STACK_NAME}` with `nginx-proxy-manager`).
 
 ```dotenv title=".env"
 STACK_NAME=nginx-proxy-manager
-STACK_DIR=xxx # Custom project storage path, such as ./nginx-proxy-manager
+STACK_DIR=xxx # Customize your project storage path, e.g., ./nginx-proxy-manager
 
 # nginx-proxy-manager
 APP_VERSION=latest
-APP_PORT=81 # Default is 81, refer to documentation for changes
+APP_PORT=81 # Default is 81; change as needed, referring to the documentation
 ```
 
-Finally, execute the command `docker compose up -d` in the same directory as `compose.yaml` to start the orchestrated containers.
+Finally, run the `docker compose up -d` command in the same directory as `compose.yaml` to start the orchestrated containers.
 
-## Configuration Instructions
+## Configuration Details
 
 Initial account credentials:
 
 - Email: `admin@example.com`
 - Password: `changeme`
 
-To obtain the IP address of Docker:
+To obtain the IP address of Docker, use the following command:
 
 ```shell
 ip addr show docker0
 ```
 
-Note: For self-hosted services, it is recommended to use reverse proxy and bind to a second-level domain for access (port 80/443), and close other ports in the firewall of the public server management console to improve security.
+Note: For self-hosted services, it is advisable to access them through a reverse proxy, binding to a subdomain (port 80/443), and close other ports in the public server's firewall management console to enhance security.
 
-## References and Acknowledgements
+## References and Acknowledgments
 
 - [Official Website](https://nginxproxymanager.com)
 - [Documentation](https://nginxproxymanager.com/guide)
-- [GitHub repo](https://github.com/NginxProxyManager/nginx-proxy-manager)
+- [GitHub Repository](https://github.com/NginxProxyManager/nginx-proxy-manager)
 - [Docker Hub](https://hub.docker.com/r/jlesage/nginx-proxy-manager)
 
-> Original: <https://wiki-power.com/>  
+> Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

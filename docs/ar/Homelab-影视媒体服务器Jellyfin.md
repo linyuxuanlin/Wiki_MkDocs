@@ -1,12 +1,12 @@
-# Homelab - خادم وسائط الفيديو Jellyfin
+# هوملاب - خادم وسائط الفيديو والأفلام Jellyfin
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230531213856.png)
+![صورة](https://img.wiki-power.com/d/wiki-media/img/20230531213856.png)
 
-**Jellyfin** هو خادم وسائط الفيديو والتدفق المفتوح المصدر ، ويمكن استخدامه لإدارة الأفلام والبرامج التلفزيونية ومشاهدتها على أجهزة مختلفة. يمكن استخدامه كبديل للبرامج الخاصة Emby و Plex.
+**Jellyfin** هو خادم وسائط مفتوح المصدر يستخدم لإدارة الأفلام والبرامج التلفزيونية ومشاهدتها على أجهزة متعددة. يُعتبر بديلاً للبرامج الخاصة Emby وPlex.
 
-## نشر (Docker Compose)
+## النشر (Docker Compose)
 
-أولاً ، قم بإنشاء ملف `compose.yaml` والصق المحتوى التالي:
+أولاً، أنشئ ملف "compose.yaml" والصق المحتوى التالي:
 
 ```yaml title="compose.yaml"
 version: "3.5"
@@ -23,43 +23,43 @@ services:
       - ${STACK_DIR}/cache:/cache
       - ${DATA_DIR}:/media
     restart: "unless-stopped"
-    # Optional - alternative address used for autodiscovery
+    # اختياري - عنوان بديل يُستخدم للعثور التلقائي
     #environment:
     #  - JELLYFIN_PublishedServerUrl=http://example.com
-    # Optional - may be necessary for docker healthcheck to pass if running in host network mode
+    # اختياري - قد يكون ضروريًا لاجتياز فحص صحة Docker إذا تم التشغيل في وضع الشبكة المضيفة
     #extra_hosts:
     #  - "host.docker.internal:host-gateway"
 ```
 
-(اختياري) يوصى بإنشاء ملف `.env` في نفس مستوى `compose.yaml` وتخصيص المتغيرات البيئية الخاصة بك. إذا كنت لا ترغب في استخدام المتغيرات البيئية ، يمكنك تخصيص المعلمات الخاصة بك مباشرة في `compose.yaml` (على سبيل المثال ، استبدال `${STACK_NAME}` بـ `jellyfin`).
+(اختياري) يُفضل إنشاء ملف ".env" في نفس الدليل الرئيسي الذي يحتوي على ملف "compose.yaml" وتخصيص المتغيرات البيئية الخاصة بك. إذا كنت لا ترغب في استخدام المتغيرات البيئية، يمكنك أيضًا تخصيص المعلمات مباشرة في "compose.yaml" (مثل استبدال "${STACK_NAME}" بـ "jellyfin").
 
 ```dotenv title=".env"
 STACK_NAME=jellyfin
-STACK_DIR=xxx # مسار تخزين المشروع المخصص ، على سبيل المثال ./jellyfin
-DATA_DIR=xxx # مسار تخزين الفيديو المخصص ، على سبيل المثال ./video
+STACK_DIR=xxx # مسار تخزين المشروع المخصص، على سبيل المثال: ./jellyfin
+DATA_DIR=xxx # مسار تخزين الفيديو المخصص، على سبيل المثال: ./video
 
 # jellyfin
 APP_VERSION=latest
-APP_PORT=xxxx # منفذ الوصول المخصص ، اختر غير مستخدم فقط
+APP_PORT=xxxx # تخصيص منفذ الوصول الخاص بك، اختر منفذًا غير مستخدم بالفعل
 ```
 
-إذا كان لديك NAS ، فيمكنك أيضًا تثبيت مساحة التخزين على NAS باستخدام بروتوكول NFS ، وتخزين الموسيقى على NAS لتوفير مساحة الخادم ، يرجى الرجوع إلى [**Linux 下挂载群晖 NAS 硬盘拓展空间（NFS）**](https://wiki-power.com/ar/Linux%E4%B8%8B%E6%8C%82%E8%BD%BD%E7%BE%A4%E6%99%96NAS%E7%A1%AC%E7%9B%98%E6%8B%93%E5%B1%95%E7%A9%BA%E9%97%B4%EF%BC%88NFS%EF%BC%89/) للحصول على التفاصيل.
+إذا كنت تمتلك NAS، يمكنك أيضًا استخدام بروتوكول NFS لربط مساحة التخزين على NAS وتخزين الموسيقى على NAS لتوفير مساحة الخادم. لمزيد من التفاصيل، يُرجى الرجوع إلى [**ربط أقراص الـ NAS من سينولوجي على نظام لينكس (NFS)**](https://wiki-power.com/ar/(https://example.com).
 
-أخيرًا ، يمكنك تشغيل حاويات الترتيب باستخدام الأمر `docker compose up -d` في نفس مستوى `compose.yaml`.
+أخيرًا، يمكنك تشغيل الحاويات المُنسقة بتنفيذ الأمر "docker compose up -d" في الدليل الذي يحتوي على ملف "compose.yaml".
 
-## شرح التكوين
+## توجيهات التكوين
 
-يمكن استخدام تطبيق Jellyfin الرسمي على الهواتف المحمولة.
+يمكنك استخدام تطبيق Jellyfin الرسمي المتاح لأجهزة الجوال.
 
 ## المراجع والشكر
 
 - [الموقع الرسمي](https://jellyfin.org/)
 - [الوثائق](https://jellyfin.org/docs/general/installation/container#using-docker-compose)
 - [مستودع GitHub](https://github.com/jellyfin/jellyfin)
-- [Docker Hub](https://hub.docker.com/r/jellyfin/jellyfin)
+- [مستودع Docker Hub](https://hub.docker.com/r/jellyfin/jellyfin)
 - [موقع العرض التوضيحي](https://demo.jellyfin.org/stable)
 
-> عنوان النص: <https://wiki-power.com/>  
+> عنوان النص: <https://wiki-power.com/>
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

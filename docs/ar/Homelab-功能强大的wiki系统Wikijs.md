@@ -1,12 +1,12 @@
-# Homelab - نظام ويكي قوي Wiki.js
+# Homelab - Wiki.js: نظام ويكي قوي
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20230304195348.png)
 
-**Wiki.js** هو أداة وثائق ويكي تحتوي على محرر واجهة المستخدم الخلفية وصفحات إدارة، بما في ذلك إدارة صلاحيات المستخدمين المتعددين وMarkdown وطرق متعددة للمزامنة والتخزين (مثل مزامنة git) وغيرها من الميزات.
+**Wiki.js** هو أداة وثائق ويكي تأتي مع محرر خلفي وصفحات إدارة، بما في ذلك إدارة الصلاحيات للمستخدمين المتعددين، ودعم Markdown، ووسائل تخزين متعددة (مثل مزامنة Git)، وغير ذلك.
 
-## نشر (Docker Compose)
+## النشر (Docker Compose)
 
-أولاً ، قم بإنشاء ملف `compose.yaml` والصق المحتوى التالي:
+أولاً، قم بإنشاء ملف `compose.yaml` والصق المحتوى التالي:
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -42,43 +42,43 @@ volumes:
   db-data:
 ```
 
-(اختياري) يوصى بإنشاء ملف `.env` في نفس مستوى `compose.yaml` وتخصيص المتغيرات البيئية الخاصة بك. إذا كنت لا ترغب في استخدام المتغيرات البيئية ، يمكنك تخصيص المعلمات مباشرةً في `compose.yaml` (على سبيل المثال ، استبدال `${STACK_NAME}` بـ `wikijs`).
+(اختياري) نوصي بإنشاء ملف `.env` في نفس مستوى `compose.yaml` وتخصيص متغيرات البيئة الخاصة بك. إذا كنت لا ترغب في استخدام المتغيرات البيئية، يمكنك أيضًا تخصيص المعلمات مباشرة داخل `compose.yaml` (على سبيل المثال، استبدال `${STACK_NAME}` بـ `wikijs`).
 
 ```dotenv title=".env"
 STACK_NAME=wikijs
-STACK_DIR=xxx # مسار تخزين المشروع المخصص ، على سبيل المثال ./wikijs
+STACK_DIR=xxx # مسار تخزين المشروع الخاص بك، مثل ./wikijs
 
 # wikijs
 APP_VERSION=2
-APP_PORT=xxxx # تخصيص منفذ الوصول الخاص بك ، فقط اختر غير مستخدم
+APP_PORT=xxxx # تخصيص منفذ الوصول الخاص بك، اختر منفذًا غير مستخدم بالفعل
 APP_DB_TYPE=postgres
 APP_DB_HOST=db
 APP_DB_PORT=5432 # منفذ قاعدة البيانات الافتراضي الداخلي
-APP_DB_USER=xxx # اسم مستخدم قاعدة البيانات
-APP_DB_PASS=xxx # كلمة مرور قاعدة البيانات
+APP_DB_USER=xxx # اسم المستخدم لقاعدة البيانات
+APP_DB_PASS=xxx # كلمة المرور لقاعدة البيانات
 APP_DB_NAME=wikijs # اسم قاعدة البيانات
 
 # db
 DB_VERSION=10-alpine
-DB_POSTGRES_DB=wikijs # اسم قاعدة البيانات ، مطابق للأعلى
-DB_POSTGRES_PASSWORD=xxx # كلمة مرور قاعدة البيانات ، مطابقة للأعلى
-DB_POSTGRES_USER=xxx # اسم مستخدم قاعدة البيانات ، مطابق للأعلى
+DB_POSTGRES_DB=wikijs # اسم قاعدة البيانات، يجب أن يتطابق مع الإعداد أعلاه
+DB_POSTGRES_PASSWORD=xxx # كلمة مرور قاعدة البيانات، يجب أن يتطابق مع الإعداد أعلاه
+DB_POSTGRES_USER=xxx # اسم المستخدم لقاعدة البيانات، يجب أن يتطابق مع الإعداد أعلاه
 ```
 
-أخيرًا ، قم بتشغيل الأمر `docker compose up -d` في نفس مستوى `compose.yaml` لتشغيل حاويات الترتيب.
+أخيرًا، قم بتنفيذ الأمر `docker compose up -d` في نفس المجلد الذي يحتوي على ملف `compose.yaml` لبدء تشغيل الحاويات المُعدة.
 
-## تعليمات التكوين
+## توجيهات التكوين
 
-دليل تفصيلي لمزامنة مستودع git: <https://docs.requarks.io/storage/git>
+لمزيد من التفاصيل حول مزامنة مستودع Git، يُرجى الرجوع إلى: <https://docs.requarks.io/storage/git>
 
-## المراجع والشكر
+## المراجعة والشكر
 
 - [الموقع الرسمي](https://js.wiki)
 - [الوثائق](https://docs.requarks.io/install/docker)
 - [مستودع GitHub](https://github.com/requarks/wiki)
-- [Docker Hub](https://hub.docker.com/r/requarks/wiki)
+- [مستودع Docker Hub](https://hub.docker.com/r/requarks/wiki)
 
-> عنوان النص: <https://wiki-power.com/>  
+> عنوان النص: <https://wiki-power.com/>
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

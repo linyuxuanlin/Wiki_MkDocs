@@ -1,12 +1,12 @@
-# Homelab - Servidor de podcasts y audiolibros Audiobookshelf
+# Homelab - Servidor de Podcasts y Audiolibros Audiobookshelf
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20230531204505.png)
 
-**Audiobookshelf** es un servidor de podcasts y audiolibros autohospedado que permite buscar fácilmente podcasts, detectar actualizaciones y descargarlos automáticamente, y organizarlos automáticamente.
+**Audiobookshelf** es un servidor de podcasts y audiolibros autohospedado que facilita la búsqueda, la detección automática de actualizaciones y la descarga de podcasts, además de organizarlos automáticamente.
 
 ## Implementación (Docker Compose)
 
-Primero, cree el archivo `compose.yaml` y pegue el siguiente contenido:
+Comienza por crear un archivo `compose.yaml` y pega el siguiente contenido:
 
 ```yaml title="compose.yaml"
 version: "3.7"
@@ -24,34 +24,34 @@ services:
     restart: unless-stopped
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `audiobookshelf`).
+(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar tus variables de entorno. Si no deseas utilizar variables de entorno, también puedes personalizar tus parámetros directamente en `compose.yaml` (por ejemplo, reemplazando `${STACK_NAME}` por `audiobookshelf`).
 
 ```dotenv title=".env"
 STACK_NAME=audiobookshelf
-STACK_DIR=xxx # Personalice la ruta de almacenamiento del proyecto, por ejemplo, ./audiobookshelf
-DATA_DIR=xxx # Personalice la ruta de almacenamiento de podcasts, por ejemplo, ./podcast
+STACK_DIR=xxx # Personaliza la ruta de almacenamiento de tu proyecto, por ejemplo, ./audiobookshelf
+DATA_DIR=xxx # Personaliza la ruta de almacenamiento de tus podcasts, por ejemplo, ./podcast
 
 # audiobookshelf
 APP_VERSION=latest
-APP_PORT=xxxx # Personalice el puerto de acceso, elija uno que no esté en uso
+APP_PORT=xxxx # Personaliza el puerto de acceso, elige uno que no esté en uso
 ```
 
-Si tiene un NAS, también puede montar el espacio de almacenamiento en el NAS a través del protocolo NFS, almacenar los podcasts en el NAS para ahorrar espacio en el servidor. Para obtener más detalles, consulte [**Cómo montar un disco duro de NAS Synology en Linux (NFS)**](https://wiki-power.com/es/Linux%E4%B8%8B%E6%8C%82%E8%BD%BD%E7%BE%A4%E6%99%96NAS%E7%A1%AC%E7%9B%98%E6%8B%93%E5%B1%95%E7%A9%BA%E9%97%B4%EF%BC%88NFS%EF%BC%89/).
+Si tienes un NAS, también puedes montar el espacio de almacenamiento de tu NAS a través del protocolo NFS y guardar tus podcasts en el NAS para ahorrar espacio en tu servidor. Para obtener más detalles, consulta [**Cómo montar un disco duro de Synology NAS en Linux para ampliar el espacio (NFS)**](https://wiki-power.com/es/Linux%E4%B8%8B%E6%8C%82%E8%BD%BD%E7%BE%A4%E6%99%96NAS%E7%A1%AC%E7%9C%98%E6%8B%93%E5%B1%95%E7%A9%BA%E9%97%B4%EF%BC%88NFS%EF%BC%89/) (en inglés).
 
-Por último, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores.
+Finalmente, ejecuta el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores en el entorno de Docker.
 
-## Instrucciones de configuración
+## Configuración
 
-Aplicación móvil: hay una aplicación oficial disponible para iOS y Android que se puede utilizar directamente.
+Aplicación móvil: Hay aplicaciones oficiales disponibles para iOS y Android que puedes utilizar directamente.
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
 - [Sitio web oficial](https://www.audiobookshelf.org/)
 - [Documentación](https://www.audiobookshelf.org/docs#docker-compose-install)
-- [Repositorio de GitHub](https://github.com/advplyr/audiobookshelf)
+- [Repositorio en GitHub](https://github.com/advplyr/audiobookshelf)
 - [Docker Hub](https://hub.docker.com/r/advplyr/audiobookshelf)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
+> Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

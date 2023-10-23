@@ -2,7 +2,7 @@
 
 ![](https://img.wiki-power.com/d/wiki-media/img/202304132214418.png)
 
-**code-server** is a VS Code that can run in a browser. Compared to the desktop version, the advantage is that you can code online with any device, including devices such as mobile phones and tablets that cannot directly install VS Code.
+**code-server** is a browser-based version of VS Code. Its advantage over the desktop version is that you can code online with any device, including mobile phones and tablets, which cannot directly install VS Code.
 
 ## Deployment (Docker Compose)
 
@@ -19,7 +19,7 @@ services:
     volumes:
       - ${STACK_DIR}/config:/config
       - ${DATA_DIR_LOCAL}:/DATA
-    environment: # needs to be run with root privileges, otherwise cannot read other docker directories or host root directories
+    environment: # Needs to run with root permissions, otherwise it won't be able to access other Docker directories or the host machine's root directory
       - PUID=0
       - PGID=0
       - TZ=Asia/Shanghai
@@ -30,55 +30,57 @@ services:
     restart: unless-stopped
 ```
 
-(Optional) It is recommended to create a `.env` file in the same directory as `compose.yaml` and customize your environment variables. If you do not want to use environment variables, you can also customize your parameters directly in `compose.yaml` (such as replacing `${STACK_NAME}` with `code-server`).
+(Optional) It's recommended to create a `.env` file in the same directory as `compose.yaml` and customize your environment variables. If you don't want to use environment variables, you can directly customize your parameters within `compose.yaml` (e.g., replace `${STACK_NAME}` with `code-server`).
 
 ```dotenv title=".env"
 STACK_NAME=code-server
-STACK_DIR=xxx # Custom project storage path, such as ./code-server
-DATA_DIR_LOCAL=xxx # Custom mount local directory, such as /DATA
+STACK_DIR=xxx # Customize your project storage path, e.g., ./code-server
+DATA_DIR_LOCAL=xxx # Customize the local directory to be mounted, e.g., /DATA
 
 # code-server
 APP_VERSION=latest
-APP_PORT=xxxx # Custom access port, choose one that is not occupied
+APP_PORT=xxxx # Customize the access port, choose one that's not already in use
 APP_PASSWORD=xxx # Login password
 APP_SUDO_PASSWORD=xxx # Superuser password
-
 ```
 
-Finally, execute the `docker compose up -d` command in the same directory as `compose.yaml` to start the orchestrated container.
+Finally, in the same directory as `compose.yaml`, run the `docker compose up -d` command to start the orchestrated container.
 
-## Configuration Instructions
+## Configuration Notes
 
-### Configure Git
+### Configuring Git
 
-After installation, if you need to use Git, please refer to the article [**Git Learning Notes**](https://wiki-power.com/en/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE) for initializing configuration of username and email.
+After installation, if you need to use Git and initialize your username and email, please refer to the article [**Git Study Notes**](https://wiki-power.com/en/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BDAE).
 
-### Read and Write Permission Issues
+### Permissions Issues
 
-If you encounter the `Error: EACCES: permission denied` error when operating files, you can open the terminal and enter the following command to grant ownership to the current user:
+If you encounter an `Error: EACCES: permission denied` error when working with files, you can open a terminal and use the following command to grant ownership to the current user:
 
 ```shell
 sudo chown -R username folder_path
 ```
 
-For example, the following is the operation of giving ownership of the current directory to the `abc` user:
+For example, the following command gives ownership of the current directory to the user `abc`:
 
 ```shell
 sudo chown -R abc .
 ```
 
-### Set Root Account Password
+### Setting the Root Password
 
-If you need to use the root account, you can use the following command to initialize its password:
+If you need to use the root account, you can initialize its password using the following command:
 
 ```shell
 sudo passwd root
 ```
 
-## Reference and Acknowledgement
+## References and Acknowledgments
 
-- [Official website](https://coder.com/docs/code-server/latest)
-- [Documentation / GitHub repo](https://github.com/linuxserver/docker-code-server)
+- [Official Website](https://coder.com/docs/code-server/latest)
+- [Documentation / GitHub Repository](https://github.com/linuxserver/docker-code-server)
 - [Docker Hub](https://hub.docker.com/r/linuxserver/code-server)
+
+[Link 1](https://coder.com/docs/code-server/latest)
+[Link 2](https://github.com/linuxserver/docker-code-server)
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

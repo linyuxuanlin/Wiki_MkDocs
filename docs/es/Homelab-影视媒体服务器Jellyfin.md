@@ -1,12 +1,12 @@
 # Homelab - Servidor de medios de cine y televisión Jellyfin
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230531213856.png)
+![Jellyfin](https://img.wiki-power.com/d/wiki-media/img/20230531213856.png)
 
-**Jellyfin** es un servidor de medios de cine y televisión de código abierto que se puede utilizar para administrar películas, programas de televisión, etc. y verlos en diferentes dispositivos. Puede ser utilizado como alternativa a los software propietarios Emby y Plex.
+**Jellyfin** es un servidor de medios de cine y televisión de código abierto que se utiliza para gestionar películas, programas de televisión y más. Permite la visualización y navegación en diferentes dispositivos, y se presenta como una alternativa de código abierto a software propietario como Emby y Plex.
 
 ## Implementación (Docker Compose)
 
-Primero, cree el archivo `compose.yaml` y pegue el siguiente contenido:
+En primer lugar, crea un archivo `compose.yaml` y pega el siguiente contenido:
 
 ```yaml title="compose.yaml"
 version: "3.5"
@@ -23,43 +23,43 @@ services:
       - ${STACK_DIR}/cache:/cache
       - ${DATA_DIR}:/media
     restart: "unless-stopped"
-    # Optional - alternative address used for autodiscovery
+    # Opcional - dirección alternativa utilizada para la autodescubrimiento
     #environment:
     #  - JELLYFIN_PublishedServerUrl=http://example.com
-    # Optional - may be necessary for docker healthcheck to pass if running in host network mode
+    # Opcional - puede ser necesario para que el chequeo de salud de Docker pase si se ejecuta en modo de red de host
     #extra_hosts:
     #  - "host.docker.internal:host-gateway"
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `jellyfin`).
+(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar tus variables de entorno. Si no deseas utilizar variables de entorno, también puedes personalizar directamente tus parámetros en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `jellyfin`).
 
 ```dotenv title=".env"
 STACK_NAME=jellyfin
 STACK_DIR=xxx # Ruta personalizada de almacenamiento del proyecto, por ejemplo, ./jellyfin
-DATA_DIR=xxx # Ruta personalizada de almacenamiento de videos, por ejemplo, ./video
+DATA_DIR=xxx # Ruta de almacenamiento de medios personalizada, por ejemplo, ./video
 
 # jellyfin
 APP_VERSION=latest
-APP_PORT=xxxx # Puerto de acceso personalizado, simplemente elija uno que no esté en uso
+APP_PORT=xxxx # Puerto de acceso personalizado, elige uno que no esté en uso
 ```
 
-Si tiene un NAS, también puede montar el espacio de almacenamiento en el NAS a través del protocolo NFS, almacenar la música en el NAS para ahorrar espacio en el servidor. Para obtener más detalles, consulte [**Montar el disco duro de expansión del NAS Synology en Linux (NFS)**](https://wiki-power.com/es/Linux%E4%B8%8B%E6%8C%82%E8%BD%BD%E7%BE%A4%E6%99%96NAS%E7%A1%AC%E7%9B%98%E6%8B%93%E5%B1%95%E7%A9%BA%E9%97%B4%EF%BC%88NFS%EF%BC%89/).
+Si tienes un NAS, también puedes montar el espacio de almacenamiento del NAS a través del protocolo NFS. Esto te permite almacenar tus medios en el NAS y ahorrar espacio en el servidor. Para obtener más detalles, consulta [**Linux: Montar un disco duro de Synology NAS para ampliar el espacio (NFS)**[por_reemplazar[3]]Linux%E4%B8%8B%E6%8C%82%E8%BD%BD%E7%BE%A4%E6%99%96NAS%E7%A1%AC%E7%9C%BC%E6%89%A9%E5%B1%95%E7%A9%BA%E9%97%B4%EF%BC%88NFS%EF%BC%89/) .
 
-Por último, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar el contenedor.
+Finalmente, ejecuta el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores según la configuración.
 
 ## Instrucciones de configuración
 
-La aplicación móvil se puede descargar desde la tienda de aplicaciones oficial de Jellyfin.
+Puedes optar por utilizar la aplicación oficial de Jellyfin en dispositivos móviles.
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
 - [Sitio web oficial](https://jellyfin.org/)
 - [Documentación](https://jellyfin.org/docs/general/installation/container#using-docker-compose)
-- [Repositorio de GitHub](https://github.com/jellyfin/jellyfin)
+- [Repositorio en GitHub](https://github.com/jellyfin/jellyfin)
 - [Docker Hub](https://hub.docker.com/r/jellyfin/jellyfin)
 - [Sitio de demostración](https://demo.jellyfin.org/stable)
 
-a_ser_reemplazado[1]  
-a_ser_reemplazado[2]
+> Dirección original del artículo: <https://wiki-power.com/>
+> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

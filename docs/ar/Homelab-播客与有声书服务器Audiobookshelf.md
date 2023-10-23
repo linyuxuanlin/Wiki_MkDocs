@@ -1,12 +1,12 @@
 # Homelab - خادم البودكاست والكتب الصوتية Audiobookshelf
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230531204505.png)
+![صورة](https://img.wiki-power.com/d/wiki-media/img/20230531204505.png)
 
-**Audiobookshelf** هو خادم بودكاست وكتب صوتية يتم استضافته ذاتيًا، ويمكن البحث عن البودكاست بسهولة والكشف التلقائي عن التحديثات وتنزيلها وتنظيمها تلقائيًا.
+**Audiobookshelf** هو خادم ذاتي الاستضافة للبودكاست والكتب الصوتية يمكنه بسهولة البحث في البودكاست والكتب الصوتية، واكتشاف التحديثات تلقائيًا وتنزيلها، وتنظيمها تلقائيًا.
 
-## التنصيب (Docker Compose)
+## النشر (Docker Compose)
 
-أولاً ، قم بإنشاء ملف `compose.yaml` والصق المحتوى التالي:
+قم أولاً بإنشاء ملف `compose.yaml` ولصق المحتوى التالي:
 
 ```yaml title="compose.yaml"
 version: "3.7"
@@ -24,34 +24,34 @@ services:
     restart: unless-stopped
 ```
 
-(اختياري) يوصى بإنشاء ملف `.env` في نفس مستوى `compose.yaml` وتخصيص المتغيرات البيئية الخاصة بك. إذا كنت لا تريد استخدام المتغيرات البيئية ، فيمكنك تخصيص المعلمات مباشرةً في `compose.yaml` (على سبيل المثال ، استبدال `${STACK_NAME}` بـ `audiobookshelf`).
+(اختياري) يُفضل إنشاء ملف `.env` في نفس دليل `compose.yaml` وتخصيص المتغيرات البيئية الخاصة بك. إذا لم ترغب في استخدام المتغيرات البيئية، يمكنك أيضاً تخصيص المعاملات مباشرة داخل `compose.yaml` (مثل استبدال `${STACK_NAME}` بـ `audiobookshelf`).
 
 ```dotenv title=".env"
 STACK_NAME=audiobookshelf
-STACK_DIR=xxx # مسار تخزين المشروع المخصص ، على سبيل المثال ./audiobookshelf
-DATA_DIR=xxx # مسار تخزين البودكاست المخصص ، على سبيل المثال ./podcast
+STACK_DIR=xxx # حدد مسار تخزين المشروع الخاص بك، على سبيل المثال ./audiobookshelf
+DATA_DIR=xxx # حدد مسار تخزين البودكاست الخاص بك، على سبيل المثال ./podcast
 
 # audiobookshelf
 APP_VERSION=latest
-APP_PORT=xxxx # تخصيص منفذ الوصول الخاص بك ، اختر غير مستخدم فقط
+APP_PORT=xxxx # حدد منفذ الوصول الخاص بك، اختر منفذ غير مستخدم بالفعل
 ```
 
-إذا كان لديك NAS ، فيمكنك أيضًا تثبيت مساحة التخزين على NAS باستخدام بروتوكول NFS ، وتخزين البودكاست على NAS لتوفير مساحة الخادم. لمزيد من التفاصيل ، يرجى الرجوع إلى [**Linux 下挂载群晖 NAS 硬盘拓展空间（NFS）**](https://wiki-power.com/ar/Linux%E4%B8%8B%E6%8C%82%E8%BD%BD%E7%BE%A4%E6%99%96NAS%E7%A1%AC%E7%9B%98%E6%8B%93%E5%B1%95%E7%A9%BA%E9%97%B4%EF%BC%88NFS%EF%BC%89/)。
+إذا كان لديك جهاز تخزين NAS، يمكنك أيضًا استخدام بروتوكول NFS لربط مساحة التخزين على NAS وحفظ البودكاست عليه لتوفير مساحة الخادم. لمزيد من التفاصيل، راجع [**كيفية ربط قرص الشبكة (NFS) من Synology NAS تحت نظام Linux لزيادة المساحة**](to_be_replace[3]).
 
-أخيرًا ، قم بتشغيل الأمر `docker compose up -d` في نفس مستوى `compose.yaml` لتشغيل حاويات الترتيب.
+أخيرًا، قم بتنفيذ الأمر `docker compose up -d` في نفس دليل `compose.yaml` لبدء تشغيل الحاويات المنسقة.
 
-## تعليمات التكوين
+## توجيهات التكوين
 
-تطبيق الجوال: يتوفر تطبيق رسمي لـ iOS و Android ، ويمكن استخدامه مباشرةً.
+تطبيق الهاتف المحمول: يتوفر تطبيق رسمي لأنظمة iOS و Android يمكن استخدامه مباشرة.
 
-## المراجع والشكر
+## المراجعة والشكر
 
 - [الموقع الرسمي](https://www.audiobookshelf.org/)
 - [الوثائق](https://www.audiobookshelf.org/docs#docker-compose-install)
 - [مستودع GitHub](https://github.com/advplyr/audiobookshelf)
-- [Docker Hub](https://hub.docker.com/r/advplyr/audiobookshelf)
+- [موقع Docker Hub](https://hub.docker.com/r/advplyr/audiobookshelf)
 
-> عنوان النص: <https://wiki-power.com/>  
+> عنوان النص: <https://wiki-power.com/>
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
