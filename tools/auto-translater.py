@@ -6,7 +6,6 @@ import re
 import yaml  # pip install PyYAML
 #import env
 
-
 # 设置 OpenAI API Key 和 API Base 参数，通过 env.py 传入
 openai.api_key = os.environ.get("CHATGPT_API_KEY")
 openai.api_base = os.environ.get("CHATGPT_API_BASE")
