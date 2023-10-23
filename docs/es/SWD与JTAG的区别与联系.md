@@ -1,72 +1,75 @@
-# Diferencias y similitudes entre SWD y JTAG
+# Diferencias y Conexiones entre SWD y JTAG
 
-Es bien sabido que SWD y JTAG son interfaces comunes para la descarga de programas y la depuración de microcontroladores. Sus similitudes son:
+Como es ampliamente conocido, SWD (Serial Wire Debug) y JTAG (Joint Test Action Group) son interfaces comunes utilizadas para la descarga de programas y la depuración en microcontroladores. Sus similitudes incluyen:
 
 - **Rango de voltaje de alimentación**: 1.2 V - 5.5 V
-- **Velocidad de reloj**: configurable hasta 10 MHz
-- **Captura de seguimiento SWO**: velocidad de datos de hasta 50 Mbit/s (modo UART/NRZ)
-- **Voltaje de aislamiento**: 1 kV
-- **Conexión en caliente**: compatible
+- **Velocidad del reloj**: Configurable hasta 10 MHz
+- **Seguimiento y captura de SWO**: Velocidad de datos de hasta 50 Mbit/s (modo UART/NRZ)
+- **Aislamiento de voltaje**: 1 kV
+- **Conexión en caliente**: Compatible
 
 ## JTAG
 
-JTAG, cuyo nombre completo es Joint Test Action Group (Grupo de Acción Conjunta de Pruebas). El estándar más reciente hasta la fecha de este artículo es el IEEE Standard 1149.1-1990.
+JTAG, cuyo nombre completo es Joint Test Action Group (Grupo de Acción de Prueba Conjunta), se basa en el estándar IEEE 1149.1-1990, el más reciente en el momento de redacción de este artículo.
 
-Su diagrama de topología (cadena de margaritas) es el siguiente:
+Su topología, conocida como "cadena en serie", se presenta a continuación:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210209191921.png)
+![JTAG Topología](https://img.wiki-power.com/d/wiki-media/img/20210209191921.png)
 
 JTAG generalmente utiliza 5 pines:
 
-- **TDI** (Test Data In): pin de entrada serial
-- **TDO** (Test Data Out): pin de salida serial
-- **TCK** (Test Clock): pin de reloj, generalmente con una resistencia de pull-down de 100k
-- **TMS** (Test Mode Select): pin de selección de modo (señal de control)
-- **TRST** (Test Reset): pin de reinicio
+- **TDI** (Test Data In): Pin de entrada en serie.
+- **TDO** (Test Data Out): Pin de salida en serie.
+- **TCK** (Test Clock): Pin de reloj, normalmente con una resistencia pull-down de 100k.
+- **TMS** (Test Mode Select): Pin de selección de modo (señal de control).
+- **TRST** (Test Reset): Pin de reinicio.
 
-Las ventajas de JTAG son:
+Ventajas de JTAG:
 
-- No se limita a chips de la serie ARM
-- Tiene más usos para programación, depuración y pruebas de producción
+- No se limita a los chips de la serie ARM.
+- Tiene una variedad de aplicaciones en programación, depuración y pruebas de producción.
 
 ## SWD
 
-El nombre completo es Serial Wire Debug (Depuración de Cable Serie), es un protocolo diseñado específicamente por ARM y solo es compatible con ARM (por lo que tiene un mejor rendimiento en microcontroladores de la serie ARM).
+Serial Wire Debug (Depuración por Cable Serie), desarrollado específicamente por ARM, es compatible solo con microcontroladores ARM (por lo que tiene un rendimiento superior en dispositivos ARM).
 
 SWD generalmente utiliza 2 pines:
 
-- **SWDIO** (Serial Wire Data Input Output): pin de entrada/salida de datos serial
-- **SWCLK** (Serial Wire Clock): pin de reloj de cable serie
+- **SWDIO** (Serial Wire Data Input Output): Pin de entrada/salida de datos en serie.
+- **SWCLK** (Serial Wire Clock): Pin de reloj en serie.
 
-Las ventajas de SWD son:
+Ventajas de SWD:
 
-- Utiliza menos pines, solo necesita 2 pines: SWDIO y SWCLK
-- SWD tiene funciones especiales, como la impresión de información de depuración
-- En comparación con JTAG, SWD tiene un mejor rendimiento general en velocidad
+- Utiliza menos pines, solo SWDIO y SWCLK.
+- SWD tiene funciones especiales, como la impresión de información de depuración.
+- En comparación con JTAG, SWD ofrece un rendimiento general superior en términos de velocidad.
 
 ## Compatibilidad entre JTAG y SWD
 
-Por lo general, las placas de microcontroladores tienen estos zócalos de grabación que son compatibles con JTAG y SWD al mismo tiempo:
+Por lo general, en una placa de microcontroladores, se encuentran ranuras de programación que son compatibles tanto con JTAG como con SWD:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210210122923.jpg)
+![Compatibilidad JTAG y SWD](https://img.wiki-power.com/d/wiki-media/img/20210210122923.jpg)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210210123714.png)
+![Compatibilidad JTAG y SWD](https://img.wiki-power.com/d/wiki-media/img/20210210123714.png)
 
-- TCK es compatible con SWCLK
-- TMS es compatible con SWDIO
-- (TDO es compatible con SWO)
+- TCK es compatible con SWCLK.
+- TMS es compatible con SWDIO.
+- (TDO es compatible con SWO).
 
 Razones para elegir SWD en lugar de JTAG:
 
-- El diseño del esquemático del circuito debe ser lo suficientemente simple y se puede probar sin la función JTAG
-- El PCB tiene limitaciones de tamaño y SWD puede ahorrar espacio
-- El MCU ya no tiene pines adicionales para JTAG
+- El diseño del esquema eléctrico debe ser lo suficientemente sencillo y permitir pruebas sin la funcionalidad JTAG.
+- Las limitaciones de espacio en la PCB se pueden abordar de manera más eficiente con SWD.
+- El microcontrolador ya no dispone de pines adicionales para JTAG.
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
-- [Diferencias entre la interfaz de descarga y depuración SWD y JTAG](https://mp.weixin.qq.com/s/MW57t266yvv6TOweeFEUVA)
-- [Compartir el puerto de depuración Cortex JTAG, SWD](https://southlife.tistory.com/107)
+- [Diferencias entre las interfaces de descarga y depuración SWD y JTAG](https://mp.weixin.qq.com/s/MW57t266yvv6TOweeFEUVA)
+- [Compartir el Puerto de Depuración Cortex JTAG y SWD](https://southlife.tistory.com/107)
 - [Interfaz JTAG/SWD](https://www.keil.com/support/man/docs/ulinkplus/ulinkplus_jtagswd_interface.htm)
 - [JTAG](https://en.wikipedia.org/wiki/JTAG)
+
+> Dirección original del artículo: <https://wiki-power.com/>
+> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

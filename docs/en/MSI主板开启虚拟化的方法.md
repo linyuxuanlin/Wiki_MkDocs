@@ -1,4 +1,4 @@
-# Method to Enable Virtualization on MSI Motherboards
+# Method for Enabling Virtualization on MSI Motherboards
 
 ## Restart and Enter BIOS
 
@@ -6,15 +6,15 @@
 shutdown.exe /r /o
 ```
 
-After restarting, click on `Troubleshoot` - `Advanced options` - `UEFI Firmware Settings` to enter the motherboard BIOS.
+After the restart, click on `Troubleshoot` - `Advanced options` - `UEFI Firmware Settings` to access the motherboard BIOS.
 
-## Locate Relevant Settings
+## Locate the Relevant Setting
 
-1. Press `F7` to enter advanced options.
-2. Click on `OC` - `CPU Features`.
-3. Locate `SVM Mode / Intel Virtualization (depending on CPU)`.
+1. Press `F7` to access advanced options.
+2. Navigate to `OC` - `CPU Features`.
+3. Locate `SVM Mode / Intel Virtualization` (varies depending on your CPU).
 
-## Modify Settings
+## Modify the Setting
 
 Change `Disabled` to `Enabled`.
 
@@ -22,12 +22,12 @@ Change `Disabled` to `Enabled`.
 
 Press `F10` to save and exit.
 
-## References and Acknowledgements
+## References and Acknowledgments
 
-- [How to Enter BIOS?](https://zhuanlan.zhihu.com/p/34223088)
+- [How to Access BIOS?](https://zhuanlan.zhihu.com/p/34223088)
 - [Method to Enable VT on MSI Computers and Motherboards](http://mumu.163.com/20181108/25905_784199.html)
 
-> Original: <https://wiki-power.com/>  
+> Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

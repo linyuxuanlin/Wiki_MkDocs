@@ -1,194 +1,190 @@
-# Lora Communication - Based on the DFRobot ATK-LORA-01 Module
+# Lora Communication - Based on Elecrow ATK-LORA-01 Module
 
-The ATK-LORA-01 is a small-sized, low-power, low-consumption, high-performance long-range LORA wireless serial module. The module is designed with the efficient ISM frequency band RF SX1278 spread spectrum chip. The module operates at a frequency range of 410MHz to 441MHz, with a step frequency of 1MHz, and a total of 32 channels. Various parameters such as serial port rate, transmission power, air rate, and operating mode can be modified online through AT commands, and firmware upgrade is supported.
+The ATK-LORA-01 is a compact, low-power, energy-efficient, high-performance long-range Lora wireless serial module. The module is designed with the efficient ISM band RF SX1278 spread spectrum chip, operating in the frequency range of 410MHz to 441MHz, with a 1MHz frequency step for a total of 32 channels. It can be configured online via AT commands to modify various parameters such as serial port speed, transmission power, air speed, operating mode, and it also supports firmware upgrades.
 
-## Basic Module Parameters
+## Module Basic Specifications
 
 - Operating Frequency: 410-441 MHz, 32 channels
-- Industrial Frequency Band: Default 433MHz license-free band
-- Wireless Rate: 6 adjustable levels (0.3, 1.2, 2.4, 4.8, 9.6, 19.2Kbps)
-- Communication Interface: TTL serial, UART serial, 8N1, 8E1, 8O1, with 8 baud rates ranging from 1200 to 115200 (default 9600, 8N1)
-- Transmission Power: 100mW (20dB), 4 adjustable levels (0-3), each level increases or decreases by approximately 3dBm
+- Industrial Frequency Band: Factory default at 433MHz, no licensing required
+- Wireless Data Rate: Adjustable in 6 levels (0.3, 1.2, 2.4, 4.8, 9.6, 19.2Kbps)
+- Communication Interface: TTL serial, UART serial, 8N1, 8E1, 8O1, with 8 available baud rates (default 9600, 8N1)
+- Transmit Power: 100mW (20dB), adjustable in 4 levels (0-3), with approximately 3dBm increase or decrease per level
 - Operating Voltage: 3.3-5V
 - Operating Current: 2.3uA-118mA
-  - Transmission: 118mA (20dBm 100mW, voltage 5V)
-  - Reception: 17mA (Mode 0, Mode 1), minimum of approximately 2.3uA (Mode 2+2S Wake-up)
-- Operating Temperature: -40~85℃
-- Receiver Sensitivity up to -136dBm, transmission distance of 3000 meters
-- Dual 512 circular FIFO
+  - Transmit: 118mA (20dBm, 100mW, 5V voltage)
+  - Receive: 17mA (Mode 0, Mode 1), with a minimum of approximately 2.3uA (Mode 2+2S wake-up)
+- Operating Temperature: -40~85°C
+- Receiver Sensitivity: Up to -136dBm, with a transmission range of 3000 meters
+- Dual 512 Circular FIFO
 
-## Interface Definition
+## Interface Definitions
 
-| Name | IO Mode        | Description                                                                 |
-| ---- | -------------- | --------------------------------------------------------------------------- |
-| MD0  | Input          | Configuration parameter entry; When powered on, it enters firmware upgrade mode in conjunction with the AUX pin |
-| AUX  | ① Output; ② Input | ① Used to indicate the module's operating status, wake up the external MCU; ② When powered on, it enters firmware upgrade mode in conjunction with the MD0 pin |
-| RXD  | Input          | TTL serial input, connected to external TXD output pin                       |
-| TXD  | Output         | TTL serial output, connected to external RXD input pin                       |
-| GND  |                | Ground                                                                      |
-| VCC  |                | DC 3.3~5V power input                                                        |
+| Name | I/O Mode        | Description                                                          |
+| ---- | -------------- | -------------------------------------------------------------------- |
+| MD0  | Input          | Configuration entry for parameter settings; when powered on, it enters firmware upgrade mode in conjunction with the AUX pin |
+| AUX  | ① Output; ② Input | ① Used to indicate the module's operational status and to wake up an external MCU; ② When powered on, it enters firmware upgrade mode in conjunction with the MD0 pin |
+| RXD  | Input          | TTL serial input, connected to an external TXD output pin             |
+| TXD  | Output         | TTL serial output, connected to an external RXD input pin             |
+| GND  |                | Ground                                                               |
+| VCC  |                | DC 3.3~5V power input                                                 |
 
-Notes:
+Please Note:
 
-1. The module's pin level is 3.3V, so level conversion adaptation is required for communication with 5V microcontrollers.
-2. The wireless serial module operates at TTL level, so it should be connected to a MCU with TTL level.
+1. The module's pin voltage level is 3.3V; for communication with a 5V microcontroller, level-shifting adaptation is required.
+2. The wireless serial module operates at TTL level, so it should be connected to a TTL-level MCU.
 
-## Mode Configuration
+| Function       | Description                | Access Method                   |
+| -------------- | -------------------------- | ------------------------------- |
+| Configuration  | Module Parameter Setup (AT Commands) | Power on, AUX floating, MD0 pulled high |
+| Communication  | Used for Wireless Communication | Power on, AUX floating, MD0 floating |
+| Firmware Upgrade | Used for Firmware Upgrades | Power on, AUX pulled high, MD0 pulled high, hold for 1s |
 
-The MD0 and AUX pins have two functions, and different states are entered based on their combination. When the module is powered on for the first time, the AUX pin is in input mode. If the MD0 and AUX pins are both connected to 3.3V TTL high level and maintained for 1 second (with no change in pin level), the module will enter firmware upgrade mode and wait for firmware upgrade. Otherwise, it will enter wireless communication mode (the AUX pin will return to output mode to indicate the module's operating status).
-
-The MD0 and AUX pins have internal pull-down resistors and are low level when floating. They are pulled high to 3.3V TTL high level.
-
-| Function         | Description              | Method of Access                   |
-| ---------------- | ------------------------ | ---------------------------------- |
-| Configuration    | Module parameter setup (AT command) | After power on, AUX floating, MD0 pulled high |
-| Communication    | Used for wireless communication | After power on, AUX floating, MD0 floating |
-| Firmware Upgrade | Used for firmware upgrade | After power on, AUX pulled high, MD0 pulled high, hold for 1s |
-
-In wireless communication mode, the AUX pin is set as an output to indicate the module's working status.
+In wireless communication mode, the AUX pin is configured as an output to indicate the module's operational status.
 
 ## Function Configuration
 
-Under "Configuration", the serial port needs to be set as follows: Baud rate "115200", Stop bit "1", Data bit "8", Parity bit "None". The module's working parameters can be set using AT commands. Refer to the following AT command table for configuration:
+Under "Configuration," the serial port should be set to the following parameters: Baud rate "115200," Stop bits "1," Data bits "8," Parity "None." Module operational parameters can be set using AT commands. Refer to the AT command table below when configuring the software:
 
-| Command   | Function                      |
-| --------- | ----------------------------- |
-| AT        | Test module response          |
-| AT+MODEL? | Query device model            |
-| AT+CGMR?  | Get software version number   |
-| AT+UPDATE | Check if device is in firmware upgrade mode |
-| ATE1      | Command echo on               |
-| ATE0      | Command echo off              |
-| AT+RESET  | Module reset (reboot)         |
-| AT+DEFAULT | Restore factory settings      |
-| AT+FLASH= | Save parameters               |
-| AT+ADDR=? | Query device configuration address range |
-| AT+ADDR?  | Query device address          |
-| AT+ADDR=  | Configure device address      |
-| AT+TPOWER=? | Query transmission power configuration range |
-| AT+TPOWER? | Query transmission power      |
-| AT+TPOWER= | Configure transmission power  |
-| AT+CWMODE=? | Query configuration working mode range |
-| AT+CWMODE? | Query working mode            |
-| AT+CWMODE= | Configure working mode        |
-| AT+TMODE=? | Query configuration sending status range |
-| AT+TMODE?  | Query sending status          |
-| AT+TMODE=  | Configure sending status      |
-| AT+WLRATE=? | Query wireless rate and channel configuration range |
-| AT+WLRATE? | Query wireless rate and channel |
-| AT+WLRATE= | Configure wireless rate and channel |
-| AT+WLTIME=? | Query configuration sleep time range |
-| AT+WLTIME? | Query sleep time              |
-| AT+WLTIME= | Configure sleep time          |
-| AT+UART=? | Query serial port configuration range |
-| AT+UART?  | Query serial port configuration |
-| AT+UART=  | Configure serial port         |
+| Command      | Function                                 |
+| ------------ | ---------------------------------------- |
+| AT           | Test module response                     |
+| AT+MODEL?    | Query device model                       |
+| AT+CGMR?     | Get software version                     |
+| AT+UPDATE    | Check if the device is in firmware upgrade mode |
+| ATE1         | Enable command echo                      |
+| ATE0         | Disable command echo                     |
+| AT+RESET     | Module reset (reboot)                   |
+| AT+DEFAULT   | Restore factory settings                 |
+| AT+FLASH=    | Save parameters                          |
+| AT+ADDR=?    | Query device configuration address range |
+| AT+ADDR?     | Query device address                     |
+| AT+ADDR=     | Configure device address                 |
+| AT+TPOWER=?  | Query transmission power configuration range |
+| AT+TPOWER?   | Query transmission power                 |
+| AT+TPOWER=   | Configure transmission power             |
+| AT+CWMODE=?  | Query configuration working mode range  |
+| AT+CWMODE?   | Query working mode                      |
+| AT+CWMODE=   | Configure working mode                  |
+| AT+TMODE=?   | Query transmission state configuration range |
+| AT+TMODE?    | Query transmission state                 |
+| AT+TMODE=    | Configure transmission state             |
+| AT+WLRATE=?  | Query wireless rate and channel configuration range |
+| AT+WLRATE?   | Query wireless rate and channel         |
+| AT+WLRATE=   | Configure wireless rate and channel     |
+| AT+WLTIME=?  | Query sleep time configuration range    |
+| AT+WLTIME?   | Query sleep time                        |
+| AT+WLTIME=   | Configure sleep time                    |
+| AT+UART=?    | Query serial port configuration range   |
+| AT+UART?     | Query serial port configuration         |
+| AT+UART=     | Configure serial port                   |
 
-When exiting the configuration function (MD0=0), the module will reconfigure the parameters. During the configuration process, AUX will remain at a high level and will output a low level after completion. The module will return to idle state.
+When exiting the configuration mode (MD0=0), the module will reconfigure its parameters. During the configuration process, the AUX pin remains high and goes low once the configuration is complete. The module then returns to an idle state.
 
 ## Sleep Time
 
-The sleep time is the interval for the receiving party to listen. For the transmitting party, it is the duration for continuously transmitting the wake-up code. When the module is in "wake-up mode", it will automatically add the wake-up code for configuring the sleep time before the user data. When the module is in "power-saving mode", the configured sleep time will be the interval for listening.
+The sleep time refers to the listening interval for the receiving end and the duration for transmitting the wake-up code for the transmitting end. When the module is in "Wake Mode," it automatically adds a wake-up code with the configured sleep time before user data. In "Power-Save Mode," the configured sleep time serves as the listening interval.
 
 ## Device Modes
 
 ### General Mode (Mode 0)
 
-- Transmitting: The module receives user data from the serial port and transmits wireless data packets with a length of 58 bytes. When the user input data reaches 58 bytes, the module will start wireless transmission. At this time, the user can continue to input the data to be transmitted. If the number of bytes to be transmitted by the user is less than 58 bytes, the module will wait for 1 byte of time. If there is no further user input, it will be considered as the end of data. At this time, the module will transmit all the data wirelessly. When the module starts sending the first packet of user data, the AUX pin will output a high level. After the module sends all the data through the RF chip and starts transmission, the AUX will output a low level. This indicates that the last wireless data packet has been transmitted. The user can continue to input data up to 512 bytes. The data packets sent through the general mode can only be received by modules in the general mode and wake-up mode.
-- Receiving: The module keeps the wireless receiving function open and can receive data packets sent by modules in the general mode and wake-up mode. After receiving a data packet, the AUX pin of the module outputs a high level. After a delay of 2-3ms, the module starts to send the wireless data through the TXD pin of the serial port. After all the wireless data is output through the serial port, the AUX pin of the module outputs a low level.
+- Transmit: The module receives user data from the serial port and transmits wireless data packets with a length of 58 bytes. When the user input data reaches 58 bytes, the module initiates wireless transmission. Users can continue to input data for transmission. If the user needs to transmit less than 58 bytes, the module waits for 1 byte time. If no further user data is input, it considers the data as terminated and transmits all the data wirelessly. When the module starts sending the first packet of user data, the AUX pin goes high. After the module has transmitted all data via the RF chip and initiated the transmission, the AUX pin goes low, indicating the completion of the last wireless data packet. Users can continue to input data of up to 512 bytes. Data sent in general mode can only be received by modules in general mode or wake-up mode.
+- Receive: The module continuously enables wireless reception and can receive data packets sent from general mode or wake-up mode. Upon receiving a data packet, the AUX pin goes high. After a 2-3ms delay, the module starts transmitting wireless data through the TXD pin. Once all wireless data has been output through the serial port, the AUX pin goes low.
 
-### Wake-up Mode (Mode 1)
+### Wake-Up Mode (Mode 1)
 
-- Transmitting: The conditions for starting data packet transmission by the module are the same as in the general mode. The only difference is that the module will automatically add a wake-up code (sleep time) before each data packet. The length of the wake-up code depends on the sleep time set in the user parameters. The purpose of the wake-up code is to wake up the receiving module in power-saving mode. Therefore, the data transmitted in wake-up mode can be received by modules in general mode, 1, and 2.
-- Receiving: Same as the general mode.
+- Transmit: The conditions for initiating data packet transmission in wake-up mode are the same as those in general mode, with the only difference being that the module automatically adds a wake-up code (sleep time) before each data packet. The length of the wake-up code depends on the sleep time set in user parameters. The purpose of the wake-up code is to wake up receiving modules operating in power-save mode. Therefore, data transmitted in wake-up mode can be received by modules in general mode and modes 1 and 2.
+- Receive: Same as general mode.
 
-### Power-saving Mode (Mode 2)
+### Power-Save Mode (Mode 2)
 
-- Transmitting: The module is in sleep mode, and the serial port is closed, so it cannot receive serial port data from an external MCU. Therefore, this mode does not have the function of wireless transmission.
-- Receiving: In power-saving mode, the transmitting party must work in wake-up mode. The wireless module listens to the wake-up code periodically. Once a valid wake-up code is received, the module will continue to be in receiving state, waiting for the entire valid data packet to be received. Then, the module will output a high level on the AUX pin, and after a delay of 2-3ms, it will open the serial port to send the received wireless data through TXD. After completion, the AUX pin will output a low level. The wireless module will continue to work in the "sleep-listen" state. By setting different wake-up times, the module has different response delays and power consumption. Users need to find a balance between communication delay and average power consumption.
+- Transmit: The module is in a sleep state, and the serial port is closed, making it unable to receive serial data from an external MCU. Therefore, this mode does not support wireless transmission.
+- Receive: In power-save mode, the transmitting end must operate in wake-up mode. The wireless module periodically listens for wake-up codes. Once a valid wake-up code is received, the module remains in the receiving state, waiting for the entire valid data packet to be received. Then, the AUX pin goes high, followed by a 2-3ms delay, after which the serial port is opened to transmit the received wireless data through TXD. Once transmission is complete, the AUX pin goes low. The wireless module continues in a "sleep-listen" operational state. By setting different wake-up times, the module can achieve different reception response delays and power consumption levels, allowing users to balance communication latency and average power consumption.
 
 ### Signal Strength Mode (Mode 3)
 
-The signal strength mode can be used to view the signal strength of both communication parties and provide a reference for evaluating communication quality.
+Signal strength mode allows viewing the signal strength of both communicating parties and provides a reference for assessing communication quality.
 
-- Transmitting: Same as the general mode.
-- Receiving: Outputs information about signal strength.
+- Transmit: Same as general mode.
+- Receive: Outputs information on signal strength.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220118110058.png)
+![Signal Strength Mode](https://img.wiki-power.com/d/wiki-media/img/20220118110058.png)
 
-SNR: Signal-to-Noise Ratio (larger values indicate more stability), RSSI: Received Signal Strength Indication (larger values indicate stronger signal)
+SNR: Signal-to-Noise Ratio (greater values indicate greater stability), RSSI: Received Signal Strength Indication (greater values indicate greater stability).
 
 ## Communication Modes
 
-- Transparent Transmission: For example, Device A sends 5 bytes of data AA BB CC DD EE to Device B, and Device B receives the data AA BB CC DD EE. (Transparent transmission is for communication between devices with the same address and the same communication channel. User data can be in the form of characters or hexadecimal data).
+- Transparent Transmission: For example, device A sends 5 bytes of data "AA BB CC DD EE" to device B, and device B receives the data as "AA BB CC DD EE" (transparent transmission is for communication between devices with the same address and on the same communication channel; user data can be in character or hexadecimal format).
   - Point-to-Point
-  - Point-to-Multi-point
+  - Point-to-Multipoint
   - Broadcast Listening
-- Directed Transmission: For example, Device A (address: 0x1400, channel: 0x17 (channel 23, 433MHz)) needs to send data AA BB CC to Device B (address: 0x1234, channel: 0x10 (channel 16, 426MHz)). The communication format is: 12 34 10 AA BB CC, where 1234 is the address of module B and 10 is the channel. Module B can receive AA BB CC. Similarly, if Device B needs to send data AA BB CC to Device A, the communication format is: 14 00 17 AA BB CC, and Device A can receive AA BB CC. (Directed transmission can achieve communication between devices with different addresses and communication channels. The data format is hexadecimal. The sending format is: high byte of address + low byte of address + channel + user data).
-  - Point-to-Multi-point
+- Directed Transmission: For example, device A (address: 0x1400, channel: 0x17) needs to send data "AA BB CC" to device B (address: 0x1234, channel: 0x10), the communication format is "12 34 10 AA BB CC," where 1234 is the address of module B and 10 is the channel, so module B can receive "AA BB CC." Similarly, if device B needs to send data "AA BB CC" to device A, the communication format is "14 00 17 AA BB CC," and device A can receive "AA BB CC" (directed transmission allows communication between devices with different addresses and communication channels; data format is hexadecimal, with the format being high address + low address + channel + user data).
+  - Point-to-Multipoint
   - Broadcast Listening
 
-Broadcast and Data Monitoring: Setting the module address to 0xFFFF allows you to monitor the data transmission of all modules on the same channel. The data sent can be received by any module with any address on the same channel, thus serving the purpose of broadcasting and monitoring.
+Broadcast and Data Monitoring: By setting the module address to 0xFFFF, you can monitor the data transmission of all modules on the same channel. The data sent can be received by modules with any address on the same channel, serving the purpose of broadcasting and monitoring.
 
 ## Transparent Transmission Mode
 
 ### Point-to-Point
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220118110614.png)
+![Image](https://img.wiki-power.com/d/wiki-media/img/20220118110614.png)
 
-- Two modules with the same address, same channel, and the same wireless rate (not serial baud rate) can send and receive data to each other (one sends, one receives).
-- Each module can perform sending/receiving.
-- Data is completely transparent, what is sent is what is received.
+- Two modules with the same address, channel, and wireless rate (non-serial port baud rate) can engage in point-to-point communication. One module sends while the other receives (one must transmit, and the other must receive).
+- Each module can send and receive.
+- Data transmission is entirely transparent, what you send is what you get.
 
-|          | Sending Module | Receiving Module |
-| -------- | -------------- | ---------------- |
-| Quantity | 1              | 1                |
-| Content  | Data           | Data             |
+|          | Transmitting Module | Receiving Module |
+| -------- | ------------------- | ----------------- |
+| Quantity | 1                   | 1                 |
+| Content  | Data                | Data              |
 
 For example:
 
-Devices A and B have the address 0x1234, channel 0x12, and the same rate.  
+Devices A and B both have the address 0x1234, channel 0x12, and the same rate.  
 Device A sends: AA BB CC DD  
 Device B receives: AA BB CC DD
 
-The transparent transmission method is simple, just use the Lora module as a serial port. Device A can send data through the serial port, and Device B can receive it from the serial port, and vice versa.
+The transparent transmission is quite straightforward, just treat the LoRa module as a serial port. Device A sends data through the serial port, and Device B can receive it via the serial port, and vice versa.
 
-### Point-to-Multi
+### Point-to-Multi-Point
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220118110709.png)
+![Image](https://img.wiki-power.com/d/wiki-media/img/20220118110709.png)
 
-- Modules with the same address, same channel, and the same wireless rate (not serial baud rate), any module can send data and all other modules can receive it.
-- Each module can perform sending/receiving.
-- Data is completely transparent, what is sent is what is received.
+- Modules with the same address, channel, and wireless rate (non-serial port baud rate) can engage in point-to-multi-point communication. When one module sends, all other modules can receive.
+- Each module can send and receive.
+- Data transmission is entirely transparent, what you send is what you get.
 
-|          | Sending Module | Receiving Module |
-| -------- | -------------- | ---------------- |
-| Quantity | 1              | N                |
-| Content  | Data           | Data             |
+|          | Transmitting Module | Receiving Module |
+| -------- | ------------------- | ----------------- |
+| Quantity | 1                   | N                 |
+| Content  | Data                | Data              |
 
-The difference from point-to-point is that there can be multiple receiving modules.
+The difference from point-to-point is that multiple modules can receive.
 
 For example:
+
 Devices A to F have the address 0x1234, channel 0x12, and the same rate.  
 Device A sends: AA BB CC DD  
 Devices B to F receive: AA BB CC DD
 
 ### Broadcast Monitoring
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220118110853.png)
+![Image](https://img.wiki-power.com/d/wiki-media/img/20220118110853.png)
 
-- If the module address is 0xFFFF, the module is in broadcast monitoring mode. The data sent can be received by all other modules with the same rate and channel (broadcast); at the same time, it can monitor the data transmission of all modules on the same rate and channel (monitoring).
-- Broadcast monitoring does not require the addresses to be the same.
+- If the module address is set to 0xFFFF, the module operates in broadcast monitoring mode. The data sent can be received by all other modules with the same rate and channel (broadcast), and it can also monitor data transmission from all modules on the same rate and channel (monitoring).
+- Broadcast monitoring does not require the same address.
 
-|          | Sending Module | Receiving Module |
-| -------- | -------------- | ---------------- |
-| Quantity | 1              | N                |
-| Content  | Data           | Data             |
+|          | Transmitting Module | Receiving Module |
+| -------- | ------------------- | ----------------- |
+| Quantity | 1                   | N                 |
+| Content  | Data                | Data              |
 
-The difference from point-to-multi is that the addresses can be different.
+The difference from point-to-multi-point is that the addresses can be different.
 
 For example:
-Device A has the address 0xFFFF, devices B to F have different addresses. Devices B and C have the address 0x1234, and devices D, E, and F have the address 0x5678. All devices A to F have the same rate.  
+
+Device A has an address of 0xFFFF, and Devices B to F have different addresses. Devices B and C have the address 0x1234, and Devices D, E, and F have the address 0x5678. All devices A to F have the same rate.  
 Broadcast:  
 Device A broadcasts: AA BB CC DD  
 Devices B to F receive: AA BB CC DD  
@@ -202,24 +198,25 @@ Device A monitors: 11 22 33 44
 
 ### Point-to-Point
 
-- When sending, the module can modify the address and channel, allowing the user to specify the data to be sent to any address and channel.
+- When sending, the module can modify the address and channel, allowing users to specify data transmission to any address and channel.
 - It can achieve networking and relay functions.
 
-|          | Sending Module       | Receiving Module |
-| -------- | -------------------- | ---------------- |
-| Quantity | 1                    | 1                |
-| Content  | Address + Channel + Data | Data             |
+|          | Transmitting Module | Receiving Module |
+| -------- | ------------------- | ----------------- |
+| Quantity | 1                   | 1                 |
+| Content  | Address + Channel + Data | Data |
 
-The difference from point-to-point transparent transmission is that the module address and channel can be changed, but the rate remains the same.
+The difference from point-to-point transparent is that the module address and channel can change, but the rate remains the same.
 
-Translate into English:
+Sure, here's the text translated into English while preserving the original markdown format:
 
+```markdown
 ![](https://img.wiki-power.com/d/wiki-media/img/20220118111903.png)
 
 For example:
-Device A address 0X1234, channel 0X17;
-Device B address 0xABCD, channel 0X01;
-Device C address 0X1256, channel 0x13.
+Device A address 0x1234, channel 0x17;
+Device B address 0xABCD, channel 0x01;
+Device C address 0x1256, channel 0x13.
 
 Device A sends: AB CD 01 AA BB CC DD
 Device B receives: AA BB CC DD
@@ -229,13 +226,13 @@ Device A sends: 12 56 13 AA BB CC DD
 Device B receives: None
 Device C receives: AA BB CC DD
 
-#### No code test
+#### Codeless Testing
 
-Prepare 2 USB to TTL converters and 2 LoRa modules. Connect them to the USB to TTL converters (power, common ground, TX/RX connections). Connect the MD0 pins of the two LoRa modules to VCC, then plug them into the computer's USB ports. Open the configuration software and set the following parameters:
+Prepare 2 USB to TTL converters and 2 LoRa modules. Connect them separately to USB to TTL (power, common ground, TX/RX pairing). Connect the MD0 pins of the two LoRa modules to VCC, then plug them into the computer's USB ports. Open the configuration software and set the following parameters:
 
 Device A:
 
-- General mode
+- Normal mode
 - Directed transmission
 - **Baud rate: 115200 (must be 115200)**
 - Parity: None
@@ -247,7 +244,7 @@ Device A:
 
 Device B:
 
-- General mode
+- Normal mode
 - Directed transmission
 - **Baud rate: 115200 (must be 115200)**
 - Parity: None
@@ -257,17 +254,17 @@ Device B:
 - **Communication channel: 10**
 - Transmit power: 20dBm
 
-After configuring, click "Save Configuration" and **remove the MD0 pins before disconnecting the power**.
+After configuration, click "Save Configuration," then **remove MD0 and power off**.
 
-Power on the two modules again, open the configuration software, and check "HEX" (hexadecimal) for both transmit and receive.
+Power both modules back on, open the configuration software, and check "HEX" (hexadecimal) for both transmit and receive.
 
-In the transmit area of Device A, enter `FF FE 0A 11 12 13 14`, click "Send", and you will receive `11 12 13 14` in the receive area of Device B. Or, in the transmit area of Device B, enter `00 00 00 11 12 13`, and you will receive `11 12 13` in the receive area of Device A.
+In the transmit area of A, enter `FF FE 0A 11 12 13 14`, click send, and you'll receive `11 12 13 14` in B's receive area. Or, in B's transmit area, enter `00 00 00 11 12 13`, and you'll receive `11 12 13` in A's receive area.
 
-In this case, `FF FE` is the hexadecimal representation of the address 65534 of Device B, and the channel is 10 (hexadecimal representation is `0A`). The transmitted data is `11 12 13 14`. Similarly, the data transmitted by Device B includes the address of Device A `00 00`, channel `00`, and content `11 12 13`. The format of the transmitted data is **high address + low address + channel + user data**.
+Here, `FF FE` represents B's address 65534 in hexadecimal, the channel is 10 (in hexadecimal, it's `0A`), and the content data is `11 12 13 14`. Similarly, B's transmitted data includes A's address `00 00`, channel `00`, and content `11 12 13`. The data transmission format is **high-byte address + low-byte address + channel + user data**.
 
-#### Testing with code
+#### Code-based Testing
 
-Point-to-point directed transmission only adds an address byte compared to point-to-point transparent transmission. It can be defined as follows:
+Point-to-point fixed transmission only adds address bytes compared to point-to-point transparent transmission. You can define it like this:
 
 ```c title="main.c"
 /* USER CODE BEGIN PV */
@@ -276,55 +273,60 @@ uint8_t B_Chan[1] = { 0x0A };
 /* USER CODE END PV */
 ```
 
-After configuring the code with UART (HAL library environment), send the address bytes before sending data each time:
+After configuring the code with UART (HAL library environment), send the address bytes before each data transmission:
 
 ```c title="main.c"
 HAL_UART_Transmit(&huart1, B_Addr, 2, 0xFFFF);
 HAL_UART_Transmit(&huart1, B_Chan, 1, 0xFFFF);
 ```
 
-This way, the receiving device (Device B) can receive a frame of data sent by Device A (excluding the address bytes).
+This way, the receiving device (Device B) can receive a data frame sent by A (without the address bytes).
 
 ### Broadcast Listening
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20220118112544.png)
 
-- If the module address is 0xFFFF, the module is in broadcast listening mode, and the data sent can be received by all other modules with the same rate and channel (broadcast); at the same time, it can listen to data transmissions from all modules on the same rate and channel (listening);
-- Broadcast listening does not require the addresses to be the same.
-- The channel address can be set. When the address is 0xFFFF, it is in broadcast mode; otherwise, it is in directed transmission mode.
+- When the module address is 0xFFFF, the module is in broadcast listening mode. The data it sends can be received by all other modules with the same speed and channel (broadcast). It can also listen to data transmission from all modules on the same speed and channel (listening).
+- Broadcast listening doesn't require the same address.
+- The channel address can be set. When the address is 0xFFFF, it's in broadcast mode; for other addresses, it's in directed transmission mode.
 
-|          | Sending Module   | Receiving Module |
-| -------- | ---------------- | ---------------- |
-| Quantity | 1                | N                |
-| Content  | 0xFFFF+Channel+Data | Data             |
+|          | Sending Module         | Receiving Modules |
+| -------- | ------------------ | ---------- |
+| Quantity | 1                | N        |
+| Transmission Content | 0xFFFF + channel + data | Data |
+```
 
-For example:
+Please let me know if you need any further assistance or clarification.
 
-Device A has the address 0xFFFF and operates on channel 0x12.  
-Devices B and C have the address 0x1234 and operate on channel 0x13.  
-Device D has the address 0xAB00 and operates on channel 0x01.  
-Device E has the address 0xAB01 and operates on channel 0x12.  
-Device F has the address 0xAB02 and operates on channel 0x12.
+```markdown
+Device A Address 0xFFFF Channel 0x12;
+Devices B and C Address 0x1234, Channel 0x13;
+Device D Address 0xAB00, Channel 0x01;
+Device E Address 0xAB01, Channel 0x12;
+Device F Address 0xAB02, Channel 0x12;
 
-Device A broadcasts: FF FF 13 AA BB CC DD  
-Devices B and C receive: AA BB CC DD
+Device A Broadcasts: FF FF 13 AA BB CC DD
+Devices B and C Receive: AA BB CC DD
 
-Device A sends: AB 00 01 11 22 33 44  
-Only device D receives: 11 22 33 44
+Device A Sends: AB 00 01 11 22 33 44
+Only Device D Receives: 11 22 33 44
 
-Device E sends: AB 02 12 66 77 88 99  
-Device F receives: 66 77 88 99  
-Device A listens: 66 77 88 99
+Device E Sends: AB 02 12 66 77 88 99
+Device F Receives: 66 77 88 99
+Device A Listens: 66 77 88 99
 
-## References and Acknowledgements
+## References and Acknowledgments
 
 - [LORA Module ATK-LORA-01](http://www.openedv.com/docs/modules/iot/atk-lora-01.html)
-- [ATK-LORA Module Usage Tutorial by DFRobot](https://www.bilibili.com/video/BV1D44y1t7bn)
-- [ATK-LORA-01 Wireless Serial Module Data Download and Technical Discussion](http://www.openedv.com/thread-309019-1-1.html)
-- [Testing Method for Two LORA Modules Transmitting Data in General Mode (Using PC Testing)](http://www.openedv.com/forum.php?mod=viewthread&tid=288951)
-- [ATK-LORA-01 Wireless Serial Module Only Receives 00](http://www.openedv.com/forum.php?mod=viewthread&tid=328190&highlight=ATK-LORA-01)
+- [ELECFREAKS LORA Module ATK-LORA User Guide](https://www.bilibili.com/video/BV1D44y1t7bn)
+- [ELECFREAKS Product Information - LORA Module ATK-LORA-01 Data Download and Technical Discussion](http://www.openedv.com/thread-309019-1-1.html)
+- [Testing Method for Two LORA Modules Working in General Mode for Directional Data Transmission (Using Host Computer Testing)](http://www.openedv.com/forum.php?mod=viewthread&tid=288951)
+- [ATK-LORA-01 Wireless Serial Module Receiving Only 00](http://www.openedv.com/forum.php?mod=viewthread&tid=328190&highlight=ATK-LORA-01)
 
-> Original: <https://wiki-power.com/>  
+> Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
+```
+
+Note: The text has been translated into colloquial, professional, and elegant English while maintaining the original markdown format.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

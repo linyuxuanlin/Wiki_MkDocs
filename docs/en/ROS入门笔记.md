@@ -1,10 +1,10 @@
-# ROS Beginner's Notes
+# ROS Getting Started Notes
 
 This tutorial is based on ROS2 Foxy and Ubuntu 20.04.
 
-## ROS Environment Installation
+## Installing the ROS Environment
 
-### Set UTF-8 Encoding
+### Setting UTF-8 Encoding
 
 ```shell
 sudo locale-gen en_US en_US.UTF-8
@@ -12,7 +12,7 @@ sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 export LANG=en_US.UTF-8
 ```
 
-### Set Software Sources
+### Setting Software Sources
 
 ```shell
 sudo apt update && sudo apt install curl gnupg2 lsb-release
@@ -23,56 +23,56 @@ curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo ap
 sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture)] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/ros2-latest.list'
 ```
 
-### Install ROS2
+### Installing ROS2
 
 ```shell
 sudo apt update
 sudo apt install ros-foxy-desktop
 ```
 
-### Set Environment Variables
+### Setting Environment Variables
 
 ```shell
 source /opt/ros/foxy/setup.bash
 ```
 
-### Install Autocomplete Tool
+### Installing Auto-Completion Tool
 
 ```shell
 sudo apt install python3-argcomplete
 ```
 
-### Test After Successful Installation
+### Testing After Successful Installation
 
-Run Talker:
+Run the Talker:
 
 ```shell
 source /opt/ros/foxy/setup.bash
 ros2 run demo_nodes_cpp talker
 ```
 
-Open a new command line window and run Listener:
+Open a new terminal window and run the Listener:
 
 ```shell
 source /opt/ros/foxy/setup.bash
 ros2 run demo_nodes_py listener
 ```
 
-### If You Want to Uninstall ROS
+### Uninstalling ROS (If Needed)
 
 ```shell
 sudo apt remove ros-foxy-* && sudo apt autoremove
 ```
 
-Then check if there is a ROS folder in ~/.bashrc and /opt/ directory.
+Afterward, check `~/.bashrc` and the `/opt/` directory for the presence of ROS folders.
 
-## ROS2 Environment Configuration
+## Configuring ROS2 Environment
 
 ```shell
 source /opt/ros/foxy/setup.bash
 ```
 
-Check after setting up:
+Check the configuration after setting:
 
 ```shell
 printenv | grep -i ROS
@@ -87,46 +87,46 @@ sudo apt update
 sudo apt install ros-foxy-turtlesim
 ```
 
-Check if installed successfully:
+Check if the installation was successful:
 
 ```shell
 ros2 pkg executables turtlesim
 ```
 
-### Launch Turtle Simulator
+### Launching the Turtle Simulator
 
 ```shell
 ros2 run turtlesim turtlesim_node
 ```
 
-To make the turtle move, open a new command window and enter the command:
+To make the turtle move, open a new terminal window and enter the following command:
 
 ```shell
 ros2 run turtlesim turtle_teleop_key
 ```
 
-Follow the prompts in the command line to control the turtle.
+Follow the prompts in the terminal to control the turtle.
 
-### Installation of rqt Tool
+### Installing rqt Tools
 
 ```shell
 sudo apt update
 sudo apt install ~nros-foxy-rqt*
 ```
 
-### Launch rqt Tool
+### Launching rqt Tools
 
-First, make sure a turtle is running in the background. Enter the command in the command line:
+First, ensure that a turtle is running in the background. In the terminal, enter:
 
 ```shell
 rqt
 ```
 
-Launch the rqt tool, open `Plugins > Services > Service Caller` in order, click the refresh button, and you can see all services.
+Launch the rqt tool and, in sequence, open `Plugins > Services > Service Caller`. Click the refresh button to see all services.
 
-Select the `/spawn` service, fill in the name (e.g. `'GuaiGuai'`) and position of the new turtle, and you can generate a new turtle. If you want to modify the color and shape of its trajectory, you can modify the content of the `/set_pen` service.
+Select the `/spawn` service, enter the turtle's name (e.g., `'GuaiGuai'`) and position to create another turtle. If you want to modify its trajectory's color and shape, you can adjust the content of the `/set_pen` service.
 
-To control the movement of the newly generated turtle, use the following command (note the name of the turtle):
+To control the movement of the newly generated turtle, you can use the following command (please note the turtle's name):
 
 ```shell
 ros2 run turtlesim turtle_teleop_key --ros-args --remap turtle1/cmd_vel:=guaiguai/cmd_vel
@@ -134,8 +134,8 @@ ros2 run turtlesim turtle_teleop_key --ros-args --remap turtle1/cmd_vel:=guaigua
 
 ## References and Acknowledgments
 
-- [ROS2 Beginner's Tutorial ——2. Installing ROS2 Foxy on Ubuntu20.04](https://www.guyuehome.com/10226)
-- [ROS2 Beginner's Tutorial ——3. ROS2 Environment Configuration](https://www.guyuehome.com/10243)
-- [ROS2 Beginner's Tutorial ——4. Basic Usage of Turtlebot Simulator](https://www.guyuehome.com/10386)
+- [ROS2 Beginner's Tutorial - 2. Installing ROS2 Foxy on Ubuntu 20.04](https://www.guyuehome.com/10226)
+- [ROS2 Beginner's Tutorial - 3. Setting Up the ROS2 Environment](https://www.guyuehome.com/10243)
+- [ROS2 Beginner's Tutorial - 4. Basic Usage of the Turtle Simulator](https://www.guyuehome.com/10386)
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

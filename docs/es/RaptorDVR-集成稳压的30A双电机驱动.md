@@ -1,28 +1,28 @@
-# RaptorDVR - Controlador de doble motor con regulador integrado de 30 A 🚧
+# RaptorDVR - Dual Motor Driver with Integrated Voltage Regulation 🚧
 
-RaptorDVR es una placa controladora de doble motor de corriente continua con reducción de velocidad capaz de manejar corrientes de hasta 30 A. También cuenta con un regulador de voltaje de 5 V/5 A integrado para alimentar dispositivos externos como la Raspberry Pi y placas controladoras de microcontroladores.
+RaptorDVR is a dual motor driver board capable of handling a 30 A current load. It also integrates a 5 V/5 A voltage regulator, designed for peripherals such as Raspberry Pi and microcontroller control boards.
 
-## Características
+## Features
 
-- Tipo de controlador: controlador de puente H de doble canal con MOSFET
-- Voltaje de entrada externo: 3.5-28 V (por confirmar)
-- Corriente de motor (por canal): 15 A
-- Protección de circuito: fusible de 30 A (LED indicador de estado del fusible)
+- Motor Driver Type: Dual-channel full-bridge MOSFET driver
+- External Input Voltage: 3.5-28 V (to be tested)
+- Motor Driver Current (per channel): 15 A
+- Circuit Protection: 30 A fuse (LED indicates fuse status)
 
-## Diseño de hardware
+## Hardware Design
 
-### Controlador de puente H
+### Full-Bridge Motor Driver
 
-### Regulador de voltaje
+### Voltage Regulation
 
-## Programa de ejemplo
+## Sample Programs
 
-## Referencias y agradecimientos
+## References and Acknowledgments
 
 - [Hercules Dual 15A 6-20V Motor Controller](https://wiki.seeedstudio.com/Hercules_Dual_15A_6-20V_Motor_Controller/)
 - 105010000
 
-> Dirección original del artículo: <https://wiki-power.com/>  
+> Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

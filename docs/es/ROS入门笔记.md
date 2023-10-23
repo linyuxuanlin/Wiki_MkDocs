@@ -1,8 +1,8 @@
-# Notas de introducción a ROS
+# Notas de Introducción a ROS
 
-Este tutorial se basa en ROS2 Foxy y Ubuntu20.04.
+Este tutorial se basa en ROS2 Foxy y Ubuntu 20.04.
 
-## Instalación del entorno ROS
+## Instalación del Entorno de ROS
 
 ### Configuración de la codificación UTF-8
 
@@ -12,7 +12,7 @@ sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 export LANG=en_US.UTF-8
 ```
 
-### Configuración de la fuente de software
+### Configuración de Repositorios
 
 ```shell
 sudo apt update && sudo apt install curl gnupg2 lsb-release
@@ -30,55 +30,55 @@ sudo apt update
 sudo apt install ros-foxy-desktop
 ```
 
-### Configuración de variables de entorno
+### Configuración de Variables de Entorno
 
 ```shell
 source /opt/ros/foxy/setup.bash
 ```
 
-### Instalación de herramientas de autocompletado
+### Instalación de la Herramienta de Autocompletado
 
 ```shell
 sudo apt install python3-argcomplete
 ```
 
-### Prueba después de la instalación exitosa
+### Prueba de Instalación
 
-Ejecutar Talker:
+Para ejecutar el Talker:
 
 ```shell
 source /opt/ros/foxy/setup.bash
 ros2 run demo_nodes_cpp talker
 ```
 
-Abrir una nueva ventana de línea de comandos y ejecutar Listener:
+Abre una nueva ventana de la terminal y ejecuta el Listener:
 
 ```shell
 source /opt/ros/foxy/setup.bash
 ros2 run demo_nodes_py listener
 ```
 
-### Si desea desinstalar ROS
+### Desinstalación de ROS (si es necesario)
 
 ```shell
 sudo apt remove ros-foxy-* && sudo apt autoremove
 ```
 
-Luego, verifique si hay una carpeta de ROS en ~ / .bashrc o / opt / directorio.
+Luego, verifica si hay una carpeta de ROS en ~/.bashrc y en el directorio /opt/.
 
-## Configuración del entorno ROS2
+## Configuración del Entorno de ROS2
 
 ```shell
 source /opt/ros/foxy/setup.bash
 ```
 
-Comprobación después de la configuración:
+Verificación después de la configuración:
 
 ```shell
 printenv | grep -i ROS
 ```
 
-## Simulador de tortuga pequeña
+## Simulador de Tortuga Pequeña
 
 ### Instalación
 
@@ -87,55 +87,55 @@ sudo apt update
 sudo apt install ros-foxy-turtlesim
 ```
 
-Comprobar si la instalación fue exitosa:
+Verifica si la instalación fue exitosa:
 
 ```shell
 ros2 pkg executables turtlesim
 ```
 
-### Iniciar el simulador de tortuga
+### Iniciar el Simulador de Tortuga
 
 ```shell
 ros2 run turtlesim turtlesim_node
 ```
 
-Para hacer que la tortuga pequeña se mueva, abra una nueva ventana de línea de comandos e ingrese el siguiente comando:
+Para hacer que la pequeña tortuga se mueva, abre una nueva ventana de la terminal e ingresa el siguiente comando:
 
 ```shell
 ros2 run turtlesim turtle_teleop_key
 ```
 
-Siga las instrucciones en la línea de comandos para controlar la tortuga.
+Sigue las instrucciones en la terminal para controlar la tortuga.
 
-### Instalación de la herramienta rqt
+### Instalación de la Herramienta rqt
 
 ```shell
 sudo apt update
 sudo apt install ~nros-foxy-rqt*
 ```
 
-### Iniciar la herramienta rqt
+### Iniciar la Herramienta rqt
 
-Primero, asegúrese de que una tortuga pequeña esté ejecutándose en segundo plano. En la línea de comandos, ingrese:
+Asegúrate de que una tortuga pequeña esté ejecutándose en segundo plano. En la terminal, ingresa:
 
 ```shell
 rqt
 ```
 
-Despierte la herramienta rqt, abra `Plugins > Services > Service Caller` en orden, haga clic en el botón de actualización y podrá ver todos los servicios.
+Abre la herramienta rqt, ve a `Plugins > Services > Service Caller`, haz clic en el botón de actualización y verás todos los servicios disponibles.
 
-Seleccione el servicio `/spawn`, ingrese el nombre (por ejemplo, `'GuaiGuai'`) y la ubicación de la tortuga pequeña para generar otra tortuga. Si desea modificar la forma y el color de su trayectoria, puede modificar el contenido del servicio `/set_pen`.
+Selecciona el servicio `/spawn`, ingresa el nombre de la tortuga (por ejemplo, `'GuaiGuai'`) y su posición para crear una nueva tortuga. Si deseas modificar el color y la forma de su trayectoria, puedes cambiar el contenido del servicio `/set_pen`.
 
-Para controlar el movimiento de una nueva tortuga generada, se puede utilizar el siguiente comando (prestar atención al nombre de la tortuga):
+Controlar el movimiento de la nueva tortuga generada se puede lograr mediante el siguiente comando (ten en cuenta el nombre de la tortuga):
 
 ```shell
 ros2 run turtlesim turtle_teleop_key --ros-args --remap turtle1/cmd_vel:=guaiguai/cmd_vel
 ```
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
-- [Tutorial de introducción a ROS2 - 2. Instalación de ROS2 Foxy en Ubuntu 20.04](https://www.guyuehome.com/10226)
-- [Tutorial de introducción a ROS2 - 3. Configuración del entorno de ROS2](https://www.guyuehome.com/10243)
-- [Tutorial de introducción a ROS2 - 4. Uso básico del simulador de la tortuga](https://www.guyuehome.com/10386)
+- [Tutorial de Inicio de ROS2 - 2. Instalación de ROS2 Foxy en Ubuntu 20.04](https://www.guyuehome.com/10226)
+- [Tutorial de Inicio de ROS2 - 3. Configuración del Entorno en ROS2](https://www.guyuehome.com/10243)
+- [Tutorial de Inicio de ROS2 - 4. Uso Básico del Simulador de la Pequeña Tortuga](https://www.guyuehome.com/10386)
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

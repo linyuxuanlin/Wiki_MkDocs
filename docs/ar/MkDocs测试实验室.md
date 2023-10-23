@@ -8,39 +8,38 @@
 
 ```mermaid
 graph TD
-    a1("جمع بيانات الجهد مقابل QUOT عبر التحريف ودرجة الحرارة")
-    a2("تحديد RO وتحديد هدف QUOT (قيمة ثابتة)" )
+    a1("جمع الجهد مقابل بيانات QUOT عبر الانحراف ودرجة الحرارة")
+    a2("تحديد RO وتحديد QUOT المستهدف (قيمة ثابتة)")
     a1-->a2
 ```
 
 ```mermaid
 graph LR
     A[مربع مستطيل] -- نص الرابط --> B((دائرة))
-    A --> C(مستطيل مستدير)
-    B --> D{معين}
+    A --> C(مربع مستدير)
+    B --> D{لوزي}
     C --> D
 ```
 
 ```mermaid
 graph LR
-  A[بداية] --> B{خطأ؟};
-  B -->|نعم| C[هم...];
-  C --> D[تصحيح الأخطاء];
+  A[بدء] --> B{خطأ؟};
+  B -->|نعم| C[همم...];
+  C --> D[تصحيح];
   D --> B;
-  B ---->|لا| E[ياي!];
+  B ---->|لا| E[نجاح!];
 ```
 
 ```mermaid
 sequenceDiagram
-  Alice->>John: مرحبا جون، كيف حالك؟
-  loop Healthcheck
-      John->>John: محاربة الهوس الصحي
+  Alice->>John: مرحبًا جون، كيف حالك؟
+  loop فحص الصحة
+      John->>John: مكافحة الهوس بالأمراض
   end
   Note right of John: أفكار منطقية!
   John-->>Alice: رائع!
   John->>Bob: وأنت؟
-  Bob-->>John: جيد جدا!
-
+  Bob-->>John: رائع أيضًا!
 ```
 
 ```mermaid
@@ -57,13 +56,14 @@ stateDiagram-v2
     State4 --> [*]
 ```
 
-## المراجع والاعترافات
+## المراجع والإعترافات
 
-- [The best MkDocs plugins and customizations](https://chrieke.medium.com/the-best-mkdocs-plugins-and-customizations-fc820eb19759)
-- [MkDocs Plugins](https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins)
-- [Diagrams](https://squidfunk.github.io/mkdocs-material/reference/diagrams/)
+- [أفضل مكونات MkDocs وتخصيصاته](https://chrieke.medium.com/the-best-mkdocs-plugins-and-customizations-fc820eb19759)
+- [مكونات MkDocs](https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins)
+- [الرسومات](https://squidfunk.github.io/mkdocs-material/reference/diagrams/)
 
-> المصدر: <https://wiki-power.com/>  
-> هذا المنشور محمي باتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) ويجب إعادة الإنتاج مع الإشارة إلى المصدر.
+> النص الأصلي: <https://wiki-power.com/>
+> هذا المنشور محمي بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.ar) ويجب إعادة إنتاجه مع الإشارة إلى المصدر.
+```
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

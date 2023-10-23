@@ -1,10 +1,10 @@
-# RobotCtrl_Core - Placa central
+# RobotCtrl_Core - Core Board
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220527113423.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20220527113423.png)
 
 Repositorio del proyecto: [**linyuxuanlin/RobotCtrl/RobotCtrl_Core**](https://github.com/linyuxuanlin/RobotCtrl/tree/main/RobotCtrl_MultiBoard_Project/RobotCtrl_Core)
 
-Vista previa en línea del proyecto:
+Vista en línea del proyecto:
 
 <div class="altium-iframe-viewer">
   <div
@@ -13,90 +13,93 @@ Vista previa en línea del proyecto:
   ></div>
 </div>
 
-Nota: el proyecto está incluido en [**RobotCtrl - Kit de desarrollo universal STM32**](https://wiki-power.com/es/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
+Nota: Este proyecto está incluido en [**RobotCtrl - STM32 Kit de Desarrollo Universal**](https://wiki-power.com/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
 
-## Diseño del esquemático
+## Diseño del esquema
 
 Las principales funciones de RobotCtrl_Core son las siguientes:
 
-- Circuito de regulación de alimentación (5V a 3.3V, con puntos de prueba)
+- Circuito de regulación de suministro de energía (de 5V a 3.3V, con puntos de prueba)
 - Sistema mínimo de microcontrolador
   - Circuito de alimentación (desacoplamiento de alimentación, fuente de alimentación analógica ADC)
   - Circuito de reinicio (botón de reinicio externo)
-  - Circuito de reloj (oscilador pasivo HSE)
-  - Interfaz de descarga y depuración (SW)
-  - Modo de arranque (seleccionar el arranque desde la memoria flash principal)
-  - Circuito de alimentación y comunicación USB (USB-Micro)
-- Conector B2B (con todos los IO)
+  - Circuito de reloj (oscilador de cristal pasivo HSE)
+  - Interfaz de depuración y descarga (SW)
+  - Modo de arranque (selección de arranque desde la memoria flash principal)
+  - Circuito de suministro de energía y comunicación USB (USB-Micro)
+- Conector B2B (todos los pines de E/S disponibles)
 - Periféricos integrados en la placa
 
-### Circuito de alimentación
+### Circuito de suministro de energía
 
-RobotCtrl_Core puede recibir una fuente de alimentación de 5V a través del puerto USB o del conector B2B, y convertirla en una fuente de 3.3V para el núcleo del microcontrolador y los periféricos integrados en la placa. El circuito de regulación de alimentación utiliza un LDO (AMS1117-3.3, con una corriente máxima de 1A), incluye un indicador de alimentación y tiene puntos de prueba clave reservados.
+RobotCtrl_Core puede recibir una fuente de alimentación de 5V a través del puerto USB o el conector B2B, y convertirla a 3.3V para alimentar el núcleo del microcontrolador y los periféricos integrados en la placa. El circuito de regulación de energía utiliza un regulador LDO (AMS1117-3.3, con una corriente máxima de 1A) y cuenta con un indicador de alimentación, así como puntos de prueba clave reservados.
 
-El principio básico del LDO se puede encontrar en el artículo [**Topología de alimentación - Regulación lineal**](https://wiki-power.com/es/%E7%94%B5%E6%BA%90%E6%8B%93%E6%89%91-%E7%BA%BF%E6%80%A7%E7%A8%B3%E5%8E%8B).
+El principio básico del LDO se puede encontrar en el artículo [**Topología de fuentes de alimentación - Regulación lineal**](https://wiki-power.com/%E7%94%B5%E6%BA%90%E6%8B%93%E6%89%91-%E7%BA%BF%E6%80%A7%E7%A8%B3%E5%8E%8B).
 
 ### Sistema mínimo de microcontrolador
 
-El diseño del sistema mínimo de microcontrolador se divide en varias partes: alimentación, reinicio, descarga y depuración, reloj y modo de arranque. Se pueden encontrar conocimientos básicos en los artículos [**Cómo diseñar el sistema mínimo de un microcontrolador**](https://wiki-power.com/es/%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E6%AC%BE%E5%8D%95%E7%89%87%E6%9C%BA%E7%9A%84%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F) y [**Desarrollo de hardware STM32F4**](https://wiki-power.com/es/STM32F4%E7%A1%AC%E4%BB%B6%E5%BC%80%E5%8F%91).
+El diseño del sistema mínimo del microcontrolador se divide en varios aspectos: alimentación, reinicio, depuración y descarga, reloj y modo de arranque. Puede encontrar información básica en los siguientes artículos: [**Cómo diseñar un sistema mínimo para un microcontrolador**](https://wiki-power.com/%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E6%AC%BE%E5%8D%95%E7%89%87%E6%9C%BA%E7%9A%84%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F) y [**Desarrollo de hardware STM32F4**](https://wiki-power.com/STM32F4%E7%A1%AC%E4%BB%B6%E5%BC%80%E5%8F%91).
 
 ### Circuito de alimentación
 
-Capacitores de desacoplamiento:
+Condensadores de desacoplamiento:
 
-- VDD: un capacitor cerámico total de 10 μF, más un capacitor cerámico de 100 nF junto a cada pin VDD.
-- VDDA: un capacitor cerámico de 100 nF + un capacitor cerámico de 1 µF.
+- VDD: Un condensador cerámico de 10 μF en total, además de un condensador cerámico de 100 nF cerca de cada pin de VDD.
+- VDDA: Condensador cerámico de 100 nF + condensador cerámico de 1 µF.
 
-Capacitores VCAP
+Condensadores VCAP
 
-- Conectar cada uno a tierra con un capacitor cerámico de 2.2 µF.
+- Conectar un condensador cerámico de 2.2 µF a tierra en cada par.
 
 ### Circuito de reinicio
 
-Se utiliza un monitor de alimentación, es decir, PDR_ON se tira hacia arriba a través de una resistencia de 120Ω. Además, se ha añadido un botón de reinicio con un sistema antirrebote de hardware.
+Se habilita el monitor de alimentación, es decir, PDR_ON se sube mediante una resistencia de 120Ω. Además, se ha añadido un botón de reinicio con eliminación de rebotes hardware.
 
 ### Circuito de reloj
 
-Se utiliza un oscilador pasivo HSE de 8M de Murata.
+Se utiliza un oscilador de cristal pasivo HSE de 8M de Murata como fuente de reloj externa de alta velocidad (HSE).
 
-### Interfaz de descarga y depuración
+### Interfaz de depuración y descarga
 
-Este diseño tiene una interfaz de descarga y depuración directamente conectada, sin necesidad de resistencias de pull-up/pull-down externas (ya que están integradas en el STM32).
+Este diseño expone directamente la interfaz de depuración y descarga, sin necesidad de resistencias de pull-up/pull-down externas (ya que el STM32 las integra internamente).
 
 ### Modo de arranque
 
-Seleccionar el arranque desde la memoria flash principal, es decir, BOOT0 se conecta en serie con una resistencia de 10 K, y BOOT1 es arbitrario.
+Se elige arrancar desde la memoria flash principal, es decir, BOOT0 está conectado a una resistencia de 10 K de pull-down, mientras que BOOT1 es libre.
 
-### Circuito de alimentación y comunicación USB (USB-Micro)
+### Circuito de suministro de energía y comunicación USB (USB-Micro)
 
-El STM32 tiene un periférico USB incorporado, por lo que solo es necesario sacar el puerto (en el chip STM32F07ZE es PA11 y PA12) para lograr la comunicación USB.
+```markdown
+El STM32 cuenta con un periférico USB integrado, lo que permite lograr la comunicación USB simplemente extrayendo los puertos (en el chip STM32F07ZE, se encuentran en PA11 y PA12).
 
-La interfaz USB también admite la función de alimentación externa (VUSB).
+El puerto USB también es compatible con la función de alimentación externa (VUSB).
 
 ## Conector B2B
 
-El conector B2B utiliza la serie 3710 de Elecrow, la placa central RobotCtrl_Core utiliza un par de 3710M060037G3FT01 (macho) y la placa de expansión RobotCtrl_Func utiliza un par de F060037G0FR01 (hembra) para la combinación. Un par de B2B (120 pines en total) es suficiente para sacar todos los IO del STM32F407ZE y maximizar el uso de los recursos del sistema.
+Para los conectores B2B se ha seleccionado la serie 3710 de Poin2, donde la placa central RobotCtrl_Core utiliza un par de conectores 3710M060037G3FT01 (machos) y la placa de expansión RobotCtrl_Func utiliza un par de conectores F060037G0FR01 (hembras) para su combinación. Un par de conectores B2B (con un total de 120 pines) es suficiente para aprovechar al máximo todos los puertos de E/S del STM32F407ZE, optimizando el uso de los recursos del sistema.
 
-Consulte la [hoja de datos del terminal 3710F](http://www.openedv.com/thread-78182-1-1.html) para obtener información sobre el conector B2B.
+Para obtener información adicional sobre los conectores B2B, consulte el documento [**3710F Data Sheet**](http://www.openedv.com/thread-78182-1-1.html).
 
-## Botón de usuario y LED
+## Botones y LEDs de Usuario
 
-Para poder realizar una verificación y depuración simples, RobotCtrl_Core tiene un botón de usuario y un LED de usuario integrados. El botón está configurado como modo de entrada GPIO, con una resistencia de pull-up interna y un condensador MLCC para evitar el rebote del hardware. El LED está configurado como modo de salida GPIO, con el pin en alto para encenderlo y una resistencia en serie para limitar la corriente.
+Para facilitar la verificación y depuración, la placa RobotCtrl_Core incluye un botón y un LED de usuario. El botón se configura como una entrada GPIO con resistencia pull-up interna y se le agrega un condensador MLCC para reducir el rebote. El LED se configura como una salida GPIO y se enciende poniendo el pin en alto; además, se coloca una resistencia en serie en el medio para limitar la corriente.
 
-Consulte el esquemático para obtener información específica sobre los pines.
+Consulte el esquema eléctrico para conocer los pines específicos.
 
-## Pruebas de hardware
+## Pruebas de Hardware
 
-Las pruebas de alimentación deben realizarse con una fuente de alimentación de 5V conectada al puerto USB (o mediante la placa de expansión de dispositivos externos a través del conector B2B), y midiendo el voltaje correspondiente en el punto de prueba de 3.3V. La prueba real dio como resultado 3.32V, lo que fue validado.
+Para la prueba de alimentación, se necesita conectar el conector USB a una fuente de alimentación de 5V (o utilizar la placa de expansión a través del conector B2B). Se debe medir un voltaje de 3.3V en el punto de prueba correspondiente. En la práctica, se obtiene un voltaje de 3.32V, lo que indica una prueba exitosa.
 
-Las pruebas de función se realizaron mediante la grabación del programa inicial (el botón de usuario controla el LED de usuario), y se probaron el encendido, la grabación del programa, los botones de reinicio y de usuario, los LED de alimentación y de usuario, y la función USB. En las pruebas reales, el programa inicial se grabó correctamente en la placa central del microcontrolador a través de ST-Link. El botón de reinicio reinició el sistema correctamente; en el programa de prueba, el LED de usuario se encendió/apagó mediante el botón de usuario; al encenderse, el LED de alimentación se encendió correctamente. La prueba de la función USB utilizó un programa de puerto serie virtual USB, abriendo la herramienta de puerto serie (con cualquier velocidad de transmisión), enviando cualquier carácter y recibiendo el mismo carácter, lo que validó la función.
+La prueba de funciones implica cargar el programa inicial (donde el botón de usuario controla el LED de usuario), y se evalúa el arranque, la carga del programa, el botón de reinicio y el botón de usuario, el LED de alimentación y el LED de usuario, así como la función USB. Durante la prueba práctica, el programa inicial se carga correctamente en la placa base del microcontrolador a través de ST-Link. El botón de reinicio restablece el sistema de manera adecuada, y el programa de prueba permite encender y apagar el LED de usuario mediante el botón de usuario. Al encender la alimentación, el LED de alimentación se enciende correctamente. La prueba de la función USB utiliza un programa de puerto serie virtual USB, que al abrirse en una herramienta de puerto serie (a cualquier velocidad de transmisión) envía caracteres y los devuelve, lo que demuestra su funcionamiento adecuado.
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
-- [Explicación detallada del pin PDR_ON de STM32 (reimpresión + complemento)](https://blog.csdn.net/Frankenstien_/article/details/105971841)
-- [Capítulo 56 de Elecrow [STM32-F407 Explorer] Experimento de lector de tarjetas USB (esclavo)](https://zhuanlan.zhihu.com/p/136163591)
+- [Explicación detallada del pin PDR_ON del STM32 (Reimpresión + Complemento)](https://blog.csdn.net/Frankenstien_/article/details/105971841)
+- [Capítulo 56 de la serie "Explorador STM32-F407" de Poin2: Experimento de lector de tarjetas USB (modo Esclavo)](https://zhuanlan.zhihu.com/p/136163591)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
+> Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+```
+
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
