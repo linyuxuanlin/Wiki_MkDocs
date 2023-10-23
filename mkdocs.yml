@@ -3,11 +3,11 @@ site_description: 博览万物，融会贯通。
 site_url: https://wiki-power.com/
 repo_url: https://github.com/linyuxuanlin/Wiki_MkDocs
 #remote_name: linyuxuanlin/Wiki_MkDocs
-edit_uri: edit/main/docs/ #
+edit_uri: edit/main/docs/ # 编辑按钮的url
 
 theme:
   name: material
-  font: #false #国内网络访问可能 Google 源可能会导致加载速度慢
+  font: #false # 国内网络访问 Google 源可能会有问题
     text: "Noto Sans SC - local"
     #code: Roboto Mono
   palette:
