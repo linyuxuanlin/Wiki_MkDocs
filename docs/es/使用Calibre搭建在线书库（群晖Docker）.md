@@ -1,60 +1,60 @@
-# Cómo construir una biblioteca en línea con Calibre (Docker en Synology)
+# Configuración de una biblioteca en línea con Calibre en Synology (Docker)
 
-Cómo construir una biblioteca en línea con calibre-web (Docker) en Synology NAS.
+Cómo configurar una biblioteca en línea utilizando Calibre-web (Docker) en un NAS Synology.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210429125418.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210429125418.png)
 
-En comparación con el método tradicional de usar carpetas, el método de gestión de bibliotecas representado por Calibre de código abierto puede proporcionar funciones más ricas, como lectura en línea, descarga, conversión de formato, envío por correo electrónico, eliminación de libros duplicados, etc. Calibre-web es una imagen de Docker basada en Calibre que nos permite implementar la biblioteca en servidores como Synology de manera muy conveniente.
+En comparación con el método tradicional de organizar libros en carpetas, la gestión de bibliotecas representada por software de código abierto como Calibre ofrece funciones más avanzadas, como lectura en línea, descargas, conversión de formatos, envío por correo electrónico y eliminación de libros duplicados. Calibre-web es una imagen Docker basada en Calibre que facilita la implementación de una biblioteca en servidores como los de Synology.
 
 ## Crear una carpeta inicial
 
-En primer lugar, cree una carpeta de recursos de biblioteca. Aquí, creé una carpeta compartida llamada `book` directamente en la raíz del disco:
+En primer lugar, cree una carpeta de recursos para la biblioteca. En mi caso, he creado una carpeta compartida llamada `book` directamente en la raíz del disco:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210429214028.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210429214028.png)
 
-En consecuencia, cree una carpeta llamada `calibre-web` en la carpeta `docker`, que se utiliza específicamente para almacenar los archivos de configuración de la imagen de Docker.
+Además, dentro de la carpeta `docker`, cree una carpeta llamada `calibre-web` dedicada a almacenar los archivos de configuración de Docker.
 
-## Crear contenedor
+## Crear el contenedor
 
-Abra el paquete Docker de Synology, busque `johngong/calibre-web` en el registro, descárguelo haciendo doble clic y luego inicialice el contenedor y haga clic en la configuración avanzada.
+Abra el paquete Docker de Synology y busque `johngong/calibre-web` en el registro. Descárguelo haciendo doble clic y luego inicialice el contenedor. Luego, vaya a la configuración avanzada.
 
-En la página `Volumen`, agregue carpetas de mapeo y cargue las rutas `/library` y `/config` respectivamente:
+En la página de `Volúmenes`, agregue las carpetas mapeadas con las rutas `/library` y `/config`:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210429214908.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210429214908.png)
 
-En la página `Configuración de puerto`, agregue el mapeo de puerto y principalmente mapee el puerto `8083` interno del contenedor. Aquí elegí `5004`.
+En la página de `Configuración de puertos`, agregue un mapeo de puerto, principalmente para redirigir el puerto `8083` del contenedor al exterior. En mi caso, he elegido el puerto `5004`.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210429215121.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210429215121.png)
 
 Luego, cree y ejecute el contenedor.
 
-## Ejecutar prueba
+## Realizar pruebas
 
-Abra la dirección IP interna de Synology: 5004 para abrir la interfaz de administración. La cuenta predeterminada es `admin` y la contraseña es `admin123`.
+Abra la dirección IP de su red interna de Synology seguida del puerto `5004` para acceder a la interfaz de administración. Las credenciales por defecto son `admin` y `admin123`.
 
-Tenga en cuenta que la función de carga de libros no está habilitada de forma predeterminada. Debe hacer clic en `Permisos de administración` - `Editar configuración básica` - `Habilitar carga` en orden para habilitar la función de carga de libros.
+Tenga en cuenta que la función de carga de libros no está habilitada de forma predeterminada. Debe habilitarla yendo a `Permisos de administración` en la esquina superior derecha, luego a `Editar configuración básica` y finalmente activando la opción `Habilitar carga`.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210429215628.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210429215628.png)
 
 ## Habilitar HTTPS
 
 ### Usar el proxy inverso incorporado en Synology (recomendado)
 
-Puede consultar el tutorial específico en el artículo [**Implementar acceso HTTPS con proxy inverso incorporado en Synology**](https://wiki-power.com/es/%E7%94%A8%E7%BE%A4%E6%99%96%E8%87%AA%E5%B8%A6%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0HTTPS%E8%AE%BF%E9%97%AE).
+Para obtener instrucciones detalladas, consulte el artículo [**Cómo habilitar HTTPS con el proxy inverso incorporado de Synology**](https://wiki-power.com/%E7%94%A8%E7%BE%A4%E6%99%96%E8%87%AA%E5%B8%A6%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0HTTPS%E8%AE%BF%E9%97%AE).
 
-### Método de agregar certificado directamente
+### Método para agregar un certificado directamente
 
-Copia el certificado y el archivo de clave que ha solicitado en la carpeta `docker/calibre-web/`.
+Copia una copia de los archivos de certificado y clave que has obtenido en la carpeta `docker/calibre-web`.
 
-Luego, en calibre-web, haga clic en `Permisos de administración` - `Editar configuración básica` - `Configuración del servidor` en orden para configurar la ruta del archivo de certificado SSL y clave (por ejemplo, `/config/wiki-power.com.cer` y `/config/wiki-power.com.key`), y luego haga clic en Guardar.
+Luego, dentro de Calibre-web, vaya a `Permisos de administración`, luego `Editar configuración básica` y finalmente `Configuración del servidor`. Configure la ruta de los archivos de certificado SSL y clave (por ejemplo, `/config/wiki-power.com.cer` y `/config/wiki-power.com.key`) y guarde la configuración.
 
-De esta manera, puede habilitar el acceso HTTPS.
+De esta manera, podrá habilitar el acceso HTTPS.
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
-- [Instalación del sistema de gestión de libros calibre-web en Synology Docker](https://www.chrno.cn/index.php/docker/15.html)
+- [Instalación de Calibre-web, un sistema de gestión de libros, en Docker en Synology](https://www.chrno.cn/index.php/docker/15.html)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
+> Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

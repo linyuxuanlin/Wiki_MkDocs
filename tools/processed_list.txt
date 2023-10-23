@@ -149,3 +149,12 @@ npm和Yarn换源加速国内访问.md
 专业与分工.md
 个人PCB设计规范.md
 个人文案排版规范.md
+个人知识库的搭建-基于Docusaurus.md
+中台的概念.md
+为什么你需要一个知识库.md
+为什么要「站在巨人的肩膀上」.md
+产品经理的日常.md
+使用Bitwarden搭建密码管理器（群晖Docker）.md
+使用Calibre搭建在线书库（群晖Docker）.md
+使用Markdown高效写作.md
+使用RSSHub搭建RSS生成器（群晖Docker）.md
