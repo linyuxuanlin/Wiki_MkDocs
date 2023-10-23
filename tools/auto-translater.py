@@ -7,12 +7,12 @@ import yaml  # pip install PyYAML
 #import env
 
 # 设置 OpenAI API Key 和 API Base 参数，通过 env.py 传入
-#openai.api_key = os.environ.get("CHATGPT_API_KEY_OPENAI")
-#openai.api_base = os.environ.get("CHATGPT_API_BASE_OPENAI")
+#openai.api_key = os.environ.get("CHATGPT_API_KEY")
+#openai.api_base = os.environ.get("CHATGPT_API_BASE")
+openai.api_key = os.environ.get("CHATGPT_API_KEY_OPENAI")
+openai.api_base = os.environ.get("CHATGPT_API_BASE_OPENAI")
 #openai.api_key = os.environ.get("CHATGPT_API_KEY_CHATANYWHERE_IRIS")
 #openai.api_base = os.environ.get("CHATGPT_API_BASE_CHATANYWHERE")
-openai.api_key = os.environ.get("CHATGPT_API_KEY")
-openai.api_base = os.environ.get("CHATGPT_API_BASE")
 
 # 设置最大输入字段，超出会拆分输入，防止超出输入字数限制
 max_length = 1800
