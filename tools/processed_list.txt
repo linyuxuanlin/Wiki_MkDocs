@@ -38,7 +38,6 @@ ESXi初始化指南.md
 Flip-基于全志F1C200s的Linux开发板.md
 FreeRTOS开发笔记.md
 GitHub改Host.md
-Auto-i18n：使用ChatGPT的自动多语言翻译工具.md
 Git学习笔记.md
 Git配置代理.md
 HAL库开发笔记-DMA.md
