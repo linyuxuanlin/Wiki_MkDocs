@@ -1,12 +1,12 @@
-# Homelab - Self-hosted RSS Aggregator FreshRSS
+# Homelab - Self-Hosted RSS Aggregator with FreshRSS
 
-![](https://img.wiki-power.com/d/wiki-media/img/202304102312005.png)
+![FreshRSS](https://img.wiki-power.com/d/wiki-media/img/202304102312005.png)
 
-**FreshRSS** is a self-hosted RSS aggregator that supports subscribing to multiple RSS feeds and automatically refreshing them. It provides web-based reading and an API for mobile apps.
+**FreshRSS** is a self-hosted RSS aggregator that allows you to subscribe to multiple RSS feeds and automatically refresh them. It provides web-based reading and an API for mobile apps.
 
 ## Deployment (Docker Compose)
 
-First, create a `compose.yaml` file and paste the following content:
+Start by creating a `compose.yaml` file and paste the following content:
 
 ```yaml title="compose.yaml"
 version: "2.4"
@@ -25,39 +25,38 @@ services:
       - ${STACK_DIR}/extensions:/var/www/FreshRSS/extensions
     environment:
       TZ: Asia/Shanghai
-      CRON_MIN: "*/60" # Pull article updates every 60 minutes
+      CRON_MIN: "*/60" # Fetch article updates every 60 minutes
     restart: unless-stopped
 ```
 
-(Optional) It is recommended to create a `.env` file in the same directory as `compose.yaml` and customize your environment variables. If you do not want to use environment variables, you can also customize your parameters directly in `compose.yaml` (for example, replace `${STACK_NAME}` with `freshrss`).
+(Optional) It's recommended to create a `.env` file in the same directory as `compose.yaml` and customize your environment variables. If you prefer not to use environment variables, you can directly customize your parameters within `compose.yaml` (e.g., replace `${STACK_NAME}` with `freshrss`).
 
 ```dotenv title=".env"
 STACK_NAME=freshrss
-STACK_DIR=xxx # Customize the project storage path, such as ./freshrss
+STACK_DIR=xxx # Customize your project storage path, e.g., ./freshrss
 
-# freshrss
+# FreshRSS
 APP_VERSION=latest
-APP_PORT=xxxx # Customize the access port, choose one that is not already in use
-
+APP_PORT=xxxx # Customize the access port, choose an unoccupied one
 ```
 
-Finally, execute the command `docker compose up -d` in the same directory as `compose.yaml` to start the orchestrated containers.
+Finally, run the `docker compose up -d` command in the directory where `compose.yaml` is located to start the orchestrated containers.
 
-## Configuration Instructions
+## Configuration
 
-Recommended RSS sources include saveweb's Chinese blog list [**rss-list**](https://github.com/saveweb/rss-list).
+You can find a recommended list of Chinese blogs on RSS feeds on saveweb's [**rss-list**](https://github.com/saveweb/rss-list).
 
 For mobile apps, we recommend using FeedMe (Android) and NetNewsWire (iOS).
 
-For more RSS-related content, please refer to the article [**RSS - Efficient Reading Method**](https://wiki-power.com/en/RSS-%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E9%98%85%E8%AF%BB%E6%96%B9%E5%BC%8F/).
+For more RSS-related content, you can refer to the article [**RSS - An Efficient Way to Read**](https://to_be_replace[3]).
 
-## References and Acknowledgements
+## References and Acknowledgments
 
 - [Official Website](https://freshrss.org)
 - [Documentation](https://github.com/FreshRSS/FreshRSS/tree/edge/Docker#docker-compose)
-- [GitHub repo](https://github.com/FreshRSS/FreshRSS)
+- [GitHub Repository](https://github.com/FreshRSS/FreshRSS)
 - [Docker Hub](https://hub.docker.com/r/freshrss/freshrss)
-- [Demo site](https://demo.freshrss.org/i/?rid=64342708bf322)
+- [Demo Site](https://demo.freshrss.org/i/?rid=64342708bf322)
 
 > Original: <https://wiki-power.com/>  
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.

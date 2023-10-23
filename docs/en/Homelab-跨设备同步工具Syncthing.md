@@ -1,12 +1,12 @@
-# Homelab - Cross-Device Sync Tool Syncthing
+# Homelab - Cross-Device Synchronization Tool: Syncthing
 
-![](https://img.wiki-power.com/d/wiki-media/img/202304111529987.png)
+![Syncthing Logo](https://img.wiki-power.com/d/wiki-media/img/202304111529987.png)
 
-**Syncthing** is a free and open-source file synchronization application that can synchronize files and folders between multiple devices and supports incremental synchronization. I use it to back up data from my server to my NAS for centralized management.
+**Syncthing** is a free and open-source file synchronization application that allows you to sync files and folders across multiple devices while supporting incremental synchronization. I use it to back up data from my server to a NAS for centralized management.
 
 ## Deployment (Docker Compose)
 
-First, create a `compose.yaml` file and paste the following content:
+To begin, create a `compose.yaml` file and paste the following content:
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -15,7 +15,7 @@ services:
     container_name: ${STACK_NAME}_app
     image: syncthing/syncthing:${APP_VERSION}
     hostname: my-syncthing
-    environment: # Needs to be run as root to read other docker directories or host root directories
+    environment: # It needs to run as root, or it won't be able to access other Docker directories or the host machine's root directory.
       - PUID=0
       - PGID=0
     volumes:
@@ -29,33 +29,33 @@ services:
     restart: unless-stopped
 ```
 
-(Optional) It is recommended to create a `.env` file in the same directory as `compose.yaml` and customize your environment variables. If you do not want to use environment variables, you can also customize your parameters directly in `compose.yaml` (for example, replace `${STACK_NAME}` with `syncthing`).
+(Optional) It's recommended to create a `.env` file at the same level as `compose.yaml` and customize your environment variables. If you prefer not to use environment variables, you can directly customize your parameters within `compose.yaml` (e.g., replace `${STACK_NAME}` with `syncthing`).
 
 ```dotenv title=".env"
 STACK_NAME=syncthing
-STACK_DIR=xxx # Custom project storage path, for example ./syncthing
+STACK_DIR=xxx # Customize your project storage path, e.g., ./syncthing
 
 # syncthing
 APP_VERSION=latest
-APP_PORT=xxxx # Custom access port, choose one that is not occupied
-APP_SYNC_DIR=xxxx # Custom path to be synchronized, such as /DATA
+APP_PORT=xxxx # Customize your access port, choose one that is not already in use
+APP_SYNC_DIR=xxxx # Customize the path you want to sync, e.g., /DATA
 ```
 
-Finally, execute the `docker compose up -d` command in the same directory as `compose.yaml` to start the orchestrated containers.
+Finally, in the same directory as `compose.yaml`, execute the `docker compose up -d` command to start the orchestrated container.
 
-## Configuration Instructions
+## Configuration Notes
 
-If you are prompted with insufficient permissions, try changing the `PUID` and `PGID` values to `0` and start with root permissions.
+If you encounter permission issues, try changing the `PUID` and `PGID` values to `0` to run it with root privileges.
 
 ## References and Acknowledgments
 
 - [Official Website](https://syncthing.net/)
 - [Documentation](https://github.com/syncthing/syncthing/blob/main/README-Docker.md)
 - [Forum](https://forum.syncthing.net/)
-- [GitHub repo](https://github.com/syncthing/syncthing)
+- [GitHub Repository](https://github.com/syncthing/syncthing)
 - [Docker Hub](https://hub.docker.com/r/syncthing/syncthing/)
 
-> Original: <https://wiki-power.com/>  
-> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
+[Replace with Reference 1]  
+[Replace with Reference 2]
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

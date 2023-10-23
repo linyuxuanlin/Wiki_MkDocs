@@ -1,12 +1,12 @@
-# Homelab - Agregador de RSS autohospedado FreshRSS
+# Homelab - Autohospedaje del Agregador de RSS FreshRSS
 
-![](https://img.wiki-power.com/d/wiki-media/img/202304102312005.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/202304102312005.png)
 
-**FreshRSS** es un agregador de RSS autohospedado que admite la suscripción a múltiples fuentes de RSS y se actualiza automáticamente. Proporciona lectura en línea a través de la web y una API para su uso en aplicaciones móviles.
+**FreshRSS** es un agregador de RSS autohospedado que permite suscribirse a múltiples fuentes de RSS y se actualiza automáticamente. Ofrece la lectura en línea a través de la web y una API para su uso en aplicaciones móviles.
 
 ## Implementación (Docker Compose)
 
-Primero, cree el archivo `compose.yaml` y pegue el siguiente contenido:
+Primero, crea un archivo `compose.yaml` y pega el siguiente contenido:
 
 ```yaml title="compose.yaml"
 version: "2.4"
@@ -29,32 +29,32 @@ services:
     restart: unless-stopped
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `freshrss`).
+(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar tus variables de entorno. Si no deseas utilizar variables de entorno, también puedes personalizar tus parámetros directamente en `compose.yaml` (por ejemplo, sustituir `${STACK_NAME}` por `freshrss`).
 
 ```dotenv title=".env"
 STACK_NAME=freshrss
-STACK_DIR=xxx # Ruta personalizada de almacenamiento del proyecto, por ejemplo, ./freshrss
+STACK_DIR=xxx # Ruta personalizada para el almacenamiento del proyecto, por ejemplo, ./freshrss
 
 # freshrss
 APP_VERSION=latest
-APP_PORT=xxxx # Puerto de acceso personalizado, elija uno que no esté en uso
+APP_PORT=xxxx # Puerto de acceso personalizado, elige uno que no esté en uso
 ```
 
-Por último, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores.
+Finalmente, ejecuta el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores configurados.
 
-## Instrucciones de configuración
+## Instrucciones de Configuración
 
-Se recomienda la lista de blogs en chino de saveweb [**rss-list**](https://github.com/saveweb/rss-list) para las fuentes de RSS.
+Se recomienda usar la lista de blogs en chino de saveweb [**rss-list**](https://github.com/saveweb/rss-list) como fuente de RSS.
 
-Se recomienda la aplicación FeedMe (Android) y NetNewsWire (iOS) para dispositivos móviles.
+Para aplicaciones móviles, se sugiere usar FeedMe (Android) y NetNewsWire (iOS).
 
-Para obtener más información sobre RSS, consulte el artículo [**RSS - Una forma eficiente de leer**](https://wiki-power.com/es/RSS-%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E9%98%85%E8%AF%BB%E6%96%B9%E5%BC%8F/) (en chino).
+Para obtener más información sobre RSS, consulta el artículo [**RSS - Una forma eficiente de leer**](https://wiki-power.com/es/RSS-%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E9%98%85%E8%AF%BB%E6%96%B9%E5%BC%8F/).
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
 - [Sitio web oficial](https://freshrss.org)
 - [Documentación](https://github.com/FreshRSS/FreshRSS/tree/edge/Docker#docker-compose)
-- [Repositorio de GitHub](https://github.com/FreshRSS/FreshRSS)
+- [Repositorio en GitHub](https://github.com/FreshRSS/FreshRSS)
 - [Docker Hub](https://hub.docker.com/r/freshrss/freshrss)
 - [Sitio de demostración](https://demo.freshrss.org/i/?rid=64342708bf322)
 

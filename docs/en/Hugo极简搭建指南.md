@@ -1,81 +1,82 @@
-# Hugo Minimalist Setup Guide
+# Hugo Minimal Setup Guide
 
-Hugo is a framework for building websites with extremely fast build and deployment speeds. As for installation and configuration on Windows, the official documentation does not provide detailed instructions, and third-party tutorials are also uneven, so I wrote this tutorial.
+Hugo is a framework for building websites with exceptionally fast build and deployment speeds. When it comes to installation and configuration on Windows, the official documentation lacks detailed instructions, and third-party tutorials vary in quality. Therefore, I have crafted this tutorial to fill the gap.
 
 ## Download and Installation
 
-1. Open the [**Releases**](https://github.com/gohugoio/hugo/releases) page on Hugo's official GitHub.
-2. Choose the latest version to download (select `hugo_xxx_Windows-64/32bit.zip`).
-3. Extract the `hugo.exe` file from the compressed package to the `D:\hugo` folder directory.
-4. Right-click on a blank space in `File Explorer` (i.e. `My Computer`) and open Properties.
-5. Click `Advanced system settings` - `Environment Variables`, and double-click `Path` in the System Variables.
-6. Double-click on a blank line in the Environment Variables interface, add `D:\hugo`, and click OK.
+1. Navigate to the [**Releases**](https://github.com/gohugoio/hugo/releases) page on Hugo's official GitHub.
+2. Choose the latest version for download (select `hugo_xxx_Windows-64/32bit.zip`).
+3. Extract the `hugo.exe` file from the downloaded zip archive to the `D:\hugo` directory.
+4. In Windows File Explorer (commonly known as "My Computer"), right-click on an empty area and open "Properties."
+5. Click on "Advanced system settings" and then "Environment Variables."
+6. Under the System Variables section, double-click on "Path."
+7. In the Environment Variables window, double-click on an empty row and add `D:\hugo`. Click "OK."
 
-Open the command prompt and enter the statement:
+Open the Command Prompt and enter the following command:
 
-```
+```plaintext
 hugo version
 ```
 
-to confirm whether Hugo has been successfully installed (if it is installed successfully, you can see the version number).
+This will confirm whether Hugo has been successfully installed (the version number should be displayed if it is).
 
 ## Create a Site
 
-Switch to the corresponding directory and use the following statement:
+Navigate to the desired directory and use the following command:
 
-```
+```plaintext
 hugo new site quickstart
 ```
 
-This will create a new Hugo site in a folder called `quickstart`.
+This will create a new Hugo site within a folder named `quickstart`.
 
 ## Add a Theme
 
-Themes can be selected from the official [**Theme Page**](https://themes.gohugo.io/).
+You can explore and select themes from the official [**Themes page**](https://themes.gohugo.io/).
 
-Directly jump to GitHub to download the theme folder, and extract it to the `theme` directory of the site.
+Download the theme folder directly from its GitHub repository and extract it into the `themes` directory of your site.
 
-Execute the following command to add the theme to the site's configuration file:
+Run the following command to add the theme to your site's configuration file:
 
+```plaintext
+echo 'theme = "theme-folder-name"' >> config.toml
 ```
-echo 'theme = "theme folder name"' >> config.toml
-```
 
-## Create an Article
+## Create Content
 
-Use the following command to create an article:
+To create a new post, use the following command:
 
-```
+```plaintext
 hugo new posts/my-first-post.md
 ```
 
-Then open the article and change `draft: true` in the `front matter` to `draft: false` to remove it from the draft area and display it normally.
+Then, open the post and change `draft: true` to `draft: false` in the "front matter" to publish it and make it visible.
 
-## Start Hugo Server
+## Start the Hugo Server
 
-Use the following command to start the Hugo local preview service:
+Initiate Hugo's local preview server with the following command:
 
-```
+```plaintext
 hugo server -D
 ```
 
-Open [**http://localhost:1313/**](http://localhost:1313/) to see the real-time preview of the site (any changes made locally will be updated instantly).
+Open [**http://localhost:1313/**](http://localhost:1313/) to view the real-time preview of your site (any changes made locally will be instantly updated).
 
 ## Local Deployment
 
 Use the following command:
 
-```
+```plaintext
 Build static pages
 ```
 
-to deploy the site locally (output to the `public` folder directory).
+This will deploy your site locally, and the output will be stored in the `public` directory.
 
-## References and Acknowledgements
+## References and Acknowledgments
 
 - [Quick Start · Hugo](https://gohugo.io/getting-started/quick-start/)
 
-> Original: <https://wiki-power.com/>  
+> Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

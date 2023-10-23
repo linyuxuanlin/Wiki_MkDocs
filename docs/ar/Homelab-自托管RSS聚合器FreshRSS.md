@@ -1,10 +1,10 @@
-# Homelab - تشغيل مجمّع RSS FreshRSS على خادم شخصي
+# الرئيسة - منصة إدارة الخدمات المنزلية
 
 ![](https://img.wiki-power.com/d/wiki-media/img/202304102312005.png)
 
-**FreshRSS** هو مجمّع RSS مستضاف يدعم الاشتراك في عدة مصادر RSS ويقوم بالتحديث التلقائي. يوفر قراءة عبر الويب وواجهة برمجة تطبيقات (API) للاستخدام على التطبيقات المحمولة.
+**FreshRSS** هو منصة إدارة مصادر خدمة التجميع لتغذية RSS، حيث يمكنك الاشتراك في مصادر متعددة وتحديثها تلقائيًا. توفر واجهة ويب للقراءة عبر الإنترنت وواجهة برمجة تطبيقات للاستخدام على الهواتف المحمولة.
 
-## التثبيت (Docker Compose)
+## النشر (Docker Compose)
 
 أولاً، قم بإنشاء ملف `compose.yaml` والصق المحتوى التالي:
 
@@ -25,30 +25,30 @@ services:
       - ${STACK_DIR}/extensions:/var/www/FreshRSS/extensions
     environment:
       TZ: Asia/Shanghai
-      CRON_MIN: "*/60" # استدعاء تحديث المقالات كل 60 دقيقة
+      CRON_MIN: "*/60" # يستخدم لسحب تحديث المقالات كل 60 دقيقة
     restart: unless-stopped
 ```
 
-(اختياري) يوصى بإنشاء ملف `.env` في نفس مستوى `compose.yaml` وتخصيص المتغيرات البيئية الخاصة بك. إذا كنت لا ترغب في استخدام المتغيرات البيئية، فيمكنك تخصيص المعلمات مباشرة في `compose.yaml` (مثل استبدال `${STACK_NAME}` بـ `freshrss`).
+(اختياري) نوصي بإنشاء ملف `.env` في نفس الدليل الرئيسي لـ `compose.yaml` وتخصيص المتغيرات البيئية الخاصة بك فيه. إذا كنت لا ترغب في استخدام المتغيرات البيئية، يمكنك تخصيص المعلمات مباشرة في ملف `compose.yaml` (مثل استبدال `${STACK_NAME}` بـ `freshrss`).
 
 ```dotenv title=".env"
 STACK_NAME=freshrss
-STACK_DIR=xxx # تخصيص مسار حفظ المشروع، مثل ./freshrss
+STACK_DIR=xxx # حدد مسار تخزين المشروع الخاص بك، على سبيل المثال، ./freshrss
 
 # freshrss
 APP_VERSION=latest
-APP_PORT=xxxx # تخصيص منفذ الوصول، يمكن اختيار أي منفذ غير مستخدم
+APP_PORT=xxxx # قم باختيار منفذ الوصول الخاص بك الذي لا يتم استخدامه بالفعل
 ```
 
-أخيرًا، قم بتشغيل الأمر `docker compose up -d` في نفس مستوى `compose.yaml` لتشغيل حاويات الترتيب.
+أخيرًا، قم بتنفيذ الأمر `docker compose up -d` في نفس الدليل الرئيسي لملف `compose.yaml` لبدء تشغيل الحاويات المكوّنة.
 
-## شرح التكوين
+## تعليمات التكوين
 
-يمكن الاطلاع على قائمة مدونات RSS الصينية الموصى بها من saveweb [**rss-list**](https://github.com/saveweb/rss-list).
+يُوصى بشدة بمصادر RSS من [**قائمة RSS**](https://github.com/saveweb/rss-list) التي تقدمها Saveweb.
 
-يوصى باستخدام تطبيقات FeedMe (Android) و NetNewsWire (iOS) على الأجهزة المحمولة.
+يُفضل استخدام تطبيقات FeedMe (لأنظمة Android) و NetNewsWire (لأنظمة iOS) على الهواتف المحمولة.
 
-يمكن الاطلاع على المزيد من المحتوى المتعلق بـ RSS في المقال [**RSS - طريقة قراءة فعالة**](https://wiki-power.com/ar/RSS-%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E9%98%85%E8%AF%BB%E6%96%B9%E5%BC%8F/) (باللغة الصينية).
+لمزيد من المعلومات حول خدمات RSS، يُمكنك الرجوع إلى المقالة [**RSS - طريقة فعالة للقراءة**](to_be_replace[3]).
 
 ## المراجع والشكر
 
@@ -56,9 +56,9 @@ APP_PORT=xxxx # تخصيص منفذ الوصول، يمكن اختيار أي م
 - [الوثائق](https://github.com/FreshRSS/FreshRSS/tree/edge/Docker#docker-compose)
 - [مستودع GitHub](https://github.com/FreshRSS/FreshRSS)
 - [Docker Hub](https://hub.docker.com/r/freshrss/freshrss)
-- [موقع العرض التوضيحي](https://demo.freshrss.org/i/?rid=64342708bf322)
+- [موقع تجريبي](https://demo.freshrss.org/i/?rid=64342708bf322)
 
-> عنوان النص: <https://wiki-power.com/>  
+> عنوان النص: <https://wiki-power.com/>
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

@@ -1,12 +1,12 @@
-# Homelab - Automatic Docker Container Update Tool: Watchtower
+# Homelab - Tool for Automatically Updating Docker Containers: Watchtower
 
 ![Watchtower](https://img.wiki-power.com/d/wiki-media/img/202304092337531.png)
 
-**Watchtower** is a tool for automating the updating of all or selected Docker containers.
+**Watchtower** is a tool for automating the updates of all or selected Docker containers.
 
 ## Deployment (Docker Compose)
 
-Start by creating a `compose.yaml` file and paste the following content:
+To begin, create a `compose.yaml` file and paste the following content:
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -19,7 +19,7 @@ services:
     restart: always
 ```
 
-(Optional) It is recommended to create a `.env` file in the same directory as `compose.yaml` and customize your environment variables. If you prefer not to use environment variables, you can directly customize your parameters within `compose.yaml` (e.g., replacing `${STACK_NAME}` with `watchtower`).
+(Optional) It is recommended to create a `.env` file in the same directory as `compose.yaml` and customize your environment variables. If you prefer not to use environment variables, you can directly customize your parameters within `compose.yaml` (for example, replacing `${STACK_NAME}` with `watchtower`).
 
 ```dotenv title=".env"
 STACK_NAME=watchtower
@@ -28,7 +28,7 @@ STACK_NAME=watchtower
 APP_VERSION=latest
 ```
 
-Finally, execute the `docker compose up -d` command in the same directory as `compose.yaml` to launch the orchestrated containers.
+Finally, execute the `docker compose up -d` command in the same directory as `compose.yaml` to start the orchestrated containers.
 
 ## References and Acknowledgments
 
@@ -36,7 +36,7 @@ Finally, execute the `docker compose up -d` command in the same directory as `co
 - [GitHub Repository](https://github.com/containrrr/watchtower/)
 - [Docker Hub](https://hub.docker.com/r/containrrr/watchtower)
 
-> Original: <https://wiki-power.com/>  
+> Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

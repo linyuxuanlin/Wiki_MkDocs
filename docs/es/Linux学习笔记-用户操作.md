@@ -1,40 +1,40 @@
-# Notas de aprendizaje de Linux - Operaciones de usuario
+# Apuntes de Estudio sobre Linux - Operaciones de Usuario
 
-## Operaciones básicas
+## Operaciones Básicas
 
-### Agregar usuario
+### Añadir un Usuario
 
 ```shell
 useradd -m nombre_de_usuario
 ```
 
-### Establecer contraseña
+### Establecer Contraseña
 
 ```shell
 passwd nombre_de_usuario
 ```
 
-### Eliminar usuario
+### Eliminar un Usuario
 
 ```shell
 userdel -r nombre_de_usuario
 ```
 
-### Eliminar directorio de usuario
+### Eliminar el Directorio del Usuario
 
 ```shell
 rm -rf nombre_de_usuario
 ```
 
-### Cambiar al usuario actual
+### Cambiar al Usuario Actual
 
 ```shell
 su nombre_de_usuario
 ```
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
-- [Linux crear usuario, establecer contraseña](https://blog.csdn.net/li_101357/article/details/69367457)
+- [Creación de Usuarios y Establecimiento de Contraseñas en Linux](https://blog.csdn.net/li_101357/article/details/69367457)
 
 > Dirección original del artículo: <https://wiki-power.com/>  
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.

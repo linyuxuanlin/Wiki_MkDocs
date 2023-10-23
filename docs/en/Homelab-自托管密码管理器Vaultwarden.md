@@ -1,12 +1,12 @@
-# Homelab - Self-Hosted Password Manager Vaultwarden
+# Homelab - Self-hosted Password Manager Vaultwarden
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230304195414.jpg)
+![Vaultwarden](https://img.wiki-power.com/d/wiki-media/img/20230304195414.jpg)
 
-**Vaultwarden** is a third-party self-hosted Bitwarden server that protects and manages passwords for various websites with a master password, and can generate random passwords for different websites.
+**Vaultwarden** is a third-party self-hosted Bitwarden server that helps protect and manage your website passwords with a master password and generate random passwords for different websites.
 
 ## Deployment (Docker Compose)
 
-First, create the `compose.yaml` file and paste the following content:
+Start by creating a `compose.yaml` file and paste the following content:
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -21,34 +21,34 @@ services:
     restart: always
 ```
 
-(Optional) It is recommended to create a `.env` file at the same level as `compose.yaml` and customize your environment variables. If you do not want to use environment variables, you can also customize your parameters directly in `compose.yaml` (such as replacing `${STACK_NAME}` with `vaultwarden`).
+(Optional) It's recommended to create a `.env` file in the same directory as `compose.yaml` and customize your environment variables. If you prefer not to use environment variables, you can directly customize your parameters in `compose.yaml` (e.g., replace `${STACK_NAME}` with `vaultwarden`).
 
 ```dotenv title=".env"
 STACK_NAME=vaultwarden
-STACK_DIR=xxx # Customize the project storage path, such as ./vaultwarden
+STACK_DIR=xxx # Customize your project storage path, e.g., ./vaultwarden
 
 # vaultwarden
 APP_VERSION=latest
-APP_PORT=xxxx # Customize the access port, choose one that is not occupied
+APP_PORT=xxxx # Customize your access port, choose an unoccupied one
 ```
 
-Finally, execute the `docker compose up -d` command in the same directory as `compose.yaml` to start the orchestrated container.
+Finally, execute the `docker compose up -d` command in the same directory as `compose.yaml` to start the container deployment.
 
-## Configuration Instructions
+## Configuration Notes
 
-Vaultwarden requires https login by default, and it is recommended to use a reverse proxy (the setup of a reverse proxy server can refer to the article [Homelab - Reverse Proxy Certificate Management Panel Nginx Proxy Manager](https://wiki-power.com/en/Homelab-%E5%8F%8D%E4%BB%A3%E8%AF%81%E4%B9%A6%E7%AE%A1%E7%90%86%E9%9D%A2%E6%9D%BFNginxProxyManager/)).
+Vaultwarden requires https for login by default and it's recommended to use a reverse proxy (you can refer to the article [**Homelab - Nginx Proxy Manager for Reverse Proxy and SSL Certificates**](https://wiki-power.com/en/Homelab-%E5%8F%8D%E4%BB%A3%E8%AF%81%E4%B9%A6%E7%AE%A1%E7%90%86%E9%9D%A2%E6%9D%BFNginxProxyManager/) for setting up a reverse proxy server).
 
-When using browser extensions, desktop and mobile apps, you need to click on settings on the login page and configure the server URL to use the self-hosted service normally.
+When using browser extensions, desktop and mobile apps, you need to click on the settings on the login page and configure the server's URL to use the self-hosted service.
 
-In addition, old versions (less than 1.27.0) of Vaultwarden and Bitwarden browser extensions are not compatible and will cause login failure. See issue: [Client fails to connect or login](https://github.com/dani-garcia/vaultwarden/issues/3082).
+Additionally, older versions (below 1.27.0) of Vaultwarden are not compatible with Bitwarden browser extensions and can result in login issues. Refer to the issue: [**Client fails to connect or login**](https://github.com/dani-garcia/vaultwarden/issues/3082).
 
-Because it is a self-hosted service, you need to pay attention to data security and remember to back up the password database regularly.
+Since it's a self-hosted service, data security is your responsibility. Remember to regularly back up the password database.
 
 ## References and Acknowledgments
 
-- [Official website](https://github.com/dani-garcia/vaultwarden/wiki)
+- [Official Website](https://github.com/dani-garcia/vaultwarden/wiki)
 - [Documentation](https://github.com/dani-garcia/vaultwarden/wiki/Using-Docker-Compose)
-- [GitHub repo](https://github.com/dani-garcia/vaultwarden)
+- [GitHub Repository](https://github.com/dani-garcia/vaultwarden)
 - [Docker Hub](https://hub.docker.com/r/vaultwarden/server)
 
 > Original: <https://wiki-power.com/>  

@@ -1,8 +1,9 @@
-# Homelab - Panel de gestión de servidor ligero CasaOS
+```markdown
+# Homelab - Panel de gestión de servidores ligero CasaOS
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20230304192541.png)
 
-**CasaOS** es un panel personal de código abierto simple, elegante y fácil de usar que incluye un administrador de archivos, monitoreo del estado del servidor, terminal, administración de contenedores Docker, tienda de aplicaciones Docker integrada, entre otras funciones.
+**CasaOS** es un panel de código abierto sencillo, elegante y fácil de usar, que incluye funciones como un administrador de archivos, monitoreo del estado del servidor, terminal, gestión de contenedores Docker y una tienda de aplicaciones Docker incorporada.
 
 ## Implementación (shell)
 
@@ -10,17 +11,18 @@
 curl -fsSL https://get.casaos.io | sudo bash
 ```
 
-Dirección de acceso predeterminada del panel: <http://localhost:80>
+Dirección de acceso al panel predeterminada: <http://localhost:80>
 
-Nota: Si se implementa en un servidor con un proxy inverso asignado, es mejor cambiar el puerto de acceso del panel en la configuración y dejar el puerto 80 para Nginx.
+Nota: Si está implementando en un servidor con un proxy inverso configurado, es recomendable cambiar el puerto de acceso del panel en la configuración interna y dejar el puerto 80 para Nginx.
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
 - [Sitio web oficial](https://casaos.io)
 - [Documentación](https://wiki.casaos.io/en/home)
-- [Repositorio de GitHub](https://github.com/IceWhaleTech/CasaOS)
+- [Repositorio en GitHub](https://github.com/IceWhaleTech/CasaOS)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
+> Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+```
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

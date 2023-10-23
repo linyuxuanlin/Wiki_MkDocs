@@ -2,11 +2,11 @@
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20230304195414.jpg)
 
-**Vaultwarden** es un servidor de Bitwarden autohospedado de terceros que protege y administra las contraseñas de diferentes sitios web con una contraseña maestra, y puede generar contraseñas aleatorias para diferentes sitios web.
+**Vaultwarden** es un servidor de Bitwarden autohospedado de terceros que protege y administra las contraseñas de varios sitios web mediante una contraseña maestra y puede generar contraseñas aleatorias para su uso en diferentes sitios.
 
 ## Implementación (Docker Compose)
 
-Primero, cree el archivo `compose.yaml` y pegue el siguiente contenido:
+Comienza creando un archivo `compose.yaml` y pega el siguiente contenido:
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -21,30 +21,30 @@ services:
     restart: always
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `vaultwarden`).
+(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar tus variables de entorno. Si no deseas utilizar variables de entorno, también puedes personalizar tus parámetros directamente dentro de `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `vaultwarden`).
 
 ```dotenv title=".env"
 STACK_NAME=vaultwarden
-STACK_DIR=xxx # Personalice la ruta de almacenamiento del proyecto, por ejemplo, ./vaultwarden
+STACK_DIR=xxx # Ruta personalizada para almacenar el proyecto, por ejemplo, ./vaultwarden
 
 # vaultwarden
 APP_VERSION=latest
-APP_PORT=xxxx # Personalice el puerto de acceso, elija uno que no esté en uso
+APP_PORT=xxxx # Puerto de acceso personalizado, elige uno que no esté en uso
 ```
 
-Por último, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores.
+Finalmente, ejecuta el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores definidos.
 
 ## Instrucciones de configuración
 
-Vaultwarden requiere https para iniciar sesión de forma predeterminada, se recomienda utilizar un proxy inverso (consulte el artículo [**Homelab - Panel de gestión de certificados de proxy inverso Nginx Proxy Manager**](https://wiki-power.com/es/Homelab-%E5%8F%8D%E4%BB%A3%E8%AF%81%E4%B9%A6%E7%AE%A1%E7%90%86%E9%9D%A2%E6%9D%BFNginxProxyManager/) para obtener información sobre cómo configurar un servidor de proxy inverso).
+Vaultwarden requiere https para iniciar sesión de forma predeterminada, se recomienda utilizar un proxy inverso (puedes consultar cómo configurar un servidor de proxy inverso en el artículo [**Homelab - Nginx Proxy Manager, un panel de gestión de certificados de proxy inverso**](https://wiki-power.com/es/Homelab-%E5%8F%8D%E4%BB%A3%E8%AF%81%E4%B9%A6%E7%AE%A1%E7%90%86%E9%9D%A2%E6%9D%BFNginxProxyManager/).
 
-Cuando se utiliza la extensión del navegador, la aplicación de escritorio o la aplicación móvil, es necesario hacer clic en Configuración en la página de inicio de sesión y configurar la URL del servidor para utilizar el servicio autohospedado correctamente.
+Cuando uses la extensión del navegador, la aplicación de escritorio o móvil, debes hacer clic en Configuración en la página de inicio de sesión y configurar la URL del servidor para poder utilizar el servicio autohospedado.
 
-Además, las versiones antiguas (inferiores a 1.27.0) de Vaultwarden no son compatibles con la extensión del navegador de Bitwarden, lo que puede impedir el inicio de sesión. Consulte el problema: [**Client fails to connect or login**](https://github.com/dani-garcia/vaultwarden/issues/3082).
+Además, las versiones antiguas (anteriores a 1.27.0) de Vaultwarden no son compatibles con las extensiones del navegador de Bitwarden, lo que puede resultar en problemas de inicio de sesión. Consulta el problema en el siguiente enlace: [**Fallo de conexión o inicio de sesión del cliente**](https://github.com/dani-garcia/vaultwarden/issues/3082).
 
-Debido a que es un servicio autohospedado, es importante prestar atención a la seguridad de los datos. Recuerde hacer copias de seguridad regulares de la base de datos de contraseñas.
+Dado que este es un servicio autohospedado, debes ser responsable de la seguridad de tus datos. No olvides realizar copias de seguridad regulares de tu base de datos de contraseñas.
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
 - [Sitio web oficial](https://github.com/dani-garcia/vaultwarden/wiki)
 - [Documentación](https://github.com/dani-garcia/vaultwarden/wiki/Using-Docker-Compose)
