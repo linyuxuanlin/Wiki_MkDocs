@@ -16,7 +16,6 @@ Basics_of_Fourier_Transform.md
 Basics_of_Mixed_Signal_Test.md
 Basics_of_Signal_and_Power_Integrity.md
 Basics_of_VBT_Syntax.md
-BeagleBone系列-BBAI入坑.md
 BeagleBone系列-使用BBIO库开发.md
 BeagleBone系列-基本参数与环境配置.md
 BeagleBone系列-无线连接.md
