@@ -48,7 +48,7 @@ You can find a recommended list of Chinese blogs on RSS feeds on saveweb's [**rs
 
 For mobile apps, we recommend using FeedMe (Android) and NetNewsWire (iOS).
 
-For more RSS-related content, you can refer to the article [**RSS - An Efficient Way to Read**](https://to_be_replace[3]).
+For more RSS-related content, you can refer to the article [**RSS - An Efficient Way to Read**]().
 
 ## References and Acknowledgments
 
