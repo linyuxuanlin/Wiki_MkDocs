@@ -1,47 +1,49 @@
-# Docker Basics
+# Docker Fundamentals
 
 ![Image](https://img.wiki-power.com/d/wiki-media/img/20210116153041.png)
 
-It's a well-known fact that one of the most cumbersome tasks in software development is setting up the environment. Variations in runtime environments can lead to unexpected issues, but Docker offers a solution to this problem.
+As we all know, one of the most troublesome aspects of software development is environment configuration. Differences in runtime environments can lead to unexpected results, and Docker can help prevent such issues.
 
-## Docker and Containerization Technology
+## Docker and Containerization
 
-Docker packages the software itself along with its required runtime environment, eliminating the need for manual environment configuration. Everything the application requires is encapsulated within the Docker container, ensuring that your environment matches that of the developer. This mitigates problems arising from disparities in runtime environments.
+Docker packages the software itself along with the required runtime environment, eliminating the need for manual environment configuration. This ensures that your environment matches that of the developer, thereby avoiding problems caused by runtime environment discrepancies.
 
-Docker employs containerization technology, often likened to **containers** themselves. Think of containers as standardized, large containers, similar to cargo containers used in various transportation modes like ships, trains, and trucks. These cargo containers can be loaded and unloaded across different carriers without consideration for the specific contents inside. Likewise, containerization technology bundles an application and all its dependencies into a self-contained, portable environment, known as a container.
+Docker utilizes containerization technology. When we talk about containerization, we can liken it to **shipping containers**. It's a standardized, large container that can be easily loaded and unloaded between various modes of transport, such as ships, trains, and trucks, without needing to consider the specific contents inside. Similarly, containerization technology packages an application and all its dependencies in a self-contained, portable environment known as a container.
 
-The primary objective of containerization technology is rapid application deployment, scalability, and environment isolation. By packaging applications and their dependencies into containers, developers can ensure consistent application execution across different computers or servers without worrying about environment differences or dependency conflicts. This streamlines the application development process and simplifies deployment and management.
+The primary goals of containerization technology are rapid application deployment, scalability, and environment isolation. By packaging an application and its dependencies into a container, we can ensure that the application runs consistently across different computers or servers, without worrying about environment differences or dependency conflicts. This enables developers to deliver applications more quickly while simplifying the deployment and management process.
 
-One significant advantage of containerization technology is its provision of lightweight virtualization. In contrast to traditional virtual machines, containers are more lightweight and consume fewer resources. Each container runs on the same host operating system kernel, sharing the host's resources. Consequently, containers start quickly, use minimal memory, and allow multiple containers to run concurrently on a single machine.
+One significant advantage of containerization technology is that it provides a lightweight virtualization solution. Compared to traditional virtual machines, containerization technology is more lightweight and resource-efficient. Each container runs on the same kernel as the host operating system, sharing the OS's resources. As a result, containers start faster, consume less memory, and can run multiple containers on the same machine simultaneously.
 
-Docker is currently a popular containerization solution, consisting of three key components: Image, Container, and Repository.
+Docker is currently one of the most popular containerization solutions, comprising three key elements: Image, Container, and Repository.
 
-- **Image**: An image is an executable file containing all the filesystem components (code, runtime, system tools, library files) and configurations required for an application. Images serve as templates for creating multiple container instances.
-- **Container**: Containers are runtime instances created from images. Each container operates in an isolated and independent environment, allowing the execution of applications within them.
-- **Repository**: Repositories are used for storing and sharing images. Users can push their own images to repositories and pull images created by others.
+- **Image**: An image is an executable file containing all the file systems (code, runtime, system tools, library files) and configurations required for an application. Think of an image as a template for creating multiple different container instances.
+
+- **Container**: A container is a running instance created from an image. Each container runs in an isolated and independent environment where applications can be executed.
+
+- **Repository**: A repository is used to store and share images. You can push your own created images to a repository and pull images created by others from the repository.
 
 The relationship between containers and images is akin to objects and classes in object-oriented programming.
 
-## Docker Installation and Configuration
+## Installing and Configuring Docker
 
-Before installing Docker, you can use the following command to uninstall any previous package versions to avoid conflicts:
+Before installing Docker, you can use the following command to uninstall old package versions to prevent conflicts:
 
 ```shell
 for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
 ```
 
-For mainstream Linux systems, you can download and install Docker Engine using the official script. This requires root user privileges:
+For mainstream Linux systems, you can download and install Docker Engine using the official script method (requires root user privileges):
 
 ```shell
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh ./get-docker.sh --dry-run
 ```
 
-Since Docker runs on and depends on the Linux environment, it has minimal efficiency overhead. However, if deploying Docker on other systems, you may need to install a virtual Linux environment first.
+Since Docker runs on and depends on the Linux environment, it incurs minimal efficiency overhead. However, if deploying Docker on other systems, a virtual Linux environment must be installed first.
 
 ![Image](https://img.wiki-power.com/d/wiki-media/img/20230708005714.png)
 
-For Docker installation on Windows, please refer to the official documentation [**Install Docker Desktop on Windows**](https://docs.docker.com/desktop/install/windows-install/).
+For instructions on installing Docker on Windows, please refer to the official documentation [**Install Docker Desktop on Windows**](https://docs.docker.com/desktop/install/windows-install/).
 
 For macOS installation, consult the official documentation [**Install Docker Desktop on Mac**](https://docs.docker.com/desktop/install/mac-install/).
 
@@ -51,86 +53,88 @@ After following the installation process, you can use the following command to v
 docker version
 ```
 
-If you have installed Docker Engine on Linux and wish to use it as a non-root user, you can configure permissions using the following commands:
+In Linux, after installing Docker Engine, if you want to use it as a non-root user, you can configure permissions with the following commands:
 
 ```shell
 sudo groupadd docker
 sudo usermod -aG docker $USER
 ```
 
-After completing the configuration, you may need to log out and log back in to update the permissions.
+After configuring, you may need to log out and log back in to update the permissions.
 
 If you encounter any installation issues, please refer to the official documentation [**Troubleshoot Docker Engine installation**](https://docs.docker.com/engine/install/troubleshoot/).
 
 ## Example: Hello World
 
-Let's demonstrate Docker using the official hello-world example. Open your terminal or command prompt and enter the following command to run the hello-world container:
+Next, we'll use the official hello-world example to demonstrate Docker. Open your terminal or command prompt and enter the following command to run the hello-world container:
 
 ```shell
 docker run hello-world
 ```
 
-This command will download the hello-world image from the Docker image repository, create, and run the container. When you see the "hello world" output, it means the execution was successful.
+This will download the hello-world image from the Docker image repository, create, and run the container. When you see the "hello world" output, it means the operation was successful.
 
 ## Some Common Docker CLI Commands
 
 Docker provides a powerful set of commands for managing and operating containers, images, networks, and other resources. Here are some commonly used Docker CLI commands:
 
-- `docker run`: Creates and runs a new container based on a specified image. For example, `docker run -d -p 8080:80 nginx` will run an NGINX container in the background, mapping the host's port 8080 to the container's port 80.
-- `docker ps`: Lists running containers. By default, it displays information such as the container ID, image, and command of running containers. You can use `docker ps -a` to show all containers, including those that have stopped.
-- `docker stop`: Stops one or more running containers, specifying the container's ID or name. For example, `docker stop mycontainer` stops the container named `mycontainer`.
-- `docker start`: Starts one or more stopped containers, using either the container's ID or name.
-- `docker restart`: Restarts one or more containers.
-- `docker rm`: Deletes one or more containers. To delete a running container, you can use `docker rm -f`.
-- `docker images`: Lists local images, showing image IDs, sizes, creation times, and more.
-- `docker rmi`: Deletes one or more images, specifying the image's ID or tag. For example, `docker rmi myimage:1.0` deletes an image named `myimage` with tag `1.0`.
-- `docker build`: Builds a custom image based on a Dockerfile. For instance, `docker build -t myimage:1.0 .` builds an image named `myimage` with tag `1.0` from the Dockerfile in the current directory.
-- `docker exec`: Executes a command within a running container, specifying the container's ID or name and the command. For example, `docker exec -it mycontainer bash` starts a new interactive terminal in the container named `mycontainer`.
+- `docker run`: Create and run a new container based on a specified image. For example, `docker run -d -p 8080:80 nginx` will run an NGINX container in the background, mapping port 8080 on the host to port 80 in the container.
+- `docker ps`: List running containers. By default, it displays information such as container ID, image, and command for running containers. You can use `docker ps -a` to show all containers, including stopped ones.
+- `docker stop`: Stop one or more running containers, specifying the container ID or name. For example, `docker stop mycontainer` will stop a container named `mycontainer`.
+- `docker start`: Start one or more stopped containers using their ID or name.
+- `docker restart`: Restart one or more containers.
+- `docker rm`: Remove one or more containers. To delete a running container, you can use the `docker rm -f` command.
+- `docker images`: List local images, displaying information like image ID, size, and creation time.
+- `docker rmi`: Remove one or more images by specifying the image ID or tag. For instance, `docker rmi myimage:1.0` will delete an image named `myimage` with tag `1.0`.
+- `docker build`: Build a custom image based on a Dockerfile. For example, `docker build -t myimage:1.0 .` will create an image named `myimage` with tag `1.0` based on the Dockerfile in the current directory.
+- `docker exec`: Execute a command in a running container, specifying the container ID or name and the command to run. For example, `docker exec -it mycontainer bash` will start a new interactive terminal in a container named `mycontainer`.
 
-These are some common Docker commands for managing and operating containers and images. There are more commands to explore, which you can find by running `docker --help` to view the full command list and additional options. For further Docker-related knowledge, please refer to upcoming articles.
+These are some common Docker commands for managing and working with containers and images. There are many more commands to explore, and you can view the complete list and options by using `docker --help` or refer to the official documentation [**Use the Docker command line**](https://docs.docker.com/engine/reference/commandline/cli/) for more information.
 
-- [**Docker Compose - Image Orchestration Tool**](https://example.com/DockerCompose-Image-Orchestration-Tool/)
-- [**Encapsulating Applications as Docker Containers**](https://example.com/Encapsulating-Applications-as-Docker-Containers/)
+For further Docker-related knowledge, please proceed to the following articles.
 
-If you wish to dive right into practical implementation, you can also refer to the following series of articles:
+- [**Docker Compose - Image Orchestration Tool**](https://wiki-power.com/DockerCompose-%E9%95%9C%E5%83%8F%E7%BC%96%E6%8E%92%E5%B7%A5%E5%85%B7/)
+- [**Encapsulating Applications into Docker Containers**](https://wiki-power.com/%E5%B0%86%E5%BA%94%E7%94%A8%E5%B0%81%E8%A3%85%E4%B8%BADocker%E5%AE%B9%E5%99%A8/)
 
-- [Setting Up Your Own HomeLab](Homelab - Setting Up Your Own HomeLab)
-- [Homelab - Lightweight Server Management Panel CasaOS](Homelab - Lightweight Server Management Panel CasaOS)
-- [Homelab - Reverse Proxy Certificate Management Panel Nginx Proxy Manager](Homelab - Reverse Proxy Certificate Management Panel Nginx Proxy Manager)
-- [Homelab - Intranet Penetration Tool frp](Homelab - Intranet Penetration Tool frp)
-- [Homelab - Free Intranet Penetration Alternative Cloudflared](Homelab - Free Intranet Penetration Alternative Cloudflared)
-- [Homelab - Online Code Editor code-server](Homelab - Online Code Editor code-server)
-- [Homelab - Website Status Monitoring Tool Uptime Kuma](Homelab - Website Status Monitoring Tool Uptime Kuma)
-- [Homelab - High-Quality Image Compression Tool TinyPNG-docker](Homelab - High-Quality Image Compression Tool TinyPNG-docker)
-- [Homelab - Minimalist Personal Bookmark Navigation Site Flare](Homelab - Minimalist Personal Bookmark Navigation Site Flare)
-- [Homelab - Container Application Management Platform Portainer](Homelab - Container Application Management Platform Portainer)
-- [Homelab - Cross-Device Synchronization Tool Syncthing](Homelab - Cross-Device Synchronization Tool Syncthing)
-- [Homelab - Fragmented Note Tool memos](Homelab - Fragmented Note Tool memos)
-- [Homelab - Powerful Wiki System Wiki.js](Homelab - Powerful Wiki System Wiki.js)
-- [Homelab - Self-Hosted Password Manager Vaultwarden](Homelab - Self-Hosted Password Manager Vaultwarden)
-- [Homelab - Cloud-Compatible Image Hosting System Cloudreve](Homelab - Cloud-Compatible Image Hosting System Cloudreve)
-- [Homelab - Self-Hosted RSS Aggregator FreshRSS](Homelab - Self-Hosted RSS Aggregator FreshRSS)
-- [Homelab - Multi-Protocol Bastion Host Next Terminal](Homelab - Multi-Protocol Bastion Host Next Terminal)
-- [Homelab - Multifunctional PDF Toolbox Stirling-PDF](Homelab - Multifunctional PDF Toolbox Stirling-PDF)
-- [Homelab - Website Favicon Retrieval Tool iconserver](Homelab - Website Favicon Retrieval Tool iconserver)
-- [Homelab - Tool for Automatically Updating Docker Containers Watchtower](Homelab - Tool for Automatically Updating Docker Containers Watchtower)
-- [Homelab - File List Program Supporting Multiple Storage Alist](Homelab - File List Program Supporting Multiple Storage Alist)
-- [Homelab - Feature-Rich Kanban Software WeKan](Homelab - Feature-Rich Kanban Software WeKan)
-- [Homelab - Podcast and Audiobook Server Audiobookshelf](Homelab - Podcast and Audiobook Server Audiobookshelf)
-- [Homelab - Cloud Music Server Navidrome](Homelab - Cloud Music Server Navidrome)
-- [Homelab - Movie and Media Server Jellyfin](Homelab - Movie and Media Server Jellyfin)
-- [Homelab - eBook Management Server calibre-web](Homelab - eBook Management Server calibre-web)
-- [Homelab - Smart Home Server Home Assistant](Homelab - Smart Home Server Home Assistant)
-- [Homelab - Flashcard-Based Memory Aid Software Anki](Homelab - Flashcard-Based Memory Aid Software Anki)
+If you're eager to dive right into practical application, you can also refer to the following series of articles:
+
+- [Setting Up Your Own HomeLab](https://wiki-power.com/Setting-Up-Your-Own-HomeLab)
+- [Homelab - Lightweight Server Management Panel CasaOS](https://wiki-power.com/Homelab-Lightweight-Server-Management-Panel-CasaOS)
+- [Homelab - Reverse Proxy and Certificate Management Panel Nginx Proxy Manager](https://wiki-power.com/Homelab-Reverse-Proxy-and-Certificate-Management-Panel-Nginx-Proxy-Manager)
+- [Homelab - Intranet Penetration Tool frp](https://wiki-power.com/Homelab-Intranet-Penetration-Tool-frp)
+- [Homelab - Free Intranet Penetration Alternative Cloudflared](https://wiki-power.com/Homelab-Free-Intranet-Penetration-Alternative-Cloudflared)
+- [Homelab - Online Code Editor code-server](https://wiki-power.com/Homelab-Online-Code-Editor-code-server)
+- [Homelab - Website Status Monitoring Tool Uptime Kuma](https://wiki-power.com/Homelab-Website-Status-Monitoring-Tool-Uptime-Kuma)
+- [Homelab - High-Quality Image Compression Tool TinyPNG-docker](https://wiki-power.com/Homelab-High-Quality-Image-Compression-Tool-TinyPNG-docker)
+- [Homelab - Minimalist Personal Bookmark Navigation Site Flare](https://wiki-power.com/Homelab-Minimalist-Personal-Bookmark-Navigation-Site-Flare)
+- [Homelab - Container Application Management Platform Portainer](https://wiki-power.com/Homelab-Container-Application-Management-Platform-Portainer)
+- [Homelab - Cross-Device Synchronization Tool Syncthing](https://wiki-power.com/Homelab-Cross-Device-Synchronization-Tool-Syncthing)
+- [Homelab - Fragmented Note-Taking Tool memos](https://wiki-power.com/Homelab-Fragmented-Note-Taking-Tool-memos)
+- [Homelab - Powerful Wiki System Wiki.js](https://wiki-power.com/Homelab-Powerful-Wiki-System-Wiki.js)
+- [Homelab - Self-Hosted Password Manager Vaultwarden](https://wiki-power.com/Homelab-Self-Hosted-Password-Manager-Vaultwarden)
+- [Homelab - Cloud-Supported Image Hosting System Cloudreve](https://wiki-power.com/Homelab-Cloud-Supported-Image-Hosting-System-Cloudreve)
+- [Homelab - Self-Hosted RSS Aggregator FreshRSS](https://wiki-power.com/Homelab-Self-Hosted-RSS-Aggregator-FreshRSS)
+- [Homelab - Multi-Protocol Bastion Host Next Terminal](https://wiki-power.com/Homelab-Multi-Protocol-Bastion-Host-Next-Terminal)
+- [Homelab - Multifunctional PDF Toolbox Stirling-PDF](https://wiki-power.com/Homelab-Multifunctional-PDF-Toolbox-Stirling-PDF)
+- [Homelab - Website Favicon Retrieval Tool iconserver](https://wiki-power.com/Homelab-Website-Favicon-Retrieval-Tool-iconserver)
+- [Homelab - Docker Container Auto-Update Tool Watchtower](https://wiki-power.com/Homelab-Docker-Container-Auto-Update-Tool-Watchtower)
+- [Homelab - Multi-Storage File Listing Program Alist](https://wiki-power.com/Homelab-Multi-Storage-File-Listing-Program-Alist)
+- [Homelab - Feature-Rich Kanban Software WeKan](https://wiki-power.com/Homelab-Feature-Rich-Kanban-Software-WeKan)
+- [Homelab - Podcast and Audiobook Server Audiobookshelf](https://wiki-power.com/Homelab-Podcast-and-Audiobook-Server-Audiobookshelf)
+- [Homelab - Cloud Music Server Navidrome](https://wiki-power.com/Homelab-Cloud-Music-Server-Navidrome)
+- [Homelab - Video and Media Server Jellyfin](https://wiki-power.com/Homelab-Video-and-Media-Server-Jellyfin)
+- [Homelab - Ebook Management Server calibre-web](https://wiki-power.com/Homelab-Ebook-Management-Server-calibre-web)
+- [Homelab - Smart Home Server Home Assistant](https://wiki-power.com/Homelab-Smart-Home-Server-Home-Assistant)
+- [Homelab - Flashcard-Assisted Memory Software Anki](https://wiki-power.com/Homelab-Flashcard-Assisted-Memory-Software-Anki)
 
 ## References and Acknowledgments
 
-- [Docker - From Beginner to Practice](https://yeasy.gitbook.io/docker_practice/)
+- [Docker - Getting Started to Practical Use](https://yeasy.gitbook.io/docker_practice/)
 - [Docker Tutorial](https://www.runoob.com/docker/docker-tutorial.html)
-- [Getting Started with Docker](http://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html)
-- [Installing Docker on CentOS](to_be_replaced[3])
+- [Introduction to Docker](http://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html)
+- [Installing Docker on CentOS](https://wiki-power.com/unlist/CentOS%E5%AE%89%E8%A3%85Docker)
 
-[to_be_replaced[1]]
-[to_be_replaced[2]]
+> Original: <https://wiki-power.com/>  
+> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.
