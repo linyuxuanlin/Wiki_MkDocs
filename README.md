@@ -21,3 +21,4 @@ RSS of updated post: <https://wiki-power.com/feed_rss_updated.xml>
 > Upgrade Material theme: `pip install --upgrade mkdocs-material`
 
 
+
