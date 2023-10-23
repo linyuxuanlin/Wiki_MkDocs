@@ -2,42 +2,43 @@
 
 ## Background
 
-In the previous article, we saw that PlatformIO is much more elegant to use than Keil. It is well known that in the STM32 development world, the HAL library is more convenient and easy to use than the standard library (when used with the CubeMX tool). However, the official compatibility of CubeMX with PlatformIO is not perfect (requiring code conversion through a Python middleware).
+In the [**previous article**](https://wiki-power.com/PlatformIO—一站式嵌入式开发工具), we observed that PlatformIO offers a more elegant development experience compared to Keil. 
+As we all know, in the world of STM32 development, the HAL library, in combination with the powerful tool CubeMX, is more convenient than the standard peripheral library. However, PlatformIO's official support for CubeMX is not entirely seamless, requiring an intermediary Python middleware for code conversion.
 
-In this article, I will introduce a unique method to make PlatformIO work more smoothly with CubeMX.
+In this article, I will introduce a unique method to make PlatformIO work seamlessly with CubeMX for a delightful development experience.
 
-## Initializing the Project
+## Project Initialization
 
-TL;DR: I have put the project folder created by the following steps in [this repository](https://github.com/linyuxuanlin/Template_of_PlatformIO_with_CubeMX). You can clone it directly.
+TL;DR: I've placed the project folder created using the following steps in [**this repository**](https://github.com/linyuxuanlin/Template_of_PlatformIO_with_CubeMX). You can clone it directly.
 
-### Initializing with CubeMX
+### CubeMX Initialization Steps
 
-1. Create a new project
-2. Select MCU model
-3. Configure Pinout & Configuration
-   1. Configure RCC (select external/internal clock as needed)
-   2. Configure SYS (change DEBUG option from `No Debug` to `Serial Wire`)
-4. Configure Clock Configuration
-5. Configure Project Manager
-   1. Project page
-      1. Fill in project name (e.g. `Template_of_PlatformIO_with_CubeMX`)
-      2. Modify project path (e.g. `D:/Desktop`)
-      3. Change toolchain/IDE to `Other Toolchains`
-   2. Code Generator page
-      1. Select `Copy only the necessary library files` for STM32Cube Firmware Library Package option
-      2. Check `Generate peripheral initialization as a pair of '.c/.h' files per peripheral` in Generated files option
+1. Create a new project.
+2. Choose the MCU model.
+3. Configure Pinout & Configuration.
+   1. Configure RCC (select external/internal clock, as needed).
+   2. Configure SYS (change DEBUG option from `No Debug` to `Serial Wire` as necessary).
+4. Configure Clock Configuration.
+5. Configure Project Manager.
+   1. Project Page
+      1. Enter the project name (e.g., `Template_of_PlatformIO_with_CubeMX`).
+      2. Modify the project path (e.g., `D:/Desktop`).
+      3. Change the toolchain/IDE to `Other Toolchains`.
+   2. Code Generator Page
+      1. Choose the software package option (STM32Cube Firmware Library Package) as `Copy only the necessary library files`.
+      2. Check the 'Generate peripheral initialization as a pair of '.c/.h' files per peripheral' in generated files options.
 
-Finally, we can click `Generate Code` in the upper right corner to generate the code.
+With the configuration completed, let's click on 'Generate Code' in the top right corner to generate the code.
 
-### Initialization steps for PlatformIO
+### PlatformIO Initialization Steps
 
-1. Open the PlatformIO homepage.
-2. Click on `New Project` to create a new project.
-   1. Fill in the project name. Note: it must be the same as the one configured in CubeMX! (e.g. `Template_of_PlatformIO_with_CubeMX`)
-   2. Select the board / MCU model. Here you can directly select the MCU model (e.g. STM32F103C8), or directly select the board type (e.g. BluePill F103C8). Note: it must be the same as the one configured in CubeMX!
-   3. Select `STM32Cube` as the code framework.
-   4. Uncheck `Use default location` under `Location` and customize the path. Note: it must be the same as the one configured in CubeMX! (e.g. `D:/Desktop`)
-3. Open the `platformio.ini` file in the project and add the following lines:
+1. Open the PlatformIO main page.
+2. Click on 'New Project' to create a new project.
+   1. Enter the project name. Note: It must match the name configured in CubeMX (e.g., `Template_of_PlatformIO_with_CubeMX`).
+   2. Select the board/MCU model. You can directly choose the MCU model (e.g., STM32F103C8) or the board type (e.g., BluePill F103C8). Note: It must match the configuration in CubeMX.
+   3. Choose the code framework as `STM32Cube`.
+   4. Uncheck 'Use default location' under the 'Location' path, and set a custom path. Note: It must match the configuration in CubeMX (e.g., `D:/Desktop`).
+3. Open the `platformio.ini` file in your project and add the following lines:
 
    ```ini
    [platformio]
@@ -45,26 +46,28 @@ Finally, we can click `Generate Code` in the upper right corner to generate the 
    src_dir=Src
    ```
 
-   This is because the framework folders generated by PlatformIO and CubeMX are different by default, so for compatibility, we follow CubeMX.
+   This is because PlatformIO and CubeMX generate framework folders differently. To ensure compatibility, we align with CubeMX.
+4. You can delete the 'include' folder in your project. Since Windows file naming is not case-sensitive, the 'src' folder naturally becomes 'Src'.
 
-4. The `include` folder in the project can be deleted. And because Windows file names are not case sensitive, the `src` folder naturally becomes `Src`.
+### Enjoy your development journey!
 
-### Enjoy!
+In the project, `.c` files are located in the `Src` folder, while `.h` files are in the `Inc` folder.  
+Any code between `/* USER CODE BEGIN */` and `/* USER CODE END */` will be preserved throughout the subsequent generation process from CubeMX and will not be overwritten.
 
-In the project, `.c` files are stored in the `Src` folder, and `.h` files are stored in `Inc`.  
-Any code between `/* USER CODE BEGIN */` and `/* USER CODE END */` will be preserved and not overwritten during the subsequent generation process from CubeMX.
+You can use the following shortcuts in PlatformIO:
+- Press `Ctrl + Alt + B` to compile.
+- Use `Ctrl + Alt + U` to compile and upload.
+- Press `F5` to start debugging.
 
-PlatformIO can be compiled using the shortcut `Ctrl + Alt + B`, compiled and uploaded using `Ctrl + Alt + U`, and debugged using `F5`.
-
-The next step is to learn the HAL library. To be continued ~
+The next step in your exploration is to learn about the HAL library. To be continued ~
 
 ## References and Acknowledgments
 
-> Original: <https://wiki-power.com/>  
-> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.  
+- [STM32CubeMX Series Tutorial 03 - Creating and Generating Code Projects](https://www.strongerhuang.com/STM32Cube/STM32CubeMX/STM32CubeMX%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B03_%E5%88%9B%E5%BB%BA%E5%B9%B6%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81%E5%B7%A5%E7%A8%8B.html)
+- [STM32CubeMX Series Tutorial 06 - Project Manager Detailed Explanation](https://www.strongerhuang.com/STM32Cube/STM32CubeMX/STM32CubeMX%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B06_Project%20Manager%E5%B7%A5%E7%A8%8B%E7%AE%A1%E7%90%86%E5%99%A8%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E.html)
+- [Using VS Code as an STM32 Development Platform (PlatformIO)](https://www.jianshu.com/p/49cfa03d6164)
 
-- [STM32CubeMX Tutorial 03_Creating and Generating Code Projects](https://www.strongerhuang.com/STM32Cube/STM32CubeMX/STM32CubeMX%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B03_%E5%88%9B%E5%BB%BA%E5%B9%B6%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81%E5%B7%A5%E7%A8%8B.html)
-- [STM32CubeMX Tutorial 06_Project Manager Detailed Explanation](https://www.strongerhuang.com/STM32Cube/STM32CubeMX/STM32CubeMX%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B06_Project%20Manager%E5%B7%A5%E7%A8%8B%E7%AE%A1%E7%90%86%E5%99%A8%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E.html)
-- [Using VS Code as STM32 Development Platform (PlatformIO)](https://www.jianshu.com/p/49cfa03d6164)
+> Original: <https://wiki-power.com/>
+> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

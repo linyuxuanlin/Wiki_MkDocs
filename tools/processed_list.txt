@@ -97,3 +97,14 @@ Homelab-电子书管理服务器calibre-web.md
 Homelab-自托管RSS聚合器FreshRSS.md
 Homelab-自托管密码管理器Vaultwarden.md
 Homelab-高质量图片压缩工具TinyPNG-docker.md
+Lora通信-基于正点原子ATK-LORA-01模块.md
+MSI主板开启虚拟化的方法.md
+MkDocs测试实验室.md
+Node.js和npm的安装与卸载（MacOS）.md
+OSD335x最小系统的设计.md
+OrCAD配置与技巧.md
+Pattern_Syntax_Notes.md
+Personal_Onboarding_Workflow_(Windows).md
+PlatformIO—一站式嵌入式开发工具.md
+PlatformIO搭配CubeMX食用.md
+ROS入门笔记.md

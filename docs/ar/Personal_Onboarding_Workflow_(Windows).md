@@ -1,58 +1,56 @@
-Here is the translated text in Arabic while maintaining the original markdown format:
-
-# سير عمل التسجيل الشخصي (نظام التشغيل ويندوز)
+# سير العمل الشخصي لبداية الاستخدام (نظام Windows)
 
 ## الإعدادات
 
-### البدء
+### التهيئة الأولية
 
-- قم بتشغيل نظام التشغيل ويندوز دون حساب مايكروسوفت.
-- قم بفتح التشخيص (للإصدار التطويري).
-- تحقق من وجود تحديثات النظام والمشغلات.
+- بدء نظام Windows من دون حساب Microsoft.
+- فتح التشخيص (للإصدار التطويري).
+- التحقق من وجود تحديثات النظام والتعريفات.
 
 ### إعدادات النظام
 
 - النظام
-  - تعدد المهام
-    - عدم عرض علامات Edge.
+  - العمل المتعدد
+    - عدم عرض علامات التبويب في Edge.
   - العرض
-    - الإضاءة الليلية
-  - سطح المكتب عن بُعد - تشغيل
+    - وضع الليل
+  - سطح المكتب عن بُعد - تفعيل
 - تخصيص
   - السمة الداكنة
   - الخلفية وشاشة القفل
   - شريط المهام
 - الخصوصية والأمان
-  - إذن البحث - إيقاف
-  - للمطورين - تشغيل
-- تحديث ويندوز
+  - إيقاف إذن البحث
+  - تفعيل وضع المطورين
+- تحديث Windows
 
 ### إعدادات أخرى
 
-- أداء ممتاز (باستخدام سطر الأوامر - `powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61`)
+- أداء ممتاز (من خلال PowerShell - `powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61`)
 - مستكشف الملفات
   - الشريط الجانبي
-- إعدادات مشغلات NVIDIA وIntel
+- إعدادات مشغل NVIDIA وإنتل
 - تنسيق اللغة / الوقت / الكتابة
-- Edge: تمكين [**تنزيل متوازي**](edge://flags/#enable-parallel-downloading)
-- إلغاء تنشيط وضع السكون: `powercfg /hibernate off`
-- frp
+- Edge: تمكين [**تنزيل متزامن**](edge://flags/#enable-parallel-downloading)
+- إيقاف وضع السكون: `powercfg /hibernate off`
+- FRP
 
 ## تثبيت البرامج
 
-### قابلة للتنفيذ
+### تنفيذية
 
 - HuoRong Security
 - Synology Drive (مع الإعدادات)
 - [Visual Studio Code Insiders](https://code.visualstudio.com/insiders/) (مع الإعدادات)
-- (فقط لجهاز Matebook) Huawei PC Manager (مع الإعدادات)
+- (فقط لـ Matebook) Huawei PC Manager (مع الإعدادات)
 - Logi Options+ (مع الإعدادات)
 - [Powertoys](https://github.com/microsoft/PowerToys/releases) (مع النسخ الاحتياطي)
 - Wechat (مع الإعدادات)
 - [Git](https://git-scm.com/downloads)
 - [GitHub Desktop](https://desktop.github.com/)
 
-### قابلة للنقل (مزامنة مع Synology Drive)
+### محمولة (مزامنة مع Synology Drive)
 
 - 0_init
 - Clash
@@ -70,19 +68,21 @@ Here is the translated text in Arabic while maintaining the original markdown fo
 - SumatraPDF
 - JPEGView
 - Telegram
-- Peazip (مع ارتباطات الملفات وتكامل القائمة النظامية)
+- Peazip (مع تكامل توجيهات الملف والقائمة النظامية)
 - DeepL
 
 ### Microsoft Store
 
-- (فقط لجهاز Matebook) Intel® Graphics Command Center (النسخة التجريبية)
+- (فقط لـ Matebook) Intel® Graphics Command Center (بيتا)
 
 ## إلغاء تثبيت البرامج
 
-- Onedrive (باستخدام HiBit Uninstaller)
-- تطبيقات ويندوز غير الضرورية (بواسطة Win10Apps)
+- Onedrive (بواسطة HiBit Uninstaller)
+- تطبيقات Windows غير الضرورية (بواسطة Win10Apps)
 
-> الأصل: <https://wiki-power.com/>  
-> هذا المنشور محمي بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)، يجب إعادة إنتاجه مع الإسناد.
+النص المترجم:
+
+> الرابط الأصلي: <https://wiki-power.com/>
+> يتم حماية هذا المنشور وفقًا لاتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)، ويجب إعادة الإنتاج مع الإسناد المناسب.
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

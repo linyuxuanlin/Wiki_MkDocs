@@ -4,19 +4,19 @@ Note: This article is based on Cadence OrCAD Capture CIS.
 
 ## Basics
 
-OrCAD Capture CIS is used for drawing schematics (Start menu -> Cadence -> Capture CIS)  
-Allegro PCB Designer is used for drawing PCBs (Start menu -> Cadence -> PCB Editor)
+To draw schematics, use OrCAD Capture CIS (Start Menu -> Cadence -> Capture CIS).
+To design PCBs, use Allegro PCB Designer (Start Menu -> Cadence -> PCB Editor).
 
-Generally, using a `.DSN` file is sufficient to encompass the entire project, and opening it will automatically generate `.opj` and other schematic files. If using git for version control, the following gitignore can be added:
+In general, you can encompass the entire project with a `.DSN` file, which will automatically generate `.opj` and other schematic files when opened. If you are using Git for version control, consider adding the following to your `.gitignore`:
 
 ```gitignore
-# From original gitignore 
+# From the original gitignore
 
 #############
 ## Allegro
 #############
 
-# Ignore log file
+# Ignore log files
 *.log
 *.log,1
 *.log,2
@@ -25,38 +25,37 @@ Generally, using a `.DSN` file is sufficient to encompass the entire project, an
 *.dml
 *.lst
 
-#ignore 记录操作allegro的事件
+# Ignore event logging for Allegro operations
 *.jrl
 *.jrl,1
 
 *.tag
 
-#报告文件
+# Report files
 *.rpt
 
-#报告文件
 *.cfg
 *.cfg,1
 
 *.lck
 
-#报表文件
+# Report files
 *.txt
 *.txt,1
 *.txt,2
 
-#XY数据除外
+# Exclude XY data
 !place_txt.txt
 
-#DXF导入文件
+# DXF import files
 *.cnv
 
-#Gerber param file除外
+# Exclude Gerber parameter file
 !art_param.txt
 
-#Folder
-#过滤整个文件夹
-/signoise.run/ 
+# Folder
+# Exclude the entire folder
+/signoise.run/
 
 #############
 ## OrCAD
@@ -66,66 +65,70 @@ Generally, using a `.DSN` file is sufficient to encompass the entire project, an
 *.DRC
 *.DSNlck
 
-#ignore netlist
-allegro/ 
+# Ignore netlists
+allegro/
 ```
 
 ## Some Settings
 
-DRC settings:
+DRC Settings:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210810134720.png)
+![DRC Settings](https://img.wiki-power.com/d/wiki-media/img/20210810134720.png)
 
 Automatically rename reference designators when copying components:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210810134747.png)
+![Auto Rename Reference Designators](https://img.wiki-power.com/d/wiki-media/img/20210810134747.png)
 
-Snap characters to grid when moving them:
+Snap components to the grid while moving text:
 
-Pitfall: When using the CIP library, if "not found in the configured library lists" is displayed, check the encoding of spaces in the path.
+![Snap to Grid When Moving Components](https://img.wiki-power.com/d/wiki-media/img/20210810134758.png)
 
-- **Mouse wheel zoom**: `Options` - `Preferences...` - `Pan and Zoom` - Set both `Zoom Factor` to 1.1
-- **Refresh schematic when placing components**: `Options` - `Preferences...` - `Miscellaneous` - `Place Part` - Check `Refresh part on selection`
-- **Set grid size**: `Options` - `Preferences...` - `Grid Display` - `Grid Spacing` - Set to 1/2
+Tip: When using the CIP library and encountering the "not found in the configured library lists" error, check for spaces in the path.
 
-## Shortcuts
+- **Mouse Wheel Zoom**: `Options` - `Preferences…` - `Pan and Zoom` - Set both `Zoom Factor` values to 1.1.
+- **Refresh Schematic on Part Placement**: `Options` - `Preferences…` - `Miscellaneous` - `Place Part` - Check "Refresh part on selection."
+- **Set Grid Spacing**: `Options` - `Preferences…` - `Grid Display` - `Grid Spacing` - Set it to 1/2.
 
-- Draw wire: `W`
+## Keyboard Shortcuts
+
+- Draw wires: `W`
 - Cancel: `ESC`
-- Draw bus: `F4`
+- Route bus: `F4`
 - Place net label: `N`
-- Rotate / Horizontal mirror / Vertical mirror component: `R` / `H` / `V`
+- Rotate / Horizontal mirror / Vertical mirror components: `R` / `H` / `V`
 - Open CIS panel: `Z`
 - Place power / ground: `F` / `G`
 - No connect: `X`
 - Filter: `Ctrl` + `I`
-- Select multiple elements: Hold `Ctrl` to select
-- Copy and automatically increment reference designator: Hold `Ctrl` and drag component
-- Move schematic with mouse as center of gravity: Hold `C` and drag mouse
+- Multi-select elements: Hold `Ctrl` while selecting
+- Copy and automatically increment reference designators: Hold `Ctrl` and drag components
+- Move the schematic with the mouse as the pivot: Hold `C` and drag the mouse
 - Place bus: `E`
 - Place text: `T`
 
 ## Errors and Solutions
 
-- Unable to drag component: Generally, restarting can solve the problem.
+- Unable to drag components: Generally, a restart can resolve this issue.
 
 ## Tips
 
-### Difference between off-page and port
+### Difference Between Off-Page and Port
 
-Off-page is generally used for flat schematics, while port is generally used for hierarchical schematics.
+Off-page is typically used in flat schematics, while port is generally used in hierarchical schematics.
 
-### DRC check
+### DRC Check
 
-1. Select the entire project by clicking on it in the file tree
-2. Click `Tools` - `Design Rules Check...` on the toolbar
-3. Check `Run Physical Rules` and `View Output`
-4. Click OK, a report will be generated and automatically opened.
+```markdown
+1. Click to select the entire project in the file tree.
+2. Click on the toolbar `Tools` - `Design Rules Check...`
+3. Check the boxes for `Run Physical Rules` and `View Output`.
+4. Click OK, and a report will be generated and automatically opened.
 
 ## References and Acknowledgments
 
-- [Quick Start Guide to Cadence](https://blog.csdn.net/ReCclay/article/details/101225359)
+- [Quick Start Guide for Cadence](https://blog.csdn.net/ReCclay/article/details/101225359)
 - [OrCAD Capture Tutorial](https://resources.orcad.com/orcad-capture-tutorials)
-- [Solution to Blurry Font Display in Cadence Software on High-Resolution Laptops](https://blog.csdn.net/qq_34338527/article/details/108846792)
+- [Resolution for Cadence Software Font Blurriness on High-Resolution Notebooks](https://blog.csdn.net/qq_34338527/article/details/108846792)
+```
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

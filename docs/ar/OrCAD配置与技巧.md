@@ -1,16 +1,16 @@
-# تكوين ونصائح OrCAD
+# OrCAD Configuration and Tips
 
-ملاحظة: يستند هذا المقال إلى Cadence OrCAD Capture CIS.
+Note: This article is based on Cadence OrCAD Capture CIS.
 
-## الأساسيات
+## Basics
 
-يتم استخدام OrCAD Capture CIS لرسم الرسم التخطيطي (القائمة البدء - Cadence - Capture CIS)  
-يتم استخدام Allegro PCB Designer لرسم PCB (القائمة البدء - Cadence - PCB Editor)
+To draw schematic diagrams, use OrCAD Capture CIS (Start Menu -> Cadence -> Capture CIS).
+To design PCBs, use Allegro PCB Designer (Start Menu -> Cadence -> PCB Editor).
 
-عمومًا ، يمكن استخدام ملف `.DSN` واحد لتغطية المشروع بأكمله ، وسيتم إنشاء ملفات الرسم التخطيطي `.opj` تلقائيًا عند الفتح. إذا تم استخدام Git لإدارة الإصدارات ، فيمكن إضافة gitignore التالي:
+In general, using a `.DSN` file is sufficient to encompass the entire project. Opening it will automatically generate `.opj` and other schematic files. If you are using Git for version control, you can add the following to your `.gitignore`:
 
 ```gitignore
-# From original gitignore 
+# From the original gitignore
 
 #############
 ## Allegro
@@ -25,38 +25,38 @@
 *.dml
 *.lst
 
-#ignore 记录操作allegro的事件
+# Ignore recording of Allegro events
 *.jrl
 *.jrl,1
 
 *.tag
 
-#报告文件
+# Report files
 *.rpt
 
-#报告文件
+# Report files
 *.cfg
 *.cfg,1
 
 *.lck
 
-#报表文件
+# Report files
 *.txt
 *.txt,1
 *.txt,2
 
-#XY数据除外
+# Exclude XY data
 !place_txt.txt
 
-#DXF导入文件
+# DXF import files
 *.cnv
 
-#Gerber param file除外
+# Exclude Gerber param file
 !art_param.txt
 
-#Folder
-#过滤整个文件夹
-/signoise.run/ 
+# Folder
+# Exclude the entire folder
+/signoise.run/ 
 
 #############
 ## OrCAD
@@ -66,68 +66,71 @@
 *.DRC
 *.DSNlck
 
-#ignore netlist
-allegro/ 
+# Ignore netlist
+allegro/ 
 ```
 
-## بعض الإعدادات
+## Settings
 
-إعدادات DRC:
+DRC Settings:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210810134720.png)
+![DRC Settings](https://img.wiki-power.com/d/wiki-media/img/20210810134720.png)
 
-إعادة تسمية تلقائية للرقم المرجعي عند نسخ المكون:
+Automatically rename reference designators when copying components:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210810134747.png)
+![Auto Rename Reference Designators](https://img.wiki-power.com/d/wiki-media/img/20210810134747.png)
 
-تحريك النص بالقرب من الشبكة:
+Snap components to grid while moving text:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210810134758.png)
+![Snap Components to Grid](https://img.wiki-power.com/d/wiki-media/img/20210810134758.png)
 
-الفخ: عند استخدام مكتبة CIP ، عندما يتم عرض `not found in the configured librarie lists` ، يجب التحقق من ترميز المسافات في المسار.
+Note: When using the CIP library and encountering the message "not found in the configured library lists," check for spaces in the file path.
 
-- **تكبير / تصغير عجلة الماوس**:`Options` - `Preferences…` - `Pan and Zoom` - تعيين العاملين `Zoom Factor` إلى 1.1 مرة
-- **تحديث الرسم التخطيطي عند وضع المكونات**:`Options` - `Preferences…` - `Miscellaneous` - `Place Part` - تحديد `Refresh part on selection`
-- **تعيين حجم الشبكة**:`Options` - `Preferences…` - `Grid Display` - `Grid Spacing` - تعيينها على 1/2
+- **Mouse Wheel Zoom**: `Options` - `Preferences...` - `Pan and Zoom` - Set both `Zoom Factor` values to 1.1x
+- **Refresh Schematic While Placing Components**: `Options` - `Preferences...` - `Miscellaneous` - `Place Part` – Check "Refresh part on selection"
+- **Set Grid Spacing**: `Options` - `Preferences...` - `Grid Display` - `Grid Spacing` - Set it to 1/2
 
-## اختصارات لوحة المفاتيح
+## Keyboard Shortcuts
 
-- سحب الخط: `W`
-- إلغاء: `ESC`
-- سحب الأسلاك: `F4`
-- وضع علامة شبكية: `N`
-- تدوير / انعكاس أفقي / انعكاس عمودي للمكون: `R` / `H` / `V`
-- فتح لوحة CIS: `Z`
-- وضع الطاقة / الأرض: `F` / `G`
-- عدم الاتصال: `X`
-- مرشح: `Ctrl` + `I`
-- تحديد عناصر متعددة: اضغط على `Ctrl` للتحديد
-- نسخ وزيادة تلقائية للرقم المرجعي: اضغط على `Ctrl` واسحب المكون
-- نقل الرسم التخطيطي حول نقطة التوازن: اضغط على `C` واسحب الماوس
-- وضع الحافلة: `E`
-- وضع النص: `T`
+- Draw Wire: `W`
+- Cancel: `ESC`
+- Drag Bus: `F4`
+- Place Net Label: `N`
+- Rotate / Flip Horizontally / Flip Vertically: `R` / `H` / `V`
+- Open CIS Panel: `Z`
+- Place Power / Ground: `F` / `G`
+- No Connect: `X`
+- Filter: `Ctrl` + `I`
+- Select Multiple Elements: Hold `Ctrl` and click to select
+- Copy and Auto Increment Reference Designators: Hold `Ctrl` and drag components
+- Move Schematic Around with Mouse as Pivot: Hold `C` and drag the mouse
+- Place Bus: `E`
+- Place Text: `T`
 
-## الأخطاء والحلول
+## Errors and Solutions
 
-- لا يمكن سحب المكون: عمومًا ، يمكن حل المشكلة بإعادة التشغيل.
+- Unable to Drag Components: Generally, restarting can resolve this issue.
 
-## الحيل
+## Tips
 
-### الفرق بين off-page و port
+### Difference Between Off-Page and Port
 
-يستخدم off-page عمومًا في الرسم التخطيطي المسطح ، بينما يستخدم port عمومًا في الرسم التخطيطي الهرمي.
+Off-page is generally used for flat schematic diagrams, while port is typically used for hierarchical schematic diagrams.
 
-### فحص DRC
+### DRC Check
 
-1. انقر فوق المشروع بالكامل في شجرة الملفات
-2. انقر فوق شريط الأدوات `Tools` - `Design Rules Check...`
-3. حدد `Run Physical Rules` و `View Output`
-4. انقر فوق موافق ، وسيتم إنشاء تقرير وفتحه تلقائيًا
+```markdown
+1. انقر على شجرة الملفات واختر المشروع بأكمله.
+2. انقر على شريط الأدوات `الأدوات` - `فحص قواعد التصميم...`
+3. حدد الخيارات التالية: `تشغيل القواعد الفيزيائية` و `عرض النتائج`
+4. انقر على "موافق"، سيتم إنشاء تقرير وفتحه تلقائياً.
 
-## المراجع والشكر
+## الإشارات والشكر
 
-- [【دليل سريع لـ Cadence】الإصدار الشامل للمقالة](https://blog.csdn.net/ReCclay/article/details/101225359)
-- [دليل OrCAD Capture](https://resources.orcad.com/orcad-capture-tutorials)
-- [حل مشكلة ضبابية الخط في برنامج Cadence على شاشات الحواسيب المحمولة عالية الدقة](https://blog.csdn.net/qq_34338527/article/details/108846792)
+- [【دليل بداية سريع لـ Cadence】](https://blog.csdn.net/ReCclay/article/details/101225359)
+- [البرنامج التعليمي لـ OrCAD Capture](https://resources.orcad.com/orcad-capture-tutorials)
+- [حلاً لمشكلة ضبابية الخطوط في برنامج Cadence على أجهزة الكمبيوتر ذات شاشات عالية الدقة](https://blog.csdn.net/qq_34338527/article/details/108846792)
+```
+
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

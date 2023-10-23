@@ -4,19 +4,18 @@ Nota: Este artículo se basa en Cadence OrCAD Capture CIS.
 
 ## Fundamentos
 
-Para dibujar un esquema, use OrCAD Capture CIS (Menú Inicio -> Cadence -> Capture CIS)
-Para dibujar un PCB, use Allegro PCB Designer (Menú Inicio -> Cadence -> PCB Editor)
+Para dibujar un esquema eléctrico, utiliza OrCAD Capture CIS (Menú Inicio -> Cadence -> Capture CIS). Para diseñar una placa de circuito impreso, usa Allegro PCB Designer (Menú Inicio -> Cadence -> PCB Editor).
 
-En general, un archivo `.DSN` es suficiente para todo el proyecto, y al abrirlo se generan automáticamente archivos de esquema como `.opj`. Si utiliza git para el control de versiones, puede agregar lo siguiente a su archivo gitignore:
+Por lo general, un archivo `.DSN` es suficiente para abarcar todo el proyecto. Al abrirlo, se generarán automáticamente archivos de esquemáticos `.opj`. Si utilizas Git para el control de versiones, puedes agregar el siguiente `.gitignore`:
 
 ```gitignore
-# Desde el gitignore original
+# Desde gitignore original
 
 #############
 ## Allegro
 #############
 
-# Ignorar archivo de registro
+# Ignorar archivos de registro
 *.log
 *.log,1
 *.log,2
@@ -25,22 +24,21 @@ En general, un archivo `.DSN` es suficiente para todo el proyecto, y al abrirlo 
 *.dml
 *.lst
 
-# Ignorar registros de eventos de allegro
+# Ignorar registros de eventos de Allegro
 *.jrl
 *.jrl,1
 
 *.tag
 
-# Archivos de informe
+# Archivos de informes
 *.rpt
 
-# Archivos de configuración
 *.cfg
 *.cfg,1
 
 *.lck
 
-# Archivos de informe
+# Archivos de informes
 *.txt
 *.txt,1
 *.txt,2
@@ -55,8 +53,8 @@ En general, un archivo `.DSN` es suficiente para todo el proyecto, y al abrirlo 
 !art_param.txt
 
 # Carpeta
-# Filtrar toda la carpeta
-/signoise.run/
+# Ignorar carpetas completas
+/signoise.run/ 
 
 #############
 ## OrCAD
@@ -66,68 +64,70 @@ En general, un archivo `.DSN` es suficiente para todo el proyecto, y al abrirlo 
 *.DRC
 *.DSNlck
 
-# Ignorar lista de redes
-allegro/
+# Ignorar netlists
+allegro/ 
 ```
 
-## Algunas configuraciones
+## Configuración adicional
 
-Configuración de DRC:
+Ajustes de DRC:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210810134720.png)
+![Imagen de configuración DRC](https://img.wiki-power.com/d/wiki-media/img/20210810134720.png)
 
-Renombrar automáticamente los identificadores al copiar componentes:
+Renombrar automáticamente las referencias al copiar componentes:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210810134747.png)
+![Imagen de configuración de renombrado automático al copiar componentes](https://img.wiki-power.com/d/wiki-media/img/20210810134747.png)
 
-Mover caracteres cerca de la cuadrícula:
+Alinear los caracteres al moverlos cerca de la rejilla:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210810134758.png)
+![Imagen de configuración para mover caracteres cerca de la rejilla](https://img.wiki-power.com/d/wiki-media/img/20210810134758.png)
 
-Truco: Cuando se utiliza la biblioteca CIP, si aparece el mensaje "not found in the configured librarie lists", verifique la codificación de los espacios en blanco en la ruta.
+Consejo: Si estás utilizando la biblioteca CIP y ves el mensaje "not found in the configured library lists", asegúrate de verificar la codificación de espacios en la ruta.
 
-- **Desplazamiento del mouse para hacer zoom**: `Options` - `Preferences…` - `Pan and Zoom` - Configure los dos `Zoom Factor` a 1.1x
-- **Actualizar el esquema al seleccionar una parte**: `Options` - `Preferences…` - `Miscellaneous` - `Place Part` – Seleccione `Refresh part on selection`
-- **Establecer el tamaño de la cuadrícula**: `Options` - `Preferences…` - `Grid Display` - `Grid Spacing` - Establecer en 1/2
+- **Zoom con la rueda del ratón**: `Opciones` - `Preferencias...` - `Pan y Zoom` - Ajusta ambos valores en `Factor de Zoom` a 1.1.
+- **Actualizar el esquema al colocar componentes**: `Opciones` - `Preferencias...` - `Varios` - `Colocar Componente` - Marca la casilla `Actualizar componente al seleccionar`.
+- **Configurar el tamaño de la rejilla**: `Opciones` - `Preferencias...` - `Visualización de Rejilla` - `Espaciado de Rejilla` - Ajusta a 1/2.
 
 ## Atajos de teclado
 
-- Dibujar un cable: `W`
+- Dibujar cables: `W`
 - Cancelar: `ESC`
-- Dibujar una línea de bus: `F4`
-- Colocar un número de red: `N`
-- Rotar / Espejo horizontal / Espejo vertical de componentes: `R` / `H` / `V`
+- Dibujar bus: `F4`
+- Colocar etiquetas de red: `N`
+- Rotar / reflejar horizontalmente / reflejar verticalmente componentes: `R` / `H` / `V`
 - Abrir el panel CIS: `Z`
-- Colocar una fuente de alimentación / tierra: `F` / `G`
+- Colocar fuentes de alimentación / tierra: `F` / `G`
 - No conectar: `X`
-- Filtro: `Ctrl` + `I`
-- Selección múltiple de elementos: Mantenga presionada la tecla `Ctrl` mientras selecciona
-- Copiar y agregar automáticamente un identificador: Mantenga presionada la tecla `Ctrl` mientras arrastra un componente
-- Mover el esquema con el mouse como centro de gravedad: Mantenga presionada la tecla `C` y arrastre el mouse
-- Colocar un bus: `E`
+- Filtrar: `Ctrl` + `I`
+- Seleccionar múltiples elementos: Mantén presionada la tecla `Ctrl` y selecciona.
+- Copiar y autoincrementar referencias: Mantén presionada la tecla `Ctrl` y arrastra un componente.
+- Mover el esquema con el ratón como centro de gravedad: Mantén presionada la tecla `C` y arrastra el ratón.
+- Colocar buses: `E`
 - Colocar texto: `T`
 
 ## Errores y soluciones
 
-- No se puede mover un componente: En general, reiniciar el programa resuelve el problema.
+- Incapacidad para arrastrar componentes: En general, reiniciar suele resolver este problema.
 
 ## Consejos
 
-### Diferencia entre off-page y port
+### Diferencia entre "off-page" y "port"
 
-Off-page se utiliza generalmente para esquemas planos, mientras que port se utiliza para esquemas jerárquicos.
+"Off-page" se utiliza generalmente en esquemas planos, mientras que "port" se utiliza en esquemas jerárquicos.
 
-### Verificación de DRC
+### Comprobación de DRC (Design Rule Check)
 
-1. En el árbol de archivos, haga clic para seleccionar todo el proyecto.
-2. Haga clic en la barra de herramientas `Tools` - `Design Rules Check...`
-3. Seleccione `Run Physical Rules` y `View Output`.
-4. Haga clic en Aceptar y se generará un informe que se abrirá automáticamente.
+```markdown
+1. Haz clic en la opción "Seleccionar proyecto completo" en el árbol de archivos.
+2. En la barra de herramientas, selecciona `Herramientas` - `Verificar Reglas de Diseño...`
+3. Marca las casillas de verificación "Ejecutar Reglas Físicas" y "Ver Resultados".
+4. Haz clic en "Aceptar", se generará un informe y se abrirá automáticamente.
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
-- [【Cadence 快速入门】一文总结版](https://blog.csdn.net/ReCclay/article/details/101225359)
-- [OrCAD Capture Tutorial](https://resources.orcad.com/orcad-capture-tutorials)
-- [cadence 软件用于高分屏笔记本时候显示字体模糊问题解决](https://blog.csdn.net/qq_34338527/article/details/108846792)
+- [Resumen del Inicio Rápido de Cadence](https://blog.csdn.net/ReCclay/article/details/101225359)
+- [Tutorial de OrCAD Capture](https://resources.orcad.com/orcad-capture-tutorials)
+- [Solución al problema de la fuente borrosa en el software Cadence en pantallas de alta resolución](https://blog.csdn.net/qq_34338527/article/details/108846792)
+```
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
