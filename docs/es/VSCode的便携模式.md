@@ -1,14 +1,14 @@
-# Modo portátil de VS Code
+# Modo Portátil de VS Code
 
-VS Code admite nativamente el modo portátil, pero las configuraciones de extensión y otros recursos aún se almacenan en la ubicación predeterminada del equipo local. Este tutorial explicará cómo hacer que VS Code sea completamente portátil.
+VS Code ofrece soporte nativo para el modo portátil, pero aún almacena configuraciones de extensiones y otros recursos en la ubicación predeterminada del sistema. En esta guía, te explicaremos cómo lograr que VS Code sea completamente portátil.
 
-Descargue VS Code en formato `.zip` desde la [**página de descarga**](https://code.visualstudio.com/#alt-downloads).
+1. Primero, descarga VS Code en formato `.zip` desde la [**página de descargas**](https://code.visualstudio.com/#alt-downloads).
 
-Después de descomprimirlo, no abra el software todavía. Cree una carpeta llamada `data` en el directorio raíz del software y cree un directorio llamado `tmp` dentro de ella (opcional, para guardar datos TMP).
+2. Descomprime el archivo descargado, pero antes de abrir la aplicación, crea una carpeta llamada `data` en el directorio raíz de la aplicación. Dentro de la carpeta `data`, puedes optar por crear una carpeta llamada `tmp` para almacenar datos temporales (esto es opcional).
 
-Luego, simplemente abra el software.
+3. Ahora puedes abrir la aplicación y utilizarla en modo portátil.
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
 - [Modo portátil de VS Code](https://blog.2dm.top/2018/12/29/vscode%E4%BE%BF%E6%90%BA%E5%BC%8F%E6%A8%A1%E5%BC%8F/)
 

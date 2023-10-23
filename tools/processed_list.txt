@@ -124,3 +124,16 @@ THEHack2019黑客马拉松.md
 TestInterface与TIC基础.md
 Tester_Alarms.md
 TheExec(The_Executive).md
+Auto-i18n：使用ChatGPT的自动多语言翻译工具.md
+TheHdw(The_Hardware).md
+TinyDVR-小巧身材，满载动力.md
+TinyMonitor-小巧的服务器状态监视器.md
+TinyTimelapseCam-基于ESP32-S3的迷你延时相机.md
+TinyWeatherStation-简约而不简单的桌面天气站.md
+Troubleshooting_of_ADC_and_DAC.md
+Ubuntu配置笔记.md
+VSCode生产力指南-JupyterNotebook.md
+VSCode生产力指南-环境配置.md
+VSCode的便携模式.md
+Vue.js小技巧.md
+WeChat.md

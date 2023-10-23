@@ -1,79 +1,82 @@
-# Auto-i18n: Utilizando la herramienta de traducción automática multilingüe de ChatGPT
+# Auto-i18n: Using the Automatic Multilingual Translation Tool with ChatGPT
 
-Auto-i18n es una herramienta que utiliza ChatGPT para traducir automáticamente archivos Markdown a varios idiomas de forma masiva. Logra la completa automatización de la internacionalización (i18n) de artículos de blog. Simplemente sube tus entradas de blog a un repositorio de GitHub y utiliza GitHub Actions para traducirlas automáticamente a varios idiomas (actualmente se admiten inglés, español y árabe, con planes de agregar más idiomas en el futuro).
+Auto-i18n is a tool that utilizes ChatGPT to automatically translate Markdown files into multiple languages. It accomplishes full automation of internationalizing blog articles (i18n - Internationalization). All you need to do is push your blog posts to a GitHub repository, and with the help of GitHub Actions, it will automatically translate them into various languages. Currently, it supports English, Spanish, and Arabic, with plans to add support for more languages in the future.
 
-Las principales características de Auto-i18n son las siguientes:
+Key features of Auto-i18n:
 
-- **Traducción masiva multilingüe**: Auto-i18n ofrece una funcionalidad de traducción masiva que te permite traducir múltiples documentos Markdown en una sola vez, aumentando significativamente la eficiencia de los proyectos de internacionalización.
-- **Compatibilidad con Front Matter**: Auto-i18n es compatible con la sintaxis de Front Matter en Markdown, lo que te permite personalizar las reglas de traducción o sustitución para diferentes campos.
-- **Sustitución de contenido fijo**: Auto-i18n también admite la sustitución de contenido fijo. Si deseas que las traducciones de ciertos campos repetitivos en el documento se mantengan iguales, esta función te ayudará a mantener la coherencia del documento.
-- **Flujo de trabajo automatizado**: Puedes automatizar el proceso de traducción con GitHub Actions. Sin intervención manual, el trabajo de traducción se realiza automáticamente y se actualizan los documentos, lo que te permite centrarte más en el contenido.
+- **Batch Multilingual Translation**: Auto-i18n offers batch translation capabilities, allowing you to translate all Markdown documents within an entire directory at once. This significantly enhances the efficiency of multilingual projects.
 
-## Puesta en marcha rápida
+- **Front Matter Compatibility**: Auto-i18n is compatible with Markdown Front Matter syntax, enabling you to customize translation or replacement rules for different fields.
 
-1. Clona el repositorio en tu máquina local, cambia el nombre de `env_template.py` a `env.py` y proporciona tu API de ChatGPT. Si no tienes una API propia, puedes obtener una gratuita en [GPT_API_free](https://github.com/chatanywhere/GPT_API_free) o utilizar [go-chatgpt-api](https://github.com/linweiyuan/go-chatgpt-api) para convertir la versión web de ChatGPT en una API.
-2. Instala los módulos necesarios con el comando `pip install -r requirements.txt`.
-3. Ejecuta el comando `python auto-translater.py` para ejecutar el programa. Automáticamente procesará todos los archivos Markdown en el directorio de prueba `testdir/to-translate` y los traducirá a inglés, español y árabe (con planes de agregar más idiomas en el futuro).
+- **Fixed Content Replacement**: Auto-i18n also supports fixed content replacement. If you want the translations of certain repetitive fields in your documents to remain consistent, this feature can help maintain document consistency.
 
-## Descripción detallada
+- **Automated Workflow**: You can use GitHub Actions to implement an automated translation process. With no manual intervention required, the translation work will automatically proceed and update the documents, allowing you to focus more on the content.
 
-El flujo de trabajo del programa `auto-translater.py` es el siguiente:
+## Getting Started
 
-1. El programa procesará automáticamente todos los archivos Markdown en el directorio de prueba `testdir/to-translate`. Puedes excluir archivos que no desees traducir especificándolos en la variable `exclude_list`.
-2. Los nombres de los archivos procesados se registrarán en el archivo generado automáticamente `processed_list.txt`. Cuando ejecutes el programa nuevamente, los archivos previamente procesados no se traducirán de nuevo.
-3. Para los artículos escritos originalmente en inglés, el programa no los traducirá nuevamente al inglés ni los revertirá al chino; en su lugar, los traducirá a otros idiomas. Debes agregar el campo `> Este post fue escrito originalmente en inglés.` (asegurándote de dejar una línea en blanco antes y después) para que el programa lo identifique. Consulta [este ejemplo](testdir/to-translate/测试文章_en.md).
-4. Si necesitas volver a traducir un artículo específico (por ejemplo, si la traducción no es precisa o si el contenido del artículo ha cambiado), puedes agregar el campo `[translate]` en el artículo (también con una línea en blanco antes y después). Esto anulará las reglas de `exclude_list` y `processed_list` y forzará la traducción. Consulta [este ejemplo](testdir/to-translate/测试文章_force-mark.md).
-5. Si el archivo Markdown contiene Front Matter, se seguirán las reglas definidas en el programa en `front_matter_translation_rules`:
-   1. Traducción automática: realizada por ChatGPT. Esto es aplicable a campos como el título y la descripción del artículo.
-   2. Sustitución de campos fijos: útil para campos como categorías o etiquetas. Por ejemplo, si tienes un nombre de etiqueta en chino que no deseas que se traduzca a diferentes etiquetas en inglés, para evitar confusiones en los índices.
-   3. Sin procesamiento alguno: si el campo no se encuentra en ninguna de las dos reglas anteriores, se mantendrá el texto original, lo que es adecuado para campos como la fecha o la URL.
+1. Clone the repository to your local machine, rename `env_template.py` to `env.py`, and provide your ChatGPT API key. If you don't have your own API key, you can obtain a free one from [GPT_API_free](https://github.com/chatanywhere/GPT_API_free), or you can use [go-chatgpt-api](https://github.com/linweiyuan/go-chatgpt-api) to convert the web-based ChatGPT into an API.
+
+2. Install the required modules: `pip install -r requirements.txt`.
+
+3. Execute the command `python auto-translater.py` to run the program. It will automatically process all Markdown files in the test directory `testdir/to-translate` and translate them into English, Spanish, and Arabic (with more language support planned for the future).
+
+## Detailed Description
+
+The operation logic of the `auto-translater.py` program is as follows:
+
+1. El programa procesará automáticamente todos los archivos Markdown en el directorio de prueba `testdir/to-translate`. Puedes excluir archivos que no necesitas traducir en la variable `exclude_list`.
+2. Los nombres de los archivos procesados se registrarán en el archivo generado automáticamente `processed_list.txt`. La próxima vez que ejecutes el programa, los archivos procesados no se traducirán nuevamente.
+3. Para artículos originalmente escritos en inglés, el programa no los volverá a traducir al inglés ni al chino, sino que los traducirá a otros idiomas. Debes agregar el campo `> This post was originally written in English.` en el artículo (asegurándote de dejar una línea en blanco antes y después) para que el programa lo reconozca. Por favor, consulta [este artículo de prueba en inglés](https://github.com/linyuxuanlin/Auto-i18n/blob/main/testdir/to-translate/测试文章_en.md) como referencia.
+4. Si necesitas volver a traducir un artículo específico (por ejemplo, si la traducción no es precisa o si el contenido del artículo ha cambiado), puedes agregar el campo `[translate]` en el artículo (también dejando una línea en blanco antes y después). Esto ignorará las reglas de `exclude_list` y `processed_list` y forzará la traducción. Consulta [este artículo de prueba con marcado forzado](https://github.com/linyuxuanlin/Auto-i18n/blob/main/testdir/to-translate/测试文章_force-mark.md) para más detalles.
+5. Si el archivo Markdown contiene Front Matter, se aplicarán las siguientes reglas según lo definido en el programa:
+   1. Traducción automática: realizada por ChatGPT. Adecuado para el título del artículo o el campo de descripción del artículo.
+   2. Reemplazo de campo fijo: aplicado a campos como categorías o etiquetas. Por ejemplo, si deseas que el mismo nombre de etiqueta en chino no se traduzca a diferentes etiquetas en inglés y cause errores de indexación.
+   3. Sin procesamiento: si el campo no se encuentra en ninguna de las dos reglas anteriores, se mantendrá sin cambios. Esto se aplica a campos como fechas y URL.
 
 ## Guía de Automatización de GitHub Actions
 
-Puedes crear un archivo `.github/workflows/ci.yml` en tu propio repositorio de proyectos. Este archivo permitirá que GitHub Actions realice automáticamente tareas de traducción y haga commits automáticos en tu repositorio cuando detecte actualizaciones en el repositorio de GitHub.
+Puedes crear un archivo `.github/workflows/ci.yml` en tu propio repositorio de proyectos. Cuando se detectan actualizaciones en el repositorio de GitHub, GitHub Actions puede realizar automáticamente el proceso de traducción y realizar un commit automático en el repositorio original.
 
-El contenido de `ci.yml` se puede basar en la plantilla que se encuentra en [ci_template.yml](ci_template.yml).
+Puedes consultar el contenido del archivo `ci.yml` en este [modelo de plantilla](https://github.com/linyuxuanlin/Auto-i18n/blob/main/ci_template.yml).
 
-Para que funcione, debes agregar dos secretos en la sección `Settings` de tu repositorio: `CHATGPT_API_BASE` y `CHATGPT_API_KEY`. Además, asegúrate de comentar la línea `import env` en el programa `auto-translater.py`.
+Debes agregar dos secrets en la sección de `Settings` de tu repositorio en `Secrets and variables` - `Repository secrets`: `CHATGPT_API_BASE` y `CHATGPT_API_KEY`. Asegúrate de comentar la línea `import env` en el programa `auto-translater.py`.
 
 ## Solución de Problemas
 
-1. Si necesitas verificar la disponibilidad de la clave de la API de ChatGPT, puedes utilizar el programa [verify-api-key.py](Archive/verify-api-key.py) para realizar pruebas. Si estás utilizando la API oficial en China, necesitarás un proxy local.
+1. Si necesitas verificar la disponibilidad de la clave de API de ChatGPT, puedes utilizar el programa [verify-api-key.py](https://github.com/linyuxuanlin/Auto-i18n/blob/main/Archive/verify-api-key.py) para realizar pruebas. Si estás utilizando la API oficial en China, necesitarás un proxy local.
+2. Si el Front Matter en Markdown no se reconoce correctamente, puedes utilizar el programa [detect_front_matter.py](https://github.com/linyuxuanlin/Auto-i18n/blob/main/Archive/detect_front_matter.py) para realizar pruebas.
+3. Si encuentras problemas al usar GitHub Actions, primero verifica si las referencias de rutas son correctas (por ejemplo, `dir_to_translate`, `dir_translated_en`, `dir_translated_es`, `dir_translated_ar`, `processed_list`).
 
-2. Si el Front Matter en el Markdown no se reconoce correctamente, puedes utilizar el programa [detect_front_matter.py](Archive/detect_front_matter.py) para hacer pruebas.
+```markdown
+1. En algunas circunstancias especiales, es posible que se produzcan traducciones inexactas o que algunos campos no se traduzcan. Se recomienda verificar manualmente las traducciones después de realizarlas antes de publicar el artículo.
 
-3. Si encuentras problemas al utilizar GitHub Actions, asegúrate de verificar primero que las referencias de los directorios sean correctas (por ejemplo, `dir_to_translate`, `dir_translated_en`, `dir_translated_es`, `dir_translated_ar`, `processed_list`).
-
-## Problemas Pendientes
-
-1. En algunas situaciones especiales, la traducción puede no ser precisa, o es posible que ciertos campos no se traduzcan correctamente. Se recomienda verificar manualmente la traducción antes de publicar el artículo.
-
-2. (Ya resuelto) ~~Si el Markdown contiene Front Matter, se conservará el contenido original del Front Matter. La funcionalidad de traducir los parámetros del Front Matter está en desarrollo.~~
+2. (Resuelto) ~~Si el Markdown contiene Front Matter, se mantendrá el contenido original del Front Matter. La funcionalidad de traducción de parámetros en la sección Front Matter está en desarrollo.~~
 
 ## Contribuciones
 
-¡Te invitamos a contribuir a este proyecto! Si deseas aportar código, informar de problemas o hacer sugerencias, consulta la [Guía de Contribución](CONTRIBUTING.md).
+¡Te invitamos a contribuir a este proyecto! Si deseas aportar código, informar sobre problemas o hacer sugerencias, consulta nuestra [Guía de Contribución](https://github.com/linyuxuanlin/Auto-i18n/blob/main/CONTRIBUTING.md).
 
 ## Derechos de Autor y Licencia
 
-Este proyecto se encuentra bajo la licencia [MIT](LICENSE).
+Este proyecto está bajo la Licencia MIT. Puedes consultar los detalles en [Licencia MIT](https://github.com/linyuxuanlin/Auto-i18n/blob/main/LICENSE).
 
 ## Problemas y Soporte
 
-Si tienes algún problema al utilizar Auto-i18n o necesitas soporte técnico, no dudes en [informarlo](https://github.com/linyuxuanlin/Auto-i18n/issues).
+Si experimentas cualquier problema al utilizar Auto-i18n o necesitas asistencia técnica, no dudes en [reportar un problema](https://github.com/linyuxuanlin/Auto-i18n/issues).
 
-Mi blog utiliza Auto-i18n para admitir múltiples idiomas. Puedes ver una demostración en [Power's Wiki](https://wiki-power.com).
+Mi blog utiliza Auto-i18n para brindar soporte en varios idiomas. Puedes ver una demostración en [Power's Wiki](https://wiki-power.com).
 
 [![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/img/202310222223670.png)](https://wiki-power.com)
 
 ## Agradecimientos
 
-- Agradecemos a [chatanywhere/GPT_API_free](https://github.com/chatanywhere/GPT_API_free) por proporcionar una clave gratuita de la API de ChatGPT.
-- Agradecemos a [linweiyuan/go-chatgpt-api](https://github.com/linweiyuan/go-chatgpt-api) por proporcionar un método para convertir ChatGPT en versión web a una API.
+- Agradecemos a [chatanywhere/GPT_API_free](https://github.com/chatanywhere/GPT_API_free) por proporcionar la clave gratuita del API de ChatGPT.
+- Agradecemos a [linweiyuan/go-chatgpt-api](https://github.com/linweiyuan/go-chatgpt-api) por ofrecer el método para convertir la versión web de ChatGPT en un API.
 
 [![Gráfico de Historial de Estrellas](https://api.star-history.com/svg?repos=linyuxuanlin/Auto-i18n&type=Date)](https://star-history.com/#linyuxuanlin/Auto-i18n&Date)
 
 > Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+```
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
