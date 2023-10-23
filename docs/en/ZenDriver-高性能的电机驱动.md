@@ -1,45 +1,45 @@
-# ZenDriver - High Performance Motor Driver
+# ZenDriver - High-Performance Motor Driver
 
-- Based on V5.1 Release version
+—— Based on Version 5.1 Release
 
-Project repository: [**linyuxuanlin/ZenDriver**](https://github.com/linyuxuanlin/ZenDriver)
+Project Repository: [**linyuxuanlin/ZenDriver**](https://github.com/linyuxuanlin/ZenDriver)
 
-## Basic Parameters
+## Basic Specifications
 
-1. Input voltage: **7.2 ~ 20 V**
-2. Output current: **0 ~ 68 A**
+1. Input Voltage: **7.2 ~ 20 V**
+2. Output Current: **0 ~ 68 A**
 3. Provides **5V 1.5A** power output for controller use
-4. Protection devices: Integrated reverse connection protection, optocoupler isolation circuit
+4. Protection Features: Integrated reverse connection protection, opto-isolation circuit
 
-## Interface Definition
+## Interface Definitions
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20200125192433.png)
 
-From left to right, the **motor end** is: **M-, 5V, encoder A, encoder B, GND, M+**, corresponding to the motor pins, which can be directly connected to the motor.
+From left to right on the **motor side**, the pins are: **M-, 5V, Encoder A, Encoder B, GND, M+**, corresponding to motor connections, suitable for direct motor attachment.
 
-From right to left, the **signal end** is: **GND, encoder B, encoder A, IN2, IN1, 5V**. Note: The 5V port **can provide power to the MCU** (maximum 1.5 A).
+From right to left on the **signal side**, the pins are: **GND, Encoder B, Encoder A, IN2, IN1, 5V**. Note: The 5V port **can supply power to a microcontroller** (up to 1.5 A).
 
-The **power input end** is common to all three interfaces, and it is generally recommended to connect the middle one to the battery, and the two next to it to expand the power supply to other driver boards.
+The three interfaces on the **power input side** are common, with the middle one typically used for battery connection, and the adjacent two interfaces for expanding power to other driver boards.
 
 ## User Guide
 
-### Direct Power Supply Test
+### Direct Power Supply Testing
 
-1. Connect the **7.2 ~ 20 V** battery power supply
-2. Connect the motor
-3. Connect **IN1, IN2** on the **signal end** to **5V** respectively. At this time, the motor will rotate forward and backward.
+1. Connect a **7.2 ~ 20 V** battery for power supply.
+2. Connect the motor.
+3. Use the **5V** from the **signal side** to connect **IN1 and IN2**; the motor will rotate in both forward and reverse directions.
 
-### MCU Connection Test
+### Microcontroller Connection Testing
 
-1. Connect the **7.2 ~ 20 V** battery power supply
-2. Connect the motor
-3. Connect **signal end GND** to **MCU GND**, and **5V port** to **MCU 5V**
-4. Connect pins **IN1, IN2** to the MCU PWM port
-5. Debug with code
+1. Connect a **7.2 ~ 20 V** battery for power supply.
+2. Connect the motor.
+3. Connect **signal side GND** to **microcontroller GND**, and the **5V port** to the microcontroller's **5V**.
+4. Pins **IN1 and IN2** are connected to the microcontroller's PWM ports.
+5. Debug using code.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20200125192734.png)
 
-> Original: <https://wiki-power.com/>  
+> Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

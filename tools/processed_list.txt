@@ -137,3 +137,14 @@ VSCode生产力指南-环境配置.md
 VSCode的便携模式.md
 Vue.js小技巧.md
 WeChat.md
+Windows初始化与软件推荐（旧）.md
+Windows常用命令.md
+X86平台的硬件测试.md
+ZenDriver-高性能的电机驱动.md
+index.md
+npm和Yarn换源加速国内访问.md
+一个舵机的自我修养.md
+一些观点.md
+一般天线匹配电路的设计.md
+专业与分工.md
+个人PCB设计规范.md

@@ -1,9 +1,10 @@
-# npm y Yarn: acelerando el acceso en China a través del cambio de origen
+```markdown
+# Cambiar la fuente de npm y Yarn para acelerar el acceso en China
 
-## Contexto
+## Antecedentes
 
-Las fuentes predeterminadas de npm y Yarn se encuentran en el extranjero, lo que ralentiza el acceso en China.  
-El siguiente comando muestra el origen del espejo actualmente en uso:
+Las direcciones de origen predeterminadas de npm y Yarn están en el extranjero, lo que ralentiza la velocidad de acceso en China.  
+Para verificar la fuente de espejo actualmente en uso, ejecute el siguiente comando:
 
 ```shell
 yarn config get registry
@@ -11,21 +12,21 @@ yarn config get registry
 
 ## Solución
 
-Utilice el software cgr para cambiar rápidamente el origen del espejo de npm y Yarn.
+Utilice el software cgr para cambiar rápidamente la fuente de espejo de npm y Yarn.
 
-### Instalar cgr
+### Instalación de cgr
 
 ```shell
 npm install -g cgr
 ```
 
-### Enumerar los orígenes del espejo disponibles actualmente
+### Listar las fuentes de espejo disponibles actualmente
 
 ```
 cgr ls
 ```
 
-### Seleccione un origen del espejo para cambiar (taobao)
+### Seleccione una fuente de espejo para cambiar (por ejemplo, Taobao)
 
 ```
 cgr use taobao
@@ -37,12 +38,13 @@ cgr use taobao
 cgr test taobao
 ```
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
-- [yarn 国内加速，修改镜像源](https://learnku.com/articles/15976/yarn-accelerate-and-modify-mirror-source-in-china)
-- [cgr -- change registry | yarn & npm registry manager](https://www.npmjs.com/package/cgr)
+- [Aceleración de Yarn en China: Cambio de fuente de espejo](https://learnku.com/articles/15976/yarn-accelerate-and-modify-mirror-source-in-china)
+- [cgr: Cambio de registro | Gestor de registros de yarn y npm](https://www.npmjs.com/package/cgr)
 
 > Dirección original del artículo: <https://wiki-power.com/>  
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+```
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
