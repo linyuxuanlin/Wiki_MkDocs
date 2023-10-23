@@ -66,15 +66,15 @@ replace_rules = [
             "ar": "> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.",
         }
     },
-    {
-        # 文章中的站内链接，跳转为当前相同语言的网页
-        "orginal_text": "](https://wiki-power.com/",
-        "replaced_text": {
-            "en": "](https://wiki-power.com/en/",
-            "es": "](https://wiki-power.com/es/",
-            "ar": "](https://wiki-power.com/ar/",
-        }
-    }
+    #{
+    #    # 文章中的站内链接，跳转为当前相同语言的网页
+    #    "orginal_text": "](https://wiki-power.com/",
+    #    "replaced_text": {
+    #        "en": "](https://wiki-power.com/en/",
+    #        "es": "](https://wiki-power.com/es/",
+    #        "ar": "](https://wiki-power.com/ar/",
+    #    }
+    #}
     # {
     #    # 不同语言可使用不同图床
     #    "orginal_text": "![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/",
