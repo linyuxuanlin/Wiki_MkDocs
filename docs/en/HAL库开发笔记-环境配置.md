@@ -1,12 +1,12 @@
-# HAL Library Development Notes - Environment Configuration
+# HAL Library Development Notes - Environment Setup
 
-Note: This tutorial is based on the STM32F429IGT6 board from STMicroelectronics.
+Note: This tutorial is based on the STM32F429IGT6 board by STM32.
 
 ## Software Installation
 
 ### Keil MDK
 
-For detailed instructions, refer to the article [**Keil MDK Configuration Guide**](to_be_replaced[3]).
+Refer to the article [**Keil MDK Configuration Guide**](https://wiki-power.com/KeilMDK%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97) for details.
 
 ### Java Runtime Environment
 
@@ -20,13 +20,13 @@ Download and install STM32CubeMX from the [**official website**](https://my.st.c
 
 ### Initialization
 
-Create a new project and save it after selecting the microcontroller.
+Create a new project, select the microcontroller, and save the project.
 
 ### SYS Configuration
 
 `Pinout & Configurations` - `System Core` - `SYS`
 
-Change the `Debug` option to `Serial Wire` (for detailed reasons, see the article [**Avoiding Pitfalls with CubeMX and CubeIDE**](to_be_replaced[3])).
+Change the `Debug` option to `Serial Wire` (see the article [**CubeMX and CubeIDE Pitfalls**](https://wiki-power.com/CubeMX与CubeIDE避坑) for the rationale).
 
 ### RCC Configuration
 
@@ -34,13 +34,13 @@ Change the `Debug` option to `Serial Wire` (for detailed reasons, see the articl
 
 Configure it according to your board's specifications.
 
-For example, referencing the board's schematic:
+For example, refer to the board's schematic:
 
 ![Board Schematic](https://img.wiki-power.com/d/wiki-media/img/20210205205030.png)
 
 Set both `HSE` and `LSE` options to use external crystal oscillators:
 
-![Clock Configuration](https://img.wiki-power.com/d/wiki-media/img/20210205205140.png)
+![Clock Settings](https://img.wiki-power.com/d/wiki-media/img/20210205205140.png)
 
 ### Clock Tree Configuration
 
@@ -48,12 +48,12 @@ Configure the clock settings in the `Clock Configuration` interface.
 
 ![Clock Configuration](https://img.wiki-power.com/d/wiki-media/img/20210205205550.png)
 
-Follow the steps below according to the above image:
+Follow these steps based on the image above:
 
-1. Enter the values for the leftmost two frequencies based on the parameters of the onboard external crystal oscillator.
-2. Check `HSE` because external crystal oscillators offer higher frequency and accuracy than internal ones.
-3. Check `PLLCLK` to obtain a higher frequency using PLL multiplication.
-4. Enter the value for `HCKL`, generally based on the maximum frequency suggested below. After inputting the value and pressing Enter, the system will automatically calculate the division and multiplication factors.
+1. Enter the values for the two leftmost frequencies based on the parameters of the onboard external crystal oscillator.
+2. Check the `HSE` box since the external crystal oscillator has higher frequency and precision than the internal oscillator.
+3. Check the `PLLCLK` box to use PLL (Phase-Locked Loop) multiplication for higher frequencies.
+4. Enter the value for `HCKL`, usually based on the maximum recommended frequency shown below, and press Enter. It will automatically calculate the prescaler and multiplier values.
 
 ### Project Management Options Configuration
 
@@ -63,16 +63,16 @@ Follow the steps below according to the above image:
 
 ## Differences Between HAL Library and Standard Library
 
-To enhance portability, the HAL library includes three additional features compared to the standard library: **Handles, MSP Functions, and Callback Functions**. For more details, refer to the content in the referenced links at the end of the document.
+To enhance portability, the HAL library includes three additional features compared to the standard library: **handles, MSP functions, and callback functions**. For more details, refer to the content in the cited links at the end of this document.
 
 ## References and Acknowledgments
 
-- [**In-Depth Explanation of STM32 System Clock RCC**](https://blog.csdn.net/as480133937/article/details/98845509)
-- [**Board Initialization: Complete Configuration of RCC Clock Tree**](https://www.notion.so/2-RCC-770c0c454f954408a3956257aa0fb523)
-- [**Comprehensive Summary of STM32 HAL Knowledge**](https://mp.weixin.qq.com/s/ffcjKtl7JdRibLRNGquGXA)
-- [**Clearly Understanding: A Comprehensive Summary of STM32 HAL Knowledge**](https://mp.weixin.qq.com/s/qkj0fQS5NrCXmbppKEhaAg)
+- [Explanation of the STM32 System Clock RCC](https://blog.csdn.net/as480133937/article/details/98845509)
+- [Board Initialization: Complete Configuration of the RCC Clock Tree](https://www.notion.so/2-RCC-770c0c454f954408a3956257aa0fb523)
+- [Comprehensive Summary of STM32 HAL Knowledge](https://mp.weixin.qq.com/s/ffcjKtl7JdRibLRNGquGXA)
+- [It's Clear Now: A Comprehensive Summary of STM32 HAL Knowledge](https://mp.weixin.qq.com/s/qkj0fQS5NrCXmbppKEhaAg)
 
-> Original: <https://wiki-power.com/>  
+> Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

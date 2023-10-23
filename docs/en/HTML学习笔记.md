@@ -21,23 +21,21 @@ You can open an `.html` file and simply type `html:5` to generate this structure
 
 ## Statements
 
-Here are some conventions:
+Some conventions to follow:
 
-1. Use lowercase for tags, and all elements must be closed.
-2. Use a forward slash to close empty elements, e.g., `<br />`.
-3. Avoid semantic markup; keep all styles in CSS, separating content and style.
+1. Use lowercase for tags, and elements must be properly closed.
+2. Add a slash to close empty elements, e.g., `<br />`.
+3. Avoid semantic attributes; keep styles in CSS to maintain a clear separation of content and style.
 
 ```markup
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Title</title>
 </head>
-
 <body>
     <h1>Heading 1</h1>
     <h2>Heading 2</h2>
@@ -51,25 +49,25 @@ Here are some conventions:
     <!-- Lists, can be nested -->
     <!-- Ordered list -->
     <ol>
-        <li>First item</li>
-        <li>Second item</li>
+        <li>Item 1</li>
+        <li>Item 2</li>
     </ol>
     <!-- Unordered list -->
     <ul>
-        <li>First item</li>
-        <li>Second item</li>
+        <li>Item 1</li>
+        <li>Item 2</li>
     </ul>
 
     <!-- Links -->
-    <a href="https://www.google.com/">Text to display</a>
+    <a href="https://www.google.com/">Text to Display</a>
     <!-- Link to a specific location on the page using the ID attribute -->
-    <a href="#top">Back to top</a>
+    <a href="#top">Back to Top</a>
     <p id="top">Top</p>
     <!-- Link to a specific location on an external page -->
     <a href="http://wiki-power.com/#top">Jump to a specific location on an external page</a>
 
     <!-- Images -->
-    <img src="/xx.png" alt="Description if the image cannot load" />
+    <img src="/xx.png" alt="Text description when the image cannot be loaded" />
 
     <!-- Tables -->
     <table>
@@ -91,16 +89,17 @@ Here are some conventions:
         <!-- Third row -->
         <tr>
             <th scope="row">Earnings</th>
-            <!-- Spanning columns with colspan and rows with rowspan -->
+            <!-- Spanning columns using colspan and rowspan -->
             <td colspan="2">500</td>
         </tr>
     </table>
 ```
 
+```markdown
 ```html
-<!--Form - To be filled in-->
-<!--iframe - To be filled in-->
-<!--flash/video/audio - To be filled in-->
+<!-- Form, to be completed -->
+<!-- Iframe, to be completed -->
+<!-- Flash/Video/Audio, to be completed -->
 
 </body>
 
@@ -109,7 +108,7 @@ Here are some conventions:
 
 ## References and Acknowledgments
 
-- [HTML Tutorial | Runoob](http://www.runoob.com/html/html-tutorial.html)
+- [HTML Tutorial | Runoob Tutorial](http://www.runoob.com/html/html-tutorial.html)
 - [HTML in 30 Minutes](http://deerchao.net/tutorials/html/html.htm)
 - [HTML - A Brief Analysis of the Head Section](https://www.tielemao.com/831.html)
 

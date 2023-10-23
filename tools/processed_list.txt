@@ -85,3 +85,13 @@ DockerCompose-镜像编排工具.md
 Docker基础知识.md
 EMC设计指南.md
 HAL库开发笔记-CAN通信.md
+BeagleBone系列-BBAI入坑.md
+HAL库开发笔记-I2C通信（MPU6050）.md
+HAL库开发笔记-TIM通用定时器.md
+HAL库开发笔记-串口通信.md
+HAL库开发笔记-环境配置.md
+HTML学习笔记.md
+Homelab-卡片辅助记忆软件Anki.md
+Homelab-播客与有声书服务器Audiobookshelf.md
+Homelab-电子书管理服务器calibre-web.md
+Homelab-自托管RSS聚合器FreshRSS.md

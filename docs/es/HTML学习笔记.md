@@ -1,4 +1,4 @@
-# Notas de Estudio sobre HTML
+# Notas de Estudio de HTML
 
 ## Estructura Básica
 
@@ -17,15 +17,15 @@
 </html>
 ```
 
-Puedes abrir un archivo `.html` y escribir `html:5` para generar esto.
+Puedes abrir un archivo `.html` y simplemente escribir `html:5` para obtener esto.
 
 ## Etiquetas
 
-Algunas pautas a seguir:
+Algunas convenciones:
 
-1. Utiliza letras minúsculas para las etiquetas, y asegúrate de que todos los elementos estén debidamente cerrados.
-2. Para elementos vacíos, agrega una barra diagonal para cerrarlos, por ejemplo, `<br />`.
-3. No utilices la semántica para estilizar; guarda todos los estilos en CSS para separar contenido y presentación.
+1. Las etiquetas se escriben en minúsculas y los elementos deben cerrarse.
+2. Para elementos vacíos, añade una barra diagonal para cerrarlos, por ejemplo, `<br />`.
+3. No uses semántica en HTML, todos los estilos deben definirse en CSS para separar contenido y presentación.
 
 ```markup
 <!DOCTYPE html>
@@ -39,16 +39,16 @@ Algunas pautas a seguir:
 </head>
 
 <body>
-    <h1>Título de Primer Nivel</h1>
-    <h2>Título de Segundo Nivel</h2>
+    <h1>Título de nivel 1</h1>
+    <h2>Título de nivel 2</h2>
     <p>Párrafo</p>
 
     <!-- Salto de línea -->
     <br />
-    <!-- Línea divisoria -->
+    <!-- Línea horizontal -->
     <hr />
 
-    <!-- Listas, pueden anidarse -->
+    <!-- Listas anidadas -->
     <!-- Lista ordenada -->
     <ol>
         <li>Primer ítem</li>
@@ -61,15 +61,15 @@ Algunas pautas a seguir:
     </ul>
 
     <!-- Enlaces -->
-    <a href="https://www.google.com/">Texto a Mostrar en el Enlace</a>
-    <!-- Enlace a una ubicación específica de la página utilizando el atributo ID -->
-    <a href="#arriba">Volver Arriba</a>
+    <a href="https://www.google.com/">Texto del enlace</a>
+    <!-- Enlace a una posición específica en la página usando el atributo ID -->
+    <a href="#arriba">Volver arriba</a>
     <p id="arriba">Arriba</p>
-    <!-- Enlace a una ubicación específica en otra página -->
-    <a href="http://wiki-power.com/#arriba">Saltar a una ubicación en una página externa</a>
+    <!-- Enlace a una posición específica en otra página -->
+    <a href="http://wiki-power.com/#arriba">Ir a una ubicación específica en una página externa</a>
 
     <!-- Imágenes -->
-    <img src="/xx.png" alt="Descripción en caso de que la imagen no se cargue" />
+    <img src="/xx.png" alt="Texto alternativo en caso de que la imagen no se cargue" />
 
     <!-- Tablas -->
     <table>
@@ -90,18 +90,17 @@ Algunas pautas a seguir:
         </tr>
         <!-- Tercera fila -->
         <tr>
-            <th scope="row">Ganancia</th>
-            <!-- Colspan para combinar celdas y rowspan para combinar filas -->
+            <th scope="row">Ingresos</th>
+            <!-- Atraviesa columnas con "colspan" o filas con "rowspan" -->
             <td colspan="2">500</td>
         </tr>
     </table>
-```
 
-```markdown
+
 ```html
-<!-- Formulario - Pendiente de completar -->
-<!-- IFrame - Pendiente de completar -->
-<!-- Flash/Vídeo/Audio - Pendiente de completar -->
+<!-- Formulario, por completar -->
+<!-- Marco (iframe), por completar -->
+<!-- Contenido flash/vídeo/audio, por completar -->
 
 </body>
 
@@ -110,9 +109,9 @@ Algunas pautas a seguir:
 
 ## Referencias y Agradecimientos
 
-- [Tutorial de HTML | Tutorial de Cómo Hacerlo](http://www.runoob.com/html/html-tutorial.html)
+- [Tutorial de HTML | Código del Novato](http://www.runoob.com/html/html-tutorial.html)
 - [Tutorial de HTML en 30 minutos](http://deerchao.net/tutorials/html/html.htm)
-- [HTML - Análisis básico de la sección head](https://www.tielemao.com/831.html)
+- [HTML - Análisis breve de la sección head](https://www.tielemao.com/831.html)
 
 > Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.

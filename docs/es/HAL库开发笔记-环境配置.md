@@ -1,16 +1,16 @@
 # Notas de desarrollo de la biblioteca HAL - Configuración del entorno
 
-Nota: Este tutorial se basa en la placa STM32F429IGT6 de Refkit.
+Nota: Este tutorial se basa en la placa STM32F429IGT6 de REKA.
 
 ## Instalación de software
 
 ### Keil MDK
 
-Consulte el artículo [**Guía de configuración de Keil MDK**](enlace_a_reemplazar) para obtener instrucciones detalladas.
+Ver el artículo [**Guía de configuración de Keil MDK**](https://wiki-power.com/KeilMDK%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97)
 
 ### Entorno de ejecución de Java
 
-Esto es necesario para STM32CubeMX. Puede descargar e instalar el entorno de ejecución de Java desde el [**enlace oficial**](https://www.java.com/en/download/).
+Esto es necesario para STM32CubeMX. Puede descargarlo e instalarlo desde el [**enlace oficial**](https://www.java.com/en/download/).
 
 ### STM32CubeMX
 
@@ -20,55 +20,57 @@ Descargue e instale STM32CubeMX desde el [**enlace oficial**](https://my.st.com/
 
 ### Inicialización
 
-Cree un nuevo proyecto y seleccione el microcontrolador antes de guardar.
+Cree un nuevo proyecto y, después de seleccionar el microcontrolador, guárdelo.
 
 ### Configuración de SYS
 
 `Pinout & Configurations` - `System Core` - `SYS`
 
-Cambie la opción de `Debug` a `Serial Wire` (consulte el artículo [**Evitando problemas con CubeMX y CubeIDE**](enlace_a_reemplazar) para conocer los detalles).
+Cambie la opción `Debug` a `Serial Wire` (consulte el artículo [**Consejos para CubeMX y CubeIDE**](https://wiki-power.com/CubeMX与CubeIDE避坑) para obtener más detalles).
 
 ### Configuración de RCC
 
 `Pinout & Configurations` - `System Core` - `RCC`
 
-Ajuste la configuración según las especificaciones de la placa.
+Configure según las especificaciones de la placa.
 
-Por ejemplo, consulte el esquema de la placa:
+Por ejemplo, siga el esquema de la placa:
 
-![Esquema de la placa](https://img.wiki-power.com/d/wiki-media/img/20210205205030.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210205205030.png)
 
-Configure las opciones `HSE` y `LSE` para utilizar osciladores de cristal externos, como se muestra a continuación:
+Simplemente configure las opciones de `HSE` y `LSE` para utilizar osciladores de cristal externos:
 
-![Configuración de HSE y LSE](https://img.wiki-power.com/d/wiki-media/img/20210205205140.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210205205140.png)
 
 ### Configuración del árbol de reloj
 
 Realice la configuración en la interfaz de `Clock Configuration`.
 
-Siga estos pasos según la imagen anterior:
+![](https://img.wiki-power.com/d/wiki-media/img/20210205205550.png)
 
-1. Ingrese los valores de las dos frecuencias en el lado izquierdo, de acuerdo con los parámetros del oscilador de cristal externo de la placa.
-2. Seleccione `HSE` ya que la frecuencia y precisión del oscilador de cristal externo son mejores que las internas.
-3. Marque `PLLCLK` para usar la multiplicación de PLL para obtener una frecuencia alta.
-4. Ingrese el valor de `HCKL`, generalmente se basa en la frecuencia máxima indicada a continuación. Después de ingresar el valor, presione Enter y se calculará automáticamente el divisor y la multiplicación.
+Siga estos pasos de acuerdo con la imagen anterior:
 
-### Configuración de opciones de administración del proyecto
+1. Ingrese los valores de las dos frecuencias de la oscilación externa de acuerdo con los parámetros del oscilador externo en la placa.
+2. Seleccione `HSE` ya que la frecuencia y precisión del oscilador externo son superiores a los internos.
+3. Marque la casilla `PLLCLK` para usar la multiplicación de frecuencia mediante el PLL.
+4. Ingrese el valor de `HCKL`, generalmente según la frecuencia máxima recomendada que se muestra debajo. Después de ingresar el valor, presione Enter y se calculará automáticamente el divisor y el multiplicador.
 
-![Opciones de administración del proyecto](https://img.wiki-power.com/d/wiki-media/img/20210130095224.png)
+### Configuración de opciones de gestión de proyectos
 
-![Opciones de administración del proyecto](https://img.wiki-power.com/d/wiki-media/img/20210130095239.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210130095224.png)
+
+![](https://img.wiki-power.com/d/wiki-media/img/20210130095239.png)
 
 ## Diferencias entre la biblioteca HAL y la biblioteca estándar
 
-Para mejorar la portabilidad, la biblioteca HAL agrega tres características adicionales en comparación con la biblioteca estándar: **manejadores, funciones MSP y funciones de devolución de llamada**. Para obtener más detalles, consulte los enlaces citados al final del documento.
+Para mejorar la portabilidad, la biblioteca HAL incluye tres características adicionales en comparación con la biblioteca estándar: **manejadores (handles), funciones MSP (Manejo del Estado de Memoria) y funciones de devolución de llamada (callbacks)**. Puede encontrar más detalles en los enlaces citados al final del documento.
 
 ## Referencias y agradecimientos
 
-- [【STM32】Explanation of RCC System Clock](https://blog.csdn.net/as480133937/article/details/98845509)
-- [Initialization of the Board, Complete Configuration of the RCC Clock Tree](https://www.notion.so/2-RCC-770c0c454f954408a3956257aa0fb523)
-- [Comprehensive Summary of STM32 HAL Knowledge](https://mp.weixin.qq.com/s/ffcjKtl7JdRibLRNGquGXA)
-- [Clear and Comprehensive Summary of STM32 HAL Knowledge](https://mp.weixin.qq.com/s/qkj0fQS5NrCXmbppKEhaAg)
+- [**Desglose detallado del sistema de reloj RCC en STM32**](https://blog.csdn.net/as480133937/article/details/98845509)
+- [**Inicialización de la placa: configuración completa del árbol de reloj RCC y su proceso detallado**](https://www.notion.so/2-RCC-770c0c454f954408a3956257aa0fb523)
+- [**Resumen exhaustivo del conocimiento de STM32 HAL**](https://mp.weixin.qq.com/s/ffcjKtl7JdRibLRNGquGXA)
+- [**Una visión más clara del resumen exhaustivo del conocimiento de STM32 HAL**](https://mp.weixin.qq.com/s/qkj0fQS5NrCXmbppKEhaAg)
 
 > Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.

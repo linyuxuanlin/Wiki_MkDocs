@@ -2,11 +2,11 @@
 
 ![Audiobookshelf](https://img.wiki-power.com/d/wiki-media/img/20230531204505.png)
 
-**Audiobookshelf** is a self-hosted server for podcasts and audiobooks, making it easy to search for podcasts, automatically detect updates, and download podcasts while organizing them efficiently.
+**Audiobookshelf** is a self-hosted server for podcasts and audiobooks, designed to make podcast searching, automatic update detection, and downloading, as well as seamless organization, a breeze.
 
 ## Deployment (Docker Compose)
 
-First, create a `compose.yaml` file and paste the following content:
+To get started, create a `compose.yaml` file and paste the following content:
 
 ```yaml title="compose.yaml"
 version: "3.7"
@@ -24,25 +24,25 @@ services:
     restart: unless-stopped
 ```
 
-(Optional) It's recommended to create a `.env` file in the same directory as `compose.yaml` and customize your environment variables. If you prefer not to use environment variables, you can also directly customize your parameters within `compose.yaml` (for example, replace `${STACK_NAME}` with `audiobookshelf`).
+(Optional) It's recommended to create a `.env` file in the same directory as `compose.yaml` and customize your environment variables. If you prefer not to use environment variables, you can directly customize your parameters within `compose.yaml` (e.g., replace `${STACK_NAME}` with `audiobookshelf`).
 
 ```dotenv title=".env"
 STACK_NAME=audiobookshelf
 STACK_DIR=xxx # Customize your project storage path, e.g., ./audiobookshelf
 DATA_DIR=xxx # Customize your podcast storage path, e.g., ./podcast
 
-# Audiobookshelf
+# audiobookshelf
 APP_VERSION=latest
-APP_PORT=xxxx # Customize the access port, choose an available one
+APP_PORT=xxxx # Customize the access port, ensuring it's not already in use
 ```
 
-If you have a NAS, you can also mount storage space on your NAS via the NFS protocol to save server space. For more details, please refer to [**Expanding Space by Mounting Synology NAS Hard Drives Under Linux (NFS)**](https://wiki-power.com/en/Linux%E4%B8%8B%E6%8C%82%E8%BD%BD%E7%BE%A4%E6%99%96NAS%E7%A1%AC%E7%9A%84%E6%8B%93%E5%B1%95%E7%A9%BA%E9%97%B4%EF%BC%88NFS%EF%BC%89/).
+If you have a NAS (Network Attached Storage), you can also mount storage space from your NAS using the NFS protocol. This allows you to store your podcasts on the NAS to save server space. For details, refer to [**Mounting Synology NAS Hard Drive for Space Expansion on Linux (NFS)**](https://wiki-power.com/Linux%E4%B8%8B%E6%8C%82%E8%BD%BD%E7%BE%A4%E6%99%96NAS%E7%A1%AC%E7%9B%98%E6%8B%93%E5%B1%95%E7%A9%BA%E9%97%B4%EF%BC%88NFS%EF%BC%89/).
 
-Finally, in the same directory as `compose.yaml`, execute the `docker compose up -d` command to start the orchestrated containers.
+Finally, in the directory where `compose.yaml` is located, execute the `docker compose up -d` command to start the orchestrated containers.
 
 ## Configuration Notes
 
-Mobile App: Official apps are available for both iOS and Android, which can be used directly.
+Mobile App: There are official apps available for both iOS and Android platforms, making it easy to access and use.
 
 ## References and Acknowledgments
 
@@ -51,7 +51,7 @@ Mobile App: Official apps are available for both iOS and Android, which can be u
 - [GitHub Repository](https://github.com/advplyr/audiobookshelf)
 - [Docker Hub](https://hub.docker.com/r/advplyr/audiobookshelf)
 
-> Original: <https://wiki-power.com/>  
+> Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

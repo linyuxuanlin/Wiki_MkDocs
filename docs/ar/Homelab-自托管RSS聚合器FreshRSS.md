@@ -1,12 +1,12 @@
-# الرئيسة - منصة إدارة الخدمات المنزلية
+# الخادم المنزلي - منصة إدارة تغذية الـ RSS المُستضافة بشكل ذاتي - FreshRSS
 
-![](https://img.wiki-power.com/d/wiki-media/img/202304102312005.png)
+![صورة](https://img.wiki-power.com/d/wiki-media/img/202304102312005.png)
 
-**FreshRSS** هو منصة إدارة مصادر خدمة التجميع لتغذية RSS، حيث يمكنك الاشتراك في مصادر متعددة وتحديثها تلقائيًا. توفر واجهة ويب للقراءة عبر الإنترنت وواجهة برمجة تطبيقات للاستخدام على الهواتف المحمولة.
+**FreshRSS** هي منصة إدارة تغذية RSS مُستضافة بشكل ذاتي، حيث تُمكنك من الاشتراك في عدة مصادر لتغذيات RSS وتحديثها تلقائيًا. يُمكنك أيضًا استخدام واجهة الويب للقراءة عبر الإنترنت وAPI لتطبيقات الهواتف المحمولة.
 
-## النشر (Docker Compose)
+## النشر (عبر Docker Compose)
 
-أولاً، قم بإنشاء ملف `compose.yaml` والصق المحتوى التالي:
+أولاً، قم بإنشاء ملف بمسمى `compose.yaml` والصق فيه المحتوى التالي:
 
 ```yaml title="compose.yaml"
 version: "2.4"
@@ -25,38 +25,38 @@ services:
       - ${STACK_DIR}/extensions:/var/www/FreshRSS/extensions
     environment:
       TZ: Asia/Shanghai
-      CRON_MIN: "*/60" # يستخدم لسحب تحديث المقالات كل 60 دقيقة
+      CRON_MIN: "*/60" # تحديث المقالات كل 60 دقيقة
     restart: unless-stopped
 ```
 
-(اختياري) نوصي بإنشاء ملف `.env` في نفس الدليل الرئيسي لـ `compose.yaml` وتخصيص المتغيرات البيئية الخاصة بك فيه. إذا كنت لا ترغب في استخدام المتغيرات البيئية، يمكنك تخصيص المعلمات مباشرة في ملف `compose.yaml` (مثل استبدال `${STACK_NAME}` بـ `freshrss`).
+(اختياري) نوصي بإنشاء ملف `.env` في نفس الدليل الذي يحتوي على ملف `compose.yaml` لتخصيص المتغيرات البيئية الخاصة بك. إذا كنت لا ترغب في استخدام المتغيرات البيئية، يمكنك تخصيص المعلمات مباشرة داخل ملف `compose.yaml` (على سبيل المثال، استبدال `${STACK_NAME}` بـ `freshrss`).
 
 ```dotenv title=".env"
 STACK_NAME=freshrss
-STACK_DIR=xxx # حدد مسار تخزين المشروع الخاص بك، على سبيل المثال، ./freshrss
+STACK_DIR=xxx # حدد مسار تخزين المشروع الخاص بك، مثل ./freshrss
 
 # freshrss
 APP_VERSION=latest
-APP_PORT=xxxx # قم باختيار منفذ الوصول الخاص بك الذي لا يتم استخدامه بالفعل
+APP_PORT=xxxx # حدد منفذ الوصول الخاص بك، اختر منفذ غير مستخدم
 ```
 
-أخيرًا، قم بتنفيذ الأمر `docker compose up -d` في نفس الدليل الرئيسي لملف `compose.yaml` لبدء تشغيل الحاويات المكوّنة.
+أخيرًا، قم بتنفيذ الأمر `docker compose up -d` في نفس الدليل الذي يحتوي على ملف `compose.yaml` لبدء تشغيل الحاويات.
 
-## تعليمات التكوين
+## تفاصيل الإعداد
 
-يُوصى بشدة بمصادر RSS من [**قائمة RSS**](https://github.com/saveweb/rss-list) التي تقدمها Saveweb.
+يُمكن الاطلاع على قائمة مواقع الويب الصينية المُوصى بها لتغذية RSS من [**rss-list**](https://github.com/saveweb/rss-list).
 
-يُفضل استخدام تطبيقات FeedMe (لأنظمة Android) و NetNewsWire (لأنظمة iOS) على الهواتف المحمولة.
+لتطبيقات الهواتف المحمولة، نوصي باستخدام تطبيق FeedMe (Android) أو NetNewsWire (iOS).
 
-لمزيد من المعلومات حول خدمات RSS، يُمكنك الرجوع إلى المقالة [**RSS - طريقة فعالة للقراءة**](to_be_replace[3]).
+للمزيد من المعلومات حول تغذية RSS، يُمكنك الرجوع إلى المقالة [**تغذية RSS - وسيلة فعّالة للقراءة**](https://wiki-power.com/RSS-%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E9%98%85%E8%AF%BB%E6%96%B9%E5%BC%8F/).
 
-## المراجع والشكر
+## المصادر والشكر
 
 - [الموقع الرسمي](https://freshrss.org)
 - [الوثائق](https://github.com/FreshRSS/FreshRSS/tree/edge/Docker#docker-compose)
 - [مستودع GitHub](https://github.com/FreshRSS/FreshRSS)
-- [Docker Hub](https://hub.docker.com/r/freshrss/freshrss)
-- [موقع تجريبي](https://demo.freshrss.org/i/?rid=64342708bf322)
+- [موقع Docker Hub](https://hub.docker.com/r/freshrss/freshrss)
+- [موقع العرض التوضيحي](https://demo.freshrss.org/i/?rid=64342708bf322)
 
 > عنوان النص: <https://wiki-power.com/>
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.

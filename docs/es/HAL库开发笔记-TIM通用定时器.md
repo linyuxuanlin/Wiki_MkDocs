@@ -1,39 +1,39 @@
-# Apuntes de desarrollo de la biblioteca HAL - Temporizador universal TIM
+# Notas de desarrollo de la biblioteca HAL - Temporizador universal TIM
 
-En el artículo anterior, presentamos brevemente las tres clases de temporizadores del STM32F4 y proporcionamos una explicación detallada del temporizador básico. En este artículo, continuaremos explorando el temporizador universal.
+En el artículo anterior, proporcionamos una introducción básica a los tres tipos de temporizadores disponibles en STM32F4, centrándonos especialmente en el temporizador básico. En esta ocasión, continuaremos explorando el temporizador universal.
 
 ## Principios fundamentales
 
-En el STM32F4, los temporizadores universales comprenden TIM2-TIM5 y TIM9-TIM14.
+En la serie STM32F4, los temporizadores universales abarcan TIM2-TIM5 y TIM9-TIM14.
 
-### Características de los temporizadores universales
+### Características del temporizador universal
 
-En el STM32F4, los temporizadores universales tienen las siguientes características:
+Los temporizadores universales en STM32F4 presentan las siguientes características:
 
-- Contadores que aumentan, disminuyen o aumentan/disminuyen automáticamente de 16/32 bits.
-- Un predivisor programable de 16 bits que se utiliza para dividir la frecuencia del reloj del contador (con un factor de división de 1-65536).
-- Cuatro canales independientes que se pueden utilizar para:
-  - Captura de entrada.
-  - Comparación de salida.
-  - Generación de PWM (modo de borde y alineación central).
-  - Salida de modo de pulso único.
-- Posibilidad de controlar el temporizador mediante señales externas y lograr la sincronización de múltiples temporizadores.
-- Generación de interrupciones o solicitudes de DMA en los siguientes eventos:
-  - Actualización: desbordamiento o subdesbordamiento del contador, inicialización del contador (a través de software o disparo interno/externo).
-  - Evento de disparo (inicio, parada, inicialización del contador o contador disparado interna/externamente).
-  - Captura de entrada.
-  - Comparación de salida.
-- Soporte para encoders incrementales (cuadratura) y circuitos de sensores Hall.
-- Entrada de disparo de reloj externo o gestión de corriente periódica.
+- Contador de recarga automática de 16/32 bits en modos ascendente, descendente y ascendente/descendente.
+- Un predivisor programable de 16 bits que permite dividir la frecuencia del reloj del contador (con un factor de división entre 1 y 65536).
+- Cuatro canales independientes que pueden utilizarse para las siguientes funciones:
+  - Captura de entrada
+  - Comparación de salida
+  - Generación de PWM (en modos de borde y alineación central)
+  - Salida en modo pulso único
+- Posibilidad de controlar el temporizador mediante señales externas y sincronizar múltiples temporizadores con circuitos sincrónicos.
+- Generación de interrupciones/solicitudes DMA en respuesta a los siguientes eventos:
+  - Actualización: desbordamiento o subdesbordamiento del contador, inicialización del contador (a través de software o activación interna/externa).
+  - Eventos de activación (inicio, parada, inicialización del contador o conteo a través de activación interna/externa).
+  - Captura de entrada
+  - Comparación de salida
+- Admite la localización de codificadores incrementales (cuadratura) y circuitos de sensores Hall.
+- Entrada de reloj externo o gestión de corriente periódica por disparo.
 
 ### Referencia de funciones de temporizador comunes
 
-A continuación, se presentan funciones comunes de temporizador que son similares a las del temporizador básico.
+A continuación, se presentan las funciones comunes del temporizador, que son idénticas a las del temporizador básico.
 
 - **HAL_TIM_Base_Init()**: Inicializa la unidad base del temporizador.
-- **HAL_TIM_Base_DeInit()**: Desactiva el temporizador, en sentido contrario a la inicialización.
-- **HAL_TIM_Base_MspInit()**: Función de inicialización de MSP que se llama automáticamente durante la inicialización del temporizador.
-- **HAL_TIM_Base_MspDeInit()**: Lo opuesto a la función anterior.
+- **HAL_TIM_Base_DeInit()**: Deshabilita el temporizador, contrario a la inicialización.
+- **HAL_TIM_Base_MspInit()**: Función de inicialización MSP que se llama automáticamente durante la inicialización del temporizador.
+- **HAL_TIM_Base_MspDeInit()**: Contraparte de la función anterior.
 - **HAL_TIM_Base_Start()**: Inicia el temporizador.
 - **HAL_TIM_Base_Stop()**: Detiene el temporizador.
 - **HAL_TIM_Base_Start_IT()**: Inicia el temporizador en modo de interrupción.
@@ -41,58 +41,60 @@ A continuación, se presentan funciones comunes de temporizador que son similare
 - **HAL_TIM_Base_Start_DMA()**: Inicia el temporizador en modo DMA.
 - **HAL_TIM_Base_Stop_DMA()**: Detiene el temporizador en modo DMA.
 
-## Generación de PWM al 1 kHz con un ciclo de trabajo del 50% mediante el temporizador universal
+## Generar una señal PWM del 1 kHz con un ciclo de trabajo del 50% utilizando el temporizador universal
 
-En esta ocasión, vamos a generar una señal PWM de 1 kHz con un ciclo de trabajo del 50% utilizando un temporizador universal. La forma de onda resultante se puede visualizar utilizando un osciloscopio.
+En este experimento, generaremos una señal PWM con una frecuencia de 1 kHz y un ciclo de trabajo del 50% utilizando el temporizador universal. Luego, podremos visualizar la forma de onda de la señal utilizando un osciloscopio.
 
-### Configuración en CubeMX
+### Configuración del temporizador universal en CubeMX
 
-En primer lugar, abrimos la página de configuración del árbol de relojes en Clock Configuration, ya que los temporizadores universales se encuentran en el bus APB2 de alta velocidad. A continuación, encontramos y anotamos la frecuencia de reloj de APB2 Timer clocks (180 MHz):
+En primer lugar, abriremos la página de configuración del árbol de reloj en "Clock Configuration" (Configuración del reloj). Dado que el temporizador universal está en la línea de alta velocidad APB2, buscaremos y anotaremos la frecuencia del reloj de "APB2 Timer clocks" (Relojes de temporizadores APB2) (180 MHz):
 
-![Frecuencia de reloj APB2](https://img.wiki-power.com/d/wiki-media/img/20210627133951.png)
+![Captura de pantalla](https://img.wiki-power.com/d/wiki-media/img/20210627133951.png)
 
-A continuación, en la barra lateral de temporizadores, localizamos TIM8 y configuramos el Canal 1 (`Channel 1`) para la generación PWM (`PWM Generation CH1`). Para lograr una frecuencia de PWM de 1 kHz, configuramos los siguientes parámetros:
+A continuación, en el lateral, encontraremos TIM8, donde configuraremos el canal 1 (`Channel 1`) para la generación de PWM (`PWM Generation CH1`). Para lograr una frecuencia de 1 kHz para la onda cuadrada PWM, configuraremos los siguientes parámetros:
 
-- **Prescaler** (predivisor): 180-1
-- **Counter Mode** (modo del contador): Up (contando hacia arriba desde 0 hasta el valor del predivisor antes de desbordarse).
-- **Counter Period** (período del contador/valor de recarga): 1000-1
-- **Auto-reload preload** (recarga automática): Habilitada (se recargará automáticamente cuando se desborde).
+- **Predivisor** (Factor de división): 180-1
+- **Modo de contador**: Ascendente (comenzando desde 0 y contando hacia arriba hasta el valor del factor de división).
+- **Período de contador**: 1000-1
+- **Recarga automática de periodo**: Habilitada (el valor se recargará automáticamente al desbordar).
 
-![Configuración TIM8](https://img.wiki-power.com/d/wiki-media/img/20210627153422.png)
+![Captura de pantalla](https://img.wiki-power.com/d/wiki-media/img/20210627153422.png)
 
-Dado que la fuente de reloj utilizada aquí es de 180 MHz, configuramos el predivisor en 180-1 = 179, lo que resulta en una frecuencia de 1 MHz. Luego, configuramos el valor de recarga en 1000-1 = 9999, lo que nos da una frecuencia de 1 kHz.
+Dado que la fuente de reloj utilizada aquí es de 180 MHz, configuramos el factor de división en 180-1 = 179, lo que resulta en una frecuencia de 1 MHz después de la división. Luego, configuramos el valor del período en 1000-1 = 9999 para obtener una frecuencia de 1 kHz. 
 
-### Configuración en el código
+### Configuración del temporizador en el código
 
-Para habilitar el temporizador en `main.c`:
+En el archivo `main.c`, iniciaremos el temporizador:
 
 ```c title="main.c"
 /* USER CODE BEGIN 2 */
 ```
 
+Espero que esta traducción sea útil. Si tienes alguna pregunta adicional o necesitas más ayuda, no dudes en preguntar.
+
 ```markdown
+Inicie la modulación por ancho de pulso (PWM) en el canal 1 del temporizador HAL_TIM8:
+
 ```c
 HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_1);
-
-// Set the duty cycle to 500 (500 Hz/1 kHz=50%)
-__HAL_TIM_SetCompare(&htim8, TIM_CHANNEL_1, 500);
-
-/* USER CODE END 2 */
 ```
 
-After compiling and flashing, you can observe the waveform using an oscilloscope:
+Luego, configure el ciclo de trabajo al 50% (500 en una escala de 1000) de la señal PWM generada a 500 Hz (500 Hz / 1 kHz = 50%):
 
-![Waveform](https://img.wiki-power.com/d/wiki-media/img/20210627154737.jpg)
+```c
+__HAL_TIM_SetCompare(&htim8, TIM_CHANNEL_1, 500);
+```
 
-## References and Acknowledgments
+Una vez realizadas estas configuraciones, compile y grabe el código en el dispositivo. Puede observar la forma de onda utilizando un osciloscopio:
 
-- [STM32CubeMX Practical Tutorial (Part Five) - General Timer (PWM Output)](https://blog.csdn.net/weixin_43892323/article/details/104776035)
+![Forma de onda](https://img.wiki-power.com/d/wiki-media/img/20210627154737.jpg)
+
+## Referencias y Agradecimientos
+
+- [STM32CubeMX Tutorial Práctico (Parte Cinco) - Temporizador General (Salida PWM)](https://blog.csdn.net/weixin_43892323/article/details/104776035)
 
 > Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
-```
-
-```markdown
 ```
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

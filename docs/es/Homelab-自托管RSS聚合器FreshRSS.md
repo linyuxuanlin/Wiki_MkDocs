@@ -1,8 +1,8 @@
-# Homelab - Autohospedaje del Agregador de RSS FreshRSS
+# Homelab - Autohospedaje del agregador RSS FreshRSS
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/202304102312005.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202304102312005.png)
 
-**FreshRSS** es un agregador de RSS autohospedado que permite suscribirse a múltiples fuentes de RSS y se actualiza automáticamente. Ofrece la lectura en línea a través de la web y una API para su uso en aplicaciones móviles.
+**FreshRSS** es un agregador RSS autohospedado que admite la suscripción a múltiples fuentes RSS y se actualiza automáticamente. Ofrece lectura en línea a través de la web y una API para su uso en aplicaciones móviles.
 
 ## Implementación (Docker Compose)
 
@@ -25,30 +25,30 @@ services:
       - ${STACK_DIR}/extensions:/var/www/FreshRSS/extensions
     environment:
       TZ: Asia/Shanghai
-      CRON_MIN: "*/60" # Actualizar los artículos cada 60 minutos
+      CRON_MIN: "*/60" # Actualiza automáticamente los artículos cada 60 minutos
     restart: unless-stopped
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar tus variables de entorno. Si no deseas utilizar variables de entorno, también puedes personalizar tus parámetros directamente en `compose.yaml` (por ejemplo, sustituir `${STACK_NAME}` por `freshrss`).
+(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar tus variables de entorno. Si no deseas utilizar variables de entorno, también puedes personalizar tus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `freshrss`).
 
 ```dotenv title=".env"
 STACK_NAME=freshrss
-STACK_DIR=xxx # Ruta personalizada para el almacenamiento del proyecto, por ejemplo, ./freshrss
+STACK_DIR=xxx # Ruta de almacenamiento personalizada para el proyecto, por ejemplo, ./freshrss
 
 # freshrss
 APP_VERSION=latest
 APP_PORT=xxxx # Puerto de acceso personalizado, elige uno que no esté en uso
 ```
 
-Finalmente, ejecuta el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores configurados.
+Finalmente, ejecuta el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores orquestados.
 
-## Instrucciones de Configuración
+## Configuración
 
-Se recomienda usar la lista de blogs en chino de saveweb [**rss-list**](https://github.com/saveweb/rss-list) como fuente de RSS.
+Puedes encontrar una lista recomendada de fuentes RSS en chino en [**rss-list**](https://github.com/saveweb/rss-list) de saveweb.
 
-Para aplicaciones móviles, se sugiere usar FeedMe (Android) y NetNewsWire (iOS).
+Para aplicaciones móviles, se recomienda usar FeedMe (Android) y NetNewsWire (iOS).
 
-Para obtener más información sobre RSS, consulta el artículo [**RSS - Una forma eficiente de leer**](https://wiki-power.com/es/RSS-%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E9%98%85%E8%AF%BB%E6%96%B9%E5%BC%8F/).
+Para obtener más información sobre RSS, puedes consultar el artículo [**RSS - Una forma eficiente de leer**](https://wiki-power.com/RSS-%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E9%98%85%E8%AF%BB%E6%96%B9%E5%BC%8F/).
 
 ## Referencias y Agradecimientos
 
@@ -58,7 +58,7 @@ Para obtener más información sobre RSS, consulta el artículo [**RSS - Una for
 - [Docker Hub](https://hub.docker.com/r/freshrss/freshrss)
 - [Sitio de demostración](https://demo.freshrss.org/i/?rid=64342708bf322)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
+> Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

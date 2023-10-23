@@ -1,36 +1,36 @@
-# سلسلة BeagleBone - البداية في BBAI
+# سلسلة BeagleBone - البداية مع BBAI
 
 ## البداية
 
-أولاً، قم بتوصيل مصدر الطاقة بجهاز Cape الخاص بك بجهد 12 فولت، واستخدم وحدة تحويل USB إلى منفذ التسلسل للاتصال بمنفذ السلسلة المدمج (الموجود في منفذ J3 ويمكن استخدامه لأغراض التصحيح):
+أولاً، قم بتوصيل مصدر طاقة Cape بجهد 12 فولت، واستخدم وحدة تحويل USB إلى منفذ تسلسلي للاتصال بالمنفذ المدمج (الموجود في المنفذ J3 والذي يمكن استخدامه لأغراض التصحيح):
 
-![الصورة](https://img.wiki-power.com/d/wiki-media/img/20211027164010.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20211027164010.png)
 
-تأكد من أن وحدة تحويل USB إلى منفذ التسلسل مزودة بالتعريفات (استخدمت وحدة FTDI، يمكن العثور على التعريفات على العنوان التالي: <https://ftdichip.com/drivers/vcp-drivers/>).
+تأكد من وجود تعريفات لوحدة التحويل USB إلى منفذ تسلسلي (في حالتي، استخدمت وحدة FTDI ويمكن العثور على تعريفاتها على هذا الرابط: <https://ftdichip.com/drivers/vcp-drivers/>).
 
-استخدم أداة سطر الأوامر للاتصال بمنفذ التسلسل (استخدمت MobaXterm في حالتي) وقم بضبط معدل الباود على 115200.
+استخدم أداة سطر الأوامر للاتصال بمنفذ التسلسل (استخدمت MobaXterm في حالتي) واضبط معدل الباود على 115200.
 
-## تثبيت حزم الإصلاحات
+## تثبيت حزمة التصحيح
 
 ```shell
 wget https://github.com/linyuxuanlin/File-host/blob/main/stash/k3-j721e-beagleboneai64.dtb?raw=true
 ```
 
-قم بتغيير اسم الملف إلى `k3-j721e-beagleboneai64.dtb` وانقله إلى المجلد `/boot` واستبدل الملف الأصلي. (قمت بتحميل الملف إلى مستودع GitHub الخاص بي واستخدمت الأمر `wget` للحصول عليه. قد تحتاج إلى تعديل مضيف GitHub لتمكين التنزيل الصحيح)
+قم بتغيير اسم الملف إلى `k3-j721e-beagleboneai64.dtb` ثم انقله إلى المجلد `/boot` واستبدل الملف الأصلي. (لقد قمت برفع الملف إلى مستودع GitHub واستخدمت أمر `wget` للحصول عليه. قد تحتاج إلى تعديل مضيف GitHub للتنزيل الصحيح).
 
-يمكنك أيضًا نقل الملف مباشرة باستخدام sftp.
+يمكن أيضاً نقل الملف مباشرة باستخدام sftp.
 
 ## evtest
 
-أداة اختبار الأحداث هي أداة تُستخدم لطباعة أحداث نواة evdev مباشرة من جهاز النواة. تقوم بقراءة الأحداث من الجهاز وطباعة الأحداث التي تحتوي على قيم وأسماء رموز مرتبطة بالجهاز، ويمكن استخدامها لتصحيح أجهزة الإدخال مثل الماوس ولوحة المفاتيح ولوحة اللمس.
+أداة اختبار الأحداث (evtest) هي أداة لطباعة أحداث نواة evdev، حيث تقوم بقراءة الأحداث مباشرة من جهاز النواة وطباعتها بما في ذلك القيم وأسماء الرموز لأحداث الأجهزة. يمكن استخدامها لأغراض تصحيح أجهزة الإدخال مثل الماوس ولوحة المفاتيح ولوحة اللمس.
 
-قم بتنزيل أداة evtest:
+لتثبيت أداة evtest، استخدم الأمر التالي:
 
 ```shell
 sudo apt install evtest
 ```
 
-استخدم الأداة كما يلي:
+استخدم الأداة على النحو التالي:
 
 ```shell
 sudo evtest /dev/input/eventｘ (حيث x هو رقم الحدث)
@@ -40,40 +40,39 @@ sudo evtest /dev/input/eventｘ (حيث x هو رقم الحدث)
 
 ```shell
 debian@BeagleBone:~$ evtest
-لم يتم تحديد جهاز، حاول البحث في جميع الأحداث على /dev/input/event*
-الأجهزة المتاحة:
+No device specified, trying to scan all of /dev/input/event*
+Available devices:
 /dev/input/event0:      gpio-keys
-اختر رقم الحدث [0-0]: 0
-إصدار سائق الإدخال هو 1.0.1
-معرف الجهاز: الحافلة 0x19 البائع 0x1 المنتج 0x1 الإصدار 0x100
-اسم الجهاز: "gpio-keys"
-الأحداث المدعومة:
-  نوع الحدث 0 (EV_SYN)
-  نوع الحدث 1 (EV_KEY)
-    رمز الحدث 256 (BTN_0)
-    رمز الحدث 257 (BTN_1)
-    رمز الحدث 258 (BTN_2)
-معالجة تكرار الأزرار:
-  نوع التكرار 20 (EV_REP)
-    رمز التأخير 0 (REP_DELAY)
-      القيمة    250
-    رمز الفترة 1 (REP_PERIOD)
-      القيمة     33
-الخصائص:
-جاري الاختبار... (انقر للخروج)
-حدث: الزمن 1634868166.060258، النوع 1 (EV_KEY)، الرمز 257 (BTN_1)، القيمة 1
-حدث: الزمن 1634868166.060258، -------------- SYN_REPORT ------------
-حدث: الزمن 1634868166.284257، النوع 1 (EV_KEY)، الرمز 257 (BTN_1)، القيمة 0
-حدث: الزمن 1634868166.284257، -------------- SYN_REPORT ------------
+Select the device event number [0-0]: 0
+Input driver version is 1.0.1
+Input device ID: bus 0x19 vendor 0x1 product 0x1 version 0x100
+Input device name: "gpio-keys"
+Supported events:
+  Event type 0 (EV_SYN)
+  Event type 1 (EV_KEY)
+    Event code 256 (BTN_0)
+    Event code 257 (BTN_1)
+    Event code 258 (BTN_2)
+Key repeat handling:
+  Repeat type 20 (EV_REP)
+    Repeat code 0 (REP_DELAY)
+      Value    250
+    Repeat code 1 (REP_PERIOD)
+      Value     33
+Properties:
+Testing ... (interrupt to exit)
+Event: time 1634868166.060258, type 1 (EV_KEY), code 257 (BTN_1), value 1
+Event: time 1634868166.060258, -------------- SYN_REPORT ------------
+Event: time 1634868166.284257, type 1 (EV_KEY), code 257 (BTN_1), value 0
+Event: time 1634868166.284257, -------------- SYN_REPORT ------------
 ```
 
-## الأجهزة على خط SPI
+## الأجهزة على شبكة SPI
 
 - بارومتر - BMP280
 - 6-DOF - LSM6DS3TR
 - بوصلة - BMM150
 
-```markdown
 ```shell
 cd /sys/bus/iio/devices && ls -l
 
@@ -85,10 +84,10 @@ cat iio\:device4/name
 cat iio\:device5/name
 ```
 
-## BeagleConnect Communication
+## التواصل مع BeagleConnect
 
 ```shell
-# BC_RST
+# إعادة تعيين BeagleConnect
 cd /sys/class/gpio
 echo 326 > export
 echo out > gpio326/direction
@@ -96,24 +95,24 @@ echo 0 > gpio326/value
 echo 1 > gpio326/value
 
 
-# Uart2
+# UART2
 root@BeagleBone:/sys/class/tty# ls -l
 lrwxrwxrwx 1 root root 0 Jul 13 17:29 ttyS4 -> ../../devices/platform/bus@100000/2820000.serial/tty/ttyS4
 
 sudo apt-get install minicom
 sudo minicom -D /dev/ttyS4
 
-Welcome to minicom 2.8
-OPTIONS: I18n
-Port /dev/ttyS4, 10:57:41
-Press CTRL-A Z for help on special keys
+مرحبًا بك في minicom 2.8
+الخيارات: I18n
+المنفذ /dev/ttyS4، 10:57:41
+اضغط على CTRL-A Z للمساعدة حول المفاتيح الخاصة
 
-hello
+مرحبًا
 ```
 
-The test was unsuccessful, no data was transmitted or received.
+فشلت عملية الاختبار ولم يتم استقبال أو إرسال البيانات.
 
-## LEDs
+## الأضواء LED
 
 ```shell
 cd /sys/class/leds && ls -l
@@ -121,14 +120,14 @@ cd /sys/class/leds && ls -l
 echo 255 > beaglebone:green:cape0/brightness
 echo 255 > beaglebone:green:cape3/brightness
 
-echo 0 > beaglebone:green:cape1/brightness # Unable to turn off
+echo 0 > beaglebone:green:cape1/brightness # لا يمكن إيقافه
 ```
 
-## Laser Radar
+## جهاز الاستشعار بالليزر
 
-If you encounter permission issues, please refer to [**Enabling the Root Account with SSH**[to_be_replaced[3]]BeagleBone Series - Basic Parameters and Environment Configuration#Enabling-the-root-account-for-ssh], and execute with root privileges.
+إذا تم عرض رسالة خطأ بسبب عدم وجود الإذن، يرجى الرجوع إلى [**تمكين حساب root لـ ssh**](https://wiki-power.com/BeagleBone%E7%B3%BB%E5%88%97-%E5%9F%BA%E6%9C%AC%E5%8F%82%E6%95%B0%E4%B8%8E%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE#%E5%90%AF%E7%94%A8-ssh-%E7%9A%84-root-%E5%B8%90%E6%88%B7) واستخدام الصلاحيات الجذرية.
 
-First, operate the GPIO to make the laser radar rotate.
+أولاً، قم بتنفيذ عمليات GPIO لتشغيل جهاز الاستشعار بالليزر.
 
 ```shell
 cd /sys/class/gpio
@@ -143,7 +142,7 @@ echo 1 > gpio306/value
 echo 1 > gpio374/value
 echo 0 > gpio306/value
 
-Confirm the interface:
+تحقق من الواجهة:
 
 ```shell
 ls -l /sys/class/tty/
@@ -151,9 +150,9 @@ ls -l /sys/class/tty/
 lrwxrwxrwx 1 root root 0 Jul 13 17:29 ttyS0 -> ../../devices/platform/bus@100000/2880000.serial/tty/ttyS0
 ```
 
-Download the latest SDK from: <https://github.com/Slamtec/rplidar_sdk/releases>
+قم بتنزيل أحدث إصدار من SDK من هنا: <https://github.com/Slamtec/rplidar_sdk/releases>
 
-Modify the `/sdk/sdk/src/hal/event.h` file for proper compilation:
+قم بتعديل ملف `/sdk/sdk/src/hal/event.h` لضمان الترجمة الصحيحة:
 
 ```shell
 enum
@@ -164,27 +163,30 @@ enum
          EVENT_FAILED = 0,
      };
 ```
-```
+
 
 ```markdown
-انتقل إلى الدليل `/sdk` باستخدام الأمر `make` للترجمة. ستكون الملفات المترجمة موجودة في الدليل `/sdk/output`.
+ترجمة إلى العربية:
 
-ثم، انتقل إلى الدليل `/sdk/output/Linux/Release` واستخدم الأمر التالي لتشغيل عينات الاختبار:
+قم بالتبديل إلى المجلد `/sdk` باستخدام الأمر `make` للقيام بعملية الترجمة، والملفات المترجمة ستكون متاحة في المجلد `/sdk/output`.
+
+بعد ذلك، قم بالتنقل إلى المجلد `/sdk/output/Linux/Release` واستخدم الأمر التالي لتشغيل سيناريو الاختبار:
 
 ```shell
 ./ultra_simple /dev/ttyS0
 ```
 
-## المراجع والشكر
+## مراجع وشكر
 
-- [مخطط الأساس](file:///C:/Users/Power/Projects/Internship_at_Seeed/Projects/Robotics_Cape_Rev2/Reference/BeagleBone%20AI%20TDA4VM_SCH_V1.0_210805.pdf)
-- [صورة النظام](https://rcn-ee.net/rootfs/debian-arm64/)
-- [شفرات الاختبار](https://gitee.com/gary87m/notes_seeed/blob/master/BBAI_Robotics%20Cape.md)
-- [مشكلات Cape](https://docs.qq.com/sheet/DU1BBZnNORlJhRG5w)
-- [مكتبة رادار الليزر](https://github.com/Slamtec/rplidar_sdk)
+- [رسم تخطيطي للدائرة](file:///C:/Users/Power/Projects/Internship_at_Seeed/Projects/Robotics_Cape_Rev2/Reference/BeagleBone%20AI%20TDA4VM_SCH_V1.0_210805.pdf)
+- [صورة نظام التشغيل](https://rcn-ee.net/rootfs/debian-arm64/)
+- [شيفرة الاختبار](https://gitee.com/gary87m/notes_seeed/blob/master/BBAI_Robotics%20Cape.md)
+- [مشكلة في الكاب الإضافي](https://docs.qq.com/sheet/DU1BBZnNORlJhRG5w)
+- [برنامج الليدار بالليزر](https://github.com/Slamtec/rplidar_sdk)
 
-[للمرجع[1]]  
-[للمرجع[2]]
+> عنوان النص: <https://wiki-power.com/>
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 ```
+
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
