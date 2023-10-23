@@ -1,12 +1,12 @@
-# Homelab - Herramienta de compresión de imágenes TinyPNG-docker de alta calidad
+# Homelab - Herramienta de compresión de imágenes de alta calidad TinyPNG-docker
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20230416163137.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20230416163137.png)
 
-TinyPNG-docker es una herramienta que utiliza la API de TinyPNG para comprimir imágenes de alta calidad. Puede comprimir automáticamente imágenes WEBP, JPEG y PNG ubicadas en la ruta especificada y guardarlas en la ubicación que desees. Esto ayuda a reducir el consumo de ancho de banda, el tráfico y el tiempo de carga de tu sitio web. Por cierto, esta es una aplicación Docker que desarrollé con la ayuda de ChatGPT.
+TinyPNG-docker es una herramienta que utiliza la API de TinyPNG para comprimir imágenes de alta calidad. Puede comprimir automáticamente imágenes WEBP, JPEG y PNG en la ruta especificada y guardarlas en la ruta deseada. Esto ayuda a reducir el ancho de banda, el tráfico y el tiempo de carga de un sitio web. Por cierto, esta es una aplicación Docker que desarrollé con la ayuda de ChatGPT.
 
-## Implementación (Docker Compose)
+## Despliegue (Docker Compose)
 
-Primero, crea un archivo `compose.yaml` y reemplaza `${DIR}` por la ruta local (por ejemplo, `/DATA/AppData`) y `${API}` por tu propia clave de API de TinyPNG:
+Primero, crea un archivo `compose.yaml` y reemplaza `${DIR}` con tu directorio local (por ejemplo, `/DATA/AppData`); reemplaza `${API}` con tu clave de API de TinyPNG:
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -26,15 +26,15 @@ services:
 
 Antes de usar este contenedor Docker, debes registrarte en el sitio web de TinyPNG y solicitar una clave de API.
 
-La forma de uso es sencilla: coloca las imágenes que deseas comprimir en la carpeta `${DIR}/tinypng/input` y encontrarás las imágenes comprimidas en la carpeta `${DIR}/tinypng/output`.
+El uso es muy sencillo, simplemente coloca las imágenes que deseas comprimir en la carpeta `${DIR}/tinypng/input` y encontrarás las imágenes comprimidas en la carpeta `${DIR}/tinypng/output`.
 
-Si el contenedor no funciona correctamente, puedes seguir estos pasos de solución:
+Si el contenedor no funciona correctamente, puedes seguir estos pasos para solucionarlo:
 
 1. Asegúrate de que las rutas de las carpetas `input` y `output` especificadas en el archivo `compose.yaml` sean correctas.
-2. Verifica tu cuenta de TinyPNG para asegurarte de que no hayas alcanzado el límite de compresiones permitido por la clave de API.
-3. Asegúrate de que la carpeta `input` contenga archivos de imagen con el formato correcto (WebP, PNG, JPEG). Ten en cuenta que este contenedor solo detectará y comprimirá eventos de creación, por lo que deberás mover manualmente los archivos existentes a la carpeta `input`.
-4. Comprueba que las imágenes que intentas comprimir no tengan una calidad superior a la configuración de compresión de la API, ya que esto podría causar un fallo en la decodificación de la API (por ejemplo, si las imágenes ya han sido comprimidas previamente).
-5. Puedes intentar utilizar la herramienta de compresión de API proporcionada por Tinify en su sitio web de forma manual para identificar y solucionar el problema, y también puedes ver la información de depuración en la consola para localizar el problema.
+2. Verifica tu cuenta de TinyPNG para asegurarte de que no hayas alcanzado el límite máximo de compresiones permitidas por la clave de API.
+3. Verifica que la carpeta `input` contenga archivos de imagen en el formato correcto (WebP, PNG, JPEG). Ten en cuenta que este contenedor solo detectará y comprimirá eventos de creación, por lo que si el archivo ya existe, deberás moverlo manualmente a la carpeta `input`.
+4. Verifica si las imágenes que estás comprimiendo tienen una calidad superior a la configuración de compresión de la API, ya que esto puede provocar un fallo en la decodificación de la API (por ejemplo, si la imagen ya ha sido comprimida antes de la compresión inicial).
+5. Intenta utilizar la herramienta de compresión de la API proporcionada por tinify en el sitio web de forma manual, subiendo las imágenes comprimidas para determinar el problema con mayor precisión. También puedes imprimir información de depuración en la consola para localizar el problema.
 
 ---
 
@@ -42,7 +42,7 @@ Si el contenedor no funciona correctamente, puedes seguir estos pasos de soluci�
 
 ### Preparación
 
-1. Si aún no has registrado una cuenta en Docker Hub, debes crear una cuenta en Docker Hub primero.
+1. Si aún no tienes una cuenta en Docker Hub, debes crear una cuenta en Docker Hub.
 
 2. Inicia sesión en Docker Hub:
 
@@ -50,7 +50,7 @@ Si el contenedor no funciona correctamente, puedes seguir estos pasos de soluci�
 docker login
 ```
 
-Sigue las indicaciones e ingresa tu nombre de usuario y contraseña para iniciar sesión en Docker Hub.
+Sigue las instrucciones e introduce tu nombre de usuario y contraseña para iniciar sesión en Docker Hub.
 
 ### Creación del contenedor
 
@@ -65,14 +65,14 @@ WORKDIR /app
 
 COPY . /app
 
-ENV TINYPNG_API_KEY=<tu_clave_de_API_de_TinyPNG>
+ENV TINYPNG_API_KEY=<your_tinypng_api_key>
 ENV INPUT_DIR=/app/input
 ENV OUTPUT_DIR=/app/output
 
 CMD ["python", "main.py"]
 ```
 
-Luego, crea un archivo `main.py` en la misma ubicación:
+Crea un archivo `main.py` en la misma ruta:
 
 ```py title="main.py"
 import tinify
@@ -87,12 +87,12 @@ class MyHandler(FileSystemEventHandler):
         if event.is_directory:
             return None
         elif event.event_type == 'created':
-            print("Evento de creación detectado - %s." % event.src_path)
+            print("Se ha recibido un evento de creación - %s." % event.src_path)
             source_path = event.src_path
             output_path = os.path.join(os.environ['OUTPUT_DIR'], os.path.basename(source_path))
-            comprimir_imagen(source_path, output_path)
+            compress_image(source_path, output_path)
 
-def comprimir_imagen(source_path, output_path):
+def compress_image(source_path, output_path):
     tinify.key = os.environ['TINYPNG_API_KEY']
     source = tinify.from_file(source_path)
     source.to_file(output_path)
@@ -112,24 +112,24 @@ if __name__ == "__main__":
     observer.join()
 ```
 
-En este código, primero importamos las bibliotecas de Python necesarias: tinify, os, time, sys y watchdog. Luego, definimos una clase llamada MyHandler que hereda de FileSystemEventHandler de watchdog. Esta clase contiene un método on_created, que se llama cuando se detecta la creación de un nuevo archivo en la carpeta especificada. El método on_created obtiene la ruta de origen de la imagen y la comprime en la ruta de salida especificada. Finalmente, iniciamos la observación de la carpeta de entrada, y cuando se detecta la creación de un nuevo archivo en esa carpeta, se ejecuta automáticamente la compresión y se guarda la imagen comprimida en la carpeta de salida especificada.
+Aquí se importan las bibliotecas de Python necesarias: tinify, os, time, sys, watchdog. Luego se define una clase llamada MyHandler que hereda de FileSystemEventHandler de watchdog.events. Esta clase contiene un método llamado on_created que se llama cuando se detecta la creación de un nuevo archivo en la carpeta especificada. La función on_created obtiene la ruta de la imagen de origen y la comprime en la ruta de salida especificada. Por último, se inicia la observación de la carpeta de entrada y, una vez que se detecta la creación de un nuevo archivo en la carpeta especificada, se realiza automáticamente la compresión y se guarda la imagen comprimida en la carpeta de salida especificada.
 
-### Compilación del contenedor
+### Compilar el contenedor
 
-Para compilar el contenedor, ejecute el siguiente comando en la misma ubicación que el archivo Dockerfile:
+Ejecute el siguiente comando en la misma ubicación que el archivo `Dockerfile` para compilar el contenedor:
 
 ```shell
 docker build -t tinypng-docker .
 ```
 
-Donde "tingpng-docker" es el nombre de la imagen que se va a construir, y "." representa la ubicación del archivo Dockerfile.
+Donde `tingpng-docker` es el nombre de la imagen que se va a construir y `.` es la ruta donde se encuentra el archivo `Dockerfile`.
 
 ### Etiquetar la imagen
 
-Use el siguiente comando para etiquetar la imagen:
+Utilice el siguiente comando para etiquetar la imagen:
 
 ```shell
-docker tag <nombre-de-la-imagen> <nombre-de-usuario-de-DockerHub>/<nombre-del-repositorio>:<etiqueta>
+docker tag <image-name> <dockerhub-username>/<repository-name>:<tag>
 ```
 
 Por ejemplo:
@@ -137,14 +137,14 @@ Por ejemplo:
 ```shell
 docker tag tinypng-docker linyuxuanlin/tinypng-docker:latest
 ```
-```
 
-### Subir una imagen a Docker Hub
 
-Utiliza el siguiente comando para cargar la imagen en Docker Hub:
+### Subir la imagen a Docker Hub
+
+Utiliza el siguiente comando para subir la imagen a Docker Hub:
 
 ```shell
-docker push <nombre-de-usuario-de-dockerhub>/<nombre-del-repositorio>:<etiqueta>
+docker push <nombre-de-usuario-de-DockerHub>/<nombre-del-repositorio>:<etiqueta>
 ```
 
 Por ejemplo:
@@ -153,9 +153,9 @@ Por ejemplo:
 docker push linyuxuanlin/tinypng-docker:latest
 ```
 
-### Descargar una imagen
+### Descargar la imagen
 
-Una vez que la carga esté completa, otras personas pueden descargar la imagen mediante el siguiente comando:
+Una vez que se haya subido, otras personas pueden descargar la imagen utilizando el siguiente comando:
 
 ```shell
 docker pull linyuxuanlin/tinypng-docker:latest
@@ -163,11 +163,11 @@ docker pull linyuxuanlin/tinypng-docker:latest
 
 ## Referencias y Agradecimientos
 
-- [Documentación](to_be_replace[3])
-- [Repositorio en GitHub](https://github.com/linyuxuanlin/Dockerfiles/tree/main/tinypng-docker)
+- [Documentación](https://wiki-power.com/Homelab-%E9%AB%98%E8%B4%A8%E9%87%8F%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9%E5%B7%A5%E5%85%B7TinyPNG-docker)
+- [Repositorio de GitHub](https://github.com/linyuxuanlin/Dockerfiles/tree/main/tinypng-docker)
 - [Docker Hub](https://hub.docker.com/r/linyuxuanlin/tinypng-docker)
 
-> Dirección original del artículo: <https://wiki-power.com/>
+> Dirección original del artículo: <https://wiki-power.com/>  
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

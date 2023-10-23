@@ -2,11 +2,11 @@
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20230416163137.png)
 
-TinyPNG-docker is a tool that utilizes the TinyPNG API for high-quality image compression. It automatically compresses WEBP, JPEG, and PNG images located in a specified directory and outputs them to your desired destination. This tool is effective in reducing website bandwidth usage, traffic, and loading times. By the way, this is a Docker application I developed with the help of ChatGPT.
+TinyPNG-docker is a tool that uses the TinyPNG API to compress images with high quality. It can automatically compress WEBP, JPEG, and PNG images in the specified path and output them to the desired path. It effectively reduces website bandwidth usage, traffic, and loading time. By the way, this is a Docker application I developed with the help of ChatGPT.
 
 ## Deployment (Docker Compose)
 
-First, create a `compose.yaml` file and replace `${DIR}` with your local directory (e.g., `/DATA/AppData`) and `${API}` with your obtained TinyPNG API key:
+First, create `compose.yaml` and replace `${DIR}` with your local directory (e.g., `/DATA/AppData`); replace `${API}` with your own TinyPNG API key:
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -24,17 +24,17 @@ services:
 
 ## Configuration Instructions
 
-Before using this Docker container, you need to register an account on the TinyPNG website and obtain an API key.
+Before using this Docker container, you need to register an account on the TinyPNG website and apply for an API key.
 
-The usage is straightforward. Place the images you want to compress in the `${DIR}/tinypng/input` folder, and you will find the compressed images in the `${DIR}/tinypng/output` folder.
+The usage is simple. Paste the images you want to compress into the `${DIR}/tinypng/input` folder, and you will find the compressed images in the `${DIR}/tinypng/output` folder.
 
-If the container is not functioning correctly, you can troubleshoot using the following steps:
+If the container cannot be used properly, you can troubleshoot using the following methods:
 
-1. Ensure that the paths for `input` and `output` folders specified in the `compose.yaml` file are correct.
+1. Make sure the `input` and `output` folder paths specified in the `compose.yaml` file are correct.
 2. Check your TinyPNG account to see if you have reached the maximum compression limit allowed by the API key.
-3. Verify that the `input` folder contains image files in the correct formats (WebP, PNG, JPEG). Please note that this container only detects and compresses files created after the container is started, so you may need to manually move existing files into the `input` directory.
-4. Check if the image compression level is higher than the API's compression settings, as this may lead to API decoding failure (e.g., if the images were already compressed before).
-5. Try manually using the API compression tool provided by Tinify's website, uploading the compressed images to further pinpoint the issue and utilize console output for debugging.
+3. Check if the `input` folder contains image files in the correct format (WebP, PNG, JPEG). Note that this container only detects and compresses files with the `created` event, so if the file already exists, you need to manually move it to the `input` directory.
+4. Check if the compressed images have a higher level of distortion than the compression settings of the API, which may cause API decoding failure (e.g., if the original image has already been compressed).
+5. Try using the API compression tool provided by tinify's official website manually, upload the compressed images to further identify the problem, and you can output debugging information in the console to locate the problem.
 
 ---
 
@@ -50,9 +50,9 @@ If the container is not functioning correctly, you can troubleshoot using the fo
 docker login
 ```
 
-Follow the prompts to enter your username and password and log in to Docker Hub.
+Enter your username and password as prompted to log in to Docker Hub.
 
-### Creating the Container
+### Create the Container
 
 Create a `Dockerfile`:
 
@@ -72,11 +72,8 @@ ENV OUTPUT_DIR=/app/output
 CMD ["python", "main.py"]
 ```
 
-Create a `main.py` file in the same directory:
+Create `main.py` in the same path:
 
-[Original content of the 'main.py' file should be provided here]
-
-```markdown
 ```py title="main.py"
 import tinify
 import os
@@ -115,19 +112,19 @@ if __name__ == "__main__":
     observer.join()
 ```
 
-Here, we start by importing the necessary Python libraries: tinify, os, time, sys, and watchdog. Then, we define a class named MyHandler, which inherits from watchdog.events.FileSystemEventHandler. This class contains an on_created method that is called when a new file is created in the specified folder. The on_created function retrieves the path of the source image and compresses it to the specified output path. Finally, we begin monitoring the input folder, and whenever a new file is created in the specified folder, it automatically performs the compression operation and saves the compressed image to the specified output folder.
+First, the necessary Python libraries are imported: tinify, os, time, sys, and watchdog. Then, a class named MyHandler is defined, which inherits from watchdog.events.FileSystemEventHandler. This class includes an on_created method, which is called when a new file is created in the specified folder. The on_created function retrieves the path of the source image and compresses it to the specified output path. Finally, the script starts monitoring the input folder, and whenever a new file is created in the specified folder, it automatically performs the compression operation and outputs the compressed image to the specified output folder.
 
-### Build the Container
+### Building the Container
 
-To build the container, execute the following command in the same directory as the Dockerfile:
+To build the container, execute the following command in the same directory as the `Dockerfile`:
 
 ```shell
 docker build -t tinypng-docker .
 ```
 
-In this command, `tinypng-docker` is the name of the image you want to build, and `.` represents the path where the Dockerfile is located.
+Here, `tinypng-docker` is the name of the image to be built, and `.` is the path where the `Dockerfile` is located.
 
-### Tag the Image
+### Tagging the Image
 
 Use the following command to tag the image:
 
@@ -140,11 +137,11 @@ For example:
 ```shell
 docker tag tinypng-docker linyuxuanlin/tinypng-docker:latest
 ```
-```
 
-### Pushing Images to Docker Hub
 
-To upload your image to Docker Hub, you can use the following command:
+### Pushing Image to Docker Hub
+
+Use the following command to upload the image to Docker Hub:
 
 ```shell
 docker push <dockerhub-username>/<repository-name>:<tag>
@@ -156,7 +153,7 @@ For example:
 docker push linyuxuanlin/tinypng-docker:latest
 ```
 
-### Pulling Images
+### Pulling Image
 
 Once the upload is complete, others can pull the image using the following command:
 
@@ -164,13 +161,13 @@ Once the upload is complete, others can pull the image using the following comma
 docker pull linyuxuanlin/tinypng-docker:latest
 ```
 
-## References and Acknowledgments
+## References and Acknowledgements
 
-- [Documentation](to_be_replace[3]) on setting up a high-quality image compression tool using TinyPNG in a Homelab environment.
-- [GitHub repository](https://github.com/linyuxuanlin/Dockerfiles/tree/main/tinypng-docker) for the Dockerfiles used in this project.
-- [Docker Hub](https://hub.docker.com/r/linyuxuanlin/tinypng-docker) repository for the Docker image.
+- [Documentation](https://wiki-power.com/Homelab-%E9%AB%98%E8%B4%A8%E9%87%8F%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9%E5%B7%A5%E5%85%B7TinyPNG-docker)
+- [GitHub repo](https://github.com/linyuxuanlin/Dockerfiles/tree/main/tinypng-docker)
+- [Docker Hub](https://hub.docker.com/r/linyuxuanlin/tinypng-docker)
 
-> Original: <https://wiki-power.com/>
+> Original: <https://wiki-power.com/>  
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

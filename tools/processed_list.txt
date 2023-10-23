@@ -95,3 +95,5 @@ Homelab-卡片辅助记忆软件Anki.md
 Homelab-播客与有声书服务器Audiobookshelf.md
 Homelab-电子书管理服务器calibre-web.md
 Homelab-自托管RSS聚合器FreshRSS.md
+Homelab-自托管密码管理器Vaultwarden.md
+Homelab-高质量图片压缩工具TinyPNG-docker.md
