@@ -1,11 +1,11 @@
-# Cómo leer/escribir un solo bit
+# Cómo leer y escribir un solo bit
 
 ```c
 #define BitVal(data,y) ( (data>>y) & 1)             // Devuelve el valor de Data.Y
 #define SetBit(data,y)    data |= (1 << y)          // Establece Data.Y en 1
-#define ClearBit(data,y)  data &= ~(1 << y)         // Borra Data.Y a 0
-#define TogleBit(data,y)     (data ^=BitVal(y))     // Alterna el valor de Data.Y
-#define Togle(data)   (data =~data )                // Alterna el valor de Data
+#define ClearBit(data,y)  data &= ~(1 << y)         // Establece Data.Y en 0
+#define TogleBit(data,y)     (data ^=BitVal(y))     // Invierte el valor de Data.Y
+#define Togle(data)   (data =~data )                // Invierte el valor de Data
 ```
 
 ## Referencias y agradecimientos

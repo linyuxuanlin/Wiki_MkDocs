@@ -215,3 +215,13 @@ npm和Yarn换源加速国内访问.md
 如何在Markdown中使用LaTeX.md
 如何在iPad上运行VSCode.md
 如何实现外网RDP远控（frp）.md
+如何快速删除node_modules.md
+如何快速制作一个启动盘.md
+如何打印出手写效果的文字.md
+如何批量拉取Git仓库更新.md
+如何撰写一份BRD.md
+如何用Markdown写一份简历.md
+如何用Markdown写公众号文章.md
+如何设计一款单片机的最小系统.md
+如何读写单个bit.md
+如何调制一杯鸡尾酒.md

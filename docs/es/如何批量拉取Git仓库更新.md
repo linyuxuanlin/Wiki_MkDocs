@@ -1,6 +1,6 @@
-# Cómo actualizar múltiples repositorios de Git en masa
+# Cómo actualizar múltiples repositorios de Git de forma masiva
 
-Cuando tienes muchos repositorios, actualizarlos manualmente uno por uno puede ser tedioso. Con el método descrito en este artículo, puedes actualizar múltiples repositorios de Git en masa.
+Cuando tienes muchos repositorios, puede volverse tedioso actualizarlos manualmente uno por uno. Con el método descrito en este artículo, podrás actualizar varios repositorios de Git de forma masiva.
 
 ## Pasos
 
@@ -28,12 +28,12 @@ function getdir(){
         fi
     done
 }
-root_dir="【ruta que contiene múltiples repositorios】"
+root_dir="【to_be_replace[包含多个仓库的路径]】"
 getdir $root_dir
 ```
 
-2. Reemplaza `【ruta que contiene múltiples repositorios】` con tu propia ruta, por ejemplo `C:\repos`.
-3. Ejecuta el comando:
+2. Reemplaza `【to_be_replace[包含多个仓库的路径]】` con tu ruta, por ejemplo `C:\repos`.
+3. Ejecuta el siguiente comando:
 
 ```shell
 sh pull-master.sh
@@ -41,31 +41,31 @@ o
 ./pull-master.sh
 ```
 
-O simplemente haz doble clic en `pull-master.sh` para ejecutarlo.
+o haz doble clic en `pull-master.sh` para ejecutarlo.
 
 ## Ejecución programada
 
-1. Busca y abre `Programador de tareas`.
-2. Haz clic en `Crear tarea`.
-   1. En la pestaña `General`, escribe un nombre para la tarea.
-   2. En la pestaña `Desencadenadores`, establece la frecuencia de ejecución.
-   3. En la pestaña `Acciones`, crea una nueva acción, escribe el `Programa o script` (por ejemplo, `F:\pull-master.sh`), agrega los argumentos (por ejemplo, `pull-master.sh`), y establece el `Comenzar en` (por ejemplo, `F:\`).
-3. Prueba la ejecución. Si no hay problemas, la tarea se ejecutará automáticamente según la frecuencia establecida. (Si no funciona, consulta [**Pull-Git-Repo.xml**](https://github.com/linyuxuanlin/File-host/blob/main/software-development/Pull-Git-Repo.xml)).
+1. Busca y abre el "Programador de tareas".
+2. Haz clic en "Crear tarea".
+   1. En la pestaña "General", ingresa un nombre para la tarea.
+   2. En la pestaña "Desencadenadores", configura el período de ejecución.
+   3. En la pestaña "Acciones", crea una nueva acción, ingresa el "Programa o script" (por ejemplo, `F:\pull-master.sh`), agrega argumentos (por ejemplo, `pull-master.sh`) y establece la "Comenzar en" (por ejemplo, `F:\`).
+3. Prueba la ejecución, si no hay problemas, estará listo. (Si no funciona, puedes consultar [**Pull-Git-Repo.xml**](https://github.com/linyuxuanlin/File-host/blob/main/software-development/Pull-Git-Repo.xml))
 
 ## Implementación en un NAS de Synology
 
-1. Coloca el script (por ejemplo, `github-pull.sh`) en cualquier ruta en el NAS.
-2. Modifica la ruta `root_dir` en `github-pull.sh` a la ruta donde colocaste tus repositorios de Git (por ejemplo, `"/volume1/projects"`).
-3. En `Panel de control` - `Programador de tareas` - `Nueva tarea` - `Tarea definida por el usuario`, configura la frecuencia de ejecución y el comando para ejecutar el script (por ejemplo, `bash /volume1/stash/permanent/github-pull.sh`).
-4. En `Configuración`, configura la salida y luego selecciona la tarea y haz clic en `Ejecutar` para probar la ejecución. Puedes abrir la ruta de salida configurada para ver los resultados.
+1. Coloca el script (por ejemplo, `github-pull.sh`) en cualquier ubicación de tu NAS.
+2. Modifica la ruta de `root_dir` en `github-pull.sh` a la ubicación donde tienes tus repositorios de Git, por ejemplo `"/volume1/projects"`.
+3. Ve a "Panel de control" - "Programador de tareas" - "Crear" - "Tarea programada" - "Script definido por el usuario". Configura el período de ejecución en las pestañas "Programación" y "Configuración de la tarea" y establece el comando para ejecutar el script (por ejemplo, `bash /volume1/stash/permanent/github-pull.sh`).
+4. Puedes configurar la salida en "Configuración" y luego seleccionar la tarea y hacer clic en "Ejecutar" para probar la ejecución y ver los resultados en la ruta de salida configurada.
 
-Si necesitas ingresar la contraseña cada vez, puedes ejecutar el siguiente comando (debes habilitar el directorio de inicio del usuario de antemano):
+Si tienes que ingresar la contraseña cada vez, puedes ejecutar el siguiente comando (debes habilitar el directorio de inicio del usuario de antemano):
 
 ```shell
 git config –global credential.helper store
 ```
 
-Esto creará un archivo de texto local que almacena tu nombre de usuario y contraseña. La próxima vez que necesites ingresar la contraseña, solo necesitas hacerlo una vez y no tendrás que ingresarla de nuevo.
+Esto generará un archivo de texto local que almacenará tu nombre de usuario y contraseña. Cuando se te solicite ingresar la contraseña nuevamente, solo tendrás que hacerlo una vez y no tendrás que volver a ingresarla en el futuro.
 
 ## Referencias y agradecimientos
 
