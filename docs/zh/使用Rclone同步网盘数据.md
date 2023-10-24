@@ -6,7 +6,7 @@ Rclone 是一个用于管理网盘文件的命令行工具，支持 40 余种网
 
 - [**Rclone**](https://rclone.org/downloads/)：下载后将 `.exe` 解压，记下路径。
 - [**RcloneBrowser**](https://github.com/kapitainsky/RcloneBrowser/releases)：GUI 工具。安装后选择 Rclone 的路径。
-- （[**WinFsp**](http://www.secfs.net/winfsp/rel/)：依赖库，如果挂载虚拟硬盘就需要安装）
+- （可选）[**WinFsp**](http://www.secfs.net/winfsp/rel/)：依赖库，如果挂载虚拟硬盘就需要安装）
 
 ## 配置流程
 
