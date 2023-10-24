@@ -1,186 +1,169 @@
-# استخدام لغة R لتحليل البيانات
+# استخدام لغة R في تحليل البيانات
 
 ## تثبيت البرامج
 
-- [**R-software**](https://cran.r-project.org/)
-  - إذا كنت تستخدم نظام Windows ، فيرجى النقر على "تنزيل R لنظام Windows" على الصفحة الرئيسية للموقع ، ثم النقر على "تثبيت R للمرة الأولى" ، ثم النقر على "تنزيل R 4.0.4 لنظام Windows" ، بعد تنزيل البرنامج ، يرجى إكمال التثبيت بنفسك.
-  - لا يوجد واجهة رسومية لبرنامج R فهو يعمل فقط في الخلفية.
+- [**برمجية R**](https://cran.r-project.org/)
+  - إذا كنت تستخدم نظام Windows، يرجى الانتقال إلى الصفحة الرئيسية للموقع والنقر على "تنزيل R لنظام Windows"، ثم انقر على "تثبيت R للمرة الأولى"، وأخيرًا انقر على "تنزيل R 4.0.4 لنظام Windows"، بعد تنزيل البرنامج، يرجى تثبيته بنفسك.
+  - برمجية R تعمل فقط في الخلفية ولا تحتوي على واجهة رسومية.
 - [**RStudio**](https://rstudio.com/products/rstudio/download/#download)
-  - الرجاء النقر على الزر الأزرق "تنزيل" مباشرةً ، أو تحميل إصدارات أخرى من الصفحة الرئيسية. بعد تنزيل البرنامج ، يرجى إكمال التثبيت بنفسك.
+  - انقر مباشرة على الزر الأزرق "تنزيل"، أو قم باختيار إصدار آخر من البرنامج من أسفل الصفحة. بعد تنزيل البرنامج، يرجى تثبيته بنفسك.
 
-## مصادر التعليم
+## مصادر التعلم
 
-### مصادر عبر الإنترنت (موصى بها)
+### موارد عبر الإنترنت (موصى بها)
 
-- [R-tutorial](http://www.r-tutor.com/r-introduction)
+- [دليل تعلم R](http://www.r-tutor.com/r-introduction)
 - [تعلم لغة R من الصفر](https://bookdown.org/qiyuandong/intro_r/)
 
 ### الكتب
 
-- [The R-book](https://www.cs.upc.edu/~robert/teaching/estadistica/TheRBook.pdf)
-- [R for Data Science](https://r4ds.had.co.nz/index.html)
+- [كتاب R](https://www.cs.upc.edu/~robert/teaching/estadistica/TheRBook.pdf)
+- [R لعلوم البيانات](https://r4ds.had.co.nz/index.html)
 
 ## أنواع البيانات الأساسية
 
-تتضمن أنواع البيانات في لغة R الأساسية ما يلي:
+أنواع البيانات في لغة R تشمل بشكل أساسي ما يلي:
 
-- **أرقام (numerics)**
-- **أعداد صحيحة (integer)**
-- **أعداد مركبة (complex)**
-- **منطقي (logical)**
-- **نص (characters)**
+- **الأعداد (Numerics)**
+- **الأعداد الصحيحة (Integers)**
+- **الأعداد المركبة (Complex)**
+- **المنطقية (Logical)**
+- **النصية (Characters)**
 
-### أرقام (numerics)
+### الأعداد (Numerics)
 
-تعتبر الأرقام هي النوع الأساسي للبيانات في لغة R. عندما نقوم بتعيين قيمة رقمية لمتغير ، فإن نوع المتغير هو الأرقام:
+الأعداد هي أنواع البيانات الأساسية في لغة R. عندما نسند قيمة عددية إلى متغير، سيكون نوع المتغير هو الأعداد:
 
 ```r
-> x = 11.15       # تعيين الرقم 11.15 للمتغير x
-> x              # طباعة قيمة x
+> x = 11.15       # قم بتعيين القيمة 11.15 إلى المتغير x
+> x              # اعرض قيمة المتغير x
 [1] 11.15
-> class(x)       # طباعة نوع x
+> class(x)       # اعرض نوع المتغير x
 [1] "numeric"
 ```
 
-يمكن أن يكون العدد صحيحًا أو عشريًا. ومع ذلك ، إذا تم إنشاء المتغير بهذه الطريقة ، فسيتم اعتبار المتغير الصحيح أيضًا متغيرًا عشريًا.
+يمكن أن تكون الأعداد الصحيحة أو العشرية من نوع الأعداد. ولكن إذا تم إنشاء المتغير بهذه الطريقة، فإن المتغيرات الصحيحة ستكون أيضًا من نوع الأعداد العشرية.
 
-### أعداد صحيحة (integer)
+### الأعداد الصحيحة (Integers)
 
-إذا كنت تريد إنشاء متغير صحيح ، فيجب استخدام الدالة `is.integer`:
+لإنشاء متغيرات من نوع الأعداد الصحيحة، يجب استخدام وظيفة `as.integer`:
 
 ```r
 > y = as.integer(3)
-> y              # طباعة قيمة y
+> y              # اعرض قيمة المتغير y
 [1] 3
-> class(y)       # طباعة نوع y
+> class(y)       # اعرض نوع المتغير y
 [1] "integer"
-> is.integer(y)  # هل y عدد صحيح؟
+> is.integer(y)  # هل المتغير y من نوع الأعداد الصحيحة؟
 [1] TRUE
 ```
 
-يمكنك أيضًا إضافة حرف `L` في النهاية لإنشاء متغير صحيح:
+بالإضافة إلى استخدام وظيفة `is.integer`، يمكنك أيضًا إضافة اللاحقة `L` لتحقيق نفس الغرض:
 
 ```r
 > y = 3L
-> is.integer(y)  # هل y عدد صحيح؟
+> is.integer(y)  # هل المتغير y من نوع الأعداد الصحيحة؟
 [1] TRUE
 ```
 
-إذا كنت تريد تقريب العدد العشري ، فيمكنك استخدام الدالة `as.integer`:
+إذا كنت بحاجة لتقريب عدد عشري إلى أقرب عدد صحيح، يمكنك استخدام وظيفة `as.integer`:
 
 ```r
-> as.integer(3.14)    # تحويل العدد العشري إلى عدد صحيح
+> as.integer(3.14)    # قم بتقريب المتغير إلى أقرب عدد صحيح
 [1] 3
 ```
 
-يمكن أيضًا تحويل النص إلى عدد صحيح:
+يمكن أيضًا تحليل سلاسل نصية وتقريبها إلى أقرب عدد صحيح:
 
 ```r
-> as.integer("5.27")  # تحويل النص إلى عدد صحيح
+> as.integer("5.27")  # قم بتحليل السلسلة النصية وتقريبها إلى أقرب عدد صحيح
 [1] 5
 ```
 
-ومع ذلك ، إذا كان النص الذي يتم تحليله ليس رقمًا ، فسيتم إصدار خطأ:
+لكن إذا تم تحليل سلسلة نصية لا تحتوي على أرقام، ستظهر رسالة خطأ:
 
 ```r
-> as.integer("Joe")   # تحليل النص الذي ليس رقمًا
+> as.integer("Joe")   # قم بتحليل سلسلة نصية غير عددية
 [1] NA
 Warning message:
 NAs introduced by coercion
 ```
 
-مثل لغة C ، يتم تعيين القيمة 1 لـ `TRUE` والقيمة 0 لـ `FALSE` في لغة R:
+لغة R تحتكم إلى نفس مبدأ لغة C عندما ترتبط الأعداد الصحيحة بقيم `1` و`0` المنطقية:
 
 ```r
-> as.integer(TRUE)    # المتغير الرقمي لـ TRUE
-[1] 1
-> as.integer(FALSE)   # المتغير الرقمي لـ FALSE
-[1] 0
-```
+> as.integer(TRUE)    #
 
-### أعداد مركبة (complex)
-
-في لغة R ، يتم تعريف المتغيرات المركبة باستخدام `i`:
-
+```markdown
 ```r
-> z = 3 + 2i       # تعيين المتغير المركب z
-> z              # طباعة قيمة z
-[1] 3+2i
-> class(z)       # طباعة نوع z
-[1] "complex"
-```
-
-
-
-```r
-> z = 1 + 2i     # إنشاء متغير عدد مركب z
-> z              # إظهار قيمة z
+> z = 1 + 2i     # Create a complex variable z
+> z              # Output the value of z
 [1] 1+2i
-> class(z)       # إظهار نوع z
+> class(z)       # Output the type of z
 [1] "complex"
 ```
 
-إذا قمنا بأخذ جذر تربيعي لـ `-1` فسيحدث خطأ:
+If we simply take the square root of `-1`, it will result in an error:
 
 ```r
-> sqrt(−1)       # أخذ جذر تربيعي لـ -1
+> sqrt(-1)       # Take the square root of -1
 [1] NaN
 Warning message:
-In sqrt(−1) : NaNs produced
+In sqrt(-1) : NaNs produced
 ```
 
-ولكن إذا قمنا بأخذ جذر تربيعي للعدد المركب `−1+0i` فلن يحدث خطأ:
+But taking the square root of the complex number `-1+0i` is not a problem:
 
 ```r
-> sqrt(−1+0i)    # أخذ جذر تربيعي لـ −1+0i
+> sqrt(-1+0i)    # Take the square root of -1+0i
 [1] 0+1i
 ```
 
-يمكن أيضًا استخدام التحويل القسري للأنواع للقيام بالعمليات:
+You can also perform the operation using type coercion:
 
 ```r
-> sqrt(as.complex(−1))
+> sqrt(as.complex(-1))
 [1] 0+1i
 ```
 
-### النوع المنطقي (logical)
+### Logical
 
-يتم إنشاء النوع المنطقي عادةً عن طريق مقارنة المتغيرات:
+Logical values are typically generated by comparing variables:
 
 ```r
-> x = 1; y = 2   # متغيرات العينة
-> z = x > y      # هل x أكبر من y؟
-> z              # إظهار المتغير المنطقي
+> x = 1; y = 2   # Sample variables
+> z = x > y      # Is x greater than y?
+> z              # Output a logical variable
 [1] FALSE
-> class(z)       # إظهار نوع z
+> class(z)       # Output the type of z
 [1] "logical"
 ```
 
-العمليات المنطقية الأساسية هي `&` (و)، `|` (أو)، `!` (لا):
+Basic logical operations include `&` (and), `|` (or), and `!` (not):
 
 ```r
 > u = TRUE; v = FALSE
-> u & v          # عملية "و" بين u و v
+> u & v          # Perform "and" operation on u and v
 [1] FALSE
-> u | v          # عملية "أو" بين u و v
+> u | v          # Perform "or" operation on u and v
 [1] TRUE
-> !u             # عملية "لا" على u
+> !u             # Perform "not" operation on u
 [1] FALSE
 ```
 
-### النوع النصي (character)
+### Character
 
-يمكن الحصول على النوع النصي باستخدام التحويل القسري `as.character`:
+Character values can be obtained using the `as.character` function:
 
 ```r
 > x = as.character(3.14)
-> x              # إظهار السلسلة النصية
+> x              # Output the string
 [1] "3.14"
-> class(x)       # إظهار نوع x
+> class(x)       # Output the type of x
 [1] "character"
 ```
 
-يمكن استخدام الدالة `paste` لدمج متغيرين نصيين:
+To concatenate two character variables, you can use the `paste` function:
 
 ```r
 > fname = "Joe"; lname ="Smith"
@@ -188,64 +171,65 @@ In sqrt(−1) : NaNs produced
 [1] "Joe Smith"
 ```
 
-يمكن استخدام الدالة `sprintf` لإخراج النص بتنسيق معين لزيادة القراءة (في المثال، تم استبدال `%s` بـ `Sam` و `%d` بـ `100`):
+Similar to C syntax, you can use format strings for improved readability using the `sprintf` function:
 
 ```r
 > sprintf("%s has %d dollars", "Sam", 100)
 [1] "Sam has 100 dollars"
 ```
 
-إذا كنت تريد استخراج جزء من السلسلة النصية، يمكن استخدام الدالة `substr` (في المثال، تم قص الأحرف بين الحرف الثالث والحرف الثاني عشر):
+To extract a substring from a string, you can use the `substr` function (in the example, characters between the 3rd and 12th positions are extracted):
 
 ```r
 > substr("Mary has a little lamb.", start=3, stop=12)
 [1] "ry has a l"
 ```
 
-إذا كنت تريد استبدال أول حرف تقابله بحرف آخر، يمكن استخدام الدالة `sub` (في المثال، تم استبدال `little` بـ `big`):
+If you want to replace the first occurrence of a character with another character, you can use the `sub` function (in the example, "little" is replaced with "big"):
 
 ```r
 > sub("little", "big", "Mary has a little lamb.")
 [1] "Mary has a big lamb."
 ```
 
-## الفيكتور (المتجه)
+## Vectors
 
-### الفيكتور في لغة R
+### Vectors in R
 
-الفيكتور هو مصفوفة تحتوي على عناصر من نفس النوع، ويطلق على أعضائها اسم components.
+A vector is an array that contains elements of the same type, and the members within a vector are referred to as components.
 
-فيما يلي مثال على فيكتور (يحتوي على ثلاثة متغيرات عددية `2` `3` `5`):
+Here's an example of a vector (containing three numeric variables: `2`, `3`, and `5`):
 
 ```r
 > c(2, 3, 5)
 [1] 2 3 5
 ```
 
-يمكن أيضًا أن يتكون بالكامل من النوع المنطقي:
+Vectors can also consist entirely of logical values:
 
 ```r
 > c(TRUE, FALSE, TRUE, FALSE, FALSE)
 [1] TRUE FALSE TRUE FALSE FALSE
 ```
 
-أو يمكن أن يتكون بالكامل من النوع النصي:
+Character vectors are also possible:
 
 ```r
 > c("aa", "bb", "cc", "dd", "ee")
 [1] "aa" "bb" "cc" "dd" "ee"
 ```
 
-إذا كنت تريد معرفة عدد الأعضاء في الفيكتور، يمكن استخدام الدالة `length`:
+To find out how many members are in a vector, you can use the `length` function:
+```markdown
 
 ```r
 > length(c("aa", "bb", "cc", "dd", "ee"))
 [1] 5
 ```
 
-### دمج الأسهم
+### Merging Vectors
 
-إذا كنت تريد دمج اثنين من الأسهم، يمكنك استخدام الدالة `c`:
+To merge two vectors, you can use the `c` function:
 
 ```r
 > n = c(2, 3, 5)
@@ -254,18 +238,18 @@ In sqrt(−1) : NaNs produced
 [1] "2"  "3"  "5"  "aa" "bb" "cc" "dd" "ee"
 ```
 
-يرجى ملاحظة في المثال أعلاه، إذا تم دمج اثنين من الأسهم بأنواع بيانات مختلفة، فسيتم توافق النوع بعد الدمج (أي يتم تحويل النوع الأكثر صرامة إلى النوع الأكثر ارتياحًا، مثل تحويل الأرقام إلى الأحرف).
+Note that in the example above, when merging two vectors of different data types, the resulting vector will be of a type that is more permissive (i.e., it will convert from a stricter type to a looser type, such as converting numeric to character).
 
-### العمليات الأساسية على الأسهم
+### Basic Vector Operations
 
-لنفترض أولاً أن لدينا اثنين من الأسهم `a` `b`:
+Let's assume two vectors `a` and `b`:
 
 ```r
 > a = c(1, 3, 5, 7)
 > b = c(1, 2, 4, 8)
 ```
 
-وهذه هي العمليات الأساسية على الأسهم:
+Here are some basic vector operations:
 
 ```r
 > a + b
@@ -284,7 +268,7 @@ In sqrt(−1) : NaNs produced
 [1] 1.000 1.500 1.250 0.875
 ```
 
-إذا كان عدد أعضاء الأسهم المضافة غير متساوٍ، فسيتم توافق النتيجة بأسفل (أي يتم اختيار طول النتيجة بناءً على الأطول):
+If the two vectors being added have different numbers of members, the result will be of a length determined by the longer vector:
 
 ```r
 > u = c(10, 20, 30)
@@ -293,30 +277,30 @@ In sqrt(−1) : NaNs produced
 [1] 11 22 33 14 25 36 17 28 39
 ```
 
-### البحث في الأسهم
+### Retrieving from Vectors
 
-إذا كنت تريد استخراج عضو من الأسهم، يمكنك استخدام الفهرس المعلن في `[ ]`، أي `[عضو رقم]`:
+To extract members from a vector, you can use indexing within square brackets `[ ]`, like `[position]`:
 
 ```r
 > s = c("aa", "bb", "cc", "dd", "ee")
-> s[3]  # استخراج قيمة العضو الثالث وطباعتها
+> s[3]  # Retrieve the value of the third member and output it
 [1] "cc"
 ```
 
-إذا أضفت علامة ناقص قبل الفهرس، مثل `[-3]`، فهذا يعني استخراج جميع الأعضاء باستثناء العضو الثالث:
+If you precede the index with a negative sign, such as `[-3]`, it means you want to extract all members except the third one:
 
 ```r
 > s[-3]
 [1] "aa" "bb" "dd" "ee"
 ```
 
-إذا تجاوز الفهرس طول الأسهم، فسيتم إصدار خطأ:
+If the index is out of the vector's length, it will result in an error:
 
 ```r
 > s[10]
 [1] NA
 ```
 
-【تحديث جارٍ】
+[Updating...]
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

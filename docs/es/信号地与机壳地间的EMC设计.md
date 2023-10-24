@@ -1,15 +1,18 @@
-# Diseño EMC entre la tierra de señal y la tierra de la carcasa
+# Diseño EMC entre tierra de señal y tierra de carcasa
 
-Por lo general, entre la tierra de señal y la tierra de la carcasa en una PCB, se utiliza un condensador de alta tensión (1 ~ 100nF / 2kV) y una gran resistencia (1MΩ) en paralelo para mejorar el rendimiento EMC:
+Por lo general, entre la tierra de señal y la tierra de la carcasa en una PCB, se utiliza una conexión en paralelo de un condensador de alto voltaje (1~100nF/2kV) y una resistencia grande (1MΩ) con el fin de mejorar el rendimiento EMC, como se muestra a continuación:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220620162528.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20220620162528.png)
 
-El condensador actúa como un filtro de paso alto. Desde el punto de vista de EMI, puede evitar la radiación de antena al hacer que las interferencias de alta frecuencia generadas internamente en el circuito fluyan a través de la carcasa hacia la tierra; desde el punto de vista de EMS, puede suprimir la diferencia de voltaje común transitoria entre la fuente de interferencia de alta frecuencia y el circuito, ya que a veces no se puede conectar directamente (la tierra después del puente rectificador de 220VAC no se puede conectar directamente a la tierra de la carcasa) o la conexión directa no es lo suficientemente segura.
+La función del condensador es permitir el paso de corriente alterna y bloquear la corriente continua. Desde una perspectiva de EMI, esto permite que las interferencias de alta frecuencia generadas internamente en el circuito fluyan hacia la carcasa y se descarguen a través de la tierra, evitando así la radiación de antenas. Desde una perspectiva de EMS, el condensador puede suprimir las diferencias de voltaje transitorias de modo común entre las fuentes de interferencia de alta frecuencia y el circuito, especialmente cuando no es seguro conectar directamente el circuito a tierra (por ejemplo, cuando la tierra de 220VAC después del puente rectificador no se puede conectar directamente a la tierra de la carcasa).
 
-La resistencia actúa como una descarga de carga para evitar daños en el circuito por ESD. Si solo se conecta la tierra de señal y la tierra de la carcasa con un condensador, la tierra de señal estará flotando. Durante las pruebas de ESD, la tierra de señal acumulará gradualmente cargas de alta tensión. Una vez que supere la tensión que los dos puntos de tierra más cercanos pueden soportar, se producirá una descarga de arco que generará una corriente muy grande en unos pocos nanosegundos, dañando el circuito. Al agregar esta resistencia en paralelo, se puede descargar lentamente la carga.
+La función de la resistencia es descargar lentamente la carga para prevenir daños al circuito causados por ESD. Si solo se conecta la tierra de señal a la tierra de la carcasa mediante el condensador, la tierra de señal estará flotando. Durante las pruebas de ESD, la tierra de señal acumulará gradualmente una alta carga eléctrica. Si esta carga supera la tensión que las tierras más cercanas entre sí pueden soportar, se producirá una descarga de arco eléctrico que generará una corriente considerable en cuestión de nanosegundos, lo que dañaría el circuito. Al conectar en paralelo esta resistencia, se puede descargar la carga de manera gradual.
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
-- [¿Qué se dice sobre la conexión de resistencia y capacitancia entre la tierra de PCB y la carcasa metálica?](https://mp.weixin.qq.com/s/vAdoDyBed4uIfISrP0Zeyw)
+- [Conexión de resistencia y condensador entre tierra de PCB y carcasa de metal, ¿qué se dice al respecto?](https://mp.weixin.qq.com/s/vAdoDyBed4uIfISrP0Zeyw)
+
+> Dirección original del artículo: <https://wiki-power.com/>
+> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

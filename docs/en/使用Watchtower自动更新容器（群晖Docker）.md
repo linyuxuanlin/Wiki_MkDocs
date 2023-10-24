@@ -1,31 +1,34 @@
-# Automatically Updating Containers with Watchtower (Synology Docker)
+# Automatically Updating Containers on Synology Docker with Watchtower
 
-Use Watchtower to automatically update containers on Synology Docker.
+Automatically update containers on Synology Docker using Watchtower.
 
-## Download the Image in Synology Docker Applications
+## Downloading the Image in Synology Docker Application
 
-Open Synology Docker Suite and download the `containrrr/watchtower` image.
+Open the Synology Docker package and download the `containrrr/watchtower` image.
 
-## Configure Watchtower in Task Scheduler
+## Configuring Watchtower in Task Scheduler
 
-Open Synology's `Control Panel` - `Task Scheduler` - `Create` - `Scheduled Task` - `User-defined script`, and then fill in the configuration according to the following pictures:
+Navigate to Synology's `Control Panel` - `Task Scheduler` - `Create` - `Scheduled Task` - `User-defined script`. Then, fill in the configuration as shown in the images below:
 
-![](https://img.wiki-power.com/d/wiki-media/img/202301092319956.png)
+![Configuration Image 1](https://img.wiki-power.com/d/wiki-media/img/202301092319956.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/202301092321592.png)
+![Configuration Image 2](https://img.wiki-power.com/d/wiki-media/img/202301092321592.png)
 
-The script is as follows:
+The script in question is as follows:
 
 ```shell
 docker run --rm --name watchtower -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --cleanup --run-once calibre-web freshrss code-server
 ```
 
-Note that the last part of the script `calibre-web freshrss code-server` is the name of the container that needs to be updated. Replace it with the name of the container you want to update, or leave it blank to update all containers.
+Please note that the last part of the script, "calibre-web freshrss code-server," represents the names of the containers to be updated. You should replace these with the names of the containers you wish to update, or leave it blank to update all containers.
 
-Save and run the script to achieve batch scheduled updates of Docker containers.
+Save and execute the script to achieve batch scheduled updates of Docker containers.
 
-## Reference and Acknowledgement
+## References and Acknowledgments
 
-- [How to Use Watchtower to Update Synology Docker Containers with One Command](https://post.smzdm.com/p/awzggnqp/)
+- [How to Gracefully Update Synology Docker Containers with a Single Command - Watchtower Tutorial](https://post.smzdm.com/p/awzggnqp/)
+
+> Original: <https://wiki-power.com/>
+> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

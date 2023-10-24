@@ -1,69 +1,72 @@
 # Accessing Synology NAS Using frp
 
-Access Synology NAS using frp in any network.
+Access your Synology NAS from any network using frp.
 
-## Why Access Synology Using frp
+## Why Use frp to Access Synology
 
-- No public IP
+- No public IP address
 - Slow QuickConnect service
-- Services like Peanut Shell require separate traffic purchase
+- Separate purchase of services like Peanut Shell for traffic
 
 ## Server Configuration
 
-Refer to the article [**How to Implement External Network RDP Remote Control (frp) · Server Configuration**](https://wiki-power.com/en/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91RDP%E8%BF%9C%E6%8E%A7%EF%BC%88frp%EF%BC%89#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%85%8D%E7%BD%AE). Note that the `vhost_http_port` / `vhost_https_port` parameters in the `frpc.ini` configuration file must be retained.
+Visit the article [**How to Implement External RDP Control (frp) - Server Configuration**](https://wiki-power.com/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91RDP%E8%BF%9C%E6%8E%A7%EF%BC%88frp%EF%BC%89#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%85%8D%E7%BD%AE). Note that the `vhost_http_port` / `vhost_https_port` parameters in the `frpc.ini` configuration file must be retained.
 
-### Bind Domain Name
+### Domain Binding
 
-- Add an A record with the server IP in the domain resolution
-- Configure domain name binding on the cloud server
+- Add an A record with the server's IP address in your domain registrar's settings.
+- Configure domain binding in your cloud server settings.
 
 ## Synology NAS Configuration
 
-### Edit Configuration File
+### Edit the Configuration File
 
-Create a new `frpc.ini` file in any location and enter the following content:
+Create a `frpc.ini` file at any location and add the following content:
 
-```ini title="frpc.ini"
+```ini
 [common]
 server_addr = Server IP
 server_port = Server frp port, default is 7000
-token = Key, must be the same as configured on the server
+token = Key, must match the one configured on the server
 
 [dsm-http]
 type = tcp
 local_ip = localhost
-local_port = Synology DSM http port, default is 5000
-custom_domains = Bound domain name
+local_port = Synology DSM HTTP port, default is 5000
+custom_domains = Bound domain
 remote_port = Custom remote port
 
 [dsm-https]
 type = tcp
 local_ip = localhost
-local_port = Synology DSM https port, default is 5001
-custom_domains = Bound domain name
+local_port = Synology DSM HTTPS port, default is 5001
+custom_domains = Bound domain
 remote_port = Custom remote port
 
 [ssh]
 type = tcp
 local_ip = localhost
 local_port = Default is 22
-custom_domains = Bound domain name
+custom_domains = Bound domain
 remote_port = Custom remote port
 ```
 
-### Using Docker Method
+### Using the Docker Method
 
-Install the `stilleshan/frpc` image in Synology's Docker and initialize the container using the following parameters:
+Install the `stilleshan/frpc` image in Synology's Docker and initialize the container with the following parameters:
 
-- Check `Use high privilege to execute container`
-- Check `Enable automatic restart`
-- Add a file in the `Volume` tab, select the local `frpc.ini` file, and mount it to the path `/frp/frpc.ini`
-- Check `Use the same network as Docker Host`
+- Enable 'Use high privilege to run container'
+- Enable 'Auto-restart'
+- Add a file under the 'Volume' tab, select your local `frpc.ini` file, and set the Mount path to `/frp/frpc.ini`
+- Enable 'Use the same network as Docker Host'
 
-Start the container and wait a moment, then you can access Synology DSM using the domain name + http port number.
+Start the container, and after a moment, you can access Synology DSM using your domain and HTTP port number.
 
-## Reference and Acknowledgment
+## References and Acknowledgments
 
-- [Tutorial on Using Docker to Install and Configure frpc Intranet Penetration for Synology NAS](https://www.ioiox.com/archives/26.html)
+- [Synology NAS Docker Installation and Configuration of frpc Intranet Penetration Tutorial](https://www.ioiox.com/archives/26.html)
+
+> Original: <https://wiki-power.com/>
+> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.
