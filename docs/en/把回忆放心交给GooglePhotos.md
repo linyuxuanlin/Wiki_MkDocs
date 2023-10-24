@@ -1,34 +1,34 @@
-# Entrusting Memories to Google Photos (Deprecated)
+# Entrust Memories to Google Photos (Deprecated)
 
 ## Background
 
-In the past, we used to store photos that held memories on our computers or hard drives. We gradually realized that photos kept piling up, and the folder-based classification method gradually lost its meaning: after a trip, we often procrastinated and didn't organize the photos; once the photos were organized, we never looked at them again; if the hard drive was damaged (due to physical or human factors), we could only send it for data recovery, and sometimes we couldn't even save it.
+In the past, we used to store photos that carry memories on computers or hard drives. Gradually, we realized that photos kept piling up, and the folder-based classification method gradually lost its meaning: after a trip, we often procrastinated and didn't organize the photos; when the photos were finally organized, we rarely looked back at them; once the hard drive encountered a disaster (physical or human factors), we could only send it for data recovery, and sometimes we couldn't even retrieve it.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/2af4c42e6f7a9f4ed45b6f150b164184.jpg)
 
-I kept looking for and discovering new media to store photos. I used Resilio Sync, Weiyun Sync Disk, Baidu Cloud Sync Disk, and other synchronization tools for multiple backups; I also considered building a NAS photo library (RAID 1); or various cloud services such as iCloud, Xiaomi Cloud Album, Weiyun, Baidu Cloud, etc., but I never found one that was convenient to use. Firstly, managing photos in the form of folders is indeed neat, but it is not convenient for organizing and viewing; secondly, it is common for these domestic service providers to sell your privacy when they run out of money.
+I kept searching and discovering new media to store photos. I tried using Resilio Sync, Weiyun Sync Disk, Baidu Cloud Sync Disk, and other sync tools for multiple backups; I also considered setting up a NAS photo library (RAID 1); or various cloud services such as iCloud, Xiaomi Cloud Album, Weiyun, Baidu Cloud, etc., but I never found one that suited me. Firstly, managing photos in folders is indeed neat, but it is not convenient for organizing and browsing; secondly, it is quite common for these domestic service providers to sell your privacy if they run out of money.
 
-I finally discovered Google Photos, which is relatively safe and has a more user-friendly interface. After experiencing it for more than a year, I think it's pretty good, so I updated this article.
+Finally, I discovered Google Photos, which is relatively secure and user-friendly. After experiencing it for more than a year, I think it's pretty good, so I updated this article.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/0f0ab1740e3206831f3e6ef19ef0c903.png)
 
 ## Features
 
-### 1. Unlimited Capacity
+### 1. Unlimited Storage
 
-Compared to iCloud (5GB of free space) and Xiaomi Cloud (11GB of free space), although you can purchase storage capacity, you still need to be cautious when syncing all photos. Google Photos' unlimited capacity completely meets the needs of personal photo storage. However, there are conditions: photos with a maximum of 16 million pixels and videos with 1080p will be compressed if they exceed the limit. But for non-professional users, it is enough.
+Compared to iCloud (5GB of free space) and Xiaomi Cloud (11GB of free space), although you can purchase storage capacity, you still need to be cautious when syncing all your photos. However, Google Photos' unlimited storage completely meets the needs of building a personal photo storage. But there are conditions: photos are limited to a maximum of 16 million pixels, and videos are limited to 1080p, anything beyond that will be compressed. However, for non-professional users, this is also sufficient.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/cea385ad94811257f4b7c084d41c5d30.jpg)
 
 ### 2. Intelligent
 
-Compared to managing photos in folder form, even if you don't archive and classify photos, Google Photos' search function is enough to help you dig out old photos that have been stored for many years; you can tag people and search for all photos about them. In addition, "Rediscover this day" is also a good feature.
+Compared to managing photos in folder form, even if you don't archive and categorize your photos, Google Photos' search function is enough to help you dig out old photos that have been stored away for years. You can tag people in the photos, and then you can search for all the photos related to that person. In addition, the "Rediscover this day" feature is also quite good.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/f1ccf68a3eeae7b4a69f58122838666d.png)
 
-### 3. Relatively Safe
+### 3. Relatively Secure
 
-Data is priceless. If you only store albums on your own devices (hard drives, etc.), you may worry about data damage or loss. Entrusting albums to a trusted cloud service provider is much safer. After all, they are responsible for user data, and if the hard drive fails, you can only bear it yourself. When it comes to security, privacy issues cannot be ignored. For me, I would entrust photos and other privacy to Google, which does not do evil, and would never give data to 360, Baidu. Under GDPR, Google, which respects user privacy more than "Chinese people who are more willing to exchange privacy for convenience" like Baidu, is even higher.
+Data is priceless. If you only store your albums on your own devices (hard drives, etc.), you may worry about data damage or loss. However, entrusting your albums to a trusted cloud service provider will be much safer. After all, they are responsible for the user's data; whereas if your hard drive encounters a problem, you can only bear the consequences yourself. Speaking of security, privacy issues cannot be ignored. For me, I would entrust the privacy of photos to Google, which does no evil, and I would never hand over my data to 360 or Baidu. Google, which respects user privacy more under GDPR, is far superior to Baidu, which believes "Chinese people are more willing to trade privacy for convenience".
 
 ![](https://img.wiki-power.com/d/wiki-media/img/59bd6366d7c370b480def6fec44802a6.png)
 
@@ -36,37 +36,40 @@ Data is priceless. If you only store albums on your own devices (hard drives, et
 
 - Compatible with various devices (iCloud and some cloud services only cater to their own devices)
 - Comes with a photo editor
-- After syncing to the cloud, you can free up phone storage
-- Automatically merge duplicate photos
+- After syncing to the cloud, you can free up storage on your phone
+- Automatically merges duplicate photos
 - Beautiful and user-friendly interface
 
-## Disadvantages
+## Drawbacks
 
 ### 1. Security Issues
 
-I dare not say too absolutely, after all, free services should not have too high expectations. However, Google has a reputation for security and is much safer than domestic manufacturers and hard drives and domestic cloud disks. Google may use your photos to train AI, but it should not leak them.
+I dare not make absolute claims, after all, free services should not be expected to meet high expectations. However, Google has a reputation to uphold and is indeed much safer than domestic manufacturers, hard drives, and domestic cloud drives. Google may use your photos to train AI, but they should not leak them.
 
 ### 2. Domestic Network
 
-For well-known reasons, if you don't have a good VPN, it's better to give up Google Photos.
+For well-known reasons, if you don't have a good VPN, it's better to give up on Google Photos.
 
-### 3. Synchronization
+### 3. Syncing
 
-Google Photos only syncs photos when it is opened, which may be an advantage. After syncing, you can delete the photos on your device to free up space. After using it for a period of time, the cache will increase, so it is recommended to clear the cache regularly (especially for devices with small storage capacity).
+Google Photos can only sync photos when it is opened, which may also be an advantage. After syncing, you can delete the photos on your device and free up space. The cache will increase after using it for a while, so you need to regularly clear the cache (for devices with small storage capacity).
 
 ## FAQ
 
-Q: I am still concerned about data security. Is there a better solution?
+Q: Still concerned about data security, are there better solutions?
 
-A: It is recommended to use an encrypted external hard drive for backup or to encrypt the files before uploading them to a foreign cloud storage service.
+A: It is recommended to use encrypted backup on a portable hard drive or encrypt and upload the files to a foreign cloud storage service.
 
-## References and Acknowledgments
+## References and Acknowledgements
 
-- [Exploring the Truth Behind Google Photos' Unlimited Free Storage](http://www.ifanr.com/527180)
-- [Google Photos: A Good Choice for Backing Up Photos, But Not Necessarily the Best](http://www.sohu.com/a/190124959_742974)
-- [16 Tips for Searching Photos on Google Photos](https://www.playpcesor.com/2015/06/google-photos-search-tips-16.html)
-- ["Are Chinese People Willing to Trade Privacy for Convenience?" Is Robin Li Wrong?](https://news.newseed.cn/p/1345029)
-- [This Time, Google Photos is Redefining "Cloud Albums"](https://sspai.com/post/29151)
-- [Google Privacy Policy and Terms](https://policies.google.com/privacy?hl=en-US)
+- [Exploring the truth behind Google Photos' unlimited free storage](http://www.ifanr.com/527180)
+- [Google Photos: a good choice for backing up photos, but not necessarily the best](http://www.sohu.com/a/190124959_742974)
+- [16 magical tips for searching photos on Google Photos](https://www.playpcesor.com/2015/06/google-photos-search-tips-16.html)
+- ["Are Chinese people willing to trade privacy for convenience?" Was Robin Li wrong?](https://news.newseed.cn/p/1345029)
+- [This time, Google Photos is redefining "cloud album"](https://sspai.com/post/29151)
+- [Google Privacy Policy](https://policies.google.com/privacy?hl=en)
+
+> Original: <https://wiki-power.com/>
+> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

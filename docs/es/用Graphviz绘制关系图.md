@@ -1,30 +1,30 @@
-# Cómo dibujar gráficos de relaciones con Graphviz
+# Cómo dibujar un gráfico de relaciones con Graphviz
 
-Una forma de dibujar gráficos de relaciones mediante código.
+Una forma de dibujar gráficos de relaciones utilizando código.
 
-## Contexto
+## Antecedentes
 
-[Graphviz](http://www.graphviz.org/) es una herramienta útil para dibujar gráficos de relaciones. A diferencia de Visio, Graphviz genera gráficos con **distribución automática**, lo que significa que no es necesario ajustar manualmente la posición de los elementos. Cuando una red de relaciones es compleja, la distribución automática puede minimizar **la intersección de líneas**.
+[Graphviz](http://www.graphviz.org/) es una herramienta muy útil para dibujar gráficos de relaciones. A diferencia de Visio, Graphviz genera los gráficos de forma **automática**, sin necesidad de ajustar manualmente la posición de los elementos. Esto es especialmente útil cuando se trabaja con redes de relaciones complejas, ya que permite **minimizar la cantidad de cruces de líneas**.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/Graphviz.png)
 
 ## Instalación
 
-Se ha descubierto un editor en línea muy útil: \[GraphvizOnline\]\([http://dreampuf.github.io/GraphvizOnline/\#digraph graph_name { ](http://dreampuf.github.io/GraphvizOnline/#digraph%20graph_name%20{%20) %20%20A-&gt;B\[label%3D"关系"\]%20 }\) que admite la representación en tiempo real y la exportación en formatos como `.png` y `.svg`.
+He descubierto un editor en línea muy útil llamado \[GraphvizOnline\]\([http://dreampuf.github.io/GraphvizOnline/\#digraph graph_name { ](http://dreampuf.github.io/GraphvizOnline/#digraph%20graph_name%20{%20) %20%20A-&gt;B\[label%3D"关系"\]%20 }\) que permite renderizar los gráficos de forma instantánea y exportarlos en formatos como `.png` y `.svg`.
 
-Para macOS, la instalación es: `brew install graphviz`
+Para instalar en macOS, ejecuta el siguiente comando: `brew install graphviz`
 
-## Proceso de dibujo
+## Proceso de creación del gráfico
 
-1. Crear `xxx.dot`
-2. Editar el documento `.dot`
-3. Cambiar al directorio correspondiente y exportar: `dot xxx.dot -T png -o xxx.png`
+1. Crea un archivo `xxx.dot`
+2. Edita el documento `.dot`
+3. Cambia al directorio donde se encuentra el archivo y exporta el gráfico: `dot xxx.dot -T png -o xxx.png`
 
-## Sintaxis sencilla
+## Sintaxis básica
 
 ```
 graph graph_name {
-  A--B[label="relación de conexión"]
+  A--B[label="relación"]
 }
 ```
 
@@ -32,12 +32,12 @@ graph graph_name {
 
 ## Conclusión
 
-La distribución automática es la esencia de Graphviz. Al igual que cuando usamos la sintaxis de Markdown para generar presentaciones, estas herramientas estandarizan el contenido, lo que permite que las personas se centren en el **contenido en lugar de la forma y la distribución**.
+La esencia de Graphviz radica en su capacidad de generar diseños automáticos. Al igual que cuando utilizo la sintaxis de Markdown para crear presentaciones, estas herramientas estandarizan el contenido y permiten que nos centremos en el **contenido en sí, en lugar de en la forma y el diseño**.
 
 ## Referencias y agradecimientos
 
-- [Tutorial sencillo de Graphviz](https://blog.zengrong.net/post/2294.html)
-- [Dibujar gráficos con dot](http://www.graphviz.org/pdf/dotguide.pdf)
+- [Tutorial básico de Graphviz](https://blog.zengrong.net/post/2294.html)
+- [Dibujo de gráficos con dot](http://www.graphviz.org/pdf/dotguide.pdf)
 - [Instalación y tutorial básico de Graphviz en Windows](https://blog.csdn.net/lanchunhui/article/details/49472949)
 
 > Dirección original del artículo: <https://wiki-power.com/>  

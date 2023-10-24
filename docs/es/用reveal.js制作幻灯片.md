@@ -1,16 +1,16 @@
-# Creando presentaciones con reveal.js
+# Creación de presentaciones con reveal.js
 
 ## Atajos de teclado
 
-- Siguiente diapositiva: **Barra espaciadora**
-- Seleccionar diapositiva: **Teclas de dirección**
+- Siguiente diapositiva: **Espacio**
+- Selección de diapositiva: **Teclas de dirección**
 - Vista general: **Esc**
 - Vista del presentador: **S**
-- Pausar presentación / pantalla negra: **V/B/.**
+- Pausar presentación / Pantalla en negro: **V/B/.**
 
 ## Exportación a PDF
 
-Agrega `?print-pdf` al final de la dirección, por ejemplo `http://localhost:8000/?print-pdf`
+Añade `?print-pdf` al final de la dirección, por ejemplo `http://localhost:8000/?print-pdf`
 
 ## Sintaxis de referencia
 
@@ -37,7 +37,7 @@ align="left"
 <p style="white-space: pre-line;"><small> </small></p>
 ```
 
-### Video
+### Vídeos
 
 ```html
 <section
