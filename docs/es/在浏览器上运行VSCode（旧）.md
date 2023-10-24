@@ -1,42 +1,43 @@
-# Ejecutar VS Code en el navegador (antiguo)
+```markdown
+# Running VS Code on a Browser (Old Method)
 
-Nota: Para la implementación de code-server v3.8.0 o superior, consulte [**Cómo ejecutar VS Code en iPad**](https://wiki-power.com/es/如何在iPad上运行VSCode) para obtener un método más simple.
+Note: For deploying code-server version ≥v3.8.0, please refer to [**How to Run VS Code on an iPad**](https://wiki-power.com/如何在iPad上运行VSCode) for a more streamlined approach.
 
-## Antecedentes
+## Background
 
-Como se sabe, VS Code es un editor muy potente. Si se pudiera usar VS Code en plataformas ligeras como el iPad (el soporte de teclado y ratón de iPadOS ya es comparable al de los sistemas de escritorio), podríamos trabajar en cualquier momento y lugar.
+It is well known that VS Code is a highly powerful code editor. If we could use VS Code on lightweight platforms like the iPad (with iPadOS offering mouse and keyboard support that rivals desktop systems), we could work anytime, anywhere.
 
-Afortunadamente, hay un servicio que permite ejecutar VS Code en un servidor: code-server. Después de la implementación, se puede acceder a él a través del navegador. De esta manera, cualquier dispositivo puede usar VS Code fácilmente siempre que tenga una conexión a Internet.
+Fortunately, there is a service that allows VS Code to run on a server: code-server. Once deployed, it can be accessed through a web browser. This way, with an internet connection, any device can easily make use of VS Code.
 
-## Preparar el entorno
+## Prerequisites
 
-Un servidor con Linux instalado (utilicé la máquina de estudiante de menor especificación de Alibaba Cloud).
+You will need a server with Linux installed (I used the lowest configuration student server from Alibaba Cloud).
 
-Los requisitos oficiales son los siguientes:
+Official system requirements are as follows:
 
-> - Host de 64 bits.
-> - Al menos 1 GB de RAM.
-> - Se recomiendan 2 núcleos o más (1 núcleo funciona pero no de manera óptima).
-> - Conexión segura a través de HTTPS o localhost (requerido para los trabajadores de servicio y el soporte de portapapeles).
-> - Para Linux: GLIBC 2.17 o posterior y GLIBCXX 3.4.15 o posterior.
+- 64-bit host.
+- At least 1GB of RAM.
+- 2 cores or more are recommended (1 core works but not optimally).
+- Secure connection over HTTPS or localhost (required for service workers and clipboard support).
+- For Linux: GLIBC 2.17 or later and GLIBCXX 3.4.15 or later.
 
-## Proceso de instalación
+## Installation
 
-### 1. Descargar
-
-```shell
-wget https://github.com/cdr/code-server/releases/download/3.1.0/code-server-3.1.0-linux-x86_64.tar.gz # Descargar code-server
-```
-
-No copie el comando directamente, copie el enlace de la última versión en la página de [**Release**](https://github.com/cdr/code-server/releases) de code-server (seleccione según la arquitectura del servidor, yo utilicé la versión `code-server-3.1.0-linux-x86_64.tar.gz`), y descargue o transfiera al servidor con `wget` o `SFTP`.
-
-Si la velocidad de descarga es lenta, puede copiar el enlace de descarga y utilizar el sitio web [**GitHub 文件加速**](https://gh.api.99988866.xyz/) para obtener un enlace de descarga acelerado en China.
+### 1. Download
 
 ```shell
-tar -xvf code-server-3.1.0-linux-x86_64.tar.gz # Descomprimir
+wget https://github.com/cdr/code-server/releases/download/3.1.0/code-server-3.1.0-linux-x86_64.tar.gz # Download code-server
 ```
 
-### 2. Instalar
+Do not copy the command verbatim. Instead, on the [**Release**](https://github.com/cdr/code-server/releases) page for code-server, copy the link for the latest version (choose the one that matches your server's architecture; I used the `code-server-3.1.0-linux-x86_64.tar.gz` version), and use `wget` or `SFTP` to download/transfer it to your server.
+
+If the download speed is slow, you can copy the download link and use the [**GitHub File Accelerator**](https://gh.api.99988866.xyz/) website to obtain a domestically accelerated download link.
+
+```shell
+tar -xvf code-server-3.1.0-linux-x86_64.tar.gz # Extract
+```
+
+### 2. Installation
 
 ```shell
 cd code-server
@@ -44,63 +45,64 @@ export PASSWORD="yourpassword"
 ./code-server --port 8888 --host 0.0.0.0
 ```
 
-- Cambie `yourpassword` a su propia contraseña, de lo contrario se generará una contraseña aleatoria.
-- `--port 8888` significa especificar el puerto de ejecución. Puede configurarlo en el puerto `80` (protocolo Http) para que no tenga que agregar el número de puerto al acceder.
-- `--host 0.0.0.0` permite que el servicio sea accesible desde Internet. El valor predeterminado `127.0.0.1` solo permite el acceso local.
-- Si no necesita autenticación de contraseña, puede agregar `--auth none`.
-- Si el servicio no se inicia correctamente, es posible que haya seleccionado la **versión de arquitectura del procesador** incorrecta. Simplemente cambie a otra versión.
+- Change `yourpassword` to your desired password; otherwise, a random password will be generated.
+- `--port 8888` specifies the running port. You can set it to `80` (HTTP protocol) so you won't need to add a port number when accessing it.
+- `--host 0.0.0.0` allows the service to be accessed from the external network. The default `127.0.0.1` restricts access to the local machine.
+- If you don't need password authentication, you can add `--auth none`.
+- If the service does not start successfully, it may be due to choosing the wrong **processor architecture version**. Try another version.
 
-### 3. Configurar la ejecución en segundo plano
+### 3. Configure Background Running
 
-Por defecto, si se ejecuta directamente, se cerrará cuando se desconecte la conexión ssh. Para que se ejecute en segundo plano, puede usar `screen`:
+By default, when running directly, the connection is lost when the SSH connection is terminated. To run it in the background, you can use `screen`:
 
 ```shell
 yum install screen
-o
+or
 apt-get install screen
 ```
 
 ```shell
-screen -S VSCode-online # VS Code-online es el nombre que elija
+screen -S VSCode-online # VSCode-online is a name of your choice
 export PASSWORD="password" && ./code-server --port 8888 --host 0.0.0.0
 ```
 
-Para volver a la tarea en ejecución de la pantalla:
+To re-enter the running screen job:
 
 ```shell
-screen -r nombre de la tarea
+screen -r JobName
+```
 ```
 
-Si necesita detener la ejecución en segundo plano de screen:
+Si necesitas detener la ejecución en segundo plano de `screen`:
 
 ```shell
-screen -ls # Ver el ID del servicio en ejecución
-screen -X -S id quit # Reemplazar id
+screen -ls # Ver IDs de servicios en ejecución
+screen -X -S id quit # Reemplaza 'id' con el ID correspondiente
 ```
 
-Salir de screen: `Ctrl + A + D`
+Para salir de `screen`: `Ctrl + A + D`
 
-### 4. Uso fácil
+### 4. Uso Sencillo
 
-Ingrese `http://your_server_ip` directamente en su navegador para disfrutar de VS Code en la nube.
+Simplemente ingresa `http://tu_dirección_ip_de_servidor` en tu navegador para disfrutar de VS Code en la nube.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200413181001.jpg)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200413181001.jpg)
 
-Configuración de acceso de dominio: `Por explorar...`
+Configuración de acceso mediante un dominio: *Pendiente de exploración...*
 
-## Problemas actuales
+## Problemas Actuales
 
-- La cantidad de complementos descargables directamente es limitada, la instalación manual de complementos es complicada y no hay una función de sincronización automática de complementos/configuraciones de usuario. Se espera que se resuelva en futuras versiones.
+- La cantidad de complementos descargables de manera directa es limitada, lo que hace que la instalación manual de complementos sea tediosa, y no hay funcionalidad de sincronización automática de complementos o configuraciones de usuario. Esto se abordará en futuras actualizaciones.
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
-- [Ejecutar VS Code en el navegador, code-server (servidor de Alibaba Cloud)](https://copyfuture.com/blogs-details/20200405045150018h4edt0f4q8486jq)
-- [Ejecutar VS Code en el navegador, code-server](https://segmentfault.com/a/1190000022267386)
-- [Herramienta en línea de VS code - Instalación y uso de code-server en un servidor en la nube y solución a problemas comunes (muy detallado)](https://blog.csdn.net/Granery/article/details/90415636)
-- [Entorno de aprendizaje de programación en iPad - Configuración de la versión web de VS Code](https://blog.icodef.com/2019/11/17/1670)
+- [Ejecución de VS Code en el navegador, code-server (en servidores de Alibaba Cloud)](https://copyfuture.com/blogs-details/20200405045150018h4edt0f4q8486jq)
+- [Ejecución de VS Code en el navegador, code-server](https://segmentfault.com/a/1190000022267386)
+- [Herramienta en línea recomendada para VS Code: instalación y uso de code-server en servidores en la nube con solución de problemas detallada](https://blog.csdn.net/Granery/article/details/90415636)
+- [Configuración de una versión web de VS Code para aprender a programar en iPad](https://blog.icodef.com/2019/11/17/1670)
 
 > Autor del artículo: **Power Lin**
-> Dirección original: <https://wiki-power.com>
-> Declaración de derechos de autor: Este artículo utiliza la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Por favor, indique la fuente al volver a publicar.
+> Fuente original: <https://wiki-power.com>
+> Declaración de derechos de autor: El artículo está licenciado bajo la [licencia CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Por favor, menciona la fuente si decides compartirlo.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
