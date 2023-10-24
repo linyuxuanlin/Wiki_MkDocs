@@ -27,6 +27,7 @@ services:
       - SUDO_PASSWORD=${APP_SUDO_PASSWORD} #optional
       #- SUDO_PASSWORD_HASH= #optional
       #- PROXY_DOMAIN=code.wiki-power.com #optional
+      #- DOCKER_MODS=linuxserver/mods:code-server-python3 #可选，如果你想添加一个 python 环境
     restart: unless-stopped
 ```
 
@@ -42,7 +43,6 @@ APP_VERSION=latest
 APP_PORT=xxxx # 自定义访问端口，选择不被占用的即可
 APP_PASSWORD=xxx # 登录密码
 APP_SUDO_PASSWORD=xxx # 超级用户权限密码
-
 ```
 
 最后，在 `compose.yaml` 同级目录下执行 `docker compose up -d` 命令即可启动编排的容器。

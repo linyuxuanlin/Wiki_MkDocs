@@ -1,12 +1,12 @@
-# الورشة المنزلية - محرر الشيفرة code-server على الإنترنت
+# Homelab - محرر الشفرة عبر الإنترنت code-server
 
 ![](https://img.wiki-power.com/d/wiki-media/img/202304132214418.png)
 
-**code-server** هو محرر شيفرة يمكن تشغيله في متصفح الويب. واحدة من المزايا المهمة له على سطح المكتب هي القدرة على كتابة الشيفرة عبر أي جهاز عبر الإنترنت، بما في ذلك الهواتف المحمولة والأجهزة اللوحية التي لا يمكن تثبيت VS Code مباشرة عليها.
+**code-server** هو برنامج يمكن تشغيله في المتصفح كـ VS Code. بالمقارنة مع الإصدار السطحي، يمكنك كتابة الشفرة عبر الإنترنت باستخدام أي جهاز، بما في ذلك الهواتف المحمولة والأجهزة اللوحية التي لا يمكن تثبيت VS Code عليها مباشرة.
 
-## النشر (بواسطة Docker Compose)
+## التنصيب (Docker Compose)
 
-أولاً، قم بإنشاء ملف `compose.yaml` والصق المحتوى التالي:
+أولاً، قم بإنشاء ملف `compose.yaml` ولصق المحتوى التالي فيه:
 
 ```yaml title="compose.yaml"
 version: "2.1"
@@ -19,69 +19,69 @@ services:
     volumes:
       - ${STACK_DIR}/config:/config
       - ${DATA_DIR_LOCAL}:/DATA
-    environment: # يجب تشغيلها بصلاحيات الجذر، وإلا لن تتمكن من الوصول إلى مجلدات Docker الأخرى أو مجلد الجذر على المضيف
+    environment: # يجب تشغيله بصلاحيات root، وإلا لن يتمكن من قراءة الدلائل الأخرى لـ Docker أو دليل root على المضيف
       - PUID=0
       - PGID=0
       - TZ=Asia/Shanghai
-      - PASSWORD=${APP_PASSWORD} # اختياري
-      - SUDO_PASSWORD=${APP_SUDO_PASSWORD} # اختياري
-      #- SUDO_PASSWORD_HASH= # اختياري
-      #- PROXY_DOMAIN=code.wiki-power.com # اختياري
+      - PASSWORD=${APP_PASSWORD} #optional
+      - SUDO_PASSWORD=${APP_SUDO_PASSWORD} #optional
+      #- SUDO_PASSWORD_HASH= #optional
+      #- PROXY_DOMAIN=code.wiki-power.com #optional
+      #- DOCKER_MODS=linuxserver/mods:code-server-python3 #optional, if you want to add a python environment
     restart: unless-stopped
 ```
 
-(اختياري) نوصي بإنشاء ملف `.env` في نفس المجلد الرئيسي لملف `compose.yaml` وتخصيص المتغيرات البيئية الخاصة بك هناك. إذا لم ترغب في استخدام المتغيرات البيئية، يمكنك تخصيص المعاملات مباشرة في ملف `compose.yaml` (على سبيل المثال، استبدال `${STACK_NAME}` بـ `code-server`).
+(اختياري) يُوصى بإنشاء ملف `.env` في نفس مستوى `compose.yaml` وتخصيص المتغيرات البيئية الخاصة بك. إذا كنت لا ترغب في استخدام المتغيرات البيئية، يمكنك تخصيص المعلمات مباشرة في `compose.yaml` (على سبيل المثال، استبدال `${STACK_NAME}` بـ `code-server`).
 
 ```dotenv title=".env"
 STACK_NAME=code-server
 STACK_DIR=xxx # مسار تخزين المشروع المخصص، مثل ./code-server
-DATA_DIR_LOCAL=xxx # مجلد المضيف المحلي الذي يتم توصيله يدويًا، مثل /DATA
+DATA_DIR_LOCAL=xxx # مسار التوصيل المحلي المخصص، مثل /DATA
 
 # code-server
 APP_VERSION=latest
-APP_PORT=xxxx # تخصيص منفذ الوصول الخاص بك - اختر منفذًا غير مستخدم بالفعل
-APP_PASSWORD=xxx # كلمة المرور لتسجيل الدخول
-APP_SUDO_PASSWORD=xxx # كلمة المرور للمستخدم الجذر - اختياري
-
+APP_PORT=xxxx # منفذ الوصول المخصص، اختر منفذًا غير مستخدم بالفعل
+APP_PASSWORD=xxx # كلمة المرور للتسجيل
+APP_SUDO_PASSWORD=xxx # كلمة مرور المستخدم الجذر
 ```
 
-أخيرًا، قم بتشغيل الأمر `docker compose up -d` في نفس المجلد الذي يحتوي على ملف `compose.yaml` لبدء تشغيل الحاويات.
+أخيرًا، قم بتشغيل الأمر `docker compose up -d` في نفس مجلد `compose.yaml` لبدء تشغيل الحاوية المُرتبة.
 
-## تفسير الإعدادات
+## تعليمات التكوين
 
 ### تكوين Git
 
-بعد الانتهاء من التثبيت، إذا كنت بحاجة إلى استخدام Git، يرجى الرجوع إلى مقالة [**مذكرات تعلم Git**](https://wiki-power.com/ar/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE] للحصول على إرشادات حول تكوين اسم المستخدم والبريد الإلكتروني.
+بعد التثبيت، إذا كنت بحاجة إلى استخدام Git وتهيئة اسم المستخدم والبريد الإلكتروني، يُرجى الاطلاع على المقالة [**ملاحظات تعلم Git**](https://wiki-power.com/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE).
 
-### مشكلة الأذونات
+### مشكلة إذن القراءة والكتابة
 
-إذا واجهت مشكلة "Error: EACCES: permission denied" أثناء التعامل مع الملفات، يمكنك فتح الطرفية واستخدام الأمر التالي لمنح صلاحيات المستخدم الحالي على المجلد:
+إذا واجهتك خطأ "Error: EACCES: permission denied" أثناء التعامل مع الملفات، يمكنك فتح الطرفية وإدخال الأمر التالي لمنح المستخدم الحالي حقوق الملكية:
 
 ```shell
 sudo chown -R اسم_المستخدم مسار_المجلد
 ```
 
-مثلاً، إليك كيفية منح مالك المجلد "abc" صلاحيات على المجلد الحالي:
+على سبيل المثال، هذا هو الأمر الذي يمنح المستخدم "abc" حقوق الملكية على المجلد الحالي:
 
 ```shell
 sudo chown -R abc .
 ```
 
-### تعيين كلمة مرور الجذر
+### تعيين كلمة مرور حساب root
 
-إذا كنت بحاجة إلى استخدام حساب الجذر، يمكنك استخدام الأمر التالي لتعيين كلمة مرور له:
+إذا كنت بحاجة إلى استخدام حساب root ، فيمكنك استخدام الأمر التالي لتهيئة كلمة المرور الخاصة به:
 
 ```shell
 sudo passwd root
 ```
 
-## المراجعة والشكر
+## المراجع والشكر
 
 - [الموقع الرسمي](https://coder.com/docs/code-server/latest)
 - [الوثائق / مستودع GitHub](https://github.com/linuxserver/docker-code-server)
-- [مركز Docker](https://hub.docker.com/r/linuxserver/code-server)
+- [Docker Hub](https://hub.docker.com/r/linuxserver/code-server)
 
-> عنوان النص: <https://wiki-power.com/>  
+> عنوان النص: <https://wiki-power.com/>
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
