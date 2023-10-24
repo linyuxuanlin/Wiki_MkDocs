@@ -1,24 +1,24 @@
 # Esquema de alimentación (LDO) - XC6206
 
-La serie XC6206 es un regulador de voltaje positivo de tres terminales de alta precisión y bajo consumo de energía que proporciona una corriente alta y una diferencia de voltaje mínima. Está compuesto internamente por un circuito limitador de corriente, un transistor de conducción, un voltaje de referencia de precisión y un circuito corrector de error. Esta serie es compatible con capacitores cerámicos de baja ESR. El voltaje de salida se puede seleccionar en incrementos de 0.1V en el rango de 1.2V a 5.0V.
+La serie XC6206 es un regulador de voltaje positivo de tres terminales de alta precisión y bajo consumo de energía. Proporciona una corriente alta y una caída de voltaje mínima, y está compuesto internamente por un circuito de limitación de corriente, un transistor de conducción, un voltaje de referencia de precisión y un circuito de corrección. Esta serie es compatible con capacitores cerámicos de baja ESR. El voltaje de salida se puede seleccionar en incrementos de 0.1V en un rango de 1.2V a 5.0V.
 
-En este artículo, se utiliza la serie XC6206 de TOREX en un paquete SOT-23. Otros fabricantes pueden utilizar el mismo modelo, pero se recomienda verificar los parámetros detallados.
+En este artículo se utiliza la serie XC6206 de TOREX, con encapsulado SOT-23. Otros fabricantes pueden ofrecer modelos equivalentes, pero se recomienda verificar los parámetros detallados.
 
 Repositorio del proyecto: [**Collection_of_Power_Module_Design/LDO/XC6206**](https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/LDO/XC6206)
 
 ## Características principales
 
 - Corriente máxima de salida: 200mA (valor típico a 6.0V)
-- Diferencia de voltaje: 250mV@100mA (valor típico a 6.0V)
+- Caída de voltaje: 250mV a 100mA (valor típico a 6.0V)
 - Voltaje de operación máximo: 6.0V
-- Rango de voltaje de salida: 1.2V ~ 5.0V (incrementos de 0.1V)
-- Precisión: ±30mV cuando Vout<1.5V; ±2% cuando Vout>1.5V; ±1% cuando Vout>2V
-- Bajo consumo de energía: valor típico de 1.0uA
-- Circuitos de protección: circuito limitador de corriente incorporado
-- Temperatura de operación: -40℃~ +85℃
-- Paquetes opcionales: SOT-23, SOT-89, USP-6B
+- Rango de voltaje de salida: 1.2V ~ 5.0V (incremento de 0.1V)
+- Precisión: ±30mV cuando Vout < 1.5V; ±2% cuando Vout > 1.5V; ±1% cuando Vout > 2V
+- Bajo consumo de energía: 1.0uA (valor típico)
+- Circuitos de protección: circuito de limitación de corriente incorporado
+- Temperatura de operación: -40℃ ~ +85℃
+- Encapsulados disponibles: SOT-23, SOT-89, USP-6B
 
-## Selección del modelo
+## Descripción de la selección
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20220420102910.png)
 
@@ -30,21 +30,21 @@ Repositorio del proyecto: [**Collection_of_Power_Module_Design/LDO/XC6206**](htt
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20220420102514.png)
 
-Nota: El diodo en el diagrama es un diodo ESD o un diodo parásito.
+Nota: El diodo dentro del diagrama es un diodo ESD o un diodo parásito.
 
 ## Definición de pines
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20220420103005.png)
 
-| Nombre del pin | Descripción del pin     |
-| -------------- | ----------------------- |
-| VSS            | Tierra                  |
+| Nombre del pin | Descripción del pin |
+| -------------- | ------------------ |
+| VSS            | Tierra              |
 | Vin            | Entrada de alimentación |
-| Vout           | Salida de alimentación  |
+| Vout           | Salida de alimentación |
 
-## Descripción de características
+## Descripción de las características
 
-Tabla de parámetros específicos de cada modelo:
+Tabla de parámetros específicos para cada modelo:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20220420103738.png)
 
