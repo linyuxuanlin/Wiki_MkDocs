@@ -1,14 +1,14 @@
-# Semiconductor Test Basics - AC Parameter Test
+# Semiconductor Testing Basics - AC Parameter Testing
 
-AC testing ensures that the timing characteristics of the DUT meet its specification requirements.
+AC testing ensures that the time characteristics of the Device Under Test (DUT) meet its specification requirements.
 
 ## Basic AC Parameters
 
 ### Setup Time
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220809094845.png)
+![Setup Time](https://img.wiki-power.com/d/wiki-media/img/20220809094845.png)
 
-Setup time refers to the minimum time that data (in the figure, `DATA IN`) must remain stable and unchanged before the reference signal (in the figure, `WE`) changes (to the middle value of 1.5V) to ensure that it can be correctly read. Before the minimum setup time, the data can change arbitrarily, but if it exceeds the minimum setup time (stays stable too late), it may not be recognized, resulting in errors. The representation in the specification is as follows:
+Setup time refers to the minimum time data (labeled as `DATA IN` in the diagram) must remain stable and unchanged before the reference signal (shown as `WE` in the figure) undergoes a change (reaching a midpoint of 1.5V). This stability is essential to ensure correct data reading. Data can change freely before the minimum setup time is reached, but if it remains stable too late, it may not be recognized, leading to errors. The specification in the datasheet is represented as follows:
 
 | Parameter | Description              | Min | Max | Unit |
 | --------- | ------------------------ | --- | --- | ---- |
@@ -16,9 +16,9 @@ Setup time refers to the minimum time that data (in the figure, `DATA IN`) must 
 
 ### Hold Time
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220809094858.png)
+![Hold Time](https://img.wiki-power.com/d/wiki-media/img/20220809094858.png)
 
-Hold time refers to the minimum time that data (in the figure, `DATA IN`) must remain stable and unchanged after the reference signal (in the figure, `WE`) changes (reaches a certain voltage threshold) to ensure that it is error-free (or how long before the clock signal triggers it must maintain a stable level). If the hold time is too short, there is a chance that the data cannot be correctly recognized. The representation in the specification is as follows:
+Hold time refers to the minimum duration that data (depicted as `DATA IN` in the diagram) must remain stable after the reference signal (depicted as `WE` in the figure) undergoes a change (reaching a certain voltage threshold). This duration ensures error-free data handling or maintaining a stable voltage level for a specific time before a clock signal triggers. If the hold time is too short, there is a probability that the data may not be correctly recognized. The specification in the datasheet is represented as follows:
 
 | Parameter | Description              | Min | Max | Unit |
 | --------- | ------------------------ | --- | --- | ---- |
@@ -26,9 +26,9 @@ Hold time refers to the minimum time that data (in the figure, `DATA IN`) must r
 
 ### Propagation Delay
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220809094910.png)
+![Propagation Delay](https://img.wiki-power.com/d/wiki-media/img/20220809094910.png)
 
-Propagation delay refers to the time interval between the transmission of one signal and the transmission of another related signal. Most of the time, it measures the time interval between the input signal (in the figure, `ADDR`) changing and the corresponding output (in the figure, `DATA OUT`) responding (the time required from the input end to the output end). It ensures that the output signal can appear within a certain time after the input signal appears. The representation in the specification is as follows:
+Propagation delay refers to the time interval between the transmission of one signal and the response of another related signal. Typically, it measures the time gap between a change in the input signal (labeled as `ADDR` in the diagram) and the corresponding output (labeled as `DATA OUT`) reaction, indicating the time required from the input side to the output side. It ensures that the output signal appears within a certain time after the input signal's occurrence. The specification in the datasheet is represented as follows:
 
 | Parameter | Description           | Min | Max | Unit |
 | --------- | --------------------- | --- | --- | ---- |
@@ -36,9 +36,9 @@ Propagation delay refers to the time interval between the transmission of one si
 
 ### Minimum Pulse Widths
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220809094924.png)
+![Minimum Pulse Widths](https://img.wiki-power.com/d/wiki-media/img/20220809094924.png)
 
-Minimum pulse width usually includes minimum low pulse width and minimum high pulse width, which are used to ensure the minimum operable value of pulse timing. The representation in the specification is as follows:
+Minimum pulse widths typically include the minimum low pulse width and minimum high pulse width. These are used to ensure the minimum operable value for timing of pulses. The specification in the datasheet is represented as follows:
 
 | Parameter | Description             | Min | Max | Unit |
 | --------- | ----------------------- | --- | --- | ---- |
@@ -47,7 +47,9 @@ Minimum pulse width usually includes minimum low pulse width and minimum high pu
 
 ### Maximum Frequency
 
-The maximum operating frequency, in simple terms, refers to the maximum speed at which a device can run. It is represented in the specifications as follows:
+![Maximum Frequency](https://img.wiki-power.com/d/wiki-media/img/20220809094934.png)
+
+In plain terms, the maximum operating frequency refers to the highest speed at which a device can function. It's represented in the specifications as follows:
 
 | Parameter | Description             | Min | Max  | Unit |
 | --------- | ----------------------- | --- | ---- | ---- |
@@ -55,7 +57,9 @@ The maximum operating frequency, in simple terms, refers to the maximum speed at
 
 ### Output Enable Time
 
-Output Enable Time refers to the time required for a pin to switch from a high-impedance state (disabled) to an active drive level (high or low level), ensuring that the output buffer can change the pin state within the specified time. The time interval from the control signal being sent to the detection of the switch output is calculated during measurement. It is represented in the specifications as follows:
+![Output Enable Time](https://img.wiki-power.com/d/wiki-media/img/20220809094941.png)
+
+This refers to the time it takes for a pin to transition from a high-impedance state (disabled) to an active drive level (high or low). It ensures that the output buffer can change the pin state within the specified time. The representation in the specification is as follows:
 
 | Parameter | Description          | Min | Max | Unit |
 | --------- | -------------------- | --- | --- | ---- |
@@ -63,7 +67,9 @@ Output Enable Time refers to the time required for a pin to switch from a high-i
 
 ### Output Disable Time
 
-Output Disable Time refers to the time required for a pin to switch from an active drive level (high or low level) to a high-impedance state (disabled), ensuring that the output buffer can change the pin state within the specified time. The time interval from the control signal being sent to the detection of the switch output is calculated during measurement. It is represented in the specifications as follows:
+![Output Disable Time](https://img.wiki-power.com/d/wiki-media/img/20220809094948.png)
+
+This refers to the time it takes for a pin to transition from an active drive level (high or low) to a high-impedance state (disabled). It ensures that the output buffer can change the pin state within the specified time. The representation in the specification is as follows:
 
 | Parameter  | Description           | Min | Max | Unit |
 | ---------- | --------------------- | --- | --- | ---- |
@@ -73,9 +79,9 @@ Output Disable Time refers to the time required for a pin to switch from an acti
 
 ### Read Cycle Timing
 
-An example of the read cycle timing for a 256 x 4 static RAM is shown below:
+An example of a read cycle for a 256 x 4 static RAM:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220731190300.png)
+![Read Cycle Timing](https://img.wiki-power.com/d/wiki-media/img/20220731190300.png)
 
 | Parameter  | Description               | Min | Max | Unit |
 | ---------- | ------------------------- | --- | --- | ---- |
@@ -89,11 +95,11 @@ An example of the read cycle timing for a 256 x 4 static RAM is shown below:
 | $t_{LZOE}$ | OE LOW to Low             | 2   |     | ns   |
 
 1. First, the length of the write cycle is determined by the $t_{RC}$ parameter.
-2. Determine which signal controls the read function. In the example in the figure above, the data output of the RAM is controlled by the falling edge of OE.
+2. Identify which signal controls the read function. In the example in the diagram above, the data output of the RAM is controlled by the falling edge of OE.
 
 ### Write Cycle Timing
 
-An example of the write cycle of a 256 x 4 static RAM:
+An example of a write cycle for a 256 x 4 static RAM:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20220731190328.png)
 
@@ -111,12 +117,13 @@ An example of the write cycle of a 256 x 4 static RAM:
 | $t_{AW}$   | Address Set-Up to Write End   | 13  |     | ns   |
 
 1. First, the length of the write cycle is determined by the $t_{WC}$ parameter.
-2. Determine which signal controls the write function. In the example in the figure above, the data input of the RAM is controlled by the rising edge of WE.
+2. Identify which signal controls the write function. In the example in the diagram above, the data input to the RAM is controlled by the rising edge of WE.
 
 ## References and Acknowledgments
 
 - "The Fundamentals Of Digital Semiconductor Testing"
 
-Sorry, there is no Chinese article provided to be translated. Please provide the article for translation.
+> Original: <https://wiki-power.com/>
+> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.
