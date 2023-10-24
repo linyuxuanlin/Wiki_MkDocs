@@ -35,8 +35,8 @@ jobs:
           #CHATGPT_API_KEY: ${{ secrets.CHATGPT_API_KEY }}
           #CHATGPT_API_KEY: ${{ secrets.KEY_CHATANYWHERE_IRIS }}
           #CHATGPT_API_KEY: ${{ secrets.KEY_CHATANYWHERE_ME }}
-          CHATGPT_API_KEY: ${{ secrets.KEY_OPENAI_FAKE_LINYUXUANLIN52 }}
-          #CHATGPT_API_KEY: ${{ secrets.KEY_OPENAI_FAKE_LISU }} #x
+          #CHATGPT_API_KEY: ${{ secrets.KEY_OPENAI_FAKE_LINYUXUANLIN52 }}
+          CHATGPT_API_KEY: ${{ secrets.KEY_OPENAI_FAKE_LISU }} #x
           #CHATGPT_API_KEY: ${{ secrets.KEY_OPENAI_LINYUXUANLIN52 }}
         run: |
           pip install -r tools/requirements.txt
