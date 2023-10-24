@@ -1,42 +1,45 @@
-# RF - S Parameters
+# Radio Frequency - S-Parameters
 
-S parameters (Scattering parameters, S-Parameters) are used to reflect the characteristics (amplitude/phase) of the reflected/transmitted signals in the frequency domain. It is a complex matrix. We can view the internal circuit as a black box (without considering internal circuit elements) and measure its port characteristics through S parameters.
+Scattering parameters, often referred to as S-Parameters, are used to characterize the behavior of reflected and transmitted signals in the frequency domain, including both their amplitude and phase. S-Parameters are represented as a complex matrix. We can think of the internal workings of a circuit as a black box, disregarding the internal circuit elements, and use S-Parameters to measure its port characteristics.
 
-## Detailed Explanation of S Parameters
+## Detailed Explanation of S-Parameters
 
-The naming convention of S parameters is that the first digit represents the measured port and the second digit represents the reference port. For example, S21 represents the signal measured at port 2 relative to the signal excitation source at port 1. The form of the S parameter wave can be power, voltage, or current.
+The naming convention for S-Parameters involves the first number representing the measurement port, and the second number representing the reference port. For example, S21 represents the signal at port 2 when excited relative to port 1. The form of the S-Parameter wave can be power, voltage, or current.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220627100338.png)
+![S-Parameter Matrix](https://img.wiki-power.com/d/wiki-media/img/20220627100338.png)
 
-As shown in the figure above, S11 and S22 represent the reflection coefficient (reflection/input), and S21 and S12 represent the transmission coefficient (transmission/input).
+As shown in the image above, S11 and S22 represent the reflection coefficients (reflection/input), while S21 and S12 represent the transmission coefficients (transmission/input).
 
 ### S11
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220621000000.gif)
+![S11](https://img.wiki-power.com/d/wiki-media/img/20220621000000.gif)
 
-S11 refers to the reflection signal at port 1 relative to the incident signal at port 1, and is calculated as $S11=\frac{S_{Reflection}}{S_{Incident}}$.
+S11 refers to the reflection signal at port 1 concerning the incident signal at port 1. It is defined as $S11=\frac{S_{Reflection}}{S_{Incident}}$.
 
 ### S21
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220621000001.gif)
+![S21](https://img.wiki-power.com/d/wiki-media/img/20220621000001.gif)
 
-S21 refers to the transmission signal at port 2 relative to the incident signal at port 1, and is calculated as $S21=\frac{S_{Transmission}}{S_{Incident}}$.
+S21 represents the transmission signal at port 2 concerning the incident signal at port 1. It is defined as $S21=\frac{S_{Transmission}}{S_{Incident}}$.
 
 ### S12
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220621000002.gif)
+![S12](https://img.wiki-power.com/d/wiki-media/img/20220621000002.gif)
 
-S12 refers to the transmission signal at port 1 relative to the incident signal at port 2, and is calculated as $S12=\frac{S_{Transmission}}{S_{Incident}}$.
+S12 indicates the transmission signal at port 1 concerning the incident signal at port 2. It is defined as $S12=\frac{S_{Transmission}}{S_{Incident}}$.
 
 ### S22
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220621000003.gif)
+![S22](https://img.wiki-power.com/d/wiki-media/img/20220621000003.gif)
 
-S22 refers to the reflection signal at port 2 relative to the incident signal at port 2, and is calculated as $S22=\frac{S_{Reflection}}{S_{Incident}}$.
+S22 refers to the reflection signal at port 2 concerning the incident signal at port 2. It is defined as $S22=\frac{S_{Reflection}}{S_{Incident}}$.
 
 ## References and Acknowledgments
 
-- [The Meaning of S Parameters and Vector Network Analyzer Measurement Methods](http://jietaipu.com/resource/88.html)
-- "S-Parameter Measurements Basics for High Speed Digital"
+- [Meaning and Practical Measurement of S-Parameters](http://jietaipu.com/resource/88.html)
+- "S-Parameter Measurements Basics for High-Speed Digital"
+
+> Original: <https://wiki-power.com/>
+> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.
