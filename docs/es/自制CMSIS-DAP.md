@@ -1,31 +1,31 @@
-# Cómo hacer tu propio CMSIS-DAP 🚧
+# DIY CMSIS-DAP 🚧
 
-CMSIS DAP es un simulador de ARM de código abierto lanzado por ARM, que soporta todos los dispositivos Cortex-ARM y las interfaces JTAG / SWD. En la última versión del firmware, también soporta la interfaz SWO de una sola línea, que puede enviar los datos correspondientes directamente a la ventana de depuración a través de la interfaz SWO en el programa, lo que cumple con el propósito de la depuración de la serie de puertos. Las principales características de DAP son las siguientes:
+CMSIS DAP es un simulador de código abierto lanzado por ARM que es compatible con todos los dispositivos Cortex-ARM y admite interfaces JTAG/SWD. En la última versión del firmware, también admite la interfaz SWO de un solo cable, lo que permite que los datos correspondientes se envíen directamente desde el programa a la ventana de depuración a través de la interfaz SWO, lo que cumple una función similar a la depuración por puerto serie. Las principales características de DAP son las siguientes:
 
-1. Completamente de código abierto, sin restricciones de licencia, por lo que el precio correspondiente será muy barato.
-2. Plug and play, no se requiere controlador.
-3. La última versión de DAP integra un puerto serie, que puede utilizarse como un módulo de conversión USB a serie además de la descarga y la depuración, lo que permite su uso dual.
-4. En cuanto al rendimiento, ya puede satisfacer las necesidades de los usuarios generales.
+1. Es completamente de código abierto y no tiene restricciones de licencia, por lo que el precio correspondiente es muy económico.
+2. No requiere controladores, se puede usar de forma plug-and-play.
+3. En las versiones más recientes de DAP se ha integrado un puerto serie, por lo que además de la depuración y descarga, también puede funcionar como un módulo USB a serie, lo que le da una doble utilidad.
+4. En cuanto al rendimiento, ya puede satisfacer las necesidades de los usuarios en general.
 
-(No terminado)
+(En proceso)
 
-Repositorio de GitHub: [**linyuxuanlin/DashDAP**](https://github.com/linyuxuanlin/DashDAP)
+Repositorio en GitHub: [**linyuxuanlin/DashDAP**](https://github.com/linyuxuanlin/DashDAP)
 
 ## Referencias y agradecimientos
 
 - [x893/CMSIS-DAP](https://github.com/x893/CMSIS-DAP)
-- [Introducción de DAP en el sitio web oficial de ARM](http://www.keil.com/pack/doc/cmsis/DAP/html/index.html)
-- [El entusiasmo de los nerds electrónicos: simulador CMSIS DAP](http://www.stmcu.org.cn/module/forum/thread-610968-1-2.html)
-- [Simulador CMSIS DAP](https://item.taobao.com/item.htm?spm=a1z10.1-c.w5003-21405148310.36.78726a3dta5ieC&id=550828063764&scene=taobao_shop)
+- [Introducción a DAP en el sitio web oficial de ARM](http://www.keil.com/pack/doc/cmsis/DAP/html/index.html)
+- [El encanto de un friki electrónico: el simulador CMSIS-DAP](http://www.stmcu.org.cn/module/forum/thread-610968-1-2.html)
+- [Simulador CMSIS-DAP](https://item.taobao.com/item.htm?spm=a1z10.1-c.w5003-21405148310.36.78726a3dta5ieC&id=550828063764&scene=taobao_shop)
 - [konosubakonoakua/Various_MCU_Debugger_DIY](https://github.com/konosubakonoakua/Various_MCU_Debugger_DIY)
 
 ---
 
-`Versión 2.0 en edición`
+Edición de la versión 2.0
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20200613154907.jpg)
 
-Vista previa del proyecto en línea:
+Vista previa del proyecto:
 
 <div class="altium-iframe-viewer">
   <div
@@ -38,47 +38,47 @@ Vista previa del proyecto en línea:
 
 CMSIS-DAP / DAP-Link tiene las siguientes ventajas en comparación con J-Link / ST-Link:
 
-- Completamente de código abierto, sin riesgo legal.
-- Soporta puerto serie virtual.
-- Sin necesidad de controlador.
-- DAPLink es CMSIS-DAP, que soporta la grabación de arrastrar y soltar / actualización de firmware.
+- Es completamente de código abierto, por lo que no hay riesgo legal.
+- Admite puertos serie virtuales.
+- No requiere controladores.
+- DAPLink es CMSIS-DAP y admite la grabación mediante arrastrar y soltar en una unidad USB / actualización de firmware.
 
 ## Parte de hardware
 
 ### MCU
 
-#### Cristal
+#### Oscilador
 
-Se selecciona un cristal pasivo de Murata de 8 MHz, modelo CSTCE8M00G53-R0, encapsulado en 3213, con una capacidad de 15 pF. ¿Por qué se selecciona este? Es porque su tamaño es relativamente pequeño y integra dos capacitores de oscilación, lo que ahorra mucho trabajo en el diseño de hardware. En cuanto al método de nomenclatura del modelo de cristal de Murata, se puede consultar la siguiente tabla:
+Se utiliza un oscilador pasivo Murata de 8 MHz, modelo CSTCE8M00G53-R0, encapsulado en 3213, con una capacidad de 15 pF. ¿Por qué se eligió este oscilador? Porque tiene un tamaño relativamente pequeño y los dos condensadores de oscilación están integrados en él, lo que simplifica mucho el diseño de hardware. En cuanto a la forma de nombrar los modelos de osciladores de Murata, se puede consultar la siguiente tabla:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20200612143451.jpg)
 
 ### Fuente de alimentación
 
-### Módulo de función
+### Módulos de funciones
 
 ## Parte de software
 
-### Controlador
+### Controladores
 
-No es necesario instalar el controlador en Win10 / MacOS / Linux; se necesita instalar el controlador manualmente en Win8 y sistemas más antiguos.
+No es necesario instalar manualmente los controladores en Win10 / MacOS / Linux; en Windows 8 y versiones anteriores, es necesario instalar los controladores manualmente.
 
-### Grabación de arrastrar y soltar (MSC)
+### Descarga mediante arrastrar y soltar (MSC)
 
-Simplemente arrastre y suelte el archivo `.hex` o `.bin` compilado en la unidad flash virtual de DAPLink para grabar. Si se produce un error, la información del error se almacenará en `FAIL.txt`.
+Simplemente arrastre el archivo `.hex` o `.bin` generado por la compilación al disco virtual de DAPLink para realizar la grabación. Si se produce un error, la información del error se guardará en `FAIL.txt`.
 
 ### Puerto serie virtual (CDC)
 
-La función del puerto serie virtual CDC tiene funciones generales de puerto serie, permite la comunicación bidireccional y permite enviar comandos de interrupción para restablecer la placa objetivo.
+La función del puerto serie virtual (CDC) tiene las mismas características que un puerto serie normal, permite la comunicación bidireccional y permite enviar comandos de interrupción para restablecer la placa objetivo.
 
 ## Referencias y agradecimientos
 
 - [Diferencias en el uso de JLink, STLink, DAPLink y CMSIS DAP](https://blog.csdn.net/zhouml_msn/article/details/105298776)
-- [Tecnología nueva · Simulador DAPLink](https://www.jixin.pro/bbs/topic/4187)
+- [Jixin · Simulador DAPLink](https://www.jixin.pro/bbs/topic/4187)
 - [wuxx / nanoDAP](https://github.com/wuxx/nanoDAP)
 - [LGG001 / Folleto DAPLink](https://github.com/LGG001/DAPLink-Brochure)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
+> Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

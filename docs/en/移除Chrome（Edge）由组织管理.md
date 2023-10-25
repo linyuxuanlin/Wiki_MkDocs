@@ -2,24 +2,24 @@
 
 ## Steps
 
-1. Press `Win` + `R`, type `regedit` to open Registry Editor
-2. Find and delete the following directories
+1. Press `Win` + `R`, type `regedit` to open the Registry Editor.
+2. Find and delete the following directories:
 
-Chrome:
+For Chrome:
 
 ```
 HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome
 HKEY_CURRENT_USER\SOFTWARE\Policies\Google\Chrome
 ```
 
-Edge:
+For Edge:
 
 ```
 HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge
 HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Edge
 ```
 
-## Reference and Acknowledgement
+## References and Acknowledgements
 
 - [Works! Fix Chrome (or Edge) is Managed by your Organization (in 3 steps!)](https://www.joshualowcock.com/guide/fix-chrome-is-managed-by-your-organization-in-3-steps/)
 

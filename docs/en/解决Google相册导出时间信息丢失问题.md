@@ -1,6 +1,6 @@
-# Solving the problem of lost time information when exporting from Google Photos
+# Resolving the issue of missing time information when exporting from Google Photos
 
-After exporting from Google Photos using Google Takeout, the time information for many photos is saved as a `.json` file. How can we import this information back into the corresponding photos?
+After exporting from Google Photos using Google Takeout, the time information of many photos is saved as a `.json` file. How can we import this information back to the corresponding photos?
 
 Create a new Python file called `update-data.py`:
 
@@ -10,16 +10,16 @@ from win32file  import GENERIC_READ, GENERIC_WRITE, OPEN_EXISTING
 from pywintypes import Time
 import os,json,time
 
-# Get all file names with a specified extension
+# Get all file names with a specific extension
 def get_all_file(ext_name):
     file_list = []
     datanames = os.listdir()
     for dataname in datanames:
-        if os.path.splitext(dataname)[1] == ext_name:  # Directory contains files with .json extension
+        if os.path.splitext(dataname)[1] == ext_name:  # Files in the directory with the .json extension
             file_list.append(dataname)
     return file_list
 
-# Load JSON file
+# Read the json file
 def load_json(json_file_name):
     f = open(json_file_name,'r',encoding = 'UTF-8')
     text = f.read()
@@ -28,12 +28,12 @@ def load_json(json_file_name):
 
 def modifyFileTime(filePath, createTime, modifyTime, accessTime, offset):
     """
-    Used to modify the relevant time properties of any file, time format: YYYY-MM-DD HH:MM:SS, for example: 2019-02-02 00:01:02
-    :param filePath: file path name
-    :param createTime: creation time
-    :param modifyTime: modification time
-    :param accessTime: access time
-    :param offset: time offset in seconds, in tuple format, in the order corresponding to the parameter time
+    Used to modify the time attributes of any file, time format: YYYY-MM-DD HH:MM:SS, for example: 2019-02-02 00:01:02
+    :param filePath: File path
+    :param createTime: Creation time
+    :param modifyTime: Modification time
+    :param accessTime: Access time
+    :param offset: Time offset in seconds, in tuple format, in the order corresponding to the time parameters
     """
     try:
         format = "%Y-%m-%d %H:%M:%S"  # Time format
@@ -52,12 +52,15 @@ def modifyFileTime(filePath, createTime, modifyTime, accessTime, offset):
         return 0
     except:
         return 1
+```
 
 ```python
+import time
+
 def timeOffsetAndStruct(times, format, offset):
     return time.localtime(time.mktime(time.strptime(times, format)) + offset)
 
-# Date conversion, convert Google date to numerical value
+# Date conversion, converting Google's date to a numerical value
 def time_format(data_string):
     print(data_string)
     year = data_string.split('年')[0]
@@ -77,22 +80,25 @@ if __name__ == '__main__':
 
     for fnj in file_name_json:
         dic = load_json(fnj)                                        # Extract dictionary information
-        st = dic['creationTime']['formatted']                       # Get file date
-        output_format = time_format(st)                             # Convert date format
+        st = dic['creationTime']['formatted']                       # Get the file date
+        output_format = time_format(st)                             # Convert the date format
 
-        file_name = fnj[0:-5]                                       # Get the corresponding photo name for the file
+        file_name = fnj[0:-5]                                       # Get the corresponding photo name of the file
         print(file_name)
         offset = (0, 1, 2)
-        # Modify file date
+        # Modify the file date
         modifyFileTime(file_name, output_format, output_format, output_format,offset)
 ```
 
-This script is used to modify the file creation date based on the JSON file and import it into the corresponding photo with the same name.
+This script is used to modify the file creation date based on a JSON file and import it into the corresponding photo with the same name.
 
-Simply place this script in each album directory and run it. After execution, the time information of the photos will be restored.
+Simply place this script in the directory of each album and run it. After execution, the time information of the photos will be restored.
 
-## References and Acknowledgments
+## References and Acknowledgements
 
-- [Google Photos download time loss problem](https://zhuanlan.zhihu.com/p/356718593)
+- [Google Photos Downloaded Date Loss Problem](https://zhuanlan.zhihu.com/p/356718593)
+
+> Original: <https://wiki-power.com/>
+> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

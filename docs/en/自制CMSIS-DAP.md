@@ -1,22 +1,22 @@
-# DIY CMSIS-DAP 🚧
+# Homemade CMSIS-DAP 🚧
 
-CMSIS DAP is an open-source emulator launched by ARM, which supports all Cortex-ARM devices and JTAG/SWD interfaces. In the latest firmware version, it also supports single-wire SWO interfaces, which can directly output corresponding data to the debugging window through the SWO interface in the program, serving a similar purpose as serial debugging. DAP has the following features:
+CMSIS-DAP is an open-source debugger launched by ARM, which supports all Cortex-ARM devices and JTAG/SWD interfaces. In the latest firmware version, it also supports the single-wire SWO interface, which can directly output corresponding data to the debug window through the SWO interface in the program, serving the purpose of serial debugging. DAP has the following features:
 
-1. Completely open-source, with no license restrictions, so the corresponding price will be very cheap
-2. Plug and play, no need for drivers
-3. The latest version of DAP integrates a serial port, which can be used as a USB-to-serial module in addition to downloading and debugging, serving two purposes with one device
-4. Performance can already meet the needs of general users
+1. Completely open-source with no licensing restrictions, so the corresponding price will be very affordable.
+2. No driver required, plug and play.
+3. The latest version of DAP integrates a serial port, which can not only be used for downloading and debugging but also serve as a USB to serial port module, providing dual functionality.
+4. Performance-wise, it can already meet the needs of most users.
 
-(Under construction)
+(To be continued)
 
 GitHub repository: [**linyuxuanlin/DashDAP**](https://github.com/linyuxuanlin/DashDAP)
 
-## References and Acknowledgments
+## References and Acknowledgements
 
 - [x893/CMSIS-DAP](https://github.com/x893/CMSIS-DAP)
-- [ARM official website's introduction to DAP](http://www.keil.com/pack/doc/cmsis/DAP/html/index.html)
-- [The sentiment of an electronic otaku: CMSIS DAP emulator](http://www.stmcu.org.cn/module/forum/thread-610968-1-2.html)
-- [CMSIS DAP emulator](https://item.taobao.com/item.htm?spm=a1z10.1-c.w5003-21405148310.36.78726a3dta5ieC&id=550828063764&scene=taobao_shop)
+- [Introduction to DAP on ARM's official website](http://www.keil.com/pack/doc/cmsis/DAP/html/index.html)
+- [The sentiment of an electronics enthusiast: CMSIS-DAP debugger](http://www.stmcu.org.cn/module/forum/thread-610968-1-2.html)
+- [CMSIS-DAP debugger on Taobao](https://item.taobao.com/item.htm?spm=a1z10.1-c.w5003-21405148310.36.78726a3dta5ieC&id=550828063764&scene=taobao_shop)
 - [konosubakonoakua/Various_MCU_Debugger_DIY](https://github.com/konosubakonoakua/Various_MCU_Debugger_DIY)
 
 ---
@@ -36,49 +36,49 @@ Project online preview:
 
 ## Background
 
-CMSIS-DAP/DAP-Link has the following advantages over J-Link/ST-Link:
+CMSIS-DAP/DAP-Link has the following advantages compared to J-Link/ST-Link:
 
-- Completely open-source, no legal risks
-- Supports virtual serial port
-- Driver-free
-- DAPLink is CMSIS-DAP, supporting USB drag-and-drop burning/firmware upgrade
+- Completely open-source with no legal risks.
+- Supports virtual serial port.
+- Plug and play.
+- DAPLink is CMSIS-DAP, supporting drag-and-drop programming/firmware upgrade via USB.
 
-## Hardware Part
+## Hardware Section
 
 ### MCU
 
 #### Crystal Oscillator
 
-We chose Murata's 8MHz passive crystal oscillator, model CSTCE8M00G53-R0, packaged in 3213, with a capacitance of 15pF. Why did we choose this one? Because it is relatively small in size and integrates the two oscillation capacitors, which can save a lot of trouble in hardware design. As for the naming convention of Murata crystal oscillator models, please refer to the table below:
+The chosen crystal oscillator is Murata's 8MHz passive crystal oscillator, model CSTCE8M00G53-R0, packaged in 3213 with a capacitance of 15pF. Why choose this one? Because it has a relatively small size and integrates two oscillation capacitors, which saves a lot of effort in hardware design. As for the naming convention of Murata crystal oscillator models, please refer to the table below:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20200612143451.jpg)
 
 ### Power Supply
 
-### Functional Module
+### Functional Modules
 
-## Software Part
+## Software Section
 
 ### Driver
 
-No manual driver installation is required on Win10/MacOS/Linux; Win8 and older systems require manual driver installation.
+No manual driver installation is required on Win10/MacOS/Linux; manual driver installation is required on Win8 and older systems.
 
-### Drag-and-Drop Download (MSC)
+### Drag-and-Drop Programming (MSC)
 
-Simply drag and drop the compiled `.hex` or `.bin` file into DAPLink's virtual U disk to complete the burning. If an error occurs, the error message will be stored in `FAIL.txt`.
+Simply drag and drop the compiled `.hex` or `.bin` file into the virtual USB drive of DAPLink to complete the programming. If an error occurs, the error message will be stored in `FAIL.txt`.
 
 ### Virtual Serial Port (CDC)
 
-The CDC virtual serial port function has general serial port functions, allowing bidirectional communication and sending interrupt commands to reset the target board.
+The CDC virtual serial port function has general serial port capabilities, allowing bidirectional communication and sending interrupt commands to reset the target board.
 
-## References and Acknowledgments
+## References and Acknowledgements
 
-- [Differences between JLink, STLink, DAPLink, and CMSIS DAP](https://blog.csdn.net/zhouml_msn/article/details/105298776)
+- [Difference in usage between JLink, STLink, DAPLink, and CMSIS DAP](https://blog.csdn.net/zhouml_msn/article/details/105298776)
 - [Jixin · DAPLink Simulator](https://www.jixin.pro/bbs/topic/4187)
 - [wuxx / nanoDAP](https://github.com/wuxx/nanoDAP)
 - [LGG001 / DAPLink-Brochure](https://github.com/LGG001/DAPLink-Brochure)
 
-> Original: <https://wiki-power.com/>  
+> Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.
