@@ -42,6 +42,5 @@ Host 路径:
 
 - [添加 Host 加速访问 github](https://yangshun.win/blogs/2b7abf4f/#%E4%BF%AE%E6%94%B9-host)
 
-> 文章作者：**Power Lin**
-> 原文地址：<https://wiki-power.com>
-> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

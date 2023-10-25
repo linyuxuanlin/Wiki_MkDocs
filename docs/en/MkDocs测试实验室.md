@@ -62,8 +62,7 @@ stateDiagram-v2
 - [MkDocs Plugins](https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins)
 - [Diagrams](https://squidfunk.github.io/mkdocs-material/reference/diagrams/)
 
-> Original: [https://wiki-power.com/](https://wiki-power.com/)
+> Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
-```
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

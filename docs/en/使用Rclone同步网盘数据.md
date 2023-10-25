@@ -1,16 +1,16 @@
 # Syncing Cloud Storage Data with Rclone
 
-Rclone is a command-line tool for managing cloud storage files, supporting over 40 cloud storage providers (including S3). Rclone also has a graphical user interface software called RcloneBrowser, which is convenient for general users. This article introduces how to sync Tencent Cloud Object Storage using Rclone.
+Rclone is a command-line tool for managing cloud storage files, supporting over 40 different cloud storage providers (including S3). Rclone also has a graphical user interface software called RcloneBrowser, which makes it easier for general users to use. This article explains how to sync Tencent Cloud Object Storage using Rclone.
 
 ## Software Installation
 
-- [**Rclone**](https://rclone.org/downloads/): After downloading, extract the `.exe` file and remember the path.
+- [**Rclone**](https://rclone.org/downloads/): Download and extract the `.exe` file, and take note of the installation path.
 - [**RcloneBrowser**](https://github.com/kapitainsky/RcloneBrowser/releases): GUI tool. After installation, select the path of Rclone.
-- ([**WinFsp**](http://www.secfs.net/winfsp/rel/): Dependency library, required if mounting virtual hard disks)
+- (Optional) [**WinFsp**](http://www.secfs.net/winfsp/rel/): Dependency library, required for mounting virtual hard drives.
 
 ## Configuration Process
 
-Open RcloneBrowser and click `Config...` in the lower left corner, then follow the prompts to enter:
+Open RcloneBrowser and click on `Config...` at the bottom left corner. Then, follow the prompts to input the following:
 
 Enter `n` to create a new remote connection:
 
@@ -29,13 +29,13 @@ q) Quit config
 e/n/d/r/c/s/q> n
 ```
 
-Give the remote connection a name (e.g. `test`):
+Give the remote connection a name (e.g., `test`):
 
 ```shell
 name> test
 ```
 
-Select the service provider (I will use Tencent Cloud Object Storage as an example and select `4`):
+Choose the cloud storage provider (in this example, I will use Tencent Cloud Object Storage, so select `4`):
 
 ```shell
 Choose a number from below, or type in your own value
@@ -80,13 +80,12 @@ Choose a number from below, or type in your own value
    \ "Wasabi"
 13 / Any other S3 compatible provider
    \ "Other"
-
-English:
+```
 
 provider> 11
 ```
 
-Choose authentication type. Since this is our first configuration, select `1`:
+Choose the authentication type. Since this is our first configuration, select `1`:
 
 ```shell
 Choose a number from below, or type in your own value
@@ -106,7 +105,7 @@ AWS Access Key ID.
 access_key_id> ******
 ```
 
-Enter the password, which is equivalent to SecretKey:
+Enter the password, which is equivalent to the SecretKey:
 
 ```shell
 AWS Secret Access Key (password)
@@ -131,7 +130,7 @@ Endpoint for Tencent COS API.
 endpoint> 4
 ```
 
-Select the read-write type. Generally, the image bed is public read and private write:
+Select the read and write type. Generally, the image bed is publicly readable and privately writable:
 
 ```shell
 Canned ACL used when creating buckets and storing or copying objects.
@@ -161,7 +160,7 @@ The storage class to use when storing new objects in Tencent COS.
 storage_class> 1
 ```
 
-Whether to edit advanced settings (select `n` for no):
+Do you want to edit advanced settings? (select `n` for no):
 
 ```shell
 Edit advanced config? (y/n)
@@ -171,10 +170,11 @@ n) No (default)
 y/n> n
 ```
 
-Finally, confirm and enter `y` after checking for errors:
+Finally, confirm and enter `y` after checking for accuracy:
 
+```shell
 Remote config
---------------------
+
 [Txcos]
 type = s3
 provider = TencentCOS
@@ -183,7 +183,7 @@ access_key_id = 我是马赛克
 secret_access_key = 我是马赛克
 endpoint = cos.ap-guangzhou.myqcloud.com
 acl = public-read
---------------------
+
 y) Yes this is OK (default)
 e) Edit this remote
 d) Delete this remote
@@ -209,23 +209,23 @@ q) Quit config
 e/n/d/r/c/s/q> q
 ```
 
-Next, double-click on the configured remote connection, select the folder and click `Download` to download to your local machine. In the pop-up window, select the following configurations:
+Next, double-click to open the configured remote connection, select a folder, and click `Download` to download it to your local machine. In the pop-up window, select the following configurations:
 
-- Select `Copy` mode for Mode (one-way sync from cloud to local), only copying new and changed files, for backup purposes.
-- Check `Skip all files that exist` in the Skip files area to avoid redundant downloads and save bandwidth.
-- Enter a task name in the Task description area for future reference.
+- Select `Copy` mode (one-way synchronization from cloud to local) in the Mode section, which only copies new and changed files for backup purposes.
+- Check the box for `Skip all files that exist` in the Skip files section to avoid redundant downloads and save bandwidth.
+- Enter a task name in the Task description section for easy reference in future synchronizations.
 
-After configuring, switch to the Tasks tab, select the corresponding task, and click `Run` to start the download.
+After the configuration is complete, switch to the Tasks tab, select the corresponding task, and click `Run` to start the download.
 
-## Configuring on Synology NAS
+## Configuration on Synology NAS
 
-Note: It is recommended to use CloudSync on Synology instead of modifying the underlying code.
+Note: It is recommended to use CloudSync on Synology NAS and avoid modifying the underlying code.
 
 Preparation:
 
 - Enable SSH
 - Enable user home directories (`homes`)
-- Create a folder for synchronization (e.g. `/volume1/wiki-media`)
+- Create a folder for synchronization (e.g., `/volume1/wiki-media`)
 
 Install Rclone:
 
@@ -239,40 +239,43 @@ Configure the service:
 rclone config
 ```
 
-Follow the steps above.
+Follow the steps mentioned above.
 
-Sync command:
+Synchronization commands:
 
 ```shell
 # Local to cloud
-rclone [function options] <local path> <cloud name:path> [parameters] [parameters] ...
+rclone [options] <local path> <remote:path> [flags] [flags] ...
 
 # Cloud to local
-rclone [function options] <cloud name:path> <local path> [parameters] [parameters] ...
+rclone [options] <remote:path> <local path> [flags] [flags] ...
 
 # Cloud to cloud
-rclone [function options] <cloud name:path> <cloud name:path> [parameters] [parameters] ...
+rclone [options] <remote:path> <remote:path> [flags] [flags] ...
 ```
 
-For example:
+For example, in my case:
 
 ```shell
 rclone sync COS_backup:/wiki-media-1253965369 /volume1/wiki-media -P
 ```
 
-Create an automation script (e.g. `rclone-sync.sh`) in the selected path and put the above command in the script.
+Create an automation script (e.g., `rclone-sync.sh`) in the selected path and place the above command in the script file.
 
-In Synology `Control Panel` - `Task Scheduler` - `Create` - `Scheduled Task` - `User-defined script`, configure the periodic run time and the script path in the `Schedule` and `Task Settings` tabs.
+In Synology, go to `Control Panel` - `Task Scheduler` - `Create` - `Scheduled Task` - `User-defined script`, and configure the run time and script path in the `Schedule` and `Task Settings` tabs.
 
-1. In Synology `Control Panel` - `Task Scheduler` - `Create` - `Scheduled Task` - `User-defined script`, configure the periodic run time and the command to run the script (e.g. `bash /volume1/stash/permanent/rclone-sync.sh`) in the `Schedule` and `Task Settings` tabs.
-2. In `Settings`, configure the output path, select the task, and click `Run` to test the run and view the results in the configured output path.
+1. Go to `Control Panel` - `Task Scheduler` - `Create` - `Scheduled Task` - `User-defined script`, and configure the run time and the command to run the script (e.g., `bash /volume1/stash/permanent/rclone-sync.sh`).
+2. In the `Settings` section, configure the output path, select the task, and click `Run` to test the execution and view the results in the configured output path.
 
-## References and Acknowledgments
+## References and Acknowledgements
 
-- [Rclone Installation, Configuration, and Usage Tutorial, with Detailed Explanation of Common Rclone Commands](https://www.wazhuji.com/jiaocheng/17.html)
-- [Low-Cost Full-Featured Private Cloud Setup Based on Object Storage](https://zhuanlan.zhihu.com/p/104628740)
-- [Mounting Aliyun OSS/Tencent Cloud COS as Windows Drives Using Rclone and WinFsp](https://www.boxmoe.com/486.html)
-- [Mounting Google Personal/Team Drive as Windows Drive Using Rclone on Windows](https://blog.rhilip.info/archives/874/)
-- [Using Rclone to Backup Typecho Blog Website Content and MySQL Database to Google Drive/OneDrive and Other Cloud Storage Services on a Daily Basis](https://omo.moe/archives/616/)
+- [Rclone installation, configuration and usage tutorial, with detailed explanation of common Rclone command parameters](https://www.wazhuji.com/jiaocheng/17.html)
+- [Building a low-cost, fully-featured private cloud based on [object storage]](https://zhuanlan.zhihu.com/p/104628740)
+- [Mounting Alibaba Cloud OSS / Tencent Cloud COS as Windows disks using Rclone and WinFsp](https://www.boxmoe.com/486.html)
+- [Mounting Google personal / team cloud drives on Windows using Rclone](https://blog.rhilip.info/archives/874/)
+- [Using Rclone to schedule daily backups of Typecho blog website content and MySQL database to Google Drive/OneDrive and other cloud storage](https://omo.moe/archives/616/)
+
+> Original: <https://wiki-power.com/>
+> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

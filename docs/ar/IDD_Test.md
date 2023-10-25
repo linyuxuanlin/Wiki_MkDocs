@@ -56,7 +56,7 @@ IDD الدينامي هو قياس للتيار من طرف DUT's VDD، عندم
 - _أسس اختبار الشرائح الرقمية_
 - _أسس الاختبار باستخدام معدات الاختبار الآلية (ATE)_
 
-> المصدر الأصلي: [https://wiki-power.com/](https://wiki-power.com/)  
-> يتم حماية هذا المنشور باتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) ويجب إعادة الإنتاج مع الإسناد.
+> عنوان النص: <https://wiki-power.com/>
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

@@ -8,14 +8,14 @@ P:\Arduino\hardware\tools\avr/bin/avrdude -C "P:\Arduino\hardware\tools\avr/etc/
 
 ## Using Arduino as ISP Programmer
 
-|    Attiny     | Arduino |
-| :-----------: | :-----: |
-| Pin 1 (PB5)   |   D10   |
-| Pin 4 (GND)   |   GND   |
-| Pin 5 (PB0)   |   D11   |
-| Pin 6 (PB1)   |   D12   |
-| Pin 7 (PB2)   |   D13   |
-| Pin 8 (VCC)   |   5V    |
+|   Attiny    | Arduino |
+| :---------: | :-----: |
+| Pin 1 (PB5) |   D10   |
+| Pin 4 (GND) |   GND   |
+| Pin 5 (PB0) |   D11   |
+| Pin 6 (PB1) |   D12   |
+| Pin 7 (PB2) |   D13   |
+| Pin 8 (VCC) |   5V    |
 
 First, burn the ISP program to the Arduino:
 
@@ -52,8 +52,7 @@ When burning the bootloader, make sure to select the correct chip model, clock s
 - [Insights into DigiSpark ATtiny85: AVR ISP Programming and Bootloader Details](http://blog.sina.com.cn/s/blog_6566538d0102w6qk.html)
 - [Quick Reference: Frequently Requested Information](http://digistump.com/wiki/digispark/quickref)
 
-> Article by: **Power Lin**
-> Original Source: [https://wiki-power.com](https://wiki-power.com)
-> Copyright Notice: This article is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) license. Please provide proper attribution when reposting.
+> Original: <https://wiki-power.com/>
+> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

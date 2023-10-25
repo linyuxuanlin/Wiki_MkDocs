@@ -99,6 +99,5 @@ screen -X -S id quit # 替换掉 id
 - [（推荐）VS code 在线工具——code-serve 在云服务器上的安装和使用 与常见的问题解决 （超详细）](https://blog.csdn.net/Granery/article/details/90415636)
 - [iPad 编程学习环境---VS Code web 版本搭建](https://blog.icodef.com/2019/11/17/1670)
 
-> 文章作者：**Power Lin**
-> 原文地址：<https://wiki-power.com>
-> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

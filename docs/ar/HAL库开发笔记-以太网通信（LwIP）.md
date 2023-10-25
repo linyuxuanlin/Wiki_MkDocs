@@ -6,17 +6,17 @@
 
 واجهة DP83848 هي RMII، ويمكن لـ DP83848 دعم سرعات خطية 10M/100M، وتحتوي على مذبذب غير نشط بسرعة 50 ميجاهرتز.
 
-| المعالج الرئيسي STM32  | موديول DP83848 |
-| ----------- | ------------ |
-| ETH_REF_CLK | PA1          |
-| ETH_MDIO    | PA2          |
-| ETH_MDC     | PC1          |
-| ETH_CRS_DV  | PA7          |
-| ETH_RXD0    | PC4          |
-| ETH_RXD1    | PC5          |
-| ETH_TX_EN   | PB11         |
-| ETH_TXD0    | PB12         |
-| ETH_TXD1    | PB13         |
+| المعالج الرئيسي STM32 | موديول DP83848 |
+| --------------------- | -------------- |
+| ETH_REF_CLK           | PA1            |
+| ETH_MDIO              | PA2            |
+| ETH_MDC               | PC1            |
+| ETH_CRS_DV            | PA7            |
+| ETH_RXD0              | PC4            |
+| ETH_RXD1              | PC5            |
+| ETH_TX_EN             | PB11           |
+| ETH_TXD0              | PB12           |
+| ETH_TXD1              | PB13           |
 
 ## البرمجيات
 
@@ -58,30 +58,29 @@ extern struct netif gnetif;
 /* USER CODE END PV */
 ```
 
-
-
-/* USER CODE BEGIN 0 */
-void ethernetif_notify_conn_changed(struct netif *netif) {
-	/* ملحوظة: يمكن تنفيذ هذه الوظيفة في ملف المستخدم عند الحاجة إلى الاستدعاء. */
-	if (netif_is_link_up(netif)) {
-		HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET);
-	} else {
-		HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_RESET);
-	}
+/_ USER CODE BEGIN 0 _/
+void ethernetif_notify_conn_changed(struct netif _netif) {
+/_ ملحوظة: يمكن تنفيذ هذه الوظيفة في ملف المستخدم عند الحاجة إلى الاستدعاء. _/
+if (netif_is_link_up(netif)) {
+HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_RESET);
+HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET);
+} else {
+HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_SET);
+HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_RESET);
 }
-/* USER CODE END 0 */
+}
+/_ USER CODE END 0 \*/
 
-/* USER CODE BEGIN 2 */
+/_ USER CODE BEGIN 2 _/
 ethernetif_notify_conn_changed(&gnetif);
-/* USER CODE END 2 */
+/_ USER CODE END 2 _/
 
-/* USER CODE BEGIN 3 */
+/_ USER CODE BEGIN 3 _/
 MX_LWIP_Process();
 }
-/* USER CODE END 3 */
-```
+/_ USER CODE END 3 _/
+
+````
 
 ```c title="lwip.c"
 /* USER CODE BEGIN 4_3 */
@@ -91,7 +90,7 @@ if (netif_is_link_up(&gnetif) && !netif_is_up(&gnetif)) {
 	dhcp_start(&gnetif);
 }
 /* USER CODE END 4_3 */
-```
+````
 
 ## Debugging
 
@@ -117,14 +116,14 @@ LwIP is a lightweight IP protocol stack that can run with or without the support
 LwIP provides three programming interfaces: RAW/Callback API, NETCONN API, and SOCKETAPI. They vary in terms of ease of use and efficiency, with RAW API being the most efficient but less user-friendly. You can choose the API that best suits your development needs. In this article, we use the Raw API and call the following functions:
 ```
 
-| API Function   | Description                               |
-| -------------- | ----------------------------------------- |
-| udp_new        | Create a new UDP PCB                      |
-| udp_remove     | Remove UDP PCB and release related resources |
-| udp_bind       | Bind UDP PCB to local IP address and port |
-| udp_connect    | Establish remote IP address and port for UDP PCB |
-| udp_disconnect | Remove remote IP and port for UDP PCB     |
-| udp_send       | Send UDP data                             |
+| API Function   | Description                                                         |
+| -------------- | ------------------------------------------------------------------- |
+| udp_new        | Create a new UDP PCB                                                |
+| udp_remove     | Remove UDP PCB and release related resources                        |
+| udp_bind       | Bind UDP PCB to local IP address and port                           |
+| udp_connect    | Establish remote IP address and port for UDP PCB                    |
+| udp_disconnect | Remove remote IP and port for UDP PCB                               |
+| udp_send       | Send UDP data                                                       |
 | udp_recv       | Register a callback function to be called when new data is received |
 
 ## Configuration in CubeMX
@@ -142,8 +141,7 @@ LwIP provides three programming interfaces: RAW/Callback API, NETCONN API, and S
 - [Developing applications on STM32Cube with LwIP TCP/IP stack (UM1713)](https://www.st.com/resource/en/user_manual/um1713-developing-applications-on-stm32cube-with-lwip-tcpip-stack-stmicroelectronics.pdf)
 - [54zorb/stm32-lwip](https://github.com/54zorb/stm32-lwip)
 
-> Article Author: **Power Lin**
-> Original Source: [https://wiki-power.com](https://wiki-power.com)
-> Copyright Notice: This article is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Please provide proper attribution when reprinting.
+> عنوان النص: <https://wiki-power.com/>
+> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

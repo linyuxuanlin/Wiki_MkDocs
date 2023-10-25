@@ -140,8 +140,7 @@ LwIP 提供了三种编程接口，分别为 RAW/Callback API、NETCONN API、SO
 - [Developing applications on STM32Cube with LwIP TCP/IP stack (UM1713)](https://www.st.com/resource/en/user_manual/um1713-developing-applications-on-stm32cube-with-lwip-tcpip-stack-stmicroelectronics.pdf)
 - [54zorb/stm32-lwip](https://github.com/54zorb/stm32-lwip)
 
-> 文章作者：**Power Lin**
-> 原文地址：<https://wiki-power.com>
-> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。
+> 原文地址：<https://wiki-power.com/>
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 
 ```

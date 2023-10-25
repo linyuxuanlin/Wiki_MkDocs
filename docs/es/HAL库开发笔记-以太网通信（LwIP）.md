@@ -119,15 +119,15 @@ LwIP proporciona tres interfaces de programación: RAW/Callback API, NETCONN API
 ```
 
 ```markdown
-| API Function  | Description                                 |
-| ------------- | ------------------------------------------- |
-| udp_new       | Create a new UDP PCB                        |
-| udp_remove    | Remove UDP PCB and release related resources |
-| udp_bind      | Bind UDP PCB to a local IP address and port |
-| udp_connect   | Establish remote IP address and port for UDP PCB |
-| udp_disconnect | Remove remote IP and port for UDP PCB        |
-| udp_send      | Send UDP data                               |
-| udp_recv      | Register a callback function to be called when new data is received |
+| API Function   | Description                                                         |
+| -------------- | ------------------------------------------------------------------- |
+| udp_new        | Create a new UDP PCB                                                |
+| udp_remove     | Remove UDP PCB and release related resources                        |
+| udp_bind       | Bind UDP PCB to a local IP address and port                         |
+| udp_connect    | Establish remote IP address and port for UDP PCB                    |
+| udp_disconnect | Remove remote IP and port for UDP PCB                               |
+| udp_send       | Send UDP data                                                       |
+| udp_recv       | Register a callback function to be called when new data is received |
 
 ## Configuration in CubeMX
 
@@ -144,10 +144,8 @@ LwIP proporciona tres interfaces de programación: RAW/Callback API, NETCONN API
 - [Developing applications on STM32Cube with LwIP TCP/IP stack (UM1713)](https://www.st.com/resource/en/user_manual/um1713-developing-applications-on-stm32cube-with-lwip-tcpip-stack-stmicroelectronics.pdf)
 - [54zorb/stm32-lwip](https://github.com/54zorb/stm32-lwip)
 
-> Article by: **Power Lin**
-> Original Source: [https://wiki-power.com](https://wiki-power.com)
-> Copyright Statement: This article is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Please provide proper attribution when reposting.
-```
-
+> Dirección original del artículo: <https://wiki-power.com/>
+> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+```

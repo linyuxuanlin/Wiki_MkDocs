@@ -173,16 +173,16 @@ y/n> n
 
 ```shell
 Remote config
---------------------
+
 [Txcos]
 type = s3
 provider = TencentCOS
 env_auth = false
-access_key_id = 我是马赛克
-secret_access_key = 我是马赛克
+access_key_id = xxx
+secret_access_key = xxx
 endpoint = cos.ap-guangzhou.myqcloud.com
 acl = public-read
---------------------
+
 y) Yes this is OK (default)
 e) Edit this remote
 d) Delete this remote

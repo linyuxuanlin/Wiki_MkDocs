@@ -86,7 +86,7 @@ Simply enter `http://your_server_ip` in your web browser to enjoy cloud-based VS
 
 ![VS Code in the Browser](https://img.wiki-power.com/d/wiki-media/img/20200413181001.jpg)
 
-Configuring domain access: *To be explored...*
+Configuring domain access: _To be explored..._
 
 ## Current Issues
 
@@ -99,8 +99,7 @@ Configuring domain access: *To be explored...*
 - [(Recommended) Installation and Usage of VS Code Online Tool - code-server on a Cloud Server with Common Problem Solving (Detailed Guide)](https://blog.csdn.net/Granery/article/details/90415636)
 - [Setting up the Web Version of VS Code for iPad Programming Environment](https://blog.icodef.com/2019/11/17/1670)
 
-> Article Author: **Power Lin**
-> Original Source: [https://wiki-power.com](https://wiki-power.com)
-> Copyright Notice: This article is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en). Please provide proper attribution when reposting.
+> Original: <https://wiki-power.com/>
+> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

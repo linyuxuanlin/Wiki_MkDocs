@@ -7,16 +7,16 @@ The following is a tutorial based on the [**Anti-Client STM32F407 Main Control B
 The DP83848 interface is RMII, and DP83848 supports 10M/100M line speed, with a built-in 50MHz passive crystal.
 
 | STM32 Main Control | DP83848 Module |
-| ------------------- | -------------- |
-| ETH_REF_CLK         | PA1            |
-| ETH_MDIO            | PA2            |
-| ETH_MDC             | PC1            |
-| ETH_CRS_DV          | PA7            |
-| ETH_RXD0            | PC4            |
-| ETH_RXD1            | PC5            |
-| ETH_TX_EN           | PB11           |
-| ETH_TXD0            | PB12           |
-| ETH_TXD1            | PB13           |
+| ------------------ | -------------- |
+| ETH_REF_CLK        | PA1            |
+| ETH_MDIO           | PA2            |
+| ETH_MDC            | PC1            |
+| ETH_CRS_DV         | PA7            |
+| ETH_RXD0           | PC4            |
+| ETH_RXD1           | PC5            |
+| ETH_TX_EN          | PB11           |
+| ETH_TXD0           | PB12           |
+| ETH_TXD1           | PB13           |
 
 ## Software
 
@@ -108,14 +108,14 @@ LwIP is a lightweight IP protocol that can run without the support of an operati
 LwIP provides three programming interfaces: RAW/Callback API, NETCONN API, and SOCKET API. Their ease of use and efficiency decrease from left to right. You can choose the API that suits your development needs. In this article, we use the Raw API and call the following functions:
 ```
 
-| API Function  | Description                             |
-| -------------- | ---------------------------------------- |
-| udp_new        | Create a new UDP PCB                    |
-| udp_remove     | Remove UDP PCB and release related resources |
-| udp_bind       | Bind UDP PCB to a local IP address and port |
-| udp_connect    | Establish remote IP address and port for UDP PCB |
-| udp_disconnect | Remove remote IP and port for UDP PCB   |
-| udp_send       | Send UDP data                           |
+| API Function   | Description                                                         |
+| -------------- | ------------------------------------------------------------------- |
+| udp_new        | Create a new UDP PCB                                                |
+| udp_remove     | Remove UDP PCB and release related resources                        |
+| udp_bind       | Bind UDP PCB to a local IP address and port                         |
+| udp_connect    | Establish remote IP address and port for UDP PCB                    |
+| udp_disconnect | Remove remote IP and port for UDP PCB                               |
+| udp_send       | Send UDP data                                                       |
 | udp_recv       | Register a callback function to be called when new data is received |
 
 ## Configuration within CubeMX
@@ -133,8 +133,7 @@ LwIP provides three programming interfaces: RAW/Callback API, NETCONN API, and S
 - [Developing applications on STM32Cube with LwIP TCP/IP stack (UM1713)](https://www.st.com/resource/en/user_manual/um1713-developing-applications-on-stm32cube-with-lwip-tcpip-stack-stmicroelectronics.pdf)
 - [54zorb/stm32-lwip](https://github.com/54zorb/stm32-lwip)
 
-> Article Author: **Power Lin**
-> Original Source: [https://wiki-power.com](https://wiki-power.com)
-> Copyright Notice: This article is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en), please provide proper attribution when reproducing.
+> Original: <https://wiki-power.com/>
+> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.
