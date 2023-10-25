@@ -1,34 +1,34 @@
-# Notas de desarrollo de la biblioteca HAL - Interrupciones externas
+# Notas de desarrollo de la biblioteca HAL: Interrupciones externas
 
-En el artículo anterior, mencionamos que eliminar el rebote de las teclas y detectar la entrada utilizando un método de encuesta constante podría consumir demasiados recursos del sistema y provocar bloqueos, o incluso perder algunas detecciones. Esto es precisamente por qué necesitamos utilizar interrupciones.
+En el artículo anterior mencionamos que el uso del método de encuesta para eliminar el rebote de los botones y detectar la entrada puede consumir demasiados recursos del sistema y causar bloqueos, o incluso perder la detección. Por eso necesitamos utilizar interrupciones.
 
 ## Principios básicos
 
-### Encuesta vs. Interrupción
+### Encuesta vs Interrupciones
 
-¿Qué son la encuesta y las interrupciones? Para dar un ejemplo, la encuesta es como ir a la puerta cada minuto para ver si el repartidor de comida ha llegado. Durante ese tiempo, no podemos hacer nada más excepto esperar a que llegue la comida. Sin embargo, si el repartidor de comida llega justo cuando salimos de la puerta, perderemos la entrega. Por otro lado, las interrupciones son como recibir una llamada del repartidor cuando llega. Podemos dejar lo que estamos haciendo, recoger la comida y continuar trabajando sin preocuparnos de perderla.
+¿Qué es la encuesta y qué son las interrupciones? Tomemos como ejemplo pedir comida a domicilio. La encuesta sería ir a la puerta cada minuto para ver si ha llegado el repartidor. Durante ese tiempo no puedo hacer otra cosa más que esperar la comida; pero si el repartidor llega justo cuando me alejo de la puerta, me perderé la entrega. Por otro lado, una interrupción sería llamar al repartidor cuando llega, dejar lo que estoy haciendo y recoger la comida. De esta manera puedo seguir trabajando tranquilamente sin perderme la entrega.
 
 ### Interrupciones externas
 
-Las interrupciones se dividen en externas (Interrupt) e internas (Exception). Las interrupciones externas son generadas por dispositivos externos que interrumpen el microcontrolador (MCU), mientras que las internas son generadas por programas de software internos que interrumpen el MCU.
+Las interrupciones se dividen en externas (Interrupt) e internas (Exception). Las interrupciones externas son generadas por dispositivos externos que interrumpen al MCU, mientras que las internas son generadas por programas de software internos que interrumpen al MCU.
 
 ### NVIC
 
-NVIC significa Controlador de Interrupción Anidado de Vectores Múltiples, y sus siglas en inglés son **Nested Vectored Interrupt Controller**. Tiene tres parámetros principales: habilitar la interrupción, prioridad de prelación y prioridad de respuesta (cuanto menor es el valor de prioridad, mayor es la prioridad).
+NVIC significa Nested Vectored Interrupt Controller, que se traduce como **Controlador de Interrupciones Vectorizadas Anidadas**. Tiene tres parámetros principales: habilitación de interrupciones, prioridad de prelación y prioridad de respuesta (a menor valor, mayor prioridad).
 
-![NVIC](https://img.wiki-power.com/d/wiki-media/img/20210206121058.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210206121058.png)
 
-**Habilitar la interrupción**: esto se refiere a si la interrupción está habilitada o no. Si está habilitada, cuando se cumplan las condiciones de activación de la interrupción, se ejecutará el servicio de interrupción. De lo contrario, el servicio de interrupción se ignorará y el programa principal continuará ejecutándose.
+**Habilitación de interrupciones**: se refiere a si se activa o no la interrupción. Si se habilita la interrupción, cuando se cumpla la condición de activación de la interrupción, se saltará a la ejecución del programa de servicio de interrupción; de lo contrario, el programa de servicio de interrupción no se tendrá en cuenta y se seguirá ejecutando el programa principal.
 
-**Prioridad de prelación**: se utiliza para determinar si una interrupción puede interrumpir el servicio de otra interrupción, es decir, para tomar prioridad. Por ejemplo, si la condición para la interrupción A se cumple y el servicio de interrupción de A está en curso, si la prioridad de prelación de la interrupción B es mayor que la de A, el servicio de A se interrumpirá para ejecutar primero el servicio de B y luego se continuará con A. Esto se conoce como interrupción anidada. Si la prioridad de prelación de B no es mayor que la de A, el servicio de A se completará antes de ejecutar B.
+**Prioridad de prelación**: se utiliza para determinar si una interrupción puede interrumpir a otra interrupción y ejecutarse primero. Por ejemplo, si se cumple la condición de activación de la interrupción A y el programa de servicio de la interrupción A está en ejecución, y en ese momento se cumple la condición de activación de la interrupción B. Si la prioridad de prelación de la interrupción B es mayor que la de la interrupción A, el programa de servicio de la interrupción A se interrumpirá y se ejecutará primero el programa de servicio de la interrupción B, y una vez finalizado, se continuará con la ejecución del programa de servicio de la interrupción A. Esto se conoce como anidamiento de interrupciones. Si la prioridad de prelación de B no es mayor que la de A, entonces se ejecutará primero A y luego B.
 
 **Prioridad de respuesta**: si varias interrupciones con la misma prioridad de prelación se activan al mismo tiempo, la de mayor prioridad de respuesta se ejecutará primero.
 
-Para determinar la prioridad de una interrupción, primero se compara la prioridad de prelación. Si las prioridades de prelación son iguales, se determina según la tabla de vectores de interrupción.
+Para determinar la prioridad de una interrupción, primero se compara la prioridad de prelación. Si la prioridad de prelación es la misma, se compara la prioridad de respuesta. Si ambas prioridades son iguales, se debe consultar la tabla de vectores de interrupción.
 
-### Referencia de funciones de devolución de llamada de interrupción
+### Referencia de la función de devolución de llamada de interrupción
 
-Una vez configuradas las interrupciones GPIO y las prioridades NVIC, se puede implementar la funcionalidad mediante la reescritura de las funciones de devolución de llamada de interrupción en el archivo `stm32f4xx_it.c`.
+Después de configurar la interrupción GPIO y la prioridad NVIC, se puede implementar la función de devolución de llamada de interrupción en el archivo `stm32f4xx_it.c` para que funcione.
 
 ```c
 /* USER CODE BEGIN 1 */
@@ -41,34 +41,32 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 /* USER CODE END 1 */
 ```
 
-## Control de luces mediante interrupciones externas de teclas
+## Control de luz mediante interrupción de botón externo
 
-Antes de realizar experimentos adicionales, es necesario configurar varios parámetros, como la descarga de puertos serie y las configuraciones de reloj, en CubeMX. Para obtener instrucciones detalladas, consulte el artículo [**Notas de desarrollo de la biblioteca HAL - Configuración del entorno**](enlace_a_tu_artículo) en el método de configuración.
+Antes de continuar con el siguiente experimento, es necesario configurar varios parámetros en CubeMX, como la descarga a través del puerto serie y la configuración del reloj.  
+Para obtener instrucciones detalladas, consulte el artículo [**Notas de desarrollo de la biblioteca HAL: Configuración del entorno**](https://wiki-power.com/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE) en el método de configuración.
 
-### Configuración de interrupciones en CubeMX
+### Configuración de la interrupción en CubeMX
 
-![Configuración de interrupciones en CubeMX](https://img.wiki-power.com/d/wiki-media/img/20210205150422.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210205150422.png)
 
-Como se muestra en la figura, el LED se configura como salida siguiendo el método descrito en el artículo anterior. Debido a que la tecla se activa a nivel bajo, lo que significa que genera un flanco descendente en el momento de presionarla, el pin debe configurarse como una interrupción activada por flanco descendente.
+Como se muestra en la imagen, el LED se configura como salida utilizando el método descrito en el artículo anterior. El botón, debido a que es activado por nivel bajo, es decir, genera un flanco descendente en el momento de ser presionado, por lo que el pin debe configurarse como una interrupción activada por flanco descendente.
 
-En mi placa, esto significa configurar `PI8` como modo `GPIO_EXTI8` (interrupción externa en la línea 8), y configurarlo como flanco descendente según el esquemático, eligiendo una resistencia interna de pull-up. Como se muestra en las imágenes:
+En mi placa, se configura el pin `PI8` como modo `GPIO_EXTI8` (interrupción externa, conectada a la línea de interrupción 8) y se configura como flanco descendente. Según el esquemático, se selecciona la resistencia de pull-up interna. Como se muestra en la imagen:
 
-![Configuración del pin para interrupción](https://img.wiki-power.com/d/wiki-media/img/20210403222304.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210403222304.png)
 
-![Configuración de la resistencia pull-up](https://img.wiki-power.com/d/wiki-media/img/20210206131409.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210206131409.png)
 
-A continuación, vaya a la etiqueta NVIC y habilite las interrupciones que ha configurado:
+A continuación, haga clic en la pestaña NVIC para habilitar la interrupción configurada.
 
-[Translation End]
-
-```markdown
 ![](https://img.wiki-power.com/d/wiki-media/img/20210206134916.png)
 
-Moreover, the priority of preemption needs to be lowered by one (from 0 to 1, as explained below).
+Además, se debe reducir en un nivel la prioridad de prelación (de 0 a 1, la razón se explicará más adelante).
 
-### Configuring Interrupts in the Code
+### Configuración de interrupciones en el código
 
-You only need to add the following code at the end of `stm32f4xx_it.c`:
+Solo es necesario agregar el siguiente código al final de `stm32f4xx_it.c`:
 
 ```c title="stm32f4xx_it.c"
 /* USER CODE BEGIN 1 */
@@ -88,59 +86,16 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 /* USER CODE END 1 */
 ```
 
-The purpose of this code is to rewrite the callback function for the interrupt, adding the ability to toggle the LED on and off using the button. However, there is a caveat with the `HAL_Delay()` delay function because it originates from the SysTick timer (which generates interrupts at fixed time intervals), and therefore, it has its own interrupt priority. As shown in the NVIC configuration diagram above, both SysTick and the interrupt priority we configured are set to 0, so SysTick cannot be triggered immediately after an external interrupt. Hence, we need to lower the preemption priority of the external interrupt (from 0 to 1).
+Este fragmento de código tiene la función de reescribir la función de devolución de llamada de la interrupción, agregando la función de cambiar el estado del LED con un botón. Sin embargo, la función de retardo `HAL_Delay()` tiene un problema, ya que su fuente es el temporizador SysTick (que genera interrupciones en intervalos de tiempo fijos), por lo que tiene su propia prioridad de interrupción. En el diagrama de configuración del NVIC mostrado anteriormente, se puede ver que tanto SysTick como la prioridad de prelación de la interrupción que configuramos son 0, por lo que no se puede activar SysTick después de una interrupción externa. Por lo tanto, debemos cambiar la prioridad de prelación de la interrupción externa a un nivel más bajo (de 0 a 1).
 
-After compiling and uploading, you can switch the state of the LED on and off by pressing the button.
+Después de compilar y cargar el código, se puede cambiar el estado del LED al presionar el botón.
 
-## References and Acknowledgments
+## Referencias y agradecimientos
 
-- [Advanced Tutorial II [Interrupt]](https://alchemicronin.github.io/posts/ff6aca34/)
-- [STM32CubeMX Practical Tutorial (Part Three) - External Interrupts (Avoiding Pitfalls with Interrupts and HAL_Delay Function)](https://blog.csdn.net/weixin_43892323/article/details/104383560?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control)
+- [Advanced Part II [Interrupt]](https://alchemicronin.github.io/posts/ff6aca34/)
+- [STM32CubeMX Practical Tutorial (Part III) - External Interrupts (Interrupt and HAL_Delay Function Pitfalls)](https://blog.csdn.net/weixin_43892323/article/details/104383560?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control)
 
-[Reemplazo[1]]
-[Reemplazo[2]]
-```
-
-**Spanish Translation:**
-
-```markdown
-![](https://img.wiki-power.com/d/wiki-media/img/20210206134916.png)
-
-Además, la prioridad de prelación debe reducirse en uno (de 0 a 1, como se explica a continuación).
-
-### Configuración de Interrupciones en el Código
-
-Solo necesita agregar el siguiente código al final de `stm32f4xx_it.c`:
-
-```c title="stm32f4xx_it.c"
-/* USER CODE BEGIN 1 */
-
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
-{
-    if(HAL_GPIO_ReadPin(KEY1_GPIO_Port, KEY1_Pin) == 0)
-    {
-        HAL_Delay(100);
-        if(HAL_GPIO_ReadPin(KEY1_GPIO_Port, KEY1_Pin) == 0)
-        {
-            HAL_GPIO_TogglePin(LED1_GPIO_Port,LED1_Pin);
-        }
-    }
-}
-
-/* USER CODE END 1 */
-```
-
-El propósito de este código es reescribir la función de devolución de llamada para la interrupción, agregando la capacidad de alternar el LED encendido y apagado utilizando el botón. Sin embargo, hay un detalle con la función de retardo `HAL_Delay()` porque proviene del temporizador SysTick (que genera interrupciones a intervalos de tiempo fijos) y, por lo tanto, tiene su propia prioridad de interrupción. Como se muestra en el diagrama de configuración NVIC anterior, tanto SysTick como la prioridad de interrupción que configuramos se establecen en 0, por lo que SysTick no puede ser activado inmediatamente después de una interrupción externa. Por lo tanto, debemos reducir la prioridad de prelación de la interrupción externa (de 0 a 1).
-
-Después de compilar y cargar, puede cambiar el estado del LED encendido y apagado presionando el botón.
-
-## Referencias y Agradecimientos
-
-- [Tutorial Avanzado II [Interrupciones]](https://alchemicronin.github.io/posts/ff6aca34/)
-- [Tutorial Práctico de STM32CubeMX (Parte Tres) - Interrupciones Externas (Evitando Problemas con Interrupciones y la Función HAL_Delay)](https://blog.csdn.net/weixin_43892323/article/details/104383560?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control)
-
-[Reemplazo[1]]
-[Reemplazo[2]]
-```
+> Dirección original del artículo: <https://wiki-power.com/>  
+> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

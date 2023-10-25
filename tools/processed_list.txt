@@ -1,6 +1,5 @@
 3D打印：ABS与PLA的区别.md
 ADC-Dynamic_Parameters.md
-ADC-Static_Parameters.md
 ADC与DAC基础知识.md
 AD使用Git的注意事项.md
 AD基本操作-原理图绘制.md
@@ -41,12 +40,8 @@ GitHub改Host.md
 Git学习笔记.md
 Git配置代理.md
 HAL库开发笔记-DMA.md
-HAL库开发笔记-GPIO.md
-HAL库开发笔记-TIM基本定时器.md
 HAL库开发笔记-USB通信.md
-HAL库开发笔记-外部中断.md
 Hack.init()黑客马拉松.md
-Homelab-云端音乐服务器Navidrome.md
 Homelab-免费的内网穿透替代方案Cloudflared.md
 Homelab-内网穿透工具frp.md
 Homelab-功能丰富的看板软件WeKan.md
@@ -316,3 +311,8 @@ npm和Yarn换源加速国内访问.md
 使用Rclone同步网盘数据.md
 信号完整性-失真.md
 HAL库开发笔记-以太网通信（LwIP）.md
+HAL库开发笔记-GPIO.md
+HAL库开发笔记-TIM基本定时器.md
+HAL库开发笔记-外部中断.md
+Homelab-云端音乐服务器Navidrome.md
+ADC-Static_Parameters.md
