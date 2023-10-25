@@ -375,9 +375,13 @@ try:
                 with open(processed_list, "a", encoding="utf-8") as f:
                     f.write("\n")
                     f.write(filename)
-
+                    
             # 强制将缓冲区中的数据刷新到终端中，使用 GitHub Action 时方便实时查看过程
             sys.stdout.flush()
+
+    # 所有任务完成的提示
+    print("Congratulations! All files processed done.")
+    sys.stdout.flush()
 
 except Exception as e:
     # 捕获异常并输出错误信息
