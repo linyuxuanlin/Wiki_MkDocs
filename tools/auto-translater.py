@@ -8,8 +8,8 @@ import yaml  # pip install PyYAML
 
 
 # 设置 OpenAI API Key 和 API Base 参数，通过 env.py 传入
-openai.api_key = os.environ.get("KEY_CHATANYWHERE_ME")
-openai.api_base = os.environ.get("URL_CHATANYWHERE")
+openai.api_key = os.environ.get("CHATGPT_API_KEY")
+openai.api_base = os.environ.get("CHATGPT_API_BASE")
 
 # 设置最大输入字段，超出会拆分输入，防止超出输入字数限制
 max_length = 1800
