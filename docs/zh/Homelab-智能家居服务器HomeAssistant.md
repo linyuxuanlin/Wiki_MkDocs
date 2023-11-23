@@ -39,7 +39,19 @@ APP_PORT=xxxx # 自定义访问端口，选择不被占用的即可
 
 ## 配置说明
 
-移动端 App 可直接使用官方的 Home Assistant App
+移动端可直接使用官方的 Home Assistant App。
+
+如果你通过外网访问时提示 `400 Bad Request`，你可以在配置文件 `configuration.yaml` 中加入以下语句：
+
+```yaml
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 10.0.0.200 # 代理服务器的 IP 地址
+    - 172.30.33.0/24 # 也可也提供带掩码的 IP 地址
+```
+
+如果你不知道代理服务器的 IP 地址，可以试着从外网访问 Home Assistant，从 log 中的 error 信息就能看到了。
 
 ## 参考与致谢
 
