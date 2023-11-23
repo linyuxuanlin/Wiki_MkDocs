@@ -1,6 +1,6 @@
 # SwiftCtrl - Controlador Bluetooth
 
-SwiftCtrl es un controlador remoto Bluetooth (HC-06) basado en Arduino que ofrece control de doble joystick, dos botones y una pantalla OLED.
+SwiftCtrl es un controlador remoto Bluetooth basado en Arduino, que utiliza el módulo HC-06. Ofrece funciones de control con dos joysticks, dos botones y una pantalla OLED.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20200221145040.png)
 
@@ -17,7 +17,7 @@ Vista previa en línea del proyecto:
 
 ## Parámetros básicos
 
-- Controlador principal: basado en Arduino Nano (ATmega328)
+- Controlador principal: Arduino Nano (ATmega328)
 - Voltaje del sensor: 3.3V
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20200311182440.png)

@@ -1,68 +1,70 @@
-# Guía de configuración de Keil MDK
+# Guía de Configuración de Keil MDK
 
 ## 1. Descarga
 
-**Ingrese a la página de descarga de Keil en el sitio web oficial:** [https://www.keil.com/demo/eval/arm.htm](https://www.keil.com/demo/eval/arm.htm)
+**Ingresa a la página de descarga en el sitio web oficial de Keil:** [https://www.keil.com/demo/eval/arm.htm](https://www.keil.com/demo/eval/arm.htm)
 
-**Complete la información requerida como se muestra en la imagen y haga clic en el botón `Submit`:**
+**Completa la información requerida como se muestra en la siguiente imagen y haz clic en el botón `Submit`:**
 
-![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564402348383.png)
+![Descargar](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564402348383.png)
 
-**Haga clic en el botón de descarga del paquete de instalación:**
+**Descarga el paquete de instalación:**
 
-![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564402469518.png)
+![Descargar Paquete](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564402469518.png)
 
 ## 2. Instalación
 
-**Abra el paquete de instalación descargado y siga los siguientes pasos:**
+**Una vez descargado el paquete de instalación, sigue estos pasos:**
 
-![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405005991.png)
+![Paso 1](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405005991.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405034468.png)
+![Paso 2](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405034468.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405123578.png)
+![Paso 3](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405123578.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405166784.png)
+![Paso 4](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405166784.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405201092.png)
+![Paso 5](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405201092.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405260737.png)
+![Paso 6](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405260737.png)
 
-**Instale los paquetes de chips (necesitamos las series STM32 F1 y F4):**
+**Instala los paquetes de chips (necesarios para las series STM32 F1 y F4):**
 
-![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405574756.png)
+![Instalar Paquetes de Chips](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405574756.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405648731.png)
+![Seleccionar Chips](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405648731.png)
 
-## 3. Crackeo
+## 3. Activación
 
-Haga clic en el enlace de descarga del [**crackeador**](https://github.com/linyuxuanlin/File-host/blob/main/software/KEIL_Lic.exe)
+Haz clic para descargar el [**activador**](https://github.com/linyuxuanlin/File-host/blob/main/software/KEIL_Lic.exe)
 
-**Cierre MDK, haga clic derecho y abra como administrador:**
+**Cierra Keil MDK y ábrelo nuevamente con privilegios de administrador:**
 
-![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406135091.png)
+![Abrir como Administrador](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406135091.png)
 
-**Abra la barra de menú - File - License Management:**
+**Dirígete a la barra de menú - File - License Management:**
 
-![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406171844.png)
+![Gestión de Licencia](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406171844.png)
 
-**Copie esta cadena `CID`:**
+**Copia la serie `CID` que se muestra:**
 
-![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406230209.png)
+![Copiar CID](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406230209.png)
 
-**Pegue la cadena en el crackeador, seleccione `Arm` en el menú desplegable `Target` y haga clic en `Generate` para generar el código de activación:**
+**Pega esta serie en el activador y selecciona `Arm` en el menú desplegable `Target`, luego haz clic en `Generate` para generar el código de activación:**
 
-**Copie el código de activación, péguelo en MDK y luego haga clic en `Add LIC`:**
+![Generar Código](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406292113.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406431978.png)
+**Copia el código de activación y pégalo en Keil MDK, luego haz clic en `Add LIC`:**
 
-## Referencias y agradecimientos
+![Agregar Licencia](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406431978.png)
 
-- [Configuración del color de fondo de protección ocular de Keil](https://blog.csdn.net/w5862338/article/details/50984536)
-- [Formateo de código de Keil](https://blog.csdn.net/sudaroot/article/details/88095269)
+## Referencias y Agradecimientos
+
+- [Ajuste del color de fondo para proteger la vista en Keil](https://blog.csdn.net/w5862338/article/details/50984536)
+- [Formato de código en Keil](https://blog.csdn.net/sudaroot/article/details/88095269)
 - [Configuración de la interfaz personal](https://github.com/linyuxuanlin/File-host/blob/main/software-development/global.prop)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
+> Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

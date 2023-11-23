@@ -1,94 +1,94 @@
-# RSS - Una forma eficiente de leer
+# RSS - Una Forma Eficiente de Leer
 
-El RSS significa "Really Simple Syndication" (Sindicación Realmente Simple) y es una herramienta que te permite suscribirte a varios sitios web que te interesan en un solo lugar.
+El acrónimo RSS significa "Sindicación Realmente Simple" (Really Simple Syndication), y es una herramienta que te permite suscribirte a diversos sitios web de tu interés en un solo lugar.
 
-En pocas palabras, cuando un autor al que sigues escribe un artículo en su plataforma (puede ser un blog, una cuenta pública, Quora, etc.), el RSS lo envía para que lo leas.
+En pocas palabras, cuando un autor que sigues publica un artículo en su plataforma (ya sea un blog, un canal público, o una plataforma como Zhihu), RSS te lo envía para que puedas leerlo.
 
-> Si un sitio web admite RSS, significa que cada vez que publique un nuevo artículo, agregará una entrada en un archivo ubicado en una dirección web específica, utilizando una sintaxis específica (específicamente lenguaje de marcado XML o JSON), que enumera el título del artículo, el autor, la fecha de publicación y la información del contenido (puede ser el artículo completo o un resumen). De esta manera, los usuarios pueden recopilar las direcciones web de estos archivos que ofrecen todos los sitios web que les interesan y verificar periódicamente las actualizaciones de estos archivos para saber si y cuándo se publicó contenido en estos sitios web. La función principal de un lector de RSS es almacenar las direcciones RSS que el usuario ha suscrito, verificar automáticamente las actualizaciones a intervalos fijos y presentar el contenido en un formato fácil de leer para el usuario.
+> Si un sitio web admite RSS, significa que cada vez que publica un nuevo artículo, agrega una entrada a un archivo en una ubicación específica, en un formato específico (generalmente lenguaje de marcado XML o JSON). Esta entrada incluye el título del artículo, el autor, la fecha de publicación y el contenido (que puede ser el artículo completo o un resumen). De esta manera, los usuarios solo necesitan recopilar las direcciones de estos archivos proporcionadas por los sitios que les interesan y verificar periódicamente si hay actualizaciones en el contenido de estos archivos para saber si los sitios han publicado algo nuevo. La función principal de un lector de RSS es almacenar las direcciones de RSS a las que el usuario se ha suscrito, verificar automáticamente las actualizaciones a intervalos regulares y presentar el contenido de manera legible para el usuario.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200225145439.png)
-![](https://img.wiki-power.com/d/wiki-media/img/20200225145502.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200225145439.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200225145502.png)
 
-## ¿Por qué usar RSS?
+## Por Qué Usar RSS
 
 ### 1. Conveniencia
 
-Cuando sigues a muchas personas, no necesitas abrir Quora, Jianshu o incluso blogs para obtener actualizaciones, sino que puedes leer todo en una sola terminal.
+Cuando sigues a muchas personas, ya no necesitas abrir uno por uno sitios web como Zhihu, Jian Shu o revisar blogs para buscar actualizaciones. En su lugar, puedes leer todo en un solo lugar.
 
-### 2. Derecho a la información
+### 2. Derecho a la Información
 
-El opuesto de RSS es la recomendación de algoritmos, como WeChat Official Accounts, Quora, Weibo, Toutiao, etc. Además de la gran cantidad de publicidad en estas plataformas y el problema de la migración, la característica de la recomendación de algoritmos es que no necesitas elegir conscientemente, el algoritmo te dará contenido según tus preferencias. De esta manera, casi no tienes margen de elección y pierdes gradualmente la capacidad de juzgar mientras te alimentan constantemente. Lo más aterrador es que **define tu perfil por ti y te convierte en lo que cree que eres**. El incidente de "Big Data Kills Friends" no es casualidad, y es común que las empresas de Internet espíen la privacidad de los usuarios a través de algoritmos.
+RSS se opone a las recomendaciones algorítmicas, como las de WeChat, Zhihu, Weibo, y Jinri Toutiao, entre otras. Sin mencionar la proliferación de publicidad en plataformas de recomendación algorítmica y la molestia de migrar entre ellas. La característica de las recomendaciones algorítmicas es que no necesitas tomar decisiones conscientes; el algoritmo te proporcionará contenido basado en tus preferencias. Esto significa que casi no tienes control sobre lo que ves y, gradualmente, pierdes la capacidad de juzgar. Lo más alarmante es que **el algoritmo define quién eres y te moldea sin que te des cuenta**. La revelación de "el gran dato discrimina" no es casualidad; es una práctica común de las compañías de Internet de hoy en día observar la privacidad de los usuarios mediante algoritmos.
 
-**Sé el dueño de la información, no un esclavo.** RSS es un protocolo público que permite cambiar libremente de plataforma y cliente. Lo importante es que **el poder de obtener información es completamente autónomo**. En comparación con la recomendación de algoritmos, RSS tiene control y seguridad, y la privacidad está completamente en manos del usuario.
+**Sé el dueño de tu información, no un esclavo**. RSS es un protocolo público y te permite cambiar de plataforma y cliente libremente. Lo importante es que **tienes un control total sobre tu derecho a la información**. Comparado con las recomendaciones algorítmicas, RSS ofrece control y seguridad, y mantiene tu privacidad en tus manos.
 
 ### 3. Descentralización
 
-Los artículos publicados en plataformas que requieren registro (cuentas públicas, Weibo, Quora, etc.) a menudo se eliminan debido a problemas de sensibilidad. Para la libre circulación de información, es necesario adoptar un enfoque descentralizado, es decir, plataformas construidas por los propios autores. RSS recopila contenido disperso y lo presenta para su lectura.
+Los artículos publicados en plataformas que requieren registro a menudo son eliminados debido a contenido sensible. Para garantizar la libre circulación de información, es necesario adoptar un enfoque descentralizado, es decir, plataformas construidas por los propios autores. RSS recopila contenido disperso y lo presenta para su lectura.
 
-## Comenzando a leer RSS
+## Comenzando a Leer RSS
 
-### 1. Obtener fuentes RSS
+### 1. Obtener Fuentes de RSS
 
-Tomemos Inoreader como ejemplo. El método más simple es copiar la dirección del blog y pegarla en la barra de búsqueda de Inoreader, generalmente se puede suscribir directamente.
+Tomemos Inoreader como ejemplo. El método más sencillo es copiar la dirección del blog y pegarla en la barra de búsqueda de Inoreader, generalmente se puede suscribir directamente.
 
-Para determinar si un sitio web tiene RSS, simplemente busca este ícono:
+Para saber si un sitio web tiene RSS, busca este ícono al abrirlo:
 
-![](https://img.wiki-power.com/d/wiki-media/img/rss.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/rss.png)
 
-y haz clic en él para suscribirte al enlace RSS directamente.  
-Si no hay un ícono, es posible que haya RSS, pero está oculto.
+Si ves este ícono, simplemente haz clic en él para suscribirte al enlace RSS.
 
-En este caso, podemos usar una extensión del navegador llamada RSS+:
+Si no ves el ícono, es posible que el RSS esté presente, pero un poco más escondido.
 
-- Primero, instala la extensión Tampermonkey (necesitas acceso a Internet).
-- Luego, instala el script RSS+.
-- Si el sitio web tiene RSS, lo encontrarás en el pequeño círculo en la esquina inferior derecha.
+En este caso, puedes usar una extensión del navegador llamada RSS+:
 
-Para los sitios web sin RSS, puedes crear tu propio RSS. Aquí hay algunas herramientas recomendadas:
+- Primero, instala la extensión [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo), esto requiere acceso a Internet sin restricciones.
+- Luego, instala el script [RSS+](https://greasyfork.org/zh-CN/scripts/373252-rss-show-site-all-rss).
+- Ahora, si el sitio web tiene RSS, lo encontrarás en el pequeño círculo en la esquina inferior derecha.
+
+Para sitios web que no tengan RSS, puedes crear tu propio RSS. Aquí hay algunas herramientas recomendadas:
 
 - [feed43](http://feed43.com/)
 - [RSSHub](https://docs.rsshub.app/#%E5%BE%AE%E5%8D%9A)
 - [FeedOcean](https://feedocean.com/?lang=zh-CN)
 
-## Cómo usar RSS para obtener información de alta calidad
+Estas herramientas no solo permiten suscribirte a blogs que no tienen RSS, sino que también pueden suscribirte directamente a columnas de Zhihu, cuentas públicas, Weibo y foros, entre otros. Consulta la documentación para obtener instrucciones detalladas.
 
-### 1. Encuentra fuentes interesantes
+### 2. Elige un lector de RSS
 
-Hay muchas herramientas para encontrar fuentes interesantes, como [Feedly](https://feedly.com/), [Inoreader](https://www.inoreader.com/) y [RSSHub](https://docs.rsshub.app/). Estas herramientas no solo pueden suscribirse a blogs sin RSS, sino que también pueden suscribirse directamente a columnas de Zhihu, cuentas públicas de WeChat, Weibo, Tieba, etc. Consulte la documentación para obtener información detallada.
+**Inoreader** ofrece una versión gratuita con funciones básicas sólidas, con un tiempo de actualización de aproximadamente 15 minutos, lo que cumple con los requisitos. Está disponible en la versión web, iOS (requiere una cuenta de App Store de EE. UU.) y en la versión para Android.
 
-### 2. Elija un lector de RSS
+**Reabble** se basa en la API de Inoreader y está diseñado para la lectura en pantallas de tinta electrónica. Se recomienda actualizar a la versión de pago (¥21 al año, la versión gratuita permite leer 7 artículos al día pero no admite notificaciones push). Personalmente, he configurado la aplicación para enviar automáticamente nuevos artículos al Kindle a las 9 de la mañana, lo que facilita la realización de anotaciones y la exportación de extractos de libros. Si deseas leer en tu computadora, también puedes acceder directamente a [reabble.com](https://reabble.com), crear un acceso directo en tu escritorio y disfrutar de una interfaz más limpia y sin anuncios en comparación con Inoreader.
 
-**Inoreader** tiene una versión gratuita con funciones básicas completas y un tiempo de captura de aproximadamente 15 minutos, lo que cumple con los requisitos. Tiene una versión web, iOS (requiere una cuenta de App Store en EE. UU.) Y una versión de Android.
+## Suscribirse a Fuentes de Interés
 
-**Reabble** se basa en la API de Inoreader y está diseñado para la lectura de tinta electrónica. Se recomienda actualizar a la versión de pago (¥ 21 por año, 7 artículos / día en la versión gratuita y no admite notificaciones push). Configuré la entrega programada de nuevos artículos a mi Kindle a las 9 a.m. todos los días, lo que también facilita la anotación y la exportación de extractos de libros. Si desea leer en su computadora, también puede abrir [reabble.com](https://reabble.com), crear un acceso directo en su escritorio, la interfaz es más simple y no tiene publicidad que Inoreader.
+Nota: RSS no es adecuado para suscribirse a sitios web de noticias, ya que la información se actualiza con demasiada frecuencia y la cantidad de contenido puede dificultar la experiencia de lectura. Por lo tanto, RSS es más adecuado para la suscripción a sitios web de **alta calidad**, como blogs. No se trata de tener la mayor cantidad de fuentes de suscripción, sino de elegirlas con cuidado. Demasiadas fuentes de suscripción pueden llevar a una "sobrecarga de información", lo que significa que recibirás cientos de nuevas noticias todos los días y no podrás leerlas todas.
 
-## Suscribirse a algunas fuentes interesantes
+He exportado mis fuentes de suscripción, puedes echar un vistazo aquí: [**Mis Suscripciones**](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/doc/Blogs.opml)
+Puedes importar el archivo `.opml` en Inoreader u otros lectores de RSS.
 
-Nota: RSS no es adecuado para suscribirse a sitios web de noticias, ya que la actualización es demasiado rápida y el contenido es complicado, lo que resulta en una mala experiencia de lectura. Por lo tanto, RSS es más adecuado para suscribirse a sitios web de **blogs de alta calidad**. No es mejor tener demasiadas fuentes de suscripción. Demasiadas fuentes de suscripción pueden causar "sobrecarga de información", y descubrirá que recibe cientos de nuevas noticias todos los días, pero no tiene tiempo para leerlas.
+Actualización de abril de 2023: Cómo configurar tu propio agregador de RSS autohospedado: [**Homelab - Agregador de RSS autohospedado FreshRSS**](https://wiki-power.com/Homelab-%E8%87%AA%E6%89%98%E7%AE%A1RSS%E8%81%9A%E5%90%88%E5%99%A8FreshRSS/).
 
-Exporté mi fuente de suscripción, puede consultarla: [**Mi fuente de suscripción**](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/doc/Blogs.opml)  
-Puede importar el archivo `.opml` en Inoreader u otro lector de RSS.
+## Preguntas Frecuentes
 
-Actualización de abril de 2023: Método para construir un agregador de RSS autoalojado: [**Homelab - FreshRSS, un agregador de RSS autoalojado**](https://wiki-power.com/es/Homelab-%E8%87%AA%E6%89%98%E7%AE%A1RSS%E8%81%9A%E5%90%88%E5%99%A8FreshRSS/)。
-
-## Preguntas frecuentes
-
-P: ¿El lector de RSS será obsoleto con el tiempo?  
-A: La lectura de libros no ha sido obsoleta. Una tendencia es que todas las plataformas de Internet siempre se desarrollan en la dirección que a la gente le gusta, hasta que el contenido se vuelve acuoso y una nueva plataforma lo reemplaza, como Zhihu y Douban. RSS no se ve afectado por el auge y la caída de la plataforma, a menos que aparezca un protocolo mejor, RSS no será obsoleto.
+P: ¿El lector de RSS quedará obsoleto en la era actual?
+R: La lectura de RSS no ha quedado obsoleta, al igual que la lectura de libros no ha quedado obsoleta. Una tendencia es que las plataformas en línea siempre tienden a evolucionar hacia lo que es popular y atractivo para las masas, lo que a menudo lleva a la dilución del contenido. Nuevas plataformas emergen para tomar su lugar, como lo han hecho plataformas como Quora y Douban. Sin embargo, RSS no se ve afectado por el auge y la caída de las plataformas, a menos que surja un protocolo mejor. Por lo tanto, RSS no será obsoleto a menos que haya un reemplazo significativamente mejor.
 
 ## Conclusión
 
-Cito las palabras de "[notajerk](https://sspai.com/user/701048/updates)":
+Para citar a "[notajerk](https://sspai.com/user/701048/updates)":
 
-> Al obtener información en línea, puede ser un poco cursi imaginarse a uno mismo como un emperador que escucha las opiniones de sus ministros en la antigüedad. Para el emperador, lo más peligroso y lo que no debería hacer es exponer sus gustos, que es la base para que los subordinados sean engañados y, finalmente, para ser destituido. Un emperador sabio mantendrá su mente en calma y objetiva (neutral), insistirá en escuchar las opiniones de todas las partes sin exponer sus propias ideas, y verificará la credibilidad de cada opinión con hechos objetivos. Este es el principio que cada persona debe seguir para obtener información después de miles de años. **La selección de fuentes de información también es el lugar donde vale la pena invertir tiempo**.
+> Cuando se trata de obtener información en línea, puedes adoptar un enfoque un tanto sofisticado, imaginándote a ti mismo como un antiguo emperador escuchando los consejos de sus consejeros. Para un emperador sabio, lo más peligroso y desaconsejable sería revelar sus preferencias personales, ya que esto formaría la base para ser influenciado o despojado del poder por sus subordinados. Un emperador sabio mantendría su mente en calma y objetiva, escucharía las opiniones de todas las partes sin revelar sus propios sentimientos y verificaría la credibilidad de esas opiniones en función de hechos objetivos. Este es el principio que todos deberíamos seguir al obtener información, incluso miles de años después. La elección de las fuentes de información es el aspecto en el que más vale la pena invertir tiempo.
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
-- [Cosas que no sabías que podías hacer con RSS](https://sspai.com/post/34280)
-- [¿Cómo encontrar la dirección RSS de un sitio web? Use RSS +!](https://blog.wizos.me/20181022-258.html)
-- [Lista de herramientas RSS](https://blog.wizos.me/20180412-134.html)
-- [Mi introducción al uso de RSS](https://www.cnblogs.com/buwuliao/p/8379549.html)
-- [Recopilación de RSS de texto completo hecha en casa (con herramientas recomendadas)](https://www.douban.com/note/522518464/)
-- [Sobre el "renacimiento" de RSS](https://sspai.com/post/43998)
+- [Cosas sorprendentes que puedes hacer con RSS que quizás no habías considerado](https://sspai.com/post/34280)
+- [Cómo encontrar la dirección RSS de un sitio web: ¡Usa RSS +!](https://blog.wizos.me/20181022-258.html)
+- [Herramientas de RSS: Una guía completa](https://blog.wizos.me/20180412-134.html)
+- [Mi guía de uso de RSS](https://www.cnblogs.com/buwuliao/p/8379549.html)
+- [Agregación de RSS de texto completo hecha en casa (con herramientas recomendadas)](https://www.douban.com/note/522518464/)
+- [El "renacimiento" de RSS](https://sspai.com/post/43998)
+
+> Dirección original del artículo: <https://wiki-power.com/>
+> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

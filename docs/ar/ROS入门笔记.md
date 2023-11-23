@@ -1,10 +1,10 @@
-# ملاحظات مقدمة حول ROS
+# ملاحظات حول بدء التعامل مع ROS
 
-يستند هذا البرنامج التعليمي إلى ROS2 Foxy و Ubuntu20.04.
+هذا البرنامج التعليمي مستند إلى ROS2 Foxy و Ubuntu 20.04.
 
 ## تثبيت بيئة ROS
 
-### تعيين ترميز UTF-8
+### تعيين الترميز UTF-8
 
 ```shell
 sudo locale-gen en_US en_US.UTF-8
@@ -12,7 +12,7 @@ sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 export LANG=en_US.UTF-8
 ```
 
-### تعيين مصدر البرنامج
+### تعيين مصادر البرامج
 
 ```shell
 sudo apt update && sudo apt install curl gnupg2 lsb-release
@@ -30,41 +30,41 @@ sudo apt update
 sudo apt install ros-foxy-desktop
 ```
 
-### تعيين متغيرات البيئة
+### تعيين المتغيرات البيئية
 
 ```shell
 source /opt/ros/foxy/setup.bash
 ```
 
-### تثبيت أداة الإكمال التلقائي
+### تثبيت أداة الاكمال التلقائي
 
 ```shell
 sudo apt install python3-argcomplete
 ```
 
-### اختبار التثبيت الناجح
+### اختبار التثبيت بنجاح
 
-تشغيل Talker:
+تشغيل الـ Talker:
 
 ```shell
 source /opt/ros/foxy/setup.bash
 ros2 run demo_nodes_cpp talker
 ```
 
-فتح نافذة سطر الأوامر الجديدة وتشغيل Listener:
+فتح نافذة سطر الأوامر الجديدة وتشغيل الـ Listener:
 
 ```shell
 source /opt/ros/foxy/setup.bash
 ros2 run demo_nodes_py listener
 ```
 
-### إذا كنت ترغب في إلغاء تثبيت ROS
+### إلغاء تثبيت ROS إذا لزم الأمر
 
 ```shell
 sudo apt remove ros-foxy-* && sudo apt autoremove
 ```
 
-ثم تحقق من وجود مجلد ROS في ~/.bashrc أو /opt/ directory.
+بعد ذلك، تحقق من وجود مجلدات ROS في ملفات `~/.bashrc` و `/opt/`.
 
 ## تكوين بيئة ROS2
 
@@ -72,40 +72,40 @@ sudo apt remove ros-foxy-* && sudo apt autoremove
 source /opt/ros/foxy/setup.bash
 ```
 
-التحقق من الإعدادات بعد الانتهاء:
+تحقق من إعداداتك بعد الانتهاء:
 
 ```shell
 printenv | grep -i ROS
 ```
 
-## محاكي السلحفاة الصغيرة
+## محاكاة سلحفاة صغيرة
 
-### تثبيت
+### التثبيت
 
 ```shell
 sudo apt update
 sudo apt install ros-foxy-turtlesim
 ```
 
-التحقق من نجاح التثبيت:
+تحقق مما إذا كان التثبيت ناجحًا:
 
 ```shell
 ros2 pkg executables turtlesim
 ```
 
-### تشغيل محاكي السلحفاة
+### تشغيل محاكاة السلحفاة
 
 ```shell
 ros2 run turtlesim turtlesim_node
 ```
 
-لجعل السلحفاة الصغيرة تتحرك ، يمكن فتح نافذة سطر الأوامر جديدة وإدخال الأمر:
+لجعل السلحفاة الصغيرة تتحرك، يمكنك فتح نافذة سطر الأوامر جديدة وإدخال الأمر:
 
 ```shell
 ros2 run turtlesim turtle_teleop_key
 ```
 
-اتبع التعليمات الموجودة في سطر الأوامر.
+اتبع التعليمات على سطر الأوامر للتحكم.
 
 ### تثبيت أداة rqt
 
@@ -116,17 +116,17 @@ sudo apt install ~nros-foxy-rqt*
 
 ### تشغيل أداة rqt
 
-أولاً ، تأكد من تشغيل السلحفاة الصغيرة في الخلفية. أدخل في سطر الأوامر:
+أولًا، تأكد من تشغيل السلحفاة الصغيرة في الخلفية. ثم، اكتب الأمر التالي في سطر الأوامر:
 
 ```shell
 rqt
 ```
 
-استدعاء أداة rqt ، افتح Plugins> Services> Service Caller بالترتيب ، وانقر فوق زر التحديث ، وستظهر جميع الخدمات.
+قم بتشغيل أداة rqt واذهب إلى `Plugins > Services > Service Caller`. انقر على زر التحديث لعرض جميع الخدمات.
 
-حدد الخدمة / spawn ، واملأ اسم السلحفاة الصغيرة (مثل `'GuaiGuai'`) والموقع ، ويمكنك إنشاء سلحفاة صغيرة إضافية. إذا كنت ترغب في تغيير لون وشكل مسارها ، فيمكنك تعديل محتوى الخدمة / set_pen.
+اختر الخدمة `/spawn` واملأ اسم السلحفاة الصغيرة (على سبيل المثال، `'GuaiGuai'`) ومكانها لإنشاء سلحفاة إضافية. إذا كنت ترغب في تغيير لونها أو شكل مسارها، يمكنك تعديل محتوى الخدمة `/set_pen`.
 
-يمكن التحكم في حركة السلاحف البحرية الجديدة التي تم إنشاؤها باستخدام الأمر التالي (يرجى ملاحظة اسم السلحفاة):
+تحكم في حركة السلحفاة المولدة حديثًا باستخدام الأمر التالي (يرجى ملاحظة اسم السلحفاة):
 
 ```shell
 ros2 run turtlesim turtle_teleop_key --ros-args --remap turtle1/cmd_vel:=guaiguai/cmd_vel
@@ -134,8 +134,8 @@ ros2 run turtlesim turtle_teleop_key --ros-args --remap turtle1/cmd_vel:=guaigua
 
 ## المراجع والشكر
 
-- [دليل مقدمة في ROS2 - 2. تثبيت ROS2 Foxy على Ubuntu20.04](https://www.guyuehome.com/10226)
-- [دليل مقدمة في ROS2 - 3. تكوين بيئة ROS2](https://www.guyuehome.com/10243)
-- [دليل مقدمة في ROS2 - 4. استخدام أساسيات محاكي السلاحف البحرية الصغيرة](https://www.guyuehome.com/10386)
+- [دورة تعليم ROS2 للمبتدئين - الجزء 2: تثبيت ROS2 Foxy على Ubuntu 20.04](https://www.guyuehome.com/10226)
+- [دورة تعليم ROS2 للمبتدئين - الجزء 3: تكوين بيئة ROS2](https://www.guyuehome.com/10243)
+- [دورة تعليم ROS2 للمبتدئين - الجزء 4: الاستخدام الأساسي لمحاكاة السلحفاة الصغيرة](https://www.guyuehome.com/10386)
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

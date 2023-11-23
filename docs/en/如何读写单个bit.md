@@ -1,4 +1,4 @@
-# How to Read and Write a Single Bit
+# How to Read and Write Individual Bits
 
 ```c
 #define BitVal(data,y) ( (data>>y) & 1)             // Return Data.Y value
@@ -10,6 +10,9 @@
 
 ## References and Acknowledgements
 
-- [How to read/write arbitrary bits in C/C++](https://stackoverflow.com/questions/11815894/how-to-read-write-arbitrary-bits-in-c-c++)
+- [How to read/write arbitrary bits in C/C++](https://stackoverflow.com/questions/11815894/how-to-read-write-arbitrary-bits-in-c-c)
+
+> Original: <https://wiki-power.com/>  
+> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

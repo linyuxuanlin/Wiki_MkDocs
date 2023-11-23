@@ -2,17 +2,23 @@
 
 ## Installation
 
-[http://nodejs.cn/download/](http://nodejs.cn/download/)
+You can install Node.js and npm by following the steps below:
+
+1. Visit the Node.js website at [http://nodejs.cn/download/](http://nodejs.cn/download/).
+
+2. Download the appropriate installer for MacOS.
+
+3. Follow the installation instructions provided on the website to complete the installation process.
 
 ## Uninstallation
 
-If installed through `homebrew`:
+If you have installed Node.js and npm using Homebrew, you can uninstall them using the following command:
 
 ```shell
 brew uninstall node
 ```
 
-If installed through `.pkg` package:
+If you have installed Node.js and npm using a `.pkg` installer package, you can uninstall them with the following command:
 
 ```shell
 sudo rm -rf /usr/local/{bin/{node,npm},lib/node_modules/npm,lib/node,share/man/*/node.*}
@@ -20,9 +26,15 @@ sudo rm -rf /usr/local/{bin/{node,npm},lib/node_modules/npm,lib/node,share/man/*
 
 ## Troubleshooting
 
-Q: After changing the username on MacOS, it prompts "EACCES: permission denied". A: Run `sudo npm install -g appium --unsafe-perm=true --allow-root` in unsafe mode.
+Q: After changing my MacOS username, I encounter a "permission denied" error, such as `EACCES: permission denied`. How can I resolve this?
 
-> Original: <https://wiki-power.com/>  
-> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
+A: You can run the following command in non-secure mode to address the permission issue:
+
+```shell
+sudo npm install -g appium --unsafe-perm=true --allow-root
+```
+
+[Additional troubleshooting information here]
+[More troubleshooting tips here]
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

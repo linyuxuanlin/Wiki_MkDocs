@@ -1,16 +1,16 @@
 # Notas de desarrollo de la biblioteca HAL - Configuración del entorno
 
-Nota: Este tutorial se basa en la placa STM32F429IGT6 de Reverse Costumer.
+Nota: Este tutorial se basa en la placa STM32F429IGT6 de REKA.
 
 ## Instalación de software
 
 ### Keil MDK
 
-Consulte el artículo [**Guía de configuración de Keil MDK**](https://wiki-power.com/es/KeilMDK%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97) para obtener más información.
+Ver el artículo [**Guía de configuración de Keil MDK**](https://wiki-power.com/KeilMDK%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97)
 
-### Java Runtime Environment
+### Entorno de ejecución de Java
 
-Este es el entorno Java necesario para STM32CubeMX. Descárguelo e instálelo desde el [**enlace oficial**](https://www.java.com/en/download/).
+Esto es necesario para STM32CubeMX. Puede descargarlo e instalarlo desde el [**enlace oficial**](https://www.java.com/en/download/).
 
 ### STM32CubeMX
 
@@ -20,40 +20,40 @@ Descargue e instale STM32CubeMX desde el [**enlace oficial**](https://my.st.com/
 
 ### Inicialización
 
-Cree un nuevo proyecto y guarde después de seleccionar el chip.
+Cree un nuevo proyecto y, después de seleccionar el microcontrolador, guárdelo.
 
-### Configuración SYS
+### Configuración de SYS
 
 `Pinout & Configurations` - `System Core` - `SYS`
 
-Cambie la opción `Debug` a `Serial Wire` (consulte el artículo [**Evite problemas con CubeMX y CubeIDE**](https://wiki-power.com/es/CubeMX与CubeIDE避坑) para obtener más información).
+Cambie la opción `Debug` a `Serial Wire` (consulte el artículo [**Consejos para CubeMX y CubeIDE**](https://wiki-power.com/CubeMX与CubeIDE避坑) para obtener más detalles).
 
-### Configuración RCC
+### Configuración de RCC
 
 `Pinout & Configurations` - `System Core` - `RCC`
 
-Configure según la placa.
+Configure según las especificaciones de la placa.
 
-Por ejemplo, consulte el esquemático de la placa:
+Por ejemplo, siga el esquema de la placa:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20210205205030.png)
 
-Configure las opciones `HSE` y `LSE` como cristales externos:
+Simplemente configure las opciones de `HSE` y `LSE` para utilizar osciladores de cristal externos:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20210205205140.png)
 
 ### Configuración del árbol de reloj
 
-Configure en la interfaz `Clock Configuration`.
+Realice la configuración en la interfaz de `Clock Configuration`.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20210205205550.png)
 
-Siga los pasos de la imagen anterior:
+Siga estos pasos de acuerdo con la imagen anterior:
 
-1. Ingrese los valores de las dos frecuencias más a la izquierda según los parámetros del cristal externo de la placa.
-2. Seleccione `HSE`, ya que la frecuencia y precisión del cristal externo son mayores que las del interno.
-3. Seleccione `PLLCLK` para obtener una frecuencia alta mediante multiplicación de fase de bucle cerrado (PLL).
-4. Ingrese el valor de `HCKL`, generalmente según la frecuencia máxima indicada en la parte inferior, y presione Enter para calcular automáticamente la frecuencia de división y multiplicación.
+1. Ingrese los valores de las dos frecuencias de la oscilación externa de acuerdo con los parámetros del oscilador externo en la placa.
+2. Seleccione `HSE` ya que la frecuencia y precisión del oscilador externo son superiores a los internos.
+3. Marque la casilla `PLLCLK` para usar la multiplicación de frecuencia mediante el PLL.
+4. Ingrese el valor de `HCKL`, generalmente según la frecuencia máxima recomendada que se muestra debajo. Después de ingresar el valor, presione Enter y se calculará automáticamente el divisor y el multiplicador.
 
 ### Configuración de opciones de gestión de proyectos
 
@@ -63,16 +63,16 @@ Siga los pasos de la imagen anterior:
 
 ## Diferencias entre la biblioteca HAL y la biblioteca estándar
 
-Para aumentar la portabilidad, la biblioteca HAL tiene tres funciones adicionales en comparación con la biblioteca estándar: **manejador, funciones MSP y funciones de devolución de llamada**. Consulte el contenido en los enlaces de referencia al final del artículo para obtener más información.
+Para mejorar la portabilidad, la biblioteca HAL incluye tres características adicionales en comparación con la biblioteca estándar: **manejadores (handles), funciones MSP (Manejo del Estado de Memoria) y funciones de devolución de llamada (callbacks)**. Puede encontrar más detalles en los enlaces citados al final del documento.
 
 ## Referencias y agradecimientos
 
-- [【STM32】Explicación detallada del RCC del reloj del sistema](https://blog.csdn.net/as480133937/article/details/98845509)
-- [Inicialización de la placa, configuración completa y detallada del árbol de reloj RCC](https://www.notion.so/2-RCC-770c0c454f954408a3956257aa0fb523)
-- [Resumen completo del conocimiento de STM32 HAL](https://mp.weixin.qq.com/s/ffcjKtl7JdRibLRNGquGXA)
-- [Resumen claro del conocimiento completo de STM32 HAL](https://mp.weixin.qq.com/s/qkj0fQS5NrCXmbppKEhaAg)
+- [**Desglose detallado del sistema de reloj RCC en STM32**](https://blog.csdn.net/as480133937/article/details/98845509)
+- [**Inicialización de la placa: configuración completa del árbol de reloj RCC y su proceso detallado**](https://www.notion.so/2-RCC-770c0c454f954408a3956257aa0fb523)
+- [**Resumen exhaustivo del conocimiento de STM32 HAL**](https://mp.weixin.qq.com/s/ffcjKtl7JdRibLRNGquGXA)
+- [**Una visión más clara del resumen exhaustivo del conocimiento de STM32 HAL**](https://mp.weixin.qq.com/s/qkj0fQS5NrCXmbppKEhaAg)
 
-a_reemplazar[1]  
-a_reemplazar[2]
+> Dirección original del artículo: <https://wiki-power.com/>
+> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

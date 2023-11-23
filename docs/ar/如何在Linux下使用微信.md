@@ -2,15 +2,15 @@
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20200311141406.png)
 
-DoChat (WeChat العلبة) هو تطبيق WeChat المحمول لنظام Linux.
+DoChat (الإصدار المعبأ) هو تطبيق WeChat المحمول لنظام Linux.
 
 الميزات الرئيسية:
 
-- سهولة التثبيت ، يمكن تشغيله بسطر واحد من الأوامر في الشل
-- دعم إدخال الحروف الصينية
-- Ctrl + V لصق الصور في WeChat
+- تثبيت سهل، يمكن تشغيله بسطر واحد من الأوامر في الشل.
+- دعم إدخال الحروف الصينية.
+- لصق الصور في WeChat باستخدام Ctrl+V.
 
-الشروط اللازمة للتشغيل: نظام Ubuntu Linux وتثبيت Docker
+المتطلبات: نظام Ubuntu Linux مع سطح المكتب وتثبيت Docker.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20200311141459.png)
 
@@ -18,7 +18,7 @@ DoChat (WeChat العلبة) هو تطبيق WeChat المحمول لنظام Li
 
 - [huan/docker-wechat](https://github.com/huan/docker-wechat)
 
-> عنوان النص: <https://wiki-power.com/>  
+> عنوان النص: <https://wiki-power.com/>
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

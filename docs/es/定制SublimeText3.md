@@ -1,69 +1,73 @@
-# Personalización de SublimeText3
+# Personalización de Sublime Text 3
 
 ## Antecedentes
 
-**Sublime Text** es un editor de texto muy poderoso. Debido a que el próximo semestre tengo cursos relacionados con Python y las herramientas como Pycharm tienen una interfaz de usuario un poco fea, quiero intentar convertir Sublime Text en una herramienta de desarrollo de Python.
+**Sublime Text** es un potente editor de texto. Debido a que en el próximo semestre tendré cursos relacionados con Python y considero que la interfaz de herramientas como Pycharm no es muy atractiva, me gustaría intentar transformar Sublime Text en una poderosa herramienta para el desarrollo en Python.
 
-Imagen del resultado personalizado:
+Imagen del resultado después de la personalización:
 ![](https://img.wiki-power.com/d/wiki-media/img/ST3效果.png)
 
-## [Implementación mínima](https://www.jianguoyun.com/p/Da9TMr0Q-OOjBxif86sB)
+## [Implementación Mínima](https://www.jianguoyun.com/p/Da9TMr0Q-OOjBxif86sB)
 
 1. Descarga la fuente `Consolas-with-Yahei`, descomprímela e instálala.
-2. Descarga **mi versión personalizada** de [**Sublime Text 3**](https://www.jianguoyun.com/p/Da9TMr0Q-OOjBxif86sB) (sin garantía de actualización).
-3. Ejecuta directamente el archivo `.exe`, para obtener una configuración detallada, consulta el siguiente texto.
+2. Descarga **la versión personalizada por mí de** [**Sublime Text 3**](https://www.jianguoyun.com/p/Da9TMr0Q-OOjBxif86sB) (sin garantía de actualizaciones).
+3. Ejecuta directamente el archivo `.exe`. Para obtener información detallada sobre la configuración de parámetros, consulta a continuación.
 
-## Configuración detallada
+## Configuración Detallada
 
-### Descarga e instalación de software
+### Descarga e Instalación del Software
 
-Sublime Text 3 se puede descargar desde el [sitio web oficial](http://www.sublimetext.com/) (se recomienda descargar la [**versión portátil**](https://download.sublimetext.com/Sublime%20Text%20Build%203176%20x64.zip)). El software se puede utilizar de forma gratuita, pero a veces aparece una ventana emergente de pago. Después de recibir la advertencia, he eliminado el número de serie del artículo. Si lo necesitas, contáctame.
+Puedes descargar Sublime Text 3 desde el [sitio web oficial](http://www.sublimetext.com/) (se recomienda la descarga de la [**versión portátil**](https://download.sublimetext.com/Sublime%20Text%20Build%203176%20x64.zip)). El software es de uso gratuito, pero en ocasiones puede mostrar recordatorios de compra. Como recordatorio, he eliminado el número de serie del artículo. Si lo necesitas, no dudes en ponerte en contacto conmigo.
 
-### Instalación de administrador de paquetes y complementos
+### Gestor de Paquetes e Instalación de Complementos
 
-Instala el administrador de paquetes: `Preferences -> Install Package Control`, luego puedes usar la tecla de acceso rápido `Ctrl + Shift + P` para abrir rápidamente la interfaz del administrador de paquetes.
+Para instalar el gestor de paquetes, ve a `Preferences -> Install Package Control` y, posteriormente, puedes acceder rápidamente al menú del gestor de paquetes con la combinación de teclas `Ctrl + Shift + P`.
 
-Instala complementos: abre la interfaz de `Package Control`, escribe `Install Package`, presiona Enter, espera pacientemente y busca el complemento necesario en la ventana emergente y haz clic en instalar. Para los complementos no publicados, simplemente selecciona `Preference -> Browser packages`, abre la carpeta donde se almacenan los complementos y coloca el complemento directamente allí.
+Para instalar complementos, abre el menú del gestor de paquetes y escribe `Install Package`, presiona Enter y espera pacientemente. Luego, en el cuadro que aparecerá más adelante, busca el complemento que necesitas y haz clic en "Instalar". En el caso de complementos no publicados, puedes elegir directamente `Preference -> Browser packages`, abrir la carpeta donde se almacenan los complementos y colocarlos allí.
 
-Desinstala complementos: abre la interfaz de `Package Control`, escribe `remove package`.
+Para desinstalar complementos, abre el menú del gestor de paquetes y escribe `remove package`.
 
-### Adaptación al chino
+### Adaptación al Chino
 
-1. Localización en chino: busca `ChineseLocalizations` en `Package Control` y haz clic en instalar.
-2. Problemas de entrada en chino: descarga [IMESupport](https://github.com/zcodes/IMESupport/archive/master.zip), descomprímelo en el directorio de instalación de complementos, reinicia Sublime y resuelve el problema de que el cuadro de entrada no sigue la entrada en chino.
-3. Fuente china: descarga `Consolas-with-Yahei`, descomprímela e instálala, y reemplázala en la configuración del usuario con `"font_face": "Consolas-with-Yahei",`.
+1. Traducción al chino: Utiliza `Package Control` para buscar `ChineseLocalizations` y haz clic en "Instalar".
+2. Problemas con la entrada en chino: Descarga [IMESupport](https://github.com/zcodes/IMESupport/archive/master.zip), descomprímelo en el directorio de instalación de complementos y reinicia Sublime para resolver el problema de que la ventana de entrada no siga al texto en chino.
+3. Fuente en chino: Descarga `Consolas-with-Yahei`, descomprímelo e instálalo, luego sustituye la fuente en la configuración del usuario por `"font_face": "Consolas-with-Yahei",`.
 
    **Tema**
 
-El tema oscuro que uso: busca `Spacegray` y `Afterglow` en `Package Control`, y reemplázalo en la configuración del usuario con:
+   Los temas oscuros que uso son los siguientes: Utiliza `Package Control` para buscar `Spacegray` y `Afterglow`, y sustitúyelos en la configuración del usuario por:
 
-```
-"color_scheme": "Packages/Theme - Spacegray/base16-ocean.dark.tmTheme",
-"theme": "Afterglow-green.sublime-theme"
-```
+   ```json
+   "color_scheme": "Packages/Theme - Spacegray/base16-ocean.dark.tmTheme",
+   "theme": "Afterglow-green.sublime-theme"
+   ```
 
-### Ajustes de detalle
+### Ajustes Detallados
 
-En la configuración del usuario, puedes agregar el siguiente código:
+Puedes agregar el siguiente código en la configuración del usuario:
 
-```
+```json
 "word_wrap": "true", // Envolver automáticamente cuando se oculta
-"fold_buttons": true, // Habilitar el plegado de código
-"fade_fold_buttons": true, // Los botones de plegado se ocultan automáticamente
-"tab_size": 4, // Tamaño de indentación de tabulación
-"margin": 4, // Indentación
-"tabs_small": true, // Hacer que la barra de pestañas sea más pequeña
-"trim_trailing_white_space_on_save": true, // Eliminar automáticamente los espacios en blanco al final de la línea
-"ensure_newline_at_eof_on_save": true, // Mantener automáticamente una línea vacía al final del archivo, para C
+"fold_buttons": true, // Activar el plegado de código
+"fade_fold_buttons": true, // Ocultar automáticamente los botones de plegado
+"tab_size": 4, // Tamaño de la sangría de la pestaña
+"margin": 4, // Márgenes
+"tabs_small": true, // Reducir el tamaño de la barra de pestañas
+"trim_trailing_white_space_on_save": true, // Eliminar automáticamente los espacios en blanco al final de las líneas
+"ensure_newline_at_eof_on_save": true, // Mantener automáticamente una línea vacía al final del archivo (útil para C)
 ```
 
-### Complementos recomendados
+### Complementos Recomendados
 
-Los siguientes complementos están disponibles para instalar directamente a través de `Package Control`.
+[Incluye aquí la lista de complementos recomendados]
 
-**StyleToken**: muestra el color (RGB) que representa el código. **FileHeader**: plantilla de archivo personalizada. Abre `Preferences -> Package Settings -> FileHeader -> Settings - User`, copia el contenido de `Default` en `User` y modifica la información personal, por ejemplo:
+A continuación, los complementos que están disponibles para su instalación directa a través de `Package Control`.
 
-```
+**StyleToken**: Muestra el color (RGB) representado por el código.
+
+**FileHeader**: Personaliza las plantillas de archivo. Abre `Preferences -> Package Settings -> FileHeader -> Settings - User`, copia el contenido de `Default` a `User` y modifica la información personal de la siguiente manera:
+
+```json
 {
     "Default": {
         "author": "linyuxuanlin",
@@ -73,14 +77,14 @@ Los siguientes complementos están disponibles para instalar directamente a trav
 }
 ```
 
-Modifica el contenido de la plantilla en `Preferences -> Browse Packages... -> FileHeader -> template -> header o body`. Resultado:  
- ![](https://img.wiki-power.com/d/wiki-media/img/ST3 模板效果。png)
+Luego, modifica el contenido de las plantillas en `Preferences -> Browse Packages... -> FileHeader -> template -> header o body`. Efecto:  
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/ST3 模板效果.png)
 
 ### Ejecución de Python
 
-Debido a que el compilador incorporado no tiene entrada de usuario, se necesita un complemento: `SublimeREPL`. Instálalo directamente a través de `Package Control` y agrega un atajo en `Preferences —> Key Buildings -> User`:
+Dado que el compilador incorporado no permite la entrada del usuario, se requiere el complemento `SublimeREPL`. Instálalo directamente con `Package Control` y agrega una combinación de teclas para activarlo en `Preferences —> Key Buildings -> User`:
 
-```
+```json
 [
     { "keys": ["f5"], "caption": "SublimeREPL:Python",
                       "command": "run_existing_window_command", "args":
@@ -92,28 +96,28 @@ Debido a que el compilador incorporado no tiene entrada de usuario, se necesita 
 ]
 ```
 
-Luego, en el código de Python, puedes presionar `F5` para ejecutarlo.
+Después de esto, puedes ejecutar código Python directamente presionando `F5`.
 
 ### Formateo automático de código
 
-Instala el complemento `Python PEP8 Autoformat` y agrega el siguiente atajo en `Key Buildings`:
+Instala el complemento `Python PEP8 Autoformat` y agrega la siguiente combinación de teclas en `Key Buildings`:
 
-```
-{ "keys": ["alt+r"], "command": "pep8_autoformat" },
+```json
+{ "keys": ["alt+r"], "command": "pep8_autoformat" }
 ```
 
-Ahora puedes formatear el código de Python con `Alt + R`.
+De esta manera, podrás formatear tu código Python con `Alt + R`.
 
 ## Conclusión
 
-La apariencia es importante para la productividad. Sublime Text no solo es compatible con Python, sino que también puede abrir y editar casi todos los formatos de archivo. Si lo configuras correctamente, escribir código en una interfaz minimalista y poderosa puede ser bastante romántico.
+La estética es igual a la productividad. Sublime Text no solo admite Python, sino que casi todos los formatos de archivo se pueden abrir y editar con él. Si se configura adecuadamente, escribir código en una interfaz minimalista y potente puede ser una experiencia bastante romántica.
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
-- [Sublime Text 3 调教你的私人利器（上）](https://www.sheyilin.com/2015/05/sublime_text_3_tiao_jiao_ni_de_si_ren_li_qi_1/)
-- [Sublime Text 自动生成文件头部注释（版权信息）：FileHeader 插件的使用](https://blog.csdn.net/afei__/article/details/82890493)
+- [Sublime Text 3: Personaliza tu herramienta de desarrollo (Parte 1)](https://www.sheyilin.com/2015/05/sublime_text_3_tiao_jiao_ni_de_si_ren_li_qi_1/)
+- [Sublime Text: Uso del complemento FileHeader para generar encabezados de archivo (información de derechos de autor)](https://blog.csdn.net/afei__/article/details/82890493)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
+> Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

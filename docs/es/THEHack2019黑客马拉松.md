@@ -1,24 +1,24 @@
 # THE Hack 2019 Hackathon
 
-## Introducción
+## Introduction
 
-El concurso de Hackathon THE Hack 2019 se llevó a cabo en la Universidad de Shanghai Jiao Tong, donde mi equipo y yo participamos y después de 36 horas de arduo trabajo, logramos obtener el octavo lugar en general y el premio individual Ruff.
+THE Hack 2019 Hackathon was held at Shanghai Jiao Tong University. My friends and I participated in this competition and after 36 hours of challenging ideation, we finally achieved the 8th place overall and received the Ruff Award.
 
-## Proceso del proyecto
+## Project Journey
 
-Este año, el concurso tenía diferentes temas, inicialmente elegimos la dirección de hogares inteligentes y planeamos hacer un kit de hogar inteligente relacionado con los dormitorios, pero finalmente elegimos el tema **cómo permitir que los grupos vulnerables en la tecnología también disfruten de la diversión de la tecnología**. Un pequeño equipo de chicos y chicas se encargó del producto, y este año nuestra perspectiva se amplió, no solo desde el punto de vista técnico, sino también desde la psicología y las necesidades del usuario, analizando el tema y pensando en lo que los jueces y patrocinadores valoran más.
+This year's competition had different topics, and initially, we chose the direction of smart homes, intending to create a smart home kit for dormitories. However, we eventually decided to focus on the topic of **how to enable disadvantaged groups in technology to enjoy the benefits of technology**. With a team consisting of a product manager and a designer, our perspective broadened this year. We not only considered the technical aspects but also took into account psychology and user needs, analyzing the topic and thinking about what the judges and sponsors value the most.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/72fa421a32841af4c9cb339132b30fe.jpg)
 
-El nombre de nuestro proyecto este año fue AIO - Care, una plataforma inteligente de asistencia para personas mayores basada en un modelo de aprendizaje activo. Me encargué de la implementación simple de la parte de hardware, recopilando datos para el servidor a través de la interacción de algunos sensores, para analizar y servir a las personas mayores, brindándoles una experiencia de vida en el hogar más cómoda.
+Our project this year was called AIO - Care, a smart elderly care platform based on an active learning model. I was responsible for the hardware implementation, collecting data through sensor linkage for the server to analyze and provide a more comfortable home care experience for the elderly.
 
-La idea y dirección del producto fueron responsabilidad de Amihua Lau y Ada, quienes fueron excelentes en este aspecto. Además, Amihua Lau también se encargó del algoritmo de aprendizaje automático y la producción de la presentación en PowerPoint; mientras que Ada, como Recursos Humanos, nos brindó mucha ayuda y consejos (lo que directamente determinó la dirección de nuestro producto), así como también nos proporcionó innumerables bocadillos y bebidas, brindándonos un sólido apoyo logístico. Su responsabilidad en el proyecto es algo que admiro como líder del equipo. Además, agradezco a Yi Lin Weng del equipo vecino por crear el modelo 3D de nuestro producto.
+The product concept and direction were led by Amihua Lau and Ada, who served as product managers. They did a great job in this aspect. In addition, Amihua Lau was also responsible for the machine learning algorithms and creating the presentation slides. Ada, as the Human Resource, provided us with a lot of help and advice (which directly determined the direction of our product) and also provided us with countless snacks and drinks, offering strong logistical support. Their contributions were beyond my reach, and they truly deserved to be the leaders of our team. Additionally, I would like to thank Yi Lin Weng from the neighboring team for creating a 3D model of our product.
 
-Me encargué de la implementación simple del hardware del producto, el código ya está disponible en [GtiHub](https://github.com/linyuxuanlin/Project-of-THE-Hack), basado en Arduino, es un demo muy simple, así que no profundizaré en ello.
+I was responsible for the simple implementation of the hardware, and the code has been open-sourced on [GitHub](https://github.com/linyuxuanlin/Project-of-THE-Hack). It is based on Arduino and is a simple demo, so I won't go into detail.
 
-En comparación con el concurso de hace dos años, esta vez no solo partimos desde el punto de vista técnico, sino que también creamos un modelo comercial completo y un modelo de beneficios. Comenzamos a comprender las reglas de este tipo de competencias y aprendimos mucho de los excelentes proyectos de otros equipos. Esto es solo el comienzo, creo que el próximo año en el Hackathon podremos obtener mejores resultados.
+Compared to the competition two years ago, where we only focused on the technical aspects, this time we developed a complete business model and profit model. We learned about the strategies of this type of competition and gained a lot of experience from excellent team projects. This is just the beginning, and I believe that in next year's Hackathon, we will achieve even better results.
 
-En este tipo de competencias, siempre es importante tener en cuenta el cuidado humano; desde la perspectiva de los patrocinadores, siempre es más importante que el nivel técnico. Durante las 36 horas de la competencia, solo se puede crear un demo simple de desarrollo técnico; pero la presentación y el empaque del producto son lo que lo hacen destacar. Con una presentación creativa y una idea única, se puede mostrar el concepto y la filosofía del producto a los patrocinadores, lo que es la clave para ganar en este tipo de competencias.
+In this type of competition, the direction of human care is always highly valued. From the perspective of sponsors, it is always more important than the level of technology. In the 36-hour competition, we could only develop a simple demo in terms of technology. It is the rendering and packaging of the product that can truly stand out. By presenting the creativity and concept of the product to the sponsors, this is the key to winning awards in this type of competition.
 
 > Dirección original del artículo: <https://wiki-power.com/>  
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.

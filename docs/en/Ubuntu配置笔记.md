@@ -2,7 +2,7 @@
 
 ## Dual System Time Issue
 
-After installing dual systems, there may be a time issue (Windows and Ubuntu time not synchronized), which can be solved using the following command:
+After installing a dual system, you may encounter a time synchronization issue between Windows and Ubuntu. You can resolve this by using the following command:
 
 ```shell
 timedatectl set-local-rtc 1 --adjust-system-clock
@@ -20,48 +20,48 @@ timedatectl set-local-rtc 1 --adjust-system-clock
 
 ## Tips
 
-### View Hidden Files
+### Viewing Hidden Files
 
-Use shortcut key: `Ctrl` + `H`
+Use the shortcut keys: `Ctrl` + `H`
 
-### Open Terminal
+### Opening the Terminal
 
-Use shortcut key: `Ctrl` + `Alt` + `T`
+Use the shortcut keys: `Ctrl` + `Alt` + `T`
 
 ### Commands
 
-Note: `<xx>` means required, `(xx)` means optional
+Note: `<xx>` indicates required, `(xx)` indicates optional
 
 - cd
-  - Change working directory
+  - Change the working directory
   - `cd <directory path>`
 - pwd
-  - View current absolute path
+  - View the current absolute path
   - `pwd`
 - mkdir
-  - Create directory
-  - `mkdir (option) <directory name>`
+  - Create a directory
+  - `mkdir (options) <directory name>`
 - ls
-  - List contents of directory
-  - `ls (option) (directory name)`
+  - List the contents of a directory
+  - `ls (options) (directory name)`
 - touch
-  - Change file/directory time
-  - `touch (option) <file name>`
+  - Modify file/directory timestamps
+  - `touch (options) <file name>`
 - mv
-  - Cut
-  - `mv (option) (source file/directory) <destination file/directory>`
+  - Move (cut)
+  - `mv (options) (source file/directory) <destination file/directory>`
 - cp
   - Copy
-  - `cp (option) (source file/directory name) <destination file/directory name>`
+  - `cp (options) (source file name/directory name) <destination file name/directory name>`
 - rm
   - Delete
-  - `rm (option) <file/directory name>`
+  - `rm (options) <file name/directory name>`
 
 ## References and Acknowledgments
 
 - [ROS Installation Tutorial](https://mp.weixin.qq.com/s?__biz=MzU4Mzc1NDA5Mw==&mid=2247486645&idx=1&sn=8ba442af57060b4d608d4c24d4307921&chksm=fda504b7cad28da11a2dd782b60dce466d53ad8e260f161b1e47f24423cc1e9f9aabc486c7f3&mpshare=1&scene=1&srcid=1125YhpxcX5as5se6rsek2IS&sharer_sharetime=1606233866320&sharer_shareid=57baeb2b96d0cff9b17ac2c15b36602b&key=a402d93e91746f46ae3228f3f1014e2c74a235c331168642475573a82dabce23902b3593a2a240439e9e37cd9b2ceaeab2b3b2130d952ee61260b30c6cad24ab3f1907dd57abfae9934d0c9487ddc4364b41261c6fb7277d94de784fa9718f9f60712a15b25f505ab7105346330f16f4b659970a5143e8aa882da96dc76c0100&ascene=1&uin=MTk5MDUwOTA0Mg%3D%3D&devicetype=Windows+10+x64&version=6300002f&lang=zh_CN&exportkey=A0ZOktA1B68GOdT4vmLQPxA%3D&pass_ticket=b2tffRx7FG4vxDxfZxW7b9rGQf%2FK8YGbZtslM9VWUgnItoiwUPJYOD8ciwJbwx%2BC&wx_header=0)
 
-> Original: <https://wiki-power.com/>  
+> Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

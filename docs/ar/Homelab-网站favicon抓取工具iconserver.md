@@ -1,10 +1,11 @@
-# Homelab - أداة جلب رمز موقع favicon iconserver
+# Homelab - أداة استخراج رمز موقع الويب favicon iconserver
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230304195157.png)
+![الرمز](https://img.wiki-power.com/d/wiki-media/img/20230304195157.png)
 
-**iconserver** هي أداة جلب رمز موقع favicon. تدعم جلب `favicon.ico` و `apple-touch-icon.png` ، وتحتوي على واجهة برمجة تطبيقات URL وصفحة عمليات ويب بسيطة. إذا فشل جلب الرمز ، فسيتم إنشاء رمز بحرف أول.
+**iconserver** هي أداة استخراج رمز موقع الويب favicon. تدعم استخراج `favicon.ico` و
+`apple-touch-icon.png` ، وتتيح واجهة برمجة تطبيق (API) بسيطة للاستخدام مع صفحة واجهة الويب. إذا فشلت عملية الاستخراج ، ستقوم بإنشاء رمز favicon يبدأ بالحرف الأول للموقع.
 
-## التنصيب (docker-compose)
+## نشر (docker-compose)
 
 أولاً ، قم بإنشاء ملف `compose.yaml` والصق المحتوى التالي:
 
@@ -19,26 +20,26 @@ services:
     restart: always
 ```
 
-(اختياري) يوصى بإنشاء ملف `.env` في نفس مستوى `compose.yaml` وتخصيص المتغيرات البيئية الخاصة بك. إذا كنت لا ترغب في استخدام المتغيرات البيئية ، فيمكنك تخصيص المعلمات مباشرة في `compose.yaml` (على سبيل المثال ، استبدال `${STACK_NAME}` بـ `iconserver`).
+(اختياري) نوصي بإنشاء ملف `.env` في نفس الدليل الرئيسي لـ `compose.yaml` وتخصيص متغيرات البيئة الخاصة بك. إذا كنت لا ترغب في استخدام متغيرات البيئة ، يمكنك أيضًا تخصيص المعلمات مباشرة داخل `compose.yaml` (مثل استبدال `${STACK_NAME}` بـ `iconserver`).
 
 ```dotenv title=".env"
 STACK_NAME=iconserver
 
 # iconserver
 APP_VERSION=latest
-APP_PORT=xxxx # اختر منفذًا مخصصًا للوصول إليه ، واختر أي منفذ غير مستخدم
+APP_PORT=xxxx # حدد منفذ الوصول الخاص بك - اختر منفذًا غير مستخدم بالفعل
 ```
 
-أخيرًا ، قم بتشغيل الأمر `docker compose up -d` في نفس مستوى `compose.yaml` لتشغيل حاويات الترتيب.
+أخيرًا ، قم بتشغيل الأمر `docker compose up -d` في نفس الدليل الرئيسي لـ `compose.yaml` لبدء تشغيل الحاويات المكونة.
 
-## المراجع والشكر
+## المراجعة والشكر
 
 - [الوثائق](https://github.com/mat/besticon#docker)
 - [مستودع GitHub](https://github.com/mat/besticon)
 - [Docker Hub](https://hub.docker.com/r/matthiasluedtke/iconserver)
 - [موقع العرض التوضيحي](https://besticon-demo.herokuapp.com/)
 
-> عنوان النص: <https://wiki-power.com/>  
+> عنوان النص: <https://wiki-power.com/>
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

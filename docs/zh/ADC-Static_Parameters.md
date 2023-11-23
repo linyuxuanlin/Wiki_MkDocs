@@ -167,7 +167,7 @@ For an example historam graph as shown below:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20221008234921.png)
 
-for DNL[1](Code 001),
+for $DNL[1](Code 001)$,
 
 - Actual Output Code Count = 14
 - Idea Output Code Count = (14 +18 +15 + 17+ 17 + 15) / (8 -2 ) = 16.

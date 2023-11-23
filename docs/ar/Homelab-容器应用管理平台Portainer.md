@@ -2,11 +2,11 @@
 
 ![](https://img.wiki-power.com/d/wiki-media/img/202304111545899.png)
 
-**Portainer** هي أداة إدارة رسومية لتطبيقات الحاويات (بما في ذلك Docker / Docker compose / Swarm / Kubernetes) ، والتي يمكن استخدامها لإدارة بيئة Docker من خلال واجهة الويب. كما توفر العديد من الميزات مثل عرض السجلات وبدء وإيقاف تشغيل الحاويات وإدارة الصور والشبكات والأقراص الافتراضية وغيرها.
+**Portainer** هو أداة إدارة رسومية لتطبيقات الحاويات (بما في ذلك Docker / Docker Compose / Swarm / Kubernetes)، والتي يمكن استخدامها لإدارة بيئة Docker من خلال واجهة ويب. يوفر أيضًا العديد من الميزات مثل عرض السجلات، بدء وإيقاف الحاويات، إدارة الصور، وإدارة الشبكات والأقراص وغيرها.
 
-## التنصيب (Docker Compose)
+## النشر (Docker Compose)
 
-أولاً ، قم بإنشاء ملف `compose.yaml` ولصق المحتوى التالي:
+أولاً، يجب إنشاء ملف `compose.yaml` ولصق المحتوى التالي:
 
 ```yaml title="compose.yaml"
 version: "3.3"
@@ -23,31 +23,31 @@ services:
     restart: always
 ```
 
-(اختياري) يوصى بإنشاء ملف `.env` في نفس مستوى `compose.yaml` وتخصيص المتغيرات البيئية الخاصة بك. إذا كنت لا ترغب في استخدام المتغيرات البيئية ، فيمكنك تخصيص المعلمات الخاصة بك مباشرة في `compose.yaml` (مثل استبدال `${STACK_NAME}` بـ `portainer`).
+(اختياري) يُوصى بإنشاء ملف `.env` في نفس دليل `compose.yaml` وتخصيص متغيرات البيئة الخاصة بك. إذا كنت لا ترغب في استخدام المتغيرات البيئية، يمكنك أيضًا تخصيص المعلمات مباشرة في `compose.yaml` (مثل استبدال `${STACK_NAME}` بـ `portainer`).
 
 ```dotenv title=".env"
 STACK_NAME=portainer
-STACK_DIR=xxx # مسار تخزين المشروع المخصص ، على سبيل المثال ./portainer
+STACK_DIR=xxx # تخصيص مسار تخزين المشروع الخاص بك، مثل ./portainer
 
 # portainer
 APP_VERSION=latest
-APP_PORT=xxxx # تخصيص منفذ الوصول الخاص بك ، واختيار غير مستخدم يكون مناسبًا
+APP_PORT=xxxx # تخصيص منفذ الوصول الخاص بك، اختر منفذًا غير مستخدم
 ```
 
-أخيرًا ، يمكنك تشغيل حاويات الترتيب المسبق بتنفيذ الأمر `docker compose up -d` في نفس مستوى `compose.yaml`.
+أخيرًا، يمكنك تشغيل حاويات التكوين بنجاح بتنفيذ الأمر `docker compose up -d` في نفس دليل `compose.yaml`.
 
-## شرح التكوين
+## توضيحات عن التكوين
 
-يجب ملاحظة أن صورة الإصدار المجتمعي هي `portainer/portainer-ce` ، وتختلف عن الإصدار التجاري (portainer-be).
+يرجى ملاحظة أن الصورة المجتمعية للنسخة الخالية من المشكلات هي `portainer/portainer-ce`، وتختلف عن الإصدار التجاري (portainer-be).
 
 ## المراجع والشكر
 
 - [الموقع الرسمي](https://www.portainer.io/)
 - [الوثائق](https://docs.portainer.io/)
 - [مستودع GitHub](https://github.com/portainer/portainer)
-- [Docker Hub](https://hub.docker.com/r/portainer/portainer-ce)
+- [مستودع Docker Hub](https://hub.docker.com/r/portainer/portainer-ce)
 
-> عنوان النص: <https://wiki-power.com/>  
+> عنوان النص: <https://wiki-power.com/>
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

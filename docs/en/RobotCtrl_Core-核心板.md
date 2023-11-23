@@ -1,6 +1,6 @@
 # RobotCtrl_Core - Core Board
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220527113423.png)
+![Image](https://img.wiki-power.com/d/wiki-media/img/20220527113423.png)
 
 Project Repository: [**linyuxuanlin/RobotCtrl/RobotCtrl_Core**](https://github.com/linyuxuanlin/RobotCtrl/tree/main/RobotCtrl_MultiBoard_Project/RobotCtrl_Core)
 
@@ -13,87 +13,90 @@ Project Online Preview:
   ></div>
 </div>
 
-Note: This project is included in the [**RobotCtrl - STM32 Universal Development Kit**](https://wiki-power.com/en/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
+Note: This project is included in [**RobotCtrl - STM32 Universal Development Kit**](https://wiki-power.com/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
 
 ## Schematic Design
 
-The main functions of RobotCtrl_Core are as follows:
+The primary functions of RobotCtrl_Core are as follows:
 
-- Power supply voltage stabilization circuit (5V to 3.3V, with test points)
+- Power supply voltage regulation circuit (5V to 3.3V with test points)
 - Microcontroller minimum system
-  - Power supply circuit (power supply decoupling, ADC analog power supply)
+  - Power circuit (power decoupling, ADC analog power)
   - Reset circuit (external reset button)
   - Clock circuit (HSE passive crystal oscillator)
   - Download and debug interface (SW)
-  - Boot mode (select boot from main flash memory)
-  - USB power supply and communication circuit (USB-Micro)
-- B2B connector (with all IOs)
+  - Boot mode (select booting from the main flash memory)
+  - USB power and communication circuit (USB-Micro)
+- B2B connectors (access to all IO)
 - On-board peripherals
 
 ### Power Supply Circuit
 
-RobotCtrl_Core can be powered by a 5V power supply through the USB interface or B2B connector, and converted to 3.3V for use by the microcontroller core and on-board peripherals. The voltage stabilization circuit uses an LDO (AMS1117-3.3, with a maximum current of 1A), with a power indicator light and critical test points reserved.
+RobotCtrl_Core can be powered by a 5V input via the USB interface or B2B connector, which is then converted to 3.3V for use by the microcontroller core and on-board peripherals. The voltage regulation circuit uses an LDO (AMS1117-3.3) with a maximum current of 1A and includes a power indicator LED. It also reserves key test points.
 
-The basic principle of LDO can be referred to the article "Power Supply Topology - Linear Regulator".
+The basic principles of the LDO can be found in the article [**Power Supply Topology - Linear Regulator**](https://wiki-power.com/%E7%94%B5%E6%BA%90%E6%8B%93%E6%89%91-%E7%BA%BF%E6%80%A7%E7%A8%B3%E5%8E%8B).
 
-### Minimum System for Microcontroller
+### Microcontroller Minimum System
 
-The design of the minimum system for microcontroller is divided into several parts: power supply, reset, download debugging, clock, and startup mode. Basic knowledge can be referred to the articles "How to Design a Minimum System for Microcontroller" and "STM32F4 Hardware Development".
+The design of the microcontroller minimum system is divided into several parts: power supply, reset, download and debug, clock, and boot mode. For foundational knowledge, you can refer to the articles [**How to Design a Minimum System for a Microcontroller**](https://wiki-power.com/%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E6%AC%BE%E5%8D%95%E7%89%87%E6%9C%BA%E7%9A%84%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F) and [**STM32F4 Hardware Development**](https://wiki-power.com/STM32F4%E7%A1%AC%E4%BB%B6%E5%BC%80%E5%8F%91).
 
 ### Power Circuit
 
-Decoupling Capacitor:
+Decoupling Capacitors:
 
-- VDD: A total of 10 μF ceramic capacitor, plus a 100 nF ceramic capacitor next to each VDD pin.
+- VDD: A total of 10 μF ceramic capacitor, with an additional 100 nF ceramic capacitor connected to each VDD pin.
 - VDDA: 100 nF ceramic capacitor + 1 µF ceramic capacitor.
 
 VCAP Capacitor
 
-- Each is connected to a 2.2 µF ceramic capacitor to ground.
+- Connect a 2.2 µF ceramic capacitor to ground for each.
 
 ### Reset Circuit
 
-Enable the power monitor, that is, PDR_ON is pulled up through a 120Ω resistor. In addition, a reset button with hardware debouncing is also added.
+The power monitor is enabled, i.e., PDR_ON is pulled up through a 120Ω resistor. Additionally, a reset button with hardware debouncing is also added.
 
 ### Clock Circuit
 
-The external high-speed clock (HSE) uses Murata 8M passive crystal oscillator.
+An external high-speed clock (HSE) uses a 8M passive crystal oscillator from Murata.
 
 ### Download and Debug Interface
 
-This design directly leads out the download and debug interface without external pull-up/down resistors (because STM32 has integrated them internally).
+This design directly exposes the download and debug interface without the need for external pull-up/pull-down resistors (because STM32 has integrated them internally).
 
-### Startup Mode
+### Boot Mode
 
-Select to start from the main flash memory, that is, BOOT0 is connected in series with a 10 K pull-down resistor, and BOOT1 is arbitrary.
+Select booting from the main flash memory, i.e., BOOT0 is connected to a 10 K pull-down resistor, while BOOT1 can be set as desired.
 
 ### USB Power and Communication Circuit (USB-Micro)
 
-STM32 has a built-in USB peripheral, so it only needs to directly lead out the interface (on the STM32F07ZE chip, it is PA11 and PA12) to achieve USB communication.
+The STM32 microcontroller comes equipped with built-in USB peripherals, making it easy to establish USB communication by directly connecting the interface (on the STM32F07ZE chip, this is achieved through the PA11 and PA12 pins).
 
-The USB interface also supports external power supply function (VUSB).
+The USB interface also supports external power supply (VUSB).
 
-## B2B Connector
+## B2B Connectors
 
-B2B connectors use the 3710 series from DFRobot. The RobotCtrl_Core core board uses a pair of 3710M060037G3FT01 (male connectors), and the RobotCtrl_Func expansion board uses a pair of F060037G0FR01 (female connectors) to match. One pair of B2B connectors (a total of 120 pins) is enough to fully utilize all the IO of the STM32F407ZE, maximizing system resources.
+The B2B connectors selected are from the 3710 series by DFRobot. The RobotCtrl_Core board uses a pair of 3710M060037G3FT01 (male connectors), while the RobotCtrl_Func expansion board uses a pair of F060037G0FR01 (female connectors) for compatibility. One pair of B2B connectors (totaling 120 pins) is sufficient to fully utilize all the I/O pins of the STM32F407ZE, maximizing the utilization of system resources.
 
-For information on the B2B connectors, please refer to the [3710F terminal data](http://www.openedv.com/thread-78182-1-1.html).
+For more information on the B2B connectors, please refer to the [**3710F Connector Data**](http://www.openedv.com/thread-78182-1-1.html).
 
 ## User Buttons and LEDs
 
-In order to perform simple verification and debugging, the RobotCtrl_Core board is equipped with a user button and a user LED. The button is configured as a GPIO input mode with internal pull-up and a MLCC capacitor is added for hardware debouncing. The LED is configured as a GPIO output mode, with the pin set to high to light up, and a resistor is connected in series to limit the current.
+To facilitate simple verification and debugging, the RobotCtrl_Core board is equipped with a user button and a user LED. The button is configured in GPIO input mode with internal pull-up and an additional MLCC capacitor for hardware debouncing. The LED is configured in GPIO output mode, and it is turned on by setting the pin to a high level. There is also a resistor in series with the LED to limit current.
 
-Please refer to the schematic for specific pin information.
+For specific pin configurations, please refer to the schematic diagram.
 
 ## Hardware Testing
 
-Power testing requires 5V power supply from the USB socket (or power supply through the peripheral expansion board via the B2B connector), and the corresponding voltage can be measured at the 3.3V test point. The actual test result is 3.32V, which passes verification.
+Power testing involves connecting the USB socket to a 5V power source (or using an external expansion board via the B2B connectors) and measuring the corresponding voltage at the 3.3V test point. In actual testing, the voltage measures 3.32V, which confirms successful testing.
 
-Function testing is performed by burning the initial program (user button controls user LED) and testing power-on, program burning, reset button and user button, power LED and user LED, and USB function. In actual testing, the initial program can be burned into the MCU core board normally through ST-Link. The reset button can reset the system normally; in the test program, the user LED can be turned on/off by pressing the user button; when powered on, the power LED lights up normally. For USB function testing, a program using a USB virtual serial port is used. Open the serial port tool (with any baud rate), send any character, and the same character will be returned, passing the test.
+Function testing includes programming the initial program (which allows the user button to control the user LED) and testing power-on, program burning, reset button, user button, power LED, user LED, and USB functionality. During the practical tests, the initial program can be successfully burned into the microcontroller core board using an ST-Link. The reset button can reset the system correctly. In the test program, the user button can turn the user LED on and off. Upon powering up, the power LED lights up as expected. USB functionality is tested using a program for a USB virtual serial port. Opening a serial port tool (with any baud rate) and sending arbitrary characters will result in receiving the same characters, confirming successful testing.
 
 ## References and Acknowledgments
 
-- [Explanation of STM32's PDR_ON pin (reprint + supplement)](https://blog.csdn.net/Frankenstien_/article/details/105971841)
-- [DFRobot's STM32-F407 Explorer Chapter 56 USB Card Reader (Slave) Experiment](https://zhuanlan.zhihu.com/p/136163591)
+- [Explanation of STM32's PDR_ON Pin (Repost + Supplement)](https://blog.csdn.net/Frankenstien_/article/details/105971841)
+- [DFRobot's 56th Chapter - STM32-F407 Explorer USB Card Reader (Slave) Experiment](https://zhuanlan.zhihu.com/p/136163591)
+
+> Original: <https://wiki-power.com/>
+> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

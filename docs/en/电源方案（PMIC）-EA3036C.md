@@ -1,71 +1,73 @@
-# Power Management IC (PMIC) - EA3036C
+# Power Solution (PMIC) - EA3036C
 
-EA3036C is a 3-channel PMIC suitable for applications powered by lithium batteries or DC 5V. It integrates three synchronous buck converters that provide high efficiency output during light and heavy loads. The internal compensation architecture simplifies application circuit design. In addition, independent enable control facilitates power-on sequencing. EA3036C is available in a 20-pin QFN 3x3 package.
+The EA3036C is a 3-channel PMIC designed for applications powered by lithium batteries or a 5V DC supply. It integrates three synchronous step-down converters that provide high-efficiency outputs during light and heavy loads. Its internal compensation architecture simplifies application circuit design. Additionally, independent enable control allows for easy power sequencing. The EA3036C comes in a 20-pin QFN 3x3 package.
 
-Project repository: [**Collection_of_Power_Module_Design/PMIC/EA3036C**](https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/PMIC/EA3036C)
+Project Repository: [**Collection_of_Power_Module_Design/PMIC/EA3036C**](https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/PMIC/EA3036C)
 
 ## Key Features
 
-- Input voltage and control circuit voltage: 2.7-5.5V
-- Output voltage (3 buck converters): 0.6V-Vin
-- Single continuous load current: 1A (total output of 3 channels must be less than 6W)
-- Fixed 1.5MHz switching frequency
-- 100% duty cycle output
-- Standby current: <1uA
-- Independent enable control for each channel
-- Internal compensation
-- Cycle-by-cycle current limiting
-- Short circuit protection
-- Self-recovery over-temperature (OTP) protection
-- Input over-voltage (OVP) protection
-- 20-pin 3mm x 3mm QFN package
+- Input Voltage and Control Circuit Voltage: 2.7-5.5V
+- Output Voltage (3 Buck Converters): 0.6V-Vin
+- Single-channel Continuous Load Current: 1A (total output for 3 channels must be less than 6W)
+- Fixed 1.5MHz Switching Frequency
+- 100% Duty Cycle Output
+- Standby Current: <1uA
+- Independent Enable Control for Each Channel
+- Internal Compensation
+- Cycle-by-cycle Current Limiting
+- Short Circuit Protection
+- Self-recovering Over-Temperature (OTP) Protection
+- Input Over-Voltage (OVP) Protection
+- 20-pin 3mm x 3mm QFN Package
 
 ## Typical Application Circuit
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220417095917.png)
+![Application Circuit](https://img.wiki-power.com/d/wiki-media/img/20220417095917.png)
 
 ## Internal Functional Block Diagram
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220417001936.png)
+![Functional Block Diagram](https://img.wiki-power.com/d/wiki-media/img/20220417001936.png)
 
 ## Pin Definitions
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220416234110.png)
+![Pin Definitions](https://img.wiki-power.com/d/wiki-media/img/20220416234110.png)
 
-| Pin Name   | Pin Description                                                                                                         |
-| ---------- | ----------------------------------------------------------------------------------------------------------------------- |
-| VCC        | Power input for internal control circuit                                                                                |
-| VINx       | Power input for channel x, decoupled with 10uF MLCC capacitor                                                           |
-| LXx        | Switching output of internal MOS tube for channel x, can be connected to low-pass filter for more stable voltage output |
-| FBx        | Feedback pin for channel x, connected to voltage output through voltage divider circuit                                 |
-| ENx        | Enable pin, cannot be left floating                                                                                     |
-| GNDx       | Ground for channel x                                                                                                    |
-| AGND       | Analog ground                                                                                                           |
-| Bottom pad | Used for heat dissipation, needs to be grounded                                                                         |
+| Pin Name  | Pin Description                                              |
+| --------  | ---------------------------------------------------------- |
+| VCC       | Power input for internal control circuit                   |
+| VINx      | Power input for channel x, with 10uF MLCC capacitor for decoupling |
+| LXx       | Internal MOS switch output for channel x, can connect to a low-pass filter for more stable voltage output |
+| FBx       | Feedback pin for channel x, connected to the voltage output through a voltage divider circuit |
+| ENx       | Enable pin, should not be left floating                     |
+| GNDx      | Ground for channel x                                        |
+| AGND      | Analog ground                                               |
+| Bottom Pad | For heat dissipation, must be connected to ground           |
 
 ## Feature Description
 
 ### PFM/PWM Mode
 
-Each buck can operate in PFM/PWM mode. If the output current is less than 260mA (typical value), the regulator will automatically enter PFM mode. The output voltage and ripple in PFM mode are higher than those in PWM mode. However, PFM is more efficient than PWM in light loads.
+Each Buck converter can operate in PFM/PWM mode. If the output current is less than 260mA (typical value), the regulator will automatically switch to PFM mode. In PFM mode, the output voltage and ripple are higher than in PWM mode. However, in light-load conditions, PFM is more efficient than PWM.
 
-### Enable Switch
+### Enable Switching
 
-EA3036C is a power management IC designed specifically for IPC applications, with three 1A synchronous bucks that can be controlled by individual EN pins for enable switch.
+The EA3036C is a power management IC designed for IPC applications, featuring three 1A synchronous Bucks that can be individually enabled or disabled using the EN pins.
 
-If you need to set the turn-on time for each buck, you can use the following circuit for programming:
+To set the turn-on time for each Buck channel, you can use the circuit shown below:
 
-### 180° Phase Shift Architecture
+![Enable Switching Circuit](https://img.wiki-power.com/d/wiki-media/img/20220417100845.png)
 
-To reduce input ripple current, the EA3036C adopts a 180° phase shift architecture. Buck1 and Buck3 have the same phase, while Buck2 has a phase difference of 180°. This can reduce ripple current and thus reduce EMI.
+### 180° Phase-Shift Architecture
+
+To reduce input ripple current, the EA3036C employs a 180° phase-shift architecture. Buck1 and Buck3 share the same phase, while Buck2 has a phase difference of 180°. This helps to minimize ripple current and consequently reduce EMI.
 
 ### Overcurrent Protection
 
-Each of the three regulators inside the EA3036C has its own cycle-by-cycle current limiting circuit. When the peak current of the inductor exceeds the current limit threshold, the output voltage begins to drop until the FB pin voltage is below the threshold, typically 30% lower than the reference value. Once the threshold is triggered, the switching frequency will decrease to 400KHz (typical).
+Each of the three regulators inside the EA3036C has its own per-cycle current limit circuit. When the peak current in the inductor exceeds the current limit threshold, the output voltage begins to drop until the FB pin voltage falls below the threshold, typically 30% lower than the reference value. Once the threshold is triggered, the switching frequency decreases to 400kHz (typical).
 
 ### Peak Load Current
 
-The peak load current capability of the EA3036C depends on the internal PMOS current limit, duty cycle (Vout/Vin), and inductance value. Under the conditions of Vin=5V and L=1.5uH, the output peak load current capability is shown in the following table:
+The peak load current capability of the EA3036C depends on the internal PMOS current limit, duty cycle (Vout/Vin), and inductance value. Under the conditions of Vin=5V and L=1.5uH, the output peak load current capability is as shown in the following table:
 
 | Output Voltage | Peak Load Current |
 | -------------- | ----------------- |
@@ -74,21 +76,23 @@ The peak load current capability of the EA3036C depends on the internal PMOS cur
 | 1.5V           | 1.5A              |
 | 1.2V           | 1.5A              |
 
-It should be noted that the total output power must be less than 6W to avoid chip overheating and damage.
+It is essential to note that the total output power must remain below 6W to prevent chip overheating and damage.
 
 ### Thermal Shutdown
 
-If the chip temperature exceeds the thermal shutdown threshold, the EA3036C will automatically shut down. To avoid unstable operation, the hysteresis of the thermal shutdown is about 30°C.
+If the chip's temperature exceeds the thermal shutdown threshold, the EA3036C will automatically shut down. To avoid instability during operation, the hysteresis for thermal shutdown is approximately 30°C.
 
-### Output Voltage Regulation
+### Output Voltage Adjustment
 
-The output voltage of each regulator can be adjusted by a resistor divider (R1, R2). The output voltage is calculated by the following formula:
+The output voltage of each regulator can be adjusted using resistor dividers (R1, R2). The output voltage is calculated using the following formula:
 
 $$
 V_{OUTx}=0.6*\frac{R_1}{R_2}+0.6V
 $$
 
-If common output voltage values are required, the following resistor divider configurations (all with 1% accuracy) can be used:
+![Image](https://img.wiki-power.com/d/wiki-media/img/20220417230210.png)
+
+For common output voltage values, you can refer to the table below for resistor divider configurations (using 1% accuracy resistors):
 
 | Output Voltage | R1    | R2    |
 | -------------- | ----- | ----- |
@@ -99,52 +103,52 @@ If common output voltage values are required, the following resistor divider con
 
 ### Input/Output Capacitor Selection
 
-The input capacitor is used to suppress the noise amplitude of the input voltage and provide a stable, clean DC input for the device, while the output capacitor can suppress the output voltage ripple. Both input and output capacitors can use MLCC capacitors (low ESR).
+The input capacitor is used to suppress the noise amplitude of the input voltage, providing stable and clean DC input to the device, while the output capacitor helps to suppress output voltage ripple. Both input and output capacitors can be MLCC capacitors (low ESR).
 
-The recommended capacitor models for input/output are as follows:
+Recommended models for input/output capacitors are as follows:
 
-| NPM            | Capacitance | Voltage Rating | Package |
-| -------------- | ----------- | -------------- | ------- |
-| C2012X5R1A106M | 10uF        | 10V            | 0805    |
-| C3216X5R1A106M | 10uF        | 10V            | 1206    |
-| C2012X5R1A226M | 22uF        | 10V            | 0805    |
-| C3216X5R1A226M | 22uF        | 10V            | 1206    |
+| Part Number       | Capacitance | Voltage Rating | Package |
+| ----------------- | ----------- | -------------- | ------- |
+| C2012X5R1A106M   | 10uF        | 10V            | 0805    |
+| C3216X5R1A106M   | 10uF        | 10V            | 1206    |
+| C2012X5R1A226M   | 22uF        | 10V            | 0805    |
+| C3216X5R1A226M   | 22uF        | 10V            | 1206    |
 
 ### Output Inductor Selection
 
-The selection of the output inductor mainly depends on the ripple current $\Delta I_L$ passing through the inductor. The larger the $\Delta I_L$, the larger the output voltage ripple and loss. Although small inductors can save cost and space, larger inductance values can obtain smaller $\Delta I_L$, resulting in smaller output voltage ripple and loss. The calculation formula for inductance value is:
+The choice of the output inductor depends mainly on the ripple current magnitude $\Delta I_L$ through the inductor. A larger $\Delta I_L$ results in greater output voltage ripple and losses. While smaller inductors can save cost and space, larger inductance values can yield smaller $\Delta I_L$, resulting in reduced output voltage ripple and losses. The formula for calculating inductance value is as follows:
 
 $$
 L=\frac{V_{PWR}-V_{OUT}}{\Delta I_L*F_{SW}}*\frac{V_{OUT}}{V_{PWR}}
 $$
 
-For most applications, the EA3036C can use 1.0~2.2uH inductors.
+For most applications, the EA3036C can use inductors in the range of 1.0~2.2uH.
 
 ### Power Consumption
 
-The total power consumption of the EA3036C should not exceed 6W, and the calculation formula is as follows:
+The total power consumption of the EA3036C should not exceed 6W, calculated as follows:
 
 $$
 P_{D(total)}=\Sigma (V_{OUTx}*I_{OUTx})
 $$
 
-## Layout Reference
+## Layout Recommendations
 
-Layout of PMIC requires attention. The following suggestions can be referred to for optimal performance:
+A meticulous layout for the PMIC is essential for optimal performance. You can refer to the following suggestions:
 
-- It is recommended to use a 4-layer PCB layout, with the LX plane and output plane on the top layer, and the VIN plane on the inner layer.
-- The ground pins of the top layer input/output surface mount capacitors should be connected to the inner layer ground and bottom layer ground through vias.
+- It is advisable to employ a 4-layer PCB layout, with the LX and output planes situated on the top layer, and the VIN plane on an inner layer.
+- The ground pins of the top-layer input/output surface mount capacitors should be connected to the inner layer ground and bottom layer ground through vias.
 - AGND should be directly connected to the internal ground layer through vias.
-- Try to widen the traces for high current paths.
-- Place input capacitors as close as possible to the VINx pins to reduce noise interference.
-- Keep the feedback path (from VOUTx to FBx) away from noise nodes (such as LXx). LXx is a high current noise node. Use short and wide traces for layout.
-- Multiple holes need to be drilled from the chip bottom pad to the inner and bottom layer ground for heat dissipation.
+- Endeavor to widen traces along high current paths.
+- Place input capacitors as close as possible to the VINx pins to minimize noise interference.
+- Ensure that the feedback path (from VOUTx to FBx) is positioned away from noise nodes, such as LXx. LXx is a high-current noise node. Use short and wide traces for the layout.
+- Multiple vias should be established from the chip's bottom solder pads to the inner layer and bottom layer ground for heat dissipation.
 
-## Reference and Acknowledgement
+## References and Acknowledgments
 
 - [EA3036C](http://www.everanalog.com/Product/ProductEA3036CDetailInfo.aspx)
 
-> Original: <https://wiki-power.com/>  
+> Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

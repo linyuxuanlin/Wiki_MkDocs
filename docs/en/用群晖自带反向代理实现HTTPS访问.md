@@ -1,28 +1,28 @@
-# Implementing HTTPS Access with Synology's Built-in Reverse Proxy
+# Implement HTTPS Access with Synology's Built-in Reverse Proxy
 
-First, you need an external IP or domain name to access Synology, and you have already applied for an SSL certificate. For detailed instructions, please refer to the article [**Using acme.sh to Automatically Apply Domain Certificates (Synology Docker)**](https://wiki-power.com/en/%E5%9F%BA%E4%BA%8Eacme.sh%E8%87%AA%E5%8A%A8%E7%94%B3%E8%AF%B7%E5%9F%9F%E5%90%8D%E8%AF%81%E4%B9%A6%EF%BC%88%E7%BE%A4%E6%99%96Docker%EF%BC%89).
+First, you need an external IP or domain name to access your Synology, and you have already obtained an SSL certificate. For detailed instructions, you can refer to the article [**Automatically Apply Domain Certificates with acme.sh (Synology Docker)**](https://wiki-power.com/%E5%9F%BA%E4%BA%8Eacme.sh%E8%87%AA%E5%8A%A8%E7%94%B3%E8%AF%B7%E5%9F%9F%E5%90%8D%E8%AF%81%E4%B9%A6%EF%BC%88%E7%BE%A4%E6%99%96Docker%EF%BC%89).
 
-## Configuring Reverse Proxy
+## Configure Reverse Proxy
 
-Open `Control Panel` - `Login Portal` - `Advanced` - `Reverse Proxy Server`.
+Open `Control Panel` - `Login Portal` - `Advanced` - `Reverse Proxy Server` in sequence.
 
-For example, we add a reverse proxy service named `bitwarden`. Fill in the configuration according to the following figure:
+In the case of [**Setting Up a Password Manager with Bitwarden (Synology Docker)**](https://wiki-power.com/%E5%9F%BA%E4%BA%8EBitwarden%E6%90%AD%E5%BB%BA%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86%E5%99%A8%EF%BC%88%E7%BE%A4%E6%99%96Docker%EF%BC%89), we add a reverse proxy service named `bitwarden`. Fill in the configuration as shown in the following figure:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20210503213004.png)
 
 - `Source`
   - `Protocol`: Select `HTTPS`
-  - `Hostname`: Fill in the external access domain name
-  - `Port`: Fill in the external access port
-  - Check `Enable HSTS` (force redirect to HTTPS)
+  - `Hostname`: Fill in the domain name for external access
+  - `Port`: Fill in the port for external access
+  - Check `Enable HSTS` (Force redirect to HTTPS)
 - `Destination`
   - `Protocol`: Select `HTTP`
   - `Hostname`: Fill in `localhost`
-  - `Port`: Fill in the port for internal access (for bitwarden, it is the port mapped to port `80` of the container, such as `8003`)
+  - `Port`: Fill in the port for internal access (for bitwarden, it is the port mapped to container `80`, such as `8003`)
 
-## Configuring Certificates
+## Configure Certificate
 
-Open `Control Panel` - `Security` - `Certificate`, select the certificate in use, click `Settings`, and make sure that the certificate for the domain name corresponding to the reverse proxy service `bitwarden` is the current certificate.
+Open `Control Panel` - `Security` - `Certificate` in sequence, select the certificate in use, click `Settings`, and make sure that the certificate for the domain corresponding to the reverse proxy service `bitwarden` is the current certificate.
 
 > Original: <https://wiki-power.com/>  
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.

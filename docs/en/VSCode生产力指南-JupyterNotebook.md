@@ -1,82 +1,83 @@
 # VS Code Productivity Guide - Jupyter Notebook
 
-Create efficient productivity tools with VS Code.
+Harnessing VS Code for enhanced productivity.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200323155728.png)
+![Image](https://img.wiki-power.com/d/wiki-media/img/20200323155728.png)
 
-Jupyter Notebook is a powerful tool that allows us to write, run, view output, visualize data, and view results in a document environment. In short, with it, writing documents containing code is much more convenient.
+Jupyter Notebook is a robust tool that allows us to write, run code, view output, visualize data, and examine results all within a document environment. In other words, it greatly simplifies the process of creating documents that contain code.
 
-In the previous article, we completed the basic setup of VS Code. In this article, I will provide a detailed explanation of Jupyter with VS Code.
+In our previous article, we set up the basic VS Code environment. In this article, I will provide a detailed explanation of using Jupyter with VS Code.
 
 ## Environment Configuration
 
-As we all know, Jupyter Notebooks depend on the Python environment.  
-To confirm whether you have a Python environment, type **Python: Select Interpreter** in the VS Code command panel (`Ctrl + Shift + P`). If you see a Python version that you can select, then there is no problem.
+As known to all, Jupyter Notebooks rely on a Python environment. To verify if you have a Python environment, go to the VS Code command palette (`Ctrl + Shift + P`) and type **Python: Select Interpreter**. If you see multiple Python versions to choose from, you're all set.
 
-If you do not have a Python environment, you can install it using the following method:
+If you don't have a Python environment, you can install it using the following method:
 
-1. Download the latest version of the installation package from the [**Python official website**](https://www.python.org/) (preferably the `web-based installer` version).
+1. Download the latest version of Python from the [**Python official website**](https://www.python.org/) (preferably the `web-based installer` version).
 
-After configuring the local Python environment, we also need to install the [**Python**](https://marketplace.visualstudio.com/items?itemName=ms-python.python) plugin in VS Code. In a recent update, Jupyter Notebooks have been included in this plugin, so there is no need to install it separately.
+After setting up the local Python environment, you also need to install the [**Python**](https://marketplace.visualstudio.com/items?itemName=ms-python.python) extension within VS Code. In a recent update, Jupyter Notebooks have been included in this extension, so you no longer need to install them separately.
 
-## Creating a Notebook
+## Creating Notebooks
 
-After the environment is configured, we can create a blank Jupyter notebook (`.ipynb` file) by typing **Python: Create Blank New Jupyter** in the VS Code command panel (`Ctrl + Shift + P`). Test it as shown in the figure below:
+Once the environment is configured, you can create a blank Jupyter notebook (`.ipynb` file) in the VS Code command palette (`Ctrl + Shift + P`) by typing **Python: Create Blank New Jupyter**. As shown in the following image, give it a quick test run:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200323153020.png)
+![Image](https://img.wiki-power.com/d/wiki-media/img/20200323153020.png)
 
-As you can see, the code runs normally.
+You can see that the code runs correctly.
 
 ## Basic Operations
 
-Jupyter Notebook uses **code cells** to create, edit, and run code.
+Jupyter Notebook uses **code cells** to create, edit, and execute code.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200323153717.png)
+![Image](https://img.wiki-power.com/d/wiki-media/img/20200323153717.png)
 
-### Adding Code Cells
+### Adding code cells
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200323153850.png)
+![Image](https://img.wiki-power.com/d/wiki-media/img/20200323153850.png)
 
-### Running a Single Code Cell
+### Running a single code cell
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200323153939.png)
+![Image](https://img.wiki-power.com/d/wiki-media/img/20200323153939.png)
 
-### Running Multiple Code Cells
+### Running multiple code cells
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200323154005.png)
+![Image](https://img.wiki-power.com/d/wiki-media/img/20200323154005.png)
 
-### Moving Code Cells
+### Moving code cells
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200323154059.png)
+![Image](https://img.wiki-power.com/d/wiki-media/img/20200323154059.png)
 
-### Deleting Code Cells
+### Deleting code cells
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200323154148.png)
+![Image](https://img.wiki-power.com/d/wiki-media/img/20200323154148.png)
 
-### Switching Between Code and Markdown
+### Switching between code and Markdown
+
+![Image](https://img.wiki-power.com/d/wiki-media/img/20200323154242.png)
 
 ### Chart Viewer
 
-With the chart viewer, you can easily view the charts output by your code and export them in various image formats:
+Through the chart viewer, you can easily examine the charts generated by your code and export them in various formats:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200323154555.png)
+![Image](https://img.wiki-power.com/d/wiki-media/img/20200323154555.png)
 
 ### Data and Variable Viewer
 
-The type, quantity, and value of variables can be viewed in real-time through the variable viewer:
+You can monitor variable types, quantities, and values in real-time using the variable viewer.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20200323154758.png)
 
-You can also browse more specific data through the data viewer:
+You can also explore more specific data through the data viewer:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20200323154832.png)
 
-## References and Acknowledgements
+## References and Acknowledgments
 
 - [Working with Jupyter Notebooks in Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support)
-- [VS Code Python 全新发布！Jupyter Notebook 原生支持终于来了！](https://zhuanlan.zhihu.com/p/85445777)
+- [VS Code Python - Brand New Release! Jupyter Notebook Native Support Has Finally Arrived!](https://zhuanlan.zhihu.com/p/85445777)
 
-> Original: <https://wiki-power.com/>  
+> Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

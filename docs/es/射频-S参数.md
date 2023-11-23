@@ -1,42 +1,45 @@
-# Radiofrecuencia - Parámetros S
+# RF - Parámetros S
 
-Los parámetros S (Scattering parameters, S-Parameters, parámetros de dispersión) se utilizan para reflejar las características (amplitud/fase) de las señales de reflexión/transmisión en el dominio de la frecuencia. Es una matriz compleja. Podemos considerar el interior del circuito como una caja negra (sin tener en cuenta los elementos del circuito interno) y medir sus características de puerto a través de los parámetros S.
+Los parámetros S (parámetros de dispersión), también conocidos como S-Parameters, se utilizan para caracterizar las propiedades de señales reflejadas o transmitidas en el dominio de frecuencia en términos de amplitud y fase. Estos parámetros se representan como una matriz de números complejos. Podemos considerar un circuito como una caja negra (sin tener en cuenta los elementos internos del circuito) y medir sus propiedades en los puertos utilizando los parámetros S.
 
-## Descripción detallada de los parámetros S
+## Explicación Detallada de los Parámetros S
 
-La convención de nomenclatura de los parámetros S es que el primer número representa el puerto de medición y el segundo número representa el puerto de referencia. Por ejemplo, S21 representa la señal medida en el puerto 2 en relación con la fuente de excitación de señal en el puerto 1. La forma de onda de los parámetros S puede ser potencia, voltaje o corriente.
+La nomenclatura de los parámetros S sigue un patrón específico. El primer número indica el puerto de medición, y el segundo número indica el puerto de referencia. Por ejemplo, S21 representa la señal medida en el puerto 2 en relación con la fuente de excitación de la señal en el puerto 1. Los parámetros S pueden expresarse en términos de potencia, voltaje o corriente.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220627100338.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20220627100338.png)
 
-Como se muestra en la figura anterior, S11 y S22 representan los coeficientes de reflexión (reflexión/entrada), mientras que S21 y S12 representan los coeficientes de transmisión (transmisión/entrada).
+En la imagen anterior, S11 y S22 representan los coeficientes de reflexión (reflejo/entrada), mientras que S21 y S12 representan los coeficientes de transmisión (transmisión/entrada).
 
 ### S11
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220621000000.gif)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20220621000000.gif)
 
-S11 se refiere a la señal de reflexión en el puerto 1 en relación con la señal incidente en el puerto 1, $S11=\frac{S_{Reflection}}{S_{Incident}}$.
+S11 se refiere a la señal de reflexión en el puerto 1 en comparación con la señal incidente en el puerto 1. Matemáticamente, se expresa como $S11=\frac{S_{Reflexión}}{S_{Incidente}}$.
 
 ### S21
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220621000001.gif)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20220621000001.gif)
 
-S21 se refiere a la señal de transmisión en el puerto 2 en relación con la señal incidente en el puerto 1, $S21=\frac{S_{Transmission}}{S_{Incident}}$.
+S21 se refiere a la señal de transmisión en el puerto 2 en relación con la señal incidente en el puerto 1. Matemáticamente, se expresa como $S21=\frac{S_{Transmisión}}{S_{Incidente}}$.
 
 ### S12
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220621000002.gif)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20220621000002.gif)
 
-S12 se refiere a la señal de transmisión en el puerto 1 en relación con la señal incidente en el puerto 2, $S12=\frac{S_{Transmission}}{S_{Incident}}$.
+S12 se refiere a la señal de transmisión en el puerto 1 en relación con la señal incidente en el puerto 2. Matemáticamente, se expresa como $S12=\frac{S_{Transmisión}}{S_{Incidente}}$.
 
 ### S22
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220621000003.gif)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20220621000003.gif)
 
-S22 se refiere a la señal de reflexión en el puerto 2 en relación con la señal incidente en el puerto 2, $S22=\frac{S_{Reflection}}{S_{Incident}}$.
+S22 se refiere a la señal de reflexión en el puerto 2 en relación con la señal incidente en el puerto 2. Matemáticamente, se expresa como $S22=\frac{S_{Reflexión}}{S_{Incidente}}$.
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
-- [Significado de los parámetros S y método de medición práctica de la red vectorial](http://jietaipu.com/resource/88.html)
-- "S-Parameter Measurements Basics for High Speed Digital"
+- [Significado de los Parámetros S y Métodos Prácticos de Medición de Redes Vectoriales](http://jietaipu.com/resource/88.html)
+- "Conceptos Básicos de Medición de Parámetros S para Alta Velocidad Digital"
+
+> Dirección original del artículo: <https://wiki-power.com/>
+> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

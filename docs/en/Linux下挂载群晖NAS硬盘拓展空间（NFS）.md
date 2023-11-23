@@ -1,29 +1,33 @@
-# Mounting Synology NAS Hard Drive for Space Expansion (NFS) on Linux
+# Mount Synology NAS Hard Drive for Space Expansion on Linux (NFS)
 
-If your server has limited storage space, you can try mounting the hard drive on your Synology NAS as an expanded storage space.
+If your server is running low on storage space, you can consider mounting a hard drive from your Synology NAS to expand your storage capacity.
 
-## Configuring on Synology NAS
+## Configuration on Synology NAS
 
-### Enable NFS Service
+### Enabling NFS Service
 
-Open `Settings` - `File Services` - `NFS` on your Synology NAS, check the NFS service and select the latest protocol.
+1. Open your Synology DiskStation's settings.
+2. Navigate to `File Services` and select `NFS`.
+3. Enable the NFS service, and choose the latest protocol.
 
-### Configure NFS Permissions for Folders
+### Configuring NFS Permissions for Folders
 
-Under `Settings` - `Shared Folder`, select the shared folder that needs to enable NFS, click `Edit`, switch to the `NFS Permissions` tab, click `Add` to add a new NFS rule.
+1. Under `Settings`, go to `Shared Folders`.
+2. Select the shared folder you wish to make accessible via NFS and click `Edit`.
+3. Go to the `NFS Permissions` tab and click `Add` to create a new NFS rule.
+4. For the `Server or IP address` field, enter the IP address of the server that needs access to your Synology (e.g., if your server and Synology are on the same local network, enter your server's local IP, such as 192.168.1.2).
+5. Check the boxes for `Allow connections from non-privileged ports` and `Allow users to access mounted subfolders`. Keep other settings at their default values.
 
-For `Server or IP Address`, fill in the IP address of the server that needs to access the Synology NAS (for example, if my server and Synology NAS are on the same LAN, I can fill in the internal IP address of my server, 192.168.1.2). Check `Allow connections from non-privileged ports` and `Allow users to access mounted folder`, and keep other settings as default.
+## Mounting on the Server
 
-## Mounting on Server
-
-First, install NFS service:
+First, install the NFS service:
 
 ```bash
 apt update
 apt install nfs-common
 ```
 
-Then, create a mount path on the server, for example:
+Next, create a mount point on your server, for example:
 
 ```bash
 sudo mkdir /DATA/nfs/music
@@ -32,7 +36,7 @@ sudo mkdir /DATA/nfs/music
 Finally, execute the mount command:
 
 ```bash
-mount -t nfs Synology NAS IP address:Shared folder path /NFS client path
+mount -t nfs NAS_IP_address:/path_to_shared_folder /NFS_client_path
 ```
 
 For example:
@@ -41,13 +45,13 @@ For example:
 sudo mount -t nfs 192.168.1.3:/volume1/music /DATA/nfs/music
 ```
 
-If there is no error, use the `df` command to check the mount status.
+If there are no errors, you can use the `df` command to check the mounting status.
 
-## Reference and Acknowledgement
+## References and Acknowledgments
 
-- [Mounting Synology NAS as Virtual Disk via NFS Service on Linux (Ubuntu)](https://cloud.tencent.com/developer/article/2104277)
+- [Mount Synology NAS as a Virtual Disk on Linux (Ubuntu) via NFS](https://cloud.tencent.com/developer/article/2104277)
 
-> Original: <https://wiki-power.com/>  
-> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
+[to_be_replaced[1]]
+[to_be_replaced[2]]
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

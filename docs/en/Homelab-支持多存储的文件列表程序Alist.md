@@ -1,8 +1,8 @@
-# Homelab - Alist, a file listing program that supports multiple storage options
+# Homelab - File Listing Program Alist with Multi-Storage Support
 
-![](https://img.wiki-power.com/d/wiki-media/img/202304141808001.png)
+![Alist](https://img.wiki-power.com/d/wiki-media/img/202304141808001.png)
 
-**Alist** is a file listing program that supports multiple storage options such as local, Alibaba Cloud, OneDrive, GoogleDrive, Baidu Cloud, Quark Cloud, Lanzou Cloud, S3, FTP/SFTP, etc. It comes with an online video player and various file preview options (compatible with Office, PDF, Markdown, etc.), as well as offline download functionality.
+**Alist** is a file listing program that supports various storage options such as local storage, Alibaba Cloud Drive, OneDrive, Google Drive, Baidu NetDisk, Kuake NetDisk, Lanzou Cloud, S3, FTP/SFTP, and more. It comes with an online video player, supports various file previews (including Office, PDF, Markdown, and others), and offers offline download functionality.
 
 ## Deployment (Docker Compose)
 
@@ -18,39 +18,39 @@ services:
       - ${STACK_DIR}:/opt/alist/data
     ports:
       - ${APP_PORT}:5244
-    environment: # Needs to be run with root permissions, otherwise it cannot read other docker directories or host root directories
+    environment: # It needs to run with root privileges; otherwise, it cannot access other Docker directories or the host machine's root directory
       - PUID=0
       - PGID=0
       - UMASK=022
     restart: always
 ```
 
-(Optional) It is recommended to create a `.env` file in the same directory as `compose.yaml` and customize your environment variables. If you do not want to use environment variables, you can also customize your parameters directly in `compose.yaml` (e.g., replace `${STACK_NAME}` with `alist`).
+(Optional) It is recommended to create a `.env` file in the same directory as `compose.yaml` and customize your environment variables. If you prefer not to use environment variables, you can directly customize your parameters in `compose.yaml` (e.g., replace `${STACK_NAME}` with `alist`).
 
 ```dotenv title=".env"
 STACK_NAME=alist
 STACK_DIR=xxx # Customize your project storage path, e.g., ./alist
 
-# alist
+# Alist
 APP_VERSION=latest
-APP_PORT=xxxx # Customize your access port, choose one that is not already in use
+APP_PORT=xxxx # Customize the access port, choose one that is not already in use
 ```
 
-Finally, execute the command "docker compose up -d" in the same directory as the `compose.yaml` file to start the orchestrated containers.
+Finally, execute the `docker compose up -d` command in the same directory as `compose.yaml` to start the orchestrated containers.
 
-## Configuration Instructions
+## Configuration Details
 
-The official documentation provides detailed instructions on how to configure various cloud storage services. Simply follow the steps provided in the documentation.
+The methods for connecting to various cloud storage services are well-documented on the official website. Simply follow the configuration steps as outlined in the official documentation.
 
 ## References and Acknowledgments
 
 - [Official Website](https://alist.nn.ci/)
 - [Documentation](https://alist.nn.ci/guide/install/docker.html#release-version)
-- [GitHub Repo](https://github.com/alist-org/alist)
+- [GitHub Repository](https://github.com/alist-org/alist)
 - [Docker Hub](https://hub.docker.com/r/xhofe/alist)
 - [Demo Site](https://al.nn.ci/)
 
-> Original: <https://wiki-power.com/>  
-> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
+[1]  
+[2]
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

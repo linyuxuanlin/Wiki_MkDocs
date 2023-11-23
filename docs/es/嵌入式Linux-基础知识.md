@@ -1,21 +1,21 @@
-# Linux Embebido - Conocimientos Básicos
+# Linux Embebido - Conceptos Básicos
 
 ## Comandos Comunes
 
 - Ver información de la CPU: `cat /proc/cpuinfo`
 - Ver la versión del kernel: `cat /proc/version`
-- Ver el uso de memoria: `cat /proc/meminfo`
-  - También se puede usar el comando `free` para tener una idea simple del uso de memoria
-- Ver el uso de la memoria FLASH: `cat /proc/partitions`
+- Ver el uso de la memoria: `cat /proc/meminfo`
+  - También se puede utilizar el comando `free` para obtener una visión general del uso de la memoria
+- Ver el uso del almacenamiento FLASH: `cat /proc/partitions`
 - Ver los procesos en ejecución: `top`
 - Ver los sistemas de archivos soportados: `cat /proc/filesystems` (nodev indica que no se necesita montar un dispositivo de bloque)
 - Ver la frecuencia principal de la CPU: `cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_cur_freq`
 
 ## Controladores en Linux
 
-En Linux, los controladores tienen la función de establecer una relación de mapeo entre los dispositivos de hardware y los archivos de Linux.
+En Linux, los controladores se utilizan para establecer una relación de mapeo entre los dispositivos de hardware y los archivos de Linux.
 
-Por ejemplo, al controlar los LED y los botones, no es necesario conocer la conexión de hardware específica, solo se necesita saber qué archivo representa qué dispositivo, y luego se puede controlar el dispositivo de la misma manera a través del archivo.
+Por ejemplo, al controlar un LED o un botón, no es necesario conocer la conexión de hardware específica. Solo se necesita saber qué archivo representa a cada dispositivo, y luego se puede controlar el dispositivo de la misma manera a través del archivo.
 
 ## Referencias y Agradecimientos
 

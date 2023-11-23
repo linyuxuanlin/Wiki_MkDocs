@@ -1,14 +1,14 @@
-# BeagleBone Series - Getting Started with BBAI
+# BeagleBone Series - BBAI Getting Started
 
 ## Initialization
 
-First, connect the Cape's 12V power input and use a USB to serial module to connect to the onboard serial port (use the J3 port for debugging):
+First, connect the 12V power supply input to the Cape, and use a USB to serial module to connect the on-board serial port (J3 port for debugging):
 
-![Connection Image](https://img.wiki-power.com/d/wiki-media/img/20211027164010.png)
+![BeagleBone Initialization](https://img.wiki-power.com/d/wiki-media/img/20211027164010.png)
 
-Ensure that the USB to serial module has the necessary drivers installed (I used an FTDI module, and you can find the driver download link here: [FTDI Drivers](https://ftdichip.com/drivers/vcp-drivers/)).
+Make sure the USB to serial module has the necessary drivers (I used an FTDI module, and the driver can be downloaded from [this link](https://ftdichip.com/drivers/vcp-drivers/)).
 
-Use a command-line tool to connect to the serial port (I used MobaXterm) and set the baud rate to 115200.
+Use a command-line tool to connect to the serial port (I used MobaXterm), and set the baud rate to 115200.
 
 ## Installing Patch Files
 
@@ -16,13 +16,13 @@ Use a command-line tool to connect to the serial port (I used MobaXterm) and set
 wget https://github.com/linyuxuanlin/File-host/blob/main/stash/k3-j721e-beagleboneai64.dtb?raw=true
 ```
 
-Rename it to `k3-j721e-beagleboneai64.dtb` and move it to the `/boot` directory, overwriting the original file. (I uploaded the file to a GitHub repository and used the `wget` command to retrieve it. You may need to modify the GitHub host for successful downloading).
+Rename it to `k3-j721e-beagleboneai64.dtb`, move it to the `/boot` directory, and overwrite the original file. (I uploaded the file to a GitHub repository and used the `wget` command to retrieve it. You may need to modify the GitHub host to download it successfully.)
 
-You can also transfer the file directly using sftp.
+You can also transfer the file directly using SFTP.
 
 ## evtest
 
-The `evtest` tool is used to print evdev kernel events. It reads and prints events with values and symbolic names directly from kernel devices and can be used to debug input devices like mice, keyboards, touchpads, and more.
+The `evtest` tool is used for printing evdev kernel events. It reads and prints events with values and symbolic names directly from kernel devices. It can be used to debug input devices such as mice, keyboards, touchpads, and more.
 
 Download the `evtest` tool:
 
@@ -30,19 +30,19 @@ Download the `evtest` tool:
 sudo apt install evtest
 ```
 
-Use the tool:
+Use the tool as follows:
 
 ```shell
 sudo evtest /dev/input/eventｘ (where ｘ is the event number)
 ```
 
-## Keyboards
+## Key Input
 
 ```shell
 debian@BeagleBone:~$ evtest
 No device specified, trying to scan all of /dev/input/event*
 Available devices:
-/dev/input/event0:      gpio-keys
+/dev/input/event0: gpio-keys
 Select the device event number [0-0]: 0
 Input driver version is 1.0.1
 Input device ID: bus 0x19 vendor 0x1 product 0x1 version 0x100
@@ -74,64 +74,67 @@ Event: time 1634868166.284257, -------------- SYN_REPORT ------------
 - Compass - BMM150
 
 ```shell
-# BeagleConnect Communication
-
-Change directory to the IIO devices and list them:
-```shell
+# Change directory and list the contents
 cd /sys/bus/iio/devices && ls -l
+
+# Display the names of IIO devices
+cat iio:device0/name
+cat iio:device1/name
+cat iio:device2/name
+cat iio:device3/name
+cat iio:device4/name
+cat iio:device5/name
 ```
 
-Display the names of IIO devices:
-```shell
-cat iio\:device0/name
-cat iio\:device1/name
-cat iio\:device2/name
-cat iio\:device3/name
-cat iio\:device4/name
-cat iio\:device5/name
-```
+## BeagleConnect Communication
 
-## BeagleConnect Reset
-
-Set up the BC_RST pin for communication:
 ```shell
+# BC_RST
 cd /sys/class/gpio
 echo 326 > export
 echo out > gpio326/direction
 echo 0 > gpio326/value
 echo 1 > gpio326/value
-```
 
-## Uart2 Configuration
+# Uart2
+root@BeagleBone:/sys/class/tty# ls -l
+lrwxrwxrwx 1 root root 0 Jul 13 17:29 ttyS4 -> ../../devices/platform/bus@100000/2820000.serial/tty/ttyS4
 
-List the Uart2 configuration:
-```shell
-ls -l /sys/class/tty
-```
-
-Install Minicom and access Uart2 for communication:
-```shell
+# Install minicom (if not already installed)
 sudo apt-get install minicom
+
+# Connect to /dev/ttyS4 using minicom
 sudo minicom -D /dev/ttyS4
+
+Welcome to minicom 2.8
+OPTIONS: I18n
+Port /dev/ttyS4, 10:57:41
+Press CTRL-A Z for help on special keys
+
+hello
 ```
 
-Upon successful setup, you will be able to send and receive data. If no data is being transmitted or received, further troubleshooting is required.
+The test was unsuccessful; no data was sent or received.
 
-## LEDs Control
+## LEDs
 
-Navigate to the LED control directory and set the brightness of LEDs:
 ```shell
+# Change directory and list LED information
 cd /sys/class/leds && ls -l
+
+# Turn on the specified LEDs
 echo 255 > beaglebone:green:cape0/brightness
 echo 255 > beaglebone:green:cape3/brightness
-echo 0 > beaglebone:green:cape1/brightness # Cannot turn off
+
+# Turn off the specified LED
+echo 0 > beaglebone:green:cape1/brightness
 ```
 
-## Laser Radar Setup
+## Laser Radar
 
-If you encounter permission issues, please refer to the [Enabling the Root SSH Account](to_be_replaced[3]) section in the BeagleBone Series Basic Parameters and Environment Configuration documentation.
+If you encounter permission issues, please refer to [**Enabling SSH for the Root Account**](https://wiki-power.com/BeagleBone%E7%B3%BB%E5%88%97-%E5%9F%BA%E6%9C%AC%E5%8F%82%E6%95%B0%E4%B8%8E%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE#%E5%90%AF%E7%94%A8-ssh-%E7%9A%84-root-%E5%B8%90%E6%88%B7) and execute the following commands with root privileges.
 
-To begin, operate the GPIO to activate the laser radar:
+First, control GPIO to activate the laser radar:
 
 ```shell
 cd /sys/class/gpio
@@ -143,21 +146,15 @@ echo 0 > gpio374/value
 echo 1 > gpio306/value
 ```
 
-To turn off the laser radar:
-
-```shell
-echo 1 > gpio374/value
-echo 0 > gpio306/value
-```
-
-Confirm the interface:
+Ensure the interface is recognized:
 
 ```shell
 ls -l /sys/class/tty/
+
 lrwxrwxrwx 1 root root 0 Jul 13 17:29 ttyS0 -> ../../devices/platform/bus@100000/2880000.serial/tty/ttyS0
 ```
 
-Download the latest SDK from [Slamtec/rplidar_sdk/releases](https://github.com/Slamtec/rplidar_sdk/releases).
+Download the latest SDK from <https://github.com/Slamtec/rplidar_sdk/releases>.
 
 Modify the `/sdk/sdk/src/hal/event.h` file for proper compilation:
 
@@ -165,12 +162,12 @@ Modify the `/sdk/sdk/src/hal/event.h` file for proper compilation:
 enum
 {
     EVENT_OK = 1,
-    EVENT_TIMEOUT = 2,
+    EVENT_TIMEOUT = 2, // Changed from -1
     EVENT_FAILED = 0,
 };
 ```
 
-Switch to the `/sdk` directory and use the `make` command for compilation. The compiled files will be located in the `/sdk/output` directory.
+Switch to the `/sdk` directory and use the `make` command to compile. The compiled files will be located in the `/sdk/output` directory.
 
 Navigate to the `/sdk/output/Linux/Release` directory and execute the following command to run the test routine:
 

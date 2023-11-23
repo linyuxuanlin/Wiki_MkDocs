@@ -16,7 +16,7 @@
 
 ## Output
 
-### Alert Box
+### Displaying Alert Dialog
 
 ```javascript
 window.alert("Hello");
@@ -29,9 +29,9 @@ window.alert("Hello");
 <html>
     <body>
         <h1>My First Web Page</h1>
-        <p id="demo">My first paragraph.</p>
+        <p id="demo">My first paragraph</p>
         <script>
-            document.getElementById("demo").innerHTML = "Paragraph changed.";
+            document.getElementById("demo").innerHTML = "Paragraph has been modified.";
         </script>
     </body>
 </html>
@@ -45,11 +45,11 @@ Creating Variables:
 var carname = "Volvo";
 ```
 
-**Value Types (Primitive Types)**: String, Number, Boolean, Null, Undefined, Symbol.
+**Value Types (Primitive Types):** String, Number, Boolean, Null, Undefined, Symbol.
 
-**Reference Data Types**: Object, Array, Function.
+**Reference Data Types:** Object, Array, Function.
 
-> Original: <https://wiki-power.com/>  
+> Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

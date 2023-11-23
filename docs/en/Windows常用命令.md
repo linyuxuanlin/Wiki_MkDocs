@@ -1,12 +1,12 @@
-# Commonly Used Windows Commands
+# Common Windows Commands
 
-## Win+R Commands
+## Win+R Common Commands
 
 - `control` Control Panel
 - `regedit` Registry Editor
 - `eventvwr` Event Viewer
 - `mmc` Microsoft Management Console
-- `gpedit.msc` Group Policy Editor
+- `gpedit.msc` Group Policy
 - `devmgmt.msc` Device Manager
 - `diskmgmt.msc` Disk Management
 - `services.msc` Services
@@ -15,7 +15,7 @@
 - `wf.msc` Windows Firewall with Advanced Security
 - `%windir%\explorer.exe shell:::{4234d49b-0245-4df3-b780-3893943456e1}` Open the Applications directory
 
-## References and Acknowledgements
+## References and Acknowledgments
 
 - [Windows](https://canwdev.github.io/pages/278ffc/)
 

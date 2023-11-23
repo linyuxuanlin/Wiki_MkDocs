@@ -1,43 +1,43 @@
-# Cómo construir un generador de RSS utilizando RSSHub (Docker en Synology)
+# Construir un Generador de RSS con RSSHub en Synology Docker
 
-Construye un servicio RSSHub en Docker en Synology para generar fuentes de suscripción RSS para todo tipo de contenido extraño.
+Configura un servicio de RSSHub en Synology Docker para generar fuentes de suscripción RSS de contenido variado y peculiar.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20210504105215.png)
 
-## Despliegue en Docker en Synology
+## Despliegue en Synology Docker
 
-Abre el paquete Docker en Synology, descarga la imagen `diygod/rsshub`, haz doble clic para iniciar, marca la opción "Habilitar reinicio automático" y luego entra en "Configuración avanzada".
+Abre el paquete Docker en Synology, descarga la imagen de `diygod/rsshub`, inicia el contenedor con un doble clic y habilita la opción de "Reinicio automático". Luego, accede a la configuración avanzada.
 
-En la página "Configuración de puertos", configura manualmente el puerto local correspondiente al puerto del contenedor 1200 (por ejemplo, lo he configurado como "8004"):
+En la página de "Configuración de puertos", establece manualmente un puerto local correspondiente al puerto del contenedor 1200 (por ejemplo, puedes configurarlo como `8004`):
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20210504085806.png)
 
-Luego, completa la configuración y arranca el contenedor. Si puedes ver la página de RSSHub al ingresar la IP local de Synology:8004, significa que la instalación se ha realizado correctamente.
+Después de completar la configuración, inicia el contenedor. Si puedes acceder a la página de RSSHub en la dirección IP local de Synology seguida del puerto 8004, habrás tenido éxito en la instalación.
 
-## Pasos para usar
+## Pasos de Uso
 
-Para obtener información detallada sobre cómo utilizarlo, consulta la [**documentación oficial de RSSHub**](https://docs.rsshub.app/).
+Para obtener instrucciones detalladas sobre cómo usarlo, consulta la [**documentación oficial de RSSHub**](https://docs.rsshub.app/).
 
-Tomemos un ejemplo simple. En la documentación oficial, se puede encontrar el método de generación de "Películas en cartelera" de Douban como sigue:
+Como ejemplo sencillo, en la documentación oficial encontrarás el método para generar la fuente RSS de las películas "Currently Playing" de Douban de la siguiente manera:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20210504104630.png)
 
-Entonces, puedes utilizar "tu dominio/douban/movie/playing" para generar tu propia fuente RSS utilizando tu propio servidor.
+Entonces, puedes utilizar `tu_dominio/douban/movie/playing` para generar tu propia fuente RSS en tu servidor.
 
-Se recomienda utilizar el proxy inverso integrado en el sistema Synology para lograr el acceso HTTPS cifrado. Puedes consultar el tutorial en el artículo [**Cómo utilizar el proxy inverso integrado en Synology para lograr el acceso HTTPS**](https://wiki-power.com/es/%E7%94%A8%E7%BE%A4%E6%99%96%E8%87%AA%E5%B8%A6%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0HTTPS%E8%AE%BF%E9%97%AE).
+Se recomienda utilizar la función de proxy inverso incorporada en Synology para habilitar el acceso seguro mediante HTTPS. Puedes encontrar un tutorial detallado en el artículo [**Configurar Acceso HTTPS con el Proxy Inverso de Synology**](https://wiki-power.com/%E7%94%A8%E7%BE%A4%E6%99%96%E8%87%AA%E5%B8%A6%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0HTTPS%E8%AE%BF%E9%97%AE).
 
-## Utiliza RSSHub Radar para detectar automáticamente la ruta
+## Utiliza RSSHub Radar para Detectar Rutas de Manera Automática
 
-[**RSSHub Radar**](https://github.com/DIYgod/RSSHub-Radar) es una extensión del navegador que te ayuda a descubrir y suscribirte rápidamente a RSS y RSSHub en el sitio web actual.
+[**RSSHub Radar**](https://github.com/DIYgod/RSSHub-Radar) es una extensión de navegador que te permite descubrir y suscribirte rápidamente a fuentes RSS de sitios web y RSSHub.
 
-Simplemente ingresa la dirección personalizada en su página de configuración para utilizarla.
+Simplemente introduce tu dirección personalizada en la página de configuración para empezar a usarla.
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
-- [Documentación oficial de RSSHub](https://docs.rsshub.app/)
-- [Cómo instalar RSSHub en Synology utilizando Docker](https://immwind.com/use-docker-install-rsshub-in-synology)
+- [Documentación Oficial de RSSHub](https://docs.rsshub.app/)
+- [Instalación de RSSHub en Synology con Docker](https://immwind.com/use-docker-install-rsshub-in-synology)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
+> Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

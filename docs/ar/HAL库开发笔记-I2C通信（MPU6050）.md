@@ -1,32 +1,32 @@
-# مذكرات تطوير مكتبة HAL - اتصال I2C (MPU6050)
+# ملاحظات تطوير مكتبة HAL - الاتصال عبر I2C (MPU6050)
 
-في هذا المقال، سنشرح كيفية استخدام مكتبة HAL للاتصال عبر I2C باستخدام وحدة MPU6050. سيتم تنفيذ هذا الشرح باستخدام مجموعة تطوير RobotCtrl الخاصة بنا، والتي تستند إلى نواة الميكروكنترولر STM32F407ZET6. لمزيد من المعلومات حول مخطط الوحدة وشرح مفصل، يُرجى زيارة [**RobotCtrl - STM32 通用开发套件**](to_be_replace[3]).
+في هذا المقال، سنتناول كيفية الاتصال عبر I2C باستخدام وحدة MPU6050. سنستخدم مجموعة تطوير RobotCtrl المخصصة، مع نواة الميكروكنترولر STM32F407ZET6. للمزيد من التفاصيل حول الرسومات البيانية والشرح المفصل لمجموعة التطوير، يُرجى الاطلاع على [**RobotCtrl - STM32 通用开发套件**](https://wiki-power.com/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
 
 ## المبادئ الأساسية
 
-### اتصال I2C
+### الاتصال عبر I2C
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20211026174634.png)
 
-يمكنك الانتقال إلى مقالنا حول المبادئ الأساسية لاتصال I2C [**هنا**](to_be_replace[3]).
+يمكنك قراءة المزيد حول المبادئ الأساسية للاتصال عبر I2C من خلال الرابط [**通信协议 - I2C**](https://wiki-power.com/%E9%80%9A%E4%BF%A1%E5%8D%8C%E8%AE%AE-I2C).
 
 ### وحدة MPU6050
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20220404145145.png)
 
-تعريف أطراف الوحدة:
+تحديد دبابيس الوحدة:
 
-- VCC: 3.3 فولت إلى 5 فولت
-- GND: الأرضي
+- VCC: 3.3V~5V
+- GND: الأرضية
 - SCL: ساعة I2C / ساعة SPI
 - SDA: بيانات I2C / مدخلات بيانات SPI
 - XDA: توفير ساعة رئيسية لجهاز I2C
-- AD0: بت اختيار عنوان الجهاز I2C / مخرجات بيانات SPI
-- INT: دبوس التقاط الانقطاع
+- AD0: بت اختيار عنوان جهاز I2C / مخرجات بيانات SPI
+- INT: دبوس التوقف
 
 ### مكتبة MPU6050 مع تصفية كالمان
 
-في هذا المكان، سنستخدم مكتبة MPU6050 مع تصفية كالمان. يمكنك العثور على هذه المكتبة هنا: [**leech001/MPU6050**](https://github.com/leech001/MPU6050). يجب نسخ ملفات `mpu6050.c` و `mpu6050.h` التي تم تنزيلها إلى مجلد المشروع وإضافتها إلى مشروعك داخل بيئة التطوير STM32CubeIDE أو Keil.
+هنا، سنستخدم مكتبة MPU6050 التي تحتوي على تصفية كالمان. يمكنك العثور على هذه المكتبة في الرابط التالي: [**leech001/MPU6050**](https://github.com/leech001/MPU6050). قم بنسخ الملفات `mpu6050.c` و `mpu6050.h` التي تم تنزيلها إلى مجلد المشروع الخاص بك، وقم بإضافتها إلى المشروع الخاص بك في بيئة التطوير STM32CubeIDE أو Keil:
 
 ```c title="mpu6050.h"
 
@@ -41,7 +41,6 @@
 // هيكل MPU6050
 typedef struct
 {
-
     int16_t Accel_X_RAW;
     int16_t Accel_Y_RAW;
     int16_t Accel_Z_RAW;
@@ -80,9 +79,13 @@ void MPU6050_Read_Accel(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct);
 void MPU6050_Read_Gyro(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct);
 
 void MPU6050_Read_Temp(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct);
+```
 
 
-```c
+
+Here is the translation of the provided code into Arabic:
+
+```c title="mpu6050.c"
 #include <math.h>
 #include "mpu6050.h"
 
@@ -107,13 +110,12 @@ uint32_t timer;
 Kalman_t KalmanX = {
     .Q_angle = 0.001f,
     .Q_bias = 0.003f,
-    .R_measure = 0.03f
-};
+    .R_measure = 0.03f};
 
 Kalman_t KalmanY = {
     .Q_angle = 0.001f,
     .Q_bias = 0.003f,
-    .R_measure = 0.03f
+    .R_measure = 0.03f,
 };
 
 uint8_t MPU6050_Init(I2C_HandleTypeDef *I2Cx)
@@ -125,55 +127,39 @@ uint8_t MPU6050_Init(I2C_HandleTypeDef *I2Cx)
 
     HAL_I2C_Mem_Read(I2Cx, MPU6050_ADDR, WHO_AM_I_REG, 1, &check, 1, i2c_timeout);
 
-    if (check == 104) // سيتم إرجاع 0x68 من قبل الجهاز إذا تم كل شيء بنجاح
+    if (check == 104) // سيتم إرجاع 0x68 من قبل المستشعر إذا مرت الأمور بنجاح
     {
-        // تسجيل إدارة الطاقة 0X6B يجب أن نكتب الصفراء جميعها لإيقاظ الجهاز
+        // سجل إدارة الطاقة 0X6B يجب علينا كتابة الأصفار جميعها لإيقاظ المستشعر
         Data = 0;
         HAL_I2C_Mem_Write(I2Cx, MPU6050_ADDR, PWR_MGMT_1_REG, 1, &Data, 1, i2c_timeout);
 
-        // تعيين معدل البيانات ليكون 1 كيلو هرتز عن طريق كتابة سجل SMPLRT_DIV
+        // تعيين معدل البيانات إلى 1 كيلو هرتز عن طريق كتابة سجل SMPLRT_DIV
         Data = 0x07;
         HAL_I2C_Mem_Write(I2Cx, MPU6050_ADDR, SMPLRT_DIV_REG, 1, &Data, 1, i2c_timeout);
 
-        // تعيين تكوين المعايرة للتسارع في سجل ACCEL_CONFIG
-        // XA_ST=0,YA_ST=0,ZA_ST=0, FS_SEL=0 -> 2g
+        // تعيين تكوين المسرع في سجل ACCEL_CONFIG
+        // XA_ST=0,YA_ST=0,ZA_ST=0, FS_SEL=0 -> ±2g
         Data = 0x00;
         HAL_I2C_Mem_Write(I2Cx, MPU6050_ADDR, ACCEL_CONFIG_REG, 1, &Data, 1, i2c_timeout);
 ```
 
+I've translated the provided code into Arabic while maintaining the original markdown format.
+
 ```c
-        // ... المزيد من الإعدادات والتكوينات هنا
-    }
-    return 0;
-}
-
-void MPU6050_Read_All(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct)
-{
-    // قراءة بيانات MPU6050 وملء هيكل البيانات DataStruct هنا
-}
-
-double Kalman_getAngle(Kalman_t *Kalman, double newAngle, double newRate, double dt)
-{
-    // حساب الزاوية باستخدام معادلة كالمان هنا وإرجاعها
-}
-```
-
-```markdown
-// قم بتعيين تكوين جهاز الجيروسكوب في سجل GYRO_CONFIG
+// ضبط إعدادات الجيروسكوب في مسجل GYRO_CONFIG
 // XG_ST=0، YG_ST=0، ZG_ST=0، FS_SEL=0 -> 250 درجة/ثانية
 البيانات = 0x00;
 HAL_I2C_Mem_Write(I2Cx، MPU6050_ADDR، GYRO_CONFIG_REG، 1، &Data، 1، i2c_timeout);
-ارجاع 0;
+return 0;
 }
-
-ارجاع 1;
+return 1;
 }
 
 void MPU6050_Read_Accel(I2C_HandleTypeDef *I2Cx، MPU6050_t *DataStruct)
 {
 uint8_t Rec_Data[6];
 
-// اقرأ 6 بايت من البيانات ابتداءً من سجل ACCEL_XOUT_H
+// قراءة 6 بايت من البيانات ابتداءً من مسجل ACCEL_XOUT_H
 
 HAL_I2C_Mem_Read(I2Cx، MPU6050_ADDR، ACCEL_XOUT_H_REG، 1، Rec_Data، 6، i2c_timeout);
 
@@ -181,10 +167,11 @@ DataStruct->Accel_X_RAW = (int16_t)(Rec_Data[0] << 8 | Rec_Data[1]);
 DataStruct->Accel_Y_RAW = (int16_t)(Rec_Data[2] << 8 | Rec_Data[3]);
 DataStruct->Accel_Z_RAW = (int16_t)(Rec_Data[4] << 8 | Rec_Data[5]);
 
-/*** قم بتحويل القيم الخامة إلى تسارع بوحدة 'g'
-يجب أن نقسم وفقًا للقيمة الكاملة المحددة في FS_SEL
-لقد قمت بتكوين FS_SEL = 0. لذا أقسم على 16384.0
-للمزيد من التفاصيل، تحقق من سجل ACCEL_CONFIG ***/
+/*** تحويل القيم النقية إلى تسارع بوحدة 'g'
+يجب علينا القسمة وفقًا للقيمة الكاملة المحددة في FS_SEL
+لقد قمت بتكوين FS_SEL = 0. لذا أنا أقسم على 16384.0
+لمزيد من التفاصيل، راجع مسجل ACCEL_CONFIG  ****/
+
 DataStruct->Ax = DataStruct->Accel_X_RAW / 16384.0;
 DataStruct->Ay = DataStruct->Accel_Y_RAW / 16384.0;
 DataStruct->Az = DataStruct->Accel_Z_RAW / Accel_Z_corrector;
@@ -194,21 +181,21 @@ void MPU6050_Read_Gyro(I2C_HandleTypeDef *I2Cx، MPU6050_t *DataStruct)
 {
 uint8_t Rec_Data[6];
 
-// اقرأ 6 بايت من البيانات ابتداءً من سجل GYRO_XOUT_H
+// قراءة 6 بايت من البيانات ابتداءً من مسجل GYRO_XOUT_H
 
 HAL_I2C_Mem_Read(I2Cx، MPU6050_ADDR، GYRO_XOUT_H_REG، 1، Rec_Data، 6، i2c_timeout);
 
 DataStruct->Gyro_X_RAW = (int16_t)(Rec_Data[0] << 8 | Rec_Data[1]);
 DataStruct->Gyro_Y_RAW = (int16_t)(Rec_Data[2] << 8 | Rec_Data[3]);
 DataStruct->Gyro_Z_RAW = (int16_t)(Rec_Data[4] << 8 | Rec_Data[5]);
+}
 ```
 
 ```markdown
-/*** تحويل القيم الخامة إلى درجات في الثانية (دورة في الثانية)
-     يجب علينا القسمة وفقًا للقيمة الكاملة المضبوطة في FS_SEL
-     لقد قمت بتكوين FS_SEL = 0. لذلك أقوم بالقسمة على 131.0
-     لمزيد من التفاصيل، يُرجى التحقق من تسجيل GYRO_CONFIG
-     ****/
+/*** تحويل القيم الخامة إلى درجات في الثانية (درجة/ثانية)
+     يجب أن نقسم وفقًا لقيمة المدى الكامل المُعينة في FS_SEL
+     لقد قمت بتكوين FS_SEL = 0. لذا أقوم بالقسمة على 131.0
+     لمزيد من التفاصيل، انظر إلى تسجيل GYRO_CONFIG              ****/
 
 DataStruct->Gx = DataStruct->Gyro_X_RAW / 131.0;
 DataStruct->Gy = DataStruct->Gyro_Y_RAW / 131.0;
@@ -220,7 +207,7 @@ void MPU6050_Read_Temp(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct)
     uint8_t Rec_Data[2];
     int16_t temp;
 
-    // اقرأ 2 بايت من البيانات ابتداءً من التسجيل TEMP_OUT_H_REG
+    // قراءة 2 بايت من البيانات بدءًا من مسجل TEMP_OUT_H_REG
 
     HAL_I2C_Mem_Read(I2Cx, MPU6050_ADDR, TEMP_OUT_H_REG, 1, Rec_Data, 2, i2c_timeout);
 
@@ -233,7 +220,7 @@ void MPU6050_Read_All(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct)
     uint8_t Rec_Data[14];
     int16_t temp;
 
-    // اقرأ 14 بايت من البيانات ابتداءً من تسجيل ACCEL_XOUT_H
+    // قراءة 14 بايت من البيانات بدءًا من مسجل ACCEL_XOUT_H
 
     HAL_I2C_Mem_Read(I2Cx, MPU6050_ADDR, ACCEL_XOUT_H_REG, 1, Rec_Data, 14, i2c_timeout);
 
@@ -248,58 +235,55 @@ void MPU6050_Read_All(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct)
 ```
 
 ```markdown
-```markdown
-ترجمة إلى العربية:
+```arabic
+يُرجى ترجمة النص إلى اللغة العربية:
+```cpp
+DataStruct->Ax = DataStruct->Accel_X_RAW / 16384.0;
+DataStruct->Ay = DataStruct->Accel_Y_RAW / 16384.0;
+DataStruct->Az = DataStruct->Accel_Z_RAW / Accel_Z_corrector;
+DataStruct->Temperature = (float)((int16_t)temp / (float)340.0 + (float)36.53);
+DataStruct->Gx = DataStruct->Gyro_X_RAW / 131.0;
+DataStruct->Gy = DataStruct->Gyro_Y_RAW / 131.0;
+DataStruct->Gz = DataStruct->Gyro_Z_RAW / 131.0;
 
-```c
-    DataStruct->Ax = DataStruct->Accel_X_RAW / 16384.0;
-    DataStruct->Ay = DataStruct->Accel_Y_RAW / 16384.0;
-    DataStruct->Az = DataStruct->Accel_Z_RAW / Accel_Z_corrector;
-    DataStruct->Temperature = (float)((int16_t)temp / (float)340.0 + (float)36.53);
-    DataStruct->Gx = DataStruct->Gyro_X_RAW / 131.0;
-    DataStruct->Gy = DataStruct->Gyro_Y_RAW / 131.0;
-    DataStruct->Gz = DataStruct->Gyro_Z_RAW / 131.0;
-
-    // حل زاوية كالمان
-    double dt = (double)(HAL_GetTick() - timer) / 1000;
-    timer = HAL_GetTick();
-    double roll;
-    double roll_sqrt = sqrt(
-        DataStruct->Accel_X_RAW * DataStruct->Accel_X_RAW + DataStruct->Accel_Z_RAW * DataStruct->Accel_Z_RAW);
-    if (roll_sqrt != 0.0)
-    {
-        roll = atan(DataStruct->Accel_Y_RAW / roll_sqrt) * RAD_TO_DEG;
-    }
-    else
-    {
-        roll = 0.0;
-    }
-    double pitch = atan2(-DataStruct->Accel_X_RAW, DataStruct->Accel_Z_RAW) * RAD_TO_DEG;
-    if ((pitch < -90 && DataStruct->KalmanAngleY > 90) || (pitch > 90 && DataStruct->KalmanAngleY < -90))
-    {
-        KalmanY.angle = pitch;
-        DataStruct->KalmanAngleY = pitch;
-    }
-    else
-    {
-        DataStruct->KalmanAngleY = Kalman_getAngle(&KalmanY, pitch, DataStruct->Gy, dt);
-    }
-    if (fabs(DataStruct->KalmanAngleY) > 90)
-        DataStruct->Gx = -DataStruct->Gx;
-    DataStruct->KalmanAngleX = Kalman_getAngle(&KalmanX, roll, DataStruct->Gx, dt);
+// حل زاوية كالمان
+double dt = (double)(HAL_GetTick() - timer) / 1000;
+timer = HAL_GetTick();
+double roll;
+double roll_sqrt = sqrt(
+    DataStruct->Accel_X_RAW * DataStruct->Accel_X_RAW + DataStruct->Accel_Z_RAW * DataStruct->Accel_Z_RAW);
+if (roll_sqrt != 0.0)
+{
+    roll = atan(DataStruct->Accel_Y_RAW / roll_sqrt) * RAD_TO_DEG;
+}
+else
+{
+    roll = 0.0;
+}
+double pitch = atan2(-DataStruct->Accel_X_RAW, DataStruct->Accel_Z_RAW) * RAD_TO_DEG;
+if ((pitch < -90 && DataStruct->KalmanAngleY > 90) || (pitch > 90 && DataStruct->KalmanAngleY < -90))
+{
+    KalmanY.angle = pitch;
+    DataStruct->KalmanAngleY = pitch;
+}
+else
+{
+    DataStruct->KalmanAngleY = Kalman_getAngle(&KalmanY, pitch, DataStruct->Gy, dt);
+}
+if (fabs(DataStruct->KalmanAngleY) > 90)
+    DataStruct->Gx = -DataStruct->Gx;
+DataStruct->KalmanAngleX = Kalman_getAngle(&KalmanX, roll, DataStruct->Gx, dt);
 }
 
 double Kalman_getAngle(Kalman_t *Kalman, double newAngle, double newRate, double dt)
 {
-    double rate = newRate - Kalman->bias;
-    Kalman->angle += dt * rate;
+double rate = newRate - Kalman->bias;
+Kalman->angle += dt * rate;
 ```
 ```
 
 ```markdown
-ترجمة إلى العربية:
-
-```c
+```python
 Kalman->P[0][0] += dt * (dt * Kalman->P[1][1] - Kalman->P[0][1] - Kalman->P[1][0] + Kalman->Q_angle);
 Kalman->P[0][1] -= dt * Kalman->P[1][1];
 Kalman->P[1][0] -= dt * Kalman->P[1][1];
@@ -326,70 +310,35 @@ return Kalman->angle;
 };
 ```
 
-يمكن ملاحظة أنه بعد تعيين عنوان I2C، تمت مبادلة البيانات وتهيئة الأرقام في دالة `MPU6050_Init` وتمت إجراء العمليات اللازمة لقراءة القيم في باقي الدوال.
-
-## استخدام I2C لقراءة معلومات MPU6050
-
-### تكوين الحافلة I2C داخل CubeMX
-
-في الجدول المصنف على الجانب الأيسر من CubeMX، حدد `التواصل` - `I2Cx`، وقم بتغيير الخيار من `تعطيل` إلى `I2C`، ثم قم بتكوين المعلمات في الشاشة التي تظهر (يمكن استخدام القيم الافتراضية):
-
-![](https://img.wiki-power.com/d/wiki-media/img/20220403190116.png)
-
-### تكوين قراءة I2C لمعلومات MPU6050 في الشيفرة
-
-أولاً، في الملف `main.c`، قم بتضمين مكتبة MPU6050 كالتالي:
-
-```c title="main.c"
-/* USER CODE BEGIN Includes */
-
-#include "mpu6050.h"
-
-/* USER CODE END Includes */
+يمكن رؤية أنه تمت إضافة `dt` إلى `Kalman->P[0][0]` بناءً على معادلات معينة. ثم تم تعديل قيم `Kalman->P[0][1]` و `Kalman->P[1][0]` و `Kalman->P[1][1]` بناءً على القيم الموجودة مسبقًا وبعض القيم الأخرى. تم حساب `S` و `K` استنادًا إلى القيم المحسوبة مسبقًا. تم حساب `y` باستخدام `newAngle` و `Kalman->angle` وتم تحديث `Kalman->angle` و `Kalman->bias` باستخدام `K` و `y`. تم حساب `P00_temp` و `P01_temp` بناءً على القيم السابقة، ثم تم تحديث `Kalman->P[0][0]` و `Kalman->P[0][1]` و `Kalman->P[1][0]` و `Kalman->P[1][1]` باستخدام هذه القيم. أخيرًا، تم إرجاع `Kalman->angle`.
 ```
 
-ثم، قم بإنشاء كائن من الهيكل `MPU6050_t`:
-
-```c title="main.c"
-/* USER CODE BEGIN PV */
-
-MPU6050_t MPU6050;
-
-/* USER CODE END PV */
-```
-
-قم بتهيئته في دالة `main`، وانتظر حتى تكتمل عملية التهيئة قبل متابعة تنفيذ البرنامج:
-
-```c title="main.c"
-/* USER CODE BEGIN 2 */
-
-while (MPU6050_Init(&hi2c1) == 1);
-
-/* USER CODE END 2 */
-```
-
-في حلقة `while` الرئيسية، اقرأ البيانات التي حسبتها المكتبة وانتظر لبعض الوقت:
-
-```c title="main.c"
-
-/* USER CODE BEGIN 3 */
-
-    MPU6050_Read_All(&hi2c1, &MPU6050);
-    HAL_Delay(100);
-}
-
-/* USER CODE END 3 */
-```
-
-عند تنفيذ هذا السطر، ستتم قراءة المتغيرات داخل هيكل MPU6050 مثل `MPU6050.KalmanAngleX` (زاوية المحور X بعد التصفية). تمثل العناصر داخل هيكل MPU6050 كالتالي:
-
-```c
-typedef struct
-{
-```
+يمكن رؤية أنه بعد تعيين عنوان I2C، تمت مراجعة المعلومات المسترجعة من MPU6050 في دالة `MPU6050_Read_All` في دورة while، وتم توفير فترة تأخير قبل مواصلة التنفيذ.
 
 ```markdown
-يمكنك العثور على العبارات التالية بعد تكوين الواجهة التسلسلية، حيث يمكنك استخدامها لإخراج البيانات:
+```c
+int16_t Accel_X_RAW;
+int16_t Accel_Y_RAW;
+int16_t Accel_Z_RAW;
+double Ax;
+double Ay;
+double Az;
+
+int16_t Gyro_X_RAW;
+int16_t Gyro_Y_RAW;
+int16_t Gyro_Z_RAW;
+double Gx;
+double Gy;
+double Gz;
+
+float Temperature;
+
+double KalmanAngleX;
+double KalmanAngleY;
+} MPU6050_t;
+```
+
+بعد تكوين واجهة السلسلة، يمكنك إخراج المتغيرات باستخدام البيان التالي:
 
 ```c
 printf("زاوية X: %.2f درجة\t", MPU6050.KalmanAngleX);
@@ -398,12 +347,11 @@ printf("زاوية X: %.2f درجة\t", MPU6050.KalmanAngleX);
 ## المراجع والشكر
 
 - [leech001/MPU6050](https://github.com/leech001/MPU6050)
-- [بروتوكول الاتصال - I2C](to_be_replace[3])
+- [بروتوكول الاتصال - I2C](https://wiki-power.com/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-I2C)
 
-> عنوان النص: <https://wiki-power.com/>
+> عنوان النص: <https://wiki-power.com/>  
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 ```
 
-يرجى ملاحظة أنني لم أتمكن من ترجمة الروابط والعبارات ذات العلامات `> عنوان النص: <https://wiki-power.com/>` و`> يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.` نظرًا لعدم توفر معلومات حولها في النص الأصلي.
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

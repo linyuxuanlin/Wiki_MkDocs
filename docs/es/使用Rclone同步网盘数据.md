@@ -1,18 +1,18 @@
 # Sincronización de datos en la nube con Rclone
 
-Rclone es una herramienta de línea de comandos para administrar archivos en la nube, compatible con más de 40 servicios de almacenamiento en la nube (incluyendo S3). Rclone también cuenta con una interfaz gráfica de usuario llamada RcloneBrowser, que facilita su uso para los usuarios comunes. En este artículo se explica cómo sincronizar datos en la nube de Tencent Cloud Object Storage mediante Rclone.
+Rclone es una herramienta de línea de comandos para gestionar archivos en la nube, compatible con más de 40 proveedores de almacenamiento en la nube (incluyendo S3). Rclone también cuenta con una interfaz gráfica llamada RcloneBrowser, que facilita su uso para usuarios generales. En este artículo se explica cómo sincronizar datos con Tencent Cloud Object Storage utilizando Rclone.
 
 ## Instalación del software
 
-- [**Rclone**](https://rclone.org/downloads/): Después de descargarlo, descomprima el archivo `.exe` y tome nota de la ruta.
-- [**RcloneBrowser**](https://github.com/kapitainsky/RcloneBrowser/releases): Herramienta GUI. Después de instalarla, seleccione la ruta de Rclone.
-- ([**WinFsp**](http://www.secfs.net/winfsp/rel/): Biblioteca de dependencias, necesaria para montar discos virtuales)
+- [**Rclone**](https://rclone.org/downloads/): Descarga el archivo `.exe` y descomprímelo, luego guarda la ruta.
+- [**RcloneBrowser**](https://github.com/kapitainsky/RcloneBrowser/releases): Herramienta gráfica. Después de instalarla, selecciona la ruta de Rclone.
+- (Opcional) [**WinFsp**](http://www.secfs.net/winfsp/rel/): Biblioteca de dependencia, necesaria si deseas montar un disco virtual.
 
 ## Proceso de configuración
 
-Abra RcloneBrowser y haga clic en `Config...` en la esquina inferior izquierda. A continuación, siga las instrucciones para ingresar:
+Abre RcloneBrowser y haz clic en `Config...` en la esquina inferior izquierda. A continuación, sigue las instrucciones:
 
-Ingrese `n` para crear una nueva conexión remota:
+Ingresa `n` para crear una nueva conexión remota:
 
 ```shell
 Name                 Type
@@ -29,13 +29,13 @@ q) Quit config
 e/n/d/r/c/s/q> n
 ```
 
-Asigne un nombre a la conexión remota (por ejemplo, `test`):
+Asigna un nombre a la conexión remota (por ejemplo, `test`):
 
 ```shell
 name> test
 ```
 
-Seleccione el proveedor de servicios (en este ejemplo, se utiliza Tencent Cloud Object Storage, seleccione `4`):
+Selecciona el proveedor de servicios (en este ejemplo, usaré Tencent Cloud Object Storage, selecciona `4`):
 
 ```shell
 Choose a number from below, or type in your own value
@@ -80,40 +80,40 @@ Choose a number from below, or type in your own value
    \ "Wasabi"
 13 / Any other S3 compatible provider
    \ "Other"
-
-Español:
-
 ```
 
-Seleccione el tipo de autenticación. Como es la primera vez que se configura, seleccione `1`:
+proveedor> 11
+```
+
+Selecciona el tipo de autenticación. Como es la primera vez que se configura, elige `1`:
 
 ```shell
-Elija un número de la siguiente lista o escriba su propio valor
- 1 / Ingrese las credenciales de AWS en el siguiente paso
+Elige un número de la lista o escribe tu propio valor
+ 1 / Ingresa las credenciales de AWS en el siguiente paso
    \ "false"
- 2 / Obtenga las credenciales de AWS del entorno (variables de entorno o IAM)
+ 2 / Obtén las credenciales de AWS del entorno (variables de entorno o IAM)
    \ "true"
 
 env_auth> 1
 ```
 
-Ingrese la cuenta del servicio en la nube, que es equivalente a SecretId de Tencent Cloud COS:
+Ingresa la cuenta del servicio en la nube, esto sería equivalente a SecretId de Tencent COS:
 
 ```shell
-ID de clave de acceso de AWS.
+AWS Access Key ID.
 
 access_key_id> ******
 ```
 
-Ingrese la contraseña, que es equivalente a SecretKey:
+Ingresa la contraseña, equivalente a SecretKey:
 
 ```shell
-AWS Secret Access Key (contraseña)
+AWS Secret Access Key (password)
 
 secret_access_key> ******
 ```
 
-Seleccione la región del servicio en la nube:
+Selecciona la región del servicio en la nube:
 
 ```shell
 Endpoint para la API de Tencent COS.
@@ -130,25 +130,25 @@ Endpoint para la API de Tencent COS.
 endpoint> 4
 ```
 
-Seleccione el tipo de lectura y escritura, generalmente es lectura pública y escritura privada para la plataforma de imágenes:
+Selecciona el tipo de lectura y escritura, generalmente para un repositorio de imágenes se utiliza lectura pública y escritura privada:
 
 ```shell
-ACL predefinido utilizado al crear buckets y almacenar o copiar objetos.
- 1 / El propietario obtiene CONTROL_TOTAL. Nadie más tiene derechos de acceso (predeterminado).
+Canned ACL utilizado al crear buckets y almacenar o copiar objetos.
+ 1 / El propietario tiene control total. Nadie más tiene derechos de acceso (por defecto).
    \ "default"
- 2 / El propietario obtiene CONTROL_TOTAL. El grupo AllUsers obtiene acceso de LECTURA.
+ 2 / El propietario tiene control total. El grupo AllUsers tiene acceso de lectura.
    \ "public-read"
-   / El propietario obtiene CONTROL_TOTAL. El grupo AllUsers obtiene acceso de LECTURA y ESCRITURA.
+   / El propietario tiene control total. El grupo AllUsers tiene acceso de lectura y escritura.
 ...
 
 acl> 2
 ```
 
-Seleccione el tipo de almacenamiento (seleccione `1` por defecto):
+Selecciona el tipo de almacenamiento (puedes elegir `1` por defecto):
 
 ```shell
-La clase de almacenamiento que se utilizará al almacenar objetos nuevos en Tencent COS.
- 1 / Predeterminado
+La clase de almacenamiento a utilizar al almacenar nuevos objetos en Tencent COS.
+ 1 / Por defecto
    \ ""
  2 / Clase de almacenamiento estándar
    \ "STANDARD"
@@ -160,20 +160,21 @@ La clase de almacenamiento que se utilizará al almacenar objetos nuevos en Tenc
 storage_class> 1
 ```
 
-¿Desea editar la configuración avanzada? (seleccione `n` para no):
+¿Deseas editar la configuración avanzada? (elige `n` para no):
 
 ```shell
-¿Editar la configuración avanzada? (s/n)
-y) Sí
-n) No (predeterminado)
+¿Editar configuración avanzada? (s/n)
+s) Sí
+n) No (por defecto)
 
-y/n> n
+s/n> n
 ```
 
-Finalmente, confirme y escriba `y` después de verificar que todo es correcto:
+Finalmente, confirma y verifica que todo esté correcto ingresando `y`:
 
+```shell
 Configuración remota
---------------------
+
 [Txcos]
 type = s3
 provider = TencentCOS
@@ -182,75 +183,75 @@ access_key_id = 我是马赛克
 secret_access_key = 我是马赛克
 endpoint = cos.ap-guangzhou.myqcloud.com
 acl = public-read
---------------------
-y) Sí, esto está bien (predeterminado)
-e) Editar esta conexión remota
-d) Eliminar esta conexión remota
+
+y) Sí, está bien (por defecto)
+e) Editar esta configuración remota
+d) Eliminar esta configuración remota
 y/e/d> y
 ```
 
-Ingrese `q` para salir:
+Ingresa `q` para salir:
 
 ```shell
-Conexiones remotas actuales:
+Remotos actuales:
 
 Nombre                 Tipo
 ====                 ====
 Txcos                 s3
 
-e) Editar conexión remota existente
-n) Nueva conexión remota
-d) Eliminar conexión remota
-r) Renombrar conexión remota
-c) Copiar conexión remota
+e) Editar remoto existente
+n) Nuevo remoto
+d) Eliminar remoto
+r) Renombrar remoto
+c) Copiar remoto
 s) Establecer contraseña de configuración
 q) Salir de la configuración
 e/n/d/r/c/s/q> q
 ```
 
-A continuación, abra la conexión remota configurada haciendo doble clic, seleccione la carpeta y haga clic en `Descargar` para descargarla en su dispositivo local. En la ventana emergente, seleccione la siguiente configuración:
+A continuación, abre la conexión remota configurada haciendo doble clic, selecciona la carpeta y haz clic en `Descargar` para descargarla localmente. En la ventana emergente, elige la siguiente configuración:
 
-- Seleccione el modo `Copiar` (sincronización unidireccional desde la nube al dispositivo local), solo copie los archivos nuevos y modificados para hacer una copia de seguridad.
-- Marque la casilla `Omitir todos los archivos que existen` en la zona de omisión de archivos para evitar la descarga repetida y el consumo de datos.
-- En la zona de descripción de tareas, escriba el nombre de la tarea para facilitar la sincronización la próxima vez.
+- Selecciona el modo `Copia` (sincronización unidireccional desde la nube hasta local) para copiar solo los archivos nuevos y modificados, útil para realizar copias de seguridad.
+- Marca la opción `Omitir todos los archivos existentes` en la sección "Omitir archivos" para evitar descargas repetidas y ahorrar ancho de banda.
+- En la sección "Descripción de la tarea", ingresa un nombre para la tarea para facilitar su uso en futuras sincronizaciones.
 
-Una vez que haya terminado de configurar, cambie a la pestaña `Tareas`, seleccione la tarea correspondiente y haga clic en `Ejecutar` para comenzar la descarga.
+Una vez completada la configuración, ve a la pestaña "Tareas", selecciona la tarea correspondiente y haz clic en `Ejecutar` para iniciar la descarga.
 
 ## Configuración en un NAS Synology
 
-Nota: se recomienda utilizar CloudSync en Synology y no modificar el código subyacente.
+Nota: Se recomienda utilizar CloudSync en un NAS Synology y no realizar modificaciones en el código subyacente.
 
-Preparación:
+Preparativos:
 
 - Habilitar SSH
-- Habilitar la carpeta de inicio del usuario (`homes`)
+- Activar directorios de usuario (`homes`)
 - Crear una carpeta para la sincronización (por ejemplo, `/volume1/wiki-media`)
 
-Instale Rclone:
+Instalar Rclone:
 
 ```shell
 curl https://rclone.org/install.sh | sudo bash
 ```
 
-Configure el servicio:
+Configurar el servicio:
 
 ```shell
 rclone config
 ```
 
-Siga los pasos anteriores.
+Sigue los pasos anteriores.
 
-Comando de sincronización:
+Comandos de sincronización:
 
 ```shell
 # De local a la nube
-rclone [opciones de función] <ruta local> <nombre de la conexión remota:ruta> [parámetros] [parámetros] ...
+rclone [opciones de función] <ruta local> <nombre remoto:ruta> [parámetros] [parámetros] ...
 
 # De la nube a local
-rclone [opciones de función] <nombre de la conexión remota:ruta> <ruta local> [parámetros] [parámetros] ...
+rclone [opciones de función] <nombre remoto:ruta> <ruta local> [parámetros] [parámetros] ...
 
 # De la nube a la nube
-rclone [opciones de función] <nombre de la conexión remota:ruta> <nombre de la conexión remota:ruta> [parámetros] [parámetros] ...
+rclone [opciones de función] <nombre remoto:ruta> <nombre remoto:ruta> [parámetros] [parámetros] ...
 ```
 
 Por ejemplo, en mi caso:
@@ -259,19 +260,21 @@ Por ejemplo, en mi caso:
 rclone sync COS_backup:/wiki-media-1253965369 /volume1/wiki-media -P
 ```
 
-Cree un script de automatización en la ruta seleccionada (por ejemplo, `rclone-sync.sh`) y agregue el comando anterior al archivo del script.
+Crea un script de automatización en la ruta seleccionada (por ejemplo, `rclone-sync.sh`) y coloca el comando anterior en el archivo del script.
 
-En Synology, vaya a `Panel de control` - `Programador de tareas` - `Nueva` - `Tarea programada` - `Script definido por el usuario` y configure la hora de ejecución periódica y la ruta del script.
+En el panel de control de Synology, ve a `Tareas programadas` > `Crear` > `Tarea programada` > `Script definido por el usuario` y configura el tiempo de ejecución periódica en las pestañas "Programa" y "Configuración de la tarea", junto con el comando para ejecutar el script (por ejemplo, `bash /volume1/stash/permanent/rclone-sync.sh`).
 
-1. En la pestaña `Tarea programada` y `Configuración de la tarea`, configure la hora de ejecución periódica y el comando para ejecutar el script (por ejemplo, `bash /volume1/stash/permanent/rclone-sync.sh`).
-2. En la pestaña `Configuración`, configure la salida de resultados y seleccione la tarea. Haga clic en `Ejecutar` para probar la ejecución y abra la ruta de salida configurada para ver los resultados.
+Puedes configurar la salida de resultados en la sección "Configuración" y luego seleccionar la tarea y hacer clic en `Ejecutar` para probar la ejecución y abrir la ruta de salida configurada para ver los resultados.
 
 ## Referencias y agradecimientos
 
-- [Tutorial de instalación, configuración y uso de Rclone, con explicación detallada de los parámetros más utilizados](https://www.wazhuji.com/jiaocheng/17.html)
-- [Creación de una nube privada de bajo costo y con todas las funciones basada en almacenamiento de objetos](https://zhuanlan.zhihu.com/p/104628740)
-- [Montar Alibaba Cloud OSS / Tencent Cloud COS como disco de Windows utilizando Rclone y WinFsp](https://www.boxmoe.com/486.html)
+- [Tutorial de instalación, configuración y uso de Rclone, con explicación detallada de los parámetros más comunes](https://www.wazhuji.com/jiaocheng/17.html)
+- [Creación de una nube privada de bajo costo y con todas las funciones basada en [almacenamiento de objetos]](https://zhuanlan.zhihu.com/p/104628740)
+- [Montar Alibaba Cloud OSS / Tencent Cloud COS como disco en Windows utilizando Rclone y WinFsp](https://www.boxmoe.com/486.html)
 - [Montar Google Drive personal / de equipo en Windows utilizando Rclone](https://blog.rhilip.info/archives/874/)
-- [Realizar copias de seguridad diarias programadas del contenido del sitio web y la base de datos de Typecho en Google Drive / Onedrive y otros servicios de almacenamiento en la nube utilizando Rclone](https://omo.moe/archives/616/)
+- [Realizar copias de seguridad diarias programadas de contenido y base de datos de un sitio web de Typecho en Google Drive/OneDrive u otros servicios de almacenamiento en la nube utilizando Rclone](https://omo.moe/archives/616/)'
+
+> Dirección original del artículo: <https://wiki-power.com/>
+> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

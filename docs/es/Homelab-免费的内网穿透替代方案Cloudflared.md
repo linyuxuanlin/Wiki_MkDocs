@@ -1,31 +1,31 @@
-# Homelab - Alternativa gratuita a la conexión a través de la red interna: Cloudflared
+# Homelab - Alternativa gratuita para la travesía de red local: Cloudflared
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20230416143051.png)
 
-**Cloudflared** es una solución gratuita para la conexión a través de la red interna, utilizada para acceder a máquinas sin dirección IP pública desde la red externa.
+**Cloudflared** es una solución gratuita para la travesía de red local que permite acceder a máquinas sin una dirección IP pública desde la red externa.
 
 Requisitos:
 
-- Aunque Cloudflared es gratuito, se requiere una cuenta VISA/PayPal.
-- El servidor de nombres de dominio (DNS) debe apuntar a Cloudflare.
-- Se debe habilitar el CDN de Cloudflare (la velocidad de acceso desde China es lenta).
+- Aunque Cloudflared es gratuito, requiere la vinculación de una tarjeta VISA/PayPal.
+- El servidor de nombres de dominio (NameServer) debe apuntar a Cloudflare.
+- Es necesario habilitar la CDN de Cloudflare (la velocidad de acceso desde China puede ser lenta).
 
 Ventajas:
 
-- No se requiere una dirección IP pública para el servidor.
-- No se requiere un firewall ni un servidor proxy inverso.
-- Se pueden utilizar los puertos 80 y 443 sin necesidad de registro.
-- No se requiere una solicitud de certificado SSL.
+- No se necesita una dirección IP pública para el servidor.
+- No se requieren cortafuegos ni servidores proxy inversos.
+- No es necesario registrar el servidor para usar los puertos 80 y 443.
+- No se necesita solicitar un certificado SSL por cuenta propia.
 - Es gratuito.
 
 Desventajas:
 
-- La velocidad de acceso desde China es lenta.
-- Depende en cierta medida de la plataforma de Cloudflare.
+- Velocidad de acceso lenta desde China.
+- Dependencia relativa de la plataforma de Cloudflare.
 
 ## Implementación (Docker Compose)
 
-Primero, cree un archivo `compose.yaml` y pegue el siguiente contenido:
+En primer lugar, crea un archivo `compose.yaml` y pega el siguiente contenido:
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -40,32 +40,32 @@ services:
       - TUNNEL_TOKEN=${APP_TUNNEL_TOKEN}
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `cloudflared`).
+(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar tus variables de entorno. Si no deseas utilizar variables de entorno, también puedes personalizar tus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` por `cloudflared`).
 
 ```dotenv title=".env"
 STACK_NAME=cloudflared
 
 # cloudflared
 APP_VERSION=latest
-APP_TUNNEL_TOKEN=xxx # Reemplace con su token
+APP_TUNNEL_TOKEN=xxx # Reemplaza por tu token
 ```
 
-Por último, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores.
+Finalmente, ejecuta el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores que has definido.
 
-## Instrucciones de configuración
+## Instrucciones de Configuración
 
-Acceda al panel [**Cloudflare Zero Trust**](https://one.dash.cloudflare.com/), seleccione `Access` - `Tunnels` en la barra lateral izquierda y haga clic en `Create a tunnel` para crear un túnel. Escriba un nombre para el túnel (para distinguir entre diferentes máquinas físicas) y guarde. Anote el token y escríbalo en `compose.yaml`.
+Accede al panel de [**Cloudflare Zero Trust**](https://one.dash.cloudflare.com/), selecciona `Access` en la barra lateral izquierda y luego `Tunnels`. Haz clic en "Create a tunnel" para crear un túnel. Ingresa un nombre para el túnel (para distinguir entre distintas máquinas físicas) y guárdalo. Toma nota del token y agrégalo en `compose.yaml`.
 
-A continuación, haga clic en el túnel que ha creado y, en la pestaña `Public Hostname Page`, agregue el puerto que desea utilizar como proxy. Por ejemplo, si su dominio está vinculado a Cloudflare y es `wiki-power.com`, y desea utilizar el puerto `80` y el protocolo `HTTP` en su máquina local, simplemente escriba lo siguiente:
+Luego, ve al túnel que has creado y en la pestaña "Public Hostname Page," agrega los puertos de los servicios que deseas que se actúen como proxies. Por ejemplo, si tu dominio en Cloudflare es `wiki-power.com` y deseas que el servicio local en el puerto `80` se exponga a través del protocolo `HTTP`, simplemente configúralo de esta manera:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20230416183438.png)
 
-De esta manera, podrá acceder al puerto local a través de <https://dashboard.wiki-power.com>, y automáticamente se solicitará un certificado SSL para el acceso a través de https desde la red externa.
+De esta manera, podrás acceder al puerto local a través de <https://dashboard.wiki-power.com> y Cloudflared se encargará automáticamente de solicitar un certificado SSL, permitiendo el acceso a través de https.
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
 - [Sitio web / Documentación oficial](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/)
-- [Repositorio de GitHub](https://github.com/cloudflare/cloudflared)
+- [Repositorio en GitHub](https://github.com/cloudflare/cloudflared)
 - [Docker Hub](https://hub.docker.com/r/cloudflare/cloudflared)
 
 > Dirección original del artículo: <https://wiki-power.com/>  

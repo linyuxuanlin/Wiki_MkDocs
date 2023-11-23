@@ -4,13 +4,14 @@ hide:
   - navigation
   - toc
 ---
+
 # Power's Wiki
 
 <!--  Un desarrollador que no sabe contar historias, no es un buen producto ~-->
 
 [![badge](https://img.shields.io/github/deployments/linyuxuanlin/Wiki_MkDocs/Production?label=Construir&style=flat-square){ loading=lazy }](https://vercel.com/powerlin/wiki-mkdocs/deployments)
 [![badge](https://img.shields.io/github/last-commit/linyuxuanlin/Wiki_MkDocs?color=FCD734&label=Último%20commit&style=flat-square){ loading=lazy }](https://github.com/linyuxuanlin/Wiki_mkdocs/commits/main)
-[![badge](https://img.shields.io/badge/Contacto%20y%20Suscripción-yo-34ABE0?&style=flat-square){ loading=lazy }](Contact-and-Subscribe.md)
+[![badge](https://img.shields.io/badge/Contacto%20y%20Suscripción-yo-34ABE0?&style=flat-square){ loading=lazy }](https://wiki-power.com/es/Contact-and-Subscribe/)
 
 <!--
 [![badge](https://img.shields.io/badge/dynamic/json?label=GitHub&query=%24.data.totalSubs&url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dgithub%26queryKey%3Dlinyuxuanlin&labelColor=555555&color=282c34&longCache=true?&style=for-the-badge){ loading=lazy }](https://github.com/linyuxuanlin)

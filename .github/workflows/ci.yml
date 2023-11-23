@@ -26,8 +26,18 @@ jobs:
       - name: Auto-i18n_translate
         env:
           # 设置环境变量
-          CHATGPT_API_KEY: ${{ secrets.CHATGPT_API_KEY }}
-          CHATGPT_API_BASE: ${{ secrets.CHATGPT_API_BASE }}
+          ### API BASE:
+          #CHATGPT_API_BASE: ${{ secrets.CHATGPT_API_BASE }}
+          #CHATGPT_API_BASE: ${{ secrets.URL_CHATANYWHERE }}
+          CHATGPT_API_BASE: ${{ secrets.URL_OPENAI_FAKE }}
+          #CHATGPT_API_BASE: ${{ secrets.URL_OPENAI }}
+          ### API KEY:
+          #CHATGPT_API_KEY: ${{ secrets.CHATGPT_API_KEY }}
+          #CHATGPT_API_KEY: ${{ secrets.KEY_CHATANYWHERE_IRIS }}
+          #CHATGPT_API_KEY: ${{ secrets.KEY_CHATANYWHERE_ME }}
+          #CHATGPT_API_KEY: ${{ secrets.KEY_OPENAI_FAKE_LINYUXUANLIN52 }}
+          CHATGPT_API_KEY: ${{ secrets.KEY_OPENAI_FAKE_LISU }} #x
+          #CHATGPT_API_KEY: ${{ secrets.KEY_OPENAI_LINYUXUANLIN52 }}
         run: |
           pip install -r tools/requirements.txt
           python tools/auto-translater.py || true
@@ -45,3 +55,6 @@ jobs:
         run: pip install -r requirements.txt
       - name: Deploy with MkDocs
         run: mkdocs gh-deploy --force
+
+
+

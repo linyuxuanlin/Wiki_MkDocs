@@ -2,9 +2,9 @@
 
 ## 1. التنزيل
 
-**الدخول إلى صفحة التنزيل الرسمية لـ Keil:** [https://www.keil.com/demo/eval/arm.htm](https://www.keil.com/demo/eval/arm.htm)
+**قم بزيارة صفحة التنزيل على موقع Keil الرسمي:** [https://www.keil.com/demo/eval/arm.htm](https://www.keil.com/demo/eval/arm.htm)
 
-**املأ المعلومات المطلوبة كما هو موضح في الصورة وانقر على زر `Submit`:**
+**املأ النموذج كما هو موضح في الصورة أدناه ثم انقر على زر `Submit`:**
 
 ![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564402348383.png)
 
@@ -28,43 +28,43 @@
 
 ![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405260737.png)
 
-**تثبيت حزمة الشرائح (نحن بحاجة إلى سلسلة STM32 F1 و F4):**
+**قم بتثبيت حزمة الأشباه الموصى بها (نحتاج إلى STM32 F1 و F4 سلسلة):**
 
 ![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405574756.png)
 
 ![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405648731.png)
 
-## 3. الكسر
+## 3. التفعيل
 
-انقر على زر التنزيل [**الكسر**](https://github.com/linyuxuanlin/File-host/blob/main/software/KEIL_Lic.exe)
+انقر هنا لتحميل [**أداة التفعيل**](https://github.com/linyuxuanlin/File-host/blob/main/software/KEIL_Lic.exe)
 
-**أغلق MDK وانقر بزر الماوس الأيمن وافتحه كمسؤول:**
+**أغلق MDK، ثم انقر بزر الماوس الأيمن بصفتك مسؤولًا:**
 
 ![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406135091.png)
 
-**افتح شريط القوائم - File - License Management:**
+**انتقل إلى شريط القائمة - File - License Management:**
 
 ![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406171844.png)
 
-**انسخ هذا الرمز `CID`:**
+**قم بنسخ سلسلة "CID" هذه:**
 
 ![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406230209.png)
 
-**الصقه في الكسر واختر `Arm` في قائمة الإسقاط لـ `Target` ، ثم انقر على `Generate` لتوليد رمز التنشيط:**
+**قم بلصقها في أداة التفعيل واختر "Arm" من قائمة السقوط "Target" ، ثم انقر على "Generate" لإنشاء رمز التفعيل:**
 
 ![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406292113.png)
 
-**انسخ رمز التنشيط والصقه في MDK ، ثم انقر على `Add LIC`:**
+**انسخ رمز التفعيل والصقه في MDK ، ثم انقر على "Add LIC":**
 
 ![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406431978.png)
 
-## المراجع والشكر
+## المراجعة والشكر
 
-- [إعدادات حماية العين لـ Keil](https://blog.csdn.net/w5862338/article/details/50984536)
-- [تنسيق الشفرة في Keil](https://blog.csdn.net/sudaroot/article/details/88095269)
-- [تكوين واجهة المستخدم الشخصية](https://github.com/linyuxuanlin/File-host/blob/main/software-development/global.prop)
+- [تعيين لون خلفية حماية الرؤية في Keil](https://blog.csdn.net/w5862338/article/details/50984536)
+- [تنسيق كود Keil](https://blog.csdn.net/sudaroot/article/details/88095269)
+- [تكوين واجهة الشخصية](https://github.com/linyuxuanlin/File-host/blob/main/software-development/global.prop)
 
-> عنوان النص: <https://wiki-power.com/>  
+> عنوان النص: <https://wiki-power.com/>
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

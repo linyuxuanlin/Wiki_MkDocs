@@ -1,258 +1,199 @@
-# Escribir eficientemente con Markdown
+# Using Markdown for Efficient Writing
 
-Si estás acostumbrado a escribir con herramientas como Word, es posible que te encuentres con situaciones como estas con frecuencia:
+If you are used to writing with tools like Word, you may often encounter the following situations:
 
-- ¿Dónde está el botón para poner en negrita? ¿Y el de las listas? ¿Cómo puedo insertar imágenes correctamente?
-- ¿Qué tamaño de fuente debo usar para los diferentes títulos? ¿Y para el cuerpo del texto?
-- Cuando abro el documento con otra versión de Word, los estilos no son los que quiero.
+- Where is the bold button? Where is the button for lists? How can I insert images properly?
+- What font size should be used for different headings? What is the appropriate font size for the body text?
+- When opened in a different version of Word, the styles are not as I want them to be.
 
-Cuando el tiempo dedicado a la maquetación supera al de la escritura en sí misma, queda claro que este método de escritura no es eficiente. En cambio, el uso de Markdown permite centrarse en la escritura en sí misma, sin que el formato interrumpa el flujo de pensamiento.
+When the time spent on formatting surpasses the time spent on actual writing, it is evident that this writing method is not efficient. Markdown, on the other hand, allows you to focus on the act of writing itself without being constantly interrupted by formatting.
 
-## Herramientas
+## Tools
 
-En primer lugar, necesitarás un editor que admita Markdown. Recomiendo usar VS Code o Typora.
-Para la instalación y configuración del software, puedes consultar el tutorial que he escrito: [**Guía de productividad de VS Code - Configuración del entorno**](https://wiki-power.com/es/VSCode生产力指南-环境配置)
+First and foremost, you need an editor that supports Markdown. I recommend using VS Code or Typora. For software installation and configuration, you can refer to a tutorial I have written: [**VS Code Productivity Guide - Environment Setup**](https://wiki-power.com/VSCode生产力指南-环境配置)
 
-## Sintaxis común
+## Common Syntax
 
-La sintaxis común de Markdown se compone de: **títulos, estilo de texto, citas, código, enlaces, imágenes, listas, tablas, líneas divisorias**, y una vez que las domines, podrás moverte con facilidad.
+Markdown primarily uses the following syntax: **headings, text styling, quotes, code, links, images, lists, tables, horizontal lines**. Once you master these, you'll be at ease.
 
-### Títulos
+### Headings
 
-Para crear títulos, agrega de 1 a 6 símbolos `#` antes del texto del título. El número de niveles de título depende de la cantidad de `#`. En general, la estructura del artículo no debe tener más de 4 niveles.
+To create headings, add 1 to 6 `#` symbols in front of the heading text. The number of `#` symbols determines the level of the heading. In general, the structure of an article should not exceed 4 levels.
 
 ```markdown
-# Título principal
+# Main Heading
 
-## Título de segundo nivel
+## Subheading
 
-### Título de tercer nivel
+### Sub-subheading
 
-#### Título de cuarto nivel
+#### Sub-sub-subheading
 
 ……
 ```
 
-### Estilo de texto
+### Text Styling
 
-Agrega símbolos alrededor del texto para darle estilo:
+Style text by enclosing it with symbols on both sides:
 
-|      Estilo       | Atajo de teclado | Sintaxis                           | Apariencia                       |
-| :---------------: | :--------------: | ---------------------------------- | -------------------------------- |
-|      Negrita      | `Ctrl`/`⌘` + `B` | `**Texto en negrita**`             | **Texto en negrita**             |
-|      Cursiva      | `Ctrl`/`⌘` + `I` | `*Texto en cursiva*`               | _Texto en cursiva_               |
-| Negrita y cursiva |                  | `***Texto en negrita y cursiva***` | **_Texto en negrita y cursiva_** |
-|      Tachado      |                  | `~~Texto tachado~~`                | ~~Texto tachado~~                |
+|   Style   |    Shortcut     | Syntax                   | Resulting Style     |
+| :-------: | :-------------: | ------------------------ | ------------------- |
+|   Bold    | `Ctrl`/`⌘` + `B` | `**Bold text**`          | **Bold text**       |
+|   Italic  | `Ctrl`/`⌘` + `I` | `*Italic text*`          | _Italic text_       |
+| Bold and Italic |                  | `***Bold and Italic text***` | **_Bold and Italic text_** |
+|   Strikethrough  |                  | `~~Strikethrough text~~` | ~~Strikethrough text~~ |
 
-Nota: El texto en cursiva está diseñado específicamente para el inglés. Para mayor legibilidad y coherencia, no uses cursiva en el texto en español.
+Note: Italic text is primarily designed for English. For readability and standardization, please avoid using italics for Chinese text.
+
+### Quoting Text
+
+You can use the `>` symbol to quote a passage of text:
+
+```markdown
+Just like the Christmas message from "Pirate Bay":
+
+> We believe we've changed something. Not just us, but all of us. We no longer want to run just a website; we want to find some meaning. This cannot happen without your help. Our history is still being written, so please do not rush to conclusions.
+```
+
+Just like the Christmas message from "Pirate Bay":
+
+> We believe we've changed something. Not just us, but all of us. We no longer want to run just a website; we want to find some meaning. This cannot happen without your help. Our history is still being written, so please do not rush to conclusions.
+
+### Quoting Code
+
+#### Inline Code
+
+You can use backticks \` (found in the top left corner of the keyboard) to inline code. For example:
+
+```markdown
+Extract the `hugo.exe` file from the compressed package to the `D:\hugo` directory.
+```
+
+Extract the `hugo.exe` file from the compressed package to the `D:\hugo` directory.
+
+#### Multi-line Code
+
+If you need multiple lines of code, you can use triple backticks \` before and after the code block:
+
+![Example](https://img.wiki-power.com/d/wiki-media/img/20210215164653.png)
+
+```c
+int fputc(int ch, FILE *f)
+{
+    HAL_UART_Transmit(&huart1, (uint8_t*)&ch, 1, 100);
+    return ch;
+}
+```
+
+Here, \`c\` indicates that this code block is in the C language, and it will be rendered with syntax highlighting accordingly.
+
+```markdown
+---
 
 ### Citas
 
-Puedes usar el símbolo `>` para citar un párrafo:
+Para citar un texto, simplemente agrégale el prefijo `>` al principio de la línea. Por ejemplo:
 
 ```markdown
-Como dice el mensaje navideño de "The Pirate Bay":
-
-> Creemos que hemos cambiado algo. No solo nosotros, sino todos. Ya no queremos simplemente ejecutar un sitio web, sino buscar un significado. No podemos hacerlo sin tu ayuda. Nuestra historia aún se está escribiendo, así que no saques conclusiones precipitadas.
+> Esto es un texto citado.
 ```
 
-Como dice el mensaje navideño de "The Pirate Bay":
+> Esto es un texto citado.
 
-> Creemos que hemos cambiado algo. No solo nosotros, sino todos. Ya no queremos simplemente ejecutar un sitio web, sino buscar un significado. No podemos hacerlo sin tu ayuda. Nuestra historia aún se está escribiendo, así que no saques conclusiones precipitadas.
+### Texto en negrita y cursiva
+
+Puedes enfatizar el texto de diversas maneras. Para hacerlo en negrita, coloca el texto entre `**` o `__`. Para cursiva, utiliza `*` o `_`. Si deseas combinar ambas, puedes hacerlo con `***` o `___`. Por ejemplo:
+
+```markdown
+**Texto en negrita**
+*Texto en cursiva*
+***Texto en negrita y cursiva***
+```
+
+**Texto en negrita**
+*Texto en cursiva*
+***Texto en negrita y cursiva***
+
+### Encabezados
+
+Los encabezados se utilizan para organizar el contenido de tu documento. Puedes crear encabezados de diferentes niveles agregando uno o más símbolos `#` al principio de la línea. Cuantos más `#` coloques, más bajo será el nivel del encabezado. Por ejemplo:
+
+```markdown
+# Encabezado de nivel 1
+## Encabezado de nivel 2
+### Encabezado de nivel 3
+```
+
+# Encabezado de nivel 1
+## Encabezado de nivel 2
+### Encabezado de nivel 3
 
 ### Código
 
-#### Código en línea
+Para mostrar código en tu documento, puedes usar comillas invertidas (\`) para resaltar fragmentos de código en línea, o bloques de código con tres comillas invertidas, seguidas del lenguaje de programación. Por ejemplo:
 
-Puedes usar las comillas invertidas <code>`</code> (en la esquina superior izquierda del teclado) para citar código en línea. Por ejemplo:
+Fragmento de código en línea: `printf("Hola, mundo!");`
 
-```markdown
-Descomprime el archivo `hugo.exe` en la carpeta `D:\hugo`.
-```
+Bloque de código:
 
-Descomprime el archivo `hugo.exe` en la carpeta `D:\hugo`.
+\```c
+#include <stdio.h>
 
-#### Código de varias líneas
-
-Si necesitas varias líneas de código, puedes usar tres comillas invertidas <code>```</code> para encerrar el bloque de código:
-
-![](https://img.wiki-power.com/d/wiki-media/img/20210215164653.png)
-
-```c
-int fputc(int ch,FILE *f)
-{
-    HAL_UART_Transmit(&huart1,(uint8_t*)&ch,1,100);
-    return ch;
+int main() {
+    printf("Hola, mundo!\n");
+    return 0;
 }
-```
+\```
 
-Donde <code>```c</code> indica que este fragmento de código es en lenguaje C, y se resaltará según la sintaxis de C.
+### Notas al pie de página
 
-Si desea mostrar el archivo en el que se encuentra el código, puede agregar <code>```c title="stm32f4xx_it.c"</code>, el efecto es el siguiente:
-
-```c title="stm32f4xx_it.c"
-int fputc(int ch,FILE *f)
-{
-    HAL_UART_Transmit(&huart1,(uint8_t*)&ch,1,100);
-    return ch;
-}
-```
-
-### Enlaces
-
-Puede crear enlaces incluyendo el texto del enlace entre corchetes `[ ]` y la URL entre paréntesis `( )`. Por ejemplo:
+Puedes agregar notas al pie de página a tu documento utilizando `[^]`, seguido del texto de la nota. Luego, al final del documento, puedes definir las notas correspondientes. Por ejemplo:
 
 ```markdown
-Este sitio web está construido con [Docusaurus](https://v2.docusaurus.io/).
+Este es un ejemplo de una nota al pie de página[^1].
+
+[^1]: Esta es la explicación de la nota al pie de página.
 ```
 
-Este sitio web está construido con [Docusaurus](https://v2.docusaurus.io/).
+Este es un ejemplo de una nota al pie de página[^1].
 
-### Imágenes
+[^1]: Esta es la explicación de la nota al pie de página.
 
-El formato de las imágenes es simplemente agregar un signo `!` más que los enlaces. Por ejemplo:
+Espero que esta traducción te sea útil. Si tienes alguna otra pregunta o necesitas más ayuda, no dudes en preguntar.
 
-```markdown
-![](https://cdn.jsdelivr.net/gh/linyuxuanlin/Wiki-WildWolf/static/uploads/b944219198103ea09f0f02bcb830e9b.png)
-```
-
-![](https://cdn.jsdelivr.net/gh/linyuxuanlin/Wiki-WildWolf/static/uploads/b944219198103ea09f0f02bcb830e9b.png)
-
-Nota: las imágenes pueden no tener texto de visualización, es decir, `[ ]` puede dejarse en blanco.
-
-### Listas
-
-#### Lista sin orden
-
-Agregar `- ` o `* ` antes del texto crea una lista sin orden (nota: el símbolo debe ir seguido de un espacio, de lo contrario, la representación puede fallar). Por ejemplo:
-
-```markdown
-- Elemento de lista
-- Elemento de lista
-- Elemento de lista
-```
-
-- Elemento de lista
-- Elemento de lista
-- Elemento de lista
-
-#### Lista ordenada
-
-Para crear una lista ordenada, agregue un número a cada línea:
-
-```markdown
-1. Elemento de lista uno
-2. Elemento de lista dos
-3. Elemento de lista tres
-```
-
-1. Elemento de lista uno
-2. Elemento de lista dos
-3. Elemento de lista tres
-
-#### Lista TODO
-
-Para crear una lista TODO, siga el siguiente formato:
-
-```markdown
-- [x] Completar cambios
-- [ ] Empujar confirmación a GitHub
-- [ ] Abrir solicitud de extracción
-```
-
-- [x] Completar cambios
-- [ ] Empujar confirmación a GitHub
-- [ ] Abrir solicitud de extracción
-
-#### Lista anidada
-
-Para anidar listas, simplemente use la tecla Tab para indentar y Shift + Tab para cancelar la indentación:
-
-```markdown
-1. Elemento de lista uno
-   1. Subelemento de lista uno
-   2. Subelemento de lista dos
-      - Subsubelemento
-      - Subsubelemento
-2. Elemento de lista dos
-```
-
-1. Elemento de lista uno
-   1. Subelemento de lista uno
-   2. Subelemento de lista dos
-      - Subsubelemento
-      - Subsubelemento
-2. Elemento de lista dos
-
-### Tablas
-
-Use el símbolo `|` para separar las celdas y el símbolo `-` para separar las filas de la tabla:
-
-```markdown
-| nombre     | edad |
-| ---------- | ---- |
-| LearnShare | 12   |
-| Mike       | 32   |
-```
-
-| nombre     | edad |
-| ---------- | ---- |
-| LearnShare | 12   |
-| Mike       | 32   |
-
-Si desea alinear las columnas de la tabla, puede usar el símbolo `:`:
-
-- `:---` o `---` representa alineación a la izquierda
-- `:--:` representa alineación centrada
-- `---:` representa alineación a la derecha
-
-```markdown
-|   nombre   | edad |
-| :--------: | ---: |
-| LearnShare |   12 |
-|    Mike    |   32 |
-```
-
-|   nombre   | edad |
-| :--------: | ---: |
-| LearnShare |   12 |
-|    Mike    |   32 |
-
-### Línea divisoria
-
-Puedes usar el símbolo `---` para generar una línea divisoria y separar diferentes secciones de texto:
+Puedes utilizar el símbolo `---` para crear una línea divisoria y separar diferentes secciones de texto:
 
 ```markdown
 ---
 ```
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210216123630.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210216123630.png)
 
-## Funciones avanzadas
+## Funciones Avanzadas
 
-### Párrafos y saltos de línea
+### Párrafos y Saltos de Línea
 
-En Markdown, utiliza una línea en blanco antes y después de cada párrafo para separarlos.  
-Para hacer un salto de línea dentro del mismo párrafo, simplemente agrega dos espacios al final de la línea.
+En Markdown, debes dejar una línea en blanco antes y después de un párrafo para diferenciar entre párrafos distintos.  
+Dentro del mismo párrafo, puedes crear saltos de línea simplemente añadiendo dos espacios al final de una línea.
 
-### Exportar a otros formatos
+### Exportar a Otros Formatos
 
-Si necesitas exportar a PDF, Word, imágenes u otros formatos, puedes usar Pandoc.  
-Si estás usando VS Code, puedes usar [**Markdown PDF**](https://marketplace.visualstudio.com/items?itemName=yzane.markdown-pdf) para exportar a PDF directamente.
+Si deseas exportar a PDF, Word, imágenes u otros formatos, puedes utilizar Pandoc para hacerlo.  
+Si estás utilizando VS Code, también puedes usar [**Markdown PDF**](https://marketplace.visualstudio.com/items?itemName=yzane.markdown-pdf) para exportar documentos en formato PDF.
 
-### Escribir artículos de WeChat con Markdown
+### Escribir Artículos de Blog en Markdown
 
-WeChat utiliza un editor de texto enriquecido, pero puedes usar la herramienta web [**MD2WeChat**](https://md2wechat.wiki-power.com/) para convertir y renderizar tu Markdown y luego pegarlo en el editor de WeChat.
+Para escribir artículos en blogs de WordPress o plataformas similares, que utilizan editores de texto enriquecido, puedes utilizar la herramienta web [**MD2WeChat**](https://md2wechat.wiki-power.com/) para convertir tu contenido de Markdown y pegarlo en el editor de la plataforma.
 
-Para más detalles, consulta el artículo [**Cómo escribir de manera eficiente con Markdown**](https://wiki-power.com/es/%E5%A6%82%E4%BD%95%E7%94%A8Markdown%E5%86%99%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0) (en chino).
+Para obtener más detalles, consulta el artículo [**Cómo Escribir de Manera Efectiva con Markdown**](https://wiki-power.com/%E5%A6%82%E4%BD%95%E7%94%A8Markdown%E5%86%99%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0).
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
-- [Métodos personales de edición de Markdown](https://sinnammanyo.cn/About-Markdown/) (en chino)
-- [Escribir de manera eficiente con Markdown, para liberarte de los problemas de formato](https://zhuanlan.zhihu.com/p/41893875) (en chino)
-- [younghz/Markdown](https://github.com/younghz/Markdown) (en inglés)
-- [Learning-Markdown (Introducción a Markdown)](https://xianbai.me/learn-md/index.html) (en inglés)
-- [Sintaxis básica de escritura y formato](https://docs.github.com/cn/github/writing-on-github/basic-writing-and-formatting-syntax) (en inglés)
+- [Métodos Personales para Editar en Markdown](https://sinnammanyo.cn/About-Markdown/)
+- [Escribir de Manera Efectiva con Markdown, Eliminando los Problemas de Formateo](https://zhuanlan.zhihu.com/p/41893875)
+- [younghz/Markdown](https://github.com/younghz/Markdown)
+- [Aprender Markdown (Guía de Introducción a Markdown)](https://xianbai.me/learn-md/index.html)
+- [Sintaxis Básica de Escritura y Formateo](https://docs.github.com/cn/github/writing-on-github/basic-writing-and-formatting-syntax)
 
 > Dirección original del artículo: <https://wiki-power.com/>  
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.

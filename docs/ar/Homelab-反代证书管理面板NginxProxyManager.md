@@ -1,12 +1,12 @@
-# Homelab - لوحة إدارة شهادات الوكيل العكسي Nginx Proxy Manager
+# الرئيسية - لوحة إدارة شهادة الاستضافة المعكوسة Nginx Proxy Manager
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230408182138.png)
+![صورة](https://img.wiki-power.com/d/wiki-media/img/20230408182138.png)
 
-**Nginx Proxy Manager** هو لوحة تحكم رسومية لـ Nginx ، والتي تتيح للمستخدمين تكوين الوكيل العكسي وطلب شهادة SSL للمواقع على واجهة الويب بسهولة ، دون الحاجة إلى معرفة الكثير من تفاصيل Nginx / Letsencrypt.
+**Nginx Proxy Manager** هو لوحة تحكم رسومية لـ Nginx، تمكّن المستخدمين من تكوين الاستضافة المعكوسة بسهولة وطلب شهادات SSL للمواقع عبر واجهة الويب دون الحاجة إلى معرفة تفاصيل داخلية متعلقة بـ Nginx أو Let's Encrypt.
 
 ## النشر (Docker Compose)
 
-أولاً ، قم بإنشاء ملف `compose.yaml` والصق المحتوى التالي:
+أولاً، قم بإنشاء ملف `compose.yaml` وقم بلصق المحتوى التالي:
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -24,33 +24,33 @@ services:
     restart: unless-stopped
 ```
 
-(اختياري) يوصى بإنشاء ملف `.env` في نفس مستوى `compose.yaml` وتخصيص المتغيرات الخاصة بك. إذا كنت لا ترغب في استخدام المتغيرات البيئية ، يمكنك تخصيص المعلمات الخاصة بك مباشرةً في `compose.yaml` (على سبيل المثال ، استبدال `${STACK_NAME}` بـ `nginx-proxy-manager`).
+(اختياري) يُفضل إنشاء ملف `.env` في نفس المجلد مع `compose.yaml` وتخصيص المتغيرات البيئية الخاصة بك. إذا لم تكن ترغب في استخدام المتغيرات البيئية، يمكنك أيضاً تخصيص المعلمات مباشرة في `compose.yaml` (مثل استبدال `${STACK_NAME}` بـ `nginx-proxy-manager`).
 
 ```dotenv title=".env"
 STACK_NAME=nginx-proxy-manager
-STACK_DIR=xxx # مسار تخزين المشروع المخصص ، على سبيل المثال ./nginx-proxy-manager
+STACK_DIR=xxx # حدد مسار تخزين المشروع الخاص بك، مثل ./nginx-proxy-manager
 
 # nginx-proxy-manager
 APP_VERSION=latest
-APP_PORT=81 # الافتراضي هو 81 ، يرجى الرجوع إلى الوثائق للتغيير
+APP_PORT=81 # الافتراضي 81، يمكنك تغييره وفقًا للوثائق
 ```
 
-أخيرًا ، يمكنك تشغيل الأمر `docker compose up -d` في نفس مستوى `compose.yaml` لتشغيل حاويات الترتيب.
+أخيرًا، يمكنك تشغيل الحاويات المكونة عن طريق تنفيذ الأمر `docker-compose up -d` في نفس المجلد الذي يحتوي على ملف `compose.yaml`.
 
-## تعليمات التكوين
+## توضيحات التكوين
 
-اسم المستخدم وكلمة المرور الافتراضية:
+اسم المستخدم وكلمة المرور الافتراضيين:
 
 - البريد الإلكتروني: `admin@example.com`
 - كلمة المرور: `changeme`
 
-الحصول على عنوان IP لـ Docker:
+للحصول على عنوان IP لـ Docker:
 
 ```shell
 ip addr show docker0
 ```
 
-ملاحظة: يرجى استخدام الوكيل العكسي للخدمات الذاتية الاستضافة عن طريق ربط النطاقات الفرعية (80/443 منافذ) وإغلاق المنافذ الأخرى في لوحة التحكم العامة للخادم على الإنترنت لزيادة الأمان.
+ملحوظة: من الأفضل استخدام الخدمات الذاتية الاستضافة عبر الاستضافة المعكوسة باستخدام اتصال فرعي للنطاق (المنافذ 80/443) وإغلاق المنافذ الأخرى في جدران الجدران على لوحة تحكم الخادم العام على الإنترنت لزيادة مستوى الأمان.
 
 ## المراجع والشكر
 
@@ -59,7 +59,7 @@ ip addr show docker0
 - [مستودع GitHub](https://github.com/NginxProxyManager/nginx-proxy-manager)
 - [Docker Hub](https://hub.docker.com/r/jlesage/nginx-proxy-manager)
 
-> عنوان النص: <https://wiki-power.com/>  
+> عنوان النص: <https://wiki-power.com/>
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

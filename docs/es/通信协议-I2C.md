@@ -1,44 +1,44 @@
 # Protocolo de comunicación - I2C
 
-I2C (Inter-Integrated Circuit) es un bus de comunicación serial que permite la presencia de múltiples maestros, pero solo puede haber un maestro en línea en un momento dado. I2C consta de dos líneas de señal de drenador abierto, con una conexión simple utilizando resistencias pull-up, con niveles típicos de lógica positiva de 3.3V o 5V. La velocidad de transmisión se divide en modo rápido (400Kb/s), modo estándar (100Kb/s) y modo lento (10Kb/s).
+I2C (Inter-Integrated Circuit) es un bus de comunicación serial que permite la presencia de múltiples maestros, pero solo puede haber un maestro en línea en un momento dado. I2C consta de dos líneas de señal de drenaje abierto, con una conexión simple utilizando resistencias pull-up, con niveles típicos de 3.3V o 5V en lógica positiva. Las velocidades de transferencia se dividen en modo rápido (400Kb/s), modo estándar (100Kb/s) y modo lento (10Kb/s).
 
-En el bus I2C, el esclavo se selecciona mediante su dirección I2C. Esto permite que un maestro controle varios esclavos a través de dos líneas.
+En el bus I2C, los dispositivos esclavos son seleccionados mediante su dirección I2C. Esto permite que un solo maestro controle múltiples dispositivos a través de dos líneas.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20211026174634.png)
 
 ## Pines de I2C
 
-- **SCL** (reloj serial): una señal de onda producida por el maestro que controla la velocidad de transmisión y el bloqueo de datos.
-- **SDA** (datos seriales): una señal de línea sincrónica y semidúplex que transmite datos, incluyendo señales de dirección, control y comunicación.
+- **SCL** (reloj serial): Es una señal de onda generada por el maestro para controlar la velocidad de transferencia y el almacenamiento de datos.
+- **SDA** (datos seriales): Es una línea de señal **semidúplex y sincrónica**, que transmite datos que incluyen direcciones, señales de control y datos de comunicación.
 
 ## Direcciones de I2C
 
-- La dirección de I2C se divide en una dirección de 7 bits y una indicación de lectura/escritura de 1 bit.
-- Cada dispositivo en el bus I2C debe tener una dirección única, y si hay una dirección duplicada, se producirán problemas. Algunos dispositivos permiten la programación de la dirección de I2C.
+- La dirección de I2C se divide en 7 bits de dirección y 1 bit de indicación de lectura/escritura.
+- Cada dispositivo en el bus I2C debe tener una dirección única, ya que habrá problemas si hay direcciones duplicadas. Algunos dispositivos permiten programar su dirección I2C.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20211027112717.png)
 
-## Comunicación de I2C
+## Comunicación I2C
 
-- **START**: el maestro inicia la transmisión al bajar SDA mientras SCL está en alto.
-- **STOP**: el maestro finaliza la transmisión al liberar SDA (volviendo a alto) mientras SCL está en alto.
-- **ACK** (reconocimiento): cada transmisión de I2C implica la transmisión de 1 byte (8 bits) con cada pulso de SCL. El noveno pulso se reserva para la señal de confirmación del esclavo, y la señal ACK indica que la transmisión anterior fue exitosa.
+- **START**: El maestro inicia la comunicación al bajar la línea SDA mientras SCL está en alto.
+- **STOP**: El maestro finaliza la comunicación al liberar la línea SDA (volviéndola a nivel alto) mientras SCL está en alto.
+- **ACK** (acknowledge): Cada transferencia I2C consiste en la transmisión de 1 byte (8 bits) en cada pulso de SCL. El noveno pulso de cada transferencia se reserva para la señal de confirmación del esclavo, y la señal ACK indica el éxito de la transferencia anterior.
 
-### Ejemplo de segmento de transmisión de I2C
+### Ejemplo de segmento de transferencia I2C
 
-Este segmento de transmisión es `11001101`:
+El valor transmitido en este segmento es `11001101`:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20211104172952.png)
 
-1. El maestro baja SDA para iniciar la señal START.
-2. El primer bit se establece, el maestro baja SCL y envía la señal de reloj a través del DAC.
-3. Cuando se transmite el noveno bit, el maestro no baja SDA. Si el esclavo confirma la transmisión completa, baja SDA para que el maestro lo sepa.
+1. El maestro baja la línea SDA para generar la señal START.
+2. El primer bit se establece y el maestro baja la línea SCL para generar la señal de reloj.
+3. Cuando se transmite el noveno bit, el maestro no baja la línea SDA. Si el esclavo confirma la transferencia completa, baja la línea SDA para que el maestro lo sepa.
 
-### Transmisión de datos efectiva
+### Transferencia de datos válida
 
-1. Durante el tiempo en que SCL se mantiene en alto (transmisión de datos), SDA debe mantenerse estable para que sea efectivo.
-2. Solo se permite que SDA cambie de valor durante los pulsos bajos de SCL.
-3. Cuando SDA cambia mientras SCL está en alto, se interpreta como un evento de START, RESTART o STOP.
+1. Durante el tiempo en que SCL se mantiene en alto (transmisión de datos), SDA debe mantenerse estable para que sea válida.
+2. Solo se permite cambiar el valor de SDA durante los intervalos de baja de SCL.
+3. Cuando SCL está en alto y SDA cambia, se interpreta como un evento de START, RESTART o STOP.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20211105172139.png)
 
@@ -46,10 +46,10 @@ Este segmento de transmisión es `11001101`:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20211108093819.png)
 
-En la figura, el transistor se enciende cuando la señal está en bajo, descargando el capacitor $C_b$ a bajo. Por otro lado, el transistor se apaga cuando la señal está en alto, y la resistencia pull-up carga $C_b$ a alto.
+En la figura, el transistor se enciende durante el nivel bajo y descarga el capacitor $C_b$ a nivel bajo. Por otro lado, el transistor se apaga durante el nivel alto y la resistencia pull-up carga el capacitor $C_b$ a nivel alto.
 
-- $t_r$ (tiempo de subida): el tiempo máximo que tarda la señal en pasar de bajo a alto. Debido a que I2C es una señal de drenador abierto, el tiempo de subida depende de la resistencia pull-up y la constante de tiempo RC del bus.
-- $t_f$ (tiempo de bajada): el tiempo máximo que tarda la señal en pasar de alto a bajo.
+- $t_r$ (tiempo de subida): Es el tiempo máximo que tarda la señal en pasar de nivel bajo a nivel alto. Debido a que la señal I2C es de drenaje abierto, el tiempo de subida está determinado por la resistencia pull-up y la constante de tiempo RC del capacitor de bus.
+- $t_f$ (tiempo de bajada): Es el tiempo máximo que tarda la señal en pasar de nivel alto a nivel bajo.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20211108095142.png)
 
@@ -58,20 +58,23 @@ En la figura, el transistor se enciende cuando la señal está en bajo, descarga
 - Valor mínimo de la resistencia pull-up: $R_{Pull(Min)}=\frac{V_{DD}-V_{OLMAX}}{I_{SinkMax}}$
 - Valor máximo de la resistencia pull-up: $R_{Pull(Max)}=\frac{t_r}{0.8473*C_b}$
 
-El valor mínimo de la resistencia pull-up proporcionará el tiempo de subida más corto. Si se utiliza un valor de resistencia menor que este, se consumirá demasiada corriente cuando el transistor de salida esté activado (nivel lógico bajo), lo que violará la especificación de salida lógica baja máxima.
+El valor mínimo de la resistencia pull-up proporcionará el tiempo de subida más corto. Si se utiliza un valor de resistencia menor, se consumirá demasiada corriente cuando el transistor de salida esté encendido (nivel bajo lógico), lo cual viola las especificaciones de salida de nivel bajo lógico máximo.
 
-El valor máximo de la resistencia pull-up proporcionará el tiempo de subida más largo. Si se utiliza una resistencia pull-up mayor que este valor, se violarán los requisitos de sincronización.
+La resistencia de pull-up con el valor máximo resultará en el tiempo de subida más largo. Si se utiliza una resistencia de pull-up mayor que este valor, se violarán los requisitos de sincronización.
 
-$V_{DD}$ representa el voltaje de alimentación; $V_{OLMAX}$ representa el nivel lógico bajo máximo (valor típico de 0.4V); $I_{SinkMax}$ representa la corriente máxima de drenaje (valor típico de 3mA); $C_b$ representa la capacitancia total del bus, que depende de la longitud y el ancho de las pistas de PCB y de la capacitancia de los dispositivos conectados al bus.
+$V_{DD}$ representa el voltaje de alimentación; $V_{OLMAX}$ representa el nivel lógico bajo máximo (valor típico de 0.4V); $I_{SinkMax}$ representa la corriente de drenaje máxima (valor típico de 3mA); $C_b$ representa la capacidad total del bus, que depende de la longitud y anchura de las trazas del PCB, así como de la capacidad de los dispositivos conectados al bus.
 
 Ejemplo de cálculo:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20211108103406.png)
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
-- "Analog Engineer's Pocket Reference"
+- "Analog Engineer’s Pocket Reference"
 - [¿Cómo utilizar el bus I2C? Después de leer esto, lo sabrás](https://mp.weixin.qq.com/s/IeL77NTyVdTdkcNtqjjFPA)
 - [[Circuito] Protocolo del bus I2C 🚧](https://zhenhuizhang.tk/post/dian-lu-i2c-zong-xian-xie-yi/)
+
+> Dirección original del artículo: <https://wiki-power.com/>
+> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

@@ -1,270 +1,265 @@
-# Fundamentos de prueba de semiconductores - Prueba de parámetros DC
+# Fundamentos de Pruebas de Parámetros DC en Semiconductores
 
-La prueba de parámetros DC mide principalmente algunas características de un solo pin en el dispositivo. Para la mayoría de los parámetros DC, esencialmente se está midiendo la resistividad del semiconductor, y la ley de Ohm se utiliza para explicar la resistividad. Si se necesita verificar la viabilidad del proceso de prueba DC, también se puede utilizar un resistor para equivaler al DUT y descartar problemas fuera del DUT. Por ejemplo, para el parámetro VOL que aparece en la hoja de especificaciones del chip:
+Las pruebas de parámetros DC se centran principalmente en ciertas características de un solo pin en un dispositivo. Para la mayoría de los parámetros DC, es esencial medir la resistividad del semiconductor, y esto se logra mediante la Ley de Ohm. Para verificar la viabilidad del proceso de prueba DC, también se puede utilizar una resistencia equivalente al dispositivo bajo prueba (DUT) para descartar problemas fuera del DUT. Por ejemplo, en el caso del parámetro VOL que se encuentra en la hoja de especificaciones del chip:
 
-| Parámetro | Descripción       | Condiciones de prueba  | Min | Max | Unidades |
-| --------- | ----------------- | ---------------------- | --- | --- | -------- |
-| VOL       | Voltaje de salida | VDD = Min, IOL = 8.0mA |     | 0.4 | V        |
+| Parámetro | Descripción           | Condiciones de Prueba         | Mín | Máx | Unidades |
+| --------- | ---------------------- | ----------------------------- | --- | --- | ------- |
+| VOL       | Tensión de Salida Baja | VDD = Mín, IOL = 8.0mA         |     | 0.4 | V       |
 
-Podemos ver que el valor máximo de VOL es 0.4V, IOL es 8mA, lo que significa que cuando se produce una corriente de 8mA en una situación de nivel bajo lógico de salida, debe ser a un voltaje no superior a 0.4V, por lo que podemos concluir que la resistencia máxima del dispositivo no supera los 50Ω. Por lo tanto, se puede utilizar una resistencia no superior a 50Ω para reemplazar el DUT y verificar el proceso de prueba. Nuestro objetivo es centrar el problema en el DUT, no en problemas fuera del DUT.
+Podemos observar que el valor máximo de VOL es 0.4V, con IOL igual a 8mA, lo que significa que cuando se genera una corriente de 8mA bajo un nivel lógico bajo de salida, la tensión no debe superar los 0.4V. Por lo tanto, podemos concluir que la resistencia máxima de este dispositivo no supera los 50Ω. Por lo tanto, se puede utilizar una resistencia de menos de 50Ω en lugar del DUT para verificar el proceso de prueba. Nuestro objetivo es centrar el problema en el DUT y no en cuestiones externas al DUT.
 
-## IDD y Gross IDD
+## IDD y IDD Bruto
 
-IDD representa la corriente (I) desde el drenador (D) hasta el drenador (D) en un circuito CMOS, y si es un circuito TTL, se llama ICC (corriente desde el colector hasta el colector). Gross IDD se refiere a la corriente total que fluye hacia el pin VDD (se puede probar en la etapa de prueba de Wafer Probe o producto terminado). IDD se utiliza para verificar si la corriente total del chip cumple con las especificaciones, generalmente se debe verificar la corriente en el consumo de energía mínimo y la frecuencia de trabajo máxima.
+IDD representa la corriente de drenaje (I) en circuitos CMOS desde el drenaje (D) hasta el drenaje (D), y en circuitos TTL se conoce como ICC (corriente de colector a colector). El IDD bruto se refiere a la corriente total que ingresa al pin VDD (se puede medir en las etapas de prueba de matriz o en la etapa de producto terminado). La prueba de IDD se utiliza para verificar si la corriente total del chip cumple con las especificaciones, generalmente se observa a la corriente en el mínimo consumo de energía y la frecuencia de funcionamiento máxima.
 
-La prueba de Gross IDD se realiza para determinar si se puede continuar probando el DUT. Por lo general, esta prueba se realiza inmediatamente después de la prueba del sistema operativo y es la primera prueba después de que el DUT se enciende. Si la prueba de Gross IDD no pasa (como una corriente demasiado grande), entonces no se puede continuar probando.
+La prueba de IDD bruto se realiza para determinar si es posible continuar con la prueba del DUT. Por lo general, esta prueba sigue a la prueba del sistema operativo (OS) y es la primera prueba realizada después de que el DUT se energiza. Si la prueba de IDD bruto no se aprueba (por ejemplo, si la corriente es demasiado alta), no se puede continuar con las pruebas.
 
-Durante la etapa de prueba de Gross IDD, aún no se sabe si el preprocesamiento se puede realizar normalmente, por lo que se debe relajar la especificación de IDD. Después de que la prueba de Gross IDD pase, se puede definir con precisión la corriente de especificación de IDD mediante el programa de preprocesamiento.
+Durante la etapa de prueba de IDD bruto, aún no se sabe si el preprocesamiento se llevará a cabo de manera adecuada, por lo que se deben establecer especificaciones más flexibles para IDD. Una vez que la prueba de IDD bruto se aprueba, se pueden definir con precisión las corrientes de IDD especificadas a través del preprocesamiento.
 
-La prueba de Gross IDD debe comenzar con un reinicio para establecer todos los pines de entrada en un nivel bajo / alto. Por lo general, VIL se establece en 0V y VIH se establece en VDD, y todos los pines de salida están en carga libre (para evitar la corriente de fuga flotante que aumenta IDD). El diagrama de prueba es el siguiente:
+La prueba de IDD bruto comienza con un restablecimiento para configurar todos los pines de entrada en niveles bajos o altos, generalmente VIL se configura en 0V y VIH en VDD. Todos los pines de salida se dejan en alto impedancia para evitar que una salida en alta impedancia cause una fuga de corriente que aumentaría IDD. El esquema de prueba se muestra a continuación:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220728162655.png)
+![Esquema de Prueba](https://img.wiki-power.com/d/wiki-media/img/20220728162655.png)
 
 Algunos puntos a tener en cuenta:
 
-- Se debe establecer un pinza de corriente para evitar dañar el equipo de prueba debido a una corriente demasiado grande.
-- Si hay corriente negativa, también significa que la prueba no pasa.
-- Si hay un error en la prueba, primero se debe descartar el problema del equipo de prueba. Si se ejecuta la prueba con el zócalo vacío, la corriente debería ser 0, de lo contrario, significa que otros dispositivos fuera del DUT también están consumiendo corriente.
+- Se debe utilizar una pinza de corriente para evitar dañar los equipos de prueba debido a corrientes excesivas.
+- Si se detecta una corriente negativa, esto indica que la prueba no se ha superado.
+- En caso de errores en la prueba, primero se debe descartar si se trata de un problema con los equipos de prueba. Ejecute una prueba con el zócalo del chip vacío; la corriente debería ser igual a 0. Si no es así, significa que otros dispositivos además del DUT también están consumiendo corriente.
 
-### Prueba IDD - Método estático
+### Prueba de IDD - Método Estático
 
-La prueba IDD estática mide la corriente total que fluye hacia el pin VDD y generalmente requiere que el DUT funcione en modo de consumo de energía mínimo. La diferencia entre la prueba IDD estática y la prueba de Gross IDD es que la prueba de Gross IDD aún no tiene un programa de preprocesamiento y es una prueba aproximada, mientras que la prueba IDD estática ya tiene un modo de preprocesamiento y se realiza después del preprocesamiento.
+La prueba estática de IDD mide la corriente total que ingresa al pin VDD y generalmente requiere que el DUT funcione en su modo de consumo mínimo de energía. La diferencia entre la prueba estática de IDD y la prueba de IDD bruto es que la prueba de IDD bruto no incluye ningún preprocesamiento, es simplemente una medición bruta, mientras que la prueba de IDD estática se realiza después del preprocesamiento.
 
-Por ejemplo, la siguiente tabla es una muestra de parámetros IDD:
+Por ejemplo, aquí hay una muestra de parámetros IDD:
 
-| Parámetro    | Descripción               | Condiciones de prueba               | Min | Max | Unidades |
-| ------------ | ------------------------- | ----------------------------------- | --- | --- | -------- |
-| IDD estática | Corriente de alimentación | VDD = 5.25V, entradas = VDD, Iout=0 |     | +22 | µA       |
+| Parámetro  | Descripción          | Condiciones de Prueba                | Mín | Máx | Unidades |
+| ---------- | -------------------- | ---------------------------------- | --- | --- | ------- |
+| IDD Estático | Corriente de Alimentación | VDD = 5.25V, entradas = VDD, Iout=0 |     | +22 | µA    |
 
-El diagrama de prueba IDD estática es el siguiente:
+El esquema de prueba de IDD estático se muestra a continuación:
+
+![Esquema de Prueba](https://img.wiki-power.com/d/wiki-media/img/20220728162341.png)
 
 El proceso de prueba es el siguiente:
 
-1. Configure el DUT con el vector de prueba para consumir la corriente mínima y mantenerse en estado estático.
-2. Verifique el valor de corriente de los pines
-   - Mayor que IDD Spec: Fail
-   - Otro rango: Pass
+1. Use test vectors to set the DUT to consume the least current and keep it in a static state.
+2. Check the pin current values
+   - Above IDD Spec: Fail
+   - Other ranges: Pass
 
-Durante la prueba, generalmente se requiere un retraso entre la alimentación y la toma de muestras para permitir que los capacitores parásitos se carguen y evitar interferencias.
+During testing, it's typically necessary to introduce a delay between power-up and sampling to allow parasitic capacitance to charge fully and avoid interference.
 
-Si necesita probar la corriente estática en diferentes lógicas, puede medir el parámetro IDDQ para aumentar la cobertura de prueba (IDDQ mide la corriente en un estado lógico estático, como probar un estado con algunos MOSFET abiertos).
+If you need to test static current under different logic conditions, you can measure the IDDQ parameter to increase test coverage (IDDQ measures the current in a stationary logic state, such as opening a portion of MOSFETs for testing in a specific state).
 
-### Prueba IDD - Método dinámico
+### IDD Testing - Dynamic Method
 
-El propósito de la prueba dinámica IDD es medir la corriente consumida por el DUT durante la **ejecución dinámica de la función** (generalmente a la máxima frecuencia del DUT) para garantizar que no supere el valor nominal.
+The purpose of IDD dynamic testing is to measure the current consumed by the DUT when it is in **dynamic operation** (usually at the DUT's maximum operating frequency) to ensure it does not exceed the nominal value.
 
-Por ejemplo, la siguiente tabla es una muestra de parámetros IDD dinámicos:
+For example, the table below provides a sample of dynamic IDD parameters:
 
-| Parámetro    | Descripción             | Condiciones de prueba                      | Min | Max | Unidades |
-| ------------ | ----------------------- | ------------------------------------------ | --- | --- | -------- |
-| IDD Dinámico | Corriente de suministro | VDD = 5.25V (comercial), f = f_max (66MHz) |     | +18 | mA       |
+| Parameter   | Description          | Test Conditions                             | Min | Max | Units |
+| ----------- | -------------------- | ------------------------------------------- | --- | --- | ----- |
+| IDD Dynamic | Power Supply Current | VDD = 5.25V (commercial), f = f_max (66MHz) |     | +18 | mA    |
 
-Diagrama de prueba:
-
-![](https://img.wiki-power.com/d/wiki-media/img/20220728171447.png)
-
-El proceso de prueba es similar al método estático.
+The testing process is similar to the static method.
 
 ## VOL/IOL & VOH/IOH
 
-VOL representa la limitación de voltaje máximo cuando se produce una salida de nivel bajo (L) (no se reconocerá como lógica 1). IOL representa la capacidad de conducción de corriente de drenaje (I, sink) cuando se produce una salida de nivel bajo (L). Juntos miden la impedancia del pin del buffer cuando se produce una salida de nivel bajo para garantizar que pueda absorber un valor constante de corriente en el voltaje de salida adecuado.
+VOL represents the highest voltage (V) limit when outputting a low level (L) (not recognized as logic 1). IOL represents the drive capability of the pin's buffer to sink current (I) when outputting a low level (L). They jointly measure the pin buffer's impedance when outputting a low level, ensuring it can absorb a constant current at the appropriate output voltage.
 
-VOH representa la limitación de voltaje mínimo cuando se produce una salida de nivel alto (H) (no se reconocerá como lógica 0). IOH representa la capacidad de conducción de corriente de fuente (I, source) cuando se produce una salida de nivel alto (H). Juntos miden la impedancia del buffer cuando se produce una salida de nivel alto para garantizar que pueda producir un valor constante de corriente en el voltaje de salida adecuado.
+VOH represents the lowest voltage (V) limit when outputting a high level (H) (not recognized as logic 0). IOH represents the drive capability of the buffer to source current (I) when outputting a high level (H). They jointly measure the buffer's impedance when outputting a high level, ensuring it can output a constant current at the appropriate output voltage.
 
-Por ejemplo, la siguiente tabla muestra los parámetros VOL/IOL y VOH/IOH de una RAM estática de 256 x 4:
+For example, the table below provides VOL/IOL & VOH/IOH parameters for a 256 x 4 Static RAM:
 
-| Parámetro | Descripción            | Condiciones de prueba     | Min | Max | Unidades |
-| --------- | ---------------------- | ------------------------- | --- | --- | -------- |
-| VOL       | Voltaje de salida bajo | VDD = 4.75V, IOL = 8.0mA  |     | 0.4 | V        |
-| VOH       | Voltaje de salida alto | VDD = 4.75V, IOH = -5.2mA | 2.4 |     | V        |
+| Parameter | Description         | Test Conditions           | Min | Max | Units |
+| --------- | ------------------- | ------------------------- | --- | --- | ----- |
+| VOL       | Output LOW Voltage  | VDD = 4.75V, IOL = 8.0mA  |     | 0.4 | V     |
+| VOH       | Output HIGH Voltage | VDD = 4.75V, IOH = -5.2mA | 2.4 |     | V     |
 
-La prueba de VOL/IOL y VOH/IOH se realiza principalmente para verificar si VOL/VOH está en el nivel correcto cuando se aplica corriente de fuente o drenaje (si puede alcanzar el umbral de voltaje en la corriente de salida adecuada). Hay dos métodos de prueba: estático y dinámico. **El método estático aplica corriente a los pines y luego mide el voltaje uno por uno; el método dinámico proporciona VREF durante la prueba de función para formar una corriente de carga dinámica y luego mide el voltaje.**
+Testing VOL/IOL & VOH/IOH primarily aims to verify whether VOL/VOH are at the correct voltage levels when applying sourcing or sinking current (whether they can reach the voltage threshold at a certain current output). There are static and dynamic methods for testing. **The static method involves applying current to the pins and then measuring the voltage one by one; the dynamic method introduces VREF during functional testing to create dynamic load current and then measures the voltage**.
 
-### Prueba VOL/IOL - Método estático en serie
+### VOL/IOL Testing - Serial Static Method
 
-El diagrama de prueba de VOL/IOL utilizando el método estático en serie es el siguiente:
+The testing schematic for measuring VOL/IOL using the serial static method is as follows:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220728150542.png)
+![Schematic](https://img.wiki-power.com/d/wiki-media/img/20220728150542.png)
+
+The testing process is as follows:
+
+1. First, set the pins to low-level output through preprocessing.
+2. Apply a constant IOH to the pins, wait for 1-5 milliseconds, and then measure
+3. Check the pin voltage
+   - Above VOL (+0.4V): Fail
+   - Other ranges: Pass
+
+Points to note:
+
+- IOL es un valor de corriente positiva, ya que fluye desde PMU hacia DUT.
+- Dado que se aplica una corriente constante, es necesario configurar una abrazadera de voltaje. Si se mide un voltaje más bajo que el voltaje de la abrazadera, es posible que la lógica esté configurada en alto nivel, lo que activaría la polarización directa del diodo de protección de energía.
+- El parámetro VDDmin representa el voltaje mínimo de suministro que permite que DUT realice pruebas de manera adecuada. Si es menor, no se podrán obtener resultados precisos de la prueba.
+
+### Prueba VOH/IOH - Método estático en serie
+
+El diagrama a continuación muestra la ilustración de la prueba VOH/IOH utilizando el método estático en serie:
+
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20220728143124.png)
 
 El proceso de prueba es el siguiente:
 
-## Pruebas de VOH/IOH - Método estático en serie
-
-El diagrama de prueba para medir VOH/IOH utilizando el método estático en serie es el siguiente:
-
-![](https://img.wiki-power.com/d/wiki-media/img/20220728143124.png)
-
-El proceso de prueba es el siguiente:
-
-1. Primero, se debe configurar el pin de prueba como una salida de nivel alto mediante preprocesamiento.
-2. Se aplica IOH constante al pin y se espera de 1 a 5 milisegundos antes de medir (según la configuración de delay en el PMU).
-3. Se mide el voltaje del pin.
-   - Si es mayor que VOL (+0.4V): Fail
-   - En cualquier otro rango: Pass
+1. Se requiere la configuración previa para establecer los pines a probar en una salida de alto nivel.
+2. Se aplica una corriente constante IOH a los pines y se espera de 1 a 5 milisegundos antes de realizar la medición (se establece una demora en el PMU).
+3. Se verifica el voltaje en los pines.
+   - Si es menor que VOH (+2.4V): Falla.
+   - En cualquier otro rango: Aprobado.
 
 Consideraciones importantes:
 
-- IOL es un valor de corriente positiva, ya que fluye desde el PMU hacia el DUT.
-- Debido a que se aplica una corriente constante, se debe configurar un clamp de voltaje. Si se mide un voltaje más bajo que el voltaje del clamp, es posible que la lógica del pin se haya configurado como un nivel alto, lo que activa el diodo de protección de la fuente.
-- El parámetro VDDmin indica el voltaje mínimo de suministro de energía que permite que el DUT se pruebe correctamente. Si es menor, no se pueden obtener resultados de prueba precisos.
+- Dado que IOL fluye desde PMU hacia DUT, es un valor negativo.
+- Debido a que se aplica una corriente constante, se necesita configurar una abrazadera de voltaje. Si el voltaje medido es mayor que el voltaje de la abrazadera, es posible que la lógica de los pines esté configurada en nivel bajo, lo que activaría la polarización directa del diodo de protección a tierra.
+- El parámetro VDDmin representa el voltaje mínimo de suministro necesario para que DUT realice pruebas de manera adecuada. Si es menor, no se obtendrán resultados precisos de la prueba.
 
 ## IIL/IIH
 
-IIL se refiere a la corriente máxima de pull-up permitida (I, source, desde VSS del DUT a través del pin hacia el exterior) cuando la lógica del pin de entrada (I) es un nivel bajo (L). Esto se utiliza para verificar si la corriente de fuga del pin al suministro de energía está dentro de los límites y para verificar el grado de aislamiento. IIH se refiere a la corriente máxima de pull-down permitida (I, sink, desde VDD del DUT a través del pin hacia el exterior) cuando la lógica del pin de entrada (I) es un nivel alto (H). Por ejemplo, los parámetros IIL y IIH para una RAM estática de 256 x 4 son los siguientes:
+IIL se refiere a la corriente máxima permitida cuando la entrada del pin (I) está en un estado lógico bajo (L), lo que evalúa si la fuga de corriente desde los pines al suministro de energía cumple con las especificaciones, y también evalúa el grado de aislamiento. IIH se refiere a la corriente máxima permitida cuando la entrada del pin (I) está en un estado lógico alto (H), lo que evalúa la corriente de drenaje desde DUT a través de los pines hacia el suministro de energía. Para ilustrar, aquí se presentan los parámetros IIL y IIH de una RAM estática de 256 x 4:
 
-| Parámetro | Descripción                   | Condiciones de prueba  | Mínimo | Máximo | Unidades |
-| --------- | ----------------------------- | ---------------------- | ------ | ------ | -------- |
-| IIL, IIH  | Corriente de carga de entrada | Vss ≤ Vin ≤ VDD(5.25V) | -10    | +10    | µA       |
+| Parámetro | Descripción        | Condiciones de prueba        | Mínimo | Máximo | Unidades |
+| --------- | ------------------ | ---------------------- | --- | --- | ----- |
+| IIL, IIH  | Corriente de Carga de Entrada | Vss ≤ Vin ≤ VDD(5.25V) | -10 | +10 | µA    |
 
-IIL mide la resistencia del pin de entrada al suministro de energía VDD; IIH mide la resistencia del pin de entrada a VSS. Esta prueba se utiliza para garantizar que la impedancia de entrada cumpla con los requisitos de diseño y que la corriente de entrada no exceda los límites. IIL/IIH se pueden medir mediante métodos en serie, paralelos o combinados, así como mediante pruebas de función. El método en serie prueba los pines uno por uno, lo que es preciso pero relativamente lento.
+IIL evalúa la resistencia de entrada desde los pines a VDD, mientras que IIH evalúa la resistencia de entrada desde los pines a VSS. Esta prueba garantiza que la impedancia de entrada cumple con los requisitos de diseño y que la corriente de entrada no excede los límites. La prueba de IIL/IIH se puede realizar de forma secuencial, paralela o combinada, y también se puede realizar mediante pruebas funcionales. El enfoque secuencial prueba un pin a la vez, lo que es preciso pero puede llevar tiempo.
 
-Además, las pruebas de IIL/IIH generalmente solo se pueden realizar en pines de entrada pura. Si se encuentra un pin bidireccional, se debe agregar una carga de salida para estabilizar el nivel alto o bajo y evitar que se genere corriente en los dispositivos de protección, lo que afectaría los resultados de la prueba.
+Además, las pruebas de IIL/IIH generalmente solo se pueden realizar en pines de entrada pura. Si se encuentran pines bidireccionales, se debe agregar una carga de salida para mantener el nivel de voltaje estable en los pines y evitar que fluya corriente a través de los dispositivos de protección, lo que podría afectar los resultados de la prueba.
 
-### Pruebas de IIL/IIH - Método estático en serie
+### Prueba IIL/IIH - Método estático en serie
 
-El diagrama de prueba para medir IIL en pines de entrada utilizando el método estático en serie es el siguiente:
+En algunos sistemas de prueba, se puede realizar una medición en paralelo de la corriente de fuga (Método de Prueba en Paralelo). La medición en paralelo de la corriente de fuga implica la utilización de varios PMU (Unidades de Medición Programable) para medir por separado la corriente en varios pines. Todos los pines de entrada se fuerzan a un nivel alto y, simultáneamente, se mide en paralelo la corriente en cada pin. A continuación, los resultados de la prueba se comparan con los valores nominales para llegar a una conclusión.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220729100620.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20220729103317.png)
 
-El proceso de prueba es el siguiente:
+1. En primer lugar, se debe suministrar la fuente de alimentación VDDmax al Dispositivo Bajo Prueba (DUT).
+2. Utilice varios PMU para forzar cada pin de entrada a un nivel alto de VDDmax (para medir IIH).
+3. Espere de 1 a 5 microsegundos, detecte la corriente y haga la comparación para llegar a una conclusión.
+4. Luego, cambie los niveles a VSS y repita los pasos anteriores para medir IIL.
 
-1. Primero, se debe suministrar la fuente de alimentación VDDmax (peor caso) al DUT.
-2. Se configuran todos los pines de entrada del DUT en nivel alto (VIH).
-3. Se baja un solo pin de entrada a VSS utilizando el PMU.
-4. Se espera de 1 a 5 microsegundos y se mide el valor de corriente.
-   - Si es menor que IIL (-10µA): Fail (la corriente que fluye hacia el DUT excede los límites)
-   - En cualquier otro rango: Pass
+La característica principal del método en paralelo es que permite medir simultáneamente la corriente individual de cada pin, lo que acelera la prueba de IIL/IIH. Sin embargo, la desventaja es que es más difícil detectar las fugas entre los pines de entrada, ya que todos los pines se mantienen al mismo nivel.
 
-El diagrama de prueba para medir IIH en pines de entrada utilizando el método estático en serie es el siguiente:
+### Prueba de IIL/IIH - Método Combinado Estático
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220729100739.png)
+El método combinado (Ganged Method) implica la agrupación de todos los pines de entrada en un solo pin, y se utiliza un solo PMU para medir la corriente de fuga total. El diagrama de la prueba se muestra a continuación:
 
-El proceso de prueba es el siguiente:
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20220729104449.png)
 
-# Pruebas de IIL/IIH
-
-## Método estático en serie
-
-1. Proporcionar la fuente de alimentación VDDmax al DUT.
-2. Establecer todos los pines de entrada del DUT en nivel bajo (VIL).
-3. Usar PMU para elevar un solo pin de entrada a VDDmax.
-4. Esperar de 1 a 5 microsegundos y medir la corriente.
-   - Si es mayor que IIH (+10µA): Fail (la corriente que sale del DUT es demasiado alta)
-   - En otros intervalos: Pass
-
-## Método estático en paralelo
-
-En algunos sistemas de prueba, se puede medir la corriente de fuga en paralelo (Método de prueba paralela). La medición de corriente de fuga en paralelo implica la medición de múltiples pines con múltiples PMU, donde todos los pines de entrada se elevan a un nivel alto y se mide la corriente de cada pin en paralelo. Luego, los resultados se comparan con los valores nominales para obtener una conclusión.
-
-1. Proporcionar la fuente de alimentación VDDmax al DUT.
-2. Usar múltiples PMU para elevar cada pin de entrada a VDDmax (medir IIH).
-3. Esperar de 1 a 5 microsegundos y medir la corriente para obtener una conclusión.
-4. Luego, bajar a VSS y repetir los pasos anteriores para medir IIL.
-
-La característica del método en paralelo es que se pueden medir rápidamente las corrientes individuales de cada pin de entrada. La desventaja es que es más difícil detectar las fugas entre los pines de entrada, ya que todos los pines se mantienen en el mismo nivel.
+El método de prueba combinada es similar al método anterior. El límite total de corriente es el valor nominal de un solo pin. Si los resultados de la prueba superan este límite, se debe realizar una prueba de repetición en serie. Este método de prueba es especialmente efectivo para dispositivos CMOS (de alta impedancia de entrada).
 
 ## IOZL/IOZH
 
-La corriente de alta impedancia IOZ se refiere a la corriente de fuga (I) de un pin de salida (O) en estado de alta impedancia (Z). IOZL se refiere a la corriente de fuga en el estado de nivel bajo (L) del pin, mientras que IOZH se refiere a la corriente de fuga en el estado de nivel alto (H) del pin. Se utiliza para verificar si la corriente de fuga está dentro de los límites cuando se apaga el pin de salida de doble dirección o de alta impedancia.
+La corriente de alta impedancia IOZ se refiere a la corriente de fuga en los pines de salida (O) cuando están en estado de alta impedancia (Z). En particular, IOZL se refiere a la corriente de fuga cuando el pin está en estado bajo (L), mientras que IOZH se refiere a la corriente de fuga cuando el pin está en estado alto (H). Esta prueba se utiliza para determinar si la corriente de fuga al apagar los pines cumple con las especificaciones.
 
-Este parámetro garantiza que los pines de salida bidireccionales o de alta impedancia se puedan apagar correctamente (estado de alta impedancia de salida). IOZL mide la resistencia del pin a VDD en estado de alta impedancia de salida, mientras que IOZH mide la resistencia del pin a VSS. Por lo general, se expresa en las especificaciones de la siguiente manera:
+Este parámetro garantiza que los pines de salida bidireccionales o de alta impedancia se puedan apagar adecuadamente (en estado de alta impedancia). IOZL mide la resistencia del pin a VDD en estado de alta impedancia, mientras que IOZH mide la resistencia del pin a VSS. Por lo general, se representa de la siguiente manera en las especificaciones:
 
-| Parámetro | Descripción                            | Condiciones de prueba                      | Mínimo | Máximo | Unidades |
-| --------- | -------------------------------------- | ------------------------------------------ | ------ | ------ | -------- |
-| IOZ       | Corriente de salida de alta impedancia | VSS ≤ Vout ≤VDD(5.25V), Salida desactivada | -2.0   | +2.0   | µA       |
+| Parámetro | Descripción            | Condiciones de Prueba                  | Mín  | Máx  | Unidades |
+| --------- | ---------------------- | ------------------------------------- | ---- | ---- | ------- |
+| IOZ       | Corriente de Salida en Alta Impedancia | VSS ≤ Vout ≤ VDD (5.25V), Salida Desactivada | -2.0 | +2.0 | µA    |
 
-## Método estático en serie
+### Prueba de IOZL/IOZH - Método Estático en Serie
 
-1. Proporcionar la fuente de alimentación VDD al dispositivo.
-2. Establecer los pines del dispositivo en estado de alta impedancia y usar PMU para forzar el pin a un estado alto o bajo.
-3. Medir la corriente del pin.
-   - Si es menor que -IOZ (-2µA): Fail
-   - Si es mayor que +IOZ (+2µA): Fail
-   - En otros intervalos: Pass
+El diagrama de la prueba estática en serie de IOZL/IOZH es el siguiente:
 
-La ventaja de la prueba en serie es que se puede medir con precisión la corriente de cada pin. La desventaja es que es lenta y requiere la configuración de la corriente de pinza.
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20220807202447.png)
 
-## Método estático en paralelo
+El proceso de prueba es el siguiente:
 
-El método estático en paralelo implica el uso de múltiples PMU para medir múltiples pines en paralelo. No se profundizará en este método aquí, pero su ventaja es la velocidad.
+1. En primer lugar, se debe suministrar la fuente de alimentación VDD al dispositivo.
+2. Se deben configurar los pines del dispositivo en estado de alta impedancia y utilizar el PMU para forzar los pines a un nivel alto o bajo.
+3. Medir el valor de corriente en los pines.
+   - Menor que -IOZ (-2µA): Falla
+   - Mayor que +IOZ (+2µA): Falla
+   - En otro rango: Aprobado
 
-La pinza de voltaje de entrada VI se refiere al voltaje medido en el pin de entrada (I) de un dispositivo TTL (no CMOS) cuando se aplica una corriente negativa (corriente de extracción) en el pin. El propósito de esta prueba es **verificar la integridad del diodo de pinza entre el emisor del transistor y la tierra**. Se representa en las especificaciones de la siguiente manera:
+La ventaja de la prueba en serie es que permite una medición precisa de la corriente de cada pin de forma individual, pero la desventaja es que es más lenta. Además, esta prueba requiere la configuración de la corriente de pinza. 
 
-| Parámetro | Descripción                 | Condiciones de prueba  | Mín | Máx  | Unidades |
-| --------- | --------------------------- | ---------------------- | --- | ---- | -------- |
-| VI        | Voltaje de pinza de entrada | VCC = Min, Iin = -18mA |     | +1.5 | V        |
+### Prueba de IOZL/IOZH - Método Estático en Paralelo
 
-### Prueba VI - Método estático en serie
+El método estático en paralelo implica que varios PMU realicen pruebas simultáneas en varios pines, no se necesita ahondar más en esta descripción. Su principal ventaja es la rapidez.
 
-La prueba VI estática en serie se realiza de la siguiente manera:
+| Parámetro | Descripción          | Condiciones de prueba    | Mínimo | Máximo | Unidades |
+| --------- | ------------------- | ------------------------ | ------ | ------ | ------- |
+| VI        | Tensión de sujeción de entrada | VCC = Mín., Iin = -18mA |        | +1.5   | V       |
+
+### Prueba de VI - Método estático secuencial
+
+La prueba de VI se realiza utilizando el método estático secuencial. El diagrama de prueba se muestra a continuación:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20220729145425.png)
 
 El proceso de prueba es el siguiente:
 
-1. Asegurarse de que es un pin de entrada de un dispositivo TTL y suministrar energía a VCCmin.
-2. Después de configurar la pinza de voltaje, utilizar PMU para extraer una corriente de -15mA~-20mA.
-3. Medir el voltaje en el pin:
-   - Por debajo de VI (-1.5V): Fallo
-   - En cualquier otro rango: Aprobado
+1. Asegúrese de que esta sea la entrada de un dispositivo TTL y suministre la energía para VCCmin.
+2. Después de configurar la sujeción de voltaje, utilice el PMU para extraer una corriente de -15mA a -20mA.
+3. Mida el valor de voltaje en el pin de entrada.
+   - Por debajo de VI (-1.5V): Falla
+   - En otro rango: Aprobado
 
 ## IOS (Corriente de cortocircuito de salida)
 
-La corriente de cortocircuito de salida indica la corriente (I) generada en el pin de salida (O) cuando se produce un cortocircuito (S). El propósito es **medir la impedancia de salida cuando el pin de salida está en un estado alto pero se cortocircuita a cero voltios, para asegurarse de que la corriente de salida no sea demasiado alta en las peores condiciones de carga, y también indica la corriente máxima instantánea que el pin DUT puede proporcionar para cargar la carga capacitiva, lo que se puede utilizar para calcular el tiempo de subida**. IOS se representa en las especificaciones de la siguiente manera:
+La corriente de cortocircuito de salida representa la corriente (I) generada cuando el pin de salida (O) está en cortocircuito (S). Su propósito es **medir la impedancia de salida cuando el pin está en un estado alto pero se cortocircuita a cero voltios, garantizando que la corriente de salida no sea excesiva en las peores condiciones de carga**. También indica la corriente máxima instantánea que el pin del DUT puede proporcionar para cargar capacitiva, lo que se utiliza para calcular el tiempo de subida. IOS se describe en las especificaciones de la siguiente manera:
 
-| Parámetro | Descripción                          | Condiciones de prueba                                                                         | Mín | Máx | Unidades |
-| --------- | ------------------------------------ | --------------------------------------------------------------------------------------------- | --- | --- | -------- |
-| IOS       | Corriente de cortocircuito de salida | Vout = 0V, VDD = 5.25V, \*Solo cortocircuitar una salida a la vez durante no más de 1 segundo | -85 | -30 | mA       |
+| Parámetro | Descripción                  | Condiciones de prueba                                                             | Mínimo | Máximo | Unidades |
+| --------- | ---------------------------- | ---------------------------------------------------------------------------------- | ------ | ------ | ------- |
+| IOS       | Corriente de cortocircuito de salida | Vout = 0V, VDD = 5.25V, \* Cortocircuito solo un pin de salida a la vez durante no más de 1 segundo | -85    | -30    | mA      |
 
-### Prueba IOS - Método estático en serie
+### Prueba de IOS - Método estático secuencial
 
-La prueba IOS estática en serie se realiza de la siguiente manera:
+El diagrama de prueba se muestra a continuación:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20220729152549.png)
 
 El proceso de prueba es el siguiente:
 
-1. Suministrar energía a VDDmax, preparar el dispositivo para que el pin de salida tenga un estado alto.
-2. Utilizar PMU para bajar el pin a 0V, medir la corriente de salida y compararla con el valor nominal para obtener una conclusión.
+1. Proporcione alimentación a VDDmax, prepare el dispositivo para que el pin de salida esté en estado alto.
+2. Use el PMU para bajar el pin a 0V y mida la corriente de salida, luego compare con el valor nominal para llegar a una conclusión.
 
-En la prueba de IOS, se necesita una lógica razonable para evitar el cambio térmico. En primer lugar, se debe configurar PMU en el modo de medición de voltaje de corriente cero forzado, conectarlo a la salida DUT, medir y guardar el voltaje VOH de DUT, luego desconectarlo y configurar PMU para subir a VOH justo, y luego volver a conectar DUT (en este momento, ambos extremos tienen el mismo voltaje de VOH), y luego bajar PMU a 0V para medir el valor de corriente. Después de completar la medición, PMU debe volver a subir a VOH antes de desconectarlo. De esta manera, se puede garantizar que cuando el relé cambia de estado, los voltajes en ambos extremos sean consistentes.
+En las pruebas de IOS, es importante tener una lógica adecuada para evitar conmutaciones en caliente. En primer lugar, configure el PMU en modo de medición de voltaje de corriente cero, conéctelo a la salida del DUT, mida y guarde el voltaje VOH del DUT. Luego desconéctelo y configure el PMU para subir a VOH nuevamente, luego vuelva a conectar el DUT (en este punto, ambos extremos tienen el voltaje VOH). Luego, haga que el PMU baje a 0V y mida el valor de corriente. Después de completar la medición, el PMU debe restablecerse a VOH antes de desconectarse. De esta manera, se asegura que los voltajes en ambos extremos sean consistentes al realizar cambios de conmutación.
 
-Factores que pueden causar una prueba fallida:
+Factores que pueden causar que la prueba no pase:
 
-- **Exceder el límite superior**
+- **Excede el valor máximo**
   - La impedancia de salida es demasiado alta, lo que resulta en una corriente absoluta insuficiente.
-  - La abrazadera en sí tiene resistencia.
-  - No se ha realizado el pretratamiento correcto.
-- **Por debajo del límite inferior**
-  - La impedancia de salida es demasiado baja, lo que resulta en una corriente absoluta demasiado alta.
+  - La sonda de prueba en sí tiene resistencia.
+  - No se ha realizado un preprocesamiento adecuado.
+- **Por debajo del valor mínimo**
+  - La impedancia de salida es demasiado baja, lo que resulta en una corriente absoluta excesiva.
 
-Algunos pines de entrada pueden tener una estructura activa de pull-up o pull-down, lo que requiere garantizar que la ruta de resistencia de pull-up/down del buffer de entrada esté funcionando correctamente. Solo se puede probar en serie, ya que la estructura de pull-up/down interna de diferentes pines puede ser diferente. Diagrama esquemático de la estructura del pin:
+## Entradas resistivas (Resistencia de pull-up y pull-down)
+
+Algunos pines de entrada pueden tener una estructura activa de pull-up y pull-down, y es necesario garantizar que las rutas de resistencia de pull-up y pull-down del búfer de entrada estén funcionando correctamente. Esto solo se puede probar de manera secuencial, ya que la estructura de pull-up y pull-down interna de los diferentes pines puede ser diferente. El diagrama de la estructura del pin se muestra a continuación:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20220729130655.png)
 
-## Capacidad de ventilador de salida (Output Fanout)
 
-La capacidad de ventilador (Fanout) se refiere a la capacidad del pin de salida para conducir varios pines de entrada según sus parámetros de voltaje y corriente. Es decir, la capacidad de conducción del pin es un indicador de cuántos pines de entrada puede conducir un pin de salida.
+## Capacidad de Ramificación de Salida (Output Fanout)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220729132621.png)
+La capacidad de ramificación (Fanout) se refiere a la capacidad de un pin de salida para impulsar múltiples pines de entrada en función de sus parámetros de voltaje y corriente. En otras palabras, la capacidad de conducir pines, es un indicador de cuántos pines de entrada puede manejar un pin de salida.
 
-Como se muestra en la figura anterior, esta salida TTL puede elevar aproximadamente 17 pines de entrada o bajar 30 pines de entrada. En las especificaciones del pin, los parámetros se expresan de la siguiente manera:
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20220729132621.png)
 
-| Parámetro | Descripción                        | Condiciones de prueba     | Mínimo | Máximo | Unidades |
-| --------- | ---------------------------------- | ------------------------- | ------ | ------ | -------- |
-| VOH       | Voltaje alto de salida             | VCC = 4.75V, IOH = -2.6mA | 2.4    |        | V        |
-| VOL       | Voltaje bajo de salida             | VCC = 4.75V, IOH = 24mA   |        | 0.4    | V        |
-| IIL       | Corriente de carga baja de entrada | Vin = 0.4V                | -800   |        | µA       |
-| IIH       | Corriente de carga alta de entrada | Vin = 2.4V                |        | 150    | µA       |
+Como se muestra en la figura anterior, esta salida TTL puede elevar aproximadamente 17 pines de entrada o reducir 30 pines de entrada. En las especificaciones, los parámetros de los pines se representan de la siguiente manera:
 
-La capacidad de ventilador varía mucho entre los dispositivos TTL y CMOS, ya que la impedancia de entrada de CMOS es alta, teóricamente una salida CMOS puede conducir cualquier número de entradas CMOS. Pero los pines de entrada CMOS tienen capacitancia parásita, cuanto más se conectan las entradas, mayor es la capacitancia, lo que produce un efecto de carga y descarga de la capacitancia al cambiar entre los niveles alto y bajo, lo que produce una demora.
+| Parámetro | Descripción               | Condiciones de prueba       | Mín  | Máx | Unidades |
+| --------- | ------------------------- | --------------------------- | ---- | --- | ------- |
+| VOH       | Voltaje ALTO de Salida    | VCC = 4.75V, IOH = -2.6mA   | 2.4  |     | V       |
+| VOL       | Voltaje BAJO de Salida    | VCC = 4.75V, IOH = 24mA     |      | 0.4 | V       |
+| IIL       | Corriente de Carga Baja de Entrada | Vin = 0.4V            | -800 |     | µA      |
+| IIH       | Corriente de Carga Alta de Entrada | Vin = 2.4V            |      | 150 | µA      |
 
-## Referencias y agradecimientos
+La capacidad de ramificación varía significativamente entre dispositivos TTL y CMOS, ya que los dispositivos CMOS tienen una alta impedancia de entrada. En teoría, una salida CMOS puede impulsar cualquier cantidad de entradas CMOS. Sin embargo, los pines de entrada CMOS tienen capacitancia parásita, y cuantos más se conecten, mayor será la capacitancia, lo que resultará en efectos de carga y descarga de capacitancia y, por lo tanto, en retrasos al cambiar entre niveles altos y bajos.
+
+## Referencias y Agradecimientos
 
 - "The Fundamentals Of Digital Semiconductor Testing"
 - "DC Test Theory"
 
-> Dirección original del artículo: <https://wiki-power.com/>  
+> Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

@@ -1,4 +1,4 @@
-# ملاحظات تعلم جافا سكريبت
+# ملاحظات تعلم JavaScript
 
 ## استدعاء جافا سكريبت خارجي
 
@@ -16,22 +16,22 @@
 
 ## الإخراج
 
-### عرض صندوق تنبيه
+### عرض نافذة تحذير
 
 ```javascript
-window.alert("Hello");
+window.alert("مرحبًا");
 ```
 
-### التحكم في عناصر HTML
+### التعامل مع عناصر HTML
 
 ```markup
 <!DOCTYPE html>
 <html>
     <body>
-        <h1> صفحتي الويب الأولى </h1>
-        <p id="demo"> فقرة أولى </p>
+        <h1>صفحتي الويب الأولى</h1>
+        <p id="demo">فقرتي الأولى</p>
         <script>
-            document.getElementById ("demo").innerHTML = "تم تعديل الفقرة.";
+            document.getElementById("demo").innerHTML = "تم تعديل الفقرة.";
         </script>
     </body>
 </html>
@@ -42,14 +42,14 @@ window.alert("Hello");
 إنشاء متغير:
 
 ```javascript
-var carname = "Volvo";
+var carname = "فولفو";
 ```
 
-**أنواع القيم \ (الأساسية \)**: سلسلة نصية (String) ، رقم (Number) ، بوليان (Boolean) ، فارغ (Null) ، غير معرف (Undefined) ، رمز (Symbol).
+**أنواع القيم (الأساسية):** سلسلة نصية (String)، رقم (Number)، منطقي (Boolean)، فارغ (Null)، غير معرف (Undefined)، رمز (Symbol).
 
-**أنواع البيانات المرجعية**: كائن (Object) ، مصفوفة (Array) ، وظيفة (Function).
+**أنواع البيانات المرجعية:** كائن (Object)، مصفوفة (Array)، وظيفة (Function).
 
-> عنوان النص: <https://wiki-power.com/>  
+> عنوان النص: <https://wiki-power.com/>
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

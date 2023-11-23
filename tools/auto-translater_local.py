@@ -4,7 +4,7 @@ import openai  # pip install openai
 import sys
 import re
 import yaml  # pip install PyYAML
-#import env
+import env
 
 
 # 设置 OpenAI API Key 和 API Base 参数，通过 env.py 传入
@@ -375,10 +375,10 @@ try:
                 with open(processed_list, "a", encoding="utf-8") as f:
                     f.write("\n")
                     f.write(filename)
-                    
+
             # 强制将缓冲区中的数据刷新到终端中，使用 GitHub Action 时方便实时查看过程
             sys.stdout.flush()
-
+            
     # 所有任务完成的提示
     print("Congratulations! All files processed done.")
     sys.stdout.flush()

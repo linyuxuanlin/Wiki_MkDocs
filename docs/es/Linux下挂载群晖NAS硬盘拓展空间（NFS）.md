@@ -1,53 +1,53 @@
-# Montar un disco duro de NAS Synology en Linux para expandir el espacio de almacenamiento (NFS)
+# Montar un disco NAS de Synology en Linux para ampliar el espacio (NFS)
 
-Si su servidor tiene un espacio de almacenamiento limitado, puede intentar montar un disco duro de NAS Synology como espacio de almacenamiento adicional.
+Si tu servidor tiene un espacio de almacenamiento limitado, puedes intentar montar un disco NAS de Synology como una extensión de tu espacio de almacenamiento.
 
-## Configuración en NAS Synology
+## Configuración en el NAS de Synology
 
 ### Habilitar el servicio NFS
 
-Abra "Configuración" - "Servicio de archivos" - "NFS" en Synology, marque la casilla de verificación del servicio NFS y seleccione el protocolo más reciente.
+Abre la configuración de Synology, selecciona "Servicios de archivos" y activa el servicio NFS. Puedes elegir el protocolo más reciente.
 
 ### Configurar los permisos NFS de la carpeta
 
-En "Configuración" - "Carpeta compartida", seleccione la carpeta compartida que desea habilitar NFS, haga clic en "Editar", cambie a la pestaña "Permisos NFS" y haga clic en "Agregar" para agregar una nueva regla NFS.
+En la sección "Carpetas compartidas" dentro de la configuración, elige la carpeta compartida que deseas habilitar para NFS. Haz clic en "Editar" y ve a la pestaña de "Permisos NFS". Luego, haz clic en "Agregar" para crear una nueva regla NFS.
 
-En "Servidor o dirección IP", escriba la dirección IP del servidor que necesita acceder a Synology (por ejemplo, si mi servidor y Synology están en la misma red local, simplemente escribo la dirección IP interna de mi servidor 192.168.1.2). Marque las casillas "Permitir conexiones desde puertos no privilegiados" y "Permitir a los usuarios acceder a las carpetas montadas", y mantenga las demás configuraciones por defecto.
+En "Servidor o dirección IP", introduce la dirección IP del servidor desde el cual deseas acceder al NAS de Synology (por ejemplo, si tu servidor y el NAS de Synology están en la misma red local, puedes ingresar la dirección IP interna de tu servidor, como 192.168.1.2). Marca las opciones "Permitir conexiones desde puertos no privilegiados" y "Permitir a los usuarios acceder a carpetas montadas". Puedes dejar los demás ajustes en su configuración predeterminada.
 
 ## Montar en el servidor
 
-Primero, instale el servicio NFS:
+En primer lugar, instala el servicio NFS:
 
 ```bash
 apt update
 apt install nfs-common
 ```
 
-Luego, cree una ruta de montaje en el servidor, por ejemplo:
+Luego, en el servidor, crea la ruta de montaje, por ejemplo:
 
 ```bash
-sudo mkdir /DATA/nfs/music
+sudo mkdir /DATOS/nfs/musica
 ```
 
-Finalmente, ejecute el comando de montaje:
+Finalmente, ejecuta el comando de montaje:
 
 ```bash
-mount -t nfs Dirección IP de NAS:Ruta de carpeta compartida /Ruta de cliente NFS
+mount -t nfs IP_del_NAS:ruta_de_carpeta_compartida /ruta_del_cliente_NFS
 ```
 
 Por ejemplo:
 
 ```bash
-sudo mount -t nfs 192.168.1.3:/volume1/music /DATA/nfs/music
+sudo mount -t nfs 192.168.1.3:/volume1/musica /DATOS/nfs/musica
 ```
 
-Si no hay errores, puede usar el comando "df" para verificar el estado de montaje.
+Si no se producen errores, puedes usar el comando `df` para verificar el estado del montaje.
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
-- [Montar NAS Synology como disco virtual en Linux (Ubuntu) a través del servicio NFS](https://cloud.tencent.com/developer/article/2104277)
+- [Cómo montar un disco NAS de Synology en Linux (Ubuntu) a través del servicio NFS](https://cloud.tencent.com/developer/article/2104277)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
+> Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

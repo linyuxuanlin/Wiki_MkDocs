@@ -1,9 +1,9 @@
-# Cómo eliminar la gestión de Chrome (Edge) por parte de la organización
+# Eliminar la administración de Chrome (Edge) por parte de la organización
 
 ## Pasos
 
-1. Presiona `Win` + `R` y escribe `regedit` para abrir el Editor del Registro.
-2. Encuentra las siguientes carpetas y elimínalas:
+1. Presiona `Win` + `R`, ingresa `regedit` para abrir el Editor del Registro.
+2. Encuentra y elimina las siguientes carpetas:
 
 Chrome:
 
@@ -21,6 +21,9 @@ HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Edge
 
 ## Referencias y agradecimientos
 
-- [¡Funciona! Solución de tres pasos para eliminar la gestión de Chrome (o Edge) por parte de la organización](https://www.joshualowcock.com/guide/fix-chrome-is-managed-by-your-organization-in-3-steps/)
+- [¡Funciona! Solucionar "Chrome (o Edge) está administrado por tu organización" (en 3 pasos)](https://www.joshualowcock.com/guide/fix-chrome-is-managed-by-your-organization-in-3-steps/)
+
+> Dirección original del artículo: <https://wiki-power.com/>  
+> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

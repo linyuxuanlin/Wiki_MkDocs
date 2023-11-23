@@ -1,168 +1,178 @@
-# Esquema de alimentación (PMIC) - EA3059
+# Solución de Energía (PMIC) - EA3059
 
-EA3059 es un PMIC de 4 canales adecuado para aplicaciones alimentadas por baterías de litio o DC de 5V. Incorpora cuatro convertidores reductores síncronos que proporcionan una salida de alta eficiencia en cargas ligeras y pesadas. La arquitectura de compensación interna hace que el diseño del circuito de aplicación sea simple. Además, el control de habilitación independiente facilita el control del orden de encendido. EA3059 utiliza un paquete QFN de 24 pines de 4x4.
+El EA3059 es un PMIC de 4 canales diseñado para aplicaciones alimentadas por baterías de litio o una fuente de alimentación de 5V de corriente continua. Este dispositivo integra internamente cuatro convertidores DC-DC sincrónicos que proporcionan una eficiencia de salida óptima tanto en condiciones de carga ligera como de carga pesada. Su arquitectura de compensación interna simplifica el diseño del circuito de aplicación. Además, el control independiente de habilitación facilita la gestión del encendido secuencial. El EA3059 se presenta en un encapsulado QFN de 24 pines de 4x4 mm.
 
-Repositorio del proyecto: [**Collection_of_Power_Module_Design/PMIC/EA3059**](https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/PMIC/EA3059)
+Repositorio del proyecto: [**Colección de Diseño de Módulos de Alimentación/PMIC/EA3059**](https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/tree/main/PMIC/EA3059)
 
 Vista previa en línea del proyecto:
 
-<div class="altium-iframe-viewer">
+<div class="visor-de-iframes-de-altium">
   <div
-    class="altium-ecad-viewer"
-    data-project-src="https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/raw/main/PMIC/EA3059/EA3059_V0.2.zip"
+    class="visor-de-ecad-de-altium"
+    data-fuente-del-proyecto="https://github.com/linyuxuanlin/Collection_of_Power_Module_Design/raw/main/PMIC/EA3059/EA3059_V0.2.zip"
   ></div>
 </div>
 
-## Características principales
+## Características Principales
 
-- Voltaje de entrada y voltaje de circuito de control: 2.7-5.5V
+- Rango de voltaje de entrada y voltaje de control del circuito: 2.7-5.5V
 - Voltaje de salida (4 convertidores Buck): 0.6V-Vin
-- Corriente de salida: carga continua de una sola vía de 2A, pico de 4A (la salida total de los 4 canales debe ser inferior a 10W)
+- Corriente de salida: 2A continuos por canal, pico de 4A (la salida total de los 4 canales debe ser menor a 10W)
 - Frecuencia de conmutación fija de 1.5MHz
-- Salida de ciclo de trabajo del 100%
-- Eficiencia de cada canal del 95%
-- Corriente de espera: <1uA
-- Control de habilitación independiente para cada canal
+- Salida al 100% de ciclo de trabajo
+- Eficiencia de hasta el 95% en cada canal
+- Corriente en espera: <1uA
+- Control de habilitación independiente por canal
 - Compensación interna
 - Limitación de corriente por ciclo
 - Protección contra cortocircuitos
-- Protección contra sobrecalentamiento (OTP) con recuperación automática
-- Sin protección contra sobretensión de entrada (OVP) (en comparación con EA3059)
-- Paquete QFN de 24 pines de 4mm x 4mm
+- Protección de sobrecalentamiento autorecuperable (OTP)
+- Sin protección de sobretensión de entrada (OVP) (en comparación con el EA3059)
+- Encapsulado QFN de 24 pines de 4x4 mm
 
-## Circuito de aplicación típico
+## Circuitos de Aplicación Típicos
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20220420171841.png)
 
-## Diagrama de funciones internas
+## Diagrama de Funciones Internas
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20220420171859.png)
 
-## Definición de pines
+## Definición de Pines
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20220420171920.png)
 
-| Nombre del pin | Descripción del pin                                                                                                                             |
-| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| VCC            | Pin de entrada de alimentación del circuito de control interno                                                                                  |
-| VINx           | Pin de entrada de alimentación del canal x, con un condensador MLCC de 10uF para la eliminación de ruido                                        |
-| LXx            | Salida de conmutación del MOS interno del canal x, que se puede conectar a un circuito de filtro paso bajo para obtener una tensión más estable |
-| FBx            | Pin de retroalimentación del canal x, conectado a la salida de tensión a través de un circuito divisor de tensión                               |
-| ENx            | Pin de habilitación, no debe dejarse en flotación                                                                                               |
-| GNDx           | Tierra del canal x                                                                                                                              |
-| AGND           | Tierra analógica                                                                                                                                |
-| Pad inferior   | Para disipación de calor, debe estar conectado a tierra                                                                                         |
-| NC             | Sin conexión                                                                                                                                    |
+| Nombre del Pin | Descripción del Pin                                   |
+| -------------  | ----------------------------------------------------  |
+| VCC            | Alimentación interna del circuito de control          |
+| VINx           | Alimentación del canal x, con desacople de 10uF MLCC  |
+| LXx            | Salida de conmutación del MOSFET interno del canal x, se puede conectar a un circuito de filtro paso bajo para obtener una tensión más estable |
+| FBx            | Pin de retroalimentación del canal x, conectado a la salida mediante un divisor de voltaje  |
+| ENx            | Pin de habilitación, no debe dejarse flotante        |
+| GNDx           | Conexión a tierra del canal x                        |
+| AGND           | Tierra analógica                                      |
+| Pad Inferior   | Para disipación de calor, debe estar conectado a tierra |
+| NC             | No conectado                                         |
 
-## Descripción de características
+## Descripción de las Características
 
 ### Modo PFM/PWM
 
-Cada canal Buck puede funcionar en modo PFM/PWM. Si la corriente de salida es menor que 150 mA (valor típico), el regulador entrará automáticamente en modo PFM. La tensión de salida y la ondulación de salida en modo PFM son mayores que en modo PWM. Sin embargo, en cargas ligeras, PFM es más eficiente que PWM.
+Cada una de las salidas Buck puede operar en modo PFM/PWM. Cuando la corriente de salida es menor a 150mA (valor típico), el regulador entrará automáticamente en el modo PFM. En el modo PFM, el voltaje de salida y la ondulación de salida son mayores en comparación con el modo PWM. Sin embargo, en condiciones de carga ligera, el modo PFM ofrece una eficiencia superior al modo PWM.
 
-### Interruptor de habilitación
+### Habilitación del interruptor
 
-EA3059 es un IC de gestión de energía diseñado específicamente para aplicaciones OTT, que incluye cuatro canales Buck síncronos de 2A, que se pueden controlar mediante un interruptor de habilitación individual en el pin EN.
+El EA3059 es un circuito integrado de gestión de energía diseñado específicamente para aplicaciones OTT, que incluye cuatro reguladores Buck síncronos de 2A cada uno. Cada uno de ellos puede ser habilitado o deshabilitado de manera independiente a través de pines EN individuales.
 
-Si se necesita establecer el tiempo de encendido de cada canal Buck, se puede programar mediante el siguiente circuito:
+Si es necesario establecer el tiempo de encendido de cada regulador Buck, esto se puede lograr mediante la programación de un circuito como se muestra a continuación:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420172125.png)
+![Circuito de Programación](https://img.wiki-power.com/d/wiki-media/img/20220420172125.png)
 
-### Arquitectura de desplazamiento de fase de 180°
+### Arquitectura con Desfase de 180°
 
-Para reducir la corriente de ondulación de entrada, EA3059 utiliza una arquitectura de desplazamiento de fase de 180°. La fase de Buck1 y Buck3 es la misma, y la fase de Buck2 y Buck4 difiere en 180°. Esto puede reducir la corriente de ondulación y, por lo tanto, reducir la EMI.
+Para reducir la ondulación de corriente de entrada, el EA3059 utiliza una arquitectura con desfase de 180°. Los reguladores Buck 1 y Buck 3 tienen fases idénticas, mientras que Buck 2 y Buck 4 tienen una diferencia de fase de 180°. Esto ayuda a reducir la ondulación de corriente y, en consecuencia, disminuye la interferencia electromagnética (EMI).
 
-### Protección contra sobrecorriente
+### Protección contra Corriente Excesiva
 
-Cada regulador interno de EA3059 tiene su propio circuito de limitación de corriente por ciclo. Cuando la corriente de pico del inductor supera el umbral de limitación de corriente, la tensión de salida comienza a disminuir hasta que la tensión en el pin FB es inferior al umbral, que suele ser un 30% inferior al valor de referencia. Una vez que se activa el umbral, la frecuencia de conmutación se reduce a 350 kHz (valor típico).
+Los cuatro reguladores internos del EA3059 están equipados con sus propios circuitos de límite de corriente por ciclo. Cuando la corriente pico del inductor supera el umbral de límite de corriente, el voltaje de salida comienza a disminuir hasta que la tensión en el pin FB cae por debajo del umbral, que generalmente es un 30% menor que el valor de referencia. Una vez que se activa el umbral, la frecuencia de conmutación se reduce a 350 kHz (valor típico).
 
-### Apagado térmico
+### Protección Térmica
 
-Si la temperatura del chip es superior al umbral de apagado térmico, EA3059 se apagará automáticamente. Para evitar la inestabilidad del trabajo, la histéresis del apagado térmico es de aproximadamente 30°C.
+Si la temperatura del chip supera el umbral de apagado térmico, el EA3059 se apagará automáticamente. Para evitar la inestabilidad en el funcionamiento, la histéresis del apagado térmico es de aproximadamente 30°C.
 
-### Ajuste de tensión de salida
+### Ajuste de Voltaje de Salida
 
-La tensión de salida de cada regulador se puede ajustar mediante un divisor de resistencia (R1, R2). La tensión de salida se calcula mediante la siguiente fórmula:
+El voltaje de salida de cada regulador se puede ajustar mediante una red de resistencias (R1 y R2). El voltaje de salida se calcula mediante la siguiente fórmula:
 
 $$
-V_{OUTx}=0.6*\frac{R_1}{R_2}+0.6V
+V_{OUTx} = 0.6 * \frac{R_1}{R_2} + 0.6V
 $$
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420172602.png)
+![Configuración de Resistencias](https://img.wiki-power.com/d/wiki-media/img/20220420172602.png)
 
-Si se necesitan valores de voltaje de salida comunes, se puede consultar la siguiente tabla para configurar la resistencia de división (se debe utilizar una precisión del 1%):
+Si es necesario obtener voltajes de salida comunes, puede consultar la siguiente tabla para configurar las resistencias divisoras (asegurándose de utilizar resistencias del 1% de precisión):
 
-| Tensión de salida | R1    | R2    |
+| Voltaje de Salida | R1    | R2    |
 | ----------------- | ----- | ----- |
 | 3.3V              | 510kΩ | 110kΩ |
 | 1.8V              | 200kΩ | 100kΩ |
 | 1.5V              | 150kΩ | 100kΩ |
 | 1.1V              | 68kΩ  | 82kΩ  |
 
-### Selección de capacitores de entrada/salida
+### Selección de Capacitores de Entrada/Salida
 
-El capacitor de entrada se utiliza para suprimir la amplitud del ruido de la tensión de entrada y proporcionar una entrada de CC estable y limpia al dispositivo, mientras que el capacitor de salida puede suprimir la ondulación de la tensión de salida. Se pueden utilizar capacitores MLCC tanto para la entrada como para la salida (baja ESR).
+Los capacitores de entrada ayudan a suprimir la amplitud del ruido en el voltaje de entrada, proporcionando una entrada continua y limpia. Los capacitores de salida ayudan a reducir la ondulación en el voltaje de salida. Tanto los capacitores de entrada como los de salida pueden ser de tipo MLCC (condensadores multicapa cerámicos con baja resistencia en serie, ESR).
 
-Los modelos de capacitores recomendados para entrada/salida son los siguientes:
+Los modelos recomendados para los capacitores de entrada/salida son los siguientes:
 
-| NPM            | Valor | Voltaje | Paquete |
-| -------------- | ----- | ------- | ------- |
-| C2012X5R1A106M | 10uF  | 10V     | 0805    |
-| C3216X5R1A106M | 10uF  | 10V     | 1206    |
-| C2012X5R1A226M | 22uF  | 10V     | 0805    |
-| C3216X5R1A226M | 22uF  | 10V     | 1206    |
+| Modelo            | Valor | Tensión | Encapsulado |
+| ----------------- | ---- | ---- | ---- |
+| C2012X5R1A106M | 10uF | 10V  | 0805 |
+| C3216X5R1A106M | 10uF | 10V  | 1206 |
+| C2012X5R1A226M | 22uF | 10V  | 0805 |
+| C3216X5R1A226M | 22uF | 10V  | 1206 |
 
-### Selección de inductores de salida
+### Selección de Inductores de Salida
 
-La selección del inductor de salida depende principalmente de la cantidad de corriente de ondulación $\Delta I_L$ que pasa a través del inductor. Cuanto mayor sea $\Delta I_L$, mayor será la ondulación de la tensión de salida y las pérdidas. Aunque los inductores pequeños pueden ahorrar costos y espacio, los valores de inductancia más grandes pueden obtener una $\Delta I_L$ más pequeña, lo que resulta en una ondulación de tensión de salida y pérdidas más pequeñas. La fórmula de cálculo del valor del inductor es la siguiente:
+La elección del inductor de salida depende principalmente de la cantidad de corriente de ondulación $\Delta I_L$ que pasa a través del inductor. Cuanto mayor sea $\Delta I_L$, mayor será la ondulación y la pérdida de voltaje de salida. Aunque los inductores más pequeños pueden ahorrar costos y espacio, los valores de inductancia más grandes pueden reducir $\Delta I_L$, lo que resulta en una menor ondulación y pérdida de voltaje de salida. La fórmula para calcular el valor del inductor es la siguiente:
 
 $$
 L=\frac{V_{PWR}-V_{OUT}}{\Delta I_L*F_{SW}}*\frac{V_{OUT}}{V_{PWR}}
 $$
 
-Para la mayoría de las aplicaciones, se pueden utilizar inductores de 1.0 a 2.2 uH.
+Para la mayoría de las aplicaciones, el EA3059 puede utilizar inductores de 1.0 a 2.2uH.
 
-### Consumo de energía
+### Consumo de Energía
 
-El consumo total de energía de EA3059 no debe superar los 10 W, y la fórmula de cálculo es la siguiente:
+La potencia total del EA3059 no debe exceder los 10W y se puede calcular mediante la siguiente fórmula:
 
 $$
-P_{D(total)}=\Sigma (V_{OUTx}*I_{OUTx})
+P_{D(total)} = \sum (V_{OUTx}*I_{OUTx})
 $$
 
-## Referencia de diseño de Layout
+## Consideraciones de Diseño
 
-El diseño de Layout de PMIC debe ser cuidadoso. Se pueden seguir las siguientes recomendaciones para obtener el mejor rendimiento:
+El diseño del PMIC debe realizarse con cuidado para garantizar un rendimiento óptimo. Puedes seguir las siguientes recomendaciones:
 
-- Se recomienda utilizar una disposición de PCB de 4 capas, colocando el plano LX y el plano de salida en la capa superior, y el plano VIN en la capa interna.
-- Los pines de tierra de los capacitores de montaje superficial de entrada/salida en la capa superior deben estar conectados a través de orificios pasantes a la tierra de la capa interna y la capa inferior.
-- AGND debe estar conectado directamente a la capa interna de tierra a través de orificios pasantes.
-- Se deben ensanchar las rutas de corriente de alta corriente tanto como sea posible.
-- Coloque los capacitores de entrada lo más cerca posible de los pines VINx para reducir la interferencia de ruido.
-- Aleje la ruta de retroalimentación (desde VOUTx hasta FBx) de los nodos de ruido (como LXx). LXx es un nodo de ruido de alta corriente. Utilice rutas cortas y anchas para el diseño.
-- Los pads de soldadura en la parte inferior del chip deben tener varios orificios que se conecten a la capa interna y la capa inferior de tierra para la disipación de calor.
-- Coloque los capacitores de entrada lo más cerca posible de los pines VINx para reducir la interferencia de ruido.
+```markdown
+- ...
+- ...
+```
 
-Referencia de diseño:
+[//]: # (Please note that this translation is provided in markdown format as per your request.)
 
-Capa superior:
+- Se recomienda utilizar una disposición de PCB de 4 capas, colocando el plano LX y el plano de salida en la capa superior, y el plano de VIN en una capa interna.
+- Los pines de tierra de los condensadores de montaje superficial de entrada/salida en la capa superior deben estar conectados a través de agujeros pasantes a las capas internas y la capa inferior.
+- AGND debe estar directamente conectado a la capa interna a través de agujeros pasantes.
+- Se debe ensanchar al máximo las rutas de los caminos de alta corriente.
+- Coloque los condensadores de entrada lo más cerca posible de los pines VINx para reducir la interferencia de ruido.
+- Mantenga la ruta de retroalimentación (desde VOUTx hasta FBx) alejada de los nodos de ruido (como LXx). LXx es un nodo de alto ruido de corriente. Utilice rutas cortas y anchas en la disposición.
+- Los pads de soldadura en la parte inferior del chip deben tener múltiples agujeros que se conecten a las capas internas y la capa inferior para disipación de calor.
+- Coloque los condensadores de entrada lo más cerca posible de los pines VINx para reducir la interferencia de ruido.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420175756.png)
+El diseño de la disposición se muestra a continuación:
 
-Capa de alimentación intermedia:
+Capa Superior:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420175833.png)
+![Capa Superior](https://img.wiki-power.com/d/wiki-media/img/20220420175756.png)
 
-Capa de tierra intermedia:
+Capa de Alimentación Intermedia:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420175851.png)
+![Capa de Alimentación Intermedia](https://img.wiki-power.com/d/wiki-media/img/20220420175833.png)
 
-Capa inferior:
+Capa de Tierra Intermedia:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420175906.png)
+![Capa de Tierra Intermedia](https://img.wiki-power.com/d/wiki-media/img/20220420175851.png)
 
-## Referencias y agradecimientos
+Capa Inferior:
+
+![Capa Inferior](https://img.wiki-power.com/d/wiki-media/img/20220420175906.png)
+
+## Referencias y Agradecimientos
 
 - [EA3059](http://www.everanalog.com/ProductCN/ProductEA3059DetailInfoCN.aspx)
+
+> Dirección original del artículo: <https://wiki-power.com/>
+> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

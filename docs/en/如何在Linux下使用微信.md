@@ -2,15 +2,15 @@
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20200311141406.png)
 
-DoChat (Boxed WeChat) is a containerized WeChat application designed for Linux desktops.
+DoChat is a containerized WeChat application designed for Linux desktop.
 
 Main features:
 
-- Easy installation with just one shell command to start
-- Supports Chinese character input
+- Easy installation with a single shell command
+- Support for Chinese character input
 - Ctrl+V to paste images into WeChat
 
-Requirements: Ubuntu Linux desktop and Docker installed.
+Requirements: Ubuntu Linux desktop with Docker installed
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20200311141459.png)
 
@@ -18,7 +18,7 @@ Requirements: Ubuntu Linux desktop and Docker installed.
 
 - [huan/docker-wechat](https://github.com/huan/docker-wechat)
 
-> Original: <https://wiki-power.com/>  
+> Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

@@ -2,31 +2,31 @@
 
 ## Basic Operations
 
-### Add User
+### Adding a User
 
 ```shell
 useradd -m username
 ```
 
-### Set Password
+### Setting Password
 
 ```shell
 passwd username
 ```
 
-### Delete User
+### Deleting a User
 
 ```shell
 userdel -r username
 ```
 
-### Delete User Directory
+### Deleting User's Directory
 
 ```shell
 rm -rf username
 ```
 
-### Switch Current User
+### Switching to Another User
 
 ```shell
 su username
@@ -34,9 +34,9 @@ su username
 
 ## References and Acknowledgments
 
-- [Linux Create User and Set Password](https://blog.csdn.net/li_101357/article/details/69367457)
+- [Creating Users and Setting Passwords in Linux](https://blog.csdn.net/li_101357/article/details/69367457)
 
-> Original: <https://wiki-power.com/>  
-> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
+[to_be_replaced[1]]
+[to_be_replaced[2]]
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

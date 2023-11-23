@@ -1,12 +1,12 @@
-# Homelab - Herramienta de captura de favicon del sitio web iconserver
+# Homelab - Herramienta de extracción de favicon de sitios web iconserver
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20230304195157.png)
 
-**iconserver** es una herramienta de captura de iconos favicon de sitios web. Admite la captura de `favicon.ico` y `apple-touch-icon.png`, tiene una API de URL simple y una página de operación web. Si la captura falla, se generará un favicon que comienza con la primera letra.
+**iconserver** es una herramienta que permite la extracción de iconos favicon de sitios web. Admite la extracción de `favicon.ico` y `apple-touch-icon.png`, y cuenta con una sencilla API de URL y una página de operación web. En caso de que la extracción falle, generará un favicon que comienza con la primera letra.
 
 ## Implementación (docker-compose)
 
-Primero, cree el archivo `compose.yaml` y pegue el siguiente contenido:
+Primero, cree un archivo `compose.yaml` y pegue el siguiente contenido:
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -19,26 +19,26 @@ services:
     restart: always
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `iconserver`).
+(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar directamente sus parámetros en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `iconserver`).
 
 ```dotenv title=".env"
 STACK_NAME=iconserver
 
 # iconserver
 APP_VERSION=latest
-APP_PORT=xxxx # Personalice el puerto de acceso, simplemente elija uno que no esté ocupado
+APP_PORT=xxxx # Personalice el puerto de acceso, elija uno que no esté en uso
 ```
 
-Por último, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores de la implementación.
+Finalmente, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores orquestados.
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
 - [Documentación](https://github.com/mat/besticon#docker)
-- [Repositorio de GitHub](https://github.com/mat/besticon)
+- [Repositorio en GitHub](https://github.com/mat/besticon)
 - [Docker Hub](https://hub.docker.com/r/matthiasluedtke/iconserver)
 - [Sitio de demostración](https://besticon-demo.herokuapp.com/)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+[por_reemplazar[1]]
+[por_reemplazar[2]]
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

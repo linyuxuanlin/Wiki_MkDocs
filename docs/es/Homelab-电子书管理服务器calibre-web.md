@@ -1,12 +1,12 @@
-# Homelab - Servidor de gestión de libros electrónicos calibre-web
+# Homelab - Servidor de gestión de libros electrónicos con calibre-web
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210429125418.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210429125418.png)
 
-**calibre-web** es una solución integral de libros electrónicos basada en Calibre, que permite leer libros electrónicos en línea, integra el servicio calibre-server y también incluye la conversión de formatos de libros electrónicos.
+**calibre-web** es una solución integral para libros electrónicos que se basa en Calibre. Permite la lectura de libros electrónicos en línea y ofrece la integración de servicios de calibre-server, así como la conversión de formatos de libros electrónicos.
 
 ## Implementación (Docker Compose)
 
-Primero, cree el archivo `compose.yaml` y pegue el siguiente contenido:
+Para comenzar, crea un archivo `compose.yaml` y pega el siguiente contenido:
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -24,22 +24,22 @@ services:
     restart: unless-stopped
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `audiobookshelf`).
+(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar tus variables de entorno. Si no deseas usar variables de entorno, también puedes personalizar tus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `audiobookshelf`).
 
 ```dotenv title=".env"
 STACK_NAME=calibre-web
-STACK_DIR=xxx # Ruta personalizada de almacenamiento del proyecto, por ejemplo, ./calibre-web
-DATA_DIR=xxx # Ruta personalizada de almacenamiento de libros, por ejemplo, ./book
+STACK_DIR=xxx # Ruta de almacenamiento personalizada para el proyecto, por ejemplo, ./calibre-web
+DATA_DIR=xxx # Ruta de almacenamiento personalizada para la biblioteca, por ejemplo, ./book
 
 # calibre-web
 APP_VERSION=latest
-APP_PORT_WEB=xxxx # Puerto de acceso personalizado de la interfaz de usuario web, simplemente elija uno que no esté ocupado
-APP_PORT_SERVER=xxxx # Puerto de acceso personalizado de calibre-server, simplemente elija uno que no esté ocupado
+APP_PORT_WEB=xxxx # Puerto personalizado para la interfaz web, elige uno que no esté en uso
+APP_PORT_SERVER=xxxx # Puerto personalizado para calibre-server, elige uno que no esté en uso
 ```
 
-Si tiene un NAS, también puede montar el espacio de almacenamiento en el NAS a través del protocolo NFS, almacenar libros en el NAS para ahorrar espacio en el servidor. Para obtener más detalles, consulte **Montar discos duros NAS Synology en Linux (NFS)**.
+Si tienes un NAS, también puedes montar el espacio de almacenamiento en el NAS utilizando el protocolo NFS para ahorrar espacio en el servidor. Para obtener más detalles, consulta [**Montar discos duros de NAS Synology en Linux para ampliar el espacio (NFS)**](https://wiki-power.com/Linux%E4%B8%8B%E6%8C%82%E8%BD%BD%E7%BE%A4%E6%99%96NAS%E7%A1%AC%E7%9B%98%E6%8B%93%E5%B1%95%E7%A9%BA%E9%97%B4%EF%BC%88NFS%EF%BC%89/).
 
-Finalmente, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores.
+Finalmente, ejecuta el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores orquestados.
 
 ## Instrucciones de configuración
 
@@ -47,32 +47,32 @@ La cuenta predeterminada es `admin` y la contraseña es `admin123`.
 
 ### Función de carga de libros
 
-El sistema no tiene la función de carga de libros habilitada de forma predeterminada. Para habilitar esta función, haga clic en "Permisos de administración" - "Editar configuración básica" - "Habilitar carga".
+El sistema no tiene habilitada la función de carga de libros de forma predeterminada. Para habilitarla, sigue estos pasos: haz clic en la esquina superior derecha en `Permisos de administración` - `Editar configuración básica` - `Habilitar carga`, de esta manera podrás usar la función de carga de libros.
 
 ### Uso en dispositivos móviles
 
-En Android, puede usar Librera para conectarse a calibre-web a través del protocolo OPDS. La URL de la biblioteca de libros es la URL original seguida de `/opds`, por ejemplo, `calibre.xxx.com/opds`.
+En dispositivos Android, puedes utilizar Librera para conectarte a calibre-web a través del protocolo OPDS. La URL de la biblioteca que debes agregar es la URL original seguida de `/opds`, por ejemplo, `calibre.xxx.com/opds`.
 
-### Olvidó su contraseña
+### Olvido de la contraseña
 
-Si olvida su contraseña, puede descargar la base de datos `app.db` de `calibre-web` y usar SQLite para ver el software (o herramientas en línea como **Visor | Editor de SQLite**), y luego ejecutar las siguientes instrucciones:
+Si olvidas la contraseña, puedes descargar la base de datos `app.db` de `calibre-web` y usar SQLite para verla (o utilizar herramientas en línea como [**Visor | Editor SQLite**](https://www.lzltool.com/sqlite-viewer)). Luego, ejecuta las siguientes consultas:
 
 ```sql
-SELECT * FROM 'user' LIMIT 0,30 -- También se puede cambiar manualmente a la tabla llamada user
+SELECT * FROM 'user' LIMIT 0,30 -- También puedes cambiar manualmente a la tabla llamada 'user'
 ```
 
 ```sql
-UPDATE user SET password='pbkdf2:sha256:150000$ODedbYPS$4d1bd12adb1eb63f78e49873cbfc731e35af178cb9eb6b8b62c09dcf8db76670' WHERE name='xxx'; -- Reemplaza xxx con tu nombre de usuario actual
-```
+-- Actualiza la contraseña del usuario a 'pbkdf2:sha256:150000$ODedbYPS$4d1bd12adb1eb63f78e49873cbfc731e35af178cb9eb6b8b62c09dcf8db76670' donde el nombre sea 'xxx'; -- Reemplaza 'xxx' con tu nombre de usuario actual
 
-Reemplaza el archivo `app.db` modificado por el original y luego inicia sesión con la nueva contraseña `hello`.
+Reemplaza el archivo `app.db` con el modificado y luego podrás iniciar sesión con la nueva contraseña 'hello'.
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
 - [Repositorio de GitHub](https://github.com/janeczku/calibre-web)
 - [Docker Hub](https://registry.hub.docker.com/r/johngong/calibre-web)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
+> Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+```
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

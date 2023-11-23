@@ -2,15 +2,15 @@
 
 ## Keyboard Shortcuts
 
-- Next slide: **Space**
-- Select slide direction: **Arrow keys**
-- Overview mode: **Esc**
-- Speaker view: **S**
-- Pause presentation / Black screen: **V/B/.**
+- Next Slide: **Space**
+- Navigate Slide: **Arrow Keys**
+- Overview Mode: **Esc**
+- Speaker Notes: **S**
+- Pause Presentation / Black Screen: **V/B/.**
 
 ## PDF Export
 
-Add `?print-pdf` to the end of the URL, for example `http://localhost:8000/?print-pdf`
+Append `?print-pdf` to the URL, for example `http://localhost:8000/?print-pdf`
 
 ## Reference Syntax
 
@@ -49,7 +49,7 @@ align="left"
 </section>
 ```
 
-## References and Acknowledgments
+## References and Acknowledgements
 
 - [reveal.js](https://revealjs.com/)
 

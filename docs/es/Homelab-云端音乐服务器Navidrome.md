@@ -2,7 +2,7 @@
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20230531212854.png)
 
-**Navidrome** es un servidor de música y streaming basado en web de código abierto, donde puedes almacenar tu propia música y escucharla en múltiples clientes.
+**Navidrome** es un servidor de música y streaming de código abierto basado en web, donde puedes almacenar tu propia música y escucharla en múltiples clientes.
 
 ## Despliegue (Docker Compose)
 
@@ -33,21 +33,21 @@ services:
 
 ```dotenv title=".env"
 STACK_NAME=navidrome
-STACK_DIR=xxx # Personaliza la ruta de almacenamiento del proyecto, por ejemplo ./navidrome
-DATA_DIR=xxx # Personaliza la ruta de almacenamiento de la música, por ejemplo ./music
+STACK_DIR=xxx # Ruta personalizada para almacenar el proyecto, por ejemplo, ./navidrome
+DATA_DIR=xxx # Ruta personalizada para almacenar la música, por ejemplo, ./music
 
 # navidrome
 APP_VERSION=latest
-APP_PORT=xxxx # Personaliza el puerto de acceso, elige uno que no esté en uso
+APP_PORT=xxxx # Puerto de acceso personalizado, elige uno que no esté en uso
 ```
 
-Si tienes un NAS, también puedes montar el espacio de almacenamiento del NAS a través del protocolo NFS, almacenar la música en el NAS para ahorrar espacio en el servidor. Para más detalles, consulta [**Montar un disco duro de expansión de espacio NAS Synology en Linux (NFS)**](https://wiki-power.com/es/Linux%E4%B8%8B%E6%8C%82%E8%BD%BD%E7%BE%A4%E6%99%96NAS%E7%A1%AC%E7%9B%98%E6%8B%93%E5%B1%95%E7%A9%BA%E9%97%B4%EF%BC%88NFS%EF%BC%89/).
+Si tienes un NAS, también puedes montar el espacio de almacenamiento del NAS a través del protocolo NFS y almacenar la música en el NAS para ahorrar espacio en el servidor. Para más detalles, consulta [**Montar un disco duro de NAS Synology en Linux (NFS)**](https://wiki-power.com/Linux%E4%B8%8B%E6%8C%82%E8%BD%BD%E7%BE%A4%E6%99%96NAS%E7%A1%AC%E7%9B%98%E6%8B%93%E5%B1%95%E7%A9%BA%E9%97%B4%EF%BC%88NFS%EF%BC%89/).
 
-Por último, ejecuta el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores.
+Finalmente, ejecuta el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores orquestados.
 
 ## Instrucciones de configuración
 
-Hay muchas opciones de aplicación móvil, en Android, la que mejor experiencia me ha dado es substreamer. Para más aplicaciones, consulta la lista oficial en [**Apps**](https://www.navidrome.org/docs/overview/#apps).
+Hay muchas opciones de aplicaciones móviles, en Android, la que mejor experiencia he tenido es substreamer. Para más aplicaciones, consulta la lista oficial de [**Apps**](https://www.navidrome.org/docs/overview/#apps).
 
 ## Referencias y agradecimientos
 
@@ -55,9 +55,9 @@ Hay muchas opciones de aplicación móvil, en Android, la que mejor experiencia 
 - [Documentación](https://www.navidrome.org/docs/installation/docker/)
 - [Repositorio de GitHub](https://github.com/navidrome/navidrome/)
 - [Docker Hub](https://hub.docker.com/r/deluan/navidrome)
-- [Sitio de demostración](https://demo.navidrome.org/app/) (nombre de usuario y contraseña son demo)
+- [Sitio de demostración](https://demo.navidrome.org/app/) (usuario y contraseña: demo)
 
-a_ser_reemplazado[1]
-a_ser_reemplazado[2]
+> Dirección original del artículo: <https://wiki-power.com/>  
+> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

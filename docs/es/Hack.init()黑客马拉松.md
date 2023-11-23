@@ -1,207 +1,223 @@
-# Hack.init() Hackathon
+```markdown
+# Hack.init( ) 黑客马拉松
 
-—— Wight · Sistema de iluminación sin cables basado en plataforma en la nube.
+—— Wight · Un sistema de iluminación descentralizado basado en la plataforma en la nube.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/wight.jpg)
 
 Repositorio del proyecto: [**linyuxuanlin / Wight**](https://github.com/linyuxuanlin/Wight)
 
-## Antecedentes
+## Contexto
 
-El proyecto se realizó en el hack.init() Hackathon de 2017. Después de más de 20 horas de codificación, modelado, depuración de todo tipo de errores, esperando la impresión, presentación y discurso, finalmente se logró algo parecido a un producto.
+Este proyecto se creó durante el hack.init() Hackathon de 2017. Se pasaron más de 20 horas programando, modelando, depurando una variedad de problemas, esperando impresiones, y finalmente, presentando y dando discursos para obtener algo que se asemejara a un producto terminado.
 
-Este proyecto se utiliza principalmente para el sistema de iluminación de farolas en áreas remotas y rurales. El modelo es un poco abstracto, en realidad representa una farola.
+El proyecto se centra principalmente en un sistema de iluminación para farolas en áreas rurales y remotas. Aunque el concepto suena abstracto, en realidad, funciona como una farola convencional.
 
-## Puntos innovadores del proyecto
+## Puntos de Innovación del Proyecto
 
-- **Alimentación solar.** Autosuficiente (según la información detallada, la energía solar es suficiente para encender LED)
-- **Sin cables.** Proporciona comodidad para áreas remotas de montaña donde no es conveniente instalar cables.
-- **Algoritmo inteligente.** Detecta la noche y enciende automáticamente las luces; detecta la presencia de personas o vehículos y aumenta el brillo de los LED.
-- **Control unificado en la plataforma en la nube.** Utiliza un controlador principal GSM, que permite la depuración remota en lotes.
-- **Escalabilidad.** Proporciona diversas funciones personalizadas para usuarios especiales con necesidades de iluminación personalizadas.
+- **Alimentación Solar.** Capaz de autoabastecerse (según la información detallada, la energía solar es suficiente para encender los LED).
+- **Descentralización.** Proporciona una solución conveniente para áreas remotas donde no es práctico tender cables.
+- **Algoritmos Inteligentes.** Detecta la oscuridad y enciende automáticamente las luces; aumenta la intensidad de los LED al detectar la presencia de personas o vehículos.
+- **Control Unificado en la Nube.** Utiliza un controlador principal GSM, lo que permite el ajuste remoto a gran escala.
+- **Escalabilidad.** Ofrece diversas funciones personalizadas para usuarios con necesidades específicas de iluminación.
 
-## Principios y realización
+## Principios e Implementación
 
 **Código:**
 
 ```cpp
-#define BUTTONS_address   "channel/widget4_0/cmd/control" //comando de encendido / apagado
-#define LIGHT_STATUS_address  "channel/widget4_0/data/light"//estado de encendido / apagado
+#define BUTTONS_address   "channel/widget4_0/cmd/control" // Comandos de encendido y apagado
+#define LIGHT_STATUS_address  "channel/widget4_0/data/light" // Estado de encendido y apagado
 #define ITENSITY_DATA_address "channel/widget4_0/data/lightsensor"
-#define LEDPIN1    D1    //definir el pin de control de la bombilla
+#define LEDPIN1    D1    // Definición de los pines de control de las bombillas
 #define LEDPIN2    D2
 #define LEDPIN3    D3
 #define LEDPIN4    D5
 #define CHECKIN1   A0
 #define CHECKIN2   D4
 ```
+```
 
+```cpp
 int autostate = 2;
 int light_state = 2;
-void buttons_function(uint8_t *payload, uint32_t len)//Botones de automático y riego
+
+void buttons_function(uint8_t *payload, uint32_t len) // Función de botones (Auto y Riego)
 {
-uint8_t SwitchKey;
-uint8_t SwitchKey2;
-aJsonClass aJson;
-aJsonObject *root = aJson.parse((char _)payload);
-if(root == NULL)
-{
-aJson.deleteItem(root);
-return;
+    uint8_t SwitchKey;
+    uint8_t SwitchKey2;
+    aJsonClass aJson;
+    aJsonObject *root = aJson.parse((char *)payload);
+    
+    if (root == NULL)
+    {
+        aJson.deleteItem(root);
+        return;
+    }
+
+    aJsonObject *_switch = aJson.getObjectItem(root, "mode");
+    
+    if (_switch != NULL)
+    {
+        SwitchKey = atoi(_switch->valuestring);
+        
+        if (SwitchKey)
+        {
+            SerialUSB.println("Encendido automático");
+            autostate = 1;
+            IntoRobot.publish(LIGHT_STATUS_address, "1");
+        }
+        else
+        {
+            SerialUSB.println("Apagado automático");
+            autostate = 0;
+            IntoRobot.publish(LIGHT_STATUS_address, "0");
+        }
+    }
+
+    aJsonObject *_switch2 = aJson.getObjectItem(root, "manual");
+
+    if (_switch2 != NULL)
+    {
+        SwitchKey2 = atoi(_switch2->valuestring);
+
+        if (SwitchKey2)
+        {
+            SerialUSB.println("Encendido manual");
+            light_state = 1;
+            IntoRobot.publish(LIGHT_STATUS_address, "1");
+        }
+        else
+        {
+            SerialUSB.println("Apagado manual");
+            light_state = 0;
+            IntoRobot.publish(LIGHT_STATUS_address, "0");
+        }
+    }
+    else
+    {
+    }
+
+    aJson.deleteItem(root);
 }
-aJsonObject _\_switch = aJson.getObjectItem(root, "modo");
-if(\_switch != NULL)
-{
-SwitchKey = atoi(\_switch->valuestring);
-if(SwitchKey)
-{
-SerialUSB.println("automático encendido");
-autostate=1;
-IntoRobot.publish(LIGHT_STATUS_address,"1");
-}
-else
-{
-SerialUSB.println("automático apagado");
-autostate=0;
-IntoRobot.publish(LIGHT_STATUS_address,"0");
-}
-}
-aJsonObject \*\_switch2 = aJson.getObjectItem(root, "manual");
-if(\_switch2 != NULL)
-{
-SwitchKey2 = atoi(\_switch2->valuestring);
-if(SwitchKey2)
-{
-SerialUSB.println("manual encendido");
-light_state=1;
-IntoRobot.publish(LIGHT_STATUS_address,"1");
-}
-else
-{
-SerialUSB.println("manual apagado");
-light_state=0;
-IntoRobot.publish(LIGHT_STATUS_address,"0");
-}
-}
-else
-{
-}
-aJson.deleteItem(root);
-}
+
 void lightup()
 {
-digitalWrite(LEDPIN1, HIGH); // Encender la bombilla
-digitalWrite(LEDPIN2, HIGH); // Encender la bombilla
-digitalWrite(LEDPIN3, HIGH); // Encender la bombilla
-digitalWrite(LEDPIN4, HIGH); // Encender la bombilla
-
+    digitalWrite(LEDPIN1, HIGH);    // Encender bombilla
+    digitalWrite(LEDPIN2, HIGH);    // Encender bombilla
+    digitalWrite(LEDPIN3, HIGH);    // Encender bombilla
+    digitalWrite(LEDPIN4, HIGH);    // Encender bombilla
 }
+
 void light_half_up()
 {
-analogWrite(LEDPIN1, 80); // Encender la bombilla
-analogWrite(LEDPIN2, 80); // Encender la bombilla
-analogWrite(LEDPIN3, 80); // Encender la bombilla
-analogWrite(LEDPIN4, 80); // Encender la bombilla
-
-void lightdown()
-{
-digitalWrite(LEDPIN1, LOW);
-digitalWrite(LEDPIN2, LOW);
-digitalWrite(LEDPIN3, LOW);
-digitalWrite(LEDPIN4, LOW);
-
+    analogWrite(LEDPIN1, 80);    // Encender bombilla (mitad de intensidad)
+    analogWrite(LEDPIN2, 80);    // Encender bombilla (mitad de intensidad)
+    analogWrite(LEDPIN3, 80);    // Encender bombilla (mitad de intensidad)
+    analogWrite(LEDPIN4, 80);    // Encender bombilla (mitad de intensidad)
 }
-int getlight()
-{
-int k = analogRead(CHECKIN1);
-
-    SerialUSB.println(k);
-    return k;
-
-}
-int get_IR_data()
-{
-int b = digitalRead(CHECKIN2);
-SerialUSB.println(b);
-return b;
-}
-void automode()
-{
-if(getlight()>=400)
-{
-IntoRobot.publish(LIGHT_STATUS_address,"1");
-if (get_IR_data()==0)
-lightup();
-else
-light_half_up();
-}
-else
-{
-IntoRobot.publish(LIGHT_STATUS_address,"0");
-lightdown();
-}
-}
-
-void HUMIDITY_print_function(uint8_t \*payload, uint32_t len)
-{
-
-}
-
-// IntoRobot.publish(LIGHT_STATUS_address,"1");
-// IntoRobot.publish(LIGHT_STATUS_address,"0");
-void setup()
-{
-pinMode(D4,INPUT);
-SerialUSB.begin(115200);
-SerialUSB.println("hola mundo");
-pinMode(LEDPIN1, OUTPUT); //inicialización
-pinMode(LEDPIN2, OUTPUT); //inicialización
-pinMode(LEDPIN3, OUTPUT); //inicialización
-pinMode(LEDPIN4, OUTPUT); //inicialización
-//el dispositivo recibe comandos de encendido y apagado de la luz de la plataforma en la nube
-IntoRobot.subscribe(BUTTONS_address,NULL,buttons_function);
-IntoRobot.subscribe(ITENSITY_DATA_address,NULL,HUMIDITY_print_function);
-}
-void loop()
-{
-int a =map(getlight() ,0,1024,100,0);
-IntoRobot.publish(LIGHT,a);
-SerialUSB.println(getlight());
-if(autostate==0)
-{
-if(light_state ==1)
-lightup();
-else
-lightdown();
-}
-else if (autostate==1)
-{
-SerialUSB.println("estado=1");
-automode();
-}
-delay(100);
-}
-
 ```
 
-Debido al tiempo limitado del concurso, solo pudimos dibujar un modelo aproximado y ensamblarlo después de imprimirlo.
+```markdown
+# Código Traducido
 
-## Preguntas frecuentes
+```cpp
+}
+void apagarLuces()
+{
+    digitalWrite(LEDPIN1, LOW);
+    digitalWrite(LEDPIN2, LOW);
+    digitalWrite(LEDPIN3, LOW);
+    digitalWrite(LEDPIN4, LOW);
+}
 
-P: ¿Habrá seguimiento del proyecto en el futuro?
-R: Actualmente no tenemos planes de seguimiento. La idea es interesante, pero aún queda por ver si tiene valor comercial.
+int obtenerNivelLuz()
+{
+    int lecturaLuz = analogRead(CHECKIN1);
 
-## Conclusión
+    SerialUSB.println(lecturaLuz);
+    return lecturaLuz;
+}
 
-No ganamos el concurso, pero nos permitió mejorar nuestras habilidades de programación y presentación, y experimentar la sensación de trabajar horas extras para lanzar un proyecto. También conocimos a muchas personas y recibimos muchos recuerdos.
+int obtenerDatosIR()
+{
+    int estadoIR = digitalRead(CHECKIN2);
+    SerialUSB.println(estadoIR);
+    return estadoIR;
+}
 
-## Referencias y agradecimientos
+void modoAutomatico()
+{
+    if (obtenerNivelLuz() >= 400)
+    {
+        IntoRobot.publish(LIGHT_STATUS_address, "1");
+        if (obtenerDatosIR() == 0)
+            encenderLuces();
+        else
+            encenderMitadLuces();
+    }
+    else
+    {
+        IntoRobot.publish(LIGHT_STATUS_address, "0");
+        apagarLuces();
+    }
+}
 
-- Miembros del equipo: Lin Peijie, Huang Yuefeng, Zhang Ziyi
+void funcionImpresionHUMEDAD(uint8_t *datos, uint32_t longitud)
+{
+
+}
+
+void configuracion()
+{
+    pinMode(D4, INPUT);
+    SerialUSB.begin(115200);
+    SerialUSB.println("Hola, mundo");
+    pinMode(LEDPIN1, OUTPUT);
+    pinMode(LEDPIN2, OUTPUT);
+    pinMode(LEDPIN3, OUTPUT);
+    pinMode(LEDPIN4, OUTPUT);
+    IntoRobot.subscribe(BUTTONS_address, NULL, funcionBotones);
+    IntoRobot.subscribe(ITENSITY_DATA_address, NULL, funcionImpresionHUMEDAD);
+}
+
+void bucle()
+{
+    int mapeoLuz = map(obtenerNivelLuz(), 0, 1024, 100, 0);
+    IntoRobot.publish(LIGHT, mapeoLuz);
+    SerialUSB.println(obtenerNivelLuz());
+    if (autostate == 0)
+    {
+        if (estadoLuz == 1)
+            encenderLuces();
+        else
+            apagarLuces();
+    }
+    else if (autostate == 1)
+    {
+        SerialUSB.println("Estado = 1");
+        modoAutomatico();
+    }
+    delay(100);
+}
+```
+
+**FAQ**
+
+**P:** ¿Habrá un seguimiento del proyecto en el futuro?
+**R:** Actualmente no tenemos planes de seguimiento. Aunque el proyecto tiene un buen potencial innovador, todavía debe validar su valor de aplicación comercial.
+
+**Resumen**
+
+No ganamos el concurso esta vez. Sin embargo, el concurso nos ayudó a mejorar nuestras habilidades para programar y presentar, además de experimentar el trabajo extra y la presión de cumplir con los plazos. También conocimos a muchas personas y recibimos muchos obsequios como recuerdo.
+
+**Referencias y Agradecimientos**
+```
+
+- **Miembros del equipo:** Lin Peijie, Huang Yuefeng, Zhang Ziyi
 - [Plataforma en la nube de IntoRobot](https://www.intorobot.com/)
 
-por_reemplazar[1]
-por_reemplazar[2]
+> Dirección original del artículo: <https://wiki-power.com/>
+> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
-```

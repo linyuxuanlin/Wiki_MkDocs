@@ -1,12 +1,12 @@
-# Homelab - High-quality image compression tool TinyPNG-docker
+# Homelab - High-Quality Image Compression Tool TinyPNG-docker
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20230416163137.png)
 
-TinyPNG-docker is a tool that uses the TinyPNG API to compress images with high quality. It can automatically compress WEBP, JPEG, and PNG images in the specified path and output them to the desired path. It can effectively reduce website bandwidth usage, traffic, and loading time. By the way, this is a Docker application I developed with the help of ChatGPT.
+TinyPNG-docker is a tool that uses the TinyPNG API to compress images with high quality. It can automatically compress WEBP, JPEG, and PNG images in the specified path and output them to the desired path. It effectively reduces website bandwidth usage, traffic, and loading time. By the way, this is a Docker application I developed with the help of ChatGPT.
 
 ## Deployment (Docker Compose)
 
-First, create `compose.yaml` and replace `${DIR}` with the local directory (e.g. `/DATA/AppData`); replace `${API}` with your own TinyPNG key:
+First, create `compose.yaml` and replace `${DIR}` with your local directory (e.g., `/DATA/AppData`); replace `${API}` with your own TinyPNG API key:
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -26,15 +26,15 @@ services:
 
 Before using this Docker container, you need to register an account on the TinyPNG website and apply for an API key.
 
-The usage is simple, paste the images to be compressed into the `${DIR}/tinypng/input` folder, and you can find the compressed images in the `${DIR}/tinypng/output` folder.
+The usage is simple. Paste the images you want to compress into the `${DIR}/tinypng/input` folder, and you will find the compressed images in the `${DIR}/tinypng/output` folder.
 
-If the container cannot be used normally, you can use the following methods to troubleshoot:
+If the container cannot be used properly, you can troubleshoot using the following methods:
 
-1. Ensure that the `input` and `output` folder paths specified in the `compose.yaml` file are correct.
+1. Make sure the `input` and `output` folder paths specified in the `compose.yaml` file are correct.
 2. Check your TinyPNG account to see if you have reached the maximum compression limit allowed by the API key.
-3. Check if the `input` folder contains image files in the correct format (WebP, PNG, JPEG). Note that this container only detects and compresses `created` events, so if the file already exists, you need to manually move it to the `input` directory.
-4. Check if the compressed images have a higher level of distortion than the API's compression settings, which may cause the API to fail to decode (e.g. if the image was already compressed before compression).
-5. Try using the API compression tool provided by tinify's official website manually, upload the compressed image to further determine the problem, and output debugging information in the console to locate the problem.
+3. Check if the `input` folder contains image files in the correct format (WebP, PNG, JPEG). Note that this container only detects and compresses files with the `created` event, so if the file already exists, you need to manually move it to the `input` directory.
+4. Check if the compressed images have a higher level of distortion than the compression settings of the API, which may cause API decoding failure (e.g., if the original image has already been compressed).
+5. Try using the API compression tool provided by tinify's official website manually, upload the compressed images to further identify the problem, and you can output debugging information in the console to locate the problem.
 
 ---
 
@@ -42,7 +42,7 @@ If the container cannot be used normally, you can use the following methods to t
 
 ### Preparation
 
-1. If you have not registered a Docker Hub account yet, you need to create one on Docker Hub first.
+1. If you haven't registered a Docker Hub account yet, you need to create one on Docker Hub.
 
 2. Log in to Docker Hub:
 
@@ -52,9 +52,9 @@ docker login
 
 Enter your username and password as prompted to log in to Docker Hub.
 
-### Create Container
+### Create the Container
 
-Create the `Dockerfile`:
+Create a `Dockerfile`:
 
 ```Dockerfile title="Dockerfile"
 FROM python:3.8-slim-buster
@@ -81,14 +81,6 @@ import time
 import sys
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
-```
-
-The following is a Python script that uses the FileSystemEventHandler class to monitor a directory for newly created files. When a file is created, the on_created method is called. If the event is not a directory and is of type 'created', the script compresses the image using the TinyPNG API and saves it to the specified output directory.
-
-```python
-import os
-import tinify
-from watchdog.events import FileSystemEventHandler
 
 class MyHandler(FileSystemEventHandler):
     def on_created(self, event):
@@ -105,34 +97,32 @@ def compress_image(source_path, output_path):
     source = tinify.from_file(source_path)
     source.to_file(output_path)
     print(f"{source_path} compressed and saved to {output_path}")
+
+if __name__ == "__main__":
+    print("Watching for new images...")
+    event_handler = MyHandler()
+    observer = Observer()
+    observer.schedule(event_handler, path=os.environ['INPUT_DIR'], recursive=False)
+    observer.start()
+    try:
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        observer.stop()
+    observer.join()
 ```
 
-Note that the script requires the TinyPNG API key to be set as an environment variable named 'TINYPNG_API_KEY', and the output directory to be set as an environment variable named 'OUTPUT_DIR'.
-
-if **name** == "**main**":
-print("Watching for new images...")
-event_handler = MyHandler()
-observer = Observer()
-observer.schedule(event_handler, path=os.environ['INPUT_DIR'], recursive=False)
-observer.start()
-try:
-while True:
-time.sleep(1)
-except KeyboardInterrupt:
-observer.stop()
-observer.join()
-
-First, the necessary Python libraries are imported: tinify, os, time, sys, and watchdog. Then, a class named MyHandler is defined, which inherits from watchdog.events.FileSystemEventHandler. This class contains an on_created method, which is called when a new file is created in the specified folder. The on_created function gets the path of the source image and compresses it to the specified output path. Finally, the input folder is monitored, and once a new file is detected in the specified folder, the compression operation is automatically executed, and the compressed image is output to the specified output folder.
+First, the necessary Python libraries are imported: tinify, os, time, sys, and watchdog. Then, a class named MyHandler is defined, which inherits from watchdog.events.FileSystemEventHandler. This class includes an on_created method, which is called when a new file is created in the specified folder. The on_created function retrieves the path of the source image and compresses it to the specified output path. Finally, the script starts monitoring the input folder, and whenever a new file is created in the specified folder, it automatically performs the compression operation and outputs the compressed image to the specified output folder.
 
 ### Building the Container
 
-Execute the following command to build the container in the same path as the `Dockerfile`:
+To build the container, execute the following command in the same directory as the `Dockerfile`:
 
 ```shell
 docker build -t tinypng-docker .
 ```
 
-Here, `tingpng-docker` is the name of the image to be built, and `.` is the path where the `Dockerfile` is located.
+Here, `tinypng-docker` is the name of the image to be built, and `.` is the path where the `Dockerfile` is located.
 
 ### Tagging the Image
 
@@ -148,13 +138,13 @@ For example:
 docker tag tinypng-docker linyuxuanlin/tinypng-docker:latest
 ```
 
-### Pushing the Image to Docker Hub
+
+### Pushing Image to Docker Hub
 
 Use the following command to upload the image to Docker Hub:
 
 ```shell
 docker push <dockerhub-username>/<repository-name>:<tag>
-
 ```
 
 For example:
@@ -163,17 +153,17 @@ For example:
 docker push linyuxuanlin/tinypng-docker:latest
 ```
 
-### Pull the image
+### Pulling Image
 
-After uploading, others can pull the image with the following command:
+Once the upload is complete, others can pull the image using the following command:
 
 ```shell
 docker pull linyuxuanlin/tinypng-docker:latest
 ```
 
-## References and Acknowledgments
+## References and Acknowledgements
 
-- [Documentation](https://wiki-power.com/en/Homelab-%E9%AB%98%E8%B4%A8%E9%87%8F%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9%E5%B7%A5%E5%85%B7TinyPNG-docker)
+- [Documentation](https://wiki-power.com/Homelab-%E9%AB%98%E8%B4%A8%E9%87%8F%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9%E5%B7%A5%E5%85%B7TinyPNG-docker)
 - [GitHub repo](https://github.com/linyuxuanlin/Dockerfiles/tree/main/tinypng-docker)
 - [Docker Hub](https://hub.docker.com/r/linyuxuanlin/tinypng-docker)
 

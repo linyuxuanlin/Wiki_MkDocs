@@ -1,12 +1,12 @@
-# Homelab - Website Favicon Retrieval Tool iconserver
+# Homelab - Website Favicon Retrieval Tool: iconserver
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230304195157.png)
+![iconserver](https://img.wiki-power.com/d/wiki-media/img/20230304195157.png)
 
-**iconserver** is a website favicon icon retrieval tool. It supports retrieving `favicon.ico` and `apple-touch-icon.png`, and has a simple URL API and web operation page. If the retrieval fails, it will generate a favicon starting with the first letter.
+**iconserver** is a website favicon icon retrieval tool. It supports fetching `favicon.ico` and `apple-touch-icon.png` and offers a simple URL API and a web-based operation page. In case of retrieval failure, it will generate a favicon starting with the first letter of the website.
 
 ## Deployment (docker-compose)
 
-First, create the `compose.yaml` file and paste the following content:
+First, create a `compose.yaml` file and paste the following content:
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -19,24 +19,24 @@ services:
     restart: always
 ```
 
-(Optional) It is recommended to create a `.env` file at the same level as `compose.yaml` and customize your environment variables. If you do not want to use environment variables, you can also customize your parameters directly in `compose.yaml` (such as replacing `${STACK_NAME}` with `iconserver`).
+(Optional) It is recommended to create a `.env` file at the same level as the `compose.yaml` and customize your environment variables. If you prefer not to use environment variables, you can also directly customize your parameters within `compose.yaml` (e.g., replace `${STACK_NAME}` with `iconserver`).
 
 ```dotenv title=".env"
 STACK_NAME=iconserver
 
 # iconserver
 APP_VERSION=latest
-APP_PORT=xxxx # Customize the access port, choose one that is not occupied
+APP_PORT=xxxx # Customize the access port to one that is not in use
 ```
 
-Finally, execute the `docker compose up -d` command in the same directory as `compose.yaml` to start the orchestrated container.
+Finally, execute the `docker compose up -d` command in the same directory as `compose.yaml` to start the orchestrated containers.
 
-## Reference and Acknowledgement
+## References and Acknowledgments
 
 - [Documentation](https://github.com/mat/besticon#docker)
-- [GitHub repository](https://github.com/mat/besticon)
+- [GitHub repo](https://github.com/mat/besticon)
 - [Docker Hub](https://hub.docker.com/r/matthiasluedtke/iconserver)
-- [Demo website](https://besticon-demo.herokuapp.com/)
+- [Demo site](https://besticon-demo.herokuapp.com/)
 
 > Original: <https://wiki-power.com/>  
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.

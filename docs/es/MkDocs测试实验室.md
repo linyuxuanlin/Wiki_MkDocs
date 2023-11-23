@@ -1,4 +1,4 @@
-# Laboratorio de pruebas de MkDocs
+# Laboratorio de Pruebas de MkDocs
 
 `MkDocs-Lab`
 
@@ -8,34 +8,35 @@
 
 ```mermaid
 graph TD
-    a1("Recopilar datos de voltaje vs. QUOT en diferentes temperaturas y desviaciones")
+    a1("Recopilar datos de Voltaje vs. QUOT a través del sesgo y la temperatura")
     a2("Seleccionar RO y definir QUOT objetivo (valor fijo)")
     a1-->a2
 ```
 
 ```mermaid
 graph LR
-    A[Rectángulo cuadrado] -- Texto de enlace --> B((Círculo))
-    A --> C(Rectángulo redondeado)
+    A[Rectángulo Cuadrado] -- Texto de Enlace --> B((Círculo))
+    A --> C(Rectángulo Redondeado)
     B --> D{Rombo}
     C --> D
 ```
 
 ```mermaid
 graph LR
-  A[Inicio] --> B{¿Error?};
+  A[Comienzo] --> B{¿Error?};
   B -->|Sí| C[Hmm...];
-  C --> D[Depurar];
+  C --> D[Depuración];
   D --> B;
   B ---->|No| E[¡Hurra!];
 ```
 
+Please let me know if you need any further assistance.
 
 ```mermaid
 sequenceDiagram
-  Alice->>John: ¡Hola John, cómo estás?
-  loop Healthcheck
-      John->>John: Lucha contra la hipocondría
+  Alice->>John: Hola John, ¿cómo estás?
+  loop Chequeo de salud
+      John->>John: Combate la hipocondría
   end
   Note right of John: ¡Pensamientos racionales!
   John-->>Alice: ¡Genial!
@@ -47,23 +48,23 @@ sequenceDiagram
 stateDiagram-v2
   state fork_state <<fork>>
     [*] --> fork_state
-    fork_state --> State2
-    fork_state --> State3
+    fork_state --> Estado2
+    fork_state --> Estado3
 
     state join_state <<join>>
-    State2 --> join_state
-    State3 --> join_state
-    join_state --> State4
-    State4 --> [*]
+    Estado2 --> join_state
+    Estado3 --> join_state
+    join_state --> Estado4
+    Estado4 --> [*]
 ```
 
 ## Referencias y Agradecimientos
 
-- [Los mejores plugins y personalizaciones de MkDocs](https://chrieke.medium.com/the-best-mkdocs-plugins-and-customizations-fc820eb19759)
-- [Plugins de MkDocs](https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins)
+- [Los mejores complementos y personalizaciones de MkDocs](https://chrieke.medium.com/the-best-mkdocs-plugins-and-customizations-fc820eb19759)
+- [Complementos de MkDocs](https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins)
 - [Diagramas](https://squidfunk.github.io/mkdocs-material/reference/diagrams/)
 
-> Original: <https://wiki-power.com/>  
-> Este post está protegido por el acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en), debe ser reproducido con atribución.
+> Original: <https://wiki-power.com/>
+> Esta publicación está protegida por el acuerdo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en), y debe ser reproducida con atribución.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

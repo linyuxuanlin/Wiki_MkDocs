@@ -1,84 +1,85 @@
-# دليل إنتاجية VS Code - Jupyter Notebook
+# دليل إنتاجية VS Code - دفتر جوبيتر
 
-استخدم VS Code لإنشاء أدوات إنتاجية فعالة.
+استخدم VS Code لبناء أداة إنتاجية عالية الكفاءة.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200323155728.png)
+![صورة](https://img.wiki-power.com/d/wiki-media/img/20200323155728.png)
 
-يعد Jupyter Notebook أداة قوية للغاية، حيث يتيح لنا كتابة الشفرة وتشغيلها وعرض النتائج وتصور البيانات وعرض النتائج في بيئة واحدة ... بشكل عام، يجعل كتابة المستندات التي تحتوي على الشفرة أسهل بكثير.
+دفتر جوبيتر هو أداة قوية جدًا تسمح لنا بكتابة وتشغيل الشيفرات وعرض النتائج وتصور البيانات وعرض النتائج... إجمالًا، معه، يصبح كتابة مستندات تحتوي على شيفرة أسهل بكثير.
 
-في المقالة السابقة، قمنا بإعداد بيئة VS Code الأساسية. في هذه المقالة، سأشرح Jupyter with VS Code بالتفصيل.
+في المقالة السابقة، قمنا بإعداد البيئة الأساسية لـ VS Code. في هذه المقالة، سأشرح بالتفصيل Jupyter مع VS Code.
 
 ## إعداد البيئة
 
-كما هو معروف، يعتمد Jupyter Notebooks على بيئة Python.  
-للتحقق مما إذا كان لديك بيئة Python، اكتب **Python: Select Interpreter** في لوحة الأوامر في VS Code (`Ctrl + Shift + P`)، إذا رأيت إصدارات Python التي يمكنك اختيارها، فلا يوجد مشكلة.
+معروف للجميع أن دفتر جوبيتر يعتمد على بيئة Python.
+للتحقق مما إذا كنت تمتلك بيئة Python، قم بكتابة **Python: Select Interpreter** في لوحة الأوامر في VS Code (`Ctrl + Shift + P`)، إذا رأيت إصدارات Python يمكن اختيارها، فذلك يعني أنه ليس هناك مشكلة.
 
-إذا لم يكن لديك بيئة Python، يمكنك تثبيتها باستخدام الطريقة التالية:
+إذا لم يكن لديك بيئة Python، يمكنك تثبيتها عبر الطرق التالية:
 
-1. قم بتنزيل حزمة التثبيت الأحدث من [**موقع Python الرسمي**](https://www.python.org/) (حاول اختيار إصدار `web-based installer` إذا أمكن)
+1. قم بتنزيل أحدث إصدار من حزمة تثبيت Python من [موقع Python الرسمي](https://www.python.org/) (حاول اختيار إصدار مع مثبت ويب).
 
-بعد إعداد بيئة Python المحلية، ستحتاج أيضًا إلى تثبيت إضافة [**Python**](https://marketplace.visualstudio.com/items?itemName=ms-python.python) داخل VS Code. في تحديث مؤخر، تم تضمين Jupyter Notebooks في هذه الإضافة، لذلك لا يلزم تثبيتها بشكل منفصل.
+بعد إعداد بيئة Python المحلية، ستحتاج أيضًا إلى تثبيت إضافة [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) داخل VS Code. في تحديث أخير، تم تضمين دفتر جوبيتر داخل هذه الإضافة، لذا لا داعي لتثبيتها بشكل منفصل.
 
 ## إنشاء دفتر
 
-بعد إعداد البيئة، يمكننا إنشاء دفتر Jupyter فارغ (ملف `.ipynb`) باستخدام لوحة الأوامر في VS Code (`Ctrl + Shift + P`) وكتابة **Python: Create Blank New Jupyter**. كما هو موضح في الصورة التالية:
+بعد إعداد البيئة، يمكنك إنشاء دفتر جوبيتر فارغ (ملف `.ipynb`) في لوحة الأوامر في VS Code (`Ctrl + Shift + P`) عبر كتابة **Python: Create Blank New Jupyter**. قم بإجراء اختبار بسيط كما هو موضح في الصورة أدناه:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200323153020.png)
+![صورة](https://img.wiki-power.com/d/wiki-media/img/20200323153020.png)
 
-يمكن رؤية أن الشفرة تعمل بشكل صحيح.
+ستلاحظ أن الشيفرة تعمل بشكل طبيعي.
 
 ## العمليات الأساسية
 
-يستخدم Jupyter Notebook شفرات الأكواد الفردية (code cells) لإنشاء وتحرير وتشغيل الشفرة.
+يتم استخدام دفتر جوبيتر لإنشاء وتحرير الشيفرات وتشغيلها باستخدام **وحدات الشيفرة (code cells)**.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200323153717.png)
+![صورة](https://img.wiki-power.com/d/wiki-media/img/20200323153717.png)
 
-### إضافة شفرات الأكواد
+### إضافة وحدات الشيفرة
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200323153850.png)
+![صورة](https://img.wiki-power.com/d/wiki-media/img/20200323153850.png)
 
-### تشغيل شفرة واحدة
+### تشغيل وحدة شيفرة واحدة
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200323153939.png)
+![صورة](https://img.wiki-power.com/d/wiki-media/img/20200323153939.png)
 
-### تشغيل شفرات متعددة
+### تشغيل مجموعة من وحدات الشيفرة
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200323154005.png)
+![صورة](https://img.wiki-power.com/d/wiki-media/img/20200323154005.png)
 
-### نقل شفرة
+### نقل وحدة الشيفرة
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200323154059.png)
+![صورة](https://img.wiki-power.com/d/wiki-media/img/20200323154059.png)
 
-### حذف شفرة
+### حذف وحدة الشيفرة
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200323154148.png)
+![صورة](https://img.wiki-power.com/d/wiki-media/img/20200323154148.png)
 
-### التبديل بين الشفرة و Markdown
+### التبديل بين الشيفرة والماركداون
+
+![صورة](https://img.wiki-power.com/d/wiki-media/img/20200323154242.png)
+
+### عارض الرسوم البيانية
+
+من خلال عارض الرسوم البيانية، يمكنك بسهولة عرض الرسوم البيانية الناتجة عن الشيفرة وتصديرها بتنسيقات مختلفة:
+
+![صورة](https://img.wiki-power.com/d/wiki-media/img/20200323154555.png)
+
+### عارض المتغيرات والبيانات
+
+يمكنك رؤية أنواع المتغيرات وعددها وقيمها على الفور من خلال عارض المتغيرات:
 
 
+![صورة](https://img.wiki-power.com/d/wiki-media/img/20200323154758.png)
 
-### مشاهد الرسم البياني
+يمكن أيضًا تصفح البيانات بشكل أكثر تفصيلاً من خلال مُستعرض البيانات:
 
-من خلال مشاهد الرسم البياني ، يمكنك بسهولة عرض الرسوم البيانية التي تم إخراجها من الكود ، كما يمكنك تصدير الرسوم البيانية إلى صور بتنسيقات مختلفة:
-
-![](https://img.wiki-power.com/d/wiki-media/img/20200323154555.png)
-
-### مشاهد البيانات والمتغيرات
-
-يمكنك عرض نوع وكمية وقيمة المتغيرات في الوقت الحقيقي من خلال مشاهد المتغيرات:
-
-![](https://img.wiki-power.com/d/wiki-media/img/20200323154758.png)
-
-كما يمكنك تصفح البيانات الأكثر تفصيلاً من خلال مشاهد البيانات:
-
-![](https://img.wiki-power.com/d/wiki-media/img/20200323154832.png)
+![صورة](https://img.wiki-power.com/d/wiki-media/img/20200323154832.png)
 
 ## المراجع والشكر
 
-- [العمل مع دفاتر Jupyter في Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support)
-- [VS Code Python الإصدار الجديد! دعم Jupyter Notebook الأصلي أخيرًا هنا!](https://zhuanlan.zhihu.com/p/85445777)
+- [العمل مع دفاتر جوبيتر في Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support)
+- [أصدر VS Code Python بالكامل! دعم دفتر جوبيتر الأصلي أخيرًا هنا!](https://zhuanlan.zhihu.com/p/85445777)
 
-> عنوان النص: <https://wiki-power.com/>  
+> عنوان النص: <https://wiki-power.com/>
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

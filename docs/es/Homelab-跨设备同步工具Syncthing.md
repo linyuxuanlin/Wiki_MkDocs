@@ -1,12 +1,12 @@
-# Homelab - Herramienta de sincronización multi-dispositivo Syncthing
+# Homelab - Herramienta de sincronización multiplataforma Syncthing
 
-![](https://img.wiki-power.com/d/wiki-media/img/202304111529987.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/202304111529987.png)
 
-**Syncthing** es una aplicación de sincronización de archivos de código abierto y gratuita que permite sincronizar archivos y carpetas entre múltiples dispositivos, con soporte para sincronización incremental. Lo uso para hacer copias de seguridad de los datos del servidor en mi NAS y gestionarlos de manera centralizada.
+**Syncthing** es una aplicación de sincronización de archivos de código abierto y gratuita que permite sincronizar archivos y carpetas entre múltiples dispositivos con soporte para sincronización incremental. Lo utilizo para respaldar los datos de mi servidor en un NAS y gestionarlos de manera centralizada.
 
 ## Implementación (Docker Compose)
 
-Primero, cree un archivo `compose.yaml` y pegue el siguiente contenido:
+En primer lugar, crea un archivo `compose.yaml` y pega el siguiente contenido:
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -15,7 +15,7 @@ services:
     container_name: ${STACK_NAME}_app
     image: syncthing/syncthing:${APP_VERSION}
     hostname: my-syncthing
-    environment: # Necesita ejecutarse con permisos de root, de lo contrario no podrá leer otros directorios de Docker o el directorio raíz del host
+    environment: # Debe ejecutarse con permisos de root para acceder a otros directorios de Docker o al directorio raíz del host
       - PUID=0
       - PGID=0
     volumes:
@@ -23,36 +23,39 @@ services:
       - ${STACK_DIR}/config:/var/syncthing/config/
     ports:
       - ${APP_PORT}:8384 # Interfaz web
-      - 22000:22000/tcp # Transferencias de archivos TCP
-      - 22000:22000/udp # Transferencias de archivos QUIC
-      - 21027:21027/udp # Recibir difusiones de descubrimiento local
+      - 22000:22000/tcp # Transferencia de archivos TCP
+      - 22000:22000/udp # Transferencia de archivos QUIC
+      - 21027:21027/udp # Recepción de transmisiones de descubrimiento local
     restart: unless-stopped
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `syncthing`).
+(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar tus variables de entorno. Si no deseas utilizar variables de entorno, también puedes personalizar tus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `syncthing`).
 
 ```dotenv title=".env"
 STACK_NAME=syncthing
-STACK_DIR=xxx # Ruta personalizada de almacenamiento del proyecto, por ejemplo ./syncthing
+STACK_DIR=xxx # Ruta personalizada para almacenar el proyecto, por ejemplo, ./syncthing
 
-# syncthing
+# Syncthing
 APP_VERSION=latest
-APP_PORT=xxxx # Puerto de acceso personalizado, elija uno que no esté en uso
-APP_SYNC_DIR=xxxx # Ruta personalizada que desea sincronizar, por ejemplo /DATA
+APP_PORT=xxxx # Puerto personalizado para acceder, elige uno que no esté en uso
+APP_SYNC_DIR=xxxx # Ruta personalizada que deseas sincronizar, por ejemplo, /DATA
 ```
 
-Finalmente, ejecute el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores.
+Finalmente, ejecuta el comando `docker compose up -d` en el directorio que contiene `compose.yaml` para iniciar los contenedores definidos.
 
 ## Instrucciones de configuración
 
-Si recibe un mensaje de error de permisos insuficientes, intente cambiar los valores de `PUID` y `PGID` a `0` y ejecutarlo con permisos de root.
+Si experimentas problemas de permisos, intenta cambiar los valores de `PUID` y `PGID` a `0` para ejecutarlo con permisos de root.
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
 - [Sitio web oficial](https://syncthing.net/)
 - [Documentación](https://github.com/syncthing/syncthing/blob/main/README-Docker.md)
 - [Foro](https://forum.syncthing.net/)
 - [Repositorio de GitHub](https://github.com/syncthing/syncthing)
 - [Docker Hub](https://hub.docker.com/r/syncthing/syncthing/)
+
+> Dirección original del artículo: <https://wiki-power.com/>  
+> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

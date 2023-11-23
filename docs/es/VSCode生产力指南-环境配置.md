@@ -1,58 +1,57 @@
-# Guía de productividad de VS Code - Configuración del entorno
+# Guía de Productividad de VS Code - Configuración del Entorno
 
-—— Cómo crear una herramienta de productividad eficiente con VS Code.
+—— Cómo convertir VS Code en una herramienta altamente eficiente para la productividad.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200319135609.png)
+![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200319135609.png)
 
 ## Antecedentes
 
-> Si quieres hacer bien tu trabajo, debes primero tener las herramientas adecuadas. La creación es algo hermoso, y si tienes herramientas adecuadas, el proceso será más cómodo.
+> Si quieres hacer bien tu trabajo, primero debes tener buenas herramientas. La creación es un hermoso proceso, y tener herramientas adecuadas lo hace aún más cómodo.
 
-### ¿Por qué usar VS Code?
+### ¿Por qué elegir VS Code?
 
-- Es de código abierto y gratuito, y tiene una excelente apariencia.
-- Tiene funciones de edición completas (autocompletado, resaltado de sintaxis, etc.).
-- Puedes depurar el código directamente en el editor.
-- Tiene integración con Git.
-- Tiene un amplio soporte de complementos y opciones de personalización.
+- Es de código abierto y gratuito, además de ser estéticamente atractivo.
+- Ofrece funciones de edición completas, como autocompletado y resaltado de sintaxis.
+- Permite la depuración de código directamente en el editor.
+- Integra Git de manera nativa.
+- Ofrece un amplio soporte para complementos y personalización.
 
-## Instalación del software
+## Instalación del Software
 
 Puedes descargar la última versión de VS Code en el sitio web oficial: <https://code.visualstudio.com/>
 
-Por lo general, elegimos descargar la versión **Estable**. Si no temes a los errores y quieres experimentar con las últimas características, también puedes probar la versión **Insiders**.
+Generalmente, recomendamos descargar la versión **Stable**. Si no te asustan los errores y deseas probar las últimas características, también puedes optar por la versión **Insiders**.
 
-Después de descargar e instalar el software, lo abrimos y lo primero que vemos es la página de inicio:
+Una vez completada la descarga e instalación, al abrir el software, verás la página de inicio:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200318224855.png)
+![Página de Inicio](https://img.wiki-power.com/d/wiki-media/img/20200318224855.png)
 
-## Instalación de complementos
+## Instalación de Complementos
 
-Para reducir el tamaño, VS Code solo conserva algunas funciones básicas. Pero si quieres aumentar la eficiencia, estas funciones no son suficientes.
+Para mantener un tamaño de instalación reducido, VS Code incluye solo las funciones más básicas. Sin embargo, si deseas aumentar tu eficiencia, estas funciones por sí solas no son suficientes. Afortunadamente, VS Code ofrece una amplia gama de complementos de terceros para satisfacer tus necesidades específicas.
 
-Afortunadamente, VS Code tiene una variedad de complementos de terceros que pueden ser realmente útiles según tus necesidades.
-
-A continuación, se recomiendan algunos complementos útiles (puedes hacer clic en los enlaces para instalarlos directamente):
+A continuación, te presentamos algunos complementos útiles (puedes hacer clic en los enlaces para instalarlos):
 
 ### Básicos
 
-- [**Paquete de idioma chino (simplificado)**](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hans): traduce VS Code al chino.
-- [**Settings Sync**](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync): realiza una copia de seguridad de la configuración y los complementos, y sincroniza entre dispositivos.
-  - **Configuración**: configura el `GitHub Gist ID` y el `GitHub Access Token` correspondientes.
-  - **Uso**: `Shift + Alt + U` para cargar, `Shift + Alt + D` para descargar.
-  - (La última versión de VS Code ya tiene una función de sincronización incorporada, pero si necesitas una gestión de versiones, aún puedes usar este complemento).
+- [**Paquete de Idioma Chino (Simplificado)**](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hans): Permite la localización en chino simplificado de VS Code.
+- [**Sincronización de Configuraciones**](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync): Facilita la copia de seguridad de configuraciones y complementos, así como la sincronización en múltiples dispositivos.
+  - **Configuración**: Configura tu `GitHub Gist ID` y `GitHub Access Token` correspondientes.
+  - **Uso**: Usa `Shift + Alt + U` para cargar y `Shift + Alt + D` para descargar.
+  - (La versión más reciente de VS Code ya incluye una función de sincronización, pero este complemento sigue siendo útil para la gestión de versiones).
 
 ### Markdown
 
-- [**Markdown All in One**](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one): proporciona un soporte de sintaxis Markdown más potente.
-- [**Markdown Paste Image**](https://marketplace.visualstudio.com/items?itemName=onesdev.vscode-paste-image-plus): pega imágenes en Markdown y las copia en la carpeta /res.
-- [**Pangu-Markdown**](https://marketplace.visualstudio.com/items?itemName=xlthu.Pangu-Markdown): formatea el Markdown de manera más estándar (agrega espacios entre caracteres chinos e ingleses, reemplaza la puntuación estándar, etc.).
-  - **Configuración**: habilita la opción de formatear automáticamente al guardar.
-- [**vscode-pandoc**](https://marketplace.visualstudio.com/items?itemName=DougFinke.vscode-pandoc): agrega soporte para Pandoc, que exporta Markdown a PDF/Word/HTML, etc.
+- [**Markdown Todo en Uno**](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one): Ofrece un soporte avanzado de sintaxis Markdown.
+- [**Pegar Imagen en Markdown**](https://marketplace.visualstudio.com/items?itemName=onesdev.vscode-paste-image-plus): Permite pegar imágenes en documentos Markdown y las copia al directorio /res.
+- [**Pangu-Markdown**](https://marketplace.visualstudio.com/items?itemName=xlthu.Pangu-Markdown): Normaliza el formato de Markdown (agrega espacios entre caracteres chinos e ingleses, reemplaza la puntuación con normas, etc.).
+  - **Configuración**: Habilita la formateo automático al guardar.
+- [**vscode-pandoc**](https://marketplace.visualstudio.com/items?itemName=DougFinke.vscode-pandoc): Agrega soporte para Pandoc, lo que permite exportar documentos Markdown a formatos como PDF, Word, HTML, entre otros.
+  - **Configuración**: Asegúrate de tener [Pandoc](https://pandoc.org/installing.html) instalado.
 
-  - **Configuración**: asegúrate de que [Pandoc](https://pandoc.org/installing.html) esté instalado.
+### Embellecimiento
 
-- [**Indenticator**](https://marketplace.visualstudio.com/items?itemName=SirTori.indenticator): Destaca la profundidad de la indentación del código.
+- [**Indenticator**](https://marketplace.visualstudio.com/items?itemName=SirTori.indenticator): Resalta la profundidad de la sangría del código.
 - [**vscode-icons**](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons): Agrega iconos atractivos para diferentes formatos de archivo.
 
 ### Lenguajes de programación
@@ -60,79 +59,84 @@ A continuación, se recomiendan algunos complementos útiles (puedes hacer clic 
 - [**C/C++**](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
 - [**Python**](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 
-### Front-end
+### Desarrollo Front-end
 
-- [**Prettier - Code formatter**](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode): Herramienta de formateo automático para lenguajes front-end como HTML/CSS/JavaScript.
+- [**Prettier - Code formatter**](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode): Herramienta de formateo automático para lenguajes front-end como HTML, CSS y JavaScript.
   - **Uso**: `Ctrl + Shift + P`
-- [**Color Manager**](https://marketplace.visualstudio.com/items?itemName=RoyAction.color-manager): Muestra el color correspondiente a un valor de color.
-- [**Live Server**](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer): Ejecuta páginas web locales en VS Code.
+- [**Color Manager**](https://marketplace.visualstudio.com/items?itemName=RoyAction.color-manager): Muestra vistas previas directas de los colores correspondientes a los valores.
+- [**Live Server**](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer): Ejecuta páginas web locales dentro de VS Code.
 
-### Otros
+### Otras utilidades
 
-- [**Google Translate**](https://marketplace.visualstudio.com/items?itemName=hancel.google-translate): Proporciona traducción en VS Code.
+- [**Google Translate**](https://marketplace.visualstudio.com/items?itemName=hancel.google-translate): Proporciona traducción dentro de VS Code.
   - **Uso**: `Ctrl + Alt + T`
-- [**Start git-bash**](https://marketplace.visualstudio.com/items?itemName=McCarter.start-git-bash): Agrega `bash` a la terminal de VS Code.
+- [**Start git-bash**](https://marketplace.visualstudio.com/items?itemName=McCarter.start-git-bash): Agrega la terminal `bash` a VS Code.
 - [**TinyPNG**](https://marketplace.visualstudio.com/items?itemName=andi1984.tinypng): Comprime imágenes.
-  - **Configuración**: Configura la clave de API de `TinyPNG` correctamente.
-  - **Uso**: Haz clic derecho en la imagen en el árbol de archivos - `TinyPNG:Compress`
-- [**Zhihu Daily**](https://marketplace.visualstudio.com/items?itemName=YRM.zhihu): Ideal para procrastinar, lee noticias de Zhihu Daily en VS Code.
-- [**Kunkun Encouragement**](https://marketplace.visualstudio.com/items?itemName=sakura1357.cxk): Si escribes código durante una hora, recibirás un recordatorio de descanso con el baile de baloncesto exclusivo de Cai Xukun.
+  - **Configuración**: Establece una clave API de `TinyPNG` correcta.
+  - **Uso**: Haz clic derecho en las imágenes en el árbol de archivos - `TinyPNG: Comprimir`
+- [**Zhihu Daily**](https://marketplace.visualstudio.com/items?itemName=YRM.zhihu): Ideal para procrastinar, navega por las noticias diarias de Zhihu dentro de VS Code.
+- [**坤坤鼓励师**](https://marketplace.visualstudio.com/items?itemName=sakura1357.cxk): Si programas durante una hora seguida, recibirás un recordatorio exclusivo de baile de baloncesto de Cai Xukun para tomar un descanso.
 
 ## Temas
 
-Puedes seleccionar el tema que más te guste en `Archivo - Preferencias - Tema de color`. Por ejemplo, yo he seleccionado el tema `Monokai Dimmed`:
+Puedes elegir tu tema favorito en `Archivo - Preferencias - Tema de color`. Por ejemplo, yo he seleccionado el tema `Monokai Dimmed`:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200319132727.png)
+![Tema de Monokai Dimmed](https://img.wiki-power.com/d/wiki-media/img/20200319132727.png)
 
-Si no te gusta ninguno de los temas proporcionados por defecto, puedes buscar y descargar temas que te gusten en la tienda de extensiones con la palabra clave `theme`.
+Si sientes que los temas predeterminados no son suficientes, también puedes buscar y descargar temas de tu elección en la tienda de complementos usando la palabra clave "theme".
 
-## Configuraciones comunes
+## Configuraciones Comunes
 
-Para hacer que VS Code sea más fácil de usar, puedes cambiar algunas configuraciones comunes. Puedes abrir la página de configuración a través de `Archivo - Preferencias - Configuración`.
+Para una experiencia más fluida al usar VS Code por primera vez, puedes personalizar algunas configuraciones comunes. Abre la página de configuración a través de `Archivo - Preferencias - Configuración`.
 
-### Guardado automático
+### Guardado Automático
 
-Se puede configurar `Files: Auto Save` en tres opciones diferentes además de `off`. Es muy útil tener la opción de guardar automáticamente en el uso diario.
+```markdown
+Puede configurar `Files: Auto Save` en cualquiera de los tres valores distintos a `off`. En el uso diario, la función de autoguardado resulta bastante conveniente.
 
-### Fuente
+### Tipografía
 
-La fuente de ancho fijo es esencial para escribir código, personalmente recomiendo la fuente [**Microsoft YaHei Mono**](https://github.com/linyuxuanlin/File-host/blob/main/software-development/Microsoft-YaHei-Mono.ttf).
+Una fuente de ancho fijo es imprescindible para escribir código. Personalmente, recomiendo [**Microsoft YaHei Mono**](https://github.com/linyuxuanlin/File-host/blob/main/software-development/Microsoft-YaHei-Mono.ttf) como fuente.
 
-Después de descargar el archivo de fuente .ttf, instálalo, reinicia VS Code y agrega `'Microsoft YaHei Mono'` al principio de la opción `Settings - Text Editor - Font - Font Family` para habilitar la fuente.
+Después de descargar el archivo de fuente .ttf, instálelo, reinicie VS Code y, en la sección `Configuración - Editor de texto - Fuente - Font Family`, agregue `'Microsoft YaHei Mono'` al principio de la lista de fuentes para habilitarla.
 
-## Atajos de teclado comunes
+## Atajos de Teclado Comunes
 
-|               Acción               |           Atajo           |
-| :--------------------------------: | :-----------------------: |
-|         Panel de comandos          | `F1` o `Ctrl + Shift + P` |
-|              Terminal              | <code>Ctrl + &#96;</code> |
-|       Explorador de archivos       |    `Ctrl + Shift + E`     |
-|          Búsqueda global           |    `Ctrl + Shift + F`     |
-|      Control de código fuente      |    `Ctrl + Shift + G`     |
-|              Ejecutar              |    `Ctrl + Shift + D`     |
-|    Administrador de extensiones    |    `Ctrl + Shift + X`     |
-| Cambiar rápidamente entre archivos |        `Ctrl + D`         |
+|     Acción     |          Atajo           |
+| :------------: | :----------------------: |
+| Panel de Comandos | `F1` o `Ctrl + Shift + P` |
+| Terminal | <code>Ctrl + &#96;</code>  |
+| Explorador de Recursos | `Ctrl + Shift + E`     |
+| Búsqueda Global | `Ctrl + Shift + F`     |
+| Gestión de Código Fuente | `Ctrl + Shift + G`     |
+| Ejecutar | `Ctrl + Shift + D`     |
+| Gestión de Extensiones | `Ctrl + Shift + X`     |
+| Cambio Rápido de Archivo | `Ctrl + D`         |
 
-## Control de código fuente
+## Control de Código Fuente
 
-¿Tienes que ingresar tu nombre de usuario y contraseña cada vez que envías algo a Github? Ingresa el siguiente comando:
+¿Cansado de tener que ingresar tu nombre de usuario y contraseña cada vez que haces una confirmación en GitHub? Simplemente ejecuta el siguiente comando:
 
 ```shell
 git config --global credential.helper store
 ```
 
-Reinicia VS Code y listo.
+Luego reinicia VS Code y eso es todo.
 
 ## Conclusión
 
-Estas son las configuraciones básicas de VS Code. En el próximo artículo, discutiremos detalladamente cómo usar Git, Jupyter Notebook y fragmentos de código personalizados. ¡Mantente atento!
+Estos son los ajustes básicos para configurar tu entorno en VS Code. En el próximo artículo, discutiremos en detalle cómo utilizar Git, Jupyter Notebook y fragmentos de código personalizados. ¡Estén atentos!
 
-### Enlaces de referencia
+### Enlaces de Referencia
 
-- [Docs · Visual Studio Code](https://code.visualstudio.com/docs)
-- [¿Por qué elegí usar VS Code para el desarrollo web?](https://zhuanlan.zhihu.com/p/28631442)
-- [vscode git 提交总让输入用户名及密码](https://www.jianshu.com/p/8854713433c5)
-- [Vscode 编辑 markdown 代码块（snippets）](https://www.jianshu.com/p/a87e9ca2d208)
-- [Agregar fragmentos de código personalizados en Visual Studio Code](https://blog.walterlv.com/post/add-custom-code-snippet-for-vscode.html##%E5%85%B3%E4%BA%8E%E6%96%87%E4%BB%B6%E5%90%8D%E7%A7%B0)
+- [Documentación · Visual Studio Code](https://code.visualstudio.com/docs)
+- [¿Por qué elegí usar VS Code para el desarrollo front-end?](https://zhuanlan.zhihu.com/p/28631442)
+- [¿Siempre te pide el nombre de usuario y la contraseña al hacer una confirmación en VS Code?](https://www.jianshu.com/p/8854713433c5)
+- [Cómo editar bloques de código markdown (snippets) en VS Code](https://www.jianshu.com/p/a87e9ca2d208)
+- [Cómo agregar fragmentos de código personalizados en Visual Studio Code](https://blog.walterlv.com/post/add-custom-code-snippet-for-vscode.html##%E5%85%B3%E4%BA%8E%E6%96%87%E4%BB%B6%E5%90%8D%E7%A7%B0)
+
+> Dirección original del artículo: <https://wiki-power.com/>
+> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+```
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

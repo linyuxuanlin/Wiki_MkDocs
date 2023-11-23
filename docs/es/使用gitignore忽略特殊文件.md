@@ -1,20 +1,20 @@
-# Ignorando archivos especiales con gitignore
+# Ignorar archivos específicos con gitignore
 
-Hay algunos archivos que no queremos incluir en la gestión de versiones de Git, y tampoco queremos que aparezcan constantemente en la lista de archivos sin seguimiento, como node_modules, algunas dependencias de desarrollo, registros de compilación, entre otros.
+A veces, hay archivos que no queremos incluir en la gestión de versiones de Git, ni queremos que aparezcan constantemente en la lista de archivos no rastreados, como `node_modules`, algunas dependencias de desarrollo, registros de compilación, entre otros.
 
-En estos casos, podemos crear un archivo `.gitignore` y listar los archivos que queremos ignorar.
+En estos casos, podemos crear un archivo llamado `.gitignore` donde enumeramos los archivos que deseamos ignorar.
 
-## Reglas
+## Normas
 
-- Las líneas vacías o las líneas que comienzan con el símbolo de comentario `#` serán ignoradas por Git.
-- Se pueden utilizar patrones glob estándar.
-- Si el patrón de coincidencia termina con una barra diagonal invertida (/), se ignorará el directorio.
-- Para ignorar todos los archivos y directorios excepto los especificados en el patrón, se puede agregar el signo de exclamación (!) antes del patrón.
+- Las líneas en blanco o aquellas que comienzan con el símbolo de comentario `#` son ignoradas por Git.
+- Se utilizan patrones globales estándar para hacer coincidir archivos y directorios.
+- Cuando un patrón de coincidencia termina con una barra diagonal inversa `/`, se refiere a un directorio.
+- Para excluir archivos y directorios específicos de un patrón de coincidencia, puedes agregar un signo de exclamación `!` antes del patrón.
 
 ## Ejemplos
 
 ```gitignore
-# Esta línea es un comentario y será ignorada por Git.
+# Este es un comentario, Git lo ignorará
 
 # Ignorar todos los archivos con formato .a
 *.a
@@ -28,14 +28,14 @@ En estos casos, podemos crear un archivo `.gitignore` y listar los archivos que 
 # Ignorar la carpeta build
 build/
 
-# Ignorar todos los archivos txt en el directorio doc (sin incluir subdirectorios)
+# Ignorar todos los archivos .txt en el directorio doc (sin incluir subdirectorios)
 doc/*.txt
 
-# Ignorar todos los archivos txt en el directorio doc (incluyendo subdirectorios)
+# Ignorar todos los archivos .txt en el directorio doc (incluyendo todos los subdirectorios)
 doc/**/*.txt
 ```
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
 - [zxhfighter/git-ignore.md](https://gist.github.com/zxhfighter/6320b9a08698bb8703ee)
 - [github/gitignore](https://github.com/github/gitignore)

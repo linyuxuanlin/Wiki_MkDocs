@@ -1,20 +1,20 @@
-# How to Write WeChat Articles Using Markdown
+# How to Write Articles for WeChat Official Accounts Using Markdown
 
-In the article "Efficient Writing with Markdown" [**使用 Markdown 进行高效写作**](https://wiki-power.com/en/%E4%BD%BF%E7%94%A8Markdown%E8%BF%9B%E8%A1%8C%E9%AB%98%E6%95%88%E5%86%99%E4%BD%9C), we learned about the convenience of using Markdown for typesetting. But how can we use it to write articles on WeChat?
+In the article [**Efficient Writing with Markdown**](https://wiki-power.com/%E4%BD%BF%E7%94%A8Markdown%E8%BF%9B%E8%A1%8C%E9%AB%98%E6%95%88%E5%86%99%E4%BD%9C) that introduces Markdown, we have witnessed the convenience of using Markdown for typesetting. But how can we use it to write articles for WeChat Official Accounts?
 
-As we all know, WeChat uses a rich text editor that cannot directly parse Markdown syntax. However, we can first parse Markdown into rich text and then paste it into the editor of our WeChat article.
+As we all know, WeChat Official Accounts use a rich text editor that cannot directly interpret Markdown syntax. However, we can first convert Markdown into rich text and then paste it into the editor of the WeChat Official Accounts article.
 
 ## MD2WeChat
 
-[**MD2WeChat**](https://md2wechat.wiki-power.com/) is a web tool that I customized based on the open-source project [lyricat/wechat-format](https://github.com/lyricat/wechat-format). It can easily parse Markdown syntax into rich text:
+[**MD2WeChat**](https://md2wechat.wiki-power.com/) is a web tool I customized based on the open-source project [lyricat/wechat-format](https://github.com/lyricat/wechat-format). It can easily convert Markdown syntax into rich text:
 
 [![](https://img.wiki-power.com/d/wiki-media/img/20210216125752.png)](https://md2wechat.wiki-power.com/)
 
-Simply paste your Markdown article into the left column, and then click "Copy" in the right column to paste it into the editor of your WeChat article.
+Paste the Markdown article into the left column and click the "Copy" button in the right column. Then, you can paste it into the editor of the WeChat Official Accounts.
 
-Note: External links will be automatically footnoted and attached at the bottom of the article because WeChat articles do not allow external links.
+Note: Since external links are not allowed in WeChat Official Accounts articles, the links will be automatically converted to footnotes and placed at the bottom.
 
-## References and Acknowledgments
+## References and Acknowledgements
 
 - [lyricat/wechat-format](https://github.com/lyricat/wechat-format)
 

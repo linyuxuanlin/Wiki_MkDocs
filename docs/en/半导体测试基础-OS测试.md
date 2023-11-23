@@ -1,53 +1,53 @@
-# Semiconductor Testing Basics - OS Testing
+# Semiconductor Testing Fundamentals - OS Testing
 
-Open-Short Test (OS), also known as continuity or contact test, is used to **verify the electrical contact of all pins of the device with the testing system and ensure that there is no short circuit with other pins or with the power supply (ground)**. OS testing can quickly detect electrical and physical defects in the DUT, such as pin shorts, missing bond wires, electrostatic damage to pins, and manufacturing defects; it can also detect problems related to testing accessories, such as ProbeCard or device Socket contact issues.
+Open and Short Testing (OS), also known as continuity or contact testing, is used to verify the electrical connectivity of all the pins of the testing system and the device under test (DUT), without causing a short circuit with other pins or the power supply (ground). OS testing quickly identifies electrical and physical defects in the DUT, such as pin shorts, missing bond wires, electrostatic damage to pins, and manufacturing defects. It can also uncover issues related to testing components, such as ProbeCards or the socket contact of the device.
 
-**The process of OS testing is carried out by using protection diodes for VDD and ground**. There are generally two testing methods: one is to inject current with PMU to measure voltage; the other is to provide VREF with functional testing method to form dynamic load current and then measure voltage.
+The OS testing process relies on the protection diodes connected to VDD and ground. Generally, there are two testing methods: one involves applying current with a PMU to measure voltage, and the other uses a functional test method to provide VREF, creating a dynamic load current for voltage measurement.
 
 ### OS Testing - Static Method
 
-Serial/parallel static method tests OS, which is actually injecting current to measure voltage, because this current will cause a protection diode to forward bias, so the abnormality of open and short circuits can be detected by detecting the forward voltage drop. The test schematic diagram of applying positive current to forward bias the power supply diode is as follows:
+Serial/parallel static testing in OS essentially involves applying current to measure voltage. This current causes one of the protection diodes to forward bias, allowing abnormal open or short circuits to be detected by measuring the forward voltage drop. The test schematic for applying positive current to forward bias the power supply diode is shown below:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220805165031.png)
+![Positive Current Test](https://img.wiki-power.com/d/wiki-media/img/20220805165031.png)
 
-The test process is as follows:
+The test procedure is as follows:
 
 1. Ground all pins of the DUT, including power and ground.
-2. PMU applies current (about 100µA) to the pins.
-3. Detect the pin voltage
+2. Apply current (approximately 100µA) to the pins using a PMU.
+3. Measure the pin voltage:
    - Higher than VOH (+1.5V): Fail (Open)
    - Lower than VOL (+0.2V): Fail (Short)
-   - Other intervals (forward voltage, such as 0.65V): Pass
+   - Other ranges (forward voltage drop, e.g., 0.65V): Pass
 
-The test schematic diagram of applying negative current to forward bias the ground diode is as follows:
+The test schematic for applying negative current to forward bias the ground diode is shown below:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220728142155.png)
+![Negative Current Test](https://img.wiki-power.com/d/wiki-media/img/20220728142155.png)
 
-The test process is as follows:
+The test procedure is as follows:
 
 1. Ground all pins of the DUT, including power and ground.
-2. PMU applies current (about -100µA) to the pins.
-3. Detect the pin voltage
+2. Apply current (approximately -100µA) to the pins using a PMU.
+3. Measure the pin voltage:
    - Higher than VOH (-0.2V): Fail (Short)
    - Lower than VOL (-1.5V): Fail (Open)
-   - Other intervals (voltage drop after forward bias is about -0.65V): Pass
+   - Other ranges (forward voltage drop after forward bias, approximately -0.65V): Pass
 
-Because the PMU provides constant current, a voltage clamp needs to be set to clamp the voltage generated during open circuit pin testing, otherwise the voltage will be infinite. If the clamp voltage is set to 3V, then when a pin is open, its test result is 3V.
+Since the PMU provides constant current, voltage clamps need to be set to limit the voltage generated during open pin testing; otherwise, the voltage would become infinite. If the voltage clamp is set at 3V, then when a pin is open, the test result will be 3V.
 
-This method is only suitable for testing signal IO pins and cannot be used to test power supply pins. Although power supply pins can also be tested under open circuit conditions, different test limits need to be set due to their different internal structures.
+This method is limited to testing signal IO pins and cannot be used for testing power supply pins. Although power supply pins can also be tested in open circuit conditions, their internal structure is different, requiring different test limits to be set.
 
-In summary, the characteristics of OS static testing are:
+In summary, the characteristics of OS static testing are as follows:
 
-- The serial method tests only one pin at a time, with simple steps but low efficiency, suitable for DUTs with fewer pins.
-- The parallel method requires the testing system to have PPMU, and the disadvantage is that it cannot detect adjacent pin shorts. The solution is to test in two steps (such as testing pins 1357 in the first step and pins 2468 in the second step).
-- Apply current and measure voltage.
+- Serial testing examines one pin at a time, with a simple process but low efficiency, suitable for DUTs with few pins.
+- Parallel testing requires a testing system with PPMU but cannot detect adjacent pin shorts. A solution is to conduct two separate tests (e.g., test pins 1357 in the first round, and pins 2468 in the second).
+- Application of current and measurement of voltage.
 
 ## References and Acknowledgments
 
 - "The Fundamentals Of Digital Semiconductor Testing"
 - "DC Test Theory"
 
-> Original: <https://wiki-power.com/>  
+> Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

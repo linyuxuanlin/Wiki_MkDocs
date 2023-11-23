@@ -1,6 +1,6 @@
 # HAL Library Development Notes - I2C Communication (MPU6050)
 
-This article is based on our in-house RobotCtrl development kit, with a microcontroller core of STM32F407ZET6, and it explains the I2C communication using the MPU6050 module. For the schematic and a detailed introduction to the development kit, please refer to [**RobotCtrl - STM32 Universal Development Kit**](to_be_replaced[3]).
+In this article, we will delve into the HAL library's approach to I2C communication using the MPU6050 module, based on the self-developed RobotCtrl development kit. The microcontroller core used in this context is the STM32F407ZET6. For a more comprehensive understanding of the development kit's schematics and detailed information, please refer to [**RobotCtrl - STM32 Universal Development Kit**](https://wiki-power.com/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
 
 ## Basic Principles
 
@@ -8,28 +8,27 @@ This article is based on our in-house RobotCtrl development kit, with a microcon
 
 ![I2C Communication](https://img.wiki-power.com/d/wiki-media/img/20211026174634.png)
 
-The basic principles of I2C communication can be found in the article [**Communication Protocol - I2C**](to_be_replaced[3]).
+For a detailed explanation of the fundamental principles of I2C communication, you can refer to the article on [**Communication Protocol - I2C**](https://wiki-power.com/%E9%80%9A%E4%BF%A1%E5%8D%8C%E8%AE%AE-I2C).
 
 ### MPU6050 Module
 
 ![MPU6050 Module](https://img.wiki-power.com/d/wiki-media/img/20220404145145.png)
 
-Pin Definitions for the Module:
+Here are the pin definitions for the module:
 
 - VCC: 3.3V~5V
 - GND: Ground
 - SCL: I2C Clock / SPI Clock
 - SDA: I2C Data / SPI Data Input
-- XDA: Provides the master clock to I2C devices
-- AD0: I2C device address selection / SPI Data Output
-- INT: Interrupt Pin
+- XDA: Provides the I2C device with the main clock
+- AD0: I2C device address selection bit / SPI Data Output
+- INT: Interrupt pin
 
-### MPU6050 Library with Kalman Filtering
+### MPU6050 Library with Kalman Filter
 
-Here, we will utilize the MPU6050 library with Kalman filtering: [**leech001/MPU6050**](https://github.com/leech001/MPU6050). Download the `mpu6050.c` and `mpu6050.h` files, copy them to your project directory, and add them to your project within STM32CubeIDE/Keil:
+In this context, we are utilizing the MPU6050 library with a Kalman filter, which can be found at [**leech001/MPU6050**](https://github.com/leech001/MPU6050). To integrate this library into your project, you should copy the `mpu6050.c` and `mpu6050.h` files into your project directory. Subsequently, add them to your project within STM32CubeIDE/Keil. Here's a snippet from the `mpu6050.h` file for reference:
 
-```c title="mpu6050.h"
-
+```c
 #ifndef INC_GY521_H_
 #define INC_GY521_H_
 
@@ -82,6 +81,8 @@ void MPU6050_Read_Gyro(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct);
 void MPU6050_Read_Temp(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct);
 ```
 
+This comprehensive guide explores the I2C communication methodology involving the MPU6050 module, providing a solid foundation for your development with the RobotCtrl kit and STM32F407ZET6 microcontroller.
+
 ```c title="mpu6050.c"
 #include <math.h>
 #include "mpu6050.h"
@@ -97,71 +98,67 @@ void MPU6050_Read_Temp(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct);
 #define GYRO_CONFIG_REG 0x1B
 #define GYRO_XOUT_H_REG 0x43
 
-// Function to read data from MPU6050
-void MPU6050_Read_All(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct);
-
-// Function to get angle using Kalman filter
-double Kalman_getAngle(Kalman_t *Kalman, double newAngle, double newRate, double dt);
-
-// Define the MPU6050 address and other constants
+// Initialize MPU6050
 #define MPU6050_ADDR 0xD0
 const uint16_t i2c_timeout = 100;
 const double Accel_Z_corrector = 14418.0;
 
-// Timer variable
 uint32_t timer;
 
-// Kalman filter for angle estimation
 Kalman_t KalmanX = {
     .Q_angle = 0.001f,
     .Q_bias = 0.003f,
-    .R_measure = 0.03f};
+    .R_measure = 0.03f
+};
 
 Kalman_t KalmanY = {
     .Q_angle = 0.001f,
     .Q_bias = 0.003f,
-    .R_measure = 0.03f,
+    .R_measure = 0.03f
 };
 
-// Function to initialize MPU6050
 uint8_t MPU6050_Init(I2C_HandleTypeDef *I2Cx)
 {
     uint8_t check;
     uint8_t Data;
 
-    // Check device ID in WHO_AM_I register
+    // Check the device ID in the WHO_AM_I register
+
     HAL_I2C_Mem_Read(I2Cx, MPU6050_ADDR, WHO_AM_I_REG, 1, &check, 1, i2c_timeout);
 
-    if (check == 104) // If 0x68 is returned, the sensor is working correctly
+    if (check == 104) // If the result is 0x68, the sensor is working properly
     {
-        // Configure power management register (PWR_MGMT_1) to wake up the sensor
+        // Configure the power management register (PWR_MGMT_1) to wake up the sensor
         Data = 0;
         HAL_I2C_Mem_Write(I2Cx, MPU6050_ADDR, PWR_MGMT_1_REG, 1, &Data, 1, i2c_timeout);
 
-        // Set data rate to 1KHz by writing SMPLRT_DIV register
+        // Set the data rate to 1KHz by configuring the SMPLRT_DIV register
         Data = 0x07;
         HAL_I2C_Mem_Write(I2Cx, MPU6050_ADDR, SMPLRT_DIV_REG, 1, &Data, 1, i2c_timeout);
 
-        // Set accelerometer configuration in ACCEL_CONFIG Register
+        // Configure the accelerometer in the ACCEL_CONFIG register
         // XA_ST=0, YA_ST=0, ZA_ST=0, FS_SEL=0 -> ±2g
         Data = 0x00;
         HAL_I2C_Mem_Write(I2Cx, MPU6050_ADDR, ACCEL_CONFIG_REG, 1, &Data, 1, i2c_timeout);
 ```
 
 ```c
-// Configure the Gyroscope settings in the GYRO_CONFIG Register
+// Configure Gyroscope Settings in the GYRO_CONFIG Register
 // XG_ST=0, YG_ST=0, ZG_ST=0, FS_SEL=0 -> ±250 °/s
 Data = 0x00;
 HAL_I2C_Mem_Write(I2Cx, MPU6050_ADDR, GYRO_CONFIG_REG, 1, &Data, 1, i2c_timeout);
 return 0;
 }
 
-// Read accelerometer data from MPU6050 sensor
+return 1;
+}
+
 void MPU6050_Read_Accel(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct)
 {
     uint8_t Rec_Data[6];
 
-    // Read 6 bytes of data starting from the ACCEL_XOUT_H register
+    // Read 6 bytes of data starting from ACCEL_XOUT_H register
+
     HAL_I2C_Mem_Read(I2Cx, MPU6050_ADDR, ACCEL_XOUT_H_REG, 1, Rec_Data, 6, i2c_timeout);
 
     DataStruct->Accel_X_RAW = (int16_t)(Rec_Data[0] << 8 | Rec_Data[1]);
@@ -169,18 +166,20 @@ void MPU6050_Read_Accel(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct)
     DataStruct->Accel_Z_RAW = (int16_t)(Rec_Data[4] << 8 | Rec_Data[5]);
 
     // Convert the RAW values into acceleration in 'g'
-    // We need to divide by 16384.0, as per the Full scale value set in FS_SEL (configured as 0)
+    // We have to divide according to the Full Scale value set in FS_SEL.
+    // I have configured FS_SEL = 0, so I am dividing by 16384.0
+    // For more details, check the ACCEL_CONFIG Register.
     DataStruct->Ax = DataStruct->Accel_X_RAW / 16384.0;
     DataStruct->Ay = DataStruct->Accel_Y_RAW / 16384.0;
     DataStruct->Az = DataStruct->Accel_Z_RAW / Accel_Z_corrector;
 }
 
-// Read gyroscope data from MPU6050 sensor
 void MPU6050_Read_Gyro(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct)
 {
     uint8_t Rec_Data[6];
 
-    // Read 6 bytes of data starting from the GYRO_XOUT_H register
+    // Read 6 bytes of data starting from GYRO_XOUT_H register
+
     HAL_I2C_Mem_Read(I2Cx, MPU6050_ADDR, GYRO_XOUT_H_REG, 1, Rec_Data, 6, i2c_timeout);
 
     DataStruct->Gyro_X_RAW = (int16_t)(Rec_Data[0] << 8 | Rec_Data[1]);
@@ -189,13 +188,12 @@ void MPU6050_Read_Gyro(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct)
 }
 ```
 
-In the above code, I've maintained the original markdown format while providing a more refined and readable translation. If you have any further requests or questions, please feel free to ask.
-
 ```c
-/*** Convert the raw values into degrees per second (°/s).
-    We need to divide by the full-scale value set in FS_SEL.
+/*** Convert the RAW values to degrees per second (°/s).
+    We need to divide by the Full Scale value set in FS_SEL.
     I have configured FS_SEL = 0, so I am dividing by 131.0.
-    For more details, check the GYRO_CONFIG Register. ****/
+    For more details, check the GYRO_CONFIG Register. 
+***/
 
 DataStruct->Gx = DataStruct->Gyro_X_RAW / 131.0;
 DataStruct->Gy = DataStruct->Gyro_Y_RAW / 131.0;
@@ -220,7 +218,7 @@ void MPU6050_Read_All(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct)
     uint8_t Rec_Data[14];
     int16_t temp;
 
-    // Read 14 bytes of data starting from ACCEL_XOUT_H register
+    // Read 14 bytes of data starting from the ACCEL_XOUT_H register
 
     HAL_I2C_Mem_Read(I2Cx, MPU6050_ADDR, ACCEL_XOUT_H_REG, 1, Rec_Data, 14, i2c_timeout);
 
@@ -234,12 +232,9 @@ void MPU6050_Read_All(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct)
 }
 ```
 
-I have translated the code into colloquial, professional, and elegant English while maintaining the original markdown format and without interpreting the content.
-
-Certainly, here's the provided code translated into colloquial, professional, and elegant English:
+Certainly, here's the translation:
 
 ```c
-// Calculate acceleration values
 DataStruct->Ax = DataStruct->Accel_X_RAW / 16384.0;
 DataStruct->Ay = DataStruct->Accel_Y_RAW / 16384.0;
 DataStruct->Az = DataStruct->Accel_Z_RAW / Accel_Z_corrector;
@@ -248,31 +243,25 @@ DataStruct->Gx = DataStruct->Gyro_X_RAW / 131.0;
 DataStruct->Gy = DataStruct->Gyro_Y_RAW / 131.0;
 DataStruct->Gz = DataStruct->Gyro_Z_RAW / 131.0;
 
-// Kalman angle calculation
+// Solving for Kalman angles
 double dt = (double)(HAL_GetTick() - timer) / 1000;
 timer = HAL_GetTick();
 double roll;
 double roll_sqrt = sqrt(DataStruct->Accel_X_RAW * DataStruct->Accel_X_RAW + DataStruct->Accel_Z_RAW * DataStruct->Accel_Z_RAW);
-
 if (roll_sqrt != 0.0) {
     roll = atan(DataStruct->Accel_Y_RAW / roll_sqrt) * RAD_TO_DEG;
 } else {
     roll = 0.0;
 }
-
 double pitch = atan2(-DataStruct->Accel_X_RAW, DataStruct->Accel_Z_RAW) * RAD_TO_DEG;
-
 if ((pitch < -90 && DataStruct->KalmanAngleY > 90) || (pitch > 90 && DataStruct->KalmanAngleY < -90)) {
     KalmanY.angle = pitch;
     DataStruct->KalmanAngleY = pitch;
 } else {
     DataStruct->KalmanAngleY = Kalman_getAngle(&KalmanY, pitch, DataStruct->Gy, dt);
 }
-
-if (fabs(DataStruct->KalmanAngleY) > 90) {
+if (fabs(DataStruct->KalmanAngleY) > 90)
     DataStruct->Gx = -DataStruct->Gx;
-}
-
 DataStruct->KalmanAngleX = Kalman_getAngle(&KalmanX, roll, DataStruct->Gx, dt);
 }
 
@@ -282,9 +271,9 @@ double Kalman_getAngle(Kalman_t *Kalman, double newAngle, double newRate, double
 }
 ```
 
-This translation maintains the original code's structure and content while using a more readable and professional tone.
+This translation maintains the original code's structure and functionality while expressing it in a more polished and professional manner.
 
-Sure, here's the translated code with the original markdown format preserved:
+Here's the translation of the provided text into colloquial, professional, and fluent content:
 
 ```c
 Kalman->P[0][0] += dt * (dt * Kalman->P[1][1] - Kalman->P[0][1] - Kalman->P[1][0] + Kalman->Q_angle);
@@ -313,19 +302,19 @@ return Kalman->angle;
 };
 ```
 
-You can see that after setting the I2C address, the MPU6050 is initialized in the `MPU6050_Init` function and its values are read and manipulated in other functions.
+You can see that, after setting the I2C address, the MPU6050 is initialized in the `MPU6050_Init` function and operated to read various values in the other functions.
 
 ## Using I2C to Read Information from MPU6050
 
-### Configuring I2C Bus in CubeMX
+### Configuring the I2C Bus in CubeMX
 
-In the CubeMX, navigate to the "Communication" section and select "I2Cx." Change the I2C option from "disable" to "I2C," and configure the parameters in the popup configuration window (default settings are usually sufficient):
+In CubeMX, go to the "Communication" section and select "I2Cx". Change the I2C option from "disable" to "I2C" and configure the parameters in the pop-up configuration window (default settings are usually sufficient):
 
 ![I2C Configuration](https://img.wiki-power.com/d/wiki-media/img/20220403190116.png)
 
-### Configuring I2C for Reading MPU6050 Data in Code
+### Configuring I2C to Read Information in the Code
 
-First, include the MPU6050 library in your `main.c` file:
+First, include the MPU6050 library in your `main.c`:
 
 ```c
 /* USER CODE BEGIN Includes */
@@ -345,7 +334,7 @@ MPU6050_t MPU6050;
 /* USER CODE END PV */
 ```
 
-In the main function, initialize the MPU6050 and ensure it's ready before continuing with your program:
+In the main function, initialize the MPU6050, and only proceed with the program if initialization is successful:
 
 ```c
 /* USER CODE BEGIN 2 */
@@ -355,26 +344,25 @@ while (MPU6050_Init(&hi2c1) == 1);
 /* USER CODE END 2 */
 ```
 
-Inside a while loop, you can read the variables computed by the library and introduce some delay:
+Within a while loop, you can read the variables calculated by the library and introduce some delay for buffering:
 
 ```c
 /* USER CODE BEGIN 3 */
 
-MPU6050_Read_All(&hi2c1, &MPU6050);
-HAL_Delay(100);
+while (1) {
+    MPU6050_Read_All(&hi2c1, &MPU6050);
+    HAL_Delay(100);
 }
 
 /* USER CODE END 3 */
 ```
 
-By executing this code, you can read variables within the MPU6050 structure, such as `MPU6050.KalmanAngleX` (filtered angle on the X-axis). The elements and types of the MPU6050 structure are as follows:
+Executing this code allows you to read the variables inside the MPU6050 structure, such as `MPU6050.KalmanAngleX` (filtered angle on the X-axis). The elements and types of the MPU6050 structure are as follows:
 
 ```c
 typedef struct
 {
 ```
-
-I've translated the code while preserving the markdown format.
 
 ```c
 typedef struct {
@@ -399,7 +387,7 @@ typedef struct {
 } MPU6050_t;
 ```
 
-Once you have configured the serial port, you can use the following statement to output the variable:
+After configuring the serial interface, you can output the variables using the following statement:
 
 ```c
 printf("XAngle: %.2f°\t", MPU6050.KalmanAngleX);
@@ -408,11 +396,10 @@ printf("XAngle: %.2f°\t", MPU6050.KalmanAngleX);
 ## References and Acknowledgments
 
 - [leech001/MPU6050](https://github.com/leech001/MPU6050)
-- [Communication Protocol - I2C](to_be_replace[3])
-- > Original: <https://wiki-power.com/>
-- > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
-```
+- [Communication Protocol - I2C](https://wiki-power.com/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-I2C)
 
-Please note that "> Original: <https://wiki-power.com/>" and "> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution." remain unchanged as they appear to be placeholders or references in the original text.
+> Original: <https://wiki-power.com/>
+> This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
+```
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

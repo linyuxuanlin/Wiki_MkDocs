@@ -1,6 +1,6 @@
-# Notas de estudio de JavaScript
+# Notas de Estudio de JavaScript
 
-## Llamando a JS externo
+## Llamando a JavaScript Externo
 
 ```markup
 <!DOCTYPE html>
@@ -16,19 +16,19 @@
 
 ## Salida
 
-### Alerta emergente
+### Mostrar una Alerta
 
 ```javascript
 window.alert("Hola");
 ```
 
-### Manipulación de elementos HTML
+### Manipulación de Elementos HTML
 
 ```markup
 <!DOCTYPE html>
 <html>
     <body>
-        <h1> Mi primera página web </h1>
+        <h1> Mi Primera Página Web </h1>
         <p id="demo"> Mi primer párrafo </p>
         <script>
             document.getElementById ("demo").innerHTML = "El párrafo ha sido modificado.";
@@ -37,19 +37,19 @@ window.alert("Hola");
 </html>
 ```
 
-## Tipos de datos
+## Tipos de Datos
 
-Creando variables:
+Creación de Variables:
 
 ```javascript
-var carname = "Volvo";
+var nombreCoche = "Volvo";
 ```
 
-**Tipos de valores \ (tipos básicos)**: cadena (String), número (Number), booleano (Boolean), nulo (Null), indefinido (Undefined), símbolo.
+**Tipos de Valor (Tipos Primitivos)**: Cadena (String), Número (Number), Booleano (Boolean), Nulo (Null), Indefinido (Undefined), Símbolo (Symbol).
 
-**Tipos de datos de referencia**: objeto (Object), matriz (Array), función (Function).
+**Tipos de Datos por Referencia**: Objeto (Object), Arreglo (Array), Función (Function).
 
-> Dirección original del artículo: <https://wiki-power.com/>  
+> Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

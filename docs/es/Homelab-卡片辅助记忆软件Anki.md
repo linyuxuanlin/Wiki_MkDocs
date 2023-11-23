@@ -1,14 +1,14 @@
-# Homelab - Software de memoria asistida por tarjetas Anki
+# Homelab - Software de memorización asistida con tarjetas Anki
 
 ![](https://img.wiki-power.com/d/wiki-media/img/202306191745527.png)
 
-**Anki** es una aplicación de tarjetas de memoria de código abierto que ayuda a los usuarios a memorizar fácil y eficientemente diversos puntos de conocimiento, generalmente utilizada para aprender vocabulario. Su característica principal es que utiliza la curva de olvido de la memoria, generando un plan de revisión adecuado según el progreso del aprendizaje, ayudando a los usuarios a aprovechar al máximo las leyes de la memoria del cerebro para lograr el mejor efecto de memoria. Anki es altamente personalizable, puedes crear tus propias tarjetas de estudio, incluyendo texto, imágenes e incluso audio y video. Anki también es compatible con múltiples plataformas.
+**Anki** es una aplicación de tarjetas de memoria de código abierto que ayuda a los usuarios a recordar varios tipos de información de manera efectiva, comúnmente utilizada para aprender vocabulario. Su característica distintiva es la utilización de la curva de olvido, que genera un plan de revisión adaptado según el progreso de estudio, permitiendo a los usuarios aprovechar al máximo los patrones de memoria del cerebro para lograr un óptimo rendimiento en la memorización. Anki es altamente personalizable, permitiendo a los usuarios crear sus propias tarjetas de estudio con texto, imágenes e incluso audio y video. Además, Anki es compatible con múltiples plataformas.
 
-Debido a que el servidor de sincronización está en el extranjero, a veces puede haber problemas de sincronización. Podemos usar **anki-sync-server** para construir nuestro propio servicio de sincronización. El siguiente tutorial utiliza la imagen `johngong/anki-sync-server`, que funciona correctamente, pero no se ha probado con otras versiones.
+Debido a que el servidor de sincronización se encuentra en el extranjero, a veces puede haber problemas de sincronización. Sin embargo, podemos configurar nuestro propio servicio de sincronización utilizando **anki-sync-server**. El siguiente tutorial utiliza la imagen de Docker `johngong/anki-sync-server`, que ha sido probada y es funcional.
 
-## Despliegue (Docker Compose)
+## Implementación (Docker Compose)
 
-Primero, crea el archivo `compose.yaml` y pega el siguiente contenido:
+En primer lugar, cree un archivo `compose.yaml` y copie el siguiente contenido:
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -28,47 +28,47 @@ services:
     restart: unless-stopped
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar tus variables de entorno. Si no deseas utilizar variables de entorno, también puedes personalizar tus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `anki-sync-server`).
+(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si prefiere no usar variables de entorno, puede personalizar directamente los parámetros en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `anki-sync-server`).
 
 ```dotenv title=".env"
 STACK_NAME=anki-sync-server
-STACK_DIR=/DATA/AppData/anki-sync-server # Personaliza la ruta de almacenamiento del proyecto, por ejemplo, ./anki-sync-server
+STACK_DIR=/DATA/AppData/anki-sync-server # Ruta de almacenamiento personalizada para el proyecto, como ./anki-sync-server
 
 # anki-sync-server
 APP_VERSION=latest
-APP_PORT=xxxx # Personaliza el puerto de acceso, elige uno que no esté ocupado
-APP_USERNAME=xxx@xx.com  # Personaliza el nombre de usuario, debe ser un correo electrónico
-APP_PASSWORD=xxxxxx # Personaliza la contraseña
+APP_PORT=xxxx # Puerto personalizado para acceder, elija uno que no esté en uso
+APP_USERNAME=xxx@xx.com  # Nombre de usuario personalizado en formato de correo electrónico
+APP_PASSWORD=xxxxxx # Contraseña personalizada
 ```
 
-Finalmente, ejecuta el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores.
+Finalmente, en el mismo directorio que `compose.yaml`, ejecute el comando `docker compose up -d` para iniciar los contenedores.
 
 ## Instrucciones de configuración
 
 ### Windows
 
-En Windows, utilicé [**Anki 2.1.28**](https://github.com/ankitects/anki/releases/download/2.1.28/anki-2.1.28-windows.exe) (probé la versión 2.1.65 y no se pudo sincronizar).
+En la versión de Windows, he utilizado [**Anki 2.1.28**](https://github.com/ankitects/anki/releases/download/2.1.28/anki-2.1.28-windows.exe) (he comprobado que la versión 2.1.65 no es compatible con la sincronización).
 
-Después de la instalación, haz clic en `Herramientas` - `Complementos` en la barra de herramientas, luego haz clic en `Obtener complementos`, ingresa el código del complemento `358444159` y haz clic en `OK`, luego haz clic en `Configuración` y cambia la dirección al servidor donde desplegaste `anki-sync-server` y su puerto, finalmente reinicia el software.
+Después de la instalación, vaya a `Herramientas` en la barra de menú superior, luego seleccione `Complementos` y haga clic en `Obtener complementos`. Ingrese el código del complemento `358444159` y haga clic en `OK`. A continuación, vaya a `Configuración` y cambie la dirección al servidor en el que ha implementado `anki-sync-server`. Finalmente, reinicie el software.
 
-Después de reiniciar, haz clic en `Sincronizar` en la pantalla principal, ingresa el correo electrónico y la contraseña que ingresaste al desplegar el contenedor Docker, y podrás sincronizar tus tarjetas.
+Después de reiniciar, haga clic en "Sincronizar" en la pantalla principal, ingrese el correo electrónico y la contraseña que configuró al desplegar Docker y podrá iniciar la sincronización.
 
-Si aún no puede sincronizar, consulte [**Configuración de Anki**](https://github.com/ankicommunity/anki-sync-server/blob/develop/README.md#setting-up-anki).
+Si sigue experimentando problemas de sincronización, consulte [**Setting up Anki**](https://github.com/ankicommunity/anki-sync-server/blob/develop/README.md#setting-up-anki).
 
 ### Android
 
-En Android, se utiliza AnkiDroid, que permite personalizar la dirección del servidor sin necesidad de instalar complementos, pero se requiere iniciar sesión con https. Se recomienda utilizar un proxy inverso (se puede consultar el artículo [**Homelab - Nginx Proxy Manager para la gestión de certificados de proxy inverso**](https://wiki-power.com/es/Homelab-%E5%8F%8D%E4%BB%A3%E8%AF%81%E4%B9%A6%E7%AE%A1%E7%90%86%E9%9D%A2%E6%9D%BFNginxProxyManager/)).
+En el lado de Android, se utiliza AnkiDroid, que permite personalizar la dirección del servidor sin necesidad de instalar complementos, pero requiere la autenticación a través de HTTPS. Se recomienda su uso a través de un servidor de proxy inverso (puedes encontrar una guía para configurar un servidor de proxy inverso en [**Homelab - Panel de Gestión de Certificados para Proxy Nginx**](https://wiki-power.com/Homelab-%E5%8F%8D%E4%BB%A3%E8%AF%81%E4%B9%A6%E7%AE%A1%E7%90%86%E9%9D%A2%E6%9D%BFNginxProxyManager/)).
 
-Después de iniciar sesión con https, en la pantalla principal, seleccione `Advanced` - `Custom sync server` para configurar el servidor personalizado. Tenga en cuenta que en el campo `Media sync url`, debe agregar `/msync` después de la dirección original para sincronizar correctamente.
+Una vez que hayas iniciado sesión a través de HTTPS, puedes personalizar el servidor de sincronización en la pantalla principal seleccionando `Avanzado` - `Servidor de Sincronización Personalizado`. Ten en cuenta que en el campo `URL de Sincronización Multimedia`, debes agregar `/msync` al final de la dirección original para que la sincronización funcione correctamente.
 
-## Referencias y agradecimientos
+## Referencias y Agradecimientos
 
-- [Sitio web oficial](https://apps.ankiweb.net/)
+- [Sitio Oficial](https://apps.ankiweb.net/)
 - [Documentación](https://www.navidrome.org/docs/installation/docker/)
-- [Repositorio de GitHub](https://github.com/ankicommunity/anki-sync-server)
+- [Repositorio en GitHub](https://github.com/ankicommunity/anki-sync-server)
 - [Docker Hub](https://hub.docker.com/r/johngong/anki-sync-server)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
+> Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

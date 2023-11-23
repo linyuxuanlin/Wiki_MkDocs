@@ -14,7 +14,7 @@ services:
   navidrome:
     container_name: ${STACK_NAME}_app
     image: deluan/navidrome:${APP_VERSION}
-    user: 1000:1000 # If there are permission issues, try deploying as root (0:0)
+    user: 1000:1000 # If permission issues occur, you can try deploying as root (0:0)
     ports:
       - "${APP_PORT}:4533"
     environment:
@@ -29,33 +29,33 @@ services:
     restart: unless-stopped
 ```
 
-(Optional) It is recommended to create a `.env` file in the same directory as `compose.yaml` and customize your environment variables. If you do not want to use environment variables, you can also customize your parameters directly in `compose.yaml` (e.g. replace `${STACK_NAME}` with `navidrome`).
+(Optional) It is recommended to create a `.env` file in the same directory as `compose.yaml` and customize your environment variables. If you prefer not to use environment variables, you can directly customize your parameters in `compose.yaml` (e.g., replace `${STACK_NAME}` with `navidrome`).
 
 ```dotenv title=".env"
 STACK_NAME=navidrome
-STACK_DIR=xxx # Custom project storage path, such as ./navidrome
-DATA_DIR=xxx # Custom podcast storage path, such as ./music
+STACK_DIR=xxx # Customize your project storage path, e.g., ./navidrome
+DATA_DIR=xxx # Customize your music storage path, e.g., ./music
 
 # navidrome
 APP_VERSION=latest
-APP_PORT=xxxx # Custom access port, choose one that is not occupied
+APP_PORT=xxxx # Customize the access port, choose one that is not already in use
 ```
 
-If you have a NAS, you can also mount the storage space on the NAS through the NFS protocol, store the music on the NAS to save server space, please refer to [**Mount Synology NAS hard disk expansion space (NFS) under Linux**](https://wiki-power.com/en/Linux%E4%B8%8B%E6%8C%82%E8%BD%BD%E7%BE%A4%E6%99%96NAS%E7%A1%AC%E7%9B%98%E6%8B%93%E5%B1%95%E7%A9%BA%E9%97%B4%EF%BC%88NFS%EF%BC%89/) for details.
+If you have a NAS, you can also mount the storage space on your NAS using the NFS protocol to save server space. For more details, please refer to [**Mounting Synology NAS Hard Drive Expansion Space (NFS) on Linux**](https://wiki-power.com/Linux%E4%B8%8B%E6%8C%82%E8%BD%BD%E7%BE%A4%E6%99%96NAS%E7%A1%AC%E7%9B%98%E6%8B%93%E5%B1%95%E7%A9%BA%E9%97%B4%EF%BC%88NFS%EF%BC%89/).
 
 Finally, execute the command `docker compose up -d` in the same directory as `compose.yaml` to start the orchestrated container.
 
-## Configuration
+## Configuration Instructions
 
-There are many choices for mobile apps. The best experience I have used on Android is substreamer. For more apps, please refer to the official list [**Apps**](https://www.navidrome.org/docs/overview/#apps).
+There are many options for mobile apps. The one I personally find best for Android is substreamer. For more apps, you can refer to the official list of [**Apps**](https://www.navidrome.org/docs/overview/#apps).
 
-## Reference and Acknowledgement
+## References and Acknowledgements
 
-- [Official website](https://www.navidrome.org/)
+- [Official Website](https://www.navidrome.org/)
 - [Documentation](https://www.navidrome.org/docs/installation/docker/)
 - [GitHub repo](https://github.com/navidrome/navidrome/)
 - [Docker Hub](https://hub.docker.com/r/deluan/navidrome)
-- [Demo site](https://demo.navidrome.org/app/) (username and password are both demo)
+- [Demo site](https://demo.navidrome.org/app/) (username and password are both "demo")
 
 > Original: <https://wiki-power.com/>  
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.

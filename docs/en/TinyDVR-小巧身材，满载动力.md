@@ -1,14 +1,14 @@
-# TinyDVR - Small Size, Loaded with Power
+# TinyDVR - Compact Size, Loaded with Power
 
-—— Based on TinyDVR Master V1.1 & Slave V7.2 Release
+**— Based on TinyDVR Master V1.1 & Slave V7.2 Release**
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200125191345.jpg)
+![TinyDVR](https://img.wiki-power.com/d/wiki-media/img/20200125191345.jpg)
 
-TinyDVR is a motor driver kit that includes a motherboard (Master) and a daughterboard (Slave). The power supply and drive parts are separated, and the volume is greatly reduced compared to its predecessor ZenDriver, greatly improving scalability. You can stack different numbers of daughterboards according to your needs to drive n motors.
+TinyDVR is a motor driver kit that includes a mainboard (Master) and a subboard (Slave). It separates the power supply and the driving components, resulting in a significantly reduced size compared to its predecessor, ZenDriver. This design greatly enhances its expandability. You can stack different numbers of subboards according to your needs to drive multiple motors.
 
-Project repository: [**linyuxuanlin/TinyDVR**](https://github.com/linyuxuanlin/TinyDVR)
+Project Repository: [**linyuxuanlin/TinyDVR**](https://github.com/linyuxuanlin/TinyDVR)
 
-Project online preview:
+Online Preview of the Project:
 
 **TinyDVR_Master**:
 
@@ -28,60 +28,60 @@ Project online preview:
   ></div>
 </div>
 
-## Basic Parameters
+## Basic Specifications
 
-1. Input voltage: **7.2 ~ 20 V**
-2. Output current: **0 ~ 68 A**
-3. Provides **5V / 3A** power output for controllers and other modules
-4. Protection device: integrated anti-reverse, optocoupler isolation circuit
-5. Convenient motor connection: for commonly used DC reduction motors (with encoders), can be directly connected with 6-pin cable (no need to match polarity)
-6. Expandable: one motherboard can stack n daughterboards to achieve n-channel motor drive
+1. Input Voltage: **7.2 ~ 20 V**
+2. Output Current: **0 ~ 68 A**
+3. Provides a **5V / 3A** power output for controllers and other modules
+4. Protection Devices: Integrated reverse connection protection and optocoupler isolation circuit
+5. Motor Connection: Compatible with commonly available DC geared motors (with encoders) and can be directly connected with a 6-pin connector (no need for soldering)
+6. Expandable: One mainboard can stack multiple subboards, enabling control of multiple motors.
 
-## Interface Definition
+## Interface Definitions
 
 ### TinyDVR Master
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200125191439.png)
+![TinyDVR Master](https://img.wiki-power.com/d/wiki-media/img/20200125191439.png)
 
 ### TinyDVR Slave
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200125191457.png)
+![TinyDVR Slave](https://img.wiki-power.com/d/wiki-media/img/20200125191457.png)
 
-Back pin details:
+Explanation of Back Pins:
 
 - \+ : Provides 5V / 3A power output
 - 1 : IN1 port, input PWM signal 1
 - 2 : IN2 port, input PWM signal 2
-- A : Encoder A phase signal port
-- B : Encoder B phase signal port
+- A : Encoder A-phase signal port
+- B : Encoder B-phase signal port
 - \- : GND
 
 ## User Guide
 
-### Test Method
+### Testing Procedure
 
-1. Connect to **7.2 ~ 20 V** battery power supply
-2. Connect the motor to the corresponding daughterboard
-3. Connect **IN1/IN2** ports to **5V** power supply port, the motor will **rotate forward/reverse**
+1. Connect a **7.2 ~ 20 V** battery for power supply.
+2. Attach the motor to the corresponding subboard.
+3. Connect the **5V** power supply to the **IN1/IN2** ports. At this point, the motor will operate in the **forward/reverse** direction.
 
-### Connect to MCU
+### Connecting to a Microcontroller
 
-4. Connect to **7.2 ~ 20 V** battery power supply
-5. Connect the motor to the corresponding daughterboard
-6. Common ground (connect the GND of the drive board to the GND of the MCU)
-7. Connect IN1 and IN2 ports to the corresponding PWM ports of the MCU (set in the code)
-8. Test method: see the test routine in the project repository
+4. Connect a **7.2 ~ 20 V** battery for power supply.
+5. Attach the motor to the corresponding subboard.
+6. Connect the ground (drive board GND to microcontroller GND).
+7. Connect IN1 and IN2 ports to the microcontroller's respective PWM ports (set in your code).
+8. Testing procedure can be found in the project repository's test routine.
 
 ## Behind the Scenes
 
-Early daughterboard:
-![](https://img.wiki-power.com/d/wiki-media/img/20200311182442.jpg)
+Early subboards:
+![Early Subboards](https://img.wiki-power.com/d/wiki-media/img/20200311182442.jpg)
 
-Batch welding:
+Bulk soldering:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200311182441.jpg)
+![Bulk Soldering](https://img.wiki-power.com/d/wiki-media/img/20200311182441.jpg)
 
-> Original: <https://wiki-power.com/>  
+> Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

@@ -51,6 +51,5 @@ https://raw.githubusercontent.com/damellis/attiny/ide-1.6.x-boards-manager/packa
 - [DigiSpark ATtiny85 8 脚 Arduino AVR ISP 编程的那点事儿 BootLoader 熔丝](http://blog.sina.com.cn/s/blog_6566538d0102w6qk.html)
 - [Quick Reference Frequently requested info](http://digistump.com/wiki/digispark/quickref)
 
-> 文章作者：**Power Lin**
-> 原文地址：<https://wiki-power.com>
-> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。

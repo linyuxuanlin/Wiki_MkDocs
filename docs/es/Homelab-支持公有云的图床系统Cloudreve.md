@@ -1,12 +1,12 @@
-# Homelab - Sistema de almacenamiento en la nube Cloudreve compatible con la nube pública
+# Homelab - Sistema de almacenamiento en la nube Cloudreve compatible con servicios de nube pública
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230304195423.png)
+![Cloudreve](https://img.wiki-power.com/d/wiki-media/img/20230304195423.png)
 
-**Cloudreve** es un sistema de archivos en la nube compatible con múltiples controladores de almacenamiento en la nube pública. Admite el almacenamiento local, secundario, Qiniu, Aliyun OSS, Tencent Cloud COS, Upyun, OneDrive, S3 y protocolos compatibles para la conexión con Aria2 para descargas sin conexión, múltiples usuarios, carga / gestión de arrastrar y soltar, vista / edición en línea, WebDAV, entre otros. El uso típico es como un servicio de almacenamiento de imágenes personal o gestión de archivos en la nube.
+**Cloudreve** es un sistema de almacenamiento en la nube público que admite múltiples controladores de almacenamiento en la nube. Es compatible con almacenamiento local, remoto, Qiniu, Alibaba Cloud OSS, Tencent Cloud COS, UpYun, OneDrive, protocolos compatibles con S3 y permite la integración con Aria2 para descargas fuera de línea. También admite múltiples usuarios, carga y gestión de archivos mediante arrastrar y soltar, vista previa y edición en línea, WebDAV, entre otras características. Su uso típico incluye la creación de un repositorio de imágenes personales o la gestión de archivos en la nube.
 
 ## Implementación (Docker Compose)
 
-En primer lugar, debemos crear una estructura de directorios. Cambie al directorio donde se encuentra Cloudreve (por ejemplo, `/DATA/AppData/cloudreve`) y ejecute:
+Primero, es necesario crear una estructura de directorios. Cambie al directorio donde se encuentra Cloudreve (por ejemplo, `/DATA/AppData/cloudreve`) y ejecute el siguiente comando:
 
 ```shell
 mkdir -vp cloudreve/{uploads,avatar,data} \
@@ -18,7 +18,7 @@ mkdir -vp cloudreve/{uploads,avatar,data} \
 && mkdir data
 ```
 
-Primero, cree el archivo `compose.yaml` y pegue el siguiente contenido:
+Luego, cree un archivo `compose.yaml` y pegue el siguiente contenido:
 
 ```yaml title="compose.yaml"
 version: "3.8"
@@ -56,40 +56,41 @@ volumes:
       o: bind
 ```
 
-(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar sus variables de entorno. Si no desea utilizar variables de entorno, también puede personalizar sus parámetros directamente en `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `cloudreve`).
+(Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` para personalizar sus variables de entorno. Si no desea utilizar variables de entorno, puede personalizar directamente sus parámetros en `compose.yaml` (por ejemplo, sustituir `${STACK_NAME}` por `cloudreve`).
 
 ```dotenv title=".env"
 STACK_NAME=cloudreve
-STACK_DIR=xxx # Ruta personalizada de almacenamiento del proyecto, por ejemplo ./cloudreve
+STACK_DIR=xxx # Custom project storage path, e.g., ./cloudreve
 
 # cloudreve
 APP_VERSION=latest
-APP_PORT=xxxx # Puerto de acceso personalizado, elige uno que no esté ocupado
+APP_PORT=xxxx # Custom access port, choose one that is not in use
 
 # aria2
 ARIA2_VERSION=latest
-ARIA2_RPC_SECRET=xxx # Contraseña de ARIA2
+ARIA2_RPC_SECRET=xxx # ARIA2 password
 ARIA2_RPC_PORT=6800
 ```
 
-Finalmente, ejecuta el comando `docker compose up -d` en el directorio raíz de `compose.yaml` para iniciar los contenedores.
+Finally, execute the `docker compose up -d` command in the same directory as the `compose.yaml` file to start the orchestrated containers.
 
-## Instrucciones de configuración
+## Configuration Instructions
 
-Al iniciar por primera vez, se creará automáticamente una cuenta de administrador inicial, que se puede encontrar en los registros. Si se pierde, elimina el archivo cloudreve.db en el directorio y reinicia el programa principal para inicializar una nueva cuenta de administrador.
+Upon initial startup, an administrator account will be created automatically, and you can find the details in the log. If you miss it, please delete the `cloudreve.db` file in the directory and restart the main program to initialize a new administrator account.
 
-Utilizo la convención de nomenclatura de imágenes: `{año}{mes}{día}{hora}{minuto}{segundo}{ext}`.
+I use the following image naming convention: `{year}{month}{day}{hour}{minute}{second}{ext}`.
 
-## Referencias y agradecimientos
+## References and Acknowledgments
 
-- [Sitio web oficial](https://docs.cloudreve.org/)
-- [Documentación](https://docs.cloudreve.org/getting-started/install#docker-compose)
-- [Foro](https://forum.cloudreve.org/)
-- [Repositorio de GitHub](https://github.com/cloudreve/Cloudreve)
+- [Official Website](https://docs.cloudreve.org/)
+- [Documentation](https://docs.cloudreve.org/getting-started/install#docker-compose)
+- [Forum](https://forum.cloudreve.org/)
+- [GitHub Repository](https://github.com/cloudreve/Cloudreve)
 - [Docker Hub](https://hub.docker.com/r/cloudreve/cloudreve)
-- [Sitio de demostración](https://demo.cloudreve.org/)
+- [Demo Site](https://demo.cloudreve.org/)
 
-> Dirección original del artículo: <https://wiki-power.com/>  
-> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+[Por reemplazar[1]]
+[Por reemplazar[2]]
+```
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

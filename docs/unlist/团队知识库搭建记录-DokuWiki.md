@@ -3,7 +3,6 @@ id: 团队知识库搭建记录-DokuWiki
 title: 团队知识库搭建记录 - DokuWiki
 ---
 
-
 对比：
 
 - MoinMoin Wiki
@@ -12,11 +11,8 @@ title: 团队知识库搭建记录 - DokuWiki
 - mm-wiki
 - MinDoc
 
-
-
-> 文章作者：**Power Lin**
-> 原文地址：<https://wiki-power.com>  
-> 版权声明：文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议，转载请注明出处。
+> 原文地址：<https://wiki-power.com/>  
+> 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
 
 ## 拓展
 
@@ -113,7 +109,6 @@ php function getimagesize(/srv/www/www.ini.unizh.ch/tmp/phpQu74yf) does not thin
 ### 批量导入用户出现乱码
 
 解决方法：使用 utf8 编码的 .csv 文件
-
 
 ## 参考与致谢
 

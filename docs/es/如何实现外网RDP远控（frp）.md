@@ -1,48 +1,49 @@
-# Cómo implementar el control remoto RDP en Internet (frp)
+# Cómo habilitar el control remoto RDP a través de Internet (frp)
 
-Usando frp para controlar el escritorio de forma remota en cualquier red.
+Utilizando frp para habilitar el control remoto de escritorio en cualquier red.
 
-## ¿Por qué usar RDP?
+## Por qué utilizar RDP
 
 RDP es un protocolo incorporado en Windows. En comparación con otros software de escritorio remoto en el mercado, como Todesk, Anydesk, y TeamViewer, tiene las siguientes ventajas:
 
-- Mejor compatibilidad, se adapta automáticamente a la resolución del dispositivo y se puede usar para conectar teclados y ratones.
-- Mayor libertad, sin límite de cantidad de dispositivos ni sistema de membresía.
-- La velocidad de conexión depende de la velocidad de la red de la computadora y la configuración del servidor.
+- Mayor compatibilidad, se adapta automáticamente a la resolución del dispositivo y permite el uso del teclado y el mouse.
+- Mayor libertad, no hay restricciones en la cantidad de dispositivos ni un sistema de membresía.
+- La velocidad de conexión depende de la velocidad de la red y la configuración del servidor.
 
-## ¿Por qué usar frp?
+## Por qué utilizar frp
 
-RDP solo admite el uso en la misma red IP, por lo que para controlar de forma remota en Internet, necesitamos usar el método frp para penetrar en la red interna.
+RDP solo es compatible con el uso de la misma subred IP. Para habilitar el control remoto en Internet, necesitamos utilizar el método frp para atravesar la red interna.
 
-frp es un software de proxy inverso, es ligero pero potente y puede hacer que los dispositivos detrás de una red interna o un firewall proporcionen servicios al mundo exterior. Admite muchos protocolos, como HTTP, TCP, UDP, etc. El principio de usar frp para controlar el escritorio de forma remota en Internet es conectar el dispositivo controlado al servidor, y luego conectarnos indirectamente al dispositivo controlado a través del servidor.
+frp es un software de proxy inverso, es ligero pero potente, y permite que los dispositivos detrás de una red interna o un firewall brinden servicios al mundo exterior. Admite numerosos protocolos como HTTP, TCP, UDP, entre otros.  
+El principio de habilitar el control remoto RDP a través de Internet utilizando frp es conectar el dispositivo controlado al servidor, y luego conectarnos al dispositivo controlado a través del servidor, logrando así el control remoto.
 
 ## Preparación
 
-- Servidor (puede ser un servidor en la nube o una máquina física con IP pública)
+- Servidor (puede ser un servidor en la nube o una máquina física con una dirección IP pública)
 - Dispositivo controlado (Windows debe ser una versión profesional o superior)
 - Dispositivo de control remoto (compatible con todas las plataformas)
 
 ## Configuración del servidor
 
-Primero, verifique la arquitectura del servidor:
+Primero, verifiquemos la arquitectura del servidor:
 
 ```shell
 arch
 ```
 
-Consulte la página de [**Releases**](https://github.com/fatedier/frp/releases) de frp, seleccione la versión que se adapte a su arquitectura (por ejemplo, si su arquitectura es `X86_64`, seleccione `amd64`):
+Consulte la página de [**Releases**](https://github.com/fatedier/frp/releases) de frp y descargue la versión que coincida con su arquitectura (por ejemplo, si tengo una arquitectura `X86_64`, seleccionaré `amd64`):
 
 ```shell
 wget https://github.com/fatedier/frp/releases/download/v0.36.2/frp_0.36.2_linux_amd64.tar.gz
 ```
 
-Después de descargarlo, descomprímalo y cámbiele el nombre:
+Una vez descargado, descomprima y cambie el nombre:
 
 ```shell
 tar -zxvf frp_0.36.2_linux_amd64.tar.gz && mv frp_0.36.2_linux_amd64 frp
 ```
 
-Veamos los archivos en la carpeta frp:
+Veamos los archivos dentro de la carpeta frp:
 
 ```shell
 cd frp && ls
@@ -53,7 +54,7 @@ cd frp && ls
 - frpc
 - frpc.ini
 
-Entre ellos, `frps` y `frps.ini` son los programas y archivos de configuración del servidor (la "s" al final significa "servidor"), mientras que `frpc` y `frpc.ini` están relacionados con el cliente (la "c" al final significa "cliente"), que no usaremos por ahora y se pueden eliminar:
+Entre ellos, `frps` y `frps.ini` son el programa y el archivo de configuración del servidor (la "s" al final significa servidor), mientras que `frpc` y `frpc.ini` están relacionados con el cliente (la "c" al final significa cliente). Por ahora, no los necesitamos, así que podemos eliminarlos:
 
 ```shell
 rm -f frpc frpc.ini
@@ -74,10 +75,10 @@ dashboard_user = admin
 dashboard_pwd = admin
 ```
 
-- **bind_port**: el puerto al que se conectan el cliente y el servidor, que se utilizará más adelante al configurar el cliente. Por lo general, se puede dejar en el valor predeterminado.
-- **dashboard_port**: el puerto del panel de control del servidor, que se puede dejar en el valor predeterminado. Si se establece en el valor predeterminado de `7500`, se puede acceder al panel de control (por ejemplo, `IP del servidor:7500`) para ver el estado de frp.
-- **token**: la contraseña para la conexión entre el cliente y el servidor, que debe establecerse por sí mismo.
-- **dashboard_user** / **dashboard_pwd**: el nombre de usuario y la contraseña del panel de control, que deben establecerse por sí mismos.
+- **bind_port**: el puerto al que se conectan los clientes y el servidor, se utilizará más adelante al configurar el cliente, generalmente se puede dejar en su valor predeterminado.
+- **dashboard_port**: el puerto del panel de control del servidor, generalmente se puede dejar en su valor predeterminado. Si se establece en el valor predeterminado de `7500`, se puede acceder al panel de control a través del puerto `7500` (por ejemplo, `IP del servidor:7500`) para verificar el estado de frp.
+- **token**: la contraseña para la conexión entre el cliente y el servidor, establezca una contraseña por su cuenta.
+- **dashboard_user** / **dashboard_pwd**: el nombre de usuario y la contraseña del panel de control, establezca un nombre de usuario y una contraseña por su cuenta.
 
 Después de editar, presione `Esc` y luego ingrese `:wq` para guardar y salir.
 
@@ -93,13 +94,13 @@ Si ve la siguiente salida:
 nohup: ignoring input and appending output to 'nohup.out'
 ```
 
-significa que el servicio se está ejecutando correctamente. También podemos usar el comando `jobs` para ver los servicios en ejecución.
+Significa que el servicio se está ejecutando correctamente. También podemos usar el comando `jobs` para verificar los servicios en ejecución.
 
-Para probar si la configuración del servidor se ha realizado correctamente, podemos acceder a `x.x.x.x:7500` utilizando el nombre de usuario y la contraseña configurados anteriormente, para ver si podemos acceder al panel de control sin problemas. Si no se puede acceder al panel de control, es posible que se deba a que el puerto correspondiente no está abierto en el firewall del servidor.
+Para probar si la configuración del servidor se ha realizado correctamente, podemos acceder a `x.x.x.x:7500` utilizando el nombre de usuario y la contraseña configurados anteriormente, para ver si podemos acceder al panel de control sin problemas. Si no se puede acceder al panel de control, es posible que se haya bloqueado el puerto correspondiente en el firewall del servidor.
 
 ## Configuración del cliente
 
-De nuevo, consulte la página de [**Releases**](https://github.com/fatedier/frp/releases) de frp y descargue la versión adecuada para su arquitectura. Después de descargarlo, descomprima y cambie el nombre del archivo, y puede eliminar los archivos `frps` y `frps.ini`. Abra el archivo `frpc.ini`:
+Consulte la página de [**Releases**](https://github.com/fatedier/frp/releases) de frp para seleccionar y descargar la versión que corresponda a su arquitectura. Después de descargarlo, descomprímalo y cambie el nombre. Puede eliminar los archivos `frps` y `frps.ini`. Abra el archivo `frpc.ini`:
 
 ```ini title="frpc.ini"
 [common]
@@ -118,21 +119,21 @@ local_port = 445
 remote_port = 7002
 ```
 
-- **server_addr**: la dirección IP del servidor, por favor modifíquela según sea necesario.
-- **server_port**: mantenga el mismo valor que el `bind_port` del servidor, que por defecto es `7000`.
-- **token**: la contraseña de conexión, manténgala igual que la configurada en el servidor.
+- **server_addr**: Dirección IP del servidor, modifíquela según corresponda.
+- **server_port**: Mantenga el mismo valor que el `bind_port` del servidor, que por defecto es `7000`.
+- **token**: Contraseña de conexión, manténgala igual que la configurada en el servidor.
 
-A continuación, configuramos las reglas personalizadas:
+A continuación, configuraremos las reglas personalizadas:
 
-- **[rdp]**: [xxx] indica el nombre de la regla, que se puede personalizar.
-- **type**: el tipo de protocolo de reenvío, que puede ser TCP/UDP.
-- **local_port**: el número de puerto local, que aquí es el puerto del protocolo RDP (3389).
-- **remote_port**: el número de puerto abierto en el servidor, que se puede personalizar.
+- **[rdp]**: [xxx] representa el nombre de la regla, puede personalizarlo.
+- **type**: Tipo de protocolo de reenvío, puede ser TCP/UDP.
+- **local_port**: Número de puerto local, aquí se debe ingresar el puerto del protocolo RDP (3389).
+- **remote_port**: Número de puerto abierto en el servidor, puede personalizarlo.
 
-> El número de puerto predeterminado para el protocolo RDP (Protocolo de escritorio remoto) en Windows es 3389, y el protocolo es TCP.
-> El número de puerto predeterminado para el protocolo SMB (Protocolo de uso compartido de archivos de Windows) es 445, y el protocolo es TCP.
+> El protocolo RDP (Remote Desktop Protocol) tiene el número de puerto predeterminado 3389 y utiliza el protocolo TCP.
+> El protocolo SMB (Server Message Block) para compartir archivos en Windows tiene el número de puerto predeterminado 445 y utiliza el protocolo TCP.
 
-Para ejecutar frpc en segundo plano, creamos el script `frpc.vbs` y pegamos el siguiente contenido:
+Para ejecutar frpc en segundo plano, crearemos el script `frpc.vbs` y pegaremos el siguiente contenido:
 
 ```vbscript title="frpc.vbs"
 set ws=WScript.CreateObject("WScript.Shell")
@@ -141,7 +142,7 @@ ws.Run "c:\frp\frpc.exe -c c:\frp\frpc.ini",0
 
 Tenga en cuenta que es posible que deba modificar la ruta.
 
-Coloque `frpc.vbs` en el directorio `C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp` para que se inicie automáticamente al arrancar.
+Coloque `frpc.vbs` en la carpeta `C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp` para que se inicie automáticamente al iniciar el sistema.
 
 Si desea probarlo, puede ejecutar el script directamente o reiniciar para que se ejecute automáticamente.
 
@@ -149,22 +150,25 @@ Si desea probarlo, puede ejecutar el script directamente o reiniciar para que se
 
 ### El cliente de control es un dispositivo móvil
 
-Si desea controlar su computadora de forma remota en su teléfono o iPad, primero debe instalar la aplicación `Microsoft Remote Desktop` y luego seguir estos pasos:
+Si desea controlar una computadora de forma remota desde un teléfono móvil o un iPad, primero debe instalar la aplicación "Microsoft Remote Desktop" y luego seguir estos pasos:
 
-1. Haga clic en `+` - `Agregar computadora` en la esquina superior derecha de la aplicación.
-2. En `Nombre de la computadora`, ingrese `IP:remote_port`, por ejemplo, `x.x.x.x:7001`, y luego haga clic en Atrás.
-3. En `Nombre de usuario`, ingrese el nombre de usuario y la contraseña de la computadora controlada, y luego haga clic en Atrás.
+1. En la aplicación, haga clic en el símbolo "+" en la esquina superior derecha y seleccione "Agregar PC".
+2. En "Nombre de PC", ingrese "IP:remote_port", por ejemplo, `x.x.x.x:7001`, y luego haga clic en "Volver".
+3. En "Nombre de cuenta", ingrese el nombre de usuario y la contraseña de la computadora controlada y luego haga clic en "Volver".
 
-Si todo está configurado correctamente, debería poder controlar su computadora de forma remota.
+Si todo está configurado correctamente, debería poder controlar la computadora de forma remota sin problemas.
 
 ### El cliente de control es Windows
 
-Simplemente busque y abra `Conexión a Escritorio remoto` en el menú Inicio, ingrese `IP:remote_port`, por ejemplo, `x.x.x.x:7001`, y siga las instrucciones para ingresar su nombre de usuario y contraseña para controlar su computadora de forma remota.
+Simplemente busque y abra "Conexión de Escritorio Remoto" en el menú de inicio, ingrese "IP:remote_port", por ejemplo, `x.x.x.x:7001`, y siga las instrucciones para ingresar el nombre de usuario y la contraseña, para poder controlar la computadora de forma remota.
 
 ## Referencias y agradecimientos
 
-- [Cómo usar frp para la penetración de red interna](https://sspai.com/post/52523)
-- [Cómo utilizar el comando nohup en Linux](https://ehlxr.me/2017/01/18/Linux-%E7%9A%84-nohup-%E5%91%BD%E4%BB%A4%E7%9A%84%E7%94%A8%E6%B3%95/)
-- [Cómo crear un escritorio remoto personalizado utilizando frp](https://pa.ci/77.html)
+- [Cómo hacer un túnel a través de la red local con frp](https://sspai.com/post/52523)
+- [Uso del comando nohup en Linux](https://ehlxr.me/2017/01/18/Linux-%E7%9A%84-nohup-%E5%91%BD%E4%BB%A4%E7%9A%84%E7%94%A8%E6%B3%95/)
+- [【Tutorial】Acceso remoto a través de frp](https://pa.ci/77.html)
+
+> Dirección original del artículo: <https://wiki-power.com/>
+> Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

@@ -6,69 +6,70 @@ GPIO stands for **General Purpose Input Output**.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20200615205256.jpg)
 
-To illustrate, let's take the F103C8T6 chip as an example (as shown in the image above). Except for the colored pins (power and some specific function pins), all the others are referred to as GPIO pins. This showcases their versatility.
+Taking the F103C8T6 chip as an example (in the above figure), all the pins except for the colored ones (power supply and certain functional pins) are called GPIO. This shows its versatility.
 
-The function of GPIO is to handle input and output electrical signals. Let's delve into its internal structure:
+The function of GPIO is to input/output electrical signals. Let's take a look at its internal structure:
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20200615211744.jpg)
 
-- The rightmost I/O pins represent the physical chip's pins. The upper and lower "protection diodes" to some extent protect the chip from abnormal external voltages that might otherwise damage it.
-- Inside the red dashed box are the input functions (where the chip reads external signals). Two switches with pull-up/pull-down resistors are used to implement pull-up and pull-down input functions. If neither switch is closed, it's considered a floating input (with no reference voltage, i.e., no defined logic level). All three of these input modes read digital values (high/low levels). Additionally, there is an analog input function, which directly reads the analog voltage on the pin (we'll discuss multiplexing input functions later).
-- Inside the blue dashed box are the output functions. There are four output modes: push-pull, open-drain, multiplexed push-pull, and multiplexed open-drain.
+- The rightmost I/O pin is the physical pin of the chip. The upper and lower `protective diodes` can prevent the chip from being burned by abnormal external voltages to some extent.
+- The red dashed box represents the input function (the chip reads external signals). The two switches with pull-up/pull-down resistors are used to implement pull-up/pull-down input functions. If both switches are not closed, it is called floating input (neither high nor low, without reference level). All three input modes mentioned above are digital (high/low level). In addition, there is an analog input function, which directly reads the analog value on the pin. (We will mention the multiplexing input function later).
+- The blue dashed box represents the output function. There are four modes of output: push-pull, open-drain, multiplexing push-pull, and multiplexing open-drain.
 
-### Input and Output Modes
+### Input/Output Modes
 
-Input Modes:
+Input modes:
 
-- **Floating Input**: No pull-up or pull-down resistors enabled; this is the default mode after an STM32 reset.
-- **Pull-up Input**: Closing the pull-up resistor switch ensures that the reference voltage is always high. An input signal of low voltage triggers it.
-- **Pull-down Input**: Closing the pull-down resistor switch ensures that the reference voltage is always low. An input signal of high voltage triggers it.
-- **Analog Input**: In this mode, there is neither pull-up nor pull-down, and it doesn't pass through TTL trigger circuitry. STM32 directly reads the analog signal on the pin.
+- **Floating Input**: Neither pull-up nor pull-down, this is the default mode after the STM32 is reset.
+- **Pull-Up Input**: Close the switch of the pull-up resistor to keep the reference level always high, and trigger when the input signal is low.
+- **Pull-Down Input**: Close the switch of the pull-down resistor to keep the reference level always low, and trigger when the input signal is high.
+- **Analog Input**: In this mode, neither pull-up nor pull-down is used, and it does not pass through the TTL trigger. The STM32 directly reads the analog signal on the pin.
 
-Output Modes:
+Output modes:
 
-- **Open-Drain Output**: "Open-drain" refers to the drain terminal (the pin below). This mode exclusively uses the lower N-MOS transistor. MOS transistors are voltage-controlled devices. Think of it like a faucet; when a low voltage signal is applied to the gate of the N-MOS transistor (the left pin), it turns on.
-- **Push-Pull Output**: Push-pull has two modes. In the first mode, both MOS transistor gates receive a low voltage signal, causing the P-MOS transistor to conduct while the N-MOS transistor is cut off. This results in current flowing from VDD to the external pin, making the pin high. In the second mode, the opposite happens: both MOS transistor gates receive a high voltage signal, causing the P-MOS transistor to cut off and the N-MOS transistor to conduct. This results in current flowing from the external pin to the internal GND, making the pin low.
-- **Multiplexed Open-Drain**
-- **Multiplexed Push-Pull**
+- **Open-Drain Output**: Open-drain refers to the drain of the N-MOS transistor (the pin above it). This mode only uses the N-MOS transistor below. We know that the MOS transistor is a voltage-controlled component. It can be understood as a water tap. When a low-level signal is input to the gate of the N-MOS transistor (the left pin), the N-MOS transistor conducts.
+- **Push-Pull Output**: There are two modes of push-pull. In the first mode, a low-level signal is simultaneously applied to the gates of both MOS transistors, so the P-MOS transistor conducts while the N-MOS transistor cuts off, and the current flows from VDD to the external pin, making the pin high. In the second mode, a high-level signal is simultaneously applied to the gates of both MOS transistors, so the P-MOS transistor cuts off while the N-MOS transistor conducts, and the current flows from the external pin to the internal GND, making the pin low.
+- **Multiplexing Open-Drain**
+- **Multiplexing Push-Pull**
 
-### Common GPIO Function References
+### Commonly Used GPIO Function References
 
-To read the GPIO state and return high or low level:
+Read GPIO status, return high/low level:
 
 ```c
 GPIO_PinState HAL_GPIO_ReadPin(GPIOx, GPIO_Pin);
 ```
 
-To write the GPIO state and set it to high or low level:
+Write GPIO status, write high/low level:
 
 ```c
 HAL_GPIO_WritePin(GPIOx, GPIO_Pin, PinState);
 ```
 
-To toggle the GPIO level:
+Toggle GPIO level:
 
 ```c
 HAL_GPIO_TogglePin(GPIOx, GPIO_Pin);
 ```
 
-## Illuminating an LED
+## Light up LED
 
-Before proceeding to the next experiment, it's necessary to configure various parameters such as serial download and clock settings in CubeMX.
-For details on configuring the environment, please refer to the article [**HAL Library Development Notes - Environment Configuration**](to_be_replace[3]).
+Before proceeding to the next experiment, you need to configure various parameters such as serial port download and clock in CubeMX.
+Here, I won't go into details. Please refer to the article [**HAL Library Development Notes - Environment Configuration**](https://wiki-power.com/HAL%E5%BA%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE) for the method.
 
 ### Configuring GPIO in CubeMX
 
-Set the corresponding GPIO pins for LEDs as outputs and set the initial logic level.
+Set the corresponding GPIO pins for the LED as output and set the initial level.
 
 ![](https://img.wiki-power.com/d/wiki-media/img/20210205150422.png)
 
-On my board, you need to configure GPIO pins `PD4` and `PI3` as outputs (`GPIO_Output`). If you want the LEDs to be initially lit when powered, according to the circuit schematic, set the initial level to low (`Low`).
+On my board, the `PD4` and `PI3` GPIO pins need to be set as outputs (`GPIO_Output`).
+If you want the LED to light up when powered on, according to the circuit schematic, set the initial level to low (`Low`).
 
 ### Configuring GPIO in the Code
 
-
-If the configuration is correct, you can power it up to illuminate two user LEDs. If you want to add a flashing effect, you just need to add a few lines of code in the main loop's user code section:
+If the configuration is correct, the two user LEDs will light up as soon as power is applied.  
+To add a flashing effect, simply add a few lines of code in the user code section of the main loop:
 
 ```c title="main.c"
 /* USER CODE BEGIN 3 */
@@ -81,58 +82,56 @@ HAL_GPIO_TogglePin(GPIOI, GPIO_PIN_3);
 /* USER CODE END 3 */
 ```
 
+![](https://img.wiki-power.com/d/wiki-media/img/20210205151322.png)
+
 This will achieve the flashing effect.
 
-![Flashing LED](https://img.wiki-power.com/d/wiki-media/img/20210205151322.png)
+## Controlling LEDs with Buttons
 
-## Controlling Lights with Buttons
-
-After learning about GPIO output, we will now learn about GPIO input mode using buttons.
+After learning about GPIO output, let's learn about GPIO input mode using buttons.
 
 ### Configuring GPIO in CubeMX
 
-After configuring the GPIO port for the LEDs as described above, according to the onboard button's schematic:
+After configuring the GPIO port to which the LED belongs using the method mentioned above, according to the schematic diagram of the onboard button:
 
-![Button Schematic](https://img.wiki-power.com/d/wiki-media/img/20210205150422.png)
+![](https://img.wiki-power.com/d/wiki-media/img/20210205150422.png)
 
-Set the GPIO (`PI8`) corresponding to the button as an input (`GPIO_Input`). According to the schematic, choose internal pull-up (`Pull-up`). Generate the code.
+Set the GPIO (`PI8`) to input (`GPIO_Input`). According to the schematic diagram, select internal pull-up (`Pull-up`). Generate the code.
 
-### Configuring GPIO in Code
+### Configuring GPIO in the Code
 
 Add the following code in the user code section of the main loop:
 
 ```c title="main.c"
 /* USER CODE BEGIN 3 */
 
-if (HAL_GPIO_ReadPin(KEY1_GPIO_Port, KEY1_Pin) == 0)
+if(HAL_GPIO_ReadPin(KEY1_GPIO_Port,KEY1_Pin)==0)
 {
 	HAL_Delay(100);
-	if (HAL_GPIO_ReadPin(KEY1_GPIO_Port, KEY1_Pin) == 0)
+	if(HAL_GPIO_ReadPin(KEY1_GPIO_Port,KEY1_Pin)==0)
 	{
-		HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(LED1_GPIO_Port,LED1_Pin,GPIO_PIN_RESET);
 	}
-}
-else
-{
-	HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);
+}else{
+	HAL_GPIO_WritePin(LED1_GPIO_Port,LED1_Pin,GPIO_PIN_SET);
 }
 
 }
 /* USER CODE END 3 */
 ```
 
-This will achieve the effect of turning the light on when the button is pressed and turning it off when the button is released.
+This will achieve the effect of turning on the LED when the button is pressed and turning it off when the button is released.
 
-Many people are confused about what `GPIO_PIN_SET` and `GPIO_PIN_RESET` mean. In fact, the only function of these two variables is to set the GPIO pin to a high or low level. Whether the light is on or off depends on the circuit schematic.
+Many people are confused about the meaning of `GPIO_PIN_SET` and `GPIO_PIN_RESET`. In fact, the function of these two variables is simply to set the GPIO pin to high or low level. Whether the light is on or off depends on the circuit schematic.
 
-Additionally, the function of `HAL_Delay(100)` is to eliminate button bouncing in the code. However, `HAL_Delay()` uses polling and consumes resources, which may cause the system to hang. In the next article, we will use hardware interrupts to address this issue.
+In addition, the function of `HAL_Delay(100)` is to eliminate button bounce in the code. However, the `HAL_Delay()` function uses polling, which consumes resources and may cause the system to hang. In the next article, we will use hardware interrupts to solve this problem.
 
-## References and Acknowledgments
+## References and Acknowledgements
 
-- [STM32CubeMX Tutorial 2 - Basic Usage (Creating a Project to Light an LED)](https://blog.csdn.net/as480133937/article/details/98947162)
-- [STM32CubeMX Practical Tutorial 2 - Lighting a LED with a Button](https://blog.csdn.net/weixin_43892323/article/details/104343933)
+- [【STM32】STM32CubeMX Tutorial 2 - Basic Usage (Creating a Project to Light Up an LED)](https://blog.csdn.net/as480133937/article/details/98947162)
+- [STM32CubeMX Practical Tutorial 2 - Button Control LED](https://blog.csdn.net/weixin_43892323/article/details/104343933)
 
-> Original: <https://wiki-power.com/>
+> Original: <https://wiki-power.com/>  
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.
