@@ -1,7 +1,7 @@
-/* 隐藏 scrollbar */
+/* 隐藏 scrollbar 
 ::-webkit-scrollbar {
   display: none;
-}
+}*/
 
 /* 文字选取颜色 */
 ::selection {

@@ -54,7 +54,6 @@ Homelab-影视媒体服务器Jellyfin.md
 Homelab-支持公有云的图床系统Cloudreve.md
 Homelab-支持多存储的文件列表程序Alist.md
 Homelab-支持多种协议的堡垒机NextTerminal.md
-Homelab-智能家居服务器HomeAssistant.md
 Homelab-极简个人书签导航站Flare.md
 Homelab-碎片笔记工具memos.md
 Homelab-网站favicon抓取工具iconserver.md
