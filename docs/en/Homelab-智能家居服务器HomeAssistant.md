@@ -1,12 +1,12 @@
-# Homelab - Smart Home Server with Home Assistant
+# Homelab - Smart Home Server Home Assistant
 
-![Home Assistant](https://img.wiki-power.com/d/wiki-media/img/202306011647498.png)
+![](https://img.wiki-power.com/d/wiki-media/img/202306011647498.png)
 
-**Home Assistant** is an open-source smart home server that allows you to monitor all your home devices. It functions similarly to Mi Home, with a user-friendly and aesthetically pleasing interface, making deployment relatively straightforward.
+**Home Assistant** is an open-source smart home server that can monitor all devices in your home. It has similar features to the Xiaomi Mi Home app, with a friendly and beautiful interface and relatively simple deployment.
 
 ## Deployment (Docker Compose)
 
-Start by creating a `compose.yaml` file and paste the following contents:
+First, create the `compose.yaml` file and paste the following contents:
 
 ```yaml title="compose.yaml"
 version: "3"
@@ -24,32 +24,44 @@ services:
     restart: unless-stopped
 ```
 
-(Optional) It's recommended to create a `.env` file in the same directory as `compose.yaml` and customize your environment variables. If you prefer not to use environment variables, you can directly define your parameters in `compose.yaml` (e.g., replace `${STACK_NAME}` with `audiobookshelf`).
+(Optional) It is recommended to create a `.env` file in the same directory as `compose.yaml`, and customize your environment variables there. If you do not want to use environment variables, you can directly customize your parameters in `compose.yaml` (e.g., replace `${STACK_NAME}` with `audiobookshelf`).
 
 ```dotenv title=".env"
 STACK_NAME=homeassistant
-STACK_DIR=xxx # Customize your project storage path, e.g., ./homeassistant
+STACK_DIR=xxx # Customize the project storage path, e.g., ./homeassistant
 
 # homeassistant
 APP_VERSION=latest
-APP_PORT=xxxx # Choose an available access port of your choice
+APP_PORT=xxxx # Customize the access port, choose one that is not occupied
 ```
 
-Finally, execute the `docker compose up -d` command in the same directory as `compose.yaml` to start the container orchestration.
+Finally, run the `docker compose up -d` command in the same directory as `compose.yaml` to start the orchestrated containers.
 
-## Configuration Notes
+## Configuration Instructions
 
-For mobile access, you can use the official Home Assistant App.
+The official Home Assistant App can be used directly on mobile devices.
+
+If you encounter a `400 Bad Request` error when accessing from the Internet, you can add the following statements to the configuration file `configuration.yaml`:
+
+```yaml
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 10.0.0.200 # IP address of the proxy server
+    - 172.30.33.0/24 # You can also provide IP addresses with subnet masks
+```
+
+If you do not know the IP address of the proxy server, you can try accessing Home Assistant from the Internet, and you will be able to see it from the error information in the log.
 
 ## References and Acknowledgments
 
 - [Official Website](https://www.home-assistant.io/)
 - [Documentation](https://www.home-assistant.io/installation/generic-x86-64#docker-compose)
-- [GitHub Repository](https://github.com/home-assistant)
+- [GitHub repo](https://github.com/home-assistant)
 - [Docker Hub](https://hub.docker.com/r/homeassistant/home-assistant)
 - [Demo Site](https://demo.home-assistant.io/#/lovelace/0)
 
-> Original: <https://wiki-power.com/>
+> Original: <https://wiki-power.com/>  
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.
