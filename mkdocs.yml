@@ -184,6 +184,19 @@ plugins:
             技术流: تدفق التقنية
             一些小技巧: بعض النصائح والحيل
   - search
+  - minify:
+      minify_html: true
+      minify_js: true
+      minify_css: true
+      htmlmin_opts:
+        remove_comments: true
+      cache_safe: true
+      js_files:
+        - javascripts/mathjax.js
+        - javascripts/tex-mml-chtml.js
+        - javascripts/embed.js
+      css_files:
+        - stylesheets/extra.css
   - rss:
       abstract_chars_count: -1 # -1 for full content
       #categories:
