@@ -112,3 +112,4 @@ End Function
 
 - Avoid saving code in VBA, because this will create internal hard links in the workbook. Saving in DataTool interface instead.
 - If you meet the error "Procedure Too Large", you may against the Excel restriction of 64K limit per vb file. But actually, it is possible that you forgot to switch the version from 32bit to 64bit of the Windows system.
+- Recommended add `Option Explicit` on the top of the VBT module, to explicitly declare all variables by using the Dim, Private, Public, ReDim, or Static statements. 
