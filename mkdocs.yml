@@ -89,6 +89,7 @@ plugins:
             DOCKER: Docker
             LINUX: Linux
             杂七杂八: Miscellaneous
+            机器学习: Machine Learning
             生活 & 折腾: Life & Exploration
             生活琐记: Life Musings
             LIFEHACK: Life Hack
@@ -131,6 +132,7 @@ plugins:
             DOCKER: Docker
             LINUX: Linux
             杂七杂八: Miscelánea
+            机器学习: Aprendizaje Automático
             生活 & 折腾: Vida y exploración
             生活琐记: Anécdotas de vida
             LIFEHACK: Trucos de vida
@@ -173,6 +175,7 @@ plugins:
             DOCKER: دوكر
             LINUX: لينوكس
             杂七杂八: متفرقات
+            机器学习: تعلم الآلة
             生活 & 折腾: الحياة والاستكشاف
             生活琐记: يوميات الحياة
             LIFEHACK: الحيل التقنية
@@ -492,6 +495,8 @@ nav:
               - 自适应网页设计.md
               - 前端开发-环境搭建.md
               - BookJourney-二手书商城小程序.md
+      - 机器学习:
+          - 机器学习常用的库.md
   - 生活 & 折腾:
       - 生活琐记:
           - LIFEHACK:
