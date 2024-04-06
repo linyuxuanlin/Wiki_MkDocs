@@ -2,7 +2,7 @@
 
 —— How to create an efficient productivity tool with VS Code.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200319135609.png)
+![](https://media.wiki-power.com/img/20200319135609.png)
 
 ## Background
 
@@ -24,7 +24,7 @@ In general, we choose to download the **Stable** version. If you're not afraid o
 
 After completing the installation, open the software, and the first thing you'll see is the startup page:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200318224855.png)
+![](https://media.wiki-power.com/img/20200318224855.png)
 
 ## Plugin Installation
 
@@ -81,7 +81,7 @@ Below are some useful plugins (you can click the links to install them):
 
 You can choose your preferred theme by going to `File - Preferences - Color Theme`. For example, I've chosen the `Monokai Dimmed` theme:
 
-![Monokai Dimmed Theme](https://img.wiki-power.com/d/wiki-media/img/20200319132727.png)
+![Monokai Dimmed Theme](https://media.wiki-power.com/img/20200319132727.png)
 
 If you find the default themes insufficient, you can also search and download your favorite themes in the plugin store using the keyword "theme."
 
@@ -101,16 +101,16 @@ After downloading the .ttf font file, install it, restart VS Code, and add `'Mic
 
 ## Common Shortcuts
 
-|    Action    |          Shortcut           |
-| :----------: | :------------------------:  |
-|  Command Palette  | `F1` or `Ctrl + Shift + P` |
-|   Terminal   | <code>Ctrl + &#96;</code>  |
-| Explorer  | `Ctrl + Shift + E` |
-| Global Search  | `Ctrl + Shift + F` |
-| Source Control  | `Ctrl + Shift + G` |
-|   Run   | `Ctrl + Shift + D` |
-| Extension Management  | `Ctrl + Shift + X` |
-| Quick File Switching  | `Ctrl + D` |
+|        Action        |          Shortcut          |
+| :------------------: | :------------------------: |
+|   Command Palette    | `F1` or `Ctrl + Shift + P` |
+|       Terminal       | <code>Ctrl + &#96;</code>  |
+|       Explorer       |     `Ctrl + Shift + E`     |
+|    Global Search     |     `Ctrl + Shift + F`     |
+|    Source Control    |     `Ctrl + Shift + G`     |
+|         Run          |     `Ctrl + Shift + D`     |
+| Extension Management |     `Ctrl + Shift + X`     |
+| Quick File Switching |         `Ctrl + D`         |
 
 ## Source Control
 

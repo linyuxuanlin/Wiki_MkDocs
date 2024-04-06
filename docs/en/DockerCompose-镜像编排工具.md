@@ -1,6 +1,6 @@
 # Docker Compose - Image Orchestration Tool
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210117130925.jpg)
+![](https://media.wiki-power.com/img/20210117130925.jpg)
 
 Docker Compose is an image orchestration tool for Docker. It is recommended to use Docker Compose as the default way to work with Docker because it not only makes it convenient to configure and deploy images but also simplifies the setup of multi-image services and allows you to specify their startup order, which is not easily achievable when using command-based methods.
 
@@ -201,7 +201,6 @@ services:
 There is a website called [**composerize**](https://www.composerize.com/) that can convert Docker CLI commands into Docker Compose YAML. The conversion results may not always be entirely accurate, so it's essential to verify the output.
 
 ## References and Acknowledgments
-
 
 - [Using Docker Compose as an Alternative to Docker Run](https://beginor.github.io/2017/06/08/use-compose-instead-of-run.html)
 - [How to Install Docker Compose](https://docs.docker.com/compose/install/#prerequisites)

@@ -1,6 +1,6 @@
 # Homelab - Wiki.js: نظام ويكي قوي
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230304195348.png)
+![](https://media.wiki-power.com/img/20230304195348.png)
 
 **Wiki.js** هو أداة وثائق ويكي تأتي مع محرر خلفي وصفحات إدارة، بما في ذلك إدارة الصلاحيات للمستخدمين المتعددين، ودعم Markdown، ووسائل تخزين متعددة (مثل مزامنة Git)، وغير ذلك.
 

@@ -38,11 +38,11 @@ In Silent mode, a node can be set to a completely passive state on the bus. The 
 
 #### Chip Pins
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210607102222.png)
+![](https://media.wiki-power.com/img/20210607102222.png)
 
 #### Reference Circuit
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210607115611.png)
+![](https://media.wiki-power.com/img/20210607115611.png)
 
 As shown in the diagram, the CAN protocol controller (e.g., microcontroller) is connected to the transceiver via the serial lines (RX/TX). The transceiver converts the signals to CAN signals (CANH/CANL) and the High-Speed/Silent mode is selected using pin S.
 
@@ -77,13 +77,13 @@ Pull Rs up to 3.3V.
 
 #### Reference Circuit
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210607155539.png)
+![](https://media.wiki-power.com/img/20210607155539.png)
 
 PESD2CAN is a CAN-specific ESD protection diode that protects the chip from electrostatic discharge and other transient factors.
 
 The reference PCB layout is as follows:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210607171427.png)
+![](https://media.wiki-power.com/img/20210607171427.png)
 
 ### Differences between TJA1050 and SN65HVD230
 
@@ -101,7 +101,7 @@ In CAN communication, cables are prone to coupling external interference, which 
 
 CAN interface protection devices mainly include: filtering capacitors, common mode inductors, coupling capacitors, and TVS diodes.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211220134905.png)
+![](https://media.wiki-power.com/img/20211220134905.png)
 
 - Filtering capacitors $C_1, C_2$: Provide a low impedance return path for interference. The selection range is 22pF~1000pF, with a typical value of 100pF.
 - Common mode inductor $L_1$: Used to filter out common mode interference on the differential lines. The impedance selection range is 120Ω/100MHz~2200Ω/100MHz, with a typical value of 600Ω/100MHz.

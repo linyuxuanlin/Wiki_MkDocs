@@ -8,13 +8,13 @@ In semiconductor testing, the **TIC (Test Interface Controller)** is a bus maste
 
 The concept of AMBA is to isolate the testing of individual modules in a system, with each module's testing relying solely on the bus interface. A testing method is needed to test the input and output of peripherals not connected to the bus.
 
-![](https://img.wiki-power.com/d/wiki-media/img/202308262214877.png)
+![](https://media.wiki-power.com/img/202308262214877.png)
 
 This testing method can be achieved through the Test Interface. It uses a simple three-wire handshake mechanism to control the read and write of vectors. Additionally, it utilizes the **EBI (External Bus Interface)** as the data path to import external vectors into the internal bus.
 
 ## Test Interface Pins
 
-![](https://img.wiki-power.com/d/wiki-media/img/202308262225257.png)
+![](https://media.wiki-power.com/img/202308262225257.png)
 
 As shown in the above diagram, the Test Interface pins consist of three parts:
 
@@ -34,12 +34,12 @@ In the minimal configuration, the Test Interface only requires TREQA and TACK as
 
 When the system is operating normally, the Test Interface is controlled by a three-wire truth table as follows:
 
-| TREQA | TREQB | TACK | Status                    |
-| ----- | ----- | ---- | ------------------------- |
+| TREQA | TREQB | TACK | Status                             |
+| ----- | ----- | ---- | ---------------------------------- |
 | 0     | 0     | 0    | Normal operation, not in test mode |
-| 1     | 0     | 0    | Request to enter test mode |
+| 1     | 0     | 0    | Request to enter test mode         |
 | 0     | 1     | 0    | Reserved for external host request |
-| -     | -     | 1    | Entered test mode |
+| -     | -     | 1    | Entered test mode                  |
 
 Initially, TREQA is at a low level, indicating that it has not entered test mode. When TREQA is set to a high level, a request to enter test mode is made. Then, when TACK outputs a high level, it indicates that TIC allows entering test mode. At this time, TCLK becomes the internal clock source. Once in test mode, the values on the three lines and their corresponding system states are as follows:
 

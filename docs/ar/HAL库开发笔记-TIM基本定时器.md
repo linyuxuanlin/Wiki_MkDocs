@@ -37,13 +37,13 @@
 
 أولاً ، نفتح صفحة تكوين ساعة الشجرة Clock Configuration ، ونجد ونسجل قيمة APB1 Timer clocks الموجودة على الجانب الأيمن الأقصى:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210407152250.png)
+![](https://media.wiki-power.com/img/20210407152250.png)
 
 هذا يرجع إلى أن TIM2-TIM7 و TIM12-TIM14 في سلسلة STM32F4 مرتبطة بشبكة APB1 ذات السرعة المنخفضة ، بينما TIM1 و TIM8-TIM11 مرتبطة بشبكة APB2 ذات السرعة العالية. نحن نستخدم هنا المؤقت الأساسي TIM6 ، لذا يجب أن ننظر إلى سرعة APB1 (هنا بعد تقسيم التضاعف هي 90 ميجا هرتز).
 
 ثم ، نجد المؤقت TIM6 في الشريط الجانبي Timer ، ونقوم بتحديد "Activated" لتنشيط المؤقت ، ونقوم بتكوين المعلمات التالية في الجزء السفلي:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210407173136.png)
+![](https://media.wiki-power.com/img/20210407173136.png)
 
 معاني المعلمات:
 
@@ -56,7 +56,7 @@
 
 ثم نقوم بتمكين الانقطاعات في علامة التبويب NVIC:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210407155959.png)
+![](https://media.wiki-power.com/img/20210407155959.png)
 
 ### تكوين المؤقت الأساسي في الشيفرة
 

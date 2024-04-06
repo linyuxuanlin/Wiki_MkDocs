@@ -56,7 +56,7 @@ In general, using a `.DSN` file is sufficient to encompass the entire project. O
 
 # Folder
 # Exclude the entire folder
-/signoise.run/ 
+/signoise.run/
 
 #############
 ## OrCAD
@@ -67,22 +67,22 @@ In general, using a `.DSN` file is sufficient to encompass the entire project. O
 *.DSNlck
 
 # Ignore netlist
-allegro/ 
+allegro/
 ```
 
 ## Settings
 
 DRC Settings:
 
-![DRC Settings](https://img.wiki-power.com/d/wiki-media/img/20210810134720.png)
+![DRC Settings](https://media.wiki-power.com/img/20210810134720.png)
 
 Automatically rename reference designators when copying components:
 
-![Auto Rename Reference Designators](https://img.wiki-power.com/d/wiki-media/img/20210810134747.png)
+![Auto Rename Reference Designators](https://media.wiki-power.com/img/20210810134747.png)
 
 Snap components to grid while moving text:
 
-![Snap Components to Grid](https://img.wiki-power.com/d/wiki-media/img/20210810134758.png)
+![Snap Components to Grid](https://media.wiki-power.com/img/20210810134758.png)
 
 Note: When using the CIP library and encountering the message "not found in the configured library lists," check for spaces in the file path.
 
@@ -131,6 +131,5 @@ Off-page is generally used for flat schematic diagrams, while port is typically 
 - [البرنامج التعليمي لـ OrCAD Capture](https://resources.orcad.com/orcad-capture-tutorials)
 - [حلاً لمشكلة ضبابية الخطوط في برنامج Cadence على أجهزة الكمبيوتر ذات شاشات عالية الدقة](https://blog.csdn.net/qq_34338527/article/details/108846792)
 ```
-
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

@@ -36,12 +36,12 @@ To create headings, add 1 to 6 `#` symbols in front of the heading text. The num
 
 Style text by enclosing it with symbols on both sides:
 
-|   Style   |    Shortcut     | Syntax                   | Resulting Style     |
-| :-------: | :-------------: | ------------------------ | ------------------- |
-|   Bold    | `Ctrl`/`⌘` + `B` | `**Bold text**`          | **Bold text**       |
-|   Italic  | `Ctrl`/`⌘` + `I` | `*Italic text*`          | _Italic text_       |
+|      Style      |     Shortcut     | Syntax                       | Resulting Style            |
+| :-------------: | :--------------: | ---------------------------- | -------------------------- |
+|      Bold       | `Ctrl`/`⌘` + `B` | `**Bold text**`              | **Bold text**              |
+|     Italic      | `Ctrl`/`⌘` + `I` | `*Italic text*`              | _Italic text_              |
 | Bold and Italic |                  | `***Bold and Italic text***` | **_Bold and Italic text_** |
-|   Strikethrough  |                  | `~~Strikethrough text~~` | ~~Strikethrough text~~ |
+|  Strikethrough  |                  | `~~Strikethrough text~~`     | ~~Strikethrough text~~     |
 
 Note: Italic text is primarily designed for English. For readability and standardization, please avoid using italics for Chinese text.
 
@@ -75,7 +75,7 @@ Extract the `hugo.exe` file from the compressed package to the `D:\hugo` directo
 
 If you need multiple lines of code, you can use triple backticks \` before and after the code block:
 
-![Example](https://img.wiki-power.com/d/wiki-media/img/20210215164653.png)
+![Example](https://media.wiki-power.com/img/20210215164653.png)
 
 ```c
 int fputc(int ch, FILE *f)
@@ -87,7 +87,7 @@ int fputc(int ch, FILE *f)
 
 Here, \`c\` indicates that this code block is in the C language, and it will be rendered with syntax highlighting accordingly.
 
-```markdown
+````markdown
 ---
 
 ### Citas
@@ -97,6 +97,7 @@ Para citar un texto, simplemente agrégale el prefijo `>` al principio de la lí
 ```markdown
 > Esto es un texto citado.
 ```
+````
 
 > Esto es un texto citado.
 
@@ -106,13 +107,13 @@ Puedes enfatizar el texto de diversas maneras. Para hacerlo en negrita, coloca e
 
 ```markdown
 **Texto en negrita**
-*Texto en cursiva*
-***Texto en negrita y cursiva***
+_Texto en cursiva_
+**_Texto en negrita y cursiva_**
 ```
 
 **Texto en negrita**
-*Texto en cursiva*
-***Texto en negrita y cursiva***
+_Texto en cursiva_
+**_Texto en negrita y cursiva_**
 
 ### Encabezados
 
@@ -120,12 +121,16 @@ Los encabezados se utilizan para organizar el contenido de tu documento. Puedes 
 
 ```markdown
 # Encabezado de nivel 1
+
 ## Encabezado de nivel 2
+
 ### Encabezado de nivel 3
 ```
 
 # Encabezado de nivel 1
+
 ## Encabezado de nivel 2
+
 ### Encabezado de nivel 3
 
 ### Código
@@ -140,8 +145,8 @@ Bloque de código:
 #include <stdio.h>
 
 int main() {
-    printf("Hola, mundo!\n");
-    return 0;
+printf("Hola, mundo!\n");
+return 0;
 }
 \```
 
@@ -167,7 +172,7 @@ Puedes utilizar el símbolo `---` para crear una línea divisoria y separar dife
 ---
 ```
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210216123630.png)
+![Imagen](https://media.wiki-power.com/img/20210216123630.png)
 
 ## Funciones Avanzadas
 

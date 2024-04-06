@@ -4,7 +4,7 @@
 
 En primer lugar, conecta la fuente de alimentación de 12V de la Cape y utiliza un módulo USB a serie para conectar el puerto serie en la placa (el puerto J3 se utiliza para depuración):
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211027164010.png)
+![](https://media.wiki-power.com/img/20211027164010.png)
 
 Asegúrate de que el módulo USB a serie tenga los controladores instalados (yo usé un módulo FTDI, puedes descargar los controladores [aquí](https://ftdichip.com/drivers/vcp-drivers/)).
 
@@ -163,7 +163,7 @@ enum
      };
 ```
 
-```markdown
+````markdown
 Dirígete a la carpeta `/sdk` y utiliza el comando `make` para compilar. Los archivos compilados se encontrarán en la carpeta `/sdk/output`.
 
 Luego, navega hasta la carpeta `/sdk/output/Linux/Release` y ejecuta el siguiente comando para ejecutar el programa de prueba:
@@ -171,6 +171,7 @@ Luego, navega hasta la carpeta `/sdk/output/Linux/Release` y ejecuta el siguient
 ```shell
 ./ultra_simple /dev/ttyS0
 ```
+````
 
 ## Referencias y Agradecimientos
 
@@ -182,7 +183,9 @@ Luego, navega hasta la carpeta `/sdk/output/Linux/Release` y ejecuta el siguient
 
 > Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+
 ```
 
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+```

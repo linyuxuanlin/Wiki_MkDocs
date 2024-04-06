@@ -6,7 +6,7 @@ La prueba de fuga consta de la prueba de fuga de entrada (IIL y IIH) y la prueba
 
 La fuga de entrada ocurre en el circuito de búfer de un pin de entrada. IIH es la ruta de fuga desde el pin de entrada a GND cuando el DUT se lleva a "1", e IIL es la ruta de fuga desde VDD al pin de entrada cuando se lleva a "0":
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220911215421.png)
+![](https://media.wiki-power.com/img/20220911215421.png)
 
 En realidad, la medición de IIL es la resistencia desde el pin de entrada a VDD, y IIH es la resistencia desde el pin de entrada a GND. La prueba de fuga de entrada tiene como objetivo asegurar que el búfer de entrada del pin no suministre ni absorba más corriente no deseada de la especificada.
 
@@ -16,7 +16,7 @@ La prueba de fuga de entrada en serie (IIL y IIH) se realiza aplicando un voltaj
 
 #### Prueba IIL (Serial)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220911225521.png)
+![](https://media.wiki-power.com/img/20220911225521.png)
 
 1. Aplicar VDDmax al pin VDD (con abrazadera de corriente).
 2. Forzar VDDmax en todos los pines de entrada excepto el Pin bajo Prueba.
@@ -27,7 +27,7 @@ La prueba de fuga de entrada en serie (IIL y IIH) se realiza aplicando un voltaj
 
 #### Prueba IIH (Serial)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220912113044.png)
+![](https://media.wiki-power.com/img/20220912113044.png)
 
 1. Aplicar VDDmax al pin VDD (con abrazadera de corriente).
 2. Forzar 0V en todos los pines de entrada excepto el Pin bajo Prueba.
@@ -48,7 +48,7 @@ El estado tristate, también conocido como High-Z o estado flotante, indica que 
 
 La fuga en estado tristate de salida ocurre cuando se aplica un nivel de voltaje ALTO o BAJO en el pin de salida del DUT, mientras el pin está condicionado para estar deshabilitado. IOZL significa la corriente que fluye hacia afuera cuando se aplica el nivel BAJO, y IOZH significa la corriente que fluye hacia adentro cuando se aplica el nivel ALTO.
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20220912120527.png)
+![Imagen](https://media.wiki-power.com/img/20220912120527.png)
 
 Básicamente, IOZL indica la resistencia desde un pin de salida a VDD cuando está deshabilitado, y IOZH indica la resistencia a GND. La prueba asegura que el pin no suministre o absorba más corriente no deseada de la especificada.
 
@@ -58,7 +58,7 @@ Además, se requiere una entrada de control (señal de habilitación) en esta pr
 
 #### Prueba IOZL (Serial)
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20220912121730.png)
+![Imagen](https://media.wiki-power.com/img/20220912121730.png)
 
 1. Aplicar VDDmax al pin VDD (con una abrazadera de corriente).
 2. Condicionar el pin de salida específico al estado Hi-Z (deshabilitado).
@@ -70,7 +70,7 @@ Además, se requiere una entrada de control (señal de habilitación) en esta pr
 #### Prueba IOZH (Serial)
 
 ```markdown
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20220912122050.png)
+![Imagen](https://media.wiki-power.com/img/20220912122050.png)
 
 1. Aplicar VDDmax al pin VDD (con una abrazadera de corriente).
 2. Poner en estado Hi-Z (deshabilitar) el pin de salida específico.

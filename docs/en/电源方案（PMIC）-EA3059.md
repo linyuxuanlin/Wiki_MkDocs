@@ -32,27 +32,27 @@ Project Online Preview:
 
 ## Typical Application Circuit
 
-![Typical Application Circuit](https://img.wiki-power.com/d/wiki-media/img/20220420171841.png)
+![Typical Application Circuit](https://media.wiki-power.com/img/20220420171841.png)
 
 ## Internal Functional Block Diagram
 
-![Internal Functional Block Diagram](https://img.wiki-power.com/d/wiki-media/img/20220420171859.png)
+![Internal Functional Block Diagram](https://media.wiki-power.com/img/20220420171859.png)
 
 ## Pin Definitions
 
-![Pin Definitions](https://img.wiki-power.com/d/wiki-media/img/20220420171920.png)
+![Pin Definitions](https://media.wiki-power.com/img/20220420171920.png)
 
-| Pin Name | Pin Description                                           |
-| -------- | -------------------------------------------------------- |
-| VCC      | Power input for internal control circuit                 |
-| VINx     | Power input for channel x, decoupled with 10uF MLCC capacitor |
-| LXx      | Output of the internal MOS switch for channel x, can be connected to a low-pass filter circuit for more stable voltage output |
-| FBx      | Feedback pin for channel x, connected to voltage output via a voltage divider circuit |
-| ENx      | Enable pin, must not be left floating                     |
-| GNDx     | Ground for channel x                                      |
-| AGND     | Analog ground                                            |
-| Bottom Pads | Ground for heat dissipation, should be connected to ground |
-| NC       | No connection                                            |
+| Pin Name    | Pin Description                                                                                                               |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| VCC         | Power input for internal control circuit                                                                                      |
+| VINx        | Power input for channel x, decoupled with 10uF MLCC capacitor                                                                 |
+| LXx         | Output of the internal MOS switch for channel x, can be connected to a low-pass filter circuit for more stable voltage output |
+| FBx         | Feedback pin for channel x, connected to voltage output via a voltage divider circuit                                         |
+| ENx         | Enable pin, must not be left floating                                                                                         |
+| GNDx        | Ground for channel x                                                                                                          |
+| AGND        | Analog ground                                                                                                                 |
+| Bottom Pads | Ground for heat dissipation, should be connected to ground                                                                    |
+| NC          | No connection                                                                                                                 |
 
 ## Feature Description
 
@@ -66,7 +66,7 @@ The EA3059 is a power management IC designed specifically for OTT applications, 
 
 If you need to set the turn-on time for each Buck channel, you can program it using the following circuit:
 
-![Enable Switch Circuit](https://img.wiki-power.com/d/wiki-media/img/20220420172125.png)
+![Enable Switch Circuit](https://media.wiki-power.com/img/20220420172125.png)
 
 ### 180° Phase-Shift Architecture
 
@@ -88,7 +88,7 @@ $$
 V_{OUTx} = 0.6 * \frac{R_1}{R_2} + 0.6V
 $$
 
-![Output Voltage Adjustment](https://img.wiki-power.com/d/wiki-media/img/20220420172602.png)
+![Output Voltage Adjustment](https://media.wiki-power.com/img/20220420172602.png)
 
 If you need to obtain common output voltage values, you can refer to the following table for resistor divider configurations (using 1% precision resistors):
 
@@ -105,8 +105,8 @@ Input capacitors are used to suppress input voltage noise and provide stable, cl
 
 Recommended part numbers for input/output capacitors are as follows:
 
-| Part Number     | Capacitance | Voltage | Package |
-| --------------- | ----------- | ------- | ------- |
+| Part Number    | Capacitance | Voltage | Package |
+| -------------- | ----------- | ------- | ------- |
 | C2012X5R1A106M | 10uF        | 10V     | 0805    |
 | C3216X5R1A106M | 10uF        | 10V     | 1206    |
 | C2012X5R1A226M | 22uF        | 10V     | 0805    |
@@ -147,19 +147,19 @@ Layout reference is as follows:
 
 Top Layer:
 
-![Top Layer](https://img.wiki-power.com/d/wiki-media/img/20220420175756.png)
+![Top Layer](https://media.wiki-power.com/img/20220420175756.png)
 
 Middle Power Layer:
 
-![Middle Power Layer](https://img.wiki-power.com/d/wiki-media/img/20220420175833.png)
+![Middle Power Layer](https://media.wiki-power.com/img/20220420175833.png)
 
 Middle Ground Layer:
 
-![Middle Ground Layer](https://img.wiki-power.com/d/wiki-media/img/20220420175851.png)
+![Middle Ground Layer](https://media.wiki-power.com/img/20220420175851.png)
 
 Bottom Layer:
 
-![Bottom Layer](https://img.wiki-power.com/d/wiki-media/img/20220420175906.png)
+![Bottom Layer](https://media.wiki-power.com/img/20220420175906.png)
 
 ## References and Acknowledgments
 

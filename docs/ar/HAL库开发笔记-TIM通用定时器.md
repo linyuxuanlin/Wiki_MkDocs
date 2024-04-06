@@ -45,11 +45,11 @@
 
 أولاً، سنقوم بفتح صفحة تكوين الساعة في CubeMX. نظرًا لأن المؤقت العام متصل بحافلة APB2 عالية السرعة، يجب علينا البحث عن تردد الساعة لمؤقت APB2 وتسجيله (180 ميجاهرتز):
 
-![رابط الصورة](https://img.wiki-power.com/d/wiki-media/img/20210627133951.png)
+![رابط الصورة](https://media.wiki-power.com/img/20210627133951.png)
 
 ثم، سنجد المؤقت TIM8 في الجانب الأيمن وسنقوم بتكوين القناة 1 (`Channel 1`) كإخراج PWM (`PWM Generation CH1`). لكي ننشئ إشارة PWM بتردد 1 كيلوهرتز، يجب علينا تكوين المعلمات
 
-```markdown
+````markdown
 ```arabic
 تشغيل PWM في وحدة التوقيت TIM8 مستخدما الدالة `HAL_TIM_PWM_Start` على قناة TIM_CHANNEL_1.
 
@@ -58,10 +58,11 @@ __HAL_TIM_SetCompare(&htim8, TIM_CHANNEL_1, 500);
 
 /* USER CODE END 2 */
 ```
+````
 
 بعد ذلك، قم بتجميع الشيفرة وحرقها على الجهاز المستهدف. يمكنك مراقبة الموجة المنبعجة باستخدام جهاز الاستشعار (الأوسيلوسكوب) وعرضها كما هو موضح في الصورة:
 
-![صورة الموجة](https://img.wiki-power.com/d/wiki-media/img/20210627154737.jpg)
+![صورة الموجة](https://media.wiki-power.com/img/20210627154737.jpg)
 
 ## المراجع والشكر
 
@@ -69,6 +70,8 @@ __HAL_TIM_SetCompare(&htim8, TIM_CHANNEL_1, 500);
 
 > عنوان النص: <https://wiki-power.com/>
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+
 ```
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
+```

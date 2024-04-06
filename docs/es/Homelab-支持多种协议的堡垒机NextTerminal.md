@@ -1,6 +1,6 @@
 # Homelab - Next Terminal, un Bastión que soporta múltiples protocolos
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20230312001443.png)
+![Imagen](https://media.wiki-power.com/img/20230312001443.png)
 
 **Next Terminal** es una sencilla y práctica pasarela (bastión) que integra una solución de bastión de puerta de enlace de escritorio remoto sin cliente basada en Apache Guacamole. Soporta varios protocolos, como RDP, SSH, VNC, TELNET y Kubernetes, y permite acceder a recursos de la red interna directamente a través de la web con una excelente compatibilidad multiplataforma. También ofrece autenticación de múltiples factores (MFA), funciones de grabación de auditoría y otras capacidades.
 

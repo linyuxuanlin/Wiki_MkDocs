@@ -1,6 +1,6 @@
 # Homelab - Programa de listado de archivos Alist con soporte para múltiples sistemas de almacenamiento
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/202304141808001.png)
+![Imagen](https://media.wiki-power.com/img/202304141808001.png)
 
 **Alist** es un programa de listado de archivos que admite varias opciones de almacenamiento, como local, Alibaba Cloud Drive, OneDrive, Google Drive, Baidu Cloud Drive, Kuake Cloud, Lanzou Cloud, S3, FTP/SFTP, entre otros. También cuenta con un reproductor de vídeo en línea y una variedad de funciones de vista previa de archivos (compatible con Office, PDF, Markdown, etc.), así como capacidades de descarga sin conexión.
 

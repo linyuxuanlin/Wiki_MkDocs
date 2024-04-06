@@ -1,6 +1,6 @@
 # Homelab - Jellyfin Media Server for Movies and TV Shows
 
-![Jellyfin](https://img.wiki-power.com/d/wiki-media/img/20230531213856.png)
+![Jellyfin](https://media.wiki-power.com/img/20230531213856.png)
 
 **Jellyfin** is an open-source media server designed for managing movies, TV shows, and more, allowing you to access and view your content on various devices. It serves as an alternative to proprietary software like Emby and Plex.
 

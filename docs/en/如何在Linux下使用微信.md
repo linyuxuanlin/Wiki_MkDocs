@@ -1,6 +1,6 @@
 # How to Use WeChat on Linux
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200311141406.png)
+![](https://media.wiki-power.com/img/20200311141406.png)
 
 DoChat is a containerized WeChat application designed for Linux desktop.
 
@@ -12,7 +12,7 @@ Main features:
 
 Requirements: Ubuntu Linux desktop with Docker installed
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200311141459.png)
+![](https://media.wiki-power.com/img/20200311141459.png)
 
 ## References and Acknowledgements
 

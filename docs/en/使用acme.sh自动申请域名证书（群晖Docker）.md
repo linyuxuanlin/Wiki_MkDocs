@@ -20,7 +20,7 @@ This tutorial covers Docker's daemon mode, where a container runs continuously t
 
 First, create the `/docker/acme.sh` folder and manually create the `account.conf` file:
 
-![acme.sh](https://img.wiki-power.com/d/wiki-media/img/20210430212420.png)
+![acme.sh](https://media.wiki-power.com/img/20210430212420.png)
 
 Next, edit this file and manually add the following lines:
 
@@ -38,13 +38,13 @@ Open Synology Docker Suite, download the `neilpang/acme.sh` image, double-click 
 
 On the "Volume" page, configure the mounted folders by clicking "Add Folder" and select the local path to `docker/acme.sh`, and set the mount path to `/acme.sh` (default, do not change):
 
-![Volume Configuration](https://img.wiki-power.com/d/wiki-media/img/20210430214221.png)
+![Volume Configuration](https://media.wiki-power.com/img/20210430214221.png)
 
 On the "Network" page, check "Use the same network as Docker Host."
 
 Next, switch to the "Environment" page and enter the `daemon` command in the "Command" field:
 
-![Environment Configuration](https://img.wiki-power.com/d/wiki-media/img/20210430215244.png)
+![Environment Configuration](https://media.wiki-power.com/img/20210430215244.png)
 
 Then create and run the container. Double-click on the running container, switch to the "Terminal" page, click "Start with Command," enter `sh`, and confirm.
 

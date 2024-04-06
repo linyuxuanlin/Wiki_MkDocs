@@ -13,7 +13,7 @@ git config --global user.email "email@example.com"
 
 ## 基础语句
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200216204934.png)
+![](https://media.wiki-power.com/img/20200216204934.png)
 
 ### 基本流程
 
@@ -58,7 +58,7 @@ git config --global user.email "email@example.com"
 
 ## 分支管理
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200217195056.png)
+![](https://media.wiki-power.com/img/20200217195056.png)
 
 > 分支就是科幻电影里面的平行宇宙，当你正在电脑前努力学习 Git 的时候，另一个你正在另一个平行宇宙里努力学习 SVN。  
 > 如果两个平行宇宙互不干扰，那对现在的你也没啥影响。不过，在某个时间点，两个平行宇宙合并了，结果，你既学会了 Git 又学会了 SVN!
@@ -66,7 +66,7 @@ git config --global user.email "email@example.com"
 > 分支在实际中有什么用呢？假设你准备开发一个新功能，但是需要两周才能完成，第一周你写了 50% 的代码，如果立刻提交，由于代码还没写完，不完整的代码库会导致别人不能干活了。如果等代码全部写完再一次提交，又存在丢失每天进度的巨大风险。  
 > 现在有了分支，就不用怕了。你创建了一个属于你自己的分支，别人看不到，还继续在原来的分支上正常工作，而你在自己的分支上干活，想提交就提交，直到开发完毕后，再一次性合并到原来的分支上，这样，既安全，又不影响别人工作。
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200217202649.png)
+![](https://media.wiki-power.com/img/20200217202649.png)
 
 1. 创建并切换至新分支：`git switch -c branch_name`
    - `-c` 代表创建并切换分支

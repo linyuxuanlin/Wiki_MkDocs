@@ -10,30 +10,30 @@ ssh user@IP
 
 ## Root Directory Structure
 
-![Root Directory Structure](https://img.wiki-power.com/d/wiki-media/img/20211009094302.png)
+![Root Directory Structure](https://media.wiki-power.com/img/20211009094302.png)
 
-| Directory   | Contents                                                              |
-| ----------- | ---------------------------------------------------------------------- |
-| bin         | This directory contains binary (executable) files for system commands, such as 'cat,' 'cp,' and 'mkdir.' |
-| boot        | It holds the necessary content for the system's boot process, like the boot manager 'grub2.' |
-| dev         | This directory contains all device files, such as sound cards, hard drives, and optical drives. |
-| etc         | Abbreviation for "etcetera," this is where the main configuration files for the system are stored. |
-| home        | The directory where user home directory data is stored. |
-| lib         | This is the library directory where the necessary library files for commands in the 'sbin' and 'bin' directories are kept to avoid duplication. |
-| lib32/lib64 | These directories store binary function libraries, supporting both 32-bit and 64-bit systems. |
+| Directory   | Contents                                                                                                                                                                                                       |
+| ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| bin         | This directory contains binary (executable) files for system commands, such as 'cat,' 'cp,' and 'mkdir.'                                                                                                       |
+| boot        | It holds the necessary content for the system's boot process, like the boot manager 'grub2.'                                                                                                                   |
+| dev         | This directory contains all device files, such as sound cards, hard drives, and optical drives.                                                                                                                |
+| etc         | Abbreviation for "etcetera," this is where the main configuration files for the system are stored.                                                                                                             |
+| home        | The directory where user home directory data is stored.                                                                                                                                                        |
+| lib         | This is the library directory where the necessary library files for commands in the 'sbin' and 'bin' directories are kept to avoid duplication.                                                                |
+| lib32/lib64 | These directories store binary function libraries, supporting both 32-bit and 64-bit systems.                                                                                                                  |
 | lost+found  | In EXT3/4 systems, when the system crashes or shuts down unexpectedly, some fragment files are generated in this directory. The 'fsck' tool checks this directory on system startup and repairs damaged files. |
-| media       | This directory is used for mounting devices like CDs, floppy disks, and DVDs. |
-| mnt         | Similar to 'media,' this directory is used for temporarily mounting storage devices. |
-| opt         | It's the directory for storing third-party software installations. |
-| proc        | This directory is for storing process and kernel information and does not consume hard disk space. |
-| root        | The home directory for the 'root' user. |
-| run         | This is a temporary file system that stores information since the system started. Files in this directory should be deleted or cleared when the system is rebooted. |
-| sbin        | Abbreviation for "system bin," it stores commands used by the 'root' user, such as the formatting command 'mkfs.' |
-| srv         | It contains data files required by some network services. |
-| sys         | Similar to the 'proc' directory, it is used to record information related to the CPU and system hardware. |
-| tmp         | This directory is for storing temporary files generated during program execution. |
-| usr         | It's the directory where the system stores programs, similar to the 'Program Files' folder in Windows. |
-| var         | It is the directory for files that change frequently, such as system log files. |
+| media       | This directory is used for mounting devices like CDs, floppy disks, and DVDs.                                                                                                                                  |
+| mnt         | Similar to 'media,' this directory is used for temporarily mounting storage devices.                                                                                                                           |
+| opt         | It's the directory for storing third-party software installations.                                                                                                                                             |
+| proc        | This directory is for storing process and kernel information and does not consume hard disk space.                                                                                                             |
+| root        | The home directory for the 'root' user.                                                                                                                                                                        |
+| run         | This is a temporary file system that stores information since the system started. Files in this directory should be deleted or cleared when the system is rebooted.                                            |
+| sbin        | Abbreviation for "system bin," it stores commands used by the 'root' user, such as the formatting command 'mkfs.'                                                                                              |
+| srv         | It contains data files required by some network services.                                                                                                                                                      |
+| sys         | Similar to the 'proc' directory, it is used to record information related to the CPU and system hardware.                                                                                                      |
+| tmp         | This directory is for storing temporary files generated during program execution.                                                                                                                              |
+| usr         | It's the directory where the system stores programs, similar to the 'Program Files' folder in Windows.                                                                                                         |
+| var         | It is the directory for files that change frequently, such as system log files.                                                                                                                                |
 
 ## File Types
 
@@ -125,6 +125,7 @@ Commonly used commands include:
 
 ```markdown
 - `ls`: List directories and file names
+
   - `-a`: Display hidden files (those with names starting with `.`)
   - `-l`: List detailed information including file type, permissions, owner, and file size
   - `-t`: List files in order of their creation time
@@ -132,6 +133,7 @@ Commonly used commands include:
   - `-R`: If there are files in the directory, it will also list the files in that directory, making it a recursive display.
 
 - `cd`: Change directory
+
   - Special paths
     - `~`: Home directory of the current user
     - `/`: Root directory
@@ -142,6 +144,7 @@ Commonly used commands include:
 - `pwd`: Display the current directory.
 
 - `mkdir`: Create a directory
+
   - `-p`: Create directories if they do not exist.
 
 - `rmdir`: Remove an empty directory.
@@ -151,6 +154,7 @@ Commonly used commands include:
 - `cp`: Copy files or directories.
 
 - `rm`: Remove files or directories
+
   - `-r`: Delete directories, including their subdirectories and files.
   - `-f`: Force removal.
 
@@ -161,6 +165,7 @@ Commonly used commands include:
 - `echo`: Output content to the terminal.
 
 - Output redirection to a file: Save the output of a command to a file.
+
   - `command > filename`: Create the file if it doesn't exist, or overwrite it if it does.
   - `command >> filename`: Create the file if it doesn't exist, or append to the end if it does.
 

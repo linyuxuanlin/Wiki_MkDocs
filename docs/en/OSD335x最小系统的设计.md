@@ -1,14 +1,14 @@
 # Designing the OSD335x Minimum System
 
-![OSD335x-SM Chip](https://img.wiki-power.com/d/wiki-media/img/20211012144907.png)
+![OSD335x-SM Chip](https://media.wiki-power.com/img/20211012144907.png)
 
 The OSD335x-SM chip from Texas Instruments integrates a Cortex-A8 AM335x processor, DDR3 memory, TPS65217C PMIC (Power Management Integrated Circuit), TL5209 LDO (Low Drop-Out Voltage Regulator), necessary passive components, and a 4KB EEPROM within a System-in-Package (SIP) module, all packaged in a BGA package.
 
-![OSD335x Minimal System](https://img.wiki-power.com/d/wiki-media/img/20211012153036.png)
+![OSD335x Minimal System](https://media.wiki-power.com/img/20211012153036.png)
 
 The minimum system for OSD335x consists of four main components: power supply, clock, reset, and programming/debug interfaces. To enhance usability, buttons, LEDs, and additional peripheral pins can be added.
 
-![OSD335x Power Supply](https://img.wiki-power.com/d/wiki-media/img/20211012155857.png)
+![OSD335x Power Supply](https://media.wiki-power.com/img/20211012155857.png)
 
 ## Power Supply
 
@@ -18,7 +18,7 @@ The minimum system for OSD335x consists of four main components: power supply, c
 - VIN_USB: USB power input (DC 5V @ 0.5A, can be increased to 1.3A through internal PMIC), also serves as the reference voltage and current for USB 2.0 host functionality.
 - VIN_BAT: Can serve as a battery input (using battery power, 2.75-5.5V) or output (for battery charging), but cannot be used for events.
 
-![OSD335x Power Outputs](https://img.wiki-power.com/d/wiki-media/img/20211012173057.png)
+![OSD335x Power Outputs](https://media.wiki-power.com/img/20211012173057.png)
 
 ### Output
 
@@ -33,7 +33,7 @@ It is recommended to add test points to all power outputs for ease of debugging.
 
 There are also some internal power supply pins: VDDSHV_3P3V, VDDS_DDR, VDD_MPU, VDD_CORE, VDDS_PLL. These are only meant for testing purposes and should not be connected to external circuits.
 
-![Analog Reference Inputs and Ground](https://img.wiki-power.com/d/wiki-media/img/20211013142917.png)
+![Analog Reference Inputs and Ground](https://media.wiki-power.com/img/20211013142917.png)
 
 ### Analog Reference Inputs and Ground
 
@@ -52,7 +52,7 @@ The TPS65217C PMIC can be configured via I2C for the following parameters:
 - Power-on/power-off sequencing
 - Overcurrent and over-temperature thresholds
 
-![PMIC Additional Connections](https://img.wiki-power.com/d/wiki-media/img/20211013161739.png)
+![PMIC Additional Connections](https://media.wiki-power.com/img/20211013161739.png)
 
 In addition to the I2C connection, the PMIC has some feature pins that need to be connected to OSD335x:
 
@@ -72,9 +72,9 @@ In addition to the I2C connection, the PMIC has some feature pins that need to b
 
 - **PMIC_OUT_NINT**: PMIC terminal output pin (active low).
 
-![View Image](https://img.wiki-power.com/d/wiki-media/img/20211013161927.png)
+![View Image](https://media.wiki-power.com/img/20211013161927.png)
 
-![View Image](https://img.wiki-power.com/d/wiki-media/img/20211013163119.png)
+![View Image](https://media.wiki-power.com/img/20211013163119.png)
 
 ### Power Button
 
@@ -86,13 +86,13 @@ The TPS65217C PMIC features a low-level effective reset input, connected to the 
 
 - If the PMIC_IN_PB_IN pin remains low for an extended period, the device will cycle between the ACTIVE and RESET states, entering a reset every 8 seconds.
 
-![View Image](https://img.wiki-power.com/d/wiki-media/img/20211013165738.png)
+![View Image](https://media.wiki-power.com/img/20211013165738.png)
 
 ### Power Indicator Light
 
 We use SYS_VDD2_3P3V (150mA) as the output for the power indicator light.
 
-![View Image](https://img.wiki-power.com/d/wiki-media/img/20211014092054.png)
+![View Image](https://media.wiki-power.com/img/20211014092054.png)
 
 ## Resets
 
@@ -112,7 +112,7 @@ OSD335x has three reset inputs (sharing names with AM335x's reset inputs):
 
 - **RTC_PWRONRSTN**: RTC module-specific power-on reset input, not affected by cold reset, and does not impact other parts of the device.
 
-![View Image](https://img.wiki-power.com/d/wiki-media/img/20211014105556.png)
+![View Image](https://media.wiki-power.com/img/20211014105556.png)
 
 ## Clocks
 
@@ -124,13 +124,13 @@ OSD335x has two clock inputs:
 
 - **OSC1**: Low-speed clock input running at 32.768kHz for RTC. OSC1 clock input includes OSC1_IN, OSC1_OUT, and OSC1_GND pins. This clock source is disabled by default and is optional. If needed, it can receive an internal 32kHz RC crystal signal.
 
-![View Image](https://img.wiki-power.com/d/wiki-media/img/20211014095242.png)
+![View Image](https://media.wiki-power.com/img/20211014095242.png)
 
 In the above diagram, Rbias and Rd are optional components. If precise frequency control is not needed, Rbias can be used for flexible calibration and can be designated as DNP (do not populate on the schematic or leave the position empty). However, if Rd is not needed, it must be replaced with a wire to avoid an open circuit.
 
 In the reference design, OSC0 employs a 24MHz crystal oscillator, specifically the 7A-24.000MAAJ-T, with 18pF capacitors and a 1MΩ resistor serving as Rbias.
 
-![Reference Design Image](https://img.wiki-power.com/d/wiki-media/img/20211014101932.png)
+![Reference Design Image](https://media.wiki-power.com/img/20211014101932.png)
 
 The RTC_KALDO_ENN pin is configured with an external pull-down using a 10k resistor to enable the internal RTC LDO.
 
@@ -154,11 +154,11 @@ In the reference design, the following parameters are configured:
 
 ### User Buttons and LEDs
 
-![User Buttons and LEDs](https://img.wiki-power.com/d/wiki-media/img/20211014110906.png)
+![User Buttons and LEDs](https://media.wiki-power.com/img/20211014110906.png)
 
 ### Peripheral Headers
 
-![Peripheral Headers](https://img.wiki-power.com/d/wiki-media/img/20211014110947.png)
+![Peripheral Headers](https://media.wiki-power.com/img/20211014110947.png)
 
 ## References and Acknowledgments
 

@@ -8,18 +8,18 @@ P:\Arduino\hardware\tools\avr/bin/avrdude -C "P:\Arduino\hardware\tools\avr/etc/
 
 ## Arduino كمبرمج ISP
 
-|    Attiny     | Arduino |
-| :-----------: | :-----: |
-| Pin 1 (PB5)   |   D10   |
-| Pin 4 (GND)   |   GND   |
-| Pin 5 (PB0)   |   D11   |
-| Pin 6 (PB1)   |   D12   |
-| Pin 7 (PB2)   |   D13   |
-| Pin 8 (VCC)   |   5V    |
+|   Attiny    | Arduino |
+| :---------: | :-----: |
+| Pin 1 (PB5) |   D10   |
+| Pin 4 (GND) |   GND   |
+| Pin 5 (PB0) |   D11   |
+| Pin 6 (PB1) |   D12   |
+| Pin 7 (PB2) |   D13   |
+| Pin 8 (VCC) |   5V    |
 
 قم بتفليش Arduino كمبرمج ISP أولاً:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200426144425.png)
+![](https://media.wiki-power.com/img/20200426144425.png)
 
 افتح تفضيلات الـ IDE وقم بإضافة عنوان لوحة التطوير الإضافية:
 
@@ -29,15 +29,15 @@ https://raw.githubusercontent.com/damellis/attiny/ide-1.6.x-boards-manager/packa
 
 ثم افتح مدير لوحات التطوير:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200426144642.png)
+![](https://media.wiki-power.com/img/20200426144642.png)
 
 ابحث وقم بتثبيت اللوحة (قد تحتاج إلى استخدام وسيط):
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200426144732.png)
+![](https://media.wiki-power.com/img/20200426144732.png)
 
 عند تفليش الرقاقة، تأكد من اختيار نوع الرقاقة الصحيح وسرعة الساعة (Internal 16 MHz)، والمنفذ الذي توصل إليه Arduino. كما يجب اختيار "Arduino as ISP" كبرمج:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200426144834.png)
+![](https://media.wiki-power.com/img/20200426144834.png)
 
 ## ختام
 

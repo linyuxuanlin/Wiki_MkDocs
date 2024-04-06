@@ -1,6 +1,6 @@
 # TinyMonitor - Un Monitor de Estado de Servidor Compacto
 
-![](https://img.wiki-power.com/d/wiki-media/img/202305261716469.jpg)
+![](https://media.wiki-power.com/img/202305261716469.jpg)
 
 TinyMonitor es una terminal de monitoreo de estado de servidor extremadamente compacta y sencilla. Consiste únicamente en un controlador principal ESP32 y una pantalla OLED, con la capacidad de mostrar los parámetros de estado en tiempo real del servidor para facilitar la observación y la depuración.
 
@@ -8,15 +8,15 @@ TinyMonitor es una terminal de monitoreo de estado de servidor extremadamente co
 
 Los materiales de hardware necesarios para este proyecto son muy simples: un Beetle ESP32-C3 con Wi-Fi y Bluetooth incorporados, y una pantalla OLED de 128x64 píxeles.
 
-![](https://img.wiki-power.com/d/wiki-media/img/202305261541993.png)
+![](https://media.wiki-power.com/img/202305261541993.png)
 
 A continuación, se detallan las definiciones de los pines para el Beetle ESP32-C3.
 
-![](https://img.wiki-power.com/d/wiki-media/img/202305261545236.png)
+![](https://media.wiki-power.com/img/202305261545236.png)
 
 Dado que es posible utilizar una interfaz I2C de software (es decir, personalizar los pines I2C), he definido los pines `0`/`1` del Beetle ESP32-C3 para que cumplan la función de `SCL`/`SDA`. Esto simplifica la conexión, ya que solo es necesario soldar cuatro pines uno junto al otro.
 
-![](https://img.wiki-power.com/d/wiki-media/img/202305261546367.png)
+![](https://media.wiki-power.com/img/202305261546367.png)
 
 Nota: Antes de cargar el programa en el Beetle ESP32-C3, es necesario agregar el paquete de ESP32 para que el modelo de la placa se reconozca correctamente. Consulta su [**página de Wiki**](https://wiki.dfrobot.com.cn/_SKU_DFR0868_Beetle_ESP32_C3) para obtener más detalles.
 
@@ -119,7 +119,7 @@ Una vez que hayas iniciado el servicio `mosquitto` correctamente, puedes utiliza
 
 Después de instalar el software, crea una nueva conexión haciendo clic en "Create MQTT Client" y completa los parámetros según se muestra a continuación:
 
-![imagen](https://img.wiki-power.com/d/wiki-media/img/202305261456592.png)
+![imagen](https://media.wiki-power.com/img/202305261456592.png)
 
 En este caso, `HOST` corresponde a la dirección del servidor MQTT (por ejemplo, si tu servidor se encuentra en una dirección de la red local, podría ser `192.168.1.2`); el nombre de usuario y la contraseña deben coincidir con los valores que configuraste anteriormente en Mosquitto.
 
@@ -127,13 +127,13 @@ Haz clic en "Save" para guardar la configuración. Si ves "Connected" en verde e
 
 ## Script de Monitoreo del Servidor
 
-
-```markdown
+````markdown
 Podemos capturar información en tiempo real de un dispositivo y enviarla a los temas correspondientes en un servidor MQTT ejecutando el siguiente programa en Python en el servidor. Primero, debe instalar las dependencias necesarias:
 
 ```bash
 pip install paho-mqtt psutil
 ```
+````
 
 Luego, cree y ejecute el programa en Python:
 
@@ -158,7 +158,7 @@ while True:
 
 Después de ejecutar con éxito este programa, puede agregar suscripciones a estos tres temas en MQTTBox desde la barra de estado en la parte superior, como se muestra a continuación:
 
-![Ejemplo](https://img.wiki-power.com/d/wiki-media/img/202305261513642.png)
+![Ejemplo](https://media.wiki-power.com/img/202305261513642.png)
 
 Si todo está configurado correctamente, debería ver información continua sobre el estado del servidor en MQTTBox.
 
@@ -291,7 +291,7 @@ Estas sugerencias pueden enriquecer aún más la funcionalidad de tu proyecto.
 
 Adjunto: Fotografía conjunta de Beetle ESP32-C3 y Seeed XIAO ESP32C3.
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/202305261719170.jpg)
+![Imagen](https://media.wiki-power.com/img/202305261719170.jpg)
 
 ## Referencias y Agradecimientos
 

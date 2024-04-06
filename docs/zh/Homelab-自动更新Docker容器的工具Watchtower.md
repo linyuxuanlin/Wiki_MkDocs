@@ -1,6 +1,6 @@
 # Homelab - 自动更新 Docker 容器的工具 Watchtower
 
-![](https://img.wiki-power.com/d/wiki-media/img/202304092337531.png)
+![](https://media.wiki-power.com/img/202304092337531.png)
 
 **Watchtower** 是一个自动化更新全部或选定 Docker 容器的工具。
 

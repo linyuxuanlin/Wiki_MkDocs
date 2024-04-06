@@ -1,6 +1,6 @@
 # Homelab - إدارة خادم الكتب الإلكترونية calibre-web
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210429125418.png)
+![](https://media.wiki-power.com/img/20210429125418.png)
 
 **calibre-web** هو حلاً شاملاً للكتب الإلكترونية، وهو مبني على Calibre، ويتيح قراءة الكتب الإلكترونية عبر الويب، ويدمج خدمة calibre-server وأداة تحويل الكتب الإلكترونية.
 
@@ -60,7 +60,6 @@ APP_PORT_SERVER=xxxx # قم بتخصيص منفذ الوصول إلى خادم c
 ```sql
 SELECT * FROM 'user' LIMIT 0,30 -- يمكن أيضًا التبديل يدويًا إلى الجدول المسمى "user"
 ```
-
 
 ```sql
 UPDATE user SET password='pbkdf2:sha256:150000$ODedbYPS$4d1bd12adb1eb63f78e49873cbfc731e35af178cb9eb6b8b62c09dcf8db76670' WHERE name='xxx'; -- Please replace 'xxx' with your current username

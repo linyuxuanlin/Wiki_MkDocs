@@ -1,6 +1,6 @@
 # StyleTransferCam - كاميرا نقل الأسلوب على أساس ESP32-S3
 
-![](https://img.wiki-power.com/d/wiki-media/img/202308152238959.png)
+![](https://media.wiki-power.com/img/202308152238959.png)
 
 عندما يتقاطع الفن والتكنولوجيا ، ينكشف عالم جديد أمامنا ، وهذا هو عرض رائع بصريًا ، وهو أيضًا استكشاف لا حدود له. تعد StyleTransferCam كاميرا نقل الأسلوب على أساس ESP32-S3. إنها تستخدم تقنية تعلم الآلة المعروفة باسم "نقل الأسلوب" ، حيث عند الضغط على زر اللوحة ، ستلتقط المشهد الحالي وتمزجه مع صورة نموذج أسلوب محددة مسبقًا (مثل "السماء النجمية" لفان جوخ) لتوليد عمل فني فريد.
 
@@ -10,7 +10,7 @@
 2. تشغيل برنامج Python لنقل الأسلوب تلقائيًا ، ومعالجة الصورة ، وإخراج الصورة المنمقة بأسلوب.
 3. إذا كان لدى ESP32-S3 شاشة TFT مرفقة ، فيمكن أيضًا إرجاع الشاشة للعرض.
 
-![](https://img.wiki-power.com/d/wiki-media/img/202308152244791.png)
+![](https://media.wiki-power.com/img/202308152244791.png)
 
 ## اختبار زر اللوحة والمصباح الأمامي
 
@@ -99,8 +99,8 @@ DFRobot_AXP313A axp;
 // ===========================
 // أدخل بيانات اعتماد WiFi الخاصة بك
 // ===========================
-const char *ssid = "اسم_شبكة_واي_فاي";
-const char *password = "********";
+const char *ssid = "اسم*شبكة*واي_فاي";
+const char *password = "**\*\*\*\***";
 
 void startCameraServer();
 
@@ -163,65 +163,65 @@ void setup()
 // لحجم الذاكرة المؤقتة المخصصة للإطار الأكبر.
 إذا (config.pixel_format == PIXFORMAT_JPEG)
 {
-  إذا (psramFound())
-  {
-    config.jpeg_quality = 0; // 63; // جودة الصورة. القيمة الافتراضية هنا هي 10
-    config.fb_count = 2;
-    config.grab_mode = CAMERA_GRAB_LATEST;
-  }
-  آخر
-  {
-    // قم بتحديد حجم الإطار عندما لا يتوفر PSRAM
-    config.frame_size = FRAMESIZE_UXGA; // دقة الصورة. القيمة الافتراضية هنا هي FRAMESIZE_SVGA
-    config.fb_location = CAMERA_FB_IN_DRAM;
-  }
+إذا (psramFound())
+{
+config.jpeg_quality = 0; // 63; // جودة الصورة. القيمة الافتراضية هنا هي 10
+config.fb_count = 2;
+config.grab_mode = CAMERA_GRAB_LATEST;
 }
 آخر
 {
-  // أفضل خيار للكشف عن الوجه / التعرف عليه
-  config.frame_size = FRAMESIZE_UXGA; // FRAMESIZE_240X240;
+// قم بتحديد حجم الإطار عندما لا يتوفر PSRAM
+config.frame_size = FRAMESIZE_UXGA; // دقة الصورة. القيمة الافتراضية هنا هي FRAMESIZE_SVGA
+config.fb_location = CAMERA_FB_IN_DRAM;
+}
+}
+آخر
+{
+// أفضل خيار للكشف عن الوجه / التعرف عليه
+config.frame_size = FRAMESIZE_UXGA; // FRAMESIZE_240X240;
 #if CONFIG_IDF_TARGET_ESP32S3
-  config.fb_count = 2;
+config.fb_count = 2;
 #endif
 }
 
 إذا تم تعريف (CAMERA_MODEL_ESP_EYE)
 {
-  pinMode(13, INPUT_PULLUP);
-  pinMode(14, INPUT_PULLUP);
+pinMode(13, INPUT_PULLUP);
+pinMode(14, INPUT_PULLUP);
 }
 
 // تهيئة الكاميرا
 esp_err_t err = esp_camera_init(&config);
 إذا (err != ESP_OK)
 {
-  Serial.printf("فشل تهيئة الكاميرا بسبب خطأ 0x%x", err);
-  عودة;
+Serial.printf("فشل تهيئة الكاميرا بسبب خطأ 0x%x", err);
+عودة;
 }
 
-sensor_t *s = esp_camera_sensor_get();
+sensor_t \*s = esp_camera_sensor_get();
 // الاستشعارات الأولية مقلوبة عمودياً والألوان مشبعة قليلاً
 إذا (s->id.PID == OV3660_PID)
 {
-  s->set_vflip(s, 1);       // قم بعكسها
-  s->set_brightness(s, 1);  // زيادة السطوع قليلاً
-  s->set_saturation(s, -2); // خفض التشبع
+s->set_vflip(s, 1); // قم بعكسها
+s->set_brightness(s, 1); // زيادة السطوع قليلاً
+s->set_saturation(s, -2); // خفض التشبع
 }
 // قم بتقليل حجم الإطار لزيادة معدل الإطار الأولي
 إذا (config.pixel_format == PIXFORMAT_JPEG)
 {
-  s->set_framesize(s, FRAMESIZE_QVGA);
+s->set_framesize(s, FRAMESIZE_QVGA);
 }
 
 إذا تم تعريف (CAMERA_MODEL_M5STACK_WIDE) || تم تعريف (CAMERA_MODEL_M5STACK_ESP32CAM)
 {
-  s->set_vflip(s, 1);
-  s->set_hmirror(s, 1);
+s->set_vflip(s, 1);
+s->set_hmirror(s, 1);
 }
 
 إذا تم تعريف (CAMERA_MODEL_ESP32S3_EYE)
 {
-  s->set_vflip(s, 1);
+s->set_vflip(s, 1);
 }
 
 WiFi.begin(ssid, password);
@@ -329,9 +329,10 @@ def upload():
         print("فشل رفع الصورة:", str(e))
         return "فشل رفع الصورة", 500
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=9000)
-```
+if **name** == '**main**':
+app.run(host='0.0.0.0', port=9000)
+
+````
 
 لا تقم بتشغيل البرنامج على الفور، `style_transfer.py` هو برنامج نقل الأنماط وسيتم عرضه في الخطوة التالية. منطق هذا البرنامج هو أنه إذا تم استلام الصورة بنجاح من ESP32-S3 ، فسيتم تشغيل البرنامج النصي لنقل الأنماط تلقائيًا باستخدام `subprocess`.
 
@@ -341,7 +342,7 @@ if __name__ == '__main__':
 
 في نفس المجلد `receive-photo.py` ، سنستخدم TensorFlow لكتابة برنامج Python لنقل الأنماط. أولاً ، قم بتثبيت التبعيات المطلوبة للبرنامج (بسبب بيئة الشبكة المحلية في الصين ، من الصعب تنزيل TensorFlow ، لذا يلزم الكثير من الصبر) ، ثم قم بتحضير صورة للنقل الأنماط في نفس المجلد واسمها `base.png` ؛ وصورة مرجعية للنمط ، واسمها `style_reference.png` ، يمكن أن تكون لوحة فنية مثل "السماء الليلية" لفان جوخ:
 
-![](https://img.wiki-power.com/d/wiki-media/img/202308152239917.png)
+![](https://media.wiki-power.com/img/202308152239917.png)
 
 ثم ، قم بكتابة برنامج نقل الأنماط:
 
@@ -373,7 +374,7 @@ display(Image(base_image_path))
 display(Image(style_reference_image_path))
 
 # معالجة الصورة
-```
+````
 
 ```python
 def preprocess_image(image_path):
@@ -446,33 +447,38 @@ weights_path = "./dependencies/vgg19_weights_tf_dim_ordering_tf_kernels_notop.h5
 ```
 
 # إنشاء نموذج VGG19 يحمل وزنًا مدربًا مسبقًا لـ ImageNet
+
 model = vgg19.VGG19(weights=weights_path, include_top=False)
 
 # الحصول على الإخراج الرمزي لكل طبقة "مهمة" (نحدد لها اسمًا فريدًا).
+
 outputs_dict = dict([(layer.name, layer.output) for layer in model.layers])
 
 # إنشاء نموذج يعيد قيم التنشيط لكل طبقة في VGG19 (كقاموس).
+
 feature_extractor = keras.Model(inputs=model.inputs, outputs=outputs_dict)
 
 # وأخيرًا، هذا هو الكود الذي يحسب خسارة نقل الأنماط.
 
 # قائمة الطبقات المستخدمة لفقدان الأنماط.
+
 style_layer_names = [
-    "block1_conv1",
-    "block2_conv1",
-    "block3_conv1",
-    "block4_conv1",
-    "block5_conv1",
+"block1_conv1",
+"block2_conv1",
+"block3_conv1",
+"block4_conv1",
+"block5_conv1",
 ]
+
 # الطبقة المستخدمة لفقدان المحتوى.
+
 content_layer_name = "block5_conv2"
 
-
 def compute_loss(combination_image, base_image, style_reference_image):
-    input_tensor = tf.concat(
-        [base_image, style_reference_image, combination_image], axis=0
-    )
-    features = feature_extractor(input_tensor)
+input_tensor = tf.concat(
+[base_image, style_reference_image, combination_image], axis=0
+)
+features = feature_extractor(input_tensor)
 
     # تهيئة الخسارة
     loss = tf.zeros(shape=())
@@ -495,7 +501,6 @@ def compute_loss(combination_image, base_image, style_reference_image):
     # إضافة فقدان التغير الكلي
     loss += total_variation_weight * total_variation_loss(combination_image)
     return loss
-
 
 # إضافة مزيد من الأداء إلى حساب الخسارة وحساب التدرج عن طريق إضافة الديكور tf.function، مما يجعله يعمل بشكل أسرع أثناء الترجمة
 
@@ -541,16 +546,18 @@ display(Image(result_prefix + "_at_iteration_4000.png"))
 
 إذا كان البرنامج يعمل بشكل صحيح، يمكنك تشغيل `receive-photo.py` مباشرة لاستلام الصور من ESP32-S3 وتطبيق تحويل الأنماط تلقائيًا.
 
-![](https://img.wiki-power.com/d/wiki-media/img/202308152246623.png)
+![](https://media.wiki-power.com/img/202308152246623.png)
 
 ## المراجع والشكر
 
 - [تنفيذ تحويل الأنماط باستخدام TensorFlow](https://zhuanlan.zhihu.com/p/349072196)
 - [تحويل الأنماط العصبية](https://www.tensorflow.org/tutorials/generative/style_transfer?hl=zh-cn)
 - [استخدام الكاميرا](https://wiki.dfrobot.com.cn/_SKU_DFR0975_FireBeetle_2_Board_ESP32_S3_Advanced_Tutorial#target_12)
+
 ```
 
 > عنوان النص: <https://wiki-power.com/>
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
+```

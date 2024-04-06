@@ -22,26 +22,26 @@ Repositorio del proyecto: [**Colección_de_Diseño_de_Módulos_de_Potencia/PMIC/
 
 ## Circuitos de Aplicación Típicos
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220417095917.png)
+![](https://media.wiki-power.com/img/20220417095917.png)
 
 ## Diagrama de Funciones Internas
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220417001936.png)
+![](https://media.wiki-power.com/img/20220417001936.png)
 
 ## Definición de Pines
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220416234110.png)
+![](https://media.wiki-power.com/img/20220416234110.png)
 
-| Nombre del Pin | Descripción del Pin                                       |
-| -------------- | -------------------------------------------------------- |
-| VCC            | Entrada de alimentación interna para circuito de control |
-| VINx           | Entrada de alimentación del canal x, conecte un condensador cerámico de 10uF para desacoplar |
-| LXx            | Salida de conmutación del MOSFET interno del canal x, se puede conectar a un filtro pasa bajo para obtener una tensión más estable |
-| FBx            | Pin de retroalimentación del canal x, conectado al voltaje de salida a través de un divisor de tensión |
-| ENx            | Pin de habilitación, no debe dejarse en flotación |
-| GNDx           | Tierra del canal x |
-| AGND           | Tierra analógica |
-| Pads Inferiores | Para disipación de calor, deben estar conectados a tierra |
+| Nombre del Pin  | Descripción del Pin                                                                                                                |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| VCC             | Entrada de alimentación interna para circuito de control                                                                           |
+| VINx            | Entrada de alimentación del canal x, conecte un condensador cerámico de 10uF para desacoplar                                       |
+| LXx             | Salida de conmutación del MOSFET interno del canal x, se puede conectar a un filtro pasa bajo para obtener una tensión más estable |
+| FBx             | Pin de retroalimentación del canal x, conectado al voltaje de salida a través de un divisor de tensión                             |
+| ENx             | Pin de habilitación, no debe dejarse en flotación                                                                                  |
+| GNDx            | Tierra del canal x                                                                                                                 |
+| AGND            | Tierra analógica                                                                                                                   |
+| Pads Inferiores | Para disipación de calor, deben estar conectados a tierra                                                                          |
 
 ## Descripción de Características
 
@@ -55,7 +55,7 @@ El EA3036C es un IC de administración de energía diseñado específicamente pa
 
 Si se necesita ajustar el tiempo de encendido de cada convertidor Buck, se puede utilizar el siguiente circuito de programación:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220417100845.png)
+![](https://media.wiki-power.com/img/20220417100845.png)
 
 ### Arquitectura de Desplazamiento de Fase de 180°
 
@@ -90,7 +90,7 @@ $$
 V_{OUTx}=0.6*\frac{R_1}{R_2}+0.6V
 $$
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20220417230210.png)
+![Imagen](https://media.wiki-power.com/img/20220417230210.png)
 
 Si se requiere obtener valores de voltaje de uso común, se pueden utilizar las siguientes resistencias divisoras (siempre con una precisión del 1%):
 
@@ -135,8 +135,6 @@ $$
 ## Consideraciones de Diseño
 
 El diseño del PMIC requiere atención meticulosa para lograr un rendimiento óptimo. Se pueden seguir las siguientes recomendaciones:
-
-
 
 - Se recomienda utilizar un diseño de PCB de 4 capas, colocando las planos de LX y salidas en la capa superior, y el plano de VIN en una capa interna.
 - Los pines de tierra de los condensadores de montaje superficial de entrada/salida en la capa superior deben estar conectados a las capas internas y la capa inferior a través de agujeros pasantes.

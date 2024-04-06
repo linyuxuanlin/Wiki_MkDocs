@@ -6,13 +6,13 @@ La razón detrás del diseño de sistemas de placas múltiples es que un proyect
 
 En primer lugar, se debe crear un archivo de tipo proyecto de placas múltiples (`.PrjMbd`). Luego, se deben generar archivos de diseño lógico basados en el esquema (`.MbsDoc`) y archivos basados en PCB (`.MbaDoc`) dentro del proyecto. Asegúrate de guardarlos. Desde una perspectiva del sistema de archivos, copia las carpetas de proyectos de PCB individuales en el mismo directorio que el archivo `.PrjMbd`, como se muestra a continuación:
 
-![Vista de directorio del proyecto](https://img.wiki-power.com/d/wiki-media/img/20220106152537.png)
+![Vista de directorio del proyecto](https://media.wiki-power.com/img/20220106152537.png)
 
 ## Entrada de diseño lógico
 
 La entrada de diseño lógico se realiza en función de los conectores físicos en la PCB. Antes de continuar, asegúrate de agregar parámetros a los conectores en el esquema del proyecto (abre las propiedades del conector y agrega "Parámetros" con el nombre "Sistema" y el valor "Conector").
 
-![Agregar parámetros al conector](https://img.wiki-power.com/d/wiki-media/img/20220106163315.png)
+![Agregar parámetros al conector](https://media.wiki-power.com/img/20220106163315.png)
 
 ### Creación de módulos y vinculación del proyecto
 

@@ -13,7 +13,7 @@ git config --global user.email "correo@ejemplo.com"
 
 ## Comandos Básicos
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200216204934.png)
+![](https://media.wiki-power.com/img/20200216204934.png)
 
 ### Flujo Básico
 
@@ -58,18 +58,18 @@ Para comenzar desde cero o basarse en un proyecto existente.
 
 ## Gestión de Ramas
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200217195056.png)
+![](https://media.wiki-power.com/img/20200217195056.png)
 
 > A branch is like a parallel universe in a science fiction movie. While you're diligently studying Git in front of your computer, another "you" is working hard in a parallel universe, learning SVN.
-> 
+>
 > If these two parallel universes don't interfere with each other, they have no impact on your current self. However, at some point in time, these two universes merge, and the result is that you've learned both Git and SVN!
-> 
+>
 > So, what's the practical use of branches? Let's say you're about to develop a new feature, but it will take two weeks to complete. In the first week, you've written 50% of the code. If you were to submit it immediately, the incomplete codebase would prevent others from working. If you wait until all the code is written to submit it, there's a significant risk of losing daily progress.
-> 
+>
 > But now, with branches, you don't have to worry. You create your own branch that others can't see, and they continue to work on the original branch as usual. You work on your own branch and submit changes whenever you want. Once the development is complete, you merge it into the original branch all at once. This way, it's both safe and doesn't affect others' work.
-> 
-> ![Image](https://img.wiki-power.com/d/wiki-media/img/20200217202649.png)
-> 
+>
+> ![Image](https://media.wiki-power.com/img/20200217202649.png)
+>
 > 1. Create and switch to a new branch: `git switch -c branch_name`
 >    - `-c` stands for creating and switching branches.
 > 2. View the current branch: `git branch`
@@ -85,12 +85,12 @@ Para comenzar desde cero o basarse en un proyecto existente.
 ## GitHub Roaming Guide
 
 With the help of the GitHub platform, we can discover a vibrant world of open-source projects and collaborate with developers from around the globe to build an open-source world.
- 
+
 When we come across an outstanding open-source project, we can start by forking it to our own GitHub account (to gain read and write permissions). Then, we can clone it to our local environment using SSH for development. After completing the development, we can initiate a pull request on GitHub. If the original project owner finds your changes suitable, they will merge them into the existing open-source project.
 
 ### GitHub CLI
 
-GitHub CLI is a command-line tool for GitHub that brings features like pull requests, issues, and more to the command line. 
+GitHub CLI is a command-line tool for GitHub that brings features like pull requests, issues, and more to the command line.
 Download link: [**cli.github.com**](https://cli.github.com/)
 GitHub CLI is currently in beta and worth trying.
 

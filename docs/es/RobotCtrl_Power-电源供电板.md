@@ -1,6 +1,6 @@
 # RobotCtrl_Power - Placa de suministro de energía eléctrica
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20220527113517.png)
+![Imagen](https://media.wiki-power.com/img/20220527113517.png)
 
 Repositorio del proyecto: [**linyuxuanlin/RobotCtrl/RobotCtrl_Power**](https://github.com/linyuxuanlin/RobotCtrl/tree/main/RobotCtrl_MultiBoard_Project/RobotCtrl_Power)
 

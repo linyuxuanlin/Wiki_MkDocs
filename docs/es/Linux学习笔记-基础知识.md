@@ -10,30 +10,30 @@ ssh usuario@IP
 
 ## Estructura del Directorio Raíz
 
-![Estructura del directorio raíz](https://img.wiki-power.com/d/wiki-media/img/20211009094302.png)
+![Estructura del directorio raíz](https://media.wiki-power.com/img/20211009094302.png)
 
-| Directory  | Contents of the Directory                                                                                                              |
-| ----------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| bin         | Directorio de archivos binarios que almacena comandos del sistema, como cat, cp, mkdir.                                                 |
-| boot        | Contiene los archivos necesarios para el proceso de arranque, como el gestor de arranque grub2.                                          |
-| dev         | Directorio de todos los archivos de dispositivos, como tarjetas de sonido, discos duros y unidades de CD/DVD.                            |
-| etc         | "Etcétera", almacena los archivos de configuración principales del sistema.                                                              |
-| home        | Directorio de almacenamiento de datos de los directorios de inicio de los usuarios.                                                    |
-| lib         | Biblioteca, almacena archivos de biblioteca necesarios para los comandos de los directorios sbin y bin, evitando duplicaciones.        |
-| lib32/lib64 | Contiene bibliotecas binarias que admiten arquitecturas de 32 y 64 bits.                                                              |
+| Directory   | Contents of the Directory                                                                                                                                                                                  |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| bin         | Directorio de archivos binarios que almacena comandos del sistema, como cat, cp, mkdir.                                                                                                                    |
+| boot        | Contiene los archivos necesarios para el proceso de arranque, como el gestor de arranque grub2.                                                                                                            |
+| dev         | Directorio de todos los archivos de dispositivos, como tarjetas de sonido, discos duros y unidades de CD/DVD.                                                                                              |
+| etc         | "Etcétera", almacena los archivos de configuración principales del sistema.                                                                                                                                |
+| home        | Directorio de almacenamiento de datos de los directorios de inicio de los usuarios.                                                                                                                        |
+| lib         | Biblioteca, almacena archivos de biblioteca necesarios para los comandos de los directorios sbin y bin, evitando duplicaciones.                                                                            |
+| lib32/lib64 | Contiene bibliotecas binarias que admiten arquitecturas de 32 y 64 bits.                                                                                                                                   |
 | lost+found  | En sistemas EXT3/4, se generan archivos fragmentados en este directorio cuando el sistema se bloquea o se apaga de manera inesperada. El programa fsck verifica y repara los archivos dañados al arrancar. |
-| media       | Utilizado para montar dispositivos como CD-ROM, disquetes y DVD.                                                                       |
-| mnt         | Abreviatura de "mount" (montar), tiene la misma función que el directorio "media" y se utiliza para montar dispositivos de almacenamiento temporales. |
-| opt         | Directorio para la instalación de software de terceros.                                                                              |
-| proc        | Almacena información sobre procesos y el kernel, no ocupa espacio en disco.                                                             |
-| root        | Directorio de inicio del usuario "root".                                                                                              |
-| run         | Un sistema de archivos temporal que almacena información desde el inicio del sistema. Los archivos en este directorio deben eliminarse o limpiarse al reiniciar el sistema. |
-| sbin        | "System bin", contiene comandos utilizados por el usuario "root", como el comando de formateo "mkfs".                                  |
-| srv         | Almacena archivos de datos necesarios para algunos servicios de red.                                                                  |
-| sys         | Similar al directorio "proc", se utiliza para registrar información sobre la CPU y el hardware del sistema.                         |
-| tmp         | Directorio que almacena archivos temporales generados durante la ejecución de programas.                                            |
-| usr         | Directorio del sistema para almacenar programas, similar a la carpeta "Program Files" en Windows.                                      |
-| var         | Directorio que almacena archivos que cambian con frecuencia, como registros del sistema.                                            |
+| media       | Utilizado para montar dispositivos como CD-ROM, disquetes y DVD.                                                                                                                                           |
+| mnt         | Abreviatura de "mount" (montar), tiene la misma función que el directorio "media" y se utiliza para montar dispositivos de almacenamiento temporales.                                                      |
+| opt         | Directorio para la instalación de software de terceros.                                                                                                                                                    |
+| proc        | Almacena información sobre procesos y el kernel, no ocupa espacio en disco.                                                                                                                                |
+| root        | Directorio de inicio del usuario "root".                                                                                                                                                                   |
+| run         | Un sistema de archivos temporal que almacena información desde el inicio del sistema. Los archivos en este directorio deben eliminarse o limpiarse al reiniciar el sistema.                                |
+| sbin        | "System bin", contiene comandos utilizados por el usuario "root", como el comando de formateo "mkfs".                                                                                                      |
+| srv         | Almacena archivos de datos necesarios para algunos servicios de red.                                                                                                                                       |
+| sys         | Similar al directorio "proc", se utiliza para registrar información sobre la CPU y el hardware del sistema.                                                                                                |
+| tmp         | Directorio que almacena archivos temporales generados durante la ejecución de programas.                                                                                                                   |
+| usr         | Directorio del sistema para almacenar programas, similar a la carpeta "Program Files" en Windows.                                                                                                          |
+| var         | Directorio que almacena archivos que cambian con frecuencia, como registros del sistema.                                                                                                                   |
 
 ## Types of Files
 
@@ -115,6 +115,7 @@ Puede utilizar la tecla `Tab` para autocompletar y `Ctrl` + `C` para detener la 
 Algunos comandos comunes son:
 
 - `ls`: Listado de directorios y nombres de archivos
+
   - `-a`: Mostrar archivos ocultos (los que tienen un punto `.` antes del nombre)
   - `-l`: Listar detalladamente información sobre el tipo de archivo, permisos, propietario y tamaño
   - `-t`: Listar en orden de creación
@@ -122,6 +123,7 @@ Algunos comandos comunes son:
   - `-R`: Si hay archivos en el directorio, se listarán los archivos de ese directorio, es decir, se mostrará de forma recursiva.
 
 - `cd`: Cambiar de directorio
+
   - Rutas especiales
     - `~`: Directorio raíz del usuario actual
     - `/`: Directorio raíz
@@ -132,6 +134,7 @@ Algunos comandos comunes son:
 - `pwd`: Mostrar el directorio actual
 
 - `mkdir`: Crear directorios
+
   - `-p`: Crear directorios que no existen en la jerarquía especificada
 
 - `rmdir`: Eliminar un directorio vacío
@@ -141,6 +144,7 @@ Algunos comandos comunes son:
 - `cp`: Copiar archivos o directorios
 
 - `rm`: Eliminar archivos o directorios
+
   - `-r`: Eliminar directorios y su contenido
   - `-f`: Forzar la eliminación
 
@@ -151,6 +155,7 @@ Algunos comandos comunes son:
 - `echo`: Mostrar texto en la terminal
 
 - Redireccionar la salida a un archivo: Guardar el resultado de un comando en un archivo
+
   - `comando > nombre_archivo`: Crear el archivo si no existe, sobrescribirlo si existe
   - `comando >> nombre_archivo`: Crear el archivo si no existe, agregar al final si existe
 

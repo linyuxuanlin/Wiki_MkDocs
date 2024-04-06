@@ -8,7 +8,7 @@
 
 [**MD2WeChat**](https://md2wechat.wiki-power.com/) هو أداة ويب مخصصة قمت بتطويرها بناءً على مشروع مفتوح المصدر [lyricat/wechat-format](https://github.com/lyricat/wechat-format) ، ويمكن استخدامها بسهولة لتحويل بنية Markdown إلى نصوص غنية:
 
-[![](https://img.wiki-power.com/d/wiki-media/img/20210216125752.png)](https://md2wechat.wiki-power.com/)
+[![](https://media.wiki-power.com/img/20210216125752.png)](https://md2wechat.wiki-power.com/)
 
 قم بلصق مقالة Markdown في العمود الأيسر ، ثم انقر على "نسخ بنقرة واحدة" في العمود الأيمن ، وقم بلصقها في محرر المقالات العامة.
 

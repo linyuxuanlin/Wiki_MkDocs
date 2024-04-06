@@ -6,11 +6,11 @@ Definimos el valor Q de un circuito resonante como la relación entre la frecuen
 - Resistencia de carga $R_L$
 - Valor Q de los componentes mencionados en el capítulo anterior
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220418111129.png)
+![](https://media.wiki-power.com/img/20220418111129.png)
 
 ## Influencia de $R_s$ y $R_L$ en el valor Q de carga
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220418111200.png)
+![](https://media.wiki-power.com/img/20220418111200.png)
 
 La influencia de la impedancia de la fuente y la impedancia de carga en el valor Q de carga del circuito resonante se muestra en el gráfico anterior. La curva original (línea punteada) es la curva de resonancia de un circuito compuesto por una impedancia de fuente de 50Ω, una inductancia sin pérdidas de 0.05uH y un capacitor sin pérdidas de 25pF. El valor Q calculado utilizando la fórmula mencionada anteriormente $Q=\frac{f_e}{f_2-f_1}$ es aproximadamente 1.1, lo cual claramente no es un diseño de banda estrecha o alto valor Q.
 
@@ -18,11 +18,11 @@ Al cambiar la impedancia de la fuente a 1000Ω, se traza una nueva curva de reso
 
 El método anterior no muestra la influencia de la impedancia de carga en la curva de resonancia. Si se conecta una carga externa al circuito resonante de la siguiente manera:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220419163311.png)
+![](https://media.wiki-power.com/img/20220419163311.png)
 
 Puede ser equivalente a:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220419163441.png)
+![](https://media.wiki-power.com/img/20220419163441.png)
 
 En este caso, el valor Q de carga se puede expresar como:
 
@@ -36,7 +36,7 @@ Donde $R_p$ es la resistencia total equivalente en paralelo y $X_p$ representa l
 
 Se puede observar que la disminución de $R_p$ reduce el valor Q del circuito resonante y, si $R_p$ se mantiene constante y se cambia $X_p$, se puede obtener el mismo efecto. Por lo tanto, para una impedancia de fuente y una impedancia de carga dadas, se puede obtener el mejor valor Q del circuito resonante cuando la inductancia es pequeña y el capacitor es grande. En ambos casos, $X_p$ disminuirá. Por ejemplo:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220419165555.png)
+![](https://media.wiki-power.com/img/20220419165555.png)
 
 Por lo tanto, se pueden utilizar ambos métodos para ajustar el valor Q:
 
@@ -51,7 +51,7 @@ En los párrafos anteriores, hemos asumido que los componentes utilizados en el 
 
 En un circuito resonante sin pérdidas, la impedancia en los terminales del circuito en resonancia es infinita. Pero en un circuito real, debido a las pérdidas en los componentes, habrá alguna resistencia en paralelo equivalente:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220419174200.png)
+![](https://media.wiki-power.com/img/20220419174200.png)
 
 La resistencia (Rp) y su reactancia en paralelo relacionada (Xp) se pueden obtener a partir de
 

@@ -1,6 +1,6 @@
 # Homelab - أداة استخراج رمز موقع الويب favicon iconserver
 
-![الرمز](https://img.wiki-power.com/d/wiki-media/img/20230304195157.png)
+![الرمز](https://media.wiki-power.com/img/20230304195157.png)
 
 **iconserver** هي أداة استخراج رمز موقع الويب favicon. تدعم استخراج `favicon.ico` و
 `apple-touch-icon.png` ، وتتيح واجهة برمجة تطبيق (API) بسيطة للاستخدام مع صفحة واجهة الويب. إذا فشلت عملية الاستخراج ، ستقوم بإنشاء رمز favicon يبدأ بالحرف الأول للموقع.

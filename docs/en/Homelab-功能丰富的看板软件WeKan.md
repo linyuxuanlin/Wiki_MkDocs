@@ -1,6 +1,6 @@
 # Homelab - Feature-Rich Kanban Software WeKan
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230508175842.png)
+![](https://media.wiki-power.com/img/20230508175842.png)
 
 **WeKan** is a flexible, user-friendly, and highly efficient open-source Kanban software that facilitates team collaboration in managing tasks, projects, and workflows. It offers a simple yet powerful user interface, enabling users to effortlessly create multiple boards, add lists and cards to each board, and assign tasks to different team members, thereby enhancing project management and progress tracking.
 

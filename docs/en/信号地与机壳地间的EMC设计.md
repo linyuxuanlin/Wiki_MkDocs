@@ -1,8 +1,8 @@
 # EMC Design for Signal Ground and Chassis Ground
 
-Typically, in the context of PCB design, when connecting signal ground and chassis ground, we employ a parallel connection of a high-voltage capacitor (1~100nF/2kV) and a large resistor (1MΩ). This serves to enhance EMC (Electromagnetic Compatibility) performance. 
+Typically, in the context of PCB design, when connecting signal ground and chassis ground, we employ a parallel connection of a high-voltage capacitor (1~100nF/2kV) and a large resistor (1MΩ). This serves to enhance EMC (Electromagnetic Compatibility) performance.
 
-![EMC Design](https://img.wiki-power.com/d/wiki-media/img/20220620162528.png)
+![EMC Design](https://media.wiki-power.com/img/20220620162528.png)
 
 The capacitor's function is to allow AC signals to pass while blocking DC signals. From an EMI (Electromagnetic Interference) perspective, this arrangement directs high-frequency interference generated within the circuit into the chassis ground, preventing it from creating antenna radiation. From an EMS (Electromagnetic Susceptibility) perspective, it can suppress transient common-mode voltage differences between high-frequency interference sources and the circuit. This is particularly important when direct connections are either not possible or not sufficiently safe, for instance, when connecting the GND after a 220VAC rectifier bridge to the chassis ground.
 

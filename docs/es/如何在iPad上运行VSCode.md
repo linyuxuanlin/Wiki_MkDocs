@@ -2,7 +2,7 @@
 
 Nota: Este tutorial se basa en code-server v3.8.0 y CentOS 8.2.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20201221140748.jpg)
+![](https://media.wiki-power.com/img/20201221140748.jpg)
 
 Se recomienda instalar el servicio code-server utilizando Docker compose.  
 Solo se necesita una línea de comando para implementarlo, y no es necesario configurar la ejecución en segundo plano, ya que incluye entornos como Git.  

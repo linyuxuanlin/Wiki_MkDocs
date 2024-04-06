@@ -20,11 +20,11 @@ Dirección del proyecto: **<https://github.com/linyuxuanlin/Modularity_of_Functi
 
 ## Definición de pines
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210713154103.png)
+![](https://media.wiki-power.com/img/20210713154103.png)
 
 ## Diseño de referencia
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210715141625.png)
+![](https://media.wiki-power.com/img/20210715141625.png)
 
 ## Ajuste de parámetros
 

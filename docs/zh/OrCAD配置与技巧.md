@@ -74,15 +74,15 @@ allegro/ 
 
 DRC 设置：
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210810134720.png)
+![](https://media.wiki-power.com/img/20210810134720.png)
 
 复制元器件时自动重命名位号：
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210810134747.png)
+![](https://media.wiki-power.com/img/20210810134747.png)
 
 移动字符时贴近栅格：
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210810134758.png)
+![](https://media.wiki-power.com/img/20210810134758.png)
 
 坑：当使用 CIP 库，显示 `not found in the configured librarie lists` 时，要检查路径内空格的编码。
 

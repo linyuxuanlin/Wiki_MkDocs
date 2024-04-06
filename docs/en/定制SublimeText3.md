@@ -5,7 +5,7 @@
 **Sublime Text** is an incredibly powerful text editor. With Python-related courses coming up next semester, and considering the not-so-pleasing UI of tools like PyCharm, I'd like to transform Sublime Text into a Python development powerhouse.
 
 Here's a screenshot of the customized result:
-![Customized Sublime Text 3](https://img.wiki-power.com/d/wiki-media/img/ST3效果.png)
+![Customized Sublime Text 3](https://media.wiki-power.com/img/ST3效果.png)
 
 ## [Minimal Deployment](https://www.jianguoyun.com/p/Da9TMr0Q-OOjBxif86sB)
 
@@ -67,17 +67,17 @@ The following plugins can be directly installed via `Package Control`.
 
 ```json
 {
-    "Default": {
-        "author": "Your Name",
-        "email": "your@email.com",
-        "website": "yourwebsite.com"
-    }
+  "Default": {
+    "author": "Your Name",
+    "email": "your@email.com",
+    "website": "yourwebsite.com"
+  }
 }
 ```
 
 Modify the template content in `Preferences -> Browse Packages... -> FileHeader -> template -> header or body`. Result:
 
-![FileHeader Template Effect](https://img.wiki-power.com/d/wiki-media/img/ST3-Template-Effect.png)
+![FileHeader Template Effect](https://media.wiki-power.com/img/ST3-Template-Effect.png)
 
 ### Running Python
 
@@ -85,15 +85,15 @@ Since the default Sublime Text compiler lacks user input, you'll need a plugin: 
 
 ```json
 [
-    {
-        "keys": ["f5"],
-        "caption": "SublimeREPL: Python",
-        "command": "run_existing_window_command",
-        "args": {
-            "id": "repl_python_run",
-            "file": "config/Python/Main.sublime-menu"
-        }
+  {
+    "keys": ["f5"],
+    "caption": "SublimeREPL: Python",
+    "command": "run_existing_window_command",
+    "args": {
+      "id": "repl_python_run",
+      "file": "config/Python/Main.sublime-menu"
     }
+  }
 ]
 ```
 

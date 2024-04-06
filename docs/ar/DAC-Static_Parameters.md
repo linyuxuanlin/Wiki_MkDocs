@@ -2,7 +2,7 @@
 
 محول الرقمي إلى تناظري (ADC) هو جهاز يقوم بتحويل تسلسل من البيانات الرقمية الإدخالية إلى إشارات تناظرية.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20221011141644.png)
+![](https://media.wiki-power.com/img/20221011141644.png)
 
 ## المعلمات الثابتة
 
@@ -16,7 +16,7 @@
 - خطأ اللاخطية التفاضلي (DNE أو DNL)
 - خطأ اللاخطية التكاملي (INE أو INL)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20221011144045.png)
+![](https://media.wiki-power.com/img/20221011144045.png)
 
 ### الإخراج عند الصفر
 
@@ -26,7 +26,7 @@
 
 النطاق الجهد لإخراج محول الرقمي إلى تناظري (DAC) بين الحد الأدنى ($V_{ZS}$) والحد الأقصى ($V_{FS}$) للإخراج التناظري يُسمى **نطاق الإشارة بالكامل (FSR)**:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20221011142249.png)
+![](https://media.wiki-power.com/img/20221011142249.png)
 
 ### حجم أقل الوحدة الثنائية (LSB)
 
@@ -44,7 +44,7 @@ $$
 OffsetError=V_{ZS(Actual)}-V_{ZS(ideal)}
 $$
 
-![](https://img.wiki-power.com/d/wiki-media/img/20221011144415.png)
+![](https://media.wiki-power.com/img/20221011144415.png)
 
 ### خطأ الربح (Gain Error)
 
@@ -64,7 +64,7 @@ $$
 FSR_{Actual}=V_{FS(Actual)}-V_{ZS(Actual)}
 $$
 
-![](https://img.wiki-power.com/d/wiki-media/img/20221011144925.png)
+![](https://media.wiki-power.com/img/20221011144925.png)
 
 ### خطأ اللاخطية التفاضلي (DNL)
 
@@ -78,7 +78,7 @@ $$
 
 DNL هو مقياس لخطأ الخطية "بإشارة صغيرة". يتم قياس DNL من خطوة واحدة إلى الأخرى، وليس من كل خطوة إلى القيمة المثلى.
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/20221011153556.png)
+![صورة](https://media.wiki-power.com/img/20221011153556.png)
 
 ### خطأ اللاخطيء التكاملي (INL)
 
@@ -98,7 +98,7 @@ $$
 INL[i]=\sum_{n=1}^{n=i}DNL[n]
 $$
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/20221011184739.png)
+![صورة](https://media.wiki-power.com/img/20221011184739.png)
 
 ## كيفية اختبار المعلمات الثابتة
 
@@ -106,21 +106,21 @@ $$
 
 إعداد نظام الاختبار لاختبار المعلمات الثابتة لجهاز التحكم الرقمي إلى تحليله:
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/20221011185006.png)
+![صورة](https://media.wiki-power.com/img/20221011185006.png)
 
 مخطط كتلة لإعداد الإشارة:
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/20221011185447.png)
+![صورة](https://media.wiki-power.com/img/20221011185447.png)
 
 ### مفهوم الاختبارات
 
 يتم سرد إجراء اختبار المعلمات الثابتة لوحدة التحكم الرقمية (DAC) فيما يلي.
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/20221011185739.png)
+![صورة](https://media.wiki-power.com/img/20221011185739.png)
 
 #### 1. قياس الجهد الناتج من خلال تطبيق إدخالات البيانات الرقمية من الصفر إلى القيمة الكاملة
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/20221011185711.png)
+![صورة](https://media.wiki-power.com/img/20221011185711.png)
 
 #### 2. حساب DNL لكل رمز إدخال
 

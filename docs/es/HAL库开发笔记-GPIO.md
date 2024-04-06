@@ -4,13 +4,13 @@
 
 GPIO significa **Entrada/Salida de Propósito General** (General Purpose Input Output).
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200615205256.jpg)
+![](https://media.wiki-power.com/img/20200615205256.jpg)
 
 Tomemos como ejemplo el chip F103C8T6 (imagen superior), aparte de los pines de colores (alimentación y algunos pines de función específica), todos los demás se llaman GPIO. Esto demuestra su versatilidad.
 
 La función de GPIO es la de entrada/salida de señales eléctricas. Veamos su estructura interna:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200615211744.jpg)
+![](https://media.wiki-power.com/img/20200615211744.jpg)
 
 - El pin I/O más a la derecha es el pin físico del chip. Las `diodos de protección` superior e inferior evitan que el chip se dañe por voltajes anormales externos.
 - El recuadro de línea roja representa la función de entrada (lectura de señales externas). Los dos interruptores con resistencias pull-up/pull-down se utilizan para implementar la función de entrada con resistencia pull-up/pull-down. Si ambos interruptores están abiertos, se considera una entrada flotante (sin nivel de referencia). Estos tres modos de entrada se leen como valores digitales (alto/bajo). Además, también existe la función de entrada analógica, que consiste en leer directamente el valor analógico del pin. (La función de entrada de multiplexación se mencionará más adelante).
@@ -61,7 +61,7 @@ No se explicará aquí, por favor consulte el artículo [**Notas de desarrollo d
 
 Configure los pines GPIO correspondientes al LED como salida y establezca el nivel inicial.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210205150422.png)
+![](https://media.wiki-power.com/img/20210205150422.png)
 
 En mi placa, los pines `PD4` y `PI3` deben configurarse como salida (`GPIO_Output`).
 Si desea que el LED se encienda al encender la placa, según el esquema del circuito, establezca el nivel inicial en bajo (`Low`).
@@ -82,7 +82,7 @@ HAL_GPIO_TogglePin(GPIOI, GPIO_PIN_3);
 /* USER CODE END 3 */
 ```
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210205151322.png)
+![](https://media.wiki-power.com/img/20210205151322.png)
 
 Esto logrará el efecto de parpadeo de las luces.
 
@@ -94,7 +94,7 @@ Después de aprender sobre la salida de GPIO, vamos a aprender sobre el modo de 
 
 Después de configurar el puerto GPIO al que pertenecen las luces LED siguiendo los pasos anteriores, según el esquema del pulsador en la placa:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210205150422.png)
+![](https://media.wiki-power.com/img/20210205150422.png)
 
 Configurar el GPIO correspondiente al pulsador (`PI8`) como entrada (`GPIO_Input`). Según el esquema, seleccionar la resistencia de pull-up interna (`Pull-up`). Generar el código.
 

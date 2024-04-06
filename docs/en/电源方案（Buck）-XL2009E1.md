@@ -26,11 +26,11 @@ Project Repository: [**Collection_of_Power_Module_Design/DC-DC(Buck)/XL2009E1**]
 
 Based on the datasheet, the typical application circuit is as follows (Input 8-36V, Output 5V@2.1A):
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220407103157.png)
+![](https://media.wiki-power.com/img/20220407103157.png)
 
 ## Pin Definitions
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220407065806.png)
+![](https://media.wiki-power.com/img/20220407065806.png)
 
 - FB: Feedback input pin, feedback is divided by resistors from $V_{OUT}$, cannot be directly grounded. The feedback reference voltage is 1.25V.
 - OCSET: Output constant current setting pin.
@@ -42,7 +42,7 @@ Based on the datasheet, the typical application circuit is as follows (Input 8-3
 
 ### Internal Functional Block Diagram
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220407070413.png)
+![](https://media.wiki-power.com/img/20220407070413.png)
 
 ### Output Voltage Regulation
 
@@ -70,19 +70,17 @@ The datasheet of XL2009E1 provides a direct selection table for a 3A diode:
 
 Relationship between output voltage and current:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220407100229.png)
+![](https://media.wiki-power.com/img/20220407100229.png)
 
 Relationship between efficiency and output current:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220407103033.png)
+![](https://media.wiki-power.com/img/20220407103033.png)
 
 Relationship between output current and RCS resistor (constant current control):
 
 Translate into English:
 
-
-
-![](https://img.wiki-power.com/d/wiki-media/img/20220407102905.png)
+![](https://media.wiki-power.com/img/20220407102905.png)
 
 ## References and Acknowledgements
 

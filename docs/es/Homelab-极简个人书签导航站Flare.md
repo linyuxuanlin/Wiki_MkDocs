@@ -1,6 +1,6 @@
 # Homelab - Sitio de marcadores personales minimalista Flare
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230410170939.png)
+![](https://media.wiki-power.com/img/20230410170939.png)
 
 **Flare** es una página de navegación personal ligera, rápida y atractiva, sin dependencia de bases de datos, con datos de la aplicación completamente abiertos y transparentes, admite edición en línea e incluye más de 6,000 iconos Material Design.
 

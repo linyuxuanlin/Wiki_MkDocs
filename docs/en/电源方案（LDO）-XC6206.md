@@ -20,33 +20,33 @@ Project repository: [**Collection_of_Power_Module_Design/LDO/XC6206**](https://g
 
 ## Selection Guide
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420102910.png)
+![](https://media.wiki-power.com/img/20220420102910.png)
 
 ## Typical Application Circuit
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420102323.png)
+![](https://media.wiki-power.com/img/20220420102323.png)
 
 ## Internal Functional Block Diagram
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420102514.png)
+![](https://media.wiki-power.com/img/20220420102514.png)
 
 Note: The diode inside the block diagram represents ESD or parasitic diodes.
 
 ## Pin Definitions
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420103005.png)
+![](https://media.wiki-power.com/img/20220420103005.png)
 
 | Pin Name | Pin Description |
-| -------- | -------------- |
-| VSS      | Ground         |
-| Vin      | Power Input    |
-| Vout     | Power Output   |
+| -------- | --------------- |
+| VSS      | Ground          |
+| Vin      | Power Input     |
+| Vout     | Power Output    |
 
 ## Feature Description
 
 Specific parameter tables for each model:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420103738.png)
+![](https://media.wiki-power.com/img/20220420103738.png)
 
 ## References and Acknowledgements
 

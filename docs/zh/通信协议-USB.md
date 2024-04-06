@@ -2,13 +2,13 @@
 
 ## USB 版本
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211129094423.png)
+![](https://media.wiki-power.com/img/20211129094423.png)
 
 ## USB 机械接口
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211129094855.png)
+![](https://media.wiki-power.com/img/20211129094855.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211129094944.png)
+![](https://media.wiki-power.com/img/20211129094944.png)
 
 接口定义 - 标准 USB：
 
@@ -31,13 +31,13 @@
 
 ## USB 插头与版本的兼容性
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211129094829.png)
+![](https://media.wiki-power.com/img/20211129094829.png)
 
 ---
 
 ## USB Type-C
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220520105345.png)
+![](https://media.wiki-power.com/img/20220520105345.png)
 
 ### 端口类型
 
@@ -58,15 +58,15 @@ Type-C 分公母头（插头与插座），两者引脚大部分呈镜像分布�
 
 Type-C 插座：
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220520134239.png)
+![](https://media.wiki-power.com/img/20220520134239.png)
 
 Type-C 插头：
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220520134304.png)
+![](https://media.wiki-power.com/img/20220520134304.png)
 
 对接示意图（全功能）：
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220520140019.png)
+![](https://media.wiki-power.com/img/20220520140019.png)
 
 引脚定义：
 
@@ -124,7 +124,7 @@ CC 引脚使用的上下拉电阻取决于是下行端口（DFP）、上行端�
 
 电缆方向检测，如果 CC1 引脚检测到有效的上下拉，则代表正向（未翻转）；如果 CC1 检测到，则代表反向（已翻转）：
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220520141738.png)
+![](https://media.wiki-power.com/img/20220520141738.png)
 
 ## 参考与致谢
 

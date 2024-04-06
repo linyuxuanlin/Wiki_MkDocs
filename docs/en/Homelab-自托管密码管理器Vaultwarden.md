@@ -1,6 +1,6 @@
 # Homelab - Self-hosted Password Manager Vaultwarden
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230304195414.jpg)
+![](https://media.wiki-power.com/img/20230304195414.jpg)
 
 **Vaultwarden** is a third-party self-hosted Bitwarden server that protects and manages passwords for various websites with a master password. It can generate random passwords for different websites.
 

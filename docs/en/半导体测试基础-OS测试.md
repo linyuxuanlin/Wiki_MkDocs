@@ -8,7 +8,7 @@ The OS testing process relies on the protection diodes connected to VDD and grou
 
 Serial/parallel static testing in OS essentially involves applying current to measure voltage. This current causes one of the protection diodes to forward bias, allowing abnormal open or short circuits to be detected by measuring the forward voltage drop. The test schematic for applying positive current to forward bias the power supply diode is shown below:
 
-![Positive Current Test](https://img.wiki-power.com/d/wiki-media/img/20220805165031.png)
+![Positive Current Test](https://media.wiki-power.com/img/20220805165031.png)
 
 The test procedure is as follows:
 
@@ -21,7 +21,7 @@ The test procedure is as follows:
 
 The test schematic for applying negative current to forward bias the ground diode is shown below:
 
-![Negative Current Test](https://img.wiki-power.com/d/wiki-media/img/20220728142155.png)
+![Negative Current Test](https://media.wiki-power.com/img/20220728142155.png)
 
 The test procedure is as follows:
 

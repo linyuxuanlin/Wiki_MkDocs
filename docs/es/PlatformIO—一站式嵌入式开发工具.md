@@ -2,7 +2,7 @@
 
 — Creando un entorno de desarrollo integral para reemplazar Keil / Arduino IDE
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200531112801.png)
+![Imagen](https://media.wiki-power.com/img/20200531112801.png)
 
 ## Antecedentes
 
@@ -29,7 +29,7 @@ En primer lugar, asegúrate de tener instalado Visual Studio Code en tu computad
 
 Dentro de Visual Studio Code, ve a la sección de `Extensiones` (puedes hacerlo presionando `Ctrl + Shift + X`) y busca e instala las extensiones `Python` y `PlatformIO IDE`.
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200531113916.png)
+![Imagen](https://media.wiki-power.com/img/20200531113916.png)
 
 Una vez que las extensiones se instalen con éxito, haz clic en `Recargar` para activarlas y luego toma una taza de café mientras se instalan automáticamente los componentes centrales de PlatformIO (esto puede llevar algo de tiempo la primera vez).
 

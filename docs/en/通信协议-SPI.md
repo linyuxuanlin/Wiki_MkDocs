@@ -2,7 +2,7 @@
 
 SPI (Serial Peripheral Interface) is a **full-duplex, synchronous, serial, master-slave, bus** communication protocol with a data transfer rate of 8 Mbit. SPI can only have one master and can be connected to one or more slaves. When connecting multiple devices, the chip select (CS) pin is used.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210911095950.png)
+![](https://media.wiki-power.com/img/20210911095950.png)
 
 ## SPI Pins
 
@@ -16,7 +16,7 @@ SPI (Serial Peripheral Interface) is a **full-duplex, synchronous, serial, maste
 - The edge at which data is latched is called the critical edge.
 - For example, the left image below represents latching logic `1` on the rising edge of SDO, and the right image represents latching logic `0` on the falling edge.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211026151750.png)
+![](https://media.wiki-power.com/img/20211026151750.png)
 
 ## SPI Read Segment Example
 
@@ -26,7 +26,7 @@ SPI (Serial Peripheral Interface) is a **full-duplex, synchronous, serial, maste
 4. Data is transferred from the most significant bit (MSB) to the least significant bit (LSB) in order on the rising edge of SCLK.
 5. Transferred data: `1011001`
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211026152228.png)
+![](https://media.wiki-power.com/img/20211026152228.png)
 
 ## SPI Critical Edge
 
@@ -34,25 +34,25 @@ SPI (Serial Peripheral Interface) is a **full-duplex, synchronous, serial, maste
 - $t_{HO}$ (hold time): Defines how long the data on SDI must be maintained after the critical edge event.
 - $t_{DO}$ (delay time): Defines the delay time of the valid data on SDO after the critical edge event.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211026160940.png)
+![](https://media.wiki-power.com/img/20211026160940.png)
 
 ## SPI Transfer Modes (4 modes)
 
 - **CPOL** (clock polarity): The polarity of the clock when idle (not transferring data), `0` represents low level, `1` represents high level.
 - **CPHA** (clock phase): Defines whether the latch is performed on the rising or falling edge. `0` represents latch on the first changing edge; `1` represents latch on the second changing edge.
 
-| Mode Number | CPOL (Clock Polarity) | CPHA (Clock Phase)            | Latching Edge |
-| ----------- | -------------------- | ---------------------------- | ------------- |
-| 0           | 0 (Low Level)        | 0 (Latch on First Edge)      | Rising Edge   |
-| 1           | 0 (Low Level)        | 1 (Latch on Second Edge)     | Falling Edge  |
-| 2           | 1 (High Level)       | 0 (Latch on First Edge)      | Falling Edge  |
-| 3           | 1 (High Level)       | 1 (Latch on Second Edge)     | Rising Edge   |
+| Mode Number | CPOL (Clock Polarity) | CPHA (Clock Phase)       | Latching Edge |
+| ----------- | --------------------- | ------------------------ | ------------- |
+| 0           | 0 (Low Level)         | 0 (Latch on First Edge)  | Rising Edge   |
+| 1           | 0 (Low Level)         | 1 (Latch on Second Edge) | Falling Edge  |
+| 2           | 1 (High Level)        | 0 (Latch on First Edge)  | Falling Edge  |
+| 3           | 1 (High Level)        | 1 (Latch on Second Edge) | Rising Edge   |
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211026162028.png)
+![](https://media.wiki-power.com/img/20211026162028.png)
 
 ## Daisy Chain
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211026164011.png)
+![](https://media.wiki-power.com/img/20211026164011.png)
 
 In normal mode, each slave in SPI requires a CS line. When there are multiple slaves, it will occupy too many IO ports on the host. By using the daisy chain topology, only one CS line is needed to drive all the slaves.
 

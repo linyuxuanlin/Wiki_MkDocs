@@ -1,6 +1,6 @@
 # Homelab - 支持公有云的图床系统 Cloudreve
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230304195423.png)
+![](https://media.wiki-power.com/img/20230304195423.png)
 
 **Cloudreve** 是一个支持多家云存储驱动的公有云文件系统，支持用本地、从机、七牛、阿里云 OSS、腾讯云 COS、又拍云、OneDrive、S3 兼容协议作为储存端，可对接 Aria2 离线下载，多用户，拖拽上传 / 管理，在线预览 / 编辑，WebDAV 等。典型的使用场景是个人图床或网盘文件管理。
 

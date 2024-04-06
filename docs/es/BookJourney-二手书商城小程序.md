@@ -1,12 +1,12 @@
 # BookJourney - Aplicación Mini de Libros de Segunda Mano
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/书程小驿.jpg)
+![Imagen](https://media.wiki-power.com/img/书程小驿.jpg)
 
 Repositorio del Proyecto: [**linyuxuanlin/BookJourney**](https://github.com/linyuxuanlin/BookJourney)
 
 Demo (Experimenta escaneando con WeChat):
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/1.jpg)
+![Imagen](https://media.wiki-power.com/img/1.jpg)
 
 ## Antecedentes
 
@@ -18,7 +18,7 @@ En lugar de reinventar la rueda, encontré un proyecto de código abierto de una
 
 En cuanto a las funciones, eliminé una serie de características relacionadas con la negociación de precios y recompensas por compartir, y mantuve solo las funciones esenciales.
 
-Dado que yo no era el responsable de agregar nuevos productos al catálogo en el futuro, era importante que la edición de productos en el backend fuera intuitiva y basada en una interfaz gráfica. Para ello, BookJourney utilizó el backend de [api工厂](https://www.it120.cc/), lo que eliminó la necesidad de configurar mi propio servidor y facilitó la tarea de otros miembros del equipo al agregar nuevos productos. Sin embargo, esto impuso restricciones de almacenamiento para los usuarios gratuitos.
+Dado que yo no era el responsable de agregar nuevos productos al catálogo en el futuro, era importante que la edición de productos en el backend fuera intuitiva y basada en una interfaz gráfica. Para ello, BookJourney utilizó el backend de [api 工厂](https://www.it120.cc/), lo que eliminó la necesidad de configurar mi propio servidor y facilitó la tarea de otros miembros del equipo al agregar nuevos productos. Sin embargo, esto impuso restricciones de almacenamiento para los usuarios gratuitos.
 
 ## Desafíos
 

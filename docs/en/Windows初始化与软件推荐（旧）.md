@@ -1,6 +1,6 @@
 # Windows Initialization and Software Recommendations (Old)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210117142759.jpg)
+![](https://media.wiki-power.com/img/20210117142759.jpg)
 
 > For updated content, please visit [**Personal Onboarding Workflow (Windows)**](https://wiki-power.com/Personal_Onboarding_Workflow_%28Windows%29/)
 
@@ -46,6 +46,7 @@ You've just installed a Windows operating system. What are the essential setting
 - [**Modified QQ**](https://github.com/linyuxuanlin/File-host/blob/main/software/QQ%209.4.2.27666%20Lite-20210118%20by%20flighty-Q.exe)
 
 - [**DiskGenius**](https://www.diskgenius.cn/download.php): Disk Utility
+
   - Reserve 10 GB of Free Space (SSD)
   - NTFS, 4096 Sectors (4k Alignment)
 

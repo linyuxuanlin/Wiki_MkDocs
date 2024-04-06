@@ -38,11 +38,11 @@ En el modo de silencio, los nodos pueden configurarse en un estado absolutamente
 
 #### Pines del chip
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210607102222.png)
+![](https://media.wiki-power.com/img/20210607102222.png)
 
 #### Circuito de referencia
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210607115611.png)
+![](https://media.wiki-power.com/img/20210607115611.png)
 
 Como se muestra en la imagen, el controlador del protocolo CAN (por ejemplo, un microcontrolador) se conecta al transceptor a través de la línea serial (RX/TX), que se convierte en la señal CAN (CANH/CANL) en el transceptor. El modo de alta velocidad/silencio se selecciona mediante el pin S.
 
@@ -75,17 +75,17 @@ Para habilitar el modo de baja potencia, conecte Rs a 3.3V.
 
 #### Pines del chip
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210607155539.png)
+![](https://media.wiki-power.com/img/20210607155539.png)
 
 #### Circuito de referencia
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210607171051.png)
+![](https://media.wiki-power.com/img/20210607171051.png)
 
 PESD2CAN es un diodo de protección ESD especializado para CAN, que protege el chip de daños causados por descargas electrostáticas y otros transitorios.
 
 El diseño de PCB de referencia es el siguiente:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210607171427.png)
+![](https://media.wiki-power.com/img/20210607171427.png)
 
 ### Diferencias y similitudes entre TJA1050 y SN65HVD230
 
@@ -103,7 +103,7 @@ En la comunicación CAN, los cables son propensos a acoplar interferencias exter
 
 Los dispositivos de protección de la interfaz CAN incluyen principalmente: capacitores de filtrado, inductores de modo común, capacitores de derivación y diodos TVS.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211220134905.png)
+![](https://media.wiki-power.com/img/20211220134905.png)
 
 - Capacitores de filtrado $C_1, C_2$: proporcionan una ruta de retorno de baja impedancia para las interferencias, el rango de selección es de 22pF a 1000pF, con un valor típico de 100pF.
 - Inductor de modo común $L_1$: utilizado para filtrar las interferencias de modo común en las líneas diferenciales, la impedancia se selecciona en el rango de 120Ω/100MHz a 2200Ω/100MHz, con un valor típico de 600Ω/100MHz.

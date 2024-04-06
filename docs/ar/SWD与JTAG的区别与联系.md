@@ -14,7 +14,7 @@ JTAG، الذي يعني Joint Test Action Group (مجموعة عمل الاخت
 
 تبين الهيكل الشبكي لـ JTAG (المعروف أحيانًا بسلسلة الزهور) كالتالي:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210209191921.png)
+![](https://media.wiki-power.com/img/20210209191921.png)
 
 عادة ما تستخدم JTAG 5 أسلاك:
 
@@ -48,9 +48,9 @@ JTAG، الذي يعني Joint Test Action Group (مجموعة عمل الاخت
 
 عمومًا، تحتوي معظم لوحات الميكروكنترولر على أماكن لحرق البرامج تتوافق مع JTAG و SWD في نفس الوقت:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210210122923.jpg)
+![](https://media.wiki-power.com/img/20210210122923.jpg)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210210123714.png)
+![](https://media.wiki-power.com/img/20210210123714.png)
 
 - TCK متوافق مع SWCLK
 - TMS متوافق مع SWDIO

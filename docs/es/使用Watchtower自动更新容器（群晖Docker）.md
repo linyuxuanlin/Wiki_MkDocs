@@ -10,9 +10,9 @@ Abre la suite de Docker en tu dispositivo Synology y descarga la imagen `contain
 
 Accede al panel de control de Synology, dirígete a `Tareas Programadas` y crea una nueva tarea programada. Selecciona la opción `Tarea programada de usuario definido` y configura la tarea siguiendo las imágenes a continuación:
 
-![Imagen 1](https://img.wiki-power.com/d/wiki-media/img/202301092319956.png)
+![Imagen 1](https://media.wiki-power.com/img/202301092319956.png)
 
-![Imagen 2](https://img.wiki-power.com/d/wiki-media/img/202301092321592.png)
+![Imagen 2](https://media.wiki-power.com/img/202301092321592.png)
 
 El script que debes utilizar es el siguiente:
 

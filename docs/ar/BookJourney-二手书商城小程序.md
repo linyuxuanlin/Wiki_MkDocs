@@ -1,12 +1,12 @@
 # BookJourney - تطبيق متجر الكتب المستعملة
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/书程小驿.jpg)
+![صورة](https://media.wiki-power.com/img/书程小驿.jpg)
 
 مستودع المشروع: [**linyuxuanlin/BookJourney**](https://github.com/linyuxuanlin/BookJourney)
 
 عرض تجريبي (امسح الرمز باستخدام تطبيق WeChat):
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/1.jpg)
+![صورة](https://media.wiki-power.com/img/1.jpg)
 
 ## الخلفية
 

@@ -1,6 +1,6 @@
 # Homelab - Alternativa gratuita para la travesía de red local: Cloudflared
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230416143051.png)
+![](https://media.wiki-power.com/img/20230416143051.png)
 
 **Cloudflared** es una solución gratuita para la travesía de red local que permite acceder a máquinas sin una dirección IP pública desde la red externa.
 
@@ -58,7 +58,7 @@ Accede al panel de [**Cloudflare Zero Trust**](https://one.dash.cloudflare.com/)
 
 Luego, ve al túnel que has creado y en la pestaña "Public Hostname Page," agrega los puertos de los servicios que deseas que se actúen como proxies. Por ejemplo, si tu dominio en Cloudflare es `wiki-power.com` y deseas que el servicio local en el puerto `80` se exponga a través del protocolo `HTTP`, simplemente configúralo de esta manera:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230416183438.png)
+![](https://media.wiki-power.com/img/20230416183438.png)
 
 De esta manera, podrás acceder al puerto local a través de <https://dashboard.wiki-power.com> y Cloudflared se encargará automáticamente de solicitar un certificado SSL, permitiendo el acceso a través de https.
 

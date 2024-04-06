@@ -1,6 +1,6 @@
 # StyleTransferCam - Style Transfer Camera based on ESP32-S3
 
-![](https://img.wiki-power.com/d/wiki-media/img/202308152238959.png)
+![](https://media.wiki-power.com/img/202308152238959.png)
 
 When art and technology converge, a new world unfolds before us. It is a visual feast and an exploration of infinite possibilities. StyleTransferCam is a style transfer camera based on ESP32-S3. It uses a machine learning technique called "style transfer". When you press the onboard button, it captures the current scene and blends it with a preset style template photo (such as Van Gogh's "Starry Night") to create a unique and artistic masterpiece.
 
@@ -10,7 +10,7 @@ StyleTransferCam consists of the following processes:
 2. Automatically start a Python program for style transfer, process the photo, and output a stylized image.
 3. If the ESP32-S3 is equipped with a TFT screen, it can also display the stylized image.
 
-![](https://img.wiki-power.com/d/wiki-media/img/202308152244791.png)
+![](https://media.wiki-power.com/img/202308152244791.png)
 
 ## Test Onboard Button and LED
 
@@ -59,12 +59,12 @@ const char *serverName = "http://192.168.31.2:9000/upload";
 
 //
 // WARNING!!! PSRAM IC required for UXGA resolution and high JPEG quality
-//            Ensure ESP32 Wrover Module or other board with PSRAM is selected
-//            Partial images will be transmitted if image exceeds buffer size
+// Ensure ESP32 Wrover Module or other board with PSRAM is selected
+// Partial images will be transmitted if image exceeds buffer size
 //
-//            You must select partition scheme from the board menu that has at least 3MB APP space.
-//            Face Recognition is DISABLED for ESP32 and ESP32-S2, because it takes up from 15
-//            seconds to process single frame. Face Detection is ENABLED if PSRAM is enabled as well
+// You must select partition scheme from the board menu that has at least 3MB APP space.
+// Face Recognition is DISABLED for ESP32 and ESP32-S2, because it takes up from 15
+// seconds to process single frame. Face Detection is ENABLED if PSRAM is enabled as well
 
 // ===================
 // Select camera model
@@ -100,10 +100,9 @@ DFRobot_AXP313A axp;
 // Enter your WiFi credentials
 // ===========================
 const char *ssid = "WiFi_SSID";
-const char *password = "********";
+const char *password = "**\*\*\*\***";
 
 void startCameraServer();
-
 
 ```cpp
 void setup()
@@ -227,7 +226,6 @@ WiFi.begin(ssid, password);
 WiFi.setSleep(false);
 ```
 
-
 ```cpp
 while (WiFi.status() != WL_CONNECTED)
 {
@@ -319,6 +317,7 @@ def upload():
 ```
 
 # Save the photo to the specified directory
+
         with open('base.png', 'wb') as f:
             f.write(image)
         print("Photo saved, rendering...")
@@ -330,9 +329,10 @@ def upload():
         print("Failed to upload photo:", str(e))
         return "Failed to upload photo", 500
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=9000)
-```
+if **name** == '**main**':
+app.run(host='0.0.0.0', port=9000)
+
+````
 
 Don't rush to run the program yet. `style_transfer.py` is the program for style transfer, which will be shown in the next step. The logic of this program is that if the photo sent back by ESP32-S3 is successfully received, it will automatically launch the script for style transfer using `subprocess`.
 
@@ -342,7 +342,7 @@ Please note that if the program encounters an exception and prompts that the por
 
 In the same directory as `receive-photo.py`, we use TensorFlow to write a Python program for style transfer. First, install the dependencies required by the program (due to the network environment in China, it is difficult to download TensorFlow, so you need to be patient), and then prepare a photo to be stylized in the same directory, and name it `base.png`; and a style reference image, named `style_reference.png`. This image can be an artwork, such as Van Gogh's "Starry Night":
 
-![](https://img.wiki-power.com/d/wiki-media/img/202308152239917.png)
+![](https://media.wiki-power.com/img/202308152239917.png)
 
 Next, write the program for style transfer:
 
@@ -444,36 +444,41 @@ def total_variation_loss(x):
 
 # Replace with the path to the weight file you downloaded locally
 weights_path = "./dependencies/vgg19_weights_tf_dim_ordering_tf_kernels_notop.h5"
-```
+````
 
 # Build a VGG19 model with pre-trained ImageNet weights
+
 model = vgg19.VGG19(weights=weights_path, include_top=False)
 
 # Get symbolic outputs of each "key" layer (we gave them unique names)
+
 outputs_dict = dict([(layer.name, layer.output) for layer in model.layers])
 
 # Build a model that returns the activation values of each layer in VGG19 (as a dictionary)
+
 feature_extractor = keras.Model(inputs=model.inputs, outputs=outputs_dict)
 
 # Finally, here is the code to compute the style transfer loss.
 
 # List of layers for style loss
+
 style_layer_names = [
-    "block1_conv1",
-    "block2_conv1",
-    "block3_conv1",
-    "block4_conv1",
-    "block5_conv1",
+"block1_conv1",
+"block2_conv1",
+"block3_conv1",
+"block4_conv1",
+"block5_conv1",
 ]
+
 # Layer for content loss
+
 content_layer_name = "block5_conv2"
 
-
 def compute_loss(combination_image, base_image, style_reference_image):
-    input_tensor = tf.concat(
-        [base_image, style_reference_image, combination_image], axis=0
-    )
-    features = feature_extractor(input_tensor)
+input_tensor = tf.concat(
+[base_image, style_reference_image, combination_image], axis=0
+)
+features = feature_extractor(input_tensor)
 
     # Initialize loss
     loss = tf.zeros(shape=())
@@ -496,7 +501,6 @@ def compute_loss(combination_image, base_image, style_reference_image):
     # Add total variation loss
     loss += total_variation_weight * total_variation_loss(combination_image)
     return loss
-
 
 # Add tf.function decorator to the loss computation and gradient computation for faster execution during compilation.
 
@@ -542,7 +546,7 @@ Now, you can try running this Python program separately. If the program does not
 
 If this program runs successfully, you can directly run `receive-photo.py` to receive photos taken by ESP32-S3 and generate stylized photos automatically.
 
-![](https://img.wiki-power.com/d/wiki-media/img/202308152246623.png)
+![](https://media.wiki-power.com/img/202308152246623.png)
 
 ## References and Acknowledgements
 
@@ -551,9 +555,11 @@ If this program runs successfully, you can directly run `receive-photo.py` to re
 - [Camera Usage](https://wiki.dfrobot.com.cn/_SKU_DFR0975_FireBeetle_2_Board_ESP32_S3_Advanced_Tutorial#target_12)
 
 # Title
+
 > Original: <https://wiki-power.com/>
 
 # Introduction
+
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

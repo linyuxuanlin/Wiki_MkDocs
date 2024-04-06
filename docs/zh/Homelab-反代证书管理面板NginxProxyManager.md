@@ -1,6 +1,6 @@
 # Homelab - 反代证书管理面板 Nginx Proxy Manager
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230408182138.png)
+![](https://media.wiki-power.com/img/20230408182138.png)
 
 **Nginx Proxy Manager** 是一个 Nginx 图形化面板，能让用户在 Web 界面上轻松配置反向代理、申请网站 SSL 证书，而无需了解过多 Nginx / Letsencrypt 的底层原理。
 

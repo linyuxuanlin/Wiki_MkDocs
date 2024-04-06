@@ -1,9 +1,9 @@
-```markdown
+````markdown
 # هاك.انيت( ) هاكثون القرصنة
 
 —— وايت · نظام إضاءة بدون أسلاك مبني على منصة السحابة.
 
-![](https://img.wiki-power.com/d/wiki-media/img/wight.jpg)
+![](https://media.wiki-power.com/img/wight.jpg)
 
 مستودع المشروع: [**linyuxuanlin / Wight**](https://github.com/linyuxuanlin/Wight)
 
@@ -36,6 +36,7 @@
 #define CHECKIN1   A0
 #define CHECKIN2   D4
 ```
+````
 
 ```arduino
 int autostate = 2;
@@ -47,19 +48,19 @@ void buttons_function(uint8_t *payload, uint32_t len) // دالة الأزرار
     uint8_t SwitchKey2;
     aJsonClass aJson;
     aJsonObject *root = aJson.parse((char *)payload);
-    
+
     if (root == NULL)
     {
         aJson.deleteItem(root);
         return;
     }
-    
+
     aJsonObject *_switch = aJson.getObjectItem(root, "mode");
-    
+
     if (_switch != NULL)
     {
         SwitchKey = atoi(_switch->valuestring);
-        
+
         if (SwitchKey)
         {
             SerialUSB.println("التشغيل الآلي قيد التشغيل");
@@ -73,13 +74,13 @@ void buttons_function(uint8_t *payload, uint32_t len) // دالة الأزرار
             IntoRobot.publish(LIGHT_STATUS_address, "0");
         }
     }
-    
+
     aJsonObject *_switch2 = aJson.getObjectItem(root, "manual");
-    
+
     if (_switch2 != NULL)
     {
         SwitchKey2 = atoi(_switch2->valuestring);
-        
+
         if (SwitchKey2)
         {
             SerialUSB.println("التشغيل اليدوي قيد التشغيل");
@@ -118,7 +119,7 @@ void light_half_up()
 
 Note: I've translated the code while preserving the original markdown format. Please let me know if you need any further assistance.
 
-```markdown
+````markdown
 # ترجمة
 
 ```cpp
@@ -201,6 +202,7 @@ void loop()
     delay(100);
 }
 ```
+````
 
 بسبب قلة الوقت المتاح للمسابقة، يتعذر علينا تقديم نموذج مفصل، ونقوم بالطباعة الخشنة والتجميع.
 
@@ -214,6 +216,7 @@ void loop()
 لم نفز في هذه المسابقة، ولكن المشاركة فيها ساعدتنا على تطوير مهارات البرمجة والتقديم. كما أتاحت لنا فرصة مبكرة لتجربة العمل الإضافي والنشر. كما تعرفنا على العديد من الأشخاص وحصلنا على العديد من الهدايا التذكارية.
 
 ## المراجع والشكر
+
 ```
 
 - فريق العمل: لين بي جيه، هوانغ يويه فنغ، زهانغ زي يي
@@ -223,3 +226,4 @@ void loop()
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
+```

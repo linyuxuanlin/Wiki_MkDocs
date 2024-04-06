@@ -1,6 +1,6 @@
 # هوملاب - خادم المنزل الذكي Home Assistant
 
-![](https://img.wiki-power.com/d/wiki-media/img/202306011647498.png)
+![](https://media.wiki-power.com/img/202306011647498.png)
 
 **Home Assistant** هو خادم منزل ذكي مفتوح المصدر يمكنه مراقبة جميع أجهزة منزلك ، ويشبه وظيفته تطبيق Mi Home ، ويتميز بواجهة مستخدم ودية وجذابة ونسبيًا سهلة التركيب.
 

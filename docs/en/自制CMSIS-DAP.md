@@ -23,7 +23,7 @@ GitHub repository: [**linyuxuanlin/DashDAP**](https://github.com/linyuxuanlin/Da
 
 `Version 2.0 being edited`
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200613154907.jpg)
+![](https://media.wiki-power.com/img/20200613154907.jpg)
 
 Project online preview:
 
@@ -51,7 +51,7 @@ CMSIS-DAP/DAP-Link has the following advantages compared to J-Link/ST-Link:
 
 The chosen crystal oscillator is Murata's 8MHz passive crystal oscillator, model CSTCE8M00G53-R0, packaged in 3213 with a capacitance of 15pF. Why choose this one? Because it has a relatively small size and integrates two oscillation capacitors, which saves a lot of effort in hardware design. As for the naming convention of Murata crystal oscillator models, please refer to the table below:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200612143451.jpg)
+![](https://media.wiki-power.com/img/20200612143451.jpg)
 
 ### Power Supply
 

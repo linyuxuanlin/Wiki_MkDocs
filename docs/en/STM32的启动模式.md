@@ -8,7 +8,7 @@ Here are the three available startup modes:
 
 | BOOT0 | BOOT1 |
 | :---: | :---: |
-|  Low  | Any   |
+|  Low  |  Any  |
 
 In this mode, the microcontroller starts up from the onboard Flash memory. This is the typical configuration for normal operation when using Flash memory with sizes of 64K, 128K, or 256K.
 
@@ -16,7 +16,7 @@ In this mode, the microcontroller starts up from the onboard Flash memory. This 
 
 | BOOT0 | BOOT1 |
 | :---: | :---: |
-|  High | Low   |
+| High  |  Low  |
 
 This mode is used when downloading firmware via serial communication (e.g., UART) or in-system programming (ISP). It allows for programming and debugging of the microcontroller.
 
@@ -24,7 +24,7 @@ This mode is used when downloading firmware via serial communication (e.g., UART
 
 | BOOT0 | BOOT1 |
 | :---: | :---: |
-|  High | High  |
+| High  | High  |
 
 Starting from internal SRAM serves two primary purposes:
 
@@ -35,7 +35,7 @@ Starting from internal SRAM serves two primary purposes:
 
 In the tables above, "High" and "Low" indicate the states when the pins are connected to a 10KΩ pull-up or pull-down resistor, rather than directly connected to VCC or GND.
 
-![Boot Mode Configuration](https://img.wiki-power.com/d/wiki-media/img/20200603134417.jpg)
+![Boot Mode Configuration](https://media.wiki-power.com/img/20200603134417.jpg)
 
 ## References and Acknowledgments
 

@@ -1,6 +1,6 @@
 # Homelab - Smart Home Server Home Assistant
 
-![](https://img.wiki-power.com/d/wiki-media/img/202306011647498.png)
+![](https://media.wiki-power.com/img/202306011647498.png)
 
 **Home Assistant** is an open-source smart home server that can monitor all devices in your home. It has similar features to the Xiaomi Mi Home app, with a friendly and beautiful interface and relatively simple deployment.
 

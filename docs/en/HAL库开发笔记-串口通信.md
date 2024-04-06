@@ -12,11 +12,11 @@ Before proceeding with the next experiment, you need to configure various parame
 
 ### Configuring Serial Ports in CubeMX
 
-![CubeMX Serial Configuration](https://img.wiki-power.com/d/wiki-media/img/20210207100329.png)
+![CubeMX Serial Configuration](https://media.wiki-power.com/img/20210207100329.png)
 
 According to the schematic, the serial port we are using for communication experiments is `USART1`, which corresponds to the `PA9` and `PA10` pins. To configure these two pins as the transmit and receive functions of `USART1` in CubeMX, navigate to the USART1 tab on the left, set the mode to asynchronous, and modify parameters such as baud rate as shown below:
 
-![USART1 Configuration in CubeMX](https://img.wiki-power.com/d/wiki-media/img/20210207100941.png)
+![USART1 Configuration in CubeMX](https://media.wiki-power.com/img/20210207100941.png)
 
 Here are the parameter details:
 
@@ -29,7 +29,7 @@ Here are the parameter details:
 
 Finally, enable the USART1 serial port interrupt in the NVIC tab, as shown below:
 
-![USART1 Interrupt Configuration in CubeMX](https://img.wiki-power.com/d/wiki-media/img/20210207104641.png)
+![USART1 Interrupt Configuration in CubeMX](https://media.wiki-power.com/img/20210207104641.png)
 
 ### Configuring Serial Ports in Code
 
@@ -49,8 +49,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 ```
 
 Here, `aRxBuffer` is a uint8_t global variable defined in `main.c`. With this code, an interrupt is generated after receiving each byte, and the byte is returned and the interrupt is re-enabled. You need to define it in both `main.c` and `stm32f4xx_it.c` separately:
-
-
 
 ```c title="main.c"
 /* Private variables -----------------------------------------------------------*/
@@ -100,7 +98,7 @@ After successfully programming the application, open a serial terminal, configur
 
 Once connected to the serial port, it will first print the contents of `aTxBuffer`, and then it will echo the received `aRxBuffer`. As shown below:
 
-![Serial Terminal](https://img.wiki-power.com/d/wiki-media/img/20210403232628.png)
+![Serial Terminal](https://media.wiki-power.com/img/20210403232628.png)
 
 ## References and Acknowledgments
 
@@ -111,6 +109,8 @@ Once connected to the serial port, it will first print the contents of `aTxBuffe
 
 > Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
+
 ```
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.
+```

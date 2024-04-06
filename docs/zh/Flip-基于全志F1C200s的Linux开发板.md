@@ -1,8 +1,8 @@
 # Flip - 基于全志 F1C200s 的 Linux 开发板
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220527234815.jpeg)
+![](https://media.wiki-power.com/img/20220527234815.jpeg)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220527234855.jpeg)
+![](https://media.wiki-power.com/img/20220527234855.jpeg)
 
 项目仓库：[**linyuxuanlin/Flip**](https://github.com/linyuxuanlin/Flip)
 
@@ -42,15 +42,15 @@ F1C200s 的基本参数如下：
 
 F1C200s 的系统架构框图：
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220422152227.png)
+![](https://media.wiki-power.com/img/20220422152227.png)
 
 典型应用示意图：
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220513232027.png)
+![](https://media.wiki-power.com/img/20220513232027.png)
 
 Pin 定义：
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220422153239.png)
+![](https://media.wiki-power.com/img/20220422153239.png)
 
 ## 参考与致谢
 

@@ -8,7 +8,7 @@ El proceso de prueba OS implica la utilización de diodos de protección entre V
 
 La prueba OS en modo estático, ya sea en serie o en paralelo, implica esencialmente inyectar corriente y medir el voltaje, ya que esta corriente hace que un diodo de protección se polarice positivamente, lo que permite detectar anomalías de circuito abierto o cortocircuito mediante la medición de la caída de voltaje positiva. La figura siguiente muestra un diagrama de prueba que aplica corriente positiva para polarizar el diodo de protección de la fuente de alimentación:
 
-![Diagrama de Prueba](https://img.wiki-power.com/d/wiki-media/img/20220805165031.png)
+![Diagrama de Prueba](https://media.wiki-power.com/img/20220805165031.png)
 
 El proceso de prueba se lleva a cabo de la siguiente manera:
 
@@ -21,7 +21,7 @@ El proceso de prueba se lleva a cabo de la siguiente manera:
 
 El diagrama de prueba que aplica corriente negativa para polarizar el diodo de protección de tierra se muestra a continuación:
 
-![Diagrama de Prueba](https://img.wiki-power.com/d/wiki-media/img/20220728142155.png)
+![Diagrama de Prueba](https://media.wiki-power.com/img/20220728142155.png)
 
 El proceso de prueba es el siguiente:
 

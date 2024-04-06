@@ -6,33 +6,33 @@
 
 **Completa la información requerida como se muestra en la siguiente imagen y haz clic en el botón `Submit`:**
 
-![Descargar](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564402348383.png)
+![Descargar](https://media.wiki-power.com/img/UTOOLS1564402348383.png)
 
 **Descarga el paquete de instalación:**
 
-![Descargar Paquete](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564402469518.png)
+![Descargar Paquete](https://media.wiki-power.com/img/UTOOLS1564402469518.png)
 
 ## 2. Instalación
 
 **Una vez descargado el paquete de instalación, sigue estos pasos:**
 
-![Paso 1](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405005991.png)
+![Paso 1](https://media.wiki-power.com/img/UTOOLS1564405005991.png)
 
-![Paso 2](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405034468.png)
+![Paso 2](https://media.wiki-power.com/img/UTOOLS1564405034468.png)
 
-![Paso 3](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405123578.png)
+![Paso 3](https://media.wiki-power.com/img/UTOOLS1564405123578.png)
 
-![Paso 4](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405166784.png)
+![Paso 4](https://media.wiki-power.com/img/UTOOLS1564405166784.png)
 
-![Paso 5](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405201092.png)
+![Paso 5](https://media.wiki-power.com/img/UTOOLS1564405201092.png)
 
-![Paso 6](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405260737.png)
+![Paso 6](https://media.wiki-power.com/img/UTOOLS1564405260737.png)
 
 **Instala los paquetes de chips (necesarios para las series STM32 F1 y F4):**
 
-![Instalar Paquetes de Chips](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405574756.png)
+![Instalar Paquetes de Chips](https://media.wiki-power.com/img/UTOOLS1564405574756.png)
 
-![Seleccionar Chips](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405648731.png)
+![Seleccionar Chips](https://media.wiki-power.com/img/UTOOLS1564405648731.png)
 
 ## 3. Activación
 
@@ -40,23 +40,23 @@ Haz clic para descargar el [**activador**](https://github.com/linyuxuanlin/File-
 
 **Cierra Keil MDK y ábrelo nuevamente con privilegios de administrador:**
 
-![Abrir como Administrador](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406135091.png)
+![Abrir como Administrador](https://media.wiki-power.com/img/UTOOLS1564406135091.png)
 
 **Dirígete a la barra de menú - File - License Management:**
 
-![Gestión de Licencia](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406171844.png)
+![Gestión de Licencia](https://media.wiki-power.com/img/UTOOLS1564406171844.png)
 
 **Copia la serie `CID` que se muestra:**
 
-![Copiar CID](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406230209.png)
+![Copiar CID](https://media.wiki-power.com/img/UTOOLS1564406230209.png)
 
 **Pega esta serie en el activador y selecciona `Arm` en el menú desplegable `Target`, luego haz clic en `Generate` para generar el código de activación:**
 
-![Generar Código](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406292113.png)
+![Generar Código](https://media.wiki-power.com/img/UTOOLS1564406292113.png)
 
 **Copia el código de activación y pégalo en Keil MDK, luego haz clic en `Add LIC`:**
 
-![Agregar Licencia](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406431978.png)
+![Agregar Licencia](https://media.wiki-power.com/img/UTOOLS1564406431978.png)
 
 ## Referencias y Agradecimientos
 

@@ -51,7 +51,7 @@ A continuación se muestra el método de diseño de los pines de alimentación:
 
 #### Restablecimiento en encendido (POR) / Restablecimiento por caída de voltaje (PDR)
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210529143014.png)
+![Imagen](https://media.wiki-power.com/img/20210529143014.png)
 
 El chip STM32F4 integra un circuito POR/PDR. Las características específicas del restablecimiento en encendido/caída de voltaje se muestran en la imagen anterior. Si es necesario deshabilitar esta función, puede hacerlo a través del pin PDR_ON.
 
@@ -65,7 +65,7 @@ Las condiciones para el restablecimiento del sistema son las siguientes:
 - Restablecimiento por software (restablecimiento por software).
 - Restablecimiento de gestión de baja potencia.
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210529143925.png)
+![Imagen](https://media.wiki-power.com/img/20210529143925.png)
 
 Puede determinar la fuente de restablecimiento consultando las señales de restablecimiento en el registro de control y estado (RCC_CSR).
 
@@ -91,7 +91,7 @@ Si desea reducir el consumo de energía, cada reloj se puede apagar cuando no se
 
 La fuente de reloj HSE puede proporcionarse de dos maneras: fuente externa (activa) y oscilador de cristal externo / resonador cerámico (inactivo).
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210529145726.png)
+![Imagen](https://media.wiki-power.com/img/20210529145726.png)
 
 #### Fuente Externa (Derivación HSE)
 
@@ -107,7 +107,7 @@ Se deben utilizar capacitores cerámicos CL1 y CL2 de tamaño idéntico (5-25 pF
 
 La fuente de reloj LSE puede proporcionarse de dos maneras: fuente externa (activa) y oscilador de cristal externo / resonador cerámico (inactivo).
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210529152354.png)
+![Imagen](https://media.wiki-power.com/img/20210529152354.png)
 
 #### Fuente Externa (Derivación LSE)
 
@@ -125,7 +125,7 @@ Para obtener más detalles sobre los modos de arranque, consulte el artículo [*
 
 En condiciones normales, se recomienda conectar un resistor de 10 KΩ a BOOT0, mientras que BOOT1 puede dejarse sin conexión. Si es necesario cambiar el modo de arranque, puede seguir el diseño a continuación:
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200605163537.png)
+![Imagen](https://media.wiki-power.com/img/20200605163537.png)
 
 ## Gestión de Depuración
 
@@ -137,7 +137,7 @@ Los microcontroladores STM32F4 incorporan una interfaz SWJ (SW/JTAG). En esta in
 
 En los microcontroladores STM32F4, la asignación de pines para SWJ es la siguiente:
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210529210858.png)
+![Imagen](https://media.wiki-power.com/img/20210529210858.png)
 
 ### Resistencias Pull-up/Pull-down Internas para JTAG
 
@@ -152,13 +152,13 @@ Una vez que el software libera las E/S JTAG, se pueden utilizar como puertos de 
 
 ### Diseño de Hardware para Conectar un Enchufe JTAG Estándar
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210529211840.png)
+![Imagen](https://media.wiki-power.com/img/20210529211840.png)
 
 ## Diseño de Referencia
 ```
 
 ```markdown
-![](https://img.wiki-power.com/d/wiki-media/img/20210529213723.png)
+![](https://media.wiki-power.com/img/20210529213723.png)
 
 ## Referencias y Agradecimientos
 

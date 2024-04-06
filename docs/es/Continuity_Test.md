@@ -12,7 +12,7 @@ La prueba de continuidad de circuito abierto/cortocircuito se realiza mediante l
 
 #### Prueba a través del diodo de protección a tierra
 
-![Prueba a través del diodo de protección a tierra](https://img.wiki-power.com/d/wiki-media/img/20220909003924.png)
+![Prueba a través del diodo de protección a tierra](https://media.wiki-power.com/img/20220909003924.png)
 
 1. Aplicar 0V a todos los pines que no se están probando (incluido el pin de alimentación).
 2. Aplicar una pequeña corriente negativa (-100uA) en el Pin Bajo Prueba (con limitación de voltaje).
@@ -23,7 +23,7 @@ La prueba de continuidad de circuito abierto/cortocircuito se realiza mediante l
 
 #### Prueba a través del diodo de protección a VDD
 
-![Prueba a través del diodo de protección a VDD](https://img.wiki-power.com/d/wiki-media/img/20220909004139.png)
+![Prueba a través del diodo de protección a VDD](https://media.wiki-power.com/img/20220909004139.png)
 
 1. Aplicar 0V a todos los pines que no se están probando (incluido el pin de alimentación).
 2. Aplicar una pequeña corriente positiva (+100uA) en el Pin Bajo Prueba (con limitación de voltaje).
@@ -40,7 +40,7 @@ La prueba de cortocircuito en el pin de alimentación tiene como objetivo verifi
 
 El Test de Cortocircuito en el Pin de Alimentación se realiza aplicando un pequeño voltaje a VDD y midiendo la corriente que entra en él para comprobar si existe un cortocircuito. Normalmente se utiliza DCVI con el código VBT.
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20220910155805.png)
+![Imagen](https://media.wiki-power.com/img/20220910155805.png)
 
 1. Aplicar un pequeño voltaje a VDD (100mV) (con una pinza de corriente).
 2. Forzar que todos los demás pines estén a 0V con PPMU.

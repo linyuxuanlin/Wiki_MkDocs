@@ -26,11 +26,11 @@ Repositorio del proyecto: [**Collection_of_Power_Module_Design/DC-DC(Buck)/XL200
 
 Según el circuito de aplicación típico proporcionado en la hoja de datos (entrada 8-36V, salida 5V@2.1A):
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220407103157.png)
+![](https://media.wiki-power.com/img/20220407103157.png)
 
 ## Definición de pines
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220407065806.png)
+![](https://media.wiki-power.com/img/20220407065806.png)
 
 - FB: Pin de entrada de retroalimentación, se utiliza una resistencia para dividir el voltaje de $V_{OUT}$ y proporcionar retroalimentación. No se puede conectar directamente a tierra. El voltaje de referencia de retroalimentación es de 1.25V.
 - OCSET: Pin de configuración de corriente constante de salida.
@@ -42,7 +42,7 @@ Según el circuito de aplicación típico proporcionado en la hoja de datos (ent
 
 ### Diagrama de funciones internas
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220407070413.png)
+![](https://media.wiki-power.com/img/20220407070413.png)
 
 ### Regulación de voltaje de salida
 
@@ -58,27 +58,27 @@ La tensión de ruptura nominal del diodo debe ser al menos un 25% más alta que 
 
 El manual de datos de XL2009E1 proporciona una tabla de selección directa de diodos (3A):
 
-| Voltaje de entrada | Modelo        |
-| ----------------- | ------------- |
-| 20V               | SK32          |
-| 30V               | SK33/30WQ03   |
-| 40V               | SK34/30WQ04   |
-| 50V               | SK35/30WQ05   |
-| 60V               | SK36          |
+| Voltaje de entrada | Modelo      |
+| ------------------ | ----------- |
+| 20V                | SK32        |
+| 30V                | SK33/30WQ03 |
+| 40V                | SK34/30WQ04 |
+| 50V                | SK35/30WQ05 |
+| 60V                | SK36        |
 
 ### Curvas de parámetros
 
 Relación entre el voltaje de salida y la corriente:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220407100229.png)
+![](https://media.wiki-power.com/img/20220407100229.png)
 
 Relación entre la eficiencia y la corriente de salida:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220407103033.png)
+![](https://media.wiki-power.com/img/20220407103033.png)
 
 Relación entre la corriente de salida y la resistencia RCS (control de corriente constante):
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220407102905.png)
+![](https://media.wiki-power.com/img/20220407102905.png)
 
 ## Referencias y Agradecimientos
 

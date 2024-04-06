@@ -2,7 +2,7 @@
 
 ¡Crea una herramienta altamente eficiente con VS Code!
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200323155728.png)
+![Imagen](https://media.wiki-power.com/img/20200323155728.png)
 
 Jupyter Notebook es una herramienta poderosa que nos permite escribir, ejecutar código, ver resultados, visualizar datos y revisar resultados, todo dentro de un entorno de documento. En resumen, hace que escribir documentos con código sea mucho más sencillo.
 
@@ -23,7 +23,7 @@ Después de configurar tu entorno de Python local, necesitarás instalar la exte
 
 Una vez que la configuración del entorno está completa, puedes crear un cuaderno Jupyter en blanco (.ipynb) desde el panel de comandos de VS Code (Ctrl + Shift + P) ingresando **Python: Create Blank New Jupyter**. A continuación, realiza una sencilla prueba, como se muestra en la siguiente imagen:
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200323153020.png)
+![Imagen](https://media.wiki-power.com/img/20200323153020.png)
 
 Puedes ver que el código se ejecuta correctamente.
 
@@ -31,48 +31,48 @@ Puedes ver que el código se ejecuta correctamente.
 
 Jupyter Notebook utiliza **celdas de código (code cells)** para crear, editar y ejecutar código.
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200323153717.png)
+![Imagen](https://media.wiki-power.com/img/20200323153717.png)
 
 ### Agregar celdas de código
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200323153850.png)
+![Imagen](https://media.wiki-power.com/img/20200323153850.png)
 
 ### Ejecutar una única celda de código
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200323153939.png)
+![Imagen](https://media.wiki-power.com/img/20200323153939.png)
 
 ### Ejecutar varias celdas de código
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200323154005.png)
+![Imagen](https://media.wiki-power.com/img/20200323154005.png)
 
 ### Mover celdas de código
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200323154059.png)
+![Imagen](https://media.wiki-power.com/img/20200323154059.png)
 
 ### Eliminar celdas de código
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200323154148.png)
+![Imagen](https://media.wiki-power.com/img/20200323154148.png)
 
 ### Alternar entre código y Markdown
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200323154242.png)
+![Imagen](https://media.wiki-power.com/img/20200323154242.png)
 
 ### Visor de gráficos
 
 El visor de gráficos te permite ver fácilmente las gráficas generadas por tu código y exportarlas en varios formatos:
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200323154555.png)
+![Imagen](https://media.wiki-power.com/img/20200323154555.png)
 
 ### Visor de datos y variables
 
 Puedes ver en tiempo real el tipo, cantidad y valor de las variables mediante el visor de datos y variables.
 
 ```markdown
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200323154758.png)
+![Imagen](https://media.wiki-power.com/img/20200323154758.png)
 
 También puedes explorar datos más específicos a través del visor de datos:
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200323154832.png)
+![Imagen](https://media.wiki-power.com/img/20200323154832.png)
 
 ## Referencias y Agradecimientos
 
@@ -82,6 +82,5 @@ También puedes explorar datos más específicos a través del visor de datos:
 > Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 ```
-
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

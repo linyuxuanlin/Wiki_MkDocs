@@ -1,6 +1,6 @@
 # Homelab - 开源的远程桌面方案 RustDesk
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230531212854.png)
+![](https://media.wiki-power.com/img/20230531212854.png)
 
 **RustDesk** 是一套开源的远程桌面方案，在内网可直接使用各平台的客户端进行远程，本文章主要讲解公网下如何搭建自己的服务器。
 

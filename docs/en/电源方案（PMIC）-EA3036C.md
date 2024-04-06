@@ -22,26 +22,26 @@ Project Repository: [**Collection_of_Power_Module_Design/PMIC/EA3036C**](https:/
 
 ## Typical Application Circuit
 
-![Application Circuit](https://img.wiki-power.com/d/wiki-media/img/20220417095917.png)
+![Application Circuit](https://media.wiki-power.com/img/20220417095917.png)
 
 ## Internal Functional Block Diagram
 
-![Functional Block Diagram](https://img.wiki-power.com/d/wiki-media/img/20220417001936.png)
+![Functional Block Diagram](https://media.wiki-power.com/img/20220417001936.png)
 
 ## Pin Definitions
 
-![Pin Definitions](https://img.wiki-power.com/d/wiki-media/img/20220416234110.png)
+![Pin Definitions](https://media.wiki-power.com/img/20220416234110.png)
 
-| Pin Name  | Pin Description                                              |
-| --------  | ---------------------------------------------------------- |
-| VCC       | Power input for internal control circuit                   |
-| VINx      | Power input for channel x, with 10uF MLCC capacitor for decoupling |
-| LXx       | Internal MOS switch output for channel x, can connect to a low-pass filter for more stable voltage output |
-| FBx       | Feedback pin for channel x, connected to the voltage output through a voltage divider circuit |
-| ENx       | Enable pin, should not be left floating                     |
-| GNDx      | Ground for channel x                                        |
-| AGND      | Analog ground                                               |
-| Bottom Pad | For heat dissipation, must be connected to ground           |
+| Pin Name   | Pin Description                                                                                           |
+| ---------- | --------------------------------------------------------------------------------------------------------- |
+| VCC        | Power input for internal control circuit                                                                  |
+| VINx       | Power input for channel x, with 10uF MLCC capacitor for decoupling                                        |
+| LXx        | Internal MOS switch output for channel x, can connect to a low-pass filter for more stable voltage output |
+| FBx        | Feedback pin for channel x, connected to the voltage output through a voltage divider circuit             |
+| ENx        | Enable pin, should not be left floating                                                                   |
+| GNDx       | Ground for channel x                                                                                      |
+| AGND       | Analog ground                                                                                             |
+| Bottom Pad | For heat dissipation, must be connected to ground                                                         |
 
 ## Feature Description
 
@@ -55,7 +55,7 @@ The EA3036C is a power management IC designed for IPC applications, featuring th
 
 To set the turn-on time for each Buck channel, you can use the circuit shown below:
 
-![Enable Switching Circuit](https://img.wiki-power.com/d/wiki-media/img/20220417100845.png)
+![Enable Switching Circuit](https://media.wiki-power.com/img/20220417100845.png)
 
 ### 180° Phase-Shift Architecture
 
@@ -90,7 +90,7 @@ $$
 V_{OUTx}=0.6*\frac{R_1}{R_2}+0.6V
 $$
 
-![Image](https://img.wiki-power.com/d/wiki-media/img/20220417230210.png)
+![Image](https://media.wiki-power.com/img/20220417230210.png)
 
 For common output voltage values, you can refer to the table below for resistor divider configurations (using 1% accuracy resistors):
 
@@ -107,12 +107,12 @@ The input capacitor is used to suppress the noise amplitude of the input voltage
 
 Recommended models for input/output capacitors are as follows:
 
-| Part Number       | Capacitance | Voltage Rating | Package |
-| ----------------- | ----------- | -------------- | ------- |
-| C2012X5R1A106M   | 10uF        | 10V            | 0805    |
-| C3216X5R1A106M   | 10uF        | 10V            | 1206    |
-| C2012X5R1A226M   | 22uF        | 10V            | 0805    |
-| C3216X5R1A226M   | 22uF        | 10V            | 1206    |
+| Part Number    | Capacitance | Voltage Rating | Package |
+| -------------- | ----------- | -------------- | ------- |
+| C2012X5R1A106M | 10uF        | 10V            | 0805    |
+| C3216X5R1A106M | 10uF        | 10V            | 1206    |
+| C2012X5R1A226M | 22uF        | 10V            | 0805    |
+| C3216X5R1A226M | 22uF        | 10V            | 1206    |
 
 ### Output Inductor Selection
 

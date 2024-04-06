@@ -2,7 +2,7 @@
 
 ## Hardware Resources
 
-![BeagleBone Hardware](https://img.wiki-power.com/d/wiki-media/img/20211008090724.png)
+![BeagleBone Hardware](https://media.wiki-power.com/img/20211008090724.png)
 
 - USB Type-A: Used in USB Host mode
 - USB Micro: Provides power to the board and also serves as a client device

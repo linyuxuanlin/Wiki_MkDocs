@@ -8,18 +8,18 @@ P:\Arduino\hardware\tools\avr/bin/avrdude -C "P:\Arduino\hardware\tools\avr/etc/
 
 ## Arduino como Programador ISP
 
-|    Attiny     | Arduino |
-| :-----------: | :-----: |
-| Pin 1 (PB5)   |   D10   |
-| Pin 4 (GND)   |   GND   |
-| Pin 5 (PB0)   |   D11   |
-| Pin 6 (PB1)   |   D12   |
-| Pin 7 (PB2)   |   D13   |
-| Pin 8 (VCC)   |   5V    |
+|   Attiny    | Arduino |
+| :---------: | :-----: |
+| Pin 1 (PB5) |   D10   |
+| Pin 4 (GND) |   GND   |
+| Pin 5 (PB0) |   D11   |
+| Pin 6 (PB1) |   D12   |
+| Pin 7 (PB2) |   D13   |
+| Pin 8 (VCC) |   5V    |
 
 Primero, carga el programa ISP en Arduino:
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200426144425.png)
+![Imagen](https://media.wiki-power.com/img/20200426144425.png)
 
 Abre las preferencias del IDE y añade la siguiente URL en la sección de direcciones adicionales para tableros de desarrollo:
 
@@ -29,15 +29,15 @@ https://raw.githubusercontent.com/damellis/attiny/ide-1.6.x-boards-manager/packa
 
 Luego, abre el Administrador de tableros de desarrollo:
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200426144642.png)
+![Imagen](https://media.wiki-power.com/img/20200426144642.png)
 
 Busca y realiza la instalación (puede requerir un proxy):
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200426144732.png)
+![Imagen](https://media.wiki-power.com/img/20200426144732.png)
 
 Al grabar, asegúrate de seleccionar el modelo de chip correcto, la velocidad de reloj (16 MHz interno), el puerto donde está conectado Arduino y el programador `Arduino as ISP`:
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200426144834.png)
+![Imagen](https://media.wiki-power.com/img/20200426144834.png)
 
 ## Resumen
 

@@ -12,11 +12,11 @@ Antes de llevar a cabo el próximo experimento, es necesario configurar varios p
 
 ### Configuración en CubeMX
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210207100329.png)
+![Imagen](https://media.wiki-power.com/img/20210207100329.png)
 
 De acuerdo con el esquema original, el puerto serie que utilizaremos para el experimento es `USART1`, es decir, los pines `PA9` y `PA10`. En CubeMX, primero debemos configurar estos dos pines como pines de envío y recepción para `USART1`. Luego, en la pestaña `USART1` de la izquierda, establecer el modo como asíncrono (Asynchronous) y ajustar los parámetros como la velocidad en baudios (Baud Rate):
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210207100941.png)
+![Imagen](https://media.wiki-power.com/img/20210207100941.png)
 
 Los detalles de los parámetros son los siguientes:
 
@@ -29,7 +29,7 @@ Los detalles de los parámetros son los siguientes:
 
 Por último, habilita las interrupciones de USART1 en la pestaña NVIC, como se muestra en la imagen:
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210207104641.png)
+![Imagen](https://media.wiki-power.com/img/20210207104641.png)
 
 ### Configuración en el Código
 
@@ -99,7 +99,7 @@ Después de cargar el programa con éxito, abre un programa de asistencia de UAR
 
 Una vez que estés conectado al puerto UART, se imprimirá inicialmente el contenido de `aTxBuffer`, y luego se mostrará en la pantalla el contenido recibido en `aRxBuffer`, tal como se muestra en la imagen:
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210403232628.png)
+![Imagen](https://media.wiki-power.com/img/20210403232628.png)
 
 ## Referencias y Agradecimientos
 
@@ -110,6 +110,8 @@ Una vez que estés conectado al puerto UART, se imprimirá inicialmente el conte
 
 > Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+
 ```
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+```

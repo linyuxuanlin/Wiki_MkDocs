@@ -1,6 +1,6 @@
 # Homelab - 自托管密码管理器 Vaultwarden
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230304195414.jpg)
+![](https://media.wiki-power.com/img/20230304195414.jpg)
 
 **Vaultwarden** 是一个第三方自托管的 Bitwarden 服务器，通过一个主密码保护并管理各个网站的密码，可生成随机的密码供不同网站使用。
 

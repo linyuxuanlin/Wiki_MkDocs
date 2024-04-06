@@ -2,7 +2,7 @@
 
 ملاحظة: يستند هذا البرنامج التعليمي إلى code-server v3.8.0 ، CentOS 8.2.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20201221140748.jpg)
+![](https://media.wiki-power.com/img/20201221140748.jpg)
 
 يُفضل تثبيت خدمة code-server باستخدام Docker compose.
 يتطلب سطر واحد فقط للنشر ، ولا يتطلب تكوين التشغيل في الخلفية ، ويأتي مع بيئة Git وغيرها.

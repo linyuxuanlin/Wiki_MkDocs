@@ -1,6 +1,6 @@
 # اللاب المنزلي - أداة اختراق الشبكة الداخلية frp
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/20230304195137.png)
+![صورة](https://media.wiki-power.com/img/20230304195137.png)
 
 **frp** هو أسلوب لاختراق الشبكة الداخلية. يمكنك تعريض منفذ الجهاز المضيف في الشبكة الداخلية للإنترنت عن طريق خادم لديه عنوان IP عام. يدعم frp العديد من البروتوكولات مثل TCP وUDP وHTTP وHTTPS وغيرها.
 
@@ -63,7 +63,7 @@ services:
 
 (اختياري) نوصي بإنشاء ملف `.env` في نفس الدليل مع `compose.yaml` وتخصيص المتغيرات البيئية الخاصة بك. إذا كنت لا ترغب في استخدام المتغيرات البيئية، يمكنك أيضًا تخصيص المعلمات مباشرة داخل `compose.yaml` (على سبيل المثال، استبدال `${STACK_NAME}` بـ `replace`).
 
-```dotenv title=".env"
+````dotenv title=".env"
 STACK_NAME=replace
 STACK_DIR=xxx # مسار تخزين المشروع الخاص بك، على سبيل المثال ./replace
 
@@ -71,7 +71,7 @@ STACK_DIR=xxx # مسار تخزين المشروع الخاص بك، على سب
 ```markdown
 # استبدال
 APP_VERSION=latest
-```
+````
 
 في مسار تخزين مشروعك `${STACK_DIR}`, أضف ملف تكوين بالاسم `frps.ini`:
 
@@ -102,8 +102,10 @@ local_port = xx # رقم المنفذ داخل الشبكة المحلية
 
 [للإشارة[1]]
 [للإشارة[2]]
+
 ```
 
 Note: I have translated the text into Arabic while preserving the original markdown format.
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
+```

@@ -2,7 +2,7 @@
 
 ## موارد الأجهزة
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/20211008090724.png)
+![صورة](https://media.wiki-power.com/img/20211008090724.png)
 
 - USB Type-A: يُستخدم في وضع USB العبد (Host)
 - USB Micro: لتوصيل اللوحة بالكهرباء واستخدامها كجهاز عبد

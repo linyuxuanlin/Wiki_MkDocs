@@ -31,11 +31,11 @@ Vista previa en línea del proyecto:
 
 ## Definición de pines
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210713153815.png)
+![](https://media.wiki-power.com/img/20210713153815.png)
 
 ## Diseño de referencia
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210713173605.png)
+![](https://media.wiki-power.com/img/20210713173605.png)
 
 ## Ajuste de parámetros
 
@@ -65,9 +65,9 @@ Cuando la temperatura del chip supera los 165℃, el chip se detiene y se reinic
 
 ## Referencia de diseño de PCB
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210713161521.png)
+![](https://media.wiki-power.com/img/20210713161521.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210713162833.png)
+![](https://media.wiki-power.com/img/20210713162833.png)
 
 ## Resumen de problemas comunes
 

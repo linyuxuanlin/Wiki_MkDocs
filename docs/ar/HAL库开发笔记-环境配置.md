@@ -36,17 +36,17 @@
 
 على سبيل المثال، استنادًا إلى الرسم البياني للوحة:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210205205030.png)
+![](https://media.wiki-power.com/img/20210205205030.png)
 
 قم بتعيين خيارات `HSE` و `LSE` على أن تكون كلاهما خارجيتين فقط:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210205205140.png)
+![](https://media.wiki-power.com/img/20210205205140.png)
 
 ### تكوين شجرة الساعة
 
 قم بتكوينها في واجهة `Clock Configuration`.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210205205550.png)
+![](https://media.wiki-power.com/img/20210205205550.png)
 
 اتبع الخطوات كما هو موضح في الصورة أعلاه:
 
@@ -57,9 +57,9 @@
 
 ### تكوين خيارات إدارة المشروع
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210130095224.png)
+![](https://media.wiki-power.com/img/20210130095224.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210130095239.png)
+![](https://media.wiki-power.com/img/20210130095239.png)
 
 ## الفروق بين مكتبة HAL والمكتبة القياسية
 

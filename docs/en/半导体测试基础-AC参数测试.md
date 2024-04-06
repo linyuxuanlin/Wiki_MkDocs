@@ -6,7 +6,7 @@ AC testing ensures that the time characteristics of the Device Under Test (DUT) 
 
 ### Setup Time
 
-![Setup Time](https://img.wiki-power.com/d/wiki-media/img/20220809094845.png)
+![Setup Time](https://media.wiki-power.com/img/20220809094845.png)
 
 Setup time refers to the minimum time data (labeled as `DATA IN` in the diagram) must remain stable and unchanged before the reference signal (shown as `WE` in the figure) undergoes a change (reaching a midpoint of 1.5V). This stability is essential to ensure correct data reading. Data can change freely before the minimum setup time is reached, but if it remains stable too late, it may not be recognized, leading to errors. The specification in the datasheet is represented as follows:
 
@@ -16,7 +16,7 @@ Setup time refers to the minimum time data (labeled as `DATA IN` in the diagram)
 
 ### Hold Time
 
-![Hold Time](https://img.wiki-power.com/d/wiki-media/img/20220809094858.png)
+![Hold Time](https://media.wiki-power.com/img/20220809094858.png)
 
 Hold time refers to the minimum duration that data (depicted as `DATA IN` in the diagram) must remain stable after the reference signal (depicted as `WE` in the figure) undergoes a change (reaching a certain voltage threshold). This duration ensures error-free data handling or maintaining a stable voltage level for a specific time before a clock signal triggers. If the hold time is too short, there is a probability that the data may not be correctly recognized. The specification in the datasheet is represented as follows:
 
@@ -26,7 +26,7 @@ Hold time refers to the minimum duration that data (depicted as `DATA IN` in the
 
 ### Propagation Delay
 
-![Propagation Delay](https://img.wiki-power.com/d/wiki-media/img/20220809094910.png)
+![Propagation Delay](https://media.wiki-power.com/img/20220809094910.png)
 
 Propagation delay refers to the time interval between the transmission of one signal and the response of another related signal. Typically, it measures the time gap between a change in the input signal (labeled as `ADDR` in the diagram) and the corresponding output (labeled as `DATA OUT`) reaction, indicating the time required from the input side to the output side. It ensures that the output signal appears within a certain time after the input signal's occurrence. The specification in the datasheet is represented as follows:
 
@@ -36,7 +36,7 @@ Propagation delay refers to the time interval between the transmission of one si
 
 ### Minimum Pulse Widths
 
-![Minimum Pulse Widths](https://img.wiki-power.com/d/wiki-media/img/20220809094924.png)
+![Minimum Pulse Widths](https://media.wiki-power.com/img/20220809094924.png)
 
 Minimum pulse widths typically include the minimum low pulse width and minimum high pulse width. These are used to ensure the minimum operable value for timing of pulses. The specification in the datasheet is represented as follows:
 
@@ -47,7 +47,7 @@ Minimum pulse widths typically include the minimum low pulse width and minimum h
 
 ### Maximum Frequency
 
-![Maximum Frequency](https://img.wiki-power.com/d/wiki-media/img/20220809094934.png)
+![Maximum Frequency](https://media.wiki-power.com/img/20220809094934.png)
 
 In plain terms, the maximum operating frequency refers to the highest speed at which a device can function. It's represented in the specifications as follows:
 
@@ -57,7 +57,7 @@ In plain terms, the maximum operating frequency refers to the highest speed at w
 
 ### Output Enable Time
 
-![Output Enable Time](https://img.wiki-power.com/d/wiki-media/img/20220809094941.png)
+![Output Enable Time](https://media.wiki-power.com/img/20220809094941.png)
 
 This refers to the time it takes for a pin to transition from a high-impedance state (disabled) to an active drive level (high or low). It ensures that the output buffer can change the pin state within the specified time. The representation in the specification is as follows:
 
@@ -67,7 +67,7 @@ This refers to the time it takes for a pin to transition from a high-impedance s
 
 ### Output Disable Time
 
-![Output Disable Time](https://img.wiki-power.com/d/wiki-media/img/20220809094948.png)
+![Output Disable Time](https://media.wiki-power.com/img/20220809094948.png)
 
 This refers to the time it takes for a pin to transition from an active drive level (high or low) to a high-impedance state (disabled). It ensures that the output buffer can change the pin state within the specified time. The representation in the specification is as follows:
 
@@ -81,7 +81,7 @@ This refers to the time it takes for a pin to transition from an active drive le
 
 An example of a read cycle for a 256 x 4 static RAM:
 
-![Read Cycle Timing](https://img.wiki-power.com/d/wiki-media/img/20220731190300.png)
+![Read Cycle Timing](https://media.wiki-power.com/img/20220731190300.png)
 
 | Parameter  | Description               | Min | Max | Unit |
 | ---------- | ------------------------- | --- | --- | ---- |
@@ -101,7 +101,7 @@ An example of a read cycle for a 256 x 4 static RAM:
 
 An example of a write cycle for a 256 x 4 static RAM:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220731190328.png)
+![](https://media.wiki-power.com/img/20220731190328.png)
 
 | Parameter  | Description                   | Min | Max | Unit |
 | ---------- | ----------------------------- | --- | --- | ---- |

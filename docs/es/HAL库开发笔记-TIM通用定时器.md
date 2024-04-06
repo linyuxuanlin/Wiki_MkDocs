@@ -49,7 +49,7 @@ En este experimento, generaremos una señal PWM con una frecuencia de 1 kHz y un
 
 En primer lugar, abriremos la página de configuración del árbol de reloj en "Clock Configuration" (Configuración del reloj). Dado que el temporizador universal está en la línea de alta velocidad APB2, buscaremos y anotaremos la frecuencia del reloj de "APB2 Timer clocks" (Relojes de temporizadores APB2) (180 MHz):
 
-![Captura de pantalla](https://img.wiki-power.com/d/wiki-media/img/20210627133951.png)
+![Captura de pantalla](https://media.wiki-power.com/img/20210627133951.png)
 
 A continuación, en el lateral, encontraremos TIM8, donde configuraremos el canal 1 (`Channel 1`) para la generación de PWM (`PWM Generation CH1`). Para lograr una frecuencia de 1 kHz para la onda cuadrada PWM, configuraremos los siguientes parámetros:
 
@@ -58,9 +58,9 @@ A continuación, en el lateral, encontraremos TIM8, donde configuraremos el cana
 - **Período de contador**: 1000-1
 - **Recarga automática de periodo**: Habilitada (el valor se recargará automáticamente al desbordar).
 
-![Captura de pantalla](https://img.wiki-power.com/d/wiki-media/img/20210627153422.png)
+![Captura de pantalla](https://media.wiki-power.com/img/20210627153422.png)
 
-Dado que la fuente de reloj utilizada aquí es de 180 MHz, configuramos el factor de división en 180-1 = 179, lo que resulta en una frecuencia de 1 MHz después de la división. Luego, configuramos el valor del período en 1000-1 = 9999 para obtener una frecuencia de 1 kHz. 
+Dado que la fuente de reloj utilizada aquí es de 180 MHz, configuramos el factor de división en 180-1 = 179, lo que resulta en una frecuencia de 1 MHz después de la división. Luego, configuramos el valor del período en 1000-1 = 9999 para obtener una frecuencia de 1 kHz.
 
 ### Configuración del temporizador en el código
 
@@ -72,12 +72,13 @@ En el archivo `main.c`, iniciaremos el temporizador:
 
 Espero que esta traducción sea útil. Si tienes alguna pregunta adicional o necesitas más ayuda, no dudes en preguntar.
 
-```markdown
+````markdown
 Inicie la modulación por ancho de pulso (PWM) en el canal 1 del temporizador HAL_TIM8:
 
 ```c
 HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_1);
 ```
+````
 
 Luego, configure el ciclo de trabajo al 50% (500 en una escala de 1000) de la señal PWM generada a 500 Hz (500 Hz / 1 kHz = 50%):
 
@@ -87,7 +88,7 @@ __HAL_TIM_SetCompare(&htim8, TIM_CHANNEL_1, 500);
 
 Una vez realizadas estas configuraciones, compile y grabe el código en el dispositivo. Puede observar la forma de onda utilizando un osciloscopio:
 
-![Forma de onda](https://img.wiki-power.com/d/wiki-media/img/20210627154737.jpg)
+![Forma de onda](https://media.wiki-power.com/img/20210627154737.jpg)
 
 ## Referencias y Agradecimientos
 
@@ -95,6 +96,8 @@ Una vez realizadas estas configuraciones, compile y grabe el código en el dispo
 
 > Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+
 ```
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+```

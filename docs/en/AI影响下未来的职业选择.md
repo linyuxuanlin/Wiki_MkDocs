@@ -28,11 +28,11 @@ In the future society, jobs that cannot be replaced by machines and artificial i
 
 Empathy, or the ability to **empathize and think from others' perspectives**, is essential. Many times, demands do not surface on their own but need us to project our thoughts onto others to discover those needs, rather than solely focusing on technical implementation.
 
-![Empathy](https://img.wiki-power.com/d/wiki-media/img/20200226140150.png)
+![Empathy](https://media.wiki-power.com/img/20200226140150.png)
 
 Teamwork is related to the "longboard effect." Modern society does not require every individual to cover their weaknesses but to focus on developing their expertise and compensate for weaknesses through teamwork. Building a team of individuals with complementary strengths is the key to success. If everyone tries to be a "jack of all trades" and possesses mediocre skills, how can such a team stand out in the competition?
 
-![Teamwork](https://img.wiki-power.com/d/wiki-media/img/20200226140223.png)
+![Teamwork](https://media.wiki-power.com/img/20200226140223.png)
 
 The ability to tell a compelling story is crucial for maintaining a team's internal cohesion, as it requires shared values. Externally, convincing others to accept your ideas and use your products also demands storytelling skills. Learning to tell a story that resonates with all stakeholders is vital. Value is not only influenced by the product itself; effective communication is equally critical.
 

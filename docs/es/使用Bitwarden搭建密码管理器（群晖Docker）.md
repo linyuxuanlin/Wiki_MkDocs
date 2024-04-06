@@ -4,7 +4,7 @@ Nota: Debido a que la imagen de bitwarden_rs ha cambiado de nombre y la extensi�
 
 Este artículo describe cómo implementar de forma privada el servidor de administración de contraseñas Bitwarden en su propio Synology utilizando Docker.
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210503221838.png)
+![Imagen](https://media.wiki-power.com/img/20210503221838.png)
 
 Actualmente existen diversas soluciones de administración de contraseñas como 1Password, Lastpass, KeePass, Bitwarden, entre otras. Cada una tiene sus ventajas y desventajas. En este caso, la necesidad es poder sincronizar en múltiples dispositivos, que sea de código abierto y se pueda implementar de manera privada, además de contar con la función de rellenar automáticamente las contraseñas. Por eso, se eligió implementar Bitwarden en el Synology personal, ya que cumple con estos requisitos y además ofrece una interfaz atractiva.
 
@@ -20,15 +20,15 @@ Abra la suite Docker de Synology, descargue la imagen "bitwardenrs/server", iní
 
 En la página de "Volúmenes", configure la carpeta de montaje seleccionando "Agregar carpeta" y elija la ruta local "docker/bitwarden". El directorio de montaje debe ser "/data" (por defecto).
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210503211711.png)
+![Imagen](https://media.wiki-power.com/img/20210503211711.png)
 
 En la página de "Configuración de puertos", configure manualmente el puerto del contenedor correspondiente al puerto local 80 (por ejemplo, se puede configurar como "8003").
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210503211759.png)
+![Imagen](https://media.wiki-power.com/img/20210503211759.png)
 
 Una vez finalizada la configuración, inicie el contenedor. Luego, abra su navegador e ingrese la dirección IP local de Synology seguida del puerto (por ejemplo, "IP-de-Synology:8003") para acceder a la página de inicio de sesión de Bitwarden. Sin embargo, cuando intente crear una cuenta e iniciar sesión, es posible que vea un mensaje de error.
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210503212146.png)
+![Imagen](https://media.wiki-power.com/img/20210503212146.png)
 
 Esto se debe a que el contenedor Docker en sí no proporciona configuración de puerto seguro (HTTPS), y Bitwarden requiere HTTPS para iniciar sesión (con cifrado SSL para evitar ataques de intermediarios). Por lo tanto, es necesario utilizar el servicio de proxy inverso incorporado en Synology para acceder a través de HTTPS al puerto HTTP interno. Puede encontrar un tutorial detallado en [**Cómo implementar el acceso HTTPS con el proxy inverso incorporado de Synology**](https://wiki-power.com/%E7%94%A8%E7%BE%A4%E6%99%96%E8%87%AA%E5%B8%A6%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0HTTPS%E8%AE%BF%E9%97%AE).
 
@@ -40,7 +40,7 @@ Puede descargar clientes de Bitwarden desde la [**página de descargas oficial**
 
 Se recomienda utilizar la extensión del navegador [**Bitwarden - Administrador de contraseñas gratuito**](https://chrome.google.com/webstore/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb) para iniciar sesión. Cuando inicie sesión, haga clic en el pequeño engranaje en la esquina superior izquierda y vaya a la configuración.
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210503215149.png)
+![Imagen](https://media.wiki-power.com/img/20210503215149.png)
 
 En "Entorno de autohospedaje", ingrese la "URL del servidor" como la IP de su Synology seguida del puerto externo. Luego podrá iniciar sesión normalmente.
 

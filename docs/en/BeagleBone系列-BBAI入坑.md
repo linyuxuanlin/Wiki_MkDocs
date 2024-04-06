@@ -4,7 +4,7 @@
 
 First, connect the 12V power supply input to the Cape, and use a USB to serial module to connect the on-board serial port (J3 port for debugging):
 
-![BeagleBone Initialization](https://img.wiki-power.com/d/wiki-media/img/20211027164010.png)
+![BeagleBone Initialization](https://media.wiki-power.com/img/20211027164010.png)
 
 Make sure the USB to serial module has the necessary drivers (I used an FTDI module, and the driver can be downloaded from [this link](https://ftdichip.com/drivers/vcp-drivers/)).
 

@@ -1,6 +1,6 @@
 # Homelab - 极简个人书签导航站 Flare
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230410170939.png)
+![](https://media.wiki-power.com/img/20230410170939.png)
 
 **Flare** 是一个轻量、快速、美观的个人导航页面，无任何数据库依赖，应用数据完全开放透明，支持在线编辑，内置 Material Design Icons 6k+ 图标。
 

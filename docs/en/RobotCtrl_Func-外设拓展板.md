@@ -1,6 +1,6 @@
 # RobotCtrl_Func - Peripheral Expansion Board
 
-![Image](https://img.wiki-power.com/d/wiki-media/img/20220527113505.png)
+![Image](https://media.wiki-power.com/img/20220527113505.png)
 
 Project Repository: [**linyuxuanlin/RobotCtrl/RobotCtrl_Func**](https://github.com/linyuxuanlin/RobotCtrl/tree/main/RobotCtrl_MultiBoard_Project/RobotCtrl_Func)
 
@@ -20,17 +20,17 @@ Note: This project is included in [**RobotCtrl - STM32 Universal Development Kit
 The primary functions of RobotCtrl_Func are as follows:
 
 - 12V power input, 5V power input/output, 3.3V power output (with test points)
-- 5V to 3.3V voltage regulator circuits * 2 (for sensors/Ethernet, with test points)
+- 5V to 3.3V voltage regulator circuits \* 2 (for sensors/Ethernet, with test points)
 - Ethernet communication circuit
-- CAN communication circuits * 2
+- CAN communication circuits \* 2
 - Serial communication circuit (RS-232 and TTL levels)
 - Buzzer circuit
-- User buttons * 2
-- User LEDs * 3
+- User buttons \* 2
+- User LEDs \* 3
 - MPU6050 attitude sensor module
-- Infrared distance sensor interfaces * 4
-- Ultrasonic interfaces * 5
-- User GPIO interfaces * 6
+- Infrared distance sensor interfaces \* 4
+- Ultrasonic interfaces \* 5
+- User GPIO interfaces \* 6
 - B2B connectors (with access to all IO)
 - SW download interface
 

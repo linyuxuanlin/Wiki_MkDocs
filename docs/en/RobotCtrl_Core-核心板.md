@@ -1,6 +1,6 @@
 # RobotCtrl_Core - Core Board
 
-![Image](https://img.wiki-power.com/d/wiki-media/img/20220527113423.png)
+![Image](https://media.wiki-power.com/img/20220527113423.png)
 
 Project Repository: [**linyuxuanlin/RobotCtrl/RobotCtrl_Core**](https://github.com/linyuxuanlin/RobotCtrl/tree/main/RobotCtrl_MultiBoard_Project/RobotCtrl_Core)
 

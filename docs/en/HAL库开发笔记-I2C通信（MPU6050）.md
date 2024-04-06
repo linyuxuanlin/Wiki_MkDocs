@@ -6,13 +6,13 @@ In this article, we will delve into the HAL library's approach to I2C communicat
 
 ### I2C Communication
 
-![I2C Communication](https://img.wiki-power.com/d/wiki-media/img/20211026174634.png)
+![I2C Communication](https://media.wiki-power.com/img/20211026174634.png)
 
 For a detailed explanation of the fundamental principles of I2C communication, you can refer to the article on [**Communication Protocol - I2C**](https://wiki-power.com/%E9%80%9A%E4%BF%A1%E5%8D%8C%E8%AE%AE-I2C).
 
 ### MPU6050 Module
 
-![MPU6050 Module](https://img.wiki-power.com/d/wiki-media/img/20220404145145.png)
+![MPU6050 Module](https://media.wiki-power.com/img/20220404145145.png)
 
 Here are the pin definitions for the module:
 
@@ -192,7 +192,7 @@ void MPU6050_Read_Gyro(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct)
 /*** Convert the RAW values to degrees per second (°/s).
     We need to divide by the Full Scale value set in FS_SEL.
     I have configured FS_SEL = 0, so I am dividing by 131.0.
-    For more details, check the GYRO_CONFIG Register. 
+    For more details, check the GYRO_CONFIG Register.
 ***/
 
 DataStruct->Gx = DataStruct->Gyro_X_RAW / 131.0;
@@ -310,7 +310,7 @@ You can see that, after setting the I2C address, the MPU6050 is initialized in t
 
 In CubeMX, go to the "Communication" section and select "I2Cx". Change the I2C option from "disable" to "I2C" and configure the parameters in the pop-up configuration window (default settings are usually sufficient):
 
-![I2C Configuration](https://img.wiki-power.com/d/wiki-media/img/20220403190116.png)
+![I2C Configuration](https://media.wiki-power.com/img/20220403190116.png)
 
 ### Configuring I2C to Read Information in the Code
 
@@ -400,6 +400,8 @@ printf("XAngle: %.2f°\t", MPU6050.KalmanAngleX);
 
 > Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
+
 ```
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.
+```

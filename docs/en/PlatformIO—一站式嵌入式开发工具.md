@@ -2,7 +2,7 @@
 
 — Building an all-in-one development environment, replacing Keil / Arduino IDE
 
-![PlatformIO](https://img.wiki-power.com/d/wiki-media/img/20200531112801.png)
+![PlatformIO](https://media.wiki-power.com/img/20200531112801.png)
 
 ## Background
 
@@ -29,7 +29,7 @@ First, make sure you have VSCode installed (you can refer to [**this article**](
 
 In the `Extensions` (press `Ctrl + Shift + X`) section, search for and install `Python` and `PlatformIO IDE`.
 
-![PlatformIO Installation](https://img.wiki-power.com/d/wiki-media/img/20200531113916.png)
+![PlatformIO Installation](https://media.wiki-power.com/img/20200531113916.png)
 
 After the successful installation of the plugins, click on `Reload` to start the plugin. Then, grab a cup of coffee and wait for the automatic installation of the core component, `platformIO-core` (initial installation may take some time).
 

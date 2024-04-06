@@ -18,7 +18,7 @@ During the Gross IDD testing stage, it is not known if pre-processing can procee
 
 Gross IDD testing begins with a reset to set all input pins to low or high levels. Typically, VIL is set to 0V, VIH is set to VDD, and all output pins are left open (to prevent floating and leakage current, which could increase IDD). The schematic for the test is as follows:
 
-![Gross IDD Test](https://img.wiki-power.com/d/wiki-media/img/20220728162655.png)
+![Gross IDD Test](https://media.wiki-power.com/img/20220728162655.png)
 
 Important considerations include:
 
@@ -38,7 +38,7 @@ For example, consider the following IDD parameter sample:
 
 The schematic for static IDD testing is as follows:
 
-![Static IDD Test](https://img.wiki-power.com/d/wiki-media/img/20220728162341.png)
+![Static IDD Test](https://media.wiki-power.com/img/20220728162341.png)
 
 The testing process is as follows:
 
@@ -63,7 +63,7 @@ For example, the table below provides a sample of dynamic IDD parameters:
 
 Illustration of the testing process:
 
-![IDD Dynamic Testing](https://img.wiki-power.com/d/wiki-media/img/20220728171447.png)
+![IDD Dynamic Testing](https://media.wiki-power.com/img/20220728171447.png)
 
 The testing process is similar to the static method.
 
@@ -86,7 +86,7 @@ Testing VOL/IOL & VOH/IOH mainly aims to verify whether VOL/VOH reaches the corr
 
 The testing schematic for measuring VOL/IOL using the serial static method is as follows:
 
-![VOL/IOL Testing - Serial Static Method](https://img.wiki-power.com/d/wiki-media/img/20220728150542.png)
+![VOL/IOL Testing - Serial Static Method](https://media.wiki-power.com/img/20220728150542.png)
 
 The testing process is as follows:
 
@@ -107,7 +107,7 @@ Important considerations:
 
 The schematic diagram for measuring **VOH/IOH** using the serial static method is shown below:
 
-![VOH/IOH Test](https://img.wiki-power.com/d/wiki-media/img/20220728143124.png)
+![VOH/IOH Test](https://media.wiki-power.com/img/20220728143124.png)
 
 The testing process is as follows:
 
@@ -139,7 +139,7 @@ Additionally, **IIL/IIH** tests are typically performed only on pure input pins.
 
 The schematic diagram for testing input pin **IIL** using the serial method is shown below:
 
-![IIL Test](https://img.wiki-power.com/d/wiki-media/img/20220729100620.png)
+![IIL Test](https://media.wiki-power.com/img/20220729100620.png)
 
 The testing process is as follows:
 
@@ -152,7 +152,7 @@ The testing process is as follows:
 
 The schematic diagram for testing input pin **IIH** using the serial method is shown below:
 
-![IIH Test](https://img.wiki-power.com/d/wiki-media/img/20220729100739.png)
+![IIH Test](https://media.wiki-power.com/img/20220729100739.png)
 
 The testing process is as follows:
 
@@ -167,7 +167,7 @@ The testing process is as follows:
 
 In certain testing systems, it is possible to perform parallel leakage current measurements, a method known as the "Parallel Test Method." Parallel leakage current measurement involves utilizing multiple PMUs to measure the current on multiple pins simultaneously. All input pins are forced to a high state, and the current on each pin is measured in parallel. Subsequently, the test results are compared to the nominal values to draw conclusions.
 
-![Parallel Test Method](https://img.wiki-power.com/d/wiki-media/img/20220729103317.png)
+![Parallel Test Method](https://media.wiki-power.com/img/20220729103317.png)
 
 1. Firstly, supply the DUT with a power source of VDDmax.
 2. Use multiple PMUs to force each input pin to a high state at VDDmax (for IIH measurement).
@@ -180,7 +180,7 @@ The key feature of the parallel method is the ability to measure the current of 
 
 The combined test method, also known as the "Ganged Method," involves combining all input pins into one pin and measuring the total leakage current with a single PMU. The testing concept is illustrated below:
 
-![Combined Test Method](https://img.wiki-power.com/d/wiki-media/img/20220729104449.png)
+![Combined Test Method](https://media.wiki-power.com/img/20220729104449.png)
 
 The combined testing method is similar to the previous one. The total current limit is the nominal value of a single pin. If the test result exceeds this limit, it requires a switch back to serial testing. This testing method is particularly effective for CMOS devices (high-impedance inputs).
 
@@ -198,7 +198,7 @@ This parameter ensures that **bidirectional or high-impedance output pins can be
 
 The serial static testing of IOZL/IOZH is illustrated as follows:
 
-![Serial Static Test Method](https://img.wiki-power.com/d/wiki-media/img/20220807202447.png)
+![Serial Static Test Method](https://media.wiki-power.com/img/20220807202447.png)
 
 The testing process is as follows:
 
@@ -219,15 +219,15 @@ The parallel static method involves using multiple PMUs simultaneously on multip
 
 The input clamp VI refers to the voltage measured on the input pin (I) of TTL devices (non-CMOS) when a negative current (current extraction) is applied. This test serves to **verify the integrity of the transistor's emitter and the diode clamped between it and ground**. It is represented in the datasheet as follows:
 
-| Parameter   | Description           | Test Conditions         | Min  | Max  | Units |
-| ----------- | --------------------- | ----------------------- | ---  | ---- | ----- |
-| VI          | Input Clamp Voltage   | VCC = Minimum, Iin = -18mA |     | +1.5 | V     |
+| Parameter | Description         | Test Conditions            | Min | Max  | Units |
+| --------- | ------------------- | -------------------------- | --- | ---- | ----- |
+| VI        | Input Clamp Voltage | VCC = Minimum, Iin = -18mA |     | +1.5 | V     |
 
 ### VI Test - Serial Static Method
 
 VI is measured using the serial static method, and the test schematic is as follows:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220729145425.png)
+![](https://media.wiki-power.com/img/20220729145425.png)
 
 The test procedure is as follows:
 
@@ -241,15 +241,15 @@ The test procedure is as follows:
 
 The short-circuit output current represents the current (I) generated when the output pin (O) is short-circuited (S) under specific conditions. The purpose is to **measure the output impedance when the pin outputs a high level but is shorted to zero voltage, ensuring that the output current is not too high under the worst load conditions**. It also indicates the maximum instantaneous current that the DUT pin can provide for charging capacitive loads, which can be used to calculate the rise time. IOS is specified as follows:
 
-| Parameter | Description                  | Test Conditions                                                                      | Min  | Max  | Units |
-| --------- | ---------------------------- | ------------------------------------------------------------------------------------ | ---  | ---  | ----- |
-| IOS       | Output Short Circuit Current | Vout = 0V, VDD = 5.25V, \*Short only 1 output at a time for no longer than 1 sec | -85  | -30  | mA    |
+| Parameter | Description                  | Test Conditions                                                                  | Min | Max | Units |
+| --------- | ---------------------------- | -------------------------------------------------------------------------------- | --- | --- | ----- |
+| IOS       | Output Short Circuit Current | Vout = 0V, VDD = 5.25V, \*Short only 1 output at a time for no longer than 1 sec | -85 | -30 | mA    |
 
 ### IOS Test - Serial Static Method
 
 The test schematic is as follows:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220729152549.png)
+![](https://media.wiki-power.com/img/20220729152549.png)
 
 The test procedure is as follows:
 
@@ -271,13 +271,13 @@ Factors that may cause the test to fail:
 
 Some input pins may have active pull-up and pull-down structures, and it is essential to ensure that the **input buffer's pull-up and pull-down resistor paths are functioning correctly**. Testing must be performed serially, as the internal pull-up/pull-down structures may vary between different pins. An illustrative diagram of pin structures is provided below:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220729130655.png)
+![](https://media.wiki-power.com/img/20220729130655.png)
 
 ## Output Fanout Capability
 
 The fanout capability refers to the ability of an output pin to drive multiple input pins based on its voltage and current parameters. In other words, it measures the ability of an output pin to handle multiple input pins, also known as **the pin's driving capacity**.
 
-![Fanout Example](https://img.wiki-power.com/d/wiki-media/img/20220729132621.png)
+![Fanout Example](https://media.wiki-power.com/img/20220729132621.png)
 
 As shown in the above figure, this TTL output can drive approximately 17 input pins to a high state or 30 input pins to a low state. In the datasheet, the pin parameters are typically represented as follows:
 

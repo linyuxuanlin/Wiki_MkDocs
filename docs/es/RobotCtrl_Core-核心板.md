@@ -1,6 +1,6 @@
 # RobotCtrl_Core - Core Board
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20220527113423.png)
+![Imagen](https://media.wiki-power.com/img/20220527113423.png)
 
 Repositorio del proyecto: [**linyuxuanlin/RobotCtrl/RobotCtrl_Core**](https://github.com/linyuxuanlin/RobotCtrl/tree/main/RobotCtrl_MultiBoard_Project/RobotCtrl_Core)
 
@@ -100,6 +100,5 @@ La prueba de funciones implica cargar el programa inicial (donde el botón de us
 > Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 ```
-
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

@@ -36,12 +36,12 @@ To create headings, simply prefix your heading text with 1 to 6 `#` symbols. The
 
 Style text by enclosing it with appropriate symbols:
 
-|   Style   |    Keyboard Shortcut    | Syntax                    | Result               |
-| :------: | :--------------: | ---------------------- | -------------------- |
-|   Bold   | `Ctrl`/`⌘` + `B` | `**Bold Text**`         | **Bold Text**         |
-|   Italic   | `Ctrl`/`⌘` + `I` | `*Italic Text*`           | _Italic Text_           |
-| Bold and Italic |                  | `***Bold and Italic Text***` | **_Bold and Italic Text_** |
-|  Strikethrough  |                  | `~~Struck Text~~`         | ~~Struck Text~~         |
+|      Style      | Keyboard Shortcut | Syntax                       | Result                     |
+| :-------------: | :---------------: | ---------------------------- | -------------------------- |
+|      Bold       | `Ctrl`/`⌘` + `B`  | `**Bold Text**`              | **Bold Text**              |
+|     Italic      | `Ctrl`/`⌘` + `I`  | `*Italic Text*`              | _Italic Text_              |
+| Bold and Italic |                   | `***Bold and Italic Text***` | **_Bold and Italic Text_** |
+|  Strikethrough  |                   | `~~Struck Text~~`            | ~~Struck Text~~            |
 
 Note: Italics are designed primarily for English text. For readability and convention, avoid using italics with Chinese text.
 
@@ -75,7 +75,7 @@ Extract the `hugo.exe` file from the compressed archive to the `D:\hugo` directo
 
 For multi-line code, enclose the code block with triple backticks <code>```</code>:
 
-![Code Block](https://img.wiki-power.com/d/wiki-media/img/20210215164653.png)
+![Code Block](https://media.wiki-power.com/img/20210215164653.png)
 
 ```c
 int fputc(int ch,FILE *f)
@@ -225,7 +225,7 @@ You can use the `---` symbol to create a horizontal rule, which separates differ
 ---
 ```
 
-![Image](https://img.wiki-power.com/d/wiki-media/img/20210216123630.png)
+![Image](https://media.wiki-power.com/img/20210216123630.png)
 
 ## Advanced Usage
 

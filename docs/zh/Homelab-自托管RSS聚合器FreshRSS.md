@@ -1,6 +1,6 @@
 # Homelab - 自托管 RSS 聚合器 FreshRSS
 
-![](https://img.wiki-power.com/d/wiki-media/img/202304102312005.png)
+![](https://media.wiki-power.com/img/202304102312005.png)
 
 **FreshRSS** 是一个托管的 RSS 聚合器，支持订阅多个 RSS 源，并自动刷新。提供 web 在线阅读和 API 供移动端 app 使用。
 

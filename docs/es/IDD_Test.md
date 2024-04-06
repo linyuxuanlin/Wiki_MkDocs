@@ -2,7 +2,7 @@
 
 La corriente de suministro de energía (IDD) indica la corriente que fluye desde el drenaje al drenaje en un circuito CMOS (llamada ICC en un circuito TTL, que significa colector a colector). IDD puede ser equivalente a:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220910234238.png)
+![](https://media.wiki-power.com/img/20220910234238.png)
 
 ## Prueba IDD Estática
 
@@ -12,7 +12,7 @@ IDD estática es una medición de la corriente desde el pin VDD del DUT cuando e
 
 La prueba IDD estática se realiza aplicando un voltaje de VDDmax y midiendo el valor de corriente mientras el DUT se encuentra en su estado lógico de menor consumo de corriente.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220911201659.png)
+![](https://media.wiki-power.com/img/20220911201659.png)
 
 1. Aplicar VDDmax al pin VDD (con una pinza de corriente).
 2. Acondicionar el DUT a su estado lógico de menor consumo de corriente.
@@ -26,7 +26,7 @@ IDD dinámica es una medición de la corriente desde el pin VDD del DUT cuando e
 
 ### Método de Prueba
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220911201603.png)
+![](https://media.wiki-power.com/img/20220911201603.png)
 
 La prueba IDD dinámica se realiza aplicando un voltaje de VDDmax y midiendo el valor de corriente mientras el DUT se encuentra en un estado de funcionamiento continuo.
 
@@ -42,7 +42,7 @@ La IDD quiescente es una medida de la corriente de fuga en los estados quiescent
 
 ### Método de Prueba
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20220911213042.png)
+![Imagen](https://media.wiki-power.com/img/20220911213042.png)
 
 1. Aplicar VDDmax al pin VDD (con una abrazadera de corriente).
 2. Preacondicionar el DUT a un estado de funcionamiento específico (alternar ciertas partes de la función de encendido/apagado, como Bluetooth y Wi-Fi).

@@ -25,7 +25,7 @@ Solución (solución a largo plazo):
 
 - En la configuración SYS de CubeMX, cambia la opción de depuración a Serial Wire (SW).
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200531162352.jpg)
+![Imagen](https://media.wiki-power.com/img/20200531162352.jpg)
 
 ## Problemas de caracteres chinos en los comentarios en STM32CubeIDE
 

@@ -5,7 +5,7 @@
 **Sublime Text** es un potente editor de texto. Debido a que en el próximo semestre tendré cursos relacionados con Python y considero que la interfaz de herramientas como Pycharm no es muy atractiva, me gustaría intentar transformar Sublime Text en una poderosa herramienta para el desarrollo en Python.
 
 Imagen del resultado después de la personalización:
-![](https://img.wiki-power.com/d/wiki-media/img/ST3效果.png)
+![](https://media.wiki-power.com/img/ST3效果.png)
 
 ## [Implementación Mínima](https://www.jianguoyun.com/p/Da9TMr0Q-OOjBxif86sB)
 
@@ -69,16 +69,16 @@ A continuación, los complementos que están disponibles para su instalación di
 
 ```json
 {
-    "Default": {
-        "author": "linyuxuanlin",
-        "email": "824676271@qq.com",
-        "website": "yxrct.com"
-    }
+  "Default": {
+    "author": "linyuxuanlin",
+    "email": "824676271@qq.com",
+    "website": "yxrct.com"
+  }
 }
 ```
 
 Luego, modifica el contenido de las plantillas en `Preferences -> Browse Packages... -> FileHeader -> template -> header o body`. Efecto:  
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/ST3 模板效果.png)
+![Imagen](https://media.wiki-power.com/img/ST3 模板效果.png)
 
 ### Ejecución de Python
 
@@ -86,13 +86,15 @@ Dado que el compilador incorporado no permite la entrada del usuario, se requier
 
 ```json
 [
-    { "keys": ["f5"], "caption": "SublimeREPL:Python",
-                      "command": "run_existing_window_command", "args":
-                      {
-                           "id": "repl_python_run",
-                           "file": "config/Python/Main.sublime-menu"
-                      }
-    },
+  {
+    "keys": ["f5"],
+    "caption": "SublimeREPL:Python",
+    "command": "run_existing_window_command",
+    "args": {
+      "id": "repl_python_run",
+      "file": "config/Python/Main.sublime-menu"
+    }
+  }
 ]
 ```
 

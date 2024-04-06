@@ -1,6 +1,6 @@
 # How to Write a Resume Using Markdown
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210318220041.png)
+![](https://media.wiki-power.com/img/20210318220041.png)
 
 Write a resume using Markdown that can be previewed online and exported as a PDF.
 

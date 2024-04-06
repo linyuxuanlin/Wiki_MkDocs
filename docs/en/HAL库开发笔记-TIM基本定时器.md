@@ -50,13 +50,13 @@ This experiment uses a basic timer to implement a timing function that toggles t
 
 First, open the Clock Configuration page in CubeMX and find and note the value of APB1 Timer clocks on the right side:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210407152250.png)
+![](https://media.wiki-power.com/img/20210407152250.png)
 
 This is because TIM2-TIM7 and TIM12-TIM14 in the STM32F4 series are mounted on the low-speed APB1 bus, while TIM1 and TIM8-TIM11 are mounted on the high-speed APB2 bus. In this case, we are using the basic timer TIM6, so we need to check the speed of APB1 (which is 90 MHz after division and multiplication).
 
 Next, find TIM6 in the Timer section on the sidebar, check the "Activated" box to activate the timer, and configure the following parameters below:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210407173136.png)
+![](https://media.wiki-power.com/img/20210407173136.png)
 
 Meaning of each parameter:
 
@@ -69,7 +69,7 @@ Since I am using a clock source of 90 MHz, I set the prescaler value to 8999 (wh
 
 Then, on the NVIC tab, enable the interrupt:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210407155959.png)
+![](https://media.wiki-power.com/img/20210407155959.png)
 
 ### Configuring the basic timer in the code
 

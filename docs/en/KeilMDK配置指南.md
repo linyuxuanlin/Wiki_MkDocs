@@ -6,33 +6,33 @@
 
 **Fill in the requested information as shown below and click the `Submit` button:**
 
-![Download Page](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564402348383.png)
+![Download Page](https://media.wiki-power.com/img/UTOOLS1564402348383.png)
 
 **Click on the download package link:**
 
-![Download Package](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564402469518.png)
+![Download Package](https://media.wiki-power.com/img/UTOOLS1564402469518.png)
 
 ## 2. Installation
 
 **Open the downloaded installation package and follow these steps:**
 
-![Installation Step 1](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405005991.png)
+![Installation Step 1](https://media.wiki-power.com/img/UTOOLS1564405005991.png)
 
-![Installation Step 2](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405034468.png)
+![Installation Step 2](https://media.wiki-power.com/img/UTOOLS1564405034468.png)
 
-![Installation Step 3](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405123578.png)
+![Installation Step 3](https://media.wiki-power.com/img/UTOOLS1564405123578.png)
 
-![Installation Step 4](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405166784.png)
+![Installation Step 4](https://media.wiki-power.com/img/UTOOLS1564405166784.png)
 
-![Installation Step 5](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405201092.png)
+![Installation Step 5](https://media.wiki-power.com/img/UTOOLS1564405201092.png)
 
-![Installation Step 6](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405260737.png)
+![Installation Step 6](https://media.wiki-power.com/img/UTOOLS1564405260737.png)
 
 **Install the chip packages (we need STM32 F1 and F4 series):**
 
-![Install Chip Packages 1](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405574756.png)
+![Install Chip Packages 1](https://media.wiki-power.com/img/UTOOLS1564405574756.png)
 
-![Install Chip Packages 2](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405648731.png)
+![Install Chip Packages 2](https://media.wiki-power.com/img/UTOOLS1564405648731.png)
 
 ## 3. Cracking
 
@@ -40,23 +40,23 @@ Download the [**crack tool**](https://github.com/linyuxuanlin/File-host/blob/mai
 
 **Close MDK and open it as an administrator:**
 
-![Open as Administrator](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406135091.png)
+![Open as Administrator](https://media.wiki-power.com/img/UTOOLS1564406135091.png)
 
 **Open the menu bar - File - License Management:**
 
-![License Management](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406171844.png)
+![License Management](https://media.wiki-power.com/img/UTOOLS1564406171844.png)
 
 **Copy this `CID` string:**
 
-![Copy CID](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406230209.png)
+![Copy CID](https://media.wiki-power.com/img/UTOOLS1564406230209.png)
 
 **Paste it into the crack tool, select `Arm` from the `Target` dropdown, and click `Generate` to generate the activation code:**
 
-![Crack Tool](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406292113.png)
+![Crack Tool](https://media.wiki-power.com/img/UTOOLS1564406292113.png)
 
 **Copy the activation code and paste it into MDK, then click `Add LIC`:**
 
-![Paste Activation Code](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406431978.png)
+![Paste Activation Code](https://media.wiki-power.com/img/UTOOLS1564406431978.png)
 
 ## References and Acknowledgments
 

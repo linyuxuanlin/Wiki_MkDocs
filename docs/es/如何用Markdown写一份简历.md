@@ -1,6 +1,6 @@
 # Cómo escribir un currículum utilizando Markdown
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210318220041.png)
+![](https://media.wiki-power.com/img/20210318220041.png)
 
 Escribir un currículum utilizando Markdown que se pueda previsualizar en línea y exportar como PDF.
 

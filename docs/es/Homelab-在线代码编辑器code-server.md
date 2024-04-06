@@ -1,6 +1,6 @@
 # Homelab - Editor de código en línea code-server
 
-![](https://img.wiki-power.com/d/wiki-media/img/202304132214418.png)
+![](https://media.wiki-power.com/img/202304132214418.png)
 
 **code-server** es una versión de VS Code que se puede ejecutar en un navegador web. La ventaja de esto es que puedes escribir código en cualquier dispositivo, incluyendo teléfonos móviles y tabletas, que no pueden instalar directamente VS Code en ellos.
 

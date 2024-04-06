@@ -20,33 +20,33 @@
 
 ## شرح الاختيار
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420102910.png)
+![](https://media.wiki-power.com/img/20220420102910.png)
 
 ## دائرة تطبيق نموذجية
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420102323.png)
+![](https://media.wiki-power.com/img/20220420102323.png)
 
 ## مخطط الوظائف الداخلية
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420102514.png)
+![](https://media.wiki-power.com/img/20220420102514.png)
 
 ملاحظة: الثنائي الموجود في المخطط هو ثنائي ESD أو ثنائي طفيل.
 
 ## تعريف الأطراف
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420103005.png)
+![](https://media.wiki-power.com/img/20220420103005.png)
 
-| اسم الطرف | وصف الطرف |
-| -------- | -------- |
-| VSS      | الأرض       |
-| Vin      | مدخل الطاقة |
-| Vout     | مخرج الطاقة |
+| اسم الطرف | وصف الطرف   |
+| --------- | ----------- |
+| VSS       | الأرض       |
+| Vin       | مدخل الطاقة |
+| Vout      | مخرج الطاقة |
 
 ## وصف الميزات
 
 جدول المعلمات الدقيقة لكل طراز:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420103738.png)
+![](https://media.wiki-power.com/img/20220420103738.png)
 
 ## المراجع والشكر
 

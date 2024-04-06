@@ -6,13 +6,13 @@ The reason for using multi-board system design is that a hardware project may in
 
 First, create a new project type file (`.PrjMbd`). Within the project, create logic design files based on the schematic (`.MbsDoc`) and PCB-based files (`.MbaDoc`). Then, save your project. At the file system level, copy multiple individual PCB project folders to the same directory as `.PrjMbd`, as shown below:
 
-![Example](https://img.wiki-power.com/d/wiki-media/img/20220106152537.png)
+![Example](https://media.wiki-power.com/img/20220106152537.png)
 
 ## Inputting Logic Design
 
 Inputting the logic design is done based on the physical connectors on the PCB. Before this, you need to add parameters to the connectors in the project's schematic (open the connector's properties and add `Parameters` with the name `System` and the value `Connector`).
 
-![Connector Parameters](https://img.wiki-power.com/d/wiki-media/img/20220106163315.png)
+![Connector Parameters](https://media.wiki-power.com/img/20220106163315.png)
 
 ### Creating Modules and Linking Projects
 

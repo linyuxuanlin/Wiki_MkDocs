@@ -1,7 +1,7 @@
-```markdown
+````markdown
 # RobotCtrl_Core - اللوحة الأساسية
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220527113423.png)
+![](https://media.wiki-power.com/img/20220527113423.png)
 
 مستودع المشروع: [**linyuxuanlin/RobotCtrl/RobotCtrl_Core**](https://github.com/linyuxuanlin/RobotCtrl/tree/main/RobotCtrl_MultiBoard_Project/RobotCtrl_Core)
 
@@ -87,6 +87,6 @@ STM32 يحتوي على واجهة USB مدمجة، حيث يمكن تحقيق �
 > عنوان النص: <https://wiki-power.com/>
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 ```
-
+````
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

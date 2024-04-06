@@ -4,13 +4,13 @@
 
 En el pasado, solíamos almacenar nuestras fotos de recuerdos en computadoras o discos duros. Pero nos dimos cuenta de que las fotos se acumulaban y los métodos de clasificación en carpetas perdían su significado: después de un viaje, a menudo procrastinábamos y no organizábamos las fotos; cuando las fotos estaban organizadas, rara vez las volvíamos a ver. Y si el disco duro sufría algún percance (ya sea físico o por error humano), solo podíamos enviarlo a recuperación de datos, y a veces ni siquiera se podían recuperar.
 
-![](https://img.wiki-power.com/d/wiki-media/img/2af4c42e6f7a9f4ed45b6f150b164184.jpg)
+![](https://media.wiki-power.com/img/2af4c42e6f7a9f4ed45b6f150b164184.jpg)
 
 Busqué constantemente y descubrí nuevos medios para almacenar fotos. Utilicé herramientas de sincronización como Resilio Sync, Weiyun Sync Disk, Baidu Cloud Sync, entre otros, para hacer copias de seguridad múltiples; también consideré construir una biblioteca de fotos NAS (RAID 1); o utilizar servicios en la nube como iCloud, Mi Cloud Album, Weiyun, Baidu Cloud, pero ninguno me resultó realmente práctico. En primer lugar, la gestión de fotos en forma de carpetas es ordenada, pero no es conveniente para organizar y revisar; en segundo lugar, es común que estos proveedores de servicios en China vendan tu privacidad si necesitan dinero.
 
 Finalmente, descubrí Google Photos, que es relativamente seguro y tiene una interfaz fácil de usar. Después de más de un año de experiencia, me pareció bastante bueno, así que actualicé este artículo.
 
-![](https://img.wiki-power.com/d/wiki-media/img/0f0ab1740e3206831f3e6ef19ef0c903.png)
+![](https://media.wiki-power.com/img/0f0ab1740e3206831f3e6ef19ef0c903.png)
 
 ## Características
 
@@ -18,19 +18,19 @@ Finalmente, descubrí Google Photos, que es relativamente seguro y tiene una int
 
 En comparación con iCloud (5GB de espacio gratuito) y Mi Cloud (11GB de espacio gratuito), aunque se puede comprar capacidad de almacenamiento, todavía se tiene cierta precaución al sincronizar todas las fotos. Sin embargo, Google Photos ofrece almacenamiento ilimitado, lo cual satisface completamente las necesidades de almacenamiento personal de fotos. Pero hay una condición: las fotos tienen un máximo de 16 millones de píxeles y los videos son de 1080p, si se excede, se comprimirán. Pero para usuarios no profesionales, es suficiente.
 
-![](https://img.wiki-power.com/d/wiki-media/img/cea385ad94811257f4b7c084d41c5d30.jpg)
+![](https://media.wiki-power.com/img/cea385ad94811257f4b7c084d41c5d30.jpg)
 
 ### 2. Inteligente
 
 En comparación con la gestión en forma de carpetas, incluso si no se clasifican y archivan las fotos, la función de búsqueda de Google Photos es suficiente para encontrar fotos antiguas que han estado archivadas durante años. Puedes etiquetar personas y encontrar todas las fotos relacionadas con ellas. Además, la función "Revive este día en años anteriores" también es muy útil.
 
-![](https://img.wiki-power.com/d/wiki-media/img/f1ccf68a3eeae7b4a69f58122838666d.png)
+![](https://media.wiki-power.com/img/f1ccf68a3eeae7b4a69f58122838666d.png)
 
 ### 3. Relativamente seguro
 
 Los datos no tienen precio. Si solo guardas tus álbumes en tus propios dispositivos (como discos duros), es posible que te preocupes por problemas de daños o pérdida de datos. Sin embargo, si confías tus álbumes a un proveedor de servicios en la nube confiable, estarán mucho más seguros. Después de todo, ellos son responsables de los datos de los usuarios; si hay un problema con el disco duro, solo tú serás responsable. En cuanto a la seguridad, no se puede ignorar el problema de la privacidad. Personalmente, no dudaría en confiar mis fotos a Google, que no hace cosas malas, en lugar de a 360 o Baidu. Google respeta más la privacidad de los usuarios bajo el GDPR, en comparación con Baidu, que dice "los chinos están más dispuestos a cambiar privacidad por conveniencia", no sé hasta qué punto es cierto.
 
-![](https://img.wiki-power.com/d/wiki-media/img/59bd6366d7c370b480def6fec44802a6.png)
+![](https://media.wiki-power.com/img/59bd6366d7c370b480def6fec44802a6.png)
 
 ### 4. Otras ventajas
 

@@ -1,8 +1,8 @@
 # Flip - A Linux Development Board based on Allwinner F1C200s
 
-![Image](https://img.wiki-power.com/d/wiki-media/img/20220527234815.jpeg)
+![Image](https://media.wiki-power.com/img/20220527234815.jpeg)
 
-![Image](https://img.wiki-power.com/d/wiki-media/img/20220527234855.jpeg)
+![Image](https://media.wiki-power.com/img/20220527234855.jpeg)
 
 Project Repository: [**linyuxuanlin/Flip**](https://github.com/linyuxuanlin/Flip)
 
@@ -42,15 +42,15 @@ Here are the basic specifications of the F1C200s:
 
 System architecture diagram of the F1C200s:
 
-![Image](https://img.wiki-power.com/d/wiki-media/img/20220422152227.png)
+![Image](https://media.wiki-power.com/img/20220422152227.png)
 
 Typical application schematic:
 
-![Image](https://img.wiki-power.com/d/wiki-media/img/20220513232027.png)
+![Image](https://media.wiki-power.com/img/20220513232027.png)
 
 Pin definitions:
 
-![Image](https://img.wiki-power.com/d/wiki-media/img/20220422153239.png)
+![Image](https://media.wiki-power.com/img/20220422153239.png)
 
 ## References and Acknowledgments
 

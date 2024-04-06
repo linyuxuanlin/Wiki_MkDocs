@@ -1,6 +1,6 @@
 # RobotCtrl - STM32 Universal Development Kit
 
-![RobotCtrl](https://img.wiki-power.com/d/wiki-media/img/20220416181125.jpeg)
+![RobotCtrl](https://media.wiki-power.com/img/20220416181125.jpeg)
 
 Project Repository: [**linyuxuanlin/RobotCtrl**](https://github.com/linyuxuanlin/RobotCtrl)
 
@@ -12,7 +12,7 @@ RobotCtrl - STM32 Universal Development Kit consists of three boards:
 
 ## Design Requirements
 
-![Design](https://img.wiki-power.com/d/wiki-media/img/20220527111854.png)
+![Design](https://media.wiki-power.com/img/20220527111854.png)
 
 Note: The following is a design summary. For specific details, please refer to the respective articles.
 
@@ -54,7 +54,7 @@ The enable switch controls the activation and deactivation of the voltage regula
 
 ## References and Acknowledgments
 
-![Image](https://img.wiki-power.com/d/wiki-media/img/20220416181139.jpeg)
+![Image](https://media.wiki-power.com/img/20220416181139.jpeg)
 
 This project is my personal graduation design. During the design, soldering, and debugging of the project, I encountered various challenges of all sizes. With the strong support of my advisor, colleagues, and friends, I was able to successfully overcome these challenges and achieve the honor of an outstanding graduation project. Thank you!
 

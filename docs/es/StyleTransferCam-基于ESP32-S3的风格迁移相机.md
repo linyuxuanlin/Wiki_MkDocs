@@ -1,6 +1,6 @@
 # StyleTransferCam - Cámara de transferencia de estilo basada en ESP32-S3
 
-![](https://img.wiki-power.com/d/wiki-media/img/202308152238959.png)
+![](https://media.wiki-power.com/img/202308152238959.png)
 
 Cuando el arte y la tecnología se encuentran, un nuevo mundo se despliega ante nosotros. Es un festín visual maravilloso y una exploración llena de posibilidades infinitas. StyleTransferCam es una cámara de transferencia de estilo basada en ESP32-S3. Utiliza una técnica de aprendizaje automático llamada "transferencia de estilo". Cuando presionas el botón integrado, captura la escena actual y la combina con una foto de estilo predefinido (como "Starry Night" de Van Gogh) para crear una obra única y original.
 
@@ -10,7 +10,7 @@ StyleTransferCam consta de los siguientes pasos principales:
 2. Iniciar automáticamente un programa Python de transferencia de estilo para procesar la foto y generar una versión estilizada.
 3. Si ESP32-S3 tiene una pantalla TFT incorporada, también puede mostrar la foto estilizada en la pantalla.
 
-![](https://img.wiki-power.com/d/wiki-media/img/202308152244791.png)
+![](https://media.wiki-power.com/img/202308152244791.png)
 
 ## Probar el botón integrado y el LED
 
@@ -48,7 +48,7 @@ void buttonInterrupt() {
 
 A continuación, escribimos un programa de Arduino que utiliza el botón integrado para controlar la captura de una foto con ESP32-S3 y cargarla en una ubicación de red específica. La ubicación de red se establece en el código como `serverName = "http://192.168.31.2:9000/upload"` y debe modificarse con la dirección de tu servidor backend. Utilizamos un servicio de carga de archivos Python en el backend (se explicará en los pasos siguientes), por lo que aquí debes cambiarlo por la dirección IP de la máquina que ejecuta este servicio (`9000` y `/upload` se configuran en el programa `receive-photo.py` que se menciona a continuación).
 
-```cpp title="Capture-and-Upload.ino"
+````cpp title="Capture-and-Upload.ino"
 #include "esp_camera.h"
 #include <WiFi.h>
 #include <HTTPClient.h>
@@ -221,8 +221,7 @@ if (config.pixel_format == PIXFORMAT_JPEG)
 
 WiFi.begin(ssid, password);
 WiFi.setSleep(false);
-```
-
+````
 
 ```cpp
 while (WiFi.status() != WL_CONNECTED)
@@ -509,7 +508,7 @@ Now, you can try running this Python program separately. If the program does not
 
 If this program runs successfully, you can directly run `receive-photo.py` to receive photos taken by ESP32-S3 and generate stylized photos in an automated way.
 
-![](https://img.wiki-power.com/d/wiki-media/img/202308152246623.png)
+![](https://media.wiki-power.com/img/202308152246623.png)
 
 ## References and Acknowledgements
 

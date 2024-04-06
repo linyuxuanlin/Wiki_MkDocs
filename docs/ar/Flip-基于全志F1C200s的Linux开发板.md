@@ -1,9 +1,9 @@
 ```markdown
 # Flip - لوحة تطوير Linux مبنية على معالج Allwinner F1C200s
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/20220527234815.jpeg)
+![صورة](https://media.wiki-power.com/img/20220527234815.jpeg)
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/20220527234855.jpeg)
+![صورة](https://media.wiki-power.com/img/20220527234855.jpeg)
 
 مستودع المشروع: [**linyuxuanlin/Flip**](https://github.com/linyuxuanlin/Flip)
 
@@ -43,15 +43,15 @@
 
 هنا نجد مخطط الهندسة المعمارية لمعالج F1C200s:
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/20220422152227.png)
+![صورة](https://media.wiki-power.com/img/20220422152227.png)
 
 وهذا هو رسم تخطيطي للاستخدام النموذجي:
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/20220513232027.png)
+![صورة](https://media.wiki-power.com/img/20220513232027.png)
 
 تعريف المنافذ:
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/20220422153239.png)
+![صورة](https://media.wiki-power.com/img/20220422153239.png)
 
 ## المراجع والشكر
 

@@ -1,9 +1,9 @@
-```markdown
+````markdown
 # Hack.init( ) 黑客马拉松
 
 —— Wight · Un sistema de iluminación descentralizado basado en la plataforma en la nube.
 
-![](https://img.wiki-power.com/d/wiki-media/img/wight.jpg)
+![](https://media.wiki-power.com/img/wight.jpg)
 
 Repositorio del proyecto: [**linyuxuanlin / Wight**](https://github.com/linyuxuanlin/Wight)
 
@@ -36,7 +36,9 @@ El proyecto se centra principalmente en un sistema de iluminación para farolas 
 #define CHECKIN1   A0
 #define CHECKIN2   D4
 ```
-```
+````
+
+````
 
 ```cpp
 int autostate = 2;
@@ -48,7 +50,7 @@ void buttons_function(uint8_t *payload, uint32_t len) // Función de botones (Au
     uint8_t SwitchKey2;
     aJsonClass aJson;
     aJsonObject *root = aJson.parse((char *)payload);
-    
+
     if (root == NULL)
     {
         aJson.deleteItem(root);
@@ -56,11 +58,11 @@ void buttons_function(uint8_t *payload, uint32_t len) // Función de botones (Au
     }
 
     aJsonObject *_switch = aJson.getObjectItem(root, "mode");
-    
+
     if (_switch != NULL)
     {
         SwitchKey = atoi(_switch->valuestring);
-        
+
         if (SwitchKey)
         {
             SerialUSB.println("Encendido automático");
@@ -116,9 +118,9 @@ void light_half_up()
     analogWrite(LEDPIN3, 80);    // Encender bombilla (mitad de intensidad)
     analogWrite(LEDPIN4, 80);    // Encender bombilla (mitad de intensidad)
 }
-```
+````
 
-```markdown
+````markdown
 # Código Traducido
 
 ```cpp
@@ -201,6 +203,7 @@ void bucle()
     delay(100);
 }
 ```
+````
 
 **FAQ**
 
@@ -212,6 +215,7 @@ void bucle()
 No ganamos el concurso esta vez. Sin embargo, el concurso nos ayudó a mejorar nuestras habilidades para programar y presentar, además de experimentar el trabajo extra y la presión de cumplir con los plazos. También conocimos a muchas personas y recibimos muchos obsequios como recuerdo.
 
 **Referencias y Agradecimientos**
+
 ```
 
 - **Miembros del equipo:** Lin Peijie, Huang Yuefeng, Zhang Ziyi
@@ -221,3 +225,4 @@ No ganamos el concurso esta vez. Sin embargo, el concurso nos ayudó a mejorar n
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+```

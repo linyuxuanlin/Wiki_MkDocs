@@ -1,6 +1,6 @@
 # Windows 初始化与软件推荐（旧）
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210117142759.jpg)
+![](https://media.wiki-power.com/img/20210117142759.jpg)
 
 > 更新的文章请见 [**Personal Onboarding Workflow (Windows)**](https://wiki-power.com/Personal_Onboarding_Workflow_%28Windows%29/)
 

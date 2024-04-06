@@ -6,33 +6,33 @@
 
 **املأ النموذج كما هو موضح في الصورة أدناه ثم انقر على زر `Submit`:**
 
-![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564402348383.png)
+![](https://media.wiki-power.com/img/UTOOLS1564402348383.png)
 
 **انقر على زر التنزيل:**
 
-![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564402469518.png)
+![](https://media.wiki-power.com/img/UTOOLS1564402469518.png)
 
 ## 2. التثبيت
 
 **افتح ملف التثبيت الذي تم تنزيله واتبع الخطوات التالية:**
 
-![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405005991.png)
+![](https://media.wiki-power.com/img/UTOOLS1564405005991.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405034468.png)
+![](https://media.wiki-power.com/img/UTOOLS1564405034468.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405123578.png)
+![](https://media.wiki-power.com/img/UTOOLS1564405123578.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405166784.png)
+![](https://media.wiki-power.com/img/UTOOLS1564405166784.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405201092.png)
+![](https://media.wiki-power.com/img/UTOOLS1564405201092.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405260737.png)
+![](https://media.wiki-power.com/img/UTOOLS1564405260737.png)
 
 **قم بتثبيت حزمة الأشباه الموصى بها (نحتاج إلى STM32 F1 و F4 سلسلة):**
 
-![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405574756.png)
+![](https://media.wiki-power.com/img/UTOOLS1564405574756.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564405648731.png)
+![](https://media.wiki-power.com/img/UTOOLS1564405648731.png)
 
 ## 3. التفعيل
 
@@ -40,23 +40,23 @@
 
 **أغلق MDK، ثم انقر بزر الماوس الأيمن بصفتك مسؤولًا:**
 
-![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406135091.png)
+![](https://media.wiki-power.com/img/UTOOLS1564406135091.png)
 
 **انتقل إلى شريط القائمة - File - License Management:**
 
-![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406171844.png)
+![](https://media.wiki-power.com/img/UTOOLS1564406171844.png)
 
 **قم بنسخ سلسلة "CID" هذه:**
 
-![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406230209.png)
+![](https://media.wiki-power.com/img/UTOOLS1564406230209.png)
 
 **قم بلصقها في أداة التفعيل واختر "Arm" من قائمة السقوط "Target" ، ثم انقر على "Generate" لإنشاء رمز التفعيل:**
 
-![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406292113.png)
+![](https://media.wiki-power.com/img/UTOOLS1564406292113.png)
 
 **انسخ رمز التفعيل والصقه في MDK ، ثم انقر على "Add LIC":**
 
-![](https://img.wiki-power.com/d/wiki-media/img/UTOOLS1564406431978.png)
+![](https://media.wiki-power.com/img/UTOOLS1564406431978.png)
 
 ## المراجعة والشكر
 

@@ -1,7 +1,7 @@
-```markdown
+````markdown
 # الوسط المحلي - برنامج قائمة الملفات Alist الذي يدعم التخزين المتعدد
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/202304141808001.png)
+![صورة](https://media.wiki-power.com/img/202304141808001.png)
 
 **Alist** هو برنامج قائمة الملفات الذي يدعم أنواعًا متعددة من التخزين مثل التخزين المحلي وسحابة Alibaba وOneDrive وGoogleDrive وBaidu وKuaipan وLanzou وS3 وFTP / SFTP، مزود بمشغل فيديو عبر الإنترنت ومعاينة ملفات متنوعة (متوافق مع Office وPDF وMarkdown وغيرها)، بالإضافة إلى وظيفة التنزيل الغير متصل.
 
@@ -25,6 +25,7 @@ services:
       - UMASK=022
     restart: always
 ```
+````
 
 (اختياري) يُوصى بإنشاء ملف `.env` في نفس مستوى ملف `compose.yaml` وتخصيص متغيرات البيئة الخاصة بك فيه. إذا كنت لا ترغب في استخدام متغيرات البيئة، فيمكنك أيضًا تخصيص المعلمات مباشرة داخل `compose.yaml` (على سبيل المثال، استبدل `${STACK_NAME}` بـ `alist`).
 
@@ -53,7 +54,9 @@ APP_PORT=xxxx # حدد منفذ الوصول الخاص بك، اختر منفذ
 
 > عنوان النص: <https://wiki-power.com/>
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+
 ```
 
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
+```

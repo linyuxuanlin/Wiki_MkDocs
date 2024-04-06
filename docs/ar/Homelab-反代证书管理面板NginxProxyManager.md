@@ -1,6 +1,6 @@
 # الرئيسية - لوحة إدارة شهادة الاستضافة المعكوسة Nginx Proxy Manager
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/20230408182138.png)
+![صورة](https://media.wiki-power.com/img/20230408182138.png)
 
 **Nginx Proxy Manager** هو لوحة تحكم رسومية لـ Nginx، تمكّن المستخدمين من تكوين الاستضافة المعكوسة بسهولة وطلب شهادات SSL للمواقع عبر واجهة الويب دون الحاجة إلى معرفة تفاصيل داخلية متعلقة بـ Nginx أو Let's Encrypt.
 

@@ -1,6 +1,6 @@
 # Homelab - Software de pizarra WeKan con abundantes funciones
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230508175842.png)
+![](https://media.wiki-power.com/img/20230508175842.png)
 
 **WeKan** es una destacada aplicación de pizarra de código abierto que es flexible, fácil de usar y altamente eficiente. Esta aplicación es ideal para la gestión colaborativa de tareas, proyectos y flujos de trabajo en equipos. WeKan proporciona una interfaz de usuario sencilla pero poderosa que permite a los usuarios crear múltiples pizarras, agregar listas y tarjetas a cada una, y asignar tareas a diferentes miembros del equipo, lo que facilita la gestión de proyectos y el seguimiento del progreso.
 

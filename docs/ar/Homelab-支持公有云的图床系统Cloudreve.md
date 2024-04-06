@@ -1,6 +1,6 @@
 # الورشة المنزلية - نظام Cloudreve لدعم السحابة العامة
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230304195423.png)
+![](https://media.wiki-power.com/img/20230304195423.png)
 
 **Cloudreve** هو نظام ملفات سحابي عام يدعم عدة محركات تخزين سحابي ويدعم الاستخدام المحلي والفرعي ومخزن الشبكة الداخلية ومخزن البيانات الشخصي من شركات مثل QiNiu وAlibaba Cloud OSS وTencent Cloud COS وUpYun وOneDrive وبروتوكول S3 المتوافق. كما يتيح النظام التفاعل مع Aria2 للتنزيل دون اتصال ويدعم العديد من المستخدمين وتحميل وإدارة الملفات بالسحب والإفلات ومعاينة وتحرير الوثائق عبر الإنترنت ودعم WebDAV. السيناريو النموذجي للاستخدام هو مشاركة الصور الشخصية أو إدارة ملفات الخدمة السحابية الشخصية.
 
@@ -58,7 +58,7 @@ volumes:
 
 (اختياري) نوصي بإنشاء ملف `.env` في نفس الدليل الذي يحتوي على `compose.yaml` وتخصيص المتغيرات البيئية الخاصة بك. إذا لم ترغب في استخدام المتغيرات البيئية، يمكنك أيضًا تخصيص المعلمات مباشرة داخل `compose.yaml` (على سبيل المثال، استبدال `${STACK_NAME}` بـ `cloudreve`).
 
-```markdown
+````markdown
 ```dotenv title=".env"
 STACK_NAME=cloudreve
 STACK_DIR=xxx # Custom project storage path, e.g., ./cloudreve
@@ -72,6 +72,7 @@ ARIA2_VERSION=latest
 ARIA2_RPC_SECRET=xxx # ARIA2 password
 ARIA2_RPC_PORT=6800
 ```
+````
 
 Finally, in the same directory as `compose.yaml`, execute the `docker compose up -d` command to start the orchestrated containers.
 
@@ -92,7 +93,9 @@ I use the image naming convention: `{year}{month}{day}{hour}{minute}{second}{ext
 
 > عنوان النص: <https://wiki-power.com/>
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+
 ```
 
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
+```

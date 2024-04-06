@@ -23,7 +23,7 @@ Repositorio en GitHub: [**linyuxuanlin/DashDAP**](https://github.com/linyuxuanli
 
 Edición de la versión 2.0
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200613154907.jpg)
+![](https://media.wiki-power.com/img/20200613154907.jpg)
 
 Vista previa del proyecto:
 
@@ -51,7 +51,7 @@ CMSIS-DAP / DAP-Link tiene las siguientes ventajas en comparación con J-Link / 
 
 Se utiliza un oscilador pasivo Murata de 8 MHz, modelo CSTCE8M00G53-R0, encapsulado en 3213, con una capacidad de 15 pF. ¿Por qué se eligió este oscilador? Porque tiene un tamaño relativamente pequeño y los dos condensadores de oscilación están integrados en él, lo que simplifica mucho el diseño de hardware. En cuanto a la forma de nombrar los modelos de osciladores de Murata, se puede consultar la siguiente tabla:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200612143451.jpg)
+![](https://media.wiki-power.com/img/20200612143451.jpg)
 
 ### Fuente de alimentación
 

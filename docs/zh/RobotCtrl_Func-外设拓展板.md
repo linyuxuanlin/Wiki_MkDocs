@@ -1,6 +1,6 @@
 # RobotCtrl_Func - 外设拓展板
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220527113505.png)
+![](https://media.wiki-power.com/img/20220527113505.png)
 
 项目仓库：[**linyuxuanlin/RobotCtrl/RobotCtrl_Func**](https://github.com/linyuxuanlin/RobotCtrl/tree/main/RobotCtrl_MultiBoard_Project/RobotCtrl_Func)
 

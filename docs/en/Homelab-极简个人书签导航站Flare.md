@@ -1,6 +1,6 @@
 # Homelab - Minimalist Personal Bookmark Navigation Site Flare
 
-![Flare](https://img.wiki-power.com/d/wiki-media/img/20230410170939.png)
+![Flare](https://media.wiki-power.com/img/20230410170939.png)
 
 **Flare** is a lightweight, fast, and visually appealing personal navigation page. It doesn't rely on any databases, and its application data is completely open and transparent. It supports online editing and comes with over 6,000 Material Design Icons.
 

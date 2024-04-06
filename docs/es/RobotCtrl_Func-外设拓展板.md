@@ -1,6 +1,6 @@
 # RobotCtrl_Func - Expansion Board for Peripherals
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20220527113505.png)
+![Imagen](https://media.wiki-power.com/img/20220527113505.png)
 
 Repositorio del proyecto: [**linyuxuanlin/RobotCtrl/RobotCtrl_Func**](https://github.com/linyuxuanlin/RobotCtrl/tree/main/RobotCtrl_MultiBoard_Project/RobotCtrl_Func)
 

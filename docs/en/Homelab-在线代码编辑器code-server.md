@@ -1,6 +1,6 @@
 # Homelab - Online Code Editor code-server
 
-![](https://img.wiki-power.com/d/wiki-media/img/202304132214418.png)
+![](https://media.wiki-power.com/img/202304132214418.png)
 
 **code-server** is a browser-based version of VS Code. The advantage over the desktop version is that you can code online with any device, including devices like smartphones and tablets that cannot directly install VS Code.
 

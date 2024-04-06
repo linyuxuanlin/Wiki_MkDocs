@@ -12,11 +12,11 @@
 
 ### تكوين المنفذ داخل CubeMX
 
-![CubeMX](https://img.wiki-power.com/d/wiki-media/img/20210207100329.png)
+![CubeMX](https://media.wiki-power.com/img/20210207100329.png)
 
 وفقًا للمخطط الأساسي، المنفذ الذي سنستخدمه في تجربة التواصل هو `USART1` ويُمثلهم `PA9` و`PA10`. لذا، يتعين عليك أولاً تكوين هذين السنتين كوظيفة إرسال واستقبال لمنفذ `USART1` داخل CubeMX. بعد ذلك، انتقل إلى علامة `USART1` في الجانب الأيسر وحدد الوضع (Mode) كونه غير متزامن (Asynchronous) وقم بتعديل معلمات مثل معدل الباود (Baud Rate) وغيرها على الجانب السفلي كما يلي:
 
-![CubeMX](https://img.wiki-power.com/d/wiki-media/img/20210207100941.png)
+![CubeMX](https://media.wiki-power.com/img/20210207100941.png)
 
 التفاصيل عن المعلمات:
 
@@ -29,13 +29,13 @@
 
 أخيرًا، تمكين انقطاع المنفذ السلسلي USART1 داخل علامة NVIC، كما هو موضح في الصورة:
 
-![CubeMX](https://img.wiki-power.com/d/wiki-media/img/20210207104641.png)
+![CubeMX](https://media.wiki-power.com/img/20210207104641.png)
 
 ### تكوين المنفذ في الشيفرة
 
 أولاً، يجب إضافة الشيفرة التالية إلى نهاية الملف `stm32f4xx_it.c`:
 
-```c title="stm32f4xx_it.c
+````c title="stm32f4xx_it.c
 
 ```c title="main.c"
 /* المتغيرات الخاصة -----------------------------------------------------------*/
@@ -45,7 +45,7 @@ uint8_t aTxBuffer[] = "اختبار USART\r\n"; // سلسلة تُرسل
 uint8_t aRxBuffer[20]; // سلسلة تُستقبل
 
 /* USER CODE END PV */
-```
+````
 
 ```c title="stm32f4xx_it.c"
 /* المتغيرات الخاصة -----------------------------------------------------------*/
@@ -85,7 +85,7 @@ HAL_UART_Transmit(&huart1, (uint8_t*) aTxBuffer, sizeof(aTxBuffer) - 1, 0xFFFF);
 
 عند الاتصال بالمنفذ التسلسلي، ستقوم أولاً بطباعة محتوى `aTxBuffer`، ثم ستقوم بإعادة طباعة المحتوى الذي تم استقباله في `aRxBuffer`. يمكنك الرؤية في الصورة أدناه:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210403232628.png)
+![](https://media.wiki-power.com/img/20210403232628.png)
 
 ## المراجع والشكر
 

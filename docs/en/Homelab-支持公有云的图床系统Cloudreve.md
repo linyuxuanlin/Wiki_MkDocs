@@ -1,6 +1,6 @@
 # Homelab - Cloudreve, a Public Cloud Image Hosting System Supporting Multiple Cloud Providers
 
-![Cloudreve](https://img.wiki-power.com/d/wiki-media/img/20230304195423.png)
+![Cloudreve](https://media.wiki-power.com/img/20230304195423.png)
 
 **Cloudreve** is a public cloud file system that supports multiple cloud storage providers, including local storage, remote hosts, Qiniu, Alibaba Cloud OSS, Tencent Cloud COS, UpYun, OneDrive, and S3-compatible protocols as storage endpoints. It can also be integrated with Aria2 for offline downloads, supports multiple users, drag-and-drop uploads/management, online preview/editing, WebDAV, and more. It is typically used for personal image hosting or web-based file management.
 
@@ -91,6 +91,8 @@ I adhere to the image naming convention: `{year}{month}{day}{hour}{minute}{secon
 
 > Original: <https://wiki-power.com/>  
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
+
 ```
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.
+```

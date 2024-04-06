@@ -1,7 +1,7 @@
-```markdown
+````markdown
 # Homelab - أداة مذكرات الـ Homelab
 
-![](https://img.wiki-power.com/d/wiki-media/img/202304111548420.png)
+![](https://media.wiki-power.com/img/202304111548420.png)
 
 **memos** هو أداة مذكرات مفتوحة المصدر قابلة للاستضافة ذات العديد من الميزات. يدعم تنسيق Markdown، مشاركة عامة، تضمين iframe، إدارة العلامات، عرض التقويم، وإمكانية نقل البيانات والنسخ الاحتياطي البسيط.
 
@@ -21,6 +21,7 @@ services:
       - ${STACK_DIR}:/var/opt/memos
     restart: always
 ```
+````
 
 (اختياري) يُفضل إنشاء ملف `.env` في نفس مجلد `compose.yaml` وتخصيص المتغيرات البيئية الخاصة بك. إذا كنت لا ترغب في استخدام المتغيرات البيئية، يمكنك أيضًا تخصيص المعلمات مباشرة في ملف `compose.yaml` (على سبيل المثال، استبدال `${STACK_NAME}` بـ `memos`).
 
@@ -51,6 +52,8 @@ APP_PORT=xxxx # قم بتخصيص منفذ الوصول الخاص بك، اخت
 
 > عنوان النص: <https://wiki-power.com/>
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+
 ```
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
+```

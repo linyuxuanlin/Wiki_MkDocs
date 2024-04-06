@@ -3,7 +3,7 @@ id: Homelab-播客订阅管理器Podgrab
 title: Homelab - 播客订阅管理器 Podgrab
 ---
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230316131448.png)
+![](https://media.wiki-power.com/img/20230316131448.png)
 
 **Podgrab** 是一个自托管的播客管理器 / 下载器 / 存档工具，可通过 RSS 或内置搜索引擎搜索订阅播客节目，可自动下载新上线节目，并且自带 web 播放器。
 

@@ -14,7 +14,7 @@ JTAG, cuyo nombre completo es Joint Test Action Group (Grupo de Acción de Prueb
 
 Su topología, conocida como "cadena en serie", se presenta a continuación:
 
-![JTAG Topología](https://img.wiki-power.com/d/wiki-media/img/20210209191921.png)
+![JTAG Topología](https://media.wiki-power.com/img/20210209191921.png)
 
 JTAG generalmente utiliza 5 pines:
 
@@ -48,9 +48,9 @@ Ventajas de SWD:
 
 Por lo general, en una placa de microcontroladores, se encuentran ranuras de programación que son compatibles tanto con JTAG como con SWD:
 
-![Compatibilidad JTAG y SWD](https://img.wiki-power.com/d/wiki-media/img/20210210122923.jpg)
+![Compatibilidad JTAG y SWD](https://media.wiki-power.com/img/20210210122923.jpg)
 
-![Compatibilidad JTAG y SWD](https://img.wiki-power.com/d/wiki-media/img/20210210123714.png)
+![Compatibilidad JTAG y SWD](https://media.wiki-power.com/img/20210210123714.png)
 
 - TCK es compatible con SWCLK.
 - TMS es compatible con SWDIO.

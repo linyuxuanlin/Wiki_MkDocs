@@ -1,6 +1,6 @@
 # Homelab - Cross-Device Synchronization Tool: Syncthing
 
-![Syncthing Logo](https://img.wiki-power.com/d/wiki-media/img/202304111529987.png)
+![Syncthing Logo](https://media.wiki-power.com/img/202304111529987.png)
 
 **Syncthing** is a free and open-source file synchronization application that allows you to sync files and folders across multiple devices while supporting incremental synchronization. I use it to back up data from my server to a NAS for centralized management.
 

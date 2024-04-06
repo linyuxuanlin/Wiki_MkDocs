@@ -13,7 +13,7 @@ git config --global user.email "البريد الإلكتروني@example.com"
 
 ## الأوامر الأساسية
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200216204934.png)
+![](https://media.wiki-power.com/img/20200216204934.png)
 
 ### العمليات الأساسية
 
@@ -58,11 +58,11 @@ git config --global user.email "البريد الإلكتروني@example.com"
 
 ## إدارة الفروع
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200217195056.png)
+![](https://media.wiki-power.com/img/20200217195056.png)
 
 Here is the translation of the provided text into Arabic:
 
-```markdown
+````markdown
 الفرع هو عبارة عن عالم موازي في أفلام الخيال العلمي. عندما تكون تعمل بجد أمام الكمبيوتر لتعلم Git، فإن نسخة أخرى منك تعمل بجد في عالم موازي لتعلم SVN.
 
 إذا لم تتداخل العوالم الموازية، فليس لديها أي تأثير على حياتك الحالية. ولكن في وقت ما، تتلاقى العوالم الموازية، والنتيجة هي أنك ستتعلم Git وتتعلم SVN!
@@ -71,7 +71,7 @@ Here is the translation of the provided text into Arabic:
 
 الآن، بوجود الفروع، ليس هناك ما يدعو للقلق. يمكنك إنشاء فرع خاص بك لا يمكن للآخرين رؤيته، والعمل بحرية على هذا الفرع. يمكنك القيام بالتحميل عندما تريد، وبعد الانتهاء من التطوير، يمكنك دمج الفرع بشكل مرة واحدة في الفرع الأصلي. بهذه الطريقة، تبقى عملك آمنًا ولا تؤثر على أعمال الآخرين.
 
-![رسم توضيحي](https://img.wiki-power.com/d/wiki-media/img/20200217202649.png)
+![رسم توضيحي](https://media.wiki-power.com/img/20200217202649.png)
 
 1. إنشاء فرع جديد والتبديل إليه: `git switch -c branch_name`
    - `-c` تعني إنشاء فرع والتبديل إليه
@@ -103,5 +103,6 @@ Here is the translation of the provided text into Arabic:
 > عنوان النص: <https://wiki-power.com/>  
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
 ```
+````
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.

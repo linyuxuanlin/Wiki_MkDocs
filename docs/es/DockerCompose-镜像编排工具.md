@@ -1,6 +1,6 @@
 # Docker Compose - Herramienta de Orquestación de Imágenes
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210117130925.jpg)
+![Imagen](https://media.wiki-power.com/img/20210117130925.jpg)
 
 Docker Compose es una herramienta de orquestación de imágenes de Docker. Se recomienda utilizar Docker Compose como la forma predeterminada de trabajar con Docker, ya que no solo facilita la configuración y implementación de imágenes, sino que también permite configurar servicios con múltiples imágenes de manera más sencilla, incluso diferenciando su orden de inicio, algo que no se puede lograr con el uso de comandos convencionales.
 
@@ -149,7 +149,6 @@ En un archivo `compose.yaml`, generalmente incluirá los siguientes parámetros:
 ## Algunos comandos comunes de Docker Compose
 
 Aquí tienes algunos comandos comunes de Docker Compose que se utilizan para administrar y operar los servicios definidos en el archivo `docker-compose.yaml`:
-
 
 - `docker compose up`: Este comando construye las imágenes definidas en el archivo Compose y arranca los contenedores. Si es necesario, construirá automáticamente las imágenes (si el Dockerfile ha cambiado) y luego iniciará todos los servicios definidos. Para iniciar en segundo plano, agrega el parámetro `-d`.
 

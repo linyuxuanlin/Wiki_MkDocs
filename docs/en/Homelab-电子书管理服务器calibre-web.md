@@ -1,6 +1,6 @@
 # Homelab - E-book Management Server calibre-web
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210429125418.png)
+![](https://media.wiki-power.com/img/20210429125418.png)
 
 **calibre-web** is an all-in-one e-book solution based on Calibre. It allows you to read e-books on a web interface and integrates the calibre-server service, along with e-book format conversion.
 
@@ -61,11 +61,12 @@ If you forget your password, you can download the `app.db` database from `calibr
 SELECT * FROM 'user' LIMIT 0,30 -- You can also manually switch to the table named 'user'.
 ```
 
-```markdown
+````markdown
 ```sql
 -- Please replace 'xxx' with your current username
 UPDATE user SET password = 'pbkdf2:sha256:150000$ODedbYPS$4d1bd12adb1eb63f78e49873cbfc731e35af178cb9eb6b8b62c09dcf8db76670' WHERE name = 'xxx';
 ```
+````
 
 Replace the modified `app.db` with the original one, and then log in with the new password 'hello'.
 
@@ -76,7 +77,9 @@ Replace the modified `app.db` with the original one, and then log in with the ne
 
 > Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
+
 ```
 
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.
+```

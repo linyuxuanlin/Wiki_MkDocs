@@ -47,7 +47,7 @@ Basic principles:
 
 ### Maintain the Integrity of Signal Return Planes
 
-![Image](https://img.wiki-power.com/d/wiki-media/img/20211215190631.png)
+![Image](https://media.wiki-power.com/img/20211215190631.png)
 
 As shown, if the signal return plane is cut, the signal current cannot follow the optimal (shortest) path back to the source. This can lead to unpredictable alternate return paths and increase the loop area.
 
@@ -67,34 +67,38 @@ Common EMC components include common-mode inductors, ferrite beads, and filterin
 
 Common filter models:
 
-![Image](https://img.wiki-power.com/d/wiki-media/img/20211219173751.png)
+![Image](https://media.wiki-power.com/img/20211219173751.png)
 
 ### Common-Mode Inductors
 
 Equivalent models for common-mode inductors:
 
-![Image](https://img.wiki-power.com/d/wiki-media/img/20211219173856.png)
+![Image](https://media.wiki-power.com/img/20211219173856.png)
 
-![Image](https://img.wiki-power.com/d/wiki-media/img/20211219174546.png)
+![Image](https://media.wiki-power.com/img/20211219174546.png)
 
 ### Ferrite Beads
 
 Sure, here's the translated text with the original markdown format:
 
 ### Introduction to Ferrite Beads and Selection
+
 For information on ferrite beads and their selection, please refer to the [**Basic Components - Inductors and Ferrite Beads · Ferrite Beads**](https://wiki-power.com/%E5%9F%BA%E6%9C%AC%E5%85%83%E5%99%A8%E4%BB%B6-%E7%94%B5%E6%84%9F%E4%B8%8E%E7%A3%81%E7%8F%A0#%E7%A3%81%E7%8F%A0) section.
 
 ### Filter Capacitors
+
 To learn about capacitors and their selection, please visit the [**Basic Components - Capacitors**](https://wiki-power.com/%E5%9F%BA%E6%9C%AC%E5%85%83%E5%99%A8%E4%BB%B6-%E7%94%B5%E5%AE%B9) section.
 
 ## EMC Design for PCB 🚧
 
 ### 3W and 20H Principles
+
 The 3W principle indicates that when the center-to-center distance between lines is not less than 3 times the line width, it can maintain a 70% separation of the electric field between lines without mutual interference. To achieve a 98% electric field separation, you can use the 10W rule.
 
 The 20H principle ensures that the edge of the power plane is inset by at least 20 times the interplane spacing from the edge of the ground plane. This is done to suppress edge radiation effects and can confine 70% of the electric field within the ground edge. Inset by 100H can confine 98% of the electric field inside.
 
 ## References and Acknowledgments
+
 - [Introduction to Electromagnetic Compatibility](https://blog.infonet.io/2021/04/04/%E7%94%B5%E7%A3%81%E5%85%BC%E5%AE%B9%E4%BB%8B%E7%BB%8D/)
 - [Electromagnetic Compatibility (EMC): A Rough Guide to EMC Design](https://zhuanlan.zhihu.com/p/142866381)
 - [EMI/EMC Design Cheat Sheet – A Must-Have Handbook for Electronic Product Design Engineers](https://www.mr-wu.cn/emc-emi-she-ji-mi-ji/)

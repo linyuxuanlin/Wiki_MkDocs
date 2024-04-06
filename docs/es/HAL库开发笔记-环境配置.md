@@ -36,17 +36,17 @@ Configure según las especificaciones de la placa.
 
 Por ejemplo, siga el esquema de la placa:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210205205030.png)
+![](https://media.wiki-power.com/img/20210205205030.png)
 
 Simplemente configure las opciones de `HSE` y `LSE` para utilizar osciladores de cristal externos:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210205205140.png)
+![](https://media.wiki-power.com/img/20210205205140.png)
 
 ### Configuración del árbol de reloj
 
 Realice la configuración en la interfaz de `Clock Configuration`.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210205205550.png)
+![](https://media.wiki-power.com/img/20210205205550.png)
 
 Siga estos pasos de acuerdo con la imagen anterior:
 
@@ -57,9 +57,9 @@ Siga estos pasos de acuerdo con la imagen anterior:
 
 ### Configuración de opciones de gestión de proyectos
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210130095224.png)
+![](https://media.wiki-power.com/img/20210130095224.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210130095239.png)
+![](https://media.wiki-power.com/img/20210130095239.png)
 
 ## Diferencias entre la biblioteca HAL y la biblioteca estándar
 

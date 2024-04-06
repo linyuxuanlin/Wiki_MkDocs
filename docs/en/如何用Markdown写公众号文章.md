@@ -8,7 +8,7 @@ As we all know, WeChat Official Accounts use a rich text editor that cannot dire
 
 [**MD2WeChat**](https://md2wechat.wiki-power.com/) is a web tool I customized based on the open-source project [lyricat/wechat-format](https://github.com/lyricat/wechat-format). It can easily convert Markdown syntax into rich text:
 
-[![](https://img.wiki-power.com/d/wiki-media/img/20210216125752.png)](https://md2wechat.wiki-power.com/)
+[![](https://media.wiki-power.com/img/20210216125752.png)](https://md2wechat.wiki-power.com/)
 
 Paste the Markdown article into the left column and click the "Copy" button in the right column. Then, you can paste it into the editor of the WeChat Official Accounts.
 

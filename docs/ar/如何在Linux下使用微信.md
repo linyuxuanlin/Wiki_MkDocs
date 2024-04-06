@@ -1,6 +1,6 @@
 # كيفية استخدام WeChat على نظام Linux
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200311141406.png)
+![](https://media.wiki-power.com/img/20200311141406.png)
 
 DoChat (الإصدار المعبأ) هو تطبيق WeChat المحمول لنظام Linux.
 
@@ -12,7 +12,7 @@ DoChat (الإصدار المعبأ) هو تطبيق WeChat المحمول لن�
 
 المتطلبات: نظام Ubuntu Linux مع سطح المكتب وتثبيت Docker.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200311141459.png)
+![](https://media.wiki-power.com/img/20200311141459.png)
 
 ## المراجع والشكر
 

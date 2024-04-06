@@ -1,6 +1,6 @@
 # Docker Fundamentals
 
-![Image](https://img.wiki-power.com/d/wiki-media/img/20210116153041.png)
+![Image](https://media.wiki-power.com/img/20210116153041.png)
 
 As we all know, one of the most troublesome aspects of software development is environment configuration. Differences in runtime environments can lead to unexpected results, and Docker can help prevent such issues.
 
@@ -41,7 +41,7 @@ sudo sh ./get-docker.sh --dry-run
 
 Since Docker runs on and depends on the Linux environment, it incurs minimal efficiency overhead. However, if deploying Docker on other systems, a virtual Linux environment must be installed first.
 
-![Image](https://img.wiki-power.com/d/wiki-media/img/20230708005714.png)
+![Image](https://media.wiki-power.com/img/20230708005714.png)
 
 For instructions on installing Docker on Windows, please refer to the official documentation [**Install Docker Desktop on Windows**](https://docs.docker.com/desktop/install/windows-install/).
 

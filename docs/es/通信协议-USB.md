@@ -2,42 +2,42 @@
 
 ## Versiones de USB
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211129094423.png)
+![](https://media.wiki-power.com/img/20211129094423.png)
 
 ## Interfaz mecánica de USB
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211129094855.png)
+![](https://media.wiki-power.com/img/20211129094855.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211129094944.png)
+![](https://media.wiki-power.com/img/20211129094944.png)
 
 Definición de la interfaz - USB estándar:
 
-| Pin  | Función               |
-| ---- | --------------------- |
-| 1    | VBUS (4.75-5.25 V)    |
-| 2    | D-                    |
-| 3    | D+                    |
-| 4    | GND                   |
+| Pin | Función            |
+| --- | ------------------ |
+| 1   | VBUS (4.75-5.25 V) |
+| 2   | D-                 |
+| 3   | D+                 |
+| 4   | GND                |
 
 Definición de la interfaz - Mini USB:
 
-| Pin  | Función               | Color |
-| ---- | --------------------- | ----- |
-| 1    | VBUS (4.75-5.25 V)    | Rojo  |
-| 2    | D-                    | Blanco|
-| 3    | D+                    | Verde |
-| 4    | ID                    |       |
-| 5    | GND                   | Negro |
+| Pin | Función            | Color  |
+| --- | ------------------ | ------ |
+| 1   | VBUS (4.75-5.25 V) | Rojo   |
+| 2   | D-                 | Blanco |
+| 3   | D+                 | Verde  |
+| 4   | ID                 |        |
+| 5   | GND                | Negro  |
 
 ## Compatibilidad entre conectores USB y versiones
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211129094829.png)
+![](https://media.wiki-power.com/img/20211129094829.png)
 
 ---
 
 ## USB Tipo-C
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220520105345.png)
+![](https://media.wiki-power.com/img/20220520105345.png)
 
 ### Tipos de puertos
 
@@ -58,55 +58,55 @@ El conector Type-C tiene una versión macho (conector) y una versión hembra (z�
 
 Zócalo Type-C:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220520134239.png)
+![](https://media.wiki-power.com/img/20220520134239.png)
 
 Conector Type-C:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220520134304.png)
+![](https://media.wiki-power.com/img/20220520134304.png)
 
 Diagrama de conexión (funcionalidad completa):
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220520140019.png)
+![](https://media.wiki-power.com/img/20220520140019.png)
 
 Definición de pines:
 
-| Pin  | Nombre | Función           | Detalles                                          |
-| ---- | ------ | ----------------- | ------------------------------------------------- |
-| A1   | GND    | Alimentación      | Mínimo soporte de 60W (en combinación con VBUS)    |
-| A2   | TX1+   | USB3.1 o Modo Alt | Forma un par diferencial de 10 Gbps con TX1-       |
-| A3   | TX1-   | USB3.1 o Modo Alt | Forma un par diferencial de 10 Gbps con TX1+       |
-| A4   | VBUS   | Alimentación      | Mínimo soporte de 60W (en combinación con VBUS)    |
-| A5   | CC1    | CC o VCONN       | Utilizado para detección de dirección, capacidad de corriente y comunicación BMC USB2.0 |
-| A6   | D+     | USB2.0            | —                                                |
-| A7   | D-     | USB2.0            | —                                                |
-| A8   | SBU1   | Modo Alt          | Señal de banda lateral de baja velocidad, solo para uso en Modo Alt |
-| A9   | VBUS   | Alimentación      | Mínimo soporte de 60W (en combinación con VBUS)    |
-| A10  | RX2-   | USB3.1 o Modo Alt | Forma un par diferencial de 10 Gbps con RX2+       |
-| A11  | RX2+   | USB3.1 o Modo Alt | Forma un par diferencial de 10 Gbps con RX2-       |
-| A12  | GND    | Alimentación      | Mínimo soporte de 60W (en combinación con VBUS)    |
-| B1   | GND    | Alimentación      | Mínimo soporte de 60W (en combinación con VBUS)    |
-| B2   | TX2+   | USB3.1 o Modo Alt | Forma un par diferencial de 10 Gbps con TX2-       |
-| B3   | TX2-   | USB3.1 o Modo Alt | Forma un par diferencial de 10 Gbps con TX2+       |
-| B4   | VBUS   | Alimentación      | Mínimo soporte de 60W (en combinación con VBUS)    |
-| B5   | CC2    | CC o VCONN       | Utilizado para detección de dirección, capacidad de corriente y comunicación BMC USB2.0 |
-| B6   | D+     | USB2.0            | —                                                |
-| B7   | D-     | USB2.0            | —                                                |
-| B8   | SBU2   | Modo Alt          | Señal de banda lateral de baja velocidad, solo para uso en Modo Alt |
-| B9   | VBUS   | Alimentación      | Mínimo soporte de 60W                            |
-| B10  | RX1-   | USB3.1 o Modo Alt | Forma un par diferencial de 10 Gbps con RX1+       |
-| B11  | RX1+   | USB3.1 o Modo Alt | Forma un par diferencial de 10 Gbps con RX1-       |
-| B12  | GND    | Alimentación      | Mínimo soporte de 60W                            |
+| Pin | Nombre | Función           | Detalles                                                                                |
+| --- | ------ | ----------------- | --------------------------------------------------------------------------------------- |
+| A1  | GND    | Alimentación      | Mínimo soporte de 60W (en combinación con VBUS)                                         |
+| A2  | TX1+   | USB3.1 o Modo Alt | Forma un par diferencial de 10 Gbps con TX1-                                            |
+| A3  | TX1-   | USB3.1 o Modo Alt | Forma un par diferencial de 10 Gbps con TX1+                                            |
+| A4  | VBUS   | Alimentación      | Mínimo soporte de 60W (en combinación con VBUS)                                         |
+| A5  | CC1    | CC o VCONN        | Utilizado para detección de dirección, capacidad de corriente y comunicación BMC USB2.0 |
+| A6  | D+     | USB2.0            | —                                                                                       |
+| A7  | D-     | USB2.0            | —                                                                                       |
+| A8  | SBU1   | Modo Alt          | Señal de banda lateral de baja velocidad, solo para uso en Modo Alt                     |
+| A9  | VBUS   | Alimentación      | Mínimo soporte de 60W (en combinación con VBUS)                                         |
+| A10 | RX2-   | USB3.1 o Modo Alt | Forma un par diferencial de 10 Gbps con RX2+                                            |
+| A11 | RX2+   | USB3.1 o Modo Alt | Forma un par diferencial de 10 Gbps con RX2-                                            |
+| A12 | GND    | Alimentación      | Mínimo soporte de 60W (en combinación con VBUS)                                         |
+| B1  | GND    | Alimentación      | Mínimo soporte de 60W (en combinación con VBUS)                                         |
+| B2  | TX2+   | USB3.1 o Modo Alt | Forma un par diferencial de 10 Gbps con TX2-                                            |
+| B3  | TX2-   | USB3.1 o Modo Alt | Forma un par diferencial de 10 Gbps con TX2+                                            |
+| B4  | VBUS   | Alimentación      | Mínimo soporte de 60W (en combinación con VBUS)                                         |
+| B5  | CC2    | CC o VCONN        | Utilizado para detección de dirección, capacidad de corriente y comunicación BMC USB2.0 |
+| B6  | D+     | USB2.0            | —                                                                                       |
+| B7  | D-     | USB2.0            | —                                                                                       |
+| B8  | SBU2   | Modo Alt          | Señal de banda lateral de baja velocidad, solo para uso en Modo Alt                     |
+| B9  | VBUS   | Alimentación      | Mínimo soporte de 60W                                                                   |
+| B10 | RX1-   | USB3.1 o Modo Alt | Forma un par diferencial de 10 Gbps con RX1+                                            |
+| B11 | RX1+   | USB3.1 o Modo Alt | Forma un par diferencial de 10 Gbps con RX1-                                            |
+| B12 | GND    | Alimentación      | Mínimo soporte de 60W                                                                   |
 
 Acuerdo de suministro de energía:
 
 | Modo                      | Voltaje nominal | Corriente máxima |
-| ------------------------- | -------------- | ---------------- |
-| USB2.0                    | 5V             | 500 mA           |
-| USB3.0/USB3.1             | 5V             | 900 mA           |
-| USB BC1.2                 | 5V             | 1.5A             |
-| USB Type-C Current @ 1.5A | 5V             | 1.5A             |
-| USB Type-C Current @ 2.0A | 5V             | 3.0A             |
-| USB PD                    | Hasta 20V      | Hasta 5A         |
+| ------------------------- | --------------- | ---------------- |
+| USB2.0                    | 5V              | 500 mA           |
+| USB3.0/USB3.1             | 5V              | 900 mA           |
+| USB BC1.2                 | 5V              | 1.5A             |
+| USB Type-C Current @ 1.5A | 5V              | 1.5A             |
+| USB Type-C Current @ 2.0A | 5V              | 3.0A             |
+| USB PD                    | Hasta 20V       | Hasta 5A         |
 
 ### Pines CC
 
@@ -114,17 +114,17 @@ La resistencia de pull-up o pull-down utilizada en los pines CC depende de si es
 
 **El host / puerto descendente (DFP) utiliza resistencias de pull-up**. La resistencia de pull-up Rp debe estar conectada a los pines CC1 y CC2, y se debe tirar hacia arriba a 3.3V/5V/fuente de corriente. El valor de la resistencia de pull-up determinará la capacidad de corriente suministrada por el dispositivo a través del puerto, como se muestra en la siguiente tabla:
 
-| Capacidad de corriente suministrada por DFP | Tirar hacia 4.75V~5.5V | Tirar hacia 3.3V±5% | Tirar hacia 1.7~5.5V fuente de corriente |
-| ------------------------------------------ | --------------------- | ------------------ | --------------------------------------- |
-| Potencia USB predeterminada (USB2.0-500mA, USB3.0-900mA) | 56kΩ±20%              | 36kΩ±20%           | 80µA±20%                                |
-| 1.5A@5V                                    | 22kΩ±5%               | 12kΩ±5%            | 180µA±8%                                |
-| 3A@5V                                      | 10kΩ±5%               | 4.7kΩ±5%           | 330µA±8%                                |
+| Capacidad de corriente suministrada por DFP              | Tirar hacia 4.75V~5.5V | Tirar hacia 3.3V±5% | Tirar hacia 1.7~5.5V fuente de corriente |
+| -------------------------------------------------------- | ---------------------- | ------------------- | ---------------------------------------- |
+| Potencia USB predeterminada (USB2.0-500mA, USB3.0-900mA) | 56kΩ±20%               | 36kΩ±20%            | 80µA±20%                                 |
+| 1.5A@5V                                                  | 22kΩ±5%                | 12kΩ±5%             | 180µA±8%                                 |
+| 3A@5V                                                    | 10kΩ±5%                | 4.7kΩ±5%            | 330µA±8%                                 |
 
 **El dispositivo / puerto ascendente (UFP) utiliza resistencias de pull-down o terminación de voltaje**. El valor de la resistencia de pull-down Rd es siempre de 5.1kΩ±10%.
 
 La detección de la dirección del cable se realiza mediante la detección de pull-up o pull-down en el pin CC1. Si se detecta una resistencia de pull-up o pull-down válida, significa que está en la dirección correcta (sin invertir). Si no se detecta ninguna resistencia, significa que está en la dirección inversa (invertido):
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220520141738.png)
+![](https://media.wiki-power.com/img/20220520141738.png)
 
 ## Referencias y agradecimientos
 

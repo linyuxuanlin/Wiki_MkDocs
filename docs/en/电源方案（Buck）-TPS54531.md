@@ -31,11 +31,11 @@ Project Online Preview:
 
 ## Pin Definitions
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210713153815.png)
+![](https://media.wiki-power.com/img/20210713153815.png)
 
 ## Reference Design
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210713173605.png)
+![](https://media.wiki-power.com/img/20210713173605.png)
 
 ## Parameter Adjustment
 
@@ -65,9 +65,9 @@ When the chip temperature exceeds 165℃, the chip stops operating. It restarts 
 
 ## PCB Layout Reference
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210713161521.png)
+![](https://media.wiki-power.com/img/20210713161521.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210713162833.png)
+![](https://media.wiki-power.com/img/20210713162833.png)
 
 ## Pitfall Summary
 

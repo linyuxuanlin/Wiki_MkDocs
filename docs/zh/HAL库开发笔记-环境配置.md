@@ -36,17 +36,17 @@
 
 举个例子，参照板子原理图：
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210205205030.png)
+![](https://media.wiki-power.com/img/20210205205030.png)
 
 将 `HSE` 和 `LSE` 的选项都设置为外部晶振就可以了：
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210205205140.png)
+![](https://media.wiki-power.com/img/20210205205140.png)
 
 ### 配置时钟树
 
 在 `Clock Configuration` 界面进行配置。
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210205205550.png)
+![](https://media.wiki-power.com/img/20210205205550.png)
 
 根据上图的步骤如下：
 
@@ -57,9 +57,9 @@
 
 ### 配置项目管理选项
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210130095224.png)
+![](https://media.wiki-power.com/img/20210130095224.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210130095239.png)
+![](https://media.wiki-power.com/img/20210130095239.png)
 
 ## HAL 库与标准库的区别
 

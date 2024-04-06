@@ -1,6 +1,6 @@
 # Homelab - A Free Intranet Tunneling Alternative: Cloudflared
 
-![Cloudflared](https://img.wiki-power.com/d/wiki-media/img/20230416143051.png)
+![Cloudflared](https://media.wiki-power.com/img/20230416143051.png)
 
 **Cloudflared** is a free solution for intranet tunneling, allowing external access to hosts without public IP addresses.
 
@@ -58,7 +58,7 @@ Visit the [**Cloudflare Zero Trust**](https://one.dash.cloudflare.com/) dashboar
 
 Next, access the tunnel you created and, in the `Public Hostname Page` tab, add the ports of the services you want to proxy. For example, if your Cloudflare-bound domain is `wiki-power.com`, and you want to proxy a service on your local machine at port `80` using the `HTTP` protocol, you just need to fill it out like this:
 
-![Cloudflare Tunnel Configuration](https://img.wiki-power.com/d/wiki-media/img/20230416183438.png)
+![Cloudflare Tunnel Configuration](https://media.wiki-power.com/img/20230416183438.png)
 
 You can then access your local port via <https://dashboard.wiki-power.com>, and it will automatically handle SSL certificate issuance for secure public access via HTTPS.
 

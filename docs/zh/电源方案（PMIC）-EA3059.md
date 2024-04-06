@@ -32,15 +32,15 @@ EA3059 是一款 4 路 PMIC，适用于由锂电池或直流 5V 供电的应用�
 
 ## 典型应用电路
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420171841.png)
+![](https://media.wiki-power.com/img/20220420171841.png)
 
 ## 内部功能框图
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420171859.png)
+![](https://media.wiki-power.com/img/20220420171859.png)
 
 ## 引脚定义
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420171920.png)
+![](https://media.wiki-power.com/img/20220420171920.png)
 
 | 引脚名称 | 引脚描述                                                   |
 | -------- | ---------------------------------------------------------- |
@@ -66,7 +66,7 @@ EA3059 是一款专为 OTT 应用设计的电源管理 IC，包含四路 2A 同�
 
 如果需要设定每路 Buck 的开启时间，可通过使用如下电路进行编程：
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420172125.png)
+![](https://media.wiki-power.com/img/20220420172125.png)
 
 ### 180° 相位偏移架构
 
@@ -88,7 +88,7 @@ $$
 V_{OUTx}=0.6*\frac{R_1}{R_2}+0.6V
 $$
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420172602.png)
+![](https://media.wiki-power.com/img/20220420172602.png)
 
 如果需要输出常用的电压值，则可参考下表配置分压电阻（都需要选用 1% 精度的）：
 
@@ -147,19 +147,19 @@ PMIC 的 Layout 需要讲究。可参照以下建议以获得最高性能：
 
 顶层：
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420175756.png)
+![](https://media.wiki-power.com/img/20220420175756.png)
 
 中间电源层：
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420175833.png)
+![](https://media.wiki-power.com/img/20220420175833.png)
 
 中间地层：
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420175851.png)
+![](https://media.wiki-power.com/img/20220420175851.png)
 
 底层：
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420175906.png)
+![](https://media.wiki-power.com/img/20220420175906.png)
 
 ## 参考与致谢
 

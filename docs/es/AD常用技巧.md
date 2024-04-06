@@ -31,7 +31,7 @@ En esta sección, hemos recopilado algunos consejos prácticos para trabajar con
 **Método**: Utiliza el software de creación de fuentes "Font Creator". Puedes descargar mi fuente desde [GitHub](https://github.com/linyuxuanlin/Modularity_of_Functional_Circuit/tree/master/%E4%B8%93%E7%94%A8%E5%AD%97%E4%BD%93) como plantilla y personalizar tu propia fuente exclusiva. Después de crear la fuente, instala el archivo .ttf y podrás utilizar los caracteres correspondientes en Altium para crear tu logotipo.
 
 La correspondencia de caracteres con el logotipo es la siguiente:  
-![Logo](https://img.wiki-power.com/d/wiki-media/img/20200207200606.png)
+![Logo](https://media.wiki-power.com/img/20200207200606.png)
 
 ### Distribución automática de componentes en un área designada
 

@@ -8,13 +8,13 @@ The key to ESD protection is to provide a dedicated discharge path for electrost
 
 ## ESD Testing Models
 
-|                               | HBM       | MM       | CDM       | IEC 61000-4-2 MODEL |
-| ----------------------------- | --------- | -------- | --------- | ------------------- |
-| Test Voltage (V)              | 500-2000  | 100-200  | 500-2000  | 2000-15000          |
-| Pulse Duration (ns)           | ~150      | ~80      | ~1       | ~150                |
-| Peak Current at 2kV ($A_{pk}$) | 1.33      | -        | ~5       | 7.5                 |
-| Rise Time                      | 25ns      | -        | <400ps   | <1ns                |
-| Number of Voltage Impacts     | 2         | 2        | 2        | 20                  |
+|                                | HBM      | MM      | CDM      | IEC 61000-4-2 MODEL |
+| ------------------------------ | -------- | ------- | -------- | ------------------- |
+| Test Voltage (V)               | 500-2000 | 100-200 | 500-2000 | 2000-15000          |
+| Pulse Duration (ns)            | ~150     | ~80     | ~1       | ~150                |
+| Peak Current at 2kV ($A_{pk}$) | 1.33     | -       | ~5       | 7.5                 |
+| Rise Time                      | 25ns     | -       | <400ps   | <1ns                |
+| Number of Voltage Impacts      | 2        | 2       | 2        | 20                  |
 
 ### Human Body Model (HBM)
 
@@ -32,14 +32,14 @@ The first two models simulate scenarios where charged objects discharge to the c
 
 Common HBM testing specifications include:
 
-| Standard       | Charging Capacitance $C_d (pF)$ | Discharge Resistance $R_d (Ω)$ |
-| -------------- | ----------------------------- | ---------------------------- |
-| AEC-Q200-002   | 150                           | 2000                         |
-| IEC61000-4-2   | 150                           | 330                          |
+| Standard     | Charging Capacitance $C_d (pF)$ | Discharge Resistance $R_d (Ω)$ |
+| ------------ | ------------------------------- | ------------------------------ |
+| AEC-Q200-002 | 150                             | 2000                           |
+| IEC61000-4-2 | 150                             | 330                            |
 
 For example, the ESD HBM test circuit based on the AEC-Q200-002 standard is as follows:
 
-![ESD HBM Test Circuit](https://img.wiki-power.com/d/wiki-media/img/20211215164751.png)
+![ESD HBM Test Circuit](https://media.wiki-power.com/img/20211215164751.png)
 
 In this circuit, $C_x$ represents the capacitance of the device under test, $C_d$ is the charging capacitance, $R_d$ is the discharge resistance, and $R_c$ is the protection resistance. The ESD testing procedure is as follows:
 
@@ -48,19 +48,19 @@ In this circuit, $C_x$ represents the capacitance of the device under test, $C_d
 
 Discharge Current Curve:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211215165312.png)
+![](https://media.wiki-power.com/img/20211215165312.png)
 
 ## ESD Test Procedure
 
 Following the AEC-Q200-002 standard, the HBM test procedure can be performed as shown in the following diagram:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211215165447.png)
+![](https://media.wiki-power.com/img/20211215165447.png)
 
 The voltage withstand levels determined through testing are categorized as follows:
 
-| Classification | Maximum Withstand Voltage     |
-| -------------- | ----------------------------- |
-| 1A             | Less than 500V (DC)           |
+| Classification | Maximum Withstand Voltage                |
+| -------------- | ---------------------------------------- |
+| 1A             | Less than 500V (DC)                      |
 | 1B             | 0.5 kV (DC) or more, less than 1 kV (DC) |
 | 1C             | 1 kV (DC) or more, less than 2 kV (DC)   |
 | 2              | 2 kV (DC) or more, less than 4 kV (DC)   |
@@ -69,7 +69,7 @@ The voltage withstand levels determined through testing are categorized as follo
 | 5A             | 8 kV (DC) or more, less than 12 kV (AD)  |
 | 5B             | 12 kV (AD) or more, less than 16 kV (AD) |
 | 5C             | 16 kV (AD) or more, less than 25 kV (AD) |
-| 6              | 25 kV (AD) or more                  |
+| 6              | 25 kV (AD) or more                       |
 
 DC (Direct Contact Discharge) refers to direct contact discharge, and AD (Air Discharge) refers to air discharge.
 
@@ -90,7 +90,7 @@ Therefore, in general, as the capacitance value ($C_x$) increases, there is a tr
 - $C_x$ capacitance parameters: GCM series / 0402 package / X7R / 50V
 - Test conditions: $C_d=150pF, R_d=2kΩ$
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211215172528.png)
+![](https://media.wiki-power.com/img/20211215172528.png)
 
 From the graph, it can be seen that to withstand 1kV ESD, a 1000pF capacitor can be used for protection. In actual circuit design, it's advisable to parallel a large resistor with the capacitor to discharge the electric charge stored in the capacitor after eliminating ESD.
 
@@ -107,6 +107,5 @@ Certainly, here's the translation of the provided text into English:
 [To be replaced [1]]
 [To be replaced [2]]
 ```
-
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

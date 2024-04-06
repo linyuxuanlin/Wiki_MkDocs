@@ -1,6 +1,6 @@
 # Homelab - 在线代码编辑器 code-server
 
-![](https://img.wiki-power.com/d/wiki-media/img/202304132214418.png)
+![](https://media.wiki-power.com/img/202304132214418.png)
 
 **code-server** 是一个能在浏览器中运行的 VS Code。相比于桌面端的优势是，你可以用任意设备在线码字，包括手机与平板这一类无法直接安装 VS Code 的设备。
 

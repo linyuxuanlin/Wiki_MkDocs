@@ -82,7 +82,7 @@ If power consumption needs to be reduced, each clock source can be individually 
 
 The HSE clock source can be provided in two ways: an external source (active) and an external crystal / ceramic resonator (passive).
 
-![HSE Clock Source](https://img.wiki-power.com/d/wiki-media/img/20210529145726.png)
+![HSE Clock Source](https://media.wiki-power.com/img/20210529145726.png)
 
 #### External Source (HSE Bypass)
 
@@ -98,7 +98,7 @@ Both CL1 and CL2 should use capacitors of the same size (5-25 pF, with a typical
 
 The LSE clock source can be provided in two ways: an external source (active) and an external crystal / ceramic resonator (passive).
 
-![LSE Clock Source](https://img.wiki-power.com/d/wiki-media/img/20210529152354.png)
+![LSE Clock Source](https://media.wiki-power.com/img/20210529152354.png)
 
 #### External Source (LSE Bypass)
 
@@ -116,7 +116,7 @@ For detailed information about boot modes, please refer to the article [**STM32 
 
 In most cases, a 10k ohm pull-down resistor is connected to BOOT0, and BOOT1 can be left unconnected. If mode switching is needed, you can refer to the following design:
 
-![Boot Mode Switching](https://img.wiki-power.com/d/wiki-media/img/20200605163537.png)
+![Boot Mode Switching](https://media.wiki-power.com/img/20200605163537.png)
 
 ## Debug Management
 
@@ -128,7 +128,7 @@ The STM32F4 has a built-in SWJ (SW/JTAG) interface. SW-DP consists of 2 pins (cl
 
 In STM32F4, the pin assignments for SWJ are as follows:
 
-![SWJ Pin Assignments](https://img.wiki-power.com/d/wiki-media/img/20210529210858.png)
+![SWJ Pin Assignments](https://media.wiki-power.com/img/20210529210858.png)
 
 ### Internal Pull-Up and Pull-Down for JTAG
 
@@ -143,11 +143,11 @@ Once software releases the JTAG I/O, they can be used as regular I/O ports.
 
 ### Hardware Design for Connecting a Standard JTAG Connector
 
-![JTAG Connector Hardware Design](https://img.wiki-power.com/d/wiki-media/img/20210529211840.png)
+![JTAG Connector Hardware Design](https://media.wiki-power.com/img/20210529211840.png)
 
 ## Reference Design
 
-![Image](https://img.wiki-power.com/d/wiki-media/img/20210529213723.png)
+![Image](https://media.wiki-power.com/img/20210529213723.png)
 
 ## References and Acknowledgments
 

@@ -1,6 +1,6 @@
 # الورشة البيتية - أداة Watchtower لتحديث حاويات Docker تلقائيًا
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/202304092337531.png)
+![صورة](https://media.wiki-power.com/img/202304092337531.png)
 
 **Watchtower** هو أداة تُستخدم لتحديث جميع أو بعض حاويات Docker تلقائيًا.
 

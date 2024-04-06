@@ -6,9 +6,9 @@ Aquí se presentan tres modos de arranque:
 
 ## 1. Arranque desde la Memoria Flash Principal
 
-| BOOT0 | BOOT1 |
-| :---: | :---: |
-|  Bajo  | Cualquier valor  |
+| BOOT0 |      BOOT1      |
+| :---: | :-------------: |
+| Bajo  | Cualquier valor |
 
 En condiciones normales, el dispositivo se inicia desde la memoria Flash en el chip (que puede ser una Flash de 64K / 128K / 256K).
 
@@ -35,7 +35,7 @@ Este modo de arranque desde la SRAM incorporada tiene dos aplicaciones principal
 
 En la tabla anterior, 'Alto' y 'Bajo' indican la configuración de una resistencia de 10K como pull-up o pull-down, en lugar de una conexión directa a VCC o GND.
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200603134417.jpg)
+![Imagen](https://media.wiki-power.com/img/20200603134417.jpg)
 
 ## Referencias y Agradecimientos
 

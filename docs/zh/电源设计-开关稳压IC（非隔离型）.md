@@ -34,7 +34,7 @@
 
 ## 实验判断电感是否饱和
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210723133831.png)
+![](https://media.wiki-power.com/img/20210723133831.png)
 
 除此之外，也可从异常温升、啸叫等情况来判断。
 

@@ -54,7 +54,7 @@ Por lo general, un archivo `.DSN` es suficiente para abarcar todo el proyecto. A
 
 # Carpeta
 # Ignorar carpetas completas
-/signoise.run/ 
+/signoise.run/
 
 #############
 ## OrCAD
@@ -65,22 +65,22 @@ Por lo general, un archivo `.DSN` es suficiente para abarcar todo el proyecto. A
 *.DSNlck
 
 # Ignorar netlists
-allegro/ 
+allegro/
 ```
 
 ## Configuración adicional
 
 Ajustes de DRC:
 
-![Imagen de configuración DRC](https://img.wiki-power.com/d/wiki-media/img/20210810134720.png)
+![Imagen de configuración DRC](https://media.wiki-power.com/img/20210810134720.png)
 
 Renombrar automáticamente las referencias al copiar componentes:
 
-![Imagen de configuración de renombrado automático al copiar componentes](https://img.wiki-power.com/d/wiki-media/img/20210810134747.png)
+![Imagen de configuración de renombrado automático al copiar componentes](https://media.wiki-power.com/img/20210810134747.png)
 
 Alinear los caracteres al moverlos cerca de la rejilla:
 
-![Imagen de configuración para mover caracteres cerca de la rejilla](https://img.wiki-power.com/d/wiki-media/img/20210810134758.png)
+![Imagen de configuración para mover caracteres cerca de la rejilla](https://media.wiki-power.com/img/20210810134758.png)
 
 Consejo: Si estás utilizando la biblioteca CIP y ves el mensaje "not found in the configured library lists", asegúrate de verificar la codificación de espacios en la ruta.
 

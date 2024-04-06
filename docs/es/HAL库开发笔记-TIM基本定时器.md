@@ -50,13 +50,13 @@ En este experimento, utilizaremos el temporizador básico para implementar una f
 
 Primero, abrimos la página de configuración del árbol de relojes en la configuración de Clock Configuration y encontramos y anotamos el valor de APB1 Timer clocks en el extremo derecho:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210407152250.png)
+![](https://media.wiki-power.com/img/20210407152250.png)
 
 Esto se debe a que los temporizadores TIM2-TIM7 y TIM12-TIM14 de la serie STM32F4 están montados en el bus APB1 de baja velocidad, mientras que TIM1, TIM8-TIM11 están montados en el bus APB2 de alta velocidad. En este caso, utilizaremos el temporizador básico TIM6, por lo que debemos verificar la velocidad de APB1 (que es de 90 MHz después de la división y multiplicación).
 
 A continuación, en la barra lateral Timer, encontramos TIM6 y activamos "Activated" para activar el temporizador, y configuramos los siguientes parámetros:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210407173136.png)
+![](https://media.wiki-power.com/img/20210407173136.png)
 
 Significado de los parámetros:
 
@@ -69,7 +69,7 @@ Dado que estoy utilizando una fuente de reloj de 90 MHz, establezco el coeficien
 
 Luego, en la pestaña NVIC, habilitamos las interrupciones:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210407155959.png)
+![](https://media.wiki-power.com/img/20210407155959.png)
 
 ### Configuración básica del temporizador en el código
 

@@ -1,6 +1,6 @@
 # Homelab - Lightweight Server Management Panel CasaOS
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230304192541.png)
+![](https://media.wiki-power.com/img/20230304192541.png)
 
 **CasaOS** is a user-friendly, elegant open-source personal panel that offers features such as file management, server status monitoring, a terminal, Docker container management, and a built-in Docker app store.
 

@@ -73,15 +73,15 @@ allegro/
 
 DRC Settings:
 
-![DRC Settings](https://img.wiki-power.com/d/wiki-media/img/20210810134720.png)
+![DRC Settings](https://media.wiki-power.com/img/20210810134720.png)
 
 Automatically rename reference designators when copying components:
 
-![Auto Rename Reference Designators](https://img.wiki-power.com/d/wiki-media/img/20210810134747.png)
+![Auto Rename Reference Designators](https://media.wiki-power.com/img/20210810134747.png)
 
 Snap components to the grid while moving text:
 
-![Snap to Grid When Moving Components](https://img.wiki-power.com/d/wiki-media/img/20210810134758.png)
+![Snap to Grid When Moving Components](https://media.wiki-power.com/img/20210810134758.png)
 
 Tip: When using the CIP library and encountering the "not found in the configured library lists" error, check for spaces in the path.
 

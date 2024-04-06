@@ -7,16 +7,16 @@ A continuación, se presenta un tutorial basado en la [**tarjeta principal STM32
 La interfaz DP83848 es RMII y admite velocidades de línea de 10M/100M, con un oscilador pasivo de 50MHz incorporado.
 
 | STM32 Principal | Módulo DP83848 |
-| ----------- | ------------ |
-| ETH_REF_CLK | PA1          |
-| ETH_MDIO    | PA2          |
-| ETH_MDC     | PC1          |
-| ETH_CRS_DV  | PA7          |
-| ETH_RXD0    | PC4          |
-| ETH_RXD1    | PC5          |
-| ETH_TX_EN   | PB11         |
-| ETH_TXD0    | PB12         |
-| ETH_TXD1    | PB13         |
+| --------------- | -------------- |
+| ETH_REF_CLK     | PA1            |
+| ETH_MDIO        | PA2            |
+| ETH_MDC         | PC1            |
+| ETH_CRS_DV      | PA7            |
+| ETH_RXD0        | PC4            |
+| ETH_RXD1        | PC5            |
+| ETH_TX_EN       | PB11           |
+| ETH_TXD0        | PB12           |
+| ETH_TXD1        | PB13           |
 
 ## Software
 
@@ -48,7 +48,7 @@ La interfaz DP83848 es RMII y admite velocidades de línea de 10M/100M, con un o
 
 Configuración del árbol de reloj: de acuerdo con el oscilador incorporado en la placa (8M en este caso).
 
-![Configuración del árbol de reloj](https://img.wiki-power.com/d/wiki-media/img/20220702145310.png)
+![Configuración del árbol de reloj](https://media.wiki-power.com/img/20220702145310.png)
 
 ### Agregar código de funcionalidad
 
@@ -57,8 +57,6 @@ Configuración del árbol de reloj: de acuerdo con el oscilador incorporado en l
 extern struct netif gnetif;
 /* USER CODE END PV */
 ```
-
-
 
 ```c
 void ethernetif_notify_conn_changed(struct netif *netif) {
@@ -100,16 +98,19 @@ if (netif_is_link_up(&gnetif) && !netif_is_up(&gnetif)) {
 
 > Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+
 ```
 
 ---
 
 ```
+
 Este artículo se basa en el kit de desarrollo RobotCtrl de desarrollo propio, con un núcleo de microcontrolador STM32F407ZET6 y un chip PHY Ethernet LAN8720A. Para obtener el esquema y una descripción detallada, consulte [**RobotCtrl - STM32 通用开发套件**](https://wiki-power.com/RobotCtrl-STM32%E9%80%9A%E7%94%A8%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6).
 
 LwIP es un protocolo IP ligero (Light Weight IP) que puede funcionar con o sin soporte de sistema operativo. El enfoque de LwIP es mantener las funciones principales del protocolo TCP mientras se reduce el uso de memoria RAM. Esta pila de protocolos LwIP puede funcionar con tan solo unos pocos KB de RAM y alrededor de 40 KB de ROM, lo que la hace adecuada para sistemas embebidos de gama baja.
 
 LwIP proporciona tres interfaces de programación: RAW/Callback API, NETCONN API y SOCKET API. La facilidad de uso aumenta de izquierda a derecha, mientras que la eficiencia disminuye. Puede equilibrar estas consideraciones y elegir la API que mejor se adapte a su proyecto. En este artículo, se utiliza la API RAW, con las siguientes funciones:
+
 ```
 
 | API Function  | Description                                  |
@@ -141,3 +142,4 @@ LwIP proporciona tres interfaces de programación: RAW/Callback API, NETCONN API
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+```

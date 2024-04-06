@@ -1,6 +1,6 @@
 # تهيئة وتوصيات برامج Windows (الإصدار القديم)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210117142759.jpg)
+![](https://media.wiki-power.com/img/20210117142759.jpg)
 
 > للمقالات المحدثة، رجاءً انظر [**Personal Onboarding Workflow (Windows)**](https://wiki-power.com/Personal_Onboarding_Workflow_%28Windows%29/)
 
@@ -46,6 +46,7 @@
 - [**نسخة معدلة من QQ**](https://github.com/linyuxuanlin/File-host/blob/main/software/QQ%209.4.2.27666%20Lite-20210118%20by%20flighty-Q.exe)
 
 - [**DiskGenius**](https://www.diskgenius.cn/download.php): أداة الأقراص
+
   - احجز 10 غيغابايت فارغة (SSD)
   - NTFS، 4096 قطاع (معالجة 4 كيلوبايت)
 

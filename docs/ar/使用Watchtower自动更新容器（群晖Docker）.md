@@ -10,9 +10,9 @@
 
 افتح لوحة التحكم في Synology - جدول المهام - إضافة - مهمة مجدولة - سكربت مُعرف بالمستخدم، ثم اتبع الإعدادات التالية:
 
-![](https://img.wiki-power.com/d/wiki-media/img/202301092319956.png)
+![](https://media.wiki-power.com/img/202301092319956.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/202301092321592.png)
+![](https://media.wiki-power.com/img/202301092321592.png)
 
 السكربت الذي يجب استخدامه:
 

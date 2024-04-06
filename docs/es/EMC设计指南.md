@@ -49,7 +49,7 @@ En señales de alta frecuencia, el flujo de señal regresa generalmente por la r
 
 ### Mantener la integridad de la pantalla de retorno de la señal
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20211215190631.png)
+![Imagen](https://media.wiki-power.com/img/20211215190631.png)
 
 Como se muestra en la imagen, si cortas la pantalla de retorno de la señal, la corriente de la señal no podrá regresar al origen a través de la ruta óptima (más corta). En lugar de eso, buscará rutas alternativas, lo que aumentará el área del bucle de la señal. En casos especiales, la tierra digital y la tierra analógica deben estar aisladas para evitar interferencias.
 
@@ -67,15 +67,15 @@ Los componentes comunes utilizados en EMC incluyen inductores comunes de modo, p
 
 Modelos de filtros comunes:
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20211219173751.png)
+![Imagen](https://media.wiki-power.com/img/20211219173751.png)
 
 ### Inductores Comunes de Modo
 
 Modelos equivalentes de inductores comunes de modo:
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20211219173856.png)
+![Imagen](https://media.wiki-power.com/img/20211219173856.png)
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20211219174546.png)
+![Imagen](https://media.wiki-power.com/img/20211219174546.png)
 
 ### Perlas de Ferrita
 

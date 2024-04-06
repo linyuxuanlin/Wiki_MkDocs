@@ -16,7 +16,7 @@ Las interrupciones se dividen en externas (Interrupt) e internas (Exception). La
 
 NVIC significa Nested Vectored Interrupt Controller, que se traduce como **Controlador de Interrupciones Vectorizadas Anidadas**. Tiene tres parámetros principales: habilitación de interrupciones, prioridad de prelación y prioridad de respuesta (a menor valor, mayor prioridad).
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210206121058.png)
+![](https://media.wiki-power.com/img/20210206121058.png)
 
 **Habilitación de interrupciones**: se refiere a si se activa o no la interrupción. Si se habilita la interrupción, cuando se cumpla la condición de activación de la interrupción, se saltará a la ejecución del programa de servicio de interrupción; de lo contrario, el programa de servicio de interrupción no se tendrá en cuenta y se seguirá ejecutando el programa principal.
 
@@ -48,19 +48,19 @@ Para obtener instrucciones detalladas, consulte el artículo [**Notas de desarro
 
 ### Configuración de la interrupción en CubeMX
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210205150422.png)
+![](https://media.wiki-power.com/img/20210205150422.png)
 
 Como se muestra en la imagen, el LED se configura como salida utilizando el método descrito en el artículo anterior. El botón, debido a que es activado por nivel bajo, es decir, genera un flanco descendente en el momento de ser presionado, por lo que el pin debe configurarse como una interrupción activada por flanco descendente.
 
 En mi placa, se configura el pin `PI8` como modo `GPIO_EXTI8` (interrupción externa, conectada a la línea de interrupción 8) y se configura como flanco descendente. Según el esquemático, se selecciona la resistencia de pull-up interna. Como se muestra en la imagen:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210403222304.png)
+![](https://media.wiki-power.com/img/20210403222304.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210206131409.png)
+![](https://media.wiki-power.com/img/20210206131409.png)
 
 A continuación, haga clic en la pestaña NVIC para habilitar la interrupción configurada.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210206134916.png)
+![](https://media.wiki-power.com/img/20210206134916.png)
 
 Además, se debe reducir en un nivel la prioridad de prelación (de 0 a 1, la razón se explicará más adelante).
 

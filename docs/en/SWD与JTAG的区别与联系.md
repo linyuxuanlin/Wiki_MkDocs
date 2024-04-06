@@ -14,7 +14,7 @@ JTAG, short for Joint Test Action Group, is defined by the IEEE Standard 1149.1-
 
 Here is the topology diagram (daisy chain) for JTAG:
 
-![JTAG Topology](https://img.wiki-power.com/d/wiki-media/img/20210209191921.png)
+![JTAG Topology](https://media.wiki-power.com/img/20210209191921.png)
 
 JTAG typically uses 5 pins:
 
@@ -48,9 +48,9 @@ Advantages of SWD:
 
 In general, microcontroller boards are equipped with programming connectors that can be compatible with both JTAG and SWD simultaneously. Here is an example:
 
-![Compatibility Connectors](https://img.wiki-power.com/d/wiki-media/img/20210210122923.jpg)
+![Compatibility Connectors](https://media.wiki-power.com/img/20210210122923.jpg)
 
-![Compatibility Connectors](https://img.wiki-power.com/d/wiki-media/img/20210210123714.png)
+![Compatibility Connectors](https://media.wiki-power.com/img/20210210123714.png)
 
 - TCK is compatible with SWCLK
 - TMS is compatible with SWDIO

@@ -1,6 +1,6 @@
 # Homelab - Herramienta de Penetración de Red Local frp
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230304195137.png)
+![](https://media.wiki-power.com/img/20230304195137.png)
 
 **frp** es un método de penetración de red local que te permite exponer los puertos de tus hosts de red local en Internet a través de un servidor con una dirección IP pública. frp admite varios protocolos, como TCP, UDP, HTTP, HTTPS, y más.
 
@@ -63,7 +63,7 @@ services:
 
 (Opcional) Se recomienda crear un archivo `.env` en el mismo directorio que `compose.yaml` y personalizar tus variables de entorno. Si no deseas utilizar variables de entorno, también puedes personalizar tus parámetros directamente dentro de `compose.yaml` (por ejemplo, reemplazar `${STACK_NAME}` con `replace`).
 
-```dotenv title=".env"
+````dotenv title=".env"
 STACK_NAME=replace
 STACK_DIR=xxx # Ruta de almacenamiento del proyecto personalizada, por ejemplo, ./replace
 
@@ -71,7 +71,7 @@ STACK_DIR=xxx # Ruta de almacenamiento del proyecto personalizada, por ejemplo, 
 ```markdown
 # Reemplazar
 APP_VERSION=última
-```
+````
 
 En la ruta de almacenamiento de tu proyecto `${STACK_DIR}`, agrega el archivo de configuración `frps.ini`:
 
@@ -102,6 +102,8 @@ Finalmente, ejecuta el comando `docker compose up -d` en el directorio de nivel 
 
 [para_ser_reemplazado[1]]
 [para_ser_reemplazado[2]]
+
 ```
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+```

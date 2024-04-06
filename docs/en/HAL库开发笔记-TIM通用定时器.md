@@ -49,7 +49,7 @@ In this experiment, we will use a general timer to generate a 1 kHz PWM signal w
 
 First, open the Clock Configuration clock tree configuration page. Since the general timer is mounted on the high-speed APB2 bus, find and note the clock frequency of APB2 Timer clocks (180 MHz):
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210627133951.png)
+![](https://media.wiki-power.com/img/20210627133951.png)
 
 Next, go to the Timer section on the sidebar and select TIM8. Set channel 1 (`Channel 1`) for PWM generation (`PWM Generation CH1`). To generate a 1 kHz PWM square wave, configure the following parameters:
 
@@ -58,7 +58,7 @@ Next, go to the Timer section on the sidebar and select TIM8. Set channel 1 (`Ch
 - **Counter Period**: 1000-1
 - **Auto-reload preload**: Enable (automatically reloads the initial value upon overflow)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210627153422.png)
+![](https://media.wiki-power.com/img/20210627153422.png)
 
 In this case, we have chosen a clock source of 180 MHz. Therefore, set the prescaler to 180-1 = 179, which results in a division of 1 MHz. Set the counter period to 1000-1 = 9999, achieving a frequency of 1 kHz.
 
@@ -84,7 +84,7 @@ __HAL_TIM_SetCompare(&htim8, TIM_CHANNEL_1, 500);
 
 After compiling and flashing, you can observe the waveform using an oscilloscope:
 
-![Waveform](https://img.wiki-power.com/d/wiki-media/img/20210627154737.jpg)
+![Waveform](https://media.wiki-power.com/img/20210627154737.jpg)
 
 ## References and Acknowledgments
 
@@ -92,8 +92,10 @@ After compiling and flashing, you can observe the waveform using an oscilloscope
 
 > Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
+
 ```
 
 I have maintained the original markdown format while providing a professional and fluent translation. If you have any further requests or questions, please feel free to ask.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.
+```

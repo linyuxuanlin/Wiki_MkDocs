@@ -1,4 +1,4 @@
-```markdown
+````markdown
 # Running VS Code on a Browser (Old Method)
 
 Note: For deploying code-server version ≥v3.8.0, please refer to [**How to Run VS Code on an iPad**](https://wiki-power.com/如何在iPad上运行VSCode) for a more streamlined approach.
@@ -28,6 +28,7 @@ Official system requirements are as follows:
 ```shell
 wget https://github.com/cdr/code-server/releases/download/3.1.0/code-server-3.1.0-linux-x86_64.tar.gz # Download code-server
 ```
+````
 
 Do not copy the command verbatim. Instead, on the [**Release**](https://github.com/cdr/code-server/releases) page for code-server, copy the link for the latest version (choose the one that matches your server's architecture; I used the `code-server-3.1.0-linux-x86_64.tar.gz` version), and use `wget` or `SFTP` to download/transfer it to your server.
 
@@ -71,14 +72,15 @@ To re-enter the running screen job:
 ```shell
 screen -r JobName
 ```
-```
+
+````
 
 Si necesitas detener la ejecución en segundo plano de `screen`:
 
 ```shell
 screen -ls # Ver IDs de servicios en ejecución
 screen -X -S id quit # Reemplaza 'id' con el ID correspondiente
-```
+````
 
 Para salir de `screen`: `Ctrl + A + D`
 
@@ -86,9 +88,9 @@ Para salir de `screen`: `Ctrl + A + D`
 
 Simplemente ingresa `http://tu_dirección_ip_de_servidor` en tu navegador para disfrutar de VS Code en la nube.
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200413181001.jpg)
+![Imagen](https://media.wiki-power.com/img/20200413181001.jpg)
 
-Configuración de acceso mediante un dominio: *Pendiente de exploración...*
+Configuración de acceso mediante un dominio: _Pendiente de exploración..._
 
 ## Problemas Actuales
 

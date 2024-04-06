@@ -31,7 +31,7 @@
 **Method**: Use the Font Creator software, download my font library as a template from [GitHub](https://github.com/linyuxuanlin/Modularity_of_Functional_Circuit/tree/master/%E4%B8%93%E7%94%A8%E5%AD%97%E4%BD%93), and create your custom font library. After making the font library, install the .ttf file, and you can use the corresponding characters to insert the logo in Altium.
 
 Characters corresponding to the logo are as follows:  
-![Logo](https://img.wiki-power.com/d/wiki-media/img/20200207200606.png)
+![Logo](https://media.wiki-power.com/img/20200207200606.png)
 
 ### Auto-arranging Components within a Defined Area
 

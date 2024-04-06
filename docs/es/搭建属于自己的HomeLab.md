@@ -6,13 +6,13 @@ Homelab se refiere a un entorno de experimentación (y trasteo) que se puede con
 
 Mi propia configuración de HomeLab consta de un **servidor en la nube ligero** + **mini PC** + **NAS**, cada uno con su propia configuración y uso:
 
-|          | Servidor en la nube ligero (Alibaba Cloud 1C2G) | Mini PC (CPU N100) | NAS (Synology DS220+) |
-| -------- | ---------------------------------------------- | ------------------ | --------------------- |
-| IP pública| Sí                                             | No                 | No                    |
-| Almacenamiento | Pequeño                                   | Mediano            | Grande                |
-| Rendimiento | Bajo                                          | Alto               | Bajo                  |
+|                | Servidor en la nube ligero (Alibaba Cloud 1C2G) | Mini PC (CPU N100) | NAS (Synology DS220+) |
+| -------------- | ----------------------------------------------- | ------------------ | --------------------- |
+| IP pública     | Sí                                              | No                 | No                    |
+| Almacenamiento | Pequeño                                         | Mediano            | Grande                |
+| Rendimiento    | Bajo                                            | Alto               | Bajo                  |
 
-![](https://img.wiki-power.com/d/wiki-media/img/202304130031463.png)
+![](https://media.wiki-power.com/img/202304130031463.png)
 
 No es difícil ver que cada uno de ellos tiene sus propias fortalezas, pero cuando trabajan juntos, se convierten en un equipo imbatible. El **servidor en la nube ligero** se inclina hacia el acceso a la red, el **mini PC** se inclina hacia el rendimiento de procesamiento, y el **NAS** se inclina hacia el almacenamiento de espacio.
 
@@ -26,7 +26,7 @@ Debido a que tiene una IP pública (los puertos 80/443 también están abiertos)
 
 Para el **mini PC**, elegí un sistema preconfigurado con CPU N100, al que le añadí una memoria RAM DDR5 de 16 GB y un disco duro SSD de 250 GB. En general, me costó alrededor de 1000 CNY. Tiene un consumo de energía diario bajo y puede proporcionar un rendimiento sólido cuando se necesita.
 
-![](https://img.wiki-power.com/d/wiki-media/img/202304130043744.png)
+![](https://media.wiki-power.com/img/202304130043744.png)
 
 Las aplicaciones que despliego en el mini PC son principalmente servicios que requieren un consumo de rendimiento, como el editor de código web VS Code, una biblioteca privada de notas, un lector de RSS, un servidor de podcasts, una biblioteca de películas y series, y un navegador de red interna, entre otros.
 
@@ -34,7 +34,7 @@ Las aplicaciones que despliego en el mini PC son principalmente servicios que re
 
 Para el **NAS**, elegí el Synology DS220+, que tiene una arquitectura x86 que facilita la ejecución de entornos Docker. Hace un tiempo, le añadí una memoria RAM de 16 GB para intentar mejorar su rendimiento. Sin embargo, descubrí que el cuello de botella seguía siendo la débil CPU J4025. Aunque Synology es como comprar software y recibir hardware de regalo, vale la pena por la seguridad de los datos.
 
-![](https://img.wiki-power.com/d/wiki-media/img/202304130053483.png)
+![](https://media.wiki-power.com/img/202304130053483.png)
 
 En el NAS, despliego principalmente servicios de almacenamiento, como copias de seguridad de dispositivos, sincronización de archivos en la nube, una biblioteca de fotos y una biblioteca de libros, entre otros.
 
@@ -48,11 +48,12 @@ echo "Iniciando compose.sh..."
 
 ```markdown
 # Recorrer las carpetas de primer nivel en el directorio actual
-for folder in */; do
-  [ "$folder" != "Archive/" ] # Ignorar la carpeta "Archive"
-  cd "$folder"  # Entrar en la carpeta
-  docker-compose up -d # Ejecutar el comando "docker compose up -d"
-  cd .. # Volver al directorio anterior
+
+for folder in \*/; do
+[ "$folder" != "Archive/" ] # Ignorar la carpeta "Archive"
+cd "$folder" # Entrar en la carpeta
+docker-compose up -d # Ejecutar el comando "docker compose up -d"
+cd .. # Volver al directorio anterior
 done
 
 echo "¡Hecho!"
@@ -88,6 +89,8 @@ En los próximos artículos, presentaré algunas configuraciones básicas y serv
 
 > Dirección original del artículo: <https://wiki-power.com/>  
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+
 ```
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+```

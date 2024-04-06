@@ -1,6 +1,6 @@
 # Homelab - Fragmentary Notes Tool memos
 
-![Image](https://img.wiki-power.com/d/wiki-media/img/202304111548420.png)
+![Image](https://media.wiki-power.com/img/202304111548420.png)
 
 **memos** is an open-source, self-hosted memos tool. It supports Markdown syntax, public sharing, iframe embedding, tag management, calendar view, simple data migration, and backup capabilities.
 

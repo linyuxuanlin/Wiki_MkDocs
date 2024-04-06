@@ -19,7 +19,7 @@ $$
 
 Dado que el SNR es una relación de potencia, el valor $20$ en la ecuación representa el cuadrado de la relación de voltaje.
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221009221450.png)
+![Imagen](https://media.wiki-power.com/img/20221009221450.png)
 
 Aunque la Distorsión Armónica no se incluye en la medición del SNR, se incluyen el Ruido de Cuantización, el Ruido Térmico y otros ruidos residuales en el conversor.
 
@@ -31,7 +31,7 @@ $$
 THD (dB) = 20 log\left(\frac{\sqrt{V^2_{2(RMS)}+V^2_{3(RMS)}+...+V^2_{n(RMS)}}}{V_{1(RMS)}}\right)
 $$
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221009225800.png)
+![Imagen](https://media.wiki-power.com/img/20221009225800.png)
 
 ## Cómo Probar los Parámetros Dinámicos
 
@@ -39,7 +39,7 @@ $$
 
 Configuración del sistema de pruebas para los parámetros dinámicos del ADC:
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221009230212.png)
+![Imagen](https://media.wiki-power.com/img/20221009230212.png)
 
 La resolución del SRC de CA debe ser al menos de 2 a 4 bits mejor que la del Dispositivo Bajo Prueba (DUT).
 
@@ -59,7 +59,7 @@ A continuación, se detalla el procedimiento para probar los parámetros dinámi
 
 Es una práctica común asegurarse de que el reloj analógico/digital esté referenciado a un reloj maestro común, de manera que la relación de la frecuencia de las fuentes de reloj esté fija y sincronizada, lo que hace que los resultados de las pruebas sean altamente repetibles.
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221011122459.png)
+![Imagen](https://media.wiki-power.com/img/20221011122459.png)
 
 #### 2. Recolecta un conjunto de muestras con el ADC de manera coherente
 
@@ -81,11 +81,11 @@ Donde $Fs(dut)$ es la tasa de muestreo del ADC y también la tasa de muestreo de
 
 #### 3. Envía el conjunto de muestras de tiempo recopiladas al DSP para realizar un análisis DFT / FFT
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221011140834.png)
+![Imagen](https://media.wiki-power.com/img/20221011140834.png)
 
 ?
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20221011140904.png)
+![Imagen](https://media.wiki-power.com/img/20221011140904.png)
 
 #### 4. Analiza los bins de frecuencia de interés utilizando ecuaciones o algoritmos de prueba para SNR, THD y compáralos con las especificaciones.
 

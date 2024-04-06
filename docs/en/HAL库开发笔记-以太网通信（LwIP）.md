@@ -7,16 +7,16 @@ The following is a tutorial based on the [**Reverse Customer STM32F407 Main Cont
 The DP83848 interface is RMII, and DP83848 supports 10M/100M line speed, with a built-in 50MHz passive crystal oscillator.
 
 | STM32 Main Control | DP83848 Module |
-| ------------------- | -------------- |
-| ETH_REF_CLK         | PA1            |
-| ETH_MDIO            | PA2            |
-| ETH_MDC             | PC1            |
-| ETH_CRS_DV          | PA7            |
-| ETH_RXD0            | PC4            |
-| ETH_RXD1            | PC5            |
-| ETH_TX_EN           | PB11           |
-| ETH_TXD0            | PB12           |
-| ETH_TXD1            | PB13           |
+| ------------------ | -------------- |
+| ETH_REF_CLK        | PA1            |
+| ETH_MDIO           | PA2            |
+| ETH_MDC            | PC1            |
+| ETH_CRS_DV         | PA7            |
+| ETH_RXD0           | PC4            |
+| ETH_RXD1           | PC5            |
+| ETH_TX_EN          | PB11           |
+| ETH_TXD0           | PB12           |
+| ETH_TXD1           | PB13           |
 
 ## Software
 
@@ -48,7 +48,7 @@ The DP83848 interface is RMII, and DP83848 supports 10M/100M line speed, with a 
 
 Clock Tree Configuration: Set according to the onboard crystal oscillator (in this case, 8M).
 
-![Clock Tree Configuration](https://img.wiki-power.com/d/wiki-media/img/20220702145310.png)
+![Clock Tree Configuration](https://media.wiki-power.com/img/20220702145310.png)
 
 ### Adding Functional Code
 
@@ -63,11 +63,13 @@ Please let me know if you need further information or assistance!
 ```c
 ethernetif_notify_conn_changed(struct netif *netif)
 ```
+
 This function, as noted, can be implemented in a user file when the callback is needed. It checks if the network link is up using `netif_is_link_up(netif)` and then controls the state of two LEDs using `HAL_GPIO_WritePin`. If the link is up, it turns on the green LED and turns off the red LED, and vice versa if the link is down.
 
 ```c
 ethernetif_notify_conn_changed(&gnetif);
 ```
+
 This line calls the `ethernetif_notify_conn_changed` function and passes the `gnetif` structure as an argument.
 
 ```c title="lwip.c"
@@ -77,6 +79,7 @@ if (netif_is_link_up(&gnetif) && !netif_is_up(&gnetif)) {
 	dhcp_start(&gnetif);
 }
 ```
+
 In this part of the code from the `lwip.c` file, it first sets the link status using `ethernetif_set_link(&gnetif)`. Then, it checks if the link is up and the network interface is not up. If both conditions are met, it sets the network interface up and starts DHCP.
 
 ## Debugging
@@ -103,14 +106,14 @@ LwIP provides three programming interfaces: RAW/Callback API, NETCONN API, and S
 ```
 
 ```markdown
-| API Function  | Description                                  |
-| -------------- | ---------------------------------------- |
-| udp_new        | Create a new UDP PCB                         |
-| udp_remove     | Remove UDP PCB and release related resources  |
-| udp_bind       | Bind UDP PCB to a local IP address and port  |
-| udp_connect    | Establish remote IP address and port for UDP PCB  |
-| udp_disconnect | Remove remote IP and port from UDP PCB        |
-| udp_send       | Send UDP data                                  |
+| API Function   | Description                                                         |
+| -------------- | ------------------------------------------------------------------- |
+| udp_new        | Create a new UDP PCB                                                |
+| udp_remove     | Remove UDP PCB and release related resources                        |
+| udp_bind       | Bind UDP PCB to a local IP address and port                         |
+| udp_connect    | Establish remote IP address and port for UDP PCB                    |
+| udp_disconnect | Remove remote IP and port from UDP PCB                              |
+| udp_send       | Send UDP data                                                       |
 | udp_recv       | Register a callback function to be called when new data is received |
 
 ## Configuration within CubeMX
@@ -131,6 +134,5 @@ LwIP provides three programming interfaces: RAW/Callback API, NETCONN API, and S
 > Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 ```
-
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.

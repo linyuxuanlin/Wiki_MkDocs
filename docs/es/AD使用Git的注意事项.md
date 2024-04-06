@@ -4,10 +4,10 @@
 
 Altium Designer admite el uso de Git/SVN para el control de versiones. Si estás utilizando Git, simplemente crea un repositorio Git en la ubicación de tu proyecto. Al reiniciar Altium Designer, verás que aparece un estado de versión junto al árbol de archivos:
 
-![Estado de versión](https://img.wiki-power.com/d/wiki-media/img/20200421100348.png)
+![Estado de versión](https://media.wiki-power.com/img/20200421100348.png)
 
 Los iconos tienen el siguiente significado:
-![Significado de los iconos](https://img.wiki-power.com/d/wiki-media/img/20200421101221.png)
+![Significado de los iconos](https://media.wiki-power.com/img/20200421101221.png)
 
 Puedes realizar operaciones de Git directamente desde el menú `Proyecto (C) - Control de versiones (E)`, e incluso puedes hacer commits directamente en GitHub.
 
@@ -105,84 +105,113 @@ Espero que esta traducción sea de ayuda. Si tienes alguna pregunta o necesitas 
 
 ```markdown
 # ============================= Gerber =============================
-*.G[1-30]
+
+\*.G[1-30]
+
 # Datos Gerber de capas intermedias 1-30 de CAMtastic
 
 # ============================= Salidas =============================
-*.Drc
+
+\*.Drc
+
 # Informe de Verificación de Reglas de Diseño
 
-*.Drr
+\*.Drr
+
 # Informe de Taladro NC de Altium
 
-*.Net
+\*.Net
+
 # Archivo de Lista de Red de Altium
 
-*.Nsx
+\*.Nsx
+
 # Documento de Lista de Red de Simulación
 
-*.OutJob
+\*.OutJob
+
 # Archivo de Trabajo de Salida de Altium
 
-*.Rep
+\*.Rep
+
 # Archivo de Informe
 
-*.Rpt
+\*.Rpt
+
 # Archivo de Informe
 
 # ============================= Scripts =============================
-*.Bas
+
+\*.Bas
+
 # Documento de Script de Altium
 
-*.SrcDoc
+\*.SrcDoc
+
 # Documento de Script de Altium
 
-*.Tcl
+\*.Tcl
+
 # Documento de Script de Altium
 
 # ============================= Simulación =============================
-*.Ckt
+
+\*.Ckt
+
 # Subcircuito de Simulación
 
-*.LaxAn
+\*.LaxAn
+
 # Archivo Analógico del Analizador Lógico
 
-*.LaxDig
+\*.LaxDig
+
 # Archivo Digital del Analizador Lógico
 
-*.Mdl
+\*.Mdl
+
 # Modelo de Simulación
 
-*.Pld
+\*.Pld
+
 # Archivo PLD de CUPL
 
-*.Pwl
+\*.Pwl
+
 # Descripción Lineal por Tramos de Simulación
 
-*.Sdf
+\*.Sdf
+
 # Archivo de Datos de Simulación de Altium
 
-*.Si
+\*.Si
+
 # Archivo de Entrada de Simulación de CUPL
 
-*.So
+\*.So
+
 # Archivo de Forma de Onda Digital
 
 # ============================= Carpetas =============================
-__Previews/
+
+\_\_Previews/
 
 Historial/
 
-Registros del Proyecto para */
+Registros del Proyecto para \*/
 
 # ============================= Otros =============================
-*.BomDoc
+
+\*.BomDoc
+
 # Documento de Lista de Materiales (BOM)
 
-*.DBLib
+\*.DBLib
+
 # Archivo de Biblioteca de Base de Datos de Altium
 
-*.DBLink
+\*.DBLink
+
 # Archivo de Enlace de Base de Datos de Altium
 
 Colóquelo directamente en la raíz del repositorio de Git. Si hay duplicados, mezcle con el archivo `.gitignore` original.
@@ -194,6 +223,5 @@ Colóquelo directamente en la raíz del repositorio de Git. Si hay duplicados, m
 > Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
 ```
-
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.

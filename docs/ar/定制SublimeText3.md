@@ -5,7 +5,7 @@
 **Sublime Text** هو محرر نصي قوي جداً. بسبب دورتي الدراسية القادمة في الفصل القادم المتعلقة بلغة Python، وبما أن واجهة استخدام أدوات مثل PyCharm قد تكون غير جذابة بالنسبة لي، أرغب في تجربة تخصيص Sublime Text لتحويله إلى أداة تطوير Python قوية.
 
 صورة توضيحية للتخصيص:
-![](https://img.wiki-power.com/d/wiki-media/img/ST3效果.png)
+![](https://media.wiki-power.com/img/ST3效果.png)
 
 ## [النشر البسيط](https://www.jianguoyun.com/p/Da9TMr0Q-OOjBxif86sB)
 
@@ -44,7 +44,7 @@
 
 يمكنك إضافة الأكواد التالية في إعدادات المستخدم:
 
-```
+````
 "word_wrap": "true", // التفاف النص عندما يتم تجاوز الشاشة
 "fold_buttons": true, // تفعيل طي الأكواد
 "fade_fold_buttons": true, // إخفاء أزرار الطي تلقائيًا
@@ -65,12 +65,12 @@
         "website": "yxrct.com"
     }
 }
-```
+````
 
 بعد ذلك، يمكنك تخصيص محتوى القالب في `Preferences -> Browse Packages... -> FileHeader -> template -> header أو body`.
 
 **مثال على النتيجة:**  
-![نموذج FileHeader](https://img.wiki-power.com/d/wiki-media/img/ST3 模板效果.png)
+![نموذج FileHeader](https://media.wiki-power.com/img/ST3 模板效果.png)
 
 ### تشغيل Python
 
@@ -78,13 +78,15 @@
 
 ```json
 [
-    { "keys": ["f5"], "caption": "SublimeREPL:Python",
-                      "command": "run_existing_window_command", "args":
-                      {
-                           "id": "repl_python_run",
-                           "file": "config/Python/Main.sublime-menu"
-                      }
-    },
+  {
+    "keys": ["f5"],
+    "caption": "SublimeREPL:Python",
+    "command": "run_existing_window_command",
+    "args": {
+      "id": "repl_python_run",
+      "file": "config/Python/Main.sublime-menu"
+    }
+  }
 ]
 ```
 

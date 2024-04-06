@@ -1,6 +1,6 @@
 # Homelab - Servidor de Podcasts y Audiolibros Audiobookshelf
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230531204505.png)
+![](https://media.wiki-power.com/img/20230531204505.png)
 
 **Audiobookshelf** es un servidor de podcasts y audiolibros autohospedado que facilita la búsqueda de podcasts, la detección automática de actualizaciones y la descarga de podcasts, así como su organización y archivo automático.
 
@@ -36,7 +36,7 @@ APP_VERSION=latest
 APP_PORT=xxxx # Puerto de acceso personalizado, elige uno que no esté en uso
 ```
 
-Si tienes un NAS, también puedes montar espacio de almacenamiento en el NAS a través del protocolo NFS para almacenar los podcasts en el NAS y ahorrar espacio en el servidor. Consulta [**Linux下挂载群晖NAS硬盘拓展空间（NFS）**](https://wiki-power.com/Linux%E4%B8%8B%E6%8C%82%E8%BD%BD%E7%BE%A4%E6%99%96NAS%E7%A1%AC%E7%9B%98%E6%8B%93%E5%B1%95%E7%A9%BA%E9%97%B4%EF%BC%88NFS%EF%BC%89/) para obtener más detalles.
+Si tienes un NAS, también puedes montar espacio de almacenamiento en el NAS a través del protocolo NFS para almacenar los podcasts en el NAS y ahorrar espacio en el servidor. Consulta [**Linux 下挂载群晖 NAS 硬盘拓展空间（NFS）**](https://wiki-power.com/Linux%E4%B8%8B%E6%8C%82%E8%BD%BD%E7%BE%A4%E6%99%96NAS%E7%A1%AC%E7%9B%98%E6%8B%93%E5%B1%95%E7%A9%BA%E9%97%B4%EF%BC%88NFS%EF%BC%89/) para obtener más detalles.
 
 Finalmente, ejecuta el comando `docker compose up -d` en el mismo directorio que `compose.yaml` para iniciar los contenedores definidos en la composición.
 

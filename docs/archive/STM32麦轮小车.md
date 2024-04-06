@@ -22,9 +22,9 @@ title: STM32 麦轮小车
 
 ## 运动学原理
 
-![](https://img.wiki-power.com/d/wiki-media/img/麦轮。png)
+![](https://media.wiki-power.com/img/麦轮。png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/麦轮角度。png)
+![](https://media.wiki-power.com/img/麦轮角度。png)
 
 这是我自己推导出来的麦轮算法，翻译成代码是这样的：
 
@@ -97,7 +97,7 @@ void M_process(s16 x,s16 y) { //传入左摇杆 L(x,y) 坐标
 
 代码不算精简。因 PS2 手柄还没送到，所以暂时只有左摇杆的算法（任意方向移动），待测试后再加上右摇杆（自转）。就先这样吧。
 
-![](https://img.wiki-power.com/d/wiki-media/img/小车预览%20.jpg)
+![](https://media.wiki-power.com/img/小车预览%20.jpg)
 
 ## FAQ
 
@@ -112,8 +112,5 @@ void M_process(s16 x,s16 y) { //传入左摇杆 L(x,y) 坐标
 - [Mecanum Wheel Robot - Bluetooth Controlled](https://www.instructables.com/id/Mecanum-wheel-robot-bluetooth-controlled/)
 - [Design of Omnidirectional Mobile Platform Control System Based on STM32 CAN Bus Control](https://image.hanspub.org/Html/11-1540843_22169.htm)
 
-
-
 > 原文地址：<https://wiki-power.com/>  
 > 本篇文章受 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh) 协议保护，转载请注明出处。
-

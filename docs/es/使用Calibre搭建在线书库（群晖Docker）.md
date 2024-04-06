@@ -2,7 +2,7 @@
 
 Cómo configurar una biblioteca en línea utilizando Calibre-web (Docker) en un NAS Synology.
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210429125418.png)
+![Imagen](https://media.wiki-power.com/img/20210429125418.png)
 
 En comparación con el método tradicional de organizar libros en carpetas, la gestión de bibliotecas representada por software de código abierto como Calibre ofrece funciones más avanzadas, como lectura en línea, descargas, conversión de formatos, envío por correo electrónico y eliminación de libros duplicados. Calibre-web es una imagen Docker basada en Calibre que facilita la implementación de una biblioteca en servidores como los de Synology.
 
@@ -10,7 +10,7 @@ En comparación con el método tradicional de organizar libros en carpetas, la g
 
 En primer lugar, cree una carpeta de recursos para la biblioteca. En mi caso, he creado una carpeta compartida llamada `book` directamente en la raíz del disco:
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210429214028.png)
+![Imagen](https://media.wiki-power.com/img/20210429214028.png)
 
 Además, dentro de la carpeta `docker`, cree una carpeta llamada `calibre-web` dedicada a almacenar los archivos de configuración de Docker.
 
@@ -20,11 +20,11 @@ Abra el paquete Docker de Synology y busque `johngong/calibre-web` en el registr
 
 En la página de `Volúmenes`, agregue las carpetas mapeadas con las rutas `/library` y `/config`:
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210429214908.png)
+![Imagen](https://media.wiki-power.com/img/20210429214908.png)
 
 En la página de `Configuración de puertos`, agregue un mapeo de puerto, principalmente para redirigir el puerto `8083` del contenedor al exterior. En mi caso, he elegido el puerto `5004`.
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210429215121.png)
+![Imagen](https://media.wiki-power.com/img/20210429215121.png)
 
 Luego, cree y ejecute el contenedor.
 
@@ -34,7 +34,7 @@ Abra la dirección IP de su red interna de Synology seguida del puerto `5004` pa
 
 Tenga en cuenta que la función de carga de libros no está habilitada de forma predeterminada. Debe habilitarla yendo a `Permisos de administración` en la esquina superior derecha, luego a `Editar configuración básica` y finalmente activando la opción `Habilitar carga`.
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20210429215628.png)
+![Imagen](https://media.wiki-power.com/img/20210429215628.png)
 
 ## Habilitar HTTPS
 

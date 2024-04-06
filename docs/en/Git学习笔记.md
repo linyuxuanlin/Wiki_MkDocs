@@ -13,7 +13,7 @@ git config --global user.email "email@example.com"
 
 ## Basic Commands
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200216204934.png)
+![](https://media.wiki-power.com/img/20200216204934.png)
 
 ### Basic Workflow
 
@@ -58,7 +58,7 @@ Applicable when starting from scratch or working on someone else's project.
 
 ## Branch Management
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200217195056.png)
+![](https://media.wiki-power.com/img/20200217195056.png)
 
 Branches are like parallel universes in a science fiction movie. While you're diligently learning Git in front of your computer, another you in a separate parallel universe is working hard to master SVN. If these two parallel universes don't interfere with each other, it doesn't affect your current self much. However, at some point in time, these two parallel universes merge, and as a result, you've learned both Git and SVN!
 
@@ -66,7 +66,7 @@ So, what's the practical use of branches? Let's say you're about to develop a ne
 
 Now, with branches, you don't have to worry. You create a branch that belongs to you, invisible to others, and they can continue working on the original branch. You work on your branch and submit your changes whenever you want. When the development is complete, you merge it into the original branch in one go. This way, it's both safe and doesn't disrupt others' work.
 
-![Branching](https://img.wiki-power.com/d/wiki-media/img/20200217202649.png)
+![Branching](https://media.wiki-power.com/img/20200217202649.png)
 
 1. Create and switch to a new branch: `git switch -c branch_name`
    - `-c` stands for creating and switching branches.

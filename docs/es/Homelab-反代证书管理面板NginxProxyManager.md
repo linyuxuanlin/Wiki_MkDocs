@@ -1,6 +1,6 @@
 # Homelab - Panel de Gestión de Certificados de Proxy Inverso Nginx Proxy Manager
 
-![Nginx Proxy Manager](https://img.wiki-power.com/d/wiki-media/img/20230408182138.png)
+![Nginx Proxy Manager](https://media.wiki-power.com/img/20230408182138.png)
 
 **Nginx Proxy Manager** es un panel gráfico de Nginx que permite a los usuarios configurar fácilmente proxy inversos y solicitar certificados SSL para sitios web a través de una interfaz web, sin necesidad de conocer en detalle los principios subyacentes de Nginx / Letsencrypt.
 

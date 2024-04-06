@@ -4,11 +4,11 @@
 
 Altium Designer supports the use of Git/SVN for version control. If you are using Git, you can simply create a Git repository in the project's location. After restarting Altium Designer, you will see the version status displayed next to the file tree:
 
-![Version Status](https://img.wiki-power.com/d/wiki-media/img/20200421100348.png)
+![Version Status](https://media.wiki-power.com/img/20200421100348.png)
 
 The icons represent the following:
 
-![Icon Meanings](https://img.wiki-power.com/d/wiki-media/img/20200421101221.png)
+![Icon Meanings](https://media.wiki-power.com/img/20200421101221.png)
 
 You can perform Git operations directly from the `Project (C) - Version Control (E)` menu, and you can even directly submit to GitHub.
 
@@ -105,84 +105,113 @@ The `.gitignore` file suitable for Altium Designer includes the following conten
 These guidelines should help you effectively manage your Altium Designer projects using Git.
 
 # ============================= Gerber =============================
-*.G[1-30]
+
+\*.G[1-30]
+
 # CAMtastic Mid Layer 1-30 Gerber Data
 
 # ============================= Outputs =============================
-*.Drc
+
+\*.Drc
+
 # Design Rule Check Report
 
-*.Drr
+\*.Drr
+
 # Altium NC Drill Report File
 
-*.Net
+\*.Net
+
 # Altium Netlist File
 
-*.Nsx
+\*.Nsx
+
 # Simulation Netlist Document
 
-*.OutJob
+\*.OutJob
+
 # Altium Output Job File
 
-*.Rep
+\*.Rep
+
 # Report File
 
-*.Rpt
+\*.Rpt
+
 # Report File
 
 # ============================= Scripts =============================
-*.Bas
+
+\*.Bas
+
 # Altium Script Document
 
-*.SrcDoc
+\*.SrcDoc
+
 # Altium Script Document
 
-*.Tcl
+\*.Tcl
+
 # Altium Script Document
 
 # ============================= Simulation =============================
-*.Ckt
+
+\*.Ckt
+
 # Simulation Sub-Circuit
 
-*.LaxAn
+\*.LaxAn
+
 # Logic Analyser Analog File
 
-*.LaxDig
+\*.LaxDig
+
 # Logic Analyser Digital File
 
-*.Mdl
+\*.Mdl
+
 # Simulation Model
 
-*.Pld
+\*.Pld
+
 # CUPL PLD File
 
-*.Pwl
+\*.Pwl
+
 # Simulation Piecewise Linear Description
 
-*.Sdf
+\*.Sdf
+
 # Altium Simulation Data File
 
-*.Si
+\*.Si
+
 # CUPL Simulation Input File
 
-*.So
+\*.So
+
 # Digital Waveform File
 
 # ============================= Folders =============================
-__Previews/
+
+\_\_Previews/
 
 History/
 
-Project Logs for */
+Project Logs for \*/
 
 # ============================= Other =============================
-*.BomDoc
+
+\*.BomDoc
+
 # Bom Document
 
-*.DBLib
+\*.DBLib
+
 # Altium Database Library File
 
-*.DBLink
+\*.DBLink
+
 # Altium Database Link File
 
 Simply place it in the root directory of your Git repository. In case of duplicates, merge it with the existing `.gitignore` file.

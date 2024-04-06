@@ -36,17 +36,17 @@ Configure it according to your board's specifications.
 
 For example, refer to the board's schematic:
 
-![Board Schematic](https://img.wiki-power.com/d/wiki-media/img/20210205205030.png)
+![Board Schematic](https://media.wiki-power.com/img/20210205205030.png)
 
 Set both `HSE` and `LSE` options to use external crystal oscillators:
 
-![Clock Settings](https://img.wiki-power.com/d/wiki-media/img/20210205205140.png)
+![Clock Settings](https://media.wiki-power.com/img/20210205205140.png)
 
 ### Clock Tree Configuration
 
 Configure the clock settings in the `Clock Configuration` interface.
 
-![Clock Configuration](https://img.wiki-power.com/d/wiki-media/img/20210205205550.png)
+![Clock Configuration](https://media.wiki-power.com/img/20210205205550.png)
 
 Follow these steps based on the image above:
 
@@ -57,9 +57,9 @@ Follow these steps based on the image above:
 
 ### Project Management Options Configuration
 
-![Project Management Options](https://img.wiki-power.com/d/wiki-media/img/20210130095224.png)
+![Project Management Options](https://media.wiki-power.com/img/20210130095224.png)
 
-![Project Management Options](https://img.wiki-power.com/d/wiki-media/img/20210130095239.png)
+![Project Management Options](https://media.wiki-power.com/img/20210130095239.png)
 
 ## Differences Between HAL Library and Standard Library
 

@@ -17,7 +17,7 @@ CPR(Core Power Reduction) 通俗地讲，就是找到能让芯片正常运行的
 一颗芯片上的 CPR，由一个 CPR Controller 和许多个 Sensors 组成。其中，Sensors 分布在芯片上的不同
 module 里面，并且是串联而成的，其结果也是以此 shift 回 Controller 的。
 
-![](https://img.wiki-power.com/d/wiki-media/img/20240114154100.png)
+![](https://media.wiki-power.com/img/20240114154100.png)
 
 每个 Sensor 中包含许多个 RO。我们需要计算 RO 的实际 QUOT 值，这个值是指在一个 GCNT 周期内的实际振荡次数。此时，CPR Controller 会在已经 enable 的 Sensor 中寻找最慢的 Sensor 中的 RO（下限），通过与 Target QUOT 作比较，得出 ERROR 值，从而来调节 power supply 的高低。
 

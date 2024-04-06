@@ -6,8 +6,8 @@ En pocas palabras, cuando un autor que sigues publica un artículo en su platafo
 
 > Si un sitio web admite RSS, significa que cada vez que publica un nuevo artículo, agrega una entrada a un archivo en una ubicación específica, en un formato específico (generalmente lenguaje de marcado XML o JSON). Esta entrada incluye el título del artículo, el autor, la fecha de publicación y el contenido (que puede ser el artículo completo o un resumen). De esta manera, los usuarios solo necesitan recopilar las direcciones de estos archivos proporcionadas por los sitios que les interesan y verificar periódicamente si hay actualizaciones en el contenido de estos archivos para saber si los sitios han publicado algo nuevo. La función principal de un lector de RSS es almacenar las direcciones de RSS a las que el usuario se ha suscrito, verificar automáticamente las actualizaciones a intervalos regulares y presentar el contenido de manera legible para el usuario.
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200225145439.png)
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200225145502.png)
+![Imagen](https://media.wiki-power.com/img/20200225145439.png)
+![Imagen](https://media.wiki-power.com/img/20200225145502.png)
 
 ## Por Qué Usar RSS
 
@@ -33,7 +33,7 @@ Tomemos Inoreader como ejemplo. El método más sencillo es copiar la dirección
 
 Para saber si un sitio web tiene RSS, busca este ícono al abrirlo:
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/rss.png)
+![Imagen](https://media.wiki-power.com/img/rss.png)
 
 Si ves este ícono, simplemente haz clic en él para suscribirte al enlace RSS.
 

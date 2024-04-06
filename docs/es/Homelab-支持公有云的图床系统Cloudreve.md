@@ -1,6 +1,6 @@
 # Homelab - Sistema de almacenamiento en la nube Cloudreve compatible con servicios de nube pública
 
-![Cloudreve](https://img.wiki-power.com/d/wiki-media/img/20230304195423.png)
+![Cloudreve](https://media.wiki-power.com/img/20230304195423.png)
 
 **Cloudreve** es un sistema de almacenamiento en la nube público que admite múltiples controladores de almacenamiento en la nube. Es compatible con almacenamiento local, remoto, Qiniu, Alibaba Cloud OSS, Tencent Cloud COS, UpYun, OneDrive, protocolos compatibles con S3 y permite la integración con Aria2 para descargas fuera de línea. También admite múltiples usuarios, carga y gestión de archivos mediante arrastrar y soltar, vista previa y edición en línea, WebDAV, entre otras características. Su uso típico incluye la creación de un repositorio de imágenes personales o la gestión de archivos en la nube.
 
@@ -91,6 +91,8 @@ I use the following image naming convention: `{year}{month}{day}{hour}{minute}{s
 
 [Por reemplazar[1]]
 [Por reemplazar[2]]
+
 ```
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+```

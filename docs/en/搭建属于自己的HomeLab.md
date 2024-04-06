@@ -6,27 +6,27 @@ Homelab refers to an experimental (tinkering) environment that can be set up at 
 
 My own Homelab configuration consists of a **lightweight cloud server** + **mini host** + **NAS**, each with its own configuration and purpose:
 
-|          | Lightweight Cloud Server (Alibaba Cloud 1C2G) | Mini Host (N100 CPU) | NAS (Synology DS220+) |
-| -------- | -------------------------------------------- | -------------------- | -------------------- |
-| Public IP | Yes                                          | No                   | No                   |
-| Storage   | Small                                        | Medium               | Large                |
-| Performance | Low                                        | High                 | Low                  |
+|             | Lightweight Cloud Server (Alibaba Cloud 1C2G) | Mini Host (N100 CPU) | NAS (Synology DS220+) |
+| ----------- | --------------------------------------------- | -------------------- | --------------------- |
+| Public IP   | Yes                                           | No                   | No                    |
+| Storage     | Small                                         | Medium               | Large                 |
+| Performance | Low                                           | High                 | Low                   |
 
-![](https://img.wiki-power.com/d/wiki-media/img/202304130031463.png)
+![](https://media.wiki-power.com/img/202304130031463.png)
 
 As you can see, they all have their own specialties, but when they work together, they become a triangle warrior. The **lightweight cloud server** is more suitable for network access, the **mini host** is more suitable for performance processing, and the **NAS** is more suitable for storage space.
 
 ### Lightweight Cloud Server
 
-The **lightweight cloud server** is actually the surplus of cloud server providers. It has low configuration but is affordable. For example, the Alibaba Cloud lightweight server I purchased is only ￥96/year (if you have a cheaper package, please let me know).
+The **lightweight cloud server** is actually the surplus of cloud server providers. It has low configuration but is affordable. For example, the Alibaba Cloud lightweight server I purchased is only ￥ 96/year (if you have a cheaper package, please let me know).
 
 Because it has a public IP (ports 80/443 are also open), the services I deploy on this lightweight cloud server mainly include frp server, reverse proxy server, jump server for accessing other machines, panel for monitoring other hosts, small website services, website uptime monitoring, and other services that need to be accessed directly through the public network.
 
 ### Mini Host
 
-For the **mini host**, I chose the Zero-K N100 CPU barebone system and equipped it with 16GB DDR5 memory and a 250GB SSD hard drive. The total cost is around ￥1000. It has low power consumption in daily use and can provide high performance when needed.
+For the **mini host**, I chose the Zero-K N100 CPU barebone system and equipped it with 16GB DDR5 memory and a 250GB SSD hard drive. The total cost is around ￥ 1000. It has low power consumption in daily use and can provide high performance when needed.
 
-![](https://img.wiki-power.com/d/wiki-media/img/202304130043744.png)
+![](https://media.wiki-power.com/img/202304130043744.png)
 
 The applications deployed on the mini host mainly include web VS Code code editor, private note library, RSS reader, podcast server, media library, and intranet browser. These services require performance.
 
@@ -34,7 +34,7 @@ The applications deployed on the mini host mainly include web VS Code code edito
 
 For the **NAS**, I chose the Synology DS220+, which has an X86 architecture that is convenient for running Docker environments. Recently, I also added a 16GB memory module to it in an attempt to improve its performance. However, I found that the bottleneck is still the weak J4025 CPU. The purchase of the Synology NAS is like buying software and getting hardware for free, but it is still worth it for the security of data.
 
-![](https://img.wiki-power.com/d/wiki-media/img/202304130053483.png)
+![](https://media.wiki-power.com/img/202304130053483.png)
 
 The services deployed on the NAS mainly include device data backup, cloud synchronization, photo library, and book library. These are storage-oriented services.
 
@@ -47,29 +47,33 @@ echo "starting compose.sh..."
 ```
 
 # Traverse the first-level folders in the current directory
-for folder in */; do
-  [ "$folder" != "Archive/" ] # Ignore the Archive folder
-  cd "$folder"  # Enter the folder
-  docker-compose up -d # Execute the command "docker compose up -d"
-  cd .. # Go back to the parent directory
+
+for folder in \*/; do
+[ "$folder" != "Archive/" ] # Ignore the Archive folder
+cd "$folder" # Enter the folder
+docker-compose up -d # Execute the command "docker compose up -d"
+cd .. # Go back to the parent directory
 done
 
 echo "done."
+
 ```
 
 My directory structure is as follows:
 
 ```
+
 ├── compose
-│   ├── code-server
-|   |   ├──compose.yaml
-|   |   ├──.env
-│   ├── frp
-|   |   ├──compose.yaml
-│   ├── xxx
-|   |   ├──compose.yaml
-│   ├── ……
-│   └── compose.sh
+│ ├── code-server
+| | ├──compose.yaml
+| | ├──.env
+│ ├── frp
+| | ├──compose.yaml
+│ ├── xxx
+| | ├──compose.yaml
+│ ├── ……
+│ └── compose.sh
+
 ```
 
 Just execute `sh compose.sh` in the compose directory to start all Docker compose files with one click.
@@ -85,7 +89,8 @@ In the following series of articles, I will introduce some basic configurations 
 - [What interesting services have you deployed on your NAS?](https://www.v2ex.com/t/901954)
 - [Start multiple docker-compose containers with one click](https://juejin.cn/post/7082842557482270734)
 
-> Original: <https://wiki-power.com/>  
+> Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.
+```

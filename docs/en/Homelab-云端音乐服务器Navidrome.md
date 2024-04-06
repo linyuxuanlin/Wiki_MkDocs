@@ -1,6 +1,6 @@
 # Homelab - Cloud Music Server Navidrome
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230531212854.png)
+![](https://media.wiki-power.com/img/20230531212854.png)
 
 **Navidrome** is an open-source web-based music server and streaming platform where you can store your own music and listen to it on multiple clients.
 

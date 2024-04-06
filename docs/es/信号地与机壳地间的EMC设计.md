@@ -2,7 +2,7 @@
 
 Por lo general, entre la tierra de señal y la tierra de la carcasa en una PCB, se utiliza una conexión en paralelo de un condensador de alto voltaje (1~100nF/2kV) y una resistencia grande (1MΩ) con el fin de mejorar el rendimiento EMC, como se muestra a continuación:
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20220620162528.png)
+![Imagen](https://media.wiki-power.com/img/20220620162528.png)
 
 La función del condensador es permitir el paso de corriente alterna y bloquear la corriente continua. Desde una perspectiva de EMI, esto permite que las interferencias de alta frecuencia generadas internamente en el circuito fluyan hacia la carcasa y se descarguen a través de la tierra, evitando así la radiación de antenas. Desde una perspectiva de EMS, el condensador puede suprimir las diferencias de voltaje transitorias de modo común entre las fuentes de interferencia de alta frecuencia y el circuito, especialmente cuando no es seguro conectar directamente el circuito a tierra (por ejemplo, cuando la tierra de 220VAC después del puente rectificador no se puede conectar directamente a la tierra de la carcasa).
 

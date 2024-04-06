@@ -13,7 +13,7 @@ Project Repository: [**linyuxuanlin/ZenDriver**](https://github.com/linyuxuanlin
 
 ## Interface Definitions
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200125192433.png)
+![](https://media.wiki-power.com/img/20200125192433.png)
 
 From left to right on the **motor side**, the pins are: **M-, 5V, Encoder A, Encoder B, GND, M+**, corresponding to motor connections, suitable for direct motor attachment.
 
@@ -37,7 +37,7 @@ The three interfaces on the **power input side** are common, with the middle one
 4. Pins **IN1 and IN2** are connected to the microcontroller's PWM ports.
 5. Debug using code.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200125192734.png)
+![](https://media.wiki-power.com/img/20200125192734.png)
 
 > Original: <https://wiki-power.com/>
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.

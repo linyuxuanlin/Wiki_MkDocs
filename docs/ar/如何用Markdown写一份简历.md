@@ -1,6 +1,6 @@
 # كيفية كتابة سيرة ذاتية باستخدام Markdown
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210318220041.png)
+![](https://media.wiki-power.com/img/20210318220041.png)
 
 استخدم Markdown لكتابة سيرة ذاتية يمكن معاينتها عبر الإنترنت وتصديرها كملف PDF.
 

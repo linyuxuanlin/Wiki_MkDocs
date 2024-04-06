@@ -2,7 +2,7 @@
 
 SPI (Serial Peripheral Interface) es un protocolo de comunicación **full-duplex, síncrono, serial, maestro-esclavo, bus** con una velocidad de transferencia de datos de 8 Mbit. SPI solo puede tener un maestro y puede estar conectado a uno o varios esclavos. Cuando se conectan múltiples dispositivos, se requiere el uso de pines de selección de chip (chip select, CS).
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210911095950.png)
+![](https://media.wiki-power.com/img/20210911095950.png)
 
 ## Pines de SPI
 
@@ -16,7 +16,7 @@ SPI (Serial Peripheral Interface) es un protocolo de comunicación **full-duplex
 - El flanco de captura de datos se conoce como flanco crítico.
 - Por ejemplo, en la imagen de la izquierda a continuación, se muestra la captura de un "1" lógico en el flanco ascendente de SDO, mientras que en la imagen de la derecha se muestra la captura de un "0" lógico en el flanco descendente.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211026151750.png)
+![](https://media.wiki-power.com/img/20211026151750.png)
 
 ## Ejemplo de Lectura de Segmento en SPI
 
@@ -26,7 +26,7 @@ SPI (Serial Peripheral Interface) es un protocolo de comunicación **full-duplex
 4. Los datos se transmiten en orden desde el bit más significativo (MSB) hasta el menos significativo (LSB) en cada flanco ascendente de SCLK.
 5. Se completa la transmisión de datos: `1011001`.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211026152228.png)
+![](https://media.wiki-power.com/img/20211026152228.png)
 
 ## Flanco Crítico en SPI
 
@@ -34,7 +34,7 @@ SPI (Serial Peripheral Interface) es un protocolo de comunicación **full-duplex
 - $t_{HO}$ (tiempo de retención): Define cuánto tiempo los datos en SDI deben mantenerse después del evento del flanco crítico.
 - $t_{DO}$ (tiempo de retardo): Define el tiempo de retardo para que los datos válidos aparezcan en SDO después del evento del flanco crítico.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211026160940.png)
+![](https://media.wiki-power.com/img/20211026160940.png)
 
 ## Modos de Transferencia en SPI (4 modos)
 
@@ -42,17 +42,17 @@ SPI (Serial Peripheral Interface) es un protocolo de comunicación **full-duplex
 - **CPHA** (clock phase, fase del reloj): Define si la captura de datos se realiza en el flanco ascendente o descendente. `0` representa la captura en el primer flanco de cambio, mientras que `1` representa la captura en el segundo flanco de cambio.
 
 | Modo | CPOL (Polaridad del Reloj) | CPHA (Fase del Reloj)            | Flanco de Captura |
-| ---- | ------------------------- | ------------------------------- | ----------------- |
-| 0    | 0 (Nivel Bajo)            | 0 (Captura en el Primer Flanco)  | Ascendente        |
-| 1    | 0 (Nivel Bajo)            | 1 (Captura en el Segundo Flanco) | Descendente       |
-| 2    | 1 (Nivel Alto)            | 0 (Captura en el Primer Flanco)  | Descendente       |
-| 3    | 1 (Nivel Alto)            | 1 (Captura en el Segundo Flanco) | Ascendente        |
+| ---- | -------------------------- | -------------------------------- | ----------------- |
+| 0    | 0 (Nivel Bajo)             | 0 (Captura en el Primer Flanco)  | Ascendente        |
+| 1    | 0 (Nivel Bajo)             | 1 (Captura en el Segundo Flanco) | Descendente       |
+| 2    | 1 (Nivel Alto)             | 0 (Captura en el Primer Flanco)  | Descendente       |
+| 3    | 1 (Nivel Alto)             | 1 (Captura en el Segundo Flanco) | Ascendente        |
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211026162028.png)
+![](https://media.wiki-power.com/img/20211026162028.png)
 
 ## Cadena de margaritas (Daisy Chain)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211026164011.png)
+![](https://media.wiki-power.com/img/20211026164011.png)
 
 En el modo normal, cada esclavo SPI requiere una línea CS. Cuando hay muchos esclavos, ocupan demasiados pines de E/S del maestro. Con la conexión en cadena de margaritas, solo se necesita una línea CS para controlar todos los esclavos.
 

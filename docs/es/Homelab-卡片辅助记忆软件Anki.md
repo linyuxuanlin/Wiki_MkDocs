@@ -1,6 +1,6 @@
 # Homelab - Software de memorización asistida con tarjetas Anki
 
-![](https://img.wiki-power.com/d/wiki-media/img/202306191745527.png)
+![](https://media.wiki-power.com/img/202306191745527.png)
 
 **Anki** es una aplicación de tarjetas de memoria de código abierto que ayuda a los usuarios a recordar varios tipos de información de manera efectiva, comúnmente utilizada para aprender vocabulario. Su característica distintiva es la utilización de la curva de olvido, que genera un plan de revisión adaptado según el progreso de estudio, permitiendo a los usuarios aprovechar al máximo los patrones de memoria del cerebro para lograr un óptimo rendimiento en la memorización. Anki es altamente personalizable, permitiendo a los usuarios crear sus propias tarjetas de estudio con texto, imágenes e incluso audio y video. Además, Anki es compatible con múltiples plataformas.
 

@@ -1,6 +1,6 @@
 # TinyWeatherStation - Una estación meteorológica de escritorio sencilla pero sofisticada
 
-![](https://img.wiki-power.com/d/wiki-media/img/202308132245962.png)
+![](https://media.wiki-power.com/img/202308132245962.png)
 
 【Edición del artículo en curso...】
 
@@ -10,11 +10,11 @@
 
 ## Variado
 
-![](https://img.wiki-power.com/d/wiki-media/img/202308132244295.png)
+![](https://media.wiki-power.com/img/202308132244295.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/202308132245903.png)
+![](https://media.wiki-power.com/img/202308132245903.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/202308132245214.png)
+![](https://media.wiki-power.com/img/202308132245214.png)
 
 > Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.

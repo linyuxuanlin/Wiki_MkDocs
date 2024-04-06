@@ -8,7 +8,7 @@ DMA (Acceso Directo a la Memoria, por sus siglas en inglés) permite la comunica
 
 DMA proporciona transferencia de datos de alta velocidad entre periféricos/memoria o memoria/memoria sin utilizar los recursos de la CPU.
 
-![DMA](https://img.wiki-power.com/d/wiki-media/img/20210404153423.png)
+![DMA](https://media.wiki-power.com/img/20210404153423.png)
 
 Como se muestra en la imagen, la serie STM32F4 tiene dos controladores DMA con un total de 12 canales (DMA1 tiene 7 y DMA2 tiene 5). Los controladores DMA comparten el bus de datos del sistema con el núcleo Cortex-M3.
 
@@ -89,7 +89,7 @@ For the configuration of the UART section, please refer to the article [**HAL Li
 
 After configuring the USART pins and NVIC interrupts, switch to the `DMA Settings` tab and configure as shown below:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210404165541.png)
+![](https://media.wiki-power.com/img/20210404165541.png)
 
 - Click `Add` to add channels (USART1_RX and USART1_TX).
 - Set the priority of both to `Medium`.
@@ -98,7 +98,7 @@ After configuring the USART pins and NVIC interrupts, switch to the `DMA Setting
 
 Next, in the `System Core` tab, find `DMA` and add a `MEMTOMEM` section as shown below:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210404170002.png)
+![](https://media.wiki-power.com/img/20210404170002.png)
 
 ### Configuring DMA in the Code
 
@@ -129,7 +129,9 @@ Flash the program, open a serial assistant, and you will see the custom array be
 
 > Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+
 ```
 
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+```

@@ -1,6 +1,6 @@
 # Homelab - أداة ضغط صور عالية الجودة TinyPNG-docker
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230416163137.png)
+![](https://media.wiki-power.com/img/20230416163137.png)
 
 TinyPNG-docker هي أداة تستخدم واجهة برمجة التطبيقات (API) لـ TinyPNG لضغط الصور عالية الجودة. يمكنها ضغط صور WEBP وJPEG وPNG في المسار المحدد تلقائيًا ، ثم إخراجها في المسار الذي تريده. يمكنها تقليل استخدام عرض النطاق الترددي وحجم البيانات ووقت التحميل للموقع بشكل فعال. بالمناسبة ، هذا هو تطبيق Docker الذي طورته باستخدام ChatGPT.
 
@@ -137,7 +137,6 @@ docker tag <image-name> <dockerhub-username>/<repository-name>:<tag>
 ```shell
 docker tag tinypng-docker linyuxuanlin/tinypng-docker:latest
 ```
-
 
 ### رفع الصورة إلى Docker Hub
 

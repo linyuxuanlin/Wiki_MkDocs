@@ -2,7 +2,7 @@
 
 —— استنادًا إلى إصدار TinyDVR Master V1.1 & Slave V7.2
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200125191345.jpg)
+![](https://media.wiki-power.com/img/20200125191345.jpg)
 
 TinyDVR هو مجموعة تشغيل محرك كهربائي تتضمن لوحة أم (Master) ولوحة فرعية (Slave)، حيث يتم فصل الجزء الكهربائي عن الجزء المحرك. بالمقارنة مع الجيل السابق ZenDriver، تم تقليل الحجم بشكل كبير وزيادة القدرة على التوسيع بشكل كبير. يمكنك تكديس أي عدد من لوحات العبد وتشغيل n محرك.
 
@@ -41,11 +41,11 @@ TinyDVR هو مجموعة تشغيل محرك كهربائي تتضمن لوحة
 
 ### TinyDVR Master
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200125191439.png)
+![](https://media.wiki-power.com/img/20200125191439.png)
 
 ### TinyDVR Slave
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200125191457.png)
+![](https://media.wiki-power.com/img/20200125191457.png)
 
 شرح دبابيس الجزء الخلفي:
 
@@ -75,11 +75,11 @@ TinyDVR هو مجموعة تشغيل محرك كهربائي تتضمن لوحة
 ## اللقطات الإضافية
 
 لوحات فرعية في وقت مبكر:
-![](https://img.wiki-power.com/d/wiki-media/img/20200311182442.jpg)
+![](https://media.wiki-power.com/img/20200311182442.jpg)
 
 عمليات اللحام الجماعي:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200311182441.jpg)
+![](https://media.wiki-power.com/img/20200311182441.jpg)
 
 > عنوان النص: <https://wiki-power.com/>
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.

@@ -1,6 +1,6 @@
 # RobotCtrl_Power - لوحة توصيل الطاقة
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220527113517.png)
+![](https://media.wiki-power.com/img/20220527113517.png)
 
 مستودع المشروع: [**linyuxuanlin/RobotCtrl/RobotCtrl_Power**](https://github.com/linyuxuanlin/RobotCtrl/tree/main/RobotCtrl_MultiBoard_Project/RobotCtrl_Power)
 
@@ -19,7 +19,7 @@
 
 تشمل وظائف RobotCtrl_Power الرئيسية ما يلي:
 
-- إمداد الطاقة بجهد 24 فولت (يمكن أن يصل理وريا إلى 15-40 فولت)
+- إمداد الطاقة بجهد 24 فولت (يمكن أن يصل 理 وريا إلى 15-40 فولت)
 - تحويل مصدر الطاقة من البطارية إلى مثبط بجهد 12 فولت وتيار 5 أمبير (بمفتاح تمكين ومؤشر)
 - تحويل مصدر الطاقة من البطارية إلى مثبط بجهد 5 فولت وتيار 5 أمبير (بمفتاح تمكين ومؤشر)
 - حماية ضد الاتصال العكسي (P-MOS)

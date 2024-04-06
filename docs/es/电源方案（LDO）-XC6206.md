@@ -20,33 +20,33 @@ Repositorio del proyecto: [**Collection_of_Power_Module_Design/LDO/XC6206**](htt
 
 ## Descripción de la selección
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420102910.png)
+![](https://media.wiki-power.com/img/20220420102910.png)
 
 ## Circuito de aplicación típico
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420102323.png)
+![](https://media.wiki-power.com/img/20220420102323.png)
 
 ## Diagrama de funciones internas
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420102514.png)
+![](https://media.wiki-power.com/img/20220420102514.png)
 
 Nota: El diodo dentro del diagrama es un diodo ESD o un diodo parásito.
 
 ## Definición de pines
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420103005.png)
+![](https://media.wiki-power.com/img/20220420103005.png)
 
-| Nombre del pin | Descripción del pin |
-| -------------- | ------------------ |
-| VSS            | Tierra              |
+| Nombre del pin | Descripción del pin     |
+| -------------- | ----------------------- |
+| VSS            | Tierra                  |
 | Vin            | Entrada de alimentación |
-| Vout           | Salida de alimentación |
+| Vout           | Salida de alimentación  |
 
 ## Descripción de las características
 
 Tabla de parámetros específicos para cada modelo:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420103738.png)
+![](https://media.wiki-power.com/img/20220420103738.png)
 
 ## Referencias y agradecimientos
 

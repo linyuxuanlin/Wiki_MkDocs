@@ -2,7 +2,7 @@
 
 استخدم VS Code لبناء أداة إنتاجية عالية الكفاءة.
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/20200323155728.png)
+![صورة](https://media.wiki-power.com/img/20200323155728.png)
 
 دفتر جوبيتر هو أداة قوية جدًا تسمح لنا بكتابة وتشغيل الشيفرات وعرض النتائج وتصور البيانات وعرض النتائج... إجمالًا، معه، يصبح كتابة مستندات تحتوي على شيفرة أسهل بكثير.
 
@@ -23,7 +23,7 @@
 
 بعد إعداد البيئة، يمكنك إنشاء دفتر جوبيتر فارغ (ملف `.ipynb`) في لوحة الأوامر في VS Code (`Ctrl + Shift + P`) عبر كتابة **Python: Create Blank New Jupyter**. قم بإجراء اختبار بسيط كما هو موضح في الصورة أدناه:
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/20200323153020.png)
+![صورة](https://media.wiki-power.com/img/20200323153020.png)
 
 ستلاحظ أن الشيفرة تعمل بشكل طبيعي.
 
@@ -31,48 +31,47 @@
 
 يتم استخدام دفتر جوبيتر لإنشاء وتحرير الشيفرات وتشغيلها باستخدام **وحدات الشيفرة (code cells)**.
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/20200323153717.png)
+![صورة](https://media.wiki-power.com/img/20200323153717.png)
 
 ### إضافة وحدات الشيفرة
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/20200323153850.png)
+![صورة](https://media.wiki-power.com/img/20200323153850.png)
 
 ### تشغيل وحدة شيفرة واحدة
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/20200323153939.png)
+![صورة](https://media.wiki-power.com/img/20200323153939.png)
 
 ### تشغيل مجموعة من وحدات الشيفرة
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/20200323154005.png)
+![صورة](https://media.wiki-power.com/img/20200323154005.png)
 
 ### نقل وحدة الشيفرة
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/20200323154059.png)
+![صورة](https://media.wiki-power.com/img/20200323154059.png)
 
 ### حذف وحدة الشيفرة
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/20200323154148.png)
+![صورة](https://media.wiki-power.com/img/20200323154148.png)
 
 ### التبديل بين الشيفرة والماركداون
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/20200323154242.png)
+![صورة](https://media.wiki-power.com/img/20200323154242.png)
 
 ### عارض الرسوم البيانية
 
 من خلال عارض الرسوم البيانية، يمكنك بسهولة عرض الرسوم البيانية الناتجة عن الشيفرة وتصديرها بتنسيقات مختلفة:
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/20200323154555.png)
+![صورة](https://media.wiki-power.com/img/20200323154555.png)
 
 ### عارض المتغيرات والبيانات
 
 يمكنك رؤية أنواع المتغيرات وعددها وقيمها على الفور من خلال عارض المتغيرات:
 
-
-![صورة](https://img.wiki-power.com/d/wiki-media/img/20200323154758.png)
+![صورة](https://media.wiki-power.com/img/20200323154758.png)
 
 يمكن أيضًا تصفح البيانات بشكل أكثر تفصيلاً من خلال مُستعرض البيانات:
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/20200323154832.png)
+![صورة](https://media.wiki-power.com/img/20200323154832.png)
 
 ## المراجع والشكر
 

@@ -6,7 +6,7 @@ Uno de los beneficios de los reguladores de voltaje lineales de baja caída (LDO
 
 La Relación de Rechazo de la Fuente de Alimentación (Power Supply Rejection Ratio, PSRR), también conocida como la relación de atenuación de las fluctuaciones, generalmente se encuentra en las hojas de datos de los reguladores LDO. Representa el grado de atenuación desde la entrada hasta la salida de un LDO a una frecuencia particular y denota la capacidad de atenuación de las fluctuaciones a diferentes frecuencias. En algunos circuitos de comunicación de alta velocidad, como Wi-Fi y Bluetooth, es necesario utilizar LDO de alta velocidad con una alta PSRR. Esto permite que el chip responda rápidamente cuando se requiere un aumento instantáneo de corriente, evitando que el voltaje caiga por debajo del valor nominal y cause un reinicio de la carga. En algunos casos, se utiliza una fuente de alimentación CC-CC como un regulador de voltaje de nivel primario y un LDO como un regulador de voltaje y filtro de nivel secundario. Cuando la frecuencia de conmutación de la fuente de alimentación CC-CC se encuentra en el rango de kHz a MHz, es esencial considerar con seriedad la PSRR del LDO si esta frecuencia supera los 100 kHz.
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20220516174303.png)
+![Imagen](https://media.wiki-power.com/img/20220516174303.png)
 
 La Relación de Rechazo de la Fuente de Alimentación (PSRR) se expresa mediante la siguiente fórmula:
 
@@ -18,19 +18,19 @@ Donde $V_{rp (in)}$ representa las fluctuaciones de voltaje de entrada y $V_{rp 
 
 Comencemos observando la curva de atenuación de las fluctuaciones de un LDO común (Serie XC6206):
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20220421142140.png)
+![Imagen](https://media.wiki-power.com/img/20220421142140.png)
 
 Podemos ver que a una frecuencia de 1 kHz, el PSRR de XC6206P302 es aproximadamente 23 dB.
 
 Ahora, observemos la curva de atenuación de las fluctuaciones de un LDO de alta velocidad (Serie XC6217x302):
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20220421141923.png)
+![Imagen](https://media.wiki-power.com/img/20220421141923.png)
 
 A una frecuencia de 1 kHz, el PSRR de XC6217x302 es aproximadamente 68 dB.
 
 ## Método de Medición de la Relación de Rechazo de la Fuente de Alimentación (PSRR)
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20220424104353.png)
+![Imagen](https://media.wiki-power.com/img/20220424104353.png)
 
 La medición de la Relación de Rechazo de la Fuente de Alimentación (PSRR) se divide en dos partes: **inyección en la entrada** y **medición en la salida**. A través de los siguientes métodos de prueba y registrando las fluctuaciones de voltaje en la entrada y la salida, es posible calcular el valor de PSRR mediante la fórmula.
 
@@ -52,11 +52,11 @@ La elección del amplificador operacional debe cumplir con varios requisitos bá
 
 Puede diseñar un sumador de acuerdo con el siguiente esquema:
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20220424101211.png)
+![Imagen](https://media.wiki-power.com/img/20220424101211.png)
 
 Donde R1 y R2 son iguales, la frecuencia de corte más baja está determinada por C1 y R1 en conjunto, y la frecuencia de corte más alta está determinada por el ancho de banda del amplificador operacional.
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20220424104709.png)
+![Imagen](https://media.wiki-power.com/img/20220424104709.png)
 
 #### Generador de señales + Amplificador operacional
 
@@ -69,7 +69,7 @@ Utilice inductores y condensadores para combinar las fluctuaciones de voltaje de
 Aquí tienes la traducción del texto:
 
 ```markdown
-![](https://img.wiki-power.com/d/wiki-media/img/20220424102617.png)
+![](https://media.wiki-power.com/img/20220424102617.png)
 
 En este circuito, el condensador C1 se utiliza para evitar que VAC genere un alto impacto de pulso en VDC, mientras que la inductancia L1 previene un cortocircuito en VAC cuando se utiliza LC para aislar las dos fuentes de alimentación.
 
@@ -79,14 +79,14 @@ La frecuencia máxima de este circuito está determinada por la inductancia L1 y
 
 El analizador de audio en sí no tiene la capacidad de generar voltaje DC continuo y tiene una capacidad de manejo limitada. Por lo tanto, necesita un amplificador operacional de alta velocidad con una corriente significativa para superponer la ondulación AC generada sobre el voltaje DC de la fuente de alimentación continua, y luego conectarlo a la entrada de LDO. Sin embargo, debido a las limitaciones de ancho de banda del analizador de audio, no se pueden medir PSRR por encima de 100kHz.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220424095319.png)
+![](https://media.wiki-power.com/img/20220424095319.png)
 
 #### Inyector Especializado
 
 Este método requiere el uso de un inyector de entrada especializado, como el J2120A, con un ancho de banda de 10Hz a 10MHz, un voltaje máximo de 50V de corriente continua y una corriente de salida de hasta 5A. Este inyector puede superponer directamente la ondulación AC y el voltaje DC de la fuente de alimentación continua, pero el voltaje de entrada después del inyector sufrirá una cierta atenuación. Se pueden medir los valores de la ondulación del voltaje de entrada y salida con un analizador de red.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220421145125.png)
-![](https://img.wiki-power.com/d/wiki-media/img/20220424095347.png)
+![](https://media.wiki-power.com/img/20220421145125.png)
+![](https://media.wiki-power.com/img/20220424095347.png)
 
 ### Medición de Salida
 
@@ -107,7 +107,7 @@ Cuando el PSRR del LDO es superior a 50dB, la ondulación de salida generalmente
 
 Diseño del circuito de amplificación:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220424103037.png)
+![](https://media.wiki-power.com/img/20220424103037.png)
 
 La frecuencia de corte más baja de este circuito está determinada por C1 y R1, y la frecuencia de corte más alta está determinada por el ancho de banda del amplificador operacional.
 
@@ -115,7 +115,7 @@ La frecuencia de corte más baja de este circuito está determinada por C1 y R1,
 
 Un analizador de espectro puede medir señales de voltaje en microvoltios y se puede utilizar con sondas de alta impedancia para medir la señal AC de salida del LDO. Si no se dispone de sondas de alta impedancia, se puede utilizar un amplificador operacional:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220424103409.png)
+![](https://media.wiki-power.com/img/20220424103409.png)
 
 ## Consideraciones de Medición
 
@@ -125,7 +125,7 @@ Un analizador de espectro puede medir señales de voltaje en microvoltios y se p
 4. No se recomienda utilizar una carga electrónica para la carga del LDO; se sugiere utilizar resistencias de carga.
 5. Utilice una sonda de resorte de tierra en la salida para reducir el ruido, como se muestra en la imagen siguiente:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220424104154.png)
+![](https://media.wiki-power.com/img/20220424104154.png)
 
 ## Referencias y Agradecimientos
 ```

@@ -1,6 +1,6 @@
 # الوحدة المنزلية - Next Terminal: الجهاز الحصني الذي يدعم العديد من البروتوكولات
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/20230312001443.png)
+![صورة](https://media.wiki-power.com/img/20230312001443.png)
 
 **Next Terminal** هو جهاز الوصول البسيط والممتع الذي يضم بوابة سطح المكتب عن بعد بدون عميل مدمجة باستخدام Apache Guacamole. يقدم هذا الجهاز حلاً للجهاز الحصني الذي يدعم العديد من البروتوكولات مثل RDP و SSH و VNC و TELNET و Kubernetes. يمكن الوصول إلى الموارد الداخلية مباشرة عبر الويب وهو متوافق مع مختلف منصات التشغيل. يدعم أيضًا ميزة التحقق المتعدد العوامل (MFA) للدخول، بالإضافة إلى تسجيل الجلسات وميزات أخرى.
 
@@ -55,7 +55,6 @@ GUACD_VERSION=latest
 اسم المستخدم / كلمة المرور الافتراضيين: `admin`.
 
 ## الإشارة والشكر
-
 
 - [الموقع الرسمي](https://next-terminal.typesafe.cn/)
 - [الوثائق](https://next-terminal.typesafe.cn/docs/install/docker-install.html)

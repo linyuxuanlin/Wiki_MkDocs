@@ -16,7 +16,7 @@ Repositorio del proyecto: [**linyuxuanlin/AirForceDVR**](https://github.com/liny
 
 ## AirCraft - Subplaca de motorización de doble canal
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20201101231734.jpg)
+![Imagen](https://media.wiki-power.com/img/20201101231734.jpg)
 
 La subplaca de motorización de doble canal AirCraft se basa en el diseño de un chip de motorización integrado TB6612FNG, con un método de control lógico adicional. Solo requiere 4 pines (2 canales normales y 2 canales PWM) para controlar dos motores (dirección/velocidad). En comparación con las soluciones convencionales en el mercado, se reducen dos canales de E/S, lo que ahorra valiosos recursos de pines en el controlador principal. En cuanto a las especificaciones del chip de motorización, la corriente máxima continua de un solo canal puede alcanzar 1.2A, con un pico de 2A/3.2A (pulsos continuos/pulsos únicos), lo que es más que suficiente para controlar los motores típicos de robots.
 
@@ -32,21 +32,21 @@ Parámetros del producto:
 
 Descripción de los pines:
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20201022104033.png)
+![Imagen](https://media.wiki-power.com/img/20201022104033.png)
 
-| Grupo de interfaces | Nombre | Descripción de la función |
-| :-----------------: | :----: | :------------------------: |
-| Interfaces de control | PWM1 | Pin de control de velocidad del motor M1 |
-| Interfaces de control | DIR1 | Pin de control de dirección del motor M1 |
-| Interfaces de control | DIR2 | Pin de control de dirección del motor M2 |
-| Interfaces de control | PWM2 | Pin de control de velocidad del motor M2 |
-| Interfaces de alimentación |  5V  | Alimentación de la parte lógica |
-| Interfaces de alimentación |  G   | Tierra (GND) |
-| Interfaces de alimentación | 12V  | Alimentación de los motores |
-| Interfaces del motor | M1+  | Salida 1 del motor M1 |
-| Interfaces del motor | M1-  | Salida 2 del motor M1 |
-| Interfaces del motor | M2+  | Salida 1 del motor M2 |
-| Interfaces del motor | M1-  | Salida 2 del motor M2 |
+|    Grupo de interfaces     | Nombre |        Descripción de la función         |
+| :------------------------: | :----: | :--------------------------------------: |
+|   Interfaces de control    |  PWM1  | Pin de control de velocidad del motor M1 |
+|   Interfaces de control    |  DIR1  | Pin de control de dirección del motor M1 |
+|   Interfaces de control    |  DIR2  | Pin de control de dirección del motor M2 |
+|   Interfaces de control    |  PWM2  | Pin de control de velocidad del motor M2 |
+| Interfaces de alimentación |   5V   |     Alimentación de la parte lógica      |
+| Interfaces de alimentación |   G    |               Tierra (GND)               |
+| Interfaces de alimentación |  12V   |       Alimentación de los motores        |
+|    Interfaces del motor    |  M1+   |          Salida 1 del motor M1           |
+|    Interfaces del motor    |  M1-   |          Salida 2 del motor M1           |
+|    Interfaces del motor    |  M2+   |          Salida 1 del motor M2           |
+|    Interfaces del motor    |  M1-   |          Salida 2 del motor M2           |
 
 Tutorial de control:
 

@@ -6,13 +6,13 @@ En esta entrada, basada en el kit de desarrollo RobotCtrl de desarrollo propio, 
 
 ### Comunicación I2C
 
-![Diagrama de la comunicación I2C](https://img.wiki-power.com/d/wiki-media/img/20211026174634.png)
+![Diagrama de la comunicación I2C](https://media.wiki-power.com/img/20211026174634.png)
 
 Puede encontrar los principios básicos de la comunicación I2C en el artículo [**Protocolo de Comunicación - I2C**](https://wiki-power.com/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-I2C).
 
 ### Módulo MPU6050
 
-![Módulo MPU6050](https://img.wiki-power.com/d/wiki-media/img/20220404145145.png)
+![Módulo MPU6050](https://media.wiki-power.com/img/20220404145145.png)
 
 Definición de los pines del módulo:
 
@@ -140,7 +140,7 @@ uint8_t MPU6050_Init(I2C_HandleTypeDef *I2Cx)
         HAL_I2C_Mem_Write(I2Cx, MPU6050_ADDR, ACCEL_CONFIG_REG, 1, &Data, 1, i2c_timeout);
 ```
 
-```markdown
+````markdown
 ```markdown
 // Establecer la configuración giroscópica en el registro GYRO_CONFIG
 // XG_ST=0, YG_ST=0, ZG_ST=0, FS_SEL=0 -> ± 250 °/s
@@ -153,7 +153,7 @@ return 1;
 
 void MPU6050_Leer_Aceleracion(I2C_HandleTypeDef *I2Cx, MPU6050_t *EstructuraDatos)
 {
-    uint8_t DatosRecibidos[6];
+uint8_t DatosRecibidos[6];
 
     // Leer 6 BYTES de datos a partir del registro ACCEL_XOUT_H
 
@@ -171,11 +171,12 @@ void MPU6050_Leer_Aceleracion(I2C_HandleTypeDef *I2Cx, MPU6050_t *EstructuraDato
     EstructuraDatos->Ax = EstructuraDatos->Accel_X_RAW / 16384.0;
     EstructuraDatos->Ay = EstructuraDatos->Accel_Y_RAW / 16384.0;
     EstructuraDatos->Az = EstructuraDatos->Accel_Z_RAW / Accel_Z_corrector;
+
 }
 
 void MPU6050_Leer_Giroscopio(I2C_HandleTypeDef *I2Cx, MPU6050_t *EstructuraDatos)
 {
-    uint8_t DatosRecibidos[6];
+uint8_t DatosRecibidos[6];
 
     // Leer 6 BYTES de datos a partir del registro GYRO_XOUT_H
 
@@ -185,13 +186,14 @@ void MPU6050_Leer_Giroscopio(I2C_HandleTypeDef *I2Cx, MPU6050_t *EstructuraDatos
     EstructuraDatos->Gyro_Y_RAW = (int16_t)(DatosRecibidos[2] << 8 | DatosRecibidos[3]);
     EstructuraDatos->Gyro_Z_RAW = (int16_t)(DatosRecibidos[4] << 8 | DatosRecibidos[5]);
 ```
+````
 
 ```markdown
-/*** Convierte los valores RAW en grados por segundo (°/s)
-     Debemos dividirlos según el valor de escala completo configurado en FS_SEL.
-     He configurado FS_SEL = 0. Por lo tanto, estoy dividiendo por 131.0.
-     Para obtener más detalles, consulta el registro de configuración GYRO_CONFIG. 
-***/
+/**_ Convierte los valores RAW en grados por segundo (°/s)
+Debemos dividirlos según el valor de escala completo configurado en FS_SEL.
+He configurado FS_SEL = 0. Por lo tanto, estoy dividiendo por 131.0.
+Para obtener más detalles, consulta el registro de configuración GYRO_CONFIG.
+_**/
 
 DataStruct->Gx = DataStruct->Gyro_X_RAW / 131.0;
 DataStruct->Gy = DataStruct->Gyro_Y_RAW / 131.0;
@@ -200,8 +202,8 @@ DataStruct->Gz = DataStruct->Gyro_Z_RAW / 131.0;
 
 void MPU6050_Read_Temp(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct)
 {
-    uint8_t Rec_Data[2];
-    int16_t temp;
+uint8_t Rec_Data[2];
+int16_t temp;
 
     // Lee 2 BYTES de datos comenzando desde el registro TEMP_OUT_H_REG
 
@@ -209,12 +211,13 @@ void MPU6050_Read_Temp(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct)
 
     temp = (int16_t)(Rec_Data[0] << 8 | Rec_Data[1]);
     DataStruct->Temperature = (float)((int16_t)temp / (float)340.0 + (float)36.53);
+
 }
 
 void MPU6050_Read_All(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct)
 {
-    uint8_t Rec_Data[14];
-    int16_t temp;
+uint8_t Rec_Data[14];
+int16_t temp;
 
     // Lee 14 BYTES de datos comenzando desde el registro ACCEL_XOUT_H
 
@@ -227,10 +230,11 @@ void MPU6050_Read_All(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct)
     DataStruct->Gyro_X_RAW = (int16_t)(Rec_Data[8] << 8 | Rec_Data[9]);
     DataStruct->Gyro_Y_RAW = (int16_t)(Rec_Data[10] << 8 | Rec_Data[11]);
     DataStruct->Gyro_Z_RAW = (int16_t)(Rec_Data[12] << 8 | Rec_Data[13]);
+
 }
 ```
 
-```markdown
+````markdown
 ```spanish
     DataStruct->Ax = DataStruct->Accel_X_RAW / 16384.0;
     DataStruct->Ay = DataStruct->Accel_Y_RAW / 16384.0;
@@ -274,7 +278,7 @@ double Kalman_getAngle(Kalman_t *Kalman, double newAngle, double newRate, double
     double rate = newRate - Kalman->bias;
     Kalman->angle += dt * rate;
 ```
-
+````
 
 ```c
     Kalman->P[0][0] += dt * (dt * Kalman->P[1][1] - Kalman->P[0][1] - Kalman->P[1][0] + Kalman->Q_angle);
@@ -309,7 +313,7 @@ El código también incluye una función `MPU6050_Read_All` que se utiliza para 
 
 Por favor, házme saber si necesitas alguna aclaración adicional o si deseas que traduzca alguna parte específica del código.
 
-```markdown
+````markdown
 ```c
 int16_t Accel_X_RAW;
 int16_t Accel_Y_RAW;
@@ -331,6 +335,7 @@ double KalmanAngleX;
 double KalmanAngleY;
 } MPU6050_t;
 ```
+````
 
 Una vez que hayas configurado la comunicación serie, puedes utilizar la siguiente instrucción para mostrar los valores de las variables:
 
@@ -345,6 +350,8 @@ printf("Ángulo X: %.2f°\t", MPU6050.KalmanAngleX);
 
 > Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+
 ```
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+```

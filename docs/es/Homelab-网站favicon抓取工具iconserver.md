@@ -1,6 +1,6 @@
 # Homelab - Herramienta de extracción de favicon de sitios web iconserver
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230304195157.png)
+![](https://media.wiki-power.com/img/20230304195157.png)
 
 **iconserver** es una herramienta que permite la extracción de iconos favicon de sitios web. Admite la extracción de `favicon.ico` y `apple-touch-icon.png`, y cuenta con una sencilla API de URL y una página de operación web. En caso de que la extracción falle, generará un favicon que comienza con la primera letra.
 

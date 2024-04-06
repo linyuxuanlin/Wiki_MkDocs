@@ -6,13 +6,13 @@
 
 ### الاتصال عبر I2C
 
-![](https://img.wiki-power.com/d/wiki-media/img/20211026174634.png)
+![](https://media.wiki-power.com/img/20211026174634.png)
 
 يمكنك قراءة المزيد حول المبادئ الأساسية للاتصال عبر I2C من خلال الرابط [**通信协议 - I2C**](https://wiki-power.com/%E9%80%9A%E4%BF%A1%E5%8D%8C%E8%AE%AE-I2C).
 
 ### وحدة MPU6050
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220404145145.png)
+![](https://media.wiki-power.com/img/20220404145145.png)
 
 تحديد دبابيس الوحدة:
 
@@ -80,8 +80,6 @@ void MPU6050_Read_Gyro(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct);
 
 void MPU6050_Read_Temp(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct);
 ```
-
-
 
 Here is the translation of the provided code into Arabic:
 
@@ -192,10 +190,10 @@ DataStruct->Gyro_Z_RAW = (int16_t)(Rec_Data[4] << 8 | Rec_Data[5]);
 ```
 
 ```markdown
-/*** تحويل القيم الخامة إلى درجات في الثانية (درجة/ثانية)
-     يجب أن نقسم وفقًا لقيمة المدى الكامل المُعينة في FS_SEL
-     لقد قمت بتكوين FS_SEL = 0. لذا أقوم بالقسمة على 131.0
-     لمزيد من التفاصيل، انظر إلى تسجيل GYRO_CONFIG              ****/
+/**\* تحويل القيم الخامة إلى درجات في الثانية (درجة/ثانية)
+يجب أن نقسم وفقًا لقيمة المدى الكامل المُعينة في FS_SEL
+لقد قمت بتكوين FS_SEL = 0. لذا أقوم بالقسمة على 131.0
+لمزيد من التفاصيل، انظر إلى تسجيل GYRO_CONFIG \*\***/
 
 DataStruct->Gx = DataStruct->Gyro_X_RAW / 131.0;
 DataStruct->Gy = DataStruct->Gyro_Y_RAW / 131.0;
@@ -204,8 +202,8 @@ DataStruct->Gz = DataStruct->Gyro_Z_RAW / 131.0;
 
 void MPU6050_Read_Temp(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct)
 {
-    uint8_t Rec_Data[2];
-    int16_t temp;
+uint8_t Rec_Data[2];
+int16_t temp;
 
     // قراءة 2 بايت من البيانات بدءًا من مسجل TEMP_OUT_H_REG
 
@@ -213,12 +211,13 @@ void MPU6050_Read_Temp(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct)
 
     temp = (int16_t)(Rec_Data[0] << 8 | Rec_Data[1]);
     DataStruct->Temperature = (float)((int16_t)temp / (float)340.0 + (float)36.53);
+
 }
 
 void MPU6050_Read_All(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct)
 {
-    uint8_t Rec_Data[14];
-    int16_t temp;
+uint8_t Rec_Data[14];
+int16_t temp;
 
     // قراءة 14 بايت من البيانات بدءًا من مسجل ACCEL_XOUT_H
 
@@ -231,11 +230,12 @@ void MPU6050_Read_All(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct)
     DataStruct->Gyro_X_RAW = (int16_t)(Rec_Data[8] << 8 | Rec_Data[9]);
     DataStruct->Gyro_Y_RAW = (int16_t)(Rec_Data[10] << 8 | Rec_Data[11]);
     DataStruct->Gyro_Z_RAW = (int16_t)(Rec_Data[12] << 8 | Rec_Data[13]);
+
 }
 ```
 
-```markdown
-```arabic
+````markdown
+````arabic
 يُرجى ترجمة النص إلى اللغة العربية:
 ```cpp
 DataStruct->Ax = DataStruct->Accel_X_RAW / 16384.0;
@@ -279,8 +279,10 @@ double Kalman_getAngle(Kalman_t *Kalman, double newAngle, double newRate, double
 {
 double rate = newRate - Kalman->bias;
 Kalman->angle += dt * rate;
-```
-```
+````
+````
+
+````
 
 ```markdown
 ```python
@@ -308,10 +310,11 @@ Kalman->P[1][1] -= K[1] * P01_temp;
 
 return Kalman->angle;
 };
-```
+````
 
 يمكن رؤية أنه تمت إضافة `dt` إلى `Kalman->P[0][0]` بناءً على معادلات معينة. ثم تم تعديل قيم `Kalman->P[0][1]` و `Kalman->P[1][0]` و `Kalman->P[1][1]` بناءً على القيم الموجودة مسبقًا وبعض القيم الأخرى. تم حساب `S` و `K` استنادًا إلى القيم المحسوبة مسبقًا. تم حساب `y` باستخدام `newAngle` و `Kalman->angle` وتم تحديث `Kalman->angle` و `Kalman->bias` باستخدام `K` و `y`. تم حساب `P00_temp` و `P01_temp` بناءً على القيم السابقة، ثم تم تحديث `Kalman->P[0][0]` و `Kalman->P[0][1]` و `Kalman->P[1][0]` و `Kalman->P[1][1]` باستخدام هذه القيم. أخيرًا، تم إرجاع `Kalman->angle`.
-```
+
+````
 
 يمكن رؤية أنه بعد تعيين عنوان I2C، تمت مراجعة المعلومات المسترجعة من MPU6050 في دالة `MPU6050_Read_All` في دورة while، وتم توفير فترة تأخير قبل مواصلة التنفيذ.
 
@@ -336,7 +339,7 @@ float Temperature;
 double KalmanAngleX;
 double KalmanAngleY;
 } MPU6050_t;
-```
+````
 
 بعد تكوين واجهة السلسلة، يمكنك إخراج المتغيرات باستخدام البيان التالي:
 
@@ -351,7 +354,9 @@ printf("زاوية X: %.2f درجة\t", MPU6050.KalmanAngleX);
 
 > عنوان النص: <https://wiki-power.com/>  
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
+
 ```
 
 
 > تمت ترجمة هذه المشاركة باستخدام ChatGPT، يرجى [**تزويدنا بتعليقاتكم**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) إذا كانت هناك أي حذف أو إهمال.
+```

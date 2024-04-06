@@ -32,27 +32,27 @@ Vista previa en línea del proyecto:
 
 ## Circuitos de Aplicación Típicos
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420171841.png)
+![](https://media.wiki-power.com/img/20220420171841.png)
 
 ## Diagrama de Funciones Internas
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420171859.png)
+![](https://media.wiki-power.com/img/20220420171859.png)
 
 ## Definición de Pines
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220420171920.png)
+![](https://media.wiki-power.com/img/20220420171920.png)
 
-| Nombre del Pin | Descripción del Pin                                   |
-| -------------  | ----------------------------------------------------  |
-| VCC            | Alimentación interna del circuito de control          |
-| VINx           | Alimentación del canal x, con desacople de 10uF MLCC  |
+| Nombre del Pin | Descripción del Pin                                                                                                                            |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| VCC            | Alimentación interna del circuito de control                                                                                                   |
+| VINx           | Alimentación del canal x, con desacople de 10uF MLCC                                                                                           |
 | LXx            | Salida de conmutación del MOSFET interno del canal x, se puede conectar a un circuito de filtro paso bajo para obtener una tensión más estable |
-| FBx            | Pin de retroalimentación del canal x, conectado a la salida mediante un divisor de voltaje  |
-| ENx            | Pin de habilitación, no debe dejarse flotante        |
-| GNDx           | Conexión a tierra del canal x                        |
-| AGND           | Tierra analógica                                      |
-| Pad Inferior   | Para disipación de calor, debe estar conectado a tierra |
-| NC             | No conectado                                         |
+| FBx            | Pin de retroalimentación del canal x, conectado a la salida mediante un divisor de voltaje                                                     |
+| ENx            | Pin de habilitación, no debe dejarse flotante                                                                                                  |
+| GNDx           | Conexión a tierra del canal x                                                                                                                  |
+| AGND           | Tierra analógica                                                                                                                               |
+| Pad Inferior   | Para disipación de calor, debe estar conectado a tierra                                                                                        |
+| NC             | No conectado                                                                                                                                   |
 
 ## Descripción de las Características
 
@@ -66,7 +66,7 @@ El EA3059 es un circuito integrado de gestión de energía diseñado específica
 
 Si es necesario establecer el tiempo de encendido de cada regulador Buck, esto se puede lograr mediante la programación de un circuito como se muestra a continuación:
 
-![Circuito de Programación](https://img.wiki-power.com/d/wiki-media/img/20220420172125.png)
+![Circuito de Programación](https://media.wiki-power.com/img/20220420172125.png)
 
 ### Arquitectura con Desfase de 180°
 
@@ -88,7 +88,7 @@ $$
 V_{OUTx} = 0.6 * \frac{R_1}{R_2} + 0.6V
 $$
 
-![Configuración de Resistencias](https://img.wiki-power.com/d/wiki-media/img/20220420172602.png)
+![Configuración de Resistencias](https://media.wiki-power.com/img/20220420172602.png)
 
 Si es necesario obtener voltajes de salida comunes, puede consultar la siguiente tabla para configurar las resistencias divisoras (asegurándose de utilizar resistencias del 1% de precisión):
 
@@ -105,12 +105,12 @@ Los capacitores de entrada ayudan a suprimir la amplitud del ruido en el voltaje
 
 Los modelos recomendados para los capacitores de entrada/salida son los siguientes:
 
-| Modelo            | Valor | Tensión | Encapsulado |
-| ----------------- | ---- | ---- | ---- |
-| C2012X5R1A106M | 10uF | 10V  | 0805 |
-| C3216X5R1A106M | 10uF | 10V  | 1206 |
-| C2012X5R1A226M | 22uF | 10V  | 0805 |
-| C3216X5R1A226M | 22uF | 10V  | 1206 |
+| Modelo         | Valor | Tensión | Encapsulado |
+| -------------- | ----- | ------- | ----------- |
+| C2012X5R1A106M | 10uF  | 10V     | 0805        |
+| C3216X5R1A106M | 10uF  | 10V     | 1206        |
+| C2012X5R1A226M | 22uF  | 10V     | 0805        |
+| C3216X5R1A226M | 22uF  | 10V     | 1206        |
 
 ### Selección de Inductores de Salida
 
@@ -139,7 +139,7 @@ El diseño del PMIC debe realizarse con cuidado para garantizar un rendimiento �
 - ...
 ```
 
-[//]: # (Please note that this translation is provided in markdown format as per your request.)
+[//]: # "Please note that this translation is provided in markdown format as per your request."
 
 - Se recomienda utilizar una disposición de PCB de 4 capas, colocando el plano LX y el plano de salida en la capa superior, y el plano de VIN en una capa interna.
 - Los pines de tierra de los condensadores de montaje superficial de entrada/salida en la capa superior deben estar conectados a través de agujeros pasantes a las capas internas y la capa inferior.
@@ -154,19 +154,19 @@ El diseño de la disposición se muestra a continuación:
 
 Capa Superior:
 
-![Capa Superior](https://img.wiki-power.com/d/wiki-media/img/20220420175756.png)
+![Capa Superior](https://media.wiki-power.com/img/20220420175756.png)
 
 Capa de Alimentación Intermedia:
 
-![Capa de Alimentación Intermedia](https://img.wiki-power.com/d/wiki-media/img/20220420175833.png)
+![Capa de Alimentación Intermedia](https://media.wiki-power.com/img/20220420175833.png)
 
 Capa de Tierra Intermedia:
 
-![Capa de Tierra Intermedia](https://img.wiki-power.com/d/wiki-media/img/20220420175851.png)
+![Capa de Tierra Intermedia](https://media.wiki-power.com/img/20220420175851.png)
 
 Capa Inferior:
 
-![Capa Inferior](https://img.wiki-power.com/d/wiki-media/img/20220420175906.png)
+![Capa Inferior](https://media.wiki-power.com/img/20220420175906.png)
 
 ## Referencias y Agradecimientos
 

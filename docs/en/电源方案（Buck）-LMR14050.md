@@ -33,11 +33,11 @@ Project Online Preview:
 
 ## Internal Functional Block Diagram
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220111090855.png)
+![](https://media.wiki-power.com/img/20220111090855.png)
 
 ## Pin Definitions
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220110170233.png)
+![](https://media.wiki-power.com/img/20220110170233.png)
 
 - BOOT: Bootstrap capacitor for the high-side MOSFET. Connect a 0.1uF capacitor between BOOT and SW.
 - VIN: Power input, connected to this pin after coupling capacitor $C_{IN}$.
@@ -55,7 +55,7 @@ The output voltage of LMR14050 is adjusted by opening the high-side N-MOS and co
 
 The relationship between the SW voltage and the inductor current in Continuous Conduction Mode (CCM) is shown below:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220111095020.png)
+![](https://media.wiki-power.com/img/20220111095020.png)
 
 ### Sleep Mode
 
@@ -69,7 +69,7 @@ LMR14050 integrates an internal bootstrap voltage converter. By connecting a boo
 
 LMR14050 provides an internal reference voltage of 0.75V. The output voltage is divided from $V_{OUT}$ through a resistor divider and fed into the FB pin for internal comparison and regulation. It is recommended to use resistors with a deviation of 1% or lower and a temperature coefficient of 100 ppm or lower for the voltage divider. The low-side resistor $R_{FBB}$ (recommended value is 10-100kΩ) is chosen based on the desired voltage division current, and the high-side resistor $R_{FBT}$ is calculated using the formula. Choosing a larger resistor value helps improve light load efficiency, but if it is too large, the regulator will be more susceptible to noise and voltage errors from the FB input current.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220111105814.png)
+![](https://media.wiki-power.com/img/20220111105814.png)
 
 $$
 R_{FBT}=\frac{V_{OUT}-0.75}{0.75}R_{FBB}
@@ -81,7 +81,7 @@ LMR14050 turns on the output when $V_{IN}$ is above 3.7V and EN is above the 1.2
 
 The external pull-up and pull-down resistors for EN can be adjusted to set the startup and shutdown voltage thresholds:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220111111613.png)
+![](https://media.wiki-power.com/img/20220111111613.png)
 
 $R_{ENT}$ and $R_{ENB}$ are calculated using the following formulas:
 
@@ -111,13 +111,13 @@ $$
 R_T(kΩ)=32537*f_{SW}^{-1.045}(kHz)
 $$
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220111135021.png)
+![](https://media.wiki-power.com/img/20220111135021.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220111135034.png)
+![](https://media.wiki-power.com/img/20220111135034.png)
 
 The switching action of LMR14050 can also be synchronized with an external clock input signal (250kHz-2.3MHz):
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220111141247.png)
+![](https://media.wiki-power.com/img/20220111141247.png)
 
 The internal oscillator will be synchronized with the falling edge of the external clock. The recommended high level of the external clock should not be lower than 1.7V, the low level should not be higher than 0.5V, and the minimum pulse width should not be less than 30ns. If a low impedance signal source is connected, the frequency-setting resistor $R_T$ needs to be connected in parallel with an AC coupling resistor $C_{COUP}$ (which can be a 10pF ceramic capacitor) and terminated with a terminal resistor $R_{TERM}$ (e.g., 50Ω) to achieve better impedance matching.
 
@@ -135,7 +135,7 @@ LMR14050 has internal thermal shutdown protection. When the junction temperature
 
 ## Reference Design
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220111143510.png)
+![](https://media.wiki-power.com/img/20220111143510.png)
 
 Design parameters:
 
@@ -232,7 +232,7 @@ According to the previous formula, if the soft-start time is set to 5ms, the rec
 
 ## Layout Recommendations
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220110183248.png)
+![](https://media.wiki-power.com/img/20220110183248.png)
 
 Layout recommendations for reducing EMI:
 

@@ -1,6 +1,6 @@
 # Homelab - 容器应用管理平台 Portainer
 
-![](https://img.wiki-power.com/d/wiki-media/img/202304111545899.png)
+![](https://media.wiki-power.com/img/202304111545899.png)
 
 **Portainer** 是一个容器应用（包括 Docker / Docker compose / Swarm / Kubernetes）的图形化管理工具，可通过 web 界面管理 Docker 环境。它也提供了许多功能如日志查看、容器启动和停止、镜像管理、网络、卷管理等。
 

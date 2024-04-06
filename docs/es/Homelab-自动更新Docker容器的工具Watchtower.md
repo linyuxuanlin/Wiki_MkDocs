@@ -1,6 +1,6 @@
 # Homelab - Herramienta Watchtower para Actualizar Automáticamente Contenedores Docker
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/202304092337531.png)
+![Imagen](https://media.wiki-power.com/img/202304092337531.png)
 
 **Watchtower** es una herramienta que automatiza la actualización de todos o algunos de los contenedores Docker que elijas.
 

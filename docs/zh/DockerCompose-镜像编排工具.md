@@ -1,6 +1,6 @@
 # Docker Compose - 镜像编排工具
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210117130925.jpg)
+![](https://media.wiki-power.com/img/20210117130925.jpg)
 
 Docker Compose 是 Docker 镜像的编排工具。推荐使用 Docker Compose 作为 Docker 的默认打开方式，因为它不仅可以方便地配置与部署镜像，还可以更方便地配置多镜像服务，甚至区分它们的启动顺序，这是使用命令的打开方式所不具备的。
 

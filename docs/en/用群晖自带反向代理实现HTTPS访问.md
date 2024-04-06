@@ -8,7 +8,7 @@ Open `Control Panel` - `Login Portal` - `Advanced` - `Reverse Proxy Server` in s
 
 In the case of [**Setting Up a Password Manager with Bitwarden (Synology Docker)**](https://wiki-power.com/%E5%9F%BA%E4%BA%8EBitwarden%E6%90%AD%E5%BB%BA%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86%E5%99%A8%EF%BC%88%E7%BE%A4%E6%99%96Docker%EF%BC%89), we add a reverse proxy service named `bitwarden`. Fill in the configuration as shown in the following figure:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210503213004.png)
+![](https://media.wiki-power.com/img/20210503213004.png)
 
 - `Source`
   - `Protocol`: Select `HTTPS`

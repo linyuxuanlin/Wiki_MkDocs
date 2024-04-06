@@ -1,7 +1,6 @@
 `![](https://wiki-media-1253965369.cos.ap-guangzhou.myqcloud.com/` -> `![](https://f004.backblazeb2.com/file/wiki-media/` (zh)
 
-
-`![](https://img.wiki-power.com/d/wiki-media/`
+`![](https://media.wiki-power.com/`
 
 ## draft
 
@@ -27,4 +26,3 @@ todo:
 - post time
 - index page of groups
 - speed up page loading
-

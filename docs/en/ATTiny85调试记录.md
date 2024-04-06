@@ -19,7 +19,7 @@ P:\Arduino\hardware\tools\avr/bin/avrdude -C "P:\Arduino\hardware\tools\avr/etc/
 
 First, burn the ISP program to the Arduino:
 
-![ISP Program Burning](https://img.wiki-power.com/d/wiki-media/img/20200426144425.png)
+![ISP Program Burning](https://media.wiki-power.com/img/20200426144425.png)
 
 Open the IDE's preferences and add the following URL to the Additional Boards Manager URLs:
 
@@ -29,15 +29,15 @@ https://raw.githubusercontent.com/damellis/attiny/ide-1.6.x-boards-manager/packa
 
 Open the Boards Manager:
 
-![Boards Manager](https://img.wiki-power.com/d/wiki-media/img/20200426144642.png)
+![Boards Manager](https://media.wiki-power.com/img/20200426144642.png)
 
 Search for and install the package (you might need a proxy):
 
-![Installing Package](https://img.wiki-power.com/d/wiki-media/img/20200426144732.png)
+![Installing Package](https://media.wiki-power.com/img/20200426144732.png)
 
 When burning the bootloader, make sure to select the correct chip model, clock speed (Internal 16 MHz), the port where Arduino is connected, and choose "Arduino as ISP" as the programmer:
 
-![Burning Configuration](https://img.wiki-power.com/d/wiki-media/img/20200426144834.png)
+![Burning Configuration](https://media.wiki-power.com/img/20200426144834.png)
 
 ## Conclusion
 

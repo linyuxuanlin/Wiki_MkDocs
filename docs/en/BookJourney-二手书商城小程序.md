@@ -1,12 +1,12 @@
 # BookJourney - Secondhand Bookstore Mini Program
 
-![BookJourney](https://img.wiki-power.com/d/wiki-media/img/书程小驿.jpg)
+![BookJourney](https://media.wiki-power.com/img/书程小驿.jpg)
 
 Project Repository: [**linyuxuanlin/BookJourney**](https://github.com/linyuxuanlin/BookJourney)
 
 Demo (Scan with WeChat):
 
-![Demo](https://img.wiki-power.com/d/wiki-media/img/1.jpg)
+![Demo](https://media.wiki-power.com/img/1.jpg)
 
 ## Background
 

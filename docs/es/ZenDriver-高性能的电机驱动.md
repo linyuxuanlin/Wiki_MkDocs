@@ -13,7 +13,7 @@ Repositorio del proyecto: [**linyuxuanlin/ZenDriver**](https://github.com/linyux
 
 ## Definición de Interfaces
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200125192433.png)
+![](https://media.wiki-power.com/img/20200125192433.png)
 
 Los pines en el **lado del motor** de izquierda a derecha son: **M-, 5V, Encoder A, Encoder B, GND, M+**, correspondientes a los pines del motor y pueden conectarse directamente al motor.
 
@@ -37,7 +37,7 @@ Los tres puertos en el **lado de entrada de alimentación** son comunes, general
 4. Los pines **IN1 e IN2** deben conectarse a los pines PWM del microcontrolador.
 5. Depure mediante código.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200125192734.png)
+![](https://media.wiki-power.com/img/20200125192734.png)
 
 > Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.

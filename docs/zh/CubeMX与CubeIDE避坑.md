@@ -24,7 +24,7 @@
 
 - 在 CubeMX 的 SYS 设置中，将 Debug 选项更改为 Serial Wire（SW）
 
-![](https://img.wiki-power.com/d/wiki-media/img/20200531162352.jpg)
+![](https://media.wiki-power.com/img/20200531162352.jpg)
 
 ## STM32CubeIDE 中文注释乱码
 

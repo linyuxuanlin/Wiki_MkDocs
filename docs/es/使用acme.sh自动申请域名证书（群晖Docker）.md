@@ -20,7 +20,7 @@ Este tutorial se centra en el modo daemon de Docker, que mantiene el contenedor 
 
 Primero, cree la carpeta `/docker/acme.sh` y luego cree manualmente un archivo `account.conf`:
 
-![account.conf](https://img.wiki-power.com/d/wiki-media/img/20210430212420.png)
+![account.conf](https://media.wiki-power.com/img/20210430212420.png)
 
 A continuación, edite este archivo y agregue manualmente las siguientes líneas:
 
@@ -38,13 +38,13 @@ Abra el paquete Docker de Synology, descargue la imagen `neilpang/acme.sh`, lueg
 
 En la página "Volúmenes", configure la carpeta que desea montar haciendo clic en "Agregar carpeta" y seleccione la ruta local `/docker/acme.sh`, con la ruta de montaje como `/acme.sh` (predeterminada e inmutable):
 
-![Volumes](https://img.wiki-power.com/d/wiki-media/img/20210430214221.png)
+![Volumes](https://media.wiki-power.com/img/20210430214221.png)
 
 En la página "Red", marque la casilla "Usar la misma red que el anfitrión de Docker".
 
 A continuación, vaya a la página "Entorno" e introduzca el comando `daemon` en el cuadro "Comando":
 
-![Environment](https://img.wiki-power.com/d/wiki-media/img/20210430215244.png)
+![Environment](https://media.wiki-power.com/img/20210430215244.png)
 
 Luego, cree y ejecute el contenedor. Haga doble clic en el contenedor en ejecución, vaya a la página "Terminal" y haga clic en "Iniciar por comando", escriba `sh` y confirme.
 

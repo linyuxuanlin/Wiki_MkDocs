@@ -114,7 +114,7 @@ MD0、AUX 引脚内部下拉，悬空为低电平。拉高为 3.3V TTL 高电平
 - 发射：与一般模式相同。
 - 接收：输出信号强度的信息。
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220118110058.png)
+![](https://media.wiki-power.com/img/20220118110058.png)
 
 SNR：信噪比（越大越稳定），RSSI：接收信号的强度指示（越大越稳定）
 
@@ -134,7 +134,7 @@ SNR：信噪比（越大越稳定），RSSI：接收信号的强度指示（越�
 
 ### 点对点
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220118110614.png)
+![](https://media.wiki-power.com/img/20220118110614.png)
 
 - 地址相同、信道相同、无线速率（非串口波特率）相同的两个模块，一个模块发送，另外一个模块接收（必须是：一个发，一个收）。
 - 每个模块都可以做发送/接收。
@@ -155,7 +155,7 @@ SNR：信噪比（越大越稳定），RSSI：接收信号的强度指示（越�
 
 ### 点对多
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220118110709.png)
+![](https://media.wiki-power.com/img/20220118110709.png)
 
 - 地址相同、信道相同、无线速率（非串口波特率）相同的模块，任意一个模块发送，其他模块都可以接收到。
 - 每个模块都可以做发送/接收.
@@ -175,7 +175,7 @@ SNR：信噪比（越大越稳定），RSSI：接收信号的强度指示（越�
 
 ### 广播监听
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220118110853.png)
+![](https://media.wiki-power.com/img/20220118110853.png)
 
 - 模块地址为 0xFFFF，则该模块处于广播监听模式，发送的数据可以被相同速率和信道的其他所有模块接收到（广播）；同时，可以监听相同速率和信道上所有模块的数据传输（监听）。
 - 广播监听无需地址相同。
@@ -212,7 +212,7 @@ SNR：信噪比（越大越稳定），RSSI：接收信号的强度指示（越�
 
 与点对点透传的区别是，模块地址可变，信道可变，但速率仍然相同。
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220118111903.png)
+![](https://media.wiki-power.com/img/20220118111903.png)
 
 例如：  
 设备 A 地址 0X1234，信道 0X17；  
@@ -285,7 +285,7 @@ HAL_UART_Transmit(&huart1, B_Chan, 1, 0xFFFF);
 
 ### 广播监听
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220118112544.png)
+![](https://media.wiki-power.com/img/20220118112544.png)
 
 - 模块地址为 0xFFFF，则该模块处于广播监听模式，发送的数据可以被具有相同速率和信道的其他所有模块接收到（广播）；同时，可以监听相同速率和信道上所有模块的数据传输（监听）；
 - 广播监听无需地址相同。

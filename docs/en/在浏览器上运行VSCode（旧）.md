@@ -84,7 +84,7 @@ To detach from a screen session: `Ctrl + A + D`
 
 Simply enter `http://your_server_ip` in your web browser to enjoy cloud-based VS Code.
 
-![VS Code in the Browser](https://img.wiki-power.com/d/wiki-media/img/20200413181001.jpg)
+![VS Code in the Browser](https://media.wiki-power.com/img/20200413181001.jpg)
 
 Configuring domain access: _To be explored..._
 

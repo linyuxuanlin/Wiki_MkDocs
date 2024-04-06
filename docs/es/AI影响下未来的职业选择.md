@@ -28,11 +28,11 @@ En la sociedad del futuro, las carreras que no serán reemplazadas por máquinas
 
 La empatía implica la capacidad de **ponerse en el lugar del otro**. A menudo, las necesidades no se generan automáticamente, sino que debemos proyectar nuestras propias reflexiones en otras personas para descubrir esas necesidades, en lugar de centrarnos solo en la tecnología.
 
-![Empatía](https://img.wiki-power.com/d/wiki-media/img/20200226140150.png)
+![Empatía](https://media.wiki-power.com/img/20200226140150.png)
 
 La colaboración en equipo está relacionada con el "efecto del tablero largo". En la sociedad moderna, no se espera que cada individuo sea experto en todo, sino que se centren en sus fortalezas y colaboren en equipo para compensar las debilidades. Un equipo de tablero largo aprovecha las fortalezas individuales y se destaca en la competencia.
 
-![Colaboración en equipo](https://img.wiki-power.com/d/wiki-media/img/20200226140223.png)
+![Colaboración en equipo](https://media.wiki-power.com/img/20200226140223.png)
 
 La habilidad para contar historias es esencial tanto interna como externamente. Internamente, se necesita para mantener un equipo unido a través de una comprensión compartida de los valores. Externamente, se utiliza para que otros acepten tus ideas y productos. Aprender a contar una historia que resuene con todas las partes interesadas es crucial, ya que la promoción es tan importante como el producto en sí.
 

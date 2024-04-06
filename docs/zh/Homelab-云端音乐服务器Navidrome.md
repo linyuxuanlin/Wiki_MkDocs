@@ -1,6 +1,6 @@
 # Homelab - 云端音乐服务器 Navidrome
 
-![](https://img.wiki-power.com/d/wiki-media/img/20230531212854.png)
+![](https://media.wiki-power.com/img/20230531212854.png)
 
 **Navidrome** 是一个开源的基于 web 的音乐服务器和流媒体，你可以储存自己的音乐，并在多个客户端上收听。
 

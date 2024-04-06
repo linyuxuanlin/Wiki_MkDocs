@@ -2,7 +2,7 @@
 
 —— Cómo convertir VS Code en una herramienta altamente eficiente para la productividad.
 
-![Imagen](https://img.wiki-power.com/d/wiki-media/img/20200319135609.png)
+![Imagen](https://media.wiki-power.com/img/20200319135609.png)
 
 ## Antecedentes
 
@@ -24,7 +24,7 @@ Generalmente, recomendamos descargar la versión **Stable**. Si no te asustan lo
 
 Una vez completada la descarga e instalación, al abrir el software, verás la página de inicio:
 
-![Página de Inicio](https://img.wiki-power.com/d/wiki-media/img/20200318224855.png)
+![Página de Inicio](https://media.wiki-power.com/img/20200318224855.png)
 
 ## Instalación de Complementos
 
@@ -81,7 +81,7 @@ A continuación, te presentamos algunos complementos útiles (puedes hacer clic 
 
 Puedes elegir tu tema favorito en `Archivo - Preferencias - Tema de color`. Por ejemplo, yo he seleccionado el tema `Monokai Dimmed`:
 
-![Tema de Monokai Dimmed](https://img.wiki-power.com/d/wiki-media/img/20200319132727.png)
+![Tema de Monokai Dimmed](https://media.wiki-power.com/img/20200319132727.png)
 
 Si sientes que los temas predeterminados no son suficientes, también puedes buscar y descargar temas de tu elección en la tienda de complementos usando la palabra clave "theme".
 
@@ -91,7 +91,7 @@ Para una experiencia más fluida al usar VS Code por primera vez, puedes persona
 
 ### Guardado Automático
 
-```markdown
+````markdown
 Puede configurar `Files: Auto Save` en cualquiera de los tres valores distintos a `off`. En el uso diario, la función de autoguardado resulta bastante conveniente.
 
 ### Tipografía
@@ -102,16 +102,16 @@ Después de descargar el archivo de fuente .ttf, instálelo, reinicie VS Code y,
 
 ## Atajos de Teclado Comunes
 
-|     Acción     |          Atajo           |
-| :------------: | :----------------------: |
-| Panel de Comandos | `F1` o `Ctrl + Shift + P` |
-| Terminal | <code>Ctrl + &#96;</code>  |
-| Explorador de Recursos | `Ctrl + Shift + E`     |
-| Búsqueda Global | `Ctrl + Shift + F`     |
-| Gestión de Código Fuente | `Ctrl + Shift + G`     |
-| Ejecutar | `Ctrl + Shift + D`     |
-| Gestión de Extensiones | `Ctrl + Shift + X`     |
-| Cambio Rápido de Archivo | `Ctrl + D`         |
+|          Acción          |           Atajo           |
+| :----------------------: | :-----------------------: |
+|    Panel de Comandos     | `F1` o `Ctrl + Shift + P` |
+|         Terminal         | <code>Ctrl + &#96;</code> |
+|  Explorador de Recursos  |    `Ctrl + Shift + E`     |
+|     Búsqueda Global      |    `Ctrl + Shift + F`     |
+| Gestión de Código Fuente |    `Ctrl + Shift + G`     |
+|         Ejecutar         |    `Ctrl + Shift + D`     |
+|  Gestión de Extensiones  |    `Ctrl + Shift + X`     |
+| Cambio Rápido de Archivo |        `Ctrl + D`         |
 
 ## Control de Código Fuente
 
@@ -120,6 +120,7 @@ Después de descargar el archivo de fuente .ttf, instálelo, reinicie VS Code y,
 ```shell
 git config --global credential.helper store
 ```
+````
 
 Luego reinicia VS Code y eso es todo.
 
@@ -137,6 +138,8 @@ Estos son los ajustes básicos para configurar tu entorno en VS Code. En el pró
 
 > Dirección original del artículo: <https://wiki-power.com/>
 > Este artículo está protegido por la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh). Si desea reproducirlo, por favor indique la fuente.
+
 ```
 
 > Este post está traducido usando ChatGPT, por favor [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) si hay alguna omisión.
+```

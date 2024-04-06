@@ -2,7 +2,7 @@
 
 Note: This tutorial is based on code-server v3.8.0, CentOS 8.2.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20201221140748.jpg)
+![](https://media.wiki-power.com/img/20201221140748.jpg)
 
 It is highly recommended to install the code-server service using Docker Compose.  
 With just one command, you can deploy it without the need for background configuration and it comes with built-in Git and other environments.  
@@ -96,7 +96,7 @@ yum install git
 
 ### Accessing via a Domain Name
 
-Accessing through the server IP may seem strange, so we can bind a custom domain name to access the code-server service. 
+Accessing through the server IP may seem strange, so we can bind a custom domain name to access the code-server service.
 Purchase a domain name and add the server IP in the DNS resolution using the A record type.
 
 ### Current Version Bugs and Solutions

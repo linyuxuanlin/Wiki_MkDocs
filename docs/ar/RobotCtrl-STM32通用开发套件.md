@@ -1,6 +1,6 @@
 # RobotCtrl - مجموعة تطوير عامة للوحدة STM32
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/20220416181125.jpeg)
+![صورة](https://media.wiki-power.com/img/20220416181125.jpeg)
 
 مستودع المشروع: [**linyuxuanlin/RobotCtrl**](https://github.com/linyuxuanlin/RobotCtrl)
 
@@ -12,7 +12,7 @@
 
 ## متطلبات التصميم
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/20220527111854.png)
+![صورة](https://media.wiki-power.com/img/20220527111854.png)
 
 ملاحظة: ما يلي هو ملخص التصميم. للمزيد من التفاصيل، يرجى الانتقال إلى المقالات ذات الصلة.
 

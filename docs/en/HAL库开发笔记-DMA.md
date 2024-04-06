@@ -8,7 +8,7 @@ DMA (Direct Memory Access) allows hardware devices of different speeds to commun
 
 DMA provides high-speed data transfer between peripherals/memory or memory/memory without occupying CPU resources.
 
-![DMA Diagram](https://img.wiki-power.com/d/wiki-media/img/20210404153423.png)
+![DMA Diagram](https://media.wiki-power.com/img/20210404153423.png)
 
 As shown in the diagram above, the STM32F4 series has two DMA controllers with a total of 12 channels (7 in DMA1 and 5 in DMA2). The DMA controllers share the system's data bus with the Cortex-M3 core.
 
@@ -43,7 +43,7 @@ HAL_UART_Transmit_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size)
 Function: Send data of a specified length through UART using DMA.  
 Parameters:
 
-- **UART_HandleTypeDef *huart**: The UART handle (e.g., UART_HandleTypeDef huart1 -> huart1).
+- **UART_HandleTypeDef \*huart**: The UART handle (e.g., UART_HandleTypeDef huart1 -> huart1).
 - **\*pData**: The data to be sent.
 - **Size**: The number of bytes to send.
 
@@ -62,7 +62,7 @@ HAL_UART_Receive_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size)
 Function: Receive data of a specified length through UART using DMA.  
 Parameters:
 
-- **UART_HandleTypeDef *huart**: The UART handle (e.g., UART_HandleTypeDef huart1 -> huart1).
+- **UART_HandleTypeDef \*huart**: The UART handle (e.g., UART_HandleTypeDef huart1 -> huart1).
 - **\*pData**: An array to store the received data.
 - **Size**: The number of bytes to receive.
 
@@ -73,7 +73,6 @@ HAL_UART_Receive_DMA(&huart1, (uint8_t *)Recbuff, sizeof(Recbuff));  // Receive 
 ```
 
 #### UART DMA Resume Function
-
 
 ```c
 HAL_UART_DMAResume(&huart1)
@@ -90,7 +89,7 @@ For the configuration of the UART section, please refer to the article [**HAL Li
 
 After configuring the USART pins and NVIC interrupts, switch to the `DMA Settings` tab and configure as shown in the following image:
 
-![DMA Configuration](https://img.wiki-power.com/d/wiki-media/img/20210404165541.png)
+![DMA Configuration](https://media.wiki-power.com/img/20210404165541.png)
 
 - Click `Add` to add channels (USART1_RX and USART1_TX).
 - Set the priority of both channels to `Medium`.
@@ -99,7 +98,7 @@ After configuring the USART pins and NVIC interrupts, switch to the `DMA Setting
 
 Next, in the `System Core` tab, locate `DMA` and add a `MEMTOMEM` item as shown below:
 
-![MEMTOMEM Configuration](https://img.wiki-power.com/d/wiki-media/img/20210404170002.png)
+![MEMTOMEM Configuration](https://media.wiki-power.com/img/20210404170002.png)
 
 ### Configuring DMA in the Code
 
@@ -130,6 +129,8 @@ Flash the program, open a serial assistant, and you will see the custom array be
 
 > Original: <https://wiki-power.com/>  
 > This post is protected by [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) agreement, should be reproduced with attribution.
+
 ```
 
 > This post is translated using ChatGPT, please [**feedback**](https://github.com/linyuxuanlin/Wiki_MkDocs/issues/new) if any omissions.
+```

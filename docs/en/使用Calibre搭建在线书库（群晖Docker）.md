@@ -2,7 +2,7 @@
 
 Learn how to set up an online book library using Calibre-web (Docker) on your Synology NAS.
 
-![Image](https://img.wiki-power.com/d/wiki-media/img/20210429125418.png)
+![Image](https://media.wiki-power.com/img/20210429125418.png)
 
 Compared to the traditional method of using folders, book library management systems like Calibre, which are open source, offer a wide range of features, including online reading, downloading, format conversion, email delivery, and removing duplicate books. Calibre-web is a Docker image based on Calibre, making it convenient to deploy a book library on servers like Synology.
 
@@ -10,7 +10,7 @@ Compared to the traditional method of using folders, book library management sys
 
 First, create a folder for your library resources. I created a shared folder named `book` directly in the root directory of the disk:
 
-![Image](https://img.wiki-power.com/d/wiki-media/img/20210429214028.png)
+![Image](https://media.wiki-power.com/img/20210429214028.png)
 
 Correspondingly, create a folder named `calibre-web` within the `docker` folder. This folder is specifically for storing the configuration files for the Docker image.
 
@@ -20,11 +20,11 @@ Open Synology's Docker package, search for `johngong/calibre-web` in the registr
 
 On the "Volume" page, add mapped folders with mount paths `/library` and `/config`:
 
-![Image](https://img.wiki-power.com/d/wiki-media/img/20210429214908.png)
+![Image](https://media.wiki-power.com/img/20210429214908.png)
 
 On the "Port Settings" page, add port mapping, primarily mapping the internal container's `8083` port to an external port, such as `5004`.
 
-![Image](https://img.wiki-power.com/d/wiki-media/img/20210429215121.png)
+![Image](https://media.wiki-power.com/img/20210429215121.png)
 
 Next, create and start the container.
 
@@ -34,7 +34,7 @@ Open your Synology's local IP address followed by `:5004` to access the manageme
 
 Please note that the book upload function is not enabled by default. You need to click on "Admin" in the top right corner, then go to "Basic Configuration" > "Enable Upload" to enable book uploads.
 
-![Image](https://img.wiki-power.com/d/wiki-media/img/20210429215628.png)
+![Image](https://media.wiki-power.com/img/20210429215628.png)
 
 ## Enabling HTTPS
 

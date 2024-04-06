@@ -2,7 +2,7 @@
 
 Deploy RSSHub service on Synology Docker to generate RSS subscription sources for various peculiar content.
 
-![RSSHub](https://img.wiki-power.com/d/wiki-media/img/20210504105215.png)
+![RSSHub](https://media.wiki-power.com/img/20210504105215.png)
 
 ## Deployment on Synology Docker
 
@@ -10,7 +10,7 @@ Open the Synology Docker Package, download the `diygod/rsshub` image, double-cli
 
 On the "Port Settings" page, manually set the local port corresponding to container port 1200 (e.g., I set it as `8004`):
 
-![Port Settings](https://img.wiki-power.com/d/wiki-media/img/20210504085806.png)
+![Port Settings](https://media.wiki-power.com/img/20210504085806.png)
 
 After completing the configuration, start the container. Enter your Synology's local IP:8004, and if you can see the RSSHub page, consider the installation successful.
 
@@ -20,7 +20,7 @@ For detailed usage instructions, please refer to the [**RSSHub Official Document
 
 As a simple example, in the official documentation, you can find the method to generate the RSS feed for "Now Playing Movies" on Douban as follows:
 
-![RSS Generation](https://img.wiki-power.com/d/wiki-media/img/20210504104630.png)
+![RSS Generation](https://media.wiki-power.com/img/20210504104630.png)
 
 So, you can use `your_domain/douban/movie/playing` to generate RSS feeds using your own server.
 

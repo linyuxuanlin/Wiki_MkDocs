@@ -6,7 +6,7 @@ Una forma de dibujar gráficos de relaciones utilizando código.
 
 [Graphviz](http://www.graphviz.org/) es una herramienta muy útil para dibujar gráficos de relaciones. A diferencia de Visio, Graphviz genera los gráficos de forma **automática**, sin necesidad de ajustar manualmente la posición de los elementos. Esto es especialmente útil cuando se trabaja con redes de relaciones complejas, ya que permite **minimizar la cantidad de cruces de líneas**.
 
-![](https://img.wiki-power.com/d/wiki-media/img/Graphviz.png)
+![](https://media.wiki-power.com/img/Graphviz.png)
 
 ## Instalación
 
@@ -28,7 +28,7 @@ graph graph_name {
 }
 ```
 
-![](https://img.wiki-power.com/d/wiki-media/img/20190201140244.png)
+![](https://media.wiki-power.com/img/20190201140244.png)
 
 ## Conclusión
 

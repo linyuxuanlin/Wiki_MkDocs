@@ -34,7 +34,7 @@ From an EMI perspective, it is advisable to lay copper; from the perspective of 
 
 ## Determining Saturation of the Inductor
 
-![Inductor Saturation](https://img.wiki-power.com/d/wiki-media/img/20210723133831.png)
+![Inductor Saturation](https://media.wiki-power.com/img/20210723133831.png)
 
 Apart from this, saturation can also be determined by abnormal temperature rise and whining.
 
@@ -42,7 +42,7 @@ Apart from this, saturation can also be determined by abnormal temperature rise 
 
 - **Input/Output Capacitors**: Need to meet voltage resistance (1.5-2 times the input voltage) and input ripple requirements.
 - **BST Capacitor**: Bootstrap startup capacitor, used to boost the voltage to turn on the upper switch inside the chip. Generally, follow the recommended values in the datasheet (usually 0.1-1uF), and the voltage resistance should generally be higher than the input voltage.
-- **Inductor**: The required inductance varies for different output voltages; pay attention to temperature rise and saturation current to meet margin requirements, generally 1.3 times the maximum current (or the inductor saturation current must be greater than the maximum output current + 0.5 * inductor ripple current).
+- **Inductor**: The required inductance varies for different output voltages; pay attention to temperature rise and saturation current to meet margin requirements, generally 1.3 times the maximum current (or the inductor saturation current must be greater than the maximum output current + 0.5 \* inductor ripple current).
 - **Feedback Capacitor**: Take the value as per the datasheet requirements; different chip manufacturers have different values, and different output voltages also have different requirements.
 - **Feedback Resistors and EN Divider Resistors**: The values should be taken according to the datasheet, with a 1% accuracy required.
 

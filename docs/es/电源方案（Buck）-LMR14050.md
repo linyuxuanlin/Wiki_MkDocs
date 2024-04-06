@@ -33,11 +33,11 @@ Vista previa en línea del proyecto:
 
 ## Diagrama de funciones internas
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220111090855.png)
+![](https://media.wiki-power.com/img/20220111090855.png)
 
 ## Definición de pines
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220110170233.png)
+![](https://media.wiki-power.com/img/20220110170233.png)
 
 - BOOT: Capacitor de arranque para el MOSFET de la cara superior. Conecte un capacitor de 0.1uF entre BOOT y SW.
 - VIN: Entrada de alimentación, conectada a través de un capacitor de desacoplamiento $C_{IN}$.
@@ -45,7 +45,7 @@ Vista previa en línea del proyecto:
 - RT/SYNC: Temporización de resistencia o entrada de reloj externo. Cuando se utiliza una resistencia externa conectada a tierra para configurar la frecuencia de conmutación, el amplificador interno mantiene este pin a un voltaje fijo. Si se tira del pin por encima del umbral superior del PLL, se producirá un cambio de modo y el pin se convertirá en una entrada sincronizada. El amplificador interno se deshabilita y el pin se convierte en una entrada de reloj de alta impedancia para el PLL interno. Si se detiene el flanco del reloj, se vuelve a habilitar el amplificador interno y el modo de operación vuelve a la programación de frecuencia a través de la resistencia.?
 - FB: Pin de entrada de retroalimentación, se utiliza una resistencia para dividir el voltaje de $V_{OUT}$ como retroalimentación, no se puede conectar directamente a tierra.
 - SS: Pin de control de arranque suave, se conecta un capacitor para ajustar el tiempo de arranque suave.
-- SW: Salida del interruptor regulador, conectada internamente al MOSFET de la cara superior. Conecte la bobina de potencia. 
+- SW: Salida del interruptor regulador, conectada internamente al MOSFET de la cara superior. Conecte la bobina de potencia.
 
 ## Descripción de características
 
@@ -55,7 +55,7 @@ LMR14050 ajusta la tensión de salida mediante la apertura del N-MOS de alta lat
 
 La relación entre la tensión SW y la corriente de la bobina en el modo de conducción continua (CCM) se muestra a continuación:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220111095020.png)
+![](https://media.wiki-power.com/img/20220111095020.png)
 
 ### Modo de suspensión
 
@@ -69,7 +69,7 @@ LMR14050 integra un convertidor de voltaje de arranque interno. Al conectar un c
 
 LMR14050 proporciona una tensión de referencia interna de 0.75V. La tensión de salida se divide mediante una resistencia en el divisor de tensión y se aplica al pin FB para su comparación y ajuste interno. Se recomienda utilizar resistencias de división con una desviación del 1% o inferior y un coeficiente de temperatura de 100 ppm o inferior. La resistencia inferior $R_{FBB}$ (con un valor de referencia de 10-100kΩ) se selecciona en función de la corriente de división deseada, y la resistencia superior $R_{FBT}$ se calcula mediante la siguiente fórmula. Se recomienda utilizar valores de resistencia más altos para mejorar la eficiencia en condiciones de carga ligera, pero si son demasiado altos, el regulador será más susceptible al ruido y a los errores de voltaje provenientes de la corriente de entrada FB.
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220111105814.png)
+![](https://media.wiki-power.com/img/20220111105814.png)
 
 $$
 R_{FBT}=\frac{V_{OUT}-0.75}{0.75}R_{FBB}
@@ -81,7 +81,7 @@ Cuando $V_{IN}$ es mayor que 3.7V y EN supera el umbral de 1.2V, LMR14050 activa
 
 El ajuste de los umbrales de voltaje de inicio y apagado se puede lograr mediante la resistencia externa de pull-up y pull-down en EN, según las siguientes fórmulas:
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220111111613.png)
+![](https://media.wiki-power.com/img/20220111111613.png)
 
 $R_{ENT}$ y $R_{ENB}$ se calculan de acuerdo con las siguientes fórmulas:
 
@@ -111,13 +111,13 @@ $$
 R_T(kΩ)=32537*f_{SW}^{-1.045}(kHz)
 $$
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220111135021.png)
+![](https://media.wiki-power.com/img/20220111135021.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220111135034.png)
+![](https://media.wiki-power.com/img/20220111135034.png)
 
 La acción de conmutación del LMR14050 también puede sincronizarse mediante una señal de entrada de reloj externo (250kHz-2.3MHz):
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220111141247.png)
+![](https://media.wiki-power.com/img/20220111141247.png)
 
 El oscilador interno se sincronizará con el flanco descendente del reloj externo. Se recomienda que el nivel alto del reloj externo no sea inferior a 1.7V, el nivel bajo no sea superior a 0.5V y el ancho de pulso mínimo no sea inferior a 30ns. Si se conecta una fuente de señal de baja impedancia, la resistencia de ajuste de frecuencia $R_T$ debe conectarse en paralelo con una resistencia de acoplamiento de CA $C_{COUP}$ (que puede ser un condensador cerámico de 10pF) y conectarse a una resistencia terminal $R_{TERM}$ (por ejemplo, 50Ω) para lograr una mejor coincidencia de impedancia.
 
@@ -135,7 +135,7 @@ El LMR14050 tiene una función de protección de apagado térmico interna. Cuand
 
 ## Diseño de referencia
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220111143510.png)
+![](https://media.wiki-power.com/img/20220111143510.png)
 
 Parámetros de diseño:
 
@@ -234,7 +234,7 @@ Según la fórmula mencionada anteriormente, si se establece un tiempo de arranq
 
 ## Referencia de diseño
 
-![](https://img.wiki-power.com/d/wiki-media/img/20220110183248.png)
+![](https://media.wiki-power.com/img/20220110183248.png)
 
 Recomendaciones de diseño para reducir la interferencia electromagnética (EMI):
 

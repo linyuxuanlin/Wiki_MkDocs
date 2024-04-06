@@ -6,7 +6,7 @@
 
 [Graphviz](http://www.graphviz.org/) 是个好东西，可用来绘制关系图。与 Visio 有一个本质上的差异： Graphviz 生成图是**自动布局**的，不需要手动调整元素的位置。当一个关系网络比较复杂时，用自动布局可实现**最小化连线交叉**。
 
-![](https://img.wiki-power.com/d/wiki-media/img/Graphviz.png)
+![](https://media.wiki-power.com/img/Graphviz.png)
 
 ## 安装
 
@@ -28,7 +28,7 @@ graph graph_name {
 }
 ```
 
-![](https://img.wiki-power.com/d/wiki-media/img/20190201140244.png)
+![](https://media.wiki-power.com/img/20190201140244.png)
 
 ## 总结
 

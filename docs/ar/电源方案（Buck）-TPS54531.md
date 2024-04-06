@@ -31,11 +31,11 @@ TPS54531 هو محول تيار مستمر (Buck) بتردد 570 كيلوهرت�
 
 ## تعريف الأطراف
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210713153815.png)
+![](https://media.wiki-power.com/img/20210713153815.png)
 
 ## التصميم المرجعي
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210713173605.png)
+![](https://media.wiki-power.com/img/20210713173605.png)
 
 ## ضبط المعلمات
 
@@ -65,9 +65,9 @@ $$
 
 ## مرجع تصميم الدوائر المطبوعة (PCB)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210713161521.png)
+![](https://media.wiki-power.com/img/20210713161521.png)
 
-![](https://img.wiki-power.com/d/wiki-media/img/20210713162833.png)
+![](https://media.wiki-power.com/img/20210713162833.png)
 
 ## استنتاجات من الأخطاء الشائعة
 

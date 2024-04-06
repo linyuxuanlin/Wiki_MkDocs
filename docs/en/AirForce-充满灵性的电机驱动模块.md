@@ -16,7 +16,7 @@ Project Repository: [**linyuxuanlin/AirForceDVR**](https://github.com/linyuxuanl
 
 ## AirCraft - Dual Motor Drive Subboard
 
-![AirCraft](https://img.wiki-power.com/d/wiki-media/img/20201101231734.jpg)
+![AirCraft](https://media.wiki-power.com/img/20201101231734.jpg)
 
 The AirCraft dual motor drive subboard is designed based on the TB6612FNG integrated drive chip, along with a logic control method. It only requires 4 pins (2 general-purpose + 2 PWM) to control dual motors (direction/speed). Compared to typical solutions on the market, it reduces the usage of two I/O pins, saving valuable resources on the main controller. As for the drive chip specifications, a single channel can handle a maximum continuous drive current of 1.2A, with peak values of 2A/3.2A (continuous pulse/single pulse), making it more than sufficient for driving motors commonly found on robots.
 
@@ -32,21 +32,21 @@ The AirCraft dual motor drive subboard is designed based on the TB6612FNG integr
 
 **Pin Descriptions:**
 
-![Pin Diagram](https://img.wiki-power.com/d/wiki-media/img/20201022104033.png)
+![Pin Diagram](https://media.wiki-power.com/img/20201022104033.png)
 
-| Interface Group | Name | Function Description |
-| :------: | :--: | :------------------: |
-| Control Interface | PWM1 | Motor M1 speed control pin |
+|  Interface Group  | Name |      Function Description      |
+| :---------------: | :--: | :----------------------------: |
+| Control Interface | PWM1 |   Motor M1 speed control pin   |
 | Control Interface | DIR1 | Motor M1 direction control pin |
 | Control Interface | DIR2 | Motor M2 direction control pin |
-| Control Interface | PWM2 | Motor M2 speed control pin |
-| Power Interface | 5V | Logic control section power |
-| Power Interface | GND | Ground |
-| Power Interface | 12V | Motor power |
-| Motor Interface | M1+ | Motor M1 output 1 |
-| Motor Interface | M1- | Motor M1 output 2 |
-| Motor Interface | M2+ | Motor M2 output 1 |
-| Motor Interface | M2- | Motor M2 output 2 |
+| Control Interface | PWM2 |   Motor M2 speed control pin   |
+|  Power Interface  |  5V  |  Logic control section power   |
+|  Power Interface  | GND  |             Ground             |
+|  Power Interface  | 12V  |          Motor power           |
+|  Motor Interface  | M1+  |       Motor M1 output 1        |
+|  Motor Interface  | M1-  |       Motor M1 output 2        |
+|  Motor Interface  | M2+  |       Motor M2 output 1        |
+|  Motor Interface  | M2-  |       Motor M2 output 2        |
 
 **Control Tutorial:**
 

@@ -1,6 +1,6 @@
 # محطة الطقس الصغيرة - محطة طقس مكتبية بسيطة ولكن ليست عادية
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/202308132245962.png)
+![صورة](https://media.wiki-power.com/img/202308132245962.png)
 
 【قيد التحرير...】
 
@@ -10,11 +10,11 @@
 
 ## متفرقات
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/202308132244295.png)
+![صورة](https://media.wiki-power.com/img/202308132244295.png)
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/202308132245903.png)
+![صورة](https://media.wiki-power.com/img/202308132245903.png)
 
-![صورة](https://img.wiki-power.com/d/wiki-media/img/202308132245214.png)
+![صورة](https://media.wiki-power.com/img/202308132245214.png)
 
 > عنوان النص: <https://wiki-power.com/>
 > يتم حماية هذا المقال بموجب اتفاقية [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)، يُرجى ذكر المصدر عند إعادة النشر.
