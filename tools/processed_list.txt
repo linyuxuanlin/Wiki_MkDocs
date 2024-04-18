@@ -319,3 +319,6 @@ Homelab-内网穿透工具frp.md
 Homelab-开源的远程桌面方案RustDesk.md
 如何从零写一个实用的VSCode拓展.md
 机器学习入门-基础流程.md
+机器学习入门-模型评估指标.md
+机器学习入门-环境搭建.md
+机器学习常用的包.md
