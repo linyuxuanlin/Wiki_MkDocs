@@ -315,3 +315,6 @@ HAL库开发笔记-外部中断.md
 Homelab-云端音乐服务器Navidrome.md
 ADC-Static_Parameters.md
 Homelab-智能家居服务器HomeAssistant.md
+Homelab-内网穿透工具frp.md
+Homelab-开源的远程桌面方案RustDesk.md
+如何从零写一个实用的VSCode拓展.md
