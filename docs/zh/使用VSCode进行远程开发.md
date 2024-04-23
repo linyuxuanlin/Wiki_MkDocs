@@ -54,6 +54,8 @@ sudo sysctl -p
 - 对于 Debian 或 Ubuntu：`sudo apt-get update && sudo apt-get install openssh-server`
 - 对于 Red Hat 或 CentOS：`sudo yum update openssh-server`
 
+也有可能是代理设置的问题，请切换或关闭代理试试看。
+
 ## 参考与致谢
 
 - [VSCode Remote 体验 | 远程 Linux 环境开发真香](https://zhuanlan.zhihu.com/p/64849549)
