@@ -16,8 +16,8 @@ winget install -e Dell.DisplayManager                 # 戴尔显示器管理软
 winget install -e HiBitSoftware.HiBitUninstaller      # 高效的卸载工具，支持彻底清除软件残留
 winget install -e WinMerge.WinMerge                   # 文件和目录比较工具，支持合并差异
 winget install -e Giorgiotani.Peazip                  # 开源的文件压缩解压工具，支持多种格式
-winget install -e UderzoSoftware.SpaceSniffer         # 磁盘空间分析工具，直观显示空间占用情况
 winget install -e Synology.DriveClient                # 群晖 NAS 的桌面客户端，便于文件同步
+winget install -e AntibodySoftware.WizTree            # 高效的磁盘空间分析工具，快速查找大文件和文件夹
 ```
 
 ## 开发工具
