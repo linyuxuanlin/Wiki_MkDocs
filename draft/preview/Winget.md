@@ -1,5 +1,7 @@
 # Winget Install Commands
 
+https://github.com/microsoft/winget-cli/releases
+
 ## 系统工具
 
 ```powershell
@@ -57,19 +59,19 @@ winget install -e Logitech.OptionsPlus                # 罗技设备管理工具
 
 无法使用 winget 的软件：
 
-HEU KMS Activator
-OInstall
-huorong ?
-clash?
-Win10Apps
-DriverBooster 修改
-WPD
-Dism++
-frp
-Intel® Graphics Command Center (Beta)
-FileZilla
-PDF-XChange 修改
+- HEU KMS Activator
+- OInstall
+- huorong ?
+- clash?
+- Win10Apps
+- DriverBooster 修改
+- WPD
+- Dism++
+- frp
+- Intel® Graphics Command Center (Beta)
+- FileZilla
+- PDF-XChange 修改
 
 使用 winget 有问题，暂时放到便携式 software 目录下
 
-Pylogmon.pot
+- Pylogmon.pot
