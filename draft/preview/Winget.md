@@ -1,0 +1,75 @@
+# Winget Install Commands
+
+## 系统工具
+
+```powershell
+winget install -e Microsoft.WindowsTerminal.Preview   # 一个现代化的终端应用，支持多标签、分屏等功能
+winget install -e Microsoft.PowerToys                 # 一系列实用工具，增强 Windows 用户体验
+winget install -e Dell.DisplayManager                 # 戴尔显示器管理软件，优化显示器设置
+```
+
+## 文件管理
+
+```powershell
+winget install -e HiBitSoftware.HiBitUninstaller      # 高效的卸载工具，支持彻底清除软件残留
+winget install -e WinMerge.WinMerge                   # 文件和目录比较工具，支持合并差异
+winget install -e Giorgiotani.Peazip                  # 开源的文件压缩解压工具，支持多种格式
+winget install -e UderzoSoftware.SpaceSniffer         # 磁盘空间分析工具，直观显示空间占用情况
+winget install -e Synology.DriveClient                # 群晖 NAS 的桌面客户端，便于文件同步
+```
+
+## 开发工具
+
+```powershell
+winget install -e Git.Git                             # 分布式版本控制系统，广泛用于代码管理
+winget install -e GitHub.GitHubDesktop                # GitHub 的桌面客户端，简化版本控制操作
+winget install -e Microsoft.VisualStudioCode.Insiders # 轻量级的代码编辑器，提供最新的预发布功能
+```
+
+## 多媒体工具
+
+```powershell
+winget install -e VideoLAN.VLC                        # 多功能媒体播放器，支持几乎所有音视频格式
+winget install -e sylikc.JPEGView                     # 轻量级的图片查看和编辑工具
+winget install -e SumatraPDF.SumatraPDF               # 轻量级、多功能PDF阅读器
+winget install -e PicGo.PicGo                         # 开源的图片上传工具，支持多种图床
+winget install -e 9P1WXPKB68KX                        # Snipaste：截图和贴图工具，支持高效的截图和标注功能
+```
+
+## 网络工具
+
+```powershell
+winget install -e Tencent.WeChat                      # 腾讯微信桌面客户端，支持消息同步和多媒体通讯
+winget install -e Telegram.TelegramDesktop            # 安全的即时通讯工具，支持多平台消息同步
+winget install -e Mobatek.MobaXterm                   # 强大的终端仿真器，内置多种网络工具
+winget install -e RustDesk.RustDesk                   # 开源的远程桌面工具，替代 TeamViewer
+```
+
+## 开发辅助工具
+
+```powershell
+winget install -e Redisant.TinyGUI                    # 轻量级的 GUI 开发框架，适用于小型项目
+winget install -e AltSnap.AltSnap                     # 窗口管理工具，可使非标准窗口支持 Aero Snap
+winget install -e Logitech.OptionsPlus                # 罗技设备管理工具，优化鼠标键盘性能
+```
+
+---
+
+无法使用 winget 的软件：
+
+HEU KMS Activator
+OInstall
+huorong ?
+clash?
+Win10Apps
+DriverBooster 修改
+WPD
+Dism++
+frp
+Intel® Graphics Command Center (Beta)
+FileZilla
+PDF-XChange 修改
+
+使用 winget 有问题，暂时放到便携式 software 目录下
+
+Pylogmon.pot
