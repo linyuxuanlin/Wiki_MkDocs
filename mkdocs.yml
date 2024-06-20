@@ -49,6 +49,7 @@ theme:
     #edit: material/pencil
 
 plugins:
+  - git-revision-date-localized
   - i18n:
       docs_structure: folder
       fallback_to_default: true
