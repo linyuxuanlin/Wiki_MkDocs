@@ -49,7 +49,6 @@ theme:
     #edit: material/pencil
 
 plugins:
-  - git-revision-date-localized
   - i18n:
       docs_structure: folder
       fallback_to_default: true
@@ -223,6 +222,7 @@ plugins:
         utm_source: "documentation"
         utm_medium: "RSS"
         utm_campaign: "feed-syndication"
+  - git-revision-date-localized
 
 extra:
   alternate:
