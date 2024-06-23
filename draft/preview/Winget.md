@@ -17,6 +17,7 @@ https://github.com/microsoft/winget-cli/releases
 winget install -e Microsoft.WindowsTerminal.Preview   # 一个现代化的终端应用，支持多标签、分屏等功能
 winget install -e Microsoft.PowerToys                 # 一系列实用工具，增强 Windows 用户体验
 winget install -e Dell.DisplayManager                 # 戴尔显示器管理软件，优化显示器设置
+winget install -e Bitwarden.Bitwarden                 # 密码管理工具
 ```
 
 ## 文件管理
