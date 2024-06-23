@@ -60,11 +60,11 @@ winget install RustDesk.RustDesk                   # 开源的远程桌面工具
 ## 开发辅助工具
 
 ```powershell
-winget install Redisant.TinyGUI                    # 轻量级的 GUI 开发框架，适用于小型项目
+winget install Redisant.TinyGUI                    # 轻量级的图片压缩工具
 winget install AltSnap.AltSnap                     # 窗口管理工具，可使非标准窗口支持 Aero Snap
 winget install Logitech.OptionsPlus                # 罗技设备管理工具，优化鼠标键盘性能
 winget install Pylogmon.pot                        # 划词翻译软件，可使用 LLM 翻译
-winget install Python: Python.Python.3.12          # Python，需要需求需要下载所需的版本号
+winget install Python.Python.3.12                  # Python，需要需求需要下载所需的版本号
 ```
 
 ## 行业工具
@@ -96,5 +96,16 @@ winget install KiCad.KiCad                         # 开源的电路原理图、
 
 - Python: Python.Python.3.xx
 
-
 C:\Users\power\AppData\Local\Programs\KiCad\8.0\share\kicad\symbols
+
+可选：
+
+- AppbyTroye.KoodoReader
+- Ventoy.Ventoy
+- Hugo.Hugo
+- WPD.WPD ?
+- Rufus.Rufus?
+- Balena.Etcher
+- JGraph.Draw #draw.io
+- Eassos.DiskGenius
+- FinalWire.AIDA64.Extreme #(30 天试用)
