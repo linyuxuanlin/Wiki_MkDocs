@@ -2,6 +2,15 @@
 
 https://github.com/microsoft/winget-cli/releases
 
+- 列出已安装软件：`winget list`
+- 查看软件包详细信息：`winget show <package_name>`
+- 搜索软件：`winget search <package_name>`
+- 安装软件：`winget install <package_name>`
+- 升级软件：`winget upgrade <package_name>`
+  - 列出可升级的软件包: `winget upgrade`
+  - 升级所有软件包：`winget upgrade --all`
+- 卸载软件：`winget uninstall <package_name>`
+
 ## 系统工具
 
 ```powershell
