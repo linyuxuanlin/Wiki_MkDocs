@@ -95,3 +95,6 @@ winget install KiCad.KiCad                         # 开源的电路原理图、
 - Pylogmon.pot
 
 - Python: Python.Python.3.xx
+
+
+C:\Users\power\AppData\Local\Programs\KiCad\8.0\share\kicad\symbols
