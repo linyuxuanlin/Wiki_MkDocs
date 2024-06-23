@@ -63,6 +63,7 @@ winget install -e RustDesk.RustDesk                   # 开源的远程桌面工
 winget install -e Redisant.TinyGUI                    # 轻量级的 GUI 开发框架，适用于小型项目
 winget install -e AltSnap.AltSnap                     # 窗口管理工具，可使非标准窗口支持 Aero Snap
 winget install -e Logitech.OptionsPlus                # 罗技设备管理工具，优化鼠标键盘性能
+winget install -e Pylogmon.pot                        # 划词翻译软件，可使用 LLM 翻译
 ```
 
 ---
