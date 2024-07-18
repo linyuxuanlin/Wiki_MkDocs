@@ -46,6 +46,7 @@ winget install sylikc.JPEGView                     # 轻量级的图片查看和
 winget install SumatraPDF.SumatraPDF               # 轻量级、多功能PDF阅读器
 winget install PicGo.PicGo                         # 开源的图片上传工具，支持多种图床
 winget install 9P1WXPKB68KX                        # Snipaste：截图和贴图工具，支持高效的截图和标注功能
+winget install lyswhut.lx-music-desktop            # 免费 & 开源的音乐查找工具
 ```
 
 ## 网络工具
