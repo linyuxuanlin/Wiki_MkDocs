@@ -109,3 +109,90 @@ qobuz-dl -r
 `/nfs/music/Classical`
 
 cd /nfs/music && ./fix.sh
+
+---
+
+## 自动拷贝专辑信息（兼容 Qobuz 和 Navidrome）
+
+起因：从 Qobuz 下载的专辑，如果专辑内有分不同的 Disc，下载的文件结构是这样的：
+
+```
+Music/
+├── Classical/
+│   ├── Album1/
+│   │   ├── cover.jpg
+│   │   ├── booklet.pdf
+│   │   ├── Disc 1/
+│   │   │   └── track1.flac
+│   │   └── Disc 2/
+│   │   │   └── track2.flac
+│   ├── Album2/
+│   │   ├── cover.jpg
+│   │   ├── booklet.pdf
+│   │   └── track3.flac
+```
+
+如上所示，`Album1` 是有不同分 Disc 的专辑，作为对照，`Album2` 是普通的专辑。
+
+而 Navidrome 在读取专辑封面图片和书册文件的时候，只会在专辑的目录下寻找，不会搜索二级文件夹如 `Disc 1` `Disc 2`。所以需要有一个脚本，把这两个文件也一并拷贝到专辑中的所有二级目录下。
+
+目标：将 `cover.jpg` 和 `booklet.pdf` 文件复制到每个二级文件夹中，但要跳过 `@eaDir` 文件夹（群晖 NAS 专用的），并且如果目标文件夹中已经存在同名文件，则跳过复制。
+
+```sh
+#!/bin/bash
+
+# 设置当前目录为基目录
+base_dir=$(pwd)
+
+# 遍历 base_dir 下的每个一级目录（如 Classical, Rock 等）
+for genre_dir in "$base_dir"/*/; do
+    # 遍历每个一级目录下的每个专辑文件夹
+    for album_dir in "$genre_dir"*/; do
+        # 检查是否存在 cover.jpg 和 booklet.pdf
+        cover_path="$album_dir/cover.jpg"
+        booklet_path="$album_dir/booklet.pdf"
+
+        cover_exists=false
+        booklet_exists=false
+
+        if [ -f "$cover_path" ]; then
+            cover_exists=true
+        fi
+
+        if [ -f "$booklet_path" ]; then
+            booklet_exists=true
+        fi
+
+        # 如果 cover.jpg 或 booklet.pdf 存在
+        if [ "$cover_exists" = true ] || [ "$booklet_exists" = true ]; then
+            # 遍历专辑文件夹下的每个二级文件夹
+            for sub_dir in "$album_dir"*/; do
+                # 确保这是一个二级文件夹并且不是 @eaDir 文件夹
+                if [ -d "$sub_dir" ] && [[ "$(basename "$sub_dir")" != "@eaDir" ]]; then
+                    if [ "$cover_exists" = true ]; then
+                        target_cover_path="$sub_dir/cover.jpg"
+                        if [ ! -f "$target_cover_path" ]; then
+                            cp "$cover_path" "$sub_dir"
+                            echo "Copied $cover_path to $sub_dir"
+                        else
+                            echo "Skipped $target_cover_path as it already exists"
+                        fi
+                    fi
+
+                    if [ "$booklet_exists" = true ]; then
+                        target_booklet_path="$sub_dir/booklet.pdf"
+                        if [ ! -f "$target_booklet_path" ]; then
+                            cp "$booklet_path" "$sub_dir"
+                            echo "Copied $booklet_path to $sub_dir"
+                        else
+                            echo "Skipped $target_booklet_path as it already exists"
+                        fi
+                    fi
+                fi
+            done
+        fi
+    done
+done
+```
+
+在 `Music` 根目录下创建一个 `copy_files.sh` 的文件，把以上代码拷贝进去，使用 `./copy_files.sh` 执行这个脚本，完成自动遍历拷贝。
