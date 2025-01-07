@@ -210,13 +210,13 @@ plugins:
       #comments_path: "#__comments"
       date_from_meta:
         as_creation: "date"
-        as_update: false
+        as_update: False
         datetime_format: "%Y-%m-%d %H:%M"
-      enabled: true
+      enabled: True
       feed_ttl: 1440
       image: https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Feed-icon.svg/128px-Feed-icon.svg.png
       length: 1000
-      pretty_print: true
+      pretty_print: True
       match_path: "(zh|blog)/.*"
       url_parameters:
         utm_source: "documentation"
