@@ -210,7 +210,7 @@ plugins:
       #comments_path: "#__comments"
       date_from_meta:
         as_creation: "date"
-        as_update: False
+        #as_update: False
         datetime_format: "%Y-%m-%d %H:%M"
       enabled: True
       feed_ttl: 1440
