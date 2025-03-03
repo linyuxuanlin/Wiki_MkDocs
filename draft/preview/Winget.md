@@ -20,6 +20,7 @@ winget install Docker.DockerDesktop                # Docker 工具
 winget install Microsoft.PowerToys                 # 一系列实用工具，增强 Windows 用户体验
 #winget install Dell.DisplayManager                # 戴尔显示器管理软件，优化显示器设置
 winget install Bitwarden.Bitwarden                 # 密码管理工具
+winget install XPDNH1FMW7NB40                      # 火绒安全
 ```
 
 ## 文件管理
