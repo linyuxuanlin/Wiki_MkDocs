@@ -14,9 +14,11 @@ https://github.com/microsoft/winget-cli/releases
 ## 系统工具
 
 ```powershell
-winget install Microsoft.WindowsTerminal.Preview   # 一个现代化的终端应用，支持多标签、分屏等功能
+winget install Anysphere.Cursor                    # 大模型辅助编程工具
+winget install Docker.DockerDesktop                # Docker 工具
+#winget install Microsoft.WindowsTerminal.Preview  # 一个现代化的终端应用，支持多标签、分屏等功能
 winget install Microsoft.PowerToys                 # 一系列实用工具，增强 Windows 用户体验
-winget install Dell.DisplayManager                 # 戴尔显示器管理软件，优化显示器设置
+#winget install Dell.DisplayManager                # 戴尔显示器管理软件，优化显示器设置
 winget install Bitwarden.Bitwarden                 # 密码管理工具
 ```
 
