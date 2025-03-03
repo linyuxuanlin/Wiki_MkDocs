@@ -21,6 +21,7 @@ winget install Microsoft.PowerToys                 # 一系列实用工具，增
 #winget install Dell.DisplayManager                # 戴尔显示器管理软件，优化显示器设置
 winget install Bitwarden.Bitwarden                 # 密码管理工具
 winget install XPDNH1FMW7NB40                      # 火绒安全
+#winget install Huawei.QuickAppPCAssistant 
 ```
 
 ## 文件管理
