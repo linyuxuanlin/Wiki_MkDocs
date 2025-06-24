@@ -13,12 +13,12 @@
     <language>es</language>
 
     
-    <pubDate>Mon, 03 Mar 2025 01:25:23 -0000</pubDate>
-    <lastBuildDate>Mon, 03 Mar 2025 01:25:23 -0000</lastBuildDate>
+    <pubDate>Tue, 24 Jun 2025 03:36:49 -0000</pubDate>
+    <lastBuildDate>Tue, 24 Jun 2025 03:36:49 -0000</lastBuildDate>
     <ttl>1440</ttl>
 
     
-    <generator>MkDocs RSS plugin - v1.17.1</generator>
+    <generator>MkDocs RSS plugin - v1.17.3</generator>
 
     
     
@@ -25966,7 +25966,7 @@ P_{D(total)}=\Sigma (V_{OUTx}*I_{OUTx})
 &lt;div class=&#34;arithmatex&#34;&gt;\[
 PSRR(dB)=20\log\frac{V_{rp(in)}}{V_{rp(out)}}
 \]&lt;/div&gt;
-&lt;p&gt;其中，&lt;span class=&#34;arithmatex&#34;&gt;\(V_{rp(in)}\)&lt;/span&gt; 表示输入纹波，&lt;span class=&#34;arithmatex&#34;&gt;\(V_{rp(out)}\)&lt;/span&gt; 表示输出纹波。高速 LDO 的 PSRR 一般大于 60dB，而普通 LDO 的 PSRR 一般在 20dB 左右。60dB 的 PSRR 代表表当输入纹波为 1V 时，输出纹波将为 1mV。&lt;/p&gt;
+&lt;p&gt;其中，&lt;span class=&#34;arithmatex&#34;&gt;\(V_{rp(in)}\)&lt;/span&gt; 表示输入纹波，&lt;span class=&#34;arithmatex&#34;&gt;\(V_{rp(out)}\)&lt;/span&gt; 表示输出纹波。高速 LDO 的 PSRR 一般大于 60dB，而普通 LDO 的 PSRR 一般在 20dB 左右。60dB 的 PSRR 代表当输入纹波为 1V 时，输出纹波将为 1mV。&lt;/p&gt;
 &lt;p&gt;我们先看普通 LDO（XC6206 系列）的纹波抑制曲线：&lt;/p&gt;
 &lt;p&gt;&lt;img alt=&#34;&#34; src=&#34;https://media.wiki-power.com/img/20220421142140.png&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;可以看出，在频率为 1kHz 时，XC6206P302 的纹波抑制比约为 23dB。&lt;/p&gt;
