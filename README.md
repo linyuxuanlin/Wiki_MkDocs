@@ -20,3 +20,4 @@ RSS of updated post: <https://wiki-power.com/feed_rss_updated.xml>
 >
 > Check the version of Material theme: `pip show mkdocs-material`  
 > Upgrade Material theme: `pip install --upgrade mkdocs-material`
+
