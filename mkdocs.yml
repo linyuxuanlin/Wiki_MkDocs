@@ -240,7 +240,7 @@ extra:
   generator: false
   analytics:
     provider: google
-    property: G-QBB3SQMGLN # 如果克隆我的站点，请把这串代码改成你自己的
+    property: G-QBB3SQMGLN # 如果克隆我的站点，请把这串GA代码改成你自己的
   social:
     - name: 友链 & 导航站
       link: https://nav.wiki-power.com/
@@ -252,7 +252,7 @@ extra:
       link: https://github.com/linyuxuanlin/File-host
       icon: fontawesome/regular/file-lines
 
-copyright: Copyright &copy; 2015 - 2023 by Power | <a href="https://beian.miit.gov.cn"> 粤 ICP 备 20014898 号 </a>
+copyright: Copyright &copy; since 2015 by Power
 
 markdown_extensions:
   - pymdownx.arithmatex:
