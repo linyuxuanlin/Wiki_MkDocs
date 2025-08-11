@@ -13,8 +13,8 @@
     <language>es</language>
 
     
-    <pubDate>Sat, 26 Jul 2025 06:10:33 -0000</pubDate>
-    <lastBuildDate>Sat, 26 Jul 2025 06:10:33 -0000</lastBuildDate>
+    <pubDate>Mon, 11 Aug 2025 09:12:49 -0000</pubDate>
+    <lastBuildDate>Mon, 11 Aug 2025 09:12:49 -0000</lastBuildDate>
     <ttl>1440</ttl>
 
     
@@ -30,6 +30,49 @@
     
 
     
+    
+    <item>
+      <title>Home</title>
+      
+      
+      
+      
+      <description>&lt;h1 id=&#34;powers-wiki&#34;&gt;Power&#39;s Wiki&lt;/h1&gt;
+&lt;!--  一个不会讲故事的攻城狮，算不上一个很酷的产品汪~--&gt;
+
+&lt;!--
+[![badge](https://img.shields.io/github/deployments/linyuxuanlin/Wiki_MkDocs/Production?label=Build&amp;style=flat-square){ loading=lazy }](https://vercel.com/powerlin/wiki-mkdocs/deployments)
+--&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/linyuxuanlin/Wiki_mkdocs/commits/main&#34;&gt;&lt;img alt=&#34;badge&#34; loading=&#34;lazy&#34; src=&#34;https://img.shields.io/github/last-commit/linyuxuanlin/Wiki_MkDocs?color=FCD734&amp;amp;label=Last%20commit&amp;amp;style=flat-square&#34; /&gt;&lt;/a&gt;
+&lt;a href=&#34;https://wiki-power.com/Contact-and-Subscribe/&#34;&gt;&lt;img alt=&#34;badge&#34; loading=&#34;lazy&#34; src=&#34;https://img.shields.io/badge/Contact%20%26%20Subscribe-me-34ABE0?&amp;amp;style=flat-square&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;!--
+[![badge](https://img.shields.io/badge/dynamic/json?label=GitHub&amp;query=%24.data.totalSubs&amp;url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dgithub%26queryKey%3Dlinyuxuanlin&amp;labelColor=555555&amp;color=282c34&amp;longCache=true?&amp;style=for-the-badge){ loading=lazy }](https://github.com/linyuxuanlin)
+[![badge](https://img.shields.io/badge/dynamic/json?color=282c34&amp;labelColor=0084ff&amp;label=ZHIHU&amp;query=%24.data.totalSubs&amp;url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dzhihu%26queryKey%3Dlinyuxuanlin&amp;longCache=true?&amp;style=for-the-badge){ loading=lazy }](https://www.zhihu.com/people/linyuxuanlin)
+[![badge](https://img.shields.io/badge/dynamic/json?label=SSPAI&amp;query=%24.data.totalSubs&amp;url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dsspai%26queryKey%3Dpower&amp;color=282c34&amp;labelColor=d71a1b&amp;longCache=true?&amp;style=for-the-badge){ loading=lazy }](https://sspai.com/u/power/)
+[![badge](https://img.shields.io/badge/dynamic/json?labelColor=FE7398&amp;label=BILIBILI&amp;query=%24.data.totalSubs&amp;url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dbilibili%26queryKey%3D349536948&amp;color=282c34&amp;longCache=true?&amp;style=for-the-badge){ loading=lazy }](https://space.bilibili.com/349536948)
+--&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;博览万物，融会贯通。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Hi there~ 欢迎来到我的知识库。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://wiki-power.com/&#34;&gt;&lt;img alt=&#34;badge&#34; loading=&#34;lazy&#34; src=&#34;https://img.shields.io/badge/知识库-Wiki-34ABE0?&amp;amp;style=flat-square&#34; /&gt;&lt;/a&gt;
+&lt;a href=&#34;https://nav.wiki-power.com/&#34;&gt;&lt;img alt=&#34;badge&#34; loading=&#34;lazy&#34; src=&#34;https://img.shields.io/badge/友链%20%26%20导航站-Nav-yellow?&amp;amp;style=flat-square&#34; /&gt;&lt;/a&gt;
+&lt;a href=&#34;https://digest.wiki-power.com/&#34;&gt;&lt;img alt=&#34;badge&#34; loading=&#34;lazy&#34; src=&#34;https://img.shields.io/badge/书摘-Digest-green?&amp;amp;style=flat-square&#34; /&gt;&lt;/a&gt;
+&lt;a href=&#34;https://memos.wiki-power.com/&#34;&gt;&lt;img alt=&#34;badge&#34; loading=&#34;lazy&#34; src=&#34;https://img.shields.io/badge/只言片语-Memos-orange?&amp;amp;style=flat-square&#34; /&gt;&lt;/a&gt;
+&lt;a href=&#34;https://works.wiki-power.com/&#34;&gt;&lt;img alt=&#34;badge&#34; loading=&#34;lazy&#34; src=&#34;https://img.shields.io/badge/硬件作品集-Works-a5b0ed?&amp;amp;style=flat-square&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;为了避免遗忘、便于分享，我在这里收录知识。&lt;br /&gt;
+请随意浏览～&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;md-button&#34; href=&#34;https://wiki-power.com/信号完整性-基础概念&#34;&gt;硬件 &amp;amp; 半导体&lt;/a&gt;
+&lt;a class=&#34;md-button&#34; href=&#34;https://wiki-power.com/HAL库开发笔记-串口通信&#34;&gt;嵌入式 &amp;amp; 软件开发&lt;/a&gt;
+&lt;a class=&#34;md-button&#34; href=&#34;https://wiki-power.com/搭建属于自己的HomeLab&#34;&gt;生活 &amp;amp; 折腾&lt;/a&gt;&lt;/p&gt;</description>
+      <link>https://wiki-power.com/?utm_source=documentation&amp;utm_medium=RSS&amp;utm_campaign=feed-syndication</link>
+      <pubDate>Mon, 11 Aug 2025 09:10:42 +0000</pubDate>
+      <source url="https://wiki-power.com/feed_rss_updated.xml">Power's Wiki</source>
+      
+      <guid isPermaLink="true">https://wiki-power.com/</guid>
+      
+    </item>
     
     <item>
       <title>电源设计 - LDO 电源抑制比（PSRR）与测量方法</title>
@@ -22132,47 +22175,6 @@ This post is protected by &lt;a href=&#34;https://creativecommons.org/licenses/b
       <source url="https://wiki-power.com/feed_rss_updated.xml">Power's Wiki</source>
       
       <guid isPermaLink="true">https://wiki-power.com/Contact-and-Subscribe/</guid>
-      
-    </item>
-    
-    <item>
-      <title>Home</title>
-      
-      
-      
-      
-      <description>&lt;h1 id=&#34;powers-wiki&#34;&gt;Power&#39;s Wiki&lt;/h1&gt;
-&lt;!--  一个不会讲故事的攻城狮，算不上一个很酷的产品汪~--&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://vercel.com/powerlin/wiki-mkdocs/deployments&#34;&gt;&lt;img alt=&#34;badge&#34; loading=&#34;lazy&#34; src=&#34;https://img.shields.io/github/deployments/linyuxuanlin/Wiki_MkDocs/Production?label=Build&amp;amp;style=flat-square&#34; /&gt;&lt;/a&gt;
-&lt;a href=&#34;https://github.com/linyuxuanlin/Wiki_mkdocs/commits/main&#34;&gt;&lt;img alt=&#34;badge&#34; loading=&#34;lazy&#34; src=&#34;https://img.shields.io/github/last-commit/linyuxuanlin/Wiki_MkDocs?color=FCD734&amp;amp;label=Last%20commit&amp;amp;style=flat-square&#34; /&gt;&lt;/a&gt;
-&lt;a href=&#34;https://wiki-power.com/Contact-and-Subscribe/&#34;&gt;&lt;img alt=&#34;badge&#34; loading=&#34;lazy&#34; src=&#34;https://img.shields.io/badge/Contact%20%26%20Subscribe-me-34ABE0?&amp;amp;style=flat-square&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;!--
-[![badge](https://img.shields.io/badge/dynamic/json?label=GitHub&amp;query=%24.data.totalSubs&amp;url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dgithub%26queryKey%3Dlinyuxuanlin&amp;labelColor=555555&amp;color=282c34&amp;longCache=true?&amp;style=for-the-badge){ loading=lazy }](https://github.com/linyuxuanlin)
-[![badge](https://img.shields.io/badge/dynamic/json?color=282c34&amp;labelColor=0084ff&amp;label=ZHIHU&amp;query=%24.data.totalSubs&amp;url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dzhihu%26queryKey%3Dlinyuxuanlin&amp;longCache=true?&amp;style=for-the-badge){ loading=lazy }](https://www.zhihu.com/people/linyuxuanlin)
-[![badge](https://img.shields.io/badge/dynamic/json?label=SSPAI&amp;query=%24.data.totalSubs&amp;url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dsspai%26queryKey%3Dpower&amp;color=282c34&amp;labelColor=d71a1b&amp;longCache=true?&amp;style=for-the-badge){ loading=lazy }](https://sspai.com/u/power/)
-[![badge](https://img.shields.io/badge/dynamic/json?labelColor=FE7398&amp;label=BILIBILI&amp;query=%24.data.totalSubs&amp;url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dbilibili%26queryKey%3D349536948&amp;color=282c34&amp;longCache=true?&amp;style=for-the-badge){ loading=lazy }](https://space.bilibili.com/349536948)
---&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;博览万物，融会贯通。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Hi there~ 欢迎来到我的知识库。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://wiki-power.com/&#34;&gt;&lt;img alt=&#34;badge&#34; loading=&#34;lazy&#34; src=&#34;https://img.shields.io/badge/知识库-Wiki-34ABE0?&amp;amp;style=flat-square&#34; /&gt;&lt;/a&gt;
-&lt;a href=&#34;https://nav.wiki-power.com/&#34;&gt;&lt;img alt=&#34;badge&#34; loading=&#34;lazy&#34; src=&#34;https://img.shields.io/badge/友链%20%26%20导航站-Nav-yellow?&amp;amp;style=flat-square&#34; /&gt;&lt;/a&gt;
-&lt;a href=&#34;https://digest.wiki-power.com/&#34;&gt;&lt;img alt=&#34;badge&#34; loading=&#34;lazy&#34; src=&#34;https://img.shields.io/badge/书摘-Digest-green?&amp;amp;style=flat-square&#34; /&gt;&lt;/a&gt;
-&lt;a href=&#34;https://memos.wiki-power.com/&#34;&gt;&lt;img alt=&#34;badge&#34; loading=&#34;lazy&#34; src=&#34;https://img.shields.io/badge/只言片语-Memos-orange?&amp;amp;style=flat-square&#34; /&gt;&lt;/a&gt;
-&lt;a href=&#34;https://works.wiki-power.com/&#34;&gt;&lt;img alt=&#34;badge&#34; loading=&#34;lazy&#34; src=&#34;https://img.shields.io/badge/硬件作品集-Works-a5b0ed?&amp;amp;style=flat-square&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;为了避免遗忘、便于分享，我在这里收录知识。&lt;br /&gt;
-请随意浏览～&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;md-button&#34; href=&#34;https://wiki-power.com/信号完整性-基础概念&#34;&gt;硬件 &amp;amp; 半导体&lt;/a&gt;
-&lt;a class=&#34;md-button&#34; href=&#34;https://wiki-power.com/HAL库开发笔记-串口通信&#34;&gt;嵌入式 &amp;amp; 软件开发&lt;/a&gt;
-&lt;a class=&#34;md-button&#34; href=&#34;https://wiki-power.com/搭建属于自己的HomeLab&#34;&gt;生活 &amp;amp; 折腾&lt;/a&gt;&lt;/p&gt;</description>
-      <link>https://wiki-power.com/?utm_source=documentation&amp;utm_medium=RSS&amp;utm_campaign=feed-syndication</link>
-      <pubDate>Wed, 25 Oct 2023 06:38:08 +0000</pubDate>
-      <source url="https://wiki-power.com/feed_rss_updated.xml">Power's Wiki</source>
-      
-      <guid isPermaLink="true">https://wiki-power.com/</guid>
       
     </item>
     
