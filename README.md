@@ -1,7 +1,7 @@
 # Wiki_MkDocs
  
 ![GitHub last commit](https://img.shields.io/github/last-commit/linyuxuanlin/Wiki_MkDocs)
-![GitHub repo size](https://img.shields.io/github/repo-size/linyuxuanlin/Wiki_MkDocs)
+<!--![GitHub repo size](https://img.shields.io/github/repo-size/linyuxuanlin/Wiki_MkDocs)-->
 
 这里是我的个人 Wiki 知识库，基于 MkDocs 与 MkDocs Material。  
 请随意浏览下载，或者 clone 创建你自己的知识库。
