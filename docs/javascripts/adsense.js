@@ -1,4 +1,4 @@
-// AdSense广告插入脚本
+// AdSense广告插入脚本 - 简化版本
 (function() {
     'use strict';
     
@@ -35,7 +35,6 @@
             adContainer.className = 'adsense-container';
             adContainer.innerHTML = `
                 <div class="adsense-ad" id="adsense-ad">
-                    <div class="adsense-label">广告</div>
                     <ins class="adsbygoogle"
                          style="display:block"
                          data-ad-client="ca-pub-3052781953929851"
@@ -68,8 +67,8 @@
             };
             
             script.onerror = function() {
-                // 加载失败时的处理
-                handleAdsenseError();
+                // 加载失败时，移除广告容器
+                removeAdContainer();
             };
             
             document.head.appendChild(script);
@@ -84,46 +83,39 @@
             // 初始化AdSense广告
             (adsbygoogle = window.adsbygoogle || []).push({});
             
-            // 监听广告加载状态
-            const adElement = document.querySelector('.adsense-ad ins.adsbygoogle');
-            if (adElement) {
-                // 添加加载完成的类
-                setTimeout(() => {
-                    const adContainer = document.querySelector('.adsense-ad');
-                    if (adContainer) {
-                        adContainer.classList.add('ads-loaded');
-                    }
-                }, 2000);
-            }
+            // 设置超时检查，如果广告在5秒内没有加载，则移除容器
+            setTimeout(function() {
+                const adElement = document.querySelector('.adsense-ad ins.adsbygoogle iframe');
+                if (!adElement) {
+                    removeAdContainer();
+                }
+            }, 5000);
+            
         } catch (error) {
             console.warn('AdSense初始化失败:', error);
-            handleAdsenseError();
+            removeAdContainer();
         }
     }
     
-    function handleAdsenseError() {
-        // 广告加载失败时的处理
-        const adContainer = document.querySelector('.adsense-ad');
+    function removeAdContainer() {
+        // 移除广告容器
+        const adContainer = document.querySelector('.adsense-container');
         if (adContainer) {
-            adContainer.classList.add('error');
-            adContainer.innerHTML = `
-                <div class="adsense-label">广告</div>
-                <div style="padding: 2rem; text-align: center; color: var(--md-default-fg-color--light);">
-                    <p>广告加载中...</p>
-                    <small>如果广告无法显示，请刷新页面或稍后再试</small>
-                </div>
-            `;
+            adContainer.remove();
         }
     }
     
-    // 页面可见性变化时重新加载广告
+    // 页面可见性变化时检查广告状态
     document.addEventListener('visibilitychange', function() {
         if (!document.hidden) {
-            // 页面变为可见时，检查广告是否需要重新加载
+            // 页面变为可见时，检查广告是否加载成功
             const adContainer = document.querySelector('.adsense-container');
-            if (adContainer && !adContainer.querySelector('ins.adsbygoogle iframe')) {
-                // 如果广告没有正确加载，重新初始化
-                setTimeout(loadAdsenseAd, 1000);
+            if (adContainer) {
+                const adElement = adContainer.querySelector('ins.adsbygoogle iframe');
+                if (!adElement) {
+                    // 如果广告没有加载成功，移除容器
+                    setTimeout(removeAdContainer, 2000);
+                }
             }
         }
     });

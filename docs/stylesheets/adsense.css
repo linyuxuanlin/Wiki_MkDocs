@@ -1,236 +1,56 @@
-/* AdSense广告样式 */
+/* AdSense广告样式 - 简化版本 */
 .adsense-container {
-    margin: 2.5rem 0;
-    padding: 1.5rem;
-    border-radius: 12px;
-    background: var(--md-default-bg-color);
-    border: 2px solid var(--md-default-fg-color--lightest);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-}
-
-.adsense-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--md-primary-fg-color), var(--md-accent-fg-color));
-    opacity: 0.8;
-}
-
-.adsense-container:hover {
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-    transform: translateY(-4px);
-    border-color: var(--md-primary-fg-color);
+    margin: 1rem 0;
+    padding: 0.5rem;
+    text-align: center;
+    background: transparent;
+    border: none;
+    box-shadow: none;
 }
 
 .adsense-ad {
     position: relative;
     text-align: center;
-    min-height: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
+    min-height: auto;
+    display: block;
 }
 
 .adsense-label {
-    position: absolute;
-    top: -0.75rem;
-    left: 1.5rem;
-    background: linear-gradient(135deg, var(--md-primary-fg-color), var(--md-accent-fg-color));
-    color: var(--md-primary-bg-color);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    z-index: 2;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    letter-spacing: 0.5px;
-}
-
-/* 响应式设计 */
-@media (max-width: 1200px) {
-    .adsense-container {
-        margin: 2rem 0;
-        padding: 1.25rem;
-    }
-    
-    .adsense-ad {
-        min-height: 280px;
-    }
-}
-
-@media (max-width: 768px) {
-    .adsense-container {
-        margin: 1.5rem 0;
-        padding: 1rem;
-        border-radius: 8px;
-    }
-    
-    .adsense-ad {
-        min-height: 250px;
-        padding: 0.75rem;
-    }
-    
-    .adsense-label {
-        top: -0.5rem;
-        left: 1rem;
-        padding: 0.4rem 0.8rem;
-        font-size: 0.75rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .adsense-container {
-        margin: 1rem 0;
-        padding: 0.75rem;
-    }
-    
-    .adsense-ad {
-        min-height: 200px;
-        padding: 0.5rem;
-    }
-}
-
-/* 暗色模式适配 */
-[data-md-color-scheme="slate"] .adsense-container {
-    background: var(--md-default-bg-color);
-    border-color: var(--md-default-fg-color--lightest);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
-
-[data-md-color-scheme="slate"] .adsense-container:hover {
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-    border-color: var(--md-primary-fg-color);
-}
-
-[data-md-color-scheme="slate"] .adsense-label {
-    background: linear-gradient(135deg, var(--md-primary-fg-color), var(--md-accent-fg-color));
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    display: none; /* 隐藏广告标签 */
 }
 
 /* 确保广告在内容流中正确显示 */
 .adsense-container ins.adsbygoogle {
     display: block !important;
     width: 100%;
-    height: 100%;
-    min-height: 250px;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-/* 加载状态样式 */
-.adsense-ad::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 48px;
-    height: 48px;
-    margin: -24px 0 0 -24px;
-    border: 4px solid var(--md-default-fg-color--lightest);
-    border-top: 4px solid var(--md-primary-fg-color);
-    border-radius: 50%;
-    animation: spin 1.2s linear infinite;
-    opacity: 0.7;
-    z-index: 1;
-}
-
-.adsense-ad.loaded::before,
-.adsense-ad.ads-loaded::before {
-    display: none;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* 广告加载完成后的样式 */
-.adsense-ad.ads-loaded {
+    height: auto;
     min-height: auto;
+    border: none;
+    overflow: visible;
+}
+
+/* 响应式设计 - 保持简洁 */
+@media (max-width: 768px) {
+    .adsense-container {
+        margin: 0.75rem 0;
+        padding: 0.25rem;
+    }
+}
+
+/* 暗色模式适配 - 保持透明 */
+[data-md-color-scheme="slate"] .adsense-container {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+/* 广告加载失败时完全隐藏 */
+.adsense-ad.error {
+    display: none;
 }
 
 /* 确保广告不会影响页面布局 */
 .adsense-container {
-    overflow: hidden;
-    word-wrap: break-word;
-}
-
-/* 广告加载失败时的备用样式 */
-.adsense-ad.error {
-    background: linear-gradient(135deg, 
-        var(--md-default-fg-color--lightest), 
-        var(--md-default-bg-color));
-    color: var(--md-default-fg-color);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 200px;
-    font-style: italic;
-    border-radius: 8px;
-    text-align: center;
-    padding: 2rem;
-}
-
-.adsense-ad.error p {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.1rem;
-    font-weight: 500;
-}
-
-.adsense-ad.error small {
-    opacity: 0.7;
-    font-size: 0.9rem;
-}
-
-/* 广告加载动画 */
-.adsense-ad.loading {
-    background: linear-gradient(90deg, 
-        var(--md-default-bg-color) 25%, 
-        var(--md-default-fg-color--lightest) 50%, 
-        var(--md-default-bg-color) 75%);
-    background-size: 200% 100%;
-    animation: loading 2s infinite;
-}
-
-@keyframes loading {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
-}
-
-/* 高对比度模式支持 */
-@media (prefers-contrast: high) {
-    .adsense-container {
-        border-width: 3px;
-        border-color: var(--md-default-fg-color);
-    }
-    
-    .adsense-label {
-        border: 2px solid var(--md-primary-bg-color);
-    }
-}
-
-/* 减少动画模式支持 */
-@media (prefers-reduced-motion: reduce) {
-    .adsense-container,
-    .adsense-container:hover {
-        transition: none;
-        transform: none;
-    }
-    
-    .adsense-ad::before {
-        animation: none;
-    }
-    
-    .adsense-ad.loading {
-        animation: none;
-    }
+    overflow: visible;
+    word-wrap: normal;
 }
