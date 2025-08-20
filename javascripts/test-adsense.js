@@ -1,4 +1,4 @@
-// AdSense集成测试脚本
+// AdSense集成测试脚本 - 简化版本
 (function() {
     'use strict';
     
@@ -32,10 +32,10 @@
             // 检查是否已有广告
             const existingAd = articleContent.querySelector('.adsense-container');
             if (existingAd) {
-                console.log('✅ 广告已存在');
+                console.log('✅ 广告容器已存在');
                 return true;
             } else {
-                console.log('❌ 广告不存在');
+                console.log('❌ 广告容器不存在');
                 return false;
             }
         } else {
