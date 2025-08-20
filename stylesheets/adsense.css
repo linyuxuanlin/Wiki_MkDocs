@@ -14,7 +14,21 @@
     margin: 0 !important;
     padding: 0 !important;
     height: 0 !important;
+    min-height: 0 !important;
+    max-height: 0 !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    max-width: 0 !important;
     overflow: hidden !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
+    z-index: -9999 !important;
+    pointer-events: none !important;
+    user-select: none !important;
+    transform: scale(0) !important;
 }
 
 .adsense-ad {
@@ -72,4 +86,27 @@
 /* 广告加载完成后的样式 */
 .adsense-container.loaded {
     opacity: 1;
+}
+
+/* 强制隐藏状态 - 最高优先级 */
+.adsense-container[style*="display: none"] {
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    max-height: 0 !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    max-width: 0 !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
+    z-index: -9999 !important;
+    pointer-events: none !important;
+    user-select: none !important;
+    transform: scale(0) !important;
 }

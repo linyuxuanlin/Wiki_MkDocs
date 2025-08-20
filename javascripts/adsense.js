@@ -75,12 +75,12 @@
                 hideAdContainer();
             };
             
-            // 设置加载超时
+            // 设置加载超时 - 统一为3秒
             loadTimeout = setTimeout(function() {
                 if (typeof adsbygoogle === 'undefined') {
                     hideAdContainer();
                 }
-            }, 5000);
+            }, 3000);
             
             document.head.appendChild(script);
         } else {
@@ -100,7 +100,7 @@
             // 初始化AdSense广告
             (adsbygoogle = window.adsbygoogle || []).push({});
             
-            // 设置超时检查，如果广告在3秒内没有加载，则隐藏容器
+            // 设置超时检查 - 统一为3秒
             checkTimeout = setTimeout(function() {
                 const adElement = document.querySelector('.adsense-ad ins.adsbygoogle iframe');
                 if (!adElement) {
@@ -112,7 +112,7 @@
                         adContainer.classList.add('loaded');
                     }
                 }
-            }, 5000);
+            }, 3000);
             
         } catch (error) {
             console.warn('AdSense初始化失败:', error);
@@ -131,16 +131,43 @@
             checkTimeout = null;
         }
         
-        // 隐藏广告容器
+        // 立即隐藏广告容器
         if (adContainer) {
+            // 使用内联样式确保立即隐藏
+            adContainer.style.cssText = `
+                display: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                height: 0 !important;
+                min-height: 0 !important;
+                max-height: 0 !important;
+                width: 0 !important;
+                min-width: 0 !important;
+                max-width: 0 !important;
+                overflow: hidden !important;
+                opacity: 0 !important;
+                visibility: hidden !important;
+                position: absolute !important;
+                left: -9999px !important;
+                top: -9999px !important;
+                z-index: -9999 !important;
+                pointer-events: none !important;
+                user-select: none !important;
+                transform: scale(0) !important;
+                clip: rect(0, 0, 0, 0) !important;
+            `;
+            
+            // 添加CSS类
             adContainer.classList.add('hidden');
-            // 延迟移除，确保CSS过渡效果完成
-            setTimeout(function() {
-                if (adContainer && adContainer.parentNode) {
-                    adContainer.remove();
-                    adContainer = null;
-                }
-            }, 300);
+            
+            // 强制重排，确保样式生效
+            adContainer.offsetHeight;
+            
+            // 立即移除，不等待延迟
+            if (adContainer && adContainer.parentNode) {
+                adContainer.remove();
+                adContainer = null;
+            }
         }
     }
     
