@@ -106,17 +106,80 @@
                 if (!adElement) {
                     hideAdContainer();
                 } else {
-                    // 广告加载成功
-                    if (adContainer) {
-                        adContainer.classList.remove('loading');
-                        adContainer.classList.add('loaded');
-                    }
+                    // 广告加载成功，检查iframe内容
+                    checkIframeContent(adElement);
                 }
             }, 3000);
             
         } catch (error) {
             console.warn('AdSense初始化失败:', error);
             hideAdContainer();
+        }
+    }
+    
+    function checkIframeContent(iframe) {
+        try {
+            // 等待iframe加载完成
+            iframe.onload = function() {
+                try {
+                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                    const iframeBody = iframeDoc.body;
+                    
+                    if (iframeBody) {
+                        // 检查iframe body是否有内容
+                        const hasContent = iframeBody.children.length > 0 || 
+                                         iframeBody.textContent.trim().length > 0 ||
+                                         iframeBody.innerHTML.includes('adsbygoogle');
+                        
+                        if (!hasContent) {
+                            // iframe没有有效内容，隐藏广告容器
+                            hideAdContainer();
+                        } else {
+                            // 广告加载成功
+                            if (adContainer) {
+                                adContainer.classList.remove('loading');
+                                adContainer.classList.add('loaded');
+                            }
+                        }
+                    }
+                } catch (e) {
+                    // 跨域限制，无法访问iframe内容
+                    // 通过其他方式检查广告是否真的加载了
+                    setTimeout(() => {
+                        const adRect = iframe.getBoundingClientRect();
+                        if (adRect.height < 50 || adRect.width < 50) {
+                            // 广告尺寸太小，可能没有真正加载
+                            hideAdContainer();
+                        } else {
+                            // 广告加载成功
+                            if (adContainer) {
+                                adContainer.classList.remove('loading');
+                                adContainer.classList.add('loaded');
+                            }
+                        }
+                    }, 1000);
+                }
+            };
+            
+            // 如果iframe已经加载完成
+            if (iframe.contentDocument && iframe.contentDocument.readyState === 'complete') {
+                iframe.onload();
+            }
+            
+        } catch (error) {
+            console.warn('检查iframe内容失败:', error);
+            // 如果无法检查iframe内容，使用尺寸检查
+            setTimeout(() => {
+                const adRect = iframe.getBoundingClientRect();
+                if (adRect.height < 50 || adRect.width < 50) {
+                    hideAdContainer();
+                } else {
+                    if (adContainer) {
+                        adContainer.classList.remove('loading');
+                        adContainer.classList.add('loaded');
+                    }
+                }
+            }, 1000);
         }
     }
     
@@ -133,6 +196,48 @@
         
         // 立即隐藏广告容器
         if (adContainer) {
+            // 先尝试隐藏所有相关的iframe
+            const iframes = adContainer.querySelectorAll('iframe');
+            iframes.forEach(iframe => {
+                try {
+                    // 设置iframe样式为隐藏
+                    iframe.style.cssText = `
+                        display: none !important;
+                        width: 0 !important;
+                        height: 0 !important;
+                        border: none !important;
+                        margin: 0 !important;
+                        padding: 0 !important;
+                        overflow: hidden !important;
+                        position: absolute !important;
+                        left: -9999px !important;
+                        top: -9999px !important;
+                    `;
+                    
+                    // 尝试访问iframe内容并隐藏
+                    try {
+                        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                        if (iframeDoc && iframeDoc.body) {
+                            iframeDoc.body.style.cssText = `
+                                display: none !important;
+                                width: 0 !important;
+                                height: 0 !important;
+                                margin: 0 !important;
+                                padding: 0 !important;
+                                overflow: hidden !important;
+                                position: absolute !important;
+                                left: -9999px !important;
+                                top: -9999px !important;
+                            `;
+                        }
+                    } catch (e) {
+                        // 跨域限制，无法访问iframe内容
+                    }
+                } catch (e) {
+                    console.warn('隐藏iframe失败:', e);
+                }
+            });
+            
             // 使用内联样式确保立即隐藏
             adContainer.style.cssText = `
                 display: none !important;
@@ -188,6 +293,9 @@
                 if (!adElement) {
                     // 如果广告没有加载成功，立即隐藏容器
                     hideAdContainer();
+                } else {
+                    // 检查iframe内容
+                    checkIframeContent(adElement);
                 }
             }
         }

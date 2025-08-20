@@ -31,6 +31,33 @@
     transform: scale(0) !important;
 }
 
+/* 强制隐藏iframe - 确保iframe不占用空间 */
+.adsense-container.hidden iframe {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
+    z-index: -9999 !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    transform: scale(0) !important;
+    clip: rect(0, 0, 0, 0) !important;
+}
+
+/* 强制隐藏iframe内部的body元素 */
+.adsense-container.hidden iframe[src*="googlesyndication"] {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
 .adsense-ad {
     position: relative;
     text-align: center;
@@ -108,5 +135,44 @@
     z-index: -9999 !important;
     pointer-events: none !important;
     user-select: none !important;
+    transform: scale(0) !important;
+}
+
+/* 强制隐藏iframe - 最高优先级 */
+.adsense-container[style*="display: none"] iframe {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
+    z-index: -9999 !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    transform: scale(0) !important;
+    clip: rect(0, 0, 0, 0) !important;
+}
+
+/* 特殊处理：隐藏所有可能的AdSense相关元素 */
+.adsense-container.hidden *,
+.adsense-container[style*="display: none"] * {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
+    z-index: -9999 !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
     transform: scale(0) !important;
 }
