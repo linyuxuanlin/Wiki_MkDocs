@@ -1,6 +1,10 @@
-// AdSense广告插入脚本 - 简化版本
+// AdSense广告插入脚本 - 优化版本
 (function() {
     'use strict';
+    
+    let adContainer = null;
+    let loadTimeout = null;
+    let checkTimeout = null;
     
     // 等待DOM加载完成
     document.addEventListener('DOMContentLoaded', function() {
@@ -31,8 +35,8 @@
             }
             
             // 创建广告容器
-            const adContainer = document.createElement('div');
-            adContainer.className = 'adsense-container';
+            adContainer = document.createElement('div');
+            adContainer.className = 'adsense-container hidden'; // 初始时隐藏
             adContainer.innerHTML = `
                 <div class="adsense-ad" id="adsense-ad">
                     <ins class="adsbygoogle"
@@ -67,9 +71,16 @@
             };
             
             script.onerror = function() {
-                // 加载失败时，移除广告容器
-                removeAdContainer();
+                // 加载失败时，立即隐藏广告容器
+                hideAdContainer();
             };
+            
+            // 设置加载超时
+            loadTimeout = setTimeout(function() {
+                if (typeof adsbygoogle === 'undefined') {
+                    hideAdContainer();
+                }
+            }, 5000);
             
             document.head.appendChild(script);
         } else {
@@ -80,28 +91,64 @@
     
     function initAdsenseAd() {
         try {
+            // 显示广告容器
+            if (adContainer) {
+                adContainer.classList.remove('hidden');
+                adContainer.classList.add('loading');
+            }
+            
             // 初始化AdSense广告
             (adsbygoogle = window.adsbygoogle || []).push({});
             
-            // 设置超时检查，如果广告在5秒内没有加载，则移除容器
-            setTimeout(function() {
+            // 设置超时检查，如果广告在3秒内没有加载，则隐藏容器
+            checkTimeout = setTimeout(function() {
                 const adElement = document.querySelector('.adsense-ad ins.adsbygoogle iframe');
                 if (!adElement) {
-                    removeAdContainer();
+                    hideAdContainer();
+                } else {
+                    // 广告加载成功
+                    if (adContainer) {
+                        adContainer.classList.remove('loading');
+                        adContainer.classList.add('loaded');
+                    }
                 }
             }, 5000);
             
         } catch (error) {
             console.warn('AdSense初始化失败:', error);
-            removeAdContainer();
+            hideAdContainer();
+        }
+    }
+    
+    function hideAdContainer() {
+        // 清除所有超时
+        if (loadTimeout) {
+            clearTimeout(loadTimeout);
+            loadTimeout = null;
+        }
+        if (checkTimeout) {
+            clearTimeout(checkTimeout);
+            checkTimeout = null;
+        }
+        
+        // 隐藏广告容器
+        if (adContainer) {
+            adContainer.classList.add('hidden');
+            // 延迟移除，确保CSS过渡效果完成
+            setTimeout(function() {
+                if (adContainer && adContainer.parentNode) {
+                    adContainer.remove();
+                    adContainer = null;
+                }
+            }, 300);
         }
     }
     
     function removeAdContainer() {
         // 移除广告容器
-        const adContainer = document.querySelector('.adsense-container');
-        if (adContainer) {
+        if (adContainer && adContainer.parentNode) {
             adContainer.remove();
+            adContainer = null;
         }
     }
     
@@ -109,14 +156,24 @@
     document.addEventListener('visibilitychange', function() {
         if (!document.hidden) {
             // 页面变为可见时，检查广告是否加载成功
-            const adContainer = document.querySelector('.adsense-container');
             if (adContainer) {
                 const adElement = adContainer.querySelector('ins.adsbygoogle iframe');
                 if (!adElement) {
-                    // 如果广告没有加载成功，移除容器
-                    setTimeout(removeAdContainer, 2000);
+                    // 如果广告没有加载成功，立即隐藏容器
+                    hideAdContainer();
                 }
             }
         }
     });
+    
+    // 页面卸载时清理资源
+    window.addEventListener('beforeunload', function() {
+        if (loadTimeout) {
+            clearTimeout(loadTimeout);
+        }
+        if (checkTimeout) {
+            clearTimeout(checkTimeout);
+        }
+    });
 })();
+
