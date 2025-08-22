@@ -41,7 +41,7 @@
                 <div class="adsense-ad" id="adsense-ad">
                     <ins class="adsbygoogle"
                          style="display:block"
-                         data-ad-client="ca-pub-3052781953929851"
+                         data-ad-client="ca-pub-2699191587499841"
                          data-ad-slot="auto"
                          data-ad-format="auto"
                          data-full-width-responsive="true"></ins>
