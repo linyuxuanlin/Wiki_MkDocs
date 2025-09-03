@@ -278,7 +278,7 @@ extra_javascript:
   - javascripts/mathjax.js #https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/latest.min.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - javascripts/tex-mml-chtml.js #https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-  - javascripts/embed.js # https://viewer.altium.com/client/static/js/embed.js
+  - https://viewer.altium.com/client/static/js/embed.js # javascripts/embed.js 
   - javascripts/adsense.js # AdSense广告脚本
   - javascripts/test-adsense.js # AdSense测试脚本（开发时使用）
 
