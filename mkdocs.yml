@@ -200,7 +200,7 @@ plugins:
       js_files:
         - javascripts/mathjax.js
         - javascripts/tex-mml-chtml.js
-        - javascripts/embed.js
+        #- javascripts/embed.js
       css_files:
         - stylesheets/extra.css
   - rss:
