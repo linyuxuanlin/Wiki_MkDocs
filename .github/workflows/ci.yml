@@ -27,6 +27,13 @@ jobs:
           key: ${{ runner.os }}-pip-site-${{ hashFiles('requirements.txt', 'tools/requirements.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-site-
+      - name: Cache jieba dictionary
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/jieba
+          key: ${{ runner.os }}-jieba-${{ hashFiles('requirements.txt', 'tools/requirements.txt', 'mkdocs.yml') }}
+          restore-keys: |
+            ${{ runner.os }}-jieba-
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -76,3 +83,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Deploy with MkDocs
         run: mkdocs gh-deploy --force
+
