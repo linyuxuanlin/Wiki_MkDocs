@@ -10,7 +10,7 @@
     processHtmlClass: "arithmatex"
   },
   chtml: {
-    fontURL: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts'
+    fontURL: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2'
   }
 };
 
