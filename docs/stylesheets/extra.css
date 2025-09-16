@@ -53,5 +53,9 @@ img[alt="logo"] {
 
 @font-face {
   font-family: "Noto Sans SC - local";
-  src: "NotoSansSC-VariableFont_wght.ttf";
+  src: url("NotoSansSC-VariableFont_wght.woff2") format("woff2"),
+       url("NotoSansSC-VariableFont_wght.ttf") format("truetype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 100 900;
 }
