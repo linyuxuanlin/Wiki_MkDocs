@@ -59,3 +59,7 @@ img[alt="logo"] {
   font-style: normal;
   font-weight: 100 900;
 }
+:root {
+  --md-text-font: "Noto Sans SC - local", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Segoe UI", Arial, sans-serif;
+}
+

@@ -1,4 +1,4 @@
-site_name: Power's Wiki
+﻿site_name: Power's Wiki
 site_description: 博览万物，融会贯通。
 site_url: https://wiki-power.com/
 repo_url: https://github.com/linyuxuanlin/Wiki_MkDocs
@@ -9,8 +9,8 @@ INHERIT: mkdocs.nav.yml
 
 theme:
   name: material
-  font: #false # 国内网络访问 Google 源可能会有问题
-    text: "Noto Sans SC - local"
+  font: false # 国内网络访问 Google 源可能会有问题
+    #text: "Noto Sans SC - local"
     #code: Roboto Mono
   palette:
     - media: "(prefers-color-scheme: light)" # 检查用户系统配置是否为亮色
