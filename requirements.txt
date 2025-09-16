@@ -1,5 +1,6 @@
 mkdocs
 mkdocs-material
+mkdocs-awesome-pages-plugin
 mkdocs-roamlinks-plugin
 mkdocs-rss-plugin
 markdown
