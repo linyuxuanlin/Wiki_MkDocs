@@ -12,8 +12,10 @@ window.MathJax = {
 };
 
 document$.subscribe(() => {
-  MathJax.typesetPromise()
-})
-
-//公式自动添加空格
-pangu.spacingPageBody();
+  if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
+    window.MathJax.typesetPromise();
+  }
+  if (window.pangu && typeof window.pangu.spacingPageBody === 'function') {
+    window.pangu.spacingPageBody();
+  }
+});
