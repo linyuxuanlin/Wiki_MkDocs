@@ -6,6 +6,7 @@
     var AD_SLOT = window.ADSENSE_SLOT_ID || window.ADSENSE_SLOT || '7746286479';
     var HOME_PATHS = new Set(['/', '/zh/', '/en/', '/es/', '/ar/']);
     var HOME_TITLES = new Set(['Home', "Power's Wiki"]);
+    var ADSENSE_SCRIPT_SELECTOR = 'script[src*="pagead/js/adsbygoogle.js"]';
 
     if (!AD_SLOT) {
         console.warn('[AdSense] Missing data-ad-slot id. Set window.ADSENSE_SLOT_ID before this script runs.');
@@ -58,17 +59,17 @@
             return;
         }
 
-        var existingScript = document.querySelector('script[data-adsense-loader]');
+        var existingScript = document.getElementById('adsense-loader') || document.querySelector(ADSENSE_SCRIPT_SELECTOR);
         if (existingScript) {
             existingScript.addEventListener('load', callback, { once: true });
             return;
         }
 
         var script = document.createElement('script');
+        script.id = 'adsense-loader';
         script.async = true;
         script.crossOrigin = 'anonymous';
         script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + encodeURIComponent(AD_CLIENT);
-        script.setAttribute('data-adsense-loader', 'true');
         script.addEventListener('load', callback, { once: true });
         script.addEventListener('error', function() {
             console.error('[AdSense] Failed to load Google AdSense library.');
