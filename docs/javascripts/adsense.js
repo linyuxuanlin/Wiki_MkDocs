@@ -3,7 +3,7 @@
     'use strict';
 
     var AD_CLIENT = 'ca-pub-4776987651904746';
-    var AD_SLOT = window.ADSENSE_SLOT_ID || window.ADSENSE_SLOT || '';
+    var AD_SLOT = window.ADSENSE_SLOT_ID || window.ADSENSE_SLOT || '7746286479';
     var HOME_PATHS = new Set(['/', '/zh/', '/en/', '/es/', '/ar/']);
     var HOME_TITLES = new Set(['Home', "Power's Wiki"]);
 
