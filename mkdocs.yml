@@ -189,13 +189,7 @@ plugins:
             群晖 NAS: محرك التخزين الشبكي من شركة Synology
             技术流: تدفق التقنية
             一些小技巧: بعض النصائح والحيل
-  - search:
-      lang:
-        - zh
-        - en
-        - es
-        - ar
-      separator: "[\s\-]+"
+  - search
   - minify:
       minify_html: true
       minify_js: true
@@ -205,8 +199,7 @@ plugins:
       cache_safe: true
       js_files:
         - javascripts/mathjax.js
-        - javascripts/search-language-filter.js
-        - javascripts/adsense.js
+        - javascripts/tex-mml-chtml.js
         #- javascripts/embed.js
       css_files:
         - stylesheets/extra.css
@@ -282,15 +275,16 @@ markdown_extensions:
 
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js
-  - javascripts/mathjax.js # MathJax configuration
+  - javascripts/mathjax.js #https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/latest.min.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.min.js
+  - javascripts/tex-mml-chtml.js #https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - https://viewer.altium.com/client/static/js/embed.js # javascripts/embed.js 
-  - javascripts/search-language-filter.js # Restrict search results per locale
   - javascripts/adsense.js # AdSense广告脚本
+  - javascripts/test-adsense.js # AdSense测试脚本（开发时使用）
 
 extra_css:
   - stylesheets/extra.css
+  - stylesheets/adsense.css 
 
 #############################################################
 #############################################################
