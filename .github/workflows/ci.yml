@@ -20,8 +20,18 @@ jobs:
           cache-dependency-path: |
             requirements.txt
             tools/requirements.txt
+      - name: Cache user site-packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.local
+          key: ${{ runner.os }}-pip-site-${{ hashFiles('requirements.txt', 'tools/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-site-
       - name: Install dependencies
-        run: pip install -r tools/requirements.txt -r requirements.txt
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install --user -r tools/requirements.txt -r requirements.txt
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
       - name: Change permissions
         run: chmod 755 docs
       - name: Detect docs changes
