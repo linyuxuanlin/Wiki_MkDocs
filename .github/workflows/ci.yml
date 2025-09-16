@@ -16,16 +16,28 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: 3.x
-      - name: Cache dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
+          cache: pip
+          cache-dependency-path: |
+            requirements.txt
+            tools/requirements.txt
+      - name: Install dependencies
+        run: pip install -r tools/requirements.txt -r requirements.txt
       - name: Change permissions
         run: chmod 755 docs
+      - name: Detect docs changes
+        id: docs_changes
+        run: |
+          if git rev-parse HEAD^ >/dev/null 2>&1; then
+            if git diff --quiet HEAD^ HEAD -- docs; then
+              echo "changed=false" >> "$GITHUB_OUTPUT"
+            else
+              echo "changed=true" >> "$GITHUB_OUTPUT"
+            fi
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
       - name: Auto-i18n_translate
+        if: steps.docs_changes.outputs.changed == 'true'
         env:
           # 设置环境变量
           ### API BASE:
@@ -41,7 +53,6 @@ jobs:
           #CHATGPT_API_KEY: ${{ secrets.KEY_OPENAI_FAKE_LISU }} #x
           #CHATGPT_API_KEY: ${{ secrets.KEY_OPENAI_LINYUXUANLIN52 }}
         run: |
-          pip install -r tools/requirements.txt
           python tools/auto-translater.py || true
       - name: Commit translated
         run: |
@@ -53,7 +64,5 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Install MkDocs dependencies
-        run: pip install -r requirements.txt
       - name: Deploy with MkDocs
         run: mkdocs gh-deploy --force
