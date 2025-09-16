@@ -2,10 +2,18 @@
 (function() {
     'use strict';
 
-    console.log('🔍 AdSense集成测试脚本已加载');
-
     const HOME_PATHS = new Set(['/', '/zh/', '/en/', '/es/', '/ar/']);
     const HOME_TITLES = new Set(['Home', "Power's Wiki"]);
+    const DEBUG = Boolean(window.ADSENSE_TEST_DEBUG);
+
+    function debugLog() {
+        if (!DEBUG) {
+            return;
+        }
+        console.log.apply(console, arguments);
+    }
+
+    debugLog('🔍 AdSense集成测试脚本已加载');
 
     function testPageDetection() {
         const path = window.location.pathname;
@@ -13,14 +21,14 @@
         const isHomePage = HOME_PATHS.has(path) || HOME_TITLES.has(title);
         const detectionPass = !isHomePage;
 
-        console.log('📍 页面检测结果:', {
+        debugLog('📍 页面检测结果:', {
             pathname: path,
             title: title,
             isHomePage: isHomePage
         });
 
         if (detectionPass) {
-            console.log('✅ 当前页面被识别为非主页');
+            debugLog('✅ 当前页面被识别为非主页');
         } else {
             console.warn('❌ 页面被识别为主页，请确认测试URL');
         }
@@ -31,11 +39,11 @@
     function testAdInsertion() {
         const articleContent = document.querySelector('.md-content__inner');
         if (articleContent) {
-            console.log('📄 找到文章内容区域:', articleContent);
+            debugLog('📄 找到文章内容区域:', articleContent);
 
             const existingAd = articleContent.querySelector('.adsense-container');
             if (existingAd) {
-                console.log('✅ 广告容器已存在');
+                debugLog('✅ 广告容器已存在');
                 return true;
             }
 
@@ -54,7 +62,7 @@
         );
 
         if (adsenseStyle) {
-            console.log('✅ AdSense样式已加载');
+            debugLog('✅ AdSense样式已加载');
             return true;
         }
 
@@ -63,7 +71,7 @@
     }
 
     function runTests() {
-        console.log('🧪 开始运行AdSense集成测试...');
+        debugLog('🧪 开始运行AdSense集成测试...');
 
         const tests = [
             { name: '页面检测', test: testPageDetection },
@@ -78,22 +86,22 @@
             try {
                 const result = test();
                 if (result) {
-                    console.log(`✅ ${name}测试通过`);
+                    debugLog('✅ ' + name + '测试通过');
                     passed++;
                 } else {
-                    console.warn(`❌ ${name}测试失败`);
+                    console.warn('❌ ' + name + '测试失败');
                 }
             } catch (error) {
-                console.error(`❌ ${name}测试出错:`, error);
+                console.error('❌ ' + name + '测试出错:', error);
             }
         });
 
-        console.log(`📊 测试结果: ${passed}/${total} 通过`);
+        debugLog('📊 测试结果: ' + passed + '/' + total + ' 通过');
 
         if (passed === total) {
-            console.log('🎉 所有测试通过！AdSense集成正常工作');
+            debugLog('🎉 所有测试通过！AdSense集成正常工作');
         } else {
-            console.log('⚠️ 部分测试失败，请检查配置');
+            console.warn('⚠️ 部分测试失败，请检查配置');
         }
     }
 
