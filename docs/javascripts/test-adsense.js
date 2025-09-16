@@ -30,7 +30,7 @@
         if (detectionPass) {
             debugLog('✅ 当前页面被识别为非主页');
         } else {
-            console.warn('❌ 页面被识别为主页，请确认测试URL');
+            debugLog('❌ 页面被识别为主页，请确认测试URL');
         }
 
         return detectionPass;
@@ -47,7 +47,7 @@
                 return true;
             }
 
-            console.warn('❌ 广告容器不存在');
+            debugLog('❌ 广告容器不存在');
             return false;
         }
 
@@ -89,7 +89,7 @@
                     debugLog('✅ ' + name + '测试通过');
                     passed++;
                 } else {
-                    console.warn('❌ ' + name + '测试失败');
+                    debugLog('❌ ' + name + '测试失败');
                 }
             } catch (error) {
                 console.error('❌ ' + name + '测试出错:', error);
@@ -101,7 +101,7 @@
         if (passed === total) {
             debugLog('🎉 所有测试通过！AdSense集成正常工作');
         } else {
-            console.warn('⚠️ 部分测试失败，请检查配置');
+            debugLog('⚠️ 部分测试失败，请检查配置');
         }
     }
 
