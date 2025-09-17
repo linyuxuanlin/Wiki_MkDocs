@@ -53,11 +53,11 @@ img[alt="logo"] {
 
 @font-face {
   font-family: "Noto Sans SC - local";
-  src: url("NotoSansSC-VariableFont_wght.woff2") format("woff2"),
-       url("NotoSansSC-VariableFont_wght.ttf") format("truetype");
+  src: url("NotoSansSC-UI-subset.woff") format("woff");
   font-display: swap;
   font-style: normal;
-  font-weight: 100 900;
+  font-weight: 400;
+  unicode-range: U+0000-00FF, U+2013, U+2014, U+2018, U+2019, U+201C, U+201D, U+2022, U+3001, U+3002, U+300A, U+300B;
 }
 :root {
   --md-text-font: "Noto Sans SC - local", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Segoe UI", Arial, sans-serif;
