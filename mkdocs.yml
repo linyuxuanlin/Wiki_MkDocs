@@ -273,17 +273,11 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
 
 extra_javascript:
-  - javascripts/mathjax.js
-  - javascripts/altium-loader.js
-  - javascripts/adsense.js # AdSense script
-#  - javascripts/test-adsense.js # AdSense test script (development only)
-
-#---
-#  - https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js
-#  - javascripts/mathjax.js #https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/latest.min.js
-#  - https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6 #https://polyfill.io/v3/polyfill.min.js?features=es6
-#  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js
-#  - https://viewer.altium.com/client/static/js/embed.js # javascripts/embed.js 
-#  - javascripts/adsense.js # AdSense广告脚本
-#  - javascripts/test-adsense.js # AdSense测试脚本（开发时使用）
+  - https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js
+  - javascripts/mathjax.js #https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/latest.min.js
+  - https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6 #https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js
+  - https://viewer.altium.com/client/static/js/embed.js # javascripts/embed.js 
+  - javascripts/adsense.js # AdSense广告脚本
+  - javascripts/test-adsense.js # AdSense测试脚本（开发时使用）
 
