@@ -11,7 +11,6 @@
       script.id = SCRIPT_ID;
       script.src = SCRIPT_SRC;
       script.async = true;
-      script.crossOrigin = 'anonymous';
       script.onload = () => resolve();
       script.onerror = () => reject(new Error('Failed to load Altium viewer script.'));
       document.head.appendChild(script);
