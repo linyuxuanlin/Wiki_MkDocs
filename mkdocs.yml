@@ -276,7 +276,7 @@ extra_javascript:
   - javascripts/mathjax.js
   - javascripts/altium-loader.js
   - javascripts/adsense.js # AdSense script
-#  - javascripts/test-adsense.js # AdSense test script (development only)
+  - javascripts/test-adsense.js # AdSense test script (development only)
 
 #---
 #  - https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js
