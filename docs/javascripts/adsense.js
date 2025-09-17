@@ -7,6 +7,28 @@
     var HOME_PATHS = new Set(['/', '/zh/', '/en/', '/es/', '/ar/']);
     var HOME_TITLES = new Set(['Home', "Power's Wiki"]);
     var ADSENSE_SCRIPT_SELECTOR = 'script[src*="pagead/js/adsbygoogle.js"]';
+    var STYLE_ID = 'adsense-inline-style';
+    var STYLE_CONTENT = `
+.adsense-container{margin:1rem 0;padding:.5rem;text-align:center;background:transparent;border:0;box-shadow:none;transition:opacity .3s ease;}
+.adsense-container.hidden,.adsense-container.error,.adsense-container[style*='display: none']{display:none!important;margin:0!important;padding:0!important;height:0!important;width:0!important;overflow:hidden!important;opacity:0!important;visibility:hidden!important;position:absolute!important;left:-9999px!important;top:-9999px!important;pointer-events:none!important;}
+.adsense-container.hidden *,.adsense-container[style*='display: none'] *{display:none!important;}
+.adsense-container ins.adsbygoogle{display:block!important;width:100%;border:0;min-height:auto;}
+[data-md-color-scheme='slate'] .adsense-container{background:transparent;border:0;box-shadow:none;}
+.adsense-container.loading{opacity:.7;}
+.adsense-container.loaded{opacity:1;}
+@media(max-width:768px){.adsense-container{margin:.75rem 0;padding:.25rem;}}
+`
+
+    function ensureStyles() {
+        if (document.getElementById(STYLE_ID)) {
+            return;
+        }
+        var style = document.createElement('style');
+        style.id = STYLE_ID;
+        style.textContent = STYLE_CONTENT;
+        document.head.appendChild(style);
+    }
+
 
     if (!AD_SLOT) {
         console.warn('[AdSense] Missing data-ad-slot id. Set window.ADSENSE_SLOT_ID before this script runs.');
@@ -14,6 +36,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
+        ensureStyles();
         if (isHomePage()) {
             return;
         }
