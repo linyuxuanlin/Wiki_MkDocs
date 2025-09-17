@@ -1,6 +1,6 @@
 (function () {
   const MATHJAX_SRC = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js';
-  const PANGU_SRC = (typeof window !== 'undefined') ? new URL('/javascripts/pangu.min.js', window.location.origin).href : '/javascripts/pangu.min.js';
+  const PANGU_SRC = (typeof document !== 'undefined') ? new URL('javascripts/pangu.min.js', document.baseURI).href : '/javascripts/pangu.min.js';
   const pendingScripts = new Map();
   let mathjaxReady;
 
