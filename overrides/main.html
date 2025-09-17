@@ -3,4 +3,45 @@
 {% block extrahead %}
   {{ super() }}
   <link rel="preload" href="{{ 'stylesheets/NotoSansSC-UI-subset.woff' | url }}" as="font" type="font/woff" crossorigin>
+  <style>
+    ::selection {
+      background: aquamarine;
+      color: black;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .md-content img:not([alt="badge"]) {
+      max-width: min(100%, 1280px);
+      width: auto;
+      height: auto;
+      border: 3px solid #000;
+      background: #fff;
+    }
+
+    .md-content img[alt="logo"] {
+      border: none;
+    }
+
+    .altium-iframe-viewer {
+      height: 400px;
+      max-width: 1280px;
+      max-height: 700px;
+    }
+
+    @font-face {
+      font-family: "Noto Sans SC - local";
+      src: url("{{ 'stylesheets/NotoSansSC-UI-subset.woff' | url }}") format("woff");
+      font-display: swap;
+      font-style: normal;
+      font-weight: 400;
+      unicode-range: U+0000-00FF, U+2013, U+2014, U+2018, U+2019, U+201C, U+201D, U+2022, U+3001, U+3002, U+300A, U+300B;
+    }
+
+    :root {
+      --md-text-font: "Noto Sans SC - local", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Segoe UI", Arial, sans-serif;
+    }
+  </style>
 {% endblock %}
