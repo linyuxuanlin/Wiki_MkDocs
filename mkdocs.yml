@@ -202,6 +202,8 @@ plugins:
       js_files:
         - javascripts/mathjax.js
         #- javascripts/embed.js
+      css_files:
+        - stylesheets/extra.css
   - rss:
       abstract_chars_count: -1 # -1 for full content
       #categories:
@@ -281,3 +283,5 @@ extra_javascript:
   - javascripts/adsense.js # AdSense广告脚本
   - javascripts/test-adsense.js # AdSense测试脚本（开发时使用）
 
+extra_css:
+  - stylesheets/extra.css

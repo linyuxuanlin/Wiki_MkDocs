@@ -1,0 +1,65 @@
+/* 隐藏 scrollbar 
+::-webkit-scrollbar {
+  display: none;
+}*/
+
+/* 文字选取颜色 */
+::selection {
+  background: aquamarine;
+  color: black;
+}
+
+/* Smooth Scroll 顺滑跳转到某位置 */
+html {
+  scroll-behavior: smooth;
+}
+
+img:not([alt="badge"]) {
+  width: 1280px;
+  border: 3px solid black;
+  background: white;
+}
+
+img[alt="logo"] {
+  border: none;
+}
+.altium-iframe-viewer {
+  height: 400px;
+  max-width: 1280px;
+  max-height: 700px;
+  /*
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 0px 0px 4px 4px;
+    overflow: hidden;
+    box-sizing: border-box;
+    */
+}
+
+/*
+  iframe{
+    height: 450px;
+    width: 1280px;
+    max-width: 1280px;
+    max-height: 700px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 0px 0px 4px 4px;
+    overflow: hidden;
+    box-sizing: border-box;
+    
+  }
+  */
+
+@font-face {
+  font-family: "Noto Sans SC - local";
+  src: url("NotoSansSC-UI-subset.woff") format("woff");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+  unicode-range: U+0000-00FF, U+2013, U+2014, U+2018, U+2019, U+201C, U+201D, U+2022, U+3001, U+3002, U+300A, U+300B;
+}
+:root {
+  --md-text-font: "Noto Sans SC - local", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Segoe UI", Arial, sans-serif;
+}
+
