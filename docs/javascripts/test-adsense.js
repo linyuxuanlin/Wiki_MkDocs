@@ -56,14 +56,17 @@
     }
 
     function testStyles() {
-        const inlineStyle = document.getElementById('adsense-inline-style');
+        const styleSheets = Array.from(document.styleSheets);
+        const adsenseStyle = styleSheets.find(sheet =>
+            sheet.href && sheet.href.includes('adsense.css')
+        );
 
-        if (inlineStyle) {
-            debugLog('✅ AdSense样式已注入');
+        if (adsenseStyle) {
+            debugLog('✅ AdSense样式已加载');
             return true;
         }
 
-        console.warn('⚠️ AdSense样式未注入');
+        console.warn('❌ AdSense样式未加载');
         return false;
     }
 
