@@ -282,6 +282,7 @@ extra_javascript:
   - https://viewer.altium.com/client/static/js/embed.js # javascripts/embed.js 
   - javascripts/adsense.js # AdSense广告脚本
   - javascripts/test-adsense.js # AdSense测试脚本（开发时使用）
+  - javascripts/accessibility.js
 
 extra_css:
   - stylesheets/extra.css
