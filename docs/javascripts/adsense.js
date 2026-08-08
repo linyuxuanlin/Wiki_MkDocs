@@ -1,67 +1,162 @@
-// Simplified AdSense insertion script
-(function() {
+// AdSense placement and loader for content pages.
+(function () {
     'use strict';
 
     var AD_CLIENT = 'ca-pub-4776987651904746';
     var AD_SLOT = window.ADSENSE_SLOT_ID || window.ADSENSE_SLOT || '7746286479';
     var HOME_PATHS = new Set(['/', '/zh/', '/en/', '/es/', '/ar/']);
-    var HOME_TITLES = new Set(['Home', "Power's Wiki"]);
     var ADSENSE_SCRIPT_SELECTOR = 'script[src*="pagead/js/adsbygoogle.js"]';
+    var MIN_TEXT_LENGTH = 800;
+    var LONG_ARTICLE_TEXT_LENGTH = 2600;
+    var lastInitializedUrl = '';
 
     if (!AD_SLOT) {
-        console.warn('[AdSense] Missing data-ad-slot id. Set window.ADSENSE_SLOT_ID before this script runs.');
+        console.warn('[AdSense] Missing data-ad-slot id.');
         return;
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-        if (isHomePage()) {
-            return;
-        }
+    onReady(initAds);
 
-        var articleContent = document.querySelector('.md-content__inner');
-        if (!articleContent) {
-            return;
-        }
-
-        if (articleContent.querySelector('.adsense-container')) {
-            pushAds();
-            return;
-        }
-
-        var adContainer = document.createElement('div');
-        adContainer.className = 'adsense-container';
-
-        var adIns = document.createElement('ins');
-        adIns.className = 'adsbygoogle';
-        adIns.style.display = 'block';
-        adIns.setAttribute('data-ad-client', AD_CLIENT);
-        adIns.setAttribute('data-ad-slot', AD_SLOT);
-        adIns.setAttribute('data-ad-format', 'auto');
-        adIns.setAttribute('data-full-width-responsive', 'true');
-
-        adContainer.appendChild(adIns);
-        articleContent.appendChild(adContainer);
-
-        ensureAdsenseScript(pushAds);
-    });
-
-    function isHomePage() {
-        var path = window.location.pathname;
-        if (HOME_PATHS.has(path)) {
-            return true;
-        }
-        return HOME_TITLES.has(document.title);
+    // Also works if Material instant navigation is enabled in the future.
+    if (window.document$ && typeof window.document$.subscribe === 'function') {
+        window.document$.subscribe(initAds);
     }
 
-    function ensureAdsenseScript(callback) {
-        if (window.adsbygoogle && typeof window.adsbygoogle.push === 'function') {
+    function onReady(callback) {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', callback, { once: true });
+        } else {
             callback();
+        }
+    }
+
+    function initAds() {
+        if (shouldSkipPage()) {
             return;
         }
 
-        var existingScript = document.getElementById('adsense-loader') || document.querySelector(ADSENSE_SCRIPT_SELECTOR);
+        var article = document.querySelector('.md-content__inner');
+        if (!article) {
+            return;
+        }
+
+        var currentUrl = window.location.href;
+        if (lastInitializedUrl === currentUrl && article.querySelector('.adsense-container')) {
+            return;
+        }
+
+        // Avoid monetizing very short / low-value pages.
+        var textLength = (article.innerText || article.textContent || '')
+            .replace(/\s+/g, ' ')
+            .trim().length;
+        if (textLength < MIN_TEXT_LENGTH) {
+            return;
+        }
+
+        article.querySelectorAll('.adsense-container').forEach(function (element) {
+            element.remove();
+        });
+
+        var adUnits = [];
+
+        if (textLength >= LONG_ARTICLE_TEXT_LENGTH) {
+            var midpoint = findMidpointTarget(article);
+            if (midpoint) {
+                var midAd = createAdUnit('mid');
+                midpoint.insertAdjacentElement('afterend', midAd.container);
+                adUnits.push(midAd);
+            }
+        }
+
+        var endAd = createAdUnit('end');
+        article.appendChild(endAd.container);
+        adUnits.push(endAd);
+        lastInitializedUrl = currentUrl;
+
+        ensureAdsenseScript(function () {
+            adUnits.forEach(renderAd);
+        }, function () {
+            adUnits.forEach(function (unit) {
+                unit.container.remove();
+            });
+        });
+    }
+
+    function shouldSkipPage() {
+        var path = window.location.pathname;
+        var title = document.title || '';
+
+        return HOME_PATHS.has(path) ||
+            path === '/404.html' ||
+            /(^|\s)404(\s|$)/.test(title);
+    }
+
+    function findMidpointTarget(article) {
+        var candidates = Array.prototype.filter.call(article.children, function (element) {
+            if (!/^(P|UL|OL|PRE|TABLE|BLOCKQUOTE|DIV)$/.test(element.tagName)) {
+                return false;
+            }
+
+            var text = (element.innerText || element.textContent || '').trim();
+            return text.length >= 80 && !element.closest('.adsense-container');
+        });
+
+        if (candidates.length < 6) {
+            return null;
+        }
+
+        return candidates[Math.floor(candidates.length * 0.55)];
+    }
+
+    function createAdUnit(position) {
+        var container = document.createElement('div');
+        container.className = 'adsense-container adsense-container--' + position;
+        container.setAttribute('aria-label', 'Advertisement');
+        container.setAttribute('data-adsense-position', position);
+
+        var ad = document.createElement('ins');
+        ad.className = 'adsbygoogle';
+        ad.style.display = 'block';
+        ad.setAttribute('data-ad-client', AD_CLIENT);
+        ad.setAttribute('data-ad-slot', AD_SLOT);
+        ad.setAttribute('data-ad-format', 'auto');
+        ad.setAttribute('data-full-width-responsive', 'true');
+
+        observeAdStatus(ad, container);
+        container.appendChild(ad);
+
+        return { container: container, ad: ad };
+    }
+
+    function observeAdStatus(ad, container) {
+        if (typeof MutationObserver !== 'function') {
+            return;
+        }
+
+        var observer = new MutationObserver(function () {
+            var status = ad.getAttribute('data-ad-status');
+            container.classList.toggle('is-unfilled', status === 'unfilled');
+
+            if (status === 'filled' || status === 'unfilled') {
+                observer.disconnect();
+            }
+        });
+
+        observer.observe(ad, { attributes: true, attributeFilter: ['data-ad-status'] });
+    }
+
+    function ensureAdsenseScript(onLoad, onError) {
+        if (window.adsbygoogle && typeof window.adsbygoogle.push === 'function') {
+            onLoad();
+            return;
+        }
+
+        var existingScript = document.getElementById('adsense-loader') ||
+            document.querySelector(ADSENSE_SCRIPT_SELECTOR);
+
         if (existingScript) {
-            existingScript.addEventListener('load', callback, { once: true });
+            existingScript.addEventListener('load', onLoad, { once: true });
+            existingScript.addEventListener('error', onError, { once: true });
             return;
         }
 
@@ -69,18 +164,22 @@
         script.id = 'adsense-loader';
         script.async = true;
         script.crossOrigin = 'anonymous';
-        script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + encodeURIComponent(AD_CLIENT);
-        script.addEventListener('load', callback, { once: true });
-        script.addEventListener('error', function() {
-            console.error('[AdSense] Failed to load Google AdSense library.');
-        });
+        script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' +
+            encodeURIComponent(AD_CLIENT);
+        script.addEventListener('load', onLoad, { once: true });
+        script.addEventListener('error', onError, { once: true });
         document.head.appendChild(script);
     }
 
-    function pushAds() {
+    function renderAd(unit) {
+        if (unit.ad.getAttribute('data-adsbygoogle-status')) {
+            return;
+        }
+
         try {
             (window.adsbygoogle = window.adsbygoogle || []).push({});
         } catch (error) {
+            unit.container.remove();
             console.error('[AdSense] Failed to render ad:', error);
         }
     }
