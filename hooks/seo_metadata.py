@@ -4,7 +4,12 @@ from html import unescape
 MAX_DESCRIPTION_LENGTH = 155
 MIN_DESCRIPTION_LENGTH = 55
 
+_FRONT_MATTER_RE = re.compile(r"\A---\s*\n.*?\n---\s*(?:\n|\Z)", re.DOTALL)
 _FENCE_RE = re.compile(r"```.*?```|~~~.*?~~~", re.DOTALL)
+_HTML_BLOCK_RE = re.compile(
+    r"<(?:div|script|style|iframe|figure|table)\b.*?</(?:div|script|style|iframe|figure|table)>",
+    re.DOTALL | re.IGNORECASE,
+)
 _HTML_RE = re.compile(r"<[^>]+>")
 _IMAGE_RE = re.compile(r"!\[[^\]]*\]\([^)]*\)")
 _LINK_RE = re.compile(r"\[([^\]]+)\]\([^)]*\)")
@@ -26,7 +31,9 @@ def on_page_markdown(markdown, page, **kwargs):
 
 
 def _extract_description(markdown):
-    text = _FENCE_RE.sub("\n", markdown)
+    text = _FRONT_MATTER_RE.sub("", markdown)
+    text = _FENCE_RE.sub("\n", text)
+    text = _HTML_BLOCK_RE.sub("\n", text)
 
     for paragraph in re.split(r"\n\s*\n", text):
         cleaned = _clean_paragraph(paragraph)
@@ -47,7 +54,7 @@ def _clean_paragraph(paragraph):
             continue
         if re.match(r"^(?:[-*+] |\d+[.)] )", line):
             continue
-        if line.startswith("<") and line.endswith(">"):
+        if line.startswith("<"):
             continue
         lines.append(line)
 
