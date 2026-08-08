@@ -6,6 +6,9 @@ repo_url: https://github.com/linyuxuanlin/Wiki_MkDocs
 edit_uri: edit/main/docs/ # 编辑按钮的url
 INHERIT: mkdocs.nav.yml
 
+hooks:
+  - hooks/seo_metadata.py
+
 
 theme:
   name: material
@@ -259,8 +262,7 @@ markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.betterem
-  - pymdownx.highlight:
-      anchor_linenums: true
+  - pymdownx.highlight
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - attr_list
