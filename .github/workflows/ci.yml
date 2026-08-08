@@ -67,7 +67,7 @@ jobs:
 
       - name: Commit translated files
         run: |
-          if git diff --quiet && git diff --cached --quiet; then
+          if [ -z "$(git status --porcelain)" ]; then
             echo "No generated translation changes to commit."
             exit 0
           fi
