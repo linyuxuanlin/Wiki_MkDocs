@@ -1,1 +1,1 @@
-// Legacy diagnostic placeholder. Production diagnostics are disabled.
+// AdSense production build: diagnostics intentionally disabled.
