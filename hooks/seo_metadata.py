@@ -16,6 +16,14 @@ _LINK_RE = re.compile(r"\[([^\]]+)\]\([^)]*\)")
 _INLINE_CODE_RE = re.compile(r"`([^`]+)`")
 _MARKDOWN_MARKER_RE = re.compile(r"[*_~]+")
 _WHITESPACE_RE = re.compile(r"\s+")
+_BOILERPLATE_RE = re.compile(
+    r"^(?:"
+    r"project\s+(?:repository|repo|online\s+preview)|"
+    r"source|original(?:\s+(?:article|url|link))?|reference|references|"
+    r"项目(?:仓库|地址|链接|预览)|在线预览|原文(?:地址|链接)?|参考(?:链接|地址)?"
+    r")\s*[:：]",
+    re.IGNORECASE,
+)
 
 
 def on_page_markdown(markdown, page, **kwargs):
@@ -37,6 +45,8 @@ def _extract_description(markdown):
 
     for paragraph in re.split(r"\n\s*\n", text):
         cleaned = _clean_paragraph(paragraph)
+        if not cleaned or _BOILERPLATE_RE.match(cleaned):
+            continue
         if len(cleaned) < MIN_DESCRIPTION_LENGTH:
             continue
         return _truncate(cleaned, MAX_DESCRIPTION_LENGTH)
