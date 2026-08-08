@@ -1,0 +1,59 @@
+name: seo-validation
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Check hook syntax
+        run: python -m py_compile hooks/seo_metadata.py
+
+      - name: Build site
+        run: mkdocs build --clean
+
+      - name: Verify generated page description
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+
+          candidates = list(Path('site/en').glob('RobotCtrl_Core*/index.html'))
+          if not candidates:
+              raise SystemExit('RobotCtrl_Core generated page not found')
+
+          html = candidates[0].read_text(encoding='utf-8')
+          match = re.search(r'<meta name="?description"? content="([^"]*)"', html)
+          if not match:
+              match = re.search(r'<meta name=description content="([^"]*)"', html)
+          if not match:
+              raise SystemExit('meta description not found')
+
+          description = match.group(1)
+          generic = 'To have an extensive knowledge of all things and integrate them into a coherent whole.'
+          if description == generic:
+              raise SystemExit('page still uses generic site description')
+          if len(description) < 55 or len(description) > 155:
+              raise SystemExit(f'unexpected description length: {len(description)}')
+
+          print(description)
+          PY
