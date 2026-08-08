@@ -1,4 +1,4 @@
-﻿site_name: Power's Wiki
+site_name: Power's Wiki
 site_description: 博览万物，融会贯通。
 site_url: https://wiki-power.com/
 repo_url: https://github.com/linyuxuanlin/Wiki_MkDocs
@@ -118,7 +118,7 @@ plugins:
             通信协议: Protocolos de comunicación
             电源设计: Diseño de energía
             信号与电源完整性: Integridad de señal y energía
-            射频设计: Diseño de RF
+            射频设计: Radiofrecuencia
             软件与仪器: Software y herramientas
             半导体测试: Pruebas de semiconductores
             测试协议: Protocolos de prueba
@@ -276,14 +276,11 @@ markdown_extensions:
 
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js
-  - javascripts/mathjax.js #https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/latest.min.js
-  - https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6 #https://polyfill.io/v3/polyfill.min.js?features=es6
-  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js
-  - https://viewer.altium.com/client/static/js/embed.js # javascripts/embed.js 
+  - javascripts/mathjax.js
+  - javascripts/altium.js
   - javascripts/adsense.js # AdSense广告脚本
-  - javascripts/test-adsense.js # AdSense测试脚本（开发时使用）
   - javascripts/accessibility.js
 
 extra_css:
   - stylesheets/extra.css
-  - stylesheets/adsense.css 
+  - stylesheets/adsense.css
