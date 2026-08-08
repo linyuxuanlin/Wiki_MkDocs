@@ -20,8 +20,10 @@ _BOILERPLATE_RE = re.compile(
     r"^(?:"
     r"project\s+(?:repository|repo|online\s+preview)|"
     r"source|original(?:\s+(?:article|url|link))?|reference|references|"
-    r"项目(?:仓库|地址|链接|预览)|在线预览|原文(?:地址|链接)?|参考(?:链接|地址)?"
-    r")\s*[:：]",
+    r"note:\s*this\s+project\s+is\s+included\s+in\b|"
+    r"项目(?:仓库|地址|链接|预览)|在线预览|原文(?:地址|链接)?|参考(?:链接|地址)?|"
+    r"注[：:]\s*本项目(?:包含|隶属|属于)"
+    r")\s*[:：]?",
     re.IGNORECASE,
 )
 
