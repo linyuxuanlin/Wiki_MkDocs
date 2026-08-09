@@ -26,10 +26,6 @@
     {%- endif %}
     <url>
         <loc>{{ page_href }}</loc>
-    {%- if file.page.update_date %}
-        <lastmod>{{ file.page.update_date }}</lastmod>
-    {%- endif %}
-        <changefreq>daily</changefreq>
     {%- for i18n_locale, i18n_file in file.alternates.items() %}
         {%- set alternate_source_path = i18n_file.norm_src_uri if i18n_file.norm_src_uri is defined else i18n_file.src_uri %}
         {%- set alternate_is_fallback = i18n_file.locale != i18n_locale %}
