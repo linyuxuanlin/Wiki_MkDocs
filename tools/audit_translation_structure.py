@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
-"""Audit translation structure against zh source without changing content.
+"""Conservatively audit translated Markdown for likely structural loss.
 
-The checks are intentionally structural rather than linguistic: a translation
-may use very different words and length, but it should not silently lose major
-headings, fenced code blocks, images, or same-site references from the source.
+This is intentionally a *loss* detector, not a translation-quality scorer. A
+translation may be longer, use different wording, or even contain extra code
+blocks. We only flag pages that appear to have dropped substantial source
+structure or an extreme amount of visible content.
 """
 
 from __future__ import annotations
 
+import math
 import re
 from collections import Counter
 from dataclasses import dataclass
@@ -17,11 +19,9 @@ SOURCE_DIR = Path("docs/zh")
 LOCALE_DIRS = (Path("docs/en"), Path("docs/es"), Path("docs/ar"))
 
 _HEADING_RE = re.compile(r"^\s{0,3}#{1,6}\s+", re.MULTILINE)
-_FENCE_RE = re.compile(r"^\s*(?:```|~~~)", re.MULTILINE)
 _IMAGE_RE = re.compile(r"!\[[^\]]*\]\(")
 _SAME_SITE_RE = re.compile(r"https?://(?:www\.)?wiki-power\.com/|\]\(/")
 _FRONTMATTER_RE = re.compile(r"\A---\s*\n.*?\n---\s*\n", re.DOTALL)
-_FENCED_BLOCK_RE = re.compile(r"(^\s*(```|~~~).*?^\s*\2\s*$)", re.MULTILINE | re.DOTALL)
 _URL_RE = re.compile(r"https?://\S+")
 _MARKUP_RE = re.compile(r"[#>*_`|\[\](){}!~-]+")
 _SPACE_RE = re.compile(r"\s+")
@@ -31,58 +31,154 @@ _SPACE_RE = re.compile(r"\s+")
 class Metrics:
     visible_chars: int
     headings: int
-    fence_lines: int
+    fenced_blocks: int
     images: int
     same_site_refs: int
 
 
+def count_complete_fenced_blocks(text: str) -> int:
+    """Count complete Markdown fenced code blocks, ignoring unmatched extras."""
+    blocks = 0
+    opening_char: str | None = None
+    opening_length = 0
+
+    for line in text.splitlines():
+        stripped = line.lstrip()
+        indent = len(line) - len(stripped)
+        if indent > 3 or not stripped:
+            continue
+
+        marker_char = stripped[0]
+        if marker_char not in {"`", "~"}:
+            continue
+
+        marker_length = 0
+        while marker_length < len(stripped) and stripped[marker_length] == marker_char:
+            marker_length += 1
+        if marker_length < 3:
+            continue
+
+        if opening_char is None:
+            opening_char = marker_char
+            opening_length = marker_length
+            continue
+
+        # CommonMark closing fences use the same character and at least as many
+        # markers as the opening fence. Trailing whitespace is harmless; any
+        # other trailing content means this is not a closing fence.
+        if marker_char != opening_char or marker_length < opening_length:
+            continue
+        if stripped[marker_length:].strip():
+            continue
+
+        blocks += 1
+        opening_char = None
+        opening_length = 0
+
+    return blocks
+
+
+def strip_fenced_blocks(text: str) -> str:
+    """Remove complete fenced blocks when estimating prose/content length."""
+    output: list[str] = []
+    in_fence = False
+    opening_char: str | None = None
+    opening_length = 0
+
+    for line in text.splitlines():
+        stripped = line.lstrip()
+        indent = len(line) - len(stripped)
+        marker_char = stripped[0] if stripped and indent <= 3 else ""
+        marker_length = 0
+        if marker_char in {"`", "~"}:
+            while marker_length < len(stripped) and stripped[marker_length] == marker_char:
+                marker_length += 1
+
+        if not in_fence and marker_length >= 3:
+            in_fence = True
+            opening_char = marker_char
+            opening_length = marker_length
+            continue
+
+        if in_fence:
+            if (
+                marker_char == opening_char
+                and marker_length >= opening_length
+                and not stripped[marker_length:].strip()
+            ):
+                in_fence = False
+                opening_char = None
+                opening_length = 0
+            continue
+
+        output.append(line)
+
+    return "\n".join(output)
+
+
 def metrics(text: str) -> Metrics:
     body = _FRONTMATTER_RE.sub("", text, count=1)
-    visible = _FENCED_BLOCK_RE.sub(" ", body)
+    visible = strip_fenced_blocks(body)
     visible = _URL_RE.sub(" ", visible)
     visible = _MARKUP_RE.sub(" ", visible)
     visible = _SPACE_RE.sub("", visible)
     return Metrics(
         visible_chars=len(visible),
         headings=len(_HEADING_RE.findall(body)),
-        fence_lines=len(_FENCE_RE.findall(body)),
+        fenced_blocks=count_complete_fenced_blocks(body),
         images=len(_IMAGE_RE.findall(body)),
         same_site_refs=len(_SAME_SITE_RE.findall(body)),
     )
 
 
-def assess(source: Metrics, translated: Metrics) -> tuple[int, list[str]]:
-    score = 0
+def significant_deficit(source_count: int, translated_count: int, *, min_source: int) -> bool:
+    if source_count < min_source or translated_count >= source_count:
+        return False
+    missing = source_count - translated_count
+    threshold = max(1, math.ceil(source_count * 0.25))
+    return missing >= threshold
+
+
+def assess(source: Metrics, translated: Metrics) -> tuple[bool, int, list[str]]:
+    """Return (severe, independent_loss_signal_count, reasons)."""
     reasons: list[str] = []
+    loss_signals = 0
+    extreme_length_loss = False
 
-    if source.visible_chars >= 800:
+    if source.visible_chars >= 500:
         ratio = translated.visible_chars / max(source.visible_chars, 1)
-        if ratio < 0.35:
-            score += 5
-            reasons.append(f"very-short={ratio:.0%}")
-        elif ratio < 0.50:
-            score += 2
-            reasons.append(f"short={ratio:.0%}")
+        if ratio < 0.20:
+            extreme_length_loss = True
+            loss_signals += 1
+            reasons.append(f"extreme-length={ratio:.0%}")
+        elif ratio < 0.40:
+            loss_signals += 1
+            reasons.append(f"length={ratio:.0%}")
 
-    if source.headings >= 2 and translated.headings < source.headings:
-        missing = source.headings - translated.headings
-        score += 2 + min(missing, 3)
+    if significant_deficit(source.headings, translated.headings, min_source=4):
+        loss_signals += 1
         reasons.append(f"headings={translated.headings}/{source.headings}")
 
-    if translated.fence_lines != source.fence_lines:
-        score += 4
-        reasons.append(f"fences={translated.fence_lines}/{source.fence_lines}")
+    # Only missing complete code blocks matter. Extra translated fences are not
+    # evidence of loss and previously created many false positives.
+    if source.fenced_blocks and translated.fenced_blocks < source.fenced_blocks:
+        loss_signals += 1
+        reasons.append(f"code-blocks={translated.fenced_blocks}/{source.fenced_blocks}")
 
-    if translated.images != source.images:
-        score += 3
+    if significant_deficit(source.images, translated.images, min_source=2):
+        loss_signals += 1
         reasons.append(f"images={translated.images}/{source.images}")
 
-    if translated.same_site_refs < source.same_site_refs:
-        missing = source.same_site_refs - translated.same_site_refs
-        score += 2 + min(missing, 3)
-        reasons.append(f"internal-refs={translated.same_site_refs}/{source.same_site_refs}")
+    if significant_deficit(source.same_site_refs, translated.same_site_refs, min_source=2):
+        loss_signals += 1
+        reasons.append(
+            f"internal-refs={translated.same_site_refs}/{source.same_site_refs}"
+        )
 
-    return score, reasons
+    # Quarantine-worthy candidates must either be dramatically truncated on
+    # prose alone, or show at least two independent kinds of structural loss.
+    severe = extreme_length_loss or loss_signals >= 2
+    return severe, loss_signals, reasons
 
 
 def main() -> int:
@@ -102,20 +198,26 @@ def main() -> int:
             checked += 1
             translated_text = translated_path.read_text(encoding="utf-8")
             translated_metrics = metrics(translated_text)
-            score, reasons = assess(source_metrics, translated_metrics)
-            if score < 3:
+            severe, loss_signals, reasons = assess(source_metrics, translated_metrics)
+            if not severe:
                 continue
 
             key = translated_path.as_posix()
             candidates.append(
-                (score, key, source_metrics, translated_metrics, reasons)
+                (loss_signals, key, source_metrics, translated_metrics, reasons)
             )
             locale_counts[locale_dir.name] += 1
 
-    candidates.sort(key=lambda item: (-item[0], item[1]))
+    candidates.sort(
+        key=lambda item: (
+            -item[0],
+            item[3].visible_chars / max(item[2].visible_chars, 1),
+            item[1],
+        )
+    )
 
     print(f"Translated files checked: {checked}")
-    print(f"High-confidence structural candidates: {len(candidates)}")
+    print(f"Conservative severe structural candidates: {len(candidates)}")
     print(
         "By locale: "
         + ", ".join(
@@ -126,18 +228,21 @@ def main() -> int:
     print("\nCandidates:")
     if not candidates:
         print("    0  none")
-    for score, path, source, translated, reasons in candidates[:120]:
+    for signals, path, source, translated, reasons in candidates[:120]:
         print(
-            f"{score:2d}  {path}  "
+            f"{signals:2d} signals  {path}  "
             + ", ".join(reasons)
-            + f"; chars={translated.visible_chars}/{source.visible_chars}"
+            + (
+                f"; chars={translated.visible_chars}/{source.visible_chars}; "
+                f"blocks={translated.fenced_blocks}/{source.fenced_blocks}"
+            )
         )
 
     if len(candidates) > 120:
         print(f"... {len(candidates) - 120} more")
 
-    # Diagnostic only. A later change may turn a reviewed high-confidence list
-    # into index/monetization quarantine rules, but this audit never guesses.
+    # Diagnostic only. Every eventual quarantine entry must still be reviewed;
+    # this audit deliberately does not modify indexing or content.
     return 0
 
 
