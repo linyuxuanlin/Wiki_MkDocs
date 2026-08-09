@@ -11,9 +11,10 @@
     {%- if not file.page %}
         {%- continue %}
     {%- endif %}
-
-    {# Generated fallback copies are non-canonical and must not be sitemap locations. #}
     {%- if file.locale != locale %}
+        {%- continue %}
+    {%- endif %}
+    {%- if file.page.meta.get('_translation_quality_quarantine') %}
         {%- continue %}
     {%- endif %}
 
@@ -32,6 +33,9 @@
         {%- if alternate_is_fallback %}
             {%- continue %}
         {%- endif %}
+        {%- if i18n_file.page and i18n_file.page.meta.get('_translation_quality_quarantine') %}
+            {%- continue %}
+        {%- endif %}
 
         {%- if i18n_file.page.canonical_url %}
             {%- set i18n_href = i18n_file.page.canonical_url | e %}
@@ -45,7 +49,6 @@
             {%- endif %}
         {%- endif %}
 
-        {# These default-tree files have English primary content; label the canonical root URL accordingly. #}
         {%- if alternate_source_path in english_originals and i18n_locale == 'zh' %}
             {%- set hreflang = 'en' %}
         {%- else %}
