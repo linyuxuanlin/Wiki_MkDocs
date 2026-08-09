@@ -29,12 +29,16 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
 
-      - name: Check custom JavaScript syntax
+      - name: Check custom code syntax
         run: |
           node --check docs/javascripts/adsense.js
           node --check docs/javascripts/altium.js
           node --check docs/javascripts/mathjax.js
           node --check docs/javascripts/accessibility.js
+          python -m py_compile hooks/seo_metadata.py hooks/i18n_index_hygiene.py tools/validate_site_output.py
 
       - name: Build site
         run: mkdocs build --clean
+
+      - name: Validate generated site
+        run: python tools/validate_site_output.py
