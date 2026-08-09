@@ -2,7 +2,7 @@
 """Repair deterministic same-site Markdown link problems.
 
 Two classes of defects are handled without touching visible prose:
-1. known historical wiki-power.com paths that were renamed or consolidated;
+1. known historical or machine-translated wiki-power.com paths that have exact replacements;
 2. translated files whose Markdown link structure still matches the zh source,
    but whose internal URL destinations were translated by the language model.
 
@@ -23,7 +23,9 @@ SOURCE_DIR = DOCS_DIR / "zh"
 LOCALE_DIRS = (DOCS_DIR / "en", DOCS_DIR / "es", DOCS_DIR / "ar")
 SITE_HOSTS = {"wiki-power.com", "www.wiki-power.com"}
 
-# Exact historical routes that have clear current replacements.
+# Exact routes with verified current replacements. The first group is historical
+# renames/consolidations; the latter entries are surviving machine-translated
+# slugs from structurally incomplete legacy translations. All are exact matches.
 STALE_PATH_REPLACEMENTS = {
     "/PCB布线规范": "/个人PCB设计规范/",
     "/PCB元件布局规范": "/个人PCB设计规范/",
@@ -35,6 +37,29 @@ STALE_PATH_REPLACEMENTS = {
     "/使用Markdown进行高效写作": "/使用Markdown高效写作/",
     "/基于acme.sh自动申请域名证书（群晖Docker）": "/使用acme.sh自动申请域名证书（群晖Docker）/",
     "/基于Bitwarden搭建密码管理器（群晖Docker）": "/使用Bitwarden搭建密码管理器（群晖Docker）/",
+    "/إنشاء-HomeLab-الخاص-بك": "/搭建属于自己的HomeLab/",
+    "/Homelab-لوحة-إدارة-الخوادم-الخفيفة-CasaOS": "/Homelab-轻量服务器管理面板CasaOS/",
+    "/Homelab-لوحة-إدارة-شهادات-البروكسي-NginxProxyManager": "/Homelab-反代证书管理面板NginxProxyManager/",
+    "/Homelab-أداة-اختراق-الشبكة-الداخلية-frp": "/Homelab-内网穿透工具frp/",
+    "/Homelab-بديل-مجاني-لاختراق-الشبكة-الداخلية-Cloudflared": "/Homelab-免费的内网穿透替代方案Cloudflared/",
+    "/Homelab-محرر-الشفرات-عبر-الإنترنت-code-server": "/Homelab-在线代码编辑器code-server/",
+    "/Homelab-أداة-مراقبة-حالة-الموقع-على-الإنترنت-UptimeKuma": "/Homelab-网站状态监控工具UptimeKuma/",
+    "/Homelab-أداة-ضغط-الصور-عالية-الجودة-TinyPNG-docker": "/Homelab-高质量图片压缩工具TinyPNG-docker/",
+    "/Homelab-موقع-الإشارة-الشخصي-بسيط-Flare": "/Homelab-极简个人书签导航站Flare/",
+    "/Homelab-منصة-إدارة-تطبيقات-الحاويات-Portainer": "/Homelab-容器应用管理平台Portainer/",
+    "/Homelab-أداة-مزامنة-عبر-الأجهزة-Syncthing": "/Homelab-跨设备同步工具Syncthing/",
+    "/Homelab-أداة-ملاحظات-الشظايا-memos": "/Homelab-碎片笔记工具memos/",
+    "/Homelab-نظام-ويكي-قوي-Wikijs": "/Homelab-功能强大的wiki系统Wikijs/",
+    "/Homelab-منصة-إدارة-كلمات-المرور-الذاتية-الاستضافة-Vaultwarden": "/Homelab-自托管密码管理器Vaultwarden/",
+    "/Homelab-نظام-خدمة-الصور-السحابية-داعم-للخدمات-العامة-Cloudreve": "/Homelab-支持公有云的图床系统Cloudreve/",
+    "/Homelab-منصة-تجميع-تغذية-الرصاص-الذاتية-الاستضافة-FreshRSS": "/Homelab-自托管RSS聚合器FreshRSS/",
+    "/Homelab-برنامج-البوابة-متعدد-البروتوكولات-NextTerminal": "/Homelab-支持多种协议的堡垒机NextTerminal/",
+    "/Homelab-مجموعة-أدوات-PDF-متعددة-الوظائف-Stirling-PDF": "/Homelab-多功能PDF工具箱Stirling-PDF/",
+    "/Homelab-أداة-استخراج-الرمز-المميز-لمواقع-الويب-iconserver": "/Homelab-网站favicon抓取工具iconserver/",
+    "/Homelab-أداة-تحديث-تطبيقات-Docker-تلقائيًا-Watchtower": "/Homelab-自动更新Docker容器的工具Watchtower/",
+    "/Homelab-برنامج-قوائم-الملفات-متعددة-التخزين-Alist": "/Homelab-支持多存储的文件列表程序Alist/",
+    "/Homelab-برنامج-لوحة-الإعلانات-غني-الخصائص-WeKan": "/Homelab-功能丰富的看板软件WeKan/",
+    "/PlatformIO—una herramienta de desarrollo embebido todo en uno": "/PlatformIO—一站式嵌入式开发工具/",
 }
 
 # These pre-existing machine translations are already structurally incomplete
@@ -323,15 +348,15 @@ def main() -> int:
 
     mode = "check" if args.check else "repair"
     print(
-        f"Internal link {mode}: checked {docs_checked} Markdown files for stale routes "
+        f"Internal link {mode}: checked {docs_checked} Markdown files for exact route repairs "
         f"and {translated_checked} translated files for URL drift; "
-        f"{stale_changed} stale destination(s) and {translated_changed} translated destination(s) "
+        f"{stale_changed} exact destination(s) and {translated_changed} translated destination(s) "
         f"{'would change' if args.check else 'repaired'}."
     )
 
     if warnings:
         print(
-            f"Known structurally incomplete translations left untouched: {len(warnings)}",
+            f"Known structurally incomplete translations left untouched by ordinal alignment: {len(warnings)}",
             file=sys.stderr,
         )
         for warning in warnings:
