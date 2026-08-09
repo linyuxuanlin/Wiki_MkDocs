@@ -4,6 +4,8 @@ from urllib.parse import urlsplit, urlunsplit
 
 from mkdocs.plugins import event_priority
 
+from hooks.image_loading import optimize_article_images
+
 # Files stored in the default zh source tree whose primary visible content is English.
 # They stay on their established root URLs, but are advertised semantically as English.
 ENGLISH_ORIGINALS = frozenset(
@@ -66,14 +68,14 @@ def on_page_context(context, page, config, **kwargs):
 
 
 def on_post_page(output, page, config, **kwargs):
-    """Correct the document language for English-primary files kept on root URLs."""
+    """Apply final per-page language and article-loading output hygiene."""
     file = page.file
     if (
         getattr(file, "locale", None) == "zh"
         and _source_name(file) in ENGLISH_ORIGINALS
     ):
         output = _HTML_LANG_ZH_RE.sub(r"\1en", output, count=1)
-    return output
+    return optimize_article_images(output)
 
 
 @event_priority(-50)
