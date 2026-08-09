@@ -43,6 +43,15 @@ _HTML_LANG_ZH_RE = re.compile(
     r'(<html\b[^>]*\blang=)(?:"zh"|\'zh\'|zh)(?=[\s>])',
     re.IGNORECASE,
 )
+_ARTICLE_RE = re.compile(
+    r'(?P<open><article\b[^>]*\bclass=(?:"[^"]*\bmd-content__inner\b[^"]*"|\'[^\']*\bmd-content__inner\b[^\']*\'|[^\s>]*md-content__inner[^\s>]*)[^>]*>)'
+    r'(?P<body>.*?)'
+    r'(?P<close></article>)',
+    re.IGNORECASE | re.DOTALL,
+)
+_IMG_RE = re.compile(r'<img\b[^>]*>', re.IGNORECASE)
+_LOADING_RE = re.compile(r'\sloading\s*=', re.IGNORECASE)
+_DECODING_RE = re.compile(r'\sdecoding\s*=', re.IGNORECASE)
 
 
 def on_config(config, **kwargs):
@@ -66,14 +75,14 @@ def on_page_context(context, page, config, **kwargs):
 
 
 def on_post_page(output, page, config, **kwargs):
-    """Correct the document language for English-primary files kept on root URLs."""
+    """Apply final per-page language and article-loading output hygiene."""
     file = page.file
     if (
         getattr(file, "locale", None) == "zh"
         and _source_name(file) in ENGLISH_ORIGINALS
     ):
         output = _HTML_LANG_ZH_RE.sub(r"\1en", output, count=1)
-    return output
+    return _optimize_article_images(output)
 
 
 @event_priority(-50)
@@ -101,6 +110,44 @@ def on_post_build(config, **kwargs):
         path = site_dir / name
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(content)
+
+
+def _optimize_article_images(output):
+    """Lazy-load only article images after the first image on each page.
+
+    The first article image is intentionally left untouched because it is the
+    most likely image to contribute to LCP. Theme chrome lives outside the
+    article element and is never modified. Explicit author-provided loading or
+    decoding attributes are preserved.
+    """
+
+    def rewrite_article(match):
+        seen_images = 0
+
+        def rewrite_image(image_match):
+            nonlocal seen_images
+            seen_images += 1
+            tag = image_match.group(0)
+            if seen_images == 1:
+                return tag
+
+            additions = []
+            if not _LOADING_RE.search(tag):
+                additions.append('loading="lazy"')
+            if not _DECODING_RE.search(tag):
+                additions.append('decoding="async"')
+            if not additions:
+                return tag
+
+            insert = " " + " ".join(additions)
+            if tag.endswith("/>"):
+                return tag[:-2].rstrip() + insert + " />"
+            return tag[:-1].rstrip() + insert + ">"
+
+        body = _IMG_RE.sub(rewrite_image, match.group("body"))
+        return match.group("open") + body + match.group("close")
+
+    return _ARTICLE_RE.sub(rewrite_article, output)
 
 
 def _canonicalize_fallback(page):
