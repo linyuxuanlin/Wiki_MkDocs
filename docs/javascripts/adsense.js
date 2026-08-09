@@ -85,10 +85,13 @@
     function shouldSkipPage() {
         var path = window.location.pathname;
         var title = document.title || '';
+        var robots = document.querySelector('meta[name="robots"]');
+        var robotsContent = robots ? (robots.getAttribute('content') || '').toLowerCase() : '';
 
         return HOME_PATHS.has(path) ||
             path === '/404.html' ||
-            /(^|\s)404(\s|$)/.test(title);
+            /(^|\s)404(\s|$)/.test(title) ||
+            /(^|,)\s*noindex\s*(,|$)/.test(robotsContent);
     }
 
     function findMidpointTarget(article) {
