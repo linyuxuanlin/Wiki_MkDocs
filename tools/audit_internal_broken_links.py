@@ -11,6 +11,7 @@ from urllib.parse import unquote, urljoin, urlsplit
 SITE_DIR = Path("site")
 ORIGIN = "https://wiki-power.com"
 IGNORED_SCHEMES = {"mailto", "tel", "javascript", "data"}
+LOCALIZED_PREFIXES = ("/en/", "/es/", "/ar/")
 
 
 class LinkParser(HTMLParser):
@@ -90,6 +91,10 @@ def generated_targets() -> set[str]:
     return targets
 
 
+def is_localized_route(route: str) -> bool:
+    return route.startswith(LOCALIZED_PREFIXES)
+
+
 def main() -> int:
     html_files = sorted(SITE_DIR.rglob("*.html"))
     targets = generated_targets()
@@ -98,6 +103,12 @@ def main() -> int:
     context_counts: Counter[str] = Counter()
     source_counts: Counter[str] = Counter()
     examples: dict[str, list[str]] = defaultdict(list)
+
+    default_broken_counts: Counter[str] = Counter()
+    default_source_counts: Counter[str] = Counter()
+    default_examples: dict[str, list[str]] = defaultdict(list)
+    localized_broken_counts: Counter[str] = Counter()
+
     checked = 0
 
     for path in html_files:
@@ -127,12 +138,27 @@ def main() -> int:
             if len(examples[target]) < 4:
                 examples[target].append(source_route)
 
+            if is_localized_route(source_route):
+                localized_broken_counts[target] += 1
+            else:
+                default_broken_counts[target] += 1
+                default_source_counts[source_route] += 1
+                if len(default_examples[target]) < 4:
+                    default_examples[target].append(source_route)
+
     total_broken = sum(broken_counts.values())
+    default_broken = sum(default_broken_counts.values())
+    localized_broken = sum(localized_broken_counts.values())
+
     print(f"Generated HTML files: {len(html_files)}")
     print(f"Generated URL/file targets: {len(targets)}")
     print(f"Same-site hyperlinks checked: {checked}")
     print(f"Unresolved same-site hyperlink occurrences: {total_broken}")
     print(f"Unique unresolved targets: {len(broken_counts)}")
+    print(
+        "Unresolved source groups: "
+        f"default/root={default_broken}, localized(en/es/ar)={localized_broken}"
+    )
     print(
         "Unresolved contexts: "
         + ", ".join(
@@ -141,14 +167,27 @@ def main() -> int:
         )
     )
 
-    print("\nTop unresolved targets:")
+    print("\nTop unresolved targets from default/root sources:")
+    if not default_broken_counts:
+        print("    0  none")
+    for target, count in default_broken_counts.most_common(80):
+        sample = ", ".join(default_examples[target])
+        print(f"{count:5d}  {target}  sources: {sample}")
+
+    print("\nTop default/root source pages with unresolved same-site links:")
+    if not default_source_counts:
+        print("    0  none")
+    for source, count in default_source_counts.most_common(60):
+        print(f"{count:5d}  {source}")
+
+    print("\nTop unresolved targets (all sources):")
     if not broken_counts:
         print("    0  none")
     for target, count in broken_counts.most_common(80):
         sample = ", ".join(examples[target])
         print(f"{count:5d}  {target}  sources: {sample}")
 
-    print("\nTop source pages with unresolved same-site links:")
+    print("\nTop source pages with unresolved same-site links (all sources):")
     if not source_counts:
         print("    0  none")
     for source, count in source_counts.most_common(40):
