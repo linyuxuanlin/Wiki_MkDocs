@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+{%- for locale, i18n_files in i18n_alternates.items() %}
+{%- for file in i18n_files %}
+    {%- if file.page.is_link %}
+        {%- continue %}
+    {%- endif %}
+    {%- if not file.page %}
+        {%- continue %}
+    {%- endif %}
+
+    {%- set source_path = file.norm_src_uri if file.norm_src_uri is defined else file.src_uri %}
+    {%- set is_legacy = source_path.startswith('archive/') or source_path.startswith('unlist/') %}
+    {%- set is_legacy_fallback = is_legacy and file.locale != locale %}
+    {%- if is_legacy_fallback %}
+        {%- continue %}
+    {%- endif %}
+
+    {%- if file.page.canonical_url %}
+        {%- set page_href = file.page.canonical_url | e %}
+    {%- elif file.page.abs_url %}
+        {%- set page_href = file.page.abs_url | e %}
+    {%- else %}
+        {%- set page_href = config.site_url ~ file.url %}
+    {%- endif %}
+    <url>
+        <loc>{{ page_href }}</loc>
+    {%- if file.page.update_date %}
+        <lastmod>{{ file.page.update_date }}</lastmod>
+    {%- endif %}
+        <changefreq>daily</changefreq>
+    {%- for i18n_locale, i18n_file in file.alternates.items() %}
+        {%- set alternate_source_path = i18n_file.norm_src_uri if i18n_file.norm_src_uri is defined else i18n_file.src_uri %}
+        {%- set alternate_is_legacy = alternate_source_path.startswith('archive/') or alternate_source_path.startswith('unlist/') %}
+        {%- set alternate_is_fallback = alternate_is_legacy and i18n_file.locale != i18n_locale %}
+        {%- if alternate_is_fallback %}
+            {%- continue %}
+        {%- endif %}
+
+        {%- if i18n_file.page.canonical_url %}
+            {%- set i18n_href = i18n_file.page.canonical_url | e %}
+        {%- elif i18n_file.page.abs_url %}
+            {%- set i18n_href = i18n_file.page.abs_url | e %}
+        {%- else %}
+            {%- if i18n_file.url == "./" %}
+                {%- set i18n_href = config.site_url %}
+            {%- else %}
+                {%- set i18n_href = config.site_url ~ i18n_file.url %}
+            {%- endif %}
+        {%- endif %}
+        <xhtml:link rel="alternate" hreflang="{{ i18n_locale }}" href="{{ i18n_href }}"/>
+    {%- endfor %}
+    </url>
+{%- endfor %}
+{%- endfor %}
+</urlset>
