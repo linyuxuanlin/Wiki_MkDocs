@@ -1,0 +1,7 @@
+INHERIT: mkdocs.yml
+
+hooks:
+  - hooks/i18n_fallback_canonical.py
+
+theme:
+  custom_dir: overrides
