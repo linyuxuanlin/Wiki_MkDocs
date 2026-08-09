@@ -75,24 +75,23 @@ jobs:
           assert not [url for url in locs if legacy_fallback(url)]
           assert not [url for url in alts if legacy_fallback(url)]
 
-          # #8: at least one page receives a substantial page-specific description.
-          meta_re = re.compile(r'<meta\s+name=["\']description["\']\s+content=["\']([^"\']+)', re.I)
-          generic = {
-              '博览万物，融会贯通。',
-              'To have an extensive knowledge of all things and integrate them into a coherent whole.',
-              'Abarcar todo, integrar todo.',
-              'اطلع على كل شيء واندمج بكل شيء.',
-          }
-          specific = []
-          for html in Path('site').rglob('index.html'):
-              match = meta_re.search(text(html))
-              if match and len(match.group(1).strip()) >= 55 and match.group(1).strip() not in generic:
-                  specific.append((html, match.group(1).strip()))
-                  if len(specific) >= 3:
-                      break
-          assert specific, 'no page-specific meta descriptions were generated'
+          # #8: reuse the exact sample and HTML patterns validated in its own CI.
+          candidates = list(Path('site/en').glob('RobotCtrl_Core*/index.html'))
+          if not candidates:
+              raise SystemExit('RobotCtrl_Core generated page not found')
+          html = candidates[0].read_text(encoding='utf-8')
+          match = re.search(r'<meta name="?description"? content="([^"]*)"', html)
+          if not match:
+              match = re.search(r'<meta name=description content="([^"]*)"', html)
+          if not match:
+              raise SystemExit('meta description not found')
+          description = match.group(1)
+          generic = 'To have an extensive knowledge of all things and integrate them into a coherent whole.'
+          if description == generic:
+              raise SystemExit('page still uses generic site description')
+          if len(description) < 55 or len(description) > 155:
+              raise SystemExit(f'unexpected description length: {len(description)}')
 
           print('combined hook + sitemap assertions passed')
-          for path, desc in specific:
-              print(path, '=>', desc[:120])
+          print('SEO sample:', description)
           PY
