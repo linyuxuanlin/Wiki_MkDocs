@@ -6,8 +6,9 @@ Two classes of defects are handled without touching visible prose:
 2. translated files whose Markdown link structure still matches the zh source,
    but whose internal URL destinations were translated by the language model.
 
-Translations with known structural omissions are reported but never guessed at.
-Any new structural mismatch remains a hard failure.
+Valid same-language variants such as `/en/<source-path>` are preserved. Translations
+with known structural omissions are reported but never guessed at, and any new
+structural mismatch remains a hard failure.
 """
 
 from __future__ import annotations
@@ -20,7 +21,8 @@ from urllib.parse import unquote, urlsplit, urlunsplit
 
 DOCS_DIR = Path("docs")
 SOURCE_DIR = DOCS_DIR / "zh"
-LOCALE_DIRS = (DOCS_DIR / "en", DOCS_DIR / "es", DOCS_DIR / "ar")
+LOCALES = ("en", "es", "ar")
+LOCALE_DIRS = tuple(DOCS_DIR / locale for locale in LOCALES)
 SITE_HOSTS = {"wiki-power.com", "www.wiki-power.com"}
 
 # Exact routes with verified current replacements. The first group is historical
@@ -93,17 +95,14 @@ def markdown_destinations(text: str) -> list[Destination]:
     """Return inline Markdown link/image destinations with balanced parentheses."""
     results: list[Destination] = []
     cursor = 0
-
     while True:
         marker = text.find("](", cursor)
         if marker < 0:
             break
-
         start = marker + 2
         index = start
         depth = 0
         escaped = False
-
         while index < len(text):
             char = text[index]
             if escaped:
@@ -121,18 +120,13 @@ def markdown_destinations(text: str) -> list[Destination]:
             elif char == "\n" and depth == 0:
                 break
             index += 1
-
         cursor = max(index, marker + 2)
-
     return results
 
 
 def is_same_site_destination(value: str) -> bool:
     value = value.strip()
-    if not value:
-        return False
-    if any(char.isspace() for char in value):
-        # Skip optional Markdown titles; preserving ambiguous syntax is safer.
+    if not value or any(char.isspace() for char in value):
         return False
     if value.startswith("/") and not value.startswith("//"):
         return True
@@ -148,7 +142,6 @@ def normalized_site_path(value: str) -> str | None:
     value = value.strip()
     if not is_same_site_destination(value):
         return None
-
     parts = urlsplit(value)
     path = unquote(parts.path or "/")
     if not path.startswith("/"):
@@ -158,6 +151,27 @@ def normalized_site_path(value: str) -> str | None:
     return path
 
 
+def strip_locale_prefix(path: str, locale: str) -> str:
+    prefix = f"/{locale}"
+    if path == prefix:
+        return "/"
+    if path.startswith(prefix + "/"):
+        stripped = path[len(prefix):]
+        return stripped or "/"
+    return path
+
+
+def destinations_are_equivalent(source_value: str, translated_value: str, locale: str) -> bool:
+    """Treat the target locale's same-path URL as a valid UX-preserving variant."""
+    source_path = normalized_site_path(source_value)
+    translated_path = normalized_site_path(translated_value)
+    if source_path is None or translated_path is None:
+        return source_value == translated_value
+    if source_path == translated_path:
+        return True
+    return strip_locale_prefix(translated_path, locale) == source_path
+
+
 def replace_destination(text: str, replacements: list[tuple[int, int, str]]) -> str:
     output = text
     for start, end, value in reversed(replacements):
@@ -165,15 +179,27 @@ def replace_destination(text: str, replacements: list[tuple[int, int, str]]) -> 
     return output
 
 
+def stale_replacement_for_path(path: str) -> str | None:
+    direct = STALE_PATH_REPLACEMENTS.get(path)
+    if direct:
+        return direct
+    for locale in LOCALES:
+        stripped = strip_locale_prefix(path, locale)
+        if stripped == path:
+            continue
+        replacement = STALE_PATH_REPLACEMENTS.get(stripped)
+        if replacement:
+            return f"/{locale}{replacement}"
+    return None
+
+
 def canonicalize_known_stale_destinations(text: str) -> tuple[str, int]:
     replacements: list[tuple[int, int, str]] = []
-
     for item in markdown_destinations(text):
         path = normalized_site_path(item.value)
-        target_path = STALE_PATH_REPLACEMENTS.get(path or "")
+        target_path = stale_replacement_for_path(path or "")
         if not target_path:
             continue
-
         parts = urlsplit(item.value.strip())
         if parts.scheme in {"http", "https"}:
             replacement = urlunsplit(
@@ -185,17 +211,18 @@ def canonicalize_known_stale_destinations(text: str) -> tuple[str, int]:
                 replacement += "?" + parts.query
             if parts.fragment:
                 replacement += "#" + parts.fragment
-
         if replacement != item.value:
             replacements.append((item.start, item.end, replacement))
-
     return replace_destination(text, replacements), len(replacements)
 
 
-def align_internal_destinations(source: str, translated: str) -> tuple[str, int, str | None]:
+def align_internal_destinations(
+    source: str,
+    translated: str,
+    locale: str,
+) -> tuple[str, int, str | None]:
     source_links = internal_destinations(source)
     translated_links = internal_destinations(translated)
-
     if len(source_links) != len(translated_links):
         return (
             translated,
@@ -205,10 +232,9 @@ def align_internal_destinations(source: str, translated: str) -> tuple[str, int,
 
     replacements: list[tuple[int, int, str]] = []
     for source_link, translated_link in zip(source_links, translated_links):
-        if source_link.value == translated_link.value:
+        if destinations_are_equivalent(source_link.value, translated_link.value, locale):
             continue
         replacements.append((translated_link.start, translated_link.end, source_link.value))
-
     return replace_destination(translated, replacements), len(replacements), None
 
 
@@ -216,20 +242,17 @@ def normalize_stale_links(check_only: bool) -> tuple[int, int, list[str]]:
     files_checked = 0
     changed_destinations = 0
     issues: list[str] = []
-
     for path in sorted(DOCS_DIR.rglob("*.md")):
         files_checked += 1
         text = path.read_text(encoding="utf-8")
         repaired, changed = canonicalize_known_stale_destinations(text)
         if not changed:
             continue
-
         changed_destinations += changed
         if check_only:
-            issues.append(f"{path}: {changed} known stale internal destination(s)")
+            issues.append(f"{path}: {changed} known exact internal destination(s)")
         else:
             path.write_text(repaired, encoding="utf-8")
-
     return files_checked, changed_destinations, issues
 
 
@@ -245,26 +268,25 @@ def align_translated_links(check_only: bool) -> tuple[int, int, list[str], list[
             translated_path = locale_dir / source_path.name
             if not translated_path.is_file():
                 continue
-
             files_checked += 1
+            locale = locale_dir.name
             translated_text = translated_path.read_text(encoding="utf-8")
-            repaired, changed, issue = align_internal_destinations(source_text, translated_text)
+            repaired, changed, issue = align_internal_destinations(
+                source_text, translated_text, locale
+            )
             if issue:
                 message = f"{translated_path}: {issue}"
-                key = translated_path.as_posix()
-                if key in KNOWN_STRUCTURAL_MISMATCHES:
+                if translated_path.as_posix() in KNOWN_STRUCTURAL_MISMATCHES:
                     warnings.append(message)
                 else:
                     issues.append(message)
                 continue
-
             if not changed:
                 continue
-
             destinations_changed += changed
             if check_only:
                 issues.append(
-                    f"{translated_path}: {changed} translated internal destination(s) differ from zh source"
+                    f"{translated_path}: {changed} non-equivalent internal destination(s) differ from zh source"
                 )
             else:
                 translated_path.write_text(repaired, encoding="utf-8")
@@ -274,26 +296,29 @@ def align_translated_links(check_only: bool) -> tuple[int, int, list[str], list[
 
 def synthetic_tests() -> list[str]:
     errors: list[str] = []
-
     source = (
         "[中文标题](https://wiki-power.com/搭建属于自己的HomeLab)\n"
+        "[串口](https://wiki-power.com/HAL串口通信)\n"
         "![图](https://media.wiki-power.com/img/example.png)\n"
         "[嵌套](https://wiki-power.com/TheHdw(The_Hardware)/)\n"
         "[外链](https://example.com/中文)\n"
     )
     translated = (
         "[HomeLab](https://wiki-power.com/Setting-Up-Your-Own-HomeLab)\n"
+        "[UART](https://wiki-power.com/en/HAL%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1/)\n"
         "![Image](https://media.wiki-power.com/img/example.png)\n"
         "[Nested](https://wiki-power.com/TheHdw-The-Hardware/)\n"
         "[External](https://example.com/english)\n"
     )
-    repaired, changed, issue = align_internal_destinations(source, translated)
+    repaired, changed, issue = align_internal_destinations(source, translated, "en")
     if issue:
         errors.append(f"synthetic alignment unexpectedly failed: {issue}")
     if changed != 2:
         errors.append(f"synthetic alignment changed {changed} destinations instead of 2")
     if "https://wiki-power.com/搭建属于自己的HomeLab" not in repaired:
-        errors.append("translated same-site URL was not restored")
+        errors.append("translated broken same-site URL was not restored")
+    if "https://wiki-power.com/en/HAL%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1/" not in repaired:
+        errors.append("valid same-language internal URL was not preserved")
     if "https://wiki-power.com/TheHdw(The_Hardware)/" not in repaired:
         errors.append("balanced-parenthesis URL was not restored")
     if "https://example.com/english" not in repaired:
@@ -303,14 +328,17 @@ def synthetic_tests() -> list[str]:
 
     stale = (
         "[旧标题](https://wiki-power.com/Docker简易指南/) "
+        "[本地化旧标题](https://wiki-power.com/en/Docker简易指南/) "
         "[相对旧标题](/DC-IDD_Test) "
         "[外链](https://example.com/Docker简易指南/)"
     )
     stale_repaired, stale_changed = canonicalize_known_stale_destinations(stale)
-    if stale_changed != 2:
-        errors.append(f"stale-link test changed {stale_changed} destinations instead of 2")
+    if stale_changed != 3:
+        errors.append(f"stale-link test changed {stale_changed} destinations instead of 3")
     if "https://wiki-power.com/Docker基础知识/" not in stale_repaired:
         errors.append("absolute stale wiki route was not normalized")
+    if "https://wiki-power.com/en/Docker基础知识/" not in stale_repaired:
+        errors.append("localized stale wiki route lost its locale")
     if "](/IDD_Test/)" not in stale_repaired:
         errors.append("root-relative stale wiki route was not normalized")
     if "https://example.com/Docker简易指南/" not in stale_repaired:
@@ -319,10 +347,10 @@ def synthetic_tests() -> list[str]:
     mismatch_result = align_internal_destinations(
         "[一](https://wiki-power.com/one) [二](https://wiki-power.com/two)",
         "[One](https://wiki-power.com/one)",
+        "en",
     )
     if mismatch_result[2] is None or mismatch_result[1] != 0:
         errors.append("structural mismatch was guessed instead of rejected")
-
     return errors
 
 
@@ -345,15 +373,13 @@ def main() -> int:
     translated_checked, translated_changed, translated_issues, warnings = align_translated_links(
         args.check
     )
-
     mode = "check" if args.check else "repair"
     print(
         f"Internal link {mode}: checked {docs_checked} Markdown files for exact route repairs "
         f"and {translated_checked} translated files for URL drift; "
-        f"{stale_changed} exact destination(s) and {translated_changed} translated destination(s) "
+        f"{stale_changed} exact destination(s) and {translated_changed} non-equivalent translated destination(s) "
         f"{'would change' if args.check else 'repaired'}."
     )
-
     if warnings:
         print(
             f"Known structurally incomplete translations left untouched by ordinal alignment: {len(warnings)}",
@@ -369,7 +395,6 @@ def main() -> int:
         if len(issues) > 120:
             print(f" - ... {len(issues) - 120} more", file=sys.stderr)
         return 1
-
     return 0
 
 
