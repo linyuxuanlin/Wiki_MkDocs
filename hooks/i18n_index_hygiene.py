@@ -33,6 +33,15 @@ ENGLISH_ORIGINALS = frozenset(
     }
 )
 
+_TRANSLATION_LOCALES = frozenset({"en", "es", "ar"})
+_TRANSLATION_QUALITY_CACHE = {}
+_MARKDOWN_WRAPPER_RE = re.compile(r"^\s*(?:`{3,}|~{3,})\s*markdown\s*$", re.IGNORECASE)
+_NO_INDEX_RE = re.compile(
+    r'<meta\b[^>]*\bname=(?:"robots"|\'robots\'|robots)[^>]*\bcontent=(?:"[^"]*noindex[^"]*"|\'[^\']*noindex[^\']*\'|[^\s>]*noindex[^\s>]*)[^>]*>',
+    re.IGNORECASE,
+)
+_QUARANTINE_META = '<meta name="robots" content="noindex, follow">'
+
 _DEFAULT_SHARED_OUTPUTS = {}
 _SHARED_OUTPUT_NAMES = (
     "404.html",
@@ -59,20 +68,27 @@ def on_template_context(context, template_name, config, **kwargs):
 
 
 def on_page_context(context, page, config, **kwargs):
-    """Unify canonical and hreflang signals for real translations and fallbacks."""
+    """Unify canonical/hreflang signals and mark deterministically bad translations."""
+    if _is_malformed_translation(page.file, config):
+        page.meta["_translation_quality_quarantine"] = True
+
     _canonicalize_fallback(page)
     _filter_page_alternates(page, config)
     return context
 
 
 def on_post_page(output, page, config, **kwargs):
-    """Correct the document language for English-primary files kept on root URLs."""
+    """Apply final document-language and translation-quality output hygiene."""
     file = page.file
     if (
         getattr(file, "locale", None) == "zh"
         and _source_name(file) in ENGLISH_ORIGINALS
     ):
         output = _HTML_LANG_ZH_RE.sub(r"\1en", output, count=1)
+
+    if _is_malformed_translation(file, config):
+        output = _ensure_noindex(output)
+
     return output
 
 
@@ -103,6 +119,69 @@ def on_post_build(config, **kwargs):
         path.write_bytes(content)
 
 
+def _ensure_noindex(output):
+    if _NO_INDEX_RE.search(output):
+        return output
+
+    closing_head = output.lower().find("</head>")
+    if closing_head < 0:
+        return output
+
+    return output[:closing_head] + _QUARANTINE_META + output[closing_head:]
+
+
+def _first_nonempty_line(text):
+    for line in text.splitlines():
+        if line.strip():
+            return line
+    return ""
+
+
+def _starts_markdown_wrapper(path):
+    try:
+        text = Path(path).read_text(encoding="utf-8")
+    except (OSError, UnicodeError, TypeError):
+        return False
+    return bool(_MARKDOWN_WRAPPER_RE.match(_first_nonempty_line(text)))
+
+
+def _is_malformed_translation(file, config):
+    """Detect a zero-ambiguity legacy translation corruption pattern.
+
+    Some historical machine translations begin with a ` ```markdown ` or
+    ` ````markdown ` fence even though the corresponding zh source does not.
+    Material then renders a large part of the article as code. Only that exact,
+    deterministic pattern is quarantined here; heuristic quality signals are not.
+    """
+    locale = getattr(file, "locale", None)
+    if locale not in _TRANSLATION_LOCALES:
+        return False
+
+    translated_path = getattr(file, "abs_src_path", None)
+    normalized_source = getattr(file, "norm_src_uri", None)
+    if not translated_path or not normalized_source:
+        return False
+
+    cache_key = (str(translated_path), str(normalized_source), str(config.docs_dir))
+    cached = _TRANSLATION_QUALITY_CACHE.get(cache_key)
+    if cached is not None:
+        return cached
+
+    translated_has_wrapper = _starts_markdown_wrapper(translated_path)
+    if not translated_has_wrapper:
+        _TRANSLATION_QUALITY_CACHE[cache_key] = False
+        return False
+
+    zh_path = Path(config.docs_dir) / "zh" / PurePosixPath(normalized_source)
+    if not zh_path.is_file():
+        _TRANSLATION_QUALITY_CACHE[cache_key] = False
+        return False
+
+    malformed = not _starts_markdown_wrapper(zh_path)
+    _TRANSLATION_QUALITY_CACHE[cache_key] = malformed
+    return malformed
+
+
 def _canonicalize_fallback(page):
     file = page.file
     source_locale = getattr(file, "locale", None)
@@ -125,7 +204,7 @@ def _canonicalize_fallback(page):
 
 
 def _filter_page_alternates(page, config):
-    """Advertise only real source/translation URLs, never generated fallbacks."""
+    """Advertise only real, structurally valid translations; never fallbacks."""
     file = page.file
     file_alternates = getattr(file, "alternates", None)
     i18n = config.plugins.get("i18n")
@@ -143,6 +222,11 @@ def _filter_page_alternates(page, config):
         # If the alternate's source locale differs from the emitted locale,
         # static-i18n generated a fallback copy rather than a real translation.
         if getattr(alternate_file, "locale", None) != locale:
+            continue
+
+        # Deterministically malformed legacy translations remain reachable but
+        # are not advertised as valid localized alternatives.
+        if _is_malformed_translation(alternate_file, config):
             continue
 
         semantic_language = _semantic_language(locale, alternate_file)
