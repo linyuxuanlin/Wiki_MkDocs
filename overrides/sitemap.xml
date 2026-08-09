@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+{%- set english_originals = [
+  'ADC-Dynamic_Parameters.md',
+  'ADC-Static_Parameters.md',
+  'Basics_of_Fourier_Transform.md',
+  'Basics_of_Mixed_Signal_Test.md',
+  'Basics_of_Signal_and_Power_Integrity.md',
+  'Basics_of_VBT_Syntax.md',
+  'CPR-Fundamental.md',
+  'Continuity_Test.md',
+  'DAC-Dynamic_Parameters.md',
+  'DAC-Static_Parameters.md',
+  'DC_Parameters.md',
+  'Digital_Functional_Test.md',
+  'IDD_Test.md',
+  'Leakage_Test.md',
+  'Level_Threshold_Test.md',
+  'Pattern_Syntax_Notes.md',
+  'Personal_Onboarding_Workflow_(Windows).md',
+  'Tester_Alarms.md',
+  'TheExec(The_Executive).md',
+  'TheHdw(The_Hardware).md',
+  'Troubleshooting_of_ADC_and_DAC.md',
+  'WeChat.md'
+] %}
+
+{%- for locale, i18n_files in i18n_alternates.items() %}
+{%- for file in i18n_files %}
+    {%- if file.page.is_link %}
+        {%- continue %}
+    {%- endif %}
+    {%- if not file.page %}
+        {%- continue %}
+    {%- endif %}
+
+    {%- if file.locale != locale %}
+        {%- continue %}
+    {%- endif %}
+
+    {%- if file.page.canonical_url %}
+        {%- set page_href = file.page.canonical_url | e %}
+    {%- elif file.page.abs_url %}
+        {%- set page_href = file.page.abs_url | e %}
+    {%- else %}
+        {%- set page_href = config.site_url ~ file.url %}
+    {%- endif %}
+    <url>
+        <loc>{{ page_href }}</loc>
+    {%- if file.page.update_date %}
+        <lastmod>{{ file.page.update_date }}</lastmod>
+    {%- endif %}
+        <changefreq>daily</changefreq>
+    {%- for i18n_locale, i18n_file in file.alternates.items() %}
+        {%- set alternate_source_path = i18n_file.norm_src_uri if i18n_file.norm_src_uri is defined else i18n_file.src_uri %}
+        {%- if i18n_file.locale != i18n_locale %}
+            {%- continue %}
+        {%- endif %}
+
+        {%- if i18n_file.page.canonical_url %}
+            {%- set i18n_href = i18n_file.page.canonical_url | e %}
+        {%- elif i18n_file.page.abs_url %}
+            {%- set i18n_href = i18n_file.page.abs_url | e %}
+        {%- else %}
+            {%- if i18n_file.url == "./" %}
+                {%- set i18n_href = config.site_url %}
+            {%- else %}
+                {%- set i18n_href = config.site_url ~ i18n_file.url %}
+            {%- endif %}
+        {%- endif %}
+
+        {%- if alternate_source_path in english_originals and i18n_locale == 'zh' %}
+            {%- set hreflang = 'en' %}
+        {%- else %}
+            {%- set hreflang = i18n_locale %}
+        {%- endif %}
+        <xhtml:link rel="alternate" hreflang="{{ hreflang }}" href="{{ i18n_href }}"/>
+    {%- endfor %}
+    </url>
+{%- endfor %}
+{%- endfor %}
+</urlset>
