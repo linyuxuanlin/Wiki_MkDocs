@@ -1,0 +1,148 @@
+name: integration-seo-all-fallback
+
+on:
+  push:
+    branches:
+      - agent/integration-seo-i18n
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Check hook syntax
+        run: python -m py_compile hooks/seo_metadata.py hooks/i18n_index_hygiene.py
+
+      - name: Build composed site
+        run: mkdocs build --clean -f mkdocs.integration.yml
+
+      - name: Assert composed behavior
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from urllib.parse import unquote, urlparse
+          import re
+          import xml.etree.ElementTree as ET
+
+          NS = {
+              'sm': 'http://www.sitemaps.org/schemas/sitemap/0.9',
+              'xhtml': 'http://www.w3.org/1999/xhtml',
+          }
+          canonical_re = re.compile(
+              r'<link[^>]+(?:rel=["\']?canonical["\']?[^>]+href=["\']?([^"\' >]+)|href=["\']?([^"\' >]+)["\']?[^>]+rel=["\']?canonical["\']?)[^>]*>',
+              re.I,
+          )
+
+          def html(path):
+              return Path(path).read_text(encoding='utf-8')
+
+          def decoded_path(url):
+              return unquote(urlparse(url).path)
+
+          def canonical_path(path):
+              match = canonical_re.search(html(path))
+              if not match:
+                  raise SystemExit(f'canonical missing: {path}')
+              return decoded_path(match.group(1) or match.group(2))
+
+          # #11: representative fallback copies all consolidate to their source/root URL.
+          expected = {
+              'site/en/archive/nps/index.html': '/archive/nps/',
+              'site/es/blog/2022-07-03-有限与无限世界/index.html': '/blog/2022-07-03-有限与无限世界/',
+              'site/ar/机器学习入门-基础流程/index.html': '/机器学习入门-基础流程/',
+              'site/en/Continuity_Test/index.html': '/Continuity_Test/',
+              'site/en/Basics_of_Mixed_Signal_Test/index.html': '/Basics_of_Mixed_Signal_Test/',
+          }
+          for path, target in expected.items():
+              if canonical_path(path) != target:
+                  raise SystemExit(f'wrong canonical: {path}')
+
+          # Real source and translations remain self-canonical.
+          self_expected = {
+              'site/Continuity_Test/index.html': '/Continuity_Test/',
+              'site/es/Continuity_Test/index.html': '/es/Continuity_Test/',
+              'site/ar/Continuity_Test/index.html': '/ar/Continuity_Test/',
+          }
+          for path, target in self_expected.items():
+              if canonical_path(path) != target:
+                  raise SystemExit(f'self-canonical changed: {path}')
+
+          # No noindex is used.
+          for page in Path('site').rglob('index.html'):
+              text = page.read_text(encoding='utf-8')
+              if 'name="robots" content="noindex' in text or 'name=robots content=noindex' in text:
+                  raise SystemExit(f'unexpected noindex: {page}')
+
+          # #12: final canonical-only sitemap has 1307 locations.
+          root = ET.parse('site/sitemap.xml').getroot()
+          entries = []
+          for node in root.findall('sm:url', NS):
+              loc = node.findtext('sm:loc', namespaces=NS)
+              alts = [
+                  (link.attrib.get('hreflang'), link.attrib.get('href'))
+                  for link in node.findall('xhtml:link', NS)
+              ]
+              entries.append((loc, alts))
+          if len(entries) != 1307:
+              raise SystemExit(f'unexpected sitemap loc count: {len(entries)}')
+          by_path = {decoded_path(loc): alts for loc, alts in entries}
+
+          if '/en/Continuity_Test/' in by_path:
+              raise SystemExit('fallback en Continuity remains as sitemap loc')
+          continuity = {
+              lang: decoded_path(href)
+              for lang, href in by_path['/Continuity_Test/']
+          }
+          expected_continuity = {
+              'en': '/Continuity_Test/',
+              'es': '/es/Continuity_Test/',
+              'ar': '/ar/Continuity_Test/',
+          }
+          if continuity != expected_continuity:
+              raise SystemExit(f'unexpected Continuity hreflang: {continuity}')
+
+          blog_path = '/blog/2022-07-03-有限与无限世界/'
+          blog = {
+              lang: decoded_path(href)
+              for lang, href in by_path[blog_path]
+          }
+          if blog != {'zh': blog_path}:
+              raise SystemExit(f'unexpected Chinese blog hreflang: {blog}')
+
+          # #8: page-specific description generation remains active.
+          candidates = list(Path('site/en').glob('RobotCtrl_Core*/index.html'))
+          if not candidates:
+              raise SystemExit('RobotCtrl_Core generated page not found')
+          sample = html(candidates[0])
+          match = re.search(r'<meta name="?description"? content="([^"]*)"', sample)
+          if not match:
+              match = re.search(r'<meta name=description content="([^"]*)"', sample)
+          if not match:
+              raise SystemExit('meta description not found')
+          description = match.group(1)
+          generic = 'To have an extensive knowledge of all things and integrate them into a coherent whole.'
+          if description == generic or not 55 <= len(description) <= 155:
+              raise SystemExit(f'invalid page-specific description: {description}')
+
+          print('final SEO + all-fallback canonical integration passed')
+          print('sitemap locs:', len(entries))
+          print('Continuity hreflang:', continuity)
+          print('description sample:', description)
+          PY
