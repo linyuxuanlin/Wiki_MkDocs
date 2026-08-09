@@ -1,0 +1,7 @@
+INHERIT: mkdocs.yml
+
+hooks:
+  - hooks/i18n_canonical_hygiene.py
+
+theme:
+  custom_dir: overrides
