@@ -302,6 +302,10 @@ def main() -> int:
             fail(errors, "404.html is missing robots noindex")
         if "hreflang=" in not_found_html.lower():
             fail(errors, "404.html contains stale language alternates")
+        if "error.404" in not_found_html:
+            fail(errors, "404.html contains an unresolved translation key")
+        if "页面未找到" not in not_found_html:
+            fail(errors, "404.html is missing its expected Chinese not-found message")
     else:
         fail(errors, "404.html is missing")
 
