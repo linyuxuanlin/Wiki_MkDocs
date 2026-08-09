@@ -8,6 +8,7 @@ INHERIT: mkdocs.nav.yml
 
 hooks:
   - hooks/seo_metadata.py
+  - hooks/i18n_index_hygiene.py
 
 
 theme:
