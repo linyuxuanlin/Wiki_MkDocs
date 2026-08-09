@@ -4,7 +4,8 @@
 This is intentionally a *loss* detector, not a translation-quality scorer. A
 translation may be longer, use different wording, or even contain extra code
 blocks. We only flag pages that appear to have dropped substantial source
-structure or an extreme amount of visible content.
+structure, an extreme amount of visible content, or a deterministic malformed
+whole-document Markdown wrapper introduced by machine translation.
 """
 
 from __future__ import annotations
@@ -25,6 +26,7 @@ _FRONTMATTER_RE = re.compile(r"\A---\s*\n.*?\n---\s*\n", re.DOTALL)
 _URL_RE = re.compile(r"https?://\S+")
 _MARKUP_RE = re.compile(r"[#>*_`|\[\](){}!~-]+")
 _SPACE_RE = re.compile(r"\s+")
+_MARKDOWN_WRAPPER_RE = re.compile(r"^\s*(`{3,}|~{3,})\s*markdown\s*$", re.IGNORECASE)
 
 
 @dataclass(frozen=True)
@@ -34,6 +36,15 @@ class Metrics:
     fenced_blocks: int
     images: int
     same_site_refs: int
+    starts_markdown_wrapper: bool
+
+
+def first_nonempty_line(text: str) -> str:
+    body = _FRONTMATTER_RE.sub("", text, count=1)
+    for line in body.splitlines():
+        if line.strip():
+            return line
+    return ""
 
 
 def count_complete_fenced_blocks(text: str) -> int:
@@ -63,9 +74,6 @@ def count_complete_fenced_blocks(text: str) -> int:
             opening_length = marker_length
             continue
 
-        # CommonMark closing fences use the same character and at least as many
-        # markers as the opening fence. Trailing whitespace is harmless; any
-        # other trailing content means this is not a closing fence.
         if marker_char != opening_char or marker_length < opening_length:
             continue
         if stripped[marker_length:].strip():
@@ -128,6 +136,7 @@ def metrics(text: str) -> Metrics:
         fenced_blocks=count_complete_fenced_blocks(body),
         images=len(_IMAGE_RE.findall(body)),
         same_site_refs=len(_SAME_SITE_RE.findall(body)),
+        starts_markdown_wrapper=bool(_MARKDOWN_WRAPPER_RE.match(first_nonempty_line(body))),
     )
 
 
@@ -143,7 +152,13 @@ def assess(source: Metrics, translated: Metrics) -> tuple[bool, int, list[str]]:
     """Return (severe, independent_loss_signal_count, reasons)."""
     reasons: list[str] = []
     loss_signals = 0
+    deterministic_corruption = False
     extreme_length_loss = False
+
+    if translated.starts_markdown_wrapper and not source.starts_markdown_wrapper:
+        deterministic_corruption = True
+        loss_signals += 1
+        reasons.append("malformed-markdown-wrapper")
 
     if source.visible_chars >= 500:
         ratio = translated.visible_chars / max(source.visible_chars, 1)
@@ -175,9 +190,10 @@ def assess(source: Metrics, translated: Metrics) -> tuple[bool, int, list[str]]:
             f"internal-refs={translated.same_site_refs}/{source.same_site_refs}"
         )
 
-    # Quarantine-worthy candidates must either be dramatically truncated on
-    # prose alone, or show at least two independent kinds of structural loss.
-    severe = extreme_length_loss or loss_signals >= 2
+    # A machine-added whole-document Markdown wrapper is deterministic output
+    # corruption and is sufficient by itself. Otherwise require either dramatic
+    # truncation or at least two independent kinds of structural loss.
+    severe = deterministic_corruption or extreme_length_loss or loss_signals >= 2
     return severe, loss_signals, reasons
 
 
@@ -185,6 +201,7 @@ def main() -> int:
     checked = 0
     candidates: list[tuple[int, str, Metrics, Metrics, list[str]]] = []
     locale_counts: Counter[str] = Counter()
+    wrapper_counts: Counter[str] = Counter()
 
     for source_path in sorted(SOURCE_DIR.glob("*.md")):
         source_text = source_path.read_text(encoding="utf-8")
@@ -207,9 +224,12 @@ def main() -> int:
                 (loss_signals, key, source_metrics, translated_metrics, reasons)
             )
             locale_counts[locale_dir.name] += 1
+            if "malformed-markdown-wrapper" in reasons:
+                wrapper_counts[locale_dir.name] += 1
 
     candidates.sort(
         key=lambda item: (
+            "malformed-markdown-wrapper" not in item[4],
             -item[0],
             item[3].visible_chars / max(item[2].visible_chars, 1),
             item[1],
@@ -222,6 +242,12 @@ def main() -> int:
         "By locale: "
         + ", ".join(
             f"{locale}={locale_counts[locale]}" for locale in ("en", "es", "ar")
+        )
+    )
+    print(
+        "Deterministic malformed Markdown wrappers: "
+        + ", ".join(
+            f"{locale}={wrapper_counts[locale]}" for locale in ("en", "es", "ar")
         )
     )
 
