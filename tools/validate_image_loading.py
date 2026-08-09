@@ -8,14 +8,16 @@ import sys
 from html.parser import HTMLParser
 from pathlib import Path
 
-from hooks.image_loading import optimize_article_images
+ROOT_DIR = Path(__file__).resolve().parents[1]
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
+
+from hooks.i18n_index_hygiene import _optimize_article_images
 
 SITE_DIR = Path("site")
 _IMG_TAG_RE = re.compile(r"<img\b[^>]*>", re.IGNORECASE)
 _LOADING_LAZY_RE = re.compile(r"\sloading=(?:\"lazy\"|'lazy'|lazy)(?=[\s>])", re.IGNORECASE)
 _DECODING_ASYNC_RE = re.compile(r"\sdecoding=(?:\"async\"|'async'|async)(?=[\s>])", re.IGNORECASE)
-_LOADING_ANY_RE = re.compile(r"\sloading\s*=", re.IGNORECASE)
-_DECODING_ANY_RE = re.compile(r"\sdecoding\s*=", re.IGNORECASE)
 
 
 class ArticleImageParser(HTMLParser):
@@ -48,9 +50,11 @@ def synthetic_test() -> list[str]:
         '<img src="explicit.png" loading="eager">'
         '</article>'
     )
-    result = optimize_article_images(source)
+    result = _optimize_article_images(source)
     tags = _IMG_TAG_RE.findall(result)
 
+    if len(tags) != 4:
+        return [f"synthetic optimizer produced {len(tags)} image tags instead of 4"]
     if tags[0] != '<img src="logo.png">':
         errors.append("theme image was modified")
     if tags[1] != '<img src="hero.png">':
