@@ -35,10 +35,12 @@ jobs:
           node --check docs/javascripts/altium.js
           node --check docs/javascripts/mathjax.js
           node --check docs/javascripts/accessibility.js
-          python -m py_compile hooks/seo_metadata.py hooks/i18n_index_hygiene.py tools/validate_site_output.py tools/repair_translated_internal_links.py tools/audit_internal_broken_links.py
+          python -m py_compile hooks/seo_metadata.py hooks/i18n_index_hygiene.py tools/validate_site_output.py tools/repair_malformed_internal_urls.py tools/repair_translated_internal_links.py tools/audit_internal_broken_links.py
 
       - name: Repair deterministic internal links
         run: |
+          python tools/repair_malformed_internal_urls.py
+          python tools/repair_malformed_internal_urls.py --check
           python tools/repair_translated_internal_links.py
           python tools/repair_translated_internal_links.py --check
 
