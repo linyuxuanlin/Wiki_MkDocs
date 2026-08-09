@@ -1,30 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-{%- set english_originals = [
-  'ADC-Dynamic_Parameters.md',
-  'ADC-Static_Parameters.md',
-  'Basics_of_Fourier_Transform.md',
-  'Basics_of_Mixed_Signal_Test.md',
-  'Basics_of_Signal_and_Power_Integrity.md',
-  'Basics_of_VBT_Syntax.md',
-  'CPR-Fundamental.md',
-  'Continuity_Test.md',
-  'DAC-Dynamic_Parameters.md',
-  'DAC-Static_Parameters.md',
-  'DC_Parameters.md',
-  'Digital_Functional_Test.md',
-  'IDD_Test.md',
-  'Leakage_Test.md',
-  'Level_Threshold_Test.md',
-  'Pattern_Syntax_Notes.md',
-  'Personal_Onboarding_Workflow_(Windows).md',
-  'Tester_Alarms.md',
-  'TheExec(The_Executive).md',
-  'TheHdw(The_Hardware).md',
-  'Troubleshooting_of_ADC_and_DAC.md',
-  'WeChat.md'
-] %}
+{%- set english_originals = config.extra.english_originals | default([]) %}
 
 {%- for locale, i18n_files in i18n_alternates.items() %}
 {%- for file in i18n_files %}
