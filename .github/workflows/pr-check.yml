@@ -35,10 +35,12 @@ jobs:
           node --check docs/javascripts/altium.js
           node --check docs/javascripts/mathjax.js
           node --check docs/javascripts/accessibility.js
-          python -m py_compile hooks/seo_metadata.py hooks/i18n_index_hygiene.py tools/validate_site_output.py
+          python -m py_compile hooks/seo_metadata.py hooks/i18n_index_hygiene.py hooks/image_loading.py tools/validate_site_output.py tools/validate_image_loading.py
 
       - name: Build site
         run: mkdocs build --clean
 
       - name: Validate generated site
-        run: python tools/validate_site_output.py
+        run: |
+          python tools/validate_site_output.py
+          python tools/validate_image_loading.py
