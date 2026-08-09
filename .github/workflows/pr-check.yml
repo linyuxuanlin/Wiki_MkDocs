@@ -35,7 +35,10 @@ jobs:
           node --check docs/javascripts/altium.js
           node --check docs/javascripts/mathjax.js
           node --check docs/javascripts/accessibility.js
-          python -m py_compile hooks/seo_metadata.py hooks/i18n_index_hygiene.py tools/validate_site_output.py
+          python -m py_compile hooks/seo_metadata.py hooks/i18n_index_hygiene.py tools/validate_site_output.py tools/audit_translation_structure.py
+
+      - name: Audit translation structure
+        run: python tools/audit_translation_structure.py
 
       - name: Build site
         run: mkdocs build --clean
