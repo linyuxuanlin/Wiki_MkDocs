@@ -1,0 +1,8 @@
+INHERIT: mkdocs.yml
+
+hooks:
+  - hooks/seo_metadata.py
+  - hooks/i18n_index_hygiene.py
+
+theme:
+  custom_dir: overrides
