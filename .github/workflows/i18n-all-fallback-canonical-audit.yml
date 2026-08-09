@@ -1,0 +1,186 @@
+name: i18n-all-fallback-canonical-audit
+
+on:
+  push:
+    branches:
+      - agent/i18n-english-canonical-audit
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Check hook syntax
+        run: python -m py_compile hooks/i18n_fallback_canonical.py
+
+      - name: Build baseline
+        run: mkdocs build --clean --site-dir site-baseline
+
+      - name: Build all-fallback canonical site
+        run: mkdocs build --clean -f mkdocs.all-fallback-audit.yml --site-dir site-canonical
+
+      - name: Audit canonical and sitemap behavior
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from urllib.parse import unquote, urlparse
+          import re
+          import xml.etree.ElementTree as ET
+
+          NS = {
+              'sm': 'http://www.sitemaps.org/schemas/sitemap/0.9',
+              'xhtml': 'http://www.w3.org/1999/xhtml',
+          }
+          canonical_re = re.compile(
+              r'<link[^>]+(?:rel=["\']?canonical["\']?[^>]+href=["\']?([^"\' >]+)|href=["\']?([^"\' >]+)["\']?[^>]+rel=["\']?canonical["\']?)[^>]*>',
+              re.I,
+          )
+
+          def decoded_path(url):
+              return unquote(urlparse(url).path)
+
+          def canonical_path(html_path):
+              text = Path(html_path).read_text(encoding='utf-8')
+              match = canonical_re.search(text)
+              if not match:
+                  raise SystemExit(f'canonical not found: {html_path}')
+              return decoded_path(match.group(1) or match.group(2))
+
+          def parse_sitemap(path):
+              root = ET.parse(path).getroot()
+              entries = []
+              for node in root.findall('sm:url', NS):
+                  loc = node.findtext('sm:loc', namespaces=NS)
+                  alts = [
+                      (link.attrib.get('hreflang'), link.attrib.get('href'))
+                      for link in node.findall('xhtml:link', NS)
+                  ]
+                  entries.append((loc, alts))
+              return entries
+
+          def localized_source_exists(url):
+              path = decoded_path(url)
+              parts = path.strip('/').split('/')
+              if not parts or parts[0] not in ('en', 'es', 'ar'):
+                  return True
+              locale = parts[0]
+              relative = '/'.join(parts[1:])
+              if not relative:
+                  candidates = [Path('docs') / locale / 'index.md', Path('docs') / locale / 'README.md']
+              else:
+                  candidates = [
+                      Path('docs') / locale / f'{relative}.md',
+                      Path('docs') / locale / relative / 'index.md',
+                      Path('docs') / locale / relative / 'README.md',
+                  ]
+              return any(candidate.is_file() for candidate in candidates)
+
+          baseline = parse_sitemap('site-baseline/sitemap.xml')
+          filtered = parse_sitemap('site-canonical/sitemap.xml')
+          baseline_locs = [loc for loc, _ in baseline]
+          filtered_locs = [loc for loc, _ in filtered]
+          baseline_set = set(baseline_locs)
+          filtered_set = set(filtered_locs)
+
+          expected_fallbacks = {url for url in baseline_locs if not localized_source_exists(url)}
+          removed = baseline_set - filtered_set
+          unexpected_added = filtered_set - baseline_set
+
+          print('baseline loc count:', len(baseline_locs))
+          print('filtered loc count:', len(filtered_locs))
+          print('expected fallback locs:', len(expected_fallbacks))
+          print('removed locs:', len(removed))
+          print('unexpected added locs:', len(unexpected_added))
+
+          if len(baseline_locs) != 1491:
+              raise SystemExit(f'unexpected baseline loc count: {len(baseline_locs)}')
+          if len(expected_fallbacks) != 184:
+              raise SystemExit(f'expected 184 fallback URLs from source inventory, got {len(expected_fallbacks)}')
+          if len(filtered_locs) != 1307:
+              raise SystemExit(f'expected 1307 filtered locs, got {len(filtered_locs)}')
+          if removed != expected_fallbacks:
+              print('missing removals:', sorted(expected_fallbacks - removed)[:10])
+              print('unexpected removals:', sorted(removed - expected_fallbacks)[:10])
+              raise SystemExit('removed sitemap set does not exactly equal fallback URL set')
+          if unexpected_added:
+              raise SystemExit(f'unexpected sitemap URLs added: {sorted(unexpected_added)[:10]}')
+
+          # Canonicalize both wrong-language and English-original fallback copies to the source/root URL.
+          expected_canonicals = {
+              'site-canonical/en/archive/nps/index.html': '/archive/nps/',
+              'site-canonical/es/blog/2022-07-03-有限与无限世界/index.html': '/blog/2022-07-03-有限与无限世界/',
+              'site-canonical/ar/机器学习入门-基础流程/index.html': '/机器学习入门-基础流程/',
+              'site-canonical/en/Continuity_Test/index.html': '/Continuity_Test/',
+              'site-canonical/en/Basics_of_Mixed_Signal_Test/index.html': '/Basics_of_Mixed_Signal_Test/',
+          }
+          for page, target in expected_canonicals.items():
+              actual = canonical_path(page)
+              print(page, '=>', actual)
+              if actual != target:
+                  raise SystemExit(f'wrong canonical for {page}: {actual} != {target}')
+
+          # Source/default and genuine translations remain self-canonical.
+          self_canonicals = {
+              'site-canonical/Continuity_Test/index.html': '/Continuity_Test/',
+              'site-canonical/es/Continuity_Test/index.html': '/es/Continuity_Test/',
+              'site-canonical/ar/Continuity_Test/index.html': '/ar/Continuity_Test/',
+              'site-canonical/archive/nps/index.html': '/archive/nps/',
+          }
+          for page, target in self_canonicals.items():
+              actual = canonical_path(page)
+              if actual != target:
+                  raise SystemExit(f'self-canonical changed for {page}: {actual} != {target}')
+
+          # No noindex is used for canonical consolidation.
+          for page in Path('site-canonical').rglob('index.html'):
+              text = page.read_text(encoding='utf-8')
+              if 'name="robots" content="noindex' in text or 'name=robots content=noindex' in text:
+                  raise SystemExit(f'unexpected noindex: {page}')
+
+          filtered_by_path = {decoded_path(loc): alts for loc, alts in filtered}
+
+          # English-original root: root is canonical and labeled en; genuine es/ar translations remain.
+          continuity_alts = {
+              lang: decoded_path(href)
+              for lang, href in filtered_by_path['/Continuity_Test/']
+          }
+          print('Continuity hreflang:', continuity_alts)
+          expected_continuity = {
+              'en': '/Continuity_Test/',
+              'es': '/es/Continuity_Test/',
+              'ar': '/ar/Continuity_Test/',
+          }
+          if continuity_alts != expected_continuity:
+              raise SystemExit(f'unexpected Continuity hreflang cluster: {continuity_alts}')
+          if '/en/Continuity_Test/' in filtered_by_path:
+              raise SystemExit('noncanonical en Continuity remains as sitemap loc')
+
+          # Chinese primary-content page: no untranslated fallback languages are advertised.
+          blog_path = '/blog/2022-07-03-有限与无限世界/'
+          blog_alts = {
+              lang: decoded_path(href)
+              for lang, href in filtered_by_path[blog_path]
+          }
+          print('Chinese blog hreflang:', blog_alts)
+          if set(blog_alts) != {'zh'} or blog_alts['zh'] != blog_path:
+              raise SystemExit(f'unexpected Chinese blog hreflang cluster: {blog_alts}')
+
+          print('all-fallback canonicalization assertions passed')
+          PY
