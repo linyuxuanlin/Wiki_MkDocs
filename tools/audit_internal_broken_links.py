@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit generated same-site hyperlinks that do not resolve to generated output."""
+"""Validate that generated same-site hyperlinks resolve to generated output."""
 
 from __future__ import annotations
 
@@ -88,6 +88,10 @@ def generated_targets() -> set[str]:
 
 
 def main() -> int:
+    if not SITE_DIR.is_dir():
+        print("site/ is missing; run `mkdocs build --clean` first.")
+        return 2
+
     html_files = sorted(SITE_DIR.rglob("*.html"))
     targets = generated_targets()
     broken_counts: Counter[str] = Counter()
@@ -158,7 +162,11 @@ def main() -> int:
     for source, count in source_counts.most_common(40):
         print(f"{count:5d}  {source}")
 
-    # Diagnostic while the known structurally incomplete translations are triaged.
+    if total_broken:
+        print("\nInternal link validation FAILED.")
+        return 1
+
+    print("\nInternal link validation passed: all same-site hyperlinks resolve.")
     return 0
 
 
