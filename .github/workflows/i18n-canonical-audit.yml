@@ -1,0 +1,142 @@
+name: i18n-canonical-audit
+
+on:
+  push:
+    branches:
+      - agent/i18n-canonical-audit
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Check hook syntax
+        run: python -m py_compile hooks/i18n_canonical_hygiene.py
+
+      - name: Build baseline
+        run: mkdocs build --clean --site-dir site-baseline
+
+      - name: Build canonicalized site
+        run: mkdocs build --clean -f mkdocs.canonical-audit.yml --site-dir site-canonical
+
+      - name: Audit canonical and sitemap behavior
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from urllib.parse import unquote, urlparse
+          import re
+          import xml.etree.ElementTree as ET
+
+          NS = {
+              'sm': 'http://www.sitemaps.org/schemas/sitemap/0.9',
+              'xhtml': 'http://www.w3.org/1999/xhtml',
+          }
+          canonical_re = re.compile(
+              r'<link[^>]+(?:rel=["\']?canonical["\']?[^>]+href=["\']?([^"\' >]+)|href=["\']?([^"\' >]+)["\']?[^>]+rel=["\']?canonical["\']?)[^>]*>',
+              re.I,
+          )
+
+          def canonical_path(html_path):
+              text = Path(html_path).read_text(encoding='utf-8')
+              match = canonical_re.search(text)
+              if not match:
+                  raise SystemExit(f'canonical not found: {html_path}')
+              href = match.group(1) or match.group(2)
+              return unquote(urlparse(href).path)
+
+          def parse_sitemap(path):
+              root = ET.parse(path).getroot()
+              locs = [node.findtext('sm:loc', namespaces=NS) for node in root.findall('sm:url', NS)]
+              alts = [
+                  link.attrib.get('href')
+                  for node in root.findall('sm:url', NS)
+                  for link in node.findall('xhtml:link', NS)
+              ]
+              return locs, alts
+
+          def is_target_duplicate_url(url):
+              path = unquote(urlparse(url).path)
+              for lang in ('en', 'es', 'ar'):
+                  prefix = f'/{lang}/'
+                  if not path.startswith(prefix):
+                      continue
+                  relative = path[len(prefix):]
+                  return (
+                      relative.startswith(('archive/', 'unlist/', 'blog/'))
+                      or relative == '机器学习入门-基础流程/'
+                  )
+              return False
+
+          baseline_locs, baseline_alts = parse_sitemap('site-baseline/sitemap.xml')
+          canonical_locs, canonical_alts = parse_sitemap('site-canonical/sitemap.xml')
+          baseline_targets = [u for u in baseline_locs if is_target_duplicate_url(u)]
+          remaining_targets = [u for u in canonical_locs if is_target_duplicate_url(u)]
+          remaining_alt_targets = [u for u in canonical_alts if is_target_duplicate_url(u)]
+
+          print('baseline loc count:', len(baseline_locs))
+          print('canonical loc count:', len(canonical_locs))
+          print('removed target locs:', len(baseline_locs) - len(canonical_locs))
+          print('baseline target duplicate locs:', len(baseline_targets))
+          print('remaining target duplicate locs:', len(remaining_targets))
+          print('remaining target duplicate hreflang hrefs:', len(remaining_alt_targets))
+
+          if len(baseline_targets) != 162:
+              raise SystemExit(f'expected 162 target duplicates, got {len(baseline_targets)}')
+          if len(baseline_locs) - len(canonical_locs) != 162:
+              raise SystemExit('sitemap did not remove exactly 162 target duplicate locs')
+          if remaining_targets or remaining_alt_targets:
+              raise SystemExit('target duplicate URLs remain in sitemap signals')
+
+          # Legacy fallback copies point to the default-language page.
+          expected = {
+              'site-canonical/en/archive/nps/index.html': '/archive/nps/',
+              'site-canonical/es/archive/nps/index.html': '/archive/nps/',
+              'site-canonical/ar/archive/nps/index.html': '/archive/nps/',
+              'site-canonical/en/blog/2022-07-03-有限与无限世界/index.html': '/blog/2022-07-03-有限与无限世界/',
+              'site-canonical/es/blog/2022-07-03-有限与无限世界/index.html': '/blog/2022-07-03-有限与无限世界/',
+              'site-canonical/ar/blog/2022-07-03-有限与无限世界/index.html': '/blog/2022-07-03-有限与无限世界/',
+              'site-canonical/en/机器学习入门-基础流程/index.html': '/机器学习入门-基础流程/',
+          }
+          for page, target in expected.items():
+              actual = canonical_path(page)
+              print(page, '=>', actual)
+              if actual != target:
+                  raise SystemExit(f'wrong canonical for {page}: {actual} != {target}')
+
+          # Default pages remain self-canonical.
+          if canonical_path('site-canonical/archive/nps/index.html') != '/archive/nps/':
+              raise SystemExit('default legacy canonical changed unexpectedly')
+          if canonical_path('site-canonical/blog/2022-07-03-有限与无限世界/index.html') != '/blog/2022-07-03-有限与无限世界/':
+              raise SystemExit('default blog canonical changed unexpectedly')
+
+          # English-original fallback is intentionally untouched.
+          english_original = canonical_path('site-canonical/en/Continuity_Test/index.html')
+          print('en Continuity_Test canonical:', english_original)
+          if english_original != '/en/Continuity_Test/':
+              raise SystemExit('English-original fallback was incorrectly canonicalized')
+
+          # No noindex is used in this consolidation experiment.
+          for html in Path('site-canonical').rglob('index.html'):
+              text = html.read_text(encoding='utf-8')
+              if 'name="robots" content="noindex' in text or 'name=robots content=noindex' in text:
+                  raise SystemExit(f'unexpected noindex in canonical experiment: {html}')
+
+          print('canonical consolidation assertions passed')
+          PY
