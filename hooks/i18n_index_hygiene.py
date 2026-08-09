@@ -35,6 +35,7 @@ ENGLISH_ORIGINALS = frozenset(
 
 _TRANSLATION_LOCALES = frozenset({"en", "es", "ar"})
 _TRANSLATION_QUALITY_CACHE = {}
+_FRONTMATTER_RE = re.compile(r"\A---\s*\n.*?\n---\s*\n", re.DOTALL)
 _MARKDOWN_WRAPPER_RE = re.compile(r"^\s*(?:`{3,}|~{3,})\s*markdown\s*$", re.IGNORECASE)
 _NO_INDEX_RE = re.compile(
     r'<meta\b[^>]*\bname=(?:"robots"|\'robots\'|robots)[^>]*\bcontent=(?:"[^"]*noindex[^"]*"|\'[^\']*noindex[^\']*\'|[^\s>]*noindex[^\s>]*)[^>]*>',
@@ -142,6 +143,7 @@ def _starts_markdown_wrapper(path):
         text = Path(path).read_text(encoding="utf-8")
     except (OSError, UnicodeError, TypeError):
         return False
+    text = _FRONTMATTER_RE.sub("", text, count=1)
     return bool(_MARKDOWN_WRAPPER_RE.match(_first_nonempty_line(text)))
 
 
@@ -219,13 +221,9 @@ def _filter_page_alternates(page, config):
         if alternate_file is None:
             continue
 
-        # If the alternate's source locale differs from the emitted locale,
-        # static-i18n generated a fallback copy rather than a real translation.
         if getattr(alternate_file, "locale", None) != locale:
             continue
 
-        # Deterministically malformed legacy translations remain reachable but
-        # are not advertised as valid localized alternatives.
         if _is_malformed_translation(alternate_file, config):
             continue
 
@@ -243,9 +241,6 @@ def _filter_page_alternates(page, config):
         )
         seen_languages.add(semantic_language)
 
-    # static-i18n itself updates this LegacyConfig using attribute assignment.
-    # Use the same write path so Material's template sees the replacement in
-    # the current page context rather than the plugin's precomputed fallback list.
     config.extra.alternate = alternates
 
 
