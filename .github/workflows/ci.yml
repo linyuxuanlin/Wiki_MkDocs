@@ -67,6 +67,8 @@ jobs:
 
       - name: Restore translated internal links
         run: |
+          python tools/repair_malformed_internal_urls.py
+          python tools/repair_malformed_internal_urls.py --check
           python tools/repair_translated_internal_links.py
           python tools/repair_translated_internal_links.py --check
 
