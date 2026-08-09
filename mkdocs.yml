@@ -13,6 +13,7 @@ hooks:
 
 theme:
   name: material
+  custom_dir: overrides
   font: false # 国内网络访问 Google 源可能会有问题
     #text: "Noto Sans SC - local"
     #code: Roboto Mono
