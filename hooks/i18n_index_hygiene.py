@@ -54,7 +54,7 @@ def on_config(config, **kwargs):
 def on_template_context(context, template_name, config, **kwargs):
     """Keep the shared 404 template free of stale page-level language alternates."""
     if template_name == "404.html":
-        config.extra["alternate"] = []
+        config.extra.alternate = []
     return context
 
 
@@ -159,7 +159,10 @@ def _filter_page_alternates(page, config):
         )
         seen_languages.add(semantic_language)
 
-    config.extra["alternate"] = alternates
+    # static-i18n itself updates this LegacyConfig using attribute assignment.
+    # Use the same write path so Material's template sees the replacement in
+    # the current page context rather than the plugin's precomputed fallback list.
+    config.extra.alternate = alternates
 
 
 def _semantic_language(locale, file):
