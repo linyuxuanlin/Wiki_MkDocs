@@ -1,39 +1,39 @@
 name: ci
+
 on:
   push:
     branches:
       - main
+
 permissions:
   contents: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v7
         with:
-          fetch-depth: 1
+          fetch-depth: 0
+
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v7
         with:
-          python-version: 3.x
+          python-version: "3.13"
           cache: pip
           cache-dependency-path: |
             requirements.txt
             tools/requirements.txt
-      - name: Cache user site-packages
-        uses: actions/cache@v4
-        with:
-          path: ~/.local
-          key: ${{ runner.os }}-pip-site-${{ hashFiles('requirements.txt', 'tools/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-site-
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install --user -r tools/requirements.txt -r requirements.txt
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
+          python -m pip install -r tools/requirements.txt -r requirements.txt
+
       - name: Change permissions
         run: chmod 755 docs
+
       - name: Detect docs changes
         id: docs_changes
         run: |
@@ -46,6 +46,7 @@ jobs:
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
+
       - name: Auto-i18n_translate
         if: steps.docs_changes.outputs.changed == 'true'
         env:
@@ -62,17 +63,26 @@ jobs:
           #CHATGPT_API_KEY: ${{ secrets.KEY_OPENAI_FAKE_LINYUXUANLIN52 }}
           #CHATGPT_API_KEY: ${{ secrets.KEY_OPENAI_FAKE_LISU }} #x
           #CHATGPT_API_KEY: ${{ secrets.KEY_OPENAI_LINYUXUANLIN52 }}
+        run: python tools/auto-translater.py || true
+
+      - name: Commit translated files
         run: |
-          python tools/auto-translater.py || true
-      - name: Commit translated
-        run: |
-          git config --global user.email 824676271@qq.com
-          git config --global user.name linyuxuanlin
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No generated translation changes to commit."
+            exit 0
+          fi
+          git config user.email "824676271@qq.com"
+          git config user.name "linyuxuanlin"
           git add .
-          git commit -m "Commit translated" || true
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          git commit -m "Commit translated"
+
+      - name: Push translated files
+        run: |
+          if git rev-list --count "origin/${GITHUB_REF_NAME}..HEAD" | grep -q '^0$'; then
+            echo "No new commit to push."
+            exit 0
+          fi
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+
       - name: Deploy with MkDocs
         run: mkdocs gh-deploy --force
