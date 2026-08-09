@@ -65,6 +65,13 @@ jobs:
           #CHATGPT_API_KEY: ${{ secrets.KEY_OPENAI_LINYUXUANLIN52 }}
         run: python tools/auto-translater.py || true
 
+      - name: Restore translated internal links
+        run: |
+          python tools/repair_malformed_internal_urls.py
+          python tools/repair_malformed_internal_urls.py --check
+          python tools/repair_translated_internal_links.py
+          python tools/repair_translated_internal_links.py --check
+
       - name: Commit translated files
         run: |
           if [ -z "$(git status --porcelain)" ]; then
