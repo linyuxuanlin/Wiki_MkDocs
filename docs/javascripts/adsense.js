@@ -5,6 +5,7 @@
     var AD_CLIENT = 'ca-pub-4776987651904746';
     var AD_SLOT = window.ADSENSE_SLOT_ID || window.ADSENSE_SLOT || '7746286479';
     var HOME_PATHS = new Set(['/', '/zh/', '/en/', '/es/', '/ar/']);
+    var LOW_VALUE_PATH_RE = /(?:^|\/)(?:archive|unlist)(?:\/|$)/i;
     var ADSENSE_SCRIPT_SELECTOR = 'script[src*="pagead/js/adsbygoogle.js"]';
     var MIN_TEXT_LENGTH = 800;
     var LONG_ARTICLE_TEXT_LENGTH = 2600;
@@ -40,7 +41,7 @@
             return;
         }
 
-        var currentUrl = window.location.href;
+        var currentUrl = pageIdentity();
         if (lastInitializedUrl === currentUrl && article.querySelector('.adsense-container')) {
             return;
         }
@@ -89,10 +90,16 @@
         var robotsContent = robots ? (robots.getAttribute('content') || '').toLowerCase() : '';
 
         return HOME_PATHS.has(path) ||
+            LOW_VALUE_PATH_RE.test(path) ||
+            title.indexOf('🚧') !== -1 ||
             path === '/404.html' ||
             /(^|\s)404(\s|$)/.test(title) ||
             /(^|,)\s*noindex\s*(,|$)/.test(robotsContent) ||
             hasDifferentCanonical();
+    }
+
+    function pageIdentity() {
+        return window.location.pathname + window.location.search;
     }
 
     function hasDifferentCanonical() {
