@@ -35,7 +35,7 @@
         {%- continue %}
     {%- endif %}
 
-    {# Every generated fallback copy is non-canonical and therefore omitted as a sitemap location. #}
+    {# Every generated fallback copy is non-canonical and omitted as a sitemap location. #}
     {%- if file.locale != locale %}
         {%- continue %}
     {%- endif %}
@@ -56,7 +56,7 @@
     {%- for i18n_locale, i18n_file in file.alternates.items() %}
         {%- set alternate_source_path = i18n_file.norm_src_uri if i18n_file.norm_src_uri is defined else i18n_file.src_uri %}
         {%- set alternate_is_fallback = i18n_file.locale != i18n_locale %}
-        {%- if alternate_is_fallback and not (i18n_locale == 'en' and alternate_source_path in english_originals) %}
+        {%- if alternate_is_fallback %}
             {%- continue %}
         {%- endif %}
 
@@ -71,7 +71,14 @@
                 {%- set i18n_href = config.site_url ~ i18n_file.url %}
             {%- endif %}
         {%- endif %}
-        <xhtml:link rel="alternate" hreflang="{{ i18n_locale }}" href="{{ i18n_href }}"/>
+
+        {# These default-tree sources contain English primary content. Label the canonical root URL as English. #}
+        {%- if alternate_source_path in english_originals and i18n_locale == 'zh' %}
+            {%- set hreflang = 'en' %}
+        {%- else %}
+            {%- set hreflang = i18n_locale %}
+        {%- endif %}
+        <xhtml:link rel="alternate" hreflang="{{ hreflang }}" href="{{ i18n_href }}"/>
     {%- endfor %}
     </url>
 {%- endfor %}
