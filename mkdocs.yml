@@ -6,6 +6,9 @@ repo_url: https://github.com/linyuxuanlin/Wiki_MkDocs
 edit_uri: edit/main/docs/ # 编辑按钮的url
 INHERIT: mkdocs.nav.yml
 
+hooks:
+  - hooks/seo_metadata.py
+
 
 theme:
   name: material
