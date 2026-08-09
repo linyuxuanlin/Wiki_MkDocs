@@ -1,0 +1,98 @@
+name: integration-seo-i18n
+
+on:
+  push:
+    branches:
+      - agent/integration-seo-i18n
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Check hook syntax
+        run: python -m py_compile hooks/seo_metadata.py hooks/i18n_index_hygiene.py
+
+      - name: Build composed site
+        run: mkdocs build --clean -f mkdocs.integration.yml
+
+      - name: Assert composed behavior
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from urllib.parse import unquote, urlparse
+          import re
+          import xml.etree.ElementTree as ET
+
+          def text(path):
+              return Path(path).read_text(encoding='utf-8')
+
+          # #11: fallback copies are noindex, default and real translations are not.
+          assert 'name="robots" content="noindex, follow"' in text('site/en/archive/nps/index.html')
+          assert 'name="robots" content="noindex, follow"' not in text('site/archive/nps/index.html')
+          translated = Path('site/en/ATTiny85调试记录/index.html')
+          assert translated.is_file()
+          assert 'name="robots" content="noindex, follow"' not in text(translated)
+
+          # #12: no legacy fallback URLs or hreflang targets remain in sitemap.
+          ns = {
+              'sm': 'http://www.sitemaps.org/schemas/sitemap/0.9',
+              'xhtml': 'http://www.w3.org/1999/xhtml',
+          }
+          root = ET.parse('site/sitemap.xml').getroot()
+          locs = [node.findtext('sm:loc', namespaces=ns) for node in root.findall('sm:url', ns)]
+          alts = [
+              link.attrib['href']
+              for node in root.findall('sm:url', ns)
+              for link in node.findall('xhtml:link', ns)
+          ]
+
+          def legacy_fallback(url):
+              path = unquote(urlparse(url).path)
+              return any(
+                  path.startswith(f'/{lang}/{section}/')
+                  for lang in ('en', 'es', 'ar')
+                  for section in ('archive', 'unlist')
+              )
+
+          assert not [url for url in locs if legacy_fallback(url)]
+          assert not [url for url in alts if legacy_fallback(url)]
+
+          # #8: at least one page receives a substantial page-specific description.
+          meta_re = re.compile(r'<meta\s+name=["\']description["\']\s+content=["\']([^"\']+)', re.I)
+          generic = {
+              '博览万物，融会贯通。',
+              'To have an extensive knowledge of all things and integrate them into a coherent whole.',
+              'Abarcar todo, integrar todo.',
+              'اطلع على كل شيء واندمج بكل شيء.',
+          }
+          specific = []
+          for html in Path('site').rglob('index.html'):
+              match = meta_re.search(text(html))
+              if match and len(match.group(1).strip()) >= 55 and match.group(1).strip() not in generic:
+                  specific.append((html, match.group(1).strip()))
+                  if len(specific) >= 3:
+                      break
+          assert specific, 'no page-specific meta descriptions were generated'
+
+          print('combined hook + sitemap assertions passed')
+          for path, desc in specific:
+              print(path, '=>', desc[:120])
+          PY
