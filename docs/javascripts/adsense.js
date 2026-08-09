@@ -91,7 +91,32 @@
         return HOME_PATHS.has(path) ||
             path === '/404.html' ||
             /(^|\s)404(\s|$)/.test(title) ||
-            /(^|,)\s*noindex\s*(,|$)/.test(robotsContent);
+            /(^|,)\s*noindex\s*(,|$)/.test(robotsContent) ||
+            hasDifferentCanonical();
+    }
+
+    function hasDifferentCanonical() {
+        var canonicalLink = document.querySelector('link[rel="canonical"]');
+        if (!canonicalLink || !canonicalLink.getAttribute('href')) {
+            return false;
+        }
+
+        try {
+            var canonical = new URL(canonicalLink.getAttribute('href'), window.location.href);
+            var current = new URL(window.location.href);
+
+            return canonical.origin !== current.origin ||
+                normalizePath(canonical.pathname) !== normalizePath(current.pathname);
+        } catch (error) {
+            return false;
+        }
+    }
+
+    function normalizePath(path) {
+        if (!path || path === '/') {
+            return '/';
+        }
+        return path.replace(/\/+$/, '');
     }
 
     function findMidpointTarget(article) {
