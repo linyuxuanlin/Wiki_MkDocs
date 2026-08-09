@@ -35,9 +35,9 @@ jobs:
           node --check docs/javascripts/altium.js
           node --check docs/javascripts/mathjax.js
           node --check docs/javascripts/accessibility.js
-          python -m py_compile hooks/seo_metadata.py hooks/i18n_index_hygiene.py tools/validate_site_output.py tools/repair_translated_internal_links.py
+          python -m py_compile hooks/seo_metadata.py hooks/i18n_index_hygiene.py tools/validate_site_output.py tools/repair_translated_internal_links.py tools/audit_internal_broken_links.py
 
-      - name: Restore translated internal links
+      - name: Repair deterministic internal links
         run: |
           python tools/repair_translated_internal_links.py
           python tools/repair_translated_internal_links.py --check
@@ -47,3 +47,6 @@ jobs:
 
       - name: Validate generated site
         run: python tools/validate_site_output.py
+
+      - name: Audit residual internal broken links
+        run: python tools/audit_internal_broken_links.py
