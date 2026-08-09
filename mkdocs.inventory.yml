@@ -1,0 +1,4 @@
+INHERIT: mkdocs.yml
+
+hooks:
+  - hooks/fallback_inventory.py
