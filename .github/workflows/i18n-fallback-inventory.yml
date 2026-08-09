@@ -1,0 +1,81 @@
+name: i18n-fallback-inventory
+
+on:
+  push:
+    branches:
+      - agent/i18n-fallback-inventory
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Build instrumented site
+        run: mkdocs build --clean -f mkdocs.inventory.yml
+
+      - name: Inventory fallback pages
+        run: |
+          python - <<'PY'
+          from collections import Counter, defaultdict
+          from pathlib import Path
+          import html
+          import re
+
+          marker_re = re.compile(
+              r'<!-- i18n-fallback source="([^"]+)" output="([^"]+)" path="([^"]+)" -->'
+          )
+
+          counts = Counter()
+          path_counts = Counter()
+          samples = defaultdict(list)
+          total_html = 0
+
+          for page in Path('site').rglob('index.html'):
+              total_html += 1
+              text = page.read_text(encoding='utf-8')
+              match = marker_re.search(text)
+              if not match:
+                  continue
+
+              source, output, source_path = [html.unescape(x) for x in match.groups()]
+              category = 'legacy' if source_path.startswith(('archive/', 'unlist/')) else 'active'
+              counts[(output, category)] += 1
+              path_counts[category] += 1
+              if len(samples[(output, category)]) < 8:
+                  samples[(output, category)].append((page.as_posix(), source_path))
+
+          print('generated index.html:', total_html)
+          print('all fallback pages:', sum(path_counts.values()))
+          print('legacy fallback pages:', path_counts['legacy'])
+          print('active fallback pages:', path_counts['active'])
+          print('=== by locale/category ===')
+          for key in sorted(counts):
+              print(key, counts[key])
+          print('=== samples ===')
+          for key in sorted(samples):
+              print(key)
+              for output_path, source_path in samples[key]:
+                  print('  ', output_path, '<-', source_path)
+
+          if path_counts['legacy'] != 111:
+              raise SystemExit(f'expected 111 known legacy fallbacks, got {path_counts["legacy"]}')
+          if path_counts['active'] <= 0:
+              raise SystemExit('expected active fallback pages but found none')
+          PY
