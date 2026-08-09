@@ -41,10 +41,12 @@ jobs:
           marker_re = re.compile(
               r'<!-- i18n-fallback source="([^"]+)" output="([^"]+)" path="([^"]+)" -->'
           )
+          cjk_re = re.compile(r'[\u3400-\u4dbf\u4e00-\u9fff]')
+          latin_re = re.compile(r'[A-Za-z]')
 
           counts = Counter()
           path_counts = Counter()
-          samples = defaultdict(list)
+          active_paths = defaultdict(set)
           total_html = 0
 
           for page in Path('site').rglob('index.html'):
@@ -58,8 +60,8 @@ jobs:
               category = 'legacy' if source_path.startswith(('archive/', 'unlist/')) else 'active'
               counts[(output, category)] += 1
               path_counts[category] += 1
-              if len(samples[(output, category)]) < 8:
-                  samples[(output, category)].append((page.as_posix(), source_path))
+              if category == 'active':
+                  active_paths[output].add(source_path)
 
           print('generated index.html:', total_html)
           print('all fallback pages:', sum(path_counts.values()))
@@ -68,14 +70,52 @@ jobs:
           print('=== by locale/category ===')
           for key in sorted(counts):
               print(key, counts[key])
-          print('=== samples ===')
-          for key in sorted(samples):
-              print(key)
-              for output_path, source_path in samples[key]:
-                  print('  ', output_path, '<-', source_path)
+
+          common = set.intersection(*(active_paths[lang] for lang in ('en', 'es', 'ar')))
+          en_only = active_paths['en'] - active_paths['es'] - active_paths['ar']
+          print('active fallback source paths common to en/es/ar:', len(common))
+          print('active fallback source paths en-only:', len(en_only))
+          print('=== common active paths + source character profile ===')
+
+          def source_file(path):
+              for candidate in (Path('docs') / path, Path('docs/zh') / path):
+                  if candidate.is_file():
+                      return candidate
+              return None
+
+          common_profiles = []
+          for source_path in sorted(common):
+              src = source_file(source_path)
+              if not src:
+                  raise SystemExit(f'source file not found for {source_path}')
+              raw = src.read_text(encoding='utf-8')
+              cjk = len(cjk_re.findall(raw))
+              latin = len(latin_re.findall(raw))
+              ratio = cjk / max(cjk + latin, 1)
+              common_profiles.append((source_path, cjk, latin, ratio))
+              print(f'{source_path}\tCJK={cjk}\tLatin={latin}\tCJK_ratio={ratio:.3f}')
+
+          print('=== en-only active paths + source character profile ===')
+          en_profiles = []
+          for source_path in sorted(en_only):
+              src = source_file(source_path)
+              if not src:
+                  raise SystemExit(f'source file not found for {source_path}')
+              raw = src.read_text(encoding='utf-8')
+              cjk = len(cjk_re.findall(raw))
+              latin = len(latin_re.findall(raw))
+              ratio = cjk / max(cjk + latin, 1)
+              en_profiles.append((source_path, cjk, latin, ratio))
+              print(f'{source_path}\tCJK={cjk}\tLatin={latin}\tCJK_ratio={ratio:.3f}')
 
           if path_counts['legacy'] != 111:
               raise SystemExit(f'expected 111 known legacy fallbacks, got {path_counts["legacy"]}')
-          if path_counts['active'] <= 0:
-              raise SystemExit('expected active fallback pages but found none')
+          if len(common) != 17:
+              raise SystemExit(f'expected 17 common active fallback paths, got {len(common)}')
+          if len(en_only) != 22:
+              raise SystemExit(f'expected 22 en-only active fallback paths, got {len(en_only)}')
+          if not all(ratio >= 0.35 for _, _, _, ratio in common_profiles):
+              raise SystemExit('a common active fallback source is not clearly CJK-dominant')
+          if not all(ratio < 0.10 for _, _, _, ratio in en_profiles):
+              raise SystemExit('an en-only fallback source is not clearly Latin-dominant')
           PY
