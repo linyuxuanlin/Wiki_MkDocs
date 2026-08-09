@@ -1,0 +1,192 @@
+name: release-candidate-audit
+
+on:
+  push:
+    branches:
+      - agent/release-candidate-audit
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: |
+            requirements.txt
+            tools/requirements.txt
+
+      - name: Install exact release dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r tools/requirements.txt -r requirements.txt
+          python -m pip check
+
+      - name: Verify pinned MkDocs stack
+        run: |
+          python - <<'PY'
+          from importlib.metadata import version
+          expected = {
+              'mkdocs': '1.6.1',
+              'mkdocs-material': '9.7.7',
+              'mkdocs-static-i18n': '1.3.1',
+              'mkdocs-minify-plugin': '0.8.0',
+              'mkdocs-rss-plugin': '1.19.0',
+          }
+          for package, wanted in expected.items():
+              actual = version(package)
+              print(package, actual)
+              if actual != wanted:
+                  raise SystemExit(f'{package}: expected {wanted}, got {actual}')
+          PY
+
+      - name: Check custom source syntax
+        run: |
+          python -m py_compile hooks/seo_metadata.py hooks/i18n_index_hygiene.py
+          node --check docs/javascripts/adsense.js
+          node --check docs/javascripts/altium.js
+          node --check docs/javascripts/mathjax.js
+          node --check docs/javascripts/accessibility.js
+
+      - name: Build combined site
+        run: mkdocs build --clean -f mkdocs.release-candidate.yml
+
+      - name: Audit release candidate output
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from urllib.parse import unquote, urlparse
+          import re
+          import xml.etree.ElementTree as ET
+
+          NS = {
+              'sm': 'http://www.sitemaps.org/schemas/sitemap/0.9',
+              'xhtml': 'http://www.w3.org/1999/xhtml',
+          }
+          canonical_re = re.compile(
+              r'<link[^>]+(?:rel=["\']?canonical["\']?[^>]+href=["\']?([^"\' >]+)|href=["\']?([^"\' >]+)["\']?[^>]+rel=["\']?canonical["\']?)[^>]*>',
+              re.I,
+          )
+
+          def page_text(path):
+              return Path(path).read_text(encoding='utf-8')
+
+          def decoded_path(url):
+              return unquote(urlparse(url).path)
+
+          def canonical_path(path):
+              match = canonical_re.search(page_text(path))
+              if not match:
+                  raise SystemExit(f'canonical missing: {path}')
+              return decoded_path(match.group(1) or match.group(2))
+
+          # Final #11 canonical behavior.
+          expected_canonical = {
+              'site/en/archive/nps/index.html': '/archive/nps/',
+              'site/es/blog/2022-07-03-有限与无限世界/index.html': '/blog/2022-07-03-有限与无限世界/',
+              'site/ar/机器学习入门-基础流程/index.html': '/机器学习入门-基础流程/',
+              'site/en/Continuity_Test/index.html': '/Continuity_Test/',
+              'site/en/Basics_of_Mixed_Signal_Test/index.html': '/Basics_of_Mixed_Signal_Test/',
+              'site/es/Continuity_Test/index.html': '/es/Continuity_Test/',
+              'site/ar/Continuity_Test/index.html': '/ar/Continuity_Test/',
+          }
+          for path, wanted in expected_canonical.items():
+              actual = canonical_path(path)
+              if actual != wanted:
+                  raise SystemExit(f'{path}: expected canonical {wanted}, got {actual}')
+
+          # Final #12 sitemap behavior.
+          root = ET.parse('site/sitemap.xml').getroot()
+          entries = []
+          for node in root.findall('sm:url', NS):
+              loc = node.findtext('sm:loc', namespaces=NS)
+              alts = [
+                  (link.attrib.get('hreflang'), link.attrib.get('href'))
+                  for link in node.findall('xhtml:link', NS)
+              ]
+              entries.append((loc, alts))
+          if len(entries) != 1307:
+              raise SystemExit(f'expected 1307 sitemap locations, got {len(entries)}')
+
+          by_path = {decoded_path(loc): alts for loc, alts in entries}
+          forbidden = {
+              '/en/Continuity_Test/',
+              '/en/archive/nps/',
+              '/es/blog/2022-07-03-有限与无限世界/',
+              '/ar/机器学习入门-基础流程/',
+          }
+          present_forbidden = forbidden & set(by_path)
+          if present_forbidden:
+              raise SystemExit(f'fallback sitemap locations remain: {sorted(present_forbidden)}')
+
+          continuity = {
+              lang: decoded_path(href)
+              for lang, href in by_path['/Continuity_Test/']
+          }
+          expected_continuity = {
+              'en': '/Continuity_Test/',
+              'es': '/es/Continuity_Test/',
+              'ar': '/ar/Continuity_Test/',
+          }
+          if continuity != expected_continuity:
+              raise SystemExit(f'unexpected Continuity hreflang: {continuity}')
+
+          blog_path = '/blog/2022-07-03-有限与无限世界/'
+          blog = {lang: decoded_path(href) for lang, href in by_path[blog_path]}
+          if blog != {'zh': blog_path}:
+              raise SystemExit(f'unexpected Chinese blog hreflang: {blog}')
+
+          # #8 description remains active.
+          robot_pages = list(Path('site/en').glob('RobotCtrl_Core*/index.html'))
+          if not robot_pages:
+              raise SystemExit('RobotCtrl_Core generated page missing')
+          robot_html = page_text(robot_pages[0])
+          desc = re.search(r'<meta name="?description"? content="([^"]*)"', robot_html)
+          if not desc:
+              desc = re.search(r'<meta name=description content="([^"]*)"', robot_html)
+          if not desc:
+              raise SystemExit('RobotCtrl_Core meta description missing')
+          description = desc.group(1)
+          generic = 'To have an extensive knowledge of all things and integrate them into a coherent whole.'
+          if description == generic or not 55 <= len(description) <= 155:
+              raise SystemExit(f'invalid page description: {description}')
+
+          # #7 crawl/performance assets and canonical-aware ad guard are present.
+          if not Path('site/robots.txt').is_file():
+              raise SystemExit('robots.txt missing from built site')
+          adsense = Path('docs/javascripts/adsense.js').read_text(encoding='utf-8')
+          for marker in ('hasDifferentCanonical()', 'MIN_TEXT_LENGTH', 'LONG_ARTICLE_TEXT_LENGTH'):
+              if marker not in adsense:
+                  raise SystemExit(f'AdSense guard/placement marker missing: {marker}')
+          if Path('docs/javascripts/test-adsense.js').exists():
+              # The source diagnostic file may remain in Git history/source, but it must not be loaded by mkdocs.yml.
+              config = Path('mkdocs.yml').read_text(encoding='utf-8')
+              if 'javascripts/test-adsense.js' in config:
+                  raise SystemExit('production diagnostic AdSense script is still loaded')
+
+          # No noindex strategy remains in the final combined site.
+          for page in Path('site').rglob('index.html'):
+              text = page.read_text(encoding='utf-8')
+              if 'name="robots" content="noindex' in text or 'name=robots content=noindex' in text:
+                  raise SystemExit(f'unexpected noindex: {page}')
+
+          print('release candidate assertions passed')
+          print('sitemap locations:', len(entries))
+          print('Continuity hreflang:', continuity)
+          print('description sample:', description)
+          PY
+
+      - name: Verify hardened deploy configuration
+        run: |
+          grep -q 'actions/checkout@v7' .github/workflows/ci.yml
+          grep -q 'actions/setup-python@v7' .github/workflows/ci.yml
+          grep -q 'fetch-depth: 0' .github/workflows/ci.yml
+          grep -q 'python-version: "3.13"' .github/workflows/ci.yml
