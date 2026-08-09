@@ -6,13 +6,21 @@ MIN_DESCRIPTION_LENGTH = 55
 
 _FRONT_MATTER_RE = re.compile(r"\A---\s*\n.*?\n---\s*(?:\n|\Z)", re.DOTALL)
 _FENCE_RE = re.compile(r"```.*?```|~~~.*?~~~", re.DOTALL)
+_HTML_COMMENT_RE = re.compile(r"<!--.*?-->", re.DOTALL)
 _HTML_BLOCK_RE = re.compile(
     r"<(?:div|script|style|iframe|figure|table)\b.*?</(?:div|script|style|iframe|figure|table)>",
     re.DOTALL | re.IGNORECASE,
 )
 _HTML_RE = re.compile(r"<[^>]+>")
-_IMAGE_RE = re.compile(r"!\[[^\]]*\]\([^)]*\)")
+_LINKED_IMAGE_RE = re.compile(
+    r"\[!\[[^\]]*\]\([^)]*\)(?:\s*\{[^{}]*\})?\]\([^)]*\)"
+)
+_IMAGE_RE = re.compile(r"!\[[^\]]*\]\([^)]*\)(?:\s*\{[^{}]*\})?")
 _LINK_RE = re.compile(r"\[([^\]]+)\]\([^)]*\)")
+_ATTRIBUTE_LIST_RE = re.compile(
+    r"\{\s*(?:(?:[.#][\w-]+)|(?:[\w-]+\s*=\s*(?:\"[^\"]*\"|'[^']*'|[^\s}]+)))"
+    r"(?:\s+(?:(?:[.#][\w-]+)|(?:[\w-]+\s*=\s*(?:\"[^\"]*\"|'[^']*'|[^\s}]+))))*\s*\}"
+)
 _INLINE_CODE_RE = re.compile(r"`([^`]+)`")
 _MARKDOWN_MARKER_RE = re.compile(r"[*_~]+")
 _WHITESPACE_RE = re.compile(r"\s+")
@@ -43,6 +51,7 @@ def on_page_markdown(markdown, page, **kwargs):
 def _extract_description(markdown):
     text = _FRONT_MATTER_RE.sub("", markdown)
     text = _FENCE_RE.sub("\n", text)
+    text = _HTML_COMMENT_RE.sub("\n", text)
     text = _HTML_BLOCK_RE.sub("\n", text)
 
     for paragraph in re.split(r"\n\s*\n", text):
@@ -74,8 +83,10 @@ def _clean_paragraph(paragraph):
         return ""
 
     text = " ".join(lines)
+    text = _LINKED_IMAGE_RE.sub("", text)
     text = _IMAGE_RE.sub("", text)
     text = _LINK_RE.sub(r"\1", text)
+    text = _ATTRIBUTE_LIST_RE.sub("", text)
     text = _INLINE_CODE_RE.sub(r"\1", text)
     text = _HTML_RE.sub("", text)
     text = _MARKDOWN_MARKER_RE.sub("", text)
