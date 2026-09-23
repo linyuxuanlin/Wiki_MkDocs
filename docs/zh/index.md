@@ -32,6 +32,8 @@ Hi there~ 欢迎来到我的知识库。
 [![badge](https://img.shields.io/badge/只言片语-Memos-orange?&style=flat-square){ loading=lazy }](https://memos.wiki-power.com/)
 [![badge](https://img.shields.io/badge/硬件作品集-Works-a5b0ed?&style=flat-square){ loading=lazy }](https://works.wiki-power.com/)
 
+最近在做 [FlashAPI](https://flashapi.wiki-power.com/)：面向东南亚开发者的统一 AI API 项目。网站整理了模型公开 API 价格、成本估算和延迟测试方法；API 仍在开发中，欢迎提出需求。
+
 为了避免遗忘、便于分享，我在这里收录知识。  
 请随意浏览～
 

@@ -34,21 +34,24 @@ jobs:
       - name: Change permissions
         run: chmod 755 docs
 
-      - name: Detect docs changes
-        id: docs_changes
+      - name: Detect Chinese articles needing translation
+        id: translation_changes
         run: |
           if git rev-parse HEAD^ >/dev/null 2>&1; then
-            if git diff --quiet HEAD^ HEAD -- docs; then
-              echo "changed=false" >> "$GITHUB_OUTPUT"
-            else
-              echo "changed=true" >> "$GITHUB_OUTPUT"
-            fi
+            changed_files=$(git diff --name-only HEAD^ HEAD -- docs/zh/)
           else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
+            changed_files=$(git ls-files docs/zh/)
           fi
+          while IFS= read -r file; do
+            case "$file" in
+              docs/zh/index.md|docs/zh/Contact-and-Subscribe.md|docs/zh/WeChat.md) ;;
+              docs/zh/*.md) echo "changed=true" >> "$GITHUB_OUTPUT"; exit 0 ;;
+            esac
+          done <<< "$changed_files"
+          echo "changed=false" >> "$GITHUB_OUTPUT"
 
       - name: Auto-i18n_translate
-        if: steps.docs_changes.outputs.changed == 'true'
+        if: steps.translation_changes.outputs.changed == 'true'
         env:
           # 设置环境变量
           ### API BASE:

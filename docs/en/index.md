@@ -33,6 +33,8 @@ Hi there~ Welcome to my knowledge base.
 [![badge](https://img.shields.io/badge/Memos-Memos-orange?&style=flat-square){ loading=lazy }](https://memos.wiki-power.com/)
 [![badge](https://img.shields.io/badge/Works-Works-a5b0ed?&style=flat-square){ loading=lazy }](https://works.wiki-power.com/)
 
+I am building [FlashAPI](https://flashapi.wiki-power.com/), an early-stage unified AI API project for Southeast Asia. The site has public model price references, a cost calculator and a latency measurement guide. API access is still in development.
+
 To avoid forgetting and facilitate sharing, I collect knowledge here.  
 Please feel free to browse~
 
