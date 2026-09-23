@@ -2,15 +2,15 @@
 <a id=__codelineno-0-2 name=__codelineno-0-2 href=#__codelineno-0-2></a>
 <a id=__codelineno-0-3 name=__codelineno-0-3 href=#__codelineno-0-3></a>يشرح هذا المقال كيفية استخدام صورة Docker acme.sh للقيام بعمليات طلب وتجديد شهادات النطاق تلقائيًا.
 <a id=__codelineno-0-4 name=__codelineno-0-4 href=#__codelineno-0-4></a>
-<a id=__codelineno-0-5 name=__codelineno-0-5 href=#__codelineno-0-5></a>[<span class=gs>**acme.sh**</span>](https://github.com/acmesh-official/acme.sh) يمكنه إنشاء شهادات مجانية من Let&#39;s Encrypt ويدعم نشرها باستخدام Docker. يدعم أيضًا طريقتي التحقق من النطاق: HTTP وDNS، بما في ذلك الوضع اليدوي وDNS التلقائي ووضع الاسم البديل لتلبية متطلبات البيئات المختلفة. يمكنك أيضًا طلب شهادات لعدة نطاقات معًا وشهادات النطاق العامة، وتلقائيًا تجديد الشهادات ونشرها في مشاريعك.
+<a id=__codelineno-0-5 name=__codelineno-0-5 href=#__codelineno-0-5></a>[<span class=gs>**acme.sh**</span>](https://github.com/acmesh-official/acme.sh) يمكنه إنشاء شهادات مجانية من Let's Encrypt ويدعم نشرها باستخدام Docker. يدعم أيضًا طريقتي التحقق من النطاق: HTTP وDNS، بما في ذلك الوضع اليدوي وDNS التلقائي ووضع الاسم البديل لتلبية متطلبات البيئات المختلفة. يمكنك أيضًا طلب شهادات لعدة نطاقات معًا وشهادات النطاق العامة، وتلقائيًا تجديد الشهادات ونشرها في مشاريعك.
 <a id=__codelineno-0-6 name=__codelineno-0-6 href=#__codelineno-0-6></a>
 <a id=__codelineno-0-7 name=__codelineno-0-7 href=#__codelineno-0-7></a><span class=gu>## تحضير واجهة برمجة تطبيقات نظام أسماء النطاق (DNS API)</span>
 <a id=__codelineno-0-8 name=__codelineno-0-8 href=#__codelineno-0-8></a>
 <a id=__codelineno-0-9 name=__codelineno-0-9 href=#__codelineno-0-9></a>سيتم استخدام Tencent Cloud كمثال في هذا المقال لطلب واجهة برمجة تطبيقات نظام أسماء النطاق (DNS API). يرجى الرجوع إلى الوثائق الرسمية [<span class=gs>**dnsapi**</span>](https://github.com/acmesh-official/acme.sh/wiki/dnsapi) للمنصات الأخرى.
 <a id=__codelineno-0-10 name=__codelineno-0-10 href=#__codelineno-0-10></a>
-<a id=__codelineno-0-11 name=__codelineno-0-11 href=#__codelineno-0-11></a>أولاً، قم بزيارة [<span class=gs>**DNSPOD**</span>](https://console.dnspod.cn/)، انقر على صورة الشخص في الزاوية العلوية اليمنى - &quot;إدارة المفاتيح&quot;.
+<a id=__codelineno-0-11 name=__codelineno-0-11 href=#__codelineno-0-11></a>أولاً، قم بزيارة [<span class=gs>**DNSPOD**</span>](https://console.dnspod.cn/)، انقر على صورة الشخص في الزاوية العلوية اليمنى - "إدارة المفاتيح".
 <a id=__codelineno-0-12 name=__codelineno-0-12 href=#__codelineno-0-12></a>
-<a id=__codelineno-0-13 name=__codelineno-0-13 href=#__codelineno-0-13></a>ثم، قم بإنشاء مفتاح جديد وانسخ &quot;المعرف&quot; و &quot;الرمز&quot;.
+<a id=__codelineno-0-13 name=__codelineno-0-13 href=#__codelineno-0-13></a>ثم، قم بإنشاء مفتاح جديد وانسخ "المعرف" و "الرمز".
 <a id=__codelineno-0-14 name=__codelineno-0-14 href=#__codelineno-0-14></a>
 <a id=__codelineno-0-15 name=__codelineno-0-15 href=#__codelineno-0-15></a><span class=gu>## نشرها على Synology Docker</span>
 <a id=__codelineno-0-16 name=__codelineno-0-16 href=#__codelineno-0-16></a>
@@ -18,16 +18,16 @@
 <a id=__codelineno-0-18 name=__codelineno-0-18 href=#__codelineno-0-18></a>
 <a id=__codelineno-0-19 name=__codelineno-0-19 href=#__codelineno-0-19></a><span class=gu>### إنشاء مجلد الإعدادات</span>
 <a id=__codelineno-0-20 name=__codelineno-0-20 href=#__codelineno-0-20></a>
-<a id=__codelineno-0-21 name=__codelineno-0-21 href=#__codelineno-0-21></a>لنقم أولاً بإنشاء مجلد <span class=sb>`/docker/acme.sh`</span> ومن ثم إنشاء ملف &quot;account.conf&quot; يدويًا:
+<a id=__codelineno-0-21 name=__codelineno-0-21 href=#__codelineno-0-21></a>لنقم أولاً بإنشاء مجلد <span class=sb>`/docker/acme.sh`</span> ومن ثم إنشاء ملف "account.conf" يدويًا:
 <a id=__codelineno-0-22 name=__codelineno-0-22 href=#__codelineno-0-22></a>
 <a id=__codelineno-0-23 name=__codelineno-0-23 href=#__codelineno-0-23></a>![](https://media.wiki-power.com/img/20210430212420.png)
 <a id=__codelineno-0-24 name=__codelineno-0-24 href=#__codelineno-0-24></a>
 <a id=__codelineno-0-25 name=__codelineno-0-25 href=#__codelineno-0-25></a>ثم، قم بتحرير هذا الملف وأضف يدويًا هذه الأسطر:
 <a id=__codelineno-0-26 name=__codelineno-0-26 href=#__codelineno-0-26></a>
 <a id=__codelineno-0-27 name=__codelineno-0-27 href=#__codelineno-0-27></a><span class=sb>```conf</span>
-<a id=__codelineno-0-28 name=__codelineno-0-28 href=#__codelineno-0-28></a><span class=s>export DP_Id=&quot;المعرف الذي قمت بالتقديم له مؤخرًا&quot;</span>
-<a id=__codelineno-0-29 name=__codelineno-0-29 href=#__codelineno-0-29></a><span class=s>export DP_Key=&quot;الرمز الذي قمت بالتقديم له مؤخرًا&quot;</span>
-<a id=__codelineno-0-30 name=__codelineno-0-30 href=#__codelineno-0-30></a><span class=s>AUTO_UPGRADE=&#39;1&#39;</span>
+<a id=__codelineno-0-28 name=__codelineno-0-28 href=#__codelineno-0-28></a><span class=s>export DP_Id="المعرف الذي قمت بالتقديم له مؤخرًا"</span>
+<a id=__codelineno-0-29 name=__codelineno-0-29 href=#__codelineno-0-29></a><span class=s>export DP_Key="الرمز الذي قمت بالتقديم له مؤخرًا"</span>
+<a id=__codelineno-0-30 name=__codelineno-0-30 href=#__codelineno-0-30></a><span class=s>AUTO_UPGRADE='1'</span>
 <a id=__codelineno-0-31 name=__codelineno-0-31 href=#__codelineno-0-31></a><span class=sb>```</span>
 </code></pre></div> <p>بعد ذلك، احفظ وأغلق الملف.</p> <h3 id=_1>تنزيل الصورة وتكوين الحاوية</h3> <p>افتح حزمة Synology Docker، ثم قم بتنزيل صورة <code>neilpang/acme.sh</code> واضغط مرتين عليها للدخول في "الإعدادات المتقدمة".</p> <p>على صفحة "الأقراص"، قم بتكوين المجلدات المرفقة عن طريق النقر فوق "إضافة مجلد" واختيار المسار المحلي <code>/docker/acme.sh</code> والمسار المستهدف <code>/acme.sh</code> (الذي لا يمكن تغييره افتراضيًا):</p> <p><img alt src=https://media.wiki-power.com/img/20210430214221.png></p> <p>على صفحة "الشبكة"، قم بالتأكد من تحديد "استخدام نفس الشبكة مثل مضيف Docker".</p> <p>ثم، قم بالانتقال إلى صفحة "البيئة"، وادخل الأمر "daemon" في مربع الأوامر:</p> <p><img alt src=https://media.wiki-power.com/img/20210430215244.png></p> <p>بعد ذلك، قم بإنشاء وتشغيل الحاوية. انقر مرتين على الحاوية المشغلة، وانتقل إلى صفحة "الطرفية"، وانقر فوق "بدء بالأمر" وأدخل "sh" ثم انقر على "موافق".</p> <p>أدخل الأمر التالي لتحديث تلقائي:</p> <div class=highlight><pre><span></span><code><a id=__codelineno-1-1 name=__codelineno-1-1 href=#__codelineno-1-1></a>acme.sh<span class=w> </span>--upgrade<span class=w> </span>--auto-upgrade
 </code></pre></div> <p>ثم، أدخل الأمر التالي لطلب الشهادة:</p> <div class=highlight><pre><span></span><code><a id=__codelineno-2-1 name=__codelineno-2-1 href=#__codelineno-2-1></a>acme.sh<span class=w> </span>--issue<span class=w> </span>--dns<span class=w> </span>dns_dp<span class=w> </span>-d<span class=w> </span>wiki-power.com<span class=w> </span>-d<span class=w> </span>*.wiki-power.com

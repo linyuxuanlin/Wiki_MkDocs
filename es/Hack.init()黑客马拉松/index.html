@@ -25,9 +25,9 @@
 <a id=__codelineno-0-25 name=__codelineno-0-25 href=#__codelineno-0-25></a><span class=gs>**Código:**</span>
 <a id=__codelineno-0-26 name=__codelineno-0-26 href=#__codelineno-0-26></a>
 <a id=__codelineno-0-27 name=__codelineno-0-27 href=#__codelineno-0-27></a><span class=sb>```cpp</span>
-<a id=__codelineno-0-28 name=__codelineno-0-28 href=#__codelineno-0-28></a><span class=cp>#define BUTTONS_address   &quot;channel/widget4_0/cmd/control&quot; </span><span class=c1>// Comandos de encendido y apagado</span>
-<a id=__codelineno-0-29 name=__codelineno-0-29 href=#__codelineno-0-29></a><span class=cp>#define LIGHT_STATUS_address  &quot;channel/widget4_0/data/light&quot; </span><span class=c1>// Estado de encendido y apagado</span>
-<a id=__codelineno-0-30 name=__codelineno-0-30 href=#__codelineno-0-30></a><span class=cp>#define ITENSITY_DATA_address &quot;channel/widget4_0/data/lightsensor&quot;</span>
+<a id=__codelineno-0-28 name=__codelineno-0-28 href=#__codelineno-0-28></a><span class=cp>#define BUTTONS_address   "channel/widget4_0/cmd/control" </span><span class=c1>// Comandos de encendido y apagado</span>
+<a id=__codelineno-0-29 name=__codelineno-0-29 href=#__codelineno-0-29></a><span class=cp>#define LIGHT_STATUS_address  "channel/widget4_0/data/light" </span><span class=c1>// Estado de encendido y apagado</span>
+<a id=__codelineno-0-30 name=__codelineno-0-30 href=#__codelineno-0-30></a><span class=cp>#define ITENSITY_DATA_address "channel/widget4_0/data/lightsensor"</span>
 <a id=__codelineno-0-31 name=__codelineno-0-31 href=#__codelineno-0-31></a><span class=cp>#define LEDPIN1    D1    </span><span class=c1>// Definición de los pines de control de las bombillas</span>
 <a id=__codelineno-0-32 name=__codelineno-0-32 href=#__codelineno-0-32></a><span class=cp>#define LEDPIN2    D2</span>
 <a id=__codelineno-0-33 name=__codelineno-0-33 href=#__codelineno-0-33></a><span class=cp>#define LEDPIN3    D3</span>
@@ -52,7 +52,7 @@
 <a id=__codelineno-1-15 name=__codelineno-1-15 href=#__codelineno-1-15></a>        return;
 <a id=__codelineno-1-16 name=__codelineno-1-16 href=#__codelineno-1-16></a>    }
 <a id=__codelineno-1-17 name=__codelineno-1-17 href=#__codelineno-1-17></a>
-<a id=__codelineno-1-18 name=__codelineno-1-18 href=#__codelineno-1-18></a>    aJsonObject *_switch = aJson.getObjectItem(root, &quot;mode&quot;);
+<a id=__codelineno-1-18 name=__codelineno-1-18 href=#__codelineno-1-18></a>    aJsonObject *_switch = aJson.getObjectItem(root, "mode");
 <a id=__codelineno-1-19 name=__codelineno-1-19 href=#__codelineno-1-19></a>
 <a id=__codelineno-1-20 name=__codelineno-1-20 href=#__codelineno-1-20></a>    if (_switch != NULL)
 <a id=__codelineno-1-21 name=__codelineno-1-21 href=#__codelineno-1-21></a>    {
@@ -60,19 +60,19 @@
 <a id=__codelineno-1-23 name=__codelineno-1-23 href=#__codelineno-1-23></a>
 <a id=__codelineno-1-24 name=__codelineno-1-24 href=#__codelineno-1-24></a>        if (SwitchKey)
 <a id=__codelineno-1-25 name=__codelineno-1-25 href=#__codelineno-1-25></a>        {
-<a id=__codelineno-1-26 name=__codelineno-1-26 href=#__codelineno-1-26></a>            SerialUSB.println(&quot;Encendido automático&quot;);
+<a id=__codelineno-1-26 name=__codelineno-1-26 href=#__codelineno-1-26></a>            SerialUSB.println("Encendido automático");
 <a id=__codelineno-1-27 name=__codelineno-1-27 href=#__codelineno-1-27></a>            autostate = 1;
-<a id=__codelineno-1-28 name=__codelineno-1-28 href=#__codelineno-1-28></a>            IntoRobot.publish(LIGHT_STATUS_address, &quot;1&quot;);
+<a id=__codelineno-1-28 name=__codelineno-1-28 href=#__codelineno-1-28></a>            IntoRobot.publish(LIGHT_STATUS_address, "1");
 <a id=__codelineno-1-29 name=__codelineno-1-29 href=#__codelineno-1-29></a>        }
 <a id=__codelineno-1-30 name=__codelineno-1-30 href=#__codelineno-1-30></a>        else
 <a id=__codelineno-1-31 name=__codelineno-1-31 href=#__codelineno-1-31></a>        {
-<a id=__codelineno-1-32 name=__codelineno-1-32 href=#__codelineno-1-32></a>            SerialUSB.println(&quot;Apagado automático&quot;);
+<a id=__codelineno-1-32 name=__codelineno-1-32 href=#__codelineno-1-32></a>            SerialUSB.println("Apagado automático");
 <a id=__codelineno-1-33 name=__codelineno-1-33 href=#__codelineno-1-33></a>            autostate = 0;
-<a id=__codelineno-1-34 name=__codelineno-1-34 href=#__codelineno-1-34></a>            IntoRobot.publish(LIGHT_STATUS_address, &quot;0&quot;);
+<a id=__codelineno-1-34 name=__codelineno-1-34 href=#__codelineno-1-34></a>            IntoRobot.publish(LIGHT_STATUS_address, "0");
 <a id=__codelineno-1-35 name=__codelineno-1-35 href=#__codelineno-1-35></a>        }
 <a id=__codelineno-1-36 name=__codelineno-1-36 href=#__codelineno-1-36></a>    }
 <a id=__codelineno-1-37 name=__codelineno-1-37 href=#__codelineno-1-37></a>
-<a id=__codelineno-1-38 name=__codelineno-1-38 href=#__codelineno-1-38></a>    aJsonObject *_switch2 = aJson.getObjectItem(root, &quot;manual&quot;);
+<a id=__codelineno-1-38 name=__codelineno-1-38 href=#__codelineno-1-38></a>    aJsonObject *_switch2 = aJson.getObjectItem(root, "manual");
 <a id=__codelineno-1-39 name=__codelineno-1-39 href=#__codelineno-1-39></a>
 <a id=__codelineno-1-40 name=__codelineno-1-40 href=#__codelineno-1-40></a>    if (_switch2 != NULL)
 <a id=__codelineno-1-41 name=__codelineno-1-41 href=#__codelineno-1-41></a>    {
@@ -80,15 +80,15 @@
 <a id=__codelineno-1-43 name=__codelineno-1-43 href=#__codelineno-1-43></a>
 <a id=__codelineno-1-44 name=__codelineno-1-44 href=#__codelineno-1-44></a>        if (SwitchKey2)
 <a id=__codelineno-1-45 name=__codelineno-1-45 href=#__codelineno-1-45></a>        {
-<a id=__codelineno-1-46 name=__codelineno-1-46 href=#__codelineno-1-46></a>            SerialUSB.println(&quot;Encendido manual&quot;);
+<a id=__codelineno-1-46 name=__codelineno-1-46 href=#__codelineno-1-46></a>            SerialUSB.println("Encendido manual");
 <a id=__codelineno-1-47 name=__codelineno-1-47 href=#__codelineno-1-47></a>            light_state = 1;
-<a id=__codelineno-1-48 name=__codelineno-1-48 href=#__codelineno-1-48></a>            IntoRobot.publish(LIGHT_STATUS_address, &quot;1&quot;);
+<a id=__codelineno-1-48 name=__codelineno-1-48 href=#__codelineno-1-48></a>            IntoRobot.publish(LIGHT_STATUS_address, "1");
 <a id=__codelineno-1-49 name=__codelineno-1-49 href=#__codelineno-1-49></a>        }
 <a id=__codelineno-1-50 name=__codelineno-1-50 href=#__codelineno-1-50></a>        else
 <a id=__codelineno-1-51 name=__codelineno-1-51 href=#__codelineno-1-51></a>        {
-<a id=__codelineno-1-52 name=__codelineno-1-52 href=#__codelineno-1-52></a>            SerialUSB.println(&quot;Apagado manual&quot;);
+<a id=__codelineno-1-52 name=__codelineno-1-52 href=#__codelineno-1-52></a>            SerialUSB.println("Apagado manual");
 <a id=__codelineno-1-53 name=__codelineno-1-53 href=#__codelineno-1-53></a>            light_state = 0;
-<a id=__codelineno-1-54 name=__codelineno-1-54 href=#__codelineno-1-54></a>            IntoRobot.publish(LIGHT_STATUS_address, &quot;0&quot;);
+<a id=__codelineno-1-54 name=__codelineno-1-54 href=#__codelineno-1-54></a>            IntoRobot.publish(LIGHT_STATUS_address, "0");
 <a id=__codelineno-1-55 name=__codelineno-1-55 href=#__codelineno-1-55></a>        }
 <a id=__codelineno-1-56 name=__codelineno-1-56 href=#__codelineno-1-56></a>    }
 <a id=__codelineno-1-57 name=__codelineno-1-57 href=#__codelineno-1-57></a>    else
@@ -144,7 +144,7 @@
 <a id=__codelineno-2-29 name=__codelineno-2-29 href=#__codelineno-2-29></a><span class=p>{</span>
 <a id=__codelineno-2-30 name=__codelineno-2-30 href=#__codelineno-2-30></a><span class=w>    </span><span class=k>if</span><span class=w> </span><span class=p>(</span><span class=n>obtenerNivelLuz</span><span class=p>()</span><span class=w> </span><span class=o>&gt;=</span><span class=w> </span><span class=mi>400</span><span class=p>)</span>
 <a id=__codelineno-2-31 name=__codelineno-2-31 href=#__codelineno-2-31></a><span class=w>    </span><span class=p>{</span>
-<a id=__codelineno-2-32 name=__codelineno-2-32 href=#__codelineno-2-32></a><span class=w>        </span><span class=n>IntoRobot</span><span class=p>.</span><span class=n>publish</span><span class=p>(</span><span class=n>LIGHT_STATUS_address</span><span class=p>,</span><span class=w> </span><span class=s>&quot;1&quot;</span><span class=p>);</span>
+<a id=__codelineno-2-32 name=__codelineno-2-32 href=#__codelineno-2-32></a><span class=w>        </span><span class=n>IntoRobot</span><span class=p>.</span><span class=n>publish</span><span class=p>(</span><span class=n>LIGHT_STATUS_address</span><span class=p>,</span><span class=w> </span><span class=s>"1"</span><span class=p>);</span>
 <a id=__codelineno-2-33 name=__codelineno-2-33 href=#__codelineno-2-33></a><span class=w>        </span><span class=k>if</span><span class=w> </span><span class=p>(</span><span class=n>obtenerDatosIR</span><span class=p>()</span><span class=w> </span><span class=o>==</span><span class=w> </span><span class=mi>0</span><span class=p>)</span>
 <a id=__codelineno-2-34 name=__codelineno-2-34 href=#__codelineno-2-34></a><span class=w>            </span><span class=n>encenderLuces</span><span class=p>();</span>
 <a id=__codelineno-2-35 name=__codelineno-2-35 href=#__codelineno-2-35></a><span class=w>        </span><span class=k>else</span>
@@ -152,7 +152,7 @@
 <a id=__codelineno-2-37 name=__codelineno-2-37 href=#__codelineno-2-37></a><span class=w>    </span><span class=p>}</span>
 <a id=__codelineno-2-38 name=__codelineno-2-38 href=#__codelineno-2-38></a><span class=w>    </span><span class=k>else</span>
 <a id=__codelineno-2-39 name=__codelineno-2-39 href=#__codelineno-2-39></a><span class=w>    </span><span class=p>{</span>
-<a id=__codelineno-2-40 name=__codelineno-2-40 href=#__codelineno-2-40></a><span class=w>        </span><span class=n>IntoRobot</span><span class=p>.</span><span class=n>publish</span><span class=p>(</span><span class=n>LIGHT_STATUS_address</span><span class=p>,</span><span class=w> </span><span class=s>&quot;0&quot;</span><span class=p>);</span>
+<a id=__codelineno-2-40 name=__codelineno-2-40 href=#__codelineno-2-40></a><span class=w>        </span><span class=n>IntoRobot</span><span class=p>.</span><span class=n>publish</span><span class=p>(</span><span class=n>LIGHT_STATUS_address</span><span class=p>,</span><span class=w> </span><span class=s>"0"</span><span class=p>);</span>
 <a id=__codelineno-2-41 name=__codelineno-2-41 href=#__codelineno-2-41></a><span class=w>        </span><span class=n>apagarLuces</span><span class=p>();</span>
 <a id=__codelineno-2-42 name=__codelineno-2-42 href=#__codelineno-2-42></a><span class=w>    </span><span class=p>}</span>
 <a id=__codelineno-2-43 name=__codelineno-2-43 href=#__codelineno-2-43></a><span class=p>}</span>
@@ -166,7 +166,7 @@
 <a id=__codelineno-2-51 name=__codelineno-2-51 href=#__codelineno-2-51></a><span class=p>{</span>
 <a id=__codelineno-2-52 name=__codelineno-2-52 href=#__codelineno-2-52></a><span class=w>    </span><span class=n>pinMode</span><span class=p>(</span><span class=n>D4</span><span class=p>,</span><span class=w> </span><span class=n>INPUT</span><span class=p>);</span>
 <a id=__codelineno-2-53 name=__codelineno-2-53 href=#__codelineno-2-53></a><span class=w>    </span><span class=n>SerialUSB</span><span class=p>.</span><span class=n>begin</span><span class=p>(</span><span class=mi>115200</span><span class=p>);</span>
-<a id=__codelineno-2-54 name=__codelineno-2-54 href=#__codelineno-2-54></a><span class=w>    </span><span class=n>SerialUSB</span><span class=p>.</span><span class=n>println</span><span class=p>(</span><span class=s>&quot;Hola, mundo&quot;</span><span class=p>);</span>
+<a id=__codelineno-2-54 name=__codelineno-2-54 href=#__codelineno-2-54></a><span class=w>    </span><span class=n>SerialUSB</span><span class=p>.</span><span class=n>println</span><span class=p>(</span><span class=s>"Hola, mundo"</span><span class=p>);</span>
 <a id=__codelineno-2-55 name=__codelineno-2-55 href=#__codelineno-2-55></a><span class=w>    </span><span class=n>pinMode</span><span class=p>(</span><span class=n>LEDPIN1</span><span class=p>,</span><span class=w> </span><span class=n>OUTPUT</span><span class=p>);</span>
 <a id=__codelineno-2-56 name=__codelineno-2-56 href=#__codelineno-2-56></a><span class=w>    </span><span class=n>pinMode</span><span class=p>(</span><span class=n>LEDPIN2</span><span class=p>,</span><span class=w> </span><span class=n>OUTPUT</span><span class=p>);</span>
 <a id=__codelineno-2-57 name=__codelineno-2-57 href=#__codelineno-2-57></a><span class=w>    </span><span class=n>pinMode</span><span class=p>(</span><span class=n>LEDPIN3</span><span class=p>,</span><span class=w> </span><span class=n>OUTPUT</span><span class=p>);</span>
@@ -189,7 +189,7 @@
 <a id=__codelineno-2-74 name=__codelineno-2-74 href=#__codelineno-2-74></a><span class=w>    </span><span class=p>}</span>
 <a id=__codelineno-2-75 name=__codelineno-2-75 href=#__codelineno-2-75></a><span class=w>    </span><span class=k>else</span><span class=w> </span><span class=k>if</span><span class=w> </span><span class=p>(</span><span class=n>autostate</span><span class=w> </span><span class=o>==</span><span class=w> </span><span class=mi>1</span><span class=p>)</span>
 <a id=__codelineno-2-76 name=__codelineno-2-76 href=#__codelineno-2-76></a><span class=w>    </span><span class=p>{</span>
-<a id=__codelineno-2-77 name=__codelineno-2-77 href=#__codelineno-2-77></a><span class=w>        </span><span class=n>SerialUSB</span><span class=p>.</span><span class=n>println</span><span class=p>(</span><span class=s>&quot;Estado = 1&quot;</span><span class=p>);</span>
+<a id=__codelineno-2-77 name=__codelineno-2-77 href=#__codelineno-2-77></a><span class=w>        </span><span class=n>SerialUSB</span><span class=p>.</span><span class=n>println</span><span class=p>(</span><span class=s>"Estado = 1"</span><span class=p>);</span>
 <a id=__codelineno-2-78 name=__codelineno-2-78 href=#__codelineno-2-78></a><span class=w>        </span><span class=n>modoAutomatico</span><span class=p>();</span>
 <a id=__codelineno-2-79 name=__codelineno-2-79 href=#__codelineno-2-79></a><span class=w>    </span><span class=p>}</span>
 <a id=__codelineno-2-80 name=__codelineno-2-80 href=#__codelineno-2-80></a><span class=w>    </span><span class=n>delay</span><span class=p>(</span><span class=mi>100</span><span class=p>);</span>

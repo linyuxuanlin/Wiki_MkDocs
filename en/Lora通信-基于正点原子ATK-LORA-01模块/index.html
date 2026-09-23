@@ -15,7 +15,7 @@
 <a id=__codelineno-0-15 name=__codelineno-0-15 href=#__codelineno-0-15></a>
 <a id=__codelineno-0-16 name=__codelineno-0-16 href=#__codelineno-0-16></a><span class=gu>#### Codeless Testing</span>
 <a id=__codelineno-0-17 name=__codelineno-0-17 href=#__codelineno-0-17></a>
-<a id=__codelineno-0-18 name=__codelineno-0-18 href=#__codelineno-0-18></a>Prepare 2 USB to TTL converters and 2 LoRa modules. Connect them separately to USB to TTL (power, common ground, TX/RX pairing). Connect the MD0 pins of the two LoRa modules to VCC, then plug them into the computer&#39;s USB ports. Open the configuration software and set the following parameters:
+<a id=__codelineno-0-18 name=__codelineno-0-18 href=#__codelineno-0-18></a>Prepare 2 USB to TTL converters and 2 LoRa modules. Connect them separately to USB to TTL (power, common ground, TX/RX pairing). Connect the MD0 pins of the two LoRa modules to VCC, then plug them into the computer's USB ports. Open the configuration software and set the following parameters:
 <a id=__codelineno-0-19 name=__codelineno-0-19 href=#__codelineno-0-19></a>
 <a id=__codelineno-0-20 name=__codelineno-0-20 href=#__codelineno-0-20></a>Device A:
 <a id=__codelineno-0-21 name=__codelineno-0-21 href=#__codelineno-0-21></a>
@@ -41,19 +41,19 @@
 <a id=__codelineno-0-41 name=__codelineno-0-41 href=#__codelineno-0-41></a><span class=k>-</span><span class=w> </span><span class=gs>**Communication channel: 10**</span>
 <a id=__codelineno-0-42 name=__codelineno-0-42 href=#__codelineno-0-42></a><span class=k>-</span><span class=w> </span>Transmit power: 20dBm
 <a id=__codelineno-0-43 name=__codelineno-0-43 href=#__codelineno-0-43></a>
-<a id=__codelineno-0-44 name=__codelineno-0-44 href=#__codelineno-0-44></a>After configuration, click &quot;Save Configuration,&quot; then <span class=gs>**remove MD0 and power off**</span>.
+<a id=__codelineno-0-44 name=__codelineno-0-44 href=#__codelineno-0-44></a>After configuration, click "Save Configuration," then <span class=gs>**remove MD0 and power off**</span>.
 <a id=__codelineno-0-45 name=__codelineno-0-45 href=#__codelineno-0-45></a>
-<a id=__codelineno-0-46 name=__codelineno-0-46 href=#__codelineno-0-46></a>Power both modules back on, open the configuration software, and check &quot;HEX&quot; (hexadecimal) for both transmit and receive.
+<a id=__codelineno-0-46 name=__codelineno-0-46 href=#__codelineno-0-46></a>Power both modules back on, open the configuration software, and check "HEX" (hexadecimal) for both transmit and receive.
 <a id=__codelineno-0-47 name=__codelineno-0-47 href=#__codelineno-0-47></a>
-<a id=__codelineno-0-48 name=__codelineno-0-48 href=#__codelineno-0-48></a>In the transmit area of A, enter <span class=sb>`FF FE 0A 11 12 13 14`</span>, click send, and you&#39;ll receive <span class=sb>`11 12 13 14`</span> in B&#39;s receive area. Or, in B&#39;s transmit area, enter <span class=sb>`00 00 00 11 12 13`</span>, and you&#39;ll receive <span class=sb>`11 12 13`</span> in A&#39;s receive area.
+<a id=__codelineno-0-48 name=__codelineno-0-48 href=#__codelineno-0-48></a>In the transmit area of A, enter <span class=sb>`FF FE 0A 11 12 13 14`</span>, click send, and you'll receive <span class=sb>`11 12 13 14`</span> in B's receive area. Or, in B's transmit area, enter <span class=sb>`00 00 00 11 12 13`</span>, and you'll receive <span class=sb>`11 12 13`</span> in A's receive area.
 <a id=__codelineno-0-49 name=__codelineno-0-49 href=#__codelineno-0-49></a>
-<a id=__codelineno-0-50 name=__codelineno-0-50 href=#__codelineno-0-50></a>Here, <span class=sb>`FF FE`</span> represents B&#39;s address 65534 in hexadecimal, the channel is 10 (in hexadecimal, it&#39;s <span class=sb>`0A`</span>), and the content data is <span class=sb>`11 12 13 14`</span>. Similarly, B&#39;s transmitted data includes A&#39;s address <span class=sb>`00 00`</span>, channel <span class=sb>`00`</span>, and content <span class=sb>`11 12 13`</span>. The data transmission format is <span class=gs>**high-byte address + low-byte address + channel + user data**</span>.
+<a id=__codelineno-0-50 name=__codelineno-0-50 href=#__codelineno-0-50></a>Here, <span class=sb>`FF FE`</span> represents B's address 65534 in hexadecimal, the channel is 10 (in hexadecimal, it's <span class=sb>`0A`</span>), and the content data is <span class=sb>`11 12 13 14`</span>. Similarly, B's transmitted data includes A's address <span class=sb>`00 00`</span>, channel <span class=sb>`00`</span>, and content <span class=sb>`11 12 13`</span>. The data transmission format is <span class=gs>**high-byte address + low-byte address + channel + user data**</span>.
 <a id=__codelineno-0-51 name=__codelineno-0-51 href=#__codelineno-0-51></a>
 <a id=__codelineno-0-52 name=__codelineno-0-52 href=#__codelineno-0-52></a><span class=gu>#### Code-based Testing</span>
 <a id=__codelineno-0-53 name=__codelineno-0-53 href=#__codelineno-0-53></a>
 <a id=__codelineno-0-54 name=__codelineno-0-54 href=#__codelineno-0-54></a>Point-to-point fixed transmission only adds address bytes compared to point-to-point transparent transmission. You can define it like this:
 <a id=__codelineno-0-55 name=__codelineno-0-55 href=#__codelineno-0-55></a>
-<a id=__codelineno-0-56 name=__codelineno-0-56 href=#__codelineno-0-56></a><span class=sb>```c</span><span class=w> </span>title=&quot;main.c&quot;
+<a id=__codelineno-0-56 name=__codelineno-0-56 href=#__codelineno-0-56></a><span class=sb>```c</span><span class=w> </span>title="main.c"
 <a id=__codelineno-0-57 name=__codelineno-0-57 href=#__codelineno-0-57></a><span class=cm>/* USER CODE BEGIN PV */</span>
 <a id=__codelineno-0-58 name=__codelineno-0-58 href=#__codelineno-0-58></a><span class=kt>uint8_t</span><span class=w> </span><span class=n>B_Addr</span><span class=p>[</span><span class=mi>2</span><span class=p>]</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=p>{</span><span class=w> </span><span class=mh>0xFF</span><span class=p>,</span><span class=w> </span><span class=mh>0xFE</span><span class=w> </span><span class=p>};</span>
 <a id=__codelineno-0-59 name=__codelineno-0-59 href=#__codelineno-0-59></a><span class=kt>uint8_t</span><span class=w> </span><span class=n>B_Chan</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=p>{</span><span class=w> </span><span class=mh>0x0A</span><span class=w> </span><span class=p>};</span>
